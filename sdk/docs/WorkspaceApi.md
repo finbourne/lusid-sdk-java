@@ -65,10 +65,21 @@ public class WorkspaceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // WorkspaceApi apiInstance = apiFactory.build(WorkspaceApi.class);
+
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
         String workspaceName = "workspaceName_example"; // String | The item's workspace name.
         WorkspaceItemCreationRequest workspaceItemCreationRequest = new WorkspaceItemCreationRequest(); // WorkspaceItemCreationRequest | The item to be created.
         try {
+            // uncomment the below to set overrides at the request level
+            // WorkspaceItem result = apiInstance.createPersonalItem(workspaceName, workspaceItemCreationRequest).execute(opts);
+
             WorkspaceItem result = apiInstance.createPersonalItem(workspaceName, workspaceItemCreationRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -147,9 +158,20 @@ public class WorkspaceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // WorkspaceApi apiInstance = apiFactory.build(WorkspaceApi.class);
+
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
         WorkspaceCreationRequest workspaceCreationRequest = new WorkspaceCreationRequest(); // WorkspaceCreationRequest | The workspace to be created.
         try {
+            // uncomment the below to set overrides at the request level
+            // Workspace result = apiInstance.createPersonalWorkspace(workspaceCreationRequest).execute(opts);
+
             Workspace result = apiInstance.createPersonalWorkspace(workspaceCreationRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -227,10 +249,21 @@ public class WorkspaceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // WorkspaceApi apiInstance = apiFactory.build(WorkspaceApi.class);
+
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
         String workspaceName = "workspaceName_example"; // String | The item's workspace name.
         WorkspaceItemCreationRequest workspaceItemCreationRequest = new WorkspaceItemCreationRequest(); // WorkspaceItemCreationRequest | The item to be created.
         try {
+            // uncomment the below to set overrides at the request level
+            // WorkspaceItem result = apiInstance.createSharedItem(workspaceName, workspaceItemCreationRequest).execute(opts);
+
             WorkspaceItem result = apiInstance.createSharedItem(workspaceName, workspaceItemCreationRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -309,9 +342,20 @@ public class WorkspaceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // WorkspaceApi apiInstance = apiFactory.build(WorkspaceApi.class);
+
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
         WorkspaceCreationRequest workspaceCreationRequest = new WorkspaceCreationRequest(); // WorkspaceCreationRequest | The workspace to be created.
         try {
+            // uncomment the below to set overrides at the request level
+            // Workspace result = apiInstance.createSharedWorkspace(workspaceCreationRequest).execute(opts);
+
             Workspace result = apiInstance.createSharedWorkspace(workspaceCreationRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -389,10 +433,21 @@ public class WorkspaceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // WorkspaceApi apiInstance = apiFactory.build(WorkspaceApi.class);
+
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
         String workspaceName = "workspaceName_example"; // String | The name of the personal workspace.
         String itemName = "itemName_example"; // String | The name of the item.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deletePersonalItem(workspaceName, itemName).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deletePersonalItem(workspaceName, itemName).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -471,9 +526,20 @@ public class WorkspaceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // WorkspaceApi apiInstance = apiFactory.build(WorkspaceApi.class);
+
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
         String workspaceName = "workspaceName_example"; // String | The name of the personal workspace.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deletePersonalWorkspace(workspaceName).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deletePersonalWorkspace(workspaceName).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -551,10 +617,21 @@ public class WorkspaceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // WorkspaceApi apiInstance = apiFactory.build(WorkspaceApi.class);
+
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
         String workspaceName = "workspaceName_example"; // String | The name of the shared workspace.
         String itemName = "itemName_example"; // String | The name of the item.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteSharedItem(workspaceName, itemName).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteSharedItem(workspaceName, itemName).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -633,9 +710,20 @@ public class WorkspaceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // WorkspaceApi apiInstance = apiFactory.build(WorkspaceApi.class);
+
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
         String workspaceName = "workspaceName_example"; // String | The name of the shared workspace.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteSharedWorkspace(workspaceName).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteSharedWorkspace(workspaceName).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -713,11 +801,22 @@ public class WorkspaceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // WorkspaceApi apiInstance = apiFactory.build(WorkspaceApi.class);
+
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
         String workspaceName = "workspaceName_example"; // String | The name of the personal workspace.
         String itemName = "itemName_example"; // String | The name of the item.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The datetime at which to request the workspace item. If not provided, defaults to 'latest'.
         try {
+            // uncomment the below to set overrides at the request level
+            // WorkspaceItem result = apiInstance.getPersonalItem(workspaceName, itemName, asAt).execute(opts);
+
             WorkspaceItem result = apiInstance.getPersonalItem(workspaceName, itemName, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -797,10 +896,21 @@ public class WorkspaceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // WorkspaceApi apiInstance = apiFactory.build(WorkspaceApi.class);
+
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
         String workspaceName = "workspaceName_example"; // String | The personal workspace name.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve workspaces. Defaults to 'latest' if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // Workspace result = apiInstance.getPersonalWorkspace(workspaceName, asAt).execute(opts);
+
             Workspace result = apiInstance.getPersonalWorkspace(workspaceName, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -879,11 +989,22 @@ public class WorkspaceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // WorkspaceApi apiInstance = apiFactory.build(WorkspaceApi.class);
+
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
         String workspaceName = "workspaceName_example"; // String | The name of the shared workspace.
         String itemName = "itemName_example"; // String | The name of the item.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The datetime at which to request the workspace item. If not provided, defaults to 'latest'.
         try {
+            // uncomment the below to set overrides at the request level
+            // WorkspaceItem result = apiInstance.getSharedItem(workspaceName, itemName, asAt).execute(opts);
+
             WorkspaceItem result = apiInstance.getSharedItem(workspaceName, itemName, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -963,10 +1084,21 @@ public class WorkspaceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // WorkspaceApi apiInstance = apiFactory.build(WorkspaceApi.class);
+
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
         String workspaceName = "workspaceName_example"; // String | The shared workspace name.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve workspaces. Defaults to 'latest' if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // Workspace result = apiInstance.getSharedWorkspace(workspaceName, asAt).execute(opts);
+
             Workspace result = apiInstance.getSharedWorkspace(workspaceName, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1045,6 +1177,14 @@ public class WorkspaceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // WorkspaceApi apiInstance = apiFactory.build(WorkspaceApi.class);
+
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
         String workspaceName = "workspaceName_example"; // String | The item's workspace name.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve workspace items. Defaults to 'latest' if not specified.
@@ -1053,6 +1193,9 @@ public class WorkspaceApiExample {
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
         String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfWorkspaceItem result = apiInstance.listPersonalItems(workspaceName, asAt, page, sortBy, limit, filter).execute(opts);
+
             PagedResourceListOfWorkspaceItem result = apiInstance.listPersonalItems(workspaceName, asAt, page, sortBy, limit, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1135,6 +1278,14 @@ public class WorkspaceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // WorkspaceApi apiInstance = apiFactory.build(WorkspaceApi.class);
+
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve workspaces. Defaults to 'latest' if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing workspaces from a previous call to list workspaces.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request.
@@ -1142,6 +1293,9 @@ public class WorkspaceApiExample {
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
         String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfWorkspace result = apiInstance.listPersonalWorkspaces(asAt, page, sortBy, limit, filter).execute(opts);
+
             PagedResourceListOfWorkspace result = apiInstance.listPersonalWorkspaces(asAt, page, sortBy, limit, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1223,6 +1377,14 @@ public class WorkspaceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // WorkspaceApi apiInstance = apiFactory.build(WorkspaceApi.class);
+
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
         String workspaceName = "workspaceName_example"; // String | The item's workspace name.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve workspace items. Defaults to 'latest' if not specified.
@@ -1231,6 +1393,9 @@ public class WorkspaceApiExample {
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
         String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfWorkspaceItem result = apiInstance.listSharedItems(workspaceName, asAt, page, sortBy, limit, filter).execute(opts);
+
             PagedResourceListOfWorkspaceItem result = apiInstance.listSharedItems(workspaceName, asAt, page, sortBy, limit, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1313,6 +1478,14 @@ public class WorkspaceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // WorkspaceApi apiInstance = apiFactory.build(WorkspaceApi.class);
+
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve workspaces. Defaults to 'latest' if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing workspaces from a previous call to list workspaces.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request.
@@ -1320,6 +1493,9 @@ public class WorkspaceApiExample {
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
         String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfWorkspace result = apiInstance.listSharedWorkspaces(asAt, page, sortBy, limit, filter).execute(opts);
+
             PagedResourceListOfWorkspace result = apiInstance.listSharedWorkspaces(asAt, page, sortBy, limit, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1401,11 +1577,22 @@ public class WorkspaceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // WorkspaceApi apiInstance = apiFactory.build(WorkspaceApi.class);
+
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
         String workspaceName = "workspaceName_example"; // String | The personal workspace name.
         String itemName = "itemName_example"; // String | The item name.
         WorkspaceItemUpdateRequest workspaceItemUpdateRequest = new WorkspaceItemUpdateRequest(); // WorkspaceItemUpdateRequest | The new item details.
         try {
+            // uncomment the below to set overrides at the request level
+            // WorkspaceItem result = apiInstance.updatePersonalItem(workspaceName, itemName, workspaceItemUpdateRequest).execute(opts);
+
             WorkspaceItem result = apiInstance.updatePersonalItem(workspaceName, itemName, workspaceItemUpdateRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1485,10 +1672,21 @@ public class WorkspaceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // WorkspaceApi apiInstance = apiFactory.build(WorkspaceApi.class);
+
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
         String workspaceName = "workspaceName_example"; // String | The personal workspace name.
         WorkspaceUpdateRequest workspaceUpdateRequest = new WorkspaceUpdateRequest(); // WorkspaceUpdateRequest | The new workspace details.
         try {
+            // uncomment the below to set overrides at the request level
+            // Workspace result = apiInstance.updatePersonalWorkspace(workspaceName, workspaceUpdateRequest).execute(opts);
+
             Workspace result = apiInstance.updatePersonalWorkspace(workspaceName, workspaceUpdateRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1567,11 +1765,22 @@ public class WorkspaceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // WorkspaceApi apiInstance = apiFactory.build(WorkspaceApi.class);
+
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
         String workspaceName = "workspaceName_example"; // String | The shared workspace name.
         String itemName = "itemName_example"; // String | The item name.
         WorkspaceItemUpdateRequest workspaceItemUpdateRequest = new WorkspaceItemUpdateRequest(); // WorkspaceItemUpdateRequest | The new item details.
         try {
+            // uncomment the below to set overrides at the request level
+            // WorkspaceItem result = apiInstance.updateSharedItem(workspaceName, itemName, workspaceItemUpdateRequest).execute(opts);
+
             WorkspaceItem result = apiInstance.updateSharedItem(workspaceName, itemName, workspaceItemUpdateRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1651,10 +1860,21 @@ public class WorkspaceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // WorkspaceApi apiInstance = apiFactory.build(WorkspaceApi.class);
+
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
         String workspaceName = "workspaceName_example"; // String | The shared workspace name.
         WorkspaceUpdateRequest workspaceUpdateRequest = new WorkspaceUpdateRequest(); // WorkspaceUpdateRequest | The new workspace details.
         try {
+            // uncomment the below to set overrides at the request level
+            // Workspace result = apiInstance.updateSharedWorkspace(workspaceName, workspaceUpdateRequest).execute(opts);
+
             Workspace result = apiInstance.updateSharedWorkspace(workspaceName, workspaceUpdateRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

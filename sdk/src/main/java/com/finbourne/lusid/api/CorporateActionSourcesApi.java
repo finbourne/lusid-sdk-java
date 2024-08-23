@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -82,6 +83,10 @@ public class CorporateActionSourcesApi {
     }
 
     private okhttp3.Call batchUpsertCorporateActionsCall(String scope, String code, List<UpsertCorporateActionRequest> upsertCorporateActionRequest, final ApiCallback _callback) throws ApiException {
+        return batchUpsertCorporateActionsCall(scope, code, upsertCorporateActionRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call batchUpsertCorporateActionsCall(String scope, String code, List<UpsertCorporateActionRequest> upsertCorporateActionRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -130,11 +135,11 @@ public class CorporateActionSourcesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call batchUpsertCorporateActionsValidateBeforeCall(String scope, String code, List<UpsertCorporateActionRequest> upsertCorporateActionRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call batchUpsertCorporateActionsValidateBeforeCall(String scope, String code, List<UpsertCorporateActionRequest> upsertCorporateActionRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling batchUpsertCorporateActions(Async)");
@@ -145,20 +150,34 @@ public class CorporateActionSourcesApi {
             throw new ApiException("Missing the required parameter 'code' when calling batchUpsertCorporateActions(Async)");
         }
 
-        return batchUpsertCorporateActionsCall(scope, code, upsertCorporateActionRequest, _callback);
+        return batchUpsertCorporateActionsCall(scope, code, upsertCorporateActionRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<UpsertCorporateActionsResponse> batchUpsertCorporateActionsWithHttpInfo(String scope, String code, List<UpsertCorporateActionRequest> upsertCorporateActionRequest) throws ApiException {
-        okhttp3.Call localVarCall = batchUpsertCorporateActionsValidateBeforeCall(scope, code, upsertCorporateActionRequest, null);
+        okhttp3.Call localVarCall = batchUpsertCorporateActionsValidateBeforeCall(scope, code, upsertCorporateActionRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertCorporateActionsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<UpsertCorporateActionsResponse> batchUpsertCorporateActionsWithHttpInfo(String scope, String code, List<UpsertCorporateActionRequest> upsertCorporateActionRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = batchUpsertCorporateActionsValidateBeforeCall(scope, code, upsertCorporateActionRequest, null, opts);
         Type localVarReturnType = new TypeToken<UpsertCorporateActionsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call batchUpsertCorporateActionsAsync(String scope, String code, List<UpsertCorporateActionRequest> upsertCorporateActionRequest, final ApiCallback<UpsertCorporateActionsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = batchUpsertCorporateActionsValidateBeforeCall(scope, code, upsertCorporateActionRequest, _callback);
+        okhttp3.Call localVarCall = batchUpsertCorporateActionsValidateBeforeCall(scope, code, upsertCorporateActionRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertCorporateActionsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call batchUpsertCorporateActionsAsync(String scope, String code, List<UpsertCorporateActionRequest> upsertCorporateActionRequest, final ApiCallback<UpsertCorporateActionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = batchUpsertCorporateActionsValidateBeforeCall(scope, code, upsertCorporateActionRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<UpsertCorporateActionsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -219,6 +238,23 @@ public class CorporateActionSourcesApi {
         }
 
         /**
+         * Execute batchUpsertCorporateActions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return UpsertCorporateActionsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created corporate actions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertCorporateActionsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<UpsertCorporateActionsResponse> localVarResp = batchUpsertCorporateActionsWithHttpInfo(scope, code, upsertCorporateActionRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute batchUpsertCorporateActions request with HTTP info returned
          * @return ApiResponse&lt;UpsertCorporateActionsResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -232,6 +268,22 @@ public class CorporateActionSourcesApi {
          */
         public ApiResponse<UpsertCorporateActionsResponse> executeWithHttpInfo() throws ApiException {
             return batchUpsertCorporateActionsWithHttpInfo(scope, code, upsertCorporateActionRequest);
+        }
+
+        /**
+         * Execute batchUpsertCorporateActions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;UpsertCorporateActionsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created corporate actions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertCorporateActionsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return batchUpsertCorporateActionsWithHttpInfo(scope, code, upsertCorporateActionRequest, opts);
         }
 
         /**
@@ -249,6 +301,23 @@ public class CorporateActionSourcesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<UpsertCorporateActionsResponse> _callback) throws ApiException {
             return batchUpsertCorporateActionsAsync(scope, code, upsertCorporateActionRequest, _callback);
+        }
+
+        /**
+         * Execute batchUpsertCorporateActions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created corporate actions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertCorporateActionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return batchUpsertCorporateActionsAsync(scope, code, upsertCorporateActionRequest, _callback, opts);
         }
     }
 
@@ -270,6 +339,10 @@ public class CorporateActionSourcesApi {
         return new APIbatchUpsertCorporateActionsRequest(scope, code);
     }
     private okhttp3.Call createCorporateActionSourceCall(CreateCorporateActionSourceRequest createCorporateActionSourceRequest, final ApiCallback _callback) throws ApiException {
+        return createCorporateActionSourceCall(createCorporateActionSourceRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call createCorporateActionSourceCall(CreateCorporateActionSourceRequest createCorporateActionSourceRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -316,30 +389,44 @@ public class CorporateActionSourcesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createCorporateActionSourceValidateBeforeCall(CreateCorporateActionSourceRequest createCorporateActionSourceRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createCorporateActionSourceValidateBeforeCall(CreateCorporateActionSourceRequest createCorporateActionSourceRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'createCorporateActionSourceRequest' is set
         if (createCorporateActionSourceRequest == null) {
             throw new ApiException("Missing the required parameter 'createCorporateActionSourceRequest' when calling createCorporateActionSource(Async)");
         }
 
-        return createCorporateActionSourceCall(createCorporateActionSourceRequest, _callback);
+        return createCorporateActionSourceCall(createCorporateActionSourceRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<CorporateActionSource> createCorporateActionSourceWithHttpInfo(CreateCorporateActionSourceRequest createCorporateActionSourceRequest) throws ApiException {
-        okhttp3.Call localVarCall = createCorporateActionSourceValidateBeforeCall(createCorporateActionSourceRequest, null);
+        okhttp3.Call localVarCall = createCorporateActionSourceValidateBeforeCall(createCorporateActionSourceRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CorporateActionSource>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<CorporateActionSource> createCorporateActionSourceWithHttpInfo(CreateCorporateActionSourceRequest createCorporateActionSourceRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createCorporateActionSourceValidateBeforeCall(createCorporateActionSourceRequest, null, opts);
         Type localVarReturnType = new TypeToken<CorporateActionSource>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call createCorporateActionSourceAsync(CreateCorporateActionSourceRequest createCorporateActionSourceRequest, final ApiCallback<CorporateActionSource> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createCorporateActionSourceValidateBeforeCall(createCorporateActionSourceRequest, _callback);
+        okhttp3.Call localVarCall = createCorporateActionSourceValidateBeforeCall(createCorporateActionSourceRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CorporateActionSource>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call createCorporateActionSourceAsync(CreateCorporateActionSourceRequest createCorporateActionSourceRequest, final ApiCallback<CorporateActionSource> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = createCorporateActionSourceValidateBeforeCall(createCorporateActionSourceRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<CorporateActionSource>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -387,6 +474,23 @@ public class CorporateActionSourcesApi {
         }
 
         /**
+         * Execute createCorporateActionSource request. Use any specified configuration options to override any other configuration for this request only.
+         * @return CorporateActionSource
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created corporate action source </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CorporateActionSource execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<CorporateActionSource> localVarResp = createCorporateActionSourceWithHttpInfo(createCorporateActionSourceRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute createCorporateActionSource request with HTTP info returned
          * @return ApiResponse&lt;CorporateActionSource&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -400,6 +504,22 @@ public class CorporateActionSourcesApi {
          */
         public ApiResponse<CorporateActionSource> executeWithHttpInfo() throws ApiException {
             return createCorporateActionSourceWithHttpInfo(createCorporateActionSourceRequest);
+        }
+
+        /**
+         * Execute createCorporateActionSource request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;CorporateActionSource&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created corporate action source </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CorporateActionSource> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return createCorporateActionSourceWithHttpInfo(createCorporateActionSourceRequest, opts);
         }
 
         /**
@@ -417,6 +537,23 @@ public class CorporateActionSourcesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<CorporateActionSource> _callback) throws ApiException {
             return createCorporateActionSourceAsync(createCorporateActionSourceRequest, _callback);
+        }
+
+        /**
+         * Execute createCorporateActionSource request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created corporate action source </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CorporateActionSource> _callback, ConfigurationOptions opts) throws ApiException {
+            return createCorporateActionSourceAsync(createCorporateActionSourceRequest, _callback, opts);
         }
     }
 
@@ -437,6 +574,10 @@ public class CorporateActionSourcesApi {
         return new APIcreateCorporateActionSourceRequest(createCorporateActionSourceRequest);
     }
     private okhttp3.Call deleteCorporateActionSourceCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+        return deleteCorporateActionSourceCall(scope, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteCorporateActionSourceCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -481,11 +622,11 @@ public class CorporateActionSourcesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteCorporateActionSourceValidateBeforeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCorporateActionSourceValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteCorporateActionSource(Async)");
@@ -496,20 +637,34 @@ public class CorporateActionSourcesApi {
             throw new ApiException("Missing the required parameter 'code' when calling deleteCorporateActionSource(Async)");
         }
 
-        return deleteCorporateActionSourceCall(scope, code, _callback);
+        return deleteCorporateActionSourceCall(scope, code, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deleteCorporateActionSourceWithHttpInfo(String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = deleteCorporateActionSourceValidateBeforeCall(scope, code, null);
+        okhttp3.Call localVarCall = deleteCorporateActionSourceValidateBeforeCall(scope, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteCorporateActionSourceWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteCorporateActionSourceValidateBeforeCall(scope, code, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteCorporateActionSourceAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteCorporateActionSourceValidateBeforeCall(scope, code, _callback);
+        okhttp3.Call localVarCall = deleteCorporateActionSourceValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteCorporateActionSourceAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteCorporateActionSourceValidateBeforeCall(scope, code, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -559,6 +714,23 @@ public class CorporateActionSourcesApi {
         }
 
         /**
+         * Execute deleteCorporateActionSource request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Corporate Action Source Deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteCorporateActionSourceWithHttpInfo(scope, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteCorporateActionSource request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -572,6 +744,22 @@ public class CorporateActionSourcesApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deleteCorporateActionSourceWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteCorporateActionSource request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Corporate Action Source Deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteCorporateActionSourceWithHttpInfo(scope, code, opts);
         }
 
         /**
@@ -589,6 +777,23 @@ public class CorporateActionSourcesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deleteCorporateActionSourceAsync(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteCorporateActionSource request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Corporate Action Source Deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteCorporateActionSourceAsync(scope, code, _callback, opts);
         }
     }
 
@@ -610,6 +815,10 @@ public class CorporateActionSourcesApi {
         return new APIdeleteCorporateActionSourceRequest(scope, code);
     }
     private okhttp3.Call deleteCorporateActionsCall(String scope, String code, List<String> corporateActionIds, final ApiCallback _callback) throws ApiException {
+        return deleteCorporateActionsCall(scope, code, corporateActionIds,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteCorporateActionsCall(String scope, String code, List<String> corporateActionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -658,11 +867,11 @@ public class CorporateActionSourcesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteCorporateActionsValidateBeforeCall(String scope, String code, List<String> corporateActionIds, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCorporateActionsValidateBeforeCall(String scope, String code, List<String> corporateActionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteCorporateActions(Async)");
@@ -678,20 +887,34 @@ public class CorporateActionSourcesApi {
             throw new ApiException("Missing the required parameter 'corporateActionIds' when calling deleteCorporateActions(Async)");
         }
 
-        return deleteCorporateActionsCall(scope, code, corporateActionIds, _callback);
+        return deleteCorporateActionsCall(scope, code, corporateActionIds, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deleteCorporateActionsWithHttpInfo(String scope, String code, List<String> corporateActionIds) throws ApiException {
-        okhttp3.Call localVarCall = deleteCorporateActionsValidateBeforeCall(scope, code, corporateActionIds, null);
+        okhttp3.Call localVarCall = deleteCorporateActionsValidateBeforeCall(scope, code, corporateActionIds, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteCorporateActionsWithHttpInfo(String scope, String code, List<String> corporateActionIds, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteCorporateActionsValidateBeforeCall(scope, code, corporateActionIds, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteCorporateActionsAsync(String scope, String code, List<String> corporateActionIds, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteCorporateActionsValidateBeforeCall(scope, code, corporateActionIds, _callback);
+        okhttp3.Call localVarCall = deleteCorporateActionsValidateBeforeCall(scope, code, corporateActionIds, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteCorporateActionsAsync(String scope, String code, List<String> corporateActionIds, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteCorporateActionsValidateBeforeCall(scope, code, corporateActionIds, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -743,6 +966,23 @@ public class CorporateActionSourcesApi {
         }
 
         /**
+         * Execute deleteCorporateActions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Corporate Actions Deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteCorporateActionsWithHttpInfo(scope, code, corporateActionIds, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteCorporateActions request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -756,6 +996,22 @@ public class CorporateActionSourcesApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deleteCorporateActionsWithHttpInfo(scope, code, corporateActionIds);
+        }
+
+        /**
+         * Execute deleteCorporateActions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Corporate Actions Deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteCorporateActionsWithHttpInfo(scope, code, corporateActionIds, opts);
         }
 
         /**
@@ -773,6 +1029,23 @@ public class CorporateActionSourcesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deleteCorporateActionsAsync(scope, code, corporateActionIds, _callback);
+        }
+
+        /**
+         * Execute deleteCorporateActions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Corporate Actions Deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteCorporateActionsAsync(scope, code, corporateActionIds, _callback, opts);
         }
     }
 
@@ -795,6 +1068,10 @@ public class CorporateActionSourcesApi {
         return new APIdeleteCorporateActionsRequest(scope, code, corporateActionIds);
     }
     private okhttp3.Call deleteInstrumentEventsCall(String scope, String code, List<String> instrumentEventIds, final ApiCallback _callback) throws ApiException {
+        return deleteInstrumentEventsCall(scope, code, instrumentEventIds,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteInstrumentEventsCall(String scope, String code, List<String> instrumentEventIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -843,11 +1120,11 @@ public class CorporateActionSourcesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteInstrumentEventsValidateBeforeCall(String scope, String code, List<String> instrumentEventIds, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteInstrumentEventsValidateBeforeCall(String scope, String code, List<String> instrumentEventIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteInstrumentEvents(Async)");
@@ -863,20 +1140,34 @@ public class CorporateActionSourcesApi {
             throw new ApiException("Missing the required parameter 'instrumentEventIds' when calling deleteInstrumentEvents(Async)");
         }
 
-        return deleteInstrumentEventsCall(scope, code, instrumentEventIds, _callback);
+        return deleteInstrumentEventsCall(scope, code, instrumentEventIds, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deleteInstrumentEventsWithHttpInfo(String scope, String code, List<String> instrumentEventIds) throws ApiException {
-        okhttp3.Call localVarCall = deleteInstrumentEventsValidateBeforeCall(scope, code, instrumentEventIds, null);
+        okhttp3.Call localVarCall = deleteInstrumentEventsValidateBeforeCall(scope, code, instrumentEventIds, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteInstrumentEventsWithHttpInfo(String scope, String code, List<String> instrumentEventIds, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteInstrumentEventsValidateBeforeCall(scope, code, instrumentEventIds, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteInstrumentEventsAsync(String scope, String code, List<String> instrumentEventIds, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteInstrumentEventsValidateBeforeCall(scope, code, instrumentEventIds, _callback);
+        okhttp3.Call localVarCall = deleteInstrumentEventsValidateBeforeCall(scope, code, instrumentEventIds, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteInstrumentEventsAsync(String scope, String code, List<String> instrumentEventIds, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteInstrumentEventsValidateBeforeCall(scope, code, instrumentEventIds, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -928,6 +1219,23 @@ public class CorporateActionSourcesApi {
         }
 
         /**
+         * Execute deleteInstrumentEvents request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events Deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteInstrumentEventsWithHttpInfo(scope, code, instrumentEventIds, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteInstrumentEvents request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -941,6 +1249,22 @@ public class CorporateActionSourcesApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deleteInstrumentEventsWithHttpInfo(scope, code, instrumentEventIds);
+        }
+
+        /**
+         * Execute deleteInstrumentEvents request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events Deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteInstrumentEventsWithHttpInfo(scope, code, instrumentEventIds, opts);
         }
 
         /**
@@ -958,6 +1282,23 @@ public class CorporateActionSourcesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deleteInstrumentEventsAsync(scope, code, instrumentEventIds, _callback);
+        }
+
+        /**
+         * Execute deleteInstrumentEvents request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events Deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteInstrumentEventsAsync(scope, code, instrumentEventIds, _callback, opts);
         }
     }
 
@@ -980,6 +1321,10 @@ public class CorporateActionSourcesApi {
         return new APIdeleteInstrumentEventsRequest(scope, code, instrumentEventIds);
     }
     private okhttp3.Call getCorporateActionsCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+        return getCorporateActionsCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, sortBy, limit, filter,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getCorporateActionsCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1048,11 +1393,11 @@ public class CorporateActionSourcesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCorporateActionsValidateBeforeCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCorporateActionsValidateBeforeCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getCorporateActions(Async)");
@@ -1063,20 +1408,34 @@ public class CorporateActionSourcesApi {
             throw new ApiException("Missing the required parameter 'code' when calling getCorporateActions(Async)");
         }
 
-        return getCorporateActionsCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, sortBy, limit, filter, _callback);
+        return getCorporateActionsCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, sortBy, limit, filter, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfCorporateAction> getCorporateActionsWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, List<String> sortBy, Integer limit, String filter) throws ApiException {
-        okhttp3.Call localVarCall = getCorporateActionsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, sortBy, limit, filter, null);
+        okhttp3.Call localVarCall = getCorporateActionsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, sortBy, limit, filter, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfCorporateAction>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfCorporateAction> getCorporateActionsWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, List<String> sortBy, Integer limit, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getCorporateActionsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, sortBy, limit, filter, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfCorporateAction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getCorporateActionsAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, List<String> sortBy, Integer limit, String filter, final ApiCallback<ResourceListOfCorporateAction> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getCorporateActionsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, sortBy, limit, filter, _callback);
+        okhttp3.Call localVarCall = getCorporateActionsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, sortBy, limit, filter, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfCorporateAction>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getCorporateActionsAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, List<String> sortBy, Integer limit, String filter, final ApiCallback<ResourceListOfCorporateAction> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getCorporateActionsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, sortBy, limit, filter, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfCorporateAction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1192,6 +1551,23 @@ public class CorporateActionSourcesApi {
         }
 
         /**
+         * Execute getCorporateActions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfCorporateAction
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Corporate Actions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfCorporateAction execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfCorporateAction> localVarResp = getCorporateActionsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, sortBy, limit, filter, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getCorporateActions request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfCorporateAction&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1205,6 +1581,22 @@ public class CorporateActionSourcesApi {
          */
         public ApiResponse<ResourceListOfCorporateAction> executeWithHttpInfo() throws ApiException {
             return getCorporateActionsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, sortBy, limit, filter);
+        }
+
+        /**
+         * Execute getCorporateActions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfCorporateAction&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Corporate Actions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfCorporateAction> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getCorporateActionsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, sortBy, limit, filter, opts);
         }
 
         /**
@@ -1222,6 +1614,23 @@ public class CorporateActionSourcesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfCorporateAction> _callback) throws ApiException {
             return getCorporateActionsAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, sortBy, limit, filter, _callback);
+        }
+
+        /**
+         * Execute getCorporateActions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Corporate Actions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfCorporateAction> _callback, ConfigurationOptions opts) throws ApiException {
+            return getCorporateActionsAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, sortBy, limit, filter, _callback, opts);
         }
     }
 
@@ -1243,6 +1652,10 @@ public class CorporateActionSourcesApi {
         return new APIgetCorporateActionsRequest(scope, code);
     }
     private okhttp3.Call getInstrumentEventsCall(String scope, String code, OffsetDateTime asAt, Integer limit, String page, String filter, final ApiCallback _callback) throws ApiException {
+        return getInstrumentEventsCall(scope, code, asAt, limit, page, filter,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getInstrumentEventsCall(String scope, String code, OffsetDateTime asAt, Integer limit, String page, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1303,11 +1716,11 @@ public class CorporateActionSourcesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getInstrumentEventsValidateBeforeCall(String scope, String code, OffsetDateTime asAt, Integer limit, String page, String filter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getInstrumentEventsValidateBeforeCall(String scope, String code, OffsetDateTime asAt, Integer limit, String page, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getInstrumentEvents(Async)");
@@ -1318,20 +1731,34 @@ public class CorporateActionSourcesApi {
             throw new ApiException("Missing the required parameter 'code' when calling getInstrumentEvents(Async)");
         }
 
-        return getInstrumentEventsCall(scope, code, asAt, limit, page, filter, _callback);
+        return getInstrumentEventsCall(scope, code, asAt, limit, page, filter, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfInstrumentEventHolder> getInstrumentEventsWithHttpInfo(String scope, String code, OffsetDateTime asAt, Integer limit, String page, String filter) throws ApiException {
-        okhttp3.Call localVarCall = getInstrumentEventsValidateBeforeCall(scope, code, asAt, limit, page, filter, null);
+        okhttp3.Call localVarCall = getInstrumentEventsValidateBeforeCall(scope, code, asAt, limit, page, filter, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfInstrumentEventHolder>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfInstrumentEventHolder> getInstrumentEventsWithHttpInfo(String scope, String code, OffsetDateTime asAt, Integer limit, String page, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getInstrumentEventsValidateBeforeCall(scope, code, asAt, limit, page, filter, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfInstrumentEventHolder>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getInstrumentEventsAsync(String scope, String code, OffsetDateTime asAt, Integer limit, String page, String filter, final ApiCallback<PagedResourceListOfInstrumentEventHolder> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getInstrumentEventsValidateBeforeCall(scope, code, asAt, limit, page, filter, _callback);
+        okhttp3.Call localVarCall = getInstrumentEventsValidateBeforeCall(scope, code, asAt, limit, page, filter, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfInstrumentEventHolder>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getInstrumentEventsAsync(String scope, String code, OffsetDateTime asAt, Integer limit, String page, String filter, final ApiCallback<PagedResourceListOfInstrumentEventHolder> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getInstrumentEventsValidateBeforeCall(scope, code, asAt, limit, page, filter, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfInstrumentEventHolder>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1425,6 +1852,23 @@ public class CorporateActionSourcesApi {
         }
 
         /**
+         * Execute getInstrumentEvents request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfInstrumentEventHolder
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfInstrumentEventHolder execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfInstrumentEventHolder> localVarResp = getInstrumentEventsWithHttpInfo(scope, code, asAt, limit, page, filter, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getInstrumentEvents request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfInstrumentEventHolder&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1438,6 +1882,22 @@ public class CorporateActionSourcesApi {
          */
         public ApiResponse<PagedResourceListOfInstrumentEventHolder> executeWithHttpInfo() throws ApiException {
             return getInstrumentEventsWithHttpInfo(scope, code, asAt, limit, page, filter);
+        }
+
+        /**
+         * Execute getInstrumentEvents request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfInstrumentEventHolder&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfInstrumentEventHolder> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getInstrumentEventsWithHttpInfo(scope, code, asAt, limit, page, filter, opts);
         }
 
         /**
@@ -1455,6 +1915,23 @@ public class CorporateActionSourcesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfInstrumentEventHolder> _callback) throws ApiException {
             return getInstrumentEventsAsync(scope, code, asAt, limit, page, filter, _callback);
+        }
+
+        /**
+         * Execute getInstrumentEvents request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfInstrumentEventHolder> _callback, ConfigurationOptions opts) throws ApiException {
+            return getInstrumentEventsAsync(scope, code, asAt, limit, page, filter, _callback, opts);
         }
     }
 
@@ -1476,6 +1953,10 @@ public class CorporateActionSourcesApi {
         return new APIgetInstrumentEventsRequest(scope, code);
     }
     private okhttp3.Call listCorporateActionSourcesCall(OffsetDateTime asAt, List<String> sortBy, Integer limit, String filter, String page, final ApiCallback _callback) throws ApiException {
+        return listCorporateActionSourcesCall(asAt, sortBy, limit, filter, page,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listCorporateActionSourcesCall(OffsetDateTime asAt, List<String> sortBy, Integer limit, String filter, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1538,25 +2019,39 @@ public class CorporateActionSourcesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listCorporateActionSourcesValidateBeforeCall(OffsetDateTime asAt, List<String> sortBy, Integer limit, String filter, String page, final ApiCallback _callback) throws ApiException {
-        return listCorporateActionSourcesCall(asAt, sortBy, limit, filter, page, _callback);
+    private okhttp3.Call listCorporateActionSourcesValidateBeforeCall(OffsetDateTime asAt, List<String> sortBy, Integer limit, String filter, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listCorporateActionSourcesCall(asAt, sortBy, limit, filter, page, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfCorporateActionSource> listCorporateActionSourcesWithHttpInfo(OffsetDateTime asAt, List<String> sortBy, Integer limit, String filter, String page) throws ApiException {
-        okhttp3.Call localVarCall = listCorporateActionSourcesValidateBeforeCall(asAt, sortBy, limit, filter, page, null);
+        okhttp3.Call localVarCall = listCorporateActionSourcesValidateBeforeCall(asAt, sortBy, limit, filter, page, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfCorporateActionSource>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfCorporateActionSource> listCorporateActionSourcesWithHttpInfo(OffsetDateTime asAt, List<String> sortBy, Integer limit, String filter, String page, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listCorporateActionSourcesValidateBeforeCall(asAt, sortBy, limit, filter, page, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfCorporateActionSource>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listCorporateActionSourcesAsync(OffsetDateTime asAt, List<String> sortBy, Integer limit, String filter, String page, final ApiCallback<PagedResourceListOfCorporateActionSource> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listCorporateActionSourcesValidateBeforeCall(asAt, sortBy, limit, filter, page, _callback);
+        okhttp3.Call localVarCall = listCorporateActionSourcesValidateBeforeCall(asAt, sortBy, limit, filter, page, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfCorporateActionSource>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listCorporateActionSourcesAsync(OffsetDateTime asAt, List<String> sortBy, Integer limit, String filter, String page, final ApiCallback<PagedResourceListOfCorporateActionSource> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listCorporateActionSourcesValidateBeforeCall(asAt, sortBy, limit, filter, page, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfCorporateActionSource>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1657,6 +2152,23 @@ public class CorporateActionSourcesApi {
         }
 
         /**
+         * Execute listCorporateActionSources request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfCorporateActionSource
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> All Existing Corporate Action Sources </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfCorporateActionSource execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfCorporateActionSource> localVarResp = listCorporateActionSourcesWithHttpInfo(asAt, sortBy, limit, filter, page, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listCorporateActionSources request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfCorporateActionSource&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1670,6 +2182,22 @@ public class CorporateActionSourcesApi {
          */
         public ApiResponse<PagedResourceListOfCorporateActionSource> executeWithHttpInfo() throws ApiException {
             return listCorporateActionSourcesWithHttpInfo(asAt, sortBy, limit, filter, page);
+        }
+
+        /**
+         * Execute listCorporateActionSources request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfCorporateActionSource&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> All Existing Corporate Action Sources </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfCorporateActionSource> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listCorporateActionSourcesWithHttpInfo(asAt, sortBy, limit, filter, page, opts);
         }
 
         /**
@@ -1687,6 +2215,23 @@ public class CorporateActionSourcesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfCorporateActionSource> _callback) throws ApiException {
             return listCorporateActionSourcesAsync(asAt, sortBy, limit, filter, page, _callback);
+        }
+
+        /**
+         * Execute listCorporateActionSources request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> All Existing Corporate Action Sources </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfCorporateActionSource> _callback, ConfigurationOptions opts) throws ApiException {
+            return listCorporateActionSourcesAsync(asAt, sortBy, limit, filter, page, _callback, opts);
         }
     }
 
@@ -1706,6 +2251,10 @@ public class CorporateActionSourcesApi {
         return new APIlistCorporateActionSourcesRequest();
     }
     private okhttp3.Call upsertInstrumentEventsCall(String scope, String code, List<UpsertInstrumentEventRequest> upsertInstrumentEventRequest, final ApiCallback _callback) throws ApiException {
+        return upsertInstrumentEventsCall(scope, code, upsertInstrumentEventRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertInstrumentEventsCall(String scope, String code, List<UpsertInstrumentEventRequest> upsertInstrumentEventRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1754,11 +2303,11 @@ public class CorporateActionSourcesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertInstrumentEventsValidateBeforeCall(String scope, String code, List<UpsertInstrumentEventRequest> upsertInstrumentEventRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertInstrumentEventsValidateBeforeCall(String scope, String code, List<UpsertInstrumentEventRequest> upsertInstrumentEventRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling upsertInstrumentEvents(Async)");
@@ -1769,20 +2318,34 @@ public class CorporateActionSourcesApi {
             throw new ApiException("Missing the required parameter 'code' when calling upsertInstrumentEvents(Async)");
         }
 
-        return upsertInstrumentEventsCall(scope, code, upsertInstrumentEventRequest, _callback);
+        return upsertInstrumentEventsCall(scope, code, upsertInstrumentEventRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<UpsertInstrumentEventsResponse> upsertInstrumentEventsWithHttpInfo(String scope, String code, List<UpsertInstrumentEventRequest> upsertInstrumentEventRequest) throws ApiException {
-        okhttp3.Call localVarCall = upsertInstrumentEventsValidateBeforeCall(scope, code, upsertInstrumentEventRequest, null);
+        okhttp3.Call localVarCall = upsertInstrumentEventsValidateBeforeCall(scope, code, upsertInstrumentEventRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertInstrumentEventsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<UpsertInstrumentEventsResponse> upsertInstrumentEventsWithHttpInfo(String scope, String code, List<UpsertInstrumentEventRequest> upsertInstrumentEventRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertInstrumentEventsValidateBeforeCall(scope, code, upsertInstrumentEventRequest, null, opts);
         Type localVarReturnType = new TypeToken<UpsertInstrumentEventsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertInstrumentEventsAsync(String scope, String code, List<UpsertInstrumentEventRequest> upsertInstrumentEventRequest, final ApiCallback<UpsertInstrumentEventsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertInstrumentEventsValidateBeforeCall(scope, code, upsertInstrumentEventRequest, _callback);
+        okhttp3.Call localVarCall = upsertInstrumentEventsValidateBeforeCall(scope, code, upsertInstrumentEventRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertInstrumentEventsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertInstrumentEventsAsync(String scope, String code, List<UpsertInstrumentEventRequest> upsertInstrumentEventRequest, final ApiCallback<UpsertInstrumentEventsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertInstrumentEventsValidateBeforeCall(scope, code, upsertInstrumentEventRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<UpsertInstrumentEventsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1843,6 +2406,23 @@ public class CorporateActionSourcesApi {
         }
 
         /**
+         * Execute upsertInstrumentEvents request. Use any specified configuration options to override any other configuration for this request only.
+         * @return UpsertInstrumentEventsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Instrument Events Upserted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertInstrumentEventsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<UpsertInstrumentEventsResponse> localVarResp = upsertInstrumentEventsWithHttpInfo(scope, code, upsertInstrumentEventRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertInstrumentEvents request with HTTP info returned
          * @return ApiResponse&lt;UpsertInstrumentEventsResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1856,6 +2436,22 @@ public class CorporateActionSourcesApi {
          */
         public ApiResponse<UpsertInstrumentEventsResponse> executeWithHttpInfo() throws ApiException {
             return upsertInstrumentEventsWithHttpInfo(scope, code, upsertInstrumentEventRequest);
+        }
+
+        /**
+         * Execute upsertInstrumentEvents request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;UpsertInstrumentEventsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Instrument Events Upserted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertInstrumentEventsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertInstrumentEventsWithHttpInfo(scope, code, upsertInstrumentEventRequest, opts);
         }
 
         /**
@@ -1873,6 +2469,23 @@ public class CorporateActionSourcesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<UpsertInstrumentEventsResponse> _callback) throws ApiException {
             return upsertInstrumentEventsAsync(scope, code, upsertInstrumentEventRequest, _callback);
+        }
+
+        /**
+         * Execute upsertInstrumentEvents request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Instrument Events Upserted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertInstrumentEventsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertInstrumentEventsAsync(scope, code, upsertInstrumentEventRequest, _callback, opts);
         }
     }
 

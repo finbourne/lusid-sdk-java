@@ -48,9 +48,20 @@ public class AddressKeyDefinitionApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AddressKeyDefinitionApi apiInstance = apiFactory.build(AddressKeyDefinitionApi.class);
+
         AddressKeyDefinitionApi apiInstance = ApiFactoryBuilder.build(fileName).build(AddressKeyDefinitionApi.class);
         CreateAddressKeyDefinitionRequest createAddressKeyDefinitionRequest = new CreateAddressKeyDefinitionRequest(); // CreateAddressKeyDefinitionRequest | The request used to create the address key definition.
         try {
+            // uncomment the below to set overrides at the request level
+            // AddressKeyDefinition result = apiInstance.createAddressKeyDefinition(createAddressKeyDefinitionRequest).execute(opts);
+
             AddressKeyDefinition result = apiInstance.createAddressKeyDefinition(createAddressKeyDefinitionRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -128,10 +139,21 @@ public class AddressKeyDefinitionApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AddressKeyDefinitionApi apiInstance = apiFactory.build(AddressKeyDefinitionApi.class);
+
         AddressKeyDefinitionApi apiInstance = ApiFactoryBuilder.build(fileName).build(AddressKeyDefinitionApi.class);
         String key = "key_example"; // String | The address key of the address key definition.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the address key definition. Defaults to return the latest version of the address key definition if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // AddressKeyDefinition result = apiInstance.getAddressKeyDefinition(key, asAt).execute(opts);
+
             AddressKeyDefinition result = apiInstance.getAddressKeyDefinition(key, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -210,12 +232,23 @@ public class AddressKeyDefinitionApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AddressKeyDefinitionApi apiInstance = apiFactory.build(AddressKeyDefinitionApi.class);
+
         AddressKeyDefinitionApi apiInstance = ApiFactoryBuilder.build(fileName).build(AddressKeyDefinitionApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the address key definition.   Defaults to return the latest version of the address key definition if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing address key definitions from a previous call to list address key definitions.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
         String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfAddressKeyDefinition result = apiInstance.listAddressKeyDefinitions(asAt, page, limit, filter).execute(opts);
+
             PagedResourceListOfAddressKeyDefinition result = apiInstance.listAddressKeyDefinitions(asAt, page, limit, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

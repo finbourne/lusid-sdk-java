@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -102,6 +103,10 @@ public class ChartOfAccountsApi {
     }
 
     private okhttp3.Call createChartOfAccountsCall(String scope, ChartOfAccountsRequest chartOfAccountsRequest, final ApiCallback _callback) throws ApiException {
+        return createChartOfAccountsCall(scope, chartOfAccountsRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call createChartOfAccountsCall(String scope, ChartOfAccountsRequest chartOfAccountsRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -149,11 +154,11 @@ public class ChartOfAccountsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createChartOfAccountsValidateBeforeCall(String scope, ChartOfAccountsRequest chartOfAccountsRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createChartOfAccountsValidateBeforeCall(String scope, ChartOfAccountsRequest chartOfAccountsRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling createChartOfAccounts(Async)");
@@ -164,20 +169,34 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'chartOfAccountsRequest' when calling createChartOfAccounts(Async)");
         }
 
-        return createChartOfAccountsCall(scope, chartOfAccountsRequest, _callback);
+        return createChartOfAccountsCall(scope, chartOfAccountsRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<ChartOfAccounts> createChartOfAccountsWithHttpInfo(String scope, ChartOfAccountsRequest chartOfAccountsRequest) throws ApiException {
-        okhttp3.Call localVarCall = createChartOfAccountsValidateBeforeCall(scope, chartOfAccountsRequest, null);
+        okhttp3.Call localVarCall = createChartOfAccountsValidateBeforeCall(scope, chartOfAccountsRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ChartOfAccounts>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ChartOfAccounts> createChartOfAccountsWithHttpInfo(String scope, ChartOfAccountsRequest chartOfAccountsRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createChartOfAccountsValidateBeforeCall(scope, chartOfAccountsRequest, null, opts);
         Type localVarReturnType = new TypeToken<ChartOfAccounts>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call createChartOfAccountsAsync(String scope, ChartOfAccountsRequest chartOfAccountsRequest, final ApiCallback<ChartOfAccounts> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createChartOfAccountsValidateBeforeCall(scope, chartOfAccountsRequest, _callback);
+        okhttp3.Call localVarCall = createChartOfAccountsValidateBeforeCall(scope, chartOfAccountsRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ChartOfAccounts>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call createChartOfAccountsAsync(String scope, ChartOfAccountsRequest chartOfAccountsRequest, final ApiCallback<ChartOfAccounts> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = createChartOfAccountsValidateBeforeCall(scope, chartOfAccountsRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<ChartOfAccounts>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -227,6 +246,23 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Execute createChartOfAccounts request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ChartOfAccounts
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Chart of Accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ChartOfAccounts execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ChartOfAccounts> localVarResp = createChartOfAccountsWithHttpInfo(scope, chartOfAccountsRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute createChartOfAccounts request with HTTP info returned
          * @return ApiResponse&lt;ChartOfAccounts&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -240,6 +276,22 @@ public class ChartOfAccountsApi {
          */
         public ApiResponse<ChartOfAccounts> executeWithHttpInfo() throws ApiException {
             return createChartOfAccountsWithHttpInfo(scope, chartOfAccountsRequest);
+        }
+
+        /**
+         * Execute createChartOfAccounts request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ChartOfAccounts&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Chart of Accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ChartOfAccounts> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return createChartOfAccountsWithHttpInfo(scope, chartOfAccountsRequest, opts);
         }
 
         /**
@@ -257,6 +309,23 @@ public class ChartOfAccountsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ChartOfAccounts> _callback) throws ApiException {
             return createChartOfAccountsAsync(scope, chartOfAccountsRequest, _callback);
+        }
+
+        /**
+         * Execute createChartOfAccounts request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Chart of Accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ChartOfAccounts> _callback, ConfigurationOptions opts) throws ApiException {
+            return createChartOfAccountsAsync(scope, chartOfAccountsRequest, _callback, opts);
         }
     }
 
@@ -278,6 +347,10 @@ public class ChartOfAccountsApi {
         return new APIcreateChartOfAccountsRequest(scope, chartOfAccountsRequest);
     }
     private okhttp3.Call createCleardownModuleCall(String scope, String code, CleardownModuleRequest cleardownModuleRequest, final ApiCallback _callback) throws ApiException {
+        return createCleardownModuleCall(scope, code, cleardownModuleRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call createCleardownModuleCall(String scope, String code, CleardownModuleRequest cleardownModuleRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -326,11 +399,11 @@ public class ChartOfAccountsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createCleardownModuleValidateBeforeCall(String scope, String code, CleardownModuleRequest cleardownModuleRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createCleardownModuleValidateBeforeCall(String scope, String code, CleardownModuleRequest cleardownModuleRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling createCleardownModule(Async)");
@@ -346,20 +419,34 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'cleardownModuleRequest' when calling createCleardownModule(Async)");
         }
 
-        return createCleardownModuleCall(scope, code, cleardownModuleRequest, _callback);
+        return createCleardownModuleCall(scope, code, cleardownModuleRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<CleardownModuleResponse> createCleardownModuleWithHttpInfo(String scope, String code, CleardownModuleRequest cleardownModuleRequest) throws ApiException {
-        okhttp3.Call localVarCall = createCleardownModuleValidateBeforeCall(scope, code, cleardownModuleRequest, null);
+        okhttp3.Call localVarCall = createCleardownModuleValidateBeforeCall(scope, code, cleardownModuleRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CleardownModuleResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<CleardownModuleResponse> createCleardownModuleWithHttpInfo(String scope, String code, CleardownModuleRequest cleardownModuleRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createCleardownModuleValidateBeforeCall(scope, code, cleardownModuleRequest, null, opts);
         Type localVarReturnType = new TypeToken<CleardownModuleResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call createCleardownModuleAsync(String scope, String code, CleardownModuleRequest cleardownModuleRequest, final ApiCallback<CleardownModuleResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createCleardownModuleValidateBeforeCall(scope, code, cleardownModuleRequest, _callback);
+        okhttp3.Call localVarCall = createCleardownModuleValidateBeforeCall(scope, code, cleardownModuleRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CleardownModuleResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call createCleardownModuleAsync(String scope, String code, CleardownModuleRequest cleardownModuleRequest, final ApiCallback<CleardownModuleResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = createCleardownModuleValidateBeforeCall(scope, code, cleardownModuleRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<CleardownModuleResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -411,6 +498,23 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Execute createCleardownModule request. Use any specified configuration options to override any other configuration for this request only.
+         * @return CleardownModuleResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CleardownModuleResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<CleardownModuleResponse> localVarResp = createCleardownModuleWithHttpInfo(scope, code, cleardownModuleRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute createCleardownModule request with HTTP info returned
          * @return ApiResponse&lt;CleardownModuleResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -424,6 +528,22 @@ public class ChartOfAccountsApi {
          */
         public ApiResponse<CleardownModuleResponse> executeWithHttpInfo() throws ApiException {
             return createCleardownModuleWithHttpInfo(scope, code, cleardownModuleRequest);
+        }
+
+        /**
+         * Execute createCleardownModule request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;CleardownModuleResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CleardownModuleResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return createCleardownModuleWithHttpInfo(scope, code, cleardownModuleRequest, opts);
         }
 
         /**
@@ -441,6 +561,23 @@ public class ChartOfAccountsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<CleardownModuleResponse> _callback) throws ApiException {
             return createCleardownModuleAsync(scope, code, cleardownModuleRequest, _callback);
+        }
+
+        /**
+         * Execute createCleardownModule request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CleardownModuleResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return createCleardownModuleAsync(scope, code, cleardownModuleRequest, _callback, opts);
         }
     }
 
@@ -463,6 +600,10 @@ public class ChartOfAccountsApi {
         return new APIcreateCleardownModuleRequest(scope, code, cleardownModuleRequest);
     }
     private okhttp3.Call createGeneralLedgerProfileCall(String scope, String code, GeneralLedgerProfileRequest generalLedgerProfileRequest, final ApiCallback _callback) throws ApiException {
+        return createGeneralLedgerProfileCall(scope, code, generalLedgerProfileRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call createGeneralLedgerProfileCall(String scope, String code, GeneralLedgerProfileRequest generalLedgerProfileRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -511,11 +652,11 @@ public class ChartOfAccountsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createGeneralLedgerProfileValidateBeforeCall(String scope, String code, GeneralLedgerProfileRequest generalLedgerProfileRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createGeneralLedgerProfileValidateBeforeCall(String scope, String code, GeneralLedgerProfileRequest generalLedgerProfileRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling createGeneralLedgerProfile(Async)");
@@ -531,20 +672,34 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'generalLedgerProfileRequest' when calling createGeneralLedgerProfile(Async)");
         }
 
-        return createGeneralLedgerProfileCall(scope, code, generalLedgerProfileRequest, _callback);
+        return createGeneralLedgerProfileCall(scope, code, generalLedgerProfileRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<GeneralLedgerProfileResponse> createGeneralLedgerProfileWithHttpInfo(String scope, String code, GeneralLedgerProfileRequest generalLedgerProfileRequest) throws ApiException {
-        okhttp3.Call localVarCall = createGeneralLedgerProfileValidateBeforeCall(scope, code, generalLedgerProfileRequest, null);
+        okhttp3.Call localVarCall = createGeneralLedgerProfileValidateBeforeCall(scope, code, generalLedgerProfileRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GeneralLedgerProfileResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<GeneralLedgerProfileResponse> createGeneralLedgerProfileWithHttpInfo(String scope, String code, GeneralLedgerProfileRequest generalLedgerProfileRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createGeneralLedgerProfileValidateBeforeCall(scope, code, generalLedgerProfileRequest, null, opts);
         Type localVarReturnType = new TypeToken<GeneralLedgerProfileResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call createGeneralLedgerProfileAsync(String scope, String code, GeneralLedgerProfileRequest generalLedgerProfileRequest, final ApiCallback<GeneralLedgerProfileResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createGeneralLedgerProfileValidateBeforeCall(scope, code, generalLedgerProfileRequest, _callback);
+        okhttp3.Call localVarCall = createGeneralLedgerProfileValidateBeforeCall(scope, code, generalLedgerProfileRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GeneralLedgerProfileResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call createGeneralLedgerProfileAsync(String scope, String code, GeneralLedgerProfileRequest generalLedgerProfileRequest, final ApiCallback<GeneralLedgerProfileResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = createGeneralLedgerProfileValidateBeforeCall(scope, code, generalLedgerProfileRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<GeneralLedgerProfileResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -596,6 +751,23 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Execute createGeneralLedgerProfile request. Use any specified configuration options to override any other configuration for this request only.
+         * @return GeneralLedgerProfileResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created General Ledger Profile. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GeneralLedgerProfileResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<GeneralLedgerProfileResponse> localVarResp = createGeneralLedgerProfileWithHttpInfo(scope, code, generalLedgerProfileRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute createGeneralLedgerProfile request with HTTP info returned
          * @return ApiResponse&lt;GeneralLedgerProfileResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -609,6 +781,22 @@ public class ChartOfAccountsApi {
          */
         public ApiResponse<GeneralLedgerProfileResponse> executeWithHttpInfo() throws ApiException {
             return createGeneralLedgerProfileWithHttpInfo(scope, code, generalLedgerProfileRequest);
+        }
+
+        /**
+         * Execute createGeneralLedgerProfile request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;GeneralLedgerProfileResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created General Ledger Profile. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GeneralLedgerProfileResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return createGeneralLedgerProfileWithHttpInfo(scope, code, generalLedgerProfileRequest, opts);
         }
 
         /**
@@ -626,6 +814,23 @@ public class ChartOfAccountsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<GeneralLedgerProfileResponse> _callback) throws ApiException {
             return createGeneralLedgerProfileAsync(scope, code, generalLedgerProfileRequest, _callback);
+        }
+
+        /**
+         * Execute createGeneralLedgerProfile request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created General Ledger Profile. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GeneralLedgerProfileResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return createGeneralLedgerProfileAsync(scope, code, generalLedgerProfileRequest, _callback, opts);
         }
     }
 
@@ -648,6 +853,10 @@ public class ChartOfAccountsApi {
         return new APIcreateGeneralLedgerProfileRequest(scope, code, generalLedgerProfileRequest);
     }
     private okhttp3.Call createPostingModuleCall(String scope, String code, PostingModuleRequest postingModuleRequest, final ApiCallback _callback) throws ApiException {
+        return createPostingModuleCall(scope, code, postingModuleRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call createPostingModuleCall(String scope, String code, PostingModuleRequest postingModuleRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -696,11 +905,11 @@ public class ChartOfAccountsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createPostingModuleValidateBeforeCall(String scope, String code, PostingModuleRequest postingModuleRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createPostingModuleValidateBeforeCall(String scope, String code, PostingModuleRequest postingModuleRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling createPostingModule(Async)");
@@ -716,20 +925,34 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'postingModuleRequest' when calling createPostingModule(Async)");
         }
 
-        return createPostingModuleCall(scope, code, postingModuleRequest, _callback);
+        return createPostingModuleCall(scope, code, postingModuleRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<PostingModuleResponse> createPostingModuleWithHttpInfo(String scope, String code, PostingModuleRequest postingModuleRequest) throws ApiException {
-        okhttp3.Call localVarCall = createPostingModuleValidateBeforeCall(scope, code, postingModuleRequest, null);
+        okhttp3.Call localVarCall = createPostingModuleValidateBeforeCall(scope, code, postingModuleRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PostingModuleResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PostingModuleResponse> createPostingModuleWithHttpInfo(String scope, String code, PostingModuleRequest postingModuleRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createPostingModuleValidateBeforeCall(scope, code, postingModuleRequest, null, opts);
         Type localVarReturnType = new TypeToken<PostingModuleResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call createPostingModuleAsync(String scope, String code, PostingModuleRequest postingModuleRequest, final ApiCallback<PostingModuleResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createPostingModuleValidateBeforeCall(scope, code, postingModuleRequest, _callback);
+        okhttp3.Call localVarCall = createPostingModuleValidateBeforeCall(scope, code, postingModuleRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PostingModuleResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call createPostingModuleAsync(String scope, String code, PostingModuleRequest postingModuleRequest, final ApiCallback<PostingModuleResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = createPostingModuleValidateBeforeCall(scope, code, postingModuleRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<PostingModuleResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -781,6 +1004,23 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Execute createPostingModule request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PostingModuleResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PostingModuleResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PostingModuleResponse> localVarResp = createPostingModuleWithHttpInfo(scope, code, postingModuleRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute createPostingModule request with HTTP info returned
          * @return ApiResponse&lt;PostingModuleResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -794,6 +1034,22 @@ public class ChartOfAccountsApi {
          */
         public ApiResponse<PostingModuleResponse> executeWithHttpInfo() throws ApiException {
             return createPostingModuleWithHttpInfo(scope, code, postingModuleRequest);
+        }
+
+        /**
+         * Execute createPostingModule request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PostingModuleResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PostingModuleResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return createPostingModuleWithHttpInfo(scope, code, postingModuleRequest, opts);
         }
 
         /**
@@ -811,6 +1067,23 @@ public class ChartOfAccountsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PostingModuleResponse> _callback) throws ApiException {
             return createPostingModuleAsync(scope, code, postingModuleRequest, _callback);
+        }
+
+        /**
+         * Execute createPostingModule request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PostingModuleResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return createPostingModuleAsync(scope, code, postingModuleRequest, _callback, opts);
         }
     }
 
@@ -833,6 +1106,10 @@ public class ChartOfAccountsApi {
         return new APIcreatePostingModuleRequest(scope, code, postingModuleRequest);
     }
     private okhttp3.Call deleteAccountsCall(String scope, String code, List<String> requestBody, String deleteMode, final ApiCallback _callback) throws ApiException {
+        return deleteAccountsCall(scope, code, requestBody, deleteMode,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteAccountsCall(String scope, String code, List<String> requestBody, String deleteMode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -885,11 +1162,11 @@ public class ChartOfAccountsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteAccountsValidateBeforeCall(String scope, String code, List<String> requestBody, String deleteMode, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteAccountsValidateBeforeCall(String scope, String code, List<String> requestBody, String deleteMode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteAccounts(Async)");
@@ -905,20 +1182,34 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'requestBody' when calling deleteAccounts(Async)");
         }
 
-        return deleteAccountsCall(scope, code, requestBody, deleteMode, _callback);
+        return deleteAccountsCall(scope, code, requestBody, deleteMode, _callback, opts);
 
     }
 
 
     private ApiResponse<DeleteAccountsResponse> deleteAccountsWithHttpInfo(String scope, String code, List<String> requestBody, String deleteMode) throws ApiException {
-        okhttp3.Call localVarCall = deleteAccountsValidateBeforeCall(scope, code, requestBody, deleteMode, null);
+        okhttp3.Call localVarCall = deleteAccountsValidateBeforeCall(scope, code, requestBody, deleteMode, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeleteAccountsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeleteAccountsResponse> deleteAccountsWithHttpInfo(String scope, String code, List<String> requestBody, String deleteMode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteAccountsValidateBeforeCall(scope, code, requestBody, deleteMode, null, opts);
         Type localVarReturnType = new TypeToken<DeleteAccountsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteAccountsAsync(String scope, String code, List<String> requestBody, String deleteMode, final ApiCallback<DeleteAccountsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteAccountsValidateBeforeCall(scope, code, requestBody, deleteMode, _callback);
+        okhttp3.Call localVarCall = deleteAccountsValidateBeforeCall(scope, code, requestBody, deleteMode, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeleteAccountsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteAccountsAsync(String scope, String code, List<String> requestBody, String deleteMode, final ApiCallback<DeleteAccountsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteAccountsValidateBeforeCall(scope, code, requestBody, deleteMode, _callback, opts);
         Type localVarReturnType = new TypeToken<DeleteAccountsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -981,6 +1272,23 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Execute deleteAccounts request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeleteAccountsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Accounts were deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeleteAccountsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeleteAccountsResponse> localVarResp = deleteAccountsWithHttpInfo(scope, code, requestBody, deleteMode, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteAccounts request with HTTP info returned
          * @return ApiResponse&lt;DeleteAccountsResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -994,6 +1302,22 @@ public class ChartOfAccountsApi {
          */
         public ApiResponse<DeleteAccountsResponse> executeWithHttpInfo() throws ApiException {
             return deleteAccountsWithHttpInfo(scope, code, requestBody, deleteMode);
+        }
+
+        /**
+         * Execute deleteAccounts request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeleteAccountsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Accounts were deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeleteAccountsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteAccountsWithHttpInfo(scope, code, requestBody, deleteMode, opts);
         }
 
         /**
@@ -1011,6 +1335,23 @@ public class ChartOfAccountsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeleteAccountsResponse> _callback) throws ApiException {
             return deleteAccountsAsync(scope, code, requestBody, deleteMode, _callback);
+        }
+
+        /**
+         * Execute deleteAccounts request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Accounts were deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeleteAccountsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteAccountsAsync(scope, code, requestBody, deleteMode, _callback, opts);
         }
     }
 
@@ -1033,6 +1374,10 @@ public class ChartOfAccountsApi {
         return new APIdeleteAccountsRequest(scope, code, requestBody);
     }
     private okhttp3.Call deleteChartOfAccountsCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+        return deleteChartOfAccountsCall(scope, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteChartOfAccountsCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1077,11 +1422,11 @@ public class ChartOfAccountsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteChartOfAccountsValidateBeforeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteChartOfAccountsValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteChartOfAccounts(Async)");
@@ -1092,20 +1437,34 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'code' when calling deleteChartOfAccounts(Async)");
         }
 
-        return deleteChartOfAccountsCall(scope, code, _callback);
+        return deleteChartOfAccountsCall(scope, code, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deleteChartOfAccountsWithHttpInfo(String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = deleteChartOfAccountsValidateBeforeCall(scope, code, null);
+        okhttp3.Call localVarCall = deleteChartOfAccountsValidateBeforeCall(scope, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteChartOfAccountsWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteChartOfAccountsValidateBeforeCall(scope, code, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteChartOfAccountsAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteChartOfAccountsValidateBeforeCall(scope, code, _callback);
+        okhttp3.Call localVarCall = deleteChartOfAccountsValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteChartOfAccountsAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteChartOfAccountsValidateBeforeCall(scope, code, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1155,6 +1514,23 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Execute deleteChartOfAccounts request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Chart of Accounts was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteChartOfAccountsWithHttpInfo(scope, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteChartOfAccounts request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1168,6 +1544,22 @@ public class ChartOfAccountsApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deleteChartOfAccountsWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteChartOfAccounts request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Chart of Accounts was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteChartOfAccountsWithHttpInfo(scope, code, opts);
         }
 
         /**
@@ -1185,6 +1577,23 @@ public class ChartOfAccountsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deleteChartOfAccountsAsync(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteChartOfAccounts request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Chart of Accounts was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteChartOfAccountsAsync(scope, code, _callback, opts);
         }
     }
 
@@ -1206,6 +1615,10 @@ public class ChartOfAccountsApi {
         return new APIdeleteChartOfAccountsRequest(scope, code);
     }
     private okhttp3.Call deleteCleardownModuleCall(String scope, String code, String cleardownModuleCode, final ApiCallback _callback) throws ApiException {
+        return deleteCleardownModuleCall(scope, code, cleardownModuleCode,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteCleardownModuleCall(String scope, String code, String cleardownModuleCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1251,11 +1664,11 @@ public class ChartOfAccountsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteCleardownModuleValidateBeforeCall(String scope, String code, String cleardownModuleCode, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCleardownModuleValidateBeforeCall(String scope, String code, String cleardownModuleCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteCleardownModule(Async)");
@@ -1271,20 +1684,34 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'cleardownModuleCode' when calling deleteCleardownModule(Async)");
         }
 
-        return deleteCleardownModuleCall(scope, code, cleardownModuleCode, _callback);
+        return deleteCleardownModuleCall(scope, code, cleardownModuleCode, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deleteCleardownModuleWithHttpInfo(String scope, String code, String cleardownModuleCode) throws ApiException {
-        okhttp3.Call localVarCall = deleteCleardownModuleValidateBeforeCall(scope, code, cleardownModuleCode, null);
+        okhttp3.Call localVarCall = deleteCleardownModuleValidateBeforeCall(scope, code, cleardownModuleCode, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteCleardownModuleWithHttpInfo(String scope, String code, String cleardownModuleCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteCleardownModuleValidateBeforeCall(scope, code, cleardownModuleCode, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteCleardownModuleAsync(String scope, String code, String cleardownModuleCode, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteCleardownModuleValidateBeforeCall(scope, code, cleardownModuleCode, _callback);
+        okhttp3.Call localVarCall = deleteCleardownModuleValidateBeforeCall(scope, code, cleardownModuleCode, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteCleardownModuleAsync(String scope, String code, String cleardownModuleCode, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteCleardownModuleValidateBeforeCall(scope, code, cleardownModuleCode, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1336,6 +1763,23 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Execute deleteCleardownModule request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Cleardown Module was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteCleardownModuleWithHttpInfo(scope, code, cleardownModuleCode, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteCleardownModule request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1349,6 +1793,22 @@ public class ChartOfAccountsApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deleteCleardownModuleWithHttpInfo(scope, code, cleardownModuleCode);
+        }
+
+        /**
+         * Execute deleteCleardownModule request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Cleardown Module was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteCleardownModuleWithHttpInfo(scope, code, cleardownModuleCode, opts);
         }
 
         /**
@@ -1366,6 +1826,23 @@ public class ChartOfAccountsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deleteCleardownModuleAsync(scope, code, cleardownModuleCode, _callback);
+        }
+
+        /**
+         * Execute deleteCleardownModule request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Cleardown Module was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteCleardownModuleAsync(scope, code, cleardownModuleCode, _callback, opts);
         }
     }
 
@@ -1388,6 +1865,10 @@ public class ChartOfAccountsApi {
         return new APIdeleteCleardownModuleRequest(scope, code, cleardownModuleCode);
     }
     private okhttp3.Call deleteGeneralLedgerProfileCall(String scope, String code, String generalLedgerProfileCode, final ApiCallback _callback) throws ApiException {
+        return deleteGeneralLedgerProfileCall(scope, code, generalLedgerProfileCode,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteGeneralLedgerProfileCall(String scope, String code, String generalLedgerProfileCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1433,11 +1914,11 @@ public class ChartOfAccountsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteGeneralLedgerProfileValidateBeforeCall(String scope, String code, String generalLedgerProfileCode, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteGeneralLedgerProfileValidateBeforeCall(String scope, String code, String generalLedgerProfileCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteGeneralLedgerProfile(Async)");
@@ -1453,20 +1934,34 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'generalLedgerProfileCode' when calling deleteGeneralLedgerProfile(Async)");
         }
 
-        return deleteGeneralLedgerProfileCall(scope, code, generalLedgerProfileCode, _callback);
+        return deleteGeneralLedgerProfileCall(scope, code, generalLedgerProfileCode, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deleteGeneralLedgerProfileWithHttpInfo(String scope, String code, String generalLedgerProfileCode) throws ApiException {
-        okhttp3.Call localVarCall = deleteGeneralLedgerProfileValidateBeforeCall(scope, code, generalLedgerProfileCode, null);
+        okhttp3.Call localVarCall = deleteGeneralLedgerProfileValidateBeforeCall(scope, code, generalLedgerProfileCode, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteGeneralLedgerProfileWithHttpInfo(String scope, String code, String generalLedgerProfileCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteGeneralLedgerProfileValidateBeforeCall(scope, code, generalLedgerProfileCode, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteGeneralLedgerProfileAsync(String scope, String code, String generalLedgerProfileCode, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteGeneralLedgerProfileValidateBeforeCall(scope, code, generalLedgerProfileCode, _callback);
+        okhttp3.Call localVarCall = deleteGeneralLedgerProfileValidateBeforeCall(scope, code, generalLedgerProfileCode, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteGeneralLedgerProfileAsync(String scope, String code, String generalLedgerProfileCode, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteGeneralLedgerProfileValidateBeforeCall(scope, code, generalLedgerProfileCode, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1518,6 +2013,23 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Execute deleteGeneralLedgerProfile request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the General Ledger Profile was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteGeneralLedgerProfileWithHttpInfo(scope, code, generalLedgerProfileCode, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteGeneralLedgerProfile request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1531,6 +2043,22 @@ public class ChartOfAccountsApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deleteGeneralLedgerProfileWithHttpInfo(scope, code, generalLedgerProfileCode);
+        }
+
+        /**
+         * Execute deleteGeneralLedgerProfile request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the General Ledger Profile was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteGeneralLedgerProfileWithHttpInfo(scope, code, generalLedgerProfileCode, opts);
         }
 
         /**
@@ -1548,6 +2076,23 @@ public class ChartOfAccountsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deleteGeneralLedgerProfileAsync(scope, code, generalLedgerProfileCode, _callback);
+        }
+
+        /**
+         * Execute deleteGeneralLedgerProfile request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the General Ledger Profile was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteGeneralLedgerProfileAsync(scope, code, generalLedgerProfileCode, _callback, opts);
         }
     }
 
@@ -1570,6 +2115,10 @@ public class ChartOfAccountsApi {
         return new APIdeleteGeneralLedgerProfileRequest(scope, code, generalLedgerProfileCode);
     }
     private okhttp3.Call deletePostingModuleCall(String scope, String code, String postingModuleCode, final ApiCallback _callback) throws ApiException {
+        return deletePostingModuleCall(scope, code, postingModuleCode,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deletePostingModuleCall(String scope, String code, String postingModuleCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1615,11 +2164,11 @@ public class ChartOfAccountsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deletePostingModuleValidateBeforeCall(String scope, String code, String postingModuleCode, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deletePostingModuleValidateBeforeCall(String scope, String code, String postingModuleCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deletePostingModule(Async)");
@@ -1635,20 +2184,34 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'postingModuleCode' when calling deletePostingModule(Async)");
         }
 
-        return deletePostingModuleCall(scope, code, postingModuleCode, _callback);
+        return deletePostingModuleCall(scope, code, postingModuleCode, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deletePostingModuleWithHttpInfo(String scope, String code, String postingModuleCode) throws ApiException {
-        okhttp3.Call localVarCall = deletePostingModuleValidateBeforeCall(scope, code, postingModuleCode, null);
+        okhttp3.Call localVarCall = deletePostingModuleValidateBeforeCall(scope, code, postingModuleCode, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deletePostingModuleWithHttpInfo(String scope, String code, String postingModuleCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deletePostingModuleValidateBeforeCall(scope, code, postingModuleCode, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deletePostingModuleAsync(String scope, String code, String postingModuleCode, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deletePostingModuleValidateBeforeCall(scope, code, postingModuleCode, _callback);
+        okhttp3.Call localVarCall = deletePostingModuleValidateBeforeCall(scope, code, postingModuleCode, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deletePostingModuleAsync(String scope, String code, String postingModuleCode, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deletePostingModuleValidateBeforeCall(scope, code, postingModuleCode, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1700,6 +2263,23 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Execute deletePostingModule request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Posting Module was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deletePostingModuleWithHttpInfo(scope, code, postingModuleCode, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deletePostingModule request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1713,6 +2293,22 @@ public class ChartOfAccountsApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deletePostingModuleWithHttpInfo(scope, code, postingModuleCode);
+        }
+
+        /**
+         * Execute deletePostingModule request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Posting Module was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deletePostingModuleWithHttpInfo(scope, code, postingModuleCode, opts);
         }
 
         /**
@@ -1730,6 +2326,23 @@ public class ChartOfAccountsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deletePostingModuleAsync(scope, code, postingModuleCode, _callback);
+        }
+
+        /**
+         * Execute deletePostingModule request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Posting Module was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deletePostingModuleAsync(scope, code, postingModuleCode, _callback, opts);
         }
     }
 
@@ -1752,6 +2365,10 @@ public class ChartOfAccountsApi {
         return new APIdeletePostingModuleRequest(scope, code, postingModuleCode);
     }
     private okhttp3.Call getAccountCall(String scope, String code, String accountCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return getAccountCall(scope, code, accountCode, effectiveAt, asAt, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getAccountCall(String scope, String code, String accountCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1809,11 +2426,11 @@ public class ChartOfAccountsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAccountValidateBeforeCall(String scope, String code, String accountCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAccountValidateBeforeCall(String scope, String code, String accountCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getAccount(Async)");
@@ -1829,20 +2446,34 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'accountCode' when calling getAccount(Async)");
         }
 
-        return getAccountCall(scope, code, accountCode, effectiveAt, asAt, propertyKeys, _callback);
+        return getAccountCall(scope, code, accountCode, effectiveAt, asAt, propertyKeys, _callback, opts);
 
     }
 
 
     private ApiResponse<Account> getAccountWithHttpInfo(String scope, String code, String accountCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = getAccountValidateBeforeCall(scope, code, accountCode, effectiveAt, asAt, propertyKeys, null);
+        okhttp3.Call localVarCall = getAccountValidateBeforeCall(scope, code, accountCode, effectiveAt, asAt, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Account>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Account> getAccountWithHttpInfo(String scope, String code, String accountCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getAccountValidateBeforeCall(scope, code, accountCode, effectiveAt, asAt, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<Account>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getAccountAsync(String scope, String code, String accountCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<Account> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAccountValidateBeforeCall(scope, code, accountCode, effectiveAt, asAt, propertyKeys, _callback);
+        okhttp3.Call localVarCall = getAccountValidateBeforeCall(scope, code, accountCode, effectiveAt, asAt, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Account>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getAccountAsync(String scope, String code, String accountCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<Account> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getAccountValidateBeforeCall(scope, code, accountCode, effectiveAt, asAt, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<Account>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1927,6 +2558,23 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Execute getAccount request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Account
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Account definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Account execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Account> localVarResp = getAccountWithHttpInfo(scope, code, accountCode, effectiveAt, asAt, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getAccount request with HTTP info returned
          * @return ApiResponse&lt;Account&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1940,6 +2588,22 @@ public class ChartOfAccountsApi {
          */
         public ApiResponse<Account> executeWithHttpInfo() throws ApiException {
             return getAccountWithHttpInfo(scope, code, accountCode, effectiveAt, asAt, propertyKeys);
+        }
+
+        /**
+         * Execute getAccount request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Account&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Account definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Account> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getAccountWithHttpInfo(scope, code, accountCode, effectiveAt, asAt, propertyKeys, opts);
         }
 
         /**
@@ -1957,6 +2621,23 @@ public class ChartOfAccountsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Account> _callback) throws ApiException {
             return getAccountAsync(scope, code, accountCode, effectiveAt, asAt, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getAccount request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Account definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Account> _callback, ConfigurationOptions opts) throws ApiException {
+            return getAccountAsync(scope, code, accountCode, effectiveAt, asAt, propertyKeys, _callback, opts);
         }
     }
 
@@ -1979,6 +2660,10 @@ public class ChartOfAccountsApi {
         return new APIgetAccountRequest(scope, code, accountCode);
     }
     private okhttp3.Call getChartOfAccountsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return getChartOfAccountsCall(scope, code, effectiveAt, asAt, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getChartOfAccountsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2035,11 +2720,11 @@ public class ChartOfAccountsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getChartOfAccountsValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getChartOfAccountsValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getChartOfAccounts(Async)");
@@ -2050,20 +2735,34 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'code' when calling getChartOfAccounts(Async)");
         }
 
-        return getChartOfAccountsCall(scope, code, effectiveAt, asAt, propertyKeys, _callback);
+        return getChartOfAccountsCall(scope, code, effectiveAt, asAt, propertyKeys, _callback, opts);
 
     }
 
 
     private ApiResponse<ChartOfAccounts> getChartOfAccountsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = getChartOfAccountsValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, null);
+        okhttp3.Call localVarCall = getChartOfAccountsValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ChartOfAccounts>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ChartOfAccounts> getChartOfAccountsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getChartOfAccountsValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<ChartOfAccounts>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getChartOfAccountsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<ChartOfAccounts> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getChartOfAccountsValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback);
+        okhttp3.Call localVarCall = getChartOfAccountsValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ChartOfAccounts>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getChartOfAccountsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<ChartOfAccounts> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getChartOfAccountsValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<ChartOfAccounts>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2146,6 +2845,23 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Execute getChartOfAccounts request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ChartOfAccounts
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Chart Of Accounts definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ChartOfAccounts execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ChartOfAccounts> localVarResp = getChartOfAccountsWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getChartOfAccounts request with HTTP info returned
          * @return ApiResponse&lt;ChartOfAccounts&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2159,6 +2875,22 @@ public class ChartOfAccountsApi {
          */
         public ApiResponse<ChartOfAccounts> executeWithHttpInfo() throws ApiException {
             return getChartOfAccountsWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
+        }
+
+        /**
+         * Execute getChartOfAccounts request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ChartOfAccounts&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Chart Of Accounts definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ChartOfAccounts> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getChartOfAccountsWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys, opts);
         }
 
         /**
@@ -2176,6 +2908,23 @@ public class ChartOfAccountsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ChartOfAccounts> _callback) throws ApiException {
             return getChartOfAccountsAsync(scope, code, effectiveAt, asAt, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getChartOfAccounts request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Chart Of Accounts definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ChartOfAccounts> _callback, ConfigurationOptions opts) throws ApiException {
+            return getChartOfAccountsAsync(scope, code, effectiveAt, asAt, propertyKeys, _callback, opts);
         }
     }
 
@@ -2197,6 +2946,10 @@ public class ChartOfAccountsApi {
         return new APIgetChartOfAccountsRequest(scope, code);
     }
     private okhttp3.Call getCleardownModuleCall(String scope, String code, String cleardownModuleCode, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getCleardownModuleCall(scope, code, cleardownModuleCode, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getCleardownModuleCall(String scope, String code, String cleardownModuleCode, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2246,11 +2999,11 @@ public class ChartOfAccountsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCleardownModuleValidateBeforeCall(String scope, String code, String cleardownModuleCode, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCleardownModuleValidateBeforeCall(String scope, String code, String cleardownModuleCode, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getCleardownModule(Async)");
@@ -2266,20 +3019,34 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'cleardownModuleCode' when calling getCleardownModule(Async)");
         }
 
-        return getCleardownModuleCall(scope, code, cleardownModuleCode, asAt, _callback);
+        return getCleardownModuleCall(scope, code, cleardownModuleCode, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<CleardownModuleResponse> getCleardownModuleWithHttpInfo(String scope, String code, String cleardownModuleCode, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getCleardownModuleValidateBeforeCall(scope, code, cleardownModuleCode, asAt, null);
+        okhttp3.Call localVarCall = getCleardownModuleValidateBeforeCall(scope, code, cleardownModuleCode, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CleardownModuleResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<CleardownModuleResponse> getCleardownModuleWithHttpInfo(String scope, String code, String cleardownModuleCode, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getCleardownModuleValidateBeforeCall(scope, code, cleardownModuleCode, asAt, null, opts);
         Type localVarReturnType = new TypeToken<CleardownModuleResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getCleardownModuleAsync(String scope, String code, String cleardownModuleCode, OffsetDateTime asAt, final ApiCallback<CleardownModuleResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getCleardownModuleValidateBeforeCall(scope, code, cleardownModuleCode, asAt, _callback);
+        okhttp3.Call localVarCall = getCleardownModuleValidateBeforeCall(scope, code, cleardownModuleCode, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CleardownModuleResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getCleardownModuleAsync(String scope, String code, String cleardownModuleCode, OffsetDateTime asAt, final ApiCallback<CleardownModuleResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getCleardownModuleValidateBeforeCall(scope, code, cleardownModuleCode, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<CleardownModuleResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2342,6 +3109,23 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Execute getCleardownModule request. Use any specified configuration options to override any other configuration for this request only.
+         * @return CleardownModuleResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The full definition of the Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CleardownModuleResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<CleardownModuleResponse> localVarResp = getCleardownModuleWithHttpInfo(scope, code, cleardownModuleCode, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getCleardownModule request with HTTP info returned
          * @return ApiResponse&lt;CleardownModuleResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2355,6 +3139,22 @@ public class ChartOfAccountsApi {
          */
         public ApiResponse<CleardownModuleResponse> executeWithHttpInfo() throws ApiException {
             return getCleardownModuleWithHttpInfo(scope, code, cleardownModuleCode, asAt);
+        }
+
+        /**
+         * Execute getCleardownModule request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;CleardownModuleResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The full definition of the Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CleardownModuleResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getCleardownModuleWithHttpInfo(scope, code, cleardownModuleCode, asAt, opts);
         }
 
         /**
@@ -2372,6 +3172,23 @@ public class ChartOfAccountsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<CleardownModuleResponse> _callback) throws ApiException {
             return getCleardownModuleAsync(scope, code, cleardownModuleCode, asAt, _callback);
+        }
+
+        /**
+         * Execute getCleardownModule request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The full definition of the Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CleardownModuleResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return getCleardownModuleAsync(scope, code, cleardownModuleCode, asAt, _callback, opts);
         }
     }
 
@@ -2394,6 +3211,10 @@ public class ChartOfAccountsApi {
         return new APIgetCleardownModuleRequest(scope, code, cleardownModuleCode);
     }
     private okhttp3.Call getGeneralLedgerProfileCall(String scope, String code, String generalLedgerProfileCode, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getGeneralLedgerProfileCall(scope, code, generalLedgerProfileCode, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getGeneralLedgerProfileCall(String scope, String code, String generalLedgerProfileCode, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2443,11 +3264,11 @@ public class ChartOfAccountsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getGeneralLedgerProfileValidateBeforeCall(String scope, String code, String generalLedgerProfileCode, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getGeneralLedgerProfileValidateBeforeCall(String scope, String code, String generalLedgerProfileCode, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getGeneralLedgerProfile(Async)");
@@ -2463,20 +3284,34 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'generalLedgerProfileCode' when calling getGeneralLedgerProfile(Async)");
         }
 
-        return getGeneralLedgerProfileCall(scope, code, generalLedgerProfileCode, asAt, _callback);
+        return getGeneralLedgerProfileCall(scope, code, generalLedgerProfileCode, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<GeneralLedgerProfileResponse> getGeneralLedgerProfileWithHttpInfo(String scope, String code, String generalLedgerProfileCode, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getGeneralLedgerProfileValidateBeforeCall(scope, code, generalLedgerProfileCode, asAt, null);
+        okhttp3.Call localVarCall = getGeneralLedgerProfileValidateBeforeCall(scope, code, generalLedgerProfileCode, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GeneralLedgerProfileResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<GeneralLedgerProfileResponse> getGeneralLedgerProfileWithHttpInfo(String scope, String code, String generalLedgerProfileCode, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getGeneralLedgerProfileValidateBeforeCall(scope, code, generalLedgerProfileCode, asAt, null, opts);
         Type localVarReturnType = new TypeToken<GeneralLedgerProfileResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getGeneralLedgerProfileAsync(String scope, String code, String generalLedgerProfileCode, OffsetDateTime asAt, final ApiCallback<GeneralLedgerProfileResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getGeneralLedgerProfileValidateBeforeCall(scope, code, generalLedgerProfileCode, asAt, _callback);
+        okhttp3.Call localVarCall = getGeneralLedgerProfileValidateBeforeCall(scope, code, generalLedgerProfileCode, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GeneralLedgerProfileResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getGeneralLedgerProfileAsync(String scope, String code, String generalLedgerProfileCode, OffsetDateTime asAt, final ApiCallback<GeneralLedgerProfileResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getGeneralLedgerProfileValidateBeforeCall(scope, code, generalLedgerProfileCode, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<GeneralLedgerProfileResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2539,6 +3374,23 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Execute getGeneralLedgerProfile request. Use any specified configuration options to override any other configuration for this request only.
+         * @return GeneralLedgerProfileResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested General Ledger Profile entry. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GeneralLedgerProfileResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<GeneralLedgerProfileResponse> localVarResp = getGeneralLedgerProfileWithHttpInfo(scope, code, generalLedgerProfileCode, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getGeneralLedgerProfile request with HTTP info returned
          * @return ApiResponse&lt;GeneralLedgerProfileResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2552,6 +3404,22 @@ public class ChartOfAccountsApi {
          */
         public ApiResponse<GeneralLedgerProfileResponse> executeWithHttpInfo() throws ApiException {
             return getGeneralLedgerProfileWithHttpInfo(scope, code, generalLedgerProfileCode, asAt);
+        }
+
+        /**
+         * Execute getGeneralLedgerProfile request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;GeneralLedgerProfileResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested General Ledger Profile entry. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GeneralLedgerProfileResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getGeneralLedgerProfileWithHttpInfo(scope, code, generalLedgerProfileCode, asAt, opts);
         }
 
         /**
@@ -2569,6 +3437,23 @@ public class ChartOfAccountsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<GeneralLedgerProfileResponse> _callback) throws ApiException {
             return getGeneralLedgerProfileAsync(scope, code, generalLedgerProfileCode, asAt, _callback);
+        }
+
+        /**
+         * Execute getGeneralLedgerProfile request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested General Ledger Profile entry. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GeneralLedgerProfileResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return getGeneralLedgerProfileAsync(scope, code, generalLedgerProfileCode, asAt, _callback, opts);
         }
     }
 
@@ -2591,6 +3476,10 @@ public class ChartOfAccountsApi {
         return new APIgetGeneralLedgerProfileRequest(scope, code, generalLedgerProfileCode);
     }
     private okhttp3.Call getPostingModuleCall(String scope, String code, String postingModuleCode, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getPostingModuleCall(scope, code, postingModuleCode, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getPostingModuleCall(String scope, String code, String postingModuleCode, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2640,11 +3529,11 @@ public class ChartOfAccountsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPostingModuleValidateBeforeCall(String scope, String code, String postingModuleCode, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPostingModuleValidateBeforeCall(String scope, String code, String postingModuleCode, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getPostingModule(Async)");
@@ -2660,20 +3549,34 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'postingModuleCode' when calling getPostingModule(Async)");
         }
 
-        return getPostingModuleCall(scope, code, postingModuleCode, asAt, _callback);
+        return getPostingModuleCall(scope, code, postingModuleCode, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<PostingModuleResponse> getPostingModuleWithHttpInfo(String scope, String code, String postingModuleCode, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getPostingModuleValidateBeforeCall(scope, code, postingModuleCode, asAt, null);
+        okhttp3.Call localVarCall = getPostingModuleValidateBeforeCall(scope, code, postingModuleCode, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PostingModuleResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PostingModuleResponse> getPostingModuleWithHttpInfo(String scope, String code, String postingModuleCode, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPostingModuleValidateBeforeCall(scope, code, postingModuleCode, asAt, null, opts);
         Type localVarReturnType = new TypeToken<PostingModuleResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getPostingModuleAsync(String scope, String code, String postingModuleCode, OffsetDateTime asAt, final ApiCallback<PostingModuleResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPostingModuleValidateBeforeCall(scope, code, postingModuleCode, asAt, _callback);
+        okhttp3.Call localVarCall = getPostingModuleValidateBeforeCall(scope, code, postingModuleCode, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PostingModuleResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getPostingModuleAsync(String scope, String code, String postingModuleCode, OffsetDateTime asAt, final ApiCallback<PostingModuleResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getPostingModuleValidateBeforeCall(scope, code, postingModuleCode, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<PostingModuleResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2736,6 +3639,23 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Execute getPostingModule request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PostingModuleResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The full definition of the Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PostingModuleResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PostingModuleResponse> localVarResp = getPostingModuleWithHttpInfo(scope, code, postingModuleCode, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getPostingModule request with HTTP info returned
          * @return ApiResponse&lt;PostingModuleResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2749,6 +3669,22 @@ public class ChartOfAccountsApi {
          */
         public ApiResponse<PostingModuleResponse> executeWithHttpInfo() throws ApiException {
             return getPostingModuleWithHttpInfo(scope, code, postingModuleCode, asAt);
+        }
+
+        /**
+         * Execute getPostingModule request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PostingModuleResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The full definition of the Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PostingModuleResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getPostingModuleWithHttpInfo(scope, code, postingModuleCode, asAt, opts);
         }
 
         /**
@@ -2766,6 +3702,23 @@ public class ChartOfAccountsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PostingModuleResponse> _callback) throws ApiException {
             return getPostingModuleAsync(scope, code, postingModuleCode, asAt, _callback);
+        }
+
+        /**
+         * Execute getPostingModule request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The full definition of the Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PostingModuleResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return getPostingModuleAsync(scope, code, postingModuleCode, asAt, _callback, opts);
         }
     }
 
@@ -2788,6 +3741,10 @@ public class ChartOfAccountsApi {
         return new APIgetPostingModuleRequest(scope, code, postingModuleCode);
     }
     private okhttp3.Call listAccountsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return listAccountsCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listAccountsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2856,11 +3813,11 @@ public class ChartOfAccountsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listAccountsValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listAccountsValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listAccounts(Async)");
@@ -2871,20 +3828,34 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'code' when calling listAccounts(Async)");
         }
 
-        return listAccountsCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
+        return listAccountsCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfAccount> listAccountsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = listAccountsValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, null);
+        okhttp3.Call localVarCall = listAccountsValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfAccount>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfAccount> listAccountsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listAccountsValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfAccount>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listAccountsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfAccount> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listAccountsValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
+        okhttp3.Call localVarCall = listAccountsValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfAccount>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listAccountsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfAccount> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listAccountsValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfAccount>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3000,6 +3971,23 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Execute listAccounts request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfAccount
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Accounts in the given Chart of Accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfAccount execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfAccount> localVarResp = listAccountsWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listAccounts request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfAccount&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3013,6 +4001,22 @@ public class ChartOfAccountsApi {
          */
         public ApiResponse<PagedResourceListOfAccount> executeWithHttpInfo() throws ApiException {
             return listAccountsWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys);
+        }
+
+        /**
+         * Execute listAccounts request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfAccount&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Accounts in the given Chart of Accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfAccount> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listAccountsWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, opts);
         }
 
         /**
@@ -3030,6 +4034,23 @@ public class ChartOfAccountsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfAccount> _callback) throws ApiException {
             return listAccountsAsync(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute listAccounts request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Accounts in the given Chart of Accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfAccount> _callback, ConfigurationOptions opts) throws ApiException {
+            return listAccountsAsync(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback, opts);
         }
     }
 
@@ -3051,6 +4072,10 @@ public class ChartOfAccountsApi {
         return new APIlistAccountsRequest(scope, code);
     }
     private okhttp3.Call listChartsOfAccountsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return listChartsOfAccountsCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listChartsOfAccountsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3121,25 +4146,39 @@ public class ChartOfAccountsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listChartsOfAccountsValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
-        return listChartsOfAccountsCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
+    private okhttp3.Call listChartsOfAccountsValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listChartsOfAccountsCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfChartOfAccounts> listChartsOfAccountsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = listChartsOfAccountsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, null);
+        okhttp3.Call localVarCall = listChartsOfAccountsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfChartOfAccounts>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfChartOfAccounts> listChartsOfAccountsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listChartsOfAccountsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfChartOfAccounts>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listChartsOfAccountsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback<PagedResourceListOfChartOfAccounts> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listChartsOfAccountsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
+        okhttp3.Call localVarCall = listChartsOfAccountsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfChartOfAccounts>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listChartsOfAccountsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback<PagedResourceListOfChartOfAccounts> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listChartsOfAccountsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfChartOfAccounts>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3262,6 +4301,23 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Execute listChartsOfAccounts request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfChartOfAccounts
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Charts of Accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfChartOfAccounts execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfChartOfAccounts> localVarResp = listChartsOfAccountsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listChartsOfAccounts request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfChartOfAccounts&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3275,6 +4331,22 @@ public class ChartOfAccountsApi {
          */
         public ApiResponse<PagedResourceListOfChartOfAccounts> executeWithHttpInfo() throws ApiException {
             return listChartsOfAccountsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys);
+        }
+
+        /**
+         * Execute listChartsOfAccounts request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfChartOfAccounts&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Charts of Accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfChartOfAccounts> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listChartsOfAccountsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, opts);
         }
 
         /**
@@ -3292,6 +4364,23 @@ public class ChartOfAccountsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfChartOfAccounts> _callback) throws ApiException {
             return listChartsOfAccountsAsync(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute listChartsOfAccounts request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Charts of Accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfChartOfAccounts> _callback, ConfigurationOptions opts) throws ApiException {
+            return listChartsOfAccountsAsync(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
         }
     }
 
@@ -3311,6 +4400,10 @@ public class ChartOfAccountsApi {
         return new APIlistChartsOfAccountsRequest();
     }
     private okhttp3.Call listCleardownModuleRulesCall(String scope, String code, String cleardownModuleCode, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+        return listCleardownModuleRulesCall(scope, code, cleardownModuleCode, asAt, page, limit, filter,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listCleardownModuleRulesCall(String scope, String code, String cleardownModuleCode, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3372,11 +4465,11 @@ public class ChartOfAccountsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listCleardownModuleRulesValidateBeforeCall(String scope, String code, String cleardownModuleCode, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listCleardownModuleRulesValidateBeforeCall(String scope, String code, String cleardownModuleCode, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listCleardownModuleRules(Async)");
@@ -3392,20 +4485,34 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'cleardownModuleCode' when calling listCleardownModuleRules(Async)");
         }
 
-        return listCleardownModuleRulesCall(scope, code, cleardownModuleCode, asAt, page, limit, filter, _callback);
+        return listCleardownModuleRulesCall(scope, code, cleardownModuleCode, asAt, page, limit, filter, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfCleardownModuleRule> listCleardownModuleRulesWithHttpInfo(String scope, String code, String cleardownModuleCode, OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listCleardownModuleRulesValidateBeforeCall(scope, code, cleardownModuleCode, asAt, page, limit, filter, null);
+        okhttp3.Call localVarCall = listCleardownModuleRulesValidateBeforeCall(scope, code, cleardownModuleCode, asAt, page, limit, filter, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfCleardownModuleRule>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfCleardownModuleRule> listCleardownModuleRulesWithHttpInfo(String scope, String code, String cleardownModuleCode, OffsetDateTime asAt, String page, Integer limit, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listCleardownModuleRulesValidateBeforeCall(scope, code, cleardownModuleCode, asAt, page, limit, filter, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfCleardownModuleRule>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listCleardownModuleRulesAsync(String scope, String code, String cleardownModuleCode, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfCleardownModuleRule> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listCleardownModuleRulesValidateBeforeCall(scope, code, cleardownModuleCode, asAt, page, limit, filter, _callback);
+        okhttp3.Call localVarCall = listCleardownModuleRulesValidateBeforeCall(scope, code, cleardownModuleCode, asAt, page, limit, filter, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfCleardownModuleRule>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listCleardownModuleRulesAsync(String scope, String code, String cleardownModuleCode, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfCleardownModuleRule> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listCleardownModuleRulesValidateBeforeCall(scope, code, cleardownModuleCode, asAt, page, limit, filter, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfCleardownModuleRule>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3501,6 +4608,23 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Execute listCleardownModuleRules request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfCleardownModuleRule
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rules in the given Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfCleardownModuleRule execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfCleardownModuleRule> localVarResp = listCleardownModuleRulesWithHttpInfo(scope, code, cleardownModuleCode, asAt, page, limit, filter, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listCleardownModuleRules request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfCleardownModuleRule&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3514,6 +4638,22 @@ public class ChartOfAccountsApi {
          */
         public ApiResponse<PagedResourceListOfCleardownModuleRule> executeWithHttpInfo() throws ApiException {
             return listCleardownModuleRulesWithHttpInfo(scope, code, cleardownModuleCode, asAt, page, limit, filter);
+        }
+
+        /**
+         * Execute listCleardownModuleRules request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfCleardownModuleRule&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rules in the given Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfCleardownModuleRule> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listCleardownModuleRulesWithHttpInfo(scope, code, cleardownModuleCode, asAt, page, limit, filter, opts);
         }
 
         /**
@@ -3531,6 +4671,23 @@ public class ChartOfAccountsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfCleardownModuleRule> _callback) throws ApiException {
             return listCleardownModuleRulesAsync(scope, code, cleardownModuleCode, asAt, page, limit, filter, _callback);
+        }
+
+        /**
+         * Execute listCleardownModuleRules request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rules in the given Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfCleardownModuleRule> _callback, ConfigurationOptions opts) throws ApiException {
+            return listCleardownModuleRulesAsync(scope, code, cleardownModuleCode, asAt, page, limit, filter, _callback, opts);
         }
     }
 
@@ -3553,6 +4710,10 @@ public class ChartOfAccountsApi {
         return new APIlistCleardownModuleRulesRequest(scope, code, cleardownModuleCode);
     }
     private okhttp3.Call listCleardownModulesCall(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
+        return listCleardownModulesCall(scope, code, asAt, page, limit, filter, sortBy,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listCleardownModulesCall(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3617,11 +4778,11 @@ public class ChartOfAccountsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listCleardownModulesValidateBeforeCall(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listCleardownModulesValidateBeforeCall(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listCleardownModules(Async)");
@@ -3632,20 +4793,34 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'code' when calling listCleardownModules(Async)");
         }
 
-        return listCleardownModulesCall(scope, code, asAt, page, limit, filter, sortBy, _callback);
+        return listCleardownModulesCall(scope, code, asAt, page, limit, filter, sortBy, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfCleardownModuleResponse> listCleardownModulesWithHttpInfo(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy) throws ApiException {
-        okhttp3.Call localVarCall = listCleardownModulesValidateBeforeCall(scope, code, asAt, page, limit, filter, sortBy, null);
+        okhttp3.Call localVarCall = listCleardownModulesValidateBeforeCall(scope, code, asAt, page, limit, filter, sortBy, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfCleardownModuleResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfCleardownModuleResponse> listCleardownModulesWithHttpInfo(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listCleardownModulesValidateBeforeCall(scope, code, asAt, page, limit, filter, sortBy, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfCleardownModuleResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listCleardownModulesAsync(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfCleardownModuleResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listCleardownModulesValidateBeforeCall(scope, code, asAt, page, limit, filter, sortBy, _callback);
+        okhttp3.Call localVarCall = listCleardownModulesValidateBeforeCall(scope, code, asAt, page, limit, filter, sortBy, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfCleardownModuleResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listCleardownModulesAsync(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfCleardownModuleResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listCleardownModulesValidateBeforeCall(scope, code, asAt, page, limit, filter, sortBy, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfCleardownModuleResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3750,6 +4925,23 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Execute listCleardownModules request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfCleardownModuleResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Cleardown Modules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfCleardownModuleResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfCleardownModuleResponse> localVarResp = listCleardownModulesWithHttpInfo(scope, code, asAt, page, limit, filter, sortBy, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listCleardownModules request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfCleardownModuleResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3763,6 +4955,22 @@ public class ChartOfAccountsApi {
          */
         public ApiResponse<PagedResourceListOfCleardownModuleResponse> executeWithHttpInfo() throws ApiException {
             return listCleardownModulesWithHttpInfo(scope, code, asAt, page, limit, filter, sortBy);
+        }
+
+        /**
+         * Execute listCleardownModules request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfCleardownModuleResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Cleardown Modules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfCleardownModuleResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listCleardownModulesWithHttpInfo(scope, code, asAt, page, limit, filter, sortBy, opts);
         }
 
         /**
@@ -3780,6 +4988,23 @@ public class ChartOfAccountsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfCleardownModuleResponse> _callback) throws ApiException {
             return listCleardownModulesAsync(scope, code, asAt, page, limit, filter, sortBy, _callback);
+        }
+
+        /**
+         * Execute listCleardownModules request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Cleardown Modules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfCleardownModuleResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return listCleardownModulesAsync(scope, code, asAt, page, limit, filter, sortBy, _callback, opts);
         }
     }
 
@@ -3801,6 +5026,10 @@ public class ChartOfAccountsApi {
         return new APIlistCleardownModulesRequest(scope, code);
     }
     private okhttp3.Call listGeneralLedgerProfilesCall(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
+        return listGeneralLedgerProfilesCall(scope, code, asAt, page, limit, filter, sortBy,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listGeneralLedgerProfilesCall(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3865,11 +5094,11 @@ public class ChartOfAccountsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listGeneralLedgerProfilesValidateBeforeCall(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listGeneralLedgerProfilesValidateBeforeCall(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listGeneralLedgerProfiles(Async)");
@@ -3880,20 +5109,34 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'code' when calling listGeneralLedgerProfiles(Async)");
         }
 
-        return listGeneralLedgerProfilesCall(scope, code, asAt, page, limit, filter, sortBy, _callback);
+        return listGeneralLedgerProfilesCall(scope, code, asAt, page, limit, filter, sortBy, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfGeneralLedgerProfileResponse> listGeneralLedgerProfilesWithHttpInfo(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy) throws ApiException {
-        okhttp3.Call localVarCall = listGeneralLedgerProfilesValidateBeforeCall(scope, code, asAt, page, limit, filter, sortBy, null);
+        okhttp3.Call localVarCall = listGeneralLedgerProfilesValidateBeforeCall(scope, code, asAt, page, limit, filter, sortBy, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfGeneralLedgerProfileResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfGeneralLedgerProfileResponse> listGeneralLedgerProfilesWithHttpInfo(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listGeneralLedgerProfilesValidateBeforeCall(scope, code, asAt, page, limit, filter, sortBy, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfGeneralLedgerProfileResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listGeneralLedgerProfilesAsync(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfGeneralLedgerProfileResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listGeneralLedgerProfilesValidateBeforeCall(scope, code, asAt, page, limit, filter, sortBy, _callback);
+        okhttp3.Call localVarCall = listGeneralLedgerProfilesValidateBeforeCall(scope, code, asAt, page, limit, filter, sortBy, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfGeneralLedgerProfileResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listGeneralLedgerProfilesAsync(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfGeneralLedgerProfileResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listGeneralLedgerProfilesValidateBeforeCall(scope, code, asAt, page, limit, filter, sortBy, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfGeneralLedgerProfileResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3998,6 +5241,23 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Execute listGeneralLedgerProfiles request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfGeneralLedgerProfileResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested General Ledger Profile entries. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfGeneralLedgerProfileResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfGeneralLedgerProfileResponse> localVarResp = listGeneralLedgerProfilesWithHttpInfo(scope, code, asAt, page, limit, filter, sortBy, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listGeneralLedgerProfiles request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfGeneralLedgerProfileResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4011,6 +5271,22 @@ public class ChartOfAccountsApi {
          */
         public ApiResponse<PagedResourceListOfGeneralLedgerProfileResponse> executeWithHttpInfo() throws ApiException {
             return listGeneralLedgerProfilesWithHttpInfo(scope, code, asAt, page, limit, filter, sortBy);
+        }
+
+        /**
+         * Execute listGeneralLedgerProfiles request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfGeneralLedgerProfileResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested General Ledger Profile entries. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfGeneralLedgerProfileResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listGeneralLedgerProfilesWithHttpInfo(scope, code, asAt, page, limit, filter, sortBy, opts);
         }
 
         /**
@@ -4028,6 +5304,23 @@ public class ChartOfAccountsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfGeneralLedgerProfileResponse> _callback) throws ApiException {
             return listGeneralLedgerProfilesAsync(scope, code, asAt, page, limit, filter, sortBy, _callback);
+        }
+
+        /**
+         * Execute listGeneralLedgerProfiles request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested General Ledger Profile entries. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfGeneralLedgerProfileResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return listGeneralLedgerProfilesAsync(scope, code, asAt, page, limit, filter, sortBy, _callback, opts);
         }
     }
 
@@ -4049,6 +5342,10 @@ public class ChartOfAccountsApi {
         return new APIlistGeneralLedgerProfilesRequest(scope, code);
     }
     private okhttp3.Call listPostingModuleRulesCall(String scope, String code, String postingModuleCode, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+        return listPostingModuleRulesCall(scope, code, postingModuleCode, asAt, page, limit, filter,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listPostingModuleRulesCall(String scope, String code, String postingModuleCode, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4110,11 +5407,11 @@ public class ChartOfAccountsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listPostingModuleRulesValidateBeforeCall(String scope, String code, String postingModuleCode, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listPostingModuleRulesValidateBeforeCall(String scope, String code, String postingModuleCode, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listPostingModuleRules(Async)");
@@ -4130,20 +5427,34 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'postingModuleCode' when calling listPostingModuleRules(Async)");
         }
 
-        return listPostingModuleRulesCall(scope, code, postingModuleCode, asAt, page, limit, filter, _callback);
+        return listPostingModuleRulesCall(scope, code, postingModuleCode, asAt, page, limit, filter, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfPostingModuleRule> listPostingModuleRulesWithHttpInfo(String scope, String code, String postingModuleCode, OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listPostingModuleRulesValidateBeforeCall(scope, code, postingModuleCode, asAt, page, limit, filter, null);
+        okhttp3.Call localVarCall = listPostingModuleRulesValidateBeforeCall(scope, code, postingModuleCode, asAt, page, limit, filter, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfPostingModuleRule>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfPostingModuleRule> listPostingModuleRulesWithHttpInfo(String scope, String code, String postingModuleCode, OffsetDateTime asAt, String page, Integer limit, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listPostingModuleRulesValidateBeforeCall(scope, code, postingModuleCode, asAt, page, limit, filter, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPostingModuleRule>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listPostingModuleRulesAsync(String scope, String code, String postingModuleCode, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfPostingModuleRule> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listPostingModuleRulesValidateBeforeCall(scope, code, postingModuleCode, asAt, page, limit, filter, _callback);
+        okhttp3.Call localVarCall = listPostingModuleRulesValidateBeforeCall(scope, code, postingModuleCode, asAt, page, limit, filter, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfPostingModuleRule>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listPostingModuleRulesAsync(String scope, String code, String postingModuleCode, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfPostingModuleRule> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listPostingModuleRulesValidateBeforeCall(scope, code, postingModuleCode, asAt, page, limit, filter, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPostingModuleRule>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4239,6 +5550,23 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Execute listPostingModuleRules request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfPostingModuleRule
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rules in the given Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfPostingModuleRule execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfPostingModuleRule> localVarResp = listPostingModuleRulesWithHttpInfo(scope, code, postingModuleCode, asAt, page, limit, filter, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listPostingModuleRules request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfPostingModuleRule&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4252,6 +5580,22 @@ public class ChartOfAccountsApi {
          */
         public ApiResponse<PagedResourceListOfPostingModuleRule> executeWithHttpInfo() throws ApiException {
             return listPostingModuleRulesWithHttpInfo(scope, code, postingModuleCode, asAt, page, limit, filter);
+        }
+
+        /**
+         * Execute listPostingModuleRules request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfPostingModuleRule&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rules in the given Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfPostingModuleRule> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listPostingModuleRulesWithHttpInfo(scope, code, postingModuleCode, asAt, page, limit, filter, opts);
         }
 
         /**
@@ -4269,6 +5613,23 @@ public class ChartOfAccountsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPostingModuleRule> _callback) throws ApiException {
             return listPostingModuleRulesAsync(scope, code, postingModuleCode, asAt, page, limit, filter, _callback);
+        }
+
+        /**
+         * Execute listPostingModuleRules request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rules in the given Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPostingModuleRule> _callback, ConfigurationOptions opts) throws ApiException {
+            return listPostingModuleRulesAsync(scope, code, postingModuleCode, asAt, page, limit, filter, _callback, opts);
         }
     }
 
@@ -4291,6 +5652,10 @@ public class ChartOfAccountsApi {
         return new APIlistPostingModuleRulesRequest(scope, code, postingModuleCode);
     }
     private okhttp3.Call listPostingModulesCall(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
+        return listPostingModulesCall(scope, code, asAt, page, limit, filter, sortBy,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listPostingModulesCall(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4355,11 +5720,11 @@ public class ChartOfAccountsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listPostingModulesValidateBeforeCall(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listPostingModulesValidateBeforeCall(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listPostingModules(Async)");
@@ -4370,20 +5735,34 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'code' when calling listPostingModules(Async)");
         }
 
-        return listPostingModulesCall(scope, code, asAt, page, limit, filter, sortBy, _callback);
+        return listPostingModulesCall(scope, code, asAt, page, limit, filter, sortBy, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfPostingModuleResponse> listPostingModulesWithHttpInfo(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy) throws ApiException {
-        okhttp3.Call localVarCall = listPostingModulesValidateBeforeCall(scope, code, asAt, page, limit, filter, sortBy, null);
+        okhttp3.Call localVarCall = listPostingModulesValidateBeforeCall(scope, code, asAt, page, limit, filter, sortBy, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfPostingModuleResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfPostingModuleResponse> listPostingModulesWithHttpInfo(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listPostingModulesValidateBeforeCall(scope, code, asAt, page, limit, filter, sortBy, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPostingModuleResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listPostingModulesAsync(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfPostingModuleResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listPostingModulesValidateBeforeCall(scope, code, asAt, page, limit, filter, sortBy, _callback);
+        okhttp3.Call localVarCall = listPostingModulesValidateBeforeCall(scope, code, asAt, page, limit, filter, sortBy, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfPostingModuleResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listPostingModulesAsync(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfPostingModuleResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listPostingModulesValidateBeforeCall(scope, code, asAt, page, limit, filter, sortBy, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPostingModuleResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4488,6 +5867,23 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Execute listPostingModules request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfPostingModuleResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Posting Modules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfPostingModuleResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfPostingModuleResponse> localVarResp = listPostingModulesWithHttpInfo(scope, code, asAt, page, limit, filter, sortBy, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listPostingModules request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfPostingModuleResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4501,6 +5897,22 @@ public class ChartOfAccountsApi {
          */
         public ApiResponse<PagedResourceListOfPostingModuleResponse> executeWithHttpInfo() throws ApiException {
             return listPostingModulesWithHttpInfo(scope, code, asAt, page, limit, filter, sortBy);
+        }
+
+        /**
+         * Execute listPostingModules request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfPostingModuleResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Posting Modules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfPostingModuleResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listPostingModulesWithHttpInfo(scope, code, asAt, page, limit, filter, sortBy, opts);
         }
 
         /**
@@ -4518,6 +5930,23 @@ public class ChartOfAccountsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPostingModuleResponse> _callback) throws ApiException {
             return listPostingModulesAsync(scope, code, asAt, page, limit, filter, sortBy, _callback);
+        }
+
+        /**
+         * Execute listPostingModules request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Posting Modules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPostingModuleResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return listPostingModulesAsync(scope, code, asAt, page, limit, filter, sortBy, _callback, opts);
         }
     }
 
@@ -4539,6 +5968,10 @@ public class ChartOfAccountsApi {
         return new APIlistPostingModulesRequest(scope, code);
     }
     private okhttp3.Call patchCleardownModuleCall(String scope, String code, String cleardownModuleCode, List<Operation> operation, final ApiCallback _callback) throws ApiException {
+        return patchCleardownModuleCall(scope, code, cleardownModuleCode, operation,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call patchCleardownModuleCall(String scope, String code, String cleardownModuleCode, List<Operation> operation, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4588,11 +6021,11 @@ public class ChartOfAccountsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchCleardownModuleValidateBeforeCall(String scope, String code, String cleardownModuleCode, List<Operation> operation, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchCleardownModuleValidateBeforeCall(String scope, String code, String cleardownModuleCode, List<Operation> operation, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling patchCleardownModule(Async)");
@@ -4613,20 +6046,34 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'operation' when calling patchCleardownModule(Async)");
         }
 
-        return patchCleardownModuleCall(scope, code, cleardownModuleCode, operation, _callback);
+        return patchCleardownModuleCall(scope, code, cleardownModuleCode, operation, _callback, opts);
 
     }
 
 
     private ApiResponse<CleardownModuleResponse> patchCleardownModuleWithHttpInfo(String scope, String code, String cleardownModuleCode, List<Operation> operation) throws ApiException {
-        okhttp3.Call localVarCall = patchCleardownModuleValidateBeforeCall(scope, code, cleardownModuleCode, operation, null);
+        okhttp3.Call localVarCall = patchCleardownModuleValidateBeforeCall(scope, code, cleardownModuleCode, operation, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CleardownModuleResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<CleardownModuleResponse> patchCleardownModuleWithHttpInfo(String scope, String code, String cleardownModuleCode, List<Operation> operation, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = patchCleardownModuleValidateBeforeCall(scope, code, cleardownModuleCode, operation, null, opts);
         Type localVarReturnType = new TypeToken<CleardownModuleResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call patchCleardownModuleAsync(String scope, String code, String cleardownModuleCode, List<Operation> operation, final ApiCallback<CleardownModuleResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchCleardownModuleValidateBeforeCall(scope, code, cleardownModuleCode, operation, _callback);
+        okhttp3.Call localVarCall = patchCleardownModuleValidateBeforeCall(scope, code, cleardownModuleCode, operation, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CleardownModuleResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call patchCleardownModuleAsync(String scope, String code, String cleardownModuleCode, List<Operation> operation, final ApiCallback<CleardownModuleResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = patchCleardownModuleValidateBeforeCall(scope, code, cleardownModuleCode, operation, _callback, opts);
         Type localVarReturnType = new TypeToken<CleardownModuleResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4680,6 +6127,23 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Execute patchCleardownModule request. Use any specified configuration options to override any other configuration for this request only.
+         * @return CleardownModuleResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CleardownModuleResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<CleardownModuleResponse> localVarResp = patchCleardownModuleWithHttpInfo(scope, code, cleardownModuleCode, operation, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute patchCleardownModule request with HTTP info returned
          * @return ApiResponse&lt;CleardownModuleResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4693,6 +6157,22 @@ public class ChartOfAccountsApi {
          */
         public ApiResponse<CleardownModuleResponse> executeWithHttpInfo() throws ApiException {
             return patchCleardownModuleWithHttpInfo(scope, code, cleardownModuleCode, operation);
+        }
+
+        /**
+         * Execute patchCleardownModule request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;CleardownModuleResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CleardownModuleResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return patchCleardownModuleWithHttpInfo(scope, code, cleardownModuleCode, operation, opts);
         }
 
         /**
@@ -4710,6 +6190,23 @@ public class ChartOfAccountsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<CleardownModuleResponse> _callback) throws ApiException {
             return patchCleardownModuleAsync(scope, code, cleardownModuleCode, operation, _callback);
+        }
+
+        /**
+         * Execute patchCleardownModule request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CleardownModuleResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return patchCleardownModuleAsync(scope, code, cleardownModuleCode, operation, _callback, opts);
         }
     }
 
@@ -4733,6 +6230,10 @@ public class ChartOfAccountsApi {
         return new APIpatchCleardownModuleRequest(scope, code, cleardownModuleCode, operation);
     }
     private okhttp3.Call patchPostingModuleCall(String scope, String code, String postingModuleCode, List<Operation> operation, final ApiCallback _callback) throws ApiException {
+        return patchPostingModuleCall(scope, code, postingModuleCode, operation,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call patchPostingModuleCall(String scope, String code, String postingModuleCode, List<Operation> operation, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4782,11 +6283,11 @@ public class ChartOfAccountsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchPostingModuleValidateBeforeCall(String scope, String code, String postingModuleCode, List<Operation> operation, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchPostingModuleValidateBeforeCall(String scope, String code, String postingModuleCode, List<Operation> operation, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling patchPostingModule(Async)");
@@ -4807,20 +6308,34 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'operation' when calling patchPostingModule(Async)");
         }
 
-        return patchPostingModuleCall(scope, code, postingModuleCode, operation, _callback);
+        return patchPostingModuleCall(scope, code, postingModuleCode, operation, _callback, opts);
 
     }
 
 
     private ApiResponse<PostingModuleResponse> patchPostingModuleWithHttpInfo(String scope, String code, String postingModuleCode, List<Operation> operation) throws ApiException {
-        okhttp3.Call localVarCall = patchPostingModuleValidateBeforeCall(scope, code, postingModuleCode, operation, null);
+        okhttp3.Call localVarCall = patchPostingModuleValidateBeforeCall(scope, code, postingModuleCode, operation, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PostingModuleResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PostingModuleResponse> patchPostingModuleWithHttpInfo(String scope, String code, String postingModuleCode, List<Operation> operation, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = patchPostingModuleValidateBeforeCall(scope, code, postingModuleCode, operation, null, opts);
         Type localVarReturnType = new TypeToken<PostingModuleResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call patchPostingModuleAsync(String scope, String code, String postingModuleCode, List<Operation> operation, final ApiCallback<PostingModuleResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchPostingModuleValidateBeforeCall(scope, code, postingModuleCode, operation, _callback);
+        okhttp3.Call localVarCall = patchPostingModuleValidateBeforeCall(scope, code, postingModuleCode, operation, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PostingModuleResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call patchPostingModuleAsync(String scope, String code, String postingModuleCode, List<Operation> operation, final ApiCallback<PostingModuleResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = patchPostingModuleValidateBeforeCall(scope, code, postingModuleCode, operation, _callback, opts);
         Type localVarReturnType = new TypeToken<PostingModuleResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4874,6 +6389,23 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Execute patchPostingModule request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PostingModuleResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PostingModuleResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PostingModuleResponse> localVarResp = patchPostingModuleWithHttpInfo(scope, code, postingModuleCode, operation, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute patchPostingModule request with HTTP info returned
          * @return ApiResponse&lt;PostingModuleResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4887,6 +6419,22 @@ public class ChartOfAccountsApi {
          */
         public ApiResponse<PostingModuleResponse> executeWithHttpInfo() throws ApiException {
             return patchPostingModuleWithHttpInfo(scope, code, postingModuleCode, operation);
+        }
+
+        /**
+         * Execute patchPostingModule request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PostingModuleResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PostingModuleResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return patchPostingModuleWithHttpInfo(scope, code, postingModuleCode, operation, opts);
         }
 
         /**
@@ -4904,6 +6452,23 @@ public class ChartOfAccountsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PostingModuleResponse> _callback) throws ApiException {
             return patchPostingModuleAsync(scope, code, postingModuleCode, operation, _callback);
+        }
+
+        /**
+         * Execute patchPostingModule request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PostingModuleResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return patchPostingModuleAsync(scope, code, postingModuleCode, operation, _callback, opts);
         }
     }
 
@@ -4927,6 +6492,10 @@ public class ChartOfAccountsApi {
         return new APIpatchPostingModuleRequest(scope, code, postingModuleCode, operation);
     }
     private okhttp3.Call setCleardownModuleDetailsCall(String scope, String code, String cleardownModuleCode, CleardownModuleDetails cleardownModuleDetails, final ApiCallback _callback) throws ApiException {
+        return setCleardownModuleDetailsCall(scope, code, cleardownModuleCode, cleardownModuleDetails,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call setCleardownModuleDetailsCall(String scope, String code, String cleardownModuleCode, CleardownModuleDetails cleardownModuleDetails, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4976,11 +6545,11 @@ public class ChartOfAccountsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call setCleardownModuleDetailsValidateBeforeCall(String scope, String code, String cleardownModuleCode, CleardownModuleDetails cleardownModuleDetails, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call setCleardownModuleDetailsValidateBeforeCall(String scope, String code, String cleardownModuleCode, CleardownModuleDetails cleardownModuleDetails, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling setCleardownModuleDetails(Async)");
@@ -5001,20 +6570,34 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'cleardownModuleDetails' when calling setCleardownModuleDetails(Async)");
         }
 
-        return setCleardownModuleDetailsCall(scope, code, cleardownModuleCode, cleardownModuleDetails, _callback);
+        return setCleardownModuleDetailsCall(scope, code, cleardownModuleCode, cleardownModuleDetails, _callback, opts);
 
     }
 
 
     private ApiResponse<CleardownModuleResponse> setCleardownModuleDetailsWithHttpInfo(String scope, String code, String cleardownModuleCode, CleardownModuleDetails cleardownModuleDetails) throws ApiException {
-        okhttp3.Call localVarCall = setCleardownModuleDetailsValidateBeforeCall(scope, code, cleardownModuleCode, cleardownModuleDetails, null);
+        okhttp3.Call localVarCall = setCleardownModuleDetailsValidateBeforeCall(scope, code, cleardownModuleCode, cleardownModuleDetails, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CleardownModuleResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<CleardownModuleResponse> setCleardownModuleDetailsWithHttpInfo(String scope, String code, String cleardownModuleCode, CleardownModuleDetails cleardownModuleDetails, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = setCleardownModuleDetailsValidateBeforeCall(scope, code, cleardownModuleCode, cleardownModuleDetails, null, opts);
         Type localVarReturnType = new TypeToken<CleardownModuleResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call setCleardownModuleDetailsAsync(String scope, String code, String cleardownModuleCode, CleardownModuleDetails cleardownModuleDetails, final ApiCallback<CleardownModuleResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = setCleardownModuleDetailsValidateBeforeCall(scope, code, cleardownModuleCode, cleardownModuleDetails, _callback);
+        okhttp3.Call localVarCall = setCleardownModuleDetailsValidateBeforeCall(scope, code, cleardownModuleCode, cleardownModuleDetails, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CleardownModuleResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call setCleardownModuleDetailsAsync(String scope, String code, String cleardownModuleCode, CleardownModuleDetails cleardownModuleDetails, final ApiCallback<CleardownModuleResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = setCleardownModuleDetailsValidateBeforeCall(scope, code, cleardownModuleCode, cleardownModuleDetails, _callback, opts);
         Type localVarReturnType = new TypeToken<CleardownModuleResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -5068,6 +6651,23 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Execute setCleardownModuleDetails request. Use any specified configuration options to override any other configuration for this request only.
+         * @return CleardownModuleResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CleardownModuleResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<CleardownModuleResponse> localVarResp = setCleardownModuleDetailsWithHttpInfo(scope, code, cleardownModuleCode, cleardownModuleDetails, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute setCleardownModuleDetails request with HTTP info returned
          * @return ApiResponse&lt;CleardownModuleResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -5081,6 +6681,22 @@ public class ChartOfAccountsApi {
          */
         public ApiResponse<CleardownModuleResponse> executeWithHttpInfo() throws ApiException {
             return setCleardownModuleDetailsWithHttpInfo(scope, code, cleardownModuleCode, cleardownModuleDetails);
+        }
+
+        /**
+         * Execute setCleardownModuleDetails request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;CleardownModuleResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CleardownModuleResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return setCleardownModuleDetailsWithHttpInfo(scope, code, cleardownModuleCode, cleardownModuleDetails, opts);
         }
 
         /**
@@ -5098,6 +6714,23 @@ public class ChartOfAccountsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<CleardownModuleResponse> _callback) throws ApiException {
             return setCleardownModuleDetailsAsync(scope, code, cleardownModuleCode, cleardownModuleDetails, _callback);
+        }
+
+        /**
+         * Execute setCleardownModuleDetails request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Cleardown Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CleardownModuleResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return setCleardownModuleDetailsAsync(scope, code, cleardownModuleCode, cleardownModuleDetails, _callback, opts);
         }
     }
 
@@ -5121,6 +6754,10 @@ public class ChartOfAccountsApi {
         return new APIsetCleardownModuleDetailsRequest(scope, code, cleardownModuleCode, cleardownModuleDetails);
     }
     private okhttp3.Call setCleardownModuleRulesCall(String scope, String code, String cleardownModuleCode, List<CleardownModuleRule> cleardownModuleRule, final ApiCallback _callback) throws ApiException {
+        return setCleardownModuleRulesCall(scope, code, cleardownModuleCode, cleardownModuleRule,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call setCleardownModuleRulesCall(String scope, String code, String cleardownModuleCode, List<CleardownModuleRule> cleardownModuleRule, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5170,11 +6807,11 @@ public class ChartOfAccountsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call setCleardownModuleRulesValidateBeforeCall(String scope, String code, String cleardownModuleCode, List<CleardownModuleRule> cleardownModuleRule, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call setCleardownModuleRulesValidateBeforeCall(String scope, String code, String cleardownModuleCode, List<CleardownModuleRule> cleardownModuleRule, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling setCleardownModuleRules(Async)");
@@ -5195,20 +6832,34 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'cleardownModuleRule' when calling setCleardownModuleRules(Async)");
         }
 
-        return setCleardownModuleRulesCall(scope, code, cleardownModuleCode, cleardownModuleRule, _callback);
+        return setCleardownModuleRulesCall(scope, code, cleardownModuleCode, cleardownModuleRule, _callback, opts);
 
     }
 
 
     private ApiResponse<CleardownModuleRulesUpdatedResponse> setCleardownModuleRulesWithHttpInfo(String scope, String code, String cleardownModuleCode, List<CleardownModuleRule> cleardownModuleRule) throws ApiException {
-        okhttp3.Call localVarCall = setCleardownModuleRulesValidateBeforeCall(scope, code, cleardownModuleCode, cleardownModuleRule, null);
+        okhttp3.Call localVarCall = setCleardownModuleRulesValidateBeforeCall(scope, code, cleardownModuleCode, cleardownModuleRule, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CleardownModuleRulesUpdatedResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<CleardownModuleRulesUpdatedResponse> setCleardownModuleRulesWithHttpInfo(String scope, String code, String cleardownModuleCode, List<CleardownModuleRule> cleardownModuleRule, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = setCleardownModuleRulesValidateBeforeCall(scope, code, cleardownModuleCode, cleardownModuleRule, null, opts);
         Type localVarReturnType = new TypeToken<CleardownModuleRulesUpdatedResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call setCleardownModuleRulesAsync(String scope, String code, String cleardownModuleCode, List<CleardownModuleRule> cleardownModuleRule, final ApiCallback<CleardownModuleRulesUpdatedResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = setCleardownModuleRulesValidateBeforeCall(scope, code, cleardownModuleCode, cleardownModuleRule, _callback);
+        okhttp3.Call localVarCall = setCleardownModuleRulesValidateBeforeCall(scope, code, cleardownModuleCode, cleardownModuleRule, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CleardownModuleRulesUpdatedResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call setCleardownModuleRulesAsync(String scope, String code, String cleardownModuleCode, List<CleardownModuleRule> cleardownModuleRule, final ApiCallback<CleardownModuleRulesUpdatedResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = setCleardownModuleRulesValidateBeforeCall(scope, code, cleardownModuleCode, cleardownModuleRule, _callback, opts);
         Type localVarReturnType = new TypeToken<CleardownModuleRulesUpdatedResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -5262,6 +6913,23 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Execute setCleardownModuleRules request. Use any specified configuration options to override any other configuration for this request only.
+         * @return CleardownModuleRulesUpdatedResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Cleardown Module with updated rules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CleardownModuleRulesUpdatedResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<CleardownModuleRulesUpdatedResponse> localVarResp = setCleardownModuleRulesWithHttpInfo(scope, code, cleardownModuleCode, cleardownModuleRule, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute setCleardownModuleRules request with HTTP info returned
          * @return ApiResponse&lt;CleardownModuleRulesUpdatedResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -5275,6 +6943,22 @@ public class ChartOfAccountsApi {
          */
         public ApiResponse<CleardownModuleRulesUpdatedResponse> executeWithHttpInfo() throws ApiException {
             return setCleardownModuleRulesWithHttpInfo(scope, code, cleardownModuleCode, cleardownModuleRule);
+        }
+
+        /**
+         * Execute setCleardownModuleRules request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;CleardownModuleRulesUpdatedResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Cleardown Module with updated rules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CleardownModuleRulesUpdatedResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return setCleardownModuleRulesWithHttpInfo(scope, code, cleardownModuleCode, cleardownModuleRule, opts);
         }
 
         /**
@@ -5292,6 +6976,23 @@ public class ChartOfAccountsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<CleardownModuleRulesUpdatedResponse> _callback) throws ApiException {
             return setCleardownModuleRulesAsync(scope, code, cleardownModuleCode, cleardownModuleRule, _callback);
+        }
+
+        /**
+         * Execute setCleardownModuleRules request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Cleardown Module with updated rules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CleardownModuleRulesUpdatedResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return setCleardownModuleRulesAsync(scope, code, cleardownModuleCode, cleardownModuleRule, _callback, opts);
         }
     }
 
@@ -5315,6 +7016,10 @@ public class ChartOfAccountsApi {
         return new APIsetCleardownModuleRulesRequest(scope, code, cleardownModuleCode, cleardownModuleRule);
     }
     private okhttp3.Call setGeneralLedgerProfileMappingsCall(String scope, String code, String generalLedgerProfileCode, List<GeneralLedgerProfileMapping> generalLedgerProfileMapping, final ApiCallback _callback) throws ApiException {
+        return setGeneralLedgerProfileMappingsCall(scope, code, generalLedgerProfileCode, generalLedgerProfileMapping,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call setGeneralLedgerProfileMappingsCall(String scope, String code, String generalLedgerProfileCode, List<GeneralLedgerProfileMapping> generalLedgerProfileMapping, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5364,11 +7069,11 @@ public class ChartOfAccountsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call setGeneralLedgerProfileMappingsValidateBeforeCall(String scope, String code, String generalLedgerProfileCode, List<GeneralLedgerProfileMapping> generalLedgerProfileMapping, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call setGeneralLedgerProfileMappingsValidateBeforeCall(String scope, String code, String generalLedgerProfileCode, List<GeneralLedgerProfileMapping> generalLedgerProfileMapping, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling setGeneralLedgerProfileMappings(Async)");
@@ -5389,20 +7094,34 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'generalLedgerProfileMapping' when calling setGeneralLedgerProfileMappings(Async)");
         }
 
-        return setGeneralLedgerProfileMappingsCall(scope, code, generalLedgerProfileCode, generalLedgerProfileMapping, _callback);
+        return setGeneralLedgerProfileMappingsCall(scope, code, generalLedgerProfileCode, generalLedgerProfileMapping, _callback, opts);
 
     }
 
 
     private ApiResponse<GeneralLedgerProfileResponse> setGeneralLedgerProfileMappingsWithHttpInfo(String scope, String code, String generalLedgerProfileCode, List<GeneralLedgerProfileMapping> generalLedgerProfileMapping) throws ApiException {
-        okhttp3.Call localVarCall = setGeneralLedgerProfileMappingsValidateBeforeCall(scope, code, generalLedgerProfileCode, generalLedgerProfileMapping, null);
+        okhttp3.Call localVarCall = setGeneralLedgerProfileMappingsValidateBeforeCall(scope, code, generalLedgerProfileCode, generalLedgerProfileMapping, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GeneralLedgerProfileResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<GeneralLedgerProfileResponse> setGeneralLedgerProfileMappingsWithHttpInfo(String scope, String code, String generalLedgerProfileCode, List<GeneralLedgerProfileMapping> generalLedgerProfileMapping, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = setGeneralLedgerProfileMappingsValidateBeforeCall(scope, code, generalLedgerProfileCode, generalLedgerProfileMapping, null, opts);
         Type localVarReturnType = new TypeToken<GeneralLedgerProfileResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call setGeneralLedgerProfileMappingsAsync(String scope, String code, String generalLedgerProfileCode, List<GeneralLedgerProfileMapping> generalLedgerProfileMapping, final ApiCallback<GeneralLedgerProfileResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = setGeneralLedgerProfileMappingsValidateBeforeCall(scope, code, generalLedgerProfileCode, generalLedgerProfileMapping, _callback);
+        okhttp3.Call localVarCall = setGeneralLedgerProfileMappingsValidateBeforeCall(scope, code, generalLedgerProfileCode, generalLedgerProfileMapping, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GeneralLedgerProfileResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call setGeneralLedgerProfileMappingsAsync(String scope, String code, String generalLedgerProfileCode, List<GeneralLedgerProfileMapping> generalLedgerProfileMapping, final ApiCallback<GeneralLedgerProfileResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = setGeneralLedgerProfileMappingsValidateBeforeCall(scope, code, generalLedgerProfileCode, generalLedgerProfileMapping, _callback, opts);
         Type localVarReturnType = new TypeToken<GeneralLedgerProfileResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -5456,6 +7175,23 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Execute setGeneralLedgerProfileMappings request. Use any specified configuration options to override any other configuration for this request only.
+         * @return GeneralLedgerProfileResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The General Ledger Profile that holds the updated mappings. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GeneralLedgerProfileResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<GeneralLedgerProfileResponse> localVarResp = setGeneralLedgerProfileMappingsWithHttpInfo(scope, code, generalLedgerProfileCode, generalLedgerProfileMapping, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute setGeneralLedgerProfileMappings request with HTTP info returned
          * @return ApiResponse&lt;GeneralLedgerProfileResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -5469,6 +7205,22 @@ public class ChartOfAccountsApi {
          */
         public ApiResponse<GeneralLedgerProfileResponse> executeWithHttpInfo() throws ApiException {
             return setGeneralLedgerProfileMappingsWithHttpInfo(scope, code, generalLedgerProfileCode, generalLedgerProfileMapping);
+        }
+
+        /**
+         * Execute setGeneralLedgerProfileMappings request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;GeneralLedgerProfileResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The General Ledger Profile that holds the updated mappings. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GeneralLedgerProfileResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return setGeneralLedgerProfileMappingsWithHttpInfo(scope, code, generalLedgerProfileCode, generalLedgerProfileMapping, opts);
         }
 
         /**
@@ -5486,6 +7238,23 @@ public class ChartOfAccountsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<GeneralLedgerProfileResponse> _callback) throws ApiException {
             return setGeneralLedgerProfileMappingsAsync(scope, code, generalLedgerProfileCode, generalLedgerProfileMapping, _callback);
+        }
+
+        /**
+         * Execute setGeneralLedgerProfileMappings request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The General Ledger Profile that holds the updated mappings. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GeneralLedgerProfileResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return setGeneralLedgerProfileMappingsAsync(scope, code, generalLedgerProfileCode, generalLedgerProfileMapping, _callback, opts);
         }
     }
 
@@ -5509,6 +7278,10 @@ public class ChartOfAccountsApi {
         return new APIsetGeneralLedgerProfileMappingsRequest(scope, code, generalLedgerProfileCode, generalLedgerProfileMapping);
     }
     private okhttp3.Call setPostingModuleDetailsCall(String scope, String code, String postingModuleCode, PostingModuleDetails postingModuleDetails, final ApiCallback _callback) throws ApiException {
+        return setPostingModuleDetailsCall(scope, code, postingModuleCode, postingModuleDetails,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call setPostingModuleDetailsCall(String scope, String code, String postingModuleCode, PostingModuleDetails postingModuleDetails, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5558,11 +7331,11 @@ public class ChartOfAccountsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call setPostingModuleDetailsValidateBeforeCall(String scope, String code, String postingModuleCode, PostingModuleDetails postingModuleDetails, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call setPostingModuleDetailsValidateBeforeCall(String scope, String code, String postingModuleCode, PostingModuleDetails postingModuleDetails, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling setPostingModuleDetails(Async)");
@@ -5583,20 +7356,34 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'postingModuleDetails' when calling setPostingModuleDetails(Async)");
         }
 
-        return setPostingModuleDetailsCall(scope, code, postingModuleCode, postingModuleDetails, _callback);
+        return setPostingModuleDetailsCall(scope, code, postingModuleCode, postingModuleDetails, _callback, opts);
 
     }
 
 
     private ApiResponse<PostingModuleResponse> setPostingModuleDetailsWithHttpInfo(String scope, String code, String postingModuleCode, PostingModuleDetails postingModuleDetails) throws ApiException {
-        okhttp3.Call localVarCall = setPostingModuleDetailsValidateBeforeCall(scope, code, postingModuleCode, postingModuleDetails, null);
+        okhttp3.Call localVarCall = setPostingModuleDetailsValidateBeforeCall(scope, code, postingModuleCode, postingModuleDetails, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PostingModuleResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PostingModuleResponse> setPostingModuleDetailsWithHttpInfo(String scope, String code, String postingModuleCode, PostingModuleDetails postingModuleDetails, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = setPostingModuleDetailsValidateBeforeCall(scope, code, postingModuleCode, postingModuleDetails, null, opts);
         Type localVarReturnType = new TypeToken<PostingModuleResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call setPostingModuleDetailsAsync(String scope, String code, String postingModuleCode, PostingModuleDetails postingModuleDetails, final ApiCallback<PostingModuleResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = setPostingModuleDetailsValidateBeforeCall(scope, code, postingModuleCode, postingModuleDetails, _callback);
+        okhttp3.Call localVarCall = setPostingModuleDetailsValidateBeforeCall(scope, code, postingModuleCode, postingModuleDetails, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PostingModuleResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call setPostingModuleDetailsAsync(String scope, String code, String postingModuleCode, PostingModuleDetails postingModuleDetails, final ApiCallback<PostingModuleResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = setPostingModuleDetailsValidateBeforeCall(scope, code, postingModuleCode, postingModuleDetails, _callback, opts);
         Type localVarReturnType = new TypeToken<PostingModuleResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -5650,6 +7437,23 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Execute setPostingModuleDetails request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PostingModuleResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PostingModuleResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PostingModuleResponse> localVarResp = setPostingModuleDetailsWithHttpInfo(scope, code, postingModuleCode, postingModuleDetails, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute setPostingModuleDetails request with HTTP info returned
          * @return ApiResponse&lt;PostingModuleResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -5663,6 +7467,22 @@ public class ChartOfAccountsApi {
          */
         public ApiResponse<PostingModuleResponse> executeWithHttpInfo() throws ApiException {
             return setPostingModuleDetailsWithHttpInfo(scope, code, postingModuleCode, postingModuleDetails);
+        }
+
+        /**
+         * Execute setPostingModuleDetails request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PostingModuleResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PostingModuleResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return setPostingModuleDetailsWithHttpInfo(scope, code, postingModuleCode, postingModuleDetails, opts);
         }
 
         /**
@@ -5680,6 +7500,23 @@ public class ChartOfAccountsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PostingModuleResponse> _callback) throws ApiException {
             return setPostingModuleDetailsAsync(scope, code, postingModuleCode, postingModuleDetails, _callback);
+        }
+
+        /**
+         * Execute setPostingModuleDetails request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Posting Module. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PostingModuleResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return setPostingModuleDetailsAsync(scope, code, postingModuleCode, postingModuleDetails, _callback, opts);
         }
     }
 
@@ -5703,6 +7540,10 @@ public class ChartOfAccountsApi {
         return new APIsetPostingModuleDetailsRequest(scope, code, postingModuleCode, postingModuleDetails);
     }
     private okhttp3.Call setPostingModuleRulesCall(String scope, String code, String postingModuleCode, List<PostingModuleRule> postingModuleRule, final ApiCallback _callback) throws ApiException {
+        return setPostingModuleRulesCall(scope, code, postingModuleCode, postingModuleRule,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call setPostingModuleRulesCall(String scope, String code, String postingModuleCode, List<PostingModuleRule> postingModuleRule, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5752,11 +7593,11 @@ public class ChartOfAccountsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call setPostingModuleRulesValidateBeforeCall(String scope, String code, String postingModuleCode, List<PostingModuleRule> postingModuleRule, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call setPostingModuleRulesValidateBeforeCall(String scope, String code, String postingModuleCode, List<PostingModuleRule> postingModuleRule, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling setPostingModuleRules(Async)");
@@ -5777,20 +7618,34 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'postingModuleRule' when calling setPostingModuleRules(Async)");
         }
 
-        return setPostingModuleRulesCall(scope, code, postingModuleCode, postingModuleRule, _callback);
+        return setPostingModuleRulesCall(scope, code, postingModuleCode, postingModuleRule, _callback, opts);
 
     }
 
 
     private ApiResponse<PostingModuleRulesUpdatedResponse> setPostingModuleRulesWithHttpInfo(String scope, String code, String postingModuleCode, List<PostingModuleRule> postingModuleRule) throws ApiException {
-        okhttp3.Call localVarCall = setPostingModuleRulesValidateBeforeCall(scope, code, postingModuleCode, postingModuleRule, null);
+        okhttp3.Call localVarCall = setPostingModuleRulesValidateBeforeCall(scope, code, postingModuleCode, postingModuleRule, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PostingModuleRulesUpdatedResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PostingModuleRulesUpdatedResponse> setPostingModuleRulesWithHttpInfo(String scope, String code, String postingModuleCode, List<PostingModuleRule> postingModuleRule, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = setPostingModuleRulesValidateBeforeCall(scope, code, postingModuleCode, postingModuleRule, null, opts);
         Type localVarReturnType = new TypeToken<PostingModuleRulesUpdatedResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call setPostingModuleRulesAsync(String scope, String code, String postingModuleCode, List<PostingModuleRule> postingModuleRule, final ApiCallback<PostingModuleRulesUpdatedResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = setPostingModuleRulesValidateBeforeCall(scope, code, postingModuleCode, postingModuleRule, _callback);
+        okhttp3.Call localVarCall = setPostingModuleRulesValidateBeforeCall(scope, code, postingModuleCode, postingModuleRule, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PostingModuleRulesUpdatedResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call setPostingModuleRulesAsync(String scope, String code, String postingModuleCode, List<PostingModuleRule> postingModuleRule, final ApiCallback<PostingModuleRulesUpdatedResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = setPostingModuleRulesValidateBeforeCall(scope, code, postingModuleCode, postingModuleRule, _callback, opts);
         Type localVarReturnType = new TypeToken<PostingModuleRulesUpdatedResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -5844,6 +7699,23 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Execute setPostingModuleRules request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PostingModuleRulesUpdatedResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Posting Module with updated rules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PostingModuleRulesUpdatedResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PostingModuleRulesUpdatedResponse> localVarResp = setPostingModuleRulesWithHttpInfo(scope, code, postingModuleCode, postingModuleRule, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute setPostingModuleRules request with HTTP info returned
          * @return ApiResponse&lt;PostingModuleRulesUpdatedResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -5857,6 +7729,22 @@ public class ChartOfAccountsApi {
          */
         public ApiResponse<PostingModuleRulesUpdatedResponse> executeWithHttpInfo() throws ApiException {
             return setPostingModuleRulesWithHttpInfo(scope, code, postingModuleCode, postingModuleRule);
+        }
+
+        /**
+         * Execute setPostingModuleRules request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PostingModuleRulesUpdatedResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Posting Module with updated rules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PostingModuleRulesUpdatedResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return setPostingModuleRulesWithHttpInfo(scope, code, postingModuleCode, postingModuleRule, opts);
         }
 
         /**
@@ -5874,6 +7762,23 @@ public class ChartOfAccountsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PostingModuleRulesUpdatedResponse> _callback) throws ApiException {
             return setPostingModuleRulesAsync(scope, code, postingModuleCode, postingModuleRule, _callback);
+        }
+
+        /**
+         * Execute setPostingModuleRules request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Posting Module with updated rules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PostingModuleRulesUpdatedResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return setPostingModuleRulesAsync(scope, code, postingModuleCode, postingModuleRule, _callback, opts);
         }
     }
 
@@ -5897,6 +7802,10 @@ public class ChartOfAccountsApi {
         return new APIsetPostingModuleRulesRequest(scope, code, postingModuleCode, postingModuleRule);
     }
     private okhttp3.Call upsertAccountPropertiesCall(String scope, String code, String accountCode, Map<String, Property> requestBody, final ApiCallback _callback) throws ApiException {
+        return upsertAccountPropertiesCall(scope, code, accountCode, requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertAccountPropertiesCall(String scope, String code, String accountCode, Map<String, Property> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5946,11 +7855,11 @@ public class ChartOfAccountsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertAccountPropertiesValidateBeforeCall(String scope, String code, String accountCode, Map<String, Property> requestBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertAccountPropertiesValidateBeforeCall(String scope, String code, String accountCode, Map<String, Property> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling upsertAccountProperties(Async)");
@@ -5966,20 +7875,34 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'accountCode' when calling upsertAccountProperties(Async)");
         }
 
-        return upsertAccountPropertiesCall(scope, code, accountCode, requestBody, _callback);
+        return upsertAccountPropertiesCall(scope, code, accountCode, requestBody, _callback, opts);
 
     }
 
 
     private ApiResponse<AccountProperties> upsertAccountPropertiesWithHttpInfo(String scope, String code, String accountCode, Map<String, Property> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = upsertAccountPropertiesValidateBeforeCall(scope, code, accountCode, requestBody, null);
+        okhttp3.Call localVarCall = upsertAccountPropertiesValidateBeforeCall(scope, code, accountCode, requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AccountProperties>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AccountProperties> upsertAccountPropertiesWithHttpInfo(String scope, String code, String accountCode, Map<String, Property> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertAccountPropertiesValidateBeforeCall(scope, code, accountCode, requestBody, null, opts);
         Type localVarReturnType = new TypeToken<AccountProperties>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertAccountPropertiesAsync(String scope, String code, String accountCode, Map<String, Property> requestBody, final ApiCallback<AccountProperties> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertAccountPropertiesValidateBeforeCall(scope, code, accountCode, requestBody, _callback);
+        okhttp3.Call localVarCall = upsertAccountPropertiesValidateBeforeCall(scope, code, accountCode, requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AccountProperties>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertAccountPropertiesAsync(String scope, String code, String accountCode, Map<String, Property> requestBody, final ApiCallback<AccountProperties> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertAccountPropertiesValidateBeforeCall(scope, code, accountCode, requestBody, _callback, opts);
         Type localVarReturnType = new TypeToken<AccountProperties>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -6042,6 +7965,23 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Execute upsertAccountProperties request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AccountProperties
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AccountProperties execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AccountProperties> localVarResp = upsertAccountPropertiesWithHttpInfo(scope, code, accountCode, requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertAccountProperties request with HTTP info returned
          * @return ApiResponse&lt;AccountProperties&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -6055,6 +7995,22 @@ public class ChartOfAccountsApi {
          */
         public ApiResponse<AccountProperties> executeWithHttpInfo() throws ApiException {
             return upsertAccountPropertiesWithHttpInfo(scope, code, accountCode, requestBody);
+        }
+
+        /**
+         * Execute upsertAccountProperties request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AccountProperties&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AccountProperties> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertAccountPropertiesWithHttpInfo(scope, code, accountCode, requestBody, opts);
         }
 
         /**
@@ -6072,6 +8028,23 @@ public class ChartOfAccountsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<AccountProperties> _callback) throws ApiException {
             return upsertAccountPropertiesAsync(scope, code, accountCode, requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertAccountProperties request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AccountProperties> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertAccountPropertiesAsync(scope, code, accountCode, requestBody, _callback, opts);
         }
     }
 
@@ -6094,6 +8067,10 @@ public class ChartOfAccountsApi {
         return new APIupsertAccountPropertiesRequest(scope, code, accountCode);
     }
     private okhttp3.Call upsertAccountsCall(String scope, String code, List<Account> account, final ApiCallback _callback) throws ApiException {
+        return upsertAccountsCall(scope, code, account,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertAccountsCall(String scope, String code, List<Account> account, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -6142,11 +8119,11 @@ public class ChartOfAccountsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertAccountsValidateBeforeCall(String scope, String code, List<Account> account, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertAccountsValidateBeforeCall(String scope, String code, List<Account> account, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling upsertAccounts(Async)");
@@ -6162,20 +8139,34 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'account' when calling upsertAccounts(Async)");
         }
 
-        return upsertAccountsCall(scope, code, account, _callback);
+        return upsertAccountsCall(scope, code, account, _callback, opts);
 
     }
 
 
     private ApiResponse<AccountsUpsertResponse> upsertAccountsWithHttpInfo(String scope, String code, List<Account> account) throws ApiException {
-        okhttp3.Call localVarCall = upsertAccountsValidateBeforeCall(scope, code, account, null);
+        okhttp3.Call localVarCall = upsertAccountsValidateBeforeCall(scope, code, account, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AccountsUpsertResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AccountsUpsertResponse> upsertAccountsWithHttpInfo(String scope, String code, List<Account> account, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertAccountsValidateBeforeCall(scope, code, account, null, opts);
         Type localVarReturnType = new TypeToken<AccountsUpsertResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertAccountsAsync(String scope, String code, List<Account> account, final ApiCallback<AccountsUpsertResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertAccountsValidateBeforeCall(scope, code, account, _callback);
+        okhttp3.Call localVarCall = upsertAccountsValidateBeforeCall(scope, code, account, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AccountsUpsertResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertAccountsAsync(String scope, String code, List<Account> account, final ApiCallback<AccountsUpsertResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertAccountsValidateBeforeCall(scope, code, account, _callback, opts);
         Type localVarReturnType = new TypeToken<AccountsUpsertResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -6227,6 +8218,23 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Execute upsertAccounts request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AccountsUpsertResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly upserted Accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AccountsUpsertResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AccountsUpsertResponse> localVarResp = upsertAccountsWithHttpInfo(scope, code, account, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertAccounts request with HTTP info returned
          * @return ApiResponse&lt;AccountsUpsertResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -6240,6 +8248,22 @@ public class ChartOfAccountsApi {
          */
         public ApiResponse<AccountsUpsertResponse> executeWithHttpInfo() throws ApiException {
             return upsertAccountsWithHttpInfo(scope, code, account);
+        }
+
+        /**
+         * Execute upsertAccounts request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AccountsUpsertResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly upserted Accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AccountsUpsertResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertAccountsWithHttpInfo(scope, code, account, opts);
         }
 
         /**
@@ -6257,6 +8281,23 @@ public class ChartOfAccountsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<AccountsUpsertResponse> _callback) throws ApiException {
             return upsertAccountsAsync(scope, code, account, _callback);
+        }
+
+        /**
+         * Execute upsertAccounts request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly upserted Accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AccountsUpsertResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertAccountsAsync(scope, code, account, _callback, opts);
         }
     }
 
@@ -6279,6 +8320,10 @@ public class ChartOfAccountsApi {
         return new APIupsertAccountsRequest(scope, code, account);
     }
     private okhttp3.Call upsertChartOfAccountsPropertiesCall(String scope, String code, Map<String, Property> requestBody, final ApiCallback _callback) throws ApiException {
+        return upsertChartOfAccountsPropertiesCall(scope, code, requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertChartOfAccountsPropertiesCall(String scope, String code, Map<String, Property> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -6327,11 +8372,11 @@ public class ChartOfAccountsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertChartOfAccountsPropertiesValidateBeforeCall(String scope, String code, Map<String, Property> requestBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertChartOfAccountsPropertiesValidateBeforeCall(String scope, String code, Map<String, Property> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling upsertChartOfAccountsProperties(Async)");
@@ -6342,20 +8387,34 @@ public class ChartOfAccountsApi {
             throw new ApiException("Missing the required parameter 'code' when calling upsertChartOfAccountsProperties(Async)");
         }
 
-        return upsertChartOfAccountsPropertiesCall(scope, code, requestBody, _callback);
+        return upsertChartOfAccountsPropertiesCall(scope, code, requestBody, _callback, opts);
 
     }
 
 
     private ApiResponse<ChartOfAccountsProperties> upsertChartOfAccountsPropertiesWithHttpInfo(String scope, String code, Map<String, Property> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = upsertChartOfAccountsPropertiesValidateBeforeCall(scope, code, requestBody, null);
+        okhttp3.Call localVarCall = upsertChartOfAccountsPropertiesValidateBeforeCall(scope, code, requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ChartOfAccountsProperties>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ChartOfAccountsProperties> upsertChartOfAccountsPropertiesWithHttpInfo(String scope, String code, Map<String, Property> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertChartOfAccountsPropertiesValidateBeforeCall(scope, code, requestBody, null, opts);
         Type localVarReturnType = new TypeToken<ChartOfAccountsProperties>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertChartOfAccountsPropertiesAsync(String scope, String code, Map<String, Property> requestBody, final ApiCallback<ChartOfAccountsProperties> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertChartOfAccountsPropertiesValidateBeforeCall(scope, code, requestBody, _callback);
+        okhttp3.Call localVarCall = upsertChartOfAccountsPropertiesValidateBeforeCall(scope, code, requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ChartOfAccountsProperties>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertChartOfAccountsPropertiesAsync(String scope, String code, Map<String, Property> requestBody, final ApiCallback<ChartOfAccountsProperties> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertChartOfAccountsPropertiesValidateBeforeCall(scope, code, requestBody, _callback, opts);
         Type localVarReturnType = new TypeToken<ChartOfAccountsProperties>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -6416,6 +8475,23 @@ public class ChartOfAccountsApi {
         }
 
         /**
+         * Execute upsertChartOfAccountsProperties request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ChartOfAccountsProperties
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ChartOfAccountsProperties execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ChartOfAccountsProperties> localVarResp = upsertChartOfAccountsPropertiesWithHttpInfo(scope, code, requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertChartOfAccountsProperties request with HTTP info returned
          * @return ApiResponse&lt;ChartOfAccountsProperties&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -6429,6 +8505,22 @@ public class ChartOfAccountsApi {
          */
         public ApiResponse<ChartOfAccountsProperties> executeWithHttpInfo() throws ApiException {
             return upsertChartOfAccountsPropertiesWithHttpInfo(scope, code, requestBody);
+        }
+
+        /**
+         * Execute upsertChartOfAccountsProperties request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ChartOfAccountsProperties&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ChartOfAccountsProperties> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertChartOfAccountsPropertiesWithHttpInfo(scope, code, requestBody, opts);
         }
 
         /**
@@ -6446,6 +8538,23 @@ public class ChartOfAccountsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ChartOfAccountsProperties> _callback) throws ApiException {
             return upsertChartOfAccountsPropertiesAsync(scope, code, requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertChartOfAccountsProperties request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ChartOfAccountsProperties> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertChartOfAccountsPropertiesAsync(scope, code, requestBody, _callback, opts);
         }
     }
 

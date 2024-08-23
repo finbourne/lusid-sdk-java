@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -83,6 +84,10 @@ public class PropertyDefinitionsApi {
     }
 
     private okhttp3.Call createDerivedPropertyDefinitionCall(CreateDerivedPropertyDefinitionRequest createDerivedPropertyDefinitionRequest, final ApiCallback _callback) throws ApiException {
+        return createDerivedPropertyDefinitionCall(createDerivedPropertyDefinitionRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call createDerivedPropertyDefinitionCall(CreateDerivedPropertyDefinitionRequest createDerivedPropertyDefinitionRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -129,30 +134,44 @@ public class PropertyDefinitionsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createDerivedPropertyDefinitionValidateBeforeCall(CreateDerivedPropertyDefinitionRequest createDerivedPropertyDefinitionRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createDerivedPropertyDefinitionValidateBeforeCall(CreateDerivedPropertyDefinitionRequest createDerivedPropertyDefinitionRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'createDerivedPropertyDefinitionRequest' is set
         if (createDerivedPropertyDefinitionRequest == null) {
             throw new ApiException("Missing the required parameter 'createDerivedPropertyDefinitionRequest' when calling createDerivedPropertyDefinition(Async)");
         }
 
-        return createDerivedPropertyDefinitionCall(createDerivedPropertyDefinitionRequest, _callback);
+        return createDerivedPropertyDefinitionCall(createDerivedPropertyDefinitionRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<PropertyDefinition> createDerivedPropertyDefinitionWithHttpInfo(CreateDerivedPropertyDefinitionRequest createDerivedPropertyDefinitionRequest) throws ApiException {
-        okhttp3.Call localVarCall = createDerivedPropertyDefinitionValidateBeforeCall(createDerivedPropertyDefinitionRequest, null);
+        okhttp3.Call localVarCall = createDerivedPropertyDefinitionValidateBeforeCall(createDerivedPropertyDefinitionRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PropertyDefinition>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PropertyDefinition> createDerivedPropertyDefinitionWithHttpInfo(CreateDerivedPropertyDefinitionRequest createDerivedPropertyDefinitionRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createDerivedPropertyDefinitionValidateBeforeCall(createDerivedPropertyDefinitionRequest, null, opts);
         Type localVarReturnType = new TypeToken<PropertyDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call createDerivedPropertyDefinitionAsync(CreateDerivedPropertyDefinitionRequest createDerivedPropertyDefinitionRequest, final ApiCallback<PropertyDefinition> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createDerivedPropertyDefinitionValidateBeforeCall(createDerivedPropertyDefinitionRequest, _callback);
+        okhttp3.Call localVarCall = createDerivedPropertyDefinitionValidateBeforeCall(createDerivedPropertyDefinitionRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PropertyDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call createDerivedPropertyDefinitionAsync(CreateDerivedPropertyDefinitionRequest createDerivedPropertyDefinitionRequest, final ApiCallback<PropertyDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = createDerivedPropertyDefinitionValidateBeforeCall(createDerivedPropertyDefinitionRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<PropertyDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -200,6 +219,23 @@ public class PropertyDefinitionsApi {
         }
 
         /**
+         * Execute createDerivedPropertyDefinition request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PropertyDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created derived property definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PropertyDefinition execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PropertyDefinition> localVarResp = createDerivedPropertyDefinitionWithHttpInfo(createDerivedPropertyDefinitionRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute createDerivedPropertyDefinition request with HTTP info returned
          * @return ApiResponse&lt;PropertyDefinition&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -213,6 +249,22 @@ public class PropertyDefinitionsApi {
          */
         public ApiResponse<PropertyDefinition> executeWithHttpInfo() throws ApiException {
             return createDerivedPropertyDefinitionWithHttpInfo(createDerivedPropertyDefinitionRequest);
+        }
+
+        /**
+         * Execute createDerivedPropertyDefinition request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PropertyDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created derived property definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PropertyDefinition> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return createDerivedPropertyDefinitionWithHttpInfo(createDerivedPropertyDefinitionRequest, opts);
         }
 
         /**
@@ -230,6 +282,23 @@ public class PropertyDefinitionsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PropertyDefinition> _callback) throws ApiException {
             return createDerivedPropertyDefinitionAsync(createDerivedPropertyDefinitionRequest, _callback);
+        }
+
+        /**
+         * Execute createDerivedPropertyDefinition request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created derived property definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PropertyDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+            return createDerivedPropertyDefinitionAsync(createDerivedPropertyDefinitionRequest, _callback, opts);
         }
     }
 
@@ -250,6 +319,10 @@ public class PropertyDefinitionsApi {
         return new APIcreateDerivedPropertyDefinitionRequest(createDerivedPropertyDefinitionRequest);
     }
     private okhttp3.Call createPropertyDefinitionCall(CreatePropertyDefinitionRequest createPropertyDefinitionRequest, final ApiCallback _callback) throws ApiException {
+        return createPropertyDefinitionCall(createPropertyDefinitionRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call createPropertyDefinitionCall(CreatePropertyDefinitionRequest createPropertyDefinitionRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -296,30 +369,44 @@ public class PropertyDefinitionsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createPropertyDefinitionValidateBeforeCall(CreatePropertyDefinitionRequest createPropertyDefinitionRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createPropertyDefinitionValidateBeforeCall(CreatePropertyDefinitionRequest createPropertyDefinitionRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'createPropertyDefinitionRequest' is set
         if (createPropertyDefinitionRequest == null) {
             throw new ApiException("Missing the required parameter 'createPropertyDefinitionRequest' when calling createPropertyDefinition(Async)");
         }
 
-        return createPropertyDefinitionCall(createPropertyDefinitionRequest, _callback);
+        return createPropertyDefinitionCall(createPropertyDefinitionRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<PropertyDefinition> createPropertyDefinitionWithHttpInfo(CreatePropertyDefinitionRequest createPropertyDefinitionRequest) throws ApiException {
-        okhttp3.Call localVarCall = createPropertyDefinitionValidateBeforeCall(createPropertyDefinitionRequest, null);
+        okhttp3.Call localVarCall = createPropertyDefinitionValidateBeforeCall(createPropertyDefinitionRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PropertyDefinition>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PropertyDefinition> createPropertyDefinitionWithHttpInfo(CreatePropertyDefinitionRequest createPropertyDefinitionRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createPropertyDefinitionValidateBeforeCall(createPropertyDefinitionRequest, null, opts);
         Type localVarReturnType = new TypeToken<PropertyDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call createPropertyDefinitionAsync(CreatePropertyDefinitionRequest createPropertyDefinitionRequest, final ApiCallback<PropertyDefinition> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createPropertyDefinitionValidateBeforeCall(createPropertyDefinitionRequest, _callback);
+        okhttp3.Call localVarCall = createPropertyDefinitionValidateBeforeCall(createPropertyDefinitionRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PropertyDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call createPropertyDefinitionAsync(CreatePropertyDefinitionRequest createPropertyDefinitionRequest, final ApiCallback<PropertyDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = createPropertyDefinitionValidateBeforeCall(createPropertyDefinitionRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<PropertyDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -367,6 +454,23 @@ public class PropertyDefinitionsApi {
         }
 
         /**
+         * Execute createPropertyDefinition request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PropertyDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created property definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PropertyDefinition execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PropertyDefinition> localVarResp = createPropertyDefinitionWithHttpInfo(createPropertyDefinitionRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute createPropertyDefinition request with HTTP info returned
          * @return ApiResponse&lt;PropertyDefinition&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -380,6 +484,22 @@ public class PropertyDefinitionsApi {
          */
         public ApiResponse<PropertyDefinition> executeWithHttpInfo() throws ApiException {
             return createPropertyDefinitionWithHttpInfo(createPropertyDefinitionRequest);
+        }
+
+        /**
+         * Execute createPropertyDefinition request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PropertyDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created property definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PropertyDefinition> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return createPropertyDefinitionWithHttpInfo(createPropertyDefinitionRequest, opts);
         }
 
         /**
@@ -397,6 +517,23 @@ public class PropertyDefinitionsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PropertyDefinition> _callback) throws ApiException {
             return createPropertyDefinitionAsync(createPropertyDefinitionRequest, _callback);
+        }
+
+        /**
+         * Execute createPropertyDefinition request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created property definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PropertyDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+            return createPropertyDefinitionAsync(createPropertyDefinitionRequest, _callback, opts);
         }
     }
 
@@ -417,6 +554,10 @@ public class PropertyDefinitionsApi {
         return new APIcreatePropertyDefinitionRequest(createPropertyDefinitionRequest);
     }
     private okhttp3.Call deletePropertyDefinitionCall(String domain, String scope, String code, final ApiCallback _callback) throws ApiException {
+        return deletePropertyDefinitionCall(domain, scope, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deletePropertyDefinitionCall(String domain, String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -462,11 +603,11 @@ public class PropertyDefinitionsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deletePropertyDefinitionValidateBeforeCall(String domain, String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deletePropertyDefinitionValidateBeforeCall(String domain, String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'domain' is set
         if (domain == null) {
             throw new ApiException("Missing the required parameter 'domain' when calling deletePropertyDefinition(Async)");
@@ -482,20 +623,34 @@ public class PropertyDefinitionsApi {
             throw new ApiException("Missing the required parameter 'code' when calling deletePropertyDefinition(Async)");
         }
 
-        return deletePropertyDefinitionCall(domain, scope, code, _callback);
+        return deletePropertyDefinitionCall(domain, scope, code, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deletePropertyDefinitionWithHttpInfo(String domain, String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = deletePropertyDefinitionValidateBeforeCall(domain, scope, code, null);
+        okhttp3.Call localVarCall = deletePropertyDefinitionValidateBeforeCall(domain, scope, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deletePropertyDefinitionWithHttpInfo(String domain, String scope, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deletePropertyDefinitionValidateBeforeCall(domain, scope, code, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deletePropertyDefinitionAsync(String domain, String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deletePropertyDefinitionValidateBeforeCall(domain, scope, code, _callback);
+        okhttp3.Call localVarCall = deletePropertyDefinitionValidateBeforeCall(domain, scope, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deletePropertyDefinitionAsync(String domain, String scope, String code, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deletePropertyDefinitionValidateBeforeCall(domain, scope, code, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -547,6 +702,23 @@ public class PropertyDefinitionsApi {
         }
 
         /**
+         * Execute deletePropertyDefinition request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time that the property definition was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deletePropertyDefinitionWithHttpInfo(domain, scope, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deletePropertyDefinition request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -560,6 +732,22 @@ public class PropertyDefinitionsApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deletePropertyDefinitionWithHttpInfo(domain, scope, code);
+        }
+
+        /**
+         * Execute deletePropertyDefinition request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time that the property definition was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deletePropertyDefinitionWithHttpInfo(domain, scope, code, opts);
         }
 
         /**
@@ -577,6 +765,23 @@ public class PropertyDefinitionsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deletePropertyDefinitionAsync(domain, scope, code, _callback);
+        }
+
+        /**
+         * Execute deletePropertyDefinition request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time that the property definition was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deletePropertyDefinitionAsync(domain, scope, code, _callback, opts);
         }
     }
 
@@ -599,6 +804,10 @@ public class PropertyDefinitionsApi {
         return new APIdeletePropertyDefinitionRequest(domain, scope, code);
     }
     private okhttp3.Call deletePropertyDefinitionPropertiesCall(String domain, String scope, String code, List<String> requestBody, String effectiveAt, final ApiCallback _callback) throws ApiException {
+        return deletePropertyDefinitionPropertiesCall(domain, scope, code, requestBody, effectiveAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deletePropertyDefinitionPropertiesCall(String domain, String scope, String code, List<String> requestBody, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -652,11 +861,11 @@ public class PropertyDefinitionsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deletePropertyDefinitionPropertiesValidateBeforeCall(String domain, String scope, String code, List<String> requestBody, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deletePropertyDefinitionPropertiesValidateBeforeCall(String domain, String scope, String code, List<String> requestBody, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'domain' is set
         if (domain == null) {
             throw new ApiException("Missing the required parameter 'domain' when calling deletePropertyDefinitionProperties(Async)");
@@ -677,20 +886,34 @@ public class PropertyDefinitionsApi {
             throw new ApiException("Missing the required parameter 'requestBody' when calling deletePropertyDefinitionProperties(Async)");
         }
 
-        return deletePropertyDefinitionPropertiesCall(domain, scope, code, requestBody, effectiveAt, _callback);
+        return deletePropertyDefinitionPropertiesCall(domain, scope, code, requestBody, effectiveAt, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deletePropertyDefinitionPropertiesWithHttpInfo(String domain, String scope, String code, List<String> requestBody, String effectiveAt) throws ApiException {
-        okhttp3.Call localVarCall = deletePropertyDefinitionPropertiesValidateBeforeCall(domain, scope, code, requestBody, effectiveAt, null);
+        okhttp3.Call localVarCall = deletePropertyDefinitionPropertiesValidateBeforeCall(domain, scope, code, requestBody, effectiveAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deletePropertyDefinitionPropertiesWithHttpInfo(String domain, String scope, String code, List<String> requestBody, String effectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deletePropertyDefinitionPropertiesValidateBeforeCall(domain, scope, code, requestBody, effectiveAt, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deletePropertyDefinitionPropertiesAsync(String domain, String scope, String code, List<String> requestBody, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deletePropertyDefinitionPropertiesValidateBeforeCall(domain, scope, code, requestBody, effectiveAt, _callback);
+        okhttp3.Call localVarCall = deletePropertyDefinitionPropertiesValidateBeforeCall(domain, scope, code, requestBody, effectiveAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deletePropertyDefinitionPropertiesAsync(String domain, String scope, String code, List<String> requestBody, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deletePropertyDefinitionPropertiesValidateBeforeCall(domain, scope, code, requestBody, effectiveAt, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -755,6 +978,23 @@ public class PropertyDefinitionsApi {
         }
 
         /**
+         * Execute deletePropertyDefinitionProperties request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deletePropertyDefinitionPropertiesWithHttpInfo(domain, scope, code, requestBody, effectiveAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deletePropertyDefinitionProperties request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -768,6 +1008,22 @@ public class PropertyDefinitionsApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deletePropertyDefinitionPropertiesWithHttpInfo(domain, scope, code, requestBody, effectiveAt);
+        }
+
+        /**
+         * Execute deletePropertyDefinitionProperties request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deletePropertyDefinitionPropertiesWithHttpInfo(domain, scope, code, requestBody, effectiveAt, opts);
         }
 
         /**
@@ -785,6 +1041,23 @@ public class PropertyDefinitionsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deletePropertyDefinitionPropertiesAsync(domain, scope, code, requestBody, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute deletePropertyDefinitionProperties request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deletePropertyDefinitionPropertiesAsync(domain, scope, code, requestBody, effectiveAt, _callback, opts);
         }
     }
 
@@ -808,6 +1081,10 @@ public class PropertyDefinitionsApi {
         return new APIdeletePropertyDefinitionPropertiesRequest(domain, scope, code, requestBody);
     }
     private okhttp3.Call getMultiplePropertyDefinitionsCall(List<String> propertyKeys, OffsetDateTime asAt, String filter, String effectiveAt, final ApiCallback _callback) throws ApiException {
+        return getMultiplePropertyDefinitionsCall(propertyKeys, asAt, filter, effectiveAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getMultiplePropertyDefinitionsCall(List<String> propertyKeys, OffsetDateTime asAt, String filter, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -866,30 +1143,44 @@ public class PropertyDefinitionsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getMultiplePropertyDefinitionsValidateBeforeCall(List<String> propertyKeys, OffsetDateTime asAt, String filter, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMultiplePropertyDefinitionsValidateBeforeCall(List<String> propertyKeys, OffsetDateTime asAt, String filter, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'propertyKeys' is set
         if (propertyKeys == null) {
             throw new ApiException("Missing the required parameter 'propertyKeys' when calling getMultiplePropertyDefinitions(Async)");
         }
 
-        return getMultiplePropertyDefinitionsCall(propertyKeys, asAt, filter, effectiveAt, _callback);
+        return getMultiplePropertyDefinitionsCall(propertyKeys, asAt, filter, effectiveAt, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfPropertyDefinition> getMultiplePropertyDefinitionsWithHttpInfo(List<String> propertyKeys, OffsetDateTime asAt, String filter, String effectiveAt) throws ApiException {
-        okhttp3.Call localVarCall = getMultiplePropertyDefinitionsValidateBeforeCall(propertyKeys, asAt, filter, effectiveAt, null);
+        okhttp3.Call localVarCall = getMultiplePropertyDefinitionsValidateBeforeCall(propertyKeys, asAt, filter, effectiveAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPropertyDefinition>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfPropertyDefinition> getMultiplePropertyDefinitionsWithHttpInfo(List<String> propertyKeys, OffsetDateTime asAt, String filter, String effectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getMultiplePropertyDefinitionsValidateBeforeCall(propertyKeys, asAt, filter, effectiveAt, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPropertyDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getMultiplePropertyDefinitionsAsync(List<String> propertyKeys, OffsetDateTime asAt, String filter, String effectiveAt, final ApiCallback<ResourceListOfPropertyDefinition> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getMultiplePropertyDefinitionsValidateBeforeCall(propertyKeys, asAt, filter, effectiveAt, _callback);
+        okhttp3.Call localVarCall = getMultiplePropertyDefinitionsValidateBeforeCall(propertyKeys, asAt, filter, effectiveAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPropertyDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getMultiplePropertyDefinitionsAsync(List<String> propertyKeys, OffsetDateTime asAt, String filter, String effectiveAt, final ApiCallback<ResourceListOfPropertyDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getMultiplePropertyDefinitionsValidateBeforeCall(propertyKeys, asAt, filter, effectiveAt, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPropertyDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -970,6 +1261,23 @@ public class PropertyDefinitionsApi {
         }
 
         /**
+         * Execute getMultiplePropertyDefinitions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfPropertyDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested property definitions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfPropertyDefinition execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfPropertyDefinition> localVarResp = getMultiplePropertyDefinitionsWithHttpInfo(propertyKeys, asAt, filter, effectiveAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getMultiplePropertyDefinitions request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfPropertyDefinition&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -983,6 +1291,22 @@ public class PropertyDefinitionsApi {
          */
         public ApiResponse<ResourceListOfPropertyDefinition> executeWithHttpInfo() throws ApiException {
             return getMultiplePropertyDefinitionsWithHttpInfo(propertyKeys, asAt, filter, effectiveAt);
+        }
+
+        /**
+         * Execute getMultiplePropertyDefinitions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfPropertyDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested property definitions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfPropertyDefinition> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getMultiplePropertyDefinitionsWithHttpInfo(propertyKeys, asAt, filter, effectiveAt, opts);
         }
 
         /**
@@ -1000,6 +1324,23 @@ public class PropertyDefinitionsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPropertyDefinition> _callback) throws ApiException {
             return getMultiplePropertyDefinitionsAsync(propertyKeys, asAt, filter, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute getMultiplePropertyDefinitions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested property definitions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPropertyDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+            return getMultiplePropertyDefinitionsAsync(propertyKeys, asAt, filter, effectiveAt, _callback, opts);
         }
     }
 
@@ -1020,6 +1361,10 @@ public class PropertyDefinitionsApi {
         return new APIgetMultiplePropertyDefinitionsRequest(propertyKeys);
     }
     private okhttp3.Call getPropertyDefinitionCall(String domain, String scope, String code, OffsetDateTime asAt, String effectiveAt, final ApiCallback _callback) throws ApiException {
+        return getPropertyDefinitionCall(domain, scope, code, asAt, effectiveAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getPropertyDefinitionCall(String domain, String scope, String code, OffsetDateTime asAt, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1073,11 +1418,11 @@ public class PropertyDefinitionsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPropertyDefinitionValidateBeforeCall(String domain, String scope, String code, OffsetDateTime asAt, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPropertyDefinitionValidateBeforeCall(String domain, String scope, String code, OffsetDateTime asAt, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'domain' is set
         if (domain == null) {
             throw new ApiException("Missing the required parameter 'domain' when calling getPropertyDefinition(Async)");
@@ -1093,20 +1438,34 @@ public class PropertyDefinitionsApi {
             throw new ApiException("Missing the required parameter 'code' when calling getPropertyDefinition(Async)");
         }
 
-        return getPropertyDefinitionCall(domain, scope, code, asAt, effectiveAt, _callback);
+        return getPropertyDefinitionCall(domain, scope, code, asAt, effectiveAt, _callback, opts);
 
     }
 
 
     private ApiResponse<PropertyDefinition> getPropertyDefinitionWithHttpInfo(String domain, String scope, String code, OffsetDateTime asAt, String effectiveAt) throws ApiException {
-        okhttp3.Call localVarCall = getPropertyDefinitionValidateBeforeCall(domain, scope, code, asAt, effectiveAt, null);
+        okhttp3.Call localVarCall = getPropertyDefinitionValidateBeforeCall(domain, scope, code, asAt, effectiveAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PropertyDefinition>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PropertyDefinition> getPropertyDefinitionWithHttpInfo(String domain, String scope, String code, OffsetDateTime asAt, String effectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPropertyDefinitionValidateBeforeCall(domain, scope, code, asAt, effectiveAt, null, opts);
         Type localVarReturnType = new TypeToken<PropertyDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getPropertyDefinitionAsync(String domain, String scope, String code, OffsetDateTime asAt, String effectiveAt, final ApiCallback<PropertyDefinition> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPropertyDefinitionValidateBeforeCall(domain, scope, code, asAt, effectiveAt, _callback);
+        okhttp3.Call localVarCall = getPropertyDefinitionValidateBeforeCall(domain, scope, code, asAt, effectiveAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PropertyDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getPropertyDefinitionAsync(String domain, String scope, String code, OffsetDateTime asAt, String effectiveAt, final ApiCallback<PropertyDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getPropertyDefinitionValidateBeforeCall(domain, scope, code, asAt, effectiveAt, _callback, opts);
         Type localVarReturnType = new TypeToken<PropertyDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1180,6 +1539,23 @@ public class PropertyDefinitionsApi {
         }
 
         /**
+         * Execute getPropertyDefinition request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PropertyDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested property definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PropertyDefinition execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PropertyDefinition> localVarResp = getPropertyDefinitionWithHttpInfo(domain, scope, code, asAt, effectiveAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getPropertyDefinition request with HTTP info returned
          * @return ApiResponse&lt;PropertyDefinition&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1193,6 +1569,22 @@ public class PropertyDefinitionsApi {
          */
         public ApiResponse<PropertyDefinition> executeWithHttpInfo() throws ApiException {
             return getPropertyDefinitionWithHttpInfo(domain, scope, code, asAt, effectiveAt);
+        }
+
+        /**
+         * Execute getPropertyDefinition request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PropertyDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested property definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PropertyDefinition> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getPropertyDefinitionWithHttpInfo(domain, scope, code, asAt, effectiveAt, opts);
         }
 
         /**
@@ -1210,6 +1602,23 @@ public class PropertyDefinitionsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PropertyDefinition> _callback) throws ApiException {
             return getPropertyDefinitionAsync(domain, scope, code, asAt, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute getPropertyDefinition request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested property definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PropertyDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+            return getPropertyDefinitionAsync(domain, scope, code, asAt, effectiveAt, _callback, opts);
         }
     }
 
@@ -1232,6 +1641,10 @@ public class PropertyDefinitionsApi {
         return new APIgetPropertyDefinitionRequest(domain, scope, code);
     }
     private okhttp3.Call getPropertyDefinitionPropertyTimeSeriesCall(String domain, String scope, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback _callback) throws ApiException {
+        return getPropertyDefinitionPropertyTimeSeriesCall(domain, scope, code, propertyKey, asAt, filter, page, limit,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getPropertyDefinitionPropertyTimeSeriesCall(String domain, String scope, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1297,11 +1710,11 @@ public class PropertyDefinitionsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPropertyDefinitionPropertyTimeSeriesValidateBeforeCall(String domain, String scope, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPropertyDefinitionPropertyTimeSeriesValidateBeforeCall(String domain, String scope, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'domain' is set
         if (domain == null) {
             throw new ApiException("Missing the required parameter 'domain' when calling getPropertyDefinitionPropertyTimeSeries(Async)");
@@ -1322,20 +1735,34 @@ public class PropertyDefinitionsApi {
             throw new ApiException("Missing the required parameter 'propertyKey' when calling getPropertyDefinitionPropertyTimeSeries(Async)");
         }
 
-        return getPropertyDefinitionPropertyTimeSeriesCall(domain, scope, code, propertyKey, asAt, filter, page, limit, _callback);
+        return getPropertyDefinitionPropertyTimeSeriesCall(domain, scope, code, propertyKey, asAt, filter, page, limit, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfPropertyInterval> getPropertyDefinitionPropertyTimeSeriesWithHttpInfo(String domain, String scope, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getPropertyDefinitionPropertyTimeSeriesValidateBeforeCall(domain, scope, code, propertyKey, asAt, filter, page, limit, null);
+        okhttp3.Call localVarCall = getPropertyDefinitionPropertyTimeSeriesValidateBeforeCall(domain, scope, code, propertyKey, asAt, filter, page, limit, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPropertyInterval>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfPropertyInterval> getPropertyDefinitionPropertyTimeSeriesWithHttpInfo(String domain, String scope, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPropertyDefinitionPropertyTimeSeriesValidateBeforeCall(domain, scope, code, propertyKey, asAt, filter, page, limit, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPropertyInterval>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getPropertyDefinitionPropertyTimeSeriesAsync(String domain, String scope, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback<ResourceListOfPropertyInterval> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPropertyDefinitionPropertyTimeSeriesValidateBeforeCall(domain, scope, code, propertyKey, asAt, filter, page, limit, _callback);
+        okhttp3.Call localVarCall = getPropertyDefinitionPropertyTimeSeriesValidateBeforeCall(domain, scope, code, propertyKey, asAt, filter, page, limit, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPropertyInterval>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getPropertyDefinitionPropertyTimeSeriesAsync(String domain, String scope, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback<ResourceListOfPropertyInterval> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getPropertyDefinitionPropertyTimeSeriesValidateBeforeCall(domain, scope, code, propertyKey, asAt, filter, page, limit, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPropertyInterval>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1433,6 +1860,23 @@ public class PropertyDefinitionsApi {
         }
 
         /**
+         * Execute getPropertyDefinitionPropertyTimeSeries request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfPropertyInterval
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfPropertyInterval execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfPropertyInterval> localVarResp = getPropertyDefinitionPropertyTimeSeriesWithHttpInfo(domain, scope, code, propertyKey, asAt, filter, page, limit, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getPropertyDefinitionPropertyTimeSeries request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfPropertyInterval&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1446,6 +1890,22 @@ public class PropertyDefinitionsApi {
          */
         public ApiResponse<ResourceListOfPropertyInterval> executeWithHttpInfo() throws ApiException {
             return getPropertyDefinitionPropertyTimeSeriesWithHttpInfo(domain, scope, code, propertyKey, asAt, filter, page, limit);
+        }
+
+        /**
+         * Execute getPropertyDefinitionPropertyTimeSeries request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfPropertyInterval&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfPropertyInterval> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getPropertyDefinitionPropertyTimeSeriesWithHttpInfo(domain, scope, code, propertyKey, asAt, filter, page, limit, opts);
         }
 
         /**
@@ -1463,6 +1923,23 @@ public class PropertyDefinitionsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPropertyInterval> _callback) throws ApiException {
             return getPropertyDefinitionPropertyTimeSeriesAsync(domain, scope, code, propertyKey, asAt, filter, page, limit, _callback);
+        }
+
+        /**
+         * Execute getPropertyDefinitionPropertyTimeSeries request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPropertyInterval> _callback, ConfigurationOptions opts) throws ApiException {
+            return getPropertyDefinitionPropertyTimeSeriesAsync(domain, scope, code, propertyKey, asAt, filter, page, limit, _callback, opts);
         }
     }
 
@@ -1486,6 +1963,10 @@ public class PropertyDefinitionsApi {
         return new APIgetPropertyDefinitionPropertyTimeSeriesRequest(domain, scope, code, propertyKey);
     }
     private okhttp3.Call listPropertyDefinitionsCall(String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
+        return listPropertyDefinitionsCall(effectiveAt, asAt, propertyKeys, page, limit, filter, sortBy,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listPropertyDefinitionsCall(String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1556,25 +2037,39 @@ public class PropertyDefinitionsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listPropertyDefinitionsValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
-        return listPropertyDefinitionsCall(effectiveAt, asAt, propertyKeys, page, limit, filter, sortBy, _callback);
+    private okhttp3.Call listPropertyDefinitionsValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listPropertyDefinitionsCall(effectiveAt, asAt, propertyKeys, page, limit, filter, sortBy, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfPropertyDefinition> listPropertyDefinitionsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String page, Integer limit, String filter, List<String> sortBy) throws ApiException {
-        okhttp3.Call localVarCall = listPropertyDefinitionsValidateBeforeCall(effectiveAt, asAt, propertyKeys, page, limit, filter, sortBy, null);
+        okhttp3.Call localVarCall = listPropertyDefinitionsValidateBeforeCall(effectiveAt, asAt, propertyKeys, page, limit, filter, sortBy, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfPropertyDefinition>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfPropertyDefinition> listPropertyDefinitionsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String page, Integer limit, String filter, List<String> sortBy, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listPropertyDefinitionsValidateBeforeCall(effectiveAt, asAt, propertyKeys, page, limit, filter, sortBy, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPropertyDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listPropertyDefinitionsAsync(String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfPropertyDefinition> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listPropertyDefinitionsValidateBeforeCall(effectiveAt, asAt, propertyKeys, page, limit, filter, sortBy, _callback);
+        okhttp3.Call localVarCall = listPropertyDefinitionsValidateBeforeCall(effectiveAt, asAt, propertyKeys, page, limit, filter, sortBy, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfPropertyDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listPropertyDefinitionsAsync(String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfPropertyDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listPropertyDefinitionsValidateBeforeCall(effectiveAt, asAt, propertyKeys, page, limit, filter, sortBy, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPropertyDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1697,6 +2192,23 @@ public class PropertyDefinitionsApi {
         }
 
         /**
+         * Execute listPropertyDefinitions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfPropertyDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolios </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfPropertyDefinition execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfPropertyDefinition> localVarResp = listPropertyDefinitionsWithHttpInfo(effectiveAt, asAt, propertyKeys, page, limit, filter, sortBy, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listPropertyDefinitions request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfPropertyDefinition&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1710,6 +2222,22 @@ public class PropertyDefinitionsApi {
          */
         public ApiResponse<PagedResourceListOfPropertyDefinition> executeWithHttpInfo() throws ApiException {
             return listPropertyDefinitionsWithHttpInfo(effectiveAt, asAt, propertyKeys, page, limit, filter, sortBy);
+        }
+
+        /**
+         * Execute listPropertyDefinitions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfPropertyDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolios </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfPropertyDefinition> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listPropertyDefinitionsWithHttpInfo(effectiveAt, asAt, propertyKeys, page, limit, filter, sortBy, opts);
         }
 
         /**
@@ -1727,6 +2255,23 @@ public class PropertyDefinitionsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPropertyDefinition> _callback) throws ApiException {
             return listPropertyDefinitionsAsync(effectiveAt, asAt, propertyKeys, page, limit, filter, sortBy, _callback);
+        }
+
+        /**
+         * Execute listPropertyDefinitions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolios </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPropertyDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+            return listPropertyDefinitionsAsync(effectiveAt, asAt, propertyKeys, page, limit, filter, sortBy, _callback, opts);
         }
     }
 
@@ -1746,6 +2291,10 @@ public class PropertyDefinitionsApi {
         return new APIlistPropertyDefinitionsRequest();
     }
     private okhttp3.Call updateDerivedPropertyDefinitionCall(String domain, String scope, String code, UpdateDerivedPropertyDefinitionRequest updateDerivedPropertyDefinitionRequest, final ApiCallback _callback) throws ApiException {
+        return updateDerivedPropertyDefinitionCall(domain, scope, code, updateDerivedPropertyDefinitionRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call updateDerivedPropertyDefinitionCall(String domain, String scope, String code, UpdateDerivedPropertyDefinitionRequest updateDerivedPropertyDefinitionRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1795,11 +2344,11 @@ public class PropertyDefinitionsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateDerivedPropertyDefinitionValidateBeforeCall(String domain, String scope, String code, UpdateDerivedPropertyDefinitionRequest updateDerivedPropertyDefinitionRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateDerivedPropertyDefinitionValidateBeforeCall(String domain, String scope, String code, UpdateDerivedPropertyDefinitionRequest updateDerivedPropertyDefinitionRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'domain' is set
         if (domain == null) {
             throw new ApiException("Missing the required parameter 'domain' when calling updateDerivedPropertyDefinition(Async)");
@@ -1820,20 +2369,34 @@ public class PropertyDefinitionsApi {
             throw new ApiException("Missing the required parameter 'updateDerivedPropertyDefinitionRequest' when calling updateDerivedPropertyDefinition(Async)");
         }
 
-        return updateDerivedPropertyDefinitionCall(domain, scope, code, updateDerivedPropertyDefinitionRequest, _callback);
+        return updateDerivedPropertyDefinitionCall(domain, scope, code, updateDerivedPropertyDefinitionRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<PropertyDefinition> updateDerivedPropertyDefinitionWithHttpInfo(String domain, String scope, String code, UpdateDerivedPropertyDefinitionRequest updateDerivedPropertyDefinitionRequest) throws ApiException {
-        okhttp3.Call localVarCall = updateDerivedPropertyDefinitionValidateBeforeCall(domain, scope, code, updateDerivedPropertyDefinitionRequest, null);
+        okhttp3.Call localVarCall = updateDerivedPropertyDefinitionValidateBeforeCall(domain, scope, code, updateDerivedPropertyDefinitionRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PropertyDefinition>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PropertyDefinition> updateDerivedPropertyDefinitionWithHttpInfo(String domain, String scope, String code, UpdateDerivedPropertyDefinitionRequest updateDerivedPropertyDefinitionRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = updateDerivedPropertyDefinitionValidateBeforeCall(domain, scope, code, updateDerivedPropertyDefinitionRequest, null, opts);
         Type localVarReturnType = new TypeToken<PropertyDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call updateDerivedPropertyDefinitionAsync(String domain, String scope, String code, UpdateDerivedPropertyDefinitionRequest updateDerivedPropertyDefinitionRequest, final ApiCallback<PropertyDefinition> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateDerivedPropertyDefinitionValidateBeforeCall(domain, scope, code, updateDerivedPropertyDefinitionRequest, _callback);
+        okhttp3.Call localVarCall = updateDerivedPropertyDefinitionValidateBeforeCall(domain, scope, code, updateDerivedPropertyDefinitionRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PropertyDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call updateDerivedPropertyDefinitionAsync(String domain, String scope, String code, UpdateDerivedPropertyDefinitionRequest updateDerivedPropertyDefinitionRequest, final ApiCallback<PropertyDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = updateDerivedPropertyDefinitionValidateBeforeCall(domain, scope, code, updateDerivedPropertyDefinitionRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<PropertyDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1887,6 +2450,23 @@ public class PropertyDefinitionsApi {
         }
 
         /**
+         * Execute updateDerivedPropertyDefinition request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PropertyDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated derived property definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PropertyDefinition execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PropertyDefinition> localVarResp = updateDerivedPropertyDefinitionWithHttpInfo(domain, scope, code, updateDerivedPropertyDefinitionRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute updateDerivedPropertyDefinition request with HTTP info returned
          * @return ApiResponse&lt;PropertyDefinition&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1900,6 +2480,22 @@ public class PropertyDefinitionsApi {
          */
         public ApiResponse<PropertyDefinition> executeWithHttpInfo() throws ApiException {
             return updateDerivedPropertyDefinitionWithHttpInfo(domain, scope, code, updateDerivedPropertyDefinitionRequest);
+        }
+
+        /**
+         * Execute updateDerivedPropertyDefinition request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PropertyDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated derived property definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PropertyDefinition> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return updateDerivedPropertyDefinitionWithHttpInfo(domain, scope, code, updateDerivedPropertyDefinitionRequest, opts);
         }
 
         /**
@@ -1917,6 +2513,23 @@ public class PropertyDefinitionsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PropertyDefinition> _callback) throws ApiException {
             return updateDerivedPropertyDefinitionAsync(domain, scope, code, updateDerivedPropertyDefinitionRequest, _callback);
+        }
+
+        /**
+         * Execute updateDerivedPropertyDefinition request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated derived property definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PropertyDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+            return updateDerivedPropertyDefinitionAsync(domain, scope, code, updateDerivedPropertyDefinitionRequest, _callback, opts);
         }
     }
 
@@ -1940,6 +2553,10 @@ public class PropertyDefinitionsApi {
         return new APIupdateDerivedPropertyDefinitionRequest(domain, scope, code, updateDerivedPropertyDefinitionRequest);
     }
     private okhttp3.Call updatePropertyDefinitionCall(String domain, String scope, String code, UpdatePropertyDefinitionRequest updatePropertyDefinitionRequest, final ApiCallback _callback) throws ApiException {
+        return updatePropertyDefinitionCall(domain, scope, code, updatePropertyDefinitionRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call updatePropertyDefinitionCall(String domain, String scope, String code, UpdatePropertyDefinitionRequest updatePropertyDefinitionRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1989,11 +2606,11 @@ public class PropertyDefinitionsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updatePropertyDefinitionValidateBeforeCall(String domain, String scope, String code, UpdatePropertyDefinitionRequest updatePropertyDefinitionRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updatePropertyDefinitionValidateBeforeCall(String domain, String scope, String code, UpdatePropertyDefinitionRequest updatePropertyDefinitionRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'domain' is set
         if (domain == null) {
             throw new ApiException("Missing the required parameter 'domain' when calling updatePropertyDefinition(Async)");
@@ -2014,20 +2631,34 @@ public class PropertyDefinitionsApi {
             throw new ApiException("Missing the required parameter 'updatePropertyDefinitionRequest' when calling updatePropertyDefinition(Async)");
         }
 
-        return updatePropertyDefinitionCall(domain, scope, code, updatePropertyDefinitionRequest, _callback);
+        return updatePropertyDefinitionCall(domain, scope, code, updatePropertyDefinitionRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<PropertyDefinition> updatePropertyDefinitionWithHttpInfo(String domain, String scope, String code, UpdatePropertyDefinitionRequest updatePropertyDefinitionRequest) throws ApiException {
-        okhttp3.Call localVarCall = updatePropertyDefinitionValidateBeforeCall(domain, scope, code, updatePropertyDefinitionRequest, null);
+        okhttp3.Call localVarCall = updatePropertyDefinitionValidateBeforeCall(domain, scope, code, updatePropertyDefinitionRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PropertyDefinition>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PropertyDefinition> updatePropertyDefinitionWithHttpInfo(String domain, String scope, String code, UpdatePropertyDefinitionRequest updatePropertyDefinitionRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = updatePropertyDefinitionValidateBeforeCall(domain, scope, code, updatePropertyDefinitionRequest, null, opts);
         Type localVarReturnType = new TypeToken<PropertyDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call updatePropertyDefinitionAsync(String domain, String scope, String code, UpdatePropertyDefinitionRequest updatePropertyDefinitionRequest, final ApiCallback<PropertyDefinition> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updatePropertyDefinitionValidateBeforeCall(domain, scope, code, updatePropertyDefinitionRequest, _callback);
+        okhttp3.Call localVarCall = updatePropertyDefinitionValidateBeforeCall(domain, scope, code, updatePropertyDefinitionRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PropertyDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call updatePropertyDefinitionAsync(String domain, String scope, String code, UpdatePropertyDefinitionRequest updatePropertyDefinitionRequest, final ApiCallback<PropertyDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = updatePropertyDefinitionValidateBeforeCall(domain, scope, code, updatePropertyDefinitionRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<PropertyDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2081,6 +2712,23 @@ public class PropertyDefinitionsApi {
         }
 
         /**
+         * Execute updatePropertyDefinition request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PropertyDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated property definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PropertyDefinition execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PropertyDefinition> localVarResp = updatePropertyDefinitionWithHttpInfo(domain, scope, code, updatePropertyDefinitionRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute updatePropertyDefinition request with HTTP info returned
          * @return ApiResponse&lt;PropertyDefinition&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2094,6 +2742,22 @@ public class PropertyDefinitionsApi {
          */
         public ApiResponse<PropertyDefinition> executeWithHttpInfo() throws ApiException {
             return updatePropertyDefinitionWithHttpInfo(domain, scope, code, updatePropertyDefinitionRequest);
+        }
+
+        /**
+         * Execute updatePropertyDefinition request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PropertyDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated property definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PropertyDefinition> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return updatePropertyDefinitionWithHttpInfo(domain, scope, code, updatePropertyDefinitionRequest, opts);
         }
 
         /**
@@ -2111,6 +2775,23 @@ public class PropertyDefinitionsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PropertyDefinition> _callback) throws ApiException {
             return updatePropertyDefinitionAsync(domain, scope, code, updatePropertyDefinitionRequest, _callback);
+        }
+
+        /**
+         * Execute updatePropertyDefinition request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated property definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PropertyDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+            return updatePropertyDefinitionAsync(domain, scope, code, updatePropertyDefinitionRequest, _callback, opts);
         }
     }
 
@@ -2134,6 +2815,10 @@ public class PropertyDefinitionsApi {
         return new APIupdatePropertyDefinitionRequest(domain, scope, code, updatePropertyDefinitionRequest);
     }
     private okhttp3.Call upsertPropertyDefinitionPropertiesCall(String domain, String scope, String code, Map<String, Property> requestBody, String successMode, final ApiCallback _callback) throws ApiException {
+        return upsertPropertyDefinitionPropertiesCall(domain, scope, code, requestBody, successMode,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertPropertyDefinitionPropertiesCall(String domain, String scope, String code, Map<String, Property> requestBody, String successMode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2187,11 +2872,11 @@ public class PropertyDefinitionsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertPropertyDefinitionPropertiesValidateBeforeCall(String domain, String scope, String code, Map<String, Property> requestBody, String successMode, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertPropertyDefinitionPropertiesValidateBeforeCall(String domain, String scope, String code, Map<String, Property> requestBody, String successMode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'domain' is set
         if (domain == null) {
             throw new ApiException("Missing the required parameter 'domain' when calling upsertPropertyDefinitionProperties(Async)");
@@ -2212,20 +2897,34 @@ public class PropertyDefinitionsApi {
             throw new ApiException("Missing the required parameter 'requestBody' when calling upsertPropertyDefinitionProperties(Async)");
         }
 
-        return upsertPropertyDefinitionPropertiesCall(domain, scope, code, requestBody, successMode, _callback);
+        return upsertPropertyDefinitionPropertiesCall(domain, scope, code, requestBody, successMode, _callback, opts);
 
     }
 
 
     private ApiResponse<BatchUpsertPropertyDefinitionPropertiesResponse> upsertPropertyDefinitionPropertiesWithHttpInfo(String domain, String scope, String code, Map<String, Property> requestBody, String successMode) throws ApiException {
-        okhttp3.Call localVarCall = upsertPropertyDefinitionPropertiesValidateBeforeCall(domain, scope, code, requestBody, successMode, null);
+        okhttp3.Call localVarCall = upsertPropertyDefinitionPropertiesValidateBeforeCall(domain, scope, code, requestBody, successMode, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<BatchUpsertPropertyDefinitionPropertiesResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<BatchUpsertPropertyDefinitionPropertiesResponse> upsertPropertyDefinitionPropertiesWithHttpInfo(String domain, String scope, String code, Map<String, Property> requestBody, String successMode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertPropertyDefinitionPropertiesValidateBeforeCall(domain, scope, code, requestBody, successMode, null, opts);
         Type localVarReturnType = new TypeToken<BatchUpsertPropertyDefinitionPropertiesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertPropertyDefinitionPropertiesAsync(String domain, String scope, String code, Map<String, Property> requestBody, String successMode, final ApiCallback<BatchUpsertPropertyDefinitionPropertiesResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertPropertyDefinitionPropertiesValidateBeforeCall(domain, scope, code, requestBody, successMode, _callback);
+        okhttp3.Call localVarCall = upsertPropertyDefinitionPropertiesValidateBeforeCall(domain, scope, code, requestBody, successMode, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<BatchUpsertPropertyDefinitionPropertiesResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertPropertyDefinitionPropertiesAsync(String domain, String scope, String code, Map<String, Property> requestBody, String successMode, final ApiCallback<BatchUpsertPropertyDefinitionPropertiesResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertPropertyDefinitionPropertiesValidateBeforeCall(domain, scope, code, requestBody, successMode, _callback, opts);
         Type localVarReturnType = new TypeToken<BatchUpsertPropertyDefinitionPropertiesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2290,6 +2989,23 @@ public class PropertyDefinitionsApi {
         }
 
         /**
+         * Execute upsertPropertyDefinitionProperties request. Use any specified configuration options to override any other configuration for this request only.
+         * @return BatchUpsertPropertyDefinitionPropertiesResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The asAt datetime at which the properties were updated or created. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public BatchUpsertPropertyDefinitionPropertiesResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<BatchUpsertPropertyDefinitionPropertiesResponse> localVarResp = upsertPropertyDefinitionPropertiesWithHttpInfo(domain, scope, code, requestBody, successMode, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertPropertyDefinitionProperties request with HTTP info returned
          * @return ApiResponse&lt;BatchUpsertPropertyDefinitionPropertiesResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2303,6 +3019,22 @@ public class PropertyDefinitionsApi {
          */
         public ApiResponse<BatchUpsertPropertyDefinitionPropertiesResponse> executeWithHttpInfo() throws ApiException {
             return upsertPropertyDefinitionPropertiesWithHttpInfo(domain, scope, code, requestBody, successMode);
+        }
+
+        /**
+         * Execute upsertPropertyDefinitionProperties request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;BatchUpsertPropertyDefinitionPropertiesResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The asAt datetime at which the properties were updated or created. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<BatchUpsertPropertyDefinitionPropertiesResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertPropertyDefinitionPropertiesWithHttpInfo(domain, scope, code, requestBody, successMode, opts);
         }
 
         /**
@@ -2320,6 +3052,23 @@ public class PropertyDefinitionsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<BatchUpsertPropertyDefinitionPropertiesResponse> _callback) throws ApiException {
             return upsertPropertyDefinitionPropertiesAsync(domain, scope, code, requestBody, successMode, _callback);
+        }
+
+        /**
+         * Execute upsertPropertyDefinitionProperties request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The asAt datetime at which the properties were updated or created. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<BatchUpsertPropertyDefinitionPropertiesResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertPropertyDefinitionPropertiesAsync(domain, scope, code, requestBody, successMode, _callback, opts);
         }
     }
 

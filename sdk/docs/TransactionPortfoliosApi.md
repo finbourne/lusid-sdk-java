@@ -81,6 +81,14 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the transaction portfolio.
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio.
@@ -88,6 +96,9 @@ public class TransactionPortfoliosApiExample {
         List<AdjustHoldingRequest> adjustHoldingRequest = Arrays.asList(); // List<AdjustHoldingRequest> | The selected set of holdings to adjust to the provided targets for the   transaction portfolio.
         List<String> reconciliationMethods = Arrays.asList(); // List<String> | Optional parameter for specifying a reconciliation method: e.g. FxForward.
         try {
+            // uncomment the below to set overrides at the request level
+            // AdjustHolding result = apiInstance.adjustHoldings(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods).execute(opts);
+
             AdjustHolding result = apiInstance.adjustHoldings(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -169,6 +180,14 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the transaction portfolio.
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio.
@@ -176,6 +195,9 @@ public class TransactionPortfoliosApiExample {
         Map<String, AdjustHoldingForDateRequest> requestBody = new HashMap(); // Map<String, AdjustHoldingForDateRequest> | The selected set of holdings to adjust to the provided targets for the   transaction portfolio.
         List<String> reconciliationMethods = Arrays.asList(); // List<String> | Optional parameter for specifying a reconciliation method: e.g. FxForward.
         try {
+            // uncomment the below to set overrides at the request level
+            // BatchAdjustHoldingsResponse result = apiInstance.batchAdjustHoldings(scope, code, successMode, requestBody, reconciliationMethods).execute(opts);
+
             BatchAdjustHoldingsResponse result = apiInstance.batchAdjustHoldings(scope, code, successMode, requestBody, reconciliationMethods).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -257,11 +279,22 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the transaction portfolio.
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio.
         List<LusidTradeTicket> lusidTradeTicket = Arrays.asList(); // List<LusidTradeTicket> | the trade tickets to create
         try {
+            // uncomment the below to set overrides at the request level
+            // CreateTradeTicketsResponse result = apiInstance.batchCreateTradeTickets(scope, code, lusidTradeTicket).execute(opts);
+
             CreateTradeTicketsResponse result = apiInstance.batchCreateTradeTickets(scope, code, lusidTradeTicket).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -341,6 +374,14 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the transaction portfolio.
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio.
@@ -348,6 +389,9 @@ public class TransactionPortfoliosApiExample {
         Map<String, TransactionRequest> requestBody = new HashMap(); // Map<String, TransactionRequest> | The payload describing the transactions to be created or updated.
         Boolean preserveProperties = true; // Boolean | If set to false, the entire property set will be overwritten by the provided properties. If not specified or set to true, only the properties provided will be updated.
         try {
+            // uncomment the below to set overrides at the request level
+            // BatchUpsertPortfolioTransactionsResponse result = apiInstance.batchUpsertTransactions(scope, code, successMode, requestBody, preserveProperties).execute(opts);
+
             BatchUpsertPortfolioTransactionsResponse result = apiInstance.batchUpsertTransactions(scope, code, successMode, requestBody, preserveProperties).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -429,6 +473,14 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the transaction portfolio.
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio.
@@ -439,6 +491,9 @@ public class TransactionPortfoliosApiExample {
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing transactions from a previous call to BuildTransactions.
         try {
+            // uncomment the below to set overrides at the request level
+            // VersionedResourceListOfOutputTransaction result = apiInstance.buildTransactions(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page).execute(opts);
+
             VersionedResourceListOfOutputTransaction result = apiInstance.buildTransactions(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -523,11 +578,22 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the transaction portfolio.
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which the holding adjustments should be undone.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.cancelAdjustHoldings(scope, code, effectiveAt).execute(opts);
+
             DeletedEntityResponse result = apiInstance.cancelAdjustHoldings(scope, code, effectiveAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -607,11 +673,22 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the transaction portfolio.
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio.
         List<String> transactionIds = Arrays.asList(); // List<String> | The IDs of the transactions to cancel.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.cancelTransactions(scope, code, transactionIds).execute(opts);
+
             DeletedEntityResponse result = apiInstance.cancelTransactions(scope, code, transactionIds).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -691,10 +768,21 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope in which to create the transaction portfolio.
         CreateTransactionPortfolioRequest createTransactionPortfolioRequest = new CreateTransactionPortfolioRequest(); // CreateTransactionPortfolioRequest | The definition of the transaction portfolio.
         try {
+            // uncomment the below to set overrides at the request level
+            // Portfolio result = apiInstance.createPortfolio(scope, createTransactionPortfolioRequest).execute(opts);
+
             Portfolio result = apiInstance.createPortfolio(scope, createTransactionPortfolioRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -773,11 +861,22 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the transaction portfolio.
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio.
         LusidTradeTicket lusidTradeTicket = new LusidTradeTicket(); // LusidTradeTicket | the trade ticket to upsert
         try {
+            // uncomment the below to set overrides at the request level
+            // LusidTradeTicket result = apiInstance.createTradeTicket(scope, code, lusidTradeTicket).execute(opts);
+
             LusidTradeTicket result = apiInstance.createTradeTicket(scope, code, lusidTradeTicket).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -857,12 +956,23 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the Transaction Portfolios.
         String code = "code_example"; // String | The code of the Transaction Portfolios. Together with the scope this uniquely identifies   the Transaction Portfolios.
         List<ResourceId> resourceId = Arrays.asList(); // List<ResourceId> | The scope and codes of the custodian accounts to delete.
         String deleteMode = "Soft"; // String | The delete mode to use (defaults to 'Soft').
         try {
+            // uncomment the below to set overrides at the request level
+            // DeleteCustodianAccountsResponse result = apiInstance.deleteCustodianAccounts(scope, code, resourceId, deleteMode).execute(opts);
+
             DeleteCustodianAccountsResponse result = apiInstance.deleteCustodianAccounts(scope, code, resourceId, deleteMode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -943,12 +1053,23 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the transaction portfolio.
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio.
         String transactionId = "transactionId_example"; // String | The unique ID of the transaction from which to delete properties.
         List<String> propertyKeys = Arrays.asList(); // List<String> | The property keys of the properties to delete.   These must be from the \"Transaction\" domain and have the format {domain}/{scope}/{code}, for example   \"Transaction/strategy/quantsignal\".
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deletePropertiesFromTransaction(scope, code, transactionId, propertyKeys).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deletePropertiesFromTransaction(scope, code, transactionId, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1029,6 +1150,14 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio to retrieve the A2B report for.
         String code = "code_example"; // String | The code of the portfolio to retrieve the A2B report for. Together with the scope this   uniquely identifies the portfolio.
@@ -1040,6 +1169,9 @@ public class TransactionPortfoliosApiExample {
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\" domain to decorate onto   the results. These take the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\".
         String filter = "filter_example"; // String | Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         try {
+            // uncomment the below to set overrides at the request level
+            // VersionedResourceListOfA2BDataRecord result = apiInstance.getA2BData(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter).execute(opts);
+
             VersionedResourceListOfA2BDataRecord result = apiInstance.getA2BData(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1125,6 +1257,14 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio to retrieve the A2B movement report for.
         String code = "code_example"; // String | The code of the portfolio to retrieve the A2B movement report for. Together with the scope this   uniquely identifies the portfolio.
@@ -1136,6 +1276,9 @@ public class TransactionPortfoliosApiExample {
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\" domain to decorate onto   the results. These take the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\".
         String filter = "filter_example"; // String | Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         try {
+            // uncomment the below to set overrides at the request level
+            // VersionedResourceListOfA2BMovementRecord result = apiInstance.getA2BMovements(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter).execute(opts);
+
             VersionedResourceListOfA2BMovementRecord result = apiInstance.getA2BMovements(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1221,11 +1364,22 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the transaction portfolio.
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies the portfolio.
         BucketedCashFlowRequest bucketedCashFlowRequest = new BucketedCashFlowRequest(); // BucketedCashFlowRequest | Request specifying the bucketing of cashflows
         try {
+            // uncomment the below to set overrides at the request level
+            // BucketedCashFlowResponse result = apiInstance.getBucketedCashFlows(scope, code, bucketedCashFlowRequest).execute(opts);
+
             BucketedCashFlowResponse result = apiInstance.getBucketedCashFlows(scope, code, bucketedCashFlowRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1305,6 +1459,14 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the Transaction Portfolio.
         String code = "code_example"; // String | The code of the Transaction Portfolio. Together with the scope this uniquely identifies the Transaction Portfolio.
@@ -1314,6 +1476,9 @@ public class TransactionPortfoliosApiExample {
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Custodian Account definition. Defaults to returning the latest version of the Custodian Account definition if not specified.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'CustodianAccount' domain to decorate onto the Custodian Account.   These must take the format {domain}/{scope}/{code}, for example 'CustodianAccount/Manager/Id'. If not provided will return all the entitled properties for that Custodian Account.
         try {
+            // uncomment the below to set overrides at the request level
+            // CustodianAccount result = apiInstance.getCustodianAccount(scope, code, custodianAccountScope, custodianAccountCode, effectiveAt, asAt, propertyKeys).execute(opts);
+
             CustodianAccount result = apiInstance.getCustodianAccount(scope, code, custodianAccountScope, custodianAccountCode, effectiveAt, asAt, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1397,12 +1562,23 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the transaction portfolio.
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the   scope this uniquely identifies the transaction portfolio.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the details of the transaction   portfolio. Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the details of the transaction portfolio. Defaults   to returning the latest version of the details if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // PortfolioDetails result = apiInstance.getDetails(scope, code, effectiveAt, asAt).execute(opts);
+
             PortfolioDetails result = apiInstance.getDetails(scope, code, effectiveAt, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1483,6 +1659,14 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the transaction portfolio.
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio.
@@ -1496,6 +1680,9 @@ public class TransactionPortfoliosApiExample {
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to build the transactions. Defaults to return the latest   version of each transaction if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing transactions from a previous call to GetHoldingContributors.
         try {
+            // uncomment the below to set overrides at the request level
+            // VersionedResourceListOfHoldingContributor result = apiInstance.getHoldingContributors(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, limit, asAt, page).execute(opts);
+
             VersionedResourceListOfHoldingContributor result = apiInstance.getHoldingContributors(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, limit, asAt, page).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1583,6 +1770,14 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the transaction portfolio.
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio.
@@ -1593,6 +1788,9 @@ public class TransactionPortfoliosApiExample {
         Boolean byTaxlots = true; // Boolean | Whether or not to expand the holdings to return the underlying tax-lots. Defaults to   False.
         Integer includeSettlementEventsAfterDays = 56; // Integer | Number of days ahead to bring back settlements from, in relation to the specified effectiveAt
         try {
+            // uncomment the below to set overrides at the request level
+            // VersionedResourceListOfPortfolioHolding result = apiInstance.getHoldings(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays).execute(opts);
+
             VersionedResourceListOfPortfolioHolding result = apiInstance.getHoldings(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1677,6 +1875,14 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the transaction portfolio.
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio.
@@ -1684,6 +1890,9 @@ public class TransactionPortfoliosApiExample {
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the holdings adjustment. Defaults to the return the latest   version of the holdings adjustment if not specified.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the ‘Instrument' domain to decorate onto holdings adjustments.   These must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'.   Note that properties from the 'Holding’ domain are automatically returned.
         try {
+            // uncomment the below to set overrides at the request level
+            // HoldingsAdjustment result = apiInstance.getHoldingsAdjustment(scope, code, effectiveAt, asAt, propertyKeys).execute(opts);
+
             HoldingsAdjustment result = apiInstance.getHoldingsAdjustment(scope, code, effectiveAt, asAt, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1765,6 +1974,14 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the transaction portfolio.
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio.
@@ -1777,6 +1994,9 @@ public class TransactionPortfoliosApiExample {
         String recipeIdCode = "recipeIdCode_example"; // String | The code of the given recipeId
         Integer includeSettlementEventsAfterDays = 56; // Integer | Number of days ahead to bring back settlements from, in relation to the specified effectiveAt
         try {
+            // uncomment the below to set overrides at the request level
+            // VersionedResourceListWithWarningsOfPortfolioHolding result = apiInstance.getHoldingsWithOrders(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays).execute(opts);
+
             VersionedResourceListWithWarningsOfPortfolioHolding result = apiInstance.getHoldingsWithOrders(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1863,6 +2083,14 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the transaction portfolio.
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this   uniquely identifies the portfolio.
@@ -1875,6 +2103,9 @@ public class TransactionPortfoliosApiExample {
         String recipeIdCode = "recipeIdCode_example"; // String | The code of the given recipeID
         Boolean excludeUnsettledTrades = false; // Boolean | If absent or set to false, cashflows will returned based on trade date - more specifically, cashflows from any unsettled trades will be included in the results. If set to true, unsettled trades will be excluded from the result set.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfInstrumentCashFlow result = apiInstance.getPortfolioCashFlows(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades).execute(opts);
+
             ResourceListOfInstrumentCashFlow result = apiInstance.getPortfolioCashFlows(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1961,6 +2192,14 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the transaction portfolio.
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this   uniquely identifies the portfolio.
@@ -1973,6 +2212,9 @@ public class TransactionPortfoliosApiExample {
         String recipeIdCode = "recipeIdCode_example"; // String | The code of the given recipeID
         Boolean excludeUnsettledTrades = false; // Boolean | If absent or set to false, cashflows will returned based on trade date - more specifically, cashflows from any unsettled trades will be included in the results. If set to true, unsettled trades will be excluded from the result set.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfPortfolioCashLadder result = apiInstance.getPortfolioCashLadder(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades).execute(opts);
+
             ResourceListOfPortfolioCashLadder result = apiInstance.getPortfolioCashLadder(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -2059,6 +2301,14 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the transaction portfolio.
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this   uniquely identifies the portfolio.
@@ -2069,6 +2319,9 @@ public class TransactionPortfoliosApiExample {
         String recipeIdScope = "recipeIdScope_example"; // String | The scope of the given recipeId
         String recipeIdCode = "recipeIdCode_example"; // String | The code of the given recipeID
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfPortfolioCashFlow result = apiInstance.getPortfolioCashStatement(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode).execute(opts);
+
             ResourceListOfPortfolioCashFlow result = apiInstance.getPortfolioCashStatement(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -2153,12 +2406,23 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the transaction portfolio.
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio.
         String transactionId = "transactionId_example"; // String | The unique ID of the transaction to create or update.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the history of the transaction. Defaults   to return the latest version if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfChangeHistory result = apiInstance.getTransactionHistory(scope, code, transactionId, asAt).execute(opts);
+
             ResourceListOfChangeHistory result = apiInstance.getTransactionHistory(scope, code, transactionId, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -2239,6 +2503,14 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the transaction portfolio.
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio.
@@ -2252,6 +2524,9 @@ public class TransactionPortfoliosApiExample {
         Boolean showCancelledTransactions = true; // Boolean | Option to specify whether or not to include cancelled transactions,   including previous versions of transactions which have since been amended.   Defaults to False if not specified.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\".
         try {
+            // uncomment the below to set overrides at the request level
+            // VersionedResourceListOfTransaction result = apiInstance.getTransactions(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, showCancelledTransactions, sortBy).execute(opts);
+
             VersionedResourceListOfTransaction result = apiInstance.getTransactions(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, showCancelledTransactions, sortBy).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -2339,6 +2614,14 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the transaction portfolio.
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this   uniquely identifies the portfolio.
@@ -2351,6 +2634,9 @@ public class TransactionPortfoliosApiExample {
         String recipeIdCode = "recipeIdCode_example"; // String | The code of the given recipeID
         Boolean excludeUnsettledTrades = true; // Boolean | If absent or set to true, unsettled trades will be excluded from the result set. If set to false, cashflows will returned based on trade date - more specifically, cashflows from any unsettled trades will be included in the results.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfTransaction result = apiInstance.getUpsertablePortfolioCashFlows(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades).execute(opts);
+
             ResourceListOfTransaction result = apiInstance.getUpsertablePortfolioCashFlows(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -2437,6 +2723,14 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the Transaction Portfolio.
         String code = "code_example"; // String | The code of the Transaction Portfolio. Together with the scope this uniquely identifies   the Transaction Portfolios.
@@ -2447,6 +2741,9 @@ public class TransactionPortfoliosApiExample {
         String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the Custodian Account type, specify \"code eq '001'\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'CustodianAccount' domain to decorate onto the Custodian Account.   These must have the format {domain}/{scope}/{code}, for example 'CustodianAccount/system/Name'.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfCustodianAccount result = apiInstance.listCustodianAccounts(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys).execute(opts);
+
             PagedResourceListOfCustodianAccount result = apiInstance.listCustodianAccounts(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -2531,6 +2828,14 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the transaction portfolio.
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio.
@@ -2538,6 +2843,9 @@ public class TransactionPortfoliosApiExample {
         String toEffectiveAt = "toEffectiveAt_example"; // String | The upper bound effective datetime or cut label (inclusive) from which to retrieve the holdings   adjustments. There is no upper bound if this is not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the holdings adjustments. Defaults to return the   latest version of each holding adjustment if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfHoldingsAdjustmentHeader result = apiInstance.listHoldingsAdjustments(scope, code, fromEffectiveAt, toEffectiveAt, asAt).execute(opts);
+
             ResourceListOfHoldingsAdjustmentHeader result = apiInstance.listHoldingsAdjustments(scope, code, fromEffectiveAt, toEffectiveAt, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -2619,12 +2927,23 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the transaction portfolio.
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the   scope this uniquely identifies the transaction portfolio.
         List<Operation> operation = Arrays.asList(); // List<Operation> | The patch document.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which the updated or inserted details should become valid.   Defaults to the current LUSID system datetime if not specified.   Note that this will affect all bitemporal entities in the request, but will not be used for any perpetual entities.
         try {
+            // uncomment the below to set overrides at the request level
+            // PortfolioDetails result = apiInstance.patchPortfolioDetails(scope, code, operation, effectiveAt).execute(opts);
+
             PortfolioDetails result = apiInstance.patchPortfolioDetails(scope, code, operation, effectiveAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -2705,6 +3024,14 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the transaction portfolio.
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio.
@@ -2714,6 +3041,9 @@ public class TransactionPortfoliosApiExample {
         Boolean reResolve = false; // Boolean | When set to true, instrument resolution will be attempted for all transactions and holdings for the given identifier and date range.   When set to false (default behaviour), instrument resolution will only be attempted for those transactions and holdings that were previously unresolved.
         Map<String, String> requestBody = {"Instrument/default/Figi":"BBG000C6K6G9","Instrument/default/Isin":"GB00BH4HKS39"}; // Map<String, String> | The dictionary with the instrument identifiers to be updated on the   transaction and holdings.
         try {
+            // uncomment the below to set overrides at the request level
+            // UpsertPortfolioTransactionsResponse result = apiInstance.resolveInstrument(scope, code, instrumentIdentifierType, instrumentIdentifierValue, fromEffectiveAt, reResolve, requestBody).execute(opts);
+
             UpsertPortfolioTransactionsResponse result = apiInstance.resolveInstrument(scope, code, instrumentIdentifierType, instrumentIdentifierValue, fromEffectiveAt, reResolve, requestBody).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -2797,6 +3127,14 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the transaction portfolio.
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio.
@@ -2804,6 +3142,9 @@ public class TransactionPortfoliosApiExample {
         List<AdjustHoldingRequest> adjustHoldingRequest = Arrays.asList(); // List<AdjustHoldingRequest> | The complete set of target holdings for the transaction portfolio.
         List<String> reconciliationMethods = Arrays.asList(); // List<String> | Optional parameter for specifying a reconciliation method: e.g. FxForward.
         try {
+            // uncomment the below to set overrides at the request level
+            // AdjustHolding result = apiInstance.setHoldings(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods).execute(opts);
+
             AdjustHolding result = apiInstance.setHoldings(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -2885,11 +3226,22 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the Transaction Portfolio.
         String code = "code_example"; // String | The code of the Transaction Portfolio. Together with the scope this uniquely identifies   the Transaction Portfolios.
         List<CustodianAccountRequest> custodianAccountRequest = Arrays.asList(); // List<CustodianAccountRequest> | A list of Custodian Accounts to be created or updated.
         try {
+            // uncomment the below to set overrides at the request level
+            // CustodianAccountsUpsertResponse result = apiInstance.upsertCustodianAccounts(scope, code, custodianAccountRequest).execute(opts);
+
             CustodianAccountsUpsertResponse result = apiInstance.upsertCustodianAccounts(scope, code, custodianAccountRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -2969,6 +3321,14 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the Transaction Portfolios to update or insert the properties onto.
         String code = "code_example"; // String | The code of the Transaction Portfolios to update or insert the properties onto. Together with the scope this uniquely identifies the Transaction Portfolios.
@@ -2976,6 +3336,9 @@ public class TransactionPortfoliosApiExample {
         String custodianAccountCode = "custodianAccountCode_example"; // String | The unique ID of the custodian account to create or update properties for.
         Map<String, Property> requestBody = new HashMap(); // Map<String, Property> | The properties to be updated or inserted onto the Transaction Portfolio. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \"CustodianAccount/Manager/Id\".
         try {
+            // uncomment the below to set overrides at the request level
+            // CustodianAccountProperties result = apiInstance.upsertCustodianAccountsProperties(scope, code, custodianAccountScope, custodianAccountCode, requestBody).execute(opts);
+
             CustodianAccountProperties result = apiInstance.upsertCustodianAccountsProperties(scope, code, custodianAccountScope, custodianAccountCode, requestBody).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -3057,12 +3420,23 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the transaction portfolio.
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the   scope this uniquely identifies the transaction portfolio.
         CreatePortfolioDetails createPortfolioDetails = new CreatePortfolioDetails(); // CreatePortfolioDetails | The details to create or update for the specified transaction portfolio.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which the updated or inserted details should become valid.   Defaults to the current LUSID system datetime if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // PortfolioDetails result = apiInstance.upsertPortfolioDetails(scope, code, createPortfolioDetails, effectiveAt).execute(opts);
+
             PortfolioDetails result = apiInstance.upsertPortfolioDetails(scope, code, createPortfolioDetails, effectiveAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -3143,12 +3517,23 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the transaction portfolio.
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio.
         String transactionId = "transactionId_example"; // String | The unique ID of the transaction to create or update properties for.
         Map<String, PerpetualProperty> requestBody = new HashMap(); // Map<String, PerpetualProperty> | The properties and their associated values to create or update.
         try {
+            // uncomment the below to set overrides at the request level
+            // UpsertTransactionPropertiesResponse result = apiInstance.upsertTransactionProperties(scope, code, transactionId, requestBody).execute(opts);
+
             UpsertTransactionPropertiesResponse result = apiInstance.upsertTransactionProperties(scope, code, transactionId, requestBody).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -3229,12 +3614,23 @@ public class TransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
         TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the transaction portfolio.
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio.
         List<TransactionRequest> transactionRequest = Arrays.asList(); // List<TransactionRequest> | A list of transactions to be created or updated.
         Boolean preserveProperties = true; // Boolean | If set to false, the entire property set will be overwritten by the provided properties. If not specified or set to true, only the properties provided will be updated.
         try {
+            // uncomment the below to set overrides at the request level
+            // UpsertPortfolioTransactionsResponse result = apiInstance.upsertTransactions(scope, code, transactionRequest, preserveProperties).execute(opts);
+
             UpsertPortfolioTransactionsResponse result = apiInstance.upsertTransactions(scope, code, transactionRequest, preserveProperties).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

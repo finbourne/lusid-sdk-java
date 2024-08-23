@@ -46,10 +46,21 @@ public class QueryableKeysApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // QueryableKeysApi apiInstance = apiFactory.build(QueryableKeysApi.class);
+
         QueryableKeysApi apiInstance = ApiFactoryBuilder.build(fileName).build(QueryableKeysApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | For user defined DerivedValuation keys.
         String filter = "filter_example"; // String | Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfQueryableKey result = apiInstance.getAllQueryableKeys(asAt, filter).execute(opts);
+
             ResourceListOfQueryableKey result = apiInstance.getAllQueryableKeys(asAt, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

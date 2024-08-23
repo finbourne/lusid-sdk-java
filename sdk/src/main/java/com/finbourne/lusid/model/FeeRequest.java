@@ -365,7 +365,7 @@ public class FeeRequest {
   }
 
    /**
-   * The business day convention to use for Fee calculations on weekends.
+   * The business day convention to use for Fee calculations on weekends. Supported string values are: [Previous, P, Following, F].
    * @return businessDayConvention
   **/
   @jakarta.annotation.Nonnull

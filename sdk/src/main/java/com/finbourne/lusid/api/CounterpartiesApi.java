@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -80,6 +81,10 @@ public class CounterpartiesApi {
     }
 
     private okhttp3.Call deleteCounterpartyAgreementCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+        return deleteCounterpartyAgreementCall(scope, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteCounterpartyAgreementCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -124,11 +129,11 @@ public class CounterpartiesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteCounterpartyAgreementValidateBeforeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCounterpartyAgreementValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteCounterpartyAgreement(Async)");
@@ -139,20 +144,34 @@ public class CounterpartiesApi {
             throw new ApiException("Missing the required parameter 'code' when calling deleteCounterpartyAgreement(Async)");
         }
 
-        return deleteCounterpartyAgreementCall(scope, code, _callback);
+        return deleteCounterpartyAgreementCall(scope, code, _callback, opts);
 
     }
 
 
     private ApiResponse<AnnulSingleStructuredDataResponse> deleteCounterpartyAgreementWithHttpInfo(String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = deleteCounterpartyAgreementValidateBeforeCall(scope, code, null);
+        okhttp3.Call localVarCall = deleteCounterpartyAgreementValidateBeforeCall(scope, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AnnulSingleStructuredDataResponse> deleteCounterpartyAgreementWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteCounterpartyAgreementValidateBeforeCall(scope, code, null, opts);
         Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteCounterpartyAgreementAsync(String scope, String code, final ApiCallback<AnnulSingleStructuredDataResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteCounterpartyAgreementValidateBeforeCall(scope, code, _callback);
+        okhttp3.Call localVarCall = deleteCounterpartyAgreementValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteCounterpartyAgreementAsync(String scope, String code, final ApiCallback<AnnulSingleStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteCounterpartyAgreementValidateBeforeCall(scope, code, _callback, opts);
         Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -202,6 +221,23 @@ public class CounterpartiesApi {
         }
 
         /**
+         * Execute deleteCounterpartyAgreement request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AnnulSingleStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AnnulSingleStructuredDataResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AnnulSingleStructuredDataResponse> localVarResp = deleteCounterpartyAgreementWithHttpInfo(scope, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteCounterpartyAgreement request with HTTP info returned
          * @return ApiResponse&lt;AnnulSingleStructuredDataResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -215,6 +251,22 @@ public class CounterpartiesApi {
          */
         public ApiResponse<AnnulSingleStructuredDataResponse> executeWithHttpInfo() throws ApiException {
             return deleteCounterpartyAgreementWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteCounterpartyAgreement request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AnnulSingleStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AnnulSingleStructuredDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteCounterpartyAgreementWithHttpInfo(scope, code, opts);
         }
 
         /**
@@ -232,6 +284,23 @@ public class CounterpartiesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<AnnulSingleStructuredDataResponse> _callback) throws ApiException {
             return deleteCounterpartyAgreementAsync(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteCounterpartyAgreement request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AnnulSingleStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteCounterpartyAgreementAsync(scope, code, _callback, opts);
         }
     }
 
@@ -253,6 +322,10 @@ public class CounterpartiesApi {
         return new APIdeleteCounterpartyAgreementRequest(scope, code);
     }
     private okhttp3.Call deleteCreditSupportAnnexCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+        return deleteCreditSupportAnnexCall(scope, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteCreditSupportAnnexCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -297,11 +370,11 @@ public class CounterpartiesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteCreditSupportAnnexValidateBeforeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCreditSupportAnnexValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteCreditSupportAnnex(Async)");
@@ -312,20 +385,34 @@ public class CounterpartiesApi {
             throw new ApiException("Missing the required parameter 'code' when calling deleteCreditSupportAnnex(Async)");
         }
 
-        return deleteCreditSupportAnnexCall(scope, code, _callback);
+        return deleteCreditSupportAnnexCall(scope, code, _callback, opts);
 
     }
 
 
     private ApiResponse<AnnulSingleStructuredDataResponse> deleteCreditSupportAnnexWithHttpInfo(String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = deleteCreditSupportAnnexValidateBeforeCall(scope, code, null);
+        okhttp3.Call localVarCall = deleteCreditSupportAnnexValidateBeforeCall(scope, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AnnulSingleStructuredDataResponse> deleteCreditSupportAnnexWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteCreditSupportAnnexValidateBeforeCall(scope, code, null, opts);
         Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteCreditSupportAnnexAsync(String scope, String code, final ApiCallback<AnnulSingleStructuredDataResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteCreditSupportAnnexValidateBeforeCall(scope, code, _callback);
+        okhttp3.Call localVarCall = deleteCreditSupportAnnexValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteCreditSupportAnnexAsync(String scope, String code, final ApiCallback<AnnulSingleStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteCreditSupportAnnexValidateBeforeCall(scope, code, _callback, opts);
         Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -375,6 +462,23 @@ public class CounterpartiesApi {
         }
 
         /**
+         * Execute deleteCreditSupportAnnex request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AnnulSingleStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AnnulSingleStructuredDataResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AnnulSingleStructuredDataResponse> localVarResp = deleteCreditSupportAnnexWithHttpInfo(scope, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteCreditSupportAnnex request with HTTP info returned
          * @return ApiResponse&lt;AnnulSingleStructuredDataResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -388,6 +492,22 @@ public class CounterpartiesApi {
          */
         public ApiResponse<AnnulSingleStructuredDataResponse> executeWithHttpInfo() throws ApiException {
             return deleteCreditSupportAnnexWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteCreditSupportAnnex request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AnnulSingleStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AnnulSingleStructuredDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteCreditSupportAnnexWithHttpInfo(scope, code, opts);
         }
 
         /**
@@ -405,6 +525,23 @@ public class CounterpartiesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<AnnulSingleStructuredDataResponse> _callback) throws ApiException {
             return deleteCreditSupportAnnexAsync(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteCreditSupportAnnex request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AnnulSingleStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteCreditSupportAnnexAsync(scope, code, _callback, opts);
         }
     }
 
@@ -426,6 +563,10 @@ public class CounterpartiesApi {
         return new APIdeleteCreditSupportAnnexRequest(scope, code);
     }
     private okhttp3.Call getCounterpartyAgreementCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getCounterpartyAgreementCall(scope, code, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getCounterpartyAgreementCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -474,11 +615,11 @@ public class CounterpartiesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCounterpartyAgreementValidateBeforeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCounterpartyAgreementValidateBeforeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getCounterpartyAgreement(Async)");
@@ -489,20 +630,34 @@ public class CounterpartiesApi {
             throw new ApiException("Missing the required parameter 'code' when calling getCounterpartyAgreement(Async)");
         }
 
-        return getCounterpartyAgreementCall(scope, code, asAt, _callback);
+        return getCounterpartyAgreementCall(scope, code, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<GetCounterpartyAgreementResponse> getCounterpartyAgreementWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getCounterpartyAgreementValidateBeforeCall(scope, code, asAt, null);
+        okhttp3.Call localVarCall = getCounterpartyAgreementValidateBeforeCall(scope, code, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GetCounterpartyAgreementResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<GetCounterpartyAgreementResponse> getCounterpartyAgreementWithHttpInfo(String scope, String code, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getCounterpartyAgreementValidateBeforeCall(scope, code, asAt, null, opts);
         Type localVarReturnType = new TypeToken<GetCounterpartyAgreementResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getCounterpartyAgreementAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<GetCounterpartyAgreementResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getCounterpartyAgreementValidateBeforeCall(scope, code, asAt, _callback);
+        okhttp3.Call localVarCall = getCounterpartyAgreementValidateBeforeCall(scope, code, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GetCounterpartyAgreementResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getCounterpartyAgreementAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<GetCounterpartyAgreementResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getCounterpartyAgreementValidateBeforeCall(scope, code, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<GetCounterpartyAgreementResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -563,6 +718,23 @@ public class CounterpartiesApi {
         }
 
         /**
+         * Execute getCounterpartyAgreement request. Use any specified configuration options to override any other configuration for this request only.
+         * @return GetCounterpartyAgreementResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Counterparty Agreement or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GetCounterpartyAgreementResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<GetCounterpartyAgreementResponse> localVarResp = getCounterpartyAgreementWithHttpInfo(scope, code, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getCounterpartyAgreement request with HTTP info returned
          * @return ApiResponse&lt;GetCounterpartyAgreementResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -576,6 +748,22 @@ public class CounterpartiesApi {
          */
         public ApiResponse<GetCounterpartyAgreementResponse> executeWithHttpInfo() throws ApiException {
             return getCounterpartyAgreementWithHttpInfo(scope, code, asAt);
+        }
+
+        /**
+         * Execute getCounterpartyAgreement request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;GetCounterpartyAgreementResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Counterparty Agreement or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GetCounterpartyAgreementResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getCounterpartyAgreementWithHttpInfo(scope, code, asAt, opts);
         }
 
         /**
@@ -593,6 +781,23 @@ public class CounterpartiesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<GetCounterpartyAgreementResponse> _callback) throws ApiException {
             return getCounterpartyAgreementAsync(scope, code, asAt, _callback);
+        }
+
+        /**
+         * Execute getCounterpartyAgreement request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Counterparty Agreement or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GetCounterpartyAgreementResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return getCounterpartyAgreementAsync(scope, code, asAt, _callback, opts);
         }
     }
 
@@ -614,6 +819,10 @@ public class CounterpartiesApi {
         return new APIgetCounterpartyAgreementRequest(scope, code);
     }
     private okhttp3.Call getCreditSupportAnnexCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getCreditSupportAnnexCall(scope, code, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getCreditSupportAnnexCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -662,11 +871,11 @@ public class CounterpartiesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCreditSupportAnnexValidateBeforeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCreditSupportAnnexValidateBeforeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getCreditSupportAnnex(Async)");
@@ -677,20 +886,34 @@ public class CounterpartiesApi {
             throw new ApiException("Missing the required parameter 'code' when calling getCreditSupportAnnex(Async)");
         }
 
-        return getCreditSupportAnnexCall(scope, code, asAt, _callback);
+        return getCreditSupportAnnexCall(scope, code, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<GetCreditSupportAnnexResponse> getCreditSupportAnnexWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getCreditSupportAnnexValidateBeforeCall(scope, code, asAt, null);
+        okhttp3.Call localVarCall = getCreditSupportAnnexValidateBeforeCall(scope, code, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GetCreditSupportAnnexResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<GetCreditSupportAnnexResponse> getCreditSupportAnnexWithHttpInfo(String scope, String code, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getCreditSupportAnnexValidateBeforeCall(scope, code, asAt, null, opts);
         Type localVarReturnType = new TypeToken<GetCreditSupportAnnexResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getCreditSupportAnnexAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<GetCreditSupportAnnexResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getCreditSupportAnnexValidateBeforeCall(scope, code, asAt, _callback);
+        okhttp3.Call localVarCall = getCreditSupportAnnexValidateBeforeCall(scope, code, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GetCreditSupportAnnexResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getCreditSupportAnnexAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<GetCreditSupportAnnexResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getCreditSupportAnnexValidateBeforeCall(scope, code, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<GetCreditSupportAnnexResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -751,6 +974,23 @@ public class CounterpartiesApi {
         }
 
         /**
+         * Execute getCreditSupportAnnex request. Use any specified configuration options to override any other configuration for this request only.
+         * @return GetCreditSupportAnnexResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved credit support annexes or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GetCreditSupportAnnexResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<GetCreditSupportAnnexResponse> localVarResp = getCreditSupportAnnexWithHttpInfo(scope, code, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getCreditSupportAnnex request with HTTP info returned
          * @return ApiResponse&lt;GetCreditSupportAnnexResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -764,6 +1004,22 @@ public class CounterpartiesApi {
          */
         public ApiResponse<GetCreditSupportAnnexResponse> executeWithHttpInfo() throws ApiException {
             return getCreditSupportAnnexWithHttpInfo(scope, code, asAt);
+        }
+
+        /**
+         * Execute getCreditSupportAnnex request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;GetCreditSupportAnnexResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved credit support annexes or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GetCreditSupportAnnexResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getCreditSupportAnnexWithHttpInfo(scope, code, asAt, opts);
         }
 
         /**
@@ -781,6 +1037,23 @@ public class CounterpartiesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<GetCreditSupportAnnexResponse> _callback) throws ApiException {
             return getCreditSupportAnnexAsync(scope, code, asAt, _callback);
+        }
+
+        /**
+         * Execute getCreditSupportAnnex request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved credit support annexes or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GetCreditSupportAnnexResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return getCreditSupportAnnexAsync(scope, code, asAt, _callback, opts);
         }
     }
 
@@ -802,6 +1075,10 @@ public class CounterpartiesApi {
         return new APIgetCreditSupportAnnexRequest(scope, code);
     }
     private okhttp3.Call listCounterpartyAgreementsCall(OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return listCounterpartyAgreementsCall(asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listCounterpartyAgreementsCall(OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -848,25 +1125,39 @@ public class CounterpartiesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listCounterpartyAgreementsValidateBeforeCall(OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
-        return listCounterpartyAgreementsCall(asAt, _callback);
+    private okhttp3.Call listCounterpartyAgreementsValidateBeforeCall(OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listCounterpartyAgreementsCall(asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfGetCounterpartyAgreementResponse> listCounterpartyAgreementsWithHttpInfo(OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = listCounterpartyAgreementsValidateBeforeCall(asAt, null);
+        okhttp3.Call localVarCall = listCounterpartyAgreementsValidateBeforeCall(asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfGetCounterpartyAgreementResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfGetCounterpartyAgreementResponse> listCounterpartyAgreementsWithHttpInfo(OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listCounterpartyAgreementsValidateBeforeCall(asAt, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfGetCounterpartyAgreementResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listCounterpartyAgreementsAsync(OffsetDateTime asAt, final ApiCallback<ResourceListOfGetCounterpartyAgreementResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listCounterpartyAgreementsValidateBeforeCall(asAt, _callback);
+        okhttp3.Call localVarCall = listCounterpartyAgreementsValidateBeforeCall(asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfGetCounterpartyAgreementResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listCounterpartyAgreementsAsync(OffsetDateTime asAt, final ApiCallback<ResourceListOfGetCounterpartyAgreementResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listCounterpartyAgreementsValidateBeforeCall(asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfGetCounterpartyAgreementResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -923,6 +1214,23 @@ public class CounterpartiesApi {
         }
 
         /**
+         * Execute listCounterpartyAgreements request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfGetCounterpartyAgreementResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Counterparty Agreements </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfGetCounterpartyAgreementResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfGetCounterpartyAgreementResponse> localVarResp = listCounterpartyAgreementsWithHttpInfo(asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listCounterpartyAgreements request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfGetCounterpartyAgreementResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -936,6 +1244,22 @@ public class CounterpartiesApi {
          */
         public ApiResponse<ResourceListOfGetCounterpartyAgreementResponse> executeWithHttpInfo() throws ApiException {
             return listCounterpartyAgreementsWithHttpInfo(asAt);
+        }
+
+        /**
+         * Execute listCounterpartyAgreements request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfGetCounterpartyAgreementResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Counterparty Agreements </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfGetCounterpartyAgreementResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listCounterpartyAgreementsWithHttpInfo(asAt, opts);
         }
 
         /**
@@ -953,6 +1277,23 @@ public class CounterpartiesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfGetCounterpartyAgreementResponse> _callback) throws ApiException {
             return listCounterpartyAgreementsAsync(asAt, _callback);
+        }
+
+        /**
+         * Execute listCounterpartyAgreements request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Counterparty Agreements </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfGetCounterpartyAgreementResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return listCounterpartyAgreementsAsync(asAt, _callback, opts);
         }
     }
 
@@ -972,6 +1313,10 @@ public class CounterpartiesApi {
         return new APIlistCounterpartyAgreementsRequest();
     }
     private okhttp3.Call listCreditSupportAnnexesCall(OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return listCreditSupportAnnexesCall(asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listCreditSupportAnnexesCall(OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1018,25 +1363,39 @@ public class CounterpartiesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listCreditSupportAnnexesValidateBeforeCall(OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
-        return listCreditSupportAnnexesCall(asAt, _callback);
+    private okhttp3.Call listCreditSupportAnnexesValidateBeforeCall(OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listCreditSupportAnnexesCall(asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfGetCreditSupportAnnexResponse> listCreditSupportAnnexesWithHttpInfo(OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = listCreditSupportAnnexesValidateBeforeCall(asAt, null);
+        okhttp3.Call localVarCall = listCreditSupportAnnexesValidateBeforeCall(asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfGetCreditSupportAnnexResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfGetCreditSupportAnnexResponse> listCreditSupportAnnexesWithHttpInfo(OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listCreditSupportAnnexesValidateBeforeCall(asAt, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfGetCreditSupportAnnexResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listCreditSupportAnnexesAsync(OffsetDateTime asAt, final ApiCallback<ResourceListOfGetCreditSupportAnnexResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listCreditSupportAnnexesValidateBeforeCall(asAt, _callback);
+        okhttp3.Call localVarCall = listCreditSupportAnnexesValidateBeforeCall(asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfGetCreditSupportAnnexResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listCreditSupportAnnexesAsync(OffsetDateTime asAt, final ApiCallback<ResourceListOfGetCreditSupportAnnexResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listCreditSupportAnnexesValidateBeforeCall(asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfGetCreditSupportAnnexResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1093,6 +1452,23 @@ public class CounterpartiesApi {
         }
 
         /**
+         * Execute listCreditSupportAnnexes request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfGetCreditSupportAnnexResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Credit Support Annexes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfGetCreditSupportAnnexResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfGetCreditSupportAnnexResponse> localVarResp = listCreditSupportAnnexesWithHttpInfo(asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listCreditSupportAnnexes request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfGetCreditSupportAnnexResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1106,6 +1482,22 @@ public class CounterpartiesApi {
          */
         public ApiResponse<ResourceListOfGetCreditSupportAnnexResponse> executeWithHttpInfo() throws ApiException {
             return listCreditSupportAnnexesWithHttpInfo(asAt);
+        }
+
+        /**
+         * Execute listCreditSupportAnnexes request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfGetCreditSupportAnnexResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Credit Support Annexes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfGetCreditSupportAnnexResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listCreditSupportAnnexesWithHttpInfo(asAt, opts);
         }
 
         /**
@@ -1123,6 +1515,23 @@ public class CounterpartiesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfGetCreditSupportAnnexResponse> _callback) throws ApiException {
             return listCreditSupportAnnexesAsync(asAt, _callback);
+        }
+
+        /**
+         * Execute listCreditSupportAnnexes request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Credit Support Annexes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfGetCreditSupportAnnexResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return listCreditSupportAnnexesAsync(asAt, _callback, opts);
         }
     }
 
@@ -1142,6 +1551,10 @@ public class CounterpartiesApi {
         return new APIlistCreditSupportAnnexesRequest();
     }
     private okhttp3.Call upsertCounterpartyAgreementCall(UpsertCounterpartyAgreementRequest upsertCounterpartyAgreementRequest, final ApiCallback _callback) throws ApiException {
+        return upsertCounterpartyAgreementCall(upsertCounterpartyAgreementRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertCounterpartyAgreementCall(UpsertCounterpartyAgreementRequest upsertCounterpartyAgreementRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1188,30 +1601,44 @@ public class CounterpartiesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertCounterpartyAgreementValidateBeforeCall(UpsertCounterpartyAgreementRequest upsertCounterpartyAgreementRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertCounterpartyAgreementValidateBeforeCall(UpsertCounterpartyAgreementRequest upsertCounterpartyAgreementRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'upsertCounterpartyAgreementRequest' is set
         if (upsertCounterpartyAgreementRequest == null) {
             throw new ApiException("Missing the required parameter 'upsertCounterpartyAgreementRequest' when calling upsertCounterpartyAgreement(Async)");
         }
 
-        return upsertCounterpartyAgreementCall(upsertCounterpartyAgreementRequest, _callback);
+        return upsertCounterpartyAgreementCall(upsertCounterpartyAgreementRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<UpsertSingleStructuredDataResponse> upsertCounterpartyAgreementWithHttpInfo(UpsertCounterpartyAgreementRequest upsertCounterpartyAgreementRequest) throws ApiException {
-        okhttp3.Call localVarCall = upsertCounterpartyAgreementValidateBeforeCall(upsertCounterpartyAgreementRequest, null);
+        okhttp3.Call localVarCall = upsertCounterpartyAgreementValidateBeforeCall(upsertCounterpartyAgreementRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<UpsertSingleStructuredDataResponse> upsertCounterpartyAgreementWithHttpInfo(UpsertCounterpartyAgreementRequest upsertCounterpartyAgreementRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertCounterpartyAgreementValidateBeforeCall(upsertCounterpartyAgreementRequest, null, opts);
         Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertCounterpartyAgreementAsync(UpsertCounterpartyAgreementRequest upsertCounterpartyAgreementRequest, final ApiCallback<UpsertSingleStructuredDataResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertCounterpartyAgreementValidateBeforeCall(upsertCounterpartyAgreementRequest, _callback);
+        okhttp3.Call localVarCall = upsertCounterpartyAgreementValidateBeforeCall(upsertCounterpartyAgreementRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertCounterpartyAgreementAsync(UpsertCounterpartyAgreementRequest upsertCounterpartyAgreementRequest, final ApiCallback<UpsertSingleStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertCounterpartyAgreementValidateBeforeCall(upsertCounterpartyAgreementRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1259,6 +1686,23 @@ public class CounterpartiesApi {
         }
 
         /**
+         * Execute upsertCounterpartyAgreement request. Use any specified configuration options to override any other configuration for this request only.
+         * @return UpsertSingleStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted Counterparty Agreement or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertSingleStructuredDataResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<UpsertSingleStructuredDataResponse> localVarResp = upsertCounterpartyAgreementWithHttpInfo(upsertCounterpartyAgreementRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertCounterpartyAgreement request with HTTP info returned
          * @return ApiResponse&lt;UpsertSingleStructuredDataResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1272,6 +1716,22 @@ public class CounterpartiesApi {
          */
         public ApiResponse<UpsertSingleStructuredDataResponse> executeWithHttpInfo() throws ApiException {
             return upsertCounterpartyAgreementWithHttpInfo(upsertCounterpartyAgreementRequest);
+        }
+
+        /**
+         * Execute upsertCounterpartyAgreement request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;UpsertSingleStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted Counterparty Agreement or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertSingleStructuredDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertCounterpartyAgreementWithHttpInfo(upsertCounterpartyAgreementRequest, opts);
         }
 
         /**
@@ -1289,6 +1749,23 @@ public class CounterpartiesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<UpsertSingleStructuredDataResponse> _callback) throws ApiException {
             return upsertCounterpartyAgreementAsync(upsertCounterpartyAgreementRequest, _callback);
+        }
+
+        /**
+         * Execute upsertCounterpartyAgreement request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted Counterparty Agreement or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertSingleStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertCounterpartyAgreementAsync(upsertCounterpartyAgreementRequest, _callback, opts);
         }
     }
 
@@ -1309,6 +1786,10 @@ public class CounterpartiesApi {
         return new APIupsertCounterpartyAgreementRequest(upsertCounterpartyAgreementRequest);
     }
     private okhttp3.Call upsertCreditSupportAnnexCall(UpsertCreditSupportAnnexRequest upsertCreditSupportAnnexRequest, final ApiCallback _callback) throws ApiException {
+        return upsertCreditSupportAnnexCall(upsertCreditSupportAnnexRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertCreditSupportAnnexCall(UpsertCreditSupportAnnexRequest upsertCreditSupportAnnexRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1355,30 +1836,44 @@ public class CounterpartiesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertCreditSupportAnnexValidateBeforeCall(UpsertCreditSupportAnnexRequest upsertCreditSupportAnnexRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertCreditSupportAnnexValidateBeforeCall(UpsertCreditSupportAnnexRequest upsertCreditSupportAnnexRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'upsertCreditSupportAnnexRequest' is set
         if (upsertCreditSupportAnnexRequest == null) {
             throw new ApiException("Missing the required parameter 'upsertCreditSupportAnnexRequest' when calling upsertCreditSupportAnnex(Async)");
         }
 
-        return upsertCreditSupportAnnexCall(upsertCreditSupportAnnexRequest, _callback);
+        return upsertCreditSupportAnnexCall(upsertCreditSupportAnnexRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<UpsertSingleStructuredDataResponse> upsertCreditSupportAnnexWithHttpInfo(UpsertCreditSupportAnnexRequest upsertCreditSupportAnnexRequest) throws ApiException {
-        okhttp3.Call localVarCall = upsertCreditSupportAnnexValidateBeforeCall(upsertCreditSupportAnnexRequest, null);
+        okhttp3.Call localVarCall = upsertCreditSupportAnnexValidateBeforeCall(upsertCreditSupportAnnexRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<UpsertSingleStructuredDataResponse> upsertCreditSupportAnnexWithHttpInfo(UpsertCreditSupportAnnexRequest upsertCreditSupportAnnexRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertCreditSupportAnnexValidateBeforeCall(upsertCreditSupportAnnexRequest, null, opts);
         Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertCreditSupportAnnexAsync(UpsertCreditSupportAnnexRequest upsertCreditSupportAnnexRequest, final ApiCallback<UpsertSingleStructuredDataResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertCreditSupportAnnexValidateBeforeCall(upsertCreditSupportAnnexRequest, _callback);
+        okhttp3.Call localVarCall = upsertCreditSupportAnnexValidateBeforeCall(upsertCreditSupportAnnexRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertCreditSupportAnnexAsync(UpsertCreditSupportAnnexRequest upsertCreditSupportAnnexRequest, final ApiCallback<UpsertSingleStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertCreditSupportAnnexValidateBeforeCall(upsertCreditSupportAnnexRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1426,6 +1921,23 @@ public class CounterpartiesApi {
         }
 
         /**
+         * Execute upsertCreditSupportAnnex request. Use any specified configuration options to override any other configuration for this request only.
+         * @return UpsertSingleStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertSingleStructuredDataResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<UpsertSingleStructuredDataResponse> localVarResp = upsertCreditSupportAnnexWithHttpInfo(upsertCreditSupportAnnexRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertCreditSupportAnnex request with HTTP info returned
          * @return ApiResponse&lt;UpsertSingleStructuredDataResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1439,6 +1951,22 @@ public class CounterpartiesApi {
          */
         public ApiResponse<UpsertSingleStructuredDataResponse> executeWithHttpInfo() throws ApiException {
             return upsertCreditSupportAnnexWithHttpInfo(upsertCreditSupportAnnexRequest);
+        }
+
+        /**
+         * Execute upsertCreditSupportAnnex request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;UpsertSingleStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertSingleStructuredDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertCreditSupportAnnexWithHttpInfo(upsertCreditSupportAnnexRequest, opts);
         }
 
         /**
@@ -1456,6 +1984,23 @@ public class CounterpartiesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<UpsertSingleStructuredDataResponse> _callback) throws ApiException {
             return upsertCreditSupportAnnexAsync(upsertCreditSupportAnnexRequest, _callback);
+        }
+
+        /**
+         * Execute upsertCreditSupportAnnex request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertSingleStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertCreditSupportAnnexAsync(upsertCreditSupportAnnexRequest, _callback, opts);
         }
     }
 

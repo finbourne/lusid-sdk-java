@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -87,6 +88,10 @@ public class PersonsApi {
     }
 
     private okhttp3.Call deletePersonCall(String idTypeScope, String idTypeCode, String code, final ApiCallback _callback) throws ApiException {
+        return deletePersonCall(idTypeScope, idTypeCode, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deletePersonCall(String idTypeScope, String idTypeCode, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -132,11 +137,11 @@ public class PersonsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deletePersonValidateBeforeCall(String idTypeScope, String idTypeCode, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deletePersonValidateBeforeCall(String idTypeScope, String idTypeCode, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'idTypeScope' is set
         if (idTypeScope == null) {
             throw new ApiException("Missing the required parameter 'idTypeScope' when calling deletePerson(Async)");
@@ -152,20 +157,34 @@ public class PersonsApi {
             throw new ApiException("Missing the required parameter 'code' when calling deletePerson(Async)");
         }
 
-        return deletePersonCall(idTypeScope, idTypeCode, code, _callback);
+        return deletePersonCall(idTypeScope, idTypeCode, code, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deletePersonWithHttpInfo(String idTypeScope, String idTypeCode, String code) throws ApiException {
-        okhttp3.Call localVarCall = deletePersonValidateBeforeCall(idTypeScope, idTypeCode, code, null);
+        okhttp3.Call localVarCall = deletePersonValidateBeforeCall(idTypeScope, idTypeCode, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deletePersonWithHttpInfo(String idTypeScope, String idTypeCode, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deletePersonValidateBeforeCall(idTypeScope, idTypeCode, code, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deletePersonAsync(String idTypeScope, String idTypeCode, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deletePersonValidateBeforeCall(idTypeScope, idTypeCode, code, _callback);
+        okhttp3.Call localVarCall = deletePersonValidateBeforeCall(idTypeScope, idTypeCode, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deletePersonAsync(String idTypeScope, String idTypeCode, String code, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deletePersonValidateBeforeCall(idTypeScope, idTypeCode, code, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -217,6 +236,23 @@ public class PersonsApi {
         }
 
         /**
+         * Execute deletePerson request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting person. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deletePersonWithHttpInfo(idTypeScope, idTypeCode, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deletePerson request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -230,6 +266,22 @@ public class PersonsApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deletePersonWithHttpInfo(idTypeScope, idTypeCode, code);
+        }
+
+        /**
+         * Execute deletePerson request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting person. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deletePersonWithHttpInfo(idTypeScope, idTypeCode, code, opts);
         }
 
         /**
@@ -247,6 +299,23 @@ public class PersonsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deletePersonAsync(idTypeScope, idTypeCode, code, _callback);
+        }
+
+        /**
+         * Execute deletePerson request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting person. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deletePersonAsync(idTypeScope, idTypeCode, code, _callback, opts);
         }
     }
 
@@ -269,6 +338,10 @@ public class PersonsApi {
         return new APIdeletePersonRequest(idTypeScope, idTypeCode, code);
     }
     private okhttp3.Call deletePersonAccessMetadataCall(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+        return deletePersonAccessMetadataCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deletePersonAccessMetadataCall(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -323,11 +396,11 @@ public class PersonsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deletePersonAccessMetadataValidateBeforeCall(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deletePersonAccessMetadataValidateBeforeCall(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'idTypeScope' is set
         if (idTypeScope == null) {
             throw new ApiException("Missing the required parameter 'idTypeScope' when calling deletePersonAccessMetadata(Async)");
@@ -348,20 +421,34 @@ public class PersonsApi {
             throw new ApiException("Missing the required parameter 'metadataKey' when calling deletePersonAccessMetadata(Async)");
         }
 
-        return deletePersonAccessMetadataCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil, _callback);
+        return deletePersonAccessMetadataCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deletePersonAccessMetadataWithHttpInfo(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
-        okhttp3.Call localVarCall = deletePersonAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil, null);
+        okhttp3.Call localVarCall = deletePersonAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deletePersonAccessMetadataWithHttpInfo(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deletePersonAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deletePersonAccessMetadataAsync(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deletePersonAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil, _callback);
+        okhttp3.Call localVarCall = deletePersonAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deletePersonAccessMetadataAsync(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deletePersonAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -437,6 +524,23 @@ public class PersonsApi {
         }
 
         /**
+         * Execute deletePersonAccessMetadata request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Access Metadata with the given metadataKey has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deletePersonAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deletePersonAccessMetadata request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -450,6 +554,22 @@ public class PersonsApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deletePersonAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil);
+        }
+
+        /**
+         * Execute deletePersonAccessMetadata request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Access Metadata with the given metadataKey has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deletePersonAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil, opts);
         }
 
         /**
@@ -467,6 +587,23 @@ public class PersonsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deletePersonAccessMetadataAsync(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil, _callback);
+        }
+
+        /**
+         * Execute deletePersonAccessMetadata request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Access Metadata with the given metadataKey has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deletePersonAccessMetadataAsync(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil, _callback, opts);
         }
     }
 
@@ -490,6 +627,10 @@ public class PersonsApi {
         return new APIdeletePersonAccessMetadataRequest(idTypeScope, idTypeCode, code, metadataKey);
     }
     private okhttp3.Call deletePersonIdentifiersCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback _callback) throws ApiException {
+        return deletePersonIdentifiersCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deletePersonIdentifiersCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -543,11 +684,11 @@ public class PersonsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deletePersonIdentifiersValidateBeforeCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deletePersonIdentifiersValidateBeforeCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'idTypeScope' is set
         if (idTypeScope == null) {
             throw new ApiException("Missing the required parameter 'idTypeScope' when calling deletePersonIdentifiers(Async)");
@@ -568,20 +709,34 @@ public class PersonsApi {
             throw new ApiException("Missing the required parameter 'propertyKeys' when calling deletePersonIdentifiers(Async)");
         }
 
-        return deletePersonIdentifiersCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback);
+        return deletePersonIdentifiersCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deletePersonIdentifiersWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt) throws ApiException {
-        okhttp3.Call localVarCall = deletePersonIdentifiersValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, null);
+        okhttp3.Call localVarCall = deletePersonIdentifiersValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deletePersonIdentifiersWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deletePersonIdentifiersValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deletePersonIdentifiersAsync(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deletePersonIdentifiersValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback);
+        okhttp3.Call localVarCall = deletePersonIdentifiersValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deletePersonIdentifiersAsync(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deletePersonIdentifiersValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -646,6 +801,23 @@ public class PersonsApi {
         }
 
         /**
+         * Execute deletePersonIdentifiers request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the identifiers were deleted from the specified person </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deletePersonIdentifiersWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deletePersonIdentifiers request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -659,6 +831,22 @@ public class PersonsApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deletePersonIdentifiersWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt);
+        }
+
+        /**
+         * Execute deletePersonIdentifiers request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the identifiers were deleted from the specified person </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deletePersonIdentifiersWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, opts);
         }
 
         /**
@@ -676,6 +864,23 @@ public class PersonsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deletePersonIdentifiersAsync(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute deletePersonIdentifiers request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the identifiers were deleted from the specified person </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deletePersonIdentifiersAsync(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback, opts);
         }
     }
 
@@ -699,6 +904,10 @@ public class PersonsApi {
         return new APIdeletePersonIdentifiersRequest(idTypeScope, idTypeCode, code, propertyKeys);
     }
     private okhttp3.Call deletePersonPropertiesCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback _callback) throws ApiException {
+        return deletePersonPropertiesCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deletePersonPropertiesCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -752,11 +961,11 @@ public class PersonsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deletePersonPropertiesValidateBeforeCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deletePersonPropertiesValidateBeforeCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'idTypeScope' is set
         if (idTypeScope == null) {
             throw new ApiException("Missing the required parameter 'idTypeScope' when calling deletePersonProperties(Async)");
@@ -777,20 +986,34 @@ public class PersonsApi {
             throw new ApiException("Missing the required parameter 'propertyKeys' when calling deletePersonProperties(Async)");
         }
 
-        return deletePersonPropertiesCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback);
+        return deletePersonPropertiesCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deletePersonPropertiesWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt) throws ApiException {
-        okhttp3.Call localVarCall = deletePersonPropertiesValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, null);
+        okhttp3.Call localVarCall = deletePersonPropertiesValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deletePersonPropertiesWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deletePersonPropertiesValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deletePersonPropertiesAsync(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deletePersonPropertiesValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback);
+        okhttp3.Call localVarCall = deletePersonPropertiesValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deletePersonPropertiesAsync(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deletePersonPropertiesValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -855,6 +1078,23 @@ public class PersonsApi {
         }
 
         /**
+         * Execute deletePersonProperties request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified person </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deletePersonPropertiesWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deletePersonProperties request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -868,6 +1108,22 @@ public class PersonsApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deletePersonPropertiesWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt);
+        }
+
+        /**
+         * Execute deletePersonProperties request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified person </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deletePersonPropertiesWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, opts);
         }
 
         /**
@@ -885,6 +1141,23 @@ public class PersonsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deletePersonPropertiesAsync(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute deletePersonProperties request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified person </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deletePersonPropertiesAsync(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback, opts);
         }
     }
 
@@ -908,6 +1181,10 @@ public class PersonsApi {
         return new APIdeletePersonPropertiesRequest(idTypeScope, idTypeCode, code, propertyKeys);
     }
     private okhttp3.Call getAllPersonAccessMetadataCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getAllPersonAccessMetadataCall(idTypeScope, idTypeCode, code, effectiveAt, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getAllPersonAccessMetadataCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -961,11 +1238,11 @@ public class PersonsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAllPersonAccessMetadataValidateBeforeCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAllPersonAccessMetadataValidateBeforeCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'idTypeScope' is set
         if (idTypeScope == null) {
             throw new ApiException("Missing the required parameter 'idTypeScope' when calling getAllPersonAccessMetadata(Async)");
@@ -981,20 +1258,34 @@ public class PersonsApi {
             throw new ApiException("Missing the required parameter 'code' when calling getAllPersonAccessMetadata(Async)");
         }
 
-        return getAllPersonAccessMetadataCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, _callback);
+        return getAllPersonAccessMetadataCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<Map<String, List<AccessMetadataValue>>> getAllPersonAccessMetadataWithHttpInfo(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getAllPersonAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, null);
+        okhttp3.Call localVarCall = getAllPersonAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Map<String, List<AccessMetadataValue>>> getAllPersonAccessMetadataWithHttpInfo(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getAllPersonAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, null, opts);
         Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getAllPersonAccessMetadataAsync(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAllPersonAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, _callback);
+        okhttp3.Call localVarCall = getAllPersonAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getAllPersonAccessMetadataAsync(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getAllPersonAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1068,6 +1359,23 @@ public class PersonsApi {
         }
 
         /**
+         * Execute getAllPersonAccessMetadata request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the Person or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Map<String, List<AccessMetadataValue>> execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Map<String, List<AccessMetadataValue>>> localVarResp = getAllPersonAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getAllPersonAccessMetadata request with HTTP info returned
          * @return ApiResponse&lt;Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1081,6 +1389,22 @@ public class PersonsApi {
          */
         public ApiResponse<Map<String, List<AccessMetadataValue>>> executeWithHttpInfo() throws ApiException {
             return getAllPersonAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getAllPersonAccessMetadata request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the Person or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Map<String, List<AccessMetadataValue>>> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getAllPersonAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt, opts);
         }
 
         /**
@@ -1098,6 +1422,23 @@ public class PersonsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
             return getAllPersonAccessMetadataAsync(idTypeScope, idTypeCode, code, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getAllPersonAccessMetadata request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the Person or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback, ConfigurationOptions opts) throws ApiException {
+            return getAllPersonAccessMetadataAsync(idTypeScope, idTypeCode, code, effectiveAt, asAt, _callback, opts);
         }
     }
 
@@ -1120,6 +1461,10 @@ public class PersonsApi {
         return new APIgetAllPersonAccessMetadataRequest(idTypeScope, idTypeCode, code);
     }
     private okhttp3.Call getPersonCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+        return getPersonCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getPersonCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1181,11 +1526,11 @@ public class PersonsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPersonValidateBeforeCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPersonValidateBeforeCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'idTypeScope' is set
         if (idTypeScope == null) {
             throw new ApiException("Missing the required parameter 'idTypeScope' when calling getPerson(Async)");
@@ -1201,20 +1546,34 @@ public class PersonsApi {
             throw new ApiException("Missing the required parameter 'code' when calling getPerson(Async)");
         }
 
-        return getPersonCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback);
+        return getPersonCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback, opts);
 
     }
 
 
     private ApiResponse<Person> getPersonWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds) throws ApiException {
-        okhttp3.Call localVarCall = getPersonValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, null);
+        okhttp3.Call localVarCall = getPersonValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Person>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Person> getPersonWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPersonValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, null, opts);
         Type localVarReturnType = new TypeToken<Person>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getPersonAsync(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback<Person> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPersonValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback);
+        okhttp3.Call localVarCall = getPersonValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Person>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getPersonAsync(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback<Person> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getPersonValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback, opts);
         Type localVarReturnType = new TypeToken<Person>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1310,6 +1669,23 @@ public class PersonsApi {
         }
 
         /**
+         * Execute getPerson request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Person
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested person definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Person execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Person> localVarResp = getPersonWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getPerson request with HTTP info returned
          * @return ApiResponse&lt;Person&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1323,6 +1699,22 @@ public class PersonsApi {
          */
         public ApiResponse<Person> executeWithHttpInfo() throws ApiException {
             return getPersonWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds);
+        }
+
+        /**
+         * Execute getPerson request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Person&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested person definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Person> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getPersonWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, opts);
         }
 
         /**
@@ -1340,6 +1732,23 @@ public class PersonsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Person> _callback) throws ApiException {
             return getPersonAsync(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback);
+        }
+
+        /**
+         * Execute getPerson request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested person definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Person> _callback, ConfigurationOptions opts) throws ApiException {
+            return getPersonAsync(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback, opts);
         }
     }
 
@@ -1362,6 +1771,10 @@ public class PersonsApi {
         return new APIgetPersonRequest(idTypeScope, idTypeCode, code);
     }
     private okhttp3.Call getPersonAccessMetadataByKeyCall(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getPersonAccessMetadataByKeyCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getPersonAccessMetadataByKeyCall(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1416,11 +1829,11 @@ public class PersonsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPersonAccessMetadataByKeyValidateBeforeCall(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPersonAccessMetadataByKeyValidateBeforeCall(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'idTypeScope' is set
         if (idTypeScope == null) {
             throw new ApiException("Missing the required parameter 'idTypeScope' when calling getPersonAccessMetadataByKey(Async)");
@@ -1441,20 +1854,34 @@ public class PersonsApi {
             throw new ApiException("Missing the required parameter 'metadataKey' when calling getPersonAccessMetadataByKey(Async)");
         }
 
-        return getPersonAccessMetadataByKeyCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt, _callback);
+        return getPersonAccessMetadataByKeyCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<List<AccessMetadataValue>> getPersonAccessMetadataByKeyWithHttpInfo(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getPersonAccessMetadataByKeyValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt, null);
+        okhttp3.Call localVarCall = getPersonAccessMetadataByKeyValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<List<AccessMetadataValue>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<List<AccessMetadataValue>> getPersonAccessMetadataByKeyWithHttpInfo(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPersonAccessMetadataByKeyValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt, null, opts);
         Type localVarReturnType = new TypeToken<List<AccessMetadataValue>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getPersonAccessMetadataByKeyAsync(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt, final ApiCallback<List<AccessMetadataValue>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPersonAccessMetadataByKeyValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt, _callback);
+        okhttp3.Call localVarCall = getPersonAccessMetadataByKeyValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<List<AccessMetadataValue>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getPersonAccessMetadataByKeyAsync(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt, final ApiCallback<List<AccessMetadataValue>> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getPersonAccessMetadataByKeyValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<List<AccessMetadataValue>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1530,6 +1957,23 @@ public class PersonsApi {
         }
 
         /**
+         * Execute getPersonAccessMetadataByKey request. Use any specified configuration options to override any other configuration for this request only.
+         * @return List&lt;AccessMetadataValue&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Person access metadata filtered by metadataKey or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public List<AccessMetadataValue> execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<List<AccessMetadataValue>> localVarResp = getPersonAccessMetadataByKeyWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getPersonAccessMetadataByKey request with HTTP info returned
          * @return ApiResponse&lt;List&lt;AccessMetadataValue&gt;&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1543,6 +1987,22 @@ public class PersonsApi {
          */
         public ApiResponse<List<AccessMetadataValue>> executeWithHttpInfo() throws ApiException {
             return getPersonAccessMetadataByKeyWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getPersonAccessMetadataByKey request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;List&lt;AccessMetadataValue&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Person access metadata filtered by metadataKey or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<List<AccessMetadataValue>> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getPersonAccessMetadataByKeyWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt, opts);
         }
 
         /**
@@ -1560,6 +2020,23 @@ public class PersonsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<List<AccessMetadataValue>> _callback) throws ApiException {
             return getPersonAccessMetadataByKeyAsync(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getPersonAccessMetadataByKey request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Person access metadata filtered by metadataKey or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<List<AccessMetadataValue>> _callback, ConfigurationOptions opts) throws ApiException {
+            return getPersonAccessMetadataByKeyAsync(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt, _callback, opts);
         }
     }
 
@@ -1583,6 +2060,10 @@ public class PersonsApi {
         return new APIgetPersonAccessMetadataByKeyRequest(idTypeScope, idTypeCode, code, metadataKey);
     }
     private okhttp3.Call getPersonPropertyTimeSeriesCall(String idTypeScope, String idTypeCode, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback _callback) throws ApiException {
+        return getPersonPropertyTimeSeriesCall(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getPersonPropertyTimeSeriesCall(String idTypeScope, String idTypeCode, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1648,11 +2129,11 @@ public class PersonsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPersonPropertyTimeSeriesValidateBeforeCall(String idTypeScope, String idTypeCode, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPersonPropertyTimeSeriesValidateBeforeCall(String idTypeScope, String idTypeCode, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'idTypeScope' is set
         if (idTypeScope == null) {
             throw new ApiException("Missing the required parameter 'idTypeScope' when calling getPersonPropertyTimeSeries(Async)");
@@ -1673,20 +2154,34 @@ public class PersonsApi {
             throw new ApiException("Missing the required parameter 'propertyKey' when calling getPersonPropertyTimeSeries(Async)");
         }
 
-        return getPersonPropertyTimeSeriesCall(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit, _callback);
+        return getPersonPropertyTimeSeriesCall(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfPropertyInterval> getPersonPropertyTimeSeriesWithHttpInfo(String idTypeScope, String idTypeCode, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getPersonPropertyTimeSeriesValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit, null);
+        okhttp3.Call localVarCall = getPersonPropertyTimeSeriesValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPropertyInterval>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfPropertyInterval> getPersonPropertyTimeSeriesWithHttpInfo(String idTypeScope, String idTypeCode, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPersonPropertyTimeSeriesValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPropertyInterval>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getPersonPropertyTimeSeriesAsync(String idTypeScope, String idTypeCode, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback<ResourceListOfPropertyInterval> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPersonPropertyTimeSeriesValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit, _callback);
+        okhttp3.Call localVarCall = getPersonPropertyTimeSeriesValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPropertyInterval>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getPersonPropertyTimeSeriesAsync(String idTypeScope, String idTypeCode, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback<ResourceListOfPropertyInterval> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getPersonPropertyTimeSeriesValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPropertyInterval>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1784,6 +2279,23 @@ public class PersonsApi {
         }
 
         /**
+         * Execute getPersonPropertyTimeSeries request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfPropertyInterval
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfPropertyInterval execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfPropertyInterval> localVarResp = getPersonPropertyTimeSeriesWithHttpInfo(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getPersonPropertyTimeSeries request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfPropertyInterval&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1797,6 +2309,22 @@ public class PersonsApi {
          */
         public ApiResponse<ResourceListOfPropertyInterval> executeWithHttpInfo() throws ApiException {
             return getPersonPropertyTimeSeriesWithHttpInfo(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit);
+        }
+
+        /**
+         * Execute getPersonPropertyTimeSeries request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfPropertyInterval&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfPropertyInterval> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getPersonPropertyTimeSeriesWithHttpInfo(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit, opts);
         }
 
         /**
@@ -1814,6 +2342,23 @@ public class PersonsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPropertyInterval> _callback) throws ApiException {
             return getPersonPropertyTimeSeriesAsync(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit, _callback);
+        }
+
+        /**
+         * Execute getPersonPropertyTimeSeries request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPropertyInterval> _callback, ConfigurationOptions opts) throws ApiException {
+            return getPersonPropertyTimeSeriesAsync(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit, _callback, opts);
         }
     }
 
@@ -1837,6 +2382,10 @@ public class PersonsApi {
         return new APIgetPersonPropertyTimeSeriesRequest(idTypeScope, idTypeCode, code, propertyKey);
     }
     private okhttp3.Call getPersonRelationsCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback) throws ApiException {
+        return getPersonRelationsCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getPersonRelationsCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1898,11 +2447,11 @@ public class PersonsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPersonRelationsValidateBeforeCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPersonRelationsValidateBeforeCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'idTypeScope' is set
         if (idTypeScope == null) {
             throw new ApiException("Missing the required parameter 'idTypeScope' when calling getPersonRelations(Async)");
@@ -1918,20 +2467,34 @@ public class PersonsApi {
             throw new ApiException("Missing the required parameter 'code' when calling getPersonRelations(Async)");
         }
 
-        return getPersonRelationsCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback);
+        return getPersonRelationsCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfRelation> getPersonRelationsWithHttpInfo(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes) throws ApiException {
-        okhttp3.Call localVarCall = getPersonRelationsValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, null);
+        okhttp3.Call localVarCall = getPersonRelationsValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfRelation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfRelation> getPersonRelationsWithHttpInfo(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPersonRelationsValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfRelation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getPersonRelationsAsync(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback<ResourceListOfRelation> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPersonRelationsValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback);
+        okhttp3.Call localVarCall = getPersonRelationsValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfRelation>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getPersonRelationsAsync(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback<ResourceListOfRelation> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getPersonRelationsValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfRelation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2027,6 +2590,23 @@ public class PersonsApi {
         }
 
         /**
+         * Execute getPersonRelations request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfRelation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relations for the specified person. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfRelation execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfRelation> localVarResp = getPersonRelationsWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getPersonRelations request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfRelation&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2040,6 +2620,22 @@ public class PersonsApi {
          */
         public ApiResponse<ResourceListOfRelation> executeWithHttpInfo() throws ApiException {
             return getPersonRelationsWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes);
+        }
+
+        /**
+         * Execute getPersonRelations request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfRelation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relations for the specified person. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfRelation> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getPersonRelationsWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, opts);
         }
 
         /**
@@ -2057,6 +2653,23 @@ public class PersonsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfRelation> _callback) throws ApiException {
             return getPersonRelationsAsync(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback);
+        }
+
+        /**
+         * Execute getPersonRelations request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relations for the specified person. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfRelation> _callback, ConfigurationOptions opts) throws ApiException {
+            return getPersonRelationsAsync(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback, opts);
         }
     }
 
@@ -2079,6 +2692,10 @@ public class PersonsApi {
         return new APIgetPersonRelationsRequest(idTypeScope, idTypeCode, code);
     }
     private okhttp3.Call getPersonRelationshipsCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback) throws ApiException {
+        return getPersonRelationshipsCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getPersonRelationshipsCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2140,11 +2757,11 @@ public class PersonsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPersonRelationshipsValidateBeforeCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPersonRelationshipsValidateBeforeCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'idTypeScope' is set
         if (idTypeScope == null) {
             throw new ApiException("Missing the required parameter 'idTypeScope' when calling getPersonRelationships(Async)");
@@ -2160,20 +2777,34 @@ public class PersonsApi {
             throw new ApiException("Missing the required parameter 'code' when calling getPersonRelationships(Async)");
         }
 
-        return getPersonRelationshipsCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback);
+        return getPersonRelationshipsCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfRelationship> getPersonRelationshipsWithHttpInfo(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes) throws ApiException {
-        okhttp3.Call localVarCall = getPersonRelationshipsValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, null);
+        okhttp3.Call localVarCall = getPersonRelationshipsValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfRelationship>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfRelationship> getPersonRelationshipsWithHttpInfo(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPersonRelationshipsValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfRelationship>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getPersonRelationshipsAsync(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback<ResourceListOfRelationship> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPersonRelationshipsValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback);
+        okhttp3.Call localVarCall = getPersonRelationshipsValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfRelationship>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getPersonRelationshipsAsync(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback<ResourceListOfRelationship> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getPersonRelationshipsValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfRelationship>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2269,6 +2900,23 @@ public class PersonsApi {
         }
 
         /**
+         * Execute getPersonRelationships request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfRelationship
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified person. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfRelationship execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfRelationship> localVarResp = getPersonRelationshipsWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getPersonRelationships request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfRelationship&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2282,6 +2930,22 @@ public class PersonsApi {
          */
         public ApiResponse<ResourceListOfRelationship> executeWithHttpInfo() throws ApiException {
             return getPersonRelationshipsWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes);
+        }
+
+        /**
+         * Execute getPersonRelationships request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfRelationship&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified person. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfRelationship> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getPersonRelationshipsWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, opts);
         }
 
         /**
@@ -2299,6 +2963,23 @@ public class PersonsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfRelationship> _callback) throws ApiException {
             return getPersonRelationshipsAsync(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback);
+        }
+
+        /**
+         * Execute getPersonRelationships request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified person. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfRelationship> _callback, ConfigurationOptions opts) throws ApiException {
+            return getPersonRelationshipsAsync(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback, opts);
         }
     }
 
@@ -2321,6 +3002,10 @@ public class PersonsApi {
         return new APIgetPersonRelationshipsRequest(idTypeScope, idTypeCode, code);
     }
     private okhttp3.Call listAllPersonsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+        return listAllPersonsCall(effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listAllPersonsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2391,25 +3076,39 @@ public class PersonsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listAllPersonsValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
-        return listAllPersonsCall(effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds, _callback);
+    private okhttp3.Call listAllPersonsValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listAllPersonsCall(effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfPerson> listAllPersonsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
-        okhttp3.Call localVarCall = listAllPersonsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds, null);
+        okhttp3.Call localVarCall = listAllPersonsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPerson>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfPerson> listAllPersonsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listAllPersonsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPerson>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listAllPersonsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<ResourceListOfPerson> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listAllPersonsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds, _callback);
+        okhttp3.Call localVarCall = listAllPersonsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPerson>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listAllPersonsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<ResourceListOfPerson> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listAllPersonsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPerson>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2532,6 +3231,23 @@ public class PersonsApi {
         }
 
         /**
+         * Execute listAllPersons request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfPerson
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Existing people </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfPerson execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfPerson> localVarResp = listAllPersonsWithHttpInfo(effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listAllPersons request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfPerson&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2545,6 +3261,22 @@ public class PersonsApi {
          */
         public ApiResponse<ResourceListOfPerson> executeWithHttpInfo() throws ApiException {
             return listAllPersonsWithHttpInfo(effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds);
+        }
+
+        /**
+         * Execute listAllPersons request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfPerson&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Existing people </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfPerson> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listAllPersonsWithHttpInfo(effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds, opts);
         }
 
         /**
@@ -2562,6 +3294,23 @@ public class PersonsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPerson> _callback) throws ApiException {
             return listAllPersonsAsync(effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds, _callback);
+        }
+
+        /**
+         * Execute listAllPersons request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Existing people </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPerson> _callback, ConfigurationOptions opts) throws ApiException {
+            return listAllPersonsAsync(effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds, _callback, opts);
         }
     }
 
@@ -2581,6 +3330,10 @@ public class PersonsApi {
         return new APIlistAllPersonsRequest();
     }
     private okhttp3.Call listPersonsCall(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+        return listPersonsCall(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listPersonsCall(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2653,11 +3406,11 @@ public class PersonsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listPersonsValidateBeforeCall(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listPersonsValidateBeforeCall(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'idTypeScope' is set
         if (idTypeScope == null) {
             throw new ApiException("Missing the required parameter 'idTypeScope' when calling listPersons(Async)");
@@ -2668,20 +3421,34 @@ public class PersonsApi {
             throw new ApiException("Missing the required parameter 'idTypeCode' when calling listPersons(Async)");
         }
 
-        return listPersonsCall(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds, _callback);
+        return listPersonsCall(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfPerson> listPersonsWithHttpInfo(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
-        okhttp3.Call localVarCall = listPersonsValidateBeforeCall(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds, null);
+        okhttp3.Call localVarCall = listPersonsValidateBeforeCall(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfPerson>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfPerson> listPersonsWithHttpInfo(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listPersonsValidateBeforeCall(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPerson>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listPersonsAsync(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<PagedResourceListOfPerson> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listPersonsValidateBeforeCall(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds, _callback);
+        okhttp3.Call localVarCall = listPersonsValidateBeforeCall(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfPerson>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listPersonsAsync(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<PagedResourceListOfPerson> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listPersonsValidateBeforeCall(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPerson>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2808,6 +3575,23 @@ public class PersonsApi {
         }
 
         /**
+         * Execute listPersons request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfPerson
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> People in specified scope </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfPerson execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfPerson> localVarResp = listPersonsWithHttpInfo(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listPersons request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfPerson&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2821,6 +3605,22 @@ public class PersonsApi {
          */
         public ApiResponse<PagedResourceListOfPerson> executeWithHttpInfo() throws ApiException {
             return listPersonsWithHttpInfo(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds);
+        }
+
+        /**
+         * Execute listPersons request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfPerson&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> People in specified scope </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfPerson> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listPersonsWithHttpInfo(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds, opts);
         }
 
         /**
@@ -2838,6 +3638,23 @@ public class PersonsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPerson> _callback) throws ApiException {
             return listPersonsAsync(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds, _callback);
+        }
+
+        /**
+         * Execute listPersons request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> People in specified scope </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPerson> _callback, ConfigurationOptions opts) throws ApiException {
+            return listPersonsAsync(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds, _callback, opts);
         }
     }
 
@@ -2859,6 +3676,10 @@ public class PersonsApi {
         return new APIlistPersonsRequest(idTypeScope, idTypeCode);
     }
     private okhttp3.Call patchPersonAccessMetadataCall(String idTypeScope, String idTypeCode, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+        return patchPersonAccessMetadataCall(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call patchPersonAccessMetadataCall(String idTypeScope, String idTypeCode, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2916,11 +3737,11 @@ public class PersonsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchPersonAccessMetadataValidateBeforeCall(String idTypeScope, String idTypeCode, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchPersonAccessMetadataValidateBeforeCall(String idTypeScope, String idTypeCode, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'idTypeScope' is set
         if (idTypeScope == null) {
             throw new ApiException("Missing the required parameter 'idTypeScope' when calling patchPersonAccessMetadata(Async)");
@@ -2941,20 +3762,34 @@ public class PersonsApi {
             throw new ApiException("Missing the required parameter 'accessMetadataOperation' when calling patchPersonAccessMetadata(Async)");
         }
 
-        return patchPersonAccessMetadataCall(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil, _callback);
+        return patchPersonAccessMetadataCall(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil, _callback, opts);
 
     }
 
 
     private ApiResponse<Map<String, List<AccessMetadataValue>>> patchPersonAccessMetadataWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
-        okhttp3.Call localVarCall = patchPersonAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil, null);
+        okhttp3.Call localVarCall = patchPersonAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Map<String, List<AccessMetadataValue>>> patchPersonAccessMetadataWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = patchPersonAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil, null, opts);
         Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call patchPersonAccessMetadataAsync(String idTypeScope, String idTypeCode, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchPersonAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil, _callback);
+        okhttp3.Call localVarCall = patchPersonAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call patchPersonAccessMetadataAsync(String idTypeScope, String idTypeCode, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = patchPersonAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil, _callback, opts);
         Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3030,6 +3865,23 @@ public class PersonsApi {
         }
 
         /**
+         * Execute patchPersonAccessMetadata request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Map<String, List<AccessMetadataValue>> execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Map<String, List<AccessMetadataValue>>> localVarResp = patchPersonAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute patchPersonAccessMetadata request with HTTP info returned
          * @return ApiResponse&lt;Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3043,6 +3895,22 @@ public class PersonsApi {
          */
         public ApiResponse<Map<String, List<AccessMetadataValue>>> executeWithHttpInfo() throws ApiException {
             return patchPersonAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil);
+        }
+
+        /**
+         * Execute patchPersonAccessMetadata request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Map<String, List<AccessMetadataValue>>> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return patchPersonAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil, opts);
         }
 
         /**
@@ -3060,6 +3928,23 @@ public class PersonsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
             return patchPersonAccessMetadataAsync(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil, _callback);
+        }
+
+        /**
+         * Execute patchPersonAccessMetadata request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback, ConfigurationOptions opts) throws ApiException {
+            return patchPersonAccessMetadataAsync(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil, _callback, opts);
         }
     }
 
@@ -3083,6 +3968,10 @@ public class PersonsApi {
         return new APIpatchPersonAccessMetadataRequest(idTypeScope, idTypeCode, code, accessMetadataOperation);
     }
     private okhttp3.Call setPersonIdentifiersCall(String idTypeScope, String idTypeCode, String code, SetPersonIdentifiersRequest setPersonIdentifiersRequest, final ApiCallback _callback) throws ApiException {
+        return setPersonIdentifiersCall(idTypeScope, idTypeCode, code, setPersonIdentifiersRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call setPersonIdentifiersCall(String idTypeScope, String idTypeCode, String code, SetPersonIdentifiersRequest setPersonIdentifiersRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3132,11 +4021,11 @@ public class PersonsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call setPersonIdentifiersValidateBeforeCall(String idTypeScope, String idTypeCode, String code, SetPersonIdentifiersRequest setPersonIdentifiersRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call setPersonIdentifiersValidateBeforeCall(String idTypeScope, String idTypeCode, String code, SetPersonIdentifiersRequest setPersonIdentifiersRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'idTypeScope' is set
         if (idTypeScope == null) {
             throw new ApiException("Missing the required parameter 'idTypeScope' when calling setPersonIdentifiers(Async)");
@@ -3157,20 +4046,34 @@ public class PersonsApi {
             throw new ApiException("Missing the required parameter 'setPersonIdentifiersRequest' when calling setPersonIdentifiers(Async)");
         }
 
-        return setPersonIdentifiersCall(idTypeScope, idTypeCode, code, setPersonIdentifiersRequest, _callback);
+        return setPersonIdentifiersCall(idTypeScope, idTypeCode, code, setPersonIdentifiersRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<Person> setPersonIdentifiersWithHttpInfo(String idTypeScope, String idTypeCode, String code, SetPersonIdentifiersRequest setPersonIdentifiersRequest) throws ApiException {
-        okhttp3.Call localVarCall = setPersonIdentifiersValidateBeforeCall(idTypeScope, idTypeCode, code, setPersonIdentifiersRequest, null);
+        okhttp3.Call localVarCall = setPersonIdentifiersValidateBeforeCall(idTypeScope, idTypeCode, code, setPersonIdentifiersRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Person>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Person> setPersonIdentifiersWithHttpInfo(String idTypeScope, String idTypeCode, String code, SetPersonIdentifiersRequest setPersonIdentifiersRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = setPersonIdentifiersValidateBeforeCall(idTypeScope, idTypeCode, code, setPersonIdentifiersRequest, null, opts);
         Type localVarReturnType = new TypeToken<Person>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call setPersonIdentifiersAsync(String idTypeScope, String idTypeCode, String code, SetPersonIdentifiersRequest setPersonIdentifiersRequest, final ApiCallback<Person> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = setPersonIdentifiersValidateBeforeCall(idTypeScope, idTypeCode, code, setPersonIdentifiersRequest, _callback);
+        okhttp3.Call localVarCall = setPersonIdentifiersValidateBeforeCall(idTypeScope, idTypeCode, code, setPersonIdentifiersRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Person>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call setPersonIdentifiersAsync(String idTypeScope, String idTypeCode, String code, SetPersonIdentifiersRequest setPersonIdentifiersRequest, final ApiCallback<Person> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = setPersonIdentifiersValidateBeforeCall(idTypeScope, idTypeCode, code, setPersonIdentifiersRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<Person>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3224,6 +4127,23 @@ public class PersonsApi {
         }
 
         /**
+         * Execute setPersonIdentifiers request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Person
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Person with updated identifiers. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Person execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Person> localVarResp = setPersonIdentifiersWithHttpInfo(idTypeScope, idTypeCode, code, setPersonIdentifiersRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute setPersonIdentifiers request with HTTP info returned
          * @return ApiResponse&lt;Person&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3237,6 +4157,22 @@ public class PersonsApi {
          */
         public ApiResponse<Person> executeWithHttpInfo() throws ApiException {
             return setPersonIdentifiersWithHttpInfo(idTypeScope, idTypeCode, code, setPersonIdentifiersRequest);
+        }
+
+        /**
+         * Execute setPersonIdentifiers request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Person&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Person with updated identifiers. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Person> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return setPersonIdentifiersWithHttpInfo(idTypeScope, idTypeCode, code, setPersonIdentifiersRequest, opts);
         }
 
         /**
@@ -3254,6 +4190,23 @@ public class PersonsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Person> _callback) throws ApiException {
             return setPersonIdentifiersAsync(idTypeScope, idTypeCode, code, setPersonIdentifiersRequest, _callback);
+        }
+
+        /**
+         * Execute setPersonIdentifiers request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Person with updated identifiers. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Person> _callback, ConfigurationOptions opts) throws ApiException {
+            return setPersonIdentifiersAsync(idTypeScope, idTypeCode, code, setPersonIdentifiersRequest, _callback, opts);
         }
     }
 
@@ -3277,6 +4230,10 @@ public class PersonsApi {
         return new APIsetPersonIdentifiersRequest(idTypeScope, idTypeCode, code, setPersonIdentifiersRequest);
     }
     private okhttp3.Call setPersonPropertiesCall(String idTypeScope, String idTypeCode, String code, SetPersonPropertiesRequest setPersonPropertiesRequest, final ApiCallback _callback) throws ApiException {
+        return setPersonPropertiesCall(idTypeScope, idTypeCode, code, setPersonPropertiesRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call setPersonPropertiesCall(String idTypeScope, String idTypeCode, String code, SetPersonPropertiesRequest setPersonPropertiesRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3326,11 +4283,11 @@ public class PersonsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call setPersonPropertiesValidateBeforeCall(String idTypeScope, String idTypeCode, String code, SetPersonPropertiesRequest setPersonPropertiesRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call setPersonPropertiesValidateBeforeCall(String idTypeScope, String idTypeCode, String code, SetPersonPropertiesRequest setPersonPropertiesRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'idTypeScope' is set
         if (idTypeScope == null) {
             throw new ApiException("Missing the required parameter 'idTypeScope' when calling setPersonProperties(Async)");
@@ -3351,20 +4308,34 @@ public class PersonsApi {
             throw new ApiException("Missing the required parameter 'setPersonPropertiesRequest' when calling setPersonProperties(Async)");
         }
 
-        return setPersonPropertiesCall(idTypeScope, idTypeCode, code, setPersonPropertiesRequest, _callback);
+        return setPersonPropertiesCall(idTypeScope, idTypeCode, code, setPersonPropertiesRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<Person> setPersonPropertiesWithHttpInfo(String idTypeScope, String idTypeCode, String code, SetPersonPropertiesRequest setPersonPropertiesRequest) throws ApiException {
-        okhttp3.Call localVarCall = setPersonPropertiesValidateBeforeCall(idTypeScope, idTypeCode, code, setPersonPropertiesRequest, null);
+        okhttp3.Call localVarCall = setPersonPropertiesValidateBeforeCall(idTypeScope, idTypeCode, code, setPersonPropertiesRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Person>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Person> setPersonPropertiesWithHttpInfo(String idTypeScope, String idTypeCode, String code, SetPersonPropertiesRequest setPersonPropertiesRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = setPersonPropertiesValidateBeforeCall(idTypeScope, idTypeCode, code, setPersonPropertiesRequest, null, opts);
         Type localVarReturnType = new TypeToken<Person>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call setPersonPropertiesAsync(String idTypeScope, String idTypeCode, String code, SetPersonPropertiesRequest setPersonPropertiesRequest, final ApiCallback<Person> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = setPersonPropertiesValidateBeforeCall(idTypeScope, idTypeCode, code, setPersonPropertiesRequest, _callback);
+        okhttp3.Call localVarCall = setPersonPropertiesValidateBeforeCall(idTypeScope, idTypeCode, code, setPersonPropertiesRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Person>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call setPersonPropertiesAsync(String idTypeScope, String idTypeCode, String code, SetPersonPropertiesRequest setPersonPropertiesRequest, final ApiCallback<Person> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = setPersonPropertiesValidateBeforeCall(idTypeScope, idTypeCode, code, setPersonPropertiesRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<Person>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3418,6 +4389,23 @@ public class PersonsApi {
         }
 
         /**
+         * Execute setPersonProperties request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Person
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Person with updated properties or identifiers. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Person execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Person> localVarResp = setPersonPropertiesWithHttpInfo(idTypeScope, idTypeCode, code, setPersonPropertiesRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute setPersonProperties request with HTTP info returned
          * @return ApiResponse&lt;Person&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3431,6 +4419,22 @@ public class PersonsApi {
          */
         public ApiResponse<Person> executeWithHttpInfo() throws ApiException {
             return setPersonPropertiesWithHttpInfo(idTypeScope, idTypeCode, code, setPersonPropertiesRequest);
+        }
+
+        /**
+         * Execute setPersonProperties request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Person&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Person with updated properties or identifiers. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Person> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return setPersonPropertiesWithHttpInfo(idTypeScope, idTypeCode, code, setPersonPropertiesRequest, opts);
         }
 
         /**
@@ -3448,6 +4452,23 @@ public class PersonsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Person> _callback) throws ApiException {
             return setPersonPropertiesAsync(idTypeScope, idTypeCode, code, setPersonPropertiesRequest, _callback);
+        }
+
+        /**
+         * Execute setPersonProperties request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Person with updated properties or identifiers. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Person> _callback, ConfigurationOptions opts) throws ApiException {
+            return setPersonPropertiesAsync(idTypeScope, idTypeCode, code, setPersonPropertiesRequest, _callback, opts);
         }
     }
 
@@ -3471,6 +4492,10 @@ public class PersonsApi {
         return new APIsetPersonPropertiesRequest(idTypeScope, idTypeCode, code, setPersonPropertiesRequest);
     }
     private okhttp3.Call upsertPersonCall(UpsertPersonRequest upsertPersonRequest, final ApiCallback _callback) throws ApiException {
+        return upsertPersonCall(upsertPersonRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertPersonCall(UpsertPersonRequest upsertPersonRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3517,30 +4542,44 @@ public class PersonsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertPersonValidateBeforeCall(UpsertPersonRequest upsertPersonRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertPersonValidateBeforeCall(UpsertPersonRequest upsertPersonRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'upsertPersonRequest' is set
         if (upsertPersonRequest == null) {
             throw new ApiException("Missing the required parameter 'upsertPersonRequest' when calling upsertPerson(Async)");
         }
 
-        return upsertPersonCall(upsertPersonRequest, _callback);
+        return upsertPersonCall(upsertPersonRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<Person> upsertPersonWithHttpInfo(UpsertPersonRequest upsertPersonRequest) throws ApiException {
-        okhttp3.Call localVarCall = upsertPersonValidateBeforeCall(upsertPersonRequest, null);
+        okhttp3.Call localVarCall = upsertPersonValidateBeforeCall(upsertPersonRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Person>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Person> upsertPersonWithHttpInfo(UpsertPersonRequest upsertPersonRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertPersonValidateBeforeCall(upsertPersonRequest, null, opts);
         Type localVarReturnType = new TypeToken<Person>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertPersonAsync(UpsertPersonRequest upsertPersonRequest, final ApiCallback<Person> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertPersonValidateBeforeCall(upsertPersonRequest, _callback);
+        okhttp3.Call localVarCall = upsertPersonValidateBeforeCall(upsertPersonRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Person>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertPersonAsync(UpsertPersonRequest upsertPersonRequest, final ApiCallback<Person> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertPersonValidateBeforeCall(upsertPersonRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<Person>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3588,6 +4627,23 @@ public class PersonsApi {
         }
 
         /**
+         * Execute upsertPerson request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Person
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created or updated person </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Person execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Person> localVarResp = upsertPersonWithHttpInfo(upsertPersonRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertPerson request with HTTP info returned
          * @return ApiResponse&lt;Person&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3601,6 +4657,22 @@ public class PersonsApi {
          */
         public ApiResponse<Person> executeWithHttpInfo() throws ApiException {
             return upsertPersonWithHttpInfo(upsertPersonRequest);
+        }
+
+        /**
+         * Execute upsertPerson request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Person&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created or updated person </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Person> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertPersonWithHttpInfo(upsertPersonRequest, opts);
         }
 
         /**
@@ -3618,6 +4690,23 @@ public class PersonsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Person> _callback) throws ApiException {
             return upsertPersonAsync(upsertPersonRequest, _callback);
+        }
+
+        /**
+         * Execute upsertPerson request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created or updated person </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Person> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertPersonAsync(upsertPersonRequest, _callback, opts);
         }
     }
 
@@ -3638,6 +4727,10 @@ public class PersonsApi {
         return new APIupsertPersonRequest(upsertPersonRequest);
     }
     private okhttp3.Call upsertPersonAccessMetadataCall(String idTypeScope, String idTypeCode, String code, String metadataKey, UpsertPersonAccessMetadataRequest upsertPersonAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+        return upsertPersonAccessMetadataCall(idTypeScope, idTypeCode, code, metadataKey, upsertPersonAccessMetadataRequest, effectiveAt, effectiveUntil,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertPersonAccessMetadataCall(String idTypeScope, String idTypeCode, String code, String metadataKey, UpsertPersonAccessMetadataRequest upsertPersonAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3696,11 +4789,11 @@ public class PersonsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertPersonAccessMetadataValidateBeforeCall(String idTypeScope, String idTypeCode, String code, String metadataKey, UpsertPersonAccessMetadataRequest upsertPersonAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertPersonAccessMetadataValidateBeforeCall(String idTypeScope, String idTypeCode, String code, String metadataKey, UpsertPersonAccessMetadataRequest upsertPersonAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'idTypeScope' is set
         if (idTypeScope == null) {
             throw new ApiException("Missing the required parameter 'idTypeScope' when calling upsertPersonAccessMetadata(Async)");
@@ -3726,20 +4819,34 @@ public class PersonsApi {
             throw new ApiException("Missing the required parameter 'upsertPersonAccessMetadataRequest' when calling upsertPersonAccessMetadata(Async)");
         }
 
-        return upsertPersonAccessMetadataCall(idTypeScope, idTypeCode, code, metadataKey, upsertPersonAccessMetadataRequest, effectiveAt, effectiveUntil, _callback);
+        return upsertPersonAccessMetadataCall(idTypeScope, idTypeCode, code, metadataKey, upsertPersonAccessMetadataRequest, effectiveAt, effectiveUntil, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfAccessMetadataValueOf> upsertPersonAccessMetadataWithHttpInfo(String idTypeScope, String idTypeCode, String code, String metadataKey, UpsertPersonAccessMetadataRequest upsertPersonAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
-        okhttp3.Call localVarCall = upsertPersonAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, upsertPersonAccessMetadataRequest, effectiveAt, effectiveUntil, null);
+        okhttp3.Call localVarCall = upsertPersonAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, upsertPersonAccessMetadataRequest, effectiveAt, effectiveUntil, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfAccessMetadataValueOf>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfAccessMetadataValueOf> upsertPersonAccessMetadataWithHttpInfo(String idTypeScope, String idTypeCode, String code, String metadataKey, UpsertPersonAccessMetadataRequest upsertPersonAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertPersonAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, upsertPersonAccessMetadataRequest, effectiveAt, effectiveUntil, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfAccessMetadataValueOf>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertPersonAccessMetadataAsync(String idTypeScope, String idTypeCode, String code, String metadataKey, UpsertPersonAccessMetadataRequest upsertPersonAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<ResourceListOfAccessMetadataValueOf> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertPersonAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, upsertPersonAccessMetadataRequest, effectiveAt, effectiveUntil, _callback);
+        okhttp3.Call localVarCall = upsertPersonAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, upsertPersonAccessMetadataRequest, effectiveAt, effectiveUntil, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfAccessMetadataValueOf>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertPersonAccessMetadataAsync(String idTypeScope, String idTypeCode, String code, String metadataKey, UpsertPersonAccessMetadataRequest upsertPersonAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<ResourceListOfAccessMetadataValueOf> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertPersonAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, upsertPersonAccessMetadataRequest, effectiveAt, effectiveUntil, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfAccessMetadataValueOf>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3817,6 +4924,23 @@ public class PersonsApi {
         }
 
         /**
+         * Execute upsertPersonAccessMetadata request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfAccessMetadataValueOf
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfAccessMetadataValueOf execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfAccessMetadataValueOf> localVarResp = upsertPersonAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, upsertPersonAccessMetadataRequest, effectiveAt, effectiveUntil, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertPersonAccessMetadata request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfAccessMetadataValueOf&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3830,6 +4954,22 @@ public class PersonsApi {
          */
         public ApiResponse<ResourceListOfAccessMetadataValueOf> executeWithHttpInfo() throws ApiException {
             return upsertPersonAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, upsertPersonAccessMetadataRequest, effectiveAt, effectiveUntil);
+        }
+
+        /**
+         * Execute upsertPersonAccessMetadata request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfAccessMetadataValueOf&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfAccessMetadataValueOf> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertPersonAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, upsertPersonAccessMetadataRequest, effectiveAt, effectiveUntil, opts);
         }
 
         /**
@@ -3847,6 +4987,23 @@ public class PersonsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfAccessMetadataValueOf> _callback) throws ApiException {
             return upsertPersonAccessMetadataAsync(idTypeScope, idTypeCode, code, metadataKey, upsertPersonAccessMetadataRequest, effectiveAt, effectiveUntil, _callback);
+        }
+
+        /**
+         * Execute upsertPersonAccessMetadata request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfAccessMetadataValueOf> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertPersonAccessMetadataAsync(idTypeScope, idTypeCode, code, metadataKey, upsertPersonAccessMetadataRequest, effectiveAt, effectiveUntil, _callback, opts);
         }
     }
 
@@ -3871,6 +5028,10 @@ public class PersonsApi {
         return new APIupsertPersonAccessMetadataRequest(idTypeScope, idTypeCode, code, metadataKey, upsertPersonAccessMetadataRequest);
     }
     private okhttp3.Call upsertPersonsCall(String successMode, Map<String, UpsertPersonRequest> requestBody, final ApiCallback _callback) throws ApiException {
+        return upsertPersonsCall(successMode, requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertPersonsCall(String successMode, Map<String, UpsertPersonRequest> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3921,11 +5082,11 @@ public class PersonsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertPersonsValidateBeforeCall(String successMode, Map<String, UpsertPersonRequest> requestBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertPersonsValidateBeforeCall(String successMode, Map<String, UpsertPersonRequest> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'successMode' is set
         if (successMode == null) {
             throw new ApiException("Missing the required parameter 'successMode' when calling upsertPersons(Async)");
@@ -3936,20 +5097,34 @@ public class PersonsApi {
             throw new ApiException("Missing the required parameter 'requestBody' when calling upsertPersons(Async)");
         }
 
-        return upsertPersonsCall(successMode, requestBody, _callback);
+        return upsertPersonsCall(successMode, requestBody, _callback, opts);
 
     }
 
 
     private ApiResponse<UpsertPersonsResponse> upsertPersonsWithHttpInfo(String successMode, Map<String, UpsertPersonRequest> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = upsertPersonsValidateBeforeCall(successMode, requestBody, null);
+        okhttp3.Call localVarCall = upsertPersonsValidateBeforeCall(successMode, requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertPersonsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<UpsertPersonsResponse> upsertPersonsWithHttpInfo(String successMode, Map<String, UpsertPersonRequest> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertPersonsValidateBeforeCall(successMode, requestBody, null, opts);
         Type localVarReturnType = new TypeToken<UpsertPersonsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertPersonsAsync(String successMode, Map<String, UpsertPersonRequest> requestBody, final ApiCallback<UpsertPersonsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertPersonsValidateBeforeCall(successMode, requestBody, _callback);
+        okhttp3.Call localVarCall = upsertPersonsValidateBeforeCall(successMode, requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertPersonsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertPersonsAsync(String successMode, Map<String, UpsertPersonRequest> requestBody, final ApiCallback<UpsertPersonsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertPersonsValidateBeforeCall(successMode, requestBody, _callback, opts);
         Type localVarReturnType = new TypeToken<UpsertPersonsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3999,6 +5174,23 @@ public class PersonsApi {
         }
 
         /**
+         * Execute upsertPersons request. Use any specified configuration options to override any other configuration for this request only.
+         * @return UpsertPersonsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created or updated person(s) </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertPersonsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<UpsertPersonsResponse> localVarResp = upsertPersonsWithHttpInfo(successMode, requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertPersons request with HTTP info returned
          * @return ApiResponse&lt;UpsertPersonsResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4012,6 +5204,22 @@ public class PersonsApi {
          */
         public ApiResponse<UpsertPersonsResponse> executeWithHttpInfo() throws ApiException {
             return upsertPersonsWithHttpInfo(successMode, requestBody);
+        }
+
+        /**
+         * Execute upsertPersons request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;UpsertPersonsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created or updated person(s) </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertPersonsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertPersonsWithHttpInfo(successMode, requestBody, opts);
         }
 
         /**
@@ -4029,6 +5237,23 @@ public class PersonsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<UpsertPersonsResponse> _callback) throws ApiException {
             return upsertPersonsAsync(successMode, requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertPersons request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created or updated person(s) </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertPersonsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertPersonsAsync(successMode, requestBody, _callback, opts);
         }
     }
 

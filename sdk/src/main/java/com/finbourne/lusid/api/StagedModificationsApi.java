@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -76,6 +77,10 @@ public class StagedModificationsApi {
     }
 
     private okhttp3.Call addDecisionCall(String id, StagedModificationDecisionRequest stagedModificationDecisionRequest, final ApiCallback _callback) throws ApiException {
+        return addDecisionCall(id, stagedModificationDecisionRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call addDecisionCall(String id, StagedModificationDecisionRequest stagedModificationDecisionRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -123,11 +128,11 @@ public class StagedModificationsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call addDecisionValidateBeforeCall(String id, StagedModificationDecisionRequest stagedModificationDecisionRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call addDecisionValidateBeforeCall(String id, StagedModificationDecisionRequest stagedModificationDecisionRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling addDecision(Async)");
@@ -138,20 +143,34 @@ public class StagedModificationsApi {
             throw new ApiException("Missing the required parameter 'stagedModificationDecisionRequest' when calling addDecision(Async)");
         }
 
-        return addDecisionCall(id, stagedModificationDecisionRequest, _callback);
+        return addDecisionCall(id, stagedModificationDecisionRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<StagedModification> addDecisionWithHttpInfo(String id, StagedModificationDecisionRequest stagedModificationDecisionRequest) throws ApiException {
-        okhttp3.Call localVarCall = addDecisionValidateBeforeCall(id, stagedModificationDecisionRequest, null);
+        okhttp3.Call localVarCall = addDecisionValidateBeforeCall(id, stagedModificationDecisionRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<StagedModification>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<StagedModification> addDecisionWithHttpInfo(String id, StagedModificationDecisionRequest stagedModificationDecisionRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = addDecisionValidateBeforeCall(id, stagedModificationDecisionRequest, null, opts);
         Type localVarReturnType = new TypeToken<StagedModification>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call addDecisionAsync(String id, StagedModificationDecisionRequest stagedModificationDecisionRequest, final ApiCallback<StagedModification> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = addDecisionValidateBeforeCall(id, stagedModificationDecisionRequest, _callback);
+        okhttp3.Call localVarCall = addDecisionValidateBeforeCall(id, stagedModificationDecisionRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<StagedModification>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call addDecisionAsync(String id, StagedModificationDecisionRequest stagedModificationDecisionRequest, final ApiCallback<StagedModification> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = addDecisionValidateBeforeCall(id, stagedModificationDecisionRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<StagedModification>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -201,6 +220,23 @@ public class StagedModificationsApi {
         }
 
         /**
+         * Execute addDecision request. Use any specified configuration options to override any other configuration for this request only.
+         * @return StagedModification
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The staged modification. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public StagedModification execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<StagedModification> localVarResp = addDecisionWithHttpInfo(id, stagedModificationDecisionRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute addDecision request with HTTP info returned
          * @return ApiResponse&lt;StagedModification&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -214,6 +250,22 @@ public class StagedModificationsApi {
          */
         public ApiResponse<StagedModification> executeWithHttpInfo() throws ApiException {
             return addDecisionWithHttpInfo(id, stagedModificationDecisionRequest);
+        }
+
+        /**
+         * Execute addDecision request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;StagedModification&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The staged modification. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<StagedModification> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return addDecisionWithHttpInfo(id, stagedModificationDecisionRequest, opts);
         }
 
         /**
@@ -231,6 +283,23 @@ public class StagedModificationsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<StagedModification> _callback) throws ApiException {
             return addDecisionAsync(id, stagedModificationDecisionRequest, _callback);
+        }
+
+        /**
+         * Execute addDecision request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The staged modification. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<StagedModification> _callback, ConfigurationOptions opts) throws ApiException {
+            return addDecisionAsync(id, stagedModificationDecisionRequest, _callback, opts);
         }
     }
 
@@ -252,6 +321,10 @@ public class StagedModificationsApi {
         return new APIaddDecisionRequest(id, stagedModificationDecisionRequest);
     }
     private okhttp3.Call getStagedModificationCall(String id, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getStagedModificationCall(id, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getStagedModificationCall(String id, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -299,30 +372,44 @@ public class StagedModificationsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getStagedModificationValidateBeforeCall(String id, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getStagedModificationValidateBeforeCall(String id, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getStagedModification(Async)");
         }
 
-        return getStagedModificationCall(id, asAt, _callback);
+        return getStagedModificationCall(id, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<StagedModification> getStagedModificationWithHttpInfo(String id, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getStagedModificationValidateBeforeCall(id, asAt, null);
+        okhttp3.Call localVarCall = getStagedModificationValidateBeforeCall(id, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<StagedModification>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<StagedModification> getStagedModificationWithHttpInfo(String id, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getStagedModificationValidateBeforeCall(id, asAt, null, opts);
         Type localVarReturnType = new TypeToken<StagedModification>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getStagedModificationAsync(String id, OffsetDateTime asAt, final ApiCallback<StagedModification> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getStagedModificationValidateBeforeCall(id, asAt, _callback);
+        okhttp3.Call localVarCall = getStagedModificationValidateBeforeCall(id, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<StagedModification>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getStagedModificationAsync(String id, OffsetDateTime asAt, final ApiCallback<StagedModification> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getStagedModificationValidateBeforeCall(id, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<StagedModification>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -381,6 +468,23 @@ public class StagedModificationsApi {
         }
 
         /**
+         * Execute getStagedModification request. Use any specified configuration options to override any other configuration for this request only.
+         * @return StagedModification
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested staged modification. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public StagedModification execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<StagedModification> localVarResp = getStagedModificationWithHttpInfo(id, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getStagedModification request with HTTP info returned
          * @return ApiResponse&lt;StagedModification&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -394,6 +498,22 @@ public class StagedModificationsApi {
          */
         public ApiResponse<StagedModification> executeWithHttpInfo() throws ApiException {
             return getStagedModificationWithHttpInfo(id, asAt);
+        }
+
+        /**
+         * Execute getStagedModification request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;StagedModification&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested staged modification. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<StagedModification> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getStagedModificationWithHttpInfo(id, asAt, opts);
         }
 
         /**
@@ -411,6 +531,23 @@ public class StagedModificationsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<StagedModification> _callback) throws ApiException {
             return getStagedModificationAsync(id, asAt, _callback);
+        }
+
+        /**
+         * Execute getStagedModification request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested staged modification. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<StagedModification> _callback, ConfigurationOptions opts) throws ApiException {
+            return getStagedModificationAsync(id, asAt, _callback, opts);
         }
     }
 
@@ -431,6 +568,10 @@ public class StagedModificationsApi {
         return new APIgetStagedModificationRequest(id);
     }
     private okhttp3.Call listRequestedChangesCall(String id, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
+        return listRequestedChangesCall(id, asAt, page, limit, filter, sortBy,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listRequestedChangesCall(String id, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -494,30 +635,44 @@ public class StagedModificationsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listRequestedChangesValidateBeforeCall(String id, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listRequestedChangesValidateBeforeCall(String id, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling listRequestedChanges(Async)");
         }
 
-        return listRequestedChangesCall(id, asAt, page, limit, filter, sortBy, _callback);
+        return listRequestedChangesCall(id, asAt, page, limit, filter, sortBy, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfStagedModificationsRequestedChangeInterval> listRequestedChangesWithHttpInfo(String id, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy) throws ApiException {
-        okhttp3.Call localVarCall = listRequestedChangesValidateBeforeCall(id, asAt, page, limit, filter, sortBy, null);
+        okhttp3.Call localVarCall = listRequestedChangesValidateBeforeCall(id, asAt, page, limit, filter, sortBy, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfStagedModificationsRequestedChangeInterval>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfStagedModificationsRequestedChangeInterval> listRequestedChangesWithHttpInfo(String id, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listRequestedChangesValidateBeforeCall(id, asAt, page, limit, filter, sortBy, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfStagedModificationsRequestedChangeInterval>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listRequestedChangesAsync(String id, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfStagedModificationsRequestedChangeInterval> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listRequestedChangesValidateBeforeCall(id, asAt, page, limit, filter, sortBy, _callback);
+        okhttp3.Call localVarCall = listRequestedChangesValidateBeforeCall(id, asAt, page, limit, filter, sortBy, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfStagedModificationsRequestedChangeInterval>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listRequestedChangesAsync(String id, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfStagedModificationsRequestedChangeInterval> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listRequestedChangesValidateBeforeCall(id, asAt, page, limit, filter, sortBy, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfStagedModificationsRequestedChangeInterval>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -620,6 +775,23 @@ public class StagedModificationsApi {
         }
 
         /**
+         * Execute listRequestedChanges request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfStagedModificationsRequestedChangeInterval
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Requested changes in staged modification. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfStagedModificationsRequestedChangeInterval execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfStagedModificationsRequestedChangeInterval> localVarResp = listRequestedChangesWithHttpInfo(id, asAt, page, limit, filter, sortBy, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listRequestedChanges request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfStagedModificationsRequestedChangeInterval&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -633,6 +805,22 @@ public class StagedModificationsApi {
          */
         public ApiResponse<PagedResourceListOfStagedModificationsRequestedChangeInterval> executeWithHttpInfo() throws ApiException {
             return listRequestedChangesWithHttpInfo(id, asAt, page, limit, filter, sortBy);
+        }
+
+        /**
+         * Execute listRequestedChanges request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfStagedModificationsRequestedChangeInterval&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Requested changes in staged modification. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfStagedModificationsRequestedChangeInterval> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listRequestedChangesWithHttpInfo(id, asAt, page, limit, filter, sortBy, opts);
         }
 
         /**
@@ -650,6 +838,23 @@ public class StagedModificationsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfStagedModificationsRequestedChangeInterval> _callback) throws ApiException {
             return listRequestedChangesAsync(id, asAt, page, limit, filter, sortBy, _callback);
+        }
+
+        /**
+         * Execute listRequestedChanges request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Requested changes in staged modification. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfStagedModificationsRequestedChangeInterval> _callback, ConfigurationOptions opts) throws ApiException {
+            return listRequestedChangesAsync(id, asAt, page, limit, filter, sortBy, _callback, opts);
         }
     }
 
@@ -670,6 +875,10 @@ public class StagedModificationsApi {
         return new APIlistRequestedChangesRequest(id);
     }
     private okhttp3.Call listStagedModificationsCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
+        return listStagedModificationsCall(asAt, page, limit, filter, sortBy,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listStagedModificationsCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -732,25 +941,39 @@ public class StagedModificationsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listStagedModificationsValidateBeforeCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
-        return listStagedModificationsCall(asAt, page, limit, filter, sortBy, _callback);
+    private okhttp3.Call listStagedModificationsValidateBeforeCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listStagedModificationsCall(asAt, page, limit, filter, sortBy, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfStagedModification> listStagedModificationsWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy) throws ApiException {
-        okhttp3.Call localVarCall = listStagedModificationsValidateBeforeCall(asAt, page, limit, filter, sortBy, null);
+        okhttp3.Call localVarCall = listStagedModificationsValidateBeforeCall(asAt, page, limit, filter, sortBy, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfStagedModification>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfStagedModification> listStagedModificationsWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listStagedModificationsValidateBeforeCall(asAt, page, limit, filter, sortBy, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfStagedModification>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listStagedModificationsAsync(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfStagedModification> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listStagedModificationsValidateBeforeCall(asAt, page, limit, filter, sortBy, _callback);
+        okhttp3.Call localVarCall = listStagedModificationsValidateBeforeCall(asAt, page, limit, filter, sortBy, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfStagedModification>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listStagedModificationsAsync(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfStagedModification> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listStagedModificationsValidateBeforeCall(asAt, page, limit, filter, sortBy, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfStagedModification>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -851,6 +1074,23 @@ public class StagedModificationsApi {
         }
 
         /**
+         * Execute listStagedModifications request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfStagedModification
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List summary of staged modifications. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfStagedModification execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfStagedModification> localVarResp = listStagedModificationsWithHttpInfo(asAt, page, limit, filter, sortBy, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listStagedModifications request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfStagedModification&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -864,6 +1104,22 @@ public class StagedModificationsApi {
          */
         public ApiResponse<PagedResourceListOfStagedModification> executeWithHttpInfo() throws ApiException {
             return listStagedModificationsWithHttpInfo(asAt, page, limit, filter, sortBy);
+        }
+
+        /**
+         * Execute listStagedModifications request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfStagedModification&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List summary of staged modifications. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfStagedModification> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listStagedModificationsWithHttpInfo(asAt, page, limit, filter, sortBy, opts);
         }
 
         /**
@@ -881,6 +1137,23 @@ public class StagedModificationsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfStagedModification> _callback) throws ApiException {
             return listStagedModificationsAsync(asAt, page, limit, filter, sortBy, _callback);
+        }
+
+        /**
+         * Execute listStagedModifications request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List summary of staged modifications. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfStagedModification> _callback, ConfigurationOptions opts) throws ApiException {
+            return listStagedModificationsAsync(asAt, page, limit, filter, sortBy, _callback, opts);
         }
     }
 

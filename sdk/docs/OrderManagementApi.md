@@ -54,10 +54,21 @@ public class OrderManagementApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // OrderManagementApi apiInstance = apiFactory.build(OrderManagementApi.class);
+
         OrderManagementApi apiInstance = ApiFactoryBuilder.build(fileName).build(OrderManagementApi.class);
         BookTransactionsRequest bookTransactionsRequest = new BookTransactionsRequest(); // BookTransactionsRequest | The allocations to create transactions for
         Boolean applyFeesAndCommission = true; // Boolean | Whether to apply fees and commissions to transactions (default: true)
         try {
+            // uncomment the below to set overrides at the request level
+            // BookTransactionsResponse result = apiInstance.bookTransactions(bookTransactionsRequest, applyFeesAndCommission).execute(opts);
+
             BookTransactionsResponse result = apiInstance.bookTransactions(bookTransactionsRequest, applyFeesAndCommission).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -136,9 +147,20 @@ public class OrderManagementApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // OrderManagementApi apiInstance = apiFactory.build(OrderManagementApi.class);
+
         OrderManagementApi apiInstance = ApiFactoryBuilder.build(fileName).build(OrderManagementApi.class);
         Map<String, ResourceId> requestBody = new HashMap(); // Map<String, ResourceId> | The request containing the ids of the orders to be cancelled.
         try {
+            // uncomment the below to set overrides at the request level
+            // CancelOrdersResponse result = apiInstance.cancelOrders(requestBody).execute(opts);
+
             CancelOrdersResponse result = apiInstance.cancelOrders(requestBody).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -216,9 +238,20 @@ public class OrderManagementApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // OrderManagementApi apiInstance = apiFactory.build(OrderManagementApi.class);
+
         OrderManagementApi apiInstance = ApiFactoryBuilder.build(fileName).build(OrderManagementApi.class);
         Map<String, ResourceId> requestBody = new HashMap(); // Map<String, ResourceId> | The request containing the ids of the placements to be cancelled.
         try {
+            // uncomment the below to set overrides at the request level
+            // CancelPlacementsResponse result = apiInstance.cancelPlacements(requestBody).execute(opts);
+
             CancelPlacementsResponse result = apiInstance.cancelPlacements(requestBody).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -296,9 +329,20 @@ public class OrderManagementApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // OrderManagementApi apiInstance = apiFactory.build(OrderManagementApi.class);
+
         OrderManagementApi apiInstance = ApiFactoryBuilder.build(fileName).build(OrderManagementApi.class);
         BlockAndOrdersCreateRequest blockAndOrdersCreateRequest = new BlockAndOrdersCreateRequest(); // BlockAndOrdersCreateRequest | The collection of block and orders requests.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfBlockAndOrders result = apiInstance.createOrders(blockAndOrdersCreateRequest).execute(opts);
+
             ResourceListOfBlockAndOrders result = apiInstance.createOrders(blockAndOrdersCreateRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -376,9 +420,20 @@ public class OrderManagementApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // OrderManagementApi apiInstance = apiFactory.build(OrderManagementApi.class);
+
         OrderManagementApi apiInstance = ApiFactoryBuilder.build(fileName).build(OrderManagementApi.class);
         MoveOrdersToDifferentBlocksRequest moveOrdersToDifferentBlocksRequest = new MoveOrdersToDifferentBlocksRequest(); // MoveOrdersToDifferentBlocksRequest | The collection of order and destination block ids.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfMovedOrderToDifferentBlockResponse result = apiInstance.moveOrders(moveOrdersToDifferentBlocksRequest).execute(opts);
+
             ResourceListOfMovedOrderToDifferentBlockResponse result = apiInstance.moveOrders(moveOrdersToDifferentBlocksRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -456,9 +511,20 @@ public class OrderManagementApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // OrderManagementApi apiInstance = apiFactory.build(OrderManagementApi.class);
+
         OrderManagementApi apiInstance = ApiFactoryBuilder.build(fileName).build(OrderManagementApi.class);
         PlaceBlocksRequest placeBlocksRequest = new PlaceBlocksRequest(); // PlaceBlocksRequest | The request containing the blocks to the placed.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfPlacement result = apiInstance.placeBlocks(placeBlocksRequest).execute(opts);
+
             ResourceListOfPlacement result = apiInstance.placeBlocks(placeBlocksRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -536,10 +602,21 @@ public class OrderManagementApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // OrderManagementApi apiInstance = apiFactory.build(OrderManagementApi.class);
+
         OrderManagementApi apiInstance = ApiFactoryBuilder.build(fileName).build(OrderManagementApi.class);
         List<ResourceId> resourceId = Arrays.asList(); // List<ResourceId> | The List of Placement IDs for which you wish to allocate executions.
         String allocationAlgorithm = "allocationAlgorithm_example"; // String | A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \"PR-FIFO\".  This defaults to \"PR-FIFO\".
         try {
+            // uncomment the below to set overrides at the request level
+            // AllocationServiceRunResponse result = apiInstance.runAllocationService(resourceId, allocationAlgorithm).execute(opts);
+
             AllocationServiceRunResponse result = apiInstance.runAllocationService(resourceId, allocationAlgorithm).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -618,9 +695,20 @@ public class OrderManagementApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // OrderManagementApi apiInstance = apiFactory.build(OrderManagementApi.class);
+
         OrderManagementApi apiInstance = ApiFactoryBuilder.build(fileName).build(OrderManagementApi.class);
         Map<String, OrderUpdateRequest> requestBody = new HashMap(); // Map<String, OrderUpdateRequest> | The request containing the orders to be updated.
         try {
+            // uncomment the below to set overrides at the request level
+            // UpdateOrdersResponse result = apiInstance.updateOrders(requestBody).execute(opts);
+
             UpdateOrdersResponse result = apiInstance.updateOrders(requestBody).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -698,9 +786,20 @@ public class OrderManagementApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // OrderManagementApi apiInstance = apiFactory.build(OrderManagementApi.class);
+
         OrderManagementApi apiInstance = ApiFactoryBuilder.build(fileName).build(OrderManagementApi.class);
         Map<String, PlacementUpdateRequest> requestBody = new HashMap(); // Map<String, PlacementUpdateRequest> | The request containing the placements to be updated.
         try {
+            // uncomment the below to set overrides at the request level
+            // UpdatePlacementsResponse result = apiInstance.updatePlacements(requestBody).execute(opts);
+
             UpdatePlacementsResponse result = apiInstance.updatePlacements(requestBody).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

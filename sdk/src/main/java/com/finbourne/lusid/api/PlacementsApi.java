@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -77,6 +78,10 @@ public class PlacementsApi {
     }
 
     private okhttp3.Call deletePlacementCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+        return deletePlacementCall(scope, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deletePlacementCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,11 +126,11 @@ public class PlacementsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deletePlacementValidateBeforeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deletePlacementValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deletePlacement(Async)");
@@ -136,20 +141,34 @@ public class PlacementsApi {
             throw new ApiException("Missing the required parameter 'code' when calling deletePlacement(Async)");
         }
 
-        return deletePlacementCall(scope, code, _callback);
+        return deletePlacementCall(scope, code, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deletePlacementWithHttpInfo(String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = deletePlacementValidateBeforeCall(scope, code, null);
+        okhttp3.Call localVarCall = deletePlacementValidateBeforeCall(scope, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deletePlacementWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deletePlacementValidateBeforeCall(scope, code, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deletePlacementAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deletePlacementValidateBeforeCall(scope, code, _callback);
+        okhttp3.Call localVarCall = deletePlacementValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deletePlacementAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deletePlacementValidateBeforeCall(scope, code, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -199,6 +218,23 @@ public class PlacementsApi {
         }
 
         /**
+         * Execute deletePlacement request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting an placement. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deletePlacementWithHttpInfo(scope, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deletePlacement request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -212,6 +248,22 @@ public class PlacementsApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deletePlacementWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deletePlacement request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting an placement. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deletePlacementWithHttpInfo(scope, code, opts);
         }
 
         /**
@@ -229,6 +281,23 @@ public class PlacementsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deletePlacementAsync(scope, code, _callback);
+        }
+
+        /**
+         * Execute deletePlacement request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting an placement. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deletePlacementAsync(scope, code, _callback, opts);
         }
     }
 
@@ -250,6 +319,10 @@ public class PlacementsApi {
         return new APIdeletePlacementRequest(scope, code);
     }
     private okhttp3.Call getPlacementCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return getPlacementCall(scope, code, asAt, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getPlacementCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -302,11 +375,11 @@ public class PlacementsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPlacementValidateBeforeCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPlacementValidateBeforeCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getPlacement(Async)");
@@ -317,20 +390,34 @@ public class PlacementsApi {
             throw new ApiException("Missing the required parameter 'code' when calling getPlacement(Async)");
         }
 
-        return getPlacementCall(scope, code, asAt, propertyKeys, _callback);
+        return getPlacementCall(scope, code, asAt, propertyKeys, _callback, opts);
 
     }
 
 
     private ApiResponse<Placement> getPlacementWithHttpInfo(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = getPlacementValidateBeforeCall(scope, code, asAt, propertyKeys, null);
+        okhttp3.Call localVarCall = getPlacementValidateBeforeCall(scope, code, asAt, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Placement>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Placement> getPlacementWithHttpInfo(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPlacementValidateBeforeCall(scope, code, asAt, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<Placement>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getPlacementAsync(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<Placement> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPlacementValidateBeforeCall(scope, code, asAt, propertyKeys, _callback);
+        okhttp3.Call localVarCall = getPlacementValidateBeforeCall(scope, code, asAt, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Placement>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getPlacementAsync(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<Placement> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getPlacementValidateBeforeCall(scope, code, asAt, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<Placement>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -402,6 +489,23 @@ public class PlacementsApi {
         }
 
         /**
+         * Execute getPlacement request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Placement
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The placement matching the given identifier. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Placement execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Placement> localVarResp = getPlacementWithHttpInfo(scope, code, asAt, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getPlacement request with HTTP info returned
          * @return ApiResponse&lt;Placement&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -415,6 +519,22 @@ public class PlacementsApi {
          */
         public ApiResponse<Placement> executeWithHttpInfo() throws ApiException {
             return getPlacementWithHttpInfo(scope, code, asAt, propertyKeys);
+        }
+
+        /**
+         * Execute getPlacement request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Placement&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The placement matching the given identifier. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Placement> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getPlacementWithHttpInfo(scope, code, asAt, propertyKeys, opts);
         }
 
         /**
@@ -432,6 +552,23 @@ public class PlacementsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Placement> _callback) throws ApiException {
             return getPlacementAsync(scope, code, asAt, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getPlacement request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The placement matching the given identifier. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Placement> _callback, ConfigurationOptions opts) throws ApiException {
+            return getPlacementAsync(scope, code, asAt, propertyKeys, _callback, opts);
         }
     }
 
@@ -453,6 +590,10 @@ public class PlacementsApi {
         return new APIgetPlacementRequest(scope, code);
     }
     private okhttp3.Call listPlacementsCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return listPlacementsCall(asAt, page, sortBy, limit, filter, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listPlacementsCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -519,25 +660,39 @@ public class PlacementsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listPlacementsValidateBeforeCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
-        return listPlacementsCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
+    private okhttp3.Call listPlacementsValidateBeforeCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listPlacementsCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfPlacement> listPlacementsWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = listPlacementsValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, null);
+        okhttp3.Call localVarCall = listPlacementsValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfPlacement>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfPlacement> listPlacementsWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listPlacementsValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPlacement>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listPlacementsAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfPlacement> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listPlacementsValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
+        okhttp3.Call localVarCall = listPlacementsValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfPlacement>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listPlacementsAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfPlacement> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listPlacementsValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPlacement>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -649,6 +804,23 @@ public class PlacementsApi {
         }
 
         /**
+         * Execute listPlacements request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfPlacement
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Placements in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfPlacement execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfPlacement> localVarResp = listPlacementsWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listPlacements request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfPlacement&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -662,6 +834,22 @@ public class PlacementsApi {
          */
         public ApiResponse<PagedResourceListOfPlacement> executeWithHttpInfo() throws ApiException {
             return listPlacementsWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys);
+        }
+
+        /**
+         * Execute listPlacements request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfPlacement&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Placements in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfPlacement> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listPlacementsWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys, opts);
         }
 
         /**
@@ -679,6 +867,23 @@ public class PlacementsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPlacement> _callback) throws ApiException {
             return listPlacementsAsync(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute listPlacements request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Placements in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPlacement> _callback, ConfigurationOptions opts) throws ApiException {
+            return listPlacementsAsync(asAt, page, sortBy, limit, filter, propertyKeys, _callback, opts);
         }
     }
 
@@ -698,6 +903,10 @@ public class PlacementsApi {
         return new APIlistPlacementsRequest();
     }
     private okhttp3.Call upsertPlacementsCall(PlacementSetRequest placementSetRequest, final ApiCallback _callback) throws ApiException {
+        return upsertPlacementsCall(placementSetRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertPlacementsCall(PlacementSetRequest placementSetRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -744,25 +953,39 @@ public class PlacementsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertPlacementsValidateBeforeCall(PlacementSetRequest placementSetRequest, final ApiCallback _callback) throws ApiException {
-        return upsertPlacementsCall(placementSetRequest, _callback);
+    private okhttp3.Call upsertPlacementsValidateBeforeCall(PlacementSetRequest placementSetRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return upsertPlacementsCall(placementSetRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfPlacement> upsertPlacementsWithHttpInfo(PlacementSetRequest placementSetRequest) throws ApiException {
-        okhttp3.Call localVarCall = upsertPlacementsValidateBeforeCall(placementSetRequest, null);
+        okhttp3.Call localVarCall = upsertPlacementsValidateBeforeCall(placementSetRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPlacement>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfPlacement> upsertPlacementsWithHttpInfo(PlacementSetRequest placementSetRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertPlacementsValidateBeforeCall(placementSetRequest, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPlacement>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertPlacementsAsync(PlacementSetRequest placementSetRequest, final ApiCallback<ResourceListOfPlacement> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertPlacementsValidateBeforeCall(placementSetRequest, _callback);
+        okhttp3.Call localVarCall = upsertPlacementsValidateBeforeCall(placementSetRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPlacement>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertPlacementsAsync(PlacementSetRequest placementSetRequest, final ApiCallback<ResourceListOfPlacement> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertPlacementsValidateBeforeCall(placementSetRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPlacement>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -819,6 +1042,23 @@ public class PlacementsApi {
         }
 
         /**
+         * Execute upsertPlacements request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfPlacement
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> A collection of placements. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfPlacement execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfPlacement> localVarResp = upsertPlacementsWithHttpInfo(placementSetRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertPlacements request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfPlacement&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -832,6 +1072,22 @@ public class PlacementsApi {
          */
         public ApiResponse<ResourceListOfPlacement> executeWithHttpInfo() throws ApiException {
             return upsertPlacementsWithHttpInfo(placementSetRequest);
+        }
+
+        /**
+         * Execute upsertPlacements request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfPlacement&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> A collection of placements. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfPlacement> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertPlacementsWithHttpInfo(placementSetRequest, opts);
         }
 
         /**
@@ -849,6 +1105,23 @@ public class PlacementsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPlacement> _callback) throws ApiException {
             return upsertPlacementsAsync(placementSetRequest, _callback);
+        }
+
+        /**
+         * Execute upsertPlacements request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> A collection of placements. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPlacement> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertPlacementsAsync(placementSetRequest, _callback, opts);
         }
     }
 

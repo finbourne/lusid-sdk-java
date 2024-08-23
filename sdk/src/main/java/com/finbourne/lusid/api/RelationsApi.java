@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -75,6 +76,10 @@ public class RelationsApi {
     }
 
     private okhttp3.Call createRelationCall(String scope, String code, CreateRelationRequest createRelationRequest, String effectiveAt, final ApiCallback _callback) throws ApiException {
+        return createRelationCall(scope, code, createRelationRequest, effectiveAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call createRelationCall(String scope, String code, CreateRelationRequest createRelationRequest, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -127,11 +132,11 @@ public class RelationsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createRelationValidateBeforeCall(String scope, String code, CreateRelationRequest createRelationRequest, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createRelationValidateBeforeCall(String scope, String code, CreateRelationRequest createRelationRequest, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling createRelation(Async)");
@@ -147,20 +152,34 @@ public class RelationsApi {
             throw new ApiException("Missing the required parameter 'createRelationRequest' when calling createRelation(Async)");
         }
 
-        return createRelationCall(scope, code, createRelationRequest, effectiveAt, _callback);
+        return createRelationCall(scope, code, createRelationRequest, effectiveAt, _callback, opts);
 
     }
 
 
     private ApiResponse<CompleteRelation> createRelationWithHttpInfo(String scope, String code, CreateRelationRequest createRelationRequest, String effectiveAt) throws ApiException {
-        okhttp3.Call localVarCall = createRelationValidateBeforeCall(scope, code, createRelationRequest, effectiveAt, null);
+        okhttp3.Call localVarCall = createRelationValidateBeforeCall(scope, code, createRelationRequest, effectiveAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CompleteRelation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<CompleteRelation> createRelationWithHttpInfo(String scope, String code, CreateRelationRequest createRelationRequest, String effectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createRelationValidateBeforeCall(scope, code, createRelationRequest, effectiveAt, null, opts);
         Type localVarReturnType = new TypeToken<CompleteRelation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call createRelationAsync(String scope, String code, CreateRelationRequest createRelationRequest, String effectiveAt, final ApiCallback<CompleteRelation> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createRelationValidateBeforeCall(scope, code, createRelationRequest, effectiveAt, _callback);
+        okhttp3.Call localVarCall = createRelationValidateBeforeCall(scope, code, createRelationRequest, effectiveAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CompleteRelation>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call createRelationAsync(String scope, String code, CreateRelationRequest createRelationRequest, String effectiveAt, final ApiCallback<CompleteRelation> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = createRelationValidateBeforeCall(scope, code, createRelationRequest, effectiveAt, _callback, opts);
         Type localVarReturnType = new TypeToken<CompleteRelation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -223,6 +242,23 @@ public class RelationsApi {
         }
 
         /**
+         * Execute createRelation request. Use any specified configuration options to override any other configuration for this request only.
+         * @return CompleteRelation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created relation. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CompleteRelation execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<CompleteRelation> localVarResp = createRelationWithHttpInfo(scope, code, createRelationRequest, effectiveAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute createRelation request with HTTP info returned
          * @return ApiResponse&lt;CompleteRelation&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -236,6 +272,22 @@ public class RelationsApi {
          */
         public ApiResponse<CompleteRelation> executeWithHttpInfo() throws ApiException {
             return createRelationWithHttpInfo(scope, code, createRelationRequest, effectiveAt);
+        }
+
+        /**
+         * Execute createRelation request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;CompleteRelation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created relation. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CompleteRelation> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return createRelationWithHttpInfo(scope, code, createRelationRequest, effectiveAt, opts);
         }
 
         /**
@@ -253,6 +305,23 @@ public class RelationsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<CompleteRelation> _callback) throws ApiException {
             return createRelationAsync(scope, code, createRelationRequest, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute createRelation request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created relation. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CompleteRelation> _callback, ConfigurationOptions opts) throws ApiException {
+            return createRelationAsync(scope, code, createRelationRequest, effectiveAt, _callback, opts);
         }
     }
 
@@ -275,6 +344,10 @@ public class RelationsApi {
         return new APIcreateRelationRequest(scope, code, createRelationRequest);
     }
     private okhttp3.Call deleteRelationCall(String scope, String code, DeleteRelationRequest deleteRelationRequest, String effectiveAt, final ApiCallback _callback) throws ApiException {
+        return deleteRelationCall(scope, code, deleteRelationRequest, effectiveAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteRelationCall(String scope, String code, DeleteRelationRequest deleteRelationRequest, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -327,11 +400,11 @@ public class RelationsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteRelationValidateBeforeCall(String scope, String code, DeleteRelationRequest deleteRelationRequest, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteRelationValidateBeforeCall(String scope, String code, DeleteRelationRequest deleteRelationRequest, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteRelation(Async)");
@@ -347,20 +420,34 @@ public class RelationsApi {
             throw new ApiException("Missing the required parameter 'deleteRelationRequest' when calling deleteRelation(Async)");
         }
 
-        return deleteRelationCall(scope, code, deleteRelationRequest, effectiveAt, _callback);
+        return deleteRelationCall(scope, code, deleteRelationRequest, effectiveAt, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deleteRelationWithHttpInfo(String scope, String code, DeleteRelationRequest deleteRelationRequest, String effectiveAt) throws ApiException {
-        okhttp3.Call localVarCall = deleteRelationValidateBeforeCall(scope, code, deleteRelationRequest, effectiveAt, null);
+        okhttp3.Call localVarCall = deleteRelationValidateBeforeCall(scope, code, deleteRelationRequest, effectiveAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteRelationWithHttpInfo(String scope, String code, DeleteRelationRequest deleteRelationRequest, String effectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteRelationValidateBeforeCall(scope, code, deleteRelationRequest, effectiveAt, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteRelationAsync(String scope, String code, DeleteRelationRequest deleteRelationRequest, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteRelationValidateBeforeCall(scope, code, deleteRelationRequest, effectiveAt, _callback);
+        okhttp3.Call localVarCall = deleteRelationValidateBeforeCall(scope, code, deleteRelationRequest, effectiveAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteRelationAsync(String scope, String code, DeleteRelationRequest deleteRelationRequest, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteRelationValidateBeforeCall(scope, code, deleteRelationRequest, effectiveAt, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -423,6 +510,23 @@ public class RelationsApi {
         }
 
         /**
+         * Execute deleteRelation request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the relation is deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteRelationWithHttpInfo(scope, code, deleteRelationRequest, effectiveAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteRelation request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -436,6 +540,22 @@ public class RelationsApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deleteRelationWithHttpInfo(scope, code, deleteRelationRequest, effectiveAt);
+        }
+
+        /**
+         * Execute deleteRelation request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the relation is deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteRelationWithHttpInfo(scope, code, deleteRelationRequest, effectiveAt, opts);
         }
 
         /**
@@ -453,6 +573,23 @@ public class RelationsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deleteRelationAsync(scope, code, deleteRelationRequest, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute deleteRelation request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the relation is deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteRelationAsync(scope, code, deleteRelationRequest, effectiveAt, _callback, opts);
         }
     }
 

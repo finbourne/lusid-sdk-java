@@ -47,10 +47,21 @@ public class DerivedTransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // DerivedTransactionPortfoliosApi apiInstance = apiFactory.build(DerivedTransactionPortfoliosApi.class);
+
         DerivedTransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(DerivedTransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope in which to create the derived transaction portfolio.
         CreateDerivedTransactionPortfolioRequest createDerivedTransactionPortfolioRequest = new CreateDerivedTransactionPortfolioRequest(); // CreateDerivedTransactionPortfolioRequest | The definition of the derived transaction portfolio.
         try {
+            // uncomment the below to set overrides at the request level
+            // Portfolio result = apiInstance.createDerivedPortfolio(scope, createDerivedTransactionPortfolioRequest).execute(opts);
+
             Portfolio result = apiInstance.createDerivedPortfolio(scope, createDerivedTransactionPortfolioRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -129,11 +140,22 @@ public class DerivedTransactionPortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // DerivedTransactionPortfoliosApi apiInstance = apiFactory.build(DerivedTransactionPortfoliosApi.class);
+
         DerivedTransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(DerivedTransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the derived transaction portfolio.
         String code = "code_example"; // String | The code of the derived transaction portfolio. Together with the scope this uniquely identifies   the derived transaction portfolio.
         String effectiveAt = "effectiveAt_example"; // String | The effective date of the change.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteDerivedPortfolioDetails(scope, code, effectiveAt).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteDerivedPortfolioDetails(scope, code, effectiveAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

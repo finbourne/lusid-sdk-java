@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -78,6 +79,10 @@ public class SystemConfigurationApi {
     }
 
     private okhttp3.Call createConfigurationTransactionTypeCall(TransactionConfigurationDataRequest transactionConfigurationDataRequest, final ApiCallback _callback) throws ApiException {
+        return createConfigurationTransactionTypeCall(transactionConfigurationDataRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call createConfigurationTransactionTypeCall(TransactionConfigurationDataRequest transactionConfigurationDataRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -124,25 +129,39 @@ public class SystemConfigurationApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createConfigurationTransactionTypeValidateBeforeCall(TransactionConfigurationDataRequest transactionConfigurationDataRequest, final ApiCallback _callback) throws ApiException {
-        return createConfigurationTransactionTypeCall(transactionConfigurationDataRequest, _callback);
+    private okhttp3.Call createConfigurationTransactionTypeValidateBeforeCall(TransactionConfigurationDataRequest transactionConfigurationDataRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return createConfigurationTransactionTypeCall(transactionConfigurationDataRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<TransactionSetConfigurationData> createConfigurationTransactionTypeWithHttpInfo(TransactionConfigurationDataRequest transactionConfigurationDataRequest) throws ApiException {
-        okhttp3.Call localVarCall = createConfigurationTransactionTypeValidateBeforeCall(transactionConfigurationDataRequest, null);
+        okhttp3.Call localVarCall = createConfigurationTransactionTypeValidateBeforeCall(transactionConfigurationDataRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TransactionSetConfigurationData>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<TransactionSetConfigurationData> createConfigurationTransactionTypeWithHttpInfo(TransactionConfigurationDataRequest transactionConfigurationDataRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createConfigurationTransactionTypeValidateBeforeCall(transactionConfigurationDataRequest, null, opts);
         Type localVarReturnType = new TypeToken<TransactionSetConfigurationData>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call createConfigurationTransactionTypeAsync(TransactionConfigurationDataRequest transactionConfigurationDataRequest, final ApiCallback<TransactionSetConfigurationData> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createConfigurationTransactionTypeValidateBeforeCall(transactionConfigurationDataRequest, _callback);
+        okhttp3.Call localVarCall = createConfigurationTransactionTypeValidateBeforeCall(transactionConfigurationDataRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TransactionSetConfigurationData>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call createConfigurationTransactionTypeAsync(TransactionConfigurationDataRequest transactionConfigurationDataRequest, final ApiCallback<TransactionSetConfigurationData> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = createConfigurationTransactionTypeValidateBeforeCall(transactionConfigurationDataRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<TransactionSetConfigurationData>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -199,6 +218,23 @@ public class SystemConfigurationApi {
         }
 
         /**
+         * Execute createConfigurationTransactionType request. Use any specified configuration options to override any other configuration for this request only.
+         * @return TransactionSetConfigurationData
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TransactionSetConfigurationData execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<TransactionSetConfigurationData> localVarResp = createConfigurationTransactionTypeWithHttpInfo(transactionConfigurationDataRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute createConfigurationTransactionType request with HTTP info returned
          * @return ApiResponse&lt;TransactionSetConfigurationData&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -212,6 +248,22 @@ public class SystemConfigurationApi {
          */
         public ApiResponse<TransactionSetConfigurationData> executeWithHttpInfo() throws ApiException {
             return createConfigurationTransactionTypeWithHttpInfo(transactionConfigurationDataRequest);
+        }
+
+        /**
+         * Execute createConfigurationTransactionType request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;TransactionSetConfigurationData&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TransactionSetConfigurationData> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return createConfigurationTransactionTypeWithHttpInfo(transactionConfigurationDataRequest, opts);
         }
 
         /**
@@ -229,6 +281,23 @@ public class SystemConfigurationApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<TransactionSetConfigurationData> _callback) throws ApiException {
             return createConfigurationTransactionTypeAsync(transactionConfigurationDataRequest, _callback);
+        }
+
+        /**
+         * Execute createConfigurationTransactionType request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TransactionSetConfigurationData> _callback, ConfigurationOptions opts) throws ApiException {
+            return createConfigurationTransactionTypeAsync(transactionConfigurationDataRequest, _callback, opts);
         }
     }
 
@@ -248,6 +317,10 @@ public class SystemConfigurationApi {
         return new APIcreateConfigurationTransactionTypeRequest();
     }
     private okhttp3.Call createSideDefinitionCall(SideConfigurationDataRequest sideConfigurationDataRequest, final ApiCallback _callback) throws ApiException {
+        return createSideDefinitionCall(sideConfigurationDataRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call createSideDefinitionCall(SideConfigurationDataRequest sideConfigurationDataRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -294,25 +367,39 @@ public class SystemConfigurationApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createSideDefinitionValidateBeforeCall(SideConfigurationDataRequest sideConfigurationDataRequest, final ApiCallback _callback) throws ApiException {
-        return createSideDefinitionCall(sideConfigurationDataRequest, _callback);
+    private okhttp3.Call createSideDefinitionValidateBeforeCall(SideConfigurationDataRequest sideConfigurationDataRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return createSideDefinitionCall(sideConfigurationDataRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<TransactionSetConfigurationData> createSideDefinitionWithHttpInfo(SideConfigurationDataRequest sideConfigurationDataRequest) throws ApiException {
-        okhttp3.Call localVarCall = createSideDefinitionValidateBeforeCall(sideConfigurationDataRequest, null);
+        okhttp3.Call localVarCall = createSideDefinitionValidateBeforeCall(sideConfigurationDataRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TransactionSetConfigurationData>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<TransactionSetConfigurationData> createSideDefinitionWithHttpInfo(SideConfigurationDataRequest sideConfigurationDataRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createSideDefinitionValidateBeforeCall(sideConfigurationDataRequest, null, opts);
         Type localVarReturnType = new TypeToken<TransactionSetConfigurationData>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call createSideDefinitionAsync(SideConfigurationDataRequest sideConfigurationDataRequest, final ApiCallback<TransactionSetConfigurationData> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createSideDefinitionValidateBeforeCall(sideConfigurationDataRequest, _callback);
+        okhttp3.Call localVarCall = createSideDefinitionValidateBeforeCall(sideConfigurationDataRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TransactionSetConfigurationData>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call createSideDefinitionAsync(SideConfigurationDataRequest sideConfigurationDataRequest, final ApiCallback<TransactionSetConfigurationData> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = createSideDefinitionValidateBeforeCall(sideConfigurationDataRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<TransactionSetConfigurationData>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -369,6 +456,23 @@ public class SystemConfigurationApi {
         }
 
         /**
+         * Execute createSideDefinition request. Use any specified configuration options to override any other configuration for this request only.
+         * @return TransactionSetConfigurationData
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TransactionSetConfigurationData execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<TransactionSetConfigurationData> localVarResp = createSideDefinitionWithHttpInfo(sideConfigurationDataRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute createSideDefinition request with HTTP info returned
          * @return ApiResponse&lt;TransactionSetConfigurationData&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -382,6 +486,22 @@ public class SystemConfigurationApi {
          */
         public ApiResponse<TransactionSetConfigurationData> executeWithHttpInfo() throws ApiException {
             return createSideDefinitionWithHttpInfo(sideConfigurationDataRequest);
+        }
+
+        /**
+         * Execute createSideDefinition request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;TransactionSetConfigurationData&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TransactionSetConfigurationData> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return createSideDefinitionWithHttpInfo(sideConfigurationDataRequest, opts);
         }
 
         /**
@@ -399,6 +519,23 @@ public class SystemConfigurationApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<TransactionSetConfigurationData> _callback) throws ApiException {
             return createSideDefinitionAsync(sideConfigurationDataRequest, _callback);
+        }
+
+        /**
+         * Execute createSideDefinition request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TransactionSetConfigurationData> _callback, ConfigurationOptions opts) throws ApiException {
+            return createSideDefinitionAsync(sideConfigurationDataRequest, _callback, opts);
         }
     }
 
@@ -418,6 +555,10 @@ public class SystemConfigurationApi {
         return new APIcreateSideDefinitionRequest();
     }
     private okhttp3.Call deleteTransactionConfigurationSourceCall(String source, final ApiCallback _callback) throws ApiException {
+        return deleteTransactionConfigurationSourceCall(source,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteTransactionConfigurationSourceCall(String source, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -461,30 +602,44 @@ public class SystemConfigurationApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteTransactionConfigurationSourceValidateBeforeCall(String source, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteTransactionConfigurationSourceValidateBeforeCall(String source, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'source' is set
         if (source == null) {
             throw new ApiException("Missing the required parameter 'source' when calling deleteTransactionConfigurationSource(Async)");
         }
 
-        return deleteTransactionConfigurationSourceCall(source, _callback);
+        return deleteTransactionConfigurationSourceCall(source, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deleteTransactionConfigurationSourceWithHttpInfo(String source) throws ApiException {
-        okhttp3.Call localVarCall = deleteTransactionConfigurationSourceValidateBeforeCall(source, null);
+        okhttp3.Call localVarCall = deleteTransactionConfigurationSourceValidateBeforeCall(source, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteTransactionConfigurationSourceWithHttpInfo(String source, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteTransactionConfigurationSourceValidateBeforeCall(source, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteTransactionConfigurationSourceAsync(String source, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteTransactionConfigurationSourceValidateBeforeCall(source, _callback);
+        okhttp3.Call localVarCall = deleteTransactionConfigurationSourceValidateBeforeCall(source, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteTransactionConfigurationSourceAsync(String source, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteTransactionConfigurationSourceValidateBeforeCall(source, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -532,6 +687,23 @@ public class SystemConfigurationApi {
         }
 
         /**
+         * Execute deleteTransactionConfigurationSource request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteTransactionConfigurationSourceWithHttpInfo(source, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteTransactionConfigurationSource request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -545,6 +717,22 @@ public class SystemConfigurationApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deleteTransactionConfigurationSourceWithHttpInfo(source);
+        }
+
+        /**
+         * Execute deleteTransactionConfigurationSource request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteTransactionConfigurationSourceWithHttpInfo(source, opts);
         }
 
         /**
@@ -562,6 +750,23 @@ public class SystemConfigurationApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deleteTransactionConfigurationSourceAsync(source, _callback);
+        }
+
+        /**
+         * Execute deleteTransactionConfigurationSource request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteTransactionConfigurationSourceAsync(source, _callback, opts);
         }
     }
 
@@ -582,6 +787,10 @@ public class SystemConfigurationApi {
         return new APIdeleteTransactionConfigurationSourceRequest(source);
     }
     private okhttp3.Call getTransactionConfigurationSourceCall(String source, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getTransactionConfigurationSourceCall(source, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getTransactionConfigurationSourceCall(String source, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -629,30 +838,44 @@ public class SystemConfigurationApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTransactionConfigurationSourceValidateBeforeCall(String source, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getTransactionConfigurationSourceValidateBeforeCall(String source, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'source' is set
         if (source == null) {
             throw new ApiException("Missing the required parameter 'source' when calling getTransactionConfigurationSource(Async)");
         }
 
-        return getTransactionConfigurationSourceCall(source, asAt, _callback);
+        return getTransactionConfigurationSourceCall(source, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<TransactionSetConfigurationData> getTransactionConfigurationSourceWithHttpInfo(String source, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getTransactionConfigurationSourceValidateBeforeCall(source, asAt, null);
+        okhttp3.Call localVarCall = getTransactionConfigurationSourceValidateBeforeCall(source, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TransactionSetConfigurationData>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<TransactionSetConfigurationData> getTransactionConfigurationSourceWithHttpInfo(String source, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getTransactionConfigurationSourceValidateBeforeCall(source, asAt, null, opts);
         Type localVarReturnType = new TypeToken<TransactionSetConfigurationData>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getTransactionConfigurationSourceAsync(String source, OffsetDateTime asAt, final ApiCallback<TransactionSetConfigurationData> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getTransactionConfigurationSourceValidateBeforeCall(source, asAt, _callback);
+        okhttp3.Call localVarCall = getTransactionConfigurationSourceValidateBeforeCall(source, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TransactionSetConfigurationData>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getTransactionConfigurationSourceAsync(String source, OffsetDateTime asAt, final ApiCallback<TransactionSetConfigurationData> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getTransactionConfigurationSourceValidateBeforeCall(source, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<TransactionSetConfigurationData>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -711,6 +934,23 @@ public class SystemConfigurationApi {
         }
 
         /**
+         * Execute getTransactionConfigurationSource request. Use any specified configuration options to override any other configuration for this request only.
+         * @return TransactionSetConfigurationData
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TransactionSetConfigurationData execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<TransactionSetConfigurationData> localVarResp = getTransactionConfigurationSourceWithHttpInfo(source, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getTransactionConfigurationSource request with HTTP info returned
          * @return ApiResponse&lt;TransactionSetConfigurationData&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -724,6 +964,22 @@ public class SystemConfigurationApi {
          */
         public ApiResponse<TransactionSetConfigurationData> executeWithHttpInfo() throws ApiException {
             return getTransactionConfigurationSourceWithHttpInfo(source, asAt);
+        }
+
+        /**
+         * Execute getTransactionConfigurationSource request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;TransactionSetConfigurationData&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TransactionSetConfigurationData> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getTransactionConfigurationSourceWithHttpInfo(source, asAt, opts);
         }
 
         /**
@@ -741,6 +997,23 @@ public class SystemConfigurationApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<TransactionSetConfigurationData> _callback) throws ApiException {
             return getTransactionConfigurationSourceAsync(source, asAt, _callback);
+        }
+
+        /**
+         * Execute getTransactionConfigurationSource request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TransactionSetConfigurationData> _callback, ConfigurationOptions opts) throws ApiException {
+            return getTransactionConfigurationSourceAsync(source, asAt, _callback, opts);
         }
     }
 
@@ -761,6 +1034,10 @@ public class SystemConfigurationApi {
         return new APIgetTransactionConfigurationSourceRequest(source);
     }
     private okhttp3.Call listConfigurationTransactionTypesCall(OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return listConfigurationTransactionTypesCall(asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listConfigurationTransactionTypesCall(OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -807,25 +1084,39 @@ public class SystemConfigurationApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listConfigurationTransactionTypesValidateBeforeCall(OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
-        return listConfigurationTransactionTypesCall(asAt, _callback);
+    private okhttp3.Call listConfigurationTransactionTypesValidateBeforeCall(OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listConfigurationTransactionTypesCall(asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<TransactionSetConfigurationData> listConfigurationTransactionTypesWithHttpInfo(OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = listConfigurationTransactionTypesValidateBeforeCall(asAt, null);
+        okhttp3.Call localVarCall = listConfigurationTransactionTypesValidateBeforeCall(asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TransactionSetConfigurationData>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<TransactionSetConfigurationData> listConfigurationTransactionTypesWithHttpInfo(OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listConfigurationTransactionTypesValidateBeforeCall(asAt, null, opts);
         Type localVarReturnType = new TypeToken<TransactionSetConfigurationData>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listConfigurationTransactionTypesAsync(OffsetDateTime asAt, final ApiCallback<TransactionSetConfigurationData> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listConfigurationTransactionTypesValidateBeforeCall(asAt, _callback);
+        okhttp3.Call localVarCall = listConfigurationTransactionTypesValidateBeforeCall(asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TransactionSetConfigurationData>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listConfigurationTransactionTypesAsync(OffsetDateTime asAt, final ApiCallback<TransactionSetConfigurationData> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listConfigurationTransactionTypesValidateBeforeCall(asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<TransactionSetConfigurationData>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -882,6 +1173,23 @@ public class SystemConfigurationApi {
         }
 
         /**
+         * Execute listConfigurationTransactionTypes request. Use any specified configuration options to override any other configuration for this request only.
+         * @return TransactionSetConfigurationData
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TransactionSetConfigurationData execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<TransactionSetConfigurationData> localVarResp = listConfigurationTransactionTypesWithHttpInfo(asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listConfigurationTransactionTypes request with HTTP info returned
          * @return ApiResponse&lt;TransactionSetConfigurationData&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -895,6 +1203,22 @@ public class SystemConfigurationApi {
          */
         public ApiResponse<TransactionSetConfigurationData> executeWithHttpInfo() throws ApiException {
             return listConfigurationTransactionTypesWithHttpInfo(asAt);
+        }
+
+        /**
+         * Execute listConfigurationTransactionTypes request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;TransactionSetConfigurationData&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TransactionSetConfigurationData> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listConfigurationTransactionTypesWithHttpInfo(asAt, opts);
         }
 
         /**
@@ -912,6 +1236,23 @@ public class SystemConfigurationApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<TransactionSetConfigurationData> _callback) throws ApiException {
             return listConfigurationTransactionTypesAsync(asAt, _callback);
+        }
+
+        /**
+         * Execute listConfigurationTransactionTypes request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TransactionSetConfigurationData> _callback, ConfigurationOptions opts) throws ApiException {
+            return listConfigurationTransactionTypesAsync(asAt, _callback, opts);
         }
     }
 
@@ -931,6 +1272,10 @@ public class SystemConfigurationApi {
         return new APIlistConfigurationTransactionTypesRequest();
     }
     private okhttp3.Call setConfigurationTransactionTypesCall(TransactionSetConfigurationDataRequest transactionSetConfigurationDataRequest, final ApiCallback _callback) throws ApiException {
+        return setConfigurationTransactionTypesCall(transactionSetConfigurationDataRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call setConfigurationTransactionTypesCall(TransactionSetConfigurationDataRequest transactionSetConfigurationDataRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -977,25 +1322,39 @@ public class SystemConfigurationApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call setConfigurationTransactionTypesValidateBeforeCall(TransactionSetConfigurationDataRequest transactionSetConfigurationDataRequest, final ApiCallback _callback) throws ApiException {
-        return setConfigurationTransactionTypesCall(transactionSetConfigurationDataRequest, _callback);
+    private okhttp3.Call setConfigurationTransactionTypesValidateBeforeCall(TransactionSetConfigurationDataRequest transactionSetConfigurationDataRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return setConfigurationTransactionTypesCall(transactionSetConfigurationDataRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<TransactionSetConfigurationData> setConfigurationTransactionTypesWithHttpInfo(TransactionSetConfigurationDataRequest transactionSetConfigurationDataRequest) throws ApiException {
-        okhttp3.Call localVarCall = setConfigurationTransactionTypesValidateBeforeCall(transactionSetConfigurationDataRequest, null);
+        okhttp3.Call localVarCall = setConfigurationTransactionTypesValidateBeforeCall(transactionSetConfigurationDataRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TransactionSetConfigurationData>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<TransactionSetConfigurationData> setConfigurationTransactionTypesWithHttpInfo(TransactionSetConfigurationDataRequest transactionSetConfigurationDataRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = setConfigurationTransactionTypesValidateBeforeCall(transactionSetConfigurationDataRequest, null, opts);
         Type localVarReturnType = new TypeToken<TransactionSetConfigurationData>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call setConfigurationTransactionTypesAsync(TransactionSetConfigurationDataRequest transactionSetConfigurationDataRequest, final ApiCallback<TransactionSetConfigurationData> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = setConfigurationTransactionTypesValidateBeforeCall(transactionSetConfigurationDataRequest, _callback);
+        okhttp3.Call localVarCall = setConfigurationTransactionTypesValidateBeforeCall(transactionSetConfigurationDataRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TransactionSetConfigurationData>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call setConfigurationTransactionTypesAsync(TransactionSetConfigurationDataRequest transactionSetConfigurationDataRequest, final ApiCallback<TransactionSetConfigurationData> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = setConfigurationTransactionTypesValidateBeforeCall(transactionSetConfigurationDataRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<TransactionSetConfigurationData>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1052,6 +1411,23 @@ public class SystemConfigurationApi {
         }
 
         /**
+         * Execute setConfigurationTransactionTypes request. Use any specified configuration options to override any other configuration for this request only.
+         * @return TransactionSetConfigurationData
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TransactionSetConfigurationData execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<TransactionSetConfigurationData> localVarResp = setConfigurationTransactionTypesWithHttpInfo(transactionSetConfigurationDataRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute setConfigurationTransactionTypes request with HTTP info returned
          * @return ApiResponse&lt;TransactionSetConfigurationData&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1065,6 +1441,22 @@ public class SystemConfigurationApi {
          */
         public ApiResponse<TransactionSetConfigurationData> executeWithHttpInfo() throws ApiException {
             return setConfigurationTransactionTypesWithHttpInfo(transactionSetConfigurationDataRequest);
+        }
+
+        /**
+         * Execute setConfigurationTransactionTypes request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;TransactionSetConfigurationData&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TransactionSetConfigurationData> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return setConfigurationTransactionTypesWithHttpInfo(transactionSetConfigurationDataRequest, opts);
         }
 
         /**
@@ -1082,6 +1474,23 @@ public class SystemConfigurationApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<TransactionSetConfigurationData> _callback) throws ApiException {
             return setConfigurationTransactionTypesAsync(transactionSetConfigurationDataRequest, _callback);
+        }
+
+        /**
+         * Execute setConfigurationTransactionTypes request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TransactionSetConfigurationData> _callback, ConfigurationOptions opts) throws ApiException {
+            return setConfigurationTransactionTypesAsync(transactionSetConfigurationDataRequest, _callback, opts);
         }
     }
 
@@ -1101,6 +1510,10 @@ public class SystemConfigurationApi {
         return new APIsetConfigurationTransactionTypesRequest();
     }
     private okhttp3.Call setTransactionConfigurationSourceCall(String source, List<SetTransactionConfigurationSourceRequest> setTransactionConfigurationSourceRequest, final ApiCallback _callback) throws ApiException {
+        return setTransactionConfigurationSourceCall(source, setTransactionConfigurationSourceRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call setTransactionConfigurationSourceCall(String source, List<SetTransactionConfigurationSourceRequest> setTransactionConfigurationSourceRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1148,11 +1561,11 @@ public class SystemConfigurationApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call setTransactionConfigurationSourceValidateBeforeCall(String source, List<SetTransactionConfigurationSourceRequest> setTransactionConfigurationSourceRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call setTransactionConfigurationSourceValidateBeforeCall(String source, List<SetTransactionConfigurationSourceRequest> setTransactionConfigurationSourceRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'source' is set
         if (source == null) {
             throw new ApiException("Missing the required parameter 'source' when calling setTransactionConfigurationSource(Async)");
@@ -1163,20 +1576,34 @@ public class SystemConfigurationApi {
             throw new ApiException("Missing the required parameter 'setTransactionConfigurationSourceRequest' when calling setTransactionConfigurationSource(Async)");
         }
 
-        return setTransactionConfigurationSourceCall(source, setTransactionConfigurationSourceRequest, _callback);
+        return setTransactionConfigurationSourceCall(source, setTransactionConfigurationSourceRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<TransactionSetConfigurationData> setTransactionConfigurationSourceWithHttpInfo(String source, List<SetTransactionConfigurationSourceRequest> setTransactionConfigurationSourceRequest) throws ApiException {
-        okhttp3.Call localVarCall = setTransactionConfigurationSourceValidateBeforeCall(source, setTransactionConfigurationSourceRequest, null);
+        okhttp3.Call localVarCall = setTransactionConfigurationSourceValidateBeforeCall(source, setTransactionConfigurationSourceRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TransactionSetConfigurationData>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<TransactionSetConfigurationData> setTransactionConfigurationSourceWithHttpInfo(String source, List<SetTransactionConfigurationSourceRequest> setTransactionConfigurationSourceRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = setTransactionConfigurationSourceValidateBeforeCall(source, setTransactionConfigurationSourceRequest, null, opts);
         Type localVarReturnType = new TypeToken<TransactionSetConfigurationData>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call setTransactionConfigurationSourceAsync(String source, List<SetTransactionConfigurationSourceRequest> setTransactionConfigurationSourceRequest, final ApiCallback<TransactionSetConfigurationData> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = setTransactionConfigurationSourceValidateBeforeCall(source, setTransactionConfigurationSourceRequest, _callback);
+        okhttp3.Call localVarCall = setTransactionConfigurationSourceValidateBeforeCall(source, setTransactionConfigurationSourceRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TransactionSetConfigurationData>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call setTransactionConfigurationSourceAsync(String source, List<SetTransactionConfigurationSourceRequest> setTransactionConfigurationSourceRequest, final ApiCallback<TransactionSetConfigurationData> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = setTransactionConfigurationSourceValidateBeforeCall(source, setTransactionConfigurationSourceRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<TransactionSetConfigurationData>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1226,6 +1653,23 @@ public class SystemConfigurationApi {
         }
 
         /**
+         * Execute setTransactionConfigurationSource request. Use any specified configuration options to override any other configuration for this request only.
+         * @return TransactionSetConfigurationData
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TransactionSetConfigurationData execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<TransactionSetConfigurationData> localVarResp = setTransactionConfigurationSourceWithHttpInfo(source, setTransactionConfigurationSourceRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute setTransactionConfigurationSource request with HTTP info returned
          * @return ApiResponse&lt;TransactionSetConfigurationData&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1239,6 +1683,22 @@ public class SystemConfigurationApi {
          */
         public ApiResponse<TransactionSetConfigurationData> executeWithHttpInfo() throws ApiException {
             return setTransactionConfigurationSourceWithHttpInfo(source, setTransactionConfigurationSourceRequest);
+        }
+
+        /**
+         * Execute setTransactionConfigurationSource request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;TransactionSetConfigurationData&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TransactionSetConfigurationData> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return setTransactionConfigurationSourceWithHttpInfo(source, setTransactionConfigurationSourceRequest, opts);
         }
 
         /**
@@ -1256,6 +1716,23 @@ public class SystemConfigurationApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<TransactionSetConfigurationData> _callback) throws ApiException {
             return setTransactionConfigurationSourceAsync(source, setTransactionConfigurationSourceRequest, _callback);
+        }
+
+        /**
+         * Execute setTransactionConfigurationSource request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TransactionSetConfigurationData> _callback, ConfigurationOptions opts) throws ApiException {
+            return setTransactionConfigurationSourceAsync(source, setTransactionConfigurationSourceRequest, _callback, opts);
         }
     }
 

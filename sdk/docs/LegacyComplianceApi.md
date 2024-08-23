@@ -53,10 +53,21 @@ public class LegacyComplianceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // LegacyComplianceApi apiInstance = apiFactory.build(LegacyComplianceApi.class);
+
         LegacyComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegacyComplianceApi.class);
         String scope = "scope_example"; // String | The compliance rule scope.
         String code = "code_example"; // String | The compliance rule code.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteLegacyComplianceRule(scope, code).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteLegacyComplianceRule(scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -135,12 +146,23 @@ public class LegacyComplianceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // LegacyComplianceApi apiInstance = apiFactory.build(LegacyComplianceApi.class);
+
         LegacyComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegacyComplianceApi.class);
         String runId = "runId_example"; // String | The RunId that the results should be checked for
         String orderScope = "orderScope_example"; // String | Optional. Find rules related to a specific order by providing an Order Scope/Code combination
         String orderCode = "orderCode_example"; // String | Optional. Find rules related to a specific order by providing an Order Scope/Code combination
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfComplianceBreachedOrderInfo result = apiInstance.getLegacyBreachedOrdersInfo(runId, orderScope, orderCode, limit).execute(opts);
+
             ResourceListOfComplianceBreachedOrderInfo result = apiInstance.getLegacyBreachedOrdersInfo(runId, orderScope, orderCode, limit).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -221,12 +243,23 @@ public class LegacyComplianceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // LegacyComplianceApi apiInstance = apiFactory.build(LegacyComplianceApi.class);
+
         LegacyComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegacyComplianceApi.class);
         String scope = "scope_example"; // String | The compliance rule scope.
         String code = "code_example"; // String | The compliance rule code.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the rule definition. Defaults to the current LUSID  system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the rule definition. Defaults to returning the latest version if not  specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // ComplianceRule result = apiInstance.getLegacyComplianceRule(scope, code, effectiveAt, asAt).execute(opts);
+
             ComplianceRule result = apiInstance.getLegacyComplianceRule(scope, code, effectiveAt, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -307,12 +340,23 @@ public class LegacyComplianceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // LegacyComplianceApi apiInstance = apiFactory.build(LegacyComplianceApi.class);
+
         LegacyComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegacyComplianceApi.class);
         String runId = "runId_example"; // String | The unique identifier of the compliance run requested.
         String page = "page_example"; // String | The pagination token to use to continue listing compliance rule results from a previous call to list compliance rule result.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
         String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfComplianceRuleResult result = apiInstance.getLegacyComplianceRunResults(runId, page, limit, filter).execute(opts);
+
             ResourceListOfComplianceRuleResult result = apiInstance.getLegacyComplianceRunResults(runId, page, limit, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -393,6 +437,14 @@ public class LegacyComplianceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // LegacyComplianceApi apiInstance = apiFactory.build(LegacyComplianceApi.class);
+
         LegacyComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegacyComplianceApi.class);
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the rule definitions. Defaults to the current LUSID  system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the rule definitions. Defaults to returning the latest version if not  specified.
@@ -400,6 +452,9 @@ public class LegacyComplianceApiExample {
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
         String filter = "filter_example"; // String | Expression to filter the results.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfComplianceRule result = apiInstance.listLegacyComplianceRules(effectiveAt, asAt, page, limit, filter).execute(opts);
+
             ResourceListOfComplianceRule result = apiInstance.listLegacyComplianceRules(effectiveAt, asAt, page, limit, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -481,12 +536,23 @@ public class LegacyComplianceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // LegacyComplianceApi apiInstance = apiFactory.build(LegacyComplianceApi.class);
+
         LegacyComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegacyComplianceApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. The time at which to get results from. Default : latest
         String page = "page_example"; // String | The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
         String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfComplianceRunInfo result = apiInstance.listLegacyComplianceRunInfo(asAt, page, limit, filter).execute(opts);
+
             ResourceListOfComplianceRunInfo result = apiInstance.listLegacyComplianceRunInfo(asAt, page, limit, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -567,12 +633,23 @@ public class LegacyComplianceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // LegacyComplianceApi apiInstance = apiFactory.build(LegacyComplianceApi.class);
+
         LegacyComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegacyComplianceApi.class);
         Boolean isPreTrade = true; // Boolean | Required: Boolean flag indicating if a run should be PreTrade (Including orders). For post-trade only, set to false
         String recipeIdScope = "recipeIdScope_example"; // String | Required: the scope of the recipe to be used
         String recipeIdCode = "recipeIdCode_example"; // String | Optional: The code of the recipe to be used. If left blank, the default recipe will be used.
         Boolean byTaxlots = true; // Boolean | Optional.
         try {
+            // uncomment the below to set overrides at the request level
+            // ComplianceRunInfo result = apiInstance.runLegacyCompliance(isPreTrade, recipeIdScope, recipeIdCode, byTaxlots).execute(opts);
+
             ComplianceRunInfo result = apiInstance.runLegacyCompliance(isPreTrade, recipeIdScope, recipeIdCode, byTaxlots).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -653,10 +730,21 @@ public class LegacyComplianceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // LegacyComplianceApi apiInstance = apiFactory.build(LegacyComplianceApi.class);
+
         LegacyComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegacyComplianceApi.class);
         Map<String, ComplianceRuleUpsertRequest> requestBody = new HashMap(); // Map<String, ComplianceRuleUpsertRequest> | A dictionary of upsert request identifiers to rule upsert requests. The request   identifiers are valid for the request only and can be used to link the upserted compliance rule to the code   of a created compliance rule.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which the rule will take effect. Defaults to the current LUSID  system datetime if not specified. In the case of an update, the changes will take place from this effective  time until the next effective time that the rule as been upserted at. For example, consider a rule that  already exists, and has previously had an update applied so that the definition will change on the first day  of the coming month. An upsert effective from the current day will only change the definition until the  first day of the coming month. An additional upsert at the same time (first day of the month) is required  if the newly-updated definition is to supersede the future definition.
         try {
+            // uncomment the below to set overrides at the request level
+            // ComplianceRuleUpsertResponse result = apiInstance.upsertLegacyComplianceRules(requestBody, effectiveAt).execute(opts);
+
             ComplianceRuleUpsertResponse result = apiInstance.upsertLegacyComplianceRules(requestBody, effectiveAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

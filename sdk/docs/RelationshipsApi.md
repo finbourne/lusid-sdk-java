@@ -47,11 +47,22 @@ public class RelationshipsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // RelationshipsApi apiInstance = apiFactory.build(RelationshipsApi.class);
+
         RelationshipsApi apiInstance = ApiFactoryBuilder.build(fileName).build(RelationshipsApi.class);
         String scope = "scope_example"; // String | The scope of the relationship
         String code = "code_example"; // String | The code of the relationship
         CreateRelationshipRequest createRelationshipRequest = new CreateRelationshipRequest(); // CreateRelationshipRequest | The details of the relationship to create.
         try {
+            // uncomment the below to set overrides at the request level
+            // CompleteRelationship result = apiInstance.createRelationship(scope, code, createRelationshipRequest).execute(opts);
+
             CompleteRelationship result = apiInstance.createRelationship(scope, code, createRelationshipRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -131,11 +142,22 @@ public class RelationshipsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // RelationshipsApi apiInstance = apiFactory.build(RelationshipsApi.class);
+
         RelationshipsApi apiInstance = ApiFactoryBuilder.build(fileName).build(RelationshipsApi.class);
         String scope = "scope_example"; // String | The scope of the relationship
         String code = "code_example"; // String | The code of the relationship
         DeleteRelationshipRequest deleteRelationshipRequest = new DeleteRelationshipRequest(); // DeleteRelationshipRequest | The details of the relationship to delete.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteRelationship(scope, code, deleteRelationshipRequest).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteRelationship(scope, code, deleteRelationshipRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

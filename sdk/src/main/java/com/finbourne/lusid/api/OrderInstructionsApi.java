@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -77,6 +78,10 @@ public class OrderInstructionsApi {
     }
 
     private okhttp3.Call deleteOrderInstructionCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+        return deleteOrderInstructionCall(scope, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteOrderInstructionCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,11 +126,11 @@ public class OrderInstructionsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteOrderInstructionValidateBeforeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteOrderInstructionValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteOrderInstruction(Async)");
@@ -136,20 +141,34 @@ public class OrderInstructionsApi {
             throw new ApiException("Missing the required parameter 'code' when calling deleteOrderInstruction(Async)");
         }
 
-        return deleteOrderInstructionCall(scope, code, _callback);
+        return deleteOrderInstructionCall(scope, code, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deleteOrderInstructionWithHttpInfo(String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = deleteOrderInstructionValidateBeforeCall(scope, code, null);
+        okhttp3.Call localVarCall = deleteOrderInstructionValidateBeforeCall(scope, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteOrderInstructionWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteOrderInstructionValidateBeforeCall(scope, code, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteOrderInstructionAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteOrderInstructionValidateBeforeCall(scope, code, _callback);
+        okhttp3.Call localVarCall = deleteOrderInstructionValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteOrderInstructionAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteOrderInstructionValidateBeforeCall(scope, code, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -199,6 +218,23 @@ public class OrderInstructionsApi {
         }
 
         /**
+         * Execute deleteOrderInstruction request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting an orderInstruction. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteOrderInstructionWithHttpInfo(scope, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteOrderInstruction request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -212,6 +248,22 @@ public class OrderInstructionsApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deleteOrderInstructionWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteOrderInstruction request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting an orderInstruction. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteOrderInstructionWithHttpInfo(scope, code, opts);
         }
 
         /**
@@ -229,6 +281,23 @@ public class OrderInstructionsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deleteOrderInstructionAsync(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteOrderInstruction request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting an orderInstruction. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteOrderInstructionAsync(scope, code, _callback, opts);
         }
     }
 
@@ -250,6 +319,10 @@ public class OrderInstructionsApi {
         return new APIdeleteOrderInstructionRequest(scope, code);
     }
     private okhttp3.Call getOrderInstructionCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return getOrderInstructionCall(scope, code, asAt, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getOrderInstructionCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -302,11 +375,11 @@ public class OrderInstructionsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getOrderInstructionValidateBeforeCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getOrderInstructionValidateBeforeCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getOrderInstruction(Async)");
@@ -317,20 +390,34 @@ public class OrderInstructionsApi {
             throw new ApiException("Missing the required parameter 'code' when calling getOrderInstruction(Async)");
         }
 
-        return getOrderInstructionCall(scope, code, asAt, propertyKeys, _callback);
+        return getOrderInstructionCall(scope, code, asAt, propertyKeys, _callback, opts);
 
     }
 
 
     private ApiResponse<OrderInstruction> getOrderInstructionWithHttpInfo(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = getOrderInstructionValidateBeforeCall(scope, code, asAt, propertyKeys, null);
+        okhttp3.Call localVarCall = getOrderInstructionValidateBeforeCall(scope, code, asAt, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<OrderInstruction>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<OrderInstruction> getOrderInstructionWithHttpInfo(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getOrderInstructionValidateBeforeCall(scope, code, asAt, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<OrderInstruction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getOrderInstructionAsync(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<OrderInstruction> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getOrderInstructionValidateBeforeCall(scope, code, asAt, propertyKeys, _callback);
+        okhttp3.Call localVarCall = getOrderInstructionValidateBeforeCall(scope, code, asAt, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<OrderInstruction>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getOrderInstructionAsync(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<OrderInstruction> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getOrderInstructionValidateBeforeCall(scope, code, asAt, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<OrderInstruction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -402,6 +489,23 @@ public class OrderInstructionsApi {
         }
 
         /**
+         * Execute getOrderInstruction request. Use any specified configuration options to override any other configuration for this request only.
+         * @return OrderInstruction
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The orderInstruction matching the given identifier. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public OrderInstruction execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<OrderInstruction> localVarResp = getOrderInstructionWithHttpInfo(scope, code, asAt, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getOrderInstruction request with HTTP info returned
          * @return ApiResponse&lt;OrderInstruction&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -415,6 +519,22 @@ public class OrderInstructionsApi {
          */
         public ApiResponse<OrderInstruction> executeWithHttpInfo() throws ApiException {
             return getOrderInstructionWithHttpInfo(scope, code, asAt, propertyKeys);
+        }
+
+        /**
+         * Execute getOrderInstruction request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;OrderInstruction&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The orderInstruction matching the given identifier. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<OrderInstruction> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getOrderInstructionWithHttpInfo(scope, code, asAt, propertyKeys, opts);
         }
 
         /**
@@ -432,6 +552,23 @@ public class OrderInstructionsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<OrderInstruction> _callback) throws ApiException {
             return getOrderInstructionAsync(scope, code, asAt, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getOrderInstruction request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The orderInstruction matching the given identifier. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<OrderInstruction> _callback, ConfigurationOptions opts) throws ApiException {
+            return getOrderInstructionAsync(scope, code, asAt, propertyKeys, _callback, opts);
         }
     }
 
@@ -453,6 +590,10 @@ public class OrderInstructionsApi {
         return new APIgetOrderInstructionRequest(scope, code);
     }
     private okhttp3.Call listOrderInstructionsCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return listOrderInstructionsCall(asAt, page, sortBy, limit, filter, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listOrderInstructionsCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -519,25 +660,39 @@ public class OrderInstructionsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listOrderInstructionsValidateBeforeCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
-        return listOrderInstructionsCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
+    private okhttp3.Call listOrderInstructionsValidateBeforeCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listOrderInstructionsCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfOrderInstruction> listOrderInstructionsWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = listOrderInstructionsValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, null);
+        okhttp3.Call localVarCall = listOrderInstructionsValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfOrderInstruction>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfOrderInstruction> listOrderInstructionsWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listOrderInstructionsValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfOrderInstruction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listOrderInstructionsAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfOrderInstruction> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listOrderInstructionsValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
+        okhttp3.Call localVarCall = listOrderInstructionsValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfOrderInstruction>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listOrderInstructionsAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfOrderInstruction> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listOrderInstructionsValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfOrderInstruction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -649,6 +804,23 @@ public class OrderInstructionsApi {
         }
 
         /**
+         * Execute listOrderInstructions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfOrderInstruction
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OrderInstructions in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfOrderInstruction execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfOrderInstruction> localVarResp = listOrderInstructionsWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listOrderInstructions request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfOrderInstruction&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -662,6 +834,22 @@ public class OrderInstructionsApi {
          */
         public ApiResponse<PagedResourceListOfOrderInstruction> executeWithHttpInfo() throws ApiException {
             return listOrderInstructionsWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys);
+        }
+
+        /**
+         * Execute listOrderInstructions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfOrderInstruction&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OrderInstructions in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfOrderInstruction> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listOrderInstructionsWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys, opts);
         }
 
         /**
@@ -679,6 +867,23 @@ public class OrderInstructionsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfOrderInstruction> _callback) throws ApiException {
             return listOrderInstructionsAsync(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute listOrderInstructions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OrderInstructions in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfOrderInstruction> _callback, ConfigurationOptions opts) throws ApiException {
+            return listOrderInstructionsAsync(asAt, page, sortBy, limit, filter, propertyKeys, _callback, opts);
         }
     }
 
@@ -698,6 +903,10 @@ public class OrderInstructionsApi {
         return new APIlistOrderInstructionsRequest();
     }
     private okhttp3.Call upsertOrderInstructionsCall(OrderInstructionSetRequest orderInstructionSetRequest, final ApiCallback _callback) throws ApiException {
+        return upsertOrderInstructionsCall(orderInstructionSetRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertOrderInstructionsCall(OrderInstructionSetRequest orderInstructionSetRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -744,25 +953,39 @@ public class OrderInstructionsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertOrderInstructionsValidateBeforeCall(OrderInstructionSetRequest orderInstructionSetRequest, final ApiCallback _callback) throws ApiException {
-        return upsertOrderInstructionsCall(orderInstructionSetRequest, _callback);
+    private okhttp3.Call upsertOrderInstructionsValidateBeforeCall(OrderInstructionSetRequest orderInstructionSetRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return upsertOrderInstructionsCall(orderInstructionSetRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfOrderInstruction> upsertOrderInstructionsWithHttpInfo(OrderInstructionSetRequest orderInstructionSetRequest) throws ApiException {
-        okhttp3.Call localVarCall = upsertOrderInstructionsValidateBeforeCall(orderInstructionSetRequest, null);
+        okhttp3.Call localVarCall = upsertOrderInstructionsValidateBeforeCall(orderInstructionSetRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfOrderInstruction>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfOrderInstruction> upsertOrderInstructionsWithHttpInfo(OrderInstructionSetRequest orderInstructionSetRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertOrderInstructionsValidateBeforeCall(orderInstructionSetRequest, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfOrderInstruction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertOrderInstructionsAsync(OrderInstructionSetRequest orderInstructionSetRequest, final ApiCallback<ResourceListOfOrderInstruction> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertOrderInstructionsValidateBeforeCall(orderInstructionSetRequest, _callback);
+        okhttp3.Call localVarCall = upsertOrderInstructionsValidateBeforeCall(orderInstructionSetRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfOrderInstruction>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertOrderInstructionsAsync(OrderInstructionSetRequest orderInstructionSetRequest, final ApiCallback<ResourceListOfOrderInstruction> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertOrderInstructionsValidateBeforeCall(orderInstructionSetRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfOrderInstruction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -819,6 +1042,23 @@ public class OrderInstructionsApi {
         }
 
         /**
+         * Execute upsertOrderInstructions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfOrderInstruction
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> A collection of orderInstructions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfOrderInstruction execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfOrderInstruction> localVarResp = upsertOrderInstructionsWithHttpInfo(orderInstructionSetRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertOrderInstructions request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfOrderInstruction&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -832,6 +1072,22 @@ public class OrderInstructionsApi {
          */
         public ApiResponse<ResourceListOfOrderInstruction> executeWithHttpInfo() throws ApiException {
             return upsertOrderInstructionsWithHttpInfo(orderInstructionSetRequest);
+        }
+
+        /**
+         * Execute upsertOrderInstructions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfOrderInstruction&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> A collection of orderInstructions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfOrderInstruction> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertOrderInstructionsWithHttpInfo(orderInstructionSetRequest, opts);
         }
 
         /**
@@ -849,6 +1105,23 @@ public class OrderInstructionsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfOrderInstruction> _callback) throws ApiException {
             return upsertOrderInstructionsAsync(orderInstructionSetRequest, _callback);
+        }
+
+        /**
+         * Execute upsertOrderInstructions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> A collection of orderInstructions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfOrderInstruction> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertOrderInstructionsAsync(orderInstructionSetRequest, _callback, opts);
         }
     }
 

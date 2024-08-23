@@ -52,12 +52,23 @@ public class InstrumentEventTypesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InstrumentEventTypesApi apiInstance = apiFactory.build(InstrumentEventTypesApi.class);
+
         InstrumentEventTypesApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentEventTypesApi.class);
         String instrumentEventType = "instrumentEventType_example"; // String | The type of instrument events that the template is applied to.
         String instrumentType = "instrumentType_example"; // String | The instrument type of the transaction template. The combination of the instrument   event type, instrument type and scope uniquely identifies a transaction template
         String scope = "scope_example"; // String | The scope in which the template lies.
         TransactionTemplateRequest transactionTemplateRequest = new TransactionTemplateRequest(); // TransactionTemplateRequest | A request defining a new transaction template to be created.
         try {
+            // uncomment the below to set overrides at the request level
+            // TransactionTemplate result = apiInstance.createTransactionTemplate(instrumentEventType, instrumentType, scope, transactionTemplateRequest).execute(opts);
+
             TransactionTemplate result = apiInstance.createTransactionTemplate(instrumentEventType, instrumentType, scope, transactionTemplateRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -138,11 +149,22 @@ public class InstrumentEventTypesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InstrumentEventTypesApi apiInstance = apiFactory.build(InstrumentEventTypesApi.class);
+
         InstrumentEventTypesApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentEventTypesApi.class);
         String instrumentEventType = "instrumentEventType_example"; // String | The type of instrument events that the template is applied to.
         String instrumentType = "instrumentType_example"; // String | The instrument type of the transaction template. The combination of the instrument   event type, instrument type and scope uniquely identifies a transaction template
         String scope = "scope_example"; // String | The scope of the template.
         try {
+            // uncomment the below to set overrides at the request level
+            // OffsetDateTime result = apiInstance.deleteTransactionTemplate(instrumentEventType, instrumentType, scope).execute(opts);
+
             OffsetDateTime result = apiInstance.deleteTransactionTemplate(instrumentEventType, instrumentType, scope).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -222,12 +244,23 @@ public class InstrumentEventTypesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InstrumentEventTypesApi apiInstance = apiFactory.build(InstrumentEventTypesApi.class);
+
         InstrumentEventTypesApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentEventTypesApi.class);
         String instrumentEventType = "instrumentEventType_example"; // String | The instrument event type of the transaction template
         String instrumentType = "instrumentType_example"; // String | The instrument type of the transaction template. The combination of the instrument   event type, instrument type and scope uniquely identifies a transaction template
         String scope = "scope_example"; // String | The scope in which the template lies. When not supplied the scope is 'default'.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The AsAt time of the requested Transaction Template
         try {
+            // uncomment the below to set overrides at the request level
+            // TransactionTemplate result = apiInstance.getTransactionTemplate(instrumentEventType, instrumentType, scope, asAt).execute(opts);
+
             TransactionTemplate result = apiInstance.getTransactionTemplate(instrumentEventType, instrumentType, scope, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -308,9 +341,20 @@ public class InstrumentEventTypesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InstrumentEventTypesApi apiInstance = apiFactory.build(InstrumentEventTypesApi.class);
+
         InstrumentEventTypesApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentEventTypesApi.class);
         String instrumentEventType = "instrumentEventType_example"; // String | The requested instrument event type.
         try {
+            // uncomment the below to set overrides at the request level
+            // TransactionTemplateSpecification result = apiInstance.getTransactionTemplateSpecification(instrumentEventType).execute(opts);
+
             TransactionTemplateSpecification result = apiInstance.getTransactionTemplateSpecification(instrumentEventType).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -388,6 +432,14 @@ public class InstrumentEventTypesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InstrumentEventTypesApi apiInstance = apiFactory.build(InstrumentEventTypesApi.class);
+
         InstrumentEventTypesApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentEventTypesApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | AsAt of the request
         String page = "page_example"; // String | The pagination token to use to continue listing Transaction Template Specifications from   a previous call to list Transaction Template Specifications.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt   fields must not have changed since the original request.
@@ -395,6 +447,9 @@ public class InstrumentEventTypesApiExample {
         String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names to sort by, each suffixed by \" ASC\" or \" DESC\".
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfTransactionTemplateSpecification result = apiInstance.listTransactionTemplateSpecifications(asAt, page, limit, filter, sortBy).execute(opts);
+
             PagedResourceListOfTransactionTemplateSpecification result = apiInstance.listTransactionTemplateSpecifications(asAt, page, limit, filter, sortBy).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -476,6 +531,14 @@ public class InstrumentEventTypesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InstrumentEventTypesApi apiInstance = apiFactory.build(InstrumentEventTypesApi.class);
+
         InstrumentEventTypesApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentEventTypesApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The AsAt time at which to retrieve the Transaction Templates
         String page = "page_example"; // String | The pagination token to use to continue listing Transaction Templates from a previous call to list Transaction Templates.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, limit, and asAt fields   must not have changed since the original request.
@@ -483,6 +546,9 @@ public class InstrumentEventTypesApiExample {
         String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names to sort by, each suffixed by \" ASC\" or \" DESC\"
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfTransactionTemplate result = apiInstance.listTransactionTemplates(asAt, page, limit, filter, sortBy).execute(opts);
+
             PagedResourceListOfTransactionTemplate result = apiInstance.listTransactionTemplates(asAt, page, limit, filter, sortBy).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -564,12 +630,23 @@ public class InstrumentEventTypesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InstrumentEventTypesApi apiInstance = apiFactory.build(InstrumentEventTypesApi.class);
+
         InstrumentEventTypesApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentEventTypesApi.class);
         String instrumentEventType = "instrumentEventType_example"; // String | The type of instrument events that the template is applied to.
         String instrumentType = "instrumentType_example"; // String | The instrument type of the transaction template. The combination of the instrument   event type, instrument type and scope uniquely identifies a transaction template
         String scope = "scope_example"; // String | The scope in which the template lies.
         TransactionTemplateRequest transactionTemplateRequest = new TransactionTemplateRequest(); // TransactionTemplateRequest | A request defining the updated values for the transaction template.
         try {
+            // uncomment the below to set overrides at the request level
+            // TransactionTemplate result = apiInstance.updateTransactionTemplate(instrumentEventType, instrumentType, scope, transactionTemplateRequest).execute(opts);
+
             TransactionTemplate result = apiInstance.updateTransactionTemplate(instrumentEventType, instrumentType, scope, transactionTemplateRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

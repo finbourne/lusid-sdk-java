@@ -54,10 +54,21 @@ public class StructuredResultDataApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // StructuredResultDataApi apiInstance = apiFactory.build(StructuredResultDataApi.class);
+
         StructuredResultDataApi apiInstance = ApiFactoryBuilder.build(fileName).build(StructuredResultDataApi.class);
         String scope = "scope_example"; // String | The scope in which to create or update data maps.
         Map<String, CreateDataMapRequest> requestBody = new HashMap(); // Map<String, CreateDataMapRequest> | Individual data map creation requests.
         try {
+            // uncomment the below to set overrides at the request level
+            // UpsertStructuredDataResponse result = apiInstance.createDataMap(scope, requestBody).execute(opts);
+
             UpsertStructuredDataResponse result = apiInstance.createDataMap(scope, requestBody).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -136,10 +147,21 @@ public class StructuredResultDataApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // StructuredResultDataApi apiInstance = apiFactory.build(StructuredResultDataApi.class);
+
         StructuredResultDataApi apiInstance = ApiFactoryBuilder.build(fileName).build(StructuredResultDataApi.class);
         String scope = "scope_example"; // String | The scope from which to delete data items.
         Map<String, StructuredResultDataId> requestBody = new HashMap(); // Map<String, StructuredResultDataId> | The data IDs to delete, each keyed by a unique, ephemeral correlation ID.
         try {
+            // uncomment the below to set overrides at the request level
+            // AnnulStructuredDataResponse result = apiInstance.deleteStructuredResultData(scope, requestBody).execute(opts);
+
             AnnulStructuredDataResponse result = apiInstance.deleteStructuredResultData(scope, requestBody).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -218,6 +240,14 @@ public class StructuredResultDataApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // StructuredResultDataApi apiInstance = apiFactory.build(StructuredResultDataApi.class);
+
         StructuredResultDataApi apiInstance = ApiFactoryBuilder.build(fileName).build(StructuredResultDataApi.class);
         String scope = "scope_example"; // String | The scope of the document for which address key definitions are retrieved.
         String code = "code_example"; // String | The code of the document for which address key definitions are retrieved.
@@ -226,6 +256,9 @@ public class StructuredResultDataApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime to query the document for which the address key definitions are retrieved.   Defaults to querying the latest version if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime to query the document for which the address key definitions are retrieved.   Defaults to querying the latest version if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfAddressKeyDefinition result = apiInstance.getAddressKeyDefinitionsForDocument(scope, code, source, resultType, effectiveAt, asAt).execute(opts);
+
             ResourceListOfAddressKeyDefinition result = apiInstance.getAddressKeyDefinitionsForDocument(scope, code, source, resultType, effectiveAt, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -308,10 +341,21 @@ public class StructuredResultDataApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // StructuredResultDataApi apiInstance = apiFactory.build(StructuredResultDataApi.class);
+
         StructuredResultDataApi apiInstance = ApiFactoryBuilder.build(fileName).build(StructuredResultDataApi.class);
         String scope = "scope_example"; // String | The scope from which to retrieve data maps.
         Map<String, DataMapKey> requestBody = new HashMap(); // Map<String, DataMapKey> | The data map keys to look up, each keyed by a unique, ephemeral correlation ID.
         try {
+            // uncomment the below to set overrides at the request level
+            // GetDataMapResponse result = apiInstance.getDataMap(scope, requestBody).execute(opts);
+
             GetDataMapResponse result = apiInstance.getDataMap(scope, requestBody).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -390,12 +434,23 @@ public class StructuredResultDataApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // StructuredResultDataApi apiInstance = apiFactory.build(StructuredResultDataApi.class);
+
         StructuredResultDataApi apiInstance = ApiFactoryBuilder.build(fileName).build(StructuredResultDataApi.class);
         String scope = "scope_example"; // String | The scope from which to retrieve data items.
         Map<String, StructuredResultDataId> requestBody = new HashMap(); // Map<String, StructuredResultDataId> | The time invariant set of structured data identifiers to retrieve, keyed by a unique, ephemeral correlation ID.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the structured result data. Defaults to returning the latest version if not specified.
         String maxAge = "maxAge_example"; // String | The duration of the look-back window in ISO8601 time interval format, for example 'P1Y2M3DT4H30M' (1 year, 2 months, 3 days, 4 hours and 30 minutes).   This is subtracted from the provided effectiveAt datetime to generate a effective datetime window inside which a data item must exist to be retrieved.
         try {
+            // uncomment the below to set overrides at the request level
+            // GetStructuredResultDataResponse result = apiInstance.getStructuredResultData(scope, requestBody, asAt, maxAge).execute(opts);
+
             GetStructuredResultDataResponse result = apiInstance.getStructuredResultData(scope, requestBody, asAt, maxAge).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -476,11 +531,22 @@ public class StructuredResultDataApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // StructuredResultDataApi apiInstance = apiFactory.build(StructuredResultDataApi.class);
+
         StructuredResultDataApi apiInstance = ApiFactoryBuilder.build(fileName).build(StructuredResultDataApi.class);
         String scope = "scope_example"; // String | The scope in which to construct the virtual documents.
         Map<String, StructuredResultDataId> requestBody = new HashMap(); // Map<String, StructuredResultDataId> | The time invariant set of structured data identifiers to retrieve, keyed by a unique, ephemeral correlation ID.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the structured result data. Defaults to returning the latest version if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // GetVirtualDocumentResponse result = apiInstance.getVirtualDocument(scope, requestBody, asAt).execute(opts);
+
             GetVirtualDocumentResponse result = apiInstance.getVirtualDocument(scope, requestBody, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -560,6 +626,14 @@ public class StructuredResultDataApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // StructuredResultDataApi apiInstance = apiFactory.build(StructuredResultDataApi.class);
+
         StructuredResultDataApi apiInstance = ApiFactoryBuilder.build(fileName).build(StructuredResultDataApi.class);
         String scope = "scope_example"; // String | The scope in which to retrieve the virtual document.
         String code = "code_example"; // String | The code of the virtual document to retrieve.
@@ -571,6 +645,9 @@ public class StructuredResultDataApiExample {
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
         String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfVirtualRow result = apiInstance.getVirtualDocumentRows(scope, code, source, resultType, effectiveAt, asAt, page, limit, filter).execute(opts);
+
             PagedResourceListOfVirtualRow result = apiInstance.getVirtualDocumentRows(scope, code, source, resultType, effectiveAt, asAt, page, limit, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -656,10 +733,21 @@ public class StructuredResultDataApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // StructuredResultDataApi apiInstance = apiFactory.build(StructuredResultDataApi.class);
+
         StructuredResultDataApi apiInstance = ApiFactoryBuilder.build(fileName).build(StructuredResultDataApi.class);
         String scope = "scope_example"; // String | The scope in which to construct the virtual documents.
         Map<String, UpsertResultValuesDataRequest> requestBody = new HashMap(); // Map<String, UpsertResultValuesDataRequest> | The time invariant set of structured data identifiers to retrieve, keyed by a unique, ephemeral correlation ID.
         try {
+            // uncomment the below to set overrides at the request level
+            // UpsertStructuredDataResponse result = apiInstance.upsertResultValue(scope, requestBody).execute(opts);
+
             UpsertStructuredDataResponse result = apiInstance.upsertResultValue(scope, requestBody).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -738,10 +826,21 @@ public class StructuredResultDataApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // StructuredResultDataApi apiInstance = apiFactory.build(StructuredResultDataApi.class);
+
         StructuredResultDataApi apiInstance = ApiFactoryBuilder.build(fileName).build(StructuredResultDataApi.class);
         String scope = "scope_example"; // String | The scope in which to create or update data items.
         Map<String, UpsertStructuredResultDataRequest> requestBody = new HashMap(); // Map<String, UpsertStructuredResultDataRequest> | The set of data items to create or update, keyed by a unique, ephemeral correlation ID.
         try {
+            // uncomment the below to set overrides at the request level
+            // UpsertStructuredDataResponse result = apiInstance.upsertStructuredResultData(scope, requestBody).execute(opts);
+
             UpsertStructuredDataResponse result = apiInstance.upsertStructuredResultData(scope, requestBody).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

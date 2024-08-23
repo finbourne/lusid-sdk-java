@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -77,6 +78,10 @@ public class TaxRuleSetsApi {
     }
 
     private okhttp3.Call createTaxRuleSetCall(CreateTaxRuleSetRequest createTaxRuleSetRequest, String effectiveAt, final ApiCallback _callback) throws ApiException {
+        return createTaxRuleSetCall(createTaxRuleSetRequest, effectiveAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call createTaxRuleSetCall(CreateTaxRuleSetRequest createTaxRuleSetRequest, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -127,30 +132,44 @@ public class TaxRuleSetsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createTaxRuleSetValidateBeforeCall(CreateTaxRuleSetRequest createTaxRuleSetRequest, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createTaxRuleSetValidateBeforeCall(CreateTaxRuleSetRequest createTaxRuleSetRequest, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'createTaxRuleSetRequest' is set
         if (createTaxRuleSetRequest == null) {
             throw new ApiException("Missing the required parameter 'createTaxRuleSetRequest' when calling createTaxRuleSet(Async)");
         }
 
-        return createTaxRuleSetCall(createTaxRuleSetRequest, effectiveAt, _callback);
+        return createTaxRuleSetCall(createTaxRuleSetRequest, effectiveAt, _callback, opts);
 
     }
 
 
     private ApiResponse<TaxRuleSet> createTaxRuleSetWithHttpInfo(CreateTaxRuleSetRequest createTaxRuleSetRequest, String effectiveAt) throws ApiException {
-        okhttp3.Call localVarCall = createTaxRuleSetValidateBeforeCall(createTaxRuleSetRequest, effectiveAt, null);
+        okhttp3.Call localVarCall = createTaxRuleSetValidateBeforeCall(createTaxRuleSetRequest, effectiveAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TaxRuleSet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<TaxRuleSet> createTaxRuleSetWithHttpInfo(CreateTaxRuleSetRequest createTaxRuleSetRequest, String effectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createTaxRuleSetValidateBeforeCall(createTaxRuleSetRequest, effectiveAt, null, opts);
         Type localVarReturnType = new TypeToken<TaxRuleSet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call createTaxRuleSetAsync(CreateTaxRuleSetRequest createTaxRuleSetRequest, String effectiveAt, final ApiCallback<TaxRuleSet> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createTaxRuleSetValidateBeforeCall(createTaxRuleSetRequest, effectiveAt, _callback);
+        okhttp3.Call localVarCall = createTaxRuleSetValidateBeforeCall(createTaxRuleSetRequest, effectiveAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TaxRuleSet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call createTaxRuleSetAsync(CreateTaxRuleSetRequest createTaxRuleSetRequest, String effectiveAt, final ApiCallback<TaxRuleSet> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = createTaxRuleSetValidateBeforeCall(createTaxRuleSetRequest, effectiveAt, _callback, opts);
         Type localVarReturnType = new TypeToken<TaxRuleSet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -209,6 +228,23 @@ public class TaxRuleSetsApi {
         }
 
         /**
+         * Execute createTaxRuleSet request. Use any specified configuration options to override any other configuration for this request only.
+         * @return TaxRuleSet
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Create a rule set for tax calculations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TaxRuleSet execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<TaxRuleSet> localVarResp = createTaxRuleSetWithHttpInfo(createTaxRuleSetRequest, effectiveAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute createTaxRuleSet request with HTTP info returned
          * @return ApiResponse&lt;TaxRuleSet&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -222,6 +258,22 @@ public class TaxRuleSetsApi {
          */
         public ApiResponse<TaxRuleSet> executeWithHttpInfo() throws ApiException {
             return createTaxRuleSetWithHttpInfo(createTaxRuleSetRequest, effectiveAt);
+        }
+
+        /**
+         * Execute createTaxRuleSet request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;TaxRuleSet&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Create a rule set for tax calculations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TaxRuleSet> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return createTaxRuleSetWithHttpInfo(createTaxRuleSetRequest, effectiveAt, opts);
         }
 
         /**
@@ -239,6 +291,23 @@ public class TaxRuleSetsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<TaxRuleSet> _callback) throws ApiException {
             return createTaxRuleSetAsync(createTaxRuleSetRequest, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute createTaxRuleSet request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Create a rule set for tax calculations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TaxRuleSet> _callback, ConfigurationOptions opts) throws ApiException {
+            return createTaxRuleSetAsync(createTaxRuleSetRequest, effectiveAt, _callback, opts);
         }
     }
 
@@ -259,6 +328,10 @@ public class TaxRuleSetsApi {
         return new APIcreateTaxRuleSetRequest(createTaxRuleSetRequest);
     }
     private okhttp3.Call deleteTaxRuleSetCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+        return deleteTaxRuleSetCall(scope, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteTaxRuleSetCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -303,11 +376,11 @@ public class TaxRuleSetsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteTaxRuleSetValidateBeforeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteTaxRuleSetValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteTaxRuleSet(Async)");
@@ -318,20 +391,34 @@ public class TaxRuleSetsApi {
             throw new ApiException("Missing the required parameter 'code' when calling deleteTaxRuleSet(Async)");
         }
 
-        return deleteTaxRuleSetCall(scope, code, _callback);
+        return deleteTaxRuleSetCall(scope, code, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deleteTaxRuleSetWithHttpInfo(String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = deleteTaxRuleSetValidateBeforeCall(scope, code, null);
+        okhttp3.Call localVarCall = deleteTaxRuleSetValidateBeforeCall(scope, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteTaxRuleSetWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteTaxRuleSetValidateBeforeCall(scope, code, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteTaxRuleSetAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteTaxRuleSetValidateBeforeCall(scope, code, _callback);
+        okhttp3.Call localVarCall = deleteTaxRuleSetValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteTaxRuleSetAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteTaxRuleSetValidateBeforeCall(scope, code, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -381,6 +468,23 @@ public class TaxRuleSetsApi {
         }
 
         /**
+         * Execute deleteTaxRuleSet request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteTaxRuleSetWithHttpInfo(scope, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteTaxRuleSet request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -394,6 +498,22 @@ public class TaxRuleSetsApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deleteTaxRuleSetWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteTaxRuleSet request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteTaxRuleSetWithHttpInfo(scope, code, opts);
         }
 
         /**
@@ -411,6 +531,23 @@ public class TaxRuleSetsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deleteTaxRuleSetAsync(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteTaxRuleSet request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteTaxRuleSetAsync(scope, code, _callback, opts);
         }
     }
 
@@ -432,6 +569,10 @@ public class TaxRuleSetsApi {
         return new APIdeleteTaxRuleSetRequest(scope, code);
     }
     private okhttp3.Call getTaxRuleSetCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getTaxRuleSetCall(scope, code, effectiveAt, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getTaxRuleSetCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -484,11 +625,11 @@ public class TaxRuleSetsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTaxRuleSetValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getTaxRuleSetValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getTaxRuleSet(Async)");
@@ -499,20 +640,34 @@ public class TaxRuleSetsApi {
             throw new ApiException("Missing the required parameter 'code' when calling getTaxRuleSet(Async)");
         }
 
-        return getTaxRuleSetCall(scope, code, effectiveAt, asAt, _callback);
+        return getTaxRuleSetCall(scope, code, effectiveAt, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<TaxRuleSet> getTaxRuleSetWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getTaxRuleSetValidateBeforeCall(scope, code, effectiveAt, asAt, null);
+        okhttp3.Call localVarCall = getTaxRuleSetValidateBeforeCall(scope, code, effectiveAt, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TaxRuleSet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<TaxRuleSet> getTaxRuleSetWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getTaxRuleSetValidateBeforeCall(scope, code, effectiveAt, asAt, null, opts);
         Type localVarReturnType = new TypeToken<TaxRuleSet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getTaxRuleSetAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<TaxRuleSet> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getTaxRuleSetValidateBeforeCall(scope, code, effectiveAt, asAt, _callback);
+        okhttp3.Call localVarCall = getTaxRuleSetValidateBeforeCall(scope, code, effectiveAt, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TaxRuleSet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getTaxRuleSetAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<TaxRuleSet> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getTaxRuleSetValidateBeforeCall(scope, code, effectiveAt, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<TaxRuleSet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -584,6 +739,23 @@ public class TaxRuleSetsApi {
         }
 
         /**
+         * Execute getTaxRuleSet request. Use any specified configuration options to override any other configuration for this request only.
+         * @return TaxRuleSet
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Details of one rule set. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TaxRuleSet execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<TaxRuleSet> localVarResp = getTaxRuleSetWithHttpInfo(scope, code, effectiveAt, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getTaxRuleSet request with HTTP info returned
          * @return ApiResponse&lt;TaxRuleSet&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -597,6 +769,22 @@ public class TaxRuleSetsApi {
          */
         public ApiResponse<TaxRuleSet> executeWithHttpInfo() throws ApiException {
             return getTaxRuleSetWithHttpInfo(scope, code, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getTaxRuleSet request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;TaxRuleSet&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Details of one rule set. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TaxRuleSet> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getTaxRuleSetWithHttpInfo(scope, code, effectiveAt, asAt, opts);
         }
 
         /**
@@ -614,6 +802,23 @@ public class TaxRuleSetsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<TaxRuleSet> _callback) throws ApiException {
             return getTaxRuleSetAsync(scope, code, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getTaxRuleSet request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Details of one rule set. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TaxRuleSet> _callback, ConfigurationOptions opts) throws ApiException {
+            return getTaxRuleSetAsync(scope, code, effectiveAt, asAt, _callback, opts);
         }
     }
 
@@ -635,6 +840,10 @@ public class TaxRuleSetsApi {
         return new APIgetTaxRuleSetRequest(scope, code);
     }
     private okhttp3.Call listTaxRuleSetsCall(String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return listTaxRuleSetsCall(effectiveAt, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listTaxRuleSetsCall(String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -685,25 +894,39 @@ public class TaxRuleSetsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listTaxRuleSetsValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
-        return listTaxRuleSetsCall(effectiveAt, asAt, _callback);
+    private okhttp3.Call listTaxRuleSetsValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listTaxRuleSetsCall(effectiveAt, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfTaxRuleSet> listTaxRuleSetsWithHttpInfo(String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = listTaxRuleSetsValidateBeforeCall(effectiveAt, asAt, null);
+        okhttp3.Call localVarCall = listTaxRuleSetsValidateBeforeCall(effectiveAt, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfTaxRuleSet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfTaxRuleSet> listTaxRuleSetsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listTaxRuleSetsValidateBeforeCall(effectiveAt, asAt, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfTaxRuleSet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listTaxRuleSetsAsync(String effectiveAt, OffsetDateTime asAt, final ApiCallback<ResourceListOfTaxRuleSet> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listTaxRuleSetsValidateBeforeCall(effectiveAt, asAt, _callback);
+        okhttp3.Call localVarCall = listTaxRuleSetsValidateBeforeCall(effectiveAt, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfTaxRuleSet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listTaxRuleSetsAsync(String effectiveAt, OffsetDateTime asAt, final ApiCallback<ResourceListOfTaxRuleSet> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listTaxRuleSetsValidateBeforeCall(effectiveAt, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfTaxRuleSet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -771,6 +994,23 @@ public class TaxRuleSetsApi {
         }
 
         /**
+         * Execute listTaxRuleSets request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfTaxRuleSet
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of rule sets available. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfTaxRuleSet execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfTaxRuleSet> localVarResp = listTaxRuleSetsWithHttpInfo(effectiveAt, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listTaxRuleSets request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfTaxRuleSet&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -784,6 +1024,22 @@ public class TaxRuleSetsApi {
          */
         public ApiResponse<ResourceListOfTaxRuleSet> executeWithHttpInfo() throws ApiException {
             return listTaxRuleSetsWithHttpInfo(effectiveAt, asAt);
+        }
+
+        /**
+         * Execute listTaxRuleSets request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfTaxRuleSet&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of rule sets available. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfTaxRuleSet> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listTaxRuleSetsWithHttpInfo(effectiveAt, asAt, opts);
         }
 
         /**
@@ -801,6 +1057,23 @@ public class TaxRuleSetsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfTaxRuleSet> _callback) throws ApiException {
             return listTaxRuleSetsAsync(effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute listTaxRuleSets request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of rule sets available. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfTaxRuleSet> _callback, ConfigurationOptions opts) throws ApiException {
+            return listTaxRuleSetsAsync(effectiveAt, asAt, _callback, opts);
         }
     }
 
@@ -820,6 +1093,10 @@ public class TaxRuleSetsApi {
         return new APIlistTaxRuleSetsRequest();
     }
     private okhttp3.Call updateTaxRuleSetCall(String scope, String code, UpdateTaxRuleSetRequest updateTaxRuleSetRequest, String effectiveAt, final ApiCallback _callback) throws ApiException {
+        return updateTaxRuleSetCall(scope, code, updateTaxRuleSetRequest, effectiveAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call updateTaxRuleSetCall(String scope, String code, UpdateTaxRuleSetRequest updateTaxRuleSetRequest, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -872,11 +1149,11 @@ public class TaxRuleSetsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateTaxRuleSetValidateBeforeCall(String scope, String code, UpdateTaxRuleSetRequest updateTaxRuleSetRequest, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateTaxRuleSetValidateBeforeCall(String scope, String code, UpdateTaxRuleSetRequest updateTaxRuleSetRequest, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling updateTaxRuleSet(Async)");
@@ -892,20 +1169,34 @@ public class TaxRuleSetsApi {
             throw new ApiException("Missing the required parameter 'updateTaxRuleSetRequest' when calling updateTaxRuleSet(Async)");
         }
 
-        return updateTaxRuleSetCall(scope, code, updateTaxRuleSetRequest, effectiveAt, _callback);
+        return updateTaxRuleSetCall(scope, code, updateTaxRuleSetRequest, effectiveAt, _callback, opts);
 
     }
 
 
     private ApiResponse<TaxRuleSet> updateTaxRuleSetWithHttpInfo(String scope, String code, UpdateTaxRuleSetRequest updateTaxRuleSetRequest, String effectiveAt) throws ApiException {
-        okhttp3.Call localVarCall = updateTaxRuleSetValidateBeforeCall(scope, code, updateTaxRuleSetRequest, effectiveAt, null);
+        okhttp3.Call localVarCall = updateTaxRuleSetValidateBeforeCall(scope, code, updateTaxRuleSetRequest, effectiveAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TaxRuleSet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<TaxRuleSet> updateTaxRuleSetWithHttpInfo(String scope, String code, UpdateTaxRuleSetRequest updateTaxRuleSetRequest, String effectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = updateTaxRuleSetValidateBeforeCall(scope, code, updateTaxRuleSetRequest, effectiveAt, null, opts);
         Type localVarReturnType = new TypeToken<TaxRuleSet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call updateTaxRuleSetAsync(String scope, String code, UpdateTaxRuleSetRequest updateTaxRuleSetRequest, String effectiveAt, final ApiCallback<TaxRuleSet> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateTaxRuleSetValidateBeforeCall(scope, code, updateTaxRuleSetRequest, effectiveAt, _callback);
+        okhttp3.Call localVarCall = updateTaxRuleSetValidateBeforeCall(scope, code, updateTaxRuleSetRequest, effectiveAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TaxRuleSet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call updateTaxRuleSetAsync(String scope, String code, UpdateTaxRuleSetRequest updateTaxRuleSetRequest, String effectiveAt, final ApiCallback<TaxRuleSet> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = updateTaxRuleSetValidateBeforeCall(scope, code, updateTaxRuleSetRequest, effectiveAt, _callback, opts);
         Type localVarReturnType = new TypeToken<TaxRuleSet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -968,6 +1259,23 @@ public class TaxRuleSetsApi {
         }
 
         /**
+         * Execute updateTaxRuleSet request. Use any specified configuration options to override any other configuration for this request only.
+         * @return TaxRuleSet
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Update rules for tax calculations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TaxRuleSet execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<TaxRuleSet> localVarResp = updateTaxRuleSetWithHttpInfo(scope, code, updateTaxRuleSetRequest, effectiveAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute updateTaxRuleSet request with HTTP info returned
          * @return ApiResponse&lt;TaxRuleSet&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -981,6 +1289,22 @@ public class TaxRuleSetsApi {
          */
         public ApiResponse<TaxRuleSet> executeWithHttpInfo() throws ApiException {
             return updateTaxRuleSetWithHttpInfo(scope, code, updateTaxRuleSetRequest, effectiveAt);
+        }
+
+        /**
+         * Execute updateTaxRuleSet request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;TaxRuleSet&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Update rules for tax calculations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TaxRuleSet> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return updateTaxRuleSetWithHttpInfo(scope, code, updateTaxRuleSetRequest, effectiveAt, opts);
         }
 
         /**
@@ -998,6 +1322,23 @@ public class TaxRuleSetsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<TaxRuleSet> _callback) throws ApiException {
             return updateTaxRuleSetAsync(scope, code, updateTaxRuleSetRequest, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute updateTaxRuleSet request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Update rules for tax calculations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TaxRuleSet> _callback, ConfigurationOptions opts) throws ApiException {
+            return updateTaxRuleSetAsync(scope, code, updateTaxRuleSetRequest, effectiveAt, _callback, opts);
         }
     }
 

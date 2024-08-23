@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -82,6 +83,10 @@ public class QuotesApi {
     }
 
     private okhttp3.Call deleteQuoteAccessMetadataRuleCall(String scope, String provider, String priceSource, String instrumentIdType, String instrumentId, String quoteType, String field, String effectiveAt, final ApiCallback _callback) throws ApiException {
+        return deleteQuoteAccessMetadataRuleCall(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteQuoteAccessMetadataRuleCall(String scope, String provider, String priceSource, String instrumentIdType, String instrumentId, String quoteType, String field, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -153,30 +158,44 @@ public class QuotesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteQuoteAccessMetadataRuleValidateBeforeCall(String scope, String provider, String priceSource, String instrumentIdType, String instrumentId, String quoteType, String field, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteQuoteAccessMetadataRuleValidateBeforeCall(String scope, String provider, String priceSource, String instrumentIdType, String instrumentId, String quoteType, String field, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteQuoteAccessMetadataRule(Async)");
         }
 
-        return deleteQuoteAccessMetadataRuleCall(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, _callback);
+        return deleteQuoteAccessMetadataRuleCall(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, _callback, opts);
 
     }
 
 
     private ApiResponse<QuoteAccessMetadataRule> deleteQuoteAccessMetadataRuleWithHttpInfo(String scope, String provider, String priceSource, String instrumentIdType, String instrumentId, String quoteType, String field, String effectiveAt) throws ApiException {
-        okhttp3.Call localVarCall = deleteQuoteAccessMetadataRuleValidateBeforeCall(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, null);
+        okhttp3.Call localVarCall = deleteQuoteAccessMetadataRuleValidateBeforeCall(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<QuoteAccessMetadataRule>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<QuoteAccessMetadataRule> deleteQuoteAccessMetadataRuleWithHttpInfo(String scope, String provider, String priceSource, String instrumentIdType, String instrumentId, String quoteType, String field, String effectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteQuoteAccessMetadataRuleValidateBeforeCall(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, null, opts);
         Type localVarReturnType = new TypeToken<QuoteAccessMetadataRule>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteQuoteAccessMetadataRuleAsync(String scope, String provider, String priceSource, String instrumentIdType, String instrumentId, String quoteType, String field, String effectiveAt, final ApiCallback<QuoteAccessMetadataRule> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteQuoteAccessMetadataRuleValidateBeforeCall(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, _callback);
+        okhttp3.Call localVarCall = deleteQuoteAccessMetadataRuleValidateBeforeCall(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<QuoteAccessMetadataRule>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteQuoteAccessMetadataRuleAsync(String scope, String provider, String priceSource, String instrumentIdType, String instrumentId, String quoteType, String field, String effectiveAt, final ApiCallback<QuoteAccessMetadataRule> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteQuoteAccessMetadataRuleValidateBeforeCall(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, _callback, opts);
         Type localVarReturnType = new TypeToken<QuoteAccessMetadataRule>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -301,6 +320,23 @@ public class QuotesApi {
         }
 
         /**
+         * Execute deleteQuoteAccessMetadataRule request. Use any specified configuration options to override any other configuration for this request only.
+         * @return QuoteAccessMetadataRule
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rule that has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public QuoteAccessMetadataRule execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<QuoteAccessMetadataRule> localVarResp = deleteQuoteAccessMetadataRuleWithHttpInfo(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteQuoteAccessMetadataRule request with HTTP info returned
          * @return ApiResponse&lt;QuoteAccessMetadataRule&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -314,6 +350,22 @@ public class QuotesApi {
          */
         public ApiResponse<QuoteAccessMetadataRule> executeWithHttpInfo() throws ApiException {
             return deleteQuoteAccessMetadataRuleWithHttpInfo(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt);
+        }
+
+        /**
+         * Execute deleteQuoteAccessMetadataRule request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;QuoteAccessMetadataRule&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rule that has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<QuoteAccessMetadataRule> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteQuoteAccessMetadataRuleWithHttpInfo(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, opts);
         }
 
         /**
@@ -331,6 +383,23 @@ public class QuotesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<QuoteAccessMetadataRule> _callback) throws ApiException {
             return deleteQuoteAccessMetadataRuleAsync(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute deleteQuoteAccessMetadataRule request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rule that has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<QuoteAccessMetadataRule> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteQuoteAccessMetadataRuleAsync(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, _callback, opts);
         }
     }
 
@@ -351,6 +420,10 @@ public class QuotesApi {
         return new APIdeleteQuoteAccessMetadataRuleRequest(scope);
     }
     private okhttp3.Call deleteQuotesCall(String scope, Map<String, QuoteId> requestBody, final ApiCallback _callback) throws ApiException {
+        return deleteQuotesCall(scope, requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteQuotesCall(String scope, Map<String, QuoteId> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -398,30 +471,44 @@ public class QuotesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteQuotesValidateBeforeCall(String scope, Map<String, QuoteId> requestBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteQuotesValidateBeforeCall(String scope, Map<String, QuoteId> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteQuotes(Async)");
         }
 
-        return deleteQuotesCall(scope, requestBody, _callback);
+        return deleteQuotesCall(scope, requestBody, _callback, opts);
 
     }
 
 
     private ApiResponse<AnnulQuotesResponse> deleteQuotesWithHttpInfo(String scope, Map<String, QuoteId> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = deleteQuotesValidateBeforeCall(scope, requestBody, null);
+        okhttp3.Call localVarCall = deleteQuotesValidateBeforeCall(scope, requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AnnulQuotesResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AnnulQuotesResponse> deleteQuotesWithHttpInfo(String scope, Map<String, QuoteId> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteQuotesValidateBeforeCall(scope, requestBody, null, opts);
         Type localVarReturnType = new TypeToken<AnnulQuotesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteQuotesAsync(String scope, Map<String, QuoteId> requestBody, final ApiCallback<AnnulQuotesResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteQuotesValidateBeforeCall(scope, requestBody, _callback);
+        okhttp3.Call localVarCall = deleteQuotesValidateBeforeCall(scope, requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AnnulQuotesResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteQuotesAsync(String scope, Map<String, QuoteId> requestBody, final ApiCallback<AnnulQuotesResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteQuotesValidateBeforeCall(scope, requestBody, _callback, opts);
         Type localVarReturnType = new TypeToken<AnnulQuotesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -480,6 +567,23 @@ public class QuotesApi {
         }
 
         /**
+         * Execute deleteQuotes request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AnnulQuotesResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted quotes along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AnnulQuotesResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AnnulQuotesResponse> localVarResp = deleteQuotesWithHttpInfo(scope, requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteQuotes request with HTTP info returned
          * @return ApiResponse&lt;AnnulQuotesResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -493,6 +597,22 @@ public class QuotesApi {
          */
         public ApiResponse<AnnulQuotesResponse> executeWithHttpInfo() throws ApiException {
             return deleteQuotesWithHttpInfo(scope, requestBody);
+        }
+
+        /**
+         * Execute deleteQuotes request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AnnulQuotesResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted quotes along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AnnulQuotesResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteQuotesWithHttpInfo(scope, requestBody, opts);
         }
 
         /**
@@ -510,6 +630,23 @@ public class QuotesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<AnnulQuotesResponse> _callback) throws ApiException {
             return deleteQuotesAsync(scope, requestBody, _callback);
+        }
+
+        /**
+         * Execute deleteQuotes request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted quotes along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AnnulQuotesResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteQuotesAsync(scope, requestBody, _callback, opts);
         }
     }
 
@@ -530,6 +667,10 @@ public class QuotesApi {
         return new APIdeleteQuotesRequest(scope);
     }
     private okhttp3.Call getQuotesCall(String scope, String effectiveAt, OffsetDateTime asAt, String maxAge, Map<String, QuoteSeriesId> requestBody, final ApiCallback _callback) throws ApiException {
+        return getQuotesCall(scope, effectiveAt, asAt, maxAge, requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getQuotesCall(String scope, String effectiveAt, OffsetDateTime asAt, String maxAge, Map<String, QuoteSeriesId> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -589,30 +730,44 @@ public class QuotesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getQuotesValidateBeforeCall(String scope, String effectiveAt, OffsetDateTime asAt, String maxAge, Map<String, QuoteSeriesId> requestBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getQuotesValidateBeforeCall(String scope, String effectiveAt, OffsetDateTime asAt, String maxAge, Map<String, QuoteSeriesId> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getQuotes(Async)");
         }
 
-        return getQuotesCall(scope, effectiveAt, asAt, maxAge, requestBody, _callback);
+        return getQuotesCall(scope, effectiveAt, asAt, maxAge, requestBody, _callback, opts);
 
     }
 
 
     private ApiResponse<GetQuotesResponse> getQuotesWithHttpInfo(String scope, String effectiveAt, OffsetDateTime asAt, String maxAge, Map<String, QuoteSeriesId> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = getQuotesValidateBeforeCall(scope, effectiveAt, asAt, maxAge, requestBody, null);
+        okhttp3.Call localVarCall = getQuotesValidateBeforeCall(scope, effectiveAt, asAt, maxAge, requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GetQuotesResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<GetQuotesResponse> getQuotesWithHttpInfo(String scope, String effectiveAt, OffsetDateTime asAt, String maxAge, Map<String, QuoteSeriesId> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getQuotesValidateBeforeCall(scope, effectiveAt, asAt, maxAge, requestBody, null, opts);
         Type localVarReturnType = new TypeToken<GetQuotesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getQuotesAsync(String scope, String effectiveAt, OffsetDateTime asAt, String maxAge, Map<String, QuoteSeriesId> requestBody, final ApiCallback<GetQuotesResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getQuotesValidateBeforeCall(scope, effectiveAt, asAt, maxAge, requestBody, _callback);
+        okhttp3.Call localVarCall = getQuotesValidateBeforeCall(scope, effectiveAt, asAt, maxAge, requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GetQuotesResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getQuotesAsync(String scope, String effectiveAt, OffsetDateTime asAt, String maxAge, Map<String, QuoteSeriesId> requestBody, final ApiCallback<GetQuotesResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getQuotesValidateBeforeCall(scope, effectiveAt, asAt, maxAge, requestBody, _callback, opts);
         Type localVarReturnType = new TypeToken<GetQuotesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -704,6 +859,23 @@ public class QuotesApi {
         }
 
         /**
+         * Execute getQuotes request. Use any specified configuration options to override any other configuration for this request only.
+         * @return GetQuotesResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved quotes along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GetQuotesResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<GetQuotesResponse> localVarResp = getQuotesWithHttpInfo(scope, effectiveAt, asAt, maxAge, requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getQuotes request with HTTP info returned
          * @return ApiResponse&lt;GetQuotesResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -717,6 +889,22 @@ public class QuotesApi {
          */
         public ApiResponse<GetQuotesResponse> executeWithHttpInfo() throws ApiException {
             return getQuotesWithHttpInfo(scope, effectiveAt, asAt, maxAge, requestBody);
+        }
+
+        /**
+         * Execute getQuotes request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;GetQuotesResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved quotes along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GetQuotesResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getQuotesWithHttpInfo(scope, effectiveAt, asAt, maxAge, requestBody, opts);
         }
 
         /**
@@ -734,6 +922,23 @@ public class QuotesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<GetQuotesResponse> _callback) throws ApiException {
             return getQuotesAsync(scope, effectiveAt, asAt, maxAge, requestBody, _callback);
+        }
+
+        /**
+         * Execute getQuotes request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved quotes along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GetQuotesResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return getQuotesAsync(scope, effectiveAt, asAt, maxAge, requestBody, _callback, opts);
         }
     }
 
@@ -754,6 +959,10 @@ public class QuotesApi {
         return new APIgetQuotesRequest(scope);
     }
     private okhttp3.Call getQuotesAccessMetadataRuleCall(String scope, String provider, String priceSource, String instrumentIdType, String instrumentId, String quoteType, String field, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getQuotesAccessMetadataRuleCall(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getQuotesAccessMetadataRuleCall(String scope, String provider, String priceSource, String instrumentIdType, String instrumentId, String quoteType, String field, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -832,30 +1041,44 @@ public class QuotesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getQuotesAccessMetadataRuleValidateBeforeCall(String scope, String provider, String priceSource, String instrumentIdType, String instrumentId, String quoteType, String field, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getQuotesAccessMetadataRuleValidateBeforeCall(String scope, String provider, String priceSource, String instrumentIdType, String instrumentId, String quoteType, String field, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getQuotesAccessMetadataRule(Async)");
         }
 
-        return getQuotesAccessMetadataRuleCall(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, asAt, _callback);
+        return getQuotesAccessMetadataRuleCall(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<QuoteAccessMetadataRule> getQuotesAccessMetadataRuleWithHttpInfo(String scope, String provider, String priceSource, String instrumentIdType, String instrumentId, String quoteType, String field, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getQuotesAccessMetadataRuleValidateBeforeCall(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, asAt, null);
+        okhttp3.Call localVarCall = getQuotesAccessMetadataRuleValidateBeforeCall(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<QuoteAccessMetadataRule>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<QuoteAccessMetadataRule> getQuotesAccessMetadataRuleWithHttpInfo(String scope, String provider, String priceSource, String instrumentIdType, String instrumentId, String quoteType, String field, String effectiveAt, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getQuotesAccessMetadataRuleValidateBeforeCall(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, asAt, null, opts);
         Type localVarReturnType = new TypeToken<QuoteAccessMetadataRule>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getQuotesAccessMetadataRuleAsync(String scope, String provider, String priceSource, String instrumentIdType, String instrumentId, String quoteType, String field, String effectiveAt, OffsetDateTime asAt, final ApiCallback<QuoteAccessMetadataRule> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getQuotesAccessMetadataRuleValidateBeforeCall(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, asAt, _callback);
+        okhttp3.Call localVarCall = getQuotesAccessMetadataRuleValidateBeforeCall(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<QuoteAccessMetadataRule>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getQuotesAccessMetadataRuleAsync(String scope, String provider, String priceSource, String instrumentIdType, String instrumentId, String quoteType, String field, String effectiveAt, OffsetDateTime asAt, final ApiCallback<QuoteAccessMetadataRule> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getQuotesAccessMetadataRuleValidateBeforeCall(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<QuoteAccessMetadataRule>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -991,6 +1214,23 @@ public class QuotesApi {
         }
 
         /**
+         * Execute getQuotesAccessMetadataRule request. Use any specified configuration options to override any other configuration for this request only.
+         * @return QuoteAccessMetadataRule
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Quote Access Metadata Rule or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public QuoteAccessMetadataRule execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<QuoteAccessMetadataRule> localVarResp = getQuotesAccessMetadataRuleWithHttpInfo(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getQuotesAccessMetadataRule request with HTTP info returned
          * @return ApiResponse&lt;QuoteAccessMetadataRule&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1004,6 +1244,22 @@ public class QuotesApi {
          */
         public ApiResponse<QuoteAccessMetadataRule> executeWithHttpInfo() throws ApiException {
             return getQuotesAccessMetadataRuleWithHttpInfo(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getQuotesAccessMetadataRule request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;QuoteAccessMetadataRule&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Quote Access Metadata Rule or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<QuoteAccessMetadataRule> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getQuotesAccessMetadataRuleWithHttpInfo(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, asAt, opts);
         }
 
         /**
@@ -1021,6 +1277,23 @@ public class QuotesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<QuoteAccessMetadataRule> _callback) throws ApiException {
             return getQuotesAccessMetadataRuleAsync(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getQuotesAccessMetadataRule request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Quote Access Metadata Rule or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<QuoteAccessMetadataRule> _callback, ConfigurationOptions opts) throws ApiException {
+            return getQuotesAccessMetadataRuleAsync(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, asAt, _callback, opts);
         }
     }
 
@@ -1041,6 +1314,10 @@ public class QuotesApi {
         return new APIgetQuotesAccessMetadataRuleRequest(scope);
     }
     private okhttp3.Call listQuotesCall(String scope, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+        return listQuotesCall(scope, asAt, page, limit, filter,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listQuotesCall(String scope, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1100,30 +1377,44 @@ public class QuotesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listQuotesValidateBeforeCall(String scope, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listQuotesValidateBeforeCall(String scope, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listQuotes(Async)");
         }
 
-        return listQuotesCall(scope, asAt, page, limit, filter, _callback);
+        return listQuotesCall(scope, asAt, page, limit, filter, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfQuote> listQuotesWithHttpInfo(String scope, OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listQuotesValidateBeforeCall(scope, asAt, page, limit, filter, null);
+        okhttp3.Call localVarCall = listQuotesValidateBeforeCall(scope, asAt, page, limit, filter, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfQuote>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfQuote> listQuotesWithHttpInfo(String scope, OffsetDateTime asAt, String page, Integer limit, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listQuotesValidateBeforeCall(scope, asAt, page, limit, filter, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfQuote>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listQuotesAsync(String scope, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<ResourceListOfQuote> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listQuotesValidateBeforeCall(scope, asAt, page, limit, filter, _callback);
+        okhttp3.Call localVarCall = listQuotesValidateBeforeCall(scope, asAt, page, limit, filter, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfQuote>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listQuotesAsync(String scope, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<ResourceListOfQuote> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listQuotesValidateBeforeCall(scope, asAt, page, limit, filter, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfQuote>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1215,6 +1506,23 @@ public class QuotesApi {
         }
 
         /**
+         * Execute listQuotes request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfQuote
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested quotes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfQuote execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfQuote> localVarResp = listQuotesWithHttpInfo(scope, asAt, page, limit, filter, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listQuotes request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfQuote&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1228,6 +1536,22 @@ public class QuotesApi {
          */
         public ApiResponse<ResourceListOfQuote> executeWithHttpInfo() throws ApiException {
             return listQuotesWithHttpInfo(scope, asAt, page, limit, filter);
+        }
+
+        /**
+         * Execute listQuotes request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfQuote&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested quotes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfQuote> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listQuotesWithHttpInfo(scope, asAt, page, limit, filter, opts);
         }
 
         /**
@@ -1245,6 +1569,23 @@ public class QuotesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfQuote> _callback) throws ApiException {
             return listQuotesAsync(scope, asAt, page, limit, filter, _callback);
+        }
+
+        /**
+         * Execute listQuotes request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested quotes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfQuote> _callback, ConfigurationOptions opts) throws ApiException {
+            return listQuotesAsync(scope, asAt, page, limit, filter, _callback, opts);
         }
     }
 
@@ -1265,6 +1606,10 @@ public class QuotesApi {
         return new APIlistQuotesRequest(scope);
     }
     private okhttp3.Call listQuotesAccessMetadataRulesCall(String scope, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return listQuotesAccessMetadataRulesCall(scope, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listQuotesAccessMetadataRulesCall(String scope, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1312,30 +1657,44 @@ public class QuotesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listQuotesAccessMetadataRulesValidateBeforeCall(String scope, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listQuotesAccessMetadataRulesValidateBeforeCall(String scope, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listQuotesAccessMetadataRules(Async)");
         }
 
-        return listQuotesAccessMetadataRulesCall(scope, asAt, _callback);
+        return listQuotesAccessMetadataRulesCall(scope, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfQuoteAccessMetadataRule> listQuotesAccessMetadataRulesWithHttpInfo(String scope, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = listQuotesAccessMetadataRulesValidateBeforeCall(scope, asAt, null);
+        okhttp3.Call localVarCall = listQuotesAccessMetadataRulesValidateBeforeCall(scope, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfQuoteAccessMetadataRule>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfQuoteAccessMetadataRule> listQuotesAccessMetadataRulesWithHttpInfo(String scope, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listQuotesAccessMetadataRulesValidateBeforeCall(scope, asAt, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfQuoteAccessMetadataRule>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listQuotesAccessMetadataRulesAsync(String scope, OffsetDateTime asAt, final ApiCallback<ResourceListOfQuoteAccessMetadataRule> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listQuotesAccessMetadataRulesValidateBeforeCall(scope, asAt, _callback);
+        okhttp3.Call localVarCall = listQuotesAccessMetadataRulesValidateBeforeCall(scope, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfQuoteAccessMetadataRule>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listQuotesAccessMetadataRulesAsync(String scope, OffsetDateTime asAt, final ApiCallback<ResourceListOfQuoteAccessMetadataRule> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listQuotesAccessMetadataRulesValidateBeforeCall(scope, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfQuoteAccessMetadataRule>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1394,6 +1753,23 @@ public class QuotesApi {
         }
 
         /**
+         * Execute listQuotesAccessMetadataRules request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfQuoteAccessMetadataRule
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The filtered list of results </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfQuoteAccessMetadataRule execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfQuoteAccessMetadataRule> localVarResp = listQuotesAccessMetadataRulesWithHttpInfo(scope, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listQuotesAccessMetadataRules request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfQuoteAccessMetadataRule&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1407,6 +1783,22 @@ public class QuotesApi {
          */
         public ApiResponse<ResourceListOfQuoteAccessMetadataRule> executeWithHttpInfo() throws ApiException {
             return listQuotesAccessMetadataRulesWithHttpInfo(scope, asAt);
+        }
+
+        /**
+         * Execute listQuotesAccessMetadataRules request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfQuoteAccessMetadataRule&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The filtered list of results </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfQuoteAccessMetadataRule> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listQuotesAccessMetadataRulesWithHttpInfo(scope, asAt, opts);
         }
 
         /**
@@ -1424,6 +1816,23 @@ public class QuotesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfQuoteAccessMetadataRule> _callback) throws ApiException {
             return listQuotesAccessMetadataRulesAsync(scope, asAt, _callback);
+        }
+
+        /**
+         * Execute listQuotesAccessMetadataRules request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The filtered list of results </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfQuoteAccessMetadataRule> _callback, ConfigurationOptions opts) throws ApiException {
+            return listQuotesAccessMetadataRulesAsync(scope, asAt, _callback, opts);
         }
     }
 
@@ -1444,6 +1853,10 @@ public class QuotesApi {
         return new APIlistQuotesAccessMetadataRulesRequest(scope);
     }
     private okhttp3.Call listQuotesForScopeCall(String scope, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+        return listQuotesForScopeCall(scope, asAt, page, limit, filter,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listQuotesForScopeCall(String scope, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1503,30 +1916,44 @@ public class QuotesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listQuotesForScopeValidateBeforeCall(String scope, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listQuotesForScopeValidateBeforeCall(String scope, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listQuotesForScope(Async)");
         }
 
-        return listQuotesForScopeCall(scope, asAt, page, limit, filter, _callback);
+        return listQuotesForScopeCall(scope, asAt, page, limit, filter, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfQuote> listQuotesForScopeWithHttpInfo(String scope, OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listQuotesForScopeValidateBeforeCall(scope, asAt, page, limit, filter, null);
+        okhttp3.Call localVarCall = listQuotesForScopeValidateBeforeCall(scope, asAt, page, limit, filter, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfQuote>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfQuote> listQuotesForScopeWithHttpInfo(String scope, OffsetDateTime asAt, String page, Integer limit, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listQuotesForScopeValidateBeforeCall(scope, asAt, page, limit, filter, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfQuote>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listQuotesForScopeAsync(String scope, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<ResourceListOfQuote> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listQuotesForScopeValidateBeforeCall(scope, asAt, page, limit, filter, _callback);
+        okhttp3.Call localVarCall = listQuotesForScopeValidateBeforeCall(scope, asAt, page, limit, filter, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfQuote>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listQuotesForScopeAsync(String scope, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<ResourceListOfQuote> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listQuotesForScopeValidateBeforeCall(scope, asAt, page, limit, filter, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfQuote>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1618,6 +2045,23 @@ public class QuotesApi {
         }
 
         /**
+         * Execute listQuotesForScope request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfQuote
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested quotes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfQuote execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfQuote> localVarResp = listQuotesForScopeWithHttpInfo(scope, asAt, page, limit, filter, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listQuotesForScope request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfQuote&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1631,6 +2075,22 @@ public class QuotesApi {
          */
         public ApiResponse<ResourceListOfQuote> executeWithHttpInfo() throws ApiException {
             return listQuotesForScopeWithHttpInfo(scope, asAt, page, limit, filter);
+        }
+
+        /**
+         * Execute listQuotesForScope request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfQuote&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested quotes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfQuote> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listQuotesForScopeWithHttpInfo(scope, asAt, page, limit, filter, opts);
         }
 
         /**
@@ -1648,6 +2108,23 @@ public class QuotesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfQuote> _callback) throws ApiException {
             return listQuotesForScopeAsync(scope, asAt, page, limit, filter, _callback);
+        }
+
+        /**
+         * Execute listQuotesForScope request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested quotes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfQuote> _callback, ConfigurationOptions opts) throws ApiException {
+            return listQuotesForScopeAsync(scope, asAt, page, limit, filter, _callback, opts);
         }
     }
 
@@ -1668,6 +2145,10 @@ public class QuotesApi {
         return new APIlistQuotesForScopeRequest(scope);
     }
     private okhttp3.Call upsertQuoteAccessMetadataRuleCall(String scope, UpsertQuoteAccessMetadataRuleRequest upsertQuoteAccessMetadataRuleRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+        return upsertQuoteAccessMetadataRuleCall(scope, upsertQuoteAccessMetadataRuleRequest, effectiveAt, effectiveUntil,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertQuoteAccessMetadataRuleCall(String scope, UpsertQuoteAccessMetadataRuleRequest upsertQuoteAccessMetadataRuleRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1723,11 +2204,11 @@ public class QuotesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertQuoteAccessMetadataRuleValidateBeforeCall(String scope, UpsertQuoteAccessMetadataRuleRequest upsertQuoteAccessMetadataRuleRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertQuoteAccessMetadataRuleValidateBeforeCall(String scope, UpsertQuoteAccessMetadataRuleRequest upsertQuoteAccessMetadataRuleRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling upsertQuoteAccessMetadataRule(Async)");
@@ -1738,20 +2219,34 @@ public class QuotesApi {
             throw new ApiException("Missing the required parameter 'upsertQuoteAccessMetadataRuleRequest' when calling upsertQuoteAccessMetadataRule(Async)");
         }
 
-        return upsertQuoteAccessMetadataRuleCall(scope, upsertQuoteAccessMetadataRuleRequest, effectiveAt, effectiveUntil, _callback);
+        return upsertQuoteAccessMetadataRuleCall(scope, upsertQuoteAccessMetadataRuleRequest, effectiveAt, effectiveUntil, _callback, opts);
 
     }
 
 
     private ApiResponse<QuoteAccessMetadataRule> upsertQuoteAccessMetadataRuleWithHttpInfo(String scope, UpsertQuoteAccessMetadataRuleRequest upsertQuoteAccessMetadataRuleRequest, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
-        okhttp3.Call localVarCall = upsertQuoteAccessMetadataRuleValidateBeforeCall(scope, upsertQuoteAccessMetadataRuleRequest, effectiveAt, effectiveUntil, null);
+        okhttp3.Call localVarCall = upsertQuoteAccessMetadataRuleValidateBeforeCall(scope, upsertQuoteAccessMetadataRuleRequest, effectiveAt, effectiveUntil, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<QuoteAccessMetadataRule>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<QuoteAccessMetadataRule> upsertQuoteAccessMetadataRuleWithHttpInfo(String scope, UpsertQuoteAccessMetadataRuleRequest upsertQuoteAccessMetadataRuleRequest, String effectiveAt, OffsetDateTime effectiveUntil, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertQuoteAccessMetadataRuleValidateBeforeCall(scope, upsertQuoteAccessMetadataRuleRequest, effectiveAt, effectiveUntil, null, opts);
         Type localVarReturnType = new TypeToken<QuoteAccessMetadataRule>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertQuoteAccessMetadataRuleAsync(String scope, UpsertQuoteAccessMetadataRuleRequest upsertQuoteAccessMetadataRuleRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<QuoteAccessMetadataRule> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertQuoteAccessMetadataRuleValidateBeforeCall(scope, upsertQuoteAccessMetadataRuleRequest, effectiveAt, effectiveUntil, _callback);
+        okhttp3.Call localVarCall = upsertQuoteAccessMetadataRuleValidateBeforeCall(scope, upsertQuoteAccessMetadataRuleRequest, effectiveAt, effectiveUntil, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<QuoteAccessMetadataRule>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertQuoteAccessMetadataRuleAsync(String scope, UpsertQuoteAccessMetadataRuleRequest upsertQuoteAccessMetadataRuleRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<QuoteAccessMetadataRule> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertQuoteAccessMetadataRuleValidateBeforeCall(scope, upsertQuoteAccessMetadataRuleRequest, effectiveAt, effectiveUntil, _callback, opts);
         Type localVarReturnType = new TypeToken<QuoteAccessMetadataRule>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1823,6 +2318,23 @@ public class QuotesApi {
         }
 
         /**
+         * Execute upsertQuoteAccessMetadataRule request. Use any specified configuration options to override any other configuration for this request only.
+         * @return QuoteAccessMetadataRule
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public QuoteAccessMetadataRule execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<QuoteAccessMetadataRule> localVarResp = upsertQuoteAccessMetadataRuleWithHttpInfo(scope, upsertQuoteAccessMetadataRuleRequest, effectiveAt, effectiveUntil, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertQuoteAccessMetadataRule request with HTTP info returned
          * @return ApiResponse&lt;QuoteAccessMetadataRule&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1836,6 +2348,22 @@ public class QuotesApi {
          */
         public ApiResponse<QuoteAccessMetadataRule> executeWithHttpInfo() throws ApiException {
             return upsertQuoteAccessMetadataRuleWithHttpInfo(scope, upsertQuoteAccessMetadataRuleRequest, effectiveAt, effectiveUntil);
+        }
+
+        /**
+         * Execute upsertQuoteAccessMetadataRule request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;QuoteAccessMetadataRule&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<QuoteAccessMetadataRule> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertQuoteAccessMetadataRuleWithHttpInfo(scope, upsertQuoteAccessMetadataRuleRequest, effectiveAt, effectiveUntil, opts);
         }
 
         /**
@@ -1853,6 +2381,23 @@ public class QuotesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<QuoteAccessMetadataRule> _callback) throws ApiException {
             return upsertQuoteAccessMetadataRuleAsync(scope, upsertQuoteAccessMetadataRuleRequest, effectiveAt, effectiveUntil, _callback);
+        }
+
+        /**
+         * Execute upsertQuoteAccessMetadataRule request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<QuoteAccessMetadataRule> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertQuoteAccessMetadataRuleAsync(scope, upsertQuoteAccessMetadataRuleRequest, effectiveAt, effectiveUntil, _callback, opts);
         }
     }
 
@@ -1874,6 +2419,10 @@ public class QuotesApi {
         return new APIupsertQuoteAccessMetadataRuleRequest(scope, upsertQuoteAccessMetadataRuleRequest);
     }
     private okhttp3.Call upsertQuotesCall(String scope, Map<String, UpsertQuoteRequest> requestBody, final ApiCallback _callback) throws ApiException {
+        return upsertQuotesCall(scope, requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertQuotesCall(String scope, Map<String, UpsertQuoteRequest> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1921,30 +2470,44 @@ public class QuotesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertQuotesValidateBeforeCall(String scope, Map<String, UpsertQuoteRequest> requestBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertQuotesValidateBeforeCall(String scope, Map<String, UpsertQuoteRequest> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling upsertQuotes(Async)");
         }
 
-        return upsertQuotesCall(scope, requestBody, _callback);
+        return upsertQuotesCall(scope, requestBody, _callback, opts);
 
     }
 
 
     private ApiResponse<UpsertQuotesResponse> upsertQuotesWithHttpInfo(String scope, Map<String, UpsertQuoteRequest> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = upsertQuotesValidateBeforeCall(scope, requestBody, null);
+        okhttp3.Call localVarCall = upsertQuotesValidateBeforeCall(scope, requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertQuotesResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<UpsertQuotesResponse> upsertQuotesWithHttpInfo(String scope, Map<String, UpsertQuoteRequest> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertQuotesValidateBeforeCall(scope, requestBody, null, opts);
         Type localVarReturnType = new TypeToken<UpsertQuotesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertQuotesAsync(String scope, Map<String, UpsertQuoteRequest> requestBody, final ApiCallback<UpsertQuotesResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertQuotesValidateBeforeCall(scope, requestBody, _callback);
+        okhttp3.Call localVarCall = upsertQuotesValidateBeforeCall(scope, requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertQuotesResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertQuotesAsync(String scope, Map<String, UpsertQuoteRequest> requestBody, final ApiCallback<UpsertQuotesResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertQuotesValidateBeforeCall(scope, requestBody, _callback, opts);
         Type localVarReturnType = new TypeToken<UpsertQuotesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2003,6 +2566,23 @@ public class QuotesApi {
         }
 
         /**
+         * Execute upsertQuotes request. Use any specified configuration options to override any other configuration for this request only.
+         * @return UpsertQuotesResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted quotes along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertQuotesResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<UpsertQuotesResponse> localVarResp = upsertQuotesWithHttpInfo(scope, requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertQuotes request with HTTP info returned
          * @return ApiResponse&lt;UpsertQuotesResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2016,6 +2596,22 @@ public class QuotesApi {
          */
         public ApiResponse<UpsertQuotesResponse> executeWithHttpInfo() throws ApiException {
             return upsertQuotesWithHttpInfo(scope, requestBody);
+        }
+
+        /**
+         * Execute upsertQuotes request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;UpsertQuotesResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted quotes along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertQuotesResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertQuotesWithHttpInfo(scope, requestBody, opts);
         }
 
         /**
@@ -2033,6 +2629,23 @@ public class QuotesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<UpsertQuotesResponse> _callback) throws ApiException {
             return upsertQuotesAsync(scope, requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertQuotes request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted quotes along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertQuotesResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertQuotesAsync(scope, requestBody, _callback, opts);
         }
     }
 

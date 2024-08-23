@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -78,6 +79,10 @@ public class FeeTypesApi {
     }
 
     private okhttp3.Call createFeeTypeCall(String scope, FeeTypeRequest feeTypeRequest, final ApiCallback _callback) throws ApiException {
+        return createFeeTypeCall(scope, feeTypeRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call createFeeTypeCall(String scope, FeeTypeRequest feeTypeRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -125,11 +130,11 @@ public class FeeTypesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createFeeTypeValidateBeforeCall(String scope, FeeTypeRequest feeTypeRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createFeeTypeValidateBeforeCall(String scope, FeeTypeRequest feeTypeRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling createFeeType(Async)");
@@ -140,20 +145,34 @@ public class FeeTypesApi {
             throw new ApiException("Missing the required parameter 'feeTypeRequest' when calling createFeeType(Async)");
         }
 
-        return createFeeTypeCall(scope, feeTypeRequest, _callback);
+        return createFeeTypeCall(scope, feeTypeRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<FeeType> createFeeTypeWithHttpInfo(String scope, FeeTypeRequest feeTypeRequest) throws ApiException {
-        okhttp3.Call localVarCall = createFeeTypeValidateBeforeCall(scope, feeTypeRequest, null);
+        okhttp3.Call localVarCall = createFeeTypeValidateBeforeCall(scope, feeTypeRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FeeType>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<FeeType> createFeeTypeWithHttpInfo(String scope, FeeTypeRequest feeTypeRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createFeeTypeValidateBeforeCall(scope, feeTypeRequest, null, opts);
         Type localVarReturnType = new TypeToken<FeeType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call createFeeTypeAsync(String scope, FeeTypeRequest feeTypeRequest, final ApiCallback<FeeType> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createFeeTypeValidateBeforeCall(scope, feeTypeRequest, _callback);
+        okhttp3.Call localVarCall = createFeeTypeValidateBeforeCall(scope, feeTypeRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FeeType>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call createFeeTypeAsync(String scope, FeeTypeRequest feeTypeRequest, final ApiCallback<FeeType> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = createFeeTypeValidateBeforeCall(scope, feeTypeRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<FeeType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -203,6 +222,23 @@ public class FeeTypesApi {
         }
 
         /**
+         * Execute createFeeType request. Use any specified configuration options to override any other configuration for this request only.
+         * @return FeeType
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Create a FeeType. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public FeeType execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<FeeType> localVarResp = createFeeTypeWithHttpInfo(scope, feeTypeRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute createFeeType request with HTTP info returned
          * @return ApiResponse&lt;FeeType&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -216,6 +252,22 @@ public class FeeTypesApi {
          */
         public ApiResponse<FeeType> executeWithHttpInfo() throws ApiException {
             return createFeeTypeWithHttpInfo(scope, feeTypeRequest);
+        }
+
+        /**
+         * Execute createFeeType request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;FeeType&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Create a FeeType. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<FeeType> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return createFeeTypeWithHttpInfo(scope, feeTypeRequest, opts);
         }
 
         /**
@@ -233,6 +285,23 @@ public class FeeTypesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<FeeType> _callback) throws ApiException {
             return createFeeTypeAsync(scope, feeTypeRequest, _callback);
+        }
+
+        /**
+         * Execute createFeeType request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Create a FeeType. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<FeeType> _callback, ConfigurationOptions opts) throws ApiException {
+            return createFeeTypeAsync(scope, feeTypeRequest, _callback, opts);
         }
     }
 
@@ -254,6 +323,10 @@ public class FeeTypesApi {
         return new APIcreateFeeTypeRequest(scope, feeTypeRequest);
     }
     private okhttp3.Call deleteFeeTypeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+        return deleteFeeTypeCall(scope, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteFeeTypeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -298,11 +371,11 @@ public class FeeTypesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteFeeTypeValidateBeforeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteFeeTypeValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteFeeType(Async)");
@@ -313,20 +386,34 @@ public class FeeTypesApi {
             throw new ApiException("Missing the required parameter 'code' when calling deleteFeeType(Async)");
         }
 
-        return deleteFeeTypeCall(scope, code, _callback);
+        return deleteFeeTypeCall(scope, code, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deleteFeeTypeWithHttpInfo(String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = deleteFeeTypeValidateBeforeCall(scope, code, null);
+        okhttp3.Call localVarCall = deleteFeeTypeValidateBeforeCall(scope, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteFeeTypeWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteFeeTypeValidateBeforeCall(scope, code, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteFeeTypeAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteFeeTypeValidateBeforeCall(scope, code, _callback);
+        okhttp3.Call localVarCall = deleteFeeTypeValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteFeeTypeAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteFeeTypeValidateBeforeCall(scope, code, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -376,6 +463,23 @@ public class FeeTypesApi {
         }
 
         /**
+         * Execute deleteFeeType request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Delete a FeeType. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteFeeTypeWithHttpInfo(scope, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteFeeType request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -389,6 +493,22 @@ public class FeeTypesApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deleteFeeTypeWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteFeeType request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Delete a FeeType. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteFeeTypeWithHttpInfo(scope, code, opts);
         }
 
         /**
@@ -406,6 +526,23 @@ public class FeeTypesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deleteFeeTypeAsync(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteFeeType request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Delete a FeeType. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteFeeTypeAsync(scope, code, _callback, opts);
         }
     }
 
@@ -427,6 +564,10 @@ public class FeeTypesApi {
         return new APIdeleteFeeTypeRequest(scope, code);
     }
     private okhttp3.Call getFeeTemplateSpecificationsCall(final ApiCallback _callback) throws ApiException {
+        return getFeeTemplateSpecificationsCall( _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getFeeTemplateSpecificationsCall(final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -469,25 +610,39 @@ public class FeeTypesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getFeeTemplateSpecificationsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getFeeTemplateSpecificationsCall(_callback);
+    private okhttp3.Call getFeeTemplateSpecificationsValidateBeforeCall(final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return getFeeTemplateSpecificationsCall(_callback, opts);
 
     }
 
 
     private ApiResponse<FeeTransactionTemplateSpecification> getFeeTemplateSpecificationsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getFeeTemplateSpecificationsValidateBeforeCall(null);
+        okhttp3.Call localVarCall = getFeeTemplateSpecificationsValidateBeforeCall(null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FeeTransactionTemplateSpecification>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<FeeTransactionTemplateSpecification> getFeeTemplateSpecificationsWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getFeeTemplateSpecificationsValidateBeforeCall(null, opts);
         Type localVarReturnType = new TypeToken<FeeTransactionTemplateSpecification>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getFeeTemplateSpecificationsAsync(final ApiCallback<FeeTransactionTemplateSpecification> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getFeeTemplateSpecificationsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getFeeTemplateSpecificationsValidateBeforeCall(_callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FeeTransactionTemplateSpecification>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getFeeTemplateSpecificationsAsync(final ApiCallback<FeeTransactionTemplateSpecification> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getFeeTemplateSpecificationsValidateBeforeCall(_callback, opts);
         Type localVarReturnType = new TypeToken<FeeTransactionTemplateSpecification>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -531,6 +686,22 @@ public class FeeTypesApi {
         }
 
         /**
+         * Execute getFeeTemplateSpecifications request. Use any specified configuration options to override any other configuration for this request only.
+         * @return FeeTransactionTemplateSpecification
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Fee template specifications used with a FeeType. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public FeeTransactionTemplateSpecification execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<FeeTransactionTemplateSpecification> localVarResp = getFeeTemplateSpecificationsWithHttpInfo(opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getFeeTemplateSpecifications request with HTTP info returned
          * @return ApiResponse&lt;FeeTransactionTemplateSpecification&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -543,6 +714,21 @@ public class FeeTypesApi {
          */
         public ApiResponse<FeeTransactionTemplateSpecification> executeWithHttpInfo() throws ApiException {
             return getFeeTemplateSpecificationsWithHttpInfo();
+        }
+
+        /**
+         * Execute getFeeTemplateSpecifications request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;FeeTransactionTemplateSpecification&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Fee template specifications used with a FeeType. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<FeeTransactionTemplateSpecification> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getFeeTemplateSpecificationsWithHttpInfo(opts);
         }
 
         /**
@@ -559,6 +745,22 @@ public class FeeTypesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<FeeTransactionTemplateSpecification> _callback) throws ApiException {
             return getFeeTemplateSpecificationsAsync(_callback);
+        }
+
+        /**
+         * Execute getFeeTemplateSpecifications request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Fee template specifications used with a FeeType. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<FeeTransactionTemplateSpecification> _callback, ConfigurationOptions opts) throws ApiException {
+            return getFeeTemplateSpecificationsAsync(_callback, opts);
         }
     }
 
@@ -577,6 +779,10 @@ public class FeeTypesApi {
         return new APIgetFeeTemplateSpecificationsRequest();
     }
     private okhttp3.Call getFeeTypeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getFeeTypeCall(scope, code, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getFeeTypeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -625,11 +831,11 @@ public class FeeTypesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getFeeTypeValidateBeforeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getFeeTypeValidateBeforeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getFeeType(Async)");
@@ -640,20 +846,34 @@ public class FeeTypesApi {
             throw new ApiException("Missing the required parameter 'code' when calling getFeeType(Async)");
         }
 
-        return getFeeTypeCall(scope, code, asAt, _callback);
+        return getFeeTypeCall(scope, code, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<FeeType> getFeeTypeWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getFeeTypeValidateBeforeCall(scope, code, asAt, null);
+        okhttp3.Call localVarCall = getFeeTypeValidateBeforeCall(scope, code, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FeeType>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<FeeType> getFeeTypeWithHttpInfo(String scope, String code, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getFeeTypeValidateBeforeCall(scope, code, asAt, null, opts);
         Type localVarReturnType = new TypeToken<FeeType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getFeeTypeAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<FeeType> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getFeeTypeValidateBeforeCall(scope, code, asAt, _callback);
+        okhttp3.Call localVarCall = getFeeTypeValidateBeforeCall(scope, code, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FeeType>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getFeeTypeAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<FeeType> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getFeeTypeValidateBeforeCall(scope, code, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<FeeType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -714,6 +934,23 @@ public class FeeTypesApi {
         }
 
         /**
+         * Execute getFeeType request. Use any specified configuration options to override any other configuration for this request only.
+         * @return FeeType
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested FeeType. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public FeeType execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<FeeType> localVarResp = getFeeTypeWithHttpInfo(scope, code, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getFeeType request with HTTP info returned
          * @return ApiResponse&lt;FeeType&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -727,6 +964,22 @@ public class FeeTypesApi {
          */
         public ApiResponse<FeeType> executeWithHttpInfo() throws ApiException {
             return getFeeTypeWithHttpInfo(scope, code, asAt);
+        }
+
+        /**
+         * Execute getFeeType request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;FeeType&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested FeeType. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<FeeType> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getFeeTypeWithHttpInfo(scope, code, asAt, opts);
         }
 
         /**
@@ -744,6 +997,23 @@ public class FeeTypesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<FeeType> _callback) throws ApiException {
             return getFeeTypeAsync(scope, code, asAt, _callback);
+        }
+
+        /**
+         * Execute getFeeType request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested FeeType. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<FeeType> _callback, ConfigurationOptions opts) throws ApiException {
+            return getFeeTypeAsync(scope, code, asAt, _callback, opts);
         }
     }
 
@@ -765,6 +1035,10 @@ public class FeeTypesApi {
         return new APIgetFeeTypeRequest(scope, code);
     }
     private okhttp3.Call listFeeTypesCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
+        return listFeeTypesCall(asAt, page, limit, filter, sortBy,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listFeeTypesCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -827,25 +1101,39 @@ public class FeeTypesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listFeeTypesValidateBeforeCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
-        return listFeeTypesCall(asAt, page, limit, filter, sortBy, _callback);
+    private okhttp3.Call listFeeTypesValidateBeforeCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listFeeTypesCall(asAt, page, limit, filter, sortBy, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfFeeType> listFeeTypesWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy) throws ApiException {
-        okhttp3.Call localVarCall = listFeeTypesValidateBeforeCall(asAt, page, limit, filter, sortBy, null);
+        okhttp3.Call localVarCall = listFeeTypesValidateBeforeCall(asAt, page, limit, filter, sortBy, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfFeeType>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfFeeType> listFeeTypesWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listFeeTypesValidateBeforeCall(asAt, page, limit, filter, sortBy, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfFeeType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listFeeTypesAsync(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfFeeType> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listFeeTypesValidateBeforeCall(asAt, page, limit, filter, sortBy, _callback);
+        okhttp3.Call localVarCall = listFeeTypesValidateBeforeCall(asAt, page, limit, filter, sortBy, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfFeeType>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listFeeTypesAsync(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfFeeType> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listFeeTypesValidateBeforeCall(asAt, page, limit, filter, sortBy, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfFeeType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -946,6 +1234,23 @@ public class FeeTypesApi {
         }
 
         /**
+         * Execute listFeeTypes request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfFeeType
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Fee Types </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfFeeType execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfFeeType> localVarResp = listFeeTypesWithHttpInfo(asAt, page, limit, filter, sortBy, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listFeeTypes request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfFeeType&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -959,6 +1264,22 @@ public class FeeTypesApi {
          */
         public ApiResponse<PagedResourceListOfFeeType> executeWithHttpInfo() throws ApiException {
             return listFeeTypesWithHttpInfo(asAt, page, limit, filter, sortBy);
+        }
+
+        /**
+         * Execute listFeeTypes request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfFeeType&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Fee Types </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfFeeType> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listFeeTypesWithHttpInfo(asAt, page, limit, filter, sortBy, opts);
         }
 
         /**
@@ -976,6 +1297,23 @@ public class FeeTypesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfFeeType> _callback) throws ApiException {
             return listFeeTypesAsync(asAt, page, limit, filter, sortBy, _callback);
+        }
+
+        /**
+         * Execute listFeeTypes request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Fee Types </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfFeeType> _callback, ConfigurationOptions opts) throws ApiException {
+            return listFeeTypesAsync(asAt, page, limit, filter, sortBy, _callback, opts);
         }
     }
 
@@ -995,6 +1333,10 @@ public class FeeTypesApi {
         return new APIlistFeeTypesRequest();
     }
     private okhttp3.Call updateFeeTypeCall(String scope, String code, UpdateFeeTypeRequest updateFeeTypeRequest, final ApiCallback _callback) throws ApiException {
+        return updateFeeTypeCall(scope, code, updateFeeTypeRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call updateFeeTypeCall(String scope, String code, UpdateFeeTypeRequest updateFeeTypeRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1043,11 +1385,11 @@ public class FeeTypesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateFeeTypeValidateBeforeCall(String scope, String code, UpdateFeeTypeRequest updateFeeTypeRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateFeeTypeValidateBeforeCall(String scope, String code, UpdateFeeTypeRequest updateFeeTypeRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling updateFeeType(Async)");
@@ -1063,20 +1405,34 @@ public class FeeTypesApi {
             throw new ApiException("Missing the required parameter 'updateFeeTypeRequest' when calling updateFeeType(Async)");
         }
 
-        return updateFeeTypeCall(scope, code, updateFeeTypeRequest, _callback);
+        return updateFeeTypeCall(scope, code, updateFeeTypeRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<FeeType> updateFeeTypeWithHttpInfo(String scope, String code, UpdateFeeTypeRequest updateFeeTypeRequest) throws ApiException {
-        okhttp3.Call localVarCall = updateFeeTypeValidateBeforeCall(scope, code, updateFeeTypeRequest, null);
+        okhttp3.Call localVarCall = updateFeeTypeValidateBeforeCall(scope, code, updateFeeTypeRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FeeType>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<FeeType> updateFeeTypeWithHttpInfo(String scope, String code, UpdateFeeTypeRequest updateFeeTypeRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = updateFeeTypeValidateBeforeCall(scope, code, updateFeeTypeRequest, null, opts);
         Type localVarReturnType = new TypeToken<FeeType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call updateFeeTypeAsync(String scope, String code, UpdateFeeTypeRequest updateFeeTypeRequest, final ApiCallback<FeeType> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateFeeTypeValidateBeforeCall(scope, code, updateFeeTypeRequest, _callback);
+        okhttp3.Call localVarCall = updateFeeTypeValidateBeforeCall(scope, code, updateFeeTypeRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FeeType>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call updateFeeTypeAsync(String scope, String code, UpdateFeeTypeRequest updateFeeTypeRequest, final ApiCallback<FeeType> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = updateFeeTypeValidateBeforeCall(scope, code, updateFeeTypeRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<FeeType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1128,6 +1484,23 @@ public class FeeTypesApi {
         }
 
         /**
+         * Execute updateFeeType request. Use any specified configuration options to override any other configuration for this request only.
+         * @return FeeType
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Update a FeeType. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public FeeType execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<FeeType> localVarResp = updateFeeTypeWithHttpInfo(scope, code, updateFeeTypeRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute updateFeeType request with HTTP info returned
          * @return ApiResponse&lt;FeeType&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1141,6 +1514,22 @@ public class FeeTypesApi {
          */
         public ApiResponse<FeeType> executeWithHttpInfo() throws ApiException {
             return updateFeeTypeWithHttpInfo(scope, code, updateFeeTypeRequest);
+        }
+
+        /**
+         * Execute updateFeeType request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;FeeType&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Update a FeeType. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<FeeType> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return updateFeeTypeWithHttpInfo(scope, code, updateFeeTypeRequest, opts);
         }
 
         /**
@@ -1158,6 +1547,23 @@ public class FeeTypesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<FeeType> _callback) throws ApiException {
             return updateFeeTypeAsync(scope, code, updateFeeTypeRequest, _callback);
+        }
+
+        /**
+         * Execute updateFeeType request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Update a FeeType. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<FeeType> _callback, ConfigurationOptions opts) throws ApiException {
+            return updateFeeTypeAsync(scope, code, updateFeeTypeRequest, _callback, opts);
         }
     }
 

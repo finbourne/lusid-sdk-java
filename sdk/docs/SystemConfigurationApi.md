@@ -52,9 +52,20 @@ public class SystemConfigurationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // SystemConfigurationApi apiInstance = apiFactory.build(SystemConfigurationApi.class);
+
         SystemConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(SystemConfigurationApi.class);
         TransactionConfigurationDataRequest transactionConfigurationDataRequest = new TransactionConfigurationDataRequest(); // TransactionConfigurationDataRequest | A transaction type definition.
         try {
+            // uncomment the below to set overrides at the request level
+            // TransactionSetConfigurationData result = apiInstance.createConfigurationTransactionType(transactionConfigurationDataRequest).execute(opts);
+
             TransactionSetConfigurationData result = apiInstance.createConfigurationTransactionType(transactionConfigurationDataRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -132,9 +143,20 @@ public class SystemConfigurationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // SystemConfigurationApi apiInstance = apiFactory.build(SystemConfigurationApi.class);
+
         SystemConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(SystemConfigurationApi.class);
         SideConfigurationDataRequest sideConfigurationDataRequest = new SideConfigurationDataRequest(); // SideConfigurationDataRequest | The definition of the side.
         try {
+            // uncomment the below to set overrides at the request level
+            // TransactionSetConfigurationData result = apiInstance.createSideDefinition(sideConfigurationDataRequest).execute(opts);
+
             TransactionSetConfigurationData result = apiInstance.createSideDefinition(sideConfigurationDataRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -212,9 +234,20 @@ public class SystemConfigurationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // SystemConfigurationApi apiInstance = apiFactory.build(SystemConfigurationApi.class);
+
         SystemConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(SystemConfigurationApi.class);
         String source = "source_example"; // String | The source to delete transaction configurations for
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteTransactionConfigurationSource(source).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteTransactionConfigurationSource(source).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -292,10 +325,21 @@ public class SystemConfigurationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // SystemConfigurationApi apiInstance = apiFactory.build(SystemConfigurationApi.class);
+
         SystemConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(SystemConfigurationApi.class);
         String source = "source_example"; // String | The source for which to retrieve transaction configurations
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction configurations.   Defaults to returning the latest version of the transaction configurations if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // TransactionSetConfigurationData result = apiInstance.getTransactionConfigurationSource(source, asAt).execute(opts);
+
             TransactionSetConfigurationData result = apiInstance.getTransactionConfigurationSource(source, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -374,9 +418,20 @@ public class SystemConfigurationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // SystemConfigurationApi apiInstance = apiFactory.build(SystemConfigurationApi.class);
+
         SystemConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(SystemConfigurationApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction types. Defaults   to returning the latest versions if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // TransactionSetConfigurationData result = apiInstance.listConfigurationTransactionTypes(asAt).execute(opts);
+
             TransactionSetConfigurationData result = apiInstance.listConfigurationTransactionTypes(asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -454,9 +509,20 @@ public class SystemConfigurationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // SystemConfigurationApi apiInstance = apiFactory.build(SystemConfigurationApi.class);
+
         SystemConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(SystemConfigurationApi.class);
         TransactionSetConfigurationDataRequest transactionSetConfigurationDataRequest = new TransactionSetConfigurationDataRequest(); // TransactionSetConfigurationDataRequest | The complete set of transaction type definitions.
         try {
+            // uncomment the below to set overrides at the request level
+            // TransactionSetConfigurationData result = apiInstance.setConfigurationTransactionTypes(transactionSetConfigurationDataRequest).execute(opts);
+
             TransactionSetConfigurationData result = apiInstance.setConfigurationTransactionTypes(transactionSetConfigurationDataRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -534,10 +600,21 @@ public class SystemConfigurationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // SystemConfigurationApi apiInstance = apiFactory.build(SystemConfigurationApi.class);
+
         SystemConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(SystemConfigurationApi.class);
         String source = "source_example"; // String | The source to set the transaction configurations for
         List<SetTransactionConfigurationSourceRequest> setTransactionConfigurationSourceRequest = Arrays.asList(); // List<SetTransactionConfigurationSourceRequest> | The set of transaction configurations
         try {
+            // uncomment the below to set overrides at the request level
+            // TransactionSetConfigurationData result = apiInstance.setTransactionConfigurationSource(source, setTransactionConfigurationSourceRequest).execute(opts);
+
             TransactionSetConfigurationData result = apiInstance.setTransactionConfigurationSource(source, setTransactionConfigurationSourceRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

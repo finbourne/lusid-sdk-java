@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -84,6 +85,10 @@ public class StructuredResultDataApi {
     }
 
     private okhttp3.Call createDataMapCall(String scope, Map<String, CreateDataMapRequest> requestBody, final ApiCallback _callback) throws ApiException {
+        return createDataMapCall(scope, requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call createDataMapCall(String scope, Map<String, CreateDataMapRequest> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -131,11 +136,11 @@ public class StructuredResultDataApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createDataMapValidateBeforeCall(String scope, Map<String, CreateDataMapRequest> requestBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createDataMapValidateBeforeCall(String scope, Map<String, CreateDataMapRequest> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling createDataMap(Async)");
@@ -146,20 +151,34 @@ public class StructuredResultDataApi {
             throw new ApiException("Missing the required parameter 'requestBody' when calling createDataMap(Async)");
         }
 
-        return createDataMapCall(scope, requestBody, _callback);
+        return createDataMapCall(scope, requestBody, _callback, opts);
 
     }
 
 
     private ApiResponse<UpsertStructuredDataResponse> createDataMapWithHttpInfo(String scope, Map<String, CreateDataMapRequest> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = createDataMapValidateBeforeCall(scope, requestBody, null);
+        okhttp3.Call localVarCall = createDataMapValidateBeforeCall(scope, requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertStructuredDataResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<UpsertStructuredDataResponse> createDataMapWithHttpInfo(String scope, Map<String, CreateDataMapRequest> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createDataMapValidateBeforeCall(scope, requestBody, null, opts);
         Type localVarReturnType = new TypeToken<UpsertStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call createDataMapAsync(String scope, Map<String, CreateDataMapRequest> requestBody, final ApiCallback<UpsertStructuredDataResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createDataMapValidateBeforeCall(scope, requestBody, _callback);
+        okhttp3.Call localVarCall = createDataMapValidateBeforeCall(scope, requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertStructuredDataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call createDataMapAsync(String scope, Map<String, CreateDataMapRequest> requestBody, final ApiCallback<UpsertStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = createDataMapValidateBeforeCall(scope, requestBody, _callback, opts);
         Type localVarReturnType = new TypeToken<UpsertStructuredDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -209,6 +228,23 @@ public class StructuredResultDataApi {
         }
 
         /**
+         * Execute createDataMap request. Use any specified configuration options to override any other configuration for this request only.
+         * @return UpsertStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully created or updated data maps along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertStructuredDataResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<UpsertStructuredDataResponse> localVarResp = createDataMapWithHttpInfo(scope, requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute createDataMap request with HTTP info returned
          * @return ApiResponse&lt;UpsertStructuredDataResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -222,6 +258,22 @@ public class StructuredResultDataApi {
          */
         public ApiResponse<UpsertStructuredDataResponse> executeWithHttpInfo() throws ApiException {
             return createDataMapWithHttpInfo(scope, requestBody);
+        }
+
+        /**
+         * Execute createDataMap request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;UpsertStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully created or updated data maps along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertStructuredDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return createDataMapWithHttpInfo(scope, requestBody, opts);
         }
 
         /**
@@ -239,6 +291,23 @@ public class StructuredResultDataApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<UpsertStructuredDataResponse> _callback) throws ApiException {
             return createDataMapAsync(scope, requestBody, _callback);
+        }
+
+        /**
+         * Execute createDataMap request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully created or updated data maps along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return createDataMapAsync(scope, requestBody, _callback, opts);
         }
     }
 
@@ -260,6 +329,10 @@ public class StructuredResultDataApi {
         return new APIcreateDataMapRequest(scope, requestBody);
     }
     private okhttp3.Call deleteStructuredResultDataCall(String scope, Map<String, StructuredResultDataId> requestBody, final ApiCallback _callback) throws ApiException {
+        return deleteStructuredResultDataCall(scope, requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteStructuredResultDataCall(String scope, Map<String, StructuredResultDataId> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -307,11 +380,11 @@ public class StructuredResultDataApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteStructuredResultDataValidateBeforeCall(String scope, Map<String, StructuredResultDataId> requestBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteStructuredResultDataValidateBeforeCall(String scope, Map<String, StructuredResultDataId> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteStructuredResultData(Async)");
@@ -322,20 +395,34 @@ public class StructuredResultDataApi {
             throw new ApiException("Missing the required parameter 'requestBody' when calling deleteStructuredResultData(Async)");
         }
 
-        return deleteStructuredResultDataCall(scope, requestBody, _callback);
+        return deleteStructuredResultDataCall(scope, requestBody, _callback, opts);
 
     }
 
 
     private ApiResponse<AnnulStructuredDataResponse> deleteStructuredResultDataWithHttpInfo(String scope, Map<String, StructuredResultDataId> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = deleteStructuredResultDataValidateBeforeCall(scope, requestBody, null);
+        okhttp3.Call localVarCall = deleteStructuredResultDataValidateBeforeCall(scope, requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AnnulStructuredDataResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AnnulStructuredDataResponse> deleteStructuredResultDataWithHttpInfo(String scope, Map<String, StructuredResultDataId> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteStructuredResultDataValidateBeforeCall(scope, requestBody, null, opts);
         Type localVarReturnType = new TypeToken<AnnulStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteStructuredResultDataAsync(String scope, Map<String, StructuredResultDataId> requestBody, final ApiCallback<AnnulStructuredDataResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteStructuredResultDataValidateBeforeCall(scope, requestBody, _callback);
+        okhttp3.Call localVarCall = deleteStructuredResultDataValidateBeforeCall(scope, requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AnnulStructuredDataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteStructuredResultDataAsync(String scope, Map<String, StructuredResultDataId> requestBody, final ApiCallback<AnnulStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteStructuredResultDataValidateBeforeCall(scope, requestBody, _callback, opts);
         Type localVarReturnType = new TypeToken<AnnulStructuredDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -385,6 +472,23 @@ public class StructuredResultDataApi {
         }
 
         /**
+         * Execute deleteStructuredResultData request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AnnulStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted data items along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AnnulStructuredDataResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AnnulStructuredDataResponse> localVarResp = deleteStructuredResultDataWithHttpInfo(scope, requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteStructuredResultData request with HTTP info returned
          * @return ApiResponse&lt;AnnulStructuredDataResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -398,6 +502,22 @@ public class StructuredResultDataApi {
          */
         public ApiResponse<AnnulStructuredDataResponse> executeWithHttpInfo() throws ApiException {
             return deleteStructuredResultDataWithHttpInfo(scope, requestBody);
+        }
+
+        /**
+         * Execute deleteStructuredResultData request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AnnulStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted data items along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AnnulStructuredDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteStructuredResultDataWithHttpInfo(scope, requestBody, opts);
         }
 
         /**
@@ -415,6 +535,23 @@ public class StructuredResultDataApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<AnnulStructuredDataResponse> _callback) throws ApiException {
             return deleteStructuredResultDataAsync(scope, requestBody, _callback);
+        }
+
+        /**
+         * Execute deleteStructuredResultData request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted data items along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AnnulStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteStructuredResultDataAsync(scope, requestBody, _callback, opts);
         }
     }
 
@@ -436,6 +573,10 @@ public class StructuredResultDataApi {
         return new APIdeleteStructuredResultDataRequest(scope, requestBody);
     }
     private okhttp3.Call getAddressKeyDefinitionsForDocumentCall(String scope, String code, String source, String resultType, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getAddressKeyDefinitionsForDocumentCall(scope, code, source, resultType, effectiveAt, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getAddressKeyDefinitionsForDocumentCall(String scope, String code, String source, String resultType, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -490,11 +631,11 @@ public class StructuredResultDataApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAddressKeyDefinitionsForDocumentValidateBeforeCall(String scope, String code, String source, String resultType, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAddressKeyDefinitionsForDocumentValidateBeforeCall(String scope, String code, String source, String resultType, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getAddressKeyDefinitionsForDocument(Async)");
@@ -515,20 +656,34 @@ public class StructuredResultDataApi {
             throw new ApiException("Missing the required parameter 'resultType' when calling getAddressKeyDefinitionsForDocument(Async)");
         }
 
-        return getAddressKeyDefinitionsForDocumentCall(scope, code, source, resultType, effectiveAt, asAt, _callback);
+        return getAddressKeyDefinitionsForDocumentCall(scope, code, source, resultType, effectiveAt, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfAddressKeyDefinition> getAddressKeyDefinitionsForDocumentWithHttpInfo(String scope, String code, String source, String resultType, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getAddressKeyDefinitionsForDocumentValidateBeforeCall(scope, code, source, resultType, effectiveAt, asAt, null);
+        okhttp3.Call localVarCall = getAddressKeyDefinitionsForDocumentValidateBeforeCall(scope, code, source, resultType, effectiveAt, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfAddressKeyDefinition>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfAddressKeyDefinition> getAddressKeyDefinitionsForDocumentWithHttpInfo(String scope, String code, String source, String resultType, String effectiveAt, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getAddressKeyDefinitionsForDocumentValidateBeforeCall(scope, code, source, resultType, effectiveAt, asAt, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfAddressKeyDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getAddressKeyDefinitionsForDocumentAsync(String scope, String code, String source, String resultType, String effectiveAt, OffsetDateTime asAt, final ApiCallback<ResourceListOfAddressKeyDefinition> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAddressKeyDefinitionsForDocumentValidateBeforeCall(scope, code, source, resultType, effectiveAt, asAt, _callback);
+        okhttp3.Call localVarCall = getAddressKeyDefinitionsForDocumentValidateBeforeCall(scope, code, source, resultType, effectiveAt, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfAddressKeyDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getAddressKeyDefinitionsForDocumentAsync(String scope, String code, String source, String resultType, String effectiveAt, OffsetDateTime asAt, final ApiCallback<ResourceListOfAddressKeyDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getAddressKeyDefinitionsForDocumentValidateBeforeCall(scope, code, source, resultType, effectiveAt, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfAddressKeyDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -604,6 +759,23 @@ public class StructuredResultDataApi {
         }
 
         /**
+         * Execute getAddressKeyDefinitionsForDocument request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfAddressKeyDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of address key definitions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfAddressKeyDefinition execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfAddressKeyDefinition> localVarResp = getAddressKeyDefinitionsForDocumentWithHttpInfo(scope, code, source, resultType, effectiveAt, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getAddressKeyDefinitionsForDocument request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfAddressKeyDefinition&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -617,6 +789,22 @@ public class StructuredResultDataApi {
          */
         public ApiResponse<ResourceListOfAddressKeyDefinition> executeWithHttpInfo() throws ApiException {
             return getAddressKeyDefinitionsForDocumentWithHttpInfo(scope, code, source, resultType, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getAddressKeyDefinitionsForDocument request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfAddressKeyDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of address key definitions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfAddressKeyDefinition> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getAddressKeyDefinitionsForDocumentWithHttpInfo(scope, code, source, resultType, effectiveAt, asAt, opts);
         }
 
         /**
@@ -634,6 +822,23 @@ public class StructuredResultDataApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfAddressKeyDefinition> _callback) throws ApiException {
             return getAddressKeyDefinitionsForDocumentAsync(scope, code, source, resultType, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getAddressKeyDefinitionsForDocument request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of address key definitions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfAddressKeyDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+            return getAddressKeyDefinitionsForDocumentAsync(scope, code, source, resultType, effectiveAt, asAt, _callback, opts);
         }
     }
 
@@ -657,6 +862,10 @@ public class StructuredResultDataApi {
         return new APIgetAddressKeyDefinitionsForDocumentRequest(scope, code, source, resultType);
     }
     private okhttp3.Call getDataMapCall(String scope, Map<String, DataMapKey> requestBody, final ApiCallback _callback) throws ApiException {
+        return getDataMapCall(scope, requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getDataMapCall(String scope, Map<String, DataMapKey> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -704,11 +913,11 @@ public class StructuredResultDataApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getDataMapValidateBeforeCall(String scope, Map<String, DataMapKey> requestBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getDataMapValidateBeforeCall(String scope, Map<String, DataMapKey> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getDataMap(Async)");
@@ -719,20 +928,34 @@ public class StructuredResultDataApi {
             throw new ApiException("Missing the required parameter 'requestBody' when calling getDataMap(Async)");
         }
 
-        return getDataMapCall(scope, requestBody, _callback);
+        return getDataMapCall(scope, requestBody, _callback, opts);
 
     }
 
 
     private ApiResponse<GetDataMapResponse> getDataMapWithHttpInfo(String scope, Map<String, DataMapKey> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = getDataMapValidateBeforeCall(scope, requestBody, null);
+        okhttp3.Call localVarCall = getDataMapValidateBeforeCall(scope, requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GetDataMapResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<GetDataMapResponse> getDataMapWithHttpInfo(String scope, Map<String, DataMapKey> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getDataMapValidateBeforeCall(scope, requestBody, null, opts);
         Type localVarReturnType = new TypeToken<GetDataMapResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getDataMapAsync(String scope, Map<String, DataMapKey> requestBody, final ApiCallback<GetDataMapResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getDataMapValidateBeforeCall(scope, requestBody, _callback);
+        okhttp3.Call localVarCall = getDataMapValidateBeforeCall(scope, requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GetDataMapResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getDataMapAsync(String scope, Map<String, DataMapKey> requestBody, final ApiCallback<GetDataMapResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getDataMapValidateBeforeCall(scope, requestBody, _callback, opts);
         Type localVarReturnType = new TypeToken<GetDataMapResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -782,6 +1005,23 @@ public class StructuredResultDataApi {
         }
 
         /**
+         * Execute getDataMap request. Use any specified configuration options to override any other configuration for this request only.
+         * @return GetDataMapResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved data maps along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GetDataMapResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<GetDataMapResponse> localVarResp = getDataMapWithHttpInfo(scope, requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getDataMap request with HTTP info returned
          * @return ApiResponse&lt;GetDataMapResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -795,6 +1035,22 @@ public class StructuredResultDataApi {
          */
         public ApiResponse<GetDataMapResponse> executeWithHttpInfo() throws ApiException {
             return getDataMapWithHttpInfo(scope, requestBody);
+        }
+
+        /**
+         * Execute getDataMap request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;GetDataMapResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved data maps along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GetDataMapResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getDataMapWithHttpInfo(scope, requestBody, opts);
         }
 
         /**
@@ -812,6 +1068,23 @@ public class StructuredResultDataApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<GetDataMapResponse> _callback) throws ApiException {
             return getDataMapAsync(scope, requestBody, _callback);
+        }
+
+        /**
+         * Execute getDataMap request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved data maps along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GetDataMapResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return getDataMapAsync(scope, requestBody, _callback, opts);
         }
     }
 
@@ -833,6 +1106,10 @@ public class StructuredResultDataApi {
         return new APIgetDataMapRequest(scope, requestBody);
     }
     private okhttp3.Call getStructuredResultDataCall(String scope, Map<String, StructuredResultDataId> requestBody, OffsetDateTime asAt, String maxAge, final ApiCallback _callback) throws ApiException {
+        return getStructuredResultDataCall(scope, requestBody, asAt, maxAge,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getStructuredResultDataCall(String scope, Map<String, StructuredResultDataId> requestBody, OffsetDateTime asAt, String maxAge, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -888,11 +1165,11 @@ public class StructuredResultDataApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getStructuredResultDataValidateBeforeCall(String scope, Map<String, StructuredResultDataId> requestBody, OffsetDateTime asAt, String maxAge, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getStructuredResultDataValidateBeforeCall(String scope, Map<String, StructuredResultDataId> requestBody, OffsetDateTime asAt, String maxAge, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getStructuredResultData(Async)");
@@ -903,20 +1180,34 @@ public class StructuredResultDataApi {
             throw new ApiException("Missing the required parameter 'requestBody' when calling getStructuredResultData(Async)");
         }
 
-        return getStructuredResultDataCall(scope, requestBody, asAt, maxAge, _callback);
+        return getStructuredResultDataCall(scope, requestBody, asAt, maxAge, _callback, opts);
 
     }
 
 
     private ApiResponse<GetStructuredResultDataResponse> getStructuredResultDataWithHttpInfo(String scope, Map<String, StructuredResultDataId> requestBody, OffsetDateTime asAt, String maxAge) throws ApiException {
-        okhttp3.Call localVarCall = getStructuredResultDataValidateBeforeCall(scope, requestBody, asAt, maxAge, null);
+        okhttp3.Call localVarCall = getStructuredResultDataValidateBeforeCall(scope, requestBody, asAt, maxAge, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GetStructuredResultDataResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<GetStructuredResultDataResponse> getStructuredResultDataWithHttpInfo(String scope, Map<String, StructuredResultDataId> requestBody, OffsetDateTime asAt, String maxAge, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getStructuredResultDataValidateBeforeCall(scope, requestBody, asAt, maxAge, null, opts);
         Type localVarReturnType = new TypeToken<GetStructuredResultDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getStructuredResultDataAsync(String scope, Map<String, StructuredResultDataId> requestBody, OffsetDateTime asAt, String maxAge, final ApiCallback<GetStructuredResultDataResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getStructuredResultDataValidateBeforeCall(scope, requestBody, asAt, maxAge, _callback);
+        okhttp3.Call localVarCall = getStructuredResultDataValidateBeforeCall(scope, requestBody, asAt, maxAge, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GetStructuredResultDataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getStructuredResultDataAsync(String scope, Map<String, StructuredResultDataId> requestBody, OffsetDateTime asAt, String maxAge, final ApiCallback<GetStructuredResultDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getStructuredResultDataValidateBeforeCall(scope, requestBody, asAt, maxAge, _callback, opts);
         Type localVarReturnType = new TypeToken<GetStructuredResultDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -988,6 +1279,23 @@ public class StructuredResultDataApi {
         }
 
         /**
+         * Execute getStructuredResultData request. Use any specified configuration options to override any other configuration for this request only.
+         * @return GetStructuredResultDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved data items along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GetStructuredResultDataResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<GetStructuredResultDataResponse> localVarResp = getStructuredResultDataWithHttpInfo(scope, requestBody, asAt, maxAge, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getStructuredResultData request with HTTP info returned
          * @return ApiResponse&lt;GetStructuredResultDataResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1001,6 +1309,22 @@ public class StructuredResultDataApi {
          */
         public ApiResponse<GetStructuredResultDataResponse> executeWithHttpInfo() throws ApiException {
             return getStructuredResultDataWithHttpInfo(scope, requestBody, asAt, maxAge);
+        }
+
+        /**
+         * Execute getStructuredResultData request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;GetStructuredResultDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved data items along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GetStructuredResultDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getStructuredResultDataWithHttpInfo(scope, requestBody, asAt, maxAge, opts);
         }
 
         /**
@@ -1018,6 +1342,23 @@ public class StructuredResultDataApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<GetStructuredResultDataResponse> _callback) throws ApiException {
             return getStructuredResultDataAsync(scope, requestBody, asAt, maxAge, _callback);
+        }
+
+        /**
+         * Execute getStructuredResultData request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved data items along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GetStructuredResultDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return getStructuredResultDataAsync(scope, requestBody, asAt, maxAge, _callback, opts);
         }
     }
 
@@ -1039,6 +1380,10 @@ public class StructuredResultDataApi {
         return new APIgetStructuredResultDataRequest(scope, requestBody);
     }
     private okhttp3.Call getVirtualDocumentCall(String scope, Map<String, StructuredResultDataId> requestBody, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getVirtualDocumentCall(scope, requestBody, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getVirtualDocumentCall(String scope, Map<String, StructuredResultDataId> requestBody, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1090,11 +1435,11 @@ public class StructuredResultDataApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getVirtualDocumentValidateBeforeCall(String scope, Map<String, StructuredResultDataId> requestBody, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getVirtualDocumentValidateBeforeCall(String scope, Map<String, StructuredResultDataId> requestBody, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getVirtualDocument(Async)");
@@ -1105,20 +1450,34 @@ public class StructuredResultDataApi {
             throw new ApiException("Missing the required parameter 'requestBody' when calling getVirtualDocument(Async)");
         }
 
-        return getVirtualDocumentCall(scope, requestBody, asAt, _callback);
+        return getVirtualDocumentCall(scope, requestBody, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<GetVirtualDocumentResponse> getVirtualDocumentWithHttpInfo(String scope, Map<String, StructuredResultDataId> requestBody, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getVirtualDocumentValidateBeforeCall(scope, requestBody, asAt, null);
+        okhttp3.Call localVarCall = getVirtualDocumentValidateBeforeCall(scope, requestBody, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GetVirtualDocumentResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<GetVirtualDocumentResponse> getVirtualDocumentWithHttpInfo(String scope, Map<String, StructuredResultDataId> requestBody, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getVirtualDocumentValidateBeforeCall(scope, requestBody, asAt, null, opts);
         Type localVarReturnType = new TypeToken<GetVirtualDocumentResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getVirtualDocumentAsync(String scope, Map<String, StructuredResultDataId> requestBody, OffsetDateTime asAt, final ApiCallback<GetVirtualDocumentResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getVirtualDocumentValidateBeforeCall(scope, requestBody, asAt, _callback);
+        okhttp3.Call localVarCall = getVirtualDocumentValidateBeforeCall(scope, requestBody, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GetVirtualDocumentResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getVirtualDocumentAsync(String scope, Map<String, StructuredResultDataId> requestBody, OffsetDateTime asAt, final ApiCallback<GetVirtualDocumentResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getVirtualDocumentValidateBeforeCall(scope, requestBody, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<GetVirtualDocumentResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1179,6 +1538,23 @@ public class StructuredResultDataApi {
         }
 
         /**
+         * Execute getVirtualDocument request. Use any specified configuration options to override any other configuration for this request only.
+         * @return GetVirtualDocumentResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved virtual documents along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GetVirtualDocumentResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<GetVirtualDocumentResponse> localVarResp = getVirtualDocumentWithHttpInfo(scope, requestBody, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getVirtualDocument request with HTTP info returned
          * @return ApiResponse&lt;GetVirtualDocumentResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1192,6 +1568,22 @@ public class StructuredResultDataApi {
          */
         public ApiResponse<GetVirtualDocumentResponse> executeWithHttpInfo() throws ApiException {
             return getVirtualDocumentWithHttpInfo(scope, requestBody, asAt);
+        }
+
+        /**
+         * Execute getVirtualDocument request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;GetVirtualDocumentResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved virtual documents along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GetVirtualDocumentResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getVirtualDocumentWithHttpInfo(scope, requestBody, asAt, opts);
         }
 
         /**
@@ -1209,6 +1601,23 @@ public class StructuredResultDataApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<GetVirtualDocumentResponse> _callback) throws ApiException {
             return getVirtualDocumentAsync(scope, requestBody, asAt, _callback);
+        }
+
+        /**
+         * Execute getVirtualDocument request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved virtual documents along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GetVirtualDocumentResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return getVirtualDocumentAsync(scope, requestBody, asAt, _callback, opts);
         }
     }
 
@@ -1230,6 +1639,10 @@ public class StructuredResultDataApi {
         return new APIgetVirtualDocumentRequest(scope, requestBody);
     }
     private okhttp3.Call getVirtualDocumentRowsCall(String scope, String code, String source, String resultType, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+        return getVirtualDocumentRowsCall(scope, code, source, resultType, effectiveAt, asAt, page, limit, filter,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getVirtualDocumentRowsCall(String scope, String code, String source, String resultType, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1296,11 +1709,11 @@ public class StructuredResultDataApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getVirtualDocumentRowsValidateBeforeCall(String scope, String code, String source, String resultType, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getVirtualDocumentRowsValidateBeforeCall(String scope, String code, String source, String resultType, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getVirtualDocumentRows(Async)");
@@ -1326,20 +1739,34 @@ public class StructuredResultDataApi {
             throw new ApiException("Missing the required parameter 'effectiveAt' when calling getVirtualDocumentRows(Async)");
         }
 
-        return getVirtualDocumentRowsCall(scope, code, source, resultType, effectiveAt, asAt, page, limit, filter, _callback);
+        return getVirtualDocumentRowsCall(scope, code, source, resultType, effectiveAt, asAt, page, limit, filter, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfVirtualRow> getVirtualDocumentRowsWithHttpInfo(String scope, String code, String source, String resultType, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
-        okhttp3.Call localVarCall = getVirtualDocumentRowsValidateBeforeCall(scope, code, source, resultType, effectiveAt, asAt, page, limit, filter, null);
+        okhttp3.Call localVarCall = getVirtualDocumentRowsValidateBeforeCall(scope, code, source, resultType, effectiveAt, asAt, page, limit, filter, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfVirtualRow>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfVirtualRow> getVirtualDocumentRowsWithHttpInfo(String scope, String code, String source, String resultType, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getVirtualDocumentRowsValidateBeforeCall(scope, code, source, resultType, effectiveAt, asAt, page, limit, filter, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfVirtualRow>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getVirtualDocumentRowsAsync(String scope, String code, String source, String resultType, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfVirtualRow> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getVirtualDocumentRowsValidateBeforeCall(scope, code, source, resultType, effectiveAt, asAt, page, limit, filter, _callback);
+        okhttp3.Call localVarCall = getVirtualDocumentRowsValidateBeforeCall(scope, code, source, resultType, effectiveAt, asAt, page, limit, filter, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfVirtualRow>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getVirtualDocumentRowsAsync(String scope, String code, String source, String resultType, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfVirtualRow> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getVirtualDocumentRowsValidateBeforeCall(scope, code, source, resultType, effectiveAt, asAt, page, limit, filter, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfVirtualRow>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1439,6 +1866,23 @@ public class StructuredResultDataApi {
         }
 
         /**
+         * Execute getVirtualDocumentRows request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfVirtualRow
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rows of the virtual document. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfVirtualRow execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfVirtualRow> localVarResp = getVirtualDocumentRowsWithHttpInfo(scope, code, source, resultType, effectiveAt, asAt, page, limit, filter, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getVirtualDocumentRows request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfVirtualRow&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1452,6 +1896,22 @@ public class StructuredResultDataApi {
          */
         public ApiResponse<PagedResourceListOfVirtualRow> executeWithHttpInfo() throws ApiException {
             return getVirtualDocumentRowsWithHttpInfo(scope, code, source, resultType, effectiveAt, asAt, page, limit, filter);
+        }
+
+        /**
+         * Execute getVirtualDocumentRows request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfVirtualRow&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rows of the virtual document. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfVirtualRow> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getVirtualDocumentRowsWithHttpInfo(scope, code, source, resultType, effectiveAt, asAt, page, limit, filter, opts);
         }
 
         /**
@@ -1469,6 +1929,23 @@ public class StructuredResultDataApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfVirtualRow> _callback) throws ApiException {
             return getVirtualDocumentRowsAsync(scope, code, source, resultType, effectiveAt, asAt, page, limit, filter, _callback);
+        }
+
+        /**
+         * Execute getVirtualDocumentRows request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rows of the virtual document. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfVirtualRow> _callback, ConfigurationOptions opts) throws ApiException {
+            return getVirtualDocumentRowsAsync(scope, code, source, resultType, effectiveAt, asAt, page, limit, filter, _callback, opts);
         }
     }
 
@@ -1493,6 +1970,10 @@ public class StructuredResultDataApi {
         return new APIgetVirtualDocumentRowsRequest(scope, code, source, resultType, effectiveAt);
     }
     private okhttp3.Call upsertResultValueCall(String scope, Map<String, UpsertResultValuesDataRequest> requestBody, final ApiCallback _callback) throws ApiException {
+        return upsertResultValueCall(scope, requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertResultValueCall(String scope, Map<String, UpsertResultValuesDataRequest> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1540,11 +2021,11 @@ public class StructuredResultDataApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertResultValueValidateBeforeCall(String scope, Map<String, UpsertResultValuesDataRequest> requestBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertResultValueValidateBeforeCall(String scope, Map<String, UpsertResultValuesDataRequest> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling upsertResultValue(Async)");
@@ -1555,20 +2036,34 @@ public class StructuredResultDataApi {
             throw new ApiException("Missing the required parameter 'requestBody' when calling upsertResultValue(Async)");
         }
 
-        return upsertResultValueCall(scope, requestBody, _callback);
+        return upsertResultValueCall(scope, requestBody, _callback, opts);
 
     }
 
 
     private ApiResponse<UpsertStructuredDataResponse> upsertResultValueWithHttpInfo(String scope, Map<String, UpsertResultValuesDataRequest> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = upsertResultValueValidateBeforeCall(scope, requestBody, null);
+        okhttp3.Call localVarCall = upsertResultValueValidateBeforeCall(scope, requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertStructuredDataResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<UpsertStructuredDataResponse> upsertResultValueWithHttpInfo(String scope, Map<String, UpsertResultValuesDataRequest> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertResultValueValidateBeforeCall(scope, requestBody, null, opts);
         Type localVarReturnType = new TypeToken<UpsertStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertResultValueAsync(String scope, Map<String, UpsertResultValuesDataRequest> requestBody, final ApiCallback<UpsertStructuredDataResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertResultValueValidateBeforeCall(scope, requestBody, _callback);
+        okhttp3.Call localVarCall = upsertResultValueValidateBeforeCall(scope, requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertStructuredDataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertResultValueAsync(String scope, Map<String, UpsertResultValuesDataRequest> requestBody, final ApiCallback<UpsertStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertResultValueValidateBeforeCall(scope, requestBody, _callback, opts);
         Type localVarReturnType = new TypeToken<UpsertStructuredDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1618,6 +2113,23 @@ public class StructuredResultDataApi {
         }
 
         /**
+         * Execute upsertResultValue request. Use any specified configuration options to override any other configuration for this request only.
+         * @return UpsertStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved virtual documents along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertStructuredDataResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<UpsertStructuredDataResponse> localVarResp = upsertResultValueWithHttpInfo(scope, requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertResultValue request with HTTP info returned
          * @return ApiResponse&lt;UpsertStructuredDataResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1631,6 +2143,22 @@ public class StructuredResultDataApi {
          */
         public ApiResponse<UpsertStructuredDataResponse> executeWithHttpInfo() throws ApiException {
             return upsertResultValueWithHttpInfo(scope, requestBody);
+        }
+
+        /**
+         * Execute upsertResultValue request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;UpsertStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved virtual documents along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertStructuredDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertResultValueWithHttpInfo(scope, requestBody, opts);
         }
 
         /**
@@ -1648,6 +2176,23 @@ public class StructuredResultDataApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<UpsertStructuredDataResponse> _callback) throws ApiException {
             return upsertResultValueAsync(scope, requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertResultValue request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved virtual documents along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertResultValueAsync(scope, requestBody, _callback, opts);
         }
     }
 
@@ -1669,6 +2214,10 @@ public class StructuredResultDataApi {
         return new APIupsertResultValueRequest(scope, requestBody);
     }
     private okhttp3.Call upsertStructuredResultDataCall(String scope, Map<String, UpsertStructuredResultDataRequest> requestBody, final ApiCallback _callback) throws ApiException {
+        return upsertStructuredResultDataCall(scope, requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertStructuredResultDataCall(String scope, Map<String, UpsertStructuredResultDataRequest> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1716,11 +2265,11 @@ public class StructuredResultDataApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertStructuredResultDataValidateBeforeCall(String scope, Map<String, UpsertStructuredResultDataRequest> requestBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertStructuredResultDataValidateBeforeCall(String scope, Map<String, UpsertStructuredResultDataRequest> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling upsertStructuredResultData(Async)");
@@ -1731,20 +2280,34 @@ public class StructuredResultDataApi {
             throw new ApiException("Missing the required parameter 'requestBody' when calling upsertStructuredResultData(Async)");
         }
 
-        return upsertStructuredResultDataCall(scope, requestBody, _callback);
+        return upsertStructuredResultDataCall(scope, requestBody, _callback, opts);
 
     }
 
 
     private ApiResponse<UpsertStructuredDataResponse> upsertStructuredResultDataWithHttpInfo(String scope, Map<String, UpsertStructuredResultDataRequest> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = upsertStructuredResultDataValidateBeforeCall(scope, requestBody, null);
+        okhttp3.Call localVarCall = upsertStructuredResultDataValidateBeforeCall(scope, requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertStructuredDataResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<UpsertStructuredDataResponse> upsertStructuredResultDataWithHttpInfo(String scope, Map<String, UpsertStructuredResultDataRequest> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertStructuredResultDataValidateBeforeCall(scope, requestBody, null, opts);
         Type localVarReturnType = new TypeToken<UpsertStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertStructuredResultDataAsync(String scope, Map<String, UpsertStructuredResultDataRequest> requestBody, final ApiCallback<UpsertStructuredDataResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertStructuredResultDataValidateBeforeCall(scope, requestBody, _callback);
+        okhttp3.Call localVarCall = upsertStructuredResultDataValidateBeforeCall(scope, requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertStructuredDataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertStructuredResultDataAsync(String scope, Map<String, UpsertStructuredResultDataRequest> requestBody, final ApiCallback<UpsertStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertStructuredResultDataValidateBeforeCall(scope, requestBody, _callback, opts);
         Type localVarReturnType = new TypeToken<UpsertStructuredDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1794,6 +2357,23 @@ public class StructuredResultDataApi {
         }
 
         /**
+         * Execute upsertStructuredResultData request. Use any specified configuration options to override any other configuration for this request only.
+         * @return UpsertStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully created or updated data items along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertStructuredDataResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<UpsertStructuredDataResponse> localVarResp = upsertStructuredResultDataWithHttpInfo(scope, requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertStructuredResultData request with HTTP info returned
          * @return ApiResponse&lt;UpsertStructuredDataResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1807,6 +2387,22 @@ public class StructuredResultDataApi {
          */
         public ApiResponse<UpsertStructuredDataResponse> executeWithHttpInfo() throws ApiException {
             return upsertStructuredResultDataWithHttpInfo(scope, requestBody);
+        }
+
+        /**
+         * Execute upsertStructuredResultData request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;UpsertStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully created or updated data items along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertStructuredDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertStructuredResultDataWithHttpInfo(scope, requestBody, opts);
         }
 
         /**
@@ -1824,6 +2420,23 @@ public class StructuredResultDataApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<UpsertStructuredDataResponse> _callback) throws ApiException {
             return upsertStructuredResultDataAsync(scope, requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertStructuredResultData request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully created or updated data items along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertStructuredResultDataAsync(scope, requestBody, _callback, opts);
         }
     }
 

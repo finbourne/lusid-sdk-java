@@ -76,10 +76,21 @@ public class ChartOfAccountsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
         ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
         String scope = "scope_example"; // String | The scope of the Chart of Accounts.
         ChartOfAccountsRequest chartOfAccountsRequest = new ChartOfAccountsRequest(); // ChartOfAccountsRequest | The definition of the Chart of Accounts.
         try {
+            // uncomment the below to set overrides at the request level
+            // ChartOfAccounts result = apiInstance.createChartOfAccounts(scope, chartOfAccountsRequest).execute(opts);
+
             ChartOfAccounts result = apiInstance.createChartOfAccounts(scope, chartOfAccountsRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -158,11 +169,22 @@ public class ChartOfAccountsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
         ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
         String scope = "scope_example"; // String | The scope of the Chart of Accounts.
         String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts.
         CleardownModuleRequest cleardownModuleRequest = new CleardownModuleRequest(); // CleardownModuleRequest | The definition of the Cleardown Module.
         try {
+            // uncomment the below to set overrides at the request level
+            // CleardownModuleResponse result = apiInstance.createCleardownModule(scope, code, cleardownModuleRequest).execute(opts);
+
             CleardownModuleResponse result = apiInstance.createCleardownModule(scope, code, cleardownModuleRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -242,11 +264,22 @@ public class ChartOfAccountsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
         ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
         String scope = "scope_example"; // String | The scope of the Chart of Accounts.
         String code = "code_example"; // String | The code of the Chart of Accounts.
         GeneralLedgerProfileRequest generalLedgerProfileRequest = new GeneralLedgerProfileRequest(); // GeneralLedgerProfileRequest | The definition of the General Ledger Profile.
         try {
+            // uncomment the below to set overrides at the request level
+            // GeneralLedgerProfileResponse result = apiInstance.createGeneralLedgerProfile(scope, code, generalLedgerProfileRequest).execute(opts);
+
             GeneralLedgerProfileResponse result = apiInstance.createGeneralLedgerProfile(scope, code, generalLedgerProfileRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -326,11 +359,22 @@ public class ChartOfAccountsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
         ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
         String scope = "scope_example"; // String | The scope of the Chart of Accounts.
         String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts.
         PostingModuleRequest postingModuleRequest = new PostingModuleRequest(); // PostingModuleRequest | The definition of the Posting Module.
         try {
+            // uncomment the below to set overrides at the request level
+            // PostingModuleResponse result = apiInstance.createPostingModule(scope, code, postingModuleRequest).execute(opts);
+
             PostingModuleResponse result = apiInstance.createPostingModule(scope, code, postingModuleRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -410,12 +454,23 @@ public class ChartOfAccountsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
         ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
         String scope = "scope_example"; // String | The scope of the Chart of Accounts.
         String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies   the Chart of Accounts.
         List<String> requestBody = ["AccountCode1","AccountCode2"]; // List<String> | The codes of the accounts to delete.
         String deleteMode = "Soft"; // String | The delete mode to use (defaults to 'Soft').
         try {
+            // uncomment the below to set overrides at the request level
+            // DeleteAccountsResponse result = apiInstance.deleteAccounts(scope, code, requestBody, deleteMode).execute(opts);
+
             DeleteAccountsResponse result = apiInstance.deleteAccounts(scope, code, requestBody, deleteMode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -496,10 +551,21 @@ public class ChartOfAccountsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
         ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
         String scope = "scope_example"; // String | The scope of the Chart of Accounts to be deleted.
         String code = "code_example"; // String | The code of the Chart of Accounts to be deleted. Together with the scope this uniquely identifies the Chart of Accounts.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteChartOfAccounts(scope, code).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteChartOfAccounts(scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -578,11 +644,22 @@ public class ChartOfAccountsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
         ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
         String scope = "scope_example"; // String | The scope of the Chart of Accounts.
         String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts.
         String cleardownModuleCode = "cleardownModuleCode_example"; // String | The code of the Cleardown Module to be deleted.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteCleardownModule(scope, code, cleardownModuleCode).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteCleardownModule(scope, code, cleardownModuleCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -662,11 +739,22 @@ public class ChartOfAccountsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
         ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
         String scope = "scope_example"; // String | The scope of the Chart of Accounts for the General Ledger Profile.
         String code = "code_example"; // String | The code of the Chart of Accounts for the General Ledger Profile.
         String generalLedgerProfileCode = "generalLedgerProfileCode_example"; // String | The Code of the General Ledger Profile.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteGeneralLedgerProfile(scope, code, generalLedgerProfileCode).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteGeneralLedgerProfile(scope, code, generalLedgerProfileCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -746,11 +834,22 @@ public class ChartOfAccountsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
         ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
         String scope = "scope_example"; // String | The scope of the Chart of Accounts.
         String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts.
         String postingModuleCode = "postingModuleCode_example"; // String | The code of the Posting Module to be deleted.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deletePostingModule(scope, code, postingModuleCode).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deletePostingModule(scope, code, postingModuleCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -830,6 +929,14 @@ public class ChartOfAccountsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
         ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
         String scope = "scope_example"; // String | The scope of the Chart of Accounts.
         String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts.
@@ -838,6 +945,9 @@ public class ChartOfAccountsApiExample {
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Account definition. Defaults to returning the latest version of the Account definition if not specified.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Account' domain to decorate onto the Account.   These must take the format {domain}/{scope}/{code}, for example 'Account/Manager/Id'. If not provided will return all the entitled properties for that Account.
         try {
+            // uncomment the below to set overrides at the request level
+            // Account result = apiInstance.getAccount(scope, code, accountCode, effectiveAt, asAt, propertyKeys).execute(opts);
+
             Account result = apiInstance.getAccount(scope, code, accountCode, effectiveAt, asAt, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -920,6 +1030,14 @@ public class ChartOfAccountsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
         ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
         String scope = "scope_example"; // String | The scope of the Chart of Accounts.
         String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts.
@@ -927,6 +1045,9 @@ public class ChartOfAccountsApiExample {
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Chart of Accounts definition. Defaults to returning the latest version of the Chart of Accounts definition if not specified.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'ChartOfAccounts' domain to decorate onto the Chart of Accounts.   These must take the format {domain}/{scope}/{code}, for example 'ChartOfAccounts/Manager/Id'. If no properties are specified, then no properties will be returned.
         try {
+            // uncomment the below to set overrides at the request level
+            // ChartOfAccounts result = apiInstance.getChartOfAccounts(scope, code, effectiveAt, asAt, propertyKeys).execute(opts);
+
             ChartOfAccounts result = apiInstance.getChartOfAccounts(scope, code, effectiveAt, asAt, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1008,12 +1129,23 @@ public class ChartOfAccountsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
         ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
         String scope = "scope_example"; // String | The scope of the Chart of Accounts.
         String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts.
         String cleardownModuleCode = "cleardownModuleCode_example"; // String | The code of the Cleardown Module.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Cleardown Module. Defaults to return the latest version of the Cleardown Module if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // CleardownModuleResponse result = apiInstance.getCleardownModule(scope, code, cleardownModuleCode, asAt).execute(opts);
+
             CleardownModuleResponse result = apiInstance.getCleardownModule(scope, code, cleardownModuleCode, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1094,12 +1226,23 @@ public class ChartOfAccountsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
         ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
         String scope = "scope_example"; // String | The scope of the Chart of Accounts for the General Ledger Profile.
         String code = "code_example"; // String | The code of the Chart of Accounts for the General Ledger Profile.
         String generalLedgerProfileCode = "generalLedgerProfileCode_example"; // String | The General Ledger Profile Code of the General Ledger Profile.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the General Ledger Profile. Defaults to return the latest version of the General Ledger Profile if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // GeneralLedgerProfileResponse result = apiInstance.getGeneralLedgerProfile(scope, code, generalLedgerProfileCode, asAt).execute(opts);
+
             GeneralLedgerProfileResponse result = apiInstance.getGeneralLedgerProfile(scope, code, generalLedgerProfileCode, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1180,12 +1323,23 @@ public class ChartOfAccountsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
         ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
         String scope = "scope_example"; // String | The scope of the Chart of Accounts.
         String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts.
         String postingModuleCode = "postingModuleCode_example"; // String | The code of the Posting Module.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Posting Module. Defaults to return the latest version of the Posting Module if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // PostingModuleResponse result = apiInstance.getPostingModule(scope, code, postingModuleCode, asAt).execute(opts);
+
             PostingModuleResponse result = apiInstance.getPostingModule(scope, code, postingModuleCode, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1266,6 +1420,14 @@ public class ChartOfAccountsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
         ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
         String scope = "scope_example"; // String | The scope of the Chart of Accounts.
         String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies   the Chart of Accounts.
@@ -1276,6 +1438,9 @@ public class ChartOfAccountsApiExample {
         String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the Account type, specify \"code eq '001'\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Account' domain to decorate onto the Account.   These must have the format {domain}/{scope}/{code}, for example 'Account/system/Name'.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfAccount result = apiInstance.listAccounts(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys).execute(opts);
+
             PagedResourceListOfAccount result = apiInstance.listAccounts(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1360,6 +1525,14 @@ public class ChartOfAccountsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
         ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the TimeVariant properties for the Chart Of Accounts. Defaults to the current LUSID   system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the charts of accounts. Defaults to returning the latest version   of each Chart of Accounts if not specified.
@@ -1369,6 +1542,9 @@ public class ChartOfAccountsApiExample {
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\".
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'ChartOfAccounts' domain to decorate onto each Chart of Accounts.   These must take the format {domain}/{scope}/{code}, for example 'ChartOfAccounts/Manager/Id'.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfChartOfAccounts result = apiInstance.listChartsOfAccounts(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys).execute(opts);
+
             PagedResourceListOfChartOfAccounts result = apiInstance.listChartsOfAccounts(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1452,6 +1628,14 @@ public class ChartOfAccountsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
         ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
         String scope = "scope_example"; // String | The scope of the Chart of Accounts.
         String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts.
@@ -1461,6 +1645,9 @@ public class ChartOfAccountsApiExample {
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
         String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the rule id, specify \"ruleId eq 'rule 1'\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfCleardownModuleRule result = apiInstance.listCleardownModuleRules(scope, code, cleardownModuleCode, asAt, page, limit, filter).execute(opts);
+
             PagedResourceListOfCleardownModuleRule result = apiInstance.listCleardownModuleRules(scope, code, cleardownModuleCode, asAt, page, limit, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1544,6 +1731,14 @@ public class ChartOfAccountsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
         ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
         String scope = "scope_example"; // String | The scope of the Chart of Accounts.
         String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts.
@@ -1553,6 +1748,9 @@ public class ChartOfAccountsApiExample {
         String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the Cleardown Module status, specify \"status eq 'Active'\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\".
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfCleardownModuleResponse result = apiInstance.listCleardownModules(scope, code, asAt, page, limit, filter, sortBy).execute(opts);
+
             PagedResourceListOfCleardownModuleResponse result = apiInstance.listCleardownModules(scope, code, asAt, page, limit, filter, sortBy).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1636,6 +1834,14 @@ public class ChartOfAccountsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
         ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
         String scope = "scope_example"; // String | The scope of the Chart of Accounts
         String code = "code_example"; // String | The code of the Chart of Accounts
@@ -1645,6 +1851,9 @@ public class ChartOfAccountsApiExample {
         String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the General Ledger profiles type, specify \"type eq 'PeriodBoundary'\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\".
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfGeneralLedgerProfileResponse result = apiInstance.listGeneralLedgerProfiles(scope, code, asAt, page, limit, filter, sortBy).execute(opts);
+
             PagedResourceListOfGeneralLedgerProfileResponse result = apiInstance.listGeneralLedgerProfiles(scope, code, asAt, page, limit, filter, sortBy).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1728,6 +1937,14 @@ public class ChartOfAccountsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
         ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
         String scope = "scope_example"; // String | The scope of the Chart of Accounts.
         String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts.
@@ -1737,6 +1954,9 @@ public class ChartOfAccountsApiExample {
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
         String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the rule id, specify \"ruleId eq 'rule 1'\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfPostingModuleRule result = apiInstance.listPostingModuleRules(scope, code, postingModuleCode, asAt, page, limit, filter).execute(opts);
+
             PagedResourceListOfPostingModuleRule result = apiInstance.listPostingModuleRules(scope, code, postingModuleCode, asAt, page, limit, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1820,6 +2040,14 @@ public class ChartOfAccountsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
         ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
         String scope = "scope_example"; // String | The scope of the Chart of Accounts.
         String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts.
@@ -1829,6 +2057,9 @@ public class ChartOfAccountsApiExample {
         String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the Posting Module status, specify \"status eq 'Active'\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\".
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfPostingModuleResponse result = apiInstance.listPostingModules(scope, code, asAt, page, limit, filter, sortBy).execute(opts);
+
             PagedResourceListOfPostingModuleResponse result = apiInstance.listPostingModules(scope, code, asAt, page, limit, filter, sortBy).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1912,12 +2143,23 @@ public class ChartOfAccountsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
         ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
         String scope = "scope_example"; // String | The scope of the Chart of Accounts.
         String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts.
         String cleardownModuleCode = "cleardownModuleCode_example"; // String | The code of the Cleardown Module to be updated.
         List<Operation> operation = Arrays.asList(); // List<Operation> | The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902.
         try {
+            // uncomment the below to set overrides at the request level
+            // CleardownModuleResponse result = apiInstance.patchCleardownModule(scope, code, cleardownModuleCode, operation).execute(opts);
+
             CleardownModuleResponse result = apiInstance.patchCleardownModule(scope, code, cleardownModuleCode, operation).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1998,12 +2240,23 @@ public class ChartOfAccountsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
         ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
         String scope = "scope_example"; // String | The scope of the Chart of Accounts.
         String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts.
         String postingModuleCode = "postingModuleCode_example"; // String | The code of the Posting Module to be updated.
         List<Operation> operation = Arrays.asList(); // List<Operation> | The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902.
         try {
+            // uncomment the below to set overrides at the request level
+            // PostingModuleResponse result = apiInstance.patchPostingModule(scope, code, postingModuleCode, operation).execute(opts);
+
             PostingModuleResponse result = apiInstance.patchPostingModule(scope, code, postingModuleCode, operation).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -2084,12 +2337,23 @@ public class ChartOfAccountsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
         ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
         String scope = "scope_example"; // String | The scope of the Chart of Accounts.
         String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts.
         String cleardownModuleCode = "cleardownModuleCode_example"; // String | The code of the Cleardown Module to be updated.
         CleardownModuleDetails cleardownModuleDetails = new CleardownModuleDetails(); // CleardownModuleDetails | The new details for the Cleardown Module.
         try {
+            // uncomment the below to set overrides at the request level
+            // CleardownModuleResponse result = apiInstance.setCleardownModuleDetails(scope, code, cleardownModuleCode, cleardownModuleDetails).execute(opts);
+
             CleardownModuleResponse result = apiInstance.setCleardownModuleDetails(scope, code, cleardownModuleCode, cleardownModuleDetails).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -2170,12 +2434,23 @@ public class ChartOfAccountsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
         ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
         String scope = "scope_example"; // String | The scope of the Chart of Accounts.
         String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts.
         String cleardownModuleCode = "cleardownModuleCode_example"; // String | The code of the Cleardown Module to be updated.
         List<CleardownModuleRule> cleardownModuleRule = Arrays.asList(); // List<CleardownModuleRule> | The new rule set for the Cleardown Module.
         try {
+            // uncomment the below to set overrides at the request level
+            // CleardownModuleRulesUpdatedResponse result = apiInstance.setCleardownModuleRules(scope, code, cleardownModuleCode, cleardownModuleRule).execute(opts);
+
             CleardownModuleRulesUpdatedResponse result = apiInstance.setCleardownModuleRules(scope, code, cleardownModuleCode, cleardownModuleRule).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -2256,12 +2531,23 @@ public class ChartOfAccountsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
         ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
         String scope = "scope_example"; // String | The scope of the Chart of Accounts.
         String code = "code_example"; // String | The code of the Chart of Accounts.
         String generalLedgerProfileCode = "generalLedgerProfileCode_example"; // String | The code of the General Ledger Profile
         List<GeneralLedgerProfileMapping> generalLedgerProfileMapping = Arrays.asList(); // List<GeneralLedgerProfileMapping> | The updated General Ledger Profile Mappings, the previous mappings will be wholly replaced with this data. Mappings will be evaluated in the order they are provided.
         try {
+            // uncomment the below to set overrides at the request level
+            // GeneralLedgerProfileResponse result = apiInstance.setGeneralLedgerProfileMappings(scope, code, generalLedgerProfileCode, generalLedgerProfileMapping).execute(opts);
+
             GeneralLedgerProfileResponse result = apiInstance.setGeneralLedgerProfileMappings(scope, code, generalLedgerProfileCode, generalLedgerProfileMapping).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -2342,12 +2628,23 @@ public class ChartOfAccountsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
         ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
         String scope = "scope_example"; // String | The scope of the Chart of Accounts.
         String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts.
         String postingModuleCode = "postingModuleCode_example"; // String | The code of the Posting Module to be updated.
         PostingModuleDetails postingModuleDetails = new PostingModuleDetails(); // PostingModuleDetails | The new details for the Posting Module.
         try {
+            // uncomment the below to set overrides at the request level
+            // PostingModuleResponse result = apiInstance.setPostingModuleDetails(scope, code, postingModuleCode, postingModuleDetails).execute(opts);
+
             PostingModuleResponse result = apiInstance.setPostingModuleDetails(scope, code, postingModuleCode, postingModuleDetails).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -2428,12 +2725,23 @@ public class ChartOfAccountsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
         ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
         String scope = "scope_example"; // String | The scope of the Chart of Accounts.
         String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts.
         String postingModuleCode = "postingModuleCode_example"; // String | The code of the Posting Module to be updated.
         List<PostingModuleRule> postingModuleRule = Arrays.asList(); // List<PostingModuleRule> | The new rule set for the Posting Module.
         try {
+            // uncomment the below to set overrides at the request level
+            // PostingModuleRulesUpdatedResponse result = apiInstance.setPostingModuleRules(scope, code, postingModuleCode, postingModuleRule).execute(opts);
+
             PostingModuleRulesUpdatedResponse result = apiInstance.setPostingModuleRules(scope, code, postingModuleCode, postingModuleRule).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -2514,12 +2822,23 @@ public class ChartOfAccountsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
         ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
         String scope = "scope_example"; // String | The scope of the Chart of Accounts to update or insert the properties onto.
         String code = "code_example"; // String | The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the Chart of Accounts.
         String accountCode = "accountCode_example"; // String | The unique ID of the account to create or update properties for.
         Map<String, Property> requestBody = new HashMap(); // Map<String, Property> | The properties to be updated or inserted onto the chart of account. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \"Account/Manager/Id\".
         try {
+            // uncomment the below to set overrides at the request level
+            // AccountProperties result = apiInstance.upsertAccountProperties(scope, code, accountCode, requestBody).execute(opts);
+
             AccountProperties result = apiInstance.upsertAccountProperties(scope, code, accountCode, requestBody).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -2600,11 +2919,22 @@ public class ChartOfAccountsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
         ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
         String scope = "scope_example"; // String | The scope of the Chart of Accounts.
         String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies   the Chart of Accounts.
         List<Account> account = Arrays.asList(); // List<Account> | A list of accounts to be created or updated.
         try {
+            // uncomment the below to set overrides at the request level
+            // AccountsUpsertResponse result = apiInstance.upsertAccounts(scope, code, account).execute(opts);
+
             AccountsUpsertResponse result = apiInstance.upsertAccounts(scope, code, account).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -2684,11 +3014,22 @@ public class ChartOfAccountsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
         ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
         String scope = "scope_example"; // String | The scope of the Chart of Accounts to update or insert the properties onto.
         String code = "code_example"; // String | The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the Chart of Accounts.
         Map<String, Property> requestBody = new HashMap(); // Map<String, Property> | The properties to be updated or inserted onto the chart of account. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \"ChartOfAccounts/Manager/Id\".
         try {
+            // uncomment the below to set overrides at the request level
+            // ChartOfAccountsProperties result = apiInstance.upsertChartOfAccountsProperties(scope, code, requestBody).execute(opts);
+
             ChartOfAccountsProperties result = apiInstance.upsertChartOfAccountsProperties(scope, code, requestBody).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

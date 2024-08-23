@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -91,6 +92,10 @@ public class FundsApi {
     }
 
     private okhttp3.Call acceptEstimateValuationPointCall(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, final ApiCallback _callback) throws ApiException {
+        return acceptEstimateValuationPointCall(scope, code, valuationPointDataRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call acceptEstimateValuationPointCall(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -139,11 +144,11 @@ public class FundsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call acceptEstimateValuationPointValidateBeforeCall(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call acceptEstimateValuationPointValidateBeforeCall(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling acceptEstimateValuationPoint(Async)");
@@ -159,20 +164,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'valuationPointDataRequest' when calling acceptEstimateValuationPoint(Async)");
         }
 
-        return acceptEstimateValuationPointCall(scope, code, valuationPointDataRequest, _callback);
+        return acceptEstimateValuationPointCall(scope, code, valuationPointDataRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<AcceptEstimateValuationPointResponse> acceptEstimateValuationPointWithHttpInfo(String scope, String code, ValuationPointDataRequest valuationPointDataRequest) throws ApiException {
-        okhttp3.Call localVarCall = acceptEstimateValuationPointValidateBeforeCall(scope, code, valuationPointDataRequest, null);
+        okhttp3.Call localVarCall = acceptEstimateValuationPointValidateBeforeCall(scope, code, valuationPointDataRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AcceptEstimateValuationPointResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AcceptEstimateValuationPointResponse> acceptEstimateValuationPointWithHttpInfo(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = acceptEstimateValuationPointValidateBeforeCall(scope, code, valuationPointDataRequest, null, opts);
         Type localVarReturnType = new TypeToken<AcceptEstimateValuationPointResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call acceptEstimateValuationPointAsync(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, final ApiCallback<AcceptEstimateValuationPointResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = acceptEstimateValuationPointValidateBeforeCall(scope, code, valuationPointDataRequest, _callback);
+        okhttp3.Call localVarCall = acceptEstimateValuationPointValidateBeforeCall(scope, code, valuationPointDataRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AcceptEstimateValuationPointResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call acceptEstimateValuationPointAsync(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, final ApiCallback<AcceptEstimateValuationPointResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = acceptEstimateValuationPointValidateBeforeCall(scope, code, valuationPointDataRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<AcceptEstimateValuationPointResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -224,6 +243,23 @@ public class FundsApi {
         }
 
         /**
+         * Execute acceptEstimateValuationPoint request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AcceptEstimateValuationPointResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Accepted Estimate point and status after being Accepted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AcceptEstimateValuationPointResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AcceptEstimateValuationPointResponse> localVarResp = acceptEstimateValuationPointWithHttpInfo(scope, code, valuationPointDataRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute acceptEstimateValuationPoint request with HTTP info returned
          * @return ApiResponse&lt;AcceptEstimateValuationPointResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -237,6 +273,22 @@ public class FundsApi {
          */
         public ApiResponse<AcceptEstimateValuationPointResponse> executeWithHttpInfo() throws ApiException {
             return acceptEstimateValuationPointWithHttpInfo(scope, code, valuationPointDataRequest);
+        }
+
+        /**
+         * Execute acceptEstimateValuationPoint request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AcceptEstimateValuationPointResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Accepted Estimate point and status after being Accepted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AcceptEstimateValuationPointResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return acceptEstimateValuationPointWithHttpInfo(scope, code, valuationPointDataRequest, opts);
         }
 
         /**
@@ -254,6 +306,23 @@ public class FundsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<AcceptEstimateValuationPointResponse> _callback) throws ApiException {
             return acceptEstimateValuationPointAsync(scope, code, valuationPointDataRequest, _callback);
+        }
+
+        /**
+         * Execute acceptEstimateValuationPoint request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Accepted Estimate point and status after being Accepted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AcceptEstimateValuationPointResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return acceptEstimateValuationPointAsync(scope, code, valuationPointDataRequest, _callback, opts);
         }
     }
 
@@ -276,6 +345,10 @@ public class FundsApi {
         return new APIacceptEstimateValuationPointRequest(scope, code, valuationPointDataRequest);
     }
     private okhttp3.Call createFeeCall(String scope, String code, FeeRequest feeRequest, final ApiCallback _callback) throws ApiException {
+        return createFeeCall(scope, code, feeRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call createFeeCall(String scope, String code, FeeRequest feeRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -324,11 +397,11 @@ public class FundsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createFeeValidateBeforeCall(String scope, String code, FeeRequest feeRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createFeeValidateBeforeCall(String scope, String code, FeeRequest feeRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling createFee(Async)");
@@ -344,20 +417,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'feeRequest' when calling createFee(Async)");
         }
 
-        return createFeeCall(scope, code, feeRequest, _callback);
+        return createFeeCall(scope, code, feeRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<Fee> createFeeWithHttpInfo(String scope, String code, FeeRequest feeRequest) throws ApiException {
-        okhttp3.Call localVarCall = createFeeValidateBeforeCall(scope, code, feeRequest, null);
+        okhttp3.Call localVarCall = createFeeValidateBeforeCall(scope, code, feeRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Fee>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Fee> createFeeWithHttpInfo(String scope, String code, FeeRequest feeRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createFeeValidateBeforeCall(scope, code, feeRequest, null, opts);
         Type localVarReturnType = new TypeToken<Fee>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call createFeeAsync(String scope, String code, FeeRequest feeRequest, final ApiCallback<Fee> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createFeeValidateBeforeCall(scope, code, feeRequest, _callback);
+        okhttp3.Call localVarCall = createFeeValidateBeforeCall(scope, code, feeRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Fee>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call createFeeAsync(String scope, String code, FeeRequest feeRequest, final ApiCallback<Fee> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = createFeeValidateBeforeCall(scope, code, feeRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<Fee>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -409,6 +496,23 @@ public class FundsApi {
         }
 
         /**
+         * Execute createFee request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Fee
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Fee. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Fee execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Fee> localVarResp = createFeeWithHttpInfo(scope, code, feeRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute createFee request with HTTP info returned
          * @return ApiResponse&lt;Fee&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -422,6 +526,22 @@ public class FundsApi {
          */
         public ApiResponse<Fee> executeWithHttpInfo() throws ApiException {
             return createFeeWithHttpInfo(scope, code, feeRequest);
+        }
+
+        /**
+         * Execute createFee request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Fee&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Fee. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Fee> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return createFeeWithHttpInfo(scope, code, feeRequest, opts);
         }
 
         /**
@@ -439,6 +559,23 @@ public class FundsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Fee> _callback) throws ApiException {
             return createFeeAsync(scope, code, feeRequest, _callback);
+        }
+
+        /**
+         * Execute createFee request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Fee. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Fee> _callback, ConfigurationOptions opts) throws ApiException {
+            return createFeeAsync(scope, code, feeRequest, _callback, opts);
         }
     }
 
@@ -461,6 +598,10 @@ public class FundsApi {
         return new APIcreateFeeRequest(scope, code, feeRequest);
     }
     private okhttp3.Call createFundCall(String scope, FundRequest fundRequest, final ApiCallback _callback) throws ApiException {
+        return createFundCall(scope, fundRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call createFundCall(String scope, FundRequest fundRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -508,11 +649,11 @@ public class FundsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createFundValidateBeforeCall(String scope, FundRequest fundRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createFundValidateBeforeCall(String scope, FundRequest fundRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling createFund(Async)");
@@ -523,20 +664,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'fundRequest' when calling createFund(Async)");
         }
 
-        return createFundCall(scope, fundRequest, _callback);
+        return createFundCall(scope, fundRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<Fund> createFundWithHttpInfo(String scope, FundRequest fundRequest) throws ApiException {
-        okhttp3.Call localVarCall = createFundValidateBeforeCall(scope, fundRequest, null);
+        okhttp3.Call localVarCall = createFundValidateBeforeCall(scope, fundRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Fund>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Fund> createFundWithHttpInfo(String scope, FundRequest fundRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createFundValidateBeforeCall(scope, fundRequest, null, opts);
         Type localVarReturnType = new TypeToken<Fund>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call createFundAsync(String scope, FundRequest fundRequest, final ApiCallback<Fund> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createFundValidateBeforeCall(scope, fundRequest, _callback);
+        okhttp3.Call localVarCall = createFundValidateBeforeCall(scope, fundRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Fund>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call createFundAsync(String scope, FundRequest fundRequest, final ApiCallback<Fund> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = createFundValidateBeforeCall(scope, fundRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<Fund>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -586,6 +741,23 @@ public class FundsApi {
         }
 
         /**
+         * Execute createFund request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Fund
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Fund execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Fund> localVarResp = createFundWithHttpInfo(scope, fundRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute createFund request with HTTP info returned
          * @return ApiResponse&lt;Fund&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -599,6 +771,22 @@ public class FundsApi {
          */
         public ApiResponse<Fund> executeWithHttpInfo() throws ApiException {
             return createFundWithHttpInfo(scope, fundRequest);
+        }
+
+        /**
+         * Execute createFund request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Fund&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Fund> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return createFundWithHttpInfo(scope, fundRequest, opts);
         }
 
         /**
@@ -616,6 +804,23 @@ public class FundsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Fund> _callback) throws ApiException {
             return createFundAsync(scope, fundRequest, _callback);
+        }
+
+        /**
+         * Execute createFund request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Fund> _callback, ConfigurationOptions opts) throws ApiException {
+            return createFundAsync(scope, fundRequest, _callback, opts);
         }
     }
 
@@ -637,6 +842,10 @@ public class FundsApi {
         return new APIcreateFundRequest(scope, fundRequest);
     }
     private okhttp3.Call deleteFeeCall(String scope, String code, String feeCode, final ApiCallback _callback) throws ApiException {
+        return deleteFeeCall(scope, code, feeCode,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteFeeCall(String scope, String code, String feeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -682,11 +891,11 @@ public class FundsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteFeeValidateBeforeCall(String scope, String code, String feeCode, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteFeeValidateBeforeCall(String scope, String code, String feeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteFee(Async)");
@@ -702,20 +911,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'feeCode' when calling deleteFee(Async)");
         }
 
-        return deleteFeeCall(scope, code, feeCode, _callback);
+        return deleteFeeCall(scope, code, feeCode, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deleteFeeWithHttpInfo(String scope, String code, String feeCode) throws ApiException {
-        okhttp3.Call localVarCall = deleteFeeValidateBeforeCall(scope, code, feeCode, null);
+        okhttp3.Call localVarCall = deleteFeeValidateBeforeCall(scope, code, feeCode, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteFeeWithHttpInfo(String scope, String code, String feeCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteFeeValidateBeforeCall(scope, code, feeCode, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteFeeAsync(String scope, String code, String feeCode, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteFeeValidateBeforeCall(scope, code, feeCode, _callback);
+        okhttp3.Call localVarCall = deleteFeeValidateBeforeCall(scope, code, feeCode, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteFeeAsync(String scope, String code, String feeCode, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteFeeValidateBeforeCall(scope, code, feeCode, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -767,6 +990,23 @@ public class FundsApi {
         }
 
         /**
+         * Execute deleteFee request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Fee was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteFeeWithHttpInfo(scope, code, feeCode, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteFee request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -780,6 +1020,22 @@ public class FundsApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deleteFeeWithHttpInfo(scope, code, feeCode);
+        }
+
+        /**
+         * Execute deleteFee request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Fee was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteFeeWithHttpInfo(scope, code, feeCode, opts);
         }
 
         /**
@@ -797,6 +1053,23 @@ public class FundsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deleteFeeAsync(scope, code, feeCode, _callback);
+        }
+
+        /**
+         * Execute deleteFee request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Fee was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteFeeAsync(scope, code, feeCode, _callback, opts);
         }
     }
 
@@ -819,6 +1092,10 @@ public class FundsApi {
         return new APIdeleteFeeRequest(scope, code, feeCode);
     }
     private okhttp3.Call deleteFundCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+        return deleteFundCall(scope, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteFundCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -863,11 +1140,11 @@ public class FundsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteFundValidateBeforeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteFundValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteFund(Async)");
@@ -878,20 +1155,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'code' when calling deleteFund(Async)");
         }
 
-        return deleteFundCall(scope, code, _callback);
+        return deleteFundCall(scope, code, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deleteFundWithHttpInfo(String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = deleteFundValidateBeforeCall(scope, code, null);
+        okhttp3.Call localVarCall = deleteFundValidateBeforeCall(scope, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteFundWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteFundValidateBeforeCall(scope, code, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteFundAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteFundValidateBeforeCall(scope, code, _callback);
+        okhttp3.Call localVarCall = deleteFundValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteFundAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteFundValidateBeforeCall(scope, code, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -941,6 +1232,23 @@ public class FundsApi {
         }
 
         /**
+         * Execute deleteFund request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Fund was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteFundWithHttpInfo(scope, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteFund request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -954,6 +1262,22 @@ public class FundsApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deleteFundWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteFund request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Fund was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteFundWithHttpInfo(scope, code, opts);
         }
 
         /**
@@ -971,6 +1295,23 @@ public class FundsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deleteFundAsync(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteFund request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Fund was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteFundAsync(scope, code, _callback, opts);
         }
     }
 
@@ -992,6 +1333,10 @@ public class FundsApi {
         return new APIdeleteFundRequest(scope, code);
     }
     private okhttp3.Call deleteValuationPointCall(String scope, String code, String diaryEntryCode, final ApiCallback _callback) throws ApiException {
+        return deleteValuationPointCall(scope, code, diaryEntryCode,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteValuationPointCall(String scope, String code, String diaryEntryCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1037,11 +1382,11 @@ public class FundsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteValuationPointValidateBeforeCall(String scope, String code, String diaryEntryCode, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteValuationPointValidateBeforeCall(String scope, String code, String diaryEntryCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteValuationPoint(Async)");
@@ -1057,20 +1402,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'diaryEntryCode' when calling deleteValuationPoint(Async)");
         }
 
-        return deleteValuationPointCall(scope, code, diaryEntryCode, _callback);
+        return deleteValuationPointCall(scope, code, diaryEntryCode, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deleteValuationPointWithHttpInfo(String scope, String code, String diaryEntryCode) throws ApiException {
-        okhttp3.Call localVarCall = deleteValuationPointValidateBeforeCall(scope, code, diaryEntryCode, null);
+        okhttp3.Call localVarCall = deleteValuationPointValidateBeforeCall(scope, code, diaryEntryCode, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteValuationPointWithHttpInfo(String scope, String code, String diaryEntryCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteValuationPointValidateBeforeCall(scope, code, diaryEntryCode, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteValuationPointAsync(String scope, String code, String diaryEntryCode, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteValuationPointValidateBeforeCall(scope, code, diaryEntryCode, _callback);
+        okhttp3.Call localVarCall = deleteValuationPointValidateBeforeCall(scope, code, diaryEntryCode, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteValuationPointAsync(String scope, String code, String diaryEntryCode, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteValuationPointValidateBeforeCall(scope, code, diaryEntryCode, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1122,6 +1481,23 @@ public class FundsApi {
         }
 
         /**
+         * Execute deleteValuationPoint request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Valuation Point was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteValuationPointWithHttpInfo(scope, code, diaryEntryCode, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteValuationPoint request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1135,6 +1511,22 @@ public class FundsApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deleteValuationPointWithHttpInfo(scope, code, diaryEntryCode);
+        }
+
+        /**
+         * Execute deleteValuationPoint request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Valuation Point was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteValuationPointWithHttpInfo(scope, code, diaryEntryCode, opts);
         }
 
         /**
@@ -1152,6 +1544,23 @@ public class FundsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deleteValuationPointAsync(scope, code, diaryEntryCode, _callback);
+        }
+
+        /**
+         * Execute deleteValuationPoint request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Valuation Point was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteValuationPointAsync(scope, code, diaryEntryCode, _callback, opts);
         }
     }
 
@@ -1174,6 +1583,10 @@ public class FundsApi {
         return new APIdeleteValuationPointRequest(scope, code, diaryEntryCode);
     }
     private okhttp3.Call finaliseCandidateValuationPointCall(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, final ApiCallback _callback) throws ApiException {
+        return finaliseCandidateValuationPointCall(scope, code, valuationPointDataRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call finaliseCandidateValuationPointCall(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1222,11 +1635,11 @@ public class FundsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call finaliseCandidateValuationPointValidateBeforeCall(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call finaliseCandidateValuationPointValidateBeforeCall(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling finaliseCandidateValuationPoint(Async)");
@@ -1242,20 +1655,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'valuationPointDataRequest' when calling finaliseCandidateValuationPoint(Async)");
         }
 
-        return finaliseCandidateValuationPointCall(scope, code, valuationPointDataRequest, _callback);
+        return finaliseCandidateValuationPointCall(scope, code, valuationPointDataRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<ValuationPointDataResponse> finaliseCandidateValuationPointWithHttpInfo(String scope, String code, ValuationPointDataRequest valuationPointDataRequest) throws ApiException {
-        okhttp3.Call localVarCall = finaliseCandidateValuationPointValidateBeforeCall(scope, code, valuationPointDataRequest, null);
+        okhttp3.Call localVarCall = finaliseCandidateValuationPointValidateBeforeCall(scope, code, valuationPointDataRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ValuationPointDataResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ValuationPointDataResponse> finaliseCandidateValuationPointWithHttpInfo(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = finaliseCandidateValuationPointValidateBeforeCall(scope, code, valuationPointDataRequest, null, opts);
         Type localVarReturnType = new TypeToken<ValuationPointDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call finaliseCandidateValuationPointAsync(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, final ApiCallback<ValuationPointDataResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = finaliseCandidateValuationPointValidateBeforeCall(scope, code, valuationPointDataRequest, _callback);
+        okhttp3.Call localVarCall = finaliseCandidateValuationPointValidateBeforeCall(scope, code, valuationPointDataRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ValuationPointDataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call finaliseCandidateValuationPointAsync(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, final ApiCallback<ValuationPointDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = finaliseCandidateValuationPointValidateBeforeCall(scope, code, valuationPointDataRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<ValuationPointDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1307,6 +1734,23 @@ public class FundsApi {
         }
 
         /**
+         * Execute finaliseCandidateValuationPoint request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ValuationPointDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Valuation Point response as a result of it be marked as Final. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ValuationPointDataResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ValuationPointDataResponse> localVarResp = finaliseCandidateValuationPointWithHttpInfo(scope, code, valuationPointDataRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute finaliseCandidateValuationPoint request with HTTP info returned
          * @return ApiResponse&lt;ValuationPointDataResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1320,6 +1764,22 @@ public class FundsApi {
          */
         public ApiResponse<ValuationPointDataResponse> executeWithHttpInfo() throws ApiException {
             return finaliseCandidateValuationPointWithHttpInfo(scope, code, valuationPointDataRequest);
+        }
+
+        /**
+         * Execute finaliseCandidateValuationPoint request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ValuationPointDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Valuation Point response as a result of it be marked as Final. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ValuationPointDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return finaliseCandidateValuationPointWithHttpInfo(scope, code, valuationPointDataRequest, opts);
         }
 
         /**
@@ -1337,6 +1797,23 @@ public class FundsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ValuationPointDataResponse> _callback) throws ApiException {
             return finaliseCandidateValuationPointAsync(scope, code, valuationPointDataRequest, _callback);
+        }
+
+        /**
+         * Execute finaliseCandidateValuationPoint request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Valuation Point response as a result of it be marked as Final. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ValuationPointDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return finaliseCandidateValuationPointAsync(scope, code, valuationPointDataRequest, _callback, opts);
         }
     }
 
@@ -1359,6 +1836,10 @@ public class FundsApi {
         return new APIfinaliseCandidateValuationPointRequest(scope, code, valuationPointDataRequest);
     }
     private okhttp3.Call getFeeCall(String scope, String code, String feeCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return getFeeCall(scope, code, feeCode, effectiveAt, asAt, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getFeeCall(String scope, String code, String feeCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1416,11 +1897,11 @@ public class FundsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getFeeValidateBeforeCall(String scope, String code, String feeCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getFeeValidateBeforeCall(String scope, String code, String feeCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getFee(Async)");
@@ -1436,20 +1917,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'feeCode' when calling getFee(Async)");
         }
 
-        return getFeeCall(scope, code, feeCode, effectiveAt, asAt, propertyKeys, _callback);
+        return getFeeCall(scope, code, feeCode, effectiveAt, asAt, propertyKeys, _callback, opts);
 
     }
 
 
     private ApiResponse<Fee> getFeeWithHttpInfo(String scope, String code, String feeCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = getFeeValidateBeforeCall(scope, code, feeCode, effectiveAt, asAt, propertyKeys, null);
+        okhttp3.Call localVarCall = getFeeValidateBeforeCall(scope, code, feeCode, effectiveAt, asAt, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Fee>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Fee> getFeeWithHttpInfo(String scope, String code, String feeCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getFeeValidateBeforeCall(scope, code, feeCode, effectiveAt, asAt, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<Fee>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getFeeAsync(String scope, String code, String feeCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<Fee> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getFeeValidateBeforeCall(scope, code, feeCode, effectiveAt, asAt, propertyKeys, _callback);
+        okhttp3.Call localVarCall = getFeeValidateBeforeCall(scope, code, feeCode, effectiveAt, asAt, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Fee>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getFeeAsync(String scope, String code, String feeCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<Fee> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getFeeValidateBeforeCall(scope, code, feeCode, effectiveAt, asAt, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<Fee>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1534,6 +2029,23 @@ public class FundsApi {
         }
 
         /**
+         * Execute getFee request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Fee
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Fee definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Fee execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Fee> localVarResp = getFeeWithHttpInfo(scope, code, feeCode, effectiveAt, asAt, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getFee request with HTTP info returned
          * @return ApiResponse&lt;Fee&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1547,6 +2059,22 @@ public class FundsApi {
          */
         public ApiResponse<Fee> executeWithHttpInfo() throws ApiException {
             return getFeeWithHttpInfo(scope, code, feeCode, effectiveAt, asAt, propertyKeys);
+        }
+
+        /**
+         * Execute getFee request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Fee&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Fee definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Fee> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getFeeWithHttpInfo(scope, code, feeCode, effectiveAt, asAt, propertyKeys, opts);
         }
 
         /**
@@ -1564,6 +2092,23 @@ public class FundsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Fee> _callback) throws ApiException {
             return getFeeAsync(scope, code, feeCode, effectiveAt, asAt, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getFee request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Fee definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Fee> _callback, ConfigurationOptions opts) throws ApiException {
+            return getFeeAsync(scope, code, feeCode, effectiveAt, asAt, propertyKeys, _callback, opts);
         }
     }
 
@@ -1586,6 +2131,10 @@ public class FundsApi {
         return new APIgetFeeRequest(scope, code, feeCode);
     }
     private okhttp3.Call getFundCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return getFundCall(scope, code, effectiveAt, asAt, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getFundCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1642,11 +2191,11 @@ public class FundsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getFundValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getFundValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getFund(Async)");
@@ -1657,20 +2206,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'code' when calling getFund(Async)");
         }
 
-        return getFundCall(scope, code, effectiveAt, asAt, propertyKeys, _callback);
+        return getFundCall(scope, code, effectiveAt, asAt, propertyKeys, _callback, opts);
 
     }
 
 
     private ApiResponse<Fund> getFundWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = getFundValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, null);
+        okhttp3.Call localVarCall = getFundValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Fund>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Fund> getFundWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getFundValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<Fund>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getFundAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<Fund> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getFundValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback);
+        okhttp3.Call localVarCall = getFundValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Fund>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getFundAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<Fund> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getFundValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<Fund>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1753,6 +2316,23 @@ public class FundsApi {
         }
 
         /**
+         * Execute getFund request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Fund
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Fund definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Fund execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Fund> localVarResp = getFundWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getFund request with HTTP info returned
          * @return ApiResponse&lt;Fund&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1766,6 +2346,22 @@ public class FundsApi {
          */
         public ApiResponse<Fund> executeWithHttpInfo() throws ApiException {
             return getFundWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
+        }
+
+        /**
+         * Execute getFund request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Fund&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Fund definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Fund> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getFundWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys, opts);
         }
 
         /**
@@ -1783,6 +2379,23 @@ public class FundsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Fund> _callback) throws ApiException {
             return getFundAsync(scope, code, effectiveAt, asAt, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getFund request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Fund definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Fund> _callback, ConfigurationOptions opts) throws ApiException {
+            return getFundAsync(scope, code, effectiveAt, asAt, propertyKeys, _callback, opts);
         }
     }
 
@@ -1804,6 +2417,10 @@ public class FundsApi {
         return new APIgetFundRequest(scope, code);
     }
     private okhttp3.Call getValuationPointDataCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getValuationPointDataCall(scope, code, valuationPointDataQueryParameters, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getValuationPointDataCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1856,11 +2473,11 @@ public class FundsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getValuationPointDataValidateBeforeCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getValuationPointDataValidateBeforeCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getValuationPointData(Async)");
@@ -1876,20 +2493,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'valuationPointDataQueryParameters' when calling getValuationPointData(Async)");
         }
 
-        return getValuationPointDataCall(scope, code, valuationPointDataQueryParameters, asAt, _callback);
+        return getValuationPointDataCall(scope, code, valuationPointDataQueryParameters, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<ValuationPointDataResponse> getValuationPointDataWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getValuationPointDataValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, null);
+        okhttp3.Call localVarCall = getValuationPointDataValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ValuationPointDataResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ValuationPointDataResponse> getValuationPointDataWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getValuationPointDataValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, null, opts);
         Type localVarReturnType = new TypeToken<ValuationPointDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getValuationPointDataAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, final ApiCallback<ValuationPointDataResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getValuationPointDataValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, _callback);
+        okhttp3.Call localVarCall = getValuationPointDataValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ValuationPointDataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getValuationPointDataAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, final ApiCallback<ValuationPointDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getValuationPointDataValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<ValuationPointDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1952,6 +2583,23 @@ public class FundsApi {
         }
 
         /**
+         * Execute getValuationPointData request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ValuationPointDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The specified Valuation Point for the Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ValuationPointDataResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ValuationPointDataResponse> localVarResp = getValuationPointDataWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getValuationPointData request with HTTP info returned
          * @return ApiResponse&lt;ValuationPointDataResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1965,6 +2613,22 @@ public class FundsApi {
          */
         public ApiResponse<ValuationPointDataResponse> executeWithHttpInfo() throws ApiException {
             return getValuationPointDataWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt);
+        }
+
+        /**
+         * Execute getValuationPointData request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ValuationPointDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The specified Valuation Point for the Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ValuationPointDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getValuationPointDataWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, opts);
         }
 
         /**
@@ -1982,6 +2646,23 @@ public class FundsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ValuationPointDataResponse> _callback) throws ApiException {
             return getValuationPointDataAsync(scope, code, valuationPointDataQueryParameters, asAt, _callback);
+        }
+
+        /**
+         * Execute getValuationPointData request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The specified Valuation Point for the Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ValuationPointDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return getValuationPointDataAsync(scope, code, valuationPointDataQueryParameters, asAt, _callback, opts);
         }
     }
 
@@ -2004,6 +2685,10 @@ public class FundsApi {
         return new APIgetValuationPointDataRequest(scope, code, valuationPointDataQueryParameters);
     }
     private okhttp3.Call listFeesCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return listFeesCall(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listFeesCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2076,11 +2761,11 @@ public class FundsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listFeesValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listFeesValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listFees(Async)");
@@ -2091,20 +2776,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'code' when calling listFees(Async)");
         }
 
-        return listFeesCall(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
+        return listFeesCall(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfFee> listFeesWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = listFeesValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, null);
+        okhttp3.Call localVarCall = listFeesValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfFee>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfFee> listFeesWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listFeesValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfFee>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listFeesAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback<PagedResourceListOfFee> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listFeesValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
+        okhttp3.Call localVarCall = listFeesValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfFee>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listFeesAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback<PagedResourceListOfFee> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listFeesValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfFee>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2231,6 +2930,23 @@ public class FundsApi {
         }
 
         /**
+         * Execute listFees request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfFee
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Fees. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfFee execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfFee> localVarResp = listFeesWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listFees request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfFee&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2244,6 +2960,22 @@ public class FundsApi {
          */
         public ApiResponse<PagedResourceListOfFee> executeWithHttpInfo() throws ApiException {
             return listFeesWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys);
+        }
+
+        /**
+         * Execute listFees request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfFee&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Fees. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfFee> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listFeesWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, opts);
         }
 
         /**
@@ -2261,6 +2993,23 @@ public class FundsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfFee> _callback) throws ApiException {
             return listFeesAsync(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute listFees request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Fees. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfFee> _callback, ConfigurationOptions opts) throws ApiException {
+            return listFeesAsync(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
         }
     }
 
@@ -2282,6 +3031,10 @@ public class FundsApi {
         return new APIlistFeesRequest(scope, code);
     }
     private okhttp3.Call listFundsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return listFundsCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listFundsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2352,25 +3105,39 @@ public class FundsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listFundsValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
-        return listFundsCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
+    private okhttp3.Call listFundsValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listFundsCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfFund> listFundsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = listFundsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, null);
+        okhttp3.Call localVarCall = listFundsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfFund>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfFund> listFundsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listFundsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfFund>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listFundsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback<PagedResourceListOfFund> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listFundsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
+        okhttp3.Call localVarCall = listFundsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfFund>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listFundsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback<PagedResourceListOfFund> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listFundsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfFund>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2493,6 +3260,23 @@ public class FundsApi {
         }
 
         /**
+         * Execute listFunds request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfFund
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Funds. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfFund execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfFund> localVarResp = listFundsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listFunds request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfFund&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2506,6 +3290,22 @@ public class FundsApi {
          */
         public ApiResponse<PagedResourceListOfFund> executeWithHttpInfo() throws ApiException {
             return listFundsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys);
+        }
+
+        /**
+         * Execute listFunds request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfFund&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Funds. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfFund> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listFundsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, opts);
         }
 
         /**
@@ -2523,6 +3323,23 @@ public class FundsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfFund> _callback) throws ApiException {
             return listFundsAsync(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute listFunds request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Funds. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfFund> _callback, ConfigurationOptions opts) throws ApiException {
+            return listFundsAsync(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
         }
     }
 
@@ -2542,6 +3359,10 @@ public class FundsApi {
         return new APIlistFundsRequest();
     }
     private okhttp3.Call listValuationPointOverviewCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return listValuationPointOverviewCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listValuationPointOverviewCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2610,11 +3431,11 @@ public class FundsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listValuationPointOverviewValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listValuationPointOverviewValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listValuationPointOverview(Async)");
@@ -2625,20 +3446,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'code' when calling listValuationPointOverview(Async)");
         }
 
-        return listValuationPointOverviewCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
+        return listValuationPointOverviewCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfValuationPointOverview> listValuationPointOverviewWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = listValuationPointOverviewValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, null);
+        okhttp3.Call localVarCall = listValuationPointOverviewValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfValuationPointOverview>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfValuationPointOverview> listValuationPointOverviewWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listValuationPointOverviewValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfValuationPointOverview>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listValuationPointOverviewAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfValuationPointOverview> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listValuationPointOverviewValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
+        okhttp3.Call localVarCall = listValuationPointOverviewValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfValuationPointOverview>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listValuationPointOverviewAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfValuationPointOverview> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listValuationPointOverviewValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfValuationPointOverview>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2754,6 +3589,23 @@ public class FundsApi {
         }
 
         /**
+         * Execute listValuationPointOverview request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfValuationPointOverview
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested ValuationPointOverview. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfValuationPointOverview execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfValuationPointOverview> localVarResp = listValuationPointOverviewWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listValuationPointOverview request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfValuationPointOverview&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2767,6 +3619,22 @@ public class FundsApi {
          */
         public ApiResponse<PagedResourceListOfValuationPointOverview> executeWithHttpInfo() throws ApiException {
             return listValuationPointOverviewWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys);
+        }
+
+        /**
+         * Execute listValuationPointOverview request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfValuationPointOverview&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested ValuationPointOverview. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfValuationPointOverview> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listValuationPointOverviewWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, opts);
         }
 
         /**
@@ -2784,6 +3652,23 @@ public class FundsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfValuationPointOverview> _callback) throws ApiException {
             return listValuationPointOverviewAsync(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute listValuationPointOverview request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested ValuationPointOverview. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfValuationPointOverview> _callback, ConfigurationOptions opts) throws ApiException {
+            return listValuationPointOverviewAsync(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback, opts);
         }
     }
 
@@ -2805,6 +3690,10 @@ public class FundsApi {
         return new APIlistValuationPointOverviewRequest(scope, code);
     }
     private okhttp3.Call patchFeeCall(String scope, String code, String feeCode, List<Operation> operation, final ApiCallback _callback) throws ApiException {
+        return patchFeeCall(scope, code, feeCode, operation,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call patchFeeCall(String scope, String code, String feeCode, List<Operation> operation, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2854,11 +3743,11 @@ public class FundsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchFeeValidateBeforeCall(String scope, String code, String feeCode, List<Operation> operation, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchFeeValidateBeforeCall(String scope, String code, String feeCode, List<Operation> operation, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling patchFee(Async)");
@@ -2879,20 +3768,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'operation' when calling patchFee(Async)");
         }
 
-        return patchFeeCall(scope, code, feeCode, operation, _callback);
+        return patchFeeCall(scope, code, feeCode, operation, _callback, opts);
 
     }
 
 
     private ApiResponse<Fee> patchFeeWithHttpInfo(String scope, String code, String feeCode, List<Operation> operation) throws ApiException {
-        okhttp3.Call localVarCall = patchFeeValidateBeforeCall(scope, code, feeCode, operation, null);
+        okhttp3.Call localVarCall = patchFeeValidateBeforeCall(scope, code, feeCode, operation, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Fee>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Fee> patchFeeWithHttpInfo(String scope, String code, String feeCode, List<Operation> operation, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = patchFeeValidateBeforeCall(scope, code, feeCode, operation, null, opts);
         Type localVarReturnType = new TypeToken<Fee>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call patchFeeAsync(String scope, String code, String feeCode, List<Operation> operation, final ApiCallback<Fee> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchFeeValidateBeforeCall(scope, code, feeCode, operation, _callback);
+        okhttp3.Call localVarCall = patchFeeValidateBeforeCall(scope, code, feeCode, operation, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Fee>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call patchFeeAsync(String scope, String code, String feeCode, List<Operation> operation, final ApiCallback<Fee> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = patchFeeValidateBeforeCall(scope, code, feeCode, operation, _callback, opts);
         Type localVarReturnType = new TypeToken<Fee>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2946,6 +3849,23 @@ public class FundsApi {
         }
 
         /**
+         * Execute patchFee request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Fee
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly patched Fee. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Fee execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Fee> localVarResp = patchFeeWithHttpInfo(scope, code, feeCode, operation, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute patchFee request with HTTP info returned
          * @return ApiResponse&lt;Fee&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2959,6 +3879,22 @@ public class FundsApi {
          */
         public ApiResponse<Fee> executeWithHttpInfo() throws ApiException {
             return patchFeeWithHttpInfo(scope, code, feeCode, operation);
+        }
+
+        /**
+         * Execute patchFee request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Fee&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly patched Fee. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Fee> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return patchFeeWithHttpInfo(scope, code, feeCode, operation, opts);
         }
 
         /**
@@ -2976,6 +3912,23 @@ public class FundsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Fee> _callback) throws ApiException {
             return patchFeeAsync(scope, code, feeCode, operation, _callback);
+        }
+
+        /**
+         * Execute patchFee request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly patched Fee. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Fee> _callback, ConfigurationOptions opts) throws ApiException {
+            return patchFeeAsync(scope, code, feeCode, operation, _callback, opts);
         }
     }
 
@@ -2999,6 +3952,10 @@ public class FundsApi {
         return new APIpatchFeeRequest(scope, code, feeCode, operation);
     }
     private okhttp3.Call setShareClassInstrumentsCall(String scope, String code, SetShareClassInstrumentsRequest setShareClassInstrumentsRequest, final ApiCallback _callback) throws ApiException {
+        return setShareClassInstrumentsCall(scope, code, setShareClassInstrumentsRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call setShareClassInstrumentsCall(String scope, String code, SetShareClassInstrumentsRequest setShareClassInstrumentsRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3047,11 +4004,11 @@ public class FundsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call setShareClassInstrumentsValidateBeforeCall(String scope, String code, SetShareClassInstrumentsRequest setShareClassInstrumentsRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call setShareClassInstrumentsValidateBeforeCall(String scope, String code, SetShareClassInstrumentsRequest setShareClassInstrumentsRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling setShareClassInstruments(Async)");
@@ -3067,20 +4024,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'setShareClassInstrumentsRequest' when calling setShareClassInstruments(Async)");
         }
 
-        return setShareClassInstrumentsCall(scope, code, setShareClassInstrumentsRequest, _callback);
+        return setShareClassInstrumentsCall(scope, code, setShareClassInstrumentsRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<Fund> setShareClassInstrumentsWithHttpInfo(String scope, String code, SetShareClassInstrumentsRequest setShareClassInstrumentsRequest) throws ApiException {
-        okhttp3.Call localVarCall = setShareClassInstrumentsValidateBeforeCall(scope, code, setShareClassInstrumentsRequest, null);
+        okhttp3.Call localVarCall = setShareClassInstrumentsValidateBeforeCall(scope, code, setShareClassInstrumentsRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Fund>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Fund> setShareClassInstrumentsWithHttpInfo(String scope, String code, SetShareClassInstrumentsRequest setShareClassInstrumentsRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = setShareClassInstrumentsValidateBeforeCall(scope, code, setShareClassInstrumentsRequest, null, opts);
         Type localVarReturnType = new TypeToken<Fund>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call setShareClassInstrumentsAsync(String scope, String code, SetShareClassInstrumentsRequest setShareClassInstrumentsRequest, final ApiCallback<Fund> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = setShareClassInstrumentsValidateBeforeCall(scope, code, setShareClassInstrumentsRequest, _callback);
+        okhttp3.Call localVarCall = setShareClassInstrumentsValidateBeforeCall(scope, code, setShareClassInstrumentsRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Fund>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call setShareClassInstrumentsAsync(String scope, String code, SetShareClassInstrumentsRequest setShareClassInstrumentsRequest, final ApiCallback<Fund> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = setShareClassInstrumentsValidateBeforeCall(scope, code, setShareClassInstrumentsRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<Fund>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3132,6 +4103,23 @@ public class FundsApi {
         }
 
         /**
+         * Execute setShareClassInstruments request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Fund
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The updated fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Fund execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Fund> localVarResp = setShareClassInstrumentsWithHttpInfo(scope, code, setShareClassInstrumentsRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute setShareClassInstruments request with HTTP info returned
          * @return ApiResponse&lt;Fund&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3145,6 +4133,22 @@ public class FundsApi {
          */
         public ApiResponse<Fund> executeWithHttpInfo() throws ApiException {
             return setShareClassInstrumentsWithHttpInfo(scope, code, setShareClassInstrumentsRequest);
+        }
+
+        /**
+         * Execute setShareClassInstruments request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Fund&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The updated fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Fund> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return setShareClassInstrumentsWithHttpInfo(scope, code, setShareClassInstrumentsRequest, opts);
         }
 
         /**
@@ -3162,6 +4166,23 @@ public class FundsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Fund> _callback) throws ApiException {
             return setShareClassInstrumentsAsync(scope, code, setShareClassInstrumentsRequest, _callback);
+        }
+
+        /**
+         * Execute setShareClassInstruments request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The updated fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Fund> _callback, ConfigurationOptions opts) throws ApiException {
+            return setShareClassInstrumentsAsync(scope, code, setShareClassInstrumentsRequest, _callback, opts);
         }
     }
 
@@ -3184,6 +4205,10 @@ public class FundsApi {
         return new APIsetShareClassInstrumentsRequest(scope, code, setShareClassInstrumentsRequest);
     }
     private okhttp3.Call upsertDiaryEntryTypeValuationPointCall(String scope, String code, UpsertValuationPointRequest upsertValuationPointRequest, final ApiCallback _callback) throws ApiException {
+        return upsertDiaryEntryTypeValuationPointCall(scope, code, upsertValuationPointRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertDiaryEntryTypeValuationPointCall(String scope, String code, UpsertValuationPointRequest upsertValuationPointRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3232,11 +4257,11 @@ public class FundsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertDiaryEntryTypeValuationPointValidateBeforeCall(String scope, String code, UpsertValuationPointRequest upsertValuationPointRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertDiaryEntryTypeValuationPointValidateBeforeCall(String scope, String code, UpsertValuationPointRequest upsertValuationPointRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling upsertDiaryEntryTypeValuationPoint(Async)");
@@ -3252,20 +4277,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'upsertValuationPointRequest' when calling upsertDiaryEntryTypeValuationPoint(Async)");
         }
 
-        return upsertDiaryEntryTypeValuationPointCall(scope, code, upsertValuationPointRequest, _callback);
+        return upsertDiaryEntryTypeValuationPointCall(scope, code, upsertValuationPointRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<DiaryEntry> upsertDiaryEntryTypeValuationPointWithHttpInfo(String scope, String code, UpsertValuationPointRequest upsertValuationPointRequest) throws ApiException {
-        okhttp3.Call localVarCall = upsertDiaryEntryTypeValuationPointValidateBeforeCall(scope, code, upsertValuationPointRequest, null);
+        okhttp3.Call localVarCall = upsertDiaryEntryTypeValuationPointValidateBeforeCall(scope, code, upsertValuationPointRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DiaryEntry>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DiaryEntry> upsertDiaryEntryTypeValuationPointWithHttpInfo(String scope, String code, UpsertValuationPointRequest upsertValuationPointRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertDiaryEntryTypeValuationPointValidateBeforeCall(scope, code, upsertValuationPointRequest, null, opts);
         Type localVarReturnType = new TypeToken<DiaryEntry>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertDiaryEntryTypeValuationPointAsync(String scope, String code, UpsertValuationPointRequest upsertValuationPointRequest, final ApiCallback<DiaryEntry> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertDiaryEntryTypeValuationPointValidateBeforeCall(scope, code, upsertValuationPointRequest, _callback);
+        okhttp3.Call localVarCall = upsertDiaryEntryTypeValuationPointValidateBeforeCall(scope, code, upsertValuationPointRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DiaryEntry>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertDiaryEntryTypeValuationPointAsync(String scope, String code, UpsertValuationPointRequest upsertValuationPointRequest, final ApiCallback<DiaryEntry> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertDiaryEntryTypeValuationPointValidateBeforeCall(scope, code, upsertValuationPointRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<DiaryEntry>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3317,6 +4356,23 @@ public class FundsApi {
         }
 
         /**
+         * Execute upsertDiaryEntryTypeValuationPoint request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DiaryEntry
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted estimated Valuation Point </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DiaryEntry execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DiaryEntry> localVarResp = upsertDiaryEntryTypeValuationPointWithHttpInfo(scope, code, upsertValuationPointRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertDiaryEntryTypeValuationPoint request with HTTP info returned
          * @return ApiResponse&lt;DiaryEntry&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3330,6 +4386,22 @@ public class FundsApi {
          */
         public ApiResponse<DiaryEntry> executeWithHttpInfo() throws ApiException {
             return upsertDiaryEntryTypeValuationPointWithHttpInfo(scope, code, upsertValuationPointRequest);
+        }
+
+        /**
+         * Execute upsertDiaryEntryTypeValuationPoint request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DiaryEntry&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted estimated Valuation Point </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DiaryEntry> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertDiaryEntryTypeValuationPointWithHttpInfo(scope, code, upsertValuationPointRequest, opts);
         }
 
         /**
@@ -3347,6 +4419,23 @@ public class FundsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DiaryEntry> _callback) throws ApiException {
             return upsertDiaryEntryTypeValuationPointAsync(scope, code, upsertValuationPointRequest, _callback);
+        }
+
+        /**
+         * Execute upsertDiaryEntryTypeValuationPoint request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted estimated Valuation Point </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DiaryEntry> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertDiaryEntryTypeValuationPointAsync(scope, code, upsertValuationPointRequest, _callback, opts);
         }
     }
 
@@ -3369,6 +4458,10 @@ public class FundsApi {
         return new APIupsertDiaryEntryTypeValuationPointRequest(scope, code, upsertValuationPointRequest);
     }
     private okhttp3.Call upsertFeePropertiesCall(String scope, String code, String feeCode, Map<String, Property> requestBody, final ApiCallback _callback) throws ApiException {
+        return upsertFeePropertiesCall(scope, code, feeCode, requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertFeePropertiesCall(String scope, String code, String feeCode, Map<String, Property> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3418,11 +4511,11 @@ public class FundsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertFeePropertiesValidateBeforeCall(String scope, String code, String feeCode, Map<String, Property> requestBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertFeePropertiesValidateBeforeCall(String scope, String code, String feeCode, Map<String, Property> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling upsertFeeProperties(Async)");
@@ -3438,20 +4531,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'feeCode' when calling upsertFeeProperties(Async)");
         }
 
-        return upsertFeePropertiesCall(scope, code, feeCode, requestBody, _callback);
+        return upsertFeePropertiesCall(scope, code, feeCode, requestBody, _callback, opts);
 
     }
 
 
     private ApiResponse<FeeProperties> upsertFeePropertiesWithHttpInfo(String scope, String code, String feeCode, Map<String, Property> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = upsertFeePropertiesValidateBeforeCall(scope, code, feeCode, requestBody, null);
+        okhttp3.Call localVarCall = upsertFeePropertiesValidateBeforeCall(scope, code, feeCode, requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FeeProperties>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<FeeProperties> upsertFeePropertiesWithHttpInfo(String scope, String code, String feeCode, Map<String, Property> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertFeePropertiesValidateBeforeCall(scope, code, feeCode, requestBody, null, opts);
         Type localVarReturnType = new TypeToken<FeeProperties>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertFeePropertiesAsync(String scope, String code, String feeCode, Map<String, Property> requestBody, final ApiCallback<FeeProperties> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertFeePropertiesValidateBeforeCall(scope, code, feeCode, requestBody, _callback);
+        okhttp3.Call localVarCall = upsertFeePropertiesValidateBeforeCall(scope, code, feeCode, requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FeeProperties>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertFeePropertiesAsync(String scope, String code, String feeCode, Map<String, Property> requestBody, final ApiCallback<FeeProperties> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertFeePropertiesValidateBeforeCall(scope, code, feeCode, requestBody, _callback, opts);
         Type localVarReturnType = new TypeToken<FeeProperties>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3514,6 +4621,23 @@ public class FundsApi {
         }
 
         /**
+         * Execute upsertFeeProperties request. Use any specified configuration options to override any other configuration for this request only.
+         * @return FeeProperties
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public FeeProperties execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<FeeProperties> localVarResp = upsertFeePropertiesWithHttpInfo(scope, code, feeCode, requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertFeeProperties request with HTTP info returned
          * @return ApiResponse&lt;FeeProperties&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3527,6 +4651,22 @@ public class FundsApi {
          */
         public ApiResponse<FeeProperties> executeWithHttpInfo() throws ApiException {
             return upsertFeePropertiesWithHttpInfo(scope, code, feeCode, requestBody);
+        }
+
+        /**
+         * Execute upsertFeeProperties request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;FeeProperties&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<FeeProperties> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertFeePropertiesWithHttpInfo(scope, code, feeCode, requestBody, opts);
         }
 
         /**
@@ -3544,6 +4684,23 @@ public class FundsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<FeeProperties> _callback) throws ApiException {
             return upsertFeePropertiesAsync(scope, code, feeCode, requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertFeeProperties request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<FeeProperties> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertFeePropertiesAsync(scope, code, feeCode, requestBody, _callback, opts);
         }
     }
 
@@ -3566,6 +4723,10 @@ public class FundsApi {
         return new APIupsertFeePropertiesRequest(scope, code, feeCode);
     }
     private okhttp3.Call upsertFundPropertiesCall(String scope, String code, Map<String, Property> requestBody, final ApiCallback _callback) throws ApiException {
+        return upsertFundPropertiesCall(scope, code, requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertFundPropertiesCall(String scope, String code, Map<String, Property> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3614,11 +4775,11 @@ public class FundsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertFundPropertiesValidateBeforeCall(String scope, String code, Map<String, Property> requestBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertFundPropertiesValidateBeforeCall(String scope, String code, Map<String, Property> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling upsertFundProperties(Async)");
@@ -3629,20 +4790,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'code' when calling upsertFundProperties(Async)");
         }
 
-        return upsertFundPropertiesCall(scope, code, requestBody, _callback);
+        return upsertFundPropertiesCall(scope, code, requestBody, _callback, opts);
 
     }
 
 
     private ApiResponse<FundProperties> upsertFundPropertiesWithHttpInfo(String scope, String code, Map<String, Property> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = upsertFundPropertiesValidateBeforeCall(scope, code, requestBody, null);
+        okhttp3.Call localVarCall = upsertFundPropertiesValidateBeforeCall(scope, code, requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FundProperties>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<FundProperties> upsertFundPropertiesWithHttpInfo(String scope, String code, Map<String, Property> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertFundPropertiesValidateBeforeCall(scope, code, requestBody, null, opts);
         Type localVarReturnType = new TypeToken<FundProperties>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertFundPropertiesAsync(String scope, String code, Map<String, Property> requestBody, final ApiCallback<FundProperties> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertFundPropertiesValidateBeforeCall(scope, code, requestBody, _callback);
+        okhttp3.Call localVarCall = upsertFundPropertiesValidateBeforeCall(scope, code, requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FundProperties>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertFundPropertiesAsync(String scope, String code, Map<String, Property> requestBody, final ApiCallback<FundProperties> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertFundPropertiesValidateBeforeCall(scope, code, requestBody, _callback, opts);
         Type localVarReturnType = new TypeToken<FundProperties>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3703,6 +4878,23 @@ public class FundsApi {
         }
 
         /**
+         * Execute upsertFundProperties request. Use any specified configuration options to override any other configuration for this request only.
+         * @return FundProperties
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public FundProperties execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<FundProperties> localVarResp = upsertFundPropertiesWithHttpInfo(scope, code, requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertFundProperties request with HTTP info returned
          * @return ApiResponse&lt;FundProperties&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3716,6 +4908,22 @@ public class FundsApi {
          */
         public ApiResponse<FundProperties> executeWithHttpInfo() throws ApiException {
             return upsertFundPropertiesWithHttpInfo(scope, code, requestBody);
+        }
+
+        /**
+         * Execute upsertFundProperties request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;FundProperties&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<FundProperties> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertFundPropertiesWithHttpInfo(scope, code, requestBody, opts);
         }
 
         /**
@@ -3733,6 +4941,23 @@ public class FundsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<FundProperties> _callback) throws ApiException {
             return upsertFundPropertiesAsync(scope, code, requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertFundProperties request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<FundProperties> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertFundPropertiesAsync(scope, code, requestBody, _callback, opts);
         }
     }
 

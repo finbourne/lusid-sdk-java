@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -81,6 +82,10 @@ public class LegacyComplianceApi {
     }
 
     private okhttp3.Call deleteLegacyComplianceRuleCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+        return deleteLegacyComplianceRuleCall(scope, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteLegacyComplianceRuleCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -125,11 +130,11 @@ public class LegacyComplianceApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteLegacyComplianceRuleValidateBeforeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteLegacyComplianceRuleValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteLegacyComplianceRule(Async)");
@@ -140,20 +145,34 @@ public class LegacyComplianceApi {
             throw new ApiException("Missing the required parameter 'code' when calling deleteLegacyComplianceRule(Async)");
         }
 
-        return deleteLegacyComplianceRuleCall(scope, code, _callback);
+        return deleteLegacyComplianceRuleCall(scope, code, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deleteLegacyComplianceRuleWithHttpInfo(String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = deleteLegacyComplianceRuleValidateBeforeCall(scope, code, null);
+        okhttp3.Call localVarCall = deleteLegacyComplianceRuleValidateBeforeCall(scope, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteLegacyComplianceRuleWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteLegacyComplianceRuleValidateBeforeCall(scope, code, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteLegacyComplianceRuleAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteLegacyComplianceRuleValidateBeforeCall(scope, code, _callback);
+        okhttp3.Call localVarCall = deleteLegacyComplianceRuleValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteLegacyComplianceRuleAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteLegacyComplianceRuleValidateBeforeCall(scope, code, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -203,6 +222,23 @@ public class LegacyComplianceApi {
         }
 
         /**
+         * Execute deleteLegacyComplianceRule request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteLegacyComplianceRuleWithHttpInfo(scope, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteLegacyComplianceRule request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -216,6 +252,22 @@ public class LegacyComplianceApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deleteLegacyComplianceRuleWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteLegacyComplianceRule request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteLegacyComplianceRuleWithHttpInfo(scope, code, opts);
         }
 
         /**
@@ -233,6 +285,23 @@ public class LegacyComplianceApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deleteLegacyComplianceRuleAsync(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteLegacyComplianceRule request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteLegacyComplianceRuleAsync(scope, code, _callback, opts);
         }
     }
 
@@ -254,6 +323,10 @@ public class LegacyComplianceApi {
         return new APIdeleteLegacyComplianceRuleRequest(scope, code);
     }
     private okhttp3.Call getLegacyBreachedOrdersInfoCall(String runId, String orderScope, String orderCode, Integer limit, final ApiCallback _callback) throws ApiException {
+        return getLegacyBreachedOrdersInfoCall(runId, orderScope, orderCode, limit,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getLegacyBreachedOrdersInfoCall(String runId, String orderScope, String orderCode, Integer limit, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -309,30 +382,44 @@ public class LegacyComplianceApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLegacyBreachedOrdersInfoValidateBeforeCall(String runId, String orderScope, String orderCode, Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getLegacyBreachedOrdersInfoValidateBeforeCall(String runId, String orderScope, String orderCode, Integer limit, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'runId' is set
         if (runId == null) {
             throw new ApiException("Missing the required parameter 'runId' when calling getLegacyBreachedOrdersInfo(Async)");
         }
 
-        return getLegacyBreachedOrdersInfoCall(runId, orderScope, orderCode, limit, _callback);
+        return getLegacyBreachedOrdersInfoCall(runId, orderScope, orderCode, limit, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfComplianceBreachedOrderInfo> getLegacyBreachedOrdersInfoWithHttpInfo(String runId, String orderScope, String orderCode, Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getLegacyBreachedOrdersInfoValidateBeforeCall(runId, orderScope, orderCode, limit, null);
+        okhttp3.Call localVarCall = getLegacyBreachedOrdersInfoValidateBeforeCall(runId, orderScope, orderCode, limit, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfComplianceBreachedOrderInfo>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfComplianceBreachedOrderInfo> getLegacyBreachedOrdersInfoWithHttpInfo(String runId, String orderScope, String orderCode, Integer limit, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getLegacyBreachedOrdersInfoValidateBeforeCall(runId, orderScope, orderCode, limit, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfComplianceBreachedOrderInfo>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getLegacyBreachedOrdersInfoAsync(String runId, String orderScope, String orderCode, Integer limit, final ApiCallback<ResourceListOfComplianceBreachedOrderInfo> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getLegacyBreachedOrdersInfoValidateBeforeCall(runId, orderScope, orderCode, limit, _callback);
+        okhttp3.Call localVarCall = getLegacyBreachedOrdersInfoValidateBeforeCall(runId, orderScope, orderCode, limit, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfComplianceBreachedOrderInfo>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getLegacyBreachedOrdersInfoAsync(String runId, String orderScope, String orderCode, Integer limit, final ApiCallback<ResourceListOfComplianceBreachedOrderInfo> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getLegacyBreachedOrdersInfoValidateBeforeCall(runId, orderScope, orderCode, limit, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfComplianceBreachedOrderInfo>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -413,6 +500,23 @@ public class LegacyComplianceApi {
         }
 
         /**
+         * Execute getLegacyBreachedOrdersInfo request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfComplianceBreachedOrderInfo
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The potentially breached orders and their rules from a specific compliance run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfComplianceBreachedOrderInfo execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfComplianceBreachedOrderInfo> localVarResp = getLegacyBreachedOrdersInfoWithHttpInfo(runId, orderScope, orderCode, limit, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getLegacyBreachedOrdersInfo request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfComplianceBreachedOrderInfo&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -426,6 +530,22 @@ public class LegacyComplianceApi {
          */
         public ApiResponse<ResourceListOfComplianceBreachedOrderInfo> executeWithHttpInfo() throws ApiException {
             return getLegacyBreachedOrdersInfoWithHttpInfo(runId, orderScope, orderCode, limit);
+        }
+
+        /**
+         * Execute getLegacyBreachedOrdersInfo request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfComplianceBreachedOrderInfo&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The potentially breached orders and their rules from a specific compliance run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfComplianceBreachedOrderInfo> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getLegacyBreachedOrdersInfoWithHttpInfo(runId, orderScope, orderCode, limit, opts);
         }
 
         /**
@@ -443,6 +563,23 @@ public class LegacyComplianceApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfComplianceBreachedOrderInfo> _callback) throws ApiException {
             return getLegacyBreachedOrdersInfoAsync(runId, orderScope, orderCode, limit, _callback);
+        }
+
+        /**
+         * Execute getLegacyBreachedOrdersInfo request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The potentially breached orders and their rules from a specific compliance run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfComplianceBreachedOrderInfo> _callback, ConfigurationOptions opts) throws ApiException {
+            return getLegacyBreachedOrdersInfoAsync(runId, orderScope, orderCode, limit, _callback, opts);
         }
     }
 
@@ -463,6 +600,10 @@ public class LegacyComplianceApi {
         return new APIgetLegacyBreachedOrdersInfoRequest(runId);
     }
     private okhttp3.Call getLegacyComplianceRuleCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getLegacyComplianceRuleCall(scope, code, effectiveAt, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getLegacyComplianceRuleCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -515,11 +656,11 @@ public class LegacyComplianceApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLegacyComplianceRuleValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getLegacyComplianceRuleValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getLegacyComplianceRule(Async)");
@@ -530,20 +671,34 @@ public class LegacyComplianceApi {
             throw new ApiException("Missing the required parameter 'code' when calling getLegacyComplianceRule(Async)");
         }
 
-        return getLegacyComplianceRuleCall(scope, code, effectiveAt, asAt, _callback);
+        return getLegacyComplianceRuleCall(scope, code, effectiveAt, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<ComplianceRule> getLegacyComplianceRuleWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getLegacyComplianceRuleValidateBeforeCall(scope, code, effectiveAt, asAt, null);
+        okhttp3.Call localVarCall = getLegacyComplianceRuleValidateBeforeCall(scope, code, effectiveAt, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ComplianceRule>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ComplianceRule> getLegacyComplianceRuleWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getLegacyComplianceRuleValidateBeforeCall(scope, code, effectiveAt, asAt, null, opts);
         Type localVarReturnType = new TypeToken<ComplianceRule>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getLegacyComplianceRuleAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<ComplianceRule> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getLegacyComplianceRuleValidateBeforeCall(scope, code, effectiveAt, asAt, _callback);
+        okhttp3.Call localVarCall = getLegacyComplianceRuleValidateBeforeCall(scope, code, effectiveAt, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ComplianceRule>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getLegacyComplianceRuleAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<ComplianceRule> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getLegacyComplianceRuleValidateBeforeCall(scope, code, effectiveAt, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<ComplianceRule>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -615,6 +770,23 @@ public class LegacyComplianceApi {
         }
 
         /**
+         * Execute getLegacyComplianceRule request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ComplianceRule
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Details of one compliance rule. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ComplianceRule execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ComplianceRule> localVarResp = getLegacyComplianceRuleWithHttpInfo(scope, code, effectiveAt, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getLegacyComplianceRule request with HTTP info returned
          * @return ApiResponse&lt;ComplianceRule&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -628,6 +800,22 @@ public class LegacyComplianceApi {
          */
         public ApiResponse<ComplianceRule> executeWithHttpInfo() throws ApiException {
             return getLegacyComplianceRuleWithHttpInfo(scope, code, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getLegacyComplianceRule request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ComplianceRule&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Details of one compliance rule. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ComplianceRule> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getLegacyComplianceRuleWithHttpInfo(scope, code, effectiveAt, asAt, opts);
         }
 
         /**
@@ -645,6 +833,23 @@ public class LegacyComplianceApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ComplianceRule> _callback) throws ApiException {
             return getLegacyComplianceRuleAsync(scope, code, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getLegacyComplianceRule request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Details of one compliance rule. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ComplianceRule> _callback, ConfigurationOptions opts) throws ApiException {
+            return getLegacyComplianceRuleAsync(scope, code, effectiveAt, asAt, _callback, opts);
         }
     }
 
@@ -666,6 +871,10 @@ public class LegacyComplianceApi {
         return new APIgetLegacyComplianceRuleRequest(scope, code);
     }
     private okhttp3.Call getLegacyComplianceRunResultsCall(String runId, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+        return getLegacyComplianceRunResultsCall(runId, page, limit, filter,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getLegacyComplianceRunResultsCall(String runId, String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -721,30 +930,44 @@ public class LegacyComplianceApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLegacyComplianceRunResultsValidateBeforeCall(String runId, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getLegacyComplianceRunResultsValidateBeforeCall(String runId, String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'runId' is set
         if (runId == null) {
             throw new ApiException("Missing the required parameter 'runId' when calling getLegacyComplianceRunResults(Async)");
         }
 
-        return getLegacyComplianceRunResultsCall(runId, page, limit, filter, _callback);
+        return getLegacyComplianceRunResultsCall(runId, page, limit, filter, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfComplianceRuleResult> getLegacyComplianceRunResultsWithHttpInfo(String runId, String page, Integer limit, String filter) throws ApiException {
-        okhttp3.Call localVarCall = getLegacyComplianceRunResultsValidateBeforeCall(runId, page, limit, filter, null);
+        okhttp3.Call localVarCall = getLegacyComplianceRunResultsValidateBeforeCall(runId, page, limit, filter, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfComplianceRuleResult>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfComplianceRuleResult> getLegacyComplianceRunResultsWithHttpInfo(String runId, String page, Integer limit, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getLegacyComplianceRunResultsValidateBeforeCall(runId, page, limit, filter, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfComplianceRuleResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getLegacyComplianceRunResultsAsync(String runId, String page, Integer limit, String filter, final ApiCallback<ResourceListOfComplianceRuleResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getLegacyComplianceRunResultsValidateBeforeCall(runId, page, limit, filter, _callback);
+        okhttp3.Call localVarCall = getLegacyComplianceRunResultsValidateBeforeCall(runId, page, limit, filter, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfComplianceRuleResult>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getLegacyComplianceRunResultsAsync(String runId, String page, Integer limit, String filter, final ApiCallback<ResourceListOfComplianceRuleResult> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getLegacyComplianceRunResultsValidateBeforeCall(runId, page, limit, filter, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfComplianceRuleResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -825,6 +1048,23 @@ public class LegacyComplianceApi {
         }
 
         /**
+         * Execute getLegacyComplianceRunResults request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfComplianceRuleResult
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rule results of a specific compliance run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfComplianceRuleResult execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfComplianceRuleResult> localVarResp = getLegacyComplianceRunResultsWithHttpInfo(runId, page, limit, filter, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getLegacyComplianceRunResults request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfComplianceRuleResult&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -838,6 +1078,22 @@ public class LegacyComplianceApi {
          */
         public ApiResponse<ResourceListOfComplianceRuleResult> executeWithHttpInfo() throws ApiException {
             return getLegacyComplianceRunResultsWithHttpInfo(runId, page, limit, filter);
+        }
+
+        /**
+         * Execute getLegacyComplianceRunResults request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfComplianceRuleResult&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rule results of a specific compliance run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfComplianceRuleResult> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getLegacyComplianceRunResultsWithHttpInfo(runId, page, limit, filter, opts);
         }
 
         /**
@@ -855,6 +1111,23 @@ public class LegacyComplianceApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfComplianceRuleResult> _callback) throws ApiException {
             return getLegacyComplianceRunResultsAsync(runId, page, limit, filter, _callback);
+        }
+
+        /**
+         * Execute getLegacyComplianceRunResults request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rule results of a specific compliance run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfComplianceRuleResult> _callback, ConfigurationOptions opts) throws ApiException {
+            return getLegacyComplianceRunResultsAsync(runId, page, limit, filter, _callback, opts);
         }
     }
 
@@ -875,6 +1148,10 @@ public class LegacyComplianceApi {
         return new APIgetLegacyComplianceRunResultsRequest(runId);
     }
     private okhttp3.Call listLegacyComplianceRulesCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+        return listLegacyComplianceRulesCall(effectiveAt, asAt, page, limit, filter,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listLegacyComplianceRulesCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -937,25 +1214,39 @@ public class LegacyComplianceApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listLegacyComplianceRulesValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
-        return listLegacyComplianceRulesCall(effectiveAt, asAt, page, limit, filter, _callback);
+    private okhttp3.Call listLegacyComplianceRulesValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listLegacyComplianceRulesCall(effectiveAt, asAt, page, limit, filter, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfComplianceRule> listLegacyComplianceRulesWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listLegacyComplianceRulesValidateBeforeCall(effectiveAt, asAt, page, limit, filter, null);
+        okhttp3.Call localVarCall = listLegacyComplianceRulesValidateBeforeCall(effectiveAt, asAt, page, limit, filter, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfComplianceRule>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfComplianceRule> listLegacyComplianceRulesWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listLegacyComplianceRulesValidateBeforeCall(effectiveAt, asAt, page, limit, filter, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfComplianceRule>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listLegacyComplianceRulesAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<ResourceListOfComplianceRule> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listLegacyComplianceRulesValidateBeforeCall(effectiveAt, asAt, page, limit, filter, _callback);
+        okhttp3.Call localVarCall = listLegacyComplianceRulesValidateBeforeCall(effectiveAt, asAt, page, limit, filter, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfComplianceRule>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listLegacyComplianceRulesAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<ResourceListOfComplianceRule> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listLegacyComplianceRulesValidateBeforeCall(effectiveAt, asAt, page, limit, filter, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfComplianceRule>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1056,6 +1347,23 @@ public class LegacyComplianceApi {
         }
 
         /**
+         * Execute listLegacyComplianceRules request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfComplianceRule
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A filtered list of compliance rules available. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfComplianceRule execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfComplianceRule> localVarResp = listLegacyComplianceRulesWithHttpInfo(effectiveAt, asAt, page, limit, filter, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listLegacyComplianceRules request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfComplianceRule&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1069,6 +1377,22 @@ public class LegacyComplianceApi {
          */
         public ApiResponse<ResourceListOfComplianceRule> executeWithHttpInfo() throws ApiException {
             return listLegacyComplianceRulesWithHttpInfo(effectiveAt, asAt, page, limit, filter);
+        }
+
+        /**
+         * Execute listLegacyComplianceRules request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfComplianceRule&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A filtered list of compliance rules available. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfComplianceRule> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listLegacyComplianceRulesWithHttpInfo(effectiveAt, asAt, page, limit, filter, opts);
         }
 
         /**
@@ -1086,6 +1410,23 @@ public class LegacyComplianceApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfComplianceRule> _callback) throws ApiException {
             return listLegacyComplianceRulesAsync(effectiveAt, asAt, page, limit, filter, _callback);
+        }
+
+        /**
+         * Execute listLegacyComplianceRules request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A filtered list of compliance rules available. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfComplianceRule> _callback, ConfigurationOptions opts) throws ApiException {
+            return listLegacyComplianceRulesAsync(effectiveAt, asAt, page, limit, filter, _callback, opts);
         }
     }
 
@@ -1105,6 +1446,10 @@ public class LegacyComplianceApi {
         return new APIlistLegacyComplianceRulesRequest();
     }
     private okhttp3.Call listLegacyComplianceRunInfoCall(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+        return listLegacyComplianceRunInfoCall(asAt, page, limit, filter,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listLegacyComplianceRunInfoCall(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1163,25 +1508,39 @@ public class LegacyComplianceApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listLegacyComplianceRunInfoValidateBeforeCall(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
-        return listLegacyComplianceRunInfoCall(asAt, page, limit, filter, _callback);
+    private okhttp3.Call listLegacyComplianceRunInfoValidateBeforeCall(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listLegacyComplianceRunInfoCall(asAt, page, limit, filter, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfComplianceRunInfo> listLegacyComplianceRunInfoWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listLegacyComplianceRunInfoValidateBeforeCall(asAt, page, limit, filter, null);
+        okhttp3.Call localVarCall = listLegacyComplianceRunInfoValidateBeforeCall(asAt, page, limit, filter, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfComplianceRunInfo>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfComplianceRunInfo> listLegacyComplianceRunInfoWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listLegacyComplianceRunInfoValidateBeforeCall(asAt, page, limit, filter, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfComplianceRunInfo>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listLegacyComplianceRunInfoAsync(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<ResourceListOfComplianceRunInfo> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listLegacyComplianceRunInfoValidateBeforeCall(asAt, page, limit, filter, _callback);
+        okhttp3.Call localVarCall = listLegacyComplianceRunInfoValidateBeforeCall(asAt, page, limit, filter, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfComplianceRunInfo>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listLegacyComplianceRunInfoAsync(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<ResourceListOfComplianceRunInfo> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listLegacyComplianceRunInfoValidateBeforeCall(asAt, page, limit, filter, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfComplianceRunInfo>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1271,6 +1630,23 @@ public class LegacyComplianceApi {
         }
 
         /**
+         * Execute listLegacyComplianceRunInfo request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfComplianceRunInfo
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The List of IDs and information for all compliance runs completed </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfComplianceRunInfo execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfComplianceRunInfo> localVarResp = listLegacyComplianceRunInfoWithHttpInfo(asAt, page, limit, filter, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listLegacyComplianceRunInfo request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfComplianceRunInfo&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1284,6 +1660,22 @@ public class LegacyComplianceApi {
          */
         public ApiResponse<ResourceListOfComplianceRunInfo> executeWithHttpInfo() throws ApiException {
             return listLegacyComplianceRunInfoWithHttpInfo(asAt, page, limit, filter);
+        }
+
+        /**
+         * Execute listLegacyComplianceRunInfo request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfComplianceRunInfo&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The List of IDs and information for all compliance runs completed </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfComplianceRunInfo> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listLegacyComplianceRunInfoWithHttpInfo(asAt, page, limit, filter, opts);
         }
 
         /**
@@ -1301,6 +1693,23 @@ public class LegacyComplianceApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfComplianceRunInfo> _callback) throws ApiException {
             return listLegacyComplianceRunInfoAsync(asAt, page, limit, filter, _callback);
+        }
+
+        /**
+         * Execute listLegacyComplianceRunInfo request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The List of IDs and information for all compliance runs completed </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfComplianceRunInfo> _callback, ConfigurationOptions opts) throws ApiException {
+            return listLegacyComplianceRunInfoAsync(asAt, page, limit, filter, _callback, opts);
         }
     }
 
@@ -1320,6 +1729,10 @@ public class LegacyComplianceApi {
         return new APIlistLegacyComplianceRunInfoRequest();
     }
     private okhttp3.Call runLegacyComplianceCall(Boolean isPreTrade, String recipeIdScope, String recipeIdCode, Boolean byTaxlots, final ApiCallback _callback) throws ApiException {
+        return runLegacyComplianceCall(isPreTrade, recipeIdScope, recipeIdCode, byTaxlots,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call runLegacyComplianceCall(Boolean isPreTrade, String recipeIdScope, String recipeIdCode, Boolean byTaxlots, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1378,11 +1791,11 @@ public class LegacyComplianceApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call runLegacyComplianceValidateBeforeCall(Boolean isPreTrade, String recipeIdScope, String recipeIdCode, Boolean byTaxlots, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call runLegacyComplianceValidateBeforeCall(Boolean isPreTrade, String recipeIdScope, String recipeIdCode, Boolean byTaxlots, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'isPreTrade' is set
         if (isPreTrade == null) {
             throw new ApiException("Missing the required parameter 'isPreTrade' when calling runLegacyCompliance(Async)");
@@ -1393,20 +1806,34 @@ public class LegacyComplianceApi {
             throw new ApiException("Missing the required parameter 'recipeIdScope' when calling runLegacyCompliance(Async)");
         }
 
-        return runLegacyComplianceCall(isPreTrade, recipeIdScope, recipeIdCode, byTaxlots, _callback);
+        return runLegacyComplianceCall(isPreTrade, recipeIdScope, recipeIdCode, byTaxlots, _callback, opts);
 
     }
 
 
     private ApiResponse<ComplianceRunInfo> runLegacyComplianceWithHttpInfo(Boolean isPreTrade, String recipeIdScope, String recipeIdCode, Boolean byTaxlots) throws ApiException {
-        okhttp3.Call localVarCall = runLegacyComplianceValidateBeforeCall(isPreTrade, recipeIdScope, recipeIdCode, byTaxlots, null);
+        okhttp3.Call localVarCall = runLegacyComplianceValidateBeforeCall(isPreTrade, recipeIdScope, recipeIdCode, byTaxlots, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ComplianceRunInfo>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ComplianceRunInfo> runLegacyComplianceWithHttpInfo(Boolean isPreTrade, String recipeIdScope, String recipeIdCode, Boolean byTaxlots, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = runLegacyComplianceValidateBeforeCall(isPreTrade, recipeIdScope, recipeIdCode, byTaxlots, null, opts);
         Type localVarReturnType = new TypeToken<ComplianceRunInfo>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call runLegacyComplianceAsync(Boolean isPreTrade, String recipeIdScope, String recipeIdCode, Boolean byTaxlots, final ApiCallback<ComplianceRunInfo> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = runLegacyComplianceValidateBeforeCall(isPreTrade, recipeIdScope, recipeIdCode, byTaxlots, _callback);
+        okhttp3.Call localVarCall = runLegacyComplianceValidateBeforeCall(isPreTrade, recipeIdScope, recipeIdCode, byTaxlots, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ComplianceRunInfo>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call runLegacyComplianceAsync(Boolean isPreTrade, String recipeIdScope, String recipeIdCode, Boolean byTaxlots, final ApiCallback<ComplianceRunInfo> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = runLegacyComplianceValidateBeforeCall(isPreTrade, recipeIdScope, recipeIdCode, byTaxlots, _callback, opts);
         Type localVarReturnType = new TypeToken<ComplianceRunInfo>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1478,6 +1905,23 @@ public class LegacyComplianceApi {
         }
 
         /**
+         * Execute runLegacyCompliance request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ComplianceRunInfo
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The identifying information of a compliance run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ComplianceRunInfo execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ComplianceRunInfo> localVarResp = runLegacyComplianceWithHttpInfo(isPreTrade, recipeIdScope, recipeIdCode, byTaxlots, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute runLegacyCompliance request with HTTP info returned
          * @return ApiResponse&lt;ComplianceRunInfo&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1491,6 +1935,22 @@ public class LegacyComplianceApi {
          */
         public ApiResponse<ComplianceRunInfo> executeWithHttpInfo() throws ApiException {
             return runLegacyComplianceWithHttpInfo(isPreTrade, recipeIdScope, recipeIdCode, byTaxlots);
+        }
+
+        /**
+         * Execute runLegacyCompliance request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ComplianceRunInfo&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The identifying information of a compliance run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ComplianceRunInfo> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return runLegacyComplianceWithHttpInfo(isPreTrade, recipeIdScope, recipeIdCode, byTaxlots, opts);
         }
 
         /**
@@ -1508,6 +1968,23 @@ public class LegacyComplianceApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ComplianceRunInfo> _callback) throws ApiException {
             return runLegacyComplianceAsync(isPreTrade, recipeIdScope, recipeIdCode, byTaxlots, _callback);
+        }
+
+        /**
+         * Execute runLegacyCompliance request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The identifying information of a compliance run </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ComplianceRunInfo> _callback, ConfigurationOptions opts) throws ApiException {
+            return runLegacyComplianceAsync(isPreTrade, recipeIdScope, recipeIdCode, byTaxlots, _callback, opts);
         }
     }
 
@@ -1529,6 +2006,10 @@ public class LegacyComplianceApi {
         return new APIrunLegacyComplianceRequest(isPreTrade, recipeIdScope);
     }
     private okhttp3.Call upsertLegacyComplianceRulesCall(Map<String, ComplianceRuleUpsertRequest> requestBody, String effectiveAt, final ApiCallback _callback) throws ApiException {
+        return upsertLegacyComplianceRulesCall(requestBody, effectiveAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertLegacyComplianceRulesCall(Map<String, ComplianceRuleUpsertRequest> requestBody, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1579,30 +2060,44 @@ public class LegacyComplianceApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertLegacyComplianceRulesValidateBeforeCall(Map<String, ComplianceRuleUpsertRequest> requestBody, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertLegacyComplianceRulesValidateBeforeCall(Map<String, ComplianceRuleUpsertRequest> requestBody, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'requestBody' is set
         if (requestBody == null) {
             throw new ApiException("Missing the required parameter 'requestBody' when calling upsertLegacyComplianceRules(Async)");
         }
 
-        return upsertLegacyComplianceRulesCall(requestBody, effectiveAt, _callback);
+        return upsertLegacyComplianceRulesCall(requestBody, effectiveAt, _callback, opts);
 
     }
 
 
     private ApiResponse<ComplianceRuleUpsertResponse> upsertLegacyComplianceRulesWithHttpInfo(Map<String, ComplianceRuleUpsertRequest> requestBody, String effectiveAt) throws ApiException {
-        okhttp3.Call localVarCall = upsertLegacyComplianceRulesValidateBeforeCall(requestBody, effectiveAt, null);
+        okhttp3.Call localVarCall = upsertLegacyComplianceRulesValidateBeforeCall(requestBody, effectiveAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ComplianceRuleUpsertResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ComplianceRuleUpsertResponse> upsertLegacyComplianceRulesWithHttpInfo(Map<String, ComplianceRuleUpsertRequest> requestBody, String effectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertLegacyComplianceRulesValidateBeforeCall(requestBody, effectiveAt, null, opts);
         Type localVarReturnType = new TypeToken<ComplianceRuleUpsertResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertLegacyComplianceRulesAsync(Map<String, ComplianceRuleUpsertRequest> requestBody, String effectiveAt, final ApiCallback<ComplianceRuleUpsertResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertLegacyComplianceRulesValidateBeforeCall(requestBody, effectiveAt, _callback);
+        okhttp3.Call localVarCall = upsertLegacyComplianceRulesValidateBeforeCall(requestBody, effectiveAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ComplianceRuleUpsertResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertLegacyComplianceRulesAsync(Map<String, ComplianceRuleUpsertRequest> requestBody, String effectiveAt, final ApiCallback<ComplianceRuleUpsertResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertLegacyComplianceRulesValidateBeforeCall(requestBody, effectiveAt, _callback, opts);
         Type localVarReturnType = new TypeToken<ComplianceRuleUpsertResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1661,6 +2156,23 @@ public class LegacyComplianceApi {
         }
 
         /**
+         * Execute upsertLegacyComplianceRules request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ComplianceRuleUpsertResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Upsert compliance rules. New compliance rules must have an empty code field. Where a codeis given, this rule must already exist and will be updated. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ComplianceRuleUpsertResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ComplianceRuleUpsertResponse> localVarResp = upsertLegacyComplianceRulesWithHttpInfo(requestBody, effectiveAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertLegacyComplianceRules request with HTTP info returned
          * @return ApiResponse&lt;ComplianceRuleUpsertResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1674,6 +2186,22 @@ public class LegacyComplianceApi {
          */
         public ApiResponse<ComplianceRuleUpsertResponse> executeWithHttpInfo() throws ApiException {
             return upsertLegacyComplianceRulesWithHttpInfo(requestBody, effectiveAt);
+        }
+
+        /**
+         * Execute upsertLegacyComplianceRules request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ComplianceRuleUpsertResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Upsert compliance rules. New compliance rules must have an empty code field. Where a codeis given, this rule must already exist and will be updated. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ComplianceRuleUpsertResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertLegacyComplianceRulesWithHttpInfo(requestBody, effectiveAt, opts);
         }
 
         /**
@@ -1691,6 +2219,23 @@ public class LegacyComplianceApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ComplianceRuleUpsertResponse> _callback) throws ApiException {
             return upsertLegacyComplianceRulesAsync(requestBody, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute upsertLegacyComplianceRules request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Upsert compliance rules. New compliance rules must have an empty code field. Where a codeis given, this rule must already exist and will be updated. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ComplianceRuleUpsertResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertLegacyComplianceRulesAsync(requestBody, effectiveAt, _callback, opts);
         }
     }
 

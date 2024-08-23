@@ -47,12 +47,23 @@ public class ScopesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ScopesApi apiInstance = apiFactory.build(ScopesApi.class);
+
         ScopesApi apiInstance = ApiFactoryBuilder.build(fileName).build(ScopesApi.class);
         String entityType = "entityType_example"; // String | The entity type to list scopes for.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve scopes. Defaults to latest datetime if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing scopes from a previous call to list scopes.   This value is returned from the previous call. If a pagination token is provided, the limit and asAt fields   must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this number. Defaults to 100 if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfScopeDefinition result = apiInstance.listEntityScopes(entityType, asAt, page, limit).execute(opts);
+
             ResourceListOfScopeDefinition result = apiInstance.listEntityScopes(entityType, asAt, page, limit).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -133,9 +144,20 @@ public class ScopesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ScopesApi apiInstance = apiFactory.build(ScopesApi.class);
+
         ScopesApi apiInstance = ApiFactoryBuilder.build(fileName).build(ScopesApi.class);
         String filter = "filter_example"; // String | Expression to filter the result set.   For example, to filter on the Scope, use \"scope eq 'string'\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfScopeDefinition result = apiInstance.listScopes(filter).execute(opts);
+
             ResourceListOfScopeDefinition result = apiInstance.listScopes(filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

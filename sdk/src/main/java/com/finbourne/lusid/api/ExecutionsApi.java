@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -77,6 +78,10 @@ public class ExecutionsApi {
     }
 
     private okhttp3.Call deleteExecutionCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+        return deleteExecutionCall(scope, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteExecutionCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,11 +126,11 @@ public class ExecutionsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteExecutionValidateBeforeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteExecutionValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteExecution(Async)");
@@ -136,20 +141,34 @@ public class ExecutionsApi {
             throw new ApiException("Missing the required parameter 'code' when calling deleteExecution(Async)");
         }
 
-        return deleteExecutionCall(scope, code, _callback);
+        return deleteExecutionCall(scope, code, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deleteExecutionWithHttpInfo(String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = deleteExecutionValidateBeforeCall(scope, code, null);
+        okhttp3.Call localVarCall = deleteExecutionValidateBeforeCall(scope, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteExecutionWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteExecutionValidateBeforeCall(scope, code, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteExecutionAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteExecutionValidateBeforeCall(scope, code, _callback);
+        okhttp3.Call localVarCall = deleteExecutionValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteExecutionAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteExecutionValidateBeforeCall(scope, code, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -199,6 +218,23 @@ public class ExecutionsApi {
         }
 
         /**
+         * Execute deleteExecution request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting an execution. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteExecutionWithHttpInfo(scope, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteExecution request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -212,6 +248,22 @@ public class ExecutionsApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deleteExecutionWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteExecution request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting an execution. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteExecutionWithHttpInfo(scope, code, opts);
         }
 
         /**
@@ -229,6 +281,23 @@ public class ExecutionsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deleteExecutionAsync(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteExecution request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting an execution. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteExecutionAsync(scope, code, _callback, opts);
         }
     }
 
@@ -250,6 +319,10 @@ public class ExecutionsApi {
         return new APIdeleteExecutionRequest(scope, code);
     }
     private okhttp3.Call getExecutionCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return getExecutionCall(scope, code, asAt, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getExecutionCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -302,11 +375,11 @@ public class ExecutionsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getExecutionValidateBeforeCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getExecutionValidateBeforeCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getExecution(Async)");
@@ -317,20 +390,34 @@ public class ExecutionsApi {
             throw new ApiException("Missing the required parameter 'code' when calling getExecution(Async)");
         }
 
-        return getExecutionCall(scope, code, asAt, propertyKeys, _callback);
+        return getExecutionCall(scope, code, asAt, propertyKeys, _callback, opts);
 
     }
 
 
     private ApiResponse<Execution> getExecutionWithHttpInfo(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = getExecutionValidateBeforeCall(scope, code, asAt, propertyKeys, null);
+        okhttp3.Call localVarCall = getExecutionValidateBeforeCall(scope, code, asAt, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Execution>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Execution> getExecutionWithHttpInfo(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getExecutionValidateBeforeCall(scope, code, asAt, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<Execution>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getExecutionAsync(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<Execution> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getExecutionValidateBeforeCall(scope, code, asAt, propertyKeys, _callback);
+        okhttp3.Call localVarCall = getExecutionValidateBeforeCall(scope, code, asAt, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Execution>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getExecutionAsync(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<Execution> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getExecutionValidateBeforeCall(scope, code, asAt, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<Execution>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -402,6 +489,23 @@ public class ExecutionsApi {
         }
 
         /**
+         * Execute getExecution request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Execution
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The execution matching the given identifier. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Execution execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Execution> localVarResp = getExecutionWithHttpInfo(scope, code, asAt, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getExecution request with HTTP info returned
          * @return ApiResponse&lt;Execution&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -415,6 +519,22 @@ public class ExecutionsApi {
          */
         public ApiResponse<Execution> executeWithHttpInfo() throws ApiException {
             return getExecutionWithHttpInfo(scope, code, asAt, propertyKeys);
+        }
+
+        /**
+         * Execute getExecution request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Execution&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The execution matching the given identifier. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Execution> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getExecutionWithHttpInfo(scope, code, asAt, propertyKeys, opts);
         }
 
         /**
@@ -432,6 +552,23 @@ public class ExecutionsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Execution> _callback) throws ApiException {
             return getExecutionAsync(scope, code, asAt, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getExecution request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The execution matching the given identifier. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Execution> _callback, ConfigurationOptions opts) throws ApiException {
+            return getExecutionAsync(scope, code, asAt, propertyKeys, _callback, opts);
         }
     }
 
@@ -453,6 +590,10 @@ public class ExecutionsApi {
         return new APIgetExecutionRequest(scope, code);
     }
     private okhttp3.Call listExecutionsCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return listExecutionsCall(asAt, page, sortBy, limit, filter, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listExecutionsCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -519,25 +660,39 @@ public class ExecutionsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listExecutionsValidateBeforeCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
-        return listExecutionsCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
+    private okhttp3.Call listExecutionsValidateBeforeCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listExecutionsCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfExecution> listExecutionsWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = listExecutionsValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, null);
+        okhttp3.Call localVarCall = listExecutionsValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfExecution>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfExecution> listExecutionsWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listExecutionsValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfExecution>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listExecutionsAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfExecution> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listExecutionsValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
+        okhttp3.Call localVarCall = listExecutionsValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfExecution>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listExecutionsAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfExecution> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listExecutionsValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfExecution>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -649,6 +804,23 @@ public class ExecutionsApi {
         }
 
         /**
+         * Execute listExecutions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfExecution
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Executions in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfExecution execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfExecution> localVarResp = listExecutionsWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listExecutions request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfExecution&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -662,6 +834,22 @@ public class ExecutionsApi {
          */
         public ApiResponse<PagedResourceListOfExecution> executeWithHttpInfo() throws ApiException {
             return listExecutionsWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys);
+        }
+
+        /**
+         * Execute listExecutions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfExecution&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Executions in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfExecution> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listExecutionsWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys, opts);
         }
 
         /**
@@ -679,6 +867,23 @@ public class ExecutionsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfExecution> _callback) throws ApiException {
             return listExecutionsAsync(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute listExecutions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Executions in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfExecution> _callback, ConfigurationOptions opts) throws ApiException {
+            return listExecutionsAsync(asAt, page, sortBy, limit, filter, propertyKeys, _callback, opts);
         }
     }
 
@@ -698,6 +903,10 @@ public class ExecutionsApi {
         return new APIlistExecutionsRequest();
     }
     private okhttp3.Call upsertExecutionsCall(ExecutionSetRequest executionSetRequest, final ApiCallback _callback) throws ApiException {
+        return upsertExecutionsCall(executionSetRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertExecutionsCall(ExecutionSetRequest executionSetRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -744,25 +953,39 @@ public class ExecutionsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertExecutionsValidateBeforeCall(ExecutionSetRequest executionSetRequest, final ApiCallback _callback) throws ApiException {
-        return upsertExecutionsCall(executionSetRequest, _callback);
+    private okhttp3.Call upsertExecutionsValidateBeforeCall(ExecutionSetRequest executionSetRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return upsertExecutionsCall(executionSetRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfExecution> upsertExecutionsWithHttpInfo(ExecutionSetRequest executionSetRequest) throws ApiException {
-        okhttp3.Call localVarCall = upsertExecutionsValidateBeforeCall(executionSetRequest, null);
+        okhttp3.Call localVarCall = upsertExecutionsValidateBeforeCall(executionSetRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfExecution>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfExecution> upsertExecutionsWithHttpInfo(ExecutionSetRequest executionSetRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertExecutionsValidateBeforeCall(executionSetRequest, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfExecution>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertExecutionsAsync(ExecutionSetRequest executionSetRequest, final ApiCallback<ResourceListOfExecution> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertExecutionsValidateBeforeCall(executionSetRequest, _callback);
+        okhttp3.Call localVarCall = upsertExecutionsValidateBeforeCall(executionSetRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfExecution>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertExecutionsAsync(ExecutionSetRequest executionSetRequest, final ApiCallback<ResourceListOfExecution> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertExecutionsValidateBeforeCall(executionSetRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfExecution>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -819,6 +1042,23 @@ public class ExecutionsApi {
         }
 
         /**
+         * Execute upsertExecutions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfExecution
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> A collection of executions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfExecution execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfExecution> localVarResp = upsertExecutionsWithHttpInfo(executionSetRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertExecutions request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfExecution&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -832,6 +1072,22 @@ public class ExecutionsApi {
          */
         public ApiResponse<ResourceListOfExecution> executeWithHttpInfo() throws ApiException {
             return upsertExecutionsWithHttpInfo(executionSetRequest);
+        }
+
+        /**
+         * Execute upsertExecutions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfExecution&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> A collection of executions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfExecution> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertExecutionsWithHttpInfo(executionSetRequest, opts);
         }
 
         /**
@@ -849,6 +1105,23 @@ public class ExecutionsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfExecution> _callback) throws ApiException {
             return upsertExecutionsAsync(executionSetRequest, _callback);
+        }
+
+        /**
+         * Execute upsertExecutions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> A collection of executions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfExecution> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertExecutionsAsync(executionSetRequest, _callback, opts);
         }
     }
 

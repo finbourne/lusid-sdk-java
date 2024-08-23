@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -77,6 +78,10 @@ public class BlocksApi {
     }
 
     private okhttp3.Call deleteBlockCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+        return deleteBlockCall(scope, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteBlockCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,11 +126,11 @@ public class BlocksApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteBlockValidateBeforeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteBlockValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteBlock(Async)");
@@ -136,20 +141,34 @@ public class BlocksApi {
             throw new ApiException("Missing the required parameter 'code' when calling deleteBlock(Async)");
         }
 
-        return deleteBlockCall(scope, code, _callback);
+        return deleteBlockCall(scope, code, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deleteBlockWithHttpInfo(String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = deleteBlockValidateBeforeCall(scope, code, null);
+        okhttp3.Call localVarCall = deleteBlockValidateBeforeCall(scope, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteBlockWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteBlockValidateBeforeCall(scope, code, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteBlockAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteBlockValidateBeforeCall(scope, code, _callback);
+        okhttp3.Call localVarCall = deleteBlockValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteBlockAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteBlockValidateBeforeCall(scope, code, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -199,6 +218,23 @@ public class BlocksApi {
         }
 
         /**
+         * Execute deleteBlock request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting an block. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteBlockWithHttpInfo(scope, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteBlock request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -212,6 +248,22 @@ public class BlocksApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deleteBlockWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteBlock request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting an block. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteBlockWithHttpInfo(scope, code, opts);
         }
 
         /**
@@ -229,6 +281,23 @@ public class BlocksApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deleteBlockAsync(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteBlock request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting an block. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteBlockAsync(scope, code, _callback, opts);
         }
     }
 
@@ -250,6 +319,10 @@ public class BlocksApi {
         return new APIdeleteBlockRequest(scope, code);
     }
     private okhttp3.Call getBlockCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return getBlockCall(scope, code, asAt, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getBlockCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -302,11 +375,11 @@ public class BlocksApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getBlockValidateBeforeCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getBlockValidateBeforeCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getBlock(Async)");
@@ -317,20 +390,34 @@ public class BlocksApi {
             throw new ApiException("Missing the required parameter 'code' when calling getBlock(Async)");
         }
 
-        return getBlockCall(scope, code, asAt, propertyKeys, _callback);
+        return getBlockCall(scope, code, asAt, propertyKeys, _callback, opts);
 
     }
 
 
     private ApiResponse<Block> getBlockWithHttpInfo(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = getBlockValidateBeforeCall(scope, code, asAt, propertyKeys, null);
+        okhttp3.Call localVarCall = getBlockValidateBeforeCall(scope, code, asAt, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Block>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Block> getBlockWithHttpInfo(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getBlockValidateBeforeCall(scope, code, asAt, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<Block>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getBlockAsync(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<Block> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getBlockValidateBeforeCall(scope, code, asAt, propertyKeys, _callback);
+        okhttp3.Call localVarCall = getBlockValidateBeforeCall(scope, code, asAt, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Block>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getBlockAsync(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<Block> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getBlockValidateBeforeCall(scope, code, asAt, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<Block>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -402,6 +489,23 @@ public class BlocksApi {
         }
 
         /**
+         * Execute getBlock request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Block
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The block matching the given identifier. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Block execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Block> localVarResp = getBlockWithHttpInfo(scope, code, asAt, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getBlock request with HTTP info returned
          * @return ApiResponse&lt;Block&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -415,6 +519,22 @@ public class BlocksApi {
          */
         public ApiResponse<Block> executeWithHttpInfo() throws ApiException {
             return getBlockWithHttpInfo(scope, code, asAt, propertyKeys);
+        }
+
+        /**
+         * Execute getBlock request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Block&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The block matching the given identifier. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Block> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getBlockWithHttpInfo(scope, code, asAt, propertyKeys, opts);
         }
 
         /**
@@ -432,6 +552,23 @@ public class BlocksApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Block> _callback) throws ApiException {
             return getBlockAsync(scope, code, asAt, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getBlock request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The block matching the given identifier. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Block> _callback, ConfigurationOptions opts) throws ApiException {
+            return getBlockAsync(scope, code, asAt, propertyKeys, _callback, opts);
         }
     }
 
@@ -453,6 +590,10 @@ public class BlocksApi {
         return new APIgetBlockRequest(scope, code);
     }
     private okhttp3.Call listBlocksCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return listBlocksCall(asAt, page, sortBy, limit, filter, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listBlocksCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -519,25 +660,39 @@ public class BlocksApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listBlocksValidateBeforeCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
-        return listBlocksCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
+    private okhttp3.Call listBlocksValidateBeforeCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listBlocksCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfBlock> listBlocksWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = listBlocksValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, null);
+        okhttp3.Call localVarCall = listBlocksValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfBlock>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfBlock> listBlocksWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listBlocksValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfBlock>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listBlocksAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfBlock> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listBlocksValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
+        okhttp3.Call localVarCall = listBlocksValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfBlock>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listBlocksAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfBlock> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listBlocksValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfBlock>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -649,6 +804,23 @@ public class BlocksApi {
         }
 
         /**
+         * Execute listBlocks request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfBlock
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Blocks in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfBlock execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfBlock> localVarResp = listBlocksWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listBlocks request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfBlock&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -662,6 +834,22 @@ public class BlocksApi {
          */
         public ApiResponse<PagedResourceListOfBlock> executeWithHttpInfo() throws ApiException {
             return listBlocksWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys);
+        }
+
+        /**
+         * Execute listBlocks request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfBlock&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Blocks in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfBlock> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listBlocksWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys, opts);
         }
 
         /**
@@ -679,6 +867,23 @@ public class BlocksApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfBlock> _callback) throws ApiException {
             return listBlocksAsync(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute listBlocks request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Blocks in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfBlock> _callback, ConfigurationOptions opts) throws ApiException {
+            return listBlocksAsync(asAt, page, sortBy, limit, filter, propertyKeys, _callback, opts);
         }
     }
 
@@ -698,6 +903,10 @@ public class BlocksApi {
         return new APIlistBlocksRequest();
     }
     private okhttp3.Call upsertBlocksCall(BlockSetRequest blockSetRequest, final ApiCallback _callback) throws ApiException {
+        return upsertBlocksCall(blockSetRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertBlocksCall(BlockSetRequest blockSetRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -744,25 +953,39 @@ public class BlocksApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertBlocksValidateBeforeCall(BlockSetRequest blockSetRequest, final ApiCallback _callback) throws ApiException {
-        return upsertBlocksCall(blockSetRequest, _callback);
+    private okhttp3.Call upsertBlocksValidateBeforeCall(BlockSetRequest blockSetRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return upsertBlocksCall(blockSetRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfBlock> upsertBlocksWithHttpInfo(BlockSetRequest blockSetRequest) throws ApiException {
-        okhttp3.Call localVarCall = upsertBlocksValidateBeforeCall(blockSetRequest, null);
+        okhttp3.Call localVarCall = upsertBlocksValidateBeforeCall(blockSetRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfBlock>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfBlock> upsertBlocksWithHttpInfo(BlockSetRequest blockSetRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertBlocksValidateBeforeCall(blockSetRequest, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfBlock>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertBlocksAsync(BlockSetRequest blockSetRequest, final ApiCallback<ResourceListOfBlock> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertBlocksValidateBeforeCall(blockSetRequest, _callback);
+        okhttp3.Call localVarCall = upsertBlocksValidateBeforeCall(blockSetRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfBlock>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertBlocksAsync(BlockSetRequest blockSetRequest, final ApiCallback<ResourceListOfBlock> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertBlocksValidateBeforeCall(blockSetRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfBlock>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -819,6 +1042,23 @@ public class BlocksApi {
         }
 
         /**
+         * Execute upsertBlocks request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfBlock
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> A collection of blocks. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfBlock execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfBlock> localVarResp = upsertBlocksWithHttpInfo(blockSetRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertBlocks request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfBlock&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -832,6 +1072,22 @@ public class BlocksApi {
          */
         public ApiResponse<ResourceListOfBlock> executeWithHttpInfo() throws ApiException {
             return upsertBlocksWithHttpInfo(blockSetRequest);
+        }
+
+        /**
+         * Execute upsertBlocks request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfBlock&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> A collection of blocks. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfBlock> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertBlocksWithHttpInfo(blockSetRequest, opts);
         }
 
         /**
@@ -849,6 +1105,23 @@ public class BlocksApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfBlock> _callback) throws ApiException {
             return upsertBlocksAsync(blockSetRequest, _callback);
+        }
+
+        /**
+         * Execute upsertBlocks request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> A collection of blocks. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfBlock> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertBlocksAsync(blockSetRequest, _callback, opts);
         }
     }
 

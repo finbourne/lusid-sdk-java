@@ -56,12 +56,23 @@ public class CustomEntitiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CustomEntitiesApi apiInstance = apiFactory.build(CustomEntitiesApi.class);
+
         CustomEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(CustomEntitiesApi.class);
         String entityType = "entityType_example"; // String | The type of Custom Entity to remove.
         String identifierType = "identifierType_example"; // String | An identifier type attached to the Custom Entity instance.
         String identifierValue = "identifierValue_example"; // String | The identifier value.
         String identifierScope = "identifierScope_example"; // String | The identifier scope.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteCustomEntity(entityType, identifierType, identifierValue, identifierScope).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteCustomEntity(entityType, identifierType, identifierValue, identifierScope).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -142,6 +153,14 @@ public class CustomEntitiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CustomEntitiesApi apiInstance = apiFactory.build(CustomEntitiesApi.class);
+
         CustomEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(CustomEntitiesApi.class);
         String entityType = "entityType_example"; // String | The type of the Custom Entity.
         String identifierType = "identifierType_example"; // String | An identifier type attached to the Custom Entity instance.
@@ -151,6 +170,9 @@ public class CustomEntitiesApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The effectiveAt datetime at which to retrieve the Access Metadata.
         OffsetDateTime effectiveUntil = OffsetDateTime.now(); // OffsetDateTime | The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next 'effectiveAt' datetime of the Access Metadata.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteCustomEntityAccessMetadata(entityType, identifierType, identifierValue, metadataKey, identifierScope, effectiveAt, effectiveUntil).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteCustomEntityAccessMetadata(entityType, identifierType, identifierValue, metadataKey, identifierScope, effectiveAt, effectiveUntil).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -234,6 +256,14 @@ public class CustomEntitiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CustomEntitiesApi apiInstance = apiFactory.build(CustomEntitiesApi.class);
+
         CustomEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(CustomEntitiesApi.class);
         String entityType = "entityType_example"; // String | The type of the Custom Entity.
         String identifierType = "identifierType_example"; // String | An identifier type attached to the Custom Entity instance.
@@ -242,6 +272,9 @@ public class CustomEntitiesApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to get the entities. Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Access Metadata. Defaults to returning the latest version of the metadata if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // Map<String, List<AccessMetadataValue>> result = apiInstance.getAllCustomEntityAccessMetadata(entityType, identifierType, identifierValue, identifierScope, effectiveAt, asAt).execute(opts);
+
             Map<String, List<AccessMetadataValue>> result = apiInstance.getAllCustomEntityAccessMetadata(entityType, identifierType, identifierValue, identifierScope, effectiveAt, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -324,6 +357,14 @@ public class CustomEntitiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CustomEntitiesApi apiInstance = apiFactory.build(CustomEntitiesApi.class);
+
         CustomEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(CustomEntitiesApi.class);
         String entityType = "entityType_example"; // String | The type of Custom Entity to retrieve. An entityType can be created using the \"CreateCustomEntityDefinition\" endpoint for CustomEntityDefinitions.
         String identifierType = "identifierType_example"; // String | An identifier type attached to the Custom Entity instance.
@@ -334,6 +375,9 @@ public class CustomEntitiesApiExample {
         List<String> relatedEntityPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from any domain that supports relationships   to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'.
         List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto the entity in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
         try {
+            // uncomment the below to set overrides at the request level
+            // CustomEntityResponse result = apiInstance.getCustomEntity(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds).execute(opts);
+
             CustomEntityResponse result = apiInstance.getCustomEntity(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -418,6 +462,14 @@ public class CustomEntitiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CustomEntitiesApi apiInstance = apiFactory.build(CustomEntitiesApi.class);
+
         CustomEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(CustomEntitiesApi.class);
         String entityType = "entityType_example"; // String | The type of the Custom Entity.
         String identifierType = "identifierType_example"; // String | An identifier type attached to the Custom Entity instance.
@@ -427,6 +479,9 @@ public class CustomEntitiesApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to get the entities. Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Access Metadata. Defaults to returning the latest version of the metadata if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // List<AccessMetadataValue> result = apiInstance.getCustomEntityAccessMetadataByKey(entityType, identifierType, identifierValue, metadataKey, identifierScope, effectiveAt, asAt).execute(opts);
+
             List<AccessMetadataValue> result = apiInstance.getCustomEntityAccessMetadataByKey(entityType, identifierType, identifierValue, metadataKey, identifierScope, effectiveAt, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -510,6 +565,14 @@ public class CustomEntitiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CustomEntitiesApi apiInstance = apiFactory.build(CustomEntitiesApi.class);
+
         CustomEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(CustomEntitiesApi.class);
         String entityType = "entityType_example"; // String | The type of entity get relationships for.
         String identifierScope = "identifierScope_example"; // String | The identifier scope.
@@ -520,6 +583,9 @@ public class CustomEntitiesApiExample {
         String filter = "filter_example"; // String | Expression to filter relationships. Users should provide null or empty string for this field until further notice.
         List<String> identifierTypes = Arrays.asList(); // List<String> | Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format   {domain}/{scope}/{code} e.g. \"Person/CompanyDetails/Role\". They must be from the \"Person\" or \"LegalEntity\" domain.   Only identifier types stated will be used to look up relevant entities in relationships. If not applicable, provide an empty array.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfRelationship result = apiInstance.getCustomEntityRelationships(entityType, identifierScope, identifierType, identifierValue, effectiveAt, asAt, filter, identifierTypes).execute(opts);
+
             ResourceListOfRelationship result = apiInstance.getCustomEntityRelationships(entityType, identifierScope, identifierType, identifierValue, effectiveAt, asAt, filter, identifierTypes).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -604,6 +670,14 @@ public class CustomEntitiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CustomEntitiesApi apiInstance = apiFactory.build(CustomEntitiesApi.class);
+
         CustomEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(CustomEntitiesApi.class);
         String entityType = "entityType_example"; // String | The type of Custom Entity to list.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the entities. Defaults to the current LUSID   system datetime if not specified.
@@ -615,6 +689,9 @@ public class CustomEntitiesApiExample {
         List<String> relatedEntityPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from any domain that supports relationships   to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'.
         List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto the entities in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfCustomEntityResponse result = apiInstance.listCustomEntities(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds).execute(opts);
+
             PagedResourceListOfCustomEntityResponse result = apiInstance.listCustomEntities(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -700,6 +777,14 @@ public class CustomEntitiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CustomEntitiesApi apiInstance = apiFactory.build(CustomEntitiesApi.class);
+
         CustomEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(CustomEntitiesApi.class);
         String entityType = "entityType_example"; // String | The type of the Custom Entity.
         String identifierType = "identifierType_example"; // String | An identifier type attached to the Custom Entity instance.
@@ -709,6 +794,9 @@ public class CustomEntitiesApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The effectiveAt datetime at which the Access Metadata will be effective from
         OffsetDateTime effectiveUntil = OffsetDateTime.now(); // OffsetDateTime | The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next 'effectiveAt' datetime of the Access Metadata
         try {
+            // uncomment the below to set overrides at the request level
+            // Map<String, List<AccessMetadataValue>> result = apiInstance.patchCustomEntityAccessMetadata(entityType, identifierType, identifierValue, identifierScope, accessMetadataOperation, effectiveAt, effectiveUntil).execute(opts);
+
             Map<String, List<AccessMetadataValue>> result = apiInstance.patchCustomEntityAccessMetadata(entityType, identifierType, identifierValue, identifierScope, accessMetadataOperation, effectiveAt, effectiveUntil).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -792,11 +880,22 @@ public class CustomEntitiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CustomEntitiesApi apiInstance = apiFactory.build(CustomEntitiesApi.class);
+
         CustomEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(CustomEntitiesApi.class);
         String entityType = "entityType_example"; // String | The type of the Custom Entity to be created. An entityType can be created using the \"CreateCustomEntityDefinition\" endpoint for CustomEntityDefinitions.
         String successMode = "successMode_example"; // String | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial
         Map<String, CustomEntityRequest> requestBody = new HashMap(); // Map<String, CustomEntityRequest> | The payload describing the Custom Entity instances
         try {
+            // uncomment the below to set overrides at the request level
+            // UpsertCustomEntitiesResponse result = apiInstance.upsertCustomEntities(entityType, successMode, requestBody).execute(opts);
+
             UpsertCustomEntitiesResponse result = apiInstance.upsertCustomEntities(entityType, successMode, requestBody).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -876,10 +975,21 @@ public class CustomEntitiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CustomEntitiesApi apiInstance = apiFactory.build(CustomEntitiesApi.class);
+
         CustomEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(CustomEntitiesApi.class);
         String entityType = "entityType_example"; // String | The type of the Custom Entity to be created. An entityType can be created using the \"CreateCustomEntityDefinition\" endpoint for CustomEntityDefinitions.
         CustomEntityRequest customEntityRequest = new CustomEntityRequest(); // CustomEntityRequest | The payload describing the Custom Entity instance.
         try {
+            // uncomment the below to set overrides at the request level
+            // CustomEntityResponse result = apiInstance.upsertCustomEntity(entityType, customEntityRequest).execute(opts);
+
             CustomEntityResponse result = apiInstance.upsertCustomEntity(entityType, customEntityRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -958,6 +1068,14 @@ public class CustomEntitiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CustomEntitiesApi apiInstance = apiFactory.build(CustomEntitiesApi.class);
+
         CustomEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(CustomEntitiesApi.class);
         String entityType = "entityType_example"; // String | The type of the Custom Entity.
         String identifierType = "identifierType_example"; // String | An identifier type attached to the Custom Entity instance.
@@ -968,6 +1086,9 @@ public class CustomEntitiesApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The effectiveAt datetime at which the Access Metadata will be effective from
         OffsetDateTime effectiveUntil = OffsetDateTime.now(); // OffsetDateTime | The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next 'effectiveAt' datetime of the Access Metadata
         try {
+            // uncomment the below to set overrides at the request level
+            // List<AccessMetadataValue> result = apiInstance.upsertCustomEntityAccessMetadata(entityType, identifierType, identifierValue, metadataKey, identifierScope, upsertCustomEntityAccessMetadataRequest, effectiveAt, effectiveUntil).execute(opts);
+
             List<AccessMetadataValue> result = apiInstance.upsertCustomEntityAccessMetadata(entityType, identifierType, identifierValue, metadataKey, identifierScope, upsertCustomEntityAccessMetadataRequest, effectiveAt, effectiveUntil).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

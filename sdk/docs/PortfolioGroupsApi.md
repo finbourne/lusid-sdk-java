@@ -71,12 +71,23 @@ public class PortfolioGroupsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfolioGroupsApi apiInstance = apiFactory.build(PortfolioGroupsApi.class);
+
         PortfolioGroupsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfolioGroupsApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio group to add a portfolio to.
         String code = "code_example"; // String | The code of the portfolio group to add a portfolio to. Together with the scope this uniquely identifies the portfolio group.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label from which the portfolio will be added to the group.
         ResourceId resourceId = new ResourceId(); // ResourceId | The resource identifier of the portfolio to add to the portfolio group.
         try {
+            // uncomment the below to set overrides at the request level
+            // PortfolioGroup result = apiInstance.addPortfolioToGroup(scope, code, effectiveAt, resourceId).execute(opts);
+
             PortfolioGroup result = apiInstance.addPortfolioToGroup(scope, code, effectiveAt, resourceId).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -157,12 +168,23 @@ public class PortfolioGroupsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfolioGroupsApi apiInstance = apiFactory.build(PortfolioGroupsApi.class);
+
         PortfolioGroupsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfolioGroupsApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio group to add a portfolio group to.
         String code = "code_example"; // String | The code of the portfolio group to add a portfolio group to. Together with the scope this uniquely identifies the portfolio group.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label from which the sub group will be added to the group.
         ResourceId resourceId = new ResourceId(); // ResourceId | The resource identifier of the portfolio group to add to the portfolio group as a sub group.
         try {
+            // uncomment the below to set overrides at the request level
+            // PortfolioGroup result = apiInstance.addSubGroupToGroup(scope, code, effectiveAt, resourceId).execute(opts);
+
             PortfolioGroup result = apiInstance.addSubGroupToGroup(scope, code, effectiveAt, resourceId).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -243,6 +265,14 @@ public class PortfolioGroupsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfolioGroupsApi apiInstance = apiFactory.build(PortfolioGroupsApi.class);
+
         PortfolioGroupsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfolioGroupsApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio group.
         String code = "code_example"; // String | The code of the portfolio group. Together with the scope this uniquely identifies   the portfolio group.
@@ -253,6 +283,9 @@ public class PortfolioGroupsApiExample {
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing transactions from a previous call to BuildTransactions.
         try {
+            // uncomment the below to set overrides at the request level
+            // VersionedResourceListOfOutputTransaction result = apiInstance.buildTransactionsForPortfolioGroup(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page).execute(opts);
+
             VersionedResourceListOfOutputTransaction result = apiInstance.buildTransactionsForPortfolioGroup(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -337,10 +370,21 @@ public class PortfolioGroupsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfolioGroupsApi apiInstance = apiFactory.build(PortfolioGroupsApi.class);
+
         PortfolioGroupsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfolioGroupsApi.class);
         String scope = "scope_example"; // String | The scope that the portfolio group will be created in.
         CreatePortfolioGroupRequest createPortfolioGroupRequest = new CreatePortfolioGroupRequest(); // CreatePortfolioGroupRequest | The definition and details of the portfolio group.
         try {
+            // uncomment the below to set overrides at the request level
+            // PortfolioGroup result = apiInstance.createPortfolioGroup(scope, createPortfolioGroupRequest).execute(opts);
+
             PortfolioGroup result = apiInstance.createPortfolioGroup(scope, createPortfolioGroupRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -419,12 +463,23 @@ public class PortfolioGroupsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfolioGroupsApi apiInstance = apiFactory.build(PortfolioGroupsApi.class);
+
         PortfolioGroupsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfolioGroupsApi.class);
         String scope = "scope_example"; // String | The scope of the group to delete properties from.
         String code = "code_example"; // String | The code of the group to delete properties from. Together with the scope this uniquely identifies the group.
         List<String> requestBody = ["PortfolioGroup/MyScope/MyPropertyName","PortfolioGroup/MyScope/MyPropertyName2"]; // List<String> | The property keys of the properties to delete. These take the format   {domain}/{scope}/{code} e.g. \"PortfolioGroup/Manager/Id\". Each property must be from the \"PortfolioGroup\" domain.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified 'effectiveAt' datetime. If the 'effectiveAt' is not provided or is   before the time-variant property exists then a failure is returned. Do not specify this parameter if any of   the properties to delete are perpetual.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteGroupProperties(scope, code, requestBody, effectiveAt).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteGroupProperties(scope, code, requestBody, effectiveAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -505,6 +560,14 @@ public class PortfolioGroupsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfolioGroupsApi apiInstance = apiFactory.build(PortfolioGroupsApi.class);
+
         PortfolioGroupsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfolioGroupsApi.class);
         String scope = "scope_example"; // String | The scope of the Portfolio Group
         String code = "code_example"; // String | The Portfolio Group code
@@ -512,6 +575,9 @@ public class PortfolioGroupsApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The effective date to delete at, if this is not supplied, it will delete all data found
         OffsetDateTime effectiveUntil = OffsetDateTime.now(); // OffsetDateTime | The effective date until which the delete is valid. If not supplied this will be valid indefinitely, or until the next 'effectiveAt' date of the Access Metadata
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteKeyFromPortfolioGroupAccessMetadata(scope, code, metadataKey, effectiveAt, effectiveUntil).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteKeyFromPortfolioGroupAccessMetadata(scope, code, metadataKey, effectiveAt, effectiveUntil).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -593,6 +659,14 @@ public class PortfolioGroupsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfolioGroupsApi apiInstance = apiFactory.build(PortfolioGroupsApi.class);
+
         PortfolioGroupsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfolioGroupsApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio group to remove the portfolio from.
         String code = "code_example"; // String | The code of the portfolio group to remove the portfolio from. Together with the scope this uniquely identifies the portfolio group.
@@ -600,6 +674,9 @@ public class PortfolioGroupsApiExample {
         String portfolioCode = "portfolioCode_example"; // String | The code of the portfolio being removed from the portfolio group. Together with the scope this uniquely identifies the portfolio to remove.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label from which the portfolio will be removed from the portfolio group.
         try {
+            // uncomment the below to set overrides at the request level
+            // PortfolioGroup result = apiInstance.deletePortfolioFromGroup(scope, code, portfolioScope, portfolioCode, effectiveAt).execute(opts);
+
             PortfolioGroup result = apiInstance.deletePortfolioFromGroup(scope, code, portfolioScope, portfolioCode, effectiveAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -681,10 +758,21 @@ public class PortfolioGroupsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfolioGroupsApi apiInstance = apiFactory.build(PortfolioGroupsApi.class);
+
         PortfolioGroupsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfolioGroupsApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio group to delete.
         String code = "code_example"; // String | The code of the portfolio group to delete. Together with the scope this uniquely identifies the portfolio group to delete.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deletePortfolioGroup(scope, code).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deletePortfolioGroup(scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -763,6 +851,14 @@ public class PortfolioGroupsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfolioGroupsApi apiInstance = apiFactory.build(PortfolioGroupsApi.class);
+
         PortfolioGroupsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfolioGroupsApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio group to remove the sub group from.
         String code = "code_example"; // String | The code of the portfolio group to remove the sub group from. Together with the scope this uniquely identifies the portfolio group.
@@ -770,6 +866,9 @@ public class PortfolioGroupsApiExample {
         String subgroupCode = "subgroupCode_example"; // String | The code of the sub group to remove from the portfolio group. Together with the scope this uniquely identifies the sub group.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label from which the sub group will be removed from the portfolio group.
         try {
+            // uncomment the below to set overrides at the request level
+            // PortfolioGroup result = apiInstance.deleteSubGroupFromGroup(scope, code, subgroupScope, subgroupCode, effectiveAt).execute(opts);
+
             PortfolioGroup result = apiInstance.deleteSubGroupFromGroup(scope, code, subgroupScope, subgroupCode, effectiveAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -851,6 +950,14 @@ public class PortfolioGroupsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfolioGroupsApi apiInstance = apiFactory.build(PortfolioGroupsApi.class);
+
         PortfolioGroupsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfolioGroupsApi.class);
         String scope = "scope_example"; // String | The scope of the group to retrieve the A2B report for.
         String code = "code_example"; // String | The code of the group to retrieve the A2B report for. Together with the scope this   uniquely identifies the portfolio group.
@@ -862,6 +969,9 @@ public class PortfolioGroupsApiExample {
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\" domain to decorate onto   the results. These take the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\".
         String filter = "filter_example"; // String | Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         try {
+            // uncomment the below to set overrides at the request level
+            // VersionedResourceListOfA2BDataRecord result = apiInstance.getA2BDataForPortfolioGroup(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter).execute(opts);
+
             VersionedResourceListOfA2BDataRecord result = apiInstance.getA2BDataForPortfolioGroup(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -947,12 +1057,23 @@ public class PortfolioGroupsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfolioGroupsApi apiInstance = apiFactory.build(PortfolioGroupsApi.class);
+
         PortfolioGroupsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfolioGroupsApi.class);
         String scope = "scope_example"; // String | The scope of the group to list the properties for.
         String code = "code_example"; // String | The code of the group to list the properties for. Together with the scope this uniquely identifies the group.
         String effectiveAt = "effectiveAt_example"; // String | The effective date time or cut label at which to list the group's properties. Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt date time at which to list the group's properties. Defaults to return the latest version of each property if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // PortfolioGroupProperties result = apiInstance.getGroupProperties(scope, code, effectiveAt, asAt).execute(opts);
+
             PortfolioGroupProperties result = apiInstance.getGroupProperties(scope, code, effectiveAt, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1033,6 +1154,14 @@ public class PortfolioGroupsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfolioGroupsApi apiInstance = apiFactory.build(PortfolioGroupsApi.class);
+
         PortfolioGroupsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfolioGroupsApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio group.
         String code = "code_example"; // String | The code of the portfolio group. Together with the scope this uniquely identifies   the portfolio group.
@@ -1043,6 +1172,9 @@ public class PortfolioGroupsApiExample {
         Boolean byTaxlots = true; // Boolean | Whether or not to expand the holdings to return the underlying tax-lots. Defaults to   False.
         Integer includeSettlementEventsAfterDays = 56; // Integer | Number of days ahead to bring back settlements from, in relation to the specified effectiveAt
         try {
+            // uncomment the below to set overrides at the request level
+            // VersionedResourceListOfPortfolioHolding result = apiInstance.getHoldingsForPortfolioGroup(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays).execute(opts);
+
             VersionedResourceListOfPortfolioHolding result = apiInstance.getHoldingsForPortfolioGroup(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1127,6 +1259,14 @@ public class PortfolioGroupsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfolioGroupsApi apiInstance = apiFactory.build(PortfolioGroupsApi.class);
+
         PortfolioGroupsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfolioGroupsApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio group to retrieve the definition for.
         String code = "code_example"; // String | The code of the portfolio group to retrieve the definition for. Together with the scope   this uniquely identifies the portfolio group.
@@ -1135,6 +1275,9 @@ public class PortfolioGroupsApiExample {
         List<String> relatedEntityPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from any domain that supports relationships   to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'.
         List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto the portfolio group in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
         try {
+            // uncomment the below to set overrides at the request level
+            // PortfolioGroup result = apiInstance.getPortfolioGroup(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds).execute(opts);
+
             PortfolioGroup result = apiInstance.getPortfolioGroup(scope, code, effectiveAt, asAt, relatedEntityPropertyKeys, relationshipDefinitionIds).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1217,6 +1360,14 @@ public class PortfolioGroupsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfolioGroupsApi apiInstance = apiFactory.build(PortfolioGroupsApi.class);
+
         PortfolioGroupsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfolioGroupsApi.class);
         String scope = "scope_example"; // String | The scope of the Portfolio Group
         String code = "code_example"; // String | The Portfolio Group code
@@ -1224,6 +1375,9 @@ public class PortfolioGroupsApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The effectiveAt datetime at which to retrieve the access metadata
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the access metadata
         try {
+            // uncomment the below to set overrides at the request level
+            // List<AccessMetadataValue> result = apiInstance.getPortfolioGroupAccessMetadataByKey(scope, code, metadataKey, effectiveAt, asAt).execute(opts);
+
             List<AccessMetadataValue> result = apiInstance.getPortfolioGroupAccessMetadataByKey(scope, code, metadataKey, effectiveAt, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1305,6 +1459,14 @@ public class PortfolioGroupsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfolioGroupsApi apiInstance = apiFactory.build(PortfolioGroupsApi.class);
+
         PortfolioGroupsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfolioGroupsApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio group to retrieve the commands for.
         String code = "code_example"; // String | The code of the portfolio group to retrieve the commands for. Together with the scope this uniquely identifies the portfolio group.
@@ -1312,6 +1474,9 @@ public class PortfolioGroupsApiExample {
         OffsetDateTime toAsAt = OffsetDateTime.now(); // OffsetDateTime | The upper bound asAt datetime (inclusive) from which to retrieve commands. There is no upper bound if this is not specified.
         String filter = "filter_example"; // String | Expression to filter the result set.   For example, to filter on the User ID, use \"userId.id eq 'string'\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfProcessedCommand result = apiInstance.getPortfolioGroupCommands(scope, code, fromAsAt, toAsAt, filter).execute(opts);
+
             ResourceListOfProcessedCommand result = apiInstance.getPortfolioGroupCommands(scope, code, fromAsAt, toAsAt, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1393,6 +1558,14 @@ public class PortfolioGroupsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfolioGroupsApi apiInstance = apiFactory.build(PortfolioGroupsApi.class);
+
         PortfolioGroupsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfolioGroupsApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio group to expand.
         String code = "code_example"; // String | The code of the portfolio group to expand. Together with the scope this uniquely identifies the portfolio   group to expand.
@@ -1400,6 +1573,9 @@ public class PortfolioGroupsApiExample {
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to expand the portfolio group. Defaults to return the latest version of each portfolio in the group if not specified.
         List<String> propertyFilter = Arrays.asList(); // List<String> | The restricted list of property keys from the \"Portfolio\" domain which will be decorated onto each portfolio. These take the format {domain}/{scope}/{code} e.g. \"Portfolio/Manager/Id\".
         try {
+            // uncomment the below to set overrides at the request level
+            // ExpandedGroup result = apiInstance.getPortfolioGroupExpansion(scope, code, effectiveAt, asAt, propertyFilter).execute(opts);
+
             ExpandedGroup result = apiInstance.getPortfolioGroupExpansion(scope, code, effectiveAt, asAt, propertyFilter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1481,12 +1657,23 @@ public class PortfolioGroupsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfolioGroupsApi apiInstance = apiFactory.build(PortfolioGroupsApi.class);
+
         PortfolioGroupsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfolioGroupsApi.class);
         String scope = "scope_example"; // String | The scope of the Portfolio Group
         String code = "code_example"; // String | The Portfolio Group code
         String effectiveAt = "effectiveAt_example"; // String | The effectiveAt datetime at which to retrieve the Access Metadata
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Access Metadata
         try {
+            // uncomment the below to set overrides at the request level
+            // Map<String, List<AccessMetadataValue>> result = apiInstance.getPortfolioGroupMetadata(scope, code, effectiveAt, asAt).execute(opts);
+
             Map<String, List<AccessMetadataValue>> result = apiInstance.getPortfolioGroupMetadata(scope, code, effectiveAt, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1567,6 +1754,14 @@ public class PortfolioGroupsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfolioGroupsApi apiInstance = apiFactory.build(PortfolioGroupsApi.class);
+
         PortfolioGroupsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfolioGroupsApi.class);
         String scope = "scope_example"; // String | The scope of the group.
         String code = "code_example"; // String | The code of the group. Together with the scope this uniquely identifies   the portfolio group.
@@ -1577,6 +1772,9 @@ public class PortfolioGroupsApiExample {
         String page = "page_example"; // String | The pagination token to use to continue listing properties from a previous call to get property time series.   This value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, and asAt fields   must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfPropertyInterval result = apiInstance.getPortfolioGroupPropertyTimeSeries(scope, code, propertyKey, portfolioGroupEffectiveAt, asAt, filter, page, limit).execute(opts);
+
             ResourceListOfPropertyInterval result = apiInstance.getPortfolioGroupPropertyTimeSeries(scope, code, propertyKey, portfolioGroupEffectiveAt, asAt, filter, page, limit).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1661,6 +1859,14 @@ public class PortfolioGroupsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfolioGroupsApi apiInstance = apiFactory.build(PortfolioGroupsApi.class);
+
         PortfolioGroupsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfolioGroupsApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio group.
         String code = "code_example"; // String | The code of the portfolio group. Together with the scope this uniquely identifies   the portfolio group.
@@ -1669,6 +1875,9 @@ public class PortfolioGroupsApiExample {
         String filter = "filter_example"; // String | Expression to filter the relations. Users should provide null or empty string for this field until further notice.
         List<String> identifierTypes = Arrays.asList(); // List<String> | Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format   {domain}/{scope}/{code} e.g. \"Person/CompanyDetails/Role\". They must be from the \"Person\" or \"LegalEntity\" domain.   Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfRelation result = apiInstance.getPortfolioGroupRelations(scope, code, effectiveAt, asAt, filter, identifierTypes).execute(opts);
+
             ResourceListOfRelation result = apiInstance.getPortfolioGroupRelations(scope, code, effectiveAt, asAt, filter, identifierTypes).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1751,6 +1960,14 @@ public class PortfolioGroupsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfolioGroupsApi apiInstance = apiFactory.build(PortfolioGroupsApi.class);
+
         PortfolioGroupsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfolioGroupsApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio group.
         String code = "code_example"; // String | The code of the portfolio group. Together with the scope this uniquely identifies   the portfolio group.
@@ -1759,6 +1976,9 @@ public class PortfolioGroupsApiExample {
         String filter = "filter_example"; // String | Expression to filter relationships. Users should provide null or empty string for this field until further notice.
         List<String> identifierTypes = Arrays.asList(); // List<String> | Identifier types (as property keys) used for referencing Persons or Legal Entities.   These can be specified from the 'Person' or 'LegalEntity' domains and have the format {domain}/{scope}/{code}, for example   'Person/CompanyDetails/Role'. An Empty array may be used to return all related Entities.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfRelationship result = apiInstance.getPortfolioGroupRelationships(scope, code, effectiveAt, asAt, filter, identifierTypes).execute(opts);
+
             ResourceListOfRelationship result = apiInstance.getPortfolioGroupRelationships(scope, code, effectiveAt, asAt, filter, identifierTypes).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1841,6 +2061,14 @@ public class PortfolioGroupsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfolioGroupsApi apiInstance = apiFactory.build(PortfolioGroupsApi.class);
+
         PortfolioGroupsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfolioGroupsApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio group.
         String code = "code_example"; // String | The code of the portfolio group. Together with the scope this uniquely identifies   the portfolio group.
@@ -1854,6 +2082,9 @@ public class PortfolioGroupsApiExample {
         Boolean showCancelledTransactions = true; // Boolean | Option to specify whether or not to include cancelled transactions,   including previous versions of transactions which have since been amended.   Defaults to False if not specified.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\".
         try {
+            // uncomment the below to set overrides at the request level
+            // VersionedResourceListOfTransaction result = apiInstance.getTransactionsForPortfolioGroup(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy).execute(opts);
+
             VersionedResourceListOfTransaction result = apiInstance.getTransactionsForPortfolioGroup(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1941,6 +2172,14 @@ public class PortfolioGroupsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfolioGroupsApi apiInstance = apiFactory.build(PortfolioGroupsApi.class);
+
         PortfolioGroupsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfolioGroupsApi.class);
         String scope = "scope_example"; // String | The scope to list the portfolio groups in.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the portfolio groups. Defaults to the current LUSID system datetime if not specified.
@@ -1952,6 +2191,9 @@ public class PortfolioGroupsApiExample {
         List<String> relatedEntityPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from any domain that supports relationships   to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'.
         List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto the portfolio groups in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfPortfolioGroup result = apiInstance.listPortfolioGroups(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds).execute(opts);
+
             PagedResourceListOfPortfolioGroup result = apiInstance.listPortfolioGroups(scope, effectiveAt, asAt, page, limit, filter, sortBy, relatedEntityPropertyKeys, relationshipDefinitionIds).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -2037,6 +2279,14 @@ public class PortfolioGroupsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfolioGroupsApi apiInstance = apiFactory.build(PortfolioGroupsApi.class);
+
         PortfolioGroupsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfolioGroupsApi.class);
         String scope = "scope_example"; // String | The scope of the Portfolio Group
         String code = "code_example"; // String | The Portfolio Group code
@@ -2044,6 +2294,9 @@ public class PortfolioGroupsApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The date this rule will be effective from
         OffsetDateTime effectiveUntil = OffsetDateTime.now(); // OffsetDateTime | The effective date until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next 'effectiveAt' date of the Access Metadata
         try {
+            // uncomment the below to set overrides at the request level
+            // Map<String, List<AccessMetadataValue>> result = apiInstance.patchPortfolioGroupAccessMetadata(scope, code, accessMetadataOperation, effectiveAt, effectiveUntil).execute(opts);
+
             Map<String, List<AccessMetadataValue>> result = apiInstance.patchPortfolioGroupAccessMetadata(scope, code, accessMetadataOperation, effectiveAt, effectiveUntil).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -2125,12 +2378,23 @@ public class PortfolioGroupsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfolioGroupsApi apiInstance = apiFactory.build(PortfolioGroupsApi.class);
+
         PortfolioGroupsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfolioGroupsApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio group to update the definition for.
         String code = "code_example"; // String | The code of the portfolio group to update the definition for. Together with the scope this uniquely identifies the portfolio group.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to update the definition.
         UpdatePortfolioGroupRequest updatePortfolioGroupRequest = new UpdatePortfolioGroupRequest(); // UpdatePortfolioGroupRequest | The updated portfolio group definition.
         try {
+            // uncomment the below to set overrides at the request level
+            // PortfolioGroup result = apiInstance.updatePortfolioGroup(scope, code, effectiveAt, updatePortfolioGroupRequest).execute(opts);
+
             PortfolioGroup result = apiInstance.updatePortfolioGroup(scope, code, effectiveAt, updatePortfolioGroupRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -2211,11 +2475,22 @@ public class PortfolioGroupsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfolioGroupsApi apiInstance = apiFactory.build(PortfolioGroupsApi.class);
+
         PortfolioGroupsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfolioGroupsApi.class);
         String scope = "scope_example"; // String | The scope of the group to update or insert the properties onto.
         String code = "code_example"; // String | The code of the group to update or insert the properties onto. Together with the scope this uniquely identifies the group.
         Map<String, Property> requestBody = new HashMap(); // Map<String, Property> | The properties to be updated or inserted onto the group. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \"PortfolioGroup/Manager/Id\".
         try {
+            // uncomment the below to set overrides at the request level
+            // PortfolioGroupProperties result = apiInstance.upsertGroupProperties(scope, code, requestBody).execute(opts);
+
             PortfolioGroupProperties result = apiInstance.upsertGroupProperties(scope, code, requestBody).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -2295,6 +2570,14 @@ public class PortfolioGroupsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfolioGroupsApi apiInstance = apiFactory.build(PortfolioGroupsApi.class);
+
         PortfolioGroupsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfolioGroupsApi.class);
         String scope = "scope_example"; // String | The scope of the Portfolio Group
         String code = "code_example"; // String | The Portfolio Group code
@@ -2303,6 +2586,9 @@ public class PortfolioGroupsApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The date this rule will be effective from
         OffsetDateTime effectiveUntil = OffsetDateTime.now(); // OffsetDateTime | The effective date until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next 'effectiveAt' date of the Access Metadata
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfAccessMetadataValueOf result = apiInstance.upsertPortfolioGroupAccessMetadata(scope, code, metadataKey, upsertPortfolioGroupAccessMetadataRequest, effectiveAt, effectiveUntil).execute(opts);
+
             ResourceListOfAccessMetadataValueOf result = apiInstance.upsertPortfolioGroupAccessMetadata(scope, code, metadataKey, upsertPortfolioGroupAccessMetadataRequest, effectiveAt, effectiveUntil).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

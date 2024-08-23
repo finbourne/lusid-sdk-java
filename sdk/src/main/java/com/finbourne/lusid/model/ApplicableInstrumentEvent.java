@@ -11,9 +11,11 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.GeneratedEventDiagnostics;
 import com.finbourne.lusid.model.InstrumentEventHolder;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.Transaction;
+import com.finbourne.lusid.model.TransactionDiagnostics;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -87,6 +89,10 @@ public class ApplicableInstrumentEvent {
   @SerializedName(SERIALIZED_NAME_GENERATED_EVENT)
   private InstrumentEventHolder generatedEvent;
 
+  public static final String SERIALIZED_NAME_GENERATED_EVENT_DIAGNOSTICS = "generatedEventDiagnostics";
+  @SerializedName(SERIALIZED_NAME_GENERATED_EVENT_DIAGNOSTICS)
+  private GeneratedEventDiagnostics generatedEventDiagnostics;
+
   public static final String SERIALIZED_NAME_LOADED_EVENT = "loadedEvent";
   @SerializedName(SERIALIZED_NAME_LOADED_EVENT)
   private InstrumentEventHolder loadedEvent;
@@ -98,6 +104,10 @@ public class ApplicableInstrumentEvent {
   public static final String SERIALIZED_NAME_TRANSACTIONS = "transactions";
   @SerializedName(SERIALIZED_NAME_TRANSACTIONS)
   private List<Transaction> transactions;
+
+  public static final String SERIALIZED_NAME_TRANSACTION_DIAGNOSTICS = "transactionDiagnostics";
+  @SerializedName(SERIALIZED_NAME_TRANSACTION_DIAGNOSTICS)
+  private TransactionDiagnostics transactionDiagnostics;
 
   public ApplicableInstrumentEvent() {
   }
@@ -270,6 +280,27 @@ public class ApplicableInstrumentEvent {
   }
 
 
+  public ApplicableInstrumentEvent generatedEventDiagnostics(GeneratedEventDiagnostics generatedEventDiagnostics) {
+    
+    this.generatedEventDiagnostics = generatedEventDiagnostics;
+    return this;
+  }
+
+   /**
+   * Get generatedEventDiagnostics
+   * @return generatedEventDiagnostics
+  **/
+  @jakarta.annotation.Nullable
+  public GeneratedEventDiagnostics getGeneratedEventDiagnostics() {
+    return generatedEventDiagnostics;
+  }
+
+
+  public void setGeneratedEventDiagnostics(GeneratedEventDiagnostics generatedEventDiagnostics) {
+    this.generatedEventDiagnostics = generatedEventDiagnostics;
+  }
+
+
   public ApplicableInstrumentEvent loadedEvent(InstrumentEventHolder loadedEvent) {
     
     this.loadedEvent = loadedEvent;
@@ -341,6 +372,27 @@ public class ApplicableInstrumentEvent {
   }
 
 
+  public ApplicableInstrumentEvent transactionDiagnostics(TransactionDiagnostics transactionDiagnostics) {
+    
+    this.transactionDiagnostics = transactionDiagnostics;
+    return this;
+  }
+
+   /**
+   * Get transactionDiagnostics
+   * @return transactionDiagnostics
+  **/
+  @jakarta.annotation.Nullable
+  public TransactionDiagnostics getTransactionDiagnostics() {
+    return transactionDiagnostics;
+  }
+
+
+  public void setTransactionDiagnostics(TransactionDiagnostics transactionDiagnostics) {
+    this.transactionDiagnostics = transactionDiagnostics;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -359,9 +411,11 @@ public class ApplicableInstrumentEvent {
         Objects.equals(this.instrumentEventType, applicableInstrumentEvent.instrumentEventType) &&
         Objects.equals(this.instrumentEventId, applicableInstrumentEvent.instrumentEventId) &&
         Objects.equals(this.generatedEvent, applicableInstrumentEvent.generatedEvent) &&
+        Objects.equals(this.generatedEventDiagnostics, applicableInstrumentEvent.generatedEventDiagnostics) &&
         Objects.equals(this.loadedEvent, applicableInstrumentEvent.loadedEvent) &&
         Objects.equals(this.appliedInstrumentEventInstructionId, applicableInstrumentEvent.appliedInstrumentEventInstructionId) &&
-        Objects.equals(this.transactions, applicableInstrumentEvent.transactions);
+        Objects.equals(this.transactions, applicableInstrumentEvent.transactions) &&
+        Objects.equals(this.transactionDiagnostics, applicableInstrumentEvent.transactionDiagnostics);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -370,7 +424,7 @@ public class ApplicableInstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(portfolioId, holdingId, lusidInstrumentId, instrumentScope, instrumentType, instrumentEventType, instrumentEventId, generatedEvent, loadedEvent, appliedInstrumentEventInstructionId, transactions);
+    return Objects.hash(portfolioId, holdingId, lusidInstrumentId, instrumentScope, instrumentType, instrumentEventType, instrumentEventId, generatedEvent, generatedEventDiagnostics, loadedEvent, appliedInstrumentEventInstructionId, transactions, transactionDiagnostics);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -392,9 +446,11 @@ public class ApplicableInstrumentEvent {
     sb.append("    instrumentEventType: ").append(toIndentedString(instrumentEventType)).append("\n");
     sb.append("    instrumentEventId: ").append(toIndentedString(instrumentEventId)).append("\n");
     sb.append("    generatedEvent: ").append(toIndentedString(generatedEvent)).append("\n");
+    sb.append("    generatedEventDiagnostics: ").append(toIndentedString(generatedEventDiagnostics)).append("\n");
     sb.append("    loadedEvent: ").append(toIndentedString(loadedEvent)).append("\n");
     sb.append("    appliedInstrumentEventInstructionId: ").append(toIndentedString(appliedInstrumentEventInstructionId)).append("\n");
     sb.append("    transactions: ").append(toIndentedString(transactions)).append("\n");
+    sb.append("    transactionDiagnostics: ").append(toIndentedString(transactionDiagnostics)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -425,9 +481,11 @@ public class ApplicableInstrumentEvent {
     openapiFields.add("instrumentEventType");
     openapiFields.add("instrumentEventId");
     openapiFields.add("generatedEvent");
+    openapiFields.add("generatedEventDiagnostics");
     openapiFields.add("loadedEvent");
     openapiFields.add("appliedInstrumentEventInstructionId");
     openapiFields.add("transactions");
+    openapiFields.add("transactionDiagnostics");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -482,6 +540,10 @@ public class ApplicableInstrumentEvent {
       if (jsonObj.get("generatedEvent") != null && !jsonObj.get("generatedEvent").isJsonNull()) {
         InstrumentEventHolder.validateJsonElement(jsonObj.get("generatedEvent"));
       }
+      // validate the optional field `generatedEventDiagnostics`
+      if (jsonObj.get("generatedEventDiagnostics") != null && !jsonObj.get("generatedEventDiagnostics").isJsonNull()) {
+        GeneratedEventDiagnostics.validateJsonElement(jsonObj.get("generatedEventDiagnostics"));
+      }
       // validate the optional field `loadedEvent`
       if (jsonObj.get("loadedEvent") != null && !jsonObj.get("loadedEvent").isJsonNull()) {
         InstrumentEventHolder.validateJsonElement(jsonObj.get("loadedEvent"));
@@ -502,6 +564,10 @@ public class ApplicableInstrumentEvent {
             Transaction.validateJsonElement(jsonArraytransactions.get(i));
           };
         }
+      }
+      // validate the optional field `transactionDiagnostics`
+      if (jsonObj.get("transactionDiagnostics") != null && !jsonObj.get("transactionDiagnostics").isJsonNull()) {
+        TransactionDiagnostics.validateJsonElement(jsonObj.get("transactionDiagnostics"));
       }
   }
 

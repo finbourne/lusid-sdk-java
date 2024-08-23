@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -77,6 +78,10 @@ public class EntitiesApi {
     }
 
     private okhttp3.Call getDataTypeByEntityUniqueIdCall(String entityUniqueId, OffsetDateTime asAt, List<String> previews, final ApiCallback _callback) throws ApiException {
+        return getDataTypeByEntityUniqueIdCall(entityUniqueId, asAt, previews,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getDataTypeByEntityUniqueIdCall(String entityUniqueId, OffsetDateTime asAt, List<String> previews, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -128,30 +133,44 @@ public class EntitiesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getDataTypeByEntityUniqueIdValidateBeforeCall(String entityUniqueId, OffsetDateTime asAt, List<String> previews, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getDataTypeByEntityUniqueIdValidateBeforeCall(String entityUniqueId, OffsetDateTime asAt, List<String> previews, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'entityUniqueId' is set
         if (entityUniqueId == null) {
             throw new ApiException("Missing the required parameter 'entityUniqueId' when calling getDataTypeByEntityUniqueId(Async)");
         }
 
-        return getDataTypeByEntityUniqueIdCall(entityUniqueId, asAt, previews, _callback);
+        return getDataTypeByEntityUniqueIdCall(entityUniqueId, asAt, previews, _callback, opts);
 
     }
 
 
     private ApiResponse<DataTypeEntity> getDataTypeByEntityUniqueIdWithHttpInfo(String entityUniqueId, OffsetDateTime asAt, List<String> previews) throws ApiException {
-        okhttp3.Call localVarCall = getDataTypeByEntityUniqueIdValidateBeforeCall(entityUniqueId, asAt, previews, null);
+        okhttp3.Call localVarCall = getDataTypeByEntityUniqueIdValidateBeforeCall(entityUniqueId, asAt, previews, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DataTypeEntity>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DataTypeEntity> getDataTypeByEntityUniqueIdWithHttpInfo(String entityUniqueId, OffsetDateTime asAt, List<String> previews, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getDataTypeByEntityUniqueIdValidateBeforeCall(entityUniqueId, asAt, previews, null, opts);
         Type localVarReturnType = new TypeToken<DataTypeEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getDataTypeByEntityUniqueIdAsync(String entityUniqueId, OffsetDateTime asAt, List<String> previews, final ApiCallback<DataTypeEntity> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getDataTypeByEntityUniqueIdValidateBeforeCall(entityUniqueId, asAt, previews, _callback);
+        okhttp3.Call localVarCall = getDataTypeByEntityUniqueIdValidateBeforeCall(entityUniqueId, asAt, previews, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DataTypeEntity>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getDataTypeByEntityUniqueIdAsync(String entityUniqueId, OffsetDateTime asAt, List<String> previews, final ApiCallback<DataTypeEntity> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getDataTypeByEntityUniqueIdValidateBeforeCall(entityUniqueId, asAt, previews, _callback, opts);
         Type localVarReturnType = new TypeToken<DataTypeEntity>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -221,6 +240,23 @@ public class EntitiesApi {
         }
 
         /**
+         * Execute getDataTypeByEntityUniqueId request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DataTypeEntity
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested DataType entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DataTypeEntity execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DataTypeEntity> localVarResp = getDataTypeByEntityUniqueIdWithHttpInfo(entityUniqueId, asAt, previews, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getDataTypeByEntityUniqueId request with HTTP info returned
          * @return ApiResponse&lt;DataTypeEntity&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -234,6 +270,22 @@ public class EntitiesApi {
          */
         public ApiResponse<DataTypeEntity> executeWithHttpInfo() throws ApiException {
             return getDataTypeByEntityUniqueIdWithHttpInfo(entityUniqueId, asAt, previews);
+        }
+
+        /**
+         * Execute getDataTypeByEntityUniqueId request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DataTypeEntity&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested DataType entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DataTypeEntity> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getDataTypeByEntityUniqueIdWithHttpInfo(entityUniqueId, asAt, previews, opts);
         }
 
         /**
@@ -251,6 +303,23 @@ public class EntitiesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DataTypeEntity> _callback) throws ApiException {
             return getDataTypeByEntityUniqueIdAsync(entityUniqueId, asAt, previews, _callback);
+        }
+
+        /**
+         * Execute getDataTypeByEntityUniqueId request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested DataType entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DataTypeEntity> _callback, ConfigurationOptions opts) throws ApiException {
+            return getDataTypeByEntityUniqueIdAsync(entityUniqueId, asAt, previews, _callback, opts);
         }
     }
 
@@ -271,6 +340,10 @@ public class EntitiesApi {
         return new APIgetDataTypeByEntityUniqueIdRequest(entityUniqueId);
     }
     private okhttp3.Call getInstrumentByEntityUniqueIdCall(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback _callback) throws ApiException {
+        return getInstrumentByEntityUniqueIdCall(entityUniqueId, effectiveAt, asAt, previews,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getInstrumentByEntityUniqueIdCall(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -326,30 +399,44 @@ public class EntitiesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getInstrumentByEntityUniqueIdValidateBeforeCall(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getInstrumentByEntityUniqueIdValidateBeforeCall(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'entityUniqueId' is set
         if (entityUniqueId == null) {
             throw new ApiException("Missing the required parameter 'entityUniqueId' when calling getInstrumentByEntityUniqueId(Async)");
         }
 
-        return getInstrumentByEntityUniqueIdCall(entityUniqueId, effectiveAt, asAt, previews, _callback);
+        return getInstrumentByEntityUniqueIdCall(entityUniqueId, effectiveAt, asAt, previews, _callback, opts);
 
     }
 
 
     private ApiResponse<InstrumentEntity> getInstrumentByEntityUniqueIdWithHttpInfo(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews) throws ApiException {
-        okhttp3.Call localVarCall = getInstrumentByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, previews, null);
+        okhttp3.Call localVarCall = getInstrumentByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, previews, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<InstrumentEntity>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<InstrumentEntity> getInstrumentByEntityUniqueIdWithHttpInfo(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getInstrumentByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, previews, null, opts);
         Type localVarReturnType = new TypeToken<InstrumentEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getInstrumentByEntityUniqueIdAsync(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback<InstrumentEntity> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getInstrumentByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, previews, _callback);
+        okhttp3.Call localVarCall = getInstrumentByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, previews, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<InstrumentEntity>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getInstrumentByEntityUniqueIdAsync(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback<InstrumentEntity> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getInstrumentByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, previews, _callback, opts);
         Type localVarReturnType = new TypeToken<InstrumentEntity>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -430,6 +517,23 @@ public class EntitiesApi {
         }
 
         /**
+         * Execute getInstrumentByEntityUniqueId request. Use any specified configuration options to override any other configuration for this request only.
+         * @return InstrumentEntity
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instrument entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public InstrumentEntity execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<InstrumentEntity> localVarResp = getInstrumentByEntityUniqueIdWithHttpInfo(entityUniqueId, effectiveAt, asAt, previews, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getInstrumentByEntityUniqueId request with HTTP info returned
          * @return ApiResponse&lt;InstrumentEntity&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -443,6 +547,22 @@ public class EntitiesApi {
          */
         public ApiResponse<InstrumentEntity> executeWithHttpInfo() throws ApiException {
             return getInstrumentByEntityUniqueIdWithHttpInfo(entityUniqueId, effectiveAt, asAt, previews);
+        }
+
+        /**
+         * Execute getInstrumentByEntityUniqueId request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;InstrumentEntity&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instrument entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<InstrumentEntity> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getInstrumentByEntityUniqueIdWithHttpInfo(entityUniqueId, effectiveAt, asAt, previews, opts);
         }
 
         /**
@@ -460,6 +580,23 @@ public class EntitiesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<InstrumentEntity> _callback) throws ApiException {
             return getInstrumentByEntityUniqueIdAsync(entityUniqueId, effectiveAt, asAt, previews, _callback);
+        }
+
+        /**
+         * Execute getInstrumentByEntityUniqueId request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instrument entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<InstrumentEntity> _callback, ConfigurationOptions opts) throws ApiException {
+            return getInstrumentByEntityUniqueIdAsync(entityUniqueId, effectiveAt, asAt, previews, _callback, opts);
         }
     }
 
@@ -480,6 +617,10 @@ public class EntitiesApi {
         return new APIgetInstrumentByEntityUniqueIdRequest(entityUniqueId);
     }
     private okhttp3.Call getPortfolioByEntityUniqueIdCall(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback _callback) throws ApiException {
+        return getPortfolioByEntityUniqueIdCall(entityUniqueId, effectiveAt, asAt, previews,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getPortfolioByEntityUniqueIdCall(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -535,30 +676,44 @@ public class EntitiesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPortfolioByEntityUniqueIdValidateBeforeCall(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPortfolioByEntityUniqueIdValidateBeforeCall(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'entityUniqueId' is set
         if (entityUniqueId == null) {
             throw new ApiException("Missing the required parameter 'entityUniqueId' when calling getPortfolioByEntityUniqueId(Async)");
         }
 
-        return getPortfolioByEntityUniqueIdCall(entityUniqueId, effectiveAt, asAt, previews, _callback);
+        return getPortfolioByEntityUniqueIdCall(entityUniqueId, effectiveAt, asAt, previews, _callback, opts);
 
     }
 
 
     private ApiResponse<PortfolioEntity> getPortfolioByEntityUniqueIdWithHttpInfo(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews) throws ApiException {
-        okhttp3.Call localVarCall = getPortfolioByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, previews, null);
+        okhttp3.Call localVarCall = getPortfolioByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, previews, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PortfolioEntity>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PortfolioEntity> getPortfolioByEntityUniqueIdWithHttpInfo(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPortfolioByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, previews, null, opts);
         Type localVarReturnType = new TypeToken<PortfolioEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getPortfolioByEntityUniqueIdAsync(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback<PortfolioEntity> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPortfolioByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, previews, _callback);
+        okhttp3.Call localVarCall = getPortfolioByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, previews, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PortfolioEntity>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getPortfolioByEntityUniqueIdAsync(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback<PortfolioEntity> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getPortfolioByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, previews, _callback, opts);
         Type localVarReturnType = new TypeToken<PortfolioEntity>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -639,6 +794,23 @@ public class EntitiesApi {
         }
 
         /**
+         * Execute getPortfolioByEntityUniqueId request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PortfolioEntity
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PortfolioEntity execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PortfolioEntity> localVarResp = getPortfolioByEntityUniqueIdWithHttpInfo(entityUniqueId, effectiveAt, asAt, previews, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getPortfolioByEntityUniqueId request with HTTP info returned
          * @return ApiResponse&lt;PortfolioEntity&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -652,6 +824,22 @@ public class EntitiesApi {
          */
         public ApiResponse<PortfolioEntity> executeWithHttpInfo() throws ApiException {
             return getPortfolioByEntityUniqueIdWithHttpInfo(entityUniqueId, effectiveAt, asAt, previews);
+        }
+
+        /**
+         * Execute getPortfolioByEntityUniqueId request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PortfolioEntity&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PortfolioEntity> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getPortfolioByEntityUniqueIdWithHttpInfo(entityUniqueId, effectiveAt, asAt, previews, opts);
         }
 
         /**
@@ -669,6 +857,23 @@ public class EntitiesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PortfolioEntity> _callback) throws ApiException {
             return getPortfolioByEntityUniqueIdAsync(entityUniqueId, effectiveAt, asAt, previews, _callback);
+        }
+
+        /**
+         * Execute getPortfolioByEntityUniqueId request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PortfolioEntity> _callback, ConfigurationOptions opts) throws ApiException {
+            return getPortfolioByEntityUniqueIdAsync(entityUniqueId, effectiveAt, asAt, previews, _callback, opts);
         }
     }
 
@@ -689,6 +894,10 @@ public class EntitiesApi {
         return new APIgetPortfolioByEntityUniqueIdRequest(entityUniqueId);
     }
     private okhttp3.Call getPortfolioChangesCall(String scope, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getPortfolioChangesCall(scope, effectiveAt, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getPortfolioChangesCall(String scope, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -743,11 +952,11 @@ public class EntitiesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPortfolioChangesValidateBeforeCall(String scope, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPortfolioChangesValidateBeforeCall(String scope, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getPortfolioChanges(Async)");
@@ -758,20 +967,34 @@ public class EntitiesApi {
             throw new ApiException("Missing the required parameter 'effectiveAt' when calling getPortfolioChanges(Async)");
         }
 
-        return getPortfolioChangesCall(scope, effectiveAt, asAt, _callback);
+        return getPortfolioChangesCall(scope, effectiveAt, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfChange> getPortfolioChangesWithHttpInfo(String scope, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getPortfolioChangesValidateBeforeCall(scope, effectiveAt, asAt, null);
+        okhttp3.Call localVarCall = getPortfolioChangesValidateBeforeCall(scope, effectiveAt, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfChange>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfChange> getPortfolioChangesWithHttpInfo(String scope, String effectiveAt, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPortfolioChangesValidateBeforeCall(scope, effectiveAt, asAt, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfChange>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getPortfolioChangesAsync(String scope, String effectiveAt, OffsetDateTime asAt, final ApiCallback<ResourceListOfChange> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPortfolioChangesValidateBeforeCall(scope, effectiveAt, asAt, _callback);
+        okhttp3.Call localVarCall = getPortfolioChangesValidateBeforeCall(scope, effectiveAt, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfChange>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getPortfolioChangesAsync(String scope, String effectiveAt, OffsetDateTime asAt, final ApiCallback<ResourceListOfChange> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getPortfolioChangesValidateBeforeCall(scope, effectiveAt, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfChange>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -832,6 +1055,23 @@ public class EntitiesApi {
         }
 
         /**
+         * Execute getPortfolioChanges request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfChange
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> A list of portfolio changes in the requested scope relative to the specified time. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfChange execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfChange> localVarResp = getPortfolioChangesWithHttpInfo(scope, effectiveAt, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getPortfolioChanges request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfChange&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -845,6 +1085,22 @@ public class EntitiesApi {
          */
         public ApiResponse<ResourceListOfChange> executeWithHttpInfo() throws ApiException {
             return getPortfolioChangesWithHttpInfo(scope, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getPortfolioChanges request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfChange&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> A list of portfolio changes in the requested scope relative to the specified time. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfChange> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getPortfolioChangesWithHttpInfo(scope, effectiveAt, asAt, opts);
         }
 
         /**
@@ -862,6 +1118,23 @@ public class EntitiesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfChange> _callback) throws ApiException {
             return getPortfolioChangesAsync(scope, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getPortfolioChanges request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> A list of portfolio changes in the requested scope relative to the specified time. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfChange> _callback, ConfigurationOptions opts) throws ApiException {
+            return getPortfolioChangesAsync(scope, effectiveAt, asAt, _callback, opts);
         }
     }
 
@@ -883,6 +1156,10 @@ public class EntitiesApi {
         return new APIgetPortfolioChangesRequest(scope, effectiveAt);
     }
     private okhttp3.Call getPropertyDefinitionByEntityUniqueIdCall(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback _callback) throws ApiException {
+        return getPropertyDefinitionByEntityUniqueIdCall(entityUniqueId, effectiveAt, asAt, previews,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getPropertyDefinitionByEntityUniqueIdCall(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -938,30 +1215,44 @@ public class EntitiesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPropertyDefinitionByEntityUniqueIdValidateBeforeCall(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPropertyDefinitionByEntityUniqueIdValidateBeforeCall(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'entityUniqueId' is set
         if (entityUniqueId == null) {
             throw new ApiException("Missing the required parameter 'entityUniqueId' when calling getPropertyDefinitionByEntityUniqueId(Async)");
         }
 
-        return getPropertyDefinitionByEntityUniqueIdCall(entityUniqueId, effectiveAt, asAt, previews, _callback);
+        return getPropertyDefinitionByEntityUniqueIdCall(entityUniqueId, effectiveAt, asAt, previews, _callback, opts);
 
     }
 
 
     private ApiResponse<PropertyDefinitionEntity> getPropertyDefinitionByEntityUniqueIdWithHttpInfo(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews) throws ApiException {
-        okhttp3.Call localVarCall = getPropertyDefinitionByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, previews, null);
+        okhttp3.Call localVarCall = getPropertyDefinitionByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, previews, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PropertyDefinitionEntity>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PropertyDefinitionEntity> getPropertyDefinitionByEntityUniqueIdWithHttpInfo(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPropertyDefinitionByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, previews, null, opts);
         Type localVarReturnType = new TypeToken<PropertyDefinitionEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getPropertyDefinitionByEntityUniqueIdAsync(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback<PropertyDefinitionEntity> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPropertyDefinitionByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, previews, _callback);
+        okhttp3.Call localVarCall = getPropertyDefinitionByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, previews, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PropertyDefinitionEntity>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getPropertyDefinitionByEntityUniqueIdAsync(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback<PropertyDefinitionEntity> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getPropertyDefinitionByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, previews, _callback, opts);
         Type localVarReturnType = new TypeToken<PropertyDefinitionEntity>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1042,6 +1333,23 @@ public class EntitiesApi {
         }
 
         /**
+         * Execute getPropertyDefinitionByEntityUniqueId request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PropertyDefinitionEntity
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested property definition entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PropertyDefinitionEntity execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PropertyDefinitionEntity> localVarResp = getPropertyDefinitionByEntityUniqueIdWithHttpInfo(entityUniqueId, effectiveAt, asAt, previews, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getPropertyDefinitionByEntityUniqueId request with HTTP info returned
          * @return ApiResponse&lt;PropertyDefinitionEntity&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1055,6 +1363,22 @@ public class EntitiesApi {
          */
         public ApiResponse<PropertyDefinitionEntity> executeWithHttpInfo() throws ApiException {
             return getPropertyDefinitionByEntityUniqueIdWithHttpInfo(entityUniqueId, effectiveAt, asAt, previews);
+        }
+
+        /**
+         * Execute getPropertyDefinitionByEntityUniqueId request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PropertyDefinitionEntity&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested property definition entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PropertyDefinitionEntity> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getPropertyDefinitionByEntityUniqueIdWithHttpInfo(entityUniqueId, effectiveAt, asAt, previews, opts);
         }
 
         /**
@@ -1072,6 +1396,23 @@ public class EntitiesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PropertyDefinitionEntity> _callback) throws ApiException {
             return getPropertyDefinitionByEntityUniqueIdAsync(entityUniqueId, effectiveAt, asAt, previews, _callback);
+        }
+
+        /**
+         * Execute getPropertyDefinitionByEntityUniqueId request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested property definition entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PropertyDefinitionEntity> _callback, ConfigurationOptions opts) throws ApiException {
+            return getPropertyDefinitionByEntityUniqueIdAsync(entityUniqueId, effectiveAt, asAt, previews, _callback, opts);
         }
     }
 

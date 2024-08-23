@@ -53,10 +53,21 @@ public class CounterpartiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CounterpartiesApi apiInstance = apiFactory.build(CounterpartiesApi.class);
+
         CounterpartiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(CounterpartiesApi.class);
         String scope = "scope_example"; // String | The scope of the Counterparty Agreement to delete.
         String code = "code_example"; // String | The Counterparty Agreement to delete.
         try {
+            // uncomment the below to set overrides at the request level
+            // AnnulSingleStructuredDataResponse result = apiInstance.deleteCounterpartyAgreement(scope, code).execute(opts);
+
             AnnulSingleStructuredDataResponse result = apiInstance.deleteCounterpartyAgreement(scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -135,10 +146,21 @@ public class CounterpartiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CounterpartiesApi apiInstance = apiFactory.build(CounterpartiesApi.class);
+
         CounterpartiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(CounterpartiesApi.class);
         String scope = "scope_example"; // String | The scope of the Credit Support Annex to delete.
         String code = "code_example"; // String | The Credit Support Annex to delete.
         try {
+            // uncomment the below to set overrides at the request level
+            // AnnulSingleStructuredDataResponse result = apiInstance.deleteCreditSupportAnnex(scope, code).execute(opts);
+
             AnnulSingleStructuredDataResponse result = apiInstance.deleteCreditSupportAnnex(scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -217,11 +239,22 @@ public class CounterpartiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CounterpartiesApi apiInstance = apiFactory.build(CounterpartiesApi.class);
+
         CounterpartiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(CounterpartiesApi.class);
         String scope = "scope_example"; // String | The scope of the Counterparty Agreement to retrieve.
         String code = "code_example"; // String | The name of the Counterparty Agreement to retrieve the data for.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Counterparty Agreement. Defaults to return the latest version if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // GetCounterpartyAgreementResponse result = apiInstance.getCounterpartyAgreement(scope, code, asAt).execute(opts);
+
             GetCounterpartyAgreementResponse result = apiInstance.getCounterpartyAgreement(scope, code, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -301,11 +334,22 @@ public class CounterpartiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CounterpartiesApi apiInstance = apiFactory.build(CounterpartiesApi.class);
+
         CounterpartiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(CounterpartiesApi.class);
         String scope = "scope_example"; // String | The scope of the Credit Support Annex to retrieve.
         String code = "code_example"; // String | The name of the Credit Support Annex to retrieve the data for.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Credit Support Annex . Defaults to return the latest version if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // GetCreditSupportAnnexResponse result = apiInstance.getCreditSupportAnnex(scope, code, asAt).execute(opts);
+
             GetCreditSupportAnnexResponse result = apiInstance.getCreditSupportAnnex(scope, code, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -385,9 +429,20 @@ public class CounterpartiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CounterpartiesApi apiInstance = apiFactory.build(CounterpartiesApi.class);
+
         CounterpartiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(CounterpartiesApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the Counterparty Agreements. Defaults to latest if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfGetCounterpartyAgreementResponse result = apiInstance.listCounterpartyAgreements(asAt).execute(opts);
+
             ResourceListOfGetCounterpartyAgreementResponse result = apiInstance.listCounterpartyAgreements(asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -465,9 +520,20 @@ public class CounterpartiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CounterpartiesApi apiInstance = apiFactory.build(CounterpartiesApi.class);
+
         CounterpartiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(CounterpartiesApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the Credit Support Annexes. Defaults to latest if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfGetCreditSupportAnnexResponse result = apiInstance.listCreditSupportAnnexes(asAt).execute(opts);
+
             ResourceListOfGetCreditSupportAnnexResponse result = apiInstance.listCreditSupportAnnexes(asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -545,9 +611,20 @@ public class CounterpartiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CounterpartiesApi apiInstance = apiFactory.build(CounterpartiesApi.class);
+
         CounterpartiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(CounterpartiesApi.class);
         UpsertCounterpartyAgreementRequest upsertCounterpartyAgreementRequest = new UpsertCounterpartyAgreementRequest(); // UpsertCounterpartyAgreementRequest | The Counterparty Agreement to update or insert
         try {
+            // uncomment the below to set overrides at the request level
+            // UpsertSingleStructuredDataResponse result = apiInstance.upsertCounterpartyAgreement(upsertCounterpartyAgreementRequest).execute(opts);
+
             UpsertSingleStructuredDataResponse result = apiInstance.upsertCounterpartyAgreement(upsertCounterpartyAgreementRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -625,9 +702,20 @@ public class CounterpartiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CounterpartiesApi apiInstance = apiFactory.build(CounterpartiesApi.class);
+
         CounterpartiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(CounterpartiesApi.class);
         UpsertCreditSupportAnnexRequest upsertCreditSupportAnnexRequest = new UpsertCreditSupportAnnexRequest(); // UpsertCreditSupportAnnexRequest | The Credit Support Annex to update or insert
         try {
+            // uncomment the below to set overrides at the request level
+            // UpsertSingleStructuredDataResponse result = apiInstance.upsertCreditSupportAnnex(upsertCreditSupportAnnexRequest).execute(opts);
+
             UpsertSingleStructuredDataResponse result = apiInstance.upsertCreditSupportAnnex(upsertCreditSupportAnnexRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

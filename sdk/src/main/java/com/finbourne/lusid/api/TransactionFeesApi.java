@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -77,6 +78,10 @@ public class TransactionFeesApi {
     }
 
     private okhttp3.Call deleteTransactionFeeRuleCall(String code, final ApiCallback _callback) throws ApiException {
+        return deleteTransactionFeeRuleCall(code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteTransactionFeeRuleCall(String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -120,30 +125,44 @@ public class TransactionFeesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteTransactionFeeRuleValidateBeforeCall(String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteTransactionFeeRuleValidateBeforeCall(String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'code' is set
         if (code == null) {
             throw new ApiException("Missing the required parameter 'code' when calling deleteTransactionFeeRule(Async)");
         }
 
-        return deleteTransactionFeeRuleCall(code, _callback);
+        return deleteTransactionFeeRuleCall(code, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deleteTransactionFeeRuleWithHttpInfo(String code) throws ApiException {
-        okhttp3.Call localVarCall = deleteTransactionFeeRuleValidateBeforeCall(code, null);
+        okhttp3.Call localVarCall = deleteTransactionFeeRuleValidateBeforeCall(code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteTransactionFeeRuleWithHttpInfo(String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteTransactionFeeRuleValidateBeforeCall(code, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteTransactionFeeRuleAsync(String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteTransactionFeeRuleValidateBeforeCall(code, _callback);
+        okhttp3.Call localVarCall = deleteTransactionFeeRuleValidateBeforeCall(code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteTransactionFeeRuleAsync(String code, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteTransactionFeeRuleValidateBeforeCall(code, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -191,6 +210,23 @@ public class TransactionFeesApi {
         }
 
         /**
+         * Execute deleteTransactionFeeRule request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteTransactionFeeRuleWithHttpInfo(code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteTransactionFeeRule request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -204,6 +240,22 @@ public class TransactionFeesApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deleteTransactionFeeRuleWithHttpInfo(code);
+        }
+
+        /**
+         * Execute deleteTransactionFeeRule request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteTransactionFeeRuleWithHttpInfo(code, opts);
         }
 
         /**
@@ -221,6 +273,23 @@ public class TransactionFeesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deleteTransactionFeeRuleAsync(code, _callback);
+        }
+
+        /**
+         * Execute deleteTransactionFeeRule request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteTransactionFeeRuleAsync(code, _callback, opts);
         }
     }
 
@@ -241,6 +310,10 @@ public class TransactionFeesApi {
         return new APIdeleteTransactionFeeRuleRequest(code);
     }
     private okhttp3.Call getApplicableTransactionFeesCall(String effectiveAt, OffsetDateTime asAt, String instrumentIdentifierType, String instrumentIdentifier, String portfolioScope, String portfolioCode, Map<String, String> requestBody, final ApiCallback _callback) throws ApiException {
+        return getApplicableTransactionFeesCall(effectiveAt, asAt, instrumentIdentifierType, instrumentIdentifier, portfolioScope, portfolioCode, requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getApplicableTransactionFeesCall(String effectiveAt, OffsetDateTime asAt, String instrumentIdentifierType, String instrumentIdentifier, String portfolioScope, String portfolioCode, Map<String, String> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -311,25 +384,39 @@ public class TransactionFeesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getApplicableTransactionFeesValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String instrumentIdentifierType, String instrumentIdentifier, String portfolioScope, String portfolioCode, Map<String, String> requestBody, final ApiCallback _callback) throws ApiException {
-        return getApplicableTransactionFeesCall(effectiveAt, asAt, instrumentIdentifierType, instrumentIdentifier, portfolioScope, portfolioCode, requestBody, _callback);
+    private okhttp3.Call getApplicableTransactionFeesValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String instrumentIdentifierType, String instrumentIdentifier, String portfolioScope, String portfolioCode, Map<String, String> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return getApplicableTransactionFeesCall(effectiveAt, asAt, instrumentIdentifierType, instrumentIdentifier, portfolioScope, portfolioCode, requestBody, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfFeeRule> getApplicableTransactionFeesWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String instrumentIdentifierType, String instrumentIdentifier, String portfolioScope, String portfolioCode, Map<String, String> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = getApplicableTransactionFeesValidateBeforeCall(effectiveAt, asAt, instrumentIdentifierType, instrumentIdentifier, portfolioScope, portfolioCode, requestBody, null);
+        okhttp3.Call localVarCall = getApplicableTransactionFeesValidateBeforeCall(effectiveAt, asAt, instrumentIdentifierType, instrumentIdentifier, portfolioScope, portfolioCode, requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfFeeRule>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfFeeRule> getApplicableTransactionFeesWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String instrumentIdentifierType, String instrumentIdentifier, String portfolioScope, String portfolioCode, Map<String, String> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getApplicableTransactionFeesValidateBeforeCall(effectiveAt, asAt, instrumentIdentifierType, instrumentIdentifier, portfolioScope, portfolioCode, requestBody, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfFeeRule>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getApplicableTransactionFeesAsync(String effectiveAt, OffsetDateTime asAt, String instrumentIdentifierType, String instrumentIdentifier, String portfolioScope, String portfolioCode, Map<String, String> requestBody, final ApiCallback<ResourceListOfFeeRule> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getApplicableTransactionFeesValidateBeforeCall(effectiveAt, asAt, instrumentIdentifierType, instrumentIdentifier, portfolioScope, portfolioCode, requestBody, _callback);
+        okhttp3.Call localVarCall = getApplicableTransactionFeesValidateBeforeCall(effectiveAt, asAt, instrumentIdentifierType, instrumentIdentifier, portfolioScope, portfolioCode, requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfFeeRule>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getApplicableTransactionFeesAsync(String effectiveAt, OffsetDateTime asAt, String instrumentIdentifierType, String instrumentIdentifier, String portfolioScope, String portfolioCode, Map<String, String> requestBody, final ApiCallback<ResourceListOfFeeRule> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getApplicableTransactionFeesValidateBeforeCall(effectiveAt, asAt, instrumentIdentifierType, instrumentIdentifier, portfolioScope, portfolioCode, requestBody, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfFeeRule>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -452,6 +539,23 @@ public class TransactionFeesApi {
         }
 
         /**
+         * Execute getApplicableTransactionFees request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfFeeRule
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The list of applicable fee rules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfFeeRule execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfFeeRule> localVarResp = getApplicableTransactionFeesWithHttpInfo(effectiveAt, asAt, instrumentIdentifierType, instrumentIdentifier, portfolioScope, portfolioCode, requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getApplicableTransactionFees request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfFeeRule&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -465,6 +569,22 @@ public class TransactionFeesApi {
          */
         public ApiResponse<ResourceListOfFeeRule> executeWithHttpInfo() throws ApiException {
             return getApplicableTransactionFeesWithHttpInfo(effectiveAt, asAt, instrumentIdentifierType, instrumentIdentifier, portfolioScope, portfolioCode, requestBody);
+        }
+
+        /**
+         * Execute getApplicableTransactionFees request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfFeeRule&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The list of applicable fee rules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfFeeRule> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getApplicableTransactionFeesWithHttpInfo(effectiveAt, asAt, instrumentIdentifierType, instrumentIdentifier, portfolioScope, portfolioCode, requestBody, opts);
         }
 
         /**
@@ -482,6 +602,23 @@ public class TransactionFeesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfFeeRule> _callback) throws ApiException {
             return getApplicableTransactionFeesAsync(effectiveAt, asAt, instrumentIdentifierType, instrumentIdentifier, portfolioScope, portfolioCode, requestBody, _callback);
+        }
+
+        /**
+         * Execute getApplicableTransactionFees request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The list of applicable fee rules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfFeeRule> _callback, ConfigurationOptions opts) throws ApiException {
+            return getApplicableTransactionFeesAsync(effectiveAt, asAt, instrumentIdentifierType, instrumentIdentifier, portfolioScope, portfolioCode, requestBody, _callback, opts);
         }
     }
 
@@ -501,6 +638,10 @@ public class TransactionFeesApi {
         return new APIgetApplicableTransactionFeesRequest();
     }
     private okhttp3.Call getTransactionFeeRuleCall(String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getTransactionFeeRuleCall(code, effectiveAt, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getTransactionFeeRuleCall(String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -552,30 +693,44 @@ public class TransactionFeesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTransactionFeeRuleValidateBeforeCall(String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getTransactionFeeRuleValidateBeforeCall(String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'code' is set
         if (code == null) {
             throw new ApiException("Missing the required parameter 'code' when calling getTransactionFeeRule(Async)");
         }
 
-        return getTransactionFeeRuleCall(code, effectiveAt, asAt, _callback);
+        return getTransactionFeeRuleCall(code, effectiveAt, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<FeeRule> getTransactionFeeRuleWithHttpInfo(String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getTransactionFeeRuleValidateBeforeCall(code, effectiveAt, asAt, null);
+        okhttp3.Call localVarCall = getTransactionFeeRuleValidateBeforeCall(code, effectiveAt, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FeeRule>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<FeeRule> getTransactionFeeRuleWithHttpInfo(String code, String effectiveAt, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getTransactionFeeRuleValidateBeforeCall(code, effectiveAt, asAt, null, opts);
         Type localVarReturnType = new TypeToken<FeeRule>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getTransactionFeeRuleAsync(String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<FeeRule> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getTransactionFeeRuleValidateBeforeCall(code, effectiveAt, asAt, _callback);
+        okhttp3.Call localVarCall = getTransactionFeeRuleValidateBeforeCall(code, effectiveAt, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FeeRule>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getTransactionFeeRuleAsync(String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<FeeRule> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getTransactionFeeRuleValidateBeforeCall(code, effectiveAt, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<FeeRule>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -645,6 +800,23 @@ public class TransactionFeesApi {
         }
 
         /**
+         * Execute getTransactionFeeRule request. Use any specified configuration options to override any other configuration for this request only.
+         * @return FeeRule
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Details of one fee rule. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public FeeRule execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<FeeRule> localVarResp = getTransactionFeeRuleWithHttpInfo(code, effectiveAt, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getTransactionFeeRule request with HTTP info returned
          * @return ApiResponse&lt;FeeRule&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -658,6 +830,22 @@ public class TransactionFeesApi {
          */
         public ApiResponse<FeeRule> executeWithHttpInfo() throws ApiException {
             return getTransactionFeeRuleWithHttpInfo(code, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getTransactionFeeRule request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;FeeRule&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Details of one fee rule. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<FeeRule> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getTransactionFeeRuleWithHttpInfo(code, effectiveAt, asAt, opts);
         }
 
         /**
@@ -675,6 +863,23 @@ public class TransactionFeesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<FeeRule> _callback) throws ApiException {
             return getTransactionFeeRuleAsync(code, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getTransactionFeeRule request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Details of one fee rule. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<FeeRule> _callback, ConfigurationOptions opts) throws ApiException {
+            return getTransactionFeeRuleAsync(code, effectiveAt, asAt, _callback, opts);
         }
     }
 
@@ -695,6 +900,10 @@ public class TransactionFeesApi {
         return new APIgetTransactionFeeRuleRequest(code);
     }
     private okhttp3.Call listTransactionFeeRulesCall(String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, String page, final ApiCallback _callback) throws ApiException {
+        return listTransactionFeeRulesCall(effectiveAt, asAt, limit, filter, page,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listTransactionFeeRulesCall(String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -757,25 +966,39 @@ public class TransactionFeesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listTransactionFeeRulesValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, String page, final ApiCallback _callback) throws ApiException {
-        return listTransactionFeeRulesCall(effectiveAt, asAt, limit, filter, page, _callback);
+    private okhttp3.Call listTransactionFeeRulesValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listTransactionFeeRulesCall(effectiveAt, asAt, limit, filter, page, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfFeeRule> listTransactionFeeRulesWithHttpInfo(String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, String page) throws ApiException {
-        okhttp3.Call localVarCall = listTransactionFeeRulesValidateBeforeCall(effectiveAt, asAt, limit, filter, page, null);
+        okhttp3.Call localVarCall = listTransactionFeeRulesValidateBeforeCall(effectiveAt, asAt, limit, filter, page, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfFeeRule>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfFeeRule> listTransactionFeeRulesWithHttpInfo(String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, String page, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listTransactionFeeRulesValidateBeforeCall(effectiveAt, asAt, limit, filter, page, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfFeeRule>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listTransactionFeeRulesAsync(String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, String page, final ApiCallback<ResourceListOfFeeRule> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listTransactionFeeRulesValidateBeforeCall(effectiveAt, asAt, limit, filter, page, _callback);
+        okhttp3.Call localVarCall = listTransactionFeeRulesValidateBeforeCall(effectiveAt, asAt, limit, filter, page, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfFeeRule>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listTransactionFeeRulesAsync(String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, String page, final ApiCallback<ResourceListOfFeeRule> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listTransactionFeeRulesValidateBeforeCall(effectiveAt, asAt, limit, filter, page, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfFeeRule>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -876,6 +1099,23 @@ public class TransactionFeesApi {
         }
 
         /**
+         * Execute listTransactionFeeRules request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfFeeRule
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A filtered list of fee rules available. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfFeeRule execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfFeeRule> localVarResp = listTransactionFeeRulesWithHttpInfo(effectiveAt, asAt, limit, filter, page, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listTransactionFeeRules request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfFeeRule&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -889,6 +1129,22 @@ public class TransactionFeesApi {
          */
         public ApiResponse<ResourceListOfFeeRule> executeWithHttpInfo() throws ApiException {
             return listTransactionFeeRulesWithHttpInfo(effectiveAt, asAt, limit, filter, page);
+        }
+
+        /**
+         * Execute listTransactionFeeRules request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfFeeRule&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A filtered list of fee rules available. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfFeeRule> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listTransactionFeeRulesWithHttpInfo(effectiveAt, asAt, limit, filter, page, opts);
         }
 
         /**
@@ -906,6 +1162,23 @@ public class TransactionFeesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfFeeRule> _callback) throws ApiException {
             return listTransactionFeeRulesAsync(effectiveAt, asAt, limit, filter, page, _callback);
+        }
+
+        /**
+         * Execute listTransactionFeeRules request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A filtered list of fee rules available. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfFeeRule> _callback, ConfigurationOptions opts) throws ApiException {
+            return listTransactionFeeRulesAsync(effectiveAt, asAt, limit, filter, page, _callback, opts);
         }
     }
 
@@ -925,6 +1198,10 @@ public class TransactionFeesApi {
         return new APIlistTransactionFeeRulesRequest();
     }
     private okhttp3.Call upsertTransactionFeeRulesCall(Map<String, FeeRuleUpsertRequest> requestBody, String effectiveAt, final ApiCallback _callback) throws ApiException {
+        return upsertTransactionFeeRulesCall(requestBody, effectiveAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertTransactionFeeRulesCall(Map<String, FeeRuleUpsertRequest> requestBody, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -975,30 +1252,44 @@ public class TransactionFeesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertTransactionFeeRulesValidateBeforeCall(Map<String, FeeRuleUpsertRequest> requestBody, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertTransactionFeeRulesValidateBeforeCall(Map<String, FeeRuleUpsertRequest> requestBody, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'requestBody' is set
         if (requestBody == null) {
             throw new ApiException("Missing the required parameter 'requestBody' when calling upsertTransactionFeeRules(Async)");
         }
 
-        return upsertTransactionFeeRulesCall(requestBody, effectiveAt, _callback);
+        return upsertTransactionFeeRulesCall(requestBody, effectiveAt, _callback, opts);
 
     }
 
 
     private ApiResponse<FeeRuleUpsertResponse> upsertTransactionFeeRulesWithHttpInfo(Map<String, FeeRuleUpsertRequest> requestBody, String effectiveAt) throws ApiException {
-        okhttp3.Call localVarCall = upsertTransactionFeeRulesValidateBeforeCall(requestBody, effectiveAt, null);
+        okhttp3.Call localVarCall = upsertTransactionFeeRulesValidateBeforeCall(requestBody, effectiveAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FeeRuleUpsertResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<FeeRuleUpsertResponse> upsertTransactionFeeRulesWithHttpInfo(Map<String, FeeRuleUpsertRequest> requestBody, String effectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertTransactionFeeRulesValidateBeforeCall(requestBody, effectiveAt, null, opts);
         Type localVarReturnType = new TypeToken<FeeRuleUpsertResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertTransactionFeeRulesAsync(Map<String, FeeRuleUpsertRequest> requestBody, String effectiveAt, final ApiCallback<FeeRuleUpsertResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertTransactionFeeRulesValidateBeforeCall(requestBody, effectiveAt, _callback);
+        okhttp3.Call localVarCall = upsertTransactionFeeRulesValidateBeforeCall(requestBody, effectiveAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FeeRuleUpsertResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertTransactionFeeRulesAsync(Map<String, FeeRuleUpsertRequest> requestBody, String effectiveAt, final ApiCallback<FeeRuleUpsertResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertTransactionFeeRulesValidateBeforeCall(requestBody, effectiveAt, _callback, opts);
         Type localVarReturnType = new TypeToken<FeeRuleUpsertResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1057,6 +1348,23 @@ public class TransactionFeesApi {
         }
 
         /**
+         * Execute upsertTransactionFeeRules request. Use any specified configuration options to override any other configuration for this request only.
+         * @return FeeRuleUpsertResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Upsert fee rules. New fee rules must have an empty code field. Where a code is given, this rule must already exist and will be updated. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public FeeRuleUpsertResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<FeeRuleUpsertResponse> localVarResp = upsertTransactionFeeRulesWithHttpInfo(requestBody, effectiveAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertTransactionFeeRules request with HTTP info returned
          * @return ApiResponse&lt;FeeRuleUpsertResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1070,6 +1378,22 @@ public class TransactionFeesApi {
          */
         public ApiResponse<FeeRuleUpsertResponse> executeWithHttpInfo() throws ApiException {
             return upsertTransactionFeeRulesWithHttpInfo(requestBody, effectiveAt);
+        }
+
+        /**
+         * Execute upsertTransactionFeeRules request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;FeeRuleUpsertResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Upsert fee rules. New fee rules must have an empty code field. Where a code is given, this rule must already exist and will be updated. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<FeeRuleUpsertResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertTransactionFeeRulesWithHttpInfo(requestBody, effectiveAt, opts);
         }
 
         /**
@@ -1087,6 +1411,23 @@ public class TransactionFeesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<FeeRuleUpsertResponse> _callback) throws ApiException {
             return upsertTransactionFeeRulesAsync(requestBody, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute upsertTransactionFeeRules request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Upsert fee rules. New fee rules must have an empty code field. Where a code is given, this rule must already exist and will be updated. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<FeeRuleUpsertResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertTransactionFeeRulesAsync(requestBody, effectiveAt, _callback, opts);
         }
     }
 

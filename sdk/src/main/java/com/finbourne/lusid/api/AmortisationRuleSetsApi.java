@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -78,6 +79,10 @@ public class AmortisationRuleSetsApi {
     }
 
     private okhttp3.Call createAmortisationRuleSetCall(String scope, CreateAmortisationRuleSetRequest createAmortisationRuleSetRequest, final ApiCallback _callback) throws ApiException {
+        return createAmortisationRuleSetCall(scope, createAmortisationRuleSetRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call createAmortisationRuleSetCall(String scope, CreateAmortisationRuleSetRequest createAmortisationRuleSetRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -125,11 +130,11 @@ public class AmortisationRuleSetsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createAmortisationRuleSetValidateBeforeCall(String scope, CreateAmortisationRuleSetRequest createAmortisationRuleSetRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createAmortisationRuleSetValidateBeforeCall(String scope, CreateAmortisationRuleSetRequest createAmortisationRuleSetRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling createAmortisationRuleSet(Async)");
@@ -140,20 +145,34 @@ public class AmortisationRuleSetsApi {
             throw new ApiException("Missing the required parameter 'createAmortisationRuleSetRequest' when calling createAmortisationRuleSet(Async)");
         }
 
-        return createAmortisationRuleSetCall(scope, createAmortisationRuleSetRequest, _callback);
+        return createAmortisationRuleSetCall(scope, createAmortisationRuleSetRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<AmortisationRuleSet> createAmortisationRuleSetWithHttpInfo(String scope, CreateAmortisationRuleSetRequest createAmortisationRuleSetRequest) throws ApiException {
-        okhttp3.Call localVarCall = createAmortisationRuleSetValidateBeforeCall(scope, createAmortisationRuleSetRequest, null);
+        okhttp3.Call localVarCall = createAmortisationRuleSetValidateBeforeCall(scope, createAmortisationRuleSetRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AmortisationRuleSet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AmortisationRuleSet> createAmortisationRuleSetWithHttpInfo(String scope, CreateAmortisationRuleSetRequest createAmortisationRuleSetRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createAmortisationRuleSetValidateBeforeCall(scope, createAmortisationRuleSetRequest, null, opts);
         Type localVarReturnType = new TypeToken<AmortisationRuleSet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call createAmortisationRuleSetAsync(String scope, CreateAmortisationRuleSetRequest createAmortisationRuleSetRequest, final ApiCallback<AmortisationRuleSet> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createAmortisationRuleSetValidateBeforeCall(scope, createAmortisationRuleSetRequest, _callback);
+        okhttp3.Call localVarCall = createAmortisationRuleSetValidateBeforeCall(scope, createAmortisationRuleSetRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AmortisationRuleSet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call createAmortisationRuleSetAsync(String scope, CreateAmortisationRuleSetRequest createAmortisationRuleSetRequest, final ApiCallback<AmortisationRuleSet> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = createAmortisationRuleSetValidateBeforeCall(scope, createAmortisationRuleSetRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<AmortisationRuleSet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -203,6 +222,23 @@ public class AmortisationRuleSetsApi {
         }
 
         /**
+         * Execute createAmortisationRuleSet request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AmortisationRuleSet
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Create a rule set for amortisation. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AmortisationRuleSet execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AmortisationRuleSet> localVarResp = createAmortisationRuleSetWithHttpInfo(scope, createAmortisationRuleSetRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute createAmortisationRuleSet request with HTTP info returned
          * @return ApiResponse&lt;AmortisationRuleSet&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -216,6 +252,22 @@ public class AmortisationRuleSetsApi {
          */
         public ApiResponse<AmortisationRuleSet> executeWithHttpInfo() throws ApiException {
             return createAmortisationRuleSetWithHttpInfo(scope, createAmortisationRuleSetRequest);
+        }
+
+        /**
+         * Execute createAmortisationRuleSet request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AmortisationRuleSet&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Create a rule set for amortisation. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AmortisationRuleSet> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return createAmortisationRuleSetWithHttpInfo(scope, createAmortisationRuleSetRequest, opts);
         }
 
         /**
@@ -233,6 +285,23 @@ public class AmortisationRuleSetsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<AmortisationRuleSet> _callback) throws ApiException {
             return createAmortisationRuleSetAsync(scope, createAmortisationRuleSetRequest, _callback);
+        }
+
+        /**
+         * Execute createAmortisationRuleSet request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Create a rule set for amortisation. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AmortisationRuleSet> _callback, ConfigurationOptions opts) throws ApiException {
+            return createAmortisationRuleSetAsync(scope, createAmortisationRuleSetRequest, _callback, opts);
         }
     }
 
@@ -254,6 +323,10 @@ public class AmortisationRuleSetsApi {
         return new APIcreateAmortisationRuleSetRequest(scope, createAmortisationRuleSetRequest);
     }
     private okhttp3.Call deleteAmortisationRulesetCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+        return deleteAmortisationRulesetCall(scope, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteAmortisationRulesetCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -298,11 +371,11 @@ public class AmortisationRuleSetsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteAmortisationRulesetValidateBeforeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteAmortisationRulesetValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteAmortisationRuleset(Async)");
@@ -313,20 +386,34 @@ public class AmortisationRuleSetsApi {
             throw new ApiException("Missing the required parameter 'code' when calling deleteAmortisationRuleset(Async)");
         }
 
-        return deleteAmortisationRulesetCall(scope, code, _callback);
+        return deleteAmortisationRulesetCall(scope, code, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deleteAmortisationRulesetWithHttpInfo(String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = deleteAmortisationRulesetValidateBeforeCall(scope, code, null);
+        okhttp3.Call localVarCall = deleteAmortisationRulesetValidateBeforeCall(scope, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteAmortisationRulesetWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteAmortisationRulesetValidateBeforeCall(scope, code, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteAmortisationRulesetAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteAmortisationRulesetValidateBeforeCall(scope, code, _callback);
+        okhttp3.Call localVarCall = deleteAmortisationRulesetValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteAmortisationRulesetAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteAmortisationRulesetValidateBeforeCall(scope, code, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -376,6 +463,23 @@ public class AmortisationRuleSetsApi {
         }
 
         /**
+         * Execute deleteAmortisationRuleset request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteAmortisationRulesetWithHttpInfo(scope, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteAmortisationRuleset request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -389,6 +493,22 @@ public class AmortisationRuleSetsApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deleteAmortisationRulesetWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteAmortisationRuleset request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteAmortisationRulesetWithHttpInfo(scope, code, opts);
         }
 
         /**
@@ -406,6 +526,23 @@ public class AmortisationRuleSetsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deleteAmortisationRulesetAsync(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteAmortisationRuleset request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteAmortisationRulesetAsync(scope, code, _callback, opts);
         }
     }
 
@@ -427,6 +564,10 @@ public class AmortisationRuleSetsApi {
         return new APIdeleteAmortisationRulesetRequest(scope, code);
     }
     private okhttp3.Call getAmortisationRuleSetCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getAmortisationRuleSetCall(scope, code, effectiveAt, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getAmortisationRuleSetCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -479,11 +620,11 @@ public class AmortisationRuleSetsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAmortisationRuleSetValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAmortisationRuleSetValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getAmortisationRuleSet(Async)");
@@ -494,20 +635,34 @@ public class AmortisationRuleSetsApi {
             throw new ApiException("Missing the required parameter 'code' when calling getAmortisationRuleSet(Async)");
         }
 
-        return getAmortisationRuleSetCall(scope, code, effectiveAt, asAt, _callback);
+        return getAmortisationRuleSetCall(scope, code, effectiveAt, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<AmortisationRuleSet> getAmortisationRuleSetWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getAmortisationRuleSetValidateBeforeCall(scope, code, effectiveAt, asAt, null);
+        okhttp3.Call localVarCall = getAmortisationRuleSetValidateBeforeCall(scope, code, effectiveAt, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AmortisationRuleSet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AmortisationRuleSet> getAmortisationRuleSetWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getAmortisationRuleSetValidateBeforeCall(scope, code, effectiveAt, asAt, null, opts);
         Type localVarReturnType = new TypeToken<AmortisationRuleSet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getAmortisationRuleSetAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<AmortisationRuleSet> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAmortisationRuleSetValidateBeforeCall(scope, code, effectiveAt, asAt, _callback);
+        okhttp3.Call localVarCall = getAmortisationRuleSetValidateBeforeCall(scope, code, effectiveAt, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AmortisationRuleSet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getAmortisationRuleSetAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<AmortisationRuleSet> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getAmortisationRuleSetValidateBeforeCall(scope, code, effectiveAt, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<AmortisationRuleSet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -579,6 +734,23 @@ public class AmortisationRuleSetsApi {
         }
 
         /**
+         * Execute getAmortisationRuleSet request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AmortisationRuleSet
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Details of one rule set. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AmortisationRuleSet execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AmortisationRuleSet> localVarResp = getAmortisationRuleSetWithHttpInfo(scope, code, effectiveAt, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getAmortisationRuleSet request with HTTP info returned
          * @return ApiResponse&lt;AmortisationRuleSet&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -592,6 +764,22 @@ public class AmortisationRuleSetsApi {
          */
         public ApiResponse<AmortisationRuleSet> executeWithHttpInfo() throws ApiException {
             return getAmortisationRuleSetWithHttpInfo(scope, code, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getAmortisationRuleSet request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AmortisationRuleSet&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Details of one rule set. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AmortisationRuleSet> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getAmortisationRuleSetWithHttpInfo(scope, code, effectiveAt, asAt, opts);
         }
 
         /**
@@ -609,6 +797,23 @@ public class AmortisationRuleSetsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<AmortisationRuleSet> _callback) throws ApiException {
             return getAmortisationRuleSetAsync(scope, code, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getAmortisationRuleSet request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Details of one rule set. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AmortisationRuleSet> _callback, ConfigurationOptions opts) throws ApiException {
+            return getAmortisationRuleSetAsync(scope, code, effectiveAt, asAt, _callback, opts);
         }
     }
 
@@ -630,6 +835,10 @@ public class AmortisationRuleSetsApi {
         return new APIgetAmortisationRuleSetRequest(scope, code);
     }
     private okhttp3.Call listAmortisationRuleSetsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
+        return listAmortisationRuleSetsCall(effectiveAt, asAt, page, limit, filter, sortBy,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listAmortisationRuleSetsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -696,25 +905,39 @@ public class AmortisationRuleSetsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listAmortisationRuleSetsValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
-        return listAmortisationRuleSetsCall(effectiveAt, asAt, page, limit, filter, sortBy, _callback);
+    private okhttp3.Call listAmortisationRuleSetsValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listAmortisationRuleSetsCall(effectiveAt, asAt, page, limit, filter, sortBy, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfAmortisationRuleSet> listAmortisationRuleSetsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy) throws ApiException {
-        okhttp3.Call localVarCall = listAmortisationRuleSetsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, null);
+        okhttp3.Call localVarCall = listAmortisationRuleSetsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfAmortisationRuleSet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfAmortisationRuleSet> listAmortisationRuleSetsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listAmortisationRuleSetsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfAmortisationRuleSet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listAmortisationRuleSetsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfAmortisationRuleSet> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listAmortisationRuleSetsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, _callback);
+        okhttp3.Call localVarCall = listAmortisationRuleSetsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfAmortisationRuleSet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listAmortisationRuleSetsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfAmortisationRuleSet> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listAmortisationRuleSetsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfAmortisationRuleSet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -826,6 +1049,23 @@ public class AmortisationRuleSetsApi {
         }
 
         /**
+         * Execute listAmortisationRuleSets request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfAmortisationRuleSet
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of rule sets available. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfAmortisationRuleSet execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfAmortisationRuleSet> localVarResp = listAmortisationRuleSetsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listAmortisationRuleSets request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfAmortisationRuleSet&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -839,6 +1079,22 @@ public class AmortisationRuleSetsApi {
          */
         public ApiResponse<PagedResourceListOfAmortisationRuleSet> executeWithHttpInfo() throws ApiException {
             return listAmortisationRuleSetsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy);
+        }
+
+        /**
+         * Execute listAmortisationRuleSets request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfAmortisationRuleSet&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of rule sets available. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfAmortisationRuleSet> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listAmortisationRuleSetsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, opts);
         }
 
         /**
@@ -856,6 +1112,23 @@ public class AmortisationRuleSetsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfAmortisationRuleSet> _callback) throws ApiException {
             return listAmortisationRuleSetsAsync(effectiveAt, asAt, page, limit, filter, sortBy, _callback);
+        }
+
+        /**
+         * Execute listAmortisationRuleSets request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of rule sets available. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfAmortisationRuleSet> _callback, ConfigurationOptions opts) throws ApiException {
+            return listAmortisationRuleSetsAsync(effectiveAt, asAt, page, limit, filter, sortBy, _callback, opts);
         }
     }
 
@@ -875,6 +1148,10 @@ public class AmortisationRuleSetsApi {
         return new APIlistAmortisationRuleSetsRequest();
     }
     private okhttp3.Call setAmortisationRulesCall(String scope, String code, SetAmortisationRulesRequest setAmortisationRulesRequest, final ApiCallback _callback) throws ApiException {
+        return setAmortisationRulesCall(scope, code, setAmortisationRulesRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call setAmortisationRulesCall(String scope, String code, SetAmortisationRulesRequest setAmortisationRulesRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -923,11 +1200,11 @@ public class AmortisationRuleSetsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call setAmortisationRulesValidateBeforeCall(String scope, String code, SetAmortisationRulesRequest setAmortisationRulesRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call setAmortisationRulesValidateBeforeCall(String scope, String code, SetAmortisationRulesRequest setAmortisationRulesRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling setAmortisationRules(Async)");
@@ -943,20 +1220,34 @@ public class AmortisationRuleSetsApi {
             throw new ApiException("Missing the required parameter 'setAmortisationRulesRequest' when calling setAmortisationRules(Async)");
         }
 
-        return setAmortisationRulesCall(scope, code, setAmortisationRulesRequest, _callback);
+        return setAmortisationRulesCall(scope, code, setAmortisationRulesRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<AmortisationRuleSet> setAmortisationRulesWithHttpInfo(String scope, String code, SetAmortisationRulesRequest setAmortisationRulesRequest) throws ApiException {
-        okhttp3.Call localVarCall = setAmortisationRulesValidateBeforeCall(scope, code, setAmortisationRulesRequest, null);
+        okhttp3.Call localVarCall = setAmortisationRulesValidateBeforeCall(scope, code, setAmortisationRulesRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AmortisationRuleSet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AmortisationRuleSet> setAmortisationRulesWithHttpInfo(String scope, String code, SetAmortisationRulesRequest setAmortisationRulesRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = setAmortisationRulesValidateBeforeCall(scope, code, setAmortisationRulesRequest, null, opts);
         Type localVarReturnType = new TypeToken<AmortisationRuleSet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call setAmortisationRulesAsync(String scope, String code, SetAmortisationRulesRequest setAmortisationRulesRequest, final ApiCallback<AmortisationRuleSet> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = setAmortisationRulesValidateBeforeCall(scope, code, setAmortisationRulesRequest, _callback);
+        okhttp3.Call localVarCall = setAmortisationRulesValidateBeforeCall(scope, code, setAmortisationRulesRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AmortisationRuleSet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call setAmortisationRulesAsync(String scope, String code, SetAmortisationRulesRequest setAmortisationRulesRequest, final ApiCallback<AmortisationRuleSet> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = setAmortisationRulesValidateBeforeCall(scope, code, setAmortisationRulesRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<AmortisationRuleSet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1008,6 +1299,23 @@ public class AmortisationRuleSetsApi {
         }
 
         /**
+         * Execute setAmortisationRules request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AmortisationRuleSet
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Update the rules for an amortisation rule set. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AmortisationRuleSet execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AmortisationRuleSet> localVarResp = setAmortisationRulesWithHttpInfo(scope, code, setAmortisationRulesRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute setAmortisationRules request with HTTP info returned
          * @return ApiResponse&lt;AmortisationRuleSet&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1021,6 +1329,22 @@ public class AmortisationRuleSetsApi {
          */
         public ApiResponse<AmortisationRuleSet> executeWithHttpInfo() throws ApiException {
             return setAmortisationRulesWithHttpInfo(scope, code, setAmortisationRulesRequest);
+        }
+
+        /**
+         * Execute setAmortisationRules request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AmortisationRuleSet&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Update the rules for an amortisation rule set. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AmortisationRuleSet> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return setAmortisationRulesWithHttpInfo(scope, code, setAmortisationRulesRequest, opts);
         }
 
         /**
@@ -1038,6 +1362,23 @@ public class AmortisationRuleSetsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<AmortisationRuleSet> _callback) throws ApiException {
             return setAmortisationRulesAsync(scope, code, setAmortisationRulesRequest, _callback);
+        }
+
+        /**
+         * Execute setAmortisationRules request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Update the rules for an amortisation rule set. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AmortisationRuleSet> _callback, ConfigurationOptions opts) throws ApiException {
+            return setAmortisationRulesAsync(scope, code, setAmortisationRulesRequest, _callback, opts);
         }
     }
 
@@ -1060,6 +1401,10 @@ public class AmortisationRuleSetsApi {
         return new APIsetAmortisationRulesRequest(scope, code, setAmortisationRulesRequest);
     }
     private okhttp3.Call updateAmortisationRuleSetDetailsCall(String scope, String code, UpdateAmortisationRuleSetDetailsRequest updateAmortisationRuleSetDetailsRequest, final ApiCallback _callback) throws ApiException {
+        return updateAmortisationRuleSetDetailsCall(scope, code, updateAmortisationRuleSetDetailsRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call updateAmortisationRuleSetDetailsCall(String scope, String code, UpdateAmortisationRuleSetDetailsRequest updateAmortisationRuleSetDetailsRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1108,11 +1453,11 @@ public class AmortisationRuleSetsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateAmortisationRuleSetDetailsValidateBeforeCall(String scope, String code, UpdateAmortisationRuleSetDetailsRequest updateAmortisationRuleSetDetailsRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateAmortisationRuleSetDetailsValidateBeforeCall(String scope, String code, UpdateAmortisationRuleSetDetailsRequest updateAmortisationRuleSetDetailsRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling updateAmortisationRuleSetDetails(Async)");
@@ -1128,20 +1473,34 @@ public class AmortisationRuleSetsApi {
             throw new ApiException("Missing the required parameter 'updateAmortisationRuleSetDetailsRequest' when calling updateAmortisationRuleSetDetails(Async)");
         }
 
-        return updateAmortisationRuleSetDetailsCall(scope, code, updateAmortisationRuleSetDetailsRequest, _callback);
+        return updateAmortisationRuleSetDetailsCall(scope, code, updateAmortisationRuleSetDetailsRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<AmortisationRuleSet> updateAmortisationRuleSetDetailsWithHttpInfo(String scope, String code, UpdateAmortisationRuleSetDetailsRequest updateAmortisationRuleSetDetailsRequest) throws ApiException {
-        okhttp3.Call localVarCall = updateAmortisationRuleSetDetailsValidateBeforeCall(scope, code, updateAmortisationRuleSetDetailsRequest, null);
+        okhttp3.Call localVarCall = updateAmortisationRuleSetDetailsValidateBeforeCall(scope, code, updateAmortisationRuleSetDetailsRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AmortisationRuleSet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AmortisationRuleSet> updateAmortisationRuleSetDetailsWithHttpInfo(String scope, String code, UpdateAmortisationRuleSetDetailsRequest updateAmortisationRuleSetDetailsRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = updateAmortisationRuleSetDetailsValidateBeforeCall(scope, code, updateAmortisationRuleSetDetailsRequest, null, opts);
         Type localVarReturnType = new TypeToken<AmortisationRuleSet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call updateAmortisationRuleSetDetailsAsync(String scope, String code, UpdateAmortisationRuleSetDetailsRequest updateAmortisationRuleSetDetailsRequest, final ApiCallback<AmortisationRuleSet> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateAmortisationRuleSetDetailsValidateBeforeCall(scope, code, updateAmortisationRuleSetDetailsRequest, _callback);
+        okhttp3.Call localVarCall = updateAmortisationRuleSetDetailsValidateBeforeCall(scope, code, updateAmortisationRuleSetDetailsRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AmortisationRuleSet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call updateAmortisationRuleSetDetailsAsync(String scope, String code, UpdateAmortisationRuleSetDetailsRequest updateAmortisationRuleSetDetailsRequest, final ApiCallback<AmortisationRuleSet> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = updateAmortisationRuleSetDetailsValidateBeforeCall(scope, code, updateAmortisationRuleSetDetailsRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<AmortisationRuleSet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1193,6 +1552,23 @@ public class AmortisationRuleSetsApi {
         }
 
         /**
+         * Execute updateAmortisationRuleSetDetails request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AmortisationRuleSet
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Update the details of an Amortisation Rule Set. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AmortisationRuleSet execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AmortisationRuleSet> localVarResp = updateAmortisationRuleSetDetailsWithHttpInfo(scope, code, updateAmortisationRuleSetDetailsRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute updateAmortisationRuleSetDetails request with HTTP info returned
          * @return ApiResponse&lt;AmortisationRuleSet&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1206,6 +1582,22 @@ public class AmortisationRuleSetsApi {
          */
         public ApiResponse<AmortisationRuleSet> executeWithHttpInfo() throws ApiException {
             return updateAmortisationRuleSetDetailsWithHttpInfo(scope, code, updateAmortisationRuleSetDetailsRequest);
+        }
+
+        /**
+         * Execute updateAmortisationRuleSetDetails request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AmortisationRuleSet&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Update the details of an Amortisation Rule Set. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AmortisationRuleSet> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return updateAmortisationRuleSetDetailsWithHttpInfo(scope, code, updateAmortisationRuleSetDetailsRequest, opts);
         }
 
         /**
@@ -1223,6 +1615,23 @@ public class AmortisationRuleSetsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<AmortisationRuleSet> _callback) throws ApiException {
             return updateAmortisationRuleSetDetailsAsync(scope, code, updateAmortisationRuleSetDetailsRequest, _callback);
+        }
+
+        /**
+         * Execute updateAmortisationRuleSetDetails request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Update the details of an Amortisation Rule Set. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AmortisationRuleSet> _callback, ConfigurationOptions opts) throws ApiException {
+            return updateAmortisationRuleSetDetailsAsync(scope, code, updateAmortisationRuleSetDetailsRequest, _callback, opts);
         }
     }
 

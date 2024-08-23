@@ -65,12 +65,23 @@ public class InstrumentsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InstrumentsApi apiInstance = apiFactory.build(InstrumentsApi.class);
+
         InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
         Map<String, UpsertInstrumentPropertyRequest> requestBody = new HashMap(); // Map<String, UpsertInstrumentPropertyRequest> | A list of instruments and associated instrument properties to create or update.
         String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
         String identifierEffectiveAt = "identifierEffectiveAt_example"; // String | The effective datetime used to resolve each instrument from the provided identifiers. Defaults to the current LUSID system datetime if not specified.
         String successMode = "Partial"; // String | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial.
         try {
+            // uncomment the below to set overrides at the request level
+            // BatchUpsertInstrumentPropertiesResponse result = apiInstance.batchUpsertInstrumentProperties(requestBody, scope, identifierEffectiveAt, successMode).execute(opts);
+
             BatchUpsertInstrumentPropertiesResponse result = apiInstance.batchUpsertInstrumentProperties(requestBody, scope, identifierEffectiveAt, successMode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -151,11 +162,22 @@ public class InstrumentsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InstrumentsApi apiInstance = apiFactory.build(InstrumentsApi.class);
+
         InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
         String identifierType = "identifierType_example"; // String | The unique identifier type to search, for example 'Figi'.
         String identifier = "identifier_example"; // String | An <i>identifierType</i> value to use to identify the instrument, for example 'BBG000BLNNV0'.
         String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeleteInstrumentResponse result = apiInstance.deleteInstrument(identifierType, identifier, scope).execute(opts);
+
             DeleteInstrumentResponse result = apiInstance.deleteInstrument(identifierType, identifier, scope).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -235,6 +257,14 @@ public class InstrumentsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InstrumentsApi apiInstance = apiFactory.build(InstrumentsApi.class);
+
         InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
         String identifierType = "identifierType_example"; // String | The unique identifier type to search, for example 'Figi'.
         String identifier = "identifier_example"; // String | An <i>identifierType</i> value to use to identify the instrument, for example 'BBG000BLNNV0'.
@@ -242,6 +272,9 @@ public class InstrumentsApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified 'effectiveAt' datetime. If the 'effectiveAt' is not provided or is   before the time-variant property exists then a failure is returned. Do not specify this parameter if any of   the properties to delete are perpetual.
         String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeleteInstrumentPropertiesResponse result = apiInstance.deleteInstrumentProperties(identifierType, identifier, requestBody, effectiveAt, scope).execute(opts);
+
             DeleteInstrumentPropertiesResponse result = apiInstance.deleteInstrumentProperties(identifierType, identifier, requestBody, effectiveAt, scope).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -323,11 +356,22 @@ public class InstrumentsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InstrumentsApi apiInstance = apiFactory.build(InstrumentsApi.class);
+
         InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
         List<String> requestBody = ["LUID_12345678","LUID_87654321"]; // List<String> | The list of lusidInstrumentId's to delete.
         String deleteMode = "Soft"; // String | The delete mode to use (defaults to 'Soft').
         String scope = "default"; // String | The scope in which the instruments lie. When not supplied the scope is 'default'.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeleteInstrumentsResponse result = apiInstance.deleteInstruments(requestBody, deleteMode, scope).execute(opts);
+
             DeleteInstrumentsResponse result = apiInstance.deleteInstruments(requestBody, deleteMode, scope).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -407,9 +451,20 @@ public class InstrumentsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InstrumentsApi apiInstance = apiFactory.build(InstrumentsApi.class);
+
         InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
         String instrumentType = "instrumentType_example"; // String | A lusid instrument type e.g. Bond, FxOption.
         try {
+            // uncomment the below to set overrides at the request level
+            // Map<String, List<String>> result = apiInstance.getAllPossibleFeatures(instrumentType).execute(opts);
+
             Map<String, List<String>> result = apiInstance.getAllPossibleFeatures(instrumentType).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -487,6 +542,14 @@ public class InstrumentsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InstrumentsApi apiInstance = apiFactory.build(InstrumentsApi.class);
+
         InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
         String identifier = "identifier_example"; // String | A lusid instrument id identifying the instrument.
         String model = "model_example"; // String | A pricing model for the instrument. Defaults to Unknown if not specified. If not specified the SupportedAddresses and EconomicDependencies are not provided.
@@ -496,6 +559,9 @@ public class InstrumentsApiExample {
         String recipeScope = "default"; // String | The scope in which the recipe lies. When not supplied the scope is 'default'.
         String recipeCode = "recipeCode_example"; // String | A unique identifier for an entity, used to obtain configuration recipe details. Default configuration recipe is used if not provided.
         try {
+            // uncomment the below to set overrides at the request level
+            // InstrumentCapabilities result = apiInstance.getExistingInstrumentCapabilities(identifier, model, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode).execute(opts);
+
             InstrumentCapabilities result = apiInstance.getExistingInstrumentCapabilities(identifier, model, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -579,6 +645,14 @@ public class InstrumentsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InstrumentsApi apiInstance = apiFactory.build(InstrumentsApi.class);
+
         InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
         String identifier = "identifier_example"; // String | A lusid instrument id identifying the instrument.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the instrument.   Defaults to the current LUSID system datetime if not specified.
@@ -587,6 +661,9 @@ public class InstrumentsApiExample {
         String recipeScope = "default"; // String | The scope in which the recipe lies. When not supplied the scope is 'default'.
         String recipeCode = "recipeCode_example"; // String | A unique identifier for an entity, used to obtain configuration recipe details. Default configuration recipe is used if not provided.
         try {
+            // uncomment the below to set overrides at the request level
+            // InstrumentModels result = apiInstance.getExistingInstrumentModels(identifier, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode).execute(opts);
+
             InstrumentModels result = apiInstance.getExistingInstrumentModels(identifier, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -669,6 +746,14 @@ public class InstrumentsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InstrumentsApi apiInstance = apiFactory.build(InstrumentsApi.class);
+
         InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
         String identifierType = "identifierType_example"; // String | The unique identifier type to use, for example 'Figi'.
         String identifier = "identifier_example"; // String | An <i>identifierType</i> value to use to identify the instrument, for example 'BBG000BLNNV0'.
@@ -678,6 +763,9 @@ public class InstrumentsApiExample {
         String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
         List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto the instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
         try {
+            // uncomment the below to set overrides at the request level
+            // Instrument result = apiInstance.getInstrument(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds).execute(opts);
+
             Instrument result = apiInstance.getInstrument(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -761,8 +849,19 @@ public class InstrumentsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InstrumentsApi apiInstance = apiFactory.build(InstrumentsApi.class);
+
         InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfInstrumentIdTypeDescriptor result = apiInstance.getInstrumentIdentifierTypes().execute(opts);
+
             ResourceListOfInstrumentIdTypeDescriptor result = apiInstance.getInstrumentIdentifierTypes().execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -836,6 +935,14 @@ public class InstrumentsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InstrumentsApi apiInstance = apiFactory.build(InstrumentsApi.class);
+
         InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
         String identifierType = "identifierType_example"; // String | The identifier being supplied e.g. \"Figi\".
         String identifier = "identifier_example"; // String | The value of the identifier for the requested instrument.
@@ -845,6 +952,9 @@ public class InstrumentsApiExample {
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the instrument's properties. Defaults to return the latest version of each property if not specified.
         String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
         try {
+            // uncomment the below to set overrides at the request level
+            // InstrumentPaymentDiary result = apiInstance.getInstrumentPaymentDiary(identifierType, identifier, recipeScope, recipeCode, effectiveAt, asAt, scope).execute(opts);
+
             InstrumentPaymentDiary result = apiInstance.getInstrumentPaymentDiary(identifierType, identifier, recipeScope, recipeCode, effectiveAt, asAt, scope).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -928,6 +1038,14 @@ public class InstrumentsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InstrumentsApi apiInstance = apiFactory.build(InstrumentsApi.class);
+
         InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
         String identifierType = "identifierType_example"; // String | The unique identifier type to search, for example 'Figi'.
         String identifier = "identifier_example"; // String | An <i>identifierType</i> value to use to identify the instrument, for example 'BBG000BLNNV0'.
@@ -935,6 +1053,9 @@ public class InstrumentsApiExample {
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the instrument's properties. Defaults to returning   the latest version of each property if not specified.
         String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
         try {
+            // uncomment the below to set overrides at the request level
+            // InstrumentProperties result = apiInstance.getInstrumentProperties(identifierType, identifier, effectiveAt, asAt, scope).execute(opts);
+
             InstrumentProperties result = apiInstance.getInstrumentProperties(identifierType, identifier, effectiveAt, asAt, scope).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1016,6 +1137,14 @@ public class InstrumentsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InstrumentsApi apiInstance = apiFactory.build(InstrumentsApi.class);
+
         InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
         String identifierType = "identifierType_example"; // String | The unique identifier type to search, for example 'Figi'.
         String identifier = "identifier_example"; // String | An <i>identifierType</i> value to use to identify the instrument, for example 'BBG000BLNNV0'.
@@ -1027,6 +1156,9 @@ public class InstrumentsApiExample {
         Integer limit = 56; // Integer | When paginating, limit the results to this number.
         String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfPropertyInterval result = apiInstance.getInstrumentPropertyTimeSeries(identifierType, identifier, propertyKey, identifierEffectiveAt, asAt, filter, page, limit, scope).execute(opts);
+
             ResourceListOfPropertyInterval result = apiInstance.getInstrumentPropertyTimeSeries(identifierType, identifier, propertyKey, identifierEffectiveAt, asAt, filter, page, limit, scope).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1112,6 +1244,14 @@ public class InstrumentsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InstrumentsApi apiInstance = apiFactory.build(InstrumentsApi.class);
+
         InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
         String identifierType = "identifierType_example"; // String | An identifier type attached to the Instrument.
         String identifier = "identifier_example"; // String | The identifier value.
@@ -1121,6 +1261,9 @@ public class InstrumentsApiExample {
         List<String> identifierTypes = Arrays.asList(); // List<String> | Identifier types (as property keys) used for referencing Persons or Legal Entities.   These can be specified from the 'Person' or 'LegalEntity' domains and have the format {domain}/{scope}/{code}, for example   'Person/CompanyDetails/Role'. An Empty array may be used to return all related Entities.
         String scope = "default"; // String | The entity scope in which the instrument lies. When not supplied the scope is 'default'.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfRelationship result = apiInstance.getInstrumentRelationships(identifierType, identifier, effectiveAt, asAt, filter, identifierTypes, scope).execute(opts);
+
             ResourceListOfRelationship result = apiInstance.getInstrumentRelationships(identifierType, identifier, effectiveAt, asAt, filter, identifierTypes, scope).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1204,6 +1347,14 @@ public class InstrumentsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InstrumentsApi apiInstance = apiFactory.build(InstrumentsApi.class);
+
         InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
         String identifierType = "identifierType_example"; // String | The unique identifier type to use, for example 'Figi'.
         List<String> requestBody = ["instrument-identifier-1","instrument-identifier-2"]; // List<String> | A list of one or more <i>identifierType</i> values to use to identify instruments.
@@ -1213,6 +1364,9 @@ public class InstrumentsApiExample {
         String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
         List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
         try {
+            // uncomment the below to set overrides at the request level
+            // GetInstrumentsResponse result = apiInstance.getInstruments(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds).execute(opts);
+
             GetInstrumentsResponse result = apiInstance.getInstruments(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1296,6 +1450,14 @@ public class InstrumentsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InstrumentsApi apiInstance = apiFactory.build(InstrumentsApi.class);
+
         InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
         String identifierType = "identifierType_example"; // String | The unique identifier type to search, for example 'Figi'.
         String identifier = "identifier_example"; // String | An <i>identifierType</i> value to use to identify the instrument, for example 'BBG000BLNNV0'.
@@ -1305,6 +1467,9 @@ public class InstrumentsApiExample {
         Integer limit = 56; // Integer | When paginating, limit the results per page to this number.
         String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfProperty result = apiInstance.listInstrumentProperties(identifierType, identifier, effectiveAt, asAt, page, limit, scope).execute(opts);
+
             ResourceListOfProperty result = apiInstance.listInstrumentProperties(identifierType, identifier, effectiveAt, asAt, page, limit, scope).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1388,6 +1553,14 @@ public class InstrumentsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InstrumentsApi apiInstance = apiFactory.build(InstrumentsApi.class);
+
         InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list instruments. Defaults to returning the latest   version of each instrument if not specified.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list instruments.   Defaults to the current LUSID system datetime if not specified.
@@ -1399,6 +1572,9 @@ public class InstrumentsApiExample {
         String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
         List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfInstrument result = apiInstance.listInstruments(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds).execute(opts);
+
             PagedResourceListOfInstrument result = apiInstance.listInstruments(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1484,10 +1660,21 @@ public class InstrumentsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InstrumentsApi apiInstance = apiFactory.build(InstrumentsApi.class);
+
         InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
         LusidInstrument lusidInstrument = new LusidInstrument(); // LusidInstrument | The definition of the instrument.
         String model = "model_example"; // String | A pricing model for the instrument. Defaults to Unknown if not specified. If not specified the SupportedAddresses and EconomicDependencies are not provided.
         try {
+            // uncomment the below to set overrides at the request level
+            // InstrumentCapabilities result = apiInstance.queryInstrumentCapabilities(lusidInstrument, model).execute(opts);
+
             InstrumentCapabilities result = apiInstance.queryInstrumentCapabilities(lusidInstrument, model).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1566,12 +1753,23 @@ public class InstrumentsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InstrumentsApi apiInstance = apiFactory.build(InstrumentsApi.class);
+
         InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
         String identifierType = "identifierType_example"; // String | The unique identifier type to search, for example 'Figi'.
         String identifier = "identifier_example"; // String | An <i>identifierType</i> value to use to identify the instrument, for example 'BBG000BLNNV0'.
         UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest = new UpdateInstrumentIdentifierRequest(); // UpdateInstrumentIdentifierRequest | The identifier to update or delete. This need not be the same value as the   'identifier' parameter used to retrieve the instrument.
         String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
         try {
+            // uncomment the below to set overrides at the request level
+            // Instrument result = apiInstance.updateInstrumentIdentifier(identifierType, identifier, updateInstrumentIdentifierRequest, scope).execute(opts);
+
             Instrument result = apiInstance.updateInstrumentIdentifier(identifierType, identifier, updateInstrumentIdentifierRequest, scope).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1652,10 +1850,21 @@ public class InstrumentsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InstrumentsApi apiInstance = apiFactory.build(InstrumentsApi.class);
+
         InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
         Map<String, InstrumentDefinition> requestBody = new HashMap(); // Map<String, InstrumentDefinition> | The definitions of the instruments to create or update.
         String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
         try {
+            // uncomment the below to set overrides at the request level
+            // UpsertInstrumentsResponse result = apiInstance.upsertInstruments(requestBody, scope).execute(opts);
+
             UpsertInstrumentsResponse result = apiInstance.upsertInstruments(requestBody, scope).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1734,10 +1943,21 @@ public class InstrumentsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InstrumentsApi apiInstance = apiFactory.build(InstrumentsApi.class);
+
         InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
         List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest = Arrays.asList(); // List<UpsertInstrumentPropertyRequest> | A list of instruments and associated instrument properties to create or update.
         String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
         try {
+            // uncomment the below to set overrides at the request level
+            // UpsertInstrumentPropertiesResponse result = apiInstance.upsertInstrumentsProperties(upsertInstrumentPropertyRequest, scope).execute(opts);
+
             UpsertInstrumentPropertiesResponse result = apiInstance.upsertInstrumentsProperties(upsertInstrumentPropertyRequest, scope).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

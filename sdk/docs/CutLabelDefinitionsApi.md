@@ -50,9 +50,20 @@ public class CutLabelDefinitionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CutLabelDefinitionsApi apiInstance = apiFactory.build(CutLabelDefinitionsApi.class);
+
         CutLabelDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(CutLabelDefinitionsApi.class);
         CreateCutLabelDefinitionRequest createCutLabelDefinitionRequest = new CreateCutLabelDefinitionRequest(); // CreateCutLabelDefinitionRequest | The cut label definition
         try {
+            // uncomment the below to set overrides at the request level
+            // CutLabelDefinition result = apiInstance.createCutLabelDefinition(createCutLabelDefinitionRequest).execute(opts);
+
             CutLabelDefinition result = apiInstance.createCutLabelDefinition(createCutLabelDefinitionRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -130,9 +141,20 @@ public class CutLabelDefinitionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CutLabelDefinitionsApi apiInstance = apiFactory.build(CutLabelDefinitionsApi.class);
+
         CutLabelDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(CutLabelDefinitionsApi.class);
         String code = "code_example"; // String | The Code of the Cut Label that is being Deleted
         try {
+            // uncomment the below to set overrides at the request level
+            // OffsetDateTime result = apiInstance.deleteCutLabelDefinition(code).execute(opts);
+
             OffsetDateTime result = apiInstance.deleteCutLabelDefinition(code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -210,10 +232,21 @@ public class CutLabelDefinitionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CutLabelDefinitionsApi apiInstance = apiFactory.build(CutLabelDefinitionsApi.class);
+
         CutLabelDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(CutLabelDefinitionsApi.class);
         String code = "code_example"; // String | The Code of the Cut Label that is being queried
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The time at which to get the Cut Label
         try {
+            // uncomment the below to set overrides at the request level
+            // CutLabelDefinition result = apiInstance.getCutLabelDefinition(code, asAt).execute(opts);
+
             CutLabelDefinition result = apiInstance.getCutLabelDefinition(code, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -292,6 +325,14 @@ public class CutLabelDefinitionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CutLabelDefinitionsApi apiInstance = apiFactory.build(CutLabelDefinitionsApi.class);
+
         CutLabelDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(CutLabelDefinitionsApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. The As At time at which listed Cut Labels are valid
         List<String> sortBy = Arrays.asList(); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
@@ -299,6 +340,9 @@ public class CutLabelDefinitionsApiExample {
         String filter = "filter_example"; // String | Optional. Expression to filter the result set.   For example, to filter on code, use \"code eq 'string'\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         String page = "page_example"; // String | The pagination token to use to continue listing cut labels from a previous call This value is returned from the previous call.  If a pagination token is provided the sortBy, filter, and asAt fields  must not have changed since the original request.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfCutLabelDefinition result = apiInstance.listCutLabelDefinitions(asAt, sortBy, limit, filter, page).execute(opts);
+
             PagedResourceListOfCutLabelDefinition result = apiInstance.listCutLabelDefinitions(asAt, sortBy, limit, filter, page).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -380,10 +424,21 @@ public class CutLabelDefinitionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CutLabelDefinitionsApi apiInstance = apiFactory.build(CutLabelDefinitionsApi.class);
+
         CutLabelDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(CutLabelDefinitionsApi.class);
         String code = "code_example"; // String | The Code of the Cut Label that is being updated
         UpdateCutLabelDefinitionRequest updateCutLabelDefinitionRequest = new UpdateCutLabelDefinitionRequest(); // UpdateCutLabelDefinitionRequest | The cut label update definition
         try {
+            // uncomment the below to set overrides at the request level
+            // CutLabelDefinition result = apiInstance.updateCutLabelDefinition(code, updateCutLabelDefinitionRequest).execute(opts);
+
             CutLabelDefinition result = apiInstance.updateCutLabelDefinition(code, updateCutLabelDefinitionRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

@@ -51,10 +51,21 @@ public class AmortisationRuleSetsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AmortisationRuleSetsApi apiInstance = apiFactory.build(AmortisationRuleSetsApi.class);
+
         AmortisationRuleSetsApi apiInstance = ApiFactoryBuilder.build(fileName).build(AmortisationRuleSetsApi.class);
         String scope = "scope_example"; // String | The scope of the rule set.
         CreateAmortisationRuleSetRequest createAmortisationRuleSetRequest = new CreateAmortisationRuleSetRequest(); // CreateAmortisationRuleSetRequest | The contents of the rule set.
         try {
+            // uncomment the below to set overrides at the request level
+            // AmortisationRuleSet result = apiInstance.createAmortisationRuleSet(scope, createAmortisationRuleSetRequest).execute(opts);
+
             AmortisationRuleSet result = apiInstance.createAmortisationRuleSet(scope, createAmortisationRuleSetRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -133,10 +144,21 @@ public class AmortisationRuleSetsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AmortisationRuleSetsApi apiInstance = apiFactory.build(AmortisationRuleSetsApi.class);
+
         AmortisationRuleSetsApi apiInstance = ApiFactoryBuilder.build(fileName).build(AmortisationRuleSetsApi.class);
         String scope = "scope_example"; // String | The rule set scope.
         String code = "code_example"; // String | The rule set code.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteAmortisationRuleset(scope, code).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteAmortisationRuleset(scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -215,12 +237,23 @@ public class AmortisationRuleSetsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AmortisationRuleSetsApi apiInstance = apiFactory.build(AmortisationRuleSetsApi.class);
+
         AmortisationRuleSetsApi apiInstance = ApiFactoryBuilder.build(fileName).build(AmortisationRuleSetsApi.class);
         String scope = "scope_example"; // String | The rule set scope.
         String code = "code_example"; // String | The rule set code.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the rule definition.  Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the rule definition. Defaults to returning the latest version if not  specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // AmortisationRuleSet result = apiInstance.getAmortisationRuleSet(scope, code, effectiveAt, asAt).execute(opts);
+
             AmortisationRuleSet result = apiInstance.getAmortisationRuleSet(scope, code, effectiveAt, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -301,6 +334,14 @@ public class AmortisationRuleSetsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AmortisationRuleSetsApi apiInstance = apiFactory.build(AmortisationRuleSetsApi.class);
+
         AmortisationRuleSetsApi apiInstance = ApiFactoryBuilder.build(fileName).build(AmortisationRuleSetsApi.class);
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the rule definitions.  Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the rule definitions. Defaults to returning the latest version if not  specified.
@@ -309,6 +350,9 @@ public class AmortisationRuleSetsApiExample {
         String filter = "filter_example"; // String | Expression to filter the results.   For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\"
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfAmortisationRuleSet result = apiInstance.listAmortisationRuleSets(effectiveAt, asAt, page, limit, filter, sortBy).execute(opts);
+
             PagedResourceListOfAmortisationRuleSet result = apiInstance.listAmortisationRuleSets(effectiveAt, asAt, page, limit, filter, sortBy).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -391,11 +435,22 @@ public class AmortisationRuleSetsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AmortisationRuleSetsApi apiInstance = apiFactory.build(AmortisationRuleSetsApi.class);
+
         AmortisationRuleSetsApi apiInstance = ApiFactoryBuilder.build(fileName).build(AmortisationRuleSetsApi.class);
         String scope = "scope_example"; // String | The rule set scope.
         String code = "code_example"; // String | The rule set code.
         SetAmortisationRulesRequest setAmortisationRulesRequest = new SetAmortisationRulesRequest(); // SetAmortisationRulesRequest | The contents of the rules.
         try {
+            // uncomment the below to set overrides at the request level
+            // AmortisationRuleSet result = apiInstance.setAmortisationRules(scope, code, setAmortisationRulesRequest).execute(opts);
+
             AmortisationRuleSet result = apiInstance.setAmortisationRules(scope, code, setAmortisationRulesRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -475,11 +530,22 @@ public class AmortisationRuleSetsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AmortisationRuleSetsApi apiInstance = apiFactory.build(AmortisationRuleSetsApi.class);
+
         AmortisationRuleSetsApi apiInstance = ApiFactoryBuilder.build(fileName).build(AmortisationRuleSetsApi.class);
         String scope = "scope_example"; // String | The rule set scope.
         String code = "code_example"; // String | The rule set code.
         UpdateAmortisationRuleSetDetailsRequest updateAmortisationRuleSetDetailsRequest = new UpdateAmortisationRuleSetDetailsRequest(); // UpdateAmortisationRuleSetDetailsRequest | The contents of the rule set.
         try {
+            // uncomment the below to set overrides at the request level
+            // AmortisationRuleSet result = apiInstance.updateAmortisationRuleSetDetails(scope, code, updateAmortisationRuleSetDetailsRequest).execute(opts);
+
             AmortisationRuleSet result = apiInstance.updateAmortisationRuleSetDetails(scope, code, updateAmortisationRuleSetDetailsRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

@@ -49,10 +49,21 @@ public class ParticipationsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ParticipationsApi apiInstance = apiFactory.build(ParticipationsApi.class);
+
         ParticipationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ParticipationsApi.class);
         String scope = "scope_example"; // String | The participation scope.
         String code = "code_example"; // String | The participation's code. This, together with the scope uniquely identifies the participation to delete.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteParticipation(scope, code).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteParticipation(scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -131,12 +142,23 @@ public class ParticipationsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ParticipationsApi apiInstance = apiFactory.build(ParticipationsApi.class);
+
         ParticipationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ParticipationsApi.class);
         String scope = "scope_example"; // String | The scope to which the participation belongs.
         String code = "code_example"; // String | The participation's unique identifier.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the participation. Defaults to return the latest version of the participation if not specified.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Participation\" domain to decorate onto the participation.   These take the format {domain}/{scope}/{code} e.g. \"Participation/system/Name\".
         try {
+            // uncomment the below to set overrides at the request level
+            // Participation result = apiInstance.getParticipation(scope, code, asAt, propertyKeys).execute(opts);
+
             Participation result = apiInstance.getParticipation(scope, code, asAt, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -217,6 +239,14 @@ public class ParticipationsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ParticipationsApi apiInstance = apiFactory.build(ParticipationsApi.class);
+
         ParticipationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ParticipationsApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the participation. Defaults to return the latest version of the participation if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing participations from a previous call to list participations.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request.
@@ -225,6 +255,9 @@ public class ParticipationsApiExample {
         String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Participation\" domain to decorate onto each participation.   These take the format {domain}/{scope}/{code} e.g. \"Participation/system/Name\".
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfParticipation result = apiInstance.listParticipations(asAt, page, sortBy, limit, filter, propertyKeys).execute(opts);
+
             PagedResourceListOfParticipation result = apiInstance.listParticipations(asAt, page, sortBy, limit, filter, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -307,9 +340,20 @@ public class ParticipationsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ParticipationsApi apiInstance = apiFactory.build(ParticipationsApi.class);
+
         ParticipationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ParticipationsApi.class);
         ParticipationSetRequest participationSetRequest = new ParticipationSetRequest(); // ParticipationSetRequest | The collection of participation requests.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfParticipation result = apiInstance.upsertParticipations(participationSetRequest).execute(opts);
+
             ResourceListOfParticipation result = apiInstance.upsertParticipations(participationSetRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

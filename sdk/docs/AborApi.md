@@ -58,12 +58,23 @@ public class AborApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AborApi apiInstance = apiFactory.build(AborApi.class);
+
         AborApi apiInstance = ApiFactoryBuilder.build(fileName).build(AborApi.class);
         String scope = "scope_example"; // String | The scope of the Abor.
         String code = "code_example"; // String | The code of the Abor.
         String diaryEntryCode = "diaryEntryCode_example"; // String | Diary entry code
         DiaryEntryRequest diaryEntryRequest = new DiaryEntryRequest(); // DiaryEntryRequest | The diary entry to add.
         try {
+            // uncomment the below to set overrides at the request level
+            // DiaryEntry result = apiInstance.addDiaryEntry(scope, code, diaryEntryCode, diaryEntryRequest).execute(opts);
+
             DiaryEntry result = apiInstance.addDiaryEntry(scope, code, diaryEntryCode, diaryEntryRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -144,11 +155,22 @@ public class AborApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AborApi apiInstance = apiFactory.build(AborApi.class);
+
         AborApi apiInstance = ApiFactoryBuilder.build(fileName).build(AborApi.class);
         String scope = "scope_example"; // String | The scope of the Abor.
         String code = "code_example"; // String | The code of the Abor.
         ClosePeriodDiaryEntryRequest closePeriodDiaryEntryRequest = new ClosePeriodDiaryEntryRequest(); // ClosePeriodDiaryEntryRequest | The request body, containing details to apply to the closing/locking period.
         try {
+            // uncomment the below to set overrides at the request level
+            // DiaryEntry result = apiInstance.closePeriod(scope, code, closePeriodDiaryEntryRequest).execute(opts);
+
             DiaryEntry result = apiInstance.closePeriod(scope, code, closePeriodDiaryEntryRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -228,10 +250,21 @@ public class AborApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AborApi apiInstance = apiFactory.build(AborApi.class);
+
         AborApi apiInstance = ApiFactoryBuilder.build(fileName).build(AborApi.class);
         String scope = "scope_example"; // String | The scope of the Abor.
         AborRequest aborRequest = new AborRequest(); // AborRequest | The definition of the Abor.
         try {
+            // uncomment the below to set overrides at the request level
+            // Abor result = apiInstance.createAbor(scope, aborRequest).execute(opts);
+
             Abor result = apiInstance.createAbor(scope, aborRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -310,10 +343,21 @@ public class AborApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AborApi apiInstance = apiFactory.build(AborApi.class);
+
         AborApi apiInstance = ApiFactoryBuilder.build(fileName).build(AborApi.class);
         String scope = "scope_example"; // String | The scope of the Abor to be deleted.
         String code = "code_example"; // String | The code of the Abor to be deleted. Together with the scope this uniquely identifies the Abor.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteAbor(scope, code).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteAbor(scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -392,6 +436,14 @@ public class AborApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AborApi apiInstance = apiFactory.build(AborApi.class);
+
         AborApi apiInstance = ApiFactoryBuilder.build(fileName).build(AborApi.class);
         String scope = "scope_example"; // String | The scope of the Abor.
         String code = "code_example"; // String | The code of the Abor. Together with the scope this uniquely identifies the Abor.
@@ -399,6 +451,9 @@ public class AborApiExample {
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Abor definition. Defaults to returning the latest version of the Abor definition if not specified.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Abor' domain to decorate onto the Abor.   These must take the format {domain}/{scope}/{code}, for example 'Abor/Manager/Id'. If no properties are specified, then no properties will be returned.
         try {
+            // uncomment the below to set overrides at the request level
+            // Abor result = apiInstance.getAbor(scope, code, effectiveAt, asAt, propertyKeys).execute(opts);
+
             Abor result = apiInstance.getAbor(scope, code, effectiveAt, asAt, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -480,6 +535,14 @@ public class AborApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AborApi apiInstance = apiFactory.build(AborApi.class);
+
         AborApi apiInstance = ApiFactoryBuilder.build(fileName).build(AborApi.class);
         String scope = "scope_example"; // String | The scope of the Abor.
         String code = "code_example"; // String | The code of the Abor. Together with the scope is creating the unique identifier for the given Abor.
@@ -489,6 +552,9 @@ public class AborApiExample {
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing Journal Entry lines from a previous call to GetJournalEntryLines.
         try {
+            // uncomment the below to set overrides at the request level
+            // VersionedResourceListOfJournalEntryLine result = apiInstance.getJournalEntryLines(scope, code, journalEntryLinesQueryParameters, asAt, filter, limit, page).execute(opts);
+
             VersionedResourceListOfJournalEntryLine result = apiInstance.getJournalEntryLines(scope, code, journalEntryLinesQueryParameters, asAt, filter, limit, page).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -572,6 +638,14 @@ public class AborApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AborApi apiInstance = apiFactory.build(AborApi.class);
+
         AborApi apiInstance = ApiFactoryBuilder.build(fileName).build(AborApi.class);
         String scope = "scope_example"; // String | The scope of the Abor.
         String code = "code_example"; // String | The code of the Abor. Together with the scope is the unique identifier for the given Abor.
@@ -581,6 +655,9 @@ public class AborApiExample {
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing Trial balance from a previous call to Trial balance.
         try {
+            // uncomment the below to set overrides at the request level
+            // VersionedResourceListOfTrialBalance result = apiInstance.getTrialBalance(scope, code, trialBalanceQueryParameters, asAt, filter, limit, page).execute(opts);
+
             VersionedResourceListOfTrialBalance result = apiInstance.getTrialBalance(scope, code, trialBalanceQueryParameters, asAt, filter, limit, page).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -664,6 +741,14 @@ public class AborApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AborApi apiInstance = apiFactory.build(AborApi.class);
+
         AborApi apiInstance = ApiFactoryBuilder.build(fileName).build(AborApi.class);
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the TimeVariant properties for the Abor. Defaults to the current LUSID   system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the Abor. Defaults to returning the latest version of each Abor if not specified.
@@ -673,6 +758,9 @@ public class AborApiExample {
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\".
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Abor' domain to decorate onto each Abor.   These must take the format {domain}/{scope}/{code}, for example 'Abor/Manager/Id'.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfAbor result = apiInstance.listAbors(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys).execute(opts);
+
             PagedResourceListOfAbor result = apiInstance.listAbors(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -756,6 +844,14 @@ public class AborApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AborApi apiInstance = apiFactory.build(AborApi.class);
+
         AborApi apiInstance = ApiFactoryBuilder.build(fileName).build(AborApi.class);
         String scope = "scope_example"; // String | The scope of the Abor.
         String code = "code_example"; // String | The code of the Abor.
@@ -767,6 +863,9 @@ public class AborApiExample {
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\".
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'DiaryEntry' domain to decorate onto each DiaryEntry.   These must take the format {domain}/{scope}/{code}, for example 'DiaryEntry/Report/Id'.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfDiaryEntry result = apiInstance.listDiaryEntries(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys).execute(opts);
+
             PagedResourceListOfDiaryEntry result = apiInstance.listDiaryEntries(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -852,11 +951,22 @@ public class AborApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AborApi apiInstance = apiFactory.build(AborApi.class);
+
         AborApi apiInstance = ApiFactoryBuilder.build(fileName).build(AborApi.class);
         String scope = "scope_example"; // String | The scope of the Abor.
         String code = "code_example"; // String | The code of the Abor.
         LockPeriodDiaryEntryRequest lockPeriodDiaryEntryRequest = new LockPeriodDiaryEntryRequest(); // LockPeriodDiaryEntryRequest | The request body, detailing lock details
         try {
+            // uncomment the below to set overrides at the request level
+            // DiaryEntry result = apiInstance.lockPeriod(scope, code, lockPeriodDiaryEntryRequest).execute(opts);
+
             DiaryEntry result = apiInstance.lockPeriod(scope, code, lockPeriodDiaryEntryRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -936,11 +1046,22 @@ public class AborApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AborApi apiInstance = apiFactory.build(AborApi.class);
+
         AborApi apiInstance = ApiFactoryBuilder.build(fileName).build(AborApi.class);
         String scope = "scope_example"; // String | The scope of the Abor.
         String code = "code_example"; // String | The code of the Abor. Together with the   scope this uniquely identifies the Abor.
         List<Operation> operation = Arrays.asList(); // List<Operation> | The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902.
         try {
+            // uncomment the below to set overrides at the request level
+            // Abor result = apiInstance.patchAbor(scope, code, operation).execute(opts);
+
             Abor result = apiInstance.patchAbor(scope, code, operation).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1020,11 +1141,22 @@ public class AborApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AborApi apiInstance = apiFactory.build(AborApi.class);
+
         AborApi apiInstance = ApiFactoryBuilder.build(fileName).build(AborApi.class);
         String scope = "scope_example"; // String | The scope of the Abor to be deleted.
         String code = "code_example"; // String | The code of the Abor to be deleted. Together with the scope this uniquely identifies the Abor.
         ReOpenPeriodDiaryEntryRequest reOpenPeriodDiaryEntryRequest = new ReOpenPeriodDiaryEntryRequest(); // ReOpenPeriodDiaryEntryRequest | The request body, detailing re open details
         try {
+            // uncomment the below to set overrides at the request level
+            // PeriodDiaryEntriesReopenedResponse result = apiInstance.reOpenPeriods(scope, code, reOpenPeriodDiaryEntryRequest).execute(opts);
+
             PeriodDiaryEntriesReopenedResponse result = apiInstance.reOpenPeriods(scope, code, reOpenPeriodDiaryEntryRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1104,11 +1236,22 @@ public class AborApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AborApi apiInstance = apiFactory.build(AborApi.class);
+
         AborApi apiInstance = ApiFactoryBuilder.build(fileName).build(AborApi.class);
         String scope = "scope_example"; // String | The scope of the Abor to update or insert the properties onto.
         String code = "code_example"; // String | The code of the Abor to update or insert the properties onto. Together with the scope this uniquely identifies the Abor.
         Map<String, Property> requestBody = new HashMap(); // Map<String, Property> | The properties to be updated or inserted onto the Abor. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \"Abor/Manager/Id\".
         try {
+            // uncomment the below to set overrides at the request level
+            // AborProperties result = apiInstance.upsertAborProperties(scope, code, requestBody).execute(opts);
+
             AborProperties result = apiInstance.upsertAborProperties(scope, code, requestBody).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

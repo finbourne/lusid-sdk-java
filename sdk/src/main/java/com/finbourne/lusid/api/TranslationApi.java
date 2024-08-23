@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -75,6 +76,10 @@ public class TranslationApi {
     }
 
     private okhttp3.Call translateInstrumentDefinitionsCall(TranslateInstrumentDefinitionsRequest translateInstrumentDefinitionsRequest, final ApiCallback _callback) throws ApiException {
+        return translateInstrumentDefinitionsCall(translateInstrumentDefinitionsRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call translateInstrumentDefinitionsCall(TranslateInstrumentDefinitionsRequest translateInstrumentDefinitionsRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,30 +126,44 @@ public class TranslationApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call translateInstrumentDefinitionsValidateBeforeCall(TranslateInstrumentDefinitionsRequest translateInstrumentDefinitionsRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call translateInstrumentDefinitionsValidateBeforeCall(TranslateInstrumentDefinitionsRequest translateInstrumentDefinitionsRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'translateInstrumentDefinitionsRequest' is set
         if (translateInstrumentDefinitionsRequest == null) {
             throw new ApiException("Missing the required parameter 'translateInstrumentDefinitionsRequest' when calling translateInstrumentDefinitions(Async)");
         }
 
-        return translateInstrumentDefinitionsCall(translateInstrumentDefinitionsRequest, _callback);
+        return translateInstrumentDefinitionsCall(translateInstrumentDefinitionsRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<TranslateInstrumentDefinitionsResponse> translateInstrumentDefinitionsWithHttpInfo(TranslateInstrumentDefinitionsRequest translateInstrumentDefinitionsRequest) throws ApiException {
-        okhttp3.Call localVarCall = translateInstrumentDefinitionsValidateBeforeCall(translateInstrumentDefinitionsRequest, null);
+        okhttp3.Call localVarCall = translateInstrumentDefinitionsValidateBeforeCall(translateInstrumentDefinitionsRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TranslateInstrumentDefinitionsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<TranslateInstrumentDefinitionsResponse> translateInstrumentDefinitionsWithHttpInfo(TranslateInstrumentDefinitionsRequest translateInstrumentDefinitionsRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = translateInstrumentDefinitionsValidateBeforeCall(translateInstrumentDefinitionsRequest, null, opts);
         Type localVarReturnType = new TypeToken<TranslateInstrumentDefinitionsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call translateInstrumentDefinitionsAsync(TranslateInstrumentDefinitionsRequest translateInstrumentDefinitionsRequest, final ApiCallback<TranslateInstrumentDefinitionsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = translateInstrumentDefinitionsValidateBeforeCall(translateInstrumentDefinitionsRequest, _callback);
+        okhttp3.Call localVarCall = translateInstrumentDefinitionsValidateBeforeCall(translateInstrumentDefinitionsRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TranslateInstrumentDefinitionsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call translateInstrumentDefinitionsAsync(TranslateInstrumentDefinitionsRequest translateInstrumentDefinitionsRequest, final ApiCallback<TranslateInstrumentDefinitionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = translateInstrumentDefinitionsValidateBeforeCall(translateInstrumentDefinitionsRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<TranslateInstrumentDefinitionsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -192,6 +211,23 @@ public class TranslationApi {
         }
 
         /**
+         * Execute translateInstrumentDefinitions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return TranslateInstrumentDefinitionsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully translated instruments along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TranslateInstrumentDefinitionsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<TranslateInstrumentDefinitionsResponse> localVarResp = translateInstrumentDefinitionsWithHttpInfo(translateInstrumentDefinitionsRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute translateInstrumentDefinitions request with HTTP info returned
          * @return ApiResponse&lt;TranslateInstrumentDefinitionsResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -205,6 +241,22 @@ public class TranslationApi {
          */
         public ApiResponse<TranslateInstrumentDefinitionsResponse> executeWithHttpInfo() throws ApiException {
             return translateInstrumentDefinitionsWithHttpInfo(translateInstrumentDefinitionsRequest);
+        }
+
+        /**
+         * Execute translateInstrumentDefinitions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;TranslateInstrumentDefinitionsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully translated instruments along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TranslateInstrumentDefinitionsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return translateInstrumentDefinitionsWithHttpInfo(translateInstrumentDefinitionsRequest, opts);
         }
 
         /**
@@ -222,6 +274,23 @@ public class TranslationApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<TranslateInstrumentDefinitionsResponse> _callback) throws ApiException {
             return translateInstrumentDefinitionsAsync(translateInstrumentDefinitionsRequest, _callback);
+        }
+
+        /**
+         * Execute translateInstrumentDefinitions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully translated instruments along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TranslateInstrumentDefinitionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return translateInstrumentDefinitionsAsync(translateInstrumentDefinitionsRequest, _callback, opts);
         }
     }
 
@@ -242,6 +311,10 @@ public class TranslationApi {
         return new APItranslateInstrumentDefinitionsRequest(translateInstrumentDefinitionsRequest);
     }
     private okhttp3.Call translateTradeTicketsCall(TranslateTradeTicketRequest translateTradeTicketRequest, final ApiCallback _callback) throws ApiException {
+        return translateTradeTicketsCall(translateTradeTicketRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call translateTradeTicketsCall(TranslateTradeTicketRequest translateTradeTicketRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -288,30 +361,44 @@ public class TranslationApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call translateTradeTicketsValidateBeforeCall(TranslateTradeTicketRequest translateTradeTicketRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call translateTradeTicketsValidateBeforeCall(TranslateTradeTicketRequest translateTradeTicketRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'translateTradeTicketRequest' is set
         if (translateTradeTicketRequest == null) {
             throw new ApiException("Missing the required parameter 'translateTradeTicketRequest' when calling translateTradeTickets(Async)");
         }
 
-        return translateTradeTicketsCall(translateTradeTicketRequest, _callback);
+        return translateTradeTicketsCall(translateTradeTicketRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<TranslateTradeTicketsResponse> translateTradeTicketsWithHttpInfo(TranslateTradeTicketRequest translateTradeTicketRequest) throws ApiException {
-        okhttp3.Call localVarCall = translateTradeTicketsValidateBeforeCall(translateTradeTicketRequest, null);
+        okhttp3.Call localVarCall = translateTradeTicketsValidateBeforeCall(translateTradeTicketRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TranslateTradeTicketsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<TranslateTradeTicketsResponse> translateTradeTicketsWithHttpInfo(TranslateTradeTicketRequest translateTradeTicketRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = translateTradeTicketsValidateBeforeCall(translateTradeTicketRequest, null, opts);
         Type localVarReturnType = new TypeToken<TranslateTradeTicketsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call translateTradeTicketsAsync(TranslateTradeTicketRequest translateTradeTicketRequest, final ApiCallback<TranslateTradeTicketsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = translateTradeTicketsValidateBeforeCall(translateTradeTicketRequest, _callback);
+        okhttp3.Call localVarCall = translateTradeTicketsValidateBeforeCall(translateTradeTicketRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TranslateTradeTicketsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call translateTradeTicketsAsync(TranslateTradeTicketRequest translateTradeTicketRequest, final ApiCallback<TranslateTradeTicketsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = translateTradeTicketsValidateBeforeCall(translateTradeTicketRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<TranslateTradeTicketsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -359,6 +446,23 @@ public class TranslationApi {
         }
 
         /**
+         * Execute translateTradeTickets request. Use any specified configuration options to override any other configuration for this request only.
+         * @return TranslateTradeTicketsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully translated trade ticket along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TranslateTradeTicketsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<TranslateTradeTicketsResponse> localVarResp = translateTradeTicketsWithHttpInfo(translateTradeTicketRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute translateTradeTickets request with HTTP info returned
          * @return ApiResponse&lt;TranslateTradeTicketsResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -372,6 +476,22 @@ public class TranslationApi {
          */
         public ApiResponse<TranslateTradeTicketsResponse> executeWithHttpInfo() throws ApiException {
             return translateTradeTicketsWithHttpInfo(translateTradeTicketRequest);
+        }
+
+        /**
+         * Execute translateTradeTickets request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;TranslateTradeTicketsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully translated trade ticket along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TranslateTradeTicketsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return translateTradeTicketsWithHttpInfo(translateTradeTicketRequest, opts);
         }
 
         /**
@@ -389,6 +509,23 @@ public class TranslationApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<TranslateTradeTicketsResponse> _callback) throws ApiException {
             return translateTradeTicketsAsync(translateTradeTicketRequest, _callback);
+        }
+
+        /**
+         * Execute translateTradeTickets request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully translated trade ticket along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TranslateTradeTicketsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return translateTradeTicketsAsync(translateTradeTicketRequest, _callback, opts);
         }
     }
 

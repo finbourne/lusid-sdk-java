@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -75,6 +76,10 @@ public class AddressKeyDefinitionApi {
     }
 
     private okhttp3.Call createAddressKeyDefinitionCall(CreateAddressKeyDefinitionRequest createAddressKeyDefinitionRequest, final ApiCallback _callback) throws ApiException {
+        return createAddressKeyDefinitionCall(createAddressKeyDefinitionRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call createAddressKeyDefinitionCall(CreateAddressKeyDefinitionRequest createAddressKeyDefinitionRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,30 +126,44 @@ public class AddressKeyDefinitionApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createAddressKeyDefinitionValidateBeforeCall(CreateAddressKeyDefinitionRequest createAddressKeyDefinitionRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createAddressKeyDefinitionValidateBeforeCall(CreateAddressKeyDefinitionRequest createAddressKeyDefinitionRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'createAddressKeyDefinitionRequest' is set
         if (createAddressKeyDefinitionRequest == null) {
             throw new ApiException("Missing the required parameter 'createAddressKeyDefinitionRequest' when calling createAddressKeyDefinition(Async)");
         }
 
-        return createAddressKeyDefinitionCall(createAddressKeyDefinitionRequest, _callback);
+        return createAddressKeyDefinitionCall(createAddressKeyDefinitionRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<AddressKeyDefinition> createAddressKeyDefinitionWithHttpInfo(CreateAddressKeyDefinitionRequest createAddressKeyDefinitionRequest) throws ApiException {
-        okhttp3.Call localVarCall = createAddressKeyDefinitionValidateBeforeCall(createAddressKeyDefinitionRequest, null);
+        okhttp3.Call localVarCall = createAddressKeyDefinitionValidateBeforeCall(createAddressKeyDefinitionRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AddressKeyDefinition>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AddressKeyDefinition> createAddressKeyDefinitionWithHttpInfo(CreateAddressKeyDefinitionRequest createAddressKeyDefinitionRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createAddressKeyDefinitionValidateBeforeCall(createAddressKeyDefinitionRequest, null, opts);
         Type localVarReturnType = new TypeToken<AddressKeyDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call createAddressKeyDefinitionAsync(CreateAddressKeyDefinitionRequest createAddressKeyDefinitionRequest, final ApiCallback<AddressKeyDefinition> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createAddressKeyDefinitionValidateBeforeCall(createAddressKeyDefinitionRequest, _callback);
+        okhttp3.Call localVarCall = createAddressKeyDefinitionValidateBeforeCall(createAddressKeyDefinitionRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AddressKeyDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call createAddressKeyDefinitionAsync(CreateAddressKeyDefinitionRequest createAddressKeyDefinitionRequest, final ApiCallback<AddressKeyDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = createAddressKeyDefinitionValidateBeforeCall(createAddressKeyDefinitionRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<AddressKeyDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -192,6 +211,23 @@ public class AddressKeyDefinitionApi {
         }
 
         /**
+         * Execute createAddressKeyDefinition request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AddressKeyDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created address key definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AddressKeyDefinition execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AddressKeyDefinition> localVarResp = createAddressKeyDefinitionWithHttpInfo(createAddressKeyDefinitionRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute createAddressKeyDefinition request with HTTP info returned
          * @return ApiResponse&lt;AddressKeyDefinition&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -205,6 +241,22 @@ public class AddressKeyDefinitionApi {
          */
         public ApiResponse<AddressKeyDefinition> executeWithHttpInfo() throws ApiException {
             return createAddressKeyDefinitionWithHttpInfo(createAddressKeyDefinitionRequest);
+        }
+
+        /**
+         * Execute createAddressKeyDefinition request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AddressKeyDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created address key definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AddressKeyDefinition> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return createAddressKeyDefinitionWithHttpInfo(createAddressKeyDefinitionRequest, opts);
         }
 
         /**
@@ -222,6 +274,23 @@ public class AddressKeyDefinitionApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<AddressKeyDefinition> _callback) throws ApiException {
             return createAddressKeyDefinitionAsync(createAddressKeyDefinitionRequest, _callback);
+        }
+
+        /**
+         * Execute createAddressKeyDefinition request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created address key definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AddressKeyDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+            return createAddressKeyDefinitionAsync(createAddressKeyDefinitionRequest, _callback, opts);
         }
     }
 
@@ -242,6 +311,10 @@ public class AddressKeyDefinitionApi {
         return new APIcreateAddressKeyDefinitionRequest(createAddressKeyDefinitionRequest);
     }
     private okhttp3.Call getAddressKeyDefinitionCall(String key, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getAddressKeyDefinitionCall(key, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getAddressKeyDefinitionCall(String key, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -289,30 +362,44 @@ public class AddressKeyDefinitionApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAddressKeyDefinitionValidateBeforeCall(String key, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAddressKeyDefinitionValidateBeforeCall(String key, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'key' is set
         if (key == null) {
             throw new ApiException("Missing the required parameter 'key' when calling getAddressKeyDefinition(Async)");
         }
 
-        return getAddressKeyDefinitionCall(key, asAt, _callback);
+        return getAddressKeyDefinitionCall(key, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<AddressKeyDefinition> getAddressKeyDefinitionWithHttpInfo(String key, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getAddressKeyDefinitionValidateBeforeCall(key, asAt, null);
+        okhttp3.Call localVarCall = getAddressKeyDefinitionValidateBeforeCall(key, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AddressKeyDefinition>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AddressKeyDefinition> getAddressKeyDefinitionWithHttpInfo(String key, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getAddressKeyDefinitionValidateBeforeCall(key, asAt, null, opts);
         Type localVarReturnType = new TypeToken<AddressKeyDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getAddressKeyDefinitionAsync(String key, OffsetDateTime asAt, final ApiCallback<AddressKeyDefinition> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAddressKeyDefinitionValidateBeforeCall(key, asAt, _callback);
+        okhttp3.Call localVarCall = getAddressKeyDefinitionValidateBeforeCall(key, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AddressKeyDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getAddressKeyDefinitionAsync(String key, OffsetDateTime asAt, final ApiCallback<AddressKeyDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getAddressKeyDefinitionValidateBeforeCall(key, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<AddressKeyDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -371,6 +458,23 @@ public class AddressKeyDefinitionApi {
         }
 
         /**
+         * Execute getAddressKeyDefinition request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AddressKeyDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The address key definition with the given address key. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AddressKeyDefinition execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AddressKeyDefinition> localVarResp = getAddressKeyDefinitionWithHttpInfo(key, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getAddressKeyDefinition request with HTTP info returned
          * @return ApiResponse&lt;AddressKeyDefinition&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -384,6 +488,22 @@ public class AddressKeyDefinitionApi {
          */
         public ApiResponse<AddressKeyDefinition> executeWithHttpInfo() throws ApiException {
             return getAddressKeyDefinitionWithHttpInfo(key, asAt);
+        }
+
+        /**
+         * Execute getAddressKeyDefinition request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AddressKeyDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The address key definition with the given address key. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AddressKeyDefinition> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getAddressKeyDefinitionWithHttpInfo(key, asAt, opts);
         }
 
         /**
@@ -401,6 +521,23 @@ public class AddressKeyDefinitionApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<AddressKeyDefinition> _callback) throws ApiException {
             return getAddressKeyDefinitionAsync(key, asAt, _callback);
+        }
+
+        /**
+         * Execute getAddressKeyDefinition request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The address key definition with the given address key. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AddressKeyDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+            return getAddressKeyDefinitionAsync(key, asAt, _callback, opts);
         }
     }
 
@@ -421,6 +558,10 @@ public class AddressKeyDefinitionApi {
         return new APIgetAddressKeyDefinitionRequest(key);
     }
     private okhttp3.Call listAddressKeyDefinitionsCall(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+        return listAddressKeyDefinitionsCall(asAt, page, limit, filter,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listAddressKeyDefinitionsCall(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -479,25 +620,39 @@ public class AddressKeyDefinitionApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listAddressKeyDefinitionsValidateBeforeCall(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
-        return listAddressKeyDefinitionsCall(asAt, page, limit, filter, _callback);
+    private okhttp3.Call listAddressKeyDefinitionsValidateBeforeCall(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listAddressKeyDefinitionsCall(asAt, page, limit, filter, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfAddressKeyDefinition> listAddressKeyDefinitionsWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listAddressKeyDefinitionsValidateBeforeCall(asAt, page, limit, filter, null);
+        okhttp3.Call localVarCall = listAddressKeyDefinitionsValidateBeforeCall(asAt, page, limit, filter, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfAddressKeyDefinition>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfAddressKeyDefinition> listAddressKeyDefinitionsWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listAddressKeyDefinitionsValidateBeforeCall(asAt, page, limit, filter, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfAddressKeyDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listAddressKeyDefinitionsAsync(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfAddressKeyDefinition> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listAddressKeyDefinitionsValidateBeforeCall(asAt, page, limit, filter, _callback);
+        okhttp3.Call localVarCall = listAddressKeyDefinitionsValidateBeforeCall(asAt, page, limit, filter, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfAddressKeyDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listAddressKeyDefinitionsAsync(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfAddressKeyDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listAddressKeyDefinitionsValidateBeforeCall(asAt, page, limit, filter, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfAddressKeyDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -587,6 +742,23 @@ public class AddressKeyDefinitionApi {
         }
 
         /**
+         * Execute listAddressKeyDefinitions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfAddressKeyDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of address key definitions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfAddressKeyDefinition execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfAddressKeyDefinition> localVarResp = listAddressKeyDefinitionsWithHttpInfo(asAt, page, limit, filter, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listAddressKeyDefinitions request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfAddressKeyDefinition&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -600,6 +772,22 @@ public class AddressKeyDefinitionApi {
          */
         public ApiResponse<PagedResourceListOfAddressKeyDefinition> executeWithHttpInfo() throws ApiException {
             return listAddressKeyDefinitionsWithHttpInfo(asAt, page, limit, filter);
+        }
+
+        /**
+         * Execute listAddressKeyDefinitions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfAddressKeyDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of address key definitions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfAddressKeyDefinition> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listAddressKeyDefinitionsWithHttpInfo(asAt, page, limit, filter, opts);
         }
 
         /**
@@ -617,6 +805,23 @@ public class AddressKeyDefinitionApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfAddressKeyDefinition> _callback) throws ApiException {
             return listAddressKeyDefinitionsAsync(asAt, page, limit, filter, _callback);
+        }
+
+        /**
+         * Execute listAddressKeyDefinitions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of address key definitions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfAddressKeyDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+            return listAddressKeyDefinitionsAsync(asAt, page, limit, filter, _callback, opts);
         }
     }
 

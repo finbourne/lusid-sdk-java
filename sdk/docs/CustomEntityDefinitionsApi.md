@@ -49,9 +49,20 @@ public class CustomEntityDefinitionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CustomEntityDefinitionsApi apiInstance = apiFactory.build(CustomEntityDefinitionsApi.class);
+
         CustomEntityDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(CustomEntityDefinitionsApi.class);
         CustomEntityDefinitionRequest customEntityDefinitionRequest = new CustomEntityDefinitionRequest(); // CustomEntityDefinitionRequest | The payload containing the description of the Custom Entity type.
         try {
+            // uncomment the below to set overrides at the request level
+            // CustomEntityDefinition result = apiInstance.createCustomEntityDefinition(customEntityDefinitionRequest).execute(opts);
+
             CustomEntityDefinition result = apiInstance.createCustomEntityDefinition(customEntityDefinitionRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -129,10 +140,21 @@ public class CustomEntityDefinitionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CustomEntityDefinitionsApi apiInstance = apiFactory.build(CustomEntityDefinitionsApi.class);
+
         CustomEntityDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(CustomEntityDefinitionsApi.class);
         String entityType = "entityType_example"; // String | The identifier for the Custom Entity type, derived from the \"entityTypeName\" provided on creation.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The AsAt datetime at which to retrieve the definition.
         try {
+            // uncomment the below to set overrides at the request level
+            // CustomEntityDefinition result = apiInstance.getDefinition(entityType, asAt).execute(opts);
+
             CustomEntityDefinition result = apiInstance.getDefinition(entityType, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -211,12 +233,23 @@ public class CustomEntityDefinitionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CustomEntityDefinitionsApi apiInstance = apiFactory.build(CustomEntityDefinitionsApi.class);
+
         CustomEntityDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(CustomEntityDefinitionsApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the entities. Defaults to returning the latest version   of each portfolio if not specified.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
         String filter = "filter_example"; // String | Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
         String page = "page_example"; // String | The pagination token to use to continue listing entities; this   value is returned from the previous call. If a pagination token is provided, the filter, limit   and asAt fields must not have changed since the original request.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfCustomEntityDefinition result = apiInstance.listCustomEntityDefinitions(asAt, limit, filter, page).execute(opts);
+
             PagedResourceListOfCustomEntityDefinition result = apiInstance.listCustomEntityDefinitions(asAt, limit, filter, page).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -297,10 +330,21 @@ public class CustomEntityDefinitionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CustomEntityDefinitionsApi apiInstance = apiFactory.build(CustomEntityDefinitionsApi.class);
+
         CustomEntityDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(CustomEntityDefinitionsApi.class);
         String entityType = "entityType_example"; // String | The identifier for the Custom Entity type, derived from the \"entityTypeName\" provided on creation.
         UpdateCustomEntityDefinitionRequest updateCustomEntityDefinitionRequest = new UpdateCustomEntityDefinitionRequest(); // UpdateCustomEntityDefinitionRequest | The payload containing the description of the Custom Entity type.
         try {
+            // uncomment the below to set overrides at the request level
+            // CustomEntityDefinition result = apiInstance.updateCustomEntityDefinition(entityType, updateCustomEntityDefinitionRequest).execute(opts);
+
             CustomEntityDefinition result = apiInstance.updateCustomEntityDefinition(entityType, updateCustomEntityDefinitionRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

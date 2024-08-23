@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -77,6 +78,10 @@ public class StagingRuleSetApi {
     }
 
     private okhttp3.Call createStagingRuleSetCall(String entityType, CreateStagingRuleSetRequest createStagingRuleSetRequest, final ApiCallback _callback) throws ApiException {
+        return createStagingRuleSetCall(entityType, createStagingRuleSetRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call createStagingRuleSetCall(String entityType, CreateStagingRuleSetRequest createStagingRuleSetRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -124,11 +129,11 @@ public class StagingRuleSetApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createStagingRuleSetValidateBeforeCall(String entityType, CreateStagingRuleSetRequest createStagingRuleSetRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createStagingRuleSetValidateBeforeCall(String entityType, CreateStagingRuleSetRequest createStagingRuleSetRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'entityType' is set
         if (entityType == null) {
             throw new ApiException("Missing the required parameter 'entityType' when calling createStagingRuleSet(Async)");
@@ -139,20 +144,34 @@ public class StagingRuleSetApi {
             throw new ApiException("Missing the required parameter 'createStagingRuleSetRequest' when calling createStagingRuleSet(Async)");
         }
 
-        return createStagingRuleSetCall(entityType, createStagingRuleSetRequest, _callback);
+        return createStagingRuleSetCall(entityType, createStagingRuleSetRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<StagingRuleSet> createStagingRuleSetWithHttpInfo(String entityType, CreateStagingRuleSetRequest createStagingRuleSetRequest) throws ApiException {
-        okhttp3.Call localVarCall = createStagingRuleSetValidateBeforeCall(entityType, createStagingRuleSetRequest, null);
+        okhttp3.Call localVarCall = createStagingRuleSetValidateBeforeCall(entityType, createStagingRuleSetRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<StagingRuleSet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<StagingRuleSet> createStagingRuleSetWithHttpInfo(String entityType, CreateStagingRuleSetRequest createStagingRuleSetRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createStagingRuleSetValidateBeforeCall(entityType, createStagingRuleSetRequest, null, opts);
         Type localVarReturnType = new TypeToken<StagingRuleSet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call createStagingRuleSetAsync(String entityType, CreateStagingRuleSetRequest createStagingRuleSetRequest, final ApiCallback<StagingRuleSet> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createStagingRuleSetValidateBeforeCall(entityType, createStagingRuleSetRequest, _callback);
+        okhttp3.Call localVarCall = createStagingRuleSetValidateBeforeCall(entityType, createStagingRuleSetRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<StagingRuleSet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call createStagingRuleSetAsync(String entityType, CreateStagingRuleSetRequest createStagingRuleSetRequest, final ApiCallback<StagingRuleSet> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = createStagingRuleSetValidateBeforeCall(entityType, createStagingRuleSetRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<StagingRuleSet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -202,6 +221,23 @@ public class StagingRuleSetApi {
         }
 
         /**
+         * Execute createStagingRuleSet request. Use any specified configuration options to override any other configuration for this request only.
+         * @return StagingRuleSet
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created staging rule set </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public StagingRuleSet execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<StagingRuleSet> localVarResp = createStagingRuleSetWithHttpInfo(entityType, createStagingRuleSetRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute createStagingRuleSet request with HTTP info returned
          * @return ApiResponse&lt;StagingRuleSet&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -215,6 +251,22 @@ public class StagingRuleSetApi {
          */
         public ApiResponse<StagingRuleSet> executeWithHttpInfo() throws ApiException {
             return createStagingRuleSetWithHttpInfo(entityType, createStagingRuleSetRequest);
+        }
+
+        /**
+         * Execute createStagingRuleSet request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;StagingRuleSet&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created staging rule set </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<StagingRuleSet> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return createStagingRuleSetWithHttpInfo(entityType, createStagingRuleSetRequest, opts);
         }
 
         /**
@@ -232,6 +284,23 @@ public class StagingRuleSetApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<StagingRuleSet> _callback) throws ApiException {
             return createStagingRuleSetAsync(entityType, createStagingRuleSetRequest, _callback);
+        }
+
+        /**
+         * Execute createStagingRuleSet request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created staging rule set </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<StagingRuleSet> _callback, ConfigurationOptions opts) throws ApiException {
+            return createStagingRuleSetAsync(entityType, createStagingRuleSetRequest, _callback, opts);
         }
     }
 
@@ -253,6 +322,10 @@ public class StagingRuleSetApi {
         return new APIcreateStagingRuleSetRequest(entityType, createStagingRuleSetRequest);
     }
     private okhttp3.Call deleteStagingRuleSetCall(String entityType, final ApiCallback _callback) throws ApiException {
+        return deleteStagingRuleSetCall(entityType,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteStagingRuleSetCall(String entityType, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -296,30 +369,44 @@ public class StagingRuleSetApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteStagingRuleSetValidateBeforeCall(String entityType, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteStagingRuleSetValidateBeforeCall(String entityType, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'entityType' is set
         if (entityType == null) {
             throw new ApiException("Missing the required parameter 'entityType' when calling deleteStagingRuleSet(Async)");
         }
 
-        return deleteStagingRuleSetCall(entityType, _callback);
+        return deleteStagingRuleSetCall(entityType, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deleteStagingRuleSetWithHttpInfo(String entityType) throws ApiException {
-        okhttp3.Call localVarCall = deleteStagingRuleSetValidateBeforeCall(entityType, null);
+        okhttp3.Call localVarCall = deleteStagingRuleSetValidateBeforeCall(entityType, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteStagingRuleSetWithHttpInfo(String entityType, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteStagingRuleSetValidateBeforeCall(entityType, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteStagingRuleSetAsync(String entityType, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteStagingRuleSetValidateBeforeCall(entityType, _callback);
+        okhttp3.Call localVarCall = deleteStagingRuleSetValidateBeforeCall(entityType, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteStagingRuleSetAsync(String entityType, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteStagingRuleSetValidateBeforeCall(entityType, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -367,6 +454,23 @@ public class StagingRuleSetApi {
         }
 
         /**
+         * Execute deleteStagingRuleSet request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting staging rule set </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteStagingRuleSetWithHttpInfo(entityType, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteStagingRuleSet request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -380,6 +484,22 @@ public class StagingRuleSetApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deleteStagingRuleSetWithHttpInfo(entityType);
+        }
+
+        /**
+         * Execute deleteStagingRuleSet request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting staging rule set </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteStagingRuleSetWithHttpInfo(entityType, opts);
         }
 
         /**
@@ -397,6 +517,23 @@ public class StagingRuleSetApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deleteStagingRuleSetAsync(entityType, _callback);
+        }
+
+        /**
+         * Execute deleteStagingRuleSet request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting staging rule set </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteStagingRuleSetAsync(entityType, _callback, opts);
         }
     }
 
@@ -417,6 +554,10 @@ public class StagingRuleSetApi {
         return new APIdeleteStagingRuleSetRequest(entityType);
     }
     private okhttp3.Call getStagingRuleSetCall(String entityType, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getStagingRuleSetCall(entityType, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getStagingRuleSetCall(String entityType, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -464,30 +605,44 @@ public class StagingRuleSetApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getStagingRuleSetValidateBeforeCall(String entityType, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getStagingRuleSetValidateBeforeCall(String entityType, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'entityType' is set
         if (entityType == null) {
             throw new ApiException("Missing the required parameter 'entityType' when calling getStagingRuleSet(Async)");
         }
 
-        return getStagingRuleSetCall(entityType, asAt, _callback);
+        return getStagingRuleSetCall(entityType, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<StagingRuleSet> getStagingRuleSetWithHttpInfo(String entityType, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getStagingRuleSetValidateBeforeCall(entityType, asAt, null);
+        okhttp3.Call localVarCall = getStagingRuleSetValidateBeforeCall(entityType, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<StagingRuleSet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<StagingRuleSet> getStagingRuleSetWithHttpInfo(String entityType, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getStagingRuleSetValidateBeforeCall(entityType, asAt, null, opts);
         Type localVarReturnType = new TypeToken<StagingRuleSet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getStagingRuleSetAsync(String entityType, OffsetDateTime asAt, final ApiCallback<StagingRuleSet> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getStagingRuleSetValidateBeforeCall(entityType, asAt, _callback);
+        okhttp3.Call localVarCall = getStagingRuleSetValidateBeforeCall(entityType, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<StagingRuleSet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getStagingRuleSetAsync(String entityType, OffsetDateTime asAt, final ApiCallback<StagingRuleSet> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getStagingRuleSetValidateBeforeCall(entityType, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<StagingRuleSet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -546,6 +701,23 @@ public class StagingRuleSetApi {
         }
 
         /**
+         * Execute getStagingRuleSet request. Use any specified configuration options to override any other configuration for this request only.
+         * @return StagingRuleSet
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested staging rule set </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public StagingRuleSet execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<StagingRuleSet> localVarResp = getStagingRuleSetWithHttpInfo(entityType, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getStagingRuleSet request with HTTP info returned
          * @return ApiResponse&lt;StagingRuleSet&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -559,6 +731,22 @@ public class StagingRuleSetApi {
          */
         public ApiResponse<StagingRuleSet> executeWithHttpInfo() throws ApiException {
             return getStagingRuleSetWithHttpInfo(entityType, asAt);
+        }
+
+        /**
+         * Execute getStagingRuleSet request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;StagingRuleSet&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested staging rule set </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<StagingRuleSet> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getStagingRuleSetWithHttpInfo(entityType, asAt, opts);
         }
 
         /**
@@ -576,6 +764,23 @@ public class StagingRuleSetApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<StagingRuleSet> _callback) throws ApiException {
             return getStagingRuleSetAsync(entityType, asAt, _callback);
+        }
+
+        /**
+         * Execute getStagingRuleSet request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested staging rule set </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<StagingRuleSet> _callback, ConfigurationOptions opts) throws ApiException {
+            return getStagingRuleSetAsync(entityType, asAt, _callback, opts);
         }
     }
 
@@ -596,6 +801,10 @@ public class StagingRuleSetApi {
         return new APIgetStagingRuleSetRequest(entityType);
     }
     private okhttp3.Call listStagingRuleSetsCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+        return listStagingRuleSetsCall(asAt, page, sortBy, limit, filter,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listStagingRuleSetsCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -658,25 +867,39 @@ public class StagingRuleSetApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listStagingRuleSetsValidateBeforeCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
-        return listStagingRuleSetsCall(asAt, page, sortBy, limit, filter, _callback);
+    private okhttp3.Call listStagingRuleSetsValidateBeforeCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listStagingRuleSetsCall(asAt, page, sortBy, limit, filter, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfStagingRuleSet> listStagingRuleSetsWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listStagingRuleSetsValidateBeforeCall(asAt, page, sortBy, limit, filter, null);
+        okhttp3.Call localVarCall = listStagingRuleSetsValidateBeforeCall(asAt, page, sortBy, limit, filter, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfStagingRuleSet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfStagingRuleSet> listStagingRuleSetsWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listStagingRuleSetsValidateBeforeCall(asAt, page, sortBy, limit, filter, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfStagingRuleSet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listStagingRuleSetsAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback<PagedResourceListOfStagingRuleSet> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listStagingRuleSetsValidateBeforeCall(asAt, page, sortBy, limit, filter, _callback);
+        okhttp3.Call localVarCall = listStagingRuleSetsValidateBeforeCall(asAt, page, sortBy, limit, filter, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfStagingRuleSet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listStagingRuleSetsAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback<PagedResourceListOfStagingRuleSet> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listStagingRuleSetsValidateBeforeCall(asAt, page, sortBy, limit, filter, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfStagingRuleSet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -777,6 +1000,23 @@ public class StagingRuleSetApi {
         }
 
         /**
+         * Execute listStagingRuleSets request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfStagingRuleSet
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of staging rule sets </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfStagingRuleSet execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfStagingRuleSet> localVarResp = listStagingRuleSetsWithHttpInfo(asAt, page, sortBy, limit, filter, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listStagingRuleSets request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfStagingRuleSet&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -790,6 +1030,22 @@ public class StagingRuleSetApi {
          */
         public ApiResponse<PagedResourceListOfStagingRuleSet> executeWithHttpInfo() throws ApiException {
             return listStagingRuleSetsWithHttpInfo(asAt, page, sortBy, limit, filter);
+        }
+
+        /**
+         * Execute listStagingRuleSets request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfStagingRuleSet&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of staging rule sets </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfStagingRuleSet> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listStagingRuleSetsWithHttpInfo(asAt, page, sortBy, limit, filter, opts);
         }
 
         /**
@@ -807,6 +1063,23 @@ public class StagingRuleSetApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfStagingRuleSet> _callback) throws ApiException {
             return listStagingRuleSetsAsync(asAt, page, sortBy, limit, filter, _callback);
+        }
+
+        /**
+         * Execute listStagingRuleSets request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of staging rule sets </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfStagingRuleSet> _callback, ConfigurationOptions opts) throws ApiException {
+            return listStagingRuleSetsAsync(asAt, page, sortBy, limit, filter, _callback, opts);
         }
     }
 
@@ -826,6 +1099,10 @@ public class StagingRuleSetApi {
         return new APIlistStagingRuleSetsRequest();
     }
     private okhttp3.Call updateStagingRuleSetCall(String entityType, UpdateStagingRuleSetRequest updateStagingRuleSetRequest, final ApiCallback _callback) throws ApiException {
+        return updateStagingRuleSetCall(entityType, updateStagingRuleSetRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call updateStagingRuleSetCall(String entityType, UpdateStagingRuleSetRequest updateStagingRuleSetRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -873,11 +1150,11 @@ public class StagingRuleSetApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateStagingRuleSetValidateBeforeCall(String entityType, UpdateStagingRuleSetRequest updateStagingRuleSetRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateStagingRuleSetValidateBeforeCall(String entityType, UpdateStagingRuleSetRequest updateStagingRuleSetRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'entityType' is set
         if (entityType == null) {
             throw new ApiException("Missing the required parameter 'entityType' when calling updateStagingRuleSet(Async)");
@@ -888,20 +1165,34 @@ public class StagingRuleSetApi {
             throw new ApiException("Missing the required parameter 'updateStagingRuleSetRequest' when calling updateStagingRuleSet(Async)");
         }
 
-        return updateStagingRuleSetCall(entityType, updateStagingRuleSetRequest, _callback);
+        return updateStagingRuleSetCall(entityType, updateStagingRuleSetRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<StagingRuleSet> updateStagingRuleSetWithHttpInfo(String entityType, UpdateStagingRuleSetRequest updateStagingRuleSetRequest) throws ApiException {
-        okhttp3.Call localVarCall = updateStagingRuleSetValidateBeforeCall(entityType, updateStagingRuleSetRequest, null);
+        okhttp3.Call localVarCall = updateStagingRuleSetValidateBeforeCall(entityType, updateStagingRuleSetRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<StagingRuleSet>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<StagingRuleSet> updateStagingRuleSetWithHttpInfo(String entityType, UpdateStagingRuleSetRequest updateStagingRuleSetRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = updateStagingRuleSetValidateBeforeCall(entityType, updateStagingRuleSetRequest, null, opts);
         Type localVarReturnType = new TypeToken<StagingRuleSet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call updateStagingRuleSetAsync(String entityType, UpdateStagingRuleSetRequest updateStagingRuleSetRequest, final ApiCallback<StagingRuleSet> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateStagingRuleSetValidateBeforeCall(entityType, updateStagingRuleSetRequest, _callback);
+        okhttp3.Call localVarCall = updateStagingRuleSetValidateBeforeCall(entityType, updateStagingRuleSetRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<StagingRuleSet>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call updateStagingRuleSetAsync(String entityType, UpdateStagingRuleSetRequest updateStagingRuleSetRequest, final ApiCallback<StagingRuleSet> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = updateStagingRuleSetValidateBeforeCall(entityType, updateStagingRuleSetRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<StagingRuleSet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -951,6 +1242,23 @@ public class StagingRuleSetApi {
         }
 
         /**
+         * Execute updateStagingRuleSet request. Use any specified configuration options to override any other configuration for this request only.
+         * @return StagingRuleSet
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated staging rule set </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public StagingRuleSet execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<StagingRuleSet> localVarResp = updateStagingRuleSetWithHttpInfo(entityType, updateStagingRuleSetRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute updateStagingRuleSet request with HTTP info returned
          * @return ApiResponse&lt;StagingRuleSet&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -964,6 +1272,22 @@ public class StagingRuleSetApi {
          */
         public ApiResponse<StagingRuleSet> executeWithHttpInfo() throws ApiException {
             return updateStagingRuleSetWithHttpInfo(entityType, updateStagingRuleSetRequest);
+        }
+
+        /**
+         * Execute updateStagingRuleSet request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;StagingRuleSet&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated staging rule set </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<StagingRuleSet> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return updateStagingRuleSetWithHttpInfo(entityType, updateStagingRuleSetRequest, opts);
         }
 
         /**
@@ -981,6 +1305,23 @@ public class StagingRuleSetApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<StagingRuleSet> _callback) throws ApiException {
             return updateStagingRuleSetAsync(entityType, updateStagingRuleSetRequest, _callback);
+        }
+
+        /**
+         * Execute updateStagingRuleSet request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated staging rule set </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<StagingRuleSet> _callback, ConfigurationOptions opts) throws ApiException {
+            return updateStagingRuleSetAsync(entityType, updateStagingRuleSetRequest, _callback, opts);
         }
     }
 

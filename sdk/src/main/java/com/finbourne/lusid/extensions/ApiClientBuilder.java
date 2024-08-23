@@ -2,7 +2,6 @@ package com.finbourne.lusid.extensions;
 
 import java.net.InetSocketAddress;
 import java.net.Proxy;
-import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient.Builder;
 import okhttp3.Credentials;
 
@@ -30,69 +29,81 @@ public class ApiClientBuilder {
     * @throws FinbourneTokenException on failing to authenticate and retrieve an initial {@link FinbourneToken}
     */
     public ApiClient build(ApiConfiguration apiConfiguration) throws FinbourneTokenException {
-
-        return this.build(apiConfiguration, 3);
+        Builder httpBuilder = new Builder();
+        httpBuilder.callTimeout(java.time.Duration.ofMillis(apiConfiguration.getTotalTimeoutMs()));
+        httpBuilder.connectTimeout(java.time.Duration.ofMillis(apiConfiguration.getConnectTimeoutMs()));
+        httpBuilder.readTimeout(java.time.Duration.ofMillis(apiConfiguration.getReadTimeoutMs()));
+        httpBuilder.writeTimeout(java.time.Duration.ofMillis(apiConfiguration.getWriteTimeoutMs()));
+        return this.build(apiConfiguration, httpBuilder);
     }
 
     /**
-     * Builds an ApiClient implementation configured against a secrets file.
-     * Typically used
-     * for communicating with lusid via the APIs
-     *
-     * ApiClient implementation enables use of REFRESH tokens (see
-     * https://support.finbourne.com/using-a-refresh-token)
-     * and automatically handles token refreshing on expiry.
-     *
-     * @param apiConfiguration configuration to connect to lusid API
-     * @param retryMaxAttempts number of times to try to make request when rate limited
-
-     * @return
-     *
-     * @throws FinbourneTokenException on failing to authenticate and retrieve an
-     *                                 initial {@link FinbourneToken}
-     */
+    * @deprecated Use {@link #build(ApiConfiguration)} instead, setting {@link ConfigurationOptions#RateLimitRetries}. 
+    * Note that {@link ConfigurationOptions#RateLimitRetries} is the max number of retries whereas {@link #retryMaxAttempts} is the max total number of attempts.
+    * {@link ConfigurationOptions#RateLimitRetries} should therefore be set to one less than the {@link #retryMaxAttempts} to keep the same behaviour.
+    *
+    * Builds an ApiClient implementation configured against a secrets file.
+    * Typically used
+    * for communicating with lusid via the APIs
+    *
+    * ApiClient implementation enables use of REFRESH tokens (see
+    * https://support.finbourne.com/using-a-refresh-token)
+    * and automatically handles token refreshing on expiry.
+    *
+    * @param apiConfiguration configuration to connect to lusid API
+    * @param retryMaxAttempts number of times to try to make request when rate limited
+    * @return
+    *
+    * @throws FinbourneTokenException on failing to authenticate and retrieve an
+    *                                 initial {@link FinbourneToken}
+    */
+    @Deprecated
     public ApiClient build(ApiConfiguration apiConfiguration, int retryMaxAttempts) throws FinbourneTokenException {
-        return this.build(apiConfiguration, retryMaxAttempts, new Builder());
-    }
-
-        /**
-     * Builds an ApiClient implementation configured against a secrets file.
-     * Typically used
-     * for communicating with lusid via the APIs
-     *
-     * ApiClient implementation enables use of REFRESH tokens (see
-     * https://support.finbourne.com/using-a-refresh-token)
-     * and automatically handles token refreshing on expiry.
-     *
-     * @param apiConfiguration configuration to connect to lusid API
-     * @param builder okHttpBuilder with custom settings.
-     * @return
-     *
-     * @throws FinbourneTokenException on failing to authenticate and retrieve an
-     *                                 initial {@link FinbourneToken}
-     */
-    public ApiClient build(ApiConfiguration apiConfiguration, Builder builder) throws FinbourneTokenException {
-        return this.build(apiConfiguration, 3, builder);
+        apiConfiguration.setRateLimitRetries(retryMaxAttempts - 1);
+        return build(apiConfiguration);
     }
 
     /**
-     * Builds an ApiClient implementation configured against a secrets file. Typically used
-     * for communicating with lusid via the APIs
-     *
-     * ApiClient implementation enables use of REFRESH tokens (see https://support.finbourne.com/using-a-refresh-token)
-     * and automatically handles token refreshing on expiry.
-     *
-     * @param apiConfiguration configuration to connect to lusid API
-     * @param retryMaxAttempts number of times to try to make request when rate limited
-     * @param httpClientBuilder {@link Builder} with some configuration already
-     *                          set
-     * @return
-     *
-     * @throws FinbourneTokenException on failing to authenticate and retrieve an initial {@link FinbourneToken}
-     */
-     public ApiClient build(ApiConfiguration apiConfiguration, int retryMaxAttempts, Builder httpClientBuilder) throws FinbourneTokenException {
+    * @deprecated Use {@link #build(ApiConfiguration, Builder)} instead, setting {@link ConfigurationOptions#RateLimitRetries}.
+    * Note that {@link ConfigurationOptions#RateLimitRetries} is the max number of retries whereas {@link #retryMaxAttempts} is the max total number of attempts.
+    * {@link ConfigurationOptions#RateLimitRetries} should therefore be set to one less than the {@link #retryMaxAttempts} to keep the same behaviour.
+    * 
+    * Builds an ApiClient implementation configured against a secrets file. Typically used
+    * for communicating with lusid via the APIs
+    *
+    * ApiClient implementation enables use of REFRESH tokens (see https://support.finbourne.com/using-a-refresh-token)
+    * and automatically handles token refreshing on expiry.
+    *
+    * @param apiConfiguration configuration to connect to lusid API
+    * @param retryMaxAttempts number of times to try to make request when rate limited
+    * @param httpClientBuilder {@link Builder} with some configuration already
+    *                          set
+    * @return
+    *
+    * @throws FinbourneTokenException on failing to authenticate and retrieve an initial {@link FinbourneToken}
+    */
+    public ApiClient build(ApiConfiguration apiConfiguration, int retryMaxAttempts, Builder httpClientBuilder) throws FinbourneTokenException {
+        apiConfiguration.setRateLimitRetries(retryMaxAttempts - 1);
+        return build(apiConfiguration, httpClientBuilder);
+    }
+
+    /**
+    * Builds an ApiClient implementation configured against a secrets file. Typically used
+    * for communicating with lusid via the APIs
+    *
+    * ApiClient implementation enables use of REFRESH tokens (see https://support.finbourne.com/using-a-refresh-token)
+    * and automatically handles token refreshing on expiry.
+    *
+    * @param apiConfiguration configuration to connect to lusid API
+    * @param httpClientBuilder {@link Builder} with some configuration already
+    *                          set
+    * @return
+    *
+    * @throws FinbourneTokenException on failing to authenticate and retrieve an initial {@link FinbourneToken}
+    */
+    public ApiClient build(ApiConfiguration apiConfiguration, Builder httpClientBuilder) throws FinbourneTokenException {
         // http client to use for api and auth calls
-        httpClientBuilder = httpClientBuilder.addInterceptor(new RateLimitRetryInterceptor(retryMaxAttempts));
+        httpClientBuilder = httpClientBuilder.addInterceptor(new RateLimitRetryInterceptor(apiConfiguration.getRateLimitRetries()));
 
         // use a proxy if given
         if (apiConfiguration.getProxyAddress() != null) {

@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -77,6 +78,10 @@ public class PackagesApi {
     }
 
     private okhttp3.Call deletePackageCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+        return deletePackageCall(scope, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deletePackageCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,11 +126,11 @@ public class PackagesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deletePackageValidateBeforeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deletePackageValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deletePackage(Async)");
@@ -136,20 +141,34 @@ public class PackagesApi {
             throw new ApiException("Missing the required parameter 'code' when calling deletePackage(Async)");
         }
 
-        return deletePackageCall(scope, code, _callback);
+        return deletePackageCall(scope, code, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deletePackageWithHttpInfo(String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = deletePackageValidateBeforeCall(scope, code, null);
+        okhttp3.Call localVarCall = deletePackageValidateBeforeCall(scope, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deletePackageWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deletePackageValidateBeforeCall(scope, code, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deletePackageAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deletePackageValidateBeforeCall(scope, code, _callback);
+        okhttp3.Call localVarCall = deletePackageValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deletePackageAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deletePackageValidateBeforeCall(scope, code, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -199,6 +218,23 @@ public class PackagesApi {
         }
 
         /**
+         * Execute deletePackage request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting an package. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deletePackageWithHttpInfo(scope, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deletePackage request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -212,6 +248,22 @@ public class PackagesApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deletePackageWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deletePackage request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting an package. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deletePackageWithHttpInfo(scope, code, opts);
         }
 
         /**
@@ -229,6 +281,23 @@ public class PackagesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deletePackageAsync(scope, code, _callback);
+        }
+
+        /**
+         * Execute deletePackage request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting an package. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deletePackageAsync(scope, code, _callback, opts);
         }
     }
 
@@ -250,6 +319,10 @@ public class PackagesApi {
         return new APIdeletePackageRequest(scope, code);
     }
     private okhttp3.Call getPackageCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return getPackageCall(scope, code, asAt, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getPackageCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -302,11 +375,11 @@ public class PackagesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPackageValidateBeforeCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPackageValidateBeforeCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getPackage(Async)");
@@ -317,20 +390,34 @@ public class PackagesApi {
             throw new ApiException("Missing the required parameter 'code' when calling getPackage(Async)");
         }
 
-        return getPackageCall(scope, code, asAt, propertyKeys, _callback);
+        return getPackageCall(scope, code, asAt, propertyKeys, _callback, opts);
 
     }
 
 
     private ApiResponse<ModelPackage> getPackageWithHttpInfo(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = getPackageValidateBeforeCall(scope, code, asAt, propertyKeys, null);
+        okhttp3.Call localVarCall = getPackageValidateBeforeCall(scope, code, asAt, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ModelPackage>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ModelPackage> getPackageWithHttpInfo(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPackageValidateBeforeCall(scope, code, asAt, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<ModelPackage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getPackageAsync(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<ModelPackage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPackageValidateBeforeCall(scope, code, asAt, propertyKeys, _callback);
+        okhttp3.Call localVarCall = getPackageValidateBeforeCall(scope, code, asAt, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ModelPackage>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getPackageAsync(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<ModelPackage> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getPackageValidateBeforeCall(scope, code, asAt, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<ModelPackage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -402,6 +489,23 @@ public class PackagesApi {
         }
 
         /**
+         * Execute getPackage request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ModelPackage
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The package matching the given identifier. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ModelPackage execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ModelPackage> localVarResp = getPackageWithHttpInfo(scope, code, asAt, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getPackage request with HTTP info returned
          * @return ApiResponse&lt;ModelPackage&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -415,6 +519,22 @@ public class PackagesApi {
          */
         public ApiResponse<ModelPackage> executeWithHttpInfo() throws ApiException {
             return getPackageWithHttpInfo(scope, code, asAt, propertyKeys);
+        }
+
+        /**
+         * Execute getPackage request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ModelPackage&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The package matching the given identifier. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ModelPackage> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getPackageWithHttpInfo(scope, code, asAt, propertyKeys, opts);
         }
 
         /**
@@ -432,6 +552,23 @@ public class PackagesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ModelPackage> _callback) throws ApiException {
             return getPackageAsync(scope, code, asAt, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getPackage request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The package matching the given identifier. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ModelPackage> _callback, ConfigurationOptions opts) throws ApiException {
+            return getPackageAsync(scope, code, asAt, propertyKeys, _callback, opts);
         }
     }
 
@@ -453,6 +590,10 @@ public class PackagesApi {
         return new APIgetPackageRequest(scope, code);
     }
     private okhttp3.Call listPackagesCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return listPackagesCall(asAt, page, sortBy, limit, filter, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listPackagesCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -519,25 +660,39 @@ public class PackagesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listPackagesValidateBeforeCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
-        return listPackagesCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
+    private okhttp3.Call listPackagesValidateBeforeCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listPackagesCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfPackage> listPackagesWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = listPackagesValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, null);
+        okhttp3.Call localVarCall = listPackagesValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfPackage>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfPackage> listPackagesWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listPackagesValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPackage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listPackagesAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfPackage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listPackagesValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
+        okhttp3.Call localVarCall = listPackagesValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfPackage>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listPackagesAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfPackage> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listPackagesValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPackage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -649,6 +804,23 @@ public class PackagesApi {
         }
 
         /**
+         * Execute listPackages request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfPackage
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Packages in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfPackage execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfPackage> localVarResp = listPackagesWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listPackages request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfPackage&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -662,6 +834,22 @@ public class PackagesApi {
          */
         public ApiResponse<PagedResourceListOfPackage> executeWithHttpInfo() throws ApiException {
             return listPackagesWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys);
+        }
+
+        /**
+         * Execute listPackages request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfPackage&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Packages in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfPackage> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listPackagesWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys, opts);
         }
 
         /**
@@ -679,6 +867,23 @@ public class PackagesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPackage> _callback) throws ApiException {
             return listPackagesAsync(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute listPackages request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Packages in scope. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPackage> _callback, ConfigurationOptions opts) throws ApiException {
+            return listPackagesAsync(asAt, page, sortBy, limit, filter, propertyKeys, _callback, opts);
         }
     }
 
@@ -698,6 +903,10 @@ public class PackagesApi {
         return new APIlistPackagesRequest();
     }
     private okhttp3.Call upsertPackagesCall(PackageSetRequest packageSetRequest, final ApiCallback _callback) throws ApiException {
+        return upsertPackagesCall(packageSetRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertPackagesCall(PackageSetRequest packageSetRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -744,25 +953,39 @@ public class PackagesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertPackagesValidateBeforeCall(PackageSetRequest packageSetRequest, final ApiCallback _callback) throws ApiException {
-        return upsertPackagesCall(packageSetRequest, _callback);
+    private okhttp3.Call upsertPackagesValidateBeforeCall(PackageSetRequest packageSetRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return upsertPackagesCall(packageSetRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfPackage> upsertPackagesWithHttpInfo(PackageSetRequest packageSetRequest) throws ApiException {
-        okhttp3.Call localVarCall = upsertPackagesValidateBeforeCall(packageSetRequest, null);
+        okhttp3.Call localVarCall = upsertPackagesValidateBeforeCall(packageSetRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPackage>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfPackage> upsertPackagesWithHttpInfo(PackageSetRequest packageSetRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertPackagesValidateBeforeCall(packageSetRequest, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPackage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertPackagesAsync(PackageSetRequest packageSetRequest, final ApiCallback<ResourceListOfPackage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertPackagesValidateBeforeCall(packageSetRequest, _callback);
+        okhttp3.Call localVarCall = upsertPackagesValidateBeforeCall(packageSetRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPackage>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertPackagesAsync(PackageSetRequest packageSetRequest, final ApiCallback<ResourceListOfPackage> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertPackagesValidateBeforeCall(packageSetRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPackage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -819,6 +1042,23 @@ public class PackagesApi {
         }
 
         /**
+         * Execute upsertPackages request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfPackage
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> A collection of packages. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfPackage execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfPackage> localVarResp = upsertPackagesWithHttpInfo(packageSetRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertPackages request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfPackage&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -832,6 +1072,22 @@ public class PackagesApi {
          */
         public ApiResponse<ResourceListOfPackage> executeWithHttpInfo() throws ApiException {
             return upsertPackagesWithHttpInfo(packageSetRequest);
+        }
+
+        /**
+         * Execute upsertPackages request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfPackage&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> A collection of packages. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfPackage> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertPackagesWithHttpInfo(packageSetRequest, opts);
         }
 
         /**
@@ -849,6 +1105,23 @@ public class PackagesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPackage> _callback) throws ApiException {
             return upsertPackagesAsync(packageSetRequest, _callback);
+        }
+
+        /**
+         * Execute upsertPackages request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> A collection of packages. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPackage> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertPackagesAsync(packageSetRequest, _callback, opts);
         }
     }
 

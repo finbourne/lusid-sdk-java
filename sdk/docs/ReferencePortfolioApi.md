@@ -49,10 +49,21 @@ public class ReferencePortfolioApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ReferencePortfolioApi apiInstance = apiFactory.build(ReferencePortfolioApi.class);
+
         ReferencePortfolioApi apiInstance = ApiFactoryBuilder.build(fileName).build(ReferencePortfolioApi.class);
         String scope = "scope_example"; // String | The scope in which to create the reference portfolio.
         CreateReferencePortfolioRequest createReferencePortfolioRequest = new CreateReferencePortfolioRequest(); // CreateReferencePortfolioRequest | The definition of the reference portfolio.
         try {
+            // uncomment the below to set overrides at the request level
+            // Portfolio result = apiInstance.createReferencePortfolio(scope, createReferencePortfolioRequest).execute(opts);
+
             Portfolio result = apiInstance.createReferencePortfolio(scope, createReferencePortfolioRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -131,6 +142,14 @@ public class ReferencePortfolioApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ReferencePortfolioApi apiInstance = apiFactory.build(ReferencePortfolioApi.class);
+
         ReferencePortfolioApi apiInstance = ApiFactoryBuilder.build(fileName).build(ReferencePortfolioApi.class);
         String scope = "scope_example"; // String | The scope of the reference portfolio.
         String code = "code_example"; // String | The code of the reference portfolio. Together with the scope this uniquely identifies   the reference portfolio.
@@ -138,6 +157,9 @@ public class ReferencePortfolioApiExample {
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve constituents. Defaults to return the latest version   of each constituent if not specified.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument' or 'ReferenceHolding' domain to decorate onto   constituents. These take the format {domain}/{scope}/{code} e.g. 'Instrument/system/Name' or   'ReferenceHolding/strategy/quantsignal'. Defaults to return all available instrument and reference holding properties if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // GetReferencePortfolioConstituentsResponse result = apiInstance.getReferencePortfolioConstituents(scope, code, effectiveAt, asAt, propertyKeys).execute(opts);
+
             GetReferencePortfolioConstituentsResponse result = apiInstance.getReferencePortfolioConstituents(scope, code, effectiveAt, asAt, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -219,6 +241,14 @@ public class ReferencePortfolioApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ReferencePortfolioApi apiInstance = apiFactory.build(ReferencePortfolioApi.class);
+
         ReferencePortfolioApi apiInstance = ApiFactoryBuilder.build(fileName).build(ReferencePortfolioApi.class);
         String scope = "scope_example"; // String | The scope of the reference portfolio.
         String code = "code_example"; // String | The code of the reference portfolio. Together with the scope this uniquely identifies   the reference portfolio.
@@ -226,6 +256,9 @@ public class ReferencePortfolioApiExample {
         String toEffectiveAt = "toEffectiveAt_example"; // String | Events between this time (inclusive) and the fromEffectiveAt are returned.
         OffsetDateTime asAtTime = OffsetDateTime.now(); // OffsetDateTime | The asAt time for which the result is valid.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfConstituentsAdjustmentHeader result = apiInstance.listConstituentsAdjustments(scope, code, fromEffectiveAt, toEffectiveAt, asAtTime).execute(opts);
+
             ResourceListOfConstituentsAdjustmentHeader result = apiInstance.listConstituentsAdjustments(scope, code, fromEffectiveAt, toEffectiveAt, asAtTime).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -307,11 +340,22 @@ public class ReferencePortfolioApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ReferencePortfolioApi apiInstance = apiFactory.build(ReferencePortfolioApi.class);
+
         ReferencePortfolioApi apiInstance = ApiFactoryBuilder.build(fileName).build(ReferencePortfolioApi.class);
         String scope = "scope_example"; // String | The scope of the reference portfolio.
         String code = "code_example"; // String | The code of the reference portfolio. Together with the scope this uniquely identifies   the reference portfolio.
         UpsertReferencePortfolioConstituentsRequest upsertReferencePortfolioConstituentsRequest = new UpsertReferencePortfolioConstituentsRequest(); // UpsertReferencePortfolioConstituentsRequest | The constituents to upload to the reference portfolio.
         try {
+            // uncomment the below to set overrides at the request level
+            // UpsertReferencePortfolioConstituentsResponse result = apiInstance.upsertReferencePortfolioConstituents(scope, code, upsertReferencePortfolioConstituentsRequest).execute(opts);
+
             UpsertReferencePortfolioConstituentsResponse result = apiInstance.upsertReferencePortfolioConstituents(scope, code, upsertReferencePortfolioConstituentsRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

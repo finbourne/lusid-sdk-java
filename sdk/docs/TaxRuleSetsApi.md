@@ -50,10 +50,21 @@ public class TaxRuleSetsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TaxRuleSetsApi apiInstance = apiFactory.build(TaxRuleSetsApi.class);
+
         TaxRuleSetsApi apiInstance = ApiFactoryBuilder.build(fileName).build(TaxRuleSetsApi.class);
         CreateTaxRuleSetRequest createTaxRuleSetRequest = new CreateTaxRuleSetRequest(); // CreateTaxRuleSetRequest | The contents of the rule set.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which the rule set will take effect.  Defaults to the current LUSID system datetime if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // TaxRuleSet result = apiInstance.createTaxRuleSet(createTaxRuleSetRequest, effectiveAt).execute(opts);
+
             TaxRuleSet result = apiInstance.createTaxRuleSet(createTaxRuleSetRequest, effectiveAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -132,10 +143,21 @@ public class TaxRuleSetsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TaxRuleSetsApi apiInstance = apiFactory.build(TaxRuleSetsApi.class);
+
         TaxRuleSetsApi apiInstance = ApiFactoryBuilder.build(fileName).build(TaxRuleSetsApi.class);
         String scope = "scope_example"; // String | The rule set scope.
         String code = "code_example"; // String | The rule set code.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteTaxRuleSet(scope, code).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteTaxRuleSet(scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -214,12 +236,23 @@ public class TaxRuleSetsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TaxRuleSetsApi apiInstance = apiFactory.build(TaxRuleSetsApi.class);
+
         TaxRuleSetsApi apiInstance = ApiFactoryBuilder.build(fileName).build(TaxRuleSetsApi.class);
         String scope = "scope_example"; // String | The rule set scope.
         String code = "code_example"; // String | The rule set code.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the rule definition.  Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the rule definition. Defaults to returning the latest version if not  specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // TaxRuleSet result = apiInstance.getTaxRuleSet(scope, code, effectiveAt, asAt).execute(opts);
+
             TaxRuleSet result = apiInstance.getTaxRuleSet(scope, code, effectiveAt, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -300,10 +333,21 @@ public class TaxRuleSetsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TaxRuleSetsApi apiInstance = apiFactory.build(TaxRuleSetsApi.class);
+
         TaxRuleSetsApi apiInstance = ApiFactoryBuilder.build(fileName).build(TaxRuleSetsApi.class);
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the rule definitions.  Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the rule definitions. Defaults to returning the latest version if not  specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfTaxRuleSet result = apiInstance.listTaxRuleSets(effectiveAt, asAt).execute(opts);
+
             ResourceListOfTaxRuleSet result = apiInstance.listTaxRuleSets(effectiveAt, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -382,12 +426,23 @@ public class TaxRuleSetsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TaxRuleSetsApi apiInstance = apiFactory.build(TaxRuleSetsApi.class);
+
         TaxRuleSetsApi apiInstance = ApiFactoryBuilder.build(fileName).build(TaxRuleSetsApi.class);
         String scope = "scope_example"; // String | The rule set scope.
         String code = "code_example"; // String | The rule set code.
         UpdateTaxRuleSetRequest updateTaxRuleSetRequest = new UpdateTaxRuleSetRequest(); // UpdateTaxRuleSetRequest | The contents of the rule set.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which the rule set will take effect.  Defaults to the current LUSID system datetime if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // TaxRuleSet result = apiInstance.updateTaxRuleSet(scope, code, updateTaxRuleSetRequest, effectiveAt).execute(opts);
+
             TaxRuleSet result = apiInstance.updateTaxRuleSet(scope, code, updateTaxRuleSetRequest, effectiveAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

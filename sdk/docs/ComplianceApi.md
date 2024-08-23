@@ -60,10 +60,21 @@ public class ComplianceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ComplianceApi apiInstance = apiFactory.build(ComplianceApi.class);
+
         ComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplianceApi.class);
         String scope = "scope_example"; // String | The scope of the Compliance Rule Template.
         CreateComplianceTemplateRequest createComplianceTemplateRequest = new CreateComplianceTemplateRequest(); // CreateComplianceTemplateRequest | Request to create a compliance rule template.
         try {
+            // uncomment the below to set overrides at the request level
+            // ComplianceRuleTemplate result = apiInstance.createComplianceTemplate(scope, createComplianceTemplateRequest).execute(opts);
+
             ComplianceRuleTemplate result = apiInstance.createComplianceTemplate(scope, createComplianceTemplateRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -142,10 +153,21 @@ public class ComplianceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ComplianceApi apiInstance = apiFactory.build(ComplianceApi.class);
+
         ComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplianceApi.class);
         String scope = "scope_example"; // String | The compliance rule's scope.
         String code = "code_example"; // String | The compliance rule's code.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteComplianceRule(scope, code).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteComplianceRule(scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -224,10 +246,21 @@ public class ComplianceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ComplianceApi apiInstance = apiFactory.build(ComplianceApi.class);
+
         ComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplianceApi.class);
         String scope = "scope_example"; // String | The scope of the template to be deleted.
         String code = "code_example"; // String | The code of the template to be deleted.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteComplianceTemplate(scope, code).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteComplianceTemplate(scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -306,12 +339,23 @@ public class ComplianceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ComplianceApi apiInstance = apiFactory.build(ComplianceApi.class);
+
         ComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplianceApi.class);
         String scope = "scope_example"; // String | The compliance rule's scope.
         String code = "code_example"; // String | The compliance rule's code.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. Asat time for query.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Compliance' domain to decorate onto the rule.   These must take the format {domain}/{scope}/{code}, for example 'Compliance/live/UCITS'.
         try {
+            // uncomment the below to set overrides at the request level
+            // ComplianceRuleResponse result = apiInstance.getComplianceRule(scope, code, asAt, propertyKeys).execute(opts);
+
             ComplianceRuleResponse result = apiInstance.getComplianceRule(scope, code, asAt, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -392,12 +436,23 @@ public class ComplianceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ComplianceApi apiInstance = apiFactory.build(ComplianceApi.class);
+
         ComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplianceApi.class);
         String runScope = "runScope_example"; // String | Required: Run Scope.
         String runCode = "runCode_example"; // String | Required: Run Code.
         String ruleScope = "ruleScope_example"; // String | Required: Rule Scope.
         String ruleCode = "ruleCode_example"; // String | Required: Rule Code.
         try {
+            // uncomment the below to set overrides at the request level
+            // ComplianceRuleResultV2 result = apiInstance.getComplianceRuleResult(runScope, runCode, ruleScope, ruleCode).execute(opts);
+
             ComplianceRuleResultV2 result = apiInstance.getComplianceRuleResult(runScope, runCode, ruleScope, ruleCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -478,11 +533,22 @@ public class ComplianceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ComplianceApi apiInstance = apiFactory.build(ComplianceApi.class);
+
         ComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplianceApi.class);
         String scope = "scope_example"; // String | Scope of TemplateID
         String code = "code_example"; // String | Code of TemplateID
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. The time at which to get results from. Default : latest
         try {
+            // uncomment the below to set overrides at the request level
+            // ComplianceTemplate result = apiInstance.getComplianceTemplate(scope, code, asAt).execute(opts);
+
             ComplianceTemplate result = apiInstance.getComplianceTemplate(scope, code, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -562,10 +628,21 @@ public class ComplianceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ComplianceApi apiInstance = apiFactory.build(ComplianceApi.class);
+
         ComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplianceApi.class);
         String scope = "scope_example"; // String | Required: Run Scope.
         String code = "code_example"; // String | Required: Run Code.
         try {
+            // uncomment the below to set overrides at the request level
+            // DecoratedComplianceRunSummary result = apiInstance.getDecoratedComplianceRunSummary(scope, code).execute(opts);
+
             DecoratedComplianceRunSummary result = apiInstance.getDecoratedComplianceRunSummary(scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -644,6 +721,14 @@ public class ComplianceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ComplianceApi apiInstance = apiFactory.build(ComplianceApi.class);
+
         ComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplianceApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. Asat time.
         String page = "page_example"; // String | Optional. Pagination token.
@@ -651,6 +736,9 @@ public class ComplianceApiExample {
         String filter = "filter_example"; // String | Optional. Filter.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Compliance' domain to decorate onto each rule.   These must take the format {domain}/{scope}/{code}, for example 'Compliance/live/UCITS'. If not provided will return all the entitled properties for each rule.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfComplianceRuleResponse result = apiInstance.listComplianceRules(asAt, page, limit, filter, propertyKeys).execute(opts);
+
             PagedResourceListOfComplianceRuleResponse result = apiInstance.listComplianceRules(asAt, page, limit, filter, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -732,6 +820,14 @@ public class ComplianceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ComplianceApi apiInstance = apiFactory.build(ComplianceApi.class);
+
         ComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplianceApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. The time at which to get results from. Default : latest
         String page = "page_example"; // String | Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request.
@@ -739,6 +835,9 @@ public class ComplianceApiExample {
         String filter = "filter_example"; // String | Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         List<String> sortBy = Arrays.asList(); // List<String> | Optional. A list of field names to sort by, each suffixed by \"ASC\" or \"DESC\"
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfComplianceRunInfoV2 result = apiInstance.listComplianceRuns(asAt, page, limit, filter, sortBy).execute(opts);
+
             PagedResourceListOfComplianceRunInfoV2 result = apiInstance.listComplianceRuns(asAt, page, limit, filter, sortBy).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -820,12 +919,23 @@ public class ComplianceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ComplianceApi apiInstance = apiFactory.build(ComplianceApi.class);
+
         ComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplianceApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. The time at which to get results from. Default : latest
         String page = "page_example"; // String | Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request.
         Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
         String filter = "filter_example"; // String | Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfComplianceTemplate result = apiInstance.listComplianceTemplates(asAt, page, limit, filter).execute(opts);
+
             PagedResourceListOfComplianceTemplate result = apiInstance.listComplianceTemplates(asAt, page, limit, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -906,6 +1016,14 @@ public class ComplianceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ComplianceApi apiInstance = apiFactory.build(ComplianceApi.class);
+
         ComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplianceApi.class);
         String runScope = "runScope_example"; // String | Required: Scope to save the run results in.
         String ruleScope = "ruleScope_example"; // String | Required: Scope from which to select rules to be run.
@@ -913,6 +1031,9 @@ public class ComplianceApiExample {
         String recipeIdScope = "recipeIdScope_example"; // String | Required: the scope of the recipe to be used
         String recipeIdCode = "recipeIdCode_example"; // String | Required: The code of the recipe to be used. If left blank, the default recipe will be used.
         try {
+            // uncomment the below to set overrides at the request level
+            // ComplianceRunInfoV2 result = apiInstance.runCompliance(runScope, ruleScope, isPreTrade, recipeIdScope, recipeIdCode).execute(opts);
+
             ComplianceRunInfoV2 result = apiInstance.runCompliance(runScope, ruleScope, isPreTrade, recipeIdScope, recipeIdCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -994,6 +1115,14 @@ public class ComplianceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ComplianceApi apiInstance = apiFactory.build(ComplianceApi.class);
+
         ComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplianceApi.class);
         String runScope = "runScope_example"; // String | Required: Scope to save the run results in.
         String ruleScope = "ruleScope_example"; // String | Required: Scope from which to select rules to be run.
@@ -1001,6 +1130,9 @@ public class ComplianceApiExample {
         String recipeIdCode = "recipeIdCode_example"; // String | Required: The code of the recipe to be used. If left blank, the default recipe will be used.
         ComplianceRunConfiguration complianceRunConfiguration = new ComplianceRunConfiguration(); // ComplianceRunConfiguration | Configuration options for the compliance run.
         try {
+            // uncomment the below to set overrides at the request level
+            // ComplianceRunInfoV2 result = apiInstance.runCompliancePreview(runScope, ruleScope, recipeIdScope, recipeIdCode, complianceRunConfiguration).execute(opts);
+
             ComplianceRunInfoV2 result = apiInstance.runCompliancePreview(runScope, ruleScope, recipeIdScope, recipeIdCode, complianceRunConfiguration).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1082,11 +1214,22 @@ public class ComplianceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ComplianceApi apiInstance = apiFactory.build(ComplianceApi.class);
+
         ComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplianceApi.class);
         String scope = "scope_example"; // String | The scope of the Compliance Rule Template.
         String code = "code_example"; // String | The code of the Compliance Rule Template.
         UpdateComplianceTemplateRequest updateComplianceTemplateRequest = new UpdateComplianceTemplateRequest(); // UpdateComplianceTemplateRequest | Request to update a compliance rule template.
         try {
+            // uncomment the below to set overrides at the request level
+            // ComplianceRuleTemplate result = apiInstance.updateComplianceTemplate(scope, code, updateComplianceTemplateRequest).execute(opts);
+
             ComplianceRuleTemplate result = apiInstance.updateComplianceTemplate(scope, code, updateComplianceTemplateRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1166,9 +1309,20 @@ public class ComplianceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ComplianceApi apiInstance = apiFactory.build(ComplianceApi.class);
+
         ComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplianceApi.class);
         UpsertComplianceRuleRequest upsertComplianceRuleRequest = new UpsertComplianceRuleRequest(); // UpsertComplianceRuleRequest | 
         try {
+            // uncomment the below to set overrides at the request level
+            // ComplianceRuleResponse result = apiInstance.upsertComplianceRule(upsertComplianceRuleRequest).execute(opts);
+
             ComplianceRuleResponse result = apiInstance.upsertComplianceRule(upsertComplianceRuleRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1246,9 +1400,20 @@ public class ComplianceApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ComplianceApi apiInstance = apiFactory.build(ComplianceApi.class);
+
         ComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplianceApi.class);
         UpsertComplianceRunSummaryRequest upsertComplianceRunSummaryRequest = new UpsertComplianceRunSummaryRequest(); // UpsertComplianceRunSummaryRequest | 
         try {
+            // uncomment the below to set overrides at the request level
+            // UpsertComplianceRunSummaryResult result = apiInstance.upsertComplianceRunSummary(upsertComplianceRunSummaryRequest).execute(opts);
+
             UpsertComplianceRunSummaryResult result = apiInstance.upsertComplianceRunSummary(upsertComplianceRunSummaryRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

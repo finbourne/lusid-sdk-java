@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -80,6 +81,10 @@ public class DataTypesApi {
     }
 
     private okhttp3.Call createDataTypeCall(CreateDataTypeRequest createDataTypeRequest, final ApiCallback _callback) throws ApiException {
+        return createDataTypeCall(createDataTypeRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call createDataTypeCall(CreateDataTypeRequest createDataTypeRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -126,25 +131,39 @@ public class DataTypesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createDataTypeValidateBeforeCall(CreateDataTypeRequest createDataTypeRequest, final ApiCallback _callback) throws ApiException {
-        return createDataTypeCall(createDataTypeRequest, _callback);
+    private okhttp3.Call createDataTypeValidateBeforeCall(CreateDataTypeRequest createDataTypeRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return createDataTypeCall(createDataTypeRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<DataType> createDataTypeWithHttpInfo(CreateDataTypeRequest createDataTypeRequest) throws ApiException {
-        okhttp3.Call localVarCall = createDataTypeValidateBeforeCall(createDataTypeRequest, null);
+        okhttp3.Call localVarCall = createDataTypeValidateBeforeCall(createDataTypeRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DataType>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DataType> createDataTypeWithHttpInfo(CreateDataTypeRequest createDataTypeRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createDataTypeValidateBeforeCall(createDataTypeRequest, null, opts);
         Type localVarReturnType = new TypeToken<DataType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call createDataTypeAsync(CreateDataTypeRequest createDataTypeRequest, final ApiCallback<DataType> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createDataTypeValidateBeforeCall(createDataTypeRequest, _callback);
+        okhttp3.Call localVarCall = createDataTypeValidateBeforeCall(createDataTypeRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DataType>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call createDataTypeAsync(CreateDataTypeRequest createDataTypeRequest, final ApiCallback<DataType> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = createDataTypeValidateBeforeCall(createDataTypeRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<DataType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -201,6 +220,23 @@ public class DataTypesApi {
         }
 
         /**
+         * Execute createDataType request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DataType
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DataType execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DataType> localVarResp = createDataTypeWithHttpInfo(createDataTypeRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute createDataType request with HTTP info returned
          * @return ApiResponse&lt;DataType&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -214,6 +250,22 @@ public class DataTypesApi {
          */
         public ApiResponse<DataType> executeWithHttpInfo() throws ApiException {
             return createDataTypeWithHttpInfo(createDataTypeRequest);
+        }
+
+        /**
+         * Execute createDataType request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DataType&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DataType> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return createDataTypeWithHttpInfo(createDataTypeRequest, opts);
         }
 
         /**
@@ -231,6 +283,23 @@ public class DataTypesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DataType> _callback) throws ApiException {
             return createDataTypeAsync(createDataTypeRequest, _callback);
+        }
+
+        /**
+         * Execute createDataType request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> Created </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DataType> _callback, ConfigurationOptions opts) throws ApiException {
+            return createDataTypeAsync(createDataTypeRequest, _callback, opts);
         }
     }
 
@@ -250,6 +319,10 @@ public class DataTypesApi {
         return new APIcreateDataTypeRequest();
     }
     private okhttp3.Call deleteDataTypeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+        return deleteDataTypeCall(scope, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteDataTypeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -294,11 +367,11 @@ public class DataTypesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteDataTypeValidateBeforeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteDataTypeValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteDataType(Async)");
@@ -309,20 +382,34 @@ public class DataTypesApi {
             throw new ApiException("Missing the required parameter 'code' when calling deleteDataType(Async)");
         }
 
-        return deleteDataTypeCall(scope, code, _callback);
+        return deleteDataTypeCall(scope, code, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deleteDataTypeWithHttpInfo(String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = deleteDataTypeValidateBeforeCall(scope, code, null);
+        okhttp3.Call localVarCall = deleteDataTypeValidateBeforeCall(scope, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteDataTypeWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteDataTypeValidateBeforeCall(scope, code, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteDataTypeAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteDataTypeValidateBeforeCall(scope, code, _callback);
+        okhttp3.Call localVarCall = deleteDataTypeValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteDataTypeAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteDataTypeValidateBeforeCall(scope, code, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -372,6 +459,23 @@ public class DataTypesApi {
         }
 
         /**
+         * Execute deleteDataType request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteDataTypeWithHttpInfo(scope, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteDataType request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -385,6 +489,22 @@ public class DataTypesApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deleteDataTypeWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteDataType request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteDataTypeWithHttpInfo(scope, code, opts);
         }
 
         /**
@@ -402,6 +522,23 @@ public class DataTypesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deleteDataTypeAsync(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteDataType request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteDataTypeAsync(scope, code, _callback, opts);
         }
     }
 
@@ -423,6 +560,10 @@ public class DataTypesApi {
         return new APIdeleteDataTypeRequest(scope, code);
     }
     private okhttp3.Call getDataTypeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getDataTypeCall(scope, code, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getDataTypeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -471,11 +612,11 @@ public class DataTypesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getDataTypeValidateBeforeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getDataTypeValidateBeforeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getDataType(Async)");
@@ -486,20 +627,34 @@ public class DataTypesApi {
             throw new ApiException("Missing the required parameter 'code' when calling getDataType(Async)");
         }
 
-        return getDataTypeCall(scope, code, asAt, _callback);
+        return getDataTypeCall(scope, code, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<DataType> getDataTypeWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getDataTypeValidateBeforeCall(scope, code, asAt, null);
+        okhttp3.Call localVarCall = getDataTypeValidateBeforeCall(scope, code, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DataType>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DataType> getDataTypeWithHttpInfo(String scope, String code, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getDataTypeValidateBeforeCall(scope, code, asAt, null, opts);
         Type localVarReturnType = new TypeToken<DataType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getDataTypeAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<DataType> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getDataTypeValidateBeforeCall(scope, code, asAt, _callback);
+        okhttp3.Call localVarCall = getDataTypeValidateBeforeCall(scope, code, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DataType>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getDataTypeAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<DataType> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getDataTypeValidateBeforeCall(scope, code, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<DataType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -560,6 +715,23 @@ public class DataTypesApi {
         }
 
         /**
+         * Execute getDataType request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DataType
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DataType execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DataType> localVarResp = getDataTypeWithHttpInfo(scope, code, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getDataType request with HTTP info returned
          * @return ApiResponse&lt;DataType&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -573,6 +745,22 @@ public class DataTypesApi {
          */
         public ApiResponse<DataType> executeWithHttpInfo() throws ApiException {
             return getDataTypeWithHttpInfo(scope, code, asAt);
+        }
+
+        /**
+         * Execute getDataType request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DataType&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DataType> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getDataTypeWithHttpInfo(scope, code, asAt, opts);
         }
 
         /**
@@ -590,6 +778,23 @@ public class DataTypesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DataType> _callback) throws ApiException {
             return getDataTypeAsync(scope, code, asAt, _callback);
+        }
+
+        /**
+         * Execute getDataType request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DataType> _callback, ConfigurationOptions opts) throws ApiException {
+            return getDataTypeAsync(scope, code, asAt, _callback, opts);
         }
     }
 
@@ -611,6 +816,10 @@ public class DataTypesApi {
         return new APIgetDataTypeRequest(scope, code);
     }
     private okhttp3.Call getUnitsFromDataTypeCall(String scope, String code, List<String> units, String filter, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getUnitsFromDataTypeCall(scope, code, units, filter, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getUnitsFromDataTypeCall(String scope, String code, List<String> units, String filter, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -667,11 +876,11 @@ public class DataTypesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUnitsFromDataTypeValidateBeforeCall(String scope, String code, List<String> units, String filter, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getUnitsFromDataTypeValidateBeforeCall(String scope, String code, List<String> units, String filter, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getUnitsFromDataType(Async)");
@@ -682,20 +891,34 @@ public class DataTypesApi {
             throw new ApiException("Missing the required parameter 'code' when calling getUnitsFromDataType(Async)");
         }
 
-        return getUnitsFromDataTypeCall(scope, code, units, filter, asAt, _callback);
+        return getUnitsFromDataTypeCall(scope, code, units, filter, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfIUnitDefinitionDto> getUnitsFromDataTypeWithHttpInfo(String scope, String code, List<String> units, String filter, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getUnitsFromDataTypeValidateBeforeCall(scope, code, units, filter, asAt, null);
+        okhttp3.Call localVarCall = getUnitsFromDataTypeValidateBeforeCall(scope, code, units, filter, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfIUnitDefinitionDto>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfIUnitDefinitionDto> getUnitsFromDataTypeWithHttpInfo(String scope, String code, List<String> units, String filter, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getUnitsFromDataTypeValidateBeforeCall(scope, code, units, filter, asAt, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfIUnitDefinitionDto>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getUnitsFromDataTypeAsync(String scope, String code, List<String> units, String filter, OffsetDateTime asAt, final ApiCallback<ResourceListOfIUnitDefinitionDto> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getUnitsFromDataTypeValidateBeforeCall(scope, code, units, filter, asAt, _callback);
+        okhttp3.Call localVarCall = getUnitsFromDataTypeValidateBeforeCall(scope, code, units, filter, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfIUnitDefinitionDto>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getUnitsFromDataTypeAsync(String scope, String code, List<String> units, String filter, OffsetDateTime asAt, final ApiCallback<ResourceListOfIUnitDefinitionDto> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getUnitsFromDataTypeValidateBeforeCall(scope, code, units, filter, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfIUnitDefinitionDto>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -778,6 +1001,23 @@ public class DataTypesApi {
         }
 
         /**
+         * Execute getUnitsFromDataType request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfIUnitDefinitionDto
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfIUnitDefinitionDto execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfIUnitDefinitionDto> localVarResp = getUnitsFromDataTypeWithHttpInfo(scope, code, units, filter, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getUnitsFromDataType request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfIUnitDefinitionDto&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -791,6 +1031,22 @@ public class DataTypesApi {
          */
         public ApiResponse<ResourceListOfIUnitDefinitionDto> executeWithHttpInfo() throws ApiException {
             return getUnitsFromDataTypeWithHttpInfo(scope, code, units, filter, asAt);
+        }
+
+        /**
+         * Execute getUnitsFromDataType request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfIUnitDefinitionDto&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfIUnitDefinitionDto> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getUnitsFromDataTypeWithHttpInfo(scope, code, units, filter, asAt, opts);
         }
 
         /**
@@ -808,6 +1064,23 @@ public class DataTypesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfIUnitDefinitionDto> _callback) throws ApiException {
             return getUnitsFromDataTypeAsync(scope, code, units, filter, asAt, _callback);
+        }
+
+        /**
+         * Execute getUnitsFromDataType request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfIUnitDefinitionDto> _callback, ConfigurationOptions opts) throws ApiException {
+            return getUnitsFromDataTypeAsync(scope, code, units, filter, asAt, _callback, opts);
         }
     }
 
@@ -829,6 +1102,10 @@ public class DataTypesApi {
         return new APIgetUnitsFromDataTypeRequest(scope, code);
     }
     private okhttp3.Call listDataTypeSummariesCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
+        return listDataTypeSummariesCall(asAt, page, limit, filter, sortBy,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listDataTypeSummariesCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -891,25 +1168,39 @@ public class DataTypesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listDataTypeSummariesValidateBeforeCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
-        return listDataTypeSummariesCall(asAt, page, limit, filter, sortBy, _callback);
+    private okhttp3.Call listDataTypeSummariesValidateBeforeCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listDataTypeSummariesCall(asAt, page, limit, filter, sortBy, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfDataTypeSummary> listDataTypeSummariesWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy) throws ApiException {
-        okhttp3.Call localVarCall = listDataTypeSummariesValidateBeforeCall(asAt, page, limit, filter, sortBy, null);
+        okhttp3.Call localVarCall = listDataTypeSummariesValidateBeforeCall(asAt, page, limit, filter, sortBy, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfDataTypeSummary>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfDataTypeSummary> listDataTypeSummariesWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listDataTypeSummariesValidateBeforeCall(asAt, page, limit, filter, sortBy, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfDataTypeSummary>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listDataTypeSummariesAsync(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfDataTypeSummary> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listDataTypeSummariesValidateBeforeCall(asAt, page, limit, filter, sortBy, _callback);
+        okhttp3.Call localVarCall = listDataTypeSummariesValidateBeforeCall(asAt, page, limit, filter, sortBy, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfDataTypeSummary>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listDataTypeSummariesAsync(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfDataTypeSummary> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listDataTypeSummariesValidateBeforeCall(asAt, page, limit, filter, sortBy, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfDataTypeSummary>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1010,6 +1301,23 @@ public class DataTypesApi {
         }
 
         /**
+         * Execute listDataTypeSummaries request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfDataTypeSummary
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfDataTypeSummary execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfDataTypeSummary> localVarResp = listDataTypeSummariesWithHttpInfo(asAt, page, limit, filter, sortBy, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listDataTypeSummaries request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfDataTypeSummary&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1023,6 +1331,22 @@ public class DataTypesApi {
          */
         public ApiResponse<PagedResourceListOfDataTypeSummary> executeWithHttpInfo() throws ApiException {
             return listDataTypeSummariesWithHttpInfo(asAt, page, limit, filter, sortBy);
+        }
+
+        /**
+         * Execute listDataTypeSummaries request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfDataTypeSummary&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfDataTypeSummary> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listDataTypeSummariesWithHttpInfo(asAt, page, limit, filter, sortBy, opts);
         }
 
         /**
@@ -1040,6 +1364,23 @@ public class DataTypesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfDataTypeSummary> _callback) throws ApiException {
             return listDataTypeSummariesAsync(asAt, page, limit, filter, sortBy, _callback);
+        }
+
+        /**
+         * Execute listDataTypeSummaries request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfDataTypeSummary> _callback, ConfigurationOptions opts) throws ApiException {
+            return listDataTypeSummariesAsync(asAt, page, limit, filter, sortBy, _callback, opts);
         }
     }
 
@@ -1059,6 +1400,10 @@ public class DataTypesApi {
         return new APIlistDataTypeSummariesRequest();
     }
     private okhttp3.Call listDataTypesCall(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+        return listDataTypesCall(scope, asAt, includeSystem, sortBy, limit, filter,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listDataTypesCall(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1122,30 +1467,44 @@ public class DataTypesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listDataTypesValidateBeforeCall(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listDataTypesValidateBeforeCall(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listDataTypes(Async)");
         }
 
-        return listDataTypesCall(scope, asAt, includeSystem, sortBy, limit, filter, _callback);
+        return listDataTypesCall(scope, asAt, includeSystem, sortBy, limit, filter, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfDataType> listDataTypesWithHttpInfo(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer limit, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listDataTypesValidateBeforeCall(scope, asAt, includeSystem, sortBy, limit, filter, null);
+        okhttp3.Call localVarCall = listDataTypesValidateBeforeCall(scope, asAt, includeSystem, sortBy, limit, filter, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfDataType>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfDataType> listDataTypesWithHttpInfo(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer limit, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listDataTypesValidateBeforeCall(scope, asAt, includeSystem, sortBy, limit, filter, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfDataType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listDataTypesAsync(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer limit, String filter, final ApiCallback<ResourceListOfDataType> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listDataTypesValidateBeforeCall(scope, asAt, includeSystem, sortBy, limit, filter, _callback);
+        okhttp3.Call localVarCall = listDataTypesValidateBeforeCall(scope, asAt, includeSystem, sortBy, limit, filter, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfDataType>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listDataTypesAsync(String scope, OffsetDateTime asAt, Boolean includeSystem, List<String> sortBy, Integer limit, String filter, final ApiCallback<ResourceListOfDataType> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listDataTypesValidateBeforeCall(scope, asAt, includeSystem, sortBy, limit, filter, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfDataType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1248,6 +1607,23 @@ public class DataTypesApi {
         }
 
         /**
+         * Execute listDataTypes request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfDataType
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfDataType execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfDataType> localVarResp = listDataTypesWithHttpInfo(scope, asAt, includeSystem, sortBy, limit, filter, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listDataTypes request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfDataType&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1261,6 +1637,22 @@ public class DataTypesApi {
          */
         public ApiResponse<ResourceListOfDataType> executeWithHttpInfo() throws ApiException {
             return listDataTypesWithHttpInfo(scope, asAt, includeSystem, sortBy, limit, filter);
+        }
+
+        /**
+         * Execute listDataTypes request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfDataType&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfDataType> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listDataTypesWithHttpInfo(scope, asAt, includeSystem, sortBy, limit, filter, opts);
         }
 
         /**
@@ -1278,6 +1670,23 @@ public class DataTypesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfDataType> _callback) throws ApiException {
             return listDataTypesAsync(scope, asAt, includeSystem, sortBy, limit, filter, _callback);
+        }
+
+        /**
+         * Execute listDataTypes request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfDataType> _callback, ConfigurationOptions opts) throws ApiException {
+            return listDataTypesAsync(scope, asAt, includeSystem, sortBy, limit, filter, _callback, opts);
         }
     }
 
@@ -1298,6 +1707,10 @@ public class DataTypesApi {
         return new APIlistDataTypesRequest(scope);
     }
     private okhttp3.Call updateDataTypeCall(String scope, String code, UpdateDataTypeRequest updateDataTypeRequest, final ApiCallback _callback) throws ApiException {
+        return updateDataTypeCall(scope, code, updateDataTypeRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call updateDataTypeCall(String scope, String code, UpdateDataTypeRequest updateDataTypeRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1346,11 +1759,11 @@ public class DataTypesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateDataTypeValidateBeforeCall(String scope, String code, UpdateDataTypeRequest updateDataTypeRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateDataTypeValidateBeforeCall(String scope, String code, UpdateDataTypeRequest updateDataTypeRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling updateDataType(Async)");
@@ -1366,20 +1779,34 @@ public class DataTypesApi {
             throw new ApiException("Missing the required parameter 'updateDataTypeRequest' when calling updateDataType(Async)");
         }
 
-        return updateDataTypeCall(scope, code, updateDataTypeRequest, _callback);
+        return updateDataTypeCall(scope, code, updateDataTypeRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<DataType> updateDataTypeWithHttpInfo(String scope, String code, UpdateDataTypeRequest updateDataTypeRequest) throws ApiException {
-        okhttp3.Call localVarCall = updateDataTypeValidateBeforeCall(scope, code, updateDataTypeRequest, null);
+        okhttp3.Call localVarCall = updateDataTypeValidateBeforeCall(scope, code, updateDataTypeRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DataType>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DataType> updateDataTypeWithHttpInfo(String scope, String code, UpdateDataTypeRequest updateDataTypeRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = updateDataTypeValidateBeforeCall(scope, code, updateDataTypeRequest, null, opts);
         Type localVarReturnType = new TypeToken<DataType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call updateDataTypeAsync(String scope, String code, UpdateDataTypeRequest updateDataTypeRequest, final ApiCallback<DataType> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateDataTypeValidateBeforeCall(scope, code, updateDataTypeRequest, _callback);
+        okhttp3.Call localVarCall = updateDataTypeValidateBeforeCall(scope, code, updateDataTypeRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DataType>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call updateDataTypeAsync(String scope, String code, UpdateDataTypeRequest updateDataTypeRequest, final ApiCallback<DataType> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = updateDataTypeValidateBeforeCall(scope, code, updateDataTypeRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<DataType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1431,6 +1858,23 @@ public class DataTypesApi {
         }
 
         /**
+         * Execute updateDataType request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DataType
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DataType execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DataType> localVarResp = updateDataTypeWithHttpInfo(scope, code, updateDataTypeRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute updateDataType request with HTTP info returned
          * @return ApiResponse&lt;DataType&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1444,6 +1888,22 @@ public class DataTypesApi {
          */
         public ApiResponse<DataType> executeWithHttpInfo() throws ApiException {
             return updateDataTypeWithHttpInfo(scope, code, updateDataTypeRequest);
+        }
+
+        /**
+         * Execute updateDataType request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DataType&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DataType> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return updateDataTypeWithHttpInfo(scope, code, updateDataTypeRequest, opts);
         }
 
         /**
@@ -1461,6 +1921,23 @@ public class DataTypesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DataType> _callback) throws ApiException {
             return updateDataTypeAsync(scope, code, updateDataTypeRequest, _callback);
+        }
+
+        /**
+         * Execute updateDataType request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DataType> _callback, ConfigurationOptions opts) throws ApiException {
+            return updateDataTypeAsync(scope, code, updateDataTypeRequest, _callback, opts);
         }
     }
 
@@ -1483,6 +1960,10 @@ public class DataTypesApi {
         return new APIupdateDataTypeRequest(scope, code, updateDataTypeRequest);
     }
     private okhttp3.Call updateReferenceValuesCall(String scope, String code, List<FieldValue> fieldValue, final ApiCallback _callback) throws ApiException {
+        return updateReferenceValuesCall(scope, code, fieldValue,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call updateReferenceValuesCall(String scope, String code, List<FieldValue> fieldValue, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1531,11 +2012,11 @@ public class DataTypesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateReferenceValuesValidateBeforeCall(String scope, String code, List<FieldValue> fieldValue, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateReferenceValuesValidateBeforeCall(String scope, String code, List<FieldValue> fieldValue, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling updateReferenceValues(Async)");
@@ -1551,20 +2032,34 @@ public class DataTypesApi {
             throw new ApiException("Missing the required parameter 'fieldValue' when calling updateReferenceValues(Async)");
         }
 
-        return updateReferenceValuesCall(scope, code, fieldValue, _callback);
+        return updateReferenceValuesCall(scope, code, fieldValue, _callback, opts);
 
     }
 
 
     private ApiResponse<DataType> updateReferenceValuesWithHttpInfo(String scope, String code, List<FieldValue> fieldValue) throws ApiException {
-        okhttp3.Call localVarCall = updateReferenceValuesValidateBeforeCall(scope, code, fieldValue, null);
+        okhttp3.Call localVarCall = updateReferenceValuesValidateBeforeCall(scope, code, fieldValue, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DataType>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DataType> updateReferenceValuesWithHttpInfo(String scope, String code, List<FieldValue> fieldValue, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = updateReferenceValuesValidateBeforeCall(scope, code, fieldValue, null, opts);
         Type localVarReturnType = new TypeToken<DataType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call updateReferenceValuesAsync(String scope, String code, List<FieldValue> fieldValue, final ApiCallback<DataType> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateReferenceValuesValidateBeforeCall(scope, code, fieldValue, _callback);
+        okhttp3.Call localVarCall = updateReferenceValuesValidateBeforeCall(scope, code, fieldValue, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DataType>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call updateReferenceValuesAsync(String scope, String code, List<FieldValue> fieldValue, final ApiCallback<DataType> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = updateReferenceValuesValidateBeforeCall(scope, code, fieldValue, _callback, opts);
         Type localVarReturnType = new TypeToken<DataType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1616,6 +2111,23 @@ public class DataTypesApi {
         }
 
         /**
+         * Execute updateReferenceValues request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DataType
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DataType execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DataType> localVarResp = updateReferenceValuesWithHttpInfo(scope, code, fieldValue, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute updateReferenceValues request with HTTP info returned
          * @return ApiResponse&lt;DataType&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1629,6 +2141,22 @@ public class DataTypesApi {
          */
         public ApiResponse<DataType> executeWithHttpInfo() throws ApiException {
             return updateReferenceValuesWithHttpInfo(scope, code, fieldValue);
+        }
+
+        /**
+         * Execute updateReferenceValues request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DataType&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DataType> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return updateReferenceValuesWithHttpInfo(scope, code, fieldValue, opts);
         }
 
         /**
@@ -1646,6 +2174,23 @@ public class DataTypesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DataType> _callback) throws ApiException {
             return updateReferenceValuesAsync(scope, code, fieldValue, _callback);
+        }
+
+        /**
+         * Execute updateReferenceValues request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DataType> _callback, ConfigurationOptions opts) throws ApiException {
+            return updateReferenceValuesAsync(scope, code, fieldValue, _callback, opts);
         }
     }
 

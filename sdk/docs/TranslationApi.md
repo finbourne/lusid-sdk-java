@@ -47,9 +47,20 @@ public class TranslationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TranslationApi apiInstance = apiFactory.build(TranslationApi.class);
+
         TranslationApi apiInstance = ApiFactoryBuilder.build(fileName).build(TranslationApi.class);
         TranslateInstrumentDefinitionsRequest translateInstrumentDefinitionsRequest = new TranslateInstrumentDefinitionsRequest(); // TranslateInstrumentDefinitionsRequest | The definitions of the instruments to translate along with the target dialect.
         try {
+            // uncomment the below to set overrides at the request level
+            // TranslateInstrumentDefinitionsResponse result = apiInstance.translateInstrumentDefinitions(translateInstrumentDefinitionsRequest).execute(opts);
+
             TranslateInstrumentDefinitionsResponse result = apiInstance.translateInstrumentDefinitions(translateInstrumentDefinitionsRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -127,9 +138,20 @@ public class TranslationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TranslationApi apiInstance = apiFactory.build(TranslationApi.class);
+
         TranslationApi apiInstance = ApiFactoryBuilder.build(fileName).build(TranslationApi.class);
         TranslateTradeTicketRequest translateTradeTicketRequest = new TranslateTradeTicketRequest(); // TranslateTradeTicketRequest | The definitions of the trade ticket to translate along with the target dialect.
         try {
+            // uncomment the below to set overrides at the request level
+            // TranslateTradeTicketsResponse result = apiInstance.translateTradeTickets(translateTradeTicketRequest).execute(opts);
+
             TranslateTradeTicketsResponse result = apiInstance.translateTradeTickets(translateTradeTicketRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

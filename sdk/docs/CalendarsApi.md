@@ -57,10 +57,21 @@ public class CalendarsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CalendarsApi apiInstance = apiFactory.build(CalendarsApi.class);
+
         CalendarsApi apiInstance = ApiFactoryBuilder.build(fileName).build(CalendarsApi.class);
         String scope = "scope_example"; // String | Scope within which to search for the calendars
         AddBusinessDaysToDateRequest addBusinessDaysToDateRequest = new AddBusinessDaysToDateRequest(); // AddBusinessDaysToDateRequest | Request Details: start date, number of days to add (which can be negative, but not zero), calendar codes and optionally an AsAt date for searching the calendar store
         try {
+            // uncomment the below to set overrides at the request level
+            // AddBusinessDaysToDateResponse result = apiInstance.addBusinessDaysToDate(scope, addBusinessDaysToDateRequest).execute(opts);
+
             AddBusinessDaysToDateResponse result = apiInstance.addBusinessDaysToDate(scope, addBusinessDaysToDateRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -139,11 +150,22 @@ public class CalendarsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CalendarsApi apiInstance = apiFactory.build(CalendarsApi.class);
+
         CalendarsApi apiInstance = ApiFactoryBuilder.build(fileName).build(CalendarsApi.class);
         String scope = "scope_example"; // String | Scope of the calendar
         String code = "code_example"; // String | Code of the calendar
         CreateDateRequest createDateRequest = new CreateDateRequest(); // CreateDateRequest | Add date to calendar request
         try {
+            // uncomment the below to set overrides at the request level
+            // CalendarDate result = apiInstance.addDateToCalendar(scope, code, createDateRequest).execute(opts);
+
             CalendarDate result = apiInstance.addDateToCalendar(scope, code, createDateRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -223,9 +245,20 @@ public class CalendarsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CalendarsApi apiInstance = apiFactory.build(CalendarsApi.class);
+
         CalendarsApi apiInstance = ApiFactoryBuilder.build(fileName).build(CalendarsApi.class);
         CreateCalendarRequest createCalendarRequest = new CreateCalendarRequest(); // CreateCalendarRequest | A request to create the calendar
         try {
+            // uncomment the below to set overrides at the request level
+            // Calendar result = apiInstance.createCalendar(createCalendarRequest).execute(opts);
+
             Calendar result = apiInstance.createCalendar(createCalendarRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -303,10 +336,21 @@ public class CalendarsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CalendarsApi apiInstance = apiFactory.build(CalendarsApi.class);
+
         CalendarsApi apiInstance = ApiFactoryBuilder.build(fileName).build(CalendarsApi.class);
         String scope = "scope_example"; // String | Scope of the calendar
         String code = "code_example"; // String | Code of the calendar
         try {
+            // uncomment the below to set overrides at the request level
+            // Calendar result = apiInstance.deleteCalendar(scope, code).execute(opts);
+
             Calendar result = apiInstance.deleteCalendar(scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -385,11 +429,22 @@ public class CalendarsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CalendarsApi apiInstance = apiFactory.build(CalendarsApi.class);
+
         CalendarsApi apiInstance = ApiFactoryBuilder.build(fileName).build(CalendarsApi.class);
         String scope = "scope_example"; // String | Scope of the calendar
         String code = "code_example"; // String | Code of the calendar
         String dateId = "dateId_example"; // String | Identifier of the date to be removed
         try {
+            // uncomment the below to set overrides at the request level
+            // CalendarDate result = apiInstance.deleteDateFromCalendar(scope, code, dateId).execute(opts);
+
             CalendarDate result = apiInstance.deleteDateFromCalendar(scope, code, dateId).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -469,11 +524,22 @@ public class CalendarsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CalendarsApi apiInstance = apiFactory.build(CalendarsApi.class);
+
         CalendarsApi apiInstance = ApiFactoryBuilder.build(fileName).build(CalendarsApi.class);
         String scope = "scope_example"; // String | Scope of the calendars to use
         ValuationSchedule valuationSchedule = new ValuationSchedule(); // ValuationSchedule | The ValuationSchedule to generate schedule dates from
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional AsAt for searching the calendar store. Defaults to Latest.
         try {
+            // uncomment the below to set overrides at the request level
+            // List<OffsetDateTime> result = apiInstance.generateSchedule(scope, valuationSchedule, asAt).execute(opts);
+
             List<OffsetDateTime> result = apiInstance.generateSchedule(scope, valuationSchedule, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -553,12 +619,23 @@ public class CalendarsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CalendarsApi apiInstance = apiFactory.build(CalendarsApi.class);
+
         CalendarsApi apiInstance = ApiFactoryBuilder.build(fileName).build(CalendarsApi.class);
         String scope = "scope_example"; // String | Scope of the calendar identifier
         String code = "code_example"; // String | Code of the calendar identifier
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Calendar\" domain to decorate onto the calendar,    These take the format {domain}/{scope}/{code} e.g. \"Calendar/System/Name\".
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The AsAt datetime at which to retrieve the calendar
         try {
+            // uncomment the below to set overrides at the request level
+            // Calendar result = apiInstance.getCalendar(scope, code, propertyKeys, asAt).execute(opts);
+
             Calendar result = apiInstance.getCalendar(scope, code, propertyKeys, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -639,6 +716,14 @@ public class CalendarsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CalendarsApi apiInstance = apiFactory.build(CalendarsApi.class);
+
         CalendarsApi apiInstance = ApiFactoryBuilder.build(fileName).build(CalendarsApi.class);
         String scope = "scope_example"; // String | Scope of the calendar
         String code = "code_example"; // String | Code of the calendar
@@ -647,6 +732,9 @@ public class CalendarsApiExample {
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | AsAt the dates should be retrieved at
         List<String> idFilter = Arrays.asList(); // List<String> | An additional filter that will filter dates based on their identifer
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfCalendarDate result = apiInstance.getDates(scope, code, fromEffectiveAt, toEffectiveAt, asAt, idFilter).execute(opts);
+
             ResourceListOfCalendarDate result = apiInstance.getDates(scope, code, fromEffectiveAt, toEffectiveAt, asAt, idFilter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -729,12 +817,23 @@ public class CalendarsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CalendarsApi apiInstance = apiFactory.build(CalendarsApi.class);
+
         CalendarsApi apiInstance = ApiFactoryBuilder.build(fileName).build(CalendarsApi.class);
         OffsetDateTime dateTime = OffsetDateTime.now(); // OffsetDateTime | DateTime to check - This DateTime must be UTC
         String scope = "scope_example"; // String | Scope of the calendar
         String code = "code_example"; // String | Code of the calendar
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | AsAt for the request
         try {
+            // uncomment the below to set overrides at the request level
+            // IsBusinessDayResponse result = apiInstance.isBusinessDateTime(dateTime, scope, code, asAt).execute(opts);
+
             IsBusinessDayResponse result = apiInstance.isBusinessDateTime(dateTime, scope, code, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -815,6 +914,14 @@ public class CalendarsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CalendarsApi apiInstance = apiFactory.build(CalendarsApi.class);
+
         CalendarsApi apiInstance = ApiFactoryBuilder.build(fileName).build(CalendarsApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The AsAt datetime at which to retrieve the calendars
         String page = "page_example"; // String | The pagination token to use to continue listing calendars from a previous call to list calendars.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request.
@@ -822,6 +929,9 @@ public class CalendarsApiExample {
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Calendar\" domain to decorate onto the calendar,    These take the format {domain}/{scope}/{code} e.g. \"Calendar/System/Name\".
         String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfCalendar result = apiInstance.listCalendars(asAt, page, limit, propertyKeys, filter).execute(opts);
+
             PagedResourceListOfCalendar result = apiInstance.listCalendars(asAt, page, limit, propertyKeys, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -903,6 +1013,14 @@ public class CalendarsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CalendarsApi apiInstance = apiFactory.build(CalendarsApi.class);
+
         CalendarsApi apiInstance = ApiFactoryBuilder.build(fileName).build(CalendarsApi.class);
         String scope = "scope_example"; // String | Scope of the calendars
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The AsAt datetime at which to retrieve the calendars
@@ -911,6 +1029,9 @@ public class CalendarsApiExample {
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Calendar\" domain to decorate onto the calendar,    These take the format {domain}/{scope}/{code} e.g. \"Calendar/System/Name\".
         String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfCalendar result = apiInstance.listCalendarsInScope(scope, asAt, page, limit, propertyKeys, filter).execute(opts);
+
             PagedResourceListOfCalendar result = apiInstance.listCalendarsInScope(scope, asAt, page, limit, propertyKeys, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -993,11 +1114,22 @@ public class CalendarsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CalendarsApi apiInstance = apiFactory.build(CalendarsApi.class);
+
         CalendarsApi apiInstance = ApiFactoryBuilder.build(fileName).build(CalendarsApi.class);
         String scope = "scope_example"; // String | Scope of the request
         String code = "code_example"; // String | Code of the request
         UpdateCalendarRequest updateCalendarRequest = new UpdateCalendarRequest(); // UpdateCalendarRequest | The new state of the calendar
         try {
+            // uncomment the below to set overrides at the request level
+            // Calendar result = apiInstance.updateCalendar(scope, code, updateCalendarRequest).execute(opts);
+
             Calendar result = apiInstance.updateCalendar(scope, code, updateCalendarRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

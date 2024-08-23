@@ -49,9 +49,20 @@ public class SchemasApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // SchemasApi apiInstance = apiFactory.build(SchemasApi.class);
+
         SchemasApi apiInstance = ApiFactoryBuilder.build(fileName).build(SchemasApi.class);
         String entity = "entity_example"; // String | The name of a valid entity
         try {
+            // uncomment the below to set overrides at the request level
+            // Schema result = apiInstance.getEntitySchema(entity).execute(opts);
+
             Schema result = apiInstance.getEntitySchema(entity).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -129,10 +140,21 @@ public class SchemasApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // SchemasApi apiInstance = apiFactory.build(SchemasApi.class);
+
         SchemasApi apiInstance = ApiFactoryBuilder.build(fileName).build(SchemasApi.class);
         List<String> propertyKeys = Arrays.asList(); // List<String> | One or more property keys for which the schema is requested
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. The AsAt date of the data
         try {
+            // uncomment the below to set overrides at the request level
+            // PropertySchema result = apiInstance.getPropertySchema(propertyKeys, asAt).execute(opts);
+
             PropertySchema result = apiInstance.getPropertySchema(propertyKeys, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -211,10 +233,21 @@ public class SchemasApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // SchemasApi apiInstance = apiFactory.build(SchemasApi.class);
+
         SchemasApi apiInstance = ApiFactoryBuilder.build(fileName).build(SchemasApi.class);
         List<String> sortBy = Arrays.asList(); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
         Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfValueType result = apiInstance.getValueTypes(sortBy, limit).execute(opts);
+
             ResourceListOfValueType result = apiInstance.getValueTypes(sortBy, limit).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -293,8 +326,19 @@ public class SchemasApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // SchemasApi apiInstance = apiFactory.build(SchemasApi.class);
+
         SchemasApi apiInstance = ApiFactoryBuilder.build(fileName).build(SchemasApi.class);
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfString result = apiInstance.listEntities().execute(opts);
+
             ResourceListOfString result = apiInstance.listEntities().execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -75,6 +76,10 @@ public class SequencesApi {
     }
 
     private okhttp3.Call createSequenceCall(String scope, CreateSequenceRequest createSequenceRequest, final ApiCallback _callback) throws ApiException {
+        return createSequenceCall(scope, createSequenceRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call createSequenceCall(String scope, CreateSequenceRequest createSequenceRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -122,11 +127,11 @@ public class SequencesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createSequenceValidateBeforeCall(String scope, CreateSequenceRequest createSequenceRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createSequenceValidateBeforeCall(String scope, CreateSequenceRequest createSequenceRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling createSequence(Async)");
@@ -137,20 +142,34 @@ public class SequencesApi {
             throw new ApiException("Missing the required parameter 'createSequenceRequest' when calling createSequence(Async)");
         }
 
-        return createSequenceCall(scope, createSequenceRequest, _callback);
+        return createSequenceCall(scope, createSequenceRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<SequenceDefinition> createSequenceWithHttpInfo(String scope, CreateSequenceRequest createSequenceRequest) throws ApiException {
-        okhttp3.Call localVarCall = createSequenceValidateBeforeCall(scope, createSequenceRequest, null);
+        okhttp3.Call localVarCall = createSequenceValidateBeforeCall(scope, createSequenceRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<SequenceDefinition>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<SequenceDefinition> createSequenceWithHttpInfo(String scope, CreateSequenceRequest createSequenceRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createSequenceValidateBeforeCall(scope, createSequenceRequest, null, opts);
         Type localVarReturnType = new TypeToken<SequenceDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call createSequenceAsync(String scope, CreateSequenceRequest createSequenceRequest, final ApiCallback<SequenceDefinition> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createSequenceValidateBeforeCall(scope, createSequenceRequest, _callback);
+        okhttp3.Call localVarCall = createSequenceValidateBeforeCall(scope, createSequenceRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<SequenceDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call createSequenceAsync(String scope, CreateSequenceRequest createSequenceRequest, final ApiCallback<SequenceDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = createSequenceValidateBeforeCall(scope, createSequenceRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<SequenceDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -200,6 +219,23 @@ public class SequencesApi {
         }
 
         /**
+         * Execute createSequence request. Use any specified configuration options to override any other configuration for this request only.
+         * @return SequenceDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Sequence </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public SequenceDefinition execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<SequenceDefinition> localVarResp = createSequenceWithHttpInfo(scope, createSequenceRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute createSequence request with HTTP info returned
          * @return ApiResponse&lt;SequenceDefinition&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -213,6 +249,22 @@ public class SequencesApi {
          */
         public ApiResponse<SequenceDefinition> executeWithHttpInfo() throws ApiException {
             return createSequenceWithHttpInfo(scope, createSequenceRequest);
+        }
+
+        /**
+         * Execute createSequence request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;SequenceDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Sequence </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<SequenceDefinition> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return createSequenceWithHttpInfo(scope, createSequenceRequest, opts);
         }
 
         /**
@@ -230,6 +282,23 @@ public class SequencesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<SequenceDefinition> _callback) throws ApiException {
             return createSequenceAsync(scope, createSequenceRequest, _callback);
+        }
+
+        /**
+         * Execute createSequence request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Sequence </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<SequenceDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+            return createSequenceAsync(scope, createSequenceRequest, _callback, opts);
         }
     }
 
@@ -251,6 +320,10 @@ public class SequencesApi {
         return new APIcreateSequenceRequest(scope, createSequenceRequest);
     }
     private okhttp3.Call getSequenceCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+        return getSequenceCall(scope, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getSequenceCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -295,11 +368,11 @@ public class SequencesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getSequenceValidateBeforeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getSequenceValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getSequence(Async)");
@@ -310,20 +383,34 @@ public class SequencesApi {
             throw new ApiException("Missing the required parameter 'code' when calling getSequence(Async)");
         }
 
-        return getSequenceCall(scope, code, _callback);
+        return getSequenceCall(scope, code, _callback, opts);
 
     }
 
 
     private ApiResponse<SequenceDefinition> getSequenceWithHttpInfo(String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = getSequenceValidateBeforeCall(scope, code, null);
+        okhttp3.Call localVarCall = getSequenceValidateBeforeCall(scope, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<SequenceDefinition>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<SequenceDefinition> getSequenceWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getSequenceValidateBeforeCall(scope, code, null, opts);
         Type localVarReturnType = new TypeToken<SequenceDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getSequenceAsync(String scope, String code, final ApiCallback<SequenceDefinition> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getSequenceValidateBeforeCall(scope, code, _callback);
+        okhttp3.Call localVarCall = getSequenceValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<SequenceDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getSequenceAsync(String scope, String code, final ApiCallback<SequenceDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getSequenceValidateBeforeCall(scope, code, _callback, opts);
         Type localVarReturnType = new TypeToken<SequenceDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -373,6 +460,23 @@ public class SequencesApi {
         }
 
         /**
+         * Execute getSequence request. Use any specified configuration options to override any other configuration for this request only.
+         * @return SequenceDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested sequence </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public SequenceDefinition execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<SequenceDefinition> localVarResp = getSequenceWithHttpInfo(scope, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getSequence request with HTTP info returned
          * @return ApiResponse&lt;SequenceDefinition&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -386,6 +490,22 @@ public class SequencesApi {
          */
         public ApiResponse<SequenceDefinition> executeWithHttpInfo() throws ApiException {
             return getSequenceWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute getSequence request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;SequenceDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested sequence </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<SequenceDefinition> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getSequenceWithHttpInfo(scope, code, opts);
         }
 
         /**
@@ -403,6 +523,23 @@ public class SequencesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<SequenceDefinition> _callback) throws ApiException {
             return getSequenceAsync(scope, code, _callback);
+        }
+
+        /**
+         * Execute getSequence request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested sequence </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<SequenceDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+            return getSequenceAsync(scope, code, _callback, opts);
         }
     }
 
@@ -424,6 +561,10 @@ public class SequencesApi {
         return new APIgetSequenceRequest(scope, code);
     }
     private okhttp3.Call listSequencesCall(String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+        return listSequencesCall(page, limit, filter,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listSequencesCall(String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -478,25 +619,39 @@ public class SequencesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listSequencesValidateBeforeCall(String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
-        return listSequencesCall(page, limit, filter, _callback);
+    private okhttp3.Call listSequencesValidateBeforeCall(String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listSequencesCall(page, limit, filter, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfSequenceDefinition> listSequencesWithHttpInfo(String page, Integer limit, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listSequencesValidateBeforeCall(page, limit, filter, null);
+        okhttp3.Call localVarCall = listSequencesValidateBeforeCall(page, limit, filter, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfSequenceDefinition>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfSequenceDefinition> listSequencesWithHttpInfo(String page, Integer limit, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listSequencesValidateBeforeCall(page, limit, filter, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfSequenceDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listSequencesAsync(String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfSequenceDefinition> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listSequencesValidateBeforeCall(page, limit, filter, _callback);
+        okhttp3.Call localVarCall = listSequencesValidateBeforeCall(page, limit, filter, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfSequenceDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listSequencesAsync(String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfSequenceDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listSequencesValidateBeforeCall(page, limit, filter, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfSequenceDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -575,6 +730,23 @@ public class SequencesApi {
         }
 
         /**
+         * Execute listSequences request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfSequenceDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The sequences matching filtering criteria </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfSequenceDefinition execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfSequenceDefinition> localVarResp = listSequencesWithHttpInfo(page, limit, filter, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listSequences request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfSequenceDefinition&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -588,6 +760,22 @@ public class SequencesApi {
          */
         public ApiResponse<PagedResourceListOfSequenceDefinition> executeWithHttpInfo() throws ApiException {
             return listSequencesWithHttpInfo(page, limit, filter);
+        }
+
+        /**
+         * Execute listSequences request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfSequenceDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The sequences matching filtering criteria </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfSequenceDefinition> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listSequencesWithHttpInfo(page, limit, filter, opts);
         }
 
         /**
@@ -605,6 +793,23 @@ public class SequencesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfSequenceDefinition> _callback) throws ApiException {
             return listSequencesAsync(page, limit, filter, _callback);
+        }
+
+        /**
+         * Execute listSequences request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The sequences matching filtering criteria </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfSequenceDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+            return listSequencesAsync(page, limit, filter, _callback, opts);
         }
     }
 
@@ -624,6 +829,10 @@ public class SequencesApi {
         return new APIlistSequencesRequest();
     }
     private okhttp3.Call nextCall(String scope, String code, Integer batch, final ApiCallback _callback) throws ApiException {
+        return nextCall(scope, code, batch,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call nextCall(String scope, String code, Integer batch, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -672,11 +881,11 @@ public class SequencesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call nextValidateBeforeCall(String scope, String code, Integer batch, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call nextValidateBeforeCall(String scope, String code, Integer batch, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling next(Async)");
@@ -687,20 +896,34 @@ public class SequencesApi {
             throw new ApiException("Missing the required parameter 'code' when calling next(Async)");
         }
 
-        return nextCall(scope, code, batch, _callback);
+        return nextCall(scope, code, batch, _callback, opts);
 
     }
 
 
     private ApiResponse<NextValueInSequenceResponse> nextWithHttpInfo(String scope, String code, Integer batch) throws ApiException {
-        okhttp3.Call localVarCall = nextValidateBeforeCall(scope, code, batch, null);
+        okhttp3.Call localVarCall = nextValidateBeforeCall(scope, code, batch, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<NextValueInSequenceResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<NextValueInSequenceResponse> nextWithHttpInfo(String scope, String code, Integer batch, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = nextValidateBeforeCall(scope, code, batch, null, opts);
         Type localVarReturnType = new TypeToken<NextValueInSequenceResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call nextAsync(String scope, String code, Integer batch, final ApiCallback<NextValueInSequenceResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = nextValidateBeforeCall(scope, code, batch, _callback);
+        okhttp3.Call localVarCall = nextValidateBeforeCall(scope, code, batch, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<NextValueInSequenceResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call nextAsync(String scope, String code, Integer batch, final ApiCallback<NextValueInSequenceResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = nextValidateBeforeCall(scope, code, batch, _callback, opts);
         Type localVarReturnType = new TypeToken<NextValueInSequenceResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -761,6 +984,23 @@ public class SequencesApi {
         }
 
         /**
+         * Execute next request. Use any specified configuration options to override any other configuration for this request only.
+         * @return NextValueInSequenceResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response containing next available values in specified sequence. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public NextValueInSequenceResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<NextValueInSequenceResponse> localVarResp = nextWithHttpInfo(scope, code, batch, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute next request with HTTP info returned
          * @return ApiResponse&lt;NextValueInSequenceResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -774,6 +1014,22 @@ public class SequencesApi {
          */
         public ApiResponse<NextValueInSequenceResponse> executeWithHttpInfo() throws ApiException {
             return nextWithHttpInfo(scope, code, batch);
+        }
+
+        /**
+         * Execute next request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;NextValueInSequenceResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response containing next available values in specified sequence. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<NextValueInSequenceResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return nextWithHttpInfo(scope, code, batch, opts);
         }
 
         /**
@@ -791,6 +1047,23 @@ public class SequencesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<NextValueInSequenceResponse> _callback) throws ApiException {
             return nextAsync(scope, code, batch, _callback);
+        }
+
+        /**
+         * Execute next request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response containing next available values in specified sequence. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<NextValueInSequenceResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return nextAsync(scope, code, batch, _callback, opts);
         }
     }
 

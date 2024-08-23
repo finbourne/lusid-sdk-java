@@ -48,9 +48,20 @@ public class RelationDefinitionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // RelationDefinitionsApi apiInstance = apiFactory.build(RelationDefinitionsApi.class);
+
         RelationDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(RelationDefinitionsApi.class);
         CreateRelationDefinitionRequest createRelationDefinitionRequest = new CreateRelationDefinitionRequest(); // CreateRelationDefinitionRequest | The definition of the new relation.
         try {
+            // uncomment the below to set overrides at the request level
+            // RelationDefinition result = apiInstance.createRelationDefinition(createRelationDefinitionRequest).execute(opts);
+
             RelationDefinition result = apiInstance.createRelationDefinition(createRelationDefinitionRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -128,10 +139,21 @@ public class RelationDefinitionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // RelationDefinitionsApi apiInstance = apiFactory.build(RelationDefinitionsApi.class);
+
         RelationDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(RelationDefinitionsApi.class);
         String scope = "scope_example"; // String | The scope of the relation to be deleted.
         String code = "code_example"; // String | The code of the relation to be deleted. Together with the domain and scope this uniquely   identifies the relation.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteRelationDefinition(scope, code).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteRelationDefinition(scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -210,11 +232,22 @@ public class RelationDefinitionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // RelationDefinitionsApi apiInstance = apiFactory.build(RelationDefinitionsApi.class);
+
         RelationDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(RelationDefinitionsApi.class);
         String scope = "scope_example"; // String | The scope of the specified relation.
         String code = "code_example"; // String | The code of the specified relation. Together with the domain and scope this uniquely   identifies the relation.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the relation definition. Defaults to return   the latest version of the definition if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // RelationDefinition result = apiInstance.getRelationDefinition(scope, code, asAt).execute(opts);
+
             RelationDefinition result = apiInstance.getRelationDefinition(scope, code, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

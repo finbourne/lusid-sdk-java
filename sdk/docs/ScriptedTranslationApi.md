@@ -53,6 +53,14 @@ public class ScriptedTranslationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ScriptedTranslationApi apiInstance = apiFactory.build(ScriptedTranslationApi.class);
+
         ScriptedTranslationApi apiInstance = ApiFactoryBuilder.build(fileName).build(ScriptedTranslationApi.class);
         String scope = "scope_example"; // String | The scope of the dialect.
         String vendor = "vendor_example"; // String | The vendor of the dialect, the entity that created it. e.g. ISDA, FINBOURNE.
@@ -62,6 +70,9 @@ public class ScriptedTranslationApiExample {
         String version = "version_example"; // String | The semantic version of the dialect: MAJOR.MINOR.PATCH.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the dialect. Defaults to return the latest version of the dialect if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // Dialect result = apiInstance.getTranslationDialect(scope, vendor, sourceSystem, entityType, serialisationFormat, version, asAt).execute(opts);
+
             Dialect result = apiInstance.getTranslationDialect(scope, vendor, sourceSystem, entityType, serialisationFormat, version, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -145,12 +156,23 @@ public class ScriptedTranslationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ScriptedTranslationApi apiInstance = apiFactory.build(ScriptedTranslationApi.class);
+
         ScriptedTranslationApi apiInstance = ApiFactoryBuilder.build(fileName).build(ScriptedTranslationApi.class);
         String scope = "scope_example"; // String | Scope of the translation script.
         String code = "code_example"; // String | Code of the translation script.
         String version = "version_example"; // String | Semantic version of the translation script.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the translation script. Defaults to latest.
         try {
+            // uncomment the below to set overrides at the request level
+            // TranslationScript result = apiInstance.getTranslationScript(scope, code, version, asAt).execute(opts);
+
             TranslationScript result = apiInstance.getTranslationScript(scope, code, version, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -231,12 +253,23 @@ public class ScriptedTranslationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ScriptedTranslationApi apiInstance = apiFactory.build(ScriptedTranslationApi.class);
+
         ScriptedTranslationApi apiInstance = ApiFactoryBuilder.build(fileName).build(ScriptedTranslationApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the dialects.   Defaults to return the latest version of the dialect if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing dialect IDs from a previous call to list dialect IDs.   This value is returned from the previous call. If a pagination token is provided the filter and asAt fields   must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
         String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfDialectId result = apiInstance.listDialectIds(asAt, page, limit, filter).execute(opts);
+
             PagedResourceListOfDialectId result = apiInstance.listDialectIds(asAt, page, limit, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -317,12 +350,23 @@ public class ScriptedTranslationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ScriptedTranslationApi apiInstance = apiFactory.build(ScriptedTranslationApi.class);
+
         ScriptedTranslationApi apiInstance = ApiFactoryBuilder.build(fileName).build(ScriptedTranslationApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the script identifiers. Defaults to latest.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
         String filter = "filter_example"; // String | Expression to filter the results. For example, Id.Version.Major eq 1 to list IDs with major version 1   or Id.Scope eq 'my-scripts' to list result only for a particular scope.
         String page = "page_example"; // String | The pagination token to use to continue listing translation script IDs; this   value is returned from the previous call. If a pagination token is provided, the filter field   must not have changed since the original request.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfTranslationScriptId result = apiInstance.listTranslationScriptIds(asAt, limit, filter, page).execute(opts);
+
             PagedResourceListOfTranslationScriptId result = apiInstance.listTranslationScriptIds(asAt, limit, filter, page).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -403,9 +447,20 @@ public class ScriptedTranslationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ScriptedTranslationApi apiInstance = apiFactory.build(ScriptedTranslationApi.class);
+
         ScriptedTranslationApi apiInstance = ApiFactoryBuilder.build(fileName).build(ScriptedTranslationApi.class);
         TranslateEntitiesRequest translateEntitiesRequest = new TranslateEntitiesRequest(); // TranslateEntitiesRequest | The entities to translate, along with identifiers for the script and (optional) dialect to use.
         try {
+            // uncomment the below to set overrides at the request level
+            // TranslateEntitiesResponse result = apiInstance.translateEntities(translateEntitiesRequest).execute(opts);
+
             TranslateEntitiesResponse result = apiInstance.translateEntities(translateEntitiesRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -483,9 +538,20 @@ public class ScriptedTranslationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ScriptedTranslationApi apiInstance = apiFactory.build(ScriptedTranslationApi.class);
+
         ScriptedTranslationApi apiInstance = ApiFactoryBuilder.build(fileName).build(ScriptedTranslationApi.class);
         TranslateEntitiesInlinedRequest translateEntitiesInlinedRequest = new TranslateEntitiesInlinedRequest(); // TranslateEntitiesInlinedRequest | The entities to translate, along with the script to use and an optional schema for validation.
         try {
+            // uncomment the below to set overrides at the request level
+            // TranslateEntitiesResponse result = apiInstance.translateEntitiesInlined(translateEntitiesInlinedRequest).execute(opts);
+
             TranslateEntitiesResponse result = apiInstance.translateEntitiesInlined(translateEntitiesInlinedRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -563,9 +629,20 @@ public class ScriptedTranslationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ScriptedTranslationApi apiInstance = apiFactory.build(ScriptedTranslationApi.class);
+
         ScriptedTranslationApi apiInstance = ApiFactoryBuilder.build(fileName).build(ScriptedTranslationApi.class);
         UpsertDialectRequest upsertDialectRequest = new UpsertDialectRequest(); // UpsertDialectRequest | The dialect to upsert.
         try {
+            // uncomment the below to set overrides at the request level
+            // Dialect result = apiInstance.upsertTranslationDialect(upsertDialectRequest).execute(opts);
+
             Dialect result = apiInstance.upsertTranslationDialect(upsertDialectRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -643,9 +720,20 @@ public class ScriptedTranslationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ScriptedTranslationApi apiInstance = apiFactory.build(ScriptedTranslationApi.class);
+
         ScriptedTranslationApi apiInstance = ApiFactoryBuilder.build(fileName).build(ScriptedTranslationApi.class);
         UpsertTranslationScriptRequest upsertTranslationScriptRequest = new UpsertTranslationScriptRequest(); // UpsertTranslationScriptRequest | The translation script to be upserted.
         try {
+            // uncomment the below to set overrides at the request level
+            // TranslationScript result = apiInstance.upsertTranslationScript(upsertTranslationScriptRequest).execute(opts);
+
             TranslationScript result = apiInstance.upsertTranslationScript(upsertTranslationScriptRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

@@ -49,10 +49,21 @@ public class StagedModificationsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // StagedModificationsApi apiInstance = apiFactory.build(StagedModificationsApi.class);
+
         StagedModificationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(StagedModificationsApi.class);
         String id = "id_example"; // String | Unique Id for a staged modification..
         StagedModificationDecisionRequest stagedModificationDecisionRequest = new StagedModificationDecisionRequest(); // StagedModificationDecisionRequest | The decision on the requested staged modification, \"Approve\" or \"Reject\".
         try {
+            // uncomment the below to set overrides at the request level
+            // StagedModification result = apiInstance.addDecision(id, stagedModificationDecisionRequest).execute(opts);
+
             StagedModification result = apiInstance.addDecision(id, stagedModificationDecisionRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -131,10 +142,21 @@ public class StagedModificationsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // StagedModificationsApi apiInstance = apiFactory.build(StagedModificationsApi.class);
+
         StagedModificationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(StagedModificationsApi.class);
         String id = "id_example"; // String | The unique identifier for a staged modification.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the staged modification. Defaults to latest if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // StagedModification result = apiInstance.getStagedModification(id, asAt).execute(opts);
+
             StagedModification result = apiInstance.getStagedModification(id, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -213,6 +235,14 @@ public class StagedModificationsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // StagedModificationsApi apiInstance = apiFactory.build(StagedModificationsApi.class);
+
         StagedModificationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(StagedModificationsApi.class);
         String id = "id_example"; // String | Unique Id for a staged modification..
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list changes. Defaults to return the latest version   of each staged change if not specified.
@@ -221,6 +251,9 @@ public class StagedModificationsApiExample {
         String filter = "filter_example"; // String | Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names suffixed by \" ASC\" or \" DESC\"
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfStagedModificationsRequestedChangeInterval result = apiInstance.listRequestedChanges(id, asAt, page, limit, filter, sortBy).execute(opts);
+
             PagedResourceListOfStagedModificationsRequestedChangeInterval result = apiInstance.listRequestedChanges(id, asAt, page, limit, filter, sortBy).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -303,6 +336,14 @@ public class StagedModificationsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // StagedModificationsApi apiInstance = apiFactory.build(StagedModificationsApi.class);
+
         StagedModificationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(StagedModificationsApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list staged modifications. Defaults to return the latest version   of each staged modification if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing staged modifications from a previous call to list staged modifications. This   value is returned from the previous call. If a pagination token is provided the filter, effectiveAt   and asAt fields must not have changed since the original request.
@@ -310,6 +351,9 @@ public class StagedModificationsApiExample {
         String filter = "filter_example"; // String | Expression to filter the result set.    Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names suffixed by \" ASC\" or \" DESC\"
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfStagedModification result = apiInstance.listStagedModifications(asAt, page, limit, filter, sortBy).execute(opts);
+
             PagedResourceListOfStagedModification result = apiInstance.listStagedModifications(asAt, page, limit, filter, sortBy).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

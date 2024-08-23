@@ -63,11 +63,22 @@ public class LegalEntitiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // LegalEntitiesApi apiInstance = apiFactory.build(LegalEntitiesApi.class);
+
         LegalEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegalEntitiesApi.class);
         String idTypeScope = "idTypeScope_example"; // String | The scope of the legal entity identifier type.
         String idTypeCode = "idTypeCode_example"; // String | The code of the legal entity identifier type.
         String code = "code_example"; // String | Code of the legal entity under specified identifier type's scope and code. This together with defined   identifier type uniquely identifies the legal entity to delete.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteLegalEntity(idTypeScope, idTypeCode, code).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteLegalEntity(idTypeScope, idTypeCode, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -147,6 +158,14 @@ public class LegalEntitiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // LegalEntitiesApi apiInstance = apiFactory.build(LegalEntitiesApi.class);
+
         LegalEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegalEntitiesApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the Legal Entity identifier.
         String idTypeCode = "idTypeCode_example"; // String | Code of the Legal Entity identifier.
@@ -155,6 +174,9 @@ public class LegalEntitiesApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The effective date to delete at, if this is not supplied, it will delete all data found
         OffsetDateTime effectiveUntil = OffsetDateTime.now(); // OffsetDateTime | The effective date until which the delete is valid. If not supplied this will be valid indefinitely, or until the next 'effectiveAt' date of the Access Metadata
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteLegalEntityAccessMetadata(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteLegalEntityAccessMetadata(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -237,6 +259,14 @@ public class LegalEntitiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // LegalEntitiesApi apiInstance = apiFactory.build(LegalEntitiesApi.class);
+
         LegalEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegalEntitiesApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the legal entity identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the legal entity identifier type.
@@ -244,6 +274,9 @@ public class LegalEntitiesApiExample {
         List<String> propertyKeys = Arrays.asList(); // List<String> | The property keys of the identifiers to delete. These take the format   {domain}/{scope}/{code} e.g. \"LegalEntity/CreditAgency/Identifier\". Each property must be from the \"LegalEntity\" domain. Identifiers or identifiers not specified in request will not be changed.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to delete the identifiers. Defaults to the current LUSID system datetime if not specified.   Must not include an effective datetime if identifiers are perpetual.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteLegalEntityIdentifiers(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteLegalEntityIdentifiers(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -325,6 +358,14 @@ public class LegalEntitiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // LegalEntitiesApi apiInstance = apiFactory.build(LegalEntitiesApi.class);
+
         LegalEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegalEntitiesApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the legal entity identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the legal entity identifier type.
@@ -332,6 +373,9 @@ public class LegalEntitiesApiExample {
         List<String> propertyKeys = Arrays.asList(); // List<String> | The property keys of the legal entities properties to delete. These take the format   {domain}/{scope}/{code} e.g. \"LegalEntity/CompanyDetails/Role\". Each property must be from the \"LegalEntity\" domain. Properties or identifiers not specified in request will not be changed.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified 'effectiveAt' datetime. If the 'effectiveAt' is not provided or is   before the time-variant property exists then a failure is returned. Do not specify this parameter if any of   the properties to delete are perpetual.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteLegalEntityProperties(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteLegalEntityProperties(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -413,6 +457,14 @@ public class LegalEntitiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // LegalEntitiesApi apiInstance = apiFactory.build(LegalEntitiesApi.class);
+
         LegalEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegalEntitiesApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the Legal Entity identifier.
         String idTypeCode = "idTypeCode_example"; // String | Code of the Legal Entity identifier.
@@ -420,6 +472,9 @@ public class LegalEntitiesApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The effectiveAt datetime at which to retrieve the Access Metadata
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Access Metadata
         try {
+            // uncomment the below to set overrides at the request level
+            // Map<String, List<AccessMetadataValue>> result = apiInstance.getAllLegalEntityAccessMetadata(idTypeScope, idTypeCode, code, effectiveAt, asAt).execute(opts);
+
             Map<String, List<AccessMetadataValue>> result = apiInstance.getAllLegalEntityAccessMetadata(idTypeScope, idTypeCode, code, effectiveAt, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -501,6 +556,14 @@ public class LegalEntitiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // LegalEntitiesApi apiInstance = apiFactory.build(LegalEntitiesApi.class);
+
         LegalEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegalEntitiesApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the legal entity identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the legal entity identifier type.
@@ -510,6 +573,9 @@ public class LegalEntitiesApiExample {
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the legal entity. Defaults to return the latest version of the legal entity if not specified.
         List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto the legal entity in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
         try {
+            // uncomment the below to set overrides at the request level
+            // LegalEntity result = apiInstance.getLegalEntity(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds).execute(opts);
+
             LegalEntity result = apiInstance.getLegalEntity(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -593,6 +659,14 @@ public class LegalEntitiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // LegalEntitiesApi apiInstance = apiFactory.build(LegalEntitiesApi.class);
+
         LegalEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegalEntitiesApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the Legal Entity identifier.
         String idTypeCode = "idTypeCode_example"; // String | Code of the Legal Entity identifier.
@@ -601,6 +675,9 @@ public class LegalEntitiesApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The effectiveAt datetime at which to retrieve the Access Metadata
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Access Metadata
         try {
+            // uncomment the below to set overrides at the request level
+            // List<AccessMetadataValue> result = apiInstance.getLegalEntityAccessMetadataByKey(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt).execute(opts);
+
             List<AccessMetadataValue> result = apiInstance.getLegalEntityAccessMetadataByKey(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -683,6 +760,14 @@ public class LegalEntitiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // LegalEntitiesApi apiInstance = apiFactory.build(LegalEntitiesApi.class);
+
         LegalEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegalEntitiesApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the legal entity identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the legal entity identifier type.
@@ -693,6 +778,9 @@ public class LegalEntitiesApiExample {
         String page = "page_example"; // String | The pagination token to use to continue listing properties from a previous call to get property time series.   This value is returned from the previous call. If a pagination token is provided the filter and asAt fields   must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfPropertyInterval result = apiInstance.getLegalEntityPropertyTimeSeries(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit).execute(opts);
+
             ResourceListOfPropertyInterval result = apiInstance.getLegalEntityPropertyTimeSeries(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -777,6 +865,14 @@ public class LegalEntitiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // LegalEntitiesApi apiInstance = apiFactory.build(LegalEntitiesApi.class);
+
         LegalEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegalEntitiesApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the legal entity identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the legal entity identifier type.
@@ -786,6 +882,9 @@ public class LegalEntitiesApiExample {
         String filter = "filter_example"; // String | Expression to filter the relations. Users should provide null or empty string for this field until further notice.
         List<String> identifierTypes = Arrays.asList(); // List<String> | Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format   {domain}/{scope}/{code} e.g. \"Person/CompanyDetails/Role\". They must be from the \"Person\" or \"LegalEntity\" domain.   Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfRelation result = apiInstance.getLegalEntityRelations(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes).execute(opts);
+
             ResourceListOfRelation result = apiInstance.getLegalEntityRelations(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -869,6 +968,14 @@ public class LegalEntitiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // LegalEntitiesApi apiInstance = apiFactory.build(LegalEntitiesApi.class);
+
         LegalEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegalEntitiesApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the legal entity's identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the legal entity's identifier type.
@@ -878,6 +985,9 @@ public class LegalEntitiesApiExample {
         String filter = "filter_example"; // String | Expression to filter relationships. Users should provide null or empty string for this field until further notice.
         List<String> identifierTypes = Arrays.asList(); // List<String> | Identifier types (as property keys) used for referencing Persons or Legal Entities.   These can be specified from the 'Person' or 'LegalEntity' domains and have the format {domain}/{scope}/{code}, for example   'Person/CompanyDetails/Role'. An Empty array may be used to return all related Entities.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfRelationship result = apiInstance.getLegalEntityRelationships(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes).execute(opts);
+
             ResourceListOfRelationship result = apiInstance.getLegalEntityRelationships(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -961,6 +1071,14 @@ public class LegalEntitiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // LegalEntitiesApi apiInstance = apiFactory.build(LegalEntitiesApi.class);
+
         LegalEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegalEntitiesApi.class);
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the legal entities. Defaults to the current LUSID   system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the legal entities. Defaults to return the latest version   of each legal entities if not specified.
@@ -971,6 +1089,9 @@ public class LegalEntitiesApiExample {
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys or identifier types (as property keys) from the \"LegalEntity\" domain   to include for each legal entity, or from any domain that supports relationships to decorate onto related entities.   These take the format {domain}/{scope}/{code} e.g. \"LegalEntity/ContactDetails/Address\".
         List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto each portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfLegalEntity result = apiInstance.listAllLegalEntities(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds).execute(opts);
+
             ResourceListOfLegalEntity result = apiInstance.listAllLegalEntities(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1055,6 +1176,14 @@ public class LegalEntitiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // LegalEntitiesApi apiInstance = apiFactory.build(LegalEntitiesApi.class);
+
         LegalEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegalEntitiesApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the legal entity identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the legal entity identifier type.
@@ -1067,6 +1196,9 @@ public class LegalEntitiesApiExample {
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys or identifier types (as property keys) from the \"LegalEntity\" domain   to include for each legal entity, or from any domain that supports relationships to decorate onto related entities.   These take the format {domain}/{scope}/{code} e.g. \"LegalEntity/ContactDetails/Address\".
         List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto each portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfLegalEntity result = apiInstance.listLegalEntities(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds).execute(opts);
+
             PagedResourceListOfLegalEntity result = apiInstance.listLegalEntities(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1153,6 +1285,14 @@ public class LegalEntitiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // LegalEntitiesApi apiInstance = apiFactory.build(LegalEntitiesApi.class);
+
         LegalEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegalEntitiesApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the Legal Entity identifier.
         String idTypeCode = "idTypeCode_example"; // String | Code of the Legal Entity identifier.
@@ -1161,6 +1301,9 @@ public class LegalEntitiesApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The effectiveAt datetime at which to upsert the Access Metadata
         OffsetDateTime effectiveUntil = OffsetDateTime.now(); // OffsetDateTime | The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next 'effectiveAt' datetime of the Access Metadata
         try {
+            // uncomment the below to set overrides at the request level
+            // Map<String, List<AccessMetadataValue>> result = apiInstance.patchLegalEntityAccessMetadata(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil).execute(opts);
+
             Map<String, List<AccessMetadataValue>> result = apiInstance.patchLegalEntityAccessMetadata(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1243,12 +1386,23 @@ public class LegalEntitiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // LegalEntitiesApi apiInstance = apiFactory.build(LegalEntitiesApi.class);
+
         LegalEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegalEntitiesApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the legal entity identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the legal entity identifier type.
         String code = "code_example"; // String | Code of the legal entity under specified identifier type's scope and code. This together with stated identifier type uniquely   identifies the legal entity.
         SetLegalEntityIdentifiersRequest setLegalEntityIdentifiersRequest = new SetLegalEntityIdentifiersRequest(); // SetLegalEntityIdentifiersRequest | Request containing identifiers to set for the legal entity. Identifiers not specified in request will not be changed.
         try {
+            // uncomment the below to set overrides at the request level
+            // LegalEntity result = apiInstance.setLegalEntityIdentifiers(idTypeScope, idTypeCode, code, setLegalEntityIdentifiersRequest).execute(opts);
+
             LegalEntity result = apiInstance.setLegalEntityIdentifiers(idTypeScope, idTypeCode, code, setLegalEntityIdentifiersRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1329,12 +1483,23 @@ public class LegalEntitiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // LegalEntitiesApi apiInstance = apiFactory.build(LegalEntitiesApi.class);
+
         LegalEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegalEntitiesApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the legal entity identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the legal entity identifier type.
         String code = "code_example"; // String | Code of the legal entity under specified identifier type's scope and code. This together with stated identifier type uniquely   identifies the legal entity.
         SetLegalEntityPropertiesRequest setLegalEntityPropertiesRequest = new SetLegalEntityPropertiesRequest(); // SetLegalEntityPropertiesRequest | Request containing properties to set for the legal entity. Properties not specified in request will not be changed.
         try {
+            // uncomment the below to set overrides at the request level
+            // LegalEntity result = apiInstance.setLegalEntityProperties(idTypeScope, idTypeCode, code, setLegalEntityPropertiesRequest).execute(opts);
+
             LegalEntity result = apiInstance.setLegalEntityProperties(idTypeScope, idTypeCode, code, setLegalEntityPropertiesRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1415,10 +1580,21 @@ public class LegalEntitiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // LegalEntitiesApi apiInstance = apiFactory.build(LegalEntitiesApi.class);
+
         LegalEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegalEntitiesApi.class);
         String successMode = "successMode_example"; // String | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial
         Map<String, UpsertLegalEntityRequest> requestBody = new HashMap(); // Map<String, UpsertLegalEntityRequest> | A collection of requests to create or update Legal Entities.
         try {
+            // uncomment the below to set overrides at the request level
+            // UpsertLegalEntitiesResponse result = apiInstance.upsertLegalEntities(successMode, requestBody).execute(opts);
+
             UpsertLegalEntitiesResponse result = apiInstance.upsertLegalEntities(successMode, requestBody).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1497,9 +1673,20 @@ public class LegalEntitiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // LegalEntitiesApi apiInstance = apiFactory.build(LegalEntitiesApi.class);
+
         LegalEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegalEntitiesApi.class);
         UpsertLegalEntityRequest upsertLegalEntityRequest = new UpsertLegalEntityRequest(); // UpsertLegalEntityRequest | Request to create or update a legal entity.
         try {
+            // uncomment the below to set overrides at the request level
+            // LegalEntity result = apiInstance.upsertLegalEntity(upsertLegalEntityRequest).execute(opts);
+
             LegalEntity result = apiInstance.upsertLegalEntity(upsertLegalEntityRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1577,6 +1764,14 @@ public class LegalEntitiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // LegalEntitiesApi apiInstance = apiFactory.build(LegalEntitiesApi.class);
+
         LegalEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegalEntitiesApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the Legal Entity identifier.
         String idTypeCode = "idTypeCode_example"; // String | Code of the Legal Entity identifier.
@@ -1586,6 +1781,9 @@ public class LegalEntitiesApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The effectiveAt datetime at which to upsert the Access Metadata
         OffsetDateTime effectiveUntil = OffsetDateTime.now(); // OffsetDateTime | The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next 'effectiveAt' datetime of the Access Metadata
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfAccessMetadataValueOf result = apiInstance.upsertLegalEntityAccessMetadata(idTypeScope, idTypeCode, code, metadataKey, upsertLegalEntityAccessMetadataRequest, effectiveAt, effectiveUntil).execute(opts);
+
             ResourceListOfAccessMetadataValueOf result = apiInstance.upsertLegalEntityAccessMetadata(idTypeScope, idTypeCode, code, metadataKey, upsertLegalEntityAccessMetadataRequest, effectiveAt, effectiveUntil).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

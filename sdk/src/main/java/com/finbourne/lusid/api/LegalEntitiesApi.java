@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -87,6 +88,10 @@ public class LegalEntitiesApi {
     }
 
     private okhttp3.Call deleteLegalEntityCall(String idTypeScope, String idTypeCode, String code, final ApiCallback _callback) throws ApiException {
+        return deleteLegalEntityCall(idTypeScope, idTypeCode, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteLegalEntityCall(String idTypeScope, String idTypeCode, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -132,11 +137,11 @@ public class LegalEntitiesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteLegalEntityValidateBeforeCall(String idTypeScope, String idTypeCode, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteLegalEntityValidateBeforeCall(String idTypeScope, String idTypeCode, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'idTypeScope' is set
         if (idTypeScope == null) {
             throw new ApiException("Missing the required parameter 'idTypeScope' when calling deleteLegalEntity(Async)");
@@ -152,20 +157,34 @@ public class LegalEntitiesApi {
             throw new ApiException("Missing the required parameter 'code' when calling deleteLegalEntity(Async)");
         }
 
-        return deleteLegalEntityCall(idTypeScope, idTypeCode, code, _callback);
+        return deleteLegalEntityCall(idTypeScope, idTypeCode, code, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deleteLegalEntityWithHttpInfo(String idTypeScope, String idTypeCode, String code) throws ApiException {
-        okhttp3.Call localVarCall = deleteLegalEntityValidateBeforeCall(idTypeScope, idTypeCode, code, null);
+        okhttp3.Call localVarCall = deleteLegalEntityValidateBeforeCall(idTypeScope, idTypeCode, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteLegalEntityWithHttpInfo(String idTypeScope, String idTypeCode, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteLegalEntityValidateBeforeCall(idTypeScope, idTypeCode, code, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteLegalEntityAsync(String idTypeScope, String idTypeCode, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteLegalEntityValidateBeforeCall(idTypeScope, idTypeCode, code, _callback);
+        okhttp3.Call localVarCall = deleteLegalEntityValidateBeforeCall(idTypeScope, idTypeCode, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteLegalEntityAsync(String idTypeScope, String idTypeCode, String code, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteLegalEntityValidateBeforeCall(idTypeScope, idTypeCode, code, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -217,6 +236,23 @@ public class LegalEntitiesApi {
         }
 
         /**
+         * Execute deleteLegalEntity request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting legal entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteLegalEntityWithHttpInfo(idTypeScope, idTypeCode, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteLegalEntity request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -230,6 +266,22 @@ public class LegalEntitiesApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deleteLegalEntityWithHttpInfo(idTypeScope, idTypeCode, code);
+        }
+
+        /**
+         * Execute deleteLegalEntity request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting legal entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteLegalEntityWithHttpInfo(idTypeScope, idTypeCode, code, opts);
         }
 
         /**
@@ -247,6 +299,23 @@ public class LegalEntitiesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deleteLegalEntityAsync(idTypeScope, idTypeCode, code, _callback);
+        }
+
+        /**
+         * Execute deleteLegalEntity request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting legal entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteLegalEntityAsync(idTypeScope, idTypeCode, code, _callback, opts);
         }
     }
 
@@ -269,6 +338,10 @@ public class LegalEntitiesApi {
         return new APIdeleteLegalEntityRequest(idTypeScope, idTypeCode, code);
     }
     private okhttp3.Call deleteLegalEntityAccessMetadataCall(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+        return deleteLegalEntityAccessMetadataCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteLegalEntityAccessMetadataCall(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -323,11 +396,11 @@ public class LegalEntitiesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteLegalEntityAccessMetadataValidateBeforeCall(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteLegalEntityAccessMetadataValidateBeforeCall(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'idTypeScope' is set
         if (idTypeScope == null) {
             throw new ApiException("Missing the required parameter 'idTypeScope' when calling deleteLegalEntityAccessMetadata(Async)");
@@ -348,20 +421,34 @@ public class LegalEntitiesApi {
             throw new ApiException("Missing the required parameter 'metadataKey' when calling deleteLegalEntityAccessMetadata(Async)");
         }
 
-        return deleteLegalEntityAccessMetadataCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil, _callback);
+        return deleteLegalEntityAccessMetadataCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deleteLegalEntityAccessMetadataWithHttpInfo(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
-        okhttp3.Call localVarCall = deleteLegalEntityAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil, null);
+        okhttp3.Call localVarCall = deleteLegalEntityAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteLegalEntityAccessMetadataWithHttpInfo(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteLegalEntityAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteLegalEntityAccessMetadataAsync(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteLegalEntityAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil, _callback);
+        okhttp3.Call localVarCall = deleteLegalEntityAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteLegalEntityAccessMetadataAsync(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteLegalEntityAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -437,6 +524,23 @@ public class LegalEntitiesApi {
         }
 
         /**
+         * Execute deleteLegalEntityAccessMetadata request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Access Metadata with the given metadataKey has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteLegalEntityAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteLegalEntityAccessMetadata request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -450,6 +554,22 @@ public class LegalEntitiesApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deleteLegalEntityAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil);
+        }
+
+        /**
+         * Execute deleteLegalEntityAccessMetadata request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Access Metadata with the given metadataKey has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteLegalEntityAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil, opts);
         }
 
         /**
@@ -467,6 +587,23 @@ public class LegalEntitiesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deleteLegalEntityAccessMetadataAsync(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil, _callback);
+        }
+
+        /**
+         * Execute deleteLegalEntityAccessMetadata request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Access Metadata with the given metadataKey has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteLegalEntityAccessMetadataAsync(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil, _callback, opts);
         }
     }
 
@@ -490,6 +627,10 @@ public class LegalEntitiesApi {
         return new APIdeleteLegalEntityAccessMetadataRequest(idTypeScope, idTypeCode, code, metadataKey);
     }
     private okhttp3.Call deleteLegalEntityIdentifiersCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback _callback) throws ApiException {
+        return deleteLegalEntityIdentifiersCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteLegalEntityIdentifiersCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -543,11 +684,11 @@ public class LegalEntitiesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteLegalEntityIdentifiersValidateBeforeCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteLegalEntityIdentifiersValidateBeforeCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'idTypeScope' is set
         if (idTypeScope == null) {
             throw new ApiException("Missing the required parameter 'idTypeScope' when calling deleteLegalEntityIdentifiers(Async)");
@@ -568,20 +709,34 @@ public class LegalEntitiesApi {
             throw new ApiException("Missing the required parameter 'propertyKeys' when calling deleteLegalEntityIdentifiers(Async)");
         }
 
-        return deleteLegalEntityIdentifiersCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback);
+        return deleteLegalEntityIdentifiersCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deleteLegalEntityIdentifiersWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt) throws ApiException {
-        okhttp3.Call localVarCall = deleteLegalEntityIdentifiersValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, null);
+        okhttp3.Call localVarCall = deleteLegalEntityIdentifiersValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteLegalEntityIdentifiersWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteLegalEntityIdentifiersValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteLegalEntityIdentifiersAsync(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteLegalEntityIdentifiersValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback);
+        okhttp3.Call localVarCall = deleteLegalEntityIdentifiersValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteLegalEntityIdentifiersAsync(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteLegalEntityIdentifiersValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -646,6 +801,23 @@ public class LegalEntitiesApi {
         }
 
         /**
+         * Execute deleteLegalEntityIdentifiers request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the identifiers were deleted from the specified legal entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteLegalEntityIdentifiersWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteLegalEntityIdentifiers request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -659,6 +831,22 @@ public class LegalEntitiesApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deleteLegalEntityIdentifiersWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt);
+        }
+
+        /**
+         * Execute deleteLegalEntityIdentifiers request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the identifiers were deleted from the specified legal entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteLegalEntityIdentifiersWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, opts);
         }
 
         /**
@@ -676,6 +864,23 @@ public class LegalEntitiesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deleteLegalEntityIdentifiersAsync(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute deleteLegalEntityIdentifiers request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the identifiers were deleted from the specified legal entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteLegalEntityIdentifiersAsync(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback, opts);
         }
     }
 
@@ -699,6 +904,10 @@ public class LegalEntitiesApi {
         return new APIdeleteLegalEntityIdentifiersRequest(idTypeScope, idTypeCode, code, propertyKeys);
     }
     private okhttp3.Call deleteLegalEntityPropertiesCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback _callback) throws ApiException {
+        return deleteLegalEntityPropertiesCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteLegalEntityPropertiesCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -752,11 +961,11 @@ public class LegalEntitiesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteLegalEntityPropertiesValidateBeforeCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteLegalEntityPropertiesValidateBeforeCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'idTypeScope' is set
         if (idTypeScope == null) {
             throw new ApiException("Missing the required parameter 'idTypeScope' when calling deleteLegalEntityProperties(Async)");
@@ -777,20 +986,34 @@ public class LegalEntitiesApi {
             throw new ApiException("Missing the required parameter 'propertyKeys' when calling deleteLegalEntityProperties(Async)");
         }
 
-        return deleteLegalEntityPropertiesCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback);
+        return deleteLegalEntityPropertiesCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deleteLegalEntityPropertiesWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt) throws ApiException {
-        okhttp3.Call localVarCall = deleteLegalEntityPropertiesValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, null);
+        okhttp3.Call localVarCall = deleteLegalEntityPropertiesValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteLegalEntityPropertiesWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteLegalEntityPropertiesValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteLegalEntityPropertiesAsync(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteLegalEntityPropertiesValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback);
+        okhttp3.Call localVarCall = deleteLegalEntityPropertiesValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteLegalEntityPropertiesAsync(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteLegalEntityPropertiesValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -855,6 +1078,23 @@ public class LegalEntitiesApi {
         }
 
         /**
+         * Execute deleteLegalEntityProperties request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified legal entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteLegalEntityPropertiesWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteLegalEntityProperties request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -868,6 +1108,22 @@ public class LegalEntitiesApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deleteLegalEntityPropertiesWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt);
+        }
+
+        /**
+         * Execute deleteLegalEntityProperties request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified legal entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteLegalEntityPropertiesWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, opts);
         }
 
         /**
@@ -885,6 +1141,23 @@ public class LegalEntitiesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deleteLegalEntityPropertiesAsync(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute deleteLegalEntityProperties request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified legal entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteLegalEntityPropertiesAsync(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, _callback, opts);
         }
     }
 
@@ -908,6 +1181,10 @@ public class LegalEntitiesApi {
         return new APIdeleteLegalEntityPropertiesRequest(idTypeScope, idTypeCode, code, propertyKeys);
     }
     private okhttp3.Call getAllLegalEntityAccessMetadataCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getAllLegalEntityAccessMetadataCall(idTypeScope, idTypeCode, code, effectiveAt, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getAllLegalEntityAccessMetadataCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -961,11 +1238,11 @@ public class LegalEntitiesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAllLegalEntityAccessMetadataValidateBeforeCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAllLegalEntityAccessMetadataValidateBeforeCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'idTypeScope' is set
         if (idTypeScope == null) {
             throw new ApiException("Missing the required parameter 'idTypeScope' when calling getAllLegalEntityAccessMetadata(Async)");
@@ -981,20 +1258,34 @@ public class LegalEntitiesApi {
             throw new ApiException("Missing the required parameter 'code' when calling getAllLegalEntityAccessMetadata(Async)");
         }
 
-        return getAllLegalEntityAccessMetadataCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, _callback);
+        return getAllLegalEntityAccessMetadataCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<Map<String, List<AccessMetadataValue>>> getAllLegalEntityAccessMetadataWithHttpInfo(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getAllLegalEntityAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, null);
+        okhttp3.Call localVarCall = getAllLegalEntityAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Map<String, List<AccessMetadataValue>>> getAllLegalEntityAccessMetadataWithHttpInfo(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getAllLegalEntityAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, null, opts);
         Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getAllLegalEntityAccessMetadataAsync(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAllLegalEntityAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, _callback);
+        okhttp3.Call localVarCall = getAllLegalEntityAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getAllLegalEntityAccessMetadataAsync(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getAllLegalEntityAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1068,6 +1359,23 @@ public class LegalEntitiesApi {
         }
 
         /**
+         * Execute getAllLegalEntityAccessMetadata request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the Legal Entity or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Map<String, List<AccessMetadataValue>> execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Map<String, List<AccessMetadataValue>>> localVarResp = getAllLegalEntityAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getAllLegalEntityAccessMetadata request with HTTP info returned
          * @return ApiResponse&lt;Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1081,6 +1389,22 @@ public class LegalEntitiesApi {
          */
         public ApiResponse<Map<String, List<AccessMetadataValue>>> executeWithHttpInfo() throws ApiException {
             return getAllLegalEntityAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getAllLegalEntityAccessMetadata request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the Legal Entity or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Map<String, List<AccessMetadataValue>>> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getAllLegalEntityAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt, opts);
         }
 
         /**
@@ -1098,6 +1422,23 @@ public class LegalEntitiesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
             return getAllLegalEntityAccessMetadataAsync(idTypeScope, idTypeCode, code, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getAllLegalEntityAccessMetadata request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The access metadata for the Legal Entity or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback, ConfigurationOptions opts) throws ApiException {
+            return getAllLegalEntityAccessMetadataAsync(idTypeScope, idTypeCode, code, effectiveAt, asAt, _callback, opts);
         }
     }
 
@@ -1120,6 +1461,10 @@ public class LegalEntitiesApi {
         return new APIgetAllLegalEntityAccessMetadataRequest(idTypeScope, idTypeCode, code);
     }
     private okhttp3.Call getLegalEntityCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+        return getLegalEntityCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getLegalEntityCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1181,11 +1526,11 @@ public class LegalEntitiesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLegalEntityValidateBeforeCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getLegalEntityValidateBeforeCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'idTypeScope' is set
         if (idTypeScope == null) {
             throw new ApiException("Missing the required parameter 'idTypeScope' when calling getLegalEntity(Async)");
@@ -1201,20 +1546,34 @@ public class LegalEntitiesApi {
             throw new ApiException("Missing the required parameter 'code' when calling getLegalEntity(Async)");
         }
 
-        return getLegalEntityCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback);
+        return getLegalEntityCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback, opts);
 
     }
 
 
     private ApiResponse<LegalEntity> getLegalEntityWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds) throws ApiException {
-        okhttp3.Call localVarCall = getLegalEntityValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, null);
+        okhttp3.Call localVarCall = getLegalEntityValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<LegalEntity>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<LegalEntity> getLegalEntityWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getLegalEntityValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, null, opts);
         Type localVarReturnType = new TypeToken<LegalEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getLegalEntityAsync(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback<LegalEntity> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getLegalEntityValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback);
+        okhttp3.Call localVarCall = getLegalEntityValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<LegalEntity>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getLegalEntityAsync(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback<LegalEntity> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getLegalEntityValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback, opts);
         Type localVarReturnType = new TypeToken<LegalEntity>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1310,6 +1669,23 @@ public class LegalEntitiesApi {
         }
 
         /**
+         * Execute getLegalEntity request. Use any specified configuration options to override any other configuration for this request only.
+         * @return LegalEntity
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested legal entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public LegalEntity execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<LegalEntity> localVarResp = getLegalEntityWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getLegalEntity request with HTTP info returned
          * @return ApiResponse&lt;LegalEntity&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1323,6 +1699,22 @@ public class LegalEntitiesApi {
          */
         public ApiResponse<LegalEntity> executeWithHttpInfo() throws ApiException {
             return getLegalEntityWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds);
+        }
+
+        /**
+         * Execute getLegalEntity request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;LegalEntity&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested legal entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<LegalEntity> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getLegalEntityWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, opts);
         }
 
         /**
@@ -1340,6 +1732,23 @@ public class LegalEntitiesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<LegalEntity> _callback) throws ApiException {
             return getLegalEntityAsync(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback);
+        }
+
+        /**
+         * Execute getLegalEntity request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested legal entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<LegalEntity> _callback, ConfigurationOptions opts) throws ApiException {
+            return getLegalEntityAsync(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback, opts);
         }
     }
 
@@ -1362,6 +1771,10 @@ public class LegalEntitiesApi {
         return new APIgetLegalEntityRequest(idTypeScope, idTypeCode, code);
     }
     private okhttp3.Call getLegalEntityAccessMetadataByKeyCall(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getLegalEntityAccessMetadataByKeyCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getLegalEntityAccessMetadataByKeyCall(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1416,11 +1829,11 @@ public class LegalEntitiesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLegalEntityAccessMetadataByKeyValidateBeforeCall(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getLegalEntityAccessMetadataByKeyValidateBeforeCall(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'idTypeScope' is set
         if (idTypeScope == null) {
             throw new ApiException("Missing the required parameter 'idTypeScope' when calling getLegalEntityAccessMetadataByKey(Async)");
@@ -1441,20 +1854,34 @@ public class LegalEntitiesApi {
             throw new ApiException("Missing the required parameter 'metadataKey' when calling getLegalEntityAccessMetadataByKey(Async)");
         }
 
-        return getLegalEntityAccessMetadataByKeyCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt, _callback);
+        return getLegalEntityAccessMetadataByKeyCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<List<AccessMetadataValue>> getLegalEntityAccessMetadataByKeyWithHttpInfo(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getLegalEntityAccessMetadataByKeyValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt, null);
+        okhttp3.Call localVarCall = getLegalEntityAccessMetadataByKeyValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<List<AccessMetadataValue>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<List<AccessMetadataValue>> getLegalEntityAccessMetadataByKeyWithHttpInfo(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getLegalEntityAccessMetadataByKeyValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt, null, opts);
         Type localVarReturnType = new TypeToken<List<AccessMetadataValue>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getLegalEntityAccessMetadataByKeyAsync(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt, final ApiCallback<List<AccessMetadataValue>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getLegalEntityAccessMetadataByKeyValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt, _callback);
+        okhttp3.Call localVarCall = getLegalEntityAccessMetadataByKeyValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<List<AccessMetadataValue>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getLegalEntityAccessMetadataByKeyAsync(String idTypeScope, String idTypeCode, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt, final ApiCallback<List<AccessMetadataValue>> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getLegalEntityAccessMetadataByKeyValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<List<AccessMetadataValue>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1530,6 +1957,23 @@ public class LegalEntitiesApi {
         }
 
         /**
+         * Execute getLegalEntityAccessMetadataByKey request. Use any specified configuration options to override any other configuration for this request only.
+         * @return List&lt;AccessMetadataValue&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Legal Entity access metadata filtered by metadataKey or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public List<AccessMetadataValue> execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<List<AccessMetadataValue>> localVarResp = getLegalEntityAccessMetadataByKeyWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getLegalEntityAccessMetadataByKey request with HTTP info returned
          * @return ApiResponse&lt;List&lt;AccessMetadataValue&gt;&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1543,6 +1987,22 @@ public class LegalEntitiesApi {
          */
         public ApiResponse<List<AccessMetadataValue>> executeWithHttpInfo() throws ApiException {
             return getLegalEntityAccessMetadataByKeyWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getLegalEntityAccessMetadataByKey request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;List&lt;AccessMetadataValue&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Legal Entity access metadata filtered by metadataKey or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<List<AccessMetadataValue>> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getLegalEntityAccessMetadataByKeyWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt, opts);
         }
 
         /**
@@ -1560,6 +2020,23 @@ public class LegalEntitiesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<List<AccessMetadataValue>> _callback) throws ApiException {
             return getLegalEntityAccessMetadataByKeyAsync(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getLegalEntityAccessMetadataByKey request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Legal Entity access metadata filtered by metadataKey or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<List<AccessMetadataValue>> _callback, ConfigurationOptions opts) throws ApiException {
+            return getLegalEntityAccessMetadataByKeyAsync(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt, _callback, opts);
         }
     }
 
@@ -1583,6 +2060,10 @@ public class LegalEntitiesApi {
         return new APIgetLegalEntityAccessMetadataByKeyRequest(idTypeScope, idTypeCode, code, metadataKey);
     }
     private okhttp3.Call getLegalEntityPropertyTimeSeriesCall(String idTypeScope, String idTypeCode, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback _callback) throws ApiException {
+        return getLegalEntityPropertyTimeSeriesCall(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getLegalEntityPropertyTimeSeriesCall(String idTypeScope, String idTypeCode, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1648,11 +2129,11 @@ public class LegalEntitiesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLegalEntityPropertyTimeSeriesValidateBeforeCall(String idTypeScope, String idTypeCode, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getLegalEntityPropertyTimeSeriesValidateBeforeCall(String idTypeScope, String idTypeCode, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'idTypeScope' is set
         if (idTypeScope == null) {
             throw new ApiException("Missing the required parameter 'idTypeScope' when calling getLegalEntityPropertyTimeSeries(Async)");
@@ -1673,20 +2154,34 @@ public class LegalEntitiesApi {
             throw new ApiException("Missing the required parameter 'propertyKey' when calling getLegalEntityPropertyTimeSeries(Async)");
         }
 
-        return getLegalEntityPropertyTimeSeriesCall(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit, _callback);
+        return getLegalEntityPropertyTimeSeriesCall(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfPropertyInterval> getLegalEntityPropertyTimeSeriesWithHttpInfo(String idTypeScope, String idTypeCode, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getLegalEntityPropertyTimeSeriesValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit, null);
+        okhttp3.Call localVarCall = getLegalEntityPropertyTimeSeriesValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPropertyInterval>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfPropertyInterval> getLegalEntityPropertyTimeSeriesWithHttpInfo(String idTypeScope, String idTypeCode, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getLegalEntityPropertyTimeSeriesValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPropertyInterval>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getLegalEntityPropertyTimeSeriesAsync(String idTypeScope, String idTypeCode, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback<ResourceListOfPropertyInterval> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getLegalEntityPropertyTimeSeriesValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit, _callback);
+        okhttp3.Call localVarCall = getLegalEntityPropertyTimeSeriesValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPropertyInterval>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getLegalEntityPropertyTimeSeriesAsync(String idTypeScope, String idTypeCode, String code, String propertyKey, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback<ResourceListOfPropertyInterval> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getLegalEntityPropertyTimeSeriesValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPropertyInterval>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1784,6 +2279,23 @@ public class LegalEntitiesApi {
         }
 
         /**
+         * Execute getLegalEntityPropertyTimeSeries request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfPropertyInterval
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfPropertyInterval execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfPropertyInterval> localVarResp = getLegalEntityPropertyTimeSeriesWithHttpInfo(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getLegalEntityPropertyTimeSeries request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfPropertyInterval&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1797,6 +2309,22 @@ public class LegalEntitiesApi {
          */
         public ApiResponse<ResourceListOfPropertyInterval> executeWithHttpInfo() throws ApiException {
             return getLegalEntityPropertyTimeSeriesWithHttpInfo(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit);
+        }
+
+        /**
+         * Execute getLegalEntityPropertyTimeSeries request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfPropertyInterval&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfPropertyInterval> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getLegalEntityPropertyTimeSeriesWithHttpInfo(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit, opts);
         }
 
         /**
@@ -1814,6 +2342,23 @@ public class LegalEntitiesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPropertyInterval> _callback) throws ApiException {
             return getLegalEntityPropertyTimeSeriesAsync(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit, _callback);
+        }
+
+        /**
+         * Execute getLegalEntityPropertyTimeSeries request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPropertyInterval> _callback, ConfigurationOptions opts) throws ApiException {
+            return getLegalEntityPropertyTimeSeriesAsync(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit, _callback, opts);
         }
     }
 
@@ -1837,6 +2382,10 @@ public class LegalEntitiesApi {
         return new APIgetLegalEntityPropertyTimeSeriesRequest(idTypeScope, idTypeCode, code, propertyKey);
     }
     private okhttp3.Call getLegalEntityRelationsCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback) throws ApiException {
+        return getLegalEntityRelationsCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getLegalEntityRelationsCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1898,11 +2447,11 @@ public class LegalEntitiesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLegalEntityRelationsValidateBeforeCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getLegalEntityRelationsValidateBeforeCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'idTypeScope' is set
         if (idTypeScope == null) {
             throw new ApiException("Missing the required parameter 'idTypeScope' when calling getLegalEntityRelations(Async)");
@@ -1918,20 +2467,34 @@ public class LegalEntitiesApi {
             throw new ApiException("Missing the required parameter 'code' when calling getLegalEntityRelations(Async)");
         }
 
-        return getLegalEntityRelationsCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback);
+        return getLegalEntityRelationsCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfRelation> getLegalEntityRelationsWithHttpInfo(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes) throws ApiException {
-        okhttp3.Call localVarCall = getLegalEntityRelationsValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, null);
+        okhttp3.Call localVarCall = getLegalEntityRelationsValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfRelation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfRelation> getLegalEntityRelationsWithHttpInfo(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getLegalEntityRelationsValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfRelation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getLegalEntityRelationsAsync(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback<ResourceListOfRelation> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getLegalEntityRelationsValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback);
+        okhttp3.Call localVarCall = getLegalEntityRelationsValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfRelation>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getLegalEntityRelationsAsync(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback<ResourceListOfRelation> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getLegalEntityRelationsValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfRelation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2027,6 +2590,23 @@ public class LegalEntitiesApi {
         }
 
         /**
+         * Execute getLegalEntityRelations request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfRelation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relations for the specific legal entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfRelation execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfRelation> localVarResp = getLegalEntityRelationsWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getLegalEntityRelations request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfRelation&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2040,6 +2620,22 @@ public class LegalEntitiesApi {
          */
         public ApiResponse<ResourceListOfRelation> executeWithHttpInfo() throws ApiException {
             return getLegalEntityRelationsWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes);
+        }
+
+        /**
+         * Execute getLegalEntityRelations request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfRelation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relations for the specific legal entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfRelation> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getLegalEntityRelationsWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, opts);
         }
 
         /**
@@ -2057,6 +2653,23 @@ public class LegalEntitiesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfRelation> _callback) throws ApiException {
             return getLegalEntityRelationsAsync(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback);
+        }
+
+        /**
+         * Execute getLegalEntityRelations request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relations for the specific legal entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfRelation> _callback, ConfigurationOptions opts) throws ApiException {
+            return getLegalEntityRelationsAsync(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback, opts);
         }
     }
 
@@ -2079,6 +2692,10 @@ public class LegalEntitiesApi {
         return new APIgetLegalEntityRelationsRequest(idTypeScope, idTypeCode, code);
     }
     private okhttp3.Call getLegalEntityRelationshipsCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback) throws ApiException {
+        return getLegalEntityRelationshipsCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getLegalEntityRelationshipsCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2140,11 +2757,11 @@ public class LegalEntitiesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLegalEntityRelationshipsValidateBeforeCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getLegalEntityRelationshipsValidateBeforeCall(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'idTypeScope' is set
         if (idTypeScope == null) {
             throw new ApiException("Missing the required parameter 'idTypeScope' when calling getLegalEntityRelationships(Async)");
@@ -2160,20 +2777,34 @@ public class LegalEntitiesApi {
             throw new ApiException("Missing the required parameter 'code' when calling getLegalEntityRelationships(Async)");
         }
 
-        return getLegalEntityRelationshipsCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback);
+        return getLegalEntityRelationshipsCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfRelationship> getLegalEntityRelationshipsWithHttpInfo(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes) throws ApiException {
-        okhttp3.Call localVarCall = getLegalEntityRelationshipsValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, null);
+        okhttp3.Call localVarCall = getLegalEntityRelationshipsValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfRelationship>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfRelationship> getLegalEntityRelationshipsWithHttpInfo(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getLegalEntityRelationshipsValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfRelationship>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getLegalEntityRelationshipsAsync(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback<ResourceListOfRelationship> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getLegalEntityRelationshipsValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback);
+        okhttp3.Call localVarCall = getLegalEntityRelationshipsValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfRelationship>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getLegalEntityRelationshipsAsync(String idTypeScope, String idTypeCode, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback<ResourceListOfRelationship> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getLegalEntityRelationshipsValidateBeforeCall(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfRelationship>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2269,6 +2900,23 @@ public class LegalEntitiesApi {
         }
 
         /**
+         * Execute getLegalEntityRelationships request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfRelationship
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified legal entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfRelationship execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfRelationship> localVarResp = getLegalEntityRelationshipsWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getLegalEntityRelationships request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfRelationship&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2282,6 +2930,22 @@ public class LegalEntitiesApi {
          */
         public ApiResponse<ResourceListOfRelationship> executeWithHttpInfo() throws ApiException {
             return getLegalEntityRelationshipsWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes);
+        }
+
+        /**
+         * Execute getLegalEntityRelationships request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfRelationship&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified legal entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfRelationship> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getLegalEntityRelationshipsWithHttpInfo(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, opts);
         }
 
         /**
@@ -2299,6 +2963,23 @@ public class LegalEntitiesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfRelationship> _callback) throws ApiException {
             return getLegalEntityRelationshipsAsync(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback);
+        }
+
+        /**
+         * Execute getLegalEntityRelationships request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified legal entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfRelationship> _callback, ConfigurationOptions opts) throws ApiException {
+            return getLegalEntityRelationshipsAsync(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes, _callback, opts);
         }
     }
 
@@ -2321,6 +3002,10 @@ public class LegalEntitiesApi {
         return new APIgetLegalEntityRelationshipsRequest(idTypeScope, idTypeCode, code);
     }
     private okhttp3.Call listAllLegalEntitiesCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+        return listAllLegalEntitiesCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listAllLegalEntitiesCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2395,25 +3080,39 @@ public class LegalEntitiesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listAllLegalEntitiesValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
-        return listAllLegalEntitiesCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback);
+    private okhttp3.Call listAllLegalEntitiesValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listAllLegalEntitiesCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfLegalEntity> listAllLegalEntitiesWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
-        okhttp3.Call localVarCall = listAllLegalEntitiesValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, null);
+        okhttp3.Call localVarCall = listAllLegalEntitiesValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfLegalEntity>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfLegalEntity> listAllLegalEntitiesWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listAllLegalEntitiesValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfLegalEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listAllLegalEntitiesAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<ResourceListOfLegalEntity> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listAllLegalEntitiesValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback);
+        okhttp3.Call localVarCall = listAllLegalEntitiesValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfLegalEntity>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listAllLegalEntitiesAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<ResourceListOfLegalEntity> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listAllLegalEntitiesValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfLegalEntity>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2547,6 +3246,23 @@ public class LegalEntitiesApi {
         }
 
         /**
+         * Execute listAllLegalEntities request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfLegalEntity
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> All existing Legal Entities </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfLegalEntity execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfLegalEntity> localVarResp = listAllLegalEntitiesWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listAllLegalEntities request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfLegalEntity&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2560,6 +3276,22 @@ public class LegalEntitiesApi {
          */
         public ApiResponse<ResourceListOfLegalEntity> executeWithHttpInfo() throws ApiException {
             return listAllLegalEntitiesWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds);
+        }
+
+        /**
+         * Execute listAllLegalEntities request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfLegalEntity&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> All existing Legal Entities </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfLegalEntity> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listAllLegalEntitiesWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, opts);
         }
 
         /**
@@ -2577,6 +3309,23 @@ public class LegalEntitiesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfLegalEntity> _callback) throws ApiException {
             return listAllLegalEntitiesAsync(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback);
+        }
+
+        /**
+         * Execute listAllLegalEntities request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> All existing Legal Entities </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfLegalEntity> _callback, ConfigurationOptions opts) throws ApiException {
+            return listAllLegalEntitiesAsync(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback, opts);
         }
     }
 
@@ -2596,6 +3345,10 @@ public class LegalEntitiesApi {
         return new APIlistAllLegalEntitiesRequest();
     }
     private okhttp3.Call listLegalEntitiesCall(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+        return listLegalEntitiesCall(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listLegalEntitiesCall(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2672,11 +3425,11 @@ public class LegalEntitiesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listLegalEntitiesValidateBeforeCall(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listLegalEntitiesValidateBeforeCall(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'idTypeScope' is set
         if (idTypeScope == null) {
             throw new ApiException("Missing the required parameter 'idTypeScope' when calling listLegalEntities(Async)");
@@ -2687,20 +3440,34 @@ public class LegalEntitiesApi {
             throw new ApiException("Missing the required parameter 'idTypeCode' when calling listLegalEntities(Async)");
         }
 
-        return listLegalEntitiesCall(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback);
+        return listLegalEntitiesCall(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfLegalEntity> listLegalEntitiesWithHttpInfo(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
-        okhttp3.Call localVarCall = listLegalEntitiesValidateBeforeCall(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, null);
+        okhttp3.Call localVarCall = listLegalEntitiesValidateBeforeCall(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfLegalEntity>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfLegalEntity> listLegalEntitiesWithHttpInfo(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listLegalEntitiesValidateBeforeCall(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfLegalEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listLegalEntitiesAsync(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<PagedResourceListOfLegalEntity> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listLegalEntitiesValidateBeforeCall(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback);
+        okhttp3.Call localVarCall = listLegalEntitiesValidateBeforeCall(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfLegalEntity>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listLegalEntitiesAsync(String idTypeScope, String idTypeCode, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<PagedResourceListOfLegalEntity> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listLegalEntitiesValidateBeforeCall(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfLegalEntity>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2838,6 +3605,23 @@ public class LegalEntitiesApi {
         }
 
         /**
+         * Execute listLegalEntities request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfLegalEntity
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Legal Entities with specified identifier type </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfLegalEntity execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfLegalEntity> localVarResp = listLegalEntitiesWithHttpInfo(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listLegalEntities request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfLegalEntity&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2851,6 +3635,22 @@ public class LegalEntitiesApi {
          */
         public ApiResponse<PagedResourceListOfLegalEntity> executeWithHttpInfo() throws ApiException {
             return listLegalEntitiesWithHttpInfo(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds);
+        }
+
+        /**
+         * Execute listLegalEntities request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfLegalEntity&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Legal Entities with specified identifier type </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfLegalEntity> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listLegalEntitiesWithHttpInfo(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, opts);
         }
 
         /**
@@ -2868,6 +3668,23 @@ public class LegalEntitiesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfLegalEntity> _callback) throws ApiException {
             return listLegalEntitiesAsync(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback);
+        }
+
+        /**
+         * Execute listLegalEntities request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Legal Entities with specified identifier type </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfLegalEntity> _callback, ConfigurationOptions opts) throws ApiException {
+            return listLegalEntitiesAsync(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback, opts);
         }
     }
 
@@ -2889,6 +3706,10 @@ public class LegalEntitiesApi {
         return new APIlistLegalEntitiesRequest(idTypeScope, idTypeCode);
     }
     private okhttp3.Call patchLegalEntityAccessMetadataCall(String idTypeScope, String idTypeCode, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+        return patchLegalEntityAccessMetadataCall(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call patchLegalEntityAccessMetadataCall(String idTypeScope, String idTypeCode, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2946,11 +3767,11 @@ public class LegalEntitiesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchLegalEntityAccessMetadataValidateBeforeCall(String idTypeScope, String idTypeCode, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchLegalEntityAccessMetadataValidateBeforeCall(String idTypeScope, String idTypeCode, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'idTypeScope' is set
         if (idTypeScope == null) {
             throw new ApiException("Missing the required parameter 'idTypeScope' when calling patchLegalEntityAccessMetadata(Async)");
@@ -2971,20 +3792,34 @@ public class LegalEntitiesApi {
             throw new ApiException("Missing the required parameter 'accessMetadataOperation' when calling patchLegalEntityAccessMetadata(Async)");
         }
 
-        return patchLegalEntityAccessMetadataCall(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil, _callback);
+        return patchLegalEntityAccessMetadataCall(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil, _callback, opts);
 
     }
 
 
     private ApiResponse<Map<String, List<AccessMetadataValue>>> patchLegalEntityAccessMetadataWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
-        okhttp3.Call localVarCall = patchLegalEntityAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil, null);
+        okhttp3.Call localVarCall = patchLegalEntityAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Map<String, List<AccessMetadataValue>>> patchLegalEntityAccessMetadataWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = patchLegalEntityAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil, null, opts);
         Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call patchLegalEntityAccessMetadataAsync(String idTypeScope, String idTypeCode, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchLegalEntityAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil, _callback);
+        okhttp3.Call localVarCall = patchLegalEntityAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call patchLegalEntityAccessMetadataAsync(String idTypeScope, String idTypeCode, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = patchLegalEntityAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil, _callback, opts);
         Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3060,6 +3895,23 @@ public class LegalEntitiesApi {
         }
 
         /**
+         * Execute patchLegalEntityAccessMetadata request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Map<String, List<AccessMetadataValue>> execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Map<String, List<AccessMetadataValue>>> localVarResp = patchLegalEntityAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute patchLegalEntityAccessMetadata request with HTTP info returned
          * @return ApiResponse&lt;Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3073,6 +3925,22 @@ public class LegalEntitiesApi {
          */
         public ApiResponse<Map<String, List<AccessMetadataValue>>> executeWithHttpInfo() throws ApiException {
             return patchLegalEntityAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil);
+        }
+
+        /**
+         * Execute patchLegalEntityAccessMetadata request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Map<String, List<AccessMetadataValue>>> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return patchLegalEntityAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil, opts);
         }
 
         /**
@@ -3090,6 +3958,23 @@ public class LegalEntitiesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
             return patchLegalEntityAccessMetadataAsync(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil, _callback);
+        }
+
+        /**
+         * Execute patchLegalEntityAccessMetadata request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback, ConfigurationOptions opts) throws ApiException {
+            return patchLegalEntityAccessMetadataAsync(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil, _callback, opts);
         }
     }
 
@@ -3113,6 +3998,10 @@ public class LegalEntitiesApi {
         return new APIpatchLegalEntityAccessMetadataRequest(idTypeScope, idTypeCode, code, accessMetadataOperation);
     }
     private okhttp3.Call setLegalEntityIdentifiersCall(String idTypeScope, String idTypeCode, String code, SetLegalEntityIdentifiersRequest setLegalEntityIdentifiersRequest, final ApiCallback _callback) throws ApiException {
+        return setLegalEntityIdentifiersCall(idTypeScope, idTypeCode, code, setLegalEntityIdentifiersRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call setLegalEntityIdentifiersCall(String idTypeScope, String idTypeCode, String code, SetLegalEntityIdentifiersRequest setLegalEntityIdentifiersRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3162,11 +4051,11 @@ public class LegalEntitiesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call setLegalEntityIdentifiersValidateBeforeCall(String idTypeScope, String idTypeCode, String code, SetLegalEntityIdentifiersRequest setLegalEntityIdentifiersRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call setLegalEntityIdentifiersValidateBeforeCall(String idTypeScope, String idTypeCode, String code, SetLegalEntityIdentifiersRequest setLegalEntityIdentifiersRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'idTypeScope' is set
         if (idTypeScope == null) {
             throw new ApiException("Missing the required parameter 'idTypeScope' when calling setLegalEntityIdentifiers(Async)");
@@ -3187,20 +4076,34 @@ public class LegalEntitiesApi {
             throw new ApiException("Missing the required parameter 'setLegalEntityIdentifiersRequest' when calling setLegalEntityIdentifiers(Async)");
         }
 
-        return setLegalEntityIdentifiersCall(idTypeScope, idTypeCode, code, setLegalEntityIdentifiersRequest, _callback);
+        return setLegalEntityIdentifiersCall(idTypeScope, idTypeCode, code, setLegalEntityIdentifiersRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<LegalEntity> setLegalEntityIdentifiersWithHttpInfo(String idTypeScope, String idTypeCode, String code, SetLegalEntityIdentifiersRequest setLegalEntityIdentifiersRequest) throws ApiException {
-        okhttp3.Call localVarCall = setLegalEntityIdentifiersValidateBeforeCall(idTypeScope, idTypeCode, code, setLegalEntityIdentifiersRequest, null);
+        okhttp3.Call localVarCall = setLegalEntityIdentifiersValidateBeforeCall(idTypeScope, idTypeCode, code, setLegalEntityIdentifiersRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<LegalEntity>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<LegalEntity> setLegalEntityIdentifiersWithHttpInfo(String idTypeScope, String idTypeCode, String code, SetLegalEntityIdentifiersRequest setLegalEntityIdentifiersRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = setLegalEntityIdentifiersValidateBeforeCall(idTypeScope, idTypeCode, code, setLegalEntityIdentifiersRequest, null, opts);
         Type localVarReturnType = new TypeToken<LegalEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call setLegalEntityIdentifiersAsync(String idTypeScope, String idTypeCode, String code, SetLegalEntityIdentifiersRequest setLegalEntityIdentifiersRequest, final ApiCallback<LegalEntity> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = setLegalEntityIdentifiersValidateBeforeCall(idTypeScope, idTypeCode, code, setLegalEntityIdentifiersRequest, _callback);
+        okhttp3.Call localVarCall = setLegalEntityIdentifiersValidateBeforeCall(idTypeScope, idTypeCode, code, setLegalEntityIdentifiersRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<LegalEntity>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call setLegalEntityIdentifiersAsync(String idTypeScope, String idTypeCode, String code, SetLegalEntityIdentifiersRequest setLegalEntityIdentifiersRequest, final ApiCallback<LegalEntity> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = setLegalEntityIdentifiersValidateBeforeCall(idTypeScope, idTypeCode, code, setLegalEntityIdentifiersRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<LegalEntity>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3254,6 +4157,23 @@ public class LegalEntitiesApi {
         }
 
         /**
+         * Execute setLegalEntityIdentifiers request. Use any specified configuration options to override any other configuration for this request only.
+         * @return LegalEntity
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Legal Entity with updated identifiers </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public LegalEntity execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<LegalEntity> localVarResp = setLegalEntityIdentifiersWithHttpInfo(idTypeScope, idTypeCode, code, setLegalEntityIdentifiersRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute setLegalEntityIdentifiers request with HTTP info returned
          * @return ApiResponse&lt;LegalEntity&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3267,6 +4187,22 @@ public class LegalEntitiesApi {
          */
         public ApiResponse<LegalEntity> executeWithHttpInfo() throws ApiException {
             return setLegalEntityIdentifiersWithHttpInfo(idTypeScope, idTypeCode, code, setLegalEntityIdentifiersRequest);
+        }
+
+        /**
+         * Execute setLegalEntityIdentifiers request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;LegalEntity&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Legal Entity with updated identifiers </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<LegalEntity> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return setLegalEntityIdentifiersWithHttpInfo(idTypeScope, idTypeCode, code, setLegalEntityIdentifiersRequest, opts);
         }
 
         /**
@@ -3284,6 +4220,23 @@ public class LegalEntitiesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<LegalEntity> _callback) throws ApiException {
             return setLegalEntityIdentifiersAsync(idTypeScope, idTypeCode, code, setLegalEntityIdentifiersRequest, _callback);
+        }
+
+        /**
+         * Execute setLegalEntityIdentifiers request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Legal Entity with updated identifiers </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<LegalEntity> _callback, ConfigurationOptions opts) throws ApiException {
+            return setLegalEntityIdentifiersAsync(idTypeScope, idTypeCode, code, setLegalEntityIdentifiersRequest, _callback, opts);
         }
     }
 
@@ -3307,6 +4260,10 @@ public class LegalEntitiesApi {
         return new APIsetLegalEntityIdentifiersRequest(idTypeScope, idTypeCode, code, setLegalEntityIdentifiersRequest);
     }
     private okhttp3.Call setLegalEntityPropertiesCall(String idTypeScope, String idTypeCode, String code, SetLegalEntityPropertiesRequest setLegalEntityPropertiesRequest, final ApiCallback _callback) throws ApiException {
+        return setLegalEntityPropertiesCall(idTypeScope, idTypeCode, code, setLegalEntityPropertiesRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call setLegalEntityPropertiesCall(String idTypeScope, String idTypeCode, String code, SetLegalEntityPropertiesRequest setLegalEntityPropertiesRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3356,11 +4313,11 @@ public class LegalEntitiesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call setLegalEntityPropertiesValidateBeforeCall(String idTypeScope, String idTypeCode, String code, SetLegalEntityPropertiesRequest setLegalEntityPropertiesRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call setLegalEntityPropertiesValidateBeforeCall(String idTypeScope, String idTypeCode, String code, SetLegalEntityPropertiesRequest setLegalEntityPropertiesRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'idTypeScope' is set
         if (idTypeScope == null) {
             throw new ApiException("Missing the required parameter 'idTypeScope' when calling setLegalEntityProperties(Async)");
@@ -3381,20 +4338,34 @@ public class LegalEntitiesApi {
             throw new ApiException("Missing the required parameter 'setLegalEntityPropertiesRequest' when calling setLegalEntityProperties(Async)");
         }
 
-        return setLegalEntityPropertiesCall(idTypeScope, idTypeCode, code, setLegalEntityPropertiesRequest, _callback);
+        return setLegalEntityPropertiesCall(idTypeScope, idTypeCode, code, setLegalEntityPropertiesRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<LegalEntity> setLegalEntityPropertiesWithHttpInfo(String idTypeScope, String idTypeCode, String code, SetLegalEntityPropertiesRequest setLegalEntityPropertiesRequest) throws ApiException {
-        okhttp3.Call localVarCall = setLegalEntityPropertiesValidateBeforeCall(idTypeScope, idTypeCode, code, setLegalEntityPropertiesRequest, null);
+        okhttp3.Call localVarCall = setLegalEntityPropertiesValidateBeforeCall(idTypeScope, idTypeCode, code, setLegalEntityPropertiesRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<LegalEntity>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<LegalEntity> setLegalEntityPropertiesWithHttpInfo(String idTypeScope, String idTypeCode, String code, SetLegalEntityPropertiesRequest setLegalEntityPropertiesRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = setLegalEntityPropertiesValidateBeforeCall(idTypeScope, idTypeCode, code, setLegalEntityPropertiesRequest, null, opts);
         Type localVarReturnType = new TypeToken<LegalEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call setLegalEntityPropertiesAsync(String idTypeScope, String idTypeCode, String code, SetLegalEntityPropertiesRequest setLegalEntityPropertiesRequest, final ApiCallback<LegalEntity> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = setLegalEntityPropertiesValidateBeforeCall(idTypeScope, idTypeCode, code, setLegalEntityPropertiesRequest, _callback);
+        okhttp3.Call localVarCall = setLegalEntityPropertiesValidateBeforeCall(idTypeScope, idTypeCode, code, setLegalEntityPropertiesRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<LegalEntity>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call setLegalEntityPropertiesAsync(String idTypeScope, String idTypeCode, String code, SetLegalEntityPropertiesRequest setLegalEntityPropertiesRequest, final ApiCallback<LegalEntity> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = setLegalEntityPropertiesValidateBeforeCall(idTypeScope, idTypeCode, code, setLegalEntityPropertiesRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<LegalEntity>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3448,6 +4419,23 @@ public class LegalEntitiesApi {
         }
 
         /**
+         * Execute setLegalEntityProperties request. Use any specified configuration options to override any other configuration for this request only.
+         * @return LegalEntity
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Legal Entity with updated properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public LegalEntity execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<LegalEntity> localVarResp = setLegalEntityPropertiesWithHttpInfo(idTypeScope, idTypeCode, code, setLegalEntityPropertiesRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute setLegalEntityProperties request with HTTP info returned
          * @return ApiResponse&lt;LegalEntity&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3461,6 +4449,22 @@ public class LegalEntitiesApi {
          */
         public ApiResponse<LegalEntity> executeWithHttpInfo() throws ApiException {
             return setLegalEntityPropertiesWithHttpInfo(idTypeScope, idTypeCode, code, setLegalEntityPropertiesRequest);
+        }
+
+        /**
+         * Execute setLegalEntityProperties request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;LegalEntity&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Legal Entity with updated properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<LegalEntity> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return setLegalEntityPropertiesWithHttpInfo(idTypeScope, idTypeCode, code, setLegalEntityPropertiesRequest, opts);
         }
 
         /**
@@ -3478,6 +4482,23 @@ public class LegalEntitiesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<LegalEntity> _callback) throws ApiException {
             return setLegalEntityPropertiesAsync(idTypeScope, idTypeCode, code, setLegalEntityPropertiesRequest, _callback);
+        }
+
+        /**
+         * Execute setLegalEntityProperties request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Legal Entity with updated properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<LegalEntity> _callback, ConfigurationOptions opts) throws ApiException {
+            return setLegalEntityPropertiesAsync(idTypeScope, idTypeCode, code, setLegalEntityPropertiesRequest, _callback, opts);
         }
     }
 
@@ -3501,6 +4522,10 @@ public class LegalEntitiesApi {
         return new APIsetLegalEntityPropertiesRequest(idTypeScope, idTypeCode, code, setLegalEntityPropertiesRequest);
     }
     private okhttp3.Call upsertLegalEntitiesCall(String successMode, Map<String, UpsertLegalEntityRequest> requestBody, final ApiCallback _callback) throws ApiException {
+        return upsertLegalEntitiesCall(successMode, requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertLegalEntitiesCall(String successMode, Map<String, UpsertLegalEntityRequest> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3551,11 +4576,11 @@ public class LegalEntitiesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertLegalEntitiesValidateBeforeCall(String successMode, Map<String, UpsertLegalEntityRequest> requestBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertLegalEntitiesValidateBeforeCall(String successMode, Map<String, UpsertLegalEntityRequest> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'successMode' is set
         if (successMode == null) {
             throw new ApiException("Missing the required parameter 'successMode' when calling upsertLegalEntities(Async)");
@@ -3566,20 +4591,34 @@ public class LegalEntitiesApi {
             throw new ApiException("Missing the required parameter 'requestBody' when calling upsertLegalEntities(Async)");
         }
 
-        return upsertLegalEntitiesCall(successMode, requestBody, _callback);
+        return upsertLegalEntitiesCall(successMode, requestBody, _callback, opts);
 
     }
 
 
     private ApiResponse<UpsertLegalEntitiesResponse> upsertLegalEntitiesWithHttpInfo(String successMode, Map<String, UpsertLegalEntityRequest> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = upsertLegalEntitiesValidateBeforeCall(successMode, requestBody, null);
+        okhttp3.Call localVarCall = upsertLegalEntitiesValidateBeforeCall(successMode, requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertLegalEntitiesResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<UpsertLegalEntitiesResponse> upsertLegalEntitiesWithHttpInfo(String successMode, Map<String, UpsertLegalEntityRequest> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertLegalEntitiesValidateBeforeCall(successMode, requestBody, null, opts);
         Type localVarReturnType = new TypeToken<UpsertLegalEntitiesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertLegalEntitiesAsync(String successMode, Map<String, UpsertLegalEntityRequest> requestBody, final ApiCallback<UpsertLegalEntitiesResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertLegalEntitiesValidateBeforeCall(successMode, requestBody, _callback);
+        okhttp3.Call localVarCall = upsertLegalEntitiesValidateBeforeCall(successMode, requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertLegalEntitiesResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertLegalEntitiesAsync(String successMode, Map<String, UpsertLegalEntityRequest> requestBody, final ApiCallback<UpsertLegalEntitiesResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertLegalEntitiesValidateBeforeCall(successMode, requestBody, _callback, opts);
         Type localVarReturnType = new TypeToken<UpsertLegalEntitiesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3629,6 +4668,23 @@ public class LegalEntitiesApi {
         }
 
         /**
+         * Execute upsertLegalEntities request. Use any specified configuration options to override any other configuration for this request only.
+         * @return UpsertLegalEntitiesResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The successfully created or updated legal entities along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertLegalEntitiesResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<UpsertLegalEntitiesResponse> localVarResp = upsertLegalEntitiesWithHttpInfo(successMode, requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertLegalEntities request with HTTP info returned
          * @return ApiResponse&lt;UpsertLegalEntitiesResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3642,6 +4698,22 @@ public class LegalEntitiesApi {
          */
         public ApiResponse<UpsertLegalEntitiesResponse> executeWithHttpInfo() throws ApiException {
             return upsertLegalEntitiesWithHttpInfo(successMode, requestBody);
+        }
+
+        /**
+         * Execute upsertLegalEntities request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;UpsertLegalEntitiesResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The successfully created or updated legal entities along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertLegalEntitiesResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertLegalEntitiesWithHttpInfo(successMode, requestBody, opts);
         }
 
         /**
@@ -3659,6 +4731,23 @@ public class LegalEntitiesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<UpsertLegalEntitiesResponse> _callback) throws ApiException {
             return upsertLegalEntitiesAsync(successMode, requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertLegalEntities request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The successfully created or updated legal entities along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertLegalEntitiesResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertLegalEntitiesAsync(successMode, requestBody, _callback, opts);
         }
     }
 
@@ -3680,6 +4769,10 @@ public class LegalEntitiesApi {
         return new APIupsertLegalEntitiesRequest(successMode, requestBody);
     }
     private okhttp3.Call upsertLegalEntityCall(UpsertLegalEntityRequest upsertLegalEntityRequest, final ApiCallback _callback) throws ApiException {
+        return upsertLegalEntityCall(upsertLegalEntityRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertLegalEntityCall(UpsertLegalEntityRequest upsertLegalEntityRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3726,30 +4819,44 @@ public class LegalEntitiesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertLegalEntityValidateBeforeCall(UpsertLegalEntityRequest upsertLegalEntityRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertLegalEntityValidateBeforeCall(UpsertLegalEntityRequest upsertLegalEntityRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'upsertLegalEntityRequest' is set
         if (upsertLegalEntityRequest == null) {
             throw new ApiException("Missing the required parameter 'upsertLegalEntityRequest' when calling upsertLegalEntity(Async)");
         }
 
-        return upsertLegalEntityCall(upsertLegalEntityRequest, _callback);
+        return upsertLegalEntityCall(upsertLegalEntityRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<LegalEntity> upsertLegalEntityWithHttpInfo(UpsertLegalEntityRequest upsertLegalEntityRequest) throws ApiException {
-        okhttp3.Call localVarCall = upsertLegalEntityValidateBeforeCall(upsertLegalEntityRequest, null);
+        okhttp3.Call localVarCall = upsertLegalEntityValidateBeforeCall(upsertLegalEntityRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<LegalEntity>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<LegalEntity> upsertLegalEntityWithHttpInfo(UpsertLegalEntityRequest upsertLegalEntityRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertLegalEntityValidateBeforeCall(upsertLegalEntityRequest, null, opts);
         Type localVarReturnType = new TypeToken<LegalEntity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertLegalEntityAsync(UpsertLegalEntityRequest upsertLegalEntityRequest, final ApiCallback<LegalEntity> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertLegalEntityValidateBeforeCall(upsertLegalEntityRequest, _callback);
+        okhttp3.Call localVarCall = upsertLegalEntityValidateBeforeCall(upsertLegalEntityRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<LegalEntity>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertLegalEntityAsync(UpsertLegalEntityRequest upsertLegalEntityRequest, final ApiCallback<LegalEntity> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertLegalEntityValidateBeforeCall(upsertLegalEntityRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<LegalEntity>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3797,6 +4904,23 @@ public class LegalEntitiesApi {
         }
 
         /**
+         * Execute upsertLegalEntity request. Use any specified configuration options to override any other configuration for this request only.
+         * @return LegalEntity
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created or updated legal entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public LegalEntity execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<LegalEntity> localVarResp = upsertLegalEntityWithHttpInfo(upsertLegalEntityRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertLegalEntity request with HTTP info returned
          * @return ApiResponse&lt;LegalEntity&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3810,6 +4934,22 @@ public class LegalEntitiesApi {
          */
         public ApiResponse<LegalEntity> executeWithHttpInfo() throws ApiException {
             return upsertLegalEntityWithHttpInfo(upsertLegalEntityRequest);
+        }
+
+        /**
+         * Execute upsertLegalEntity request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;LegalEntity&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created or updated legal entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<LegalEntity> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertLegalEntityWithHttpInfo(upsertLegalEntityRequest, opts);
         }
 
         /**
@@ -3827,6 +4967,23 @@ public class LegalEntitiesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<LegalEntity> _callback) throws ApiException {
             return upsertLegalEntityAsync(upsertLegalEntityRequest, _callback);
+        }
+
+        /**
+         * Execute upsertLegalEntity request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created or updated legal entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<LegalEntity> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertLegalEntityAsync(upsertLegalEntityRequest, _callback, opts);
         }
     }
 
@@ -3847,6 +5004,10 @@ public class LegalEntitiesApi {
         return new APIupsertLegalEntityRequest(upsertLegalEntityRequest);
     }
     private okhttp3.Call upsertLegalEntityAccessMetadataCall(String idTypeScope, String idTypeCode, String code, String metadataKey, UpsertLegalEntityAccessMetadataRequest upsertLegalEntityAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+        return upsertLegalEntityAccessMetadataCall(idTypeScope, idTypeCode, code, metadataKey, upsertLegalEntityAccessMetadataRequest, effectiveAt, effectiveUntil,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertLegalEntityAccessMetadataCall(String idTypeScope, String idTypeCode, String code, String metadataKey, UpsertLegalEntityAccessMetadataRequest upsertLegalEntityAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3905,11 +5066,11 @@ public class LegalEntitiesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertLegalEntityAccessMetadataValidateBeforeCall(String idTypeScope, String idTypeCode, String code, String metadataKey, UpsertLegalEntityAccessMetadataRequest upsertLegalEntityAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertLegalEntityAccessMetadataValidateBeforeCall(String idTypeScope, String idTypeCode, String code, String metadataKey, UpsertLegalEntityAccessMetadataRequest upsertLegalEntityAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'idTypeScope' is set
         if (idTypeScope == null) {
             throw new ApiException("Missing the required parameter 'idTypeScope' when calling upsertLegalEntityAccessMetadata(Async)");
@@ -3935,20 +5096,34 @@ public class LegalEntitiesApi {
             throw new ApiException("Missing the required parameter 'upsertLegalEntityAccessMetadataRequest' when calling upsertLegalEntityAccessMetadata(Async)");
         }
 
-        return upsertLegalEntityAccessMetadataCall(idTypeScope, idTypeCode, code, metadataKey, upsertLegalEntityAccessMetadataRequest, effectiveAt, effectiveUntil, _callback);
+        return upsertLegalEntityAccessMetadataCall(idTypeScope, idTypeCode, code, metadataKey, upsertLegalEntityAccessMetadataRequest, effectiveAt, effectiveUntil, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfAccessMetadataValueOf> upsertLegalEntityAccessMetadataWithHttpInfo(String idTypeScope, String idTypeCode, String code, String metadataKey, UpsertLegalEntityAccessMetadataRequest upsertLegalEntityAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
-        okhttp3.Call localVarCall = upsertLegalEntityAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, upsertLegalEntityAccessMetadataRequest, effectiveAt, effectiveUntil, null);
+        okhttp3.Call localVarCall = upsertLegalEntityAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, upsertLegalEntityAccessMetadataRequest, effectiveAt, effectiveUntil, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfAccessMetadataValueOf>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfAccessMetadataValueOf> upsertLegalEntityAccessMetadataWithHttpInfo(String idTypeScope, String idTypeCode, String code, String metadataKey, UpsertLegalEntityAccessMetadataRequest upsertLegalEntityAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertLegalEntityAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, upsertLegalEntityAccessMetadataRequest, effectiveAt, effectiveUntil, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfAccessMetadataValueOf>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertLegalEntityAccessMetadataAsync(String idTypeScope, String idTypeCode, String code, String metadataKey, UpsertLegalEntityAccessMetadataRequest upsertLegalEntityAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<ResourceListOfAccessMetadataValueOf> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertLegalEntityAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, upsertLegalEntityAccessMetadataRequest, effectiveAt, effectiveUntil, _callback);
+        okhttp3.Call localVarCall = upsertLegalEntityAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, upsertLegalEntityAccessMetadataRequest, effectiveAt, effectiveUntil, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfAccessMetadataValueOf>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertLegalEntityAccessMetadataAsync(String idTypeScope, String idTypeCode, String code, String metadataKey, UpsertLegalEntityAccessMetadataRequest upsertLegalEntityAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<ResourceListOfAccessMetadataValueOf> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertLegalEntityAccessMetadataValidateBeforeCall(idTypeScope, idTypeCode, code, metadataKey, upsertLegalEntityAccessMetadataRequest, effectiveAt, effectiveUntil, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfAccessMetadataValueOf>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4026,6 +5201,23 @@ public class LegalEntitiesApi {
         }
 
         /**
+         * Execute upsertLegalEntityAccessMetadata request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfAccessMetadataValueOf
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfAccessMetadataValueOf execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfAccessMetadataValueOf> localVarResp = upsertLegalEntityAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, upsertLegalEntityAccessMetadataRequest, effectiveAt, effectiveUntil, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertLegalEntityAccessMetadata request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfAccessMetadataValueOf&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4039,6 +5231,22 @@ public class LegalEntitiesApi {
          */
         public ApiResponse<ResourceListOfAccessMetadataValueOf> executeWithHttpInfo() throws ApiException {
             return upsertLegalEntityAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, upsertLegalEntityAccessMetadataRequest, effectiveAt, effectiveUntil);
+        }
+
+        /**
+         * Execute upsertLegalEntityAccessMetadata request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfAccessMetadataValueOf&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfAccessMetadataValueOf> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertLegalEntityAccessMetadataWithHttpInfo(idTypeScope, idTypeCode, code, metadataKey, upsertLegalEntityAccessMetadataRequest, effectiveAt, effectiveUntil, opts);
         }
 
         /**
@@ -4056,6 +5264,23 @@ public class LegalEntitiesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfAccessMetadataValueOf> _callback) throws ApiException {
             return upsertLegalEntityAccessMetadataAsync(idTypeScope, idTypeCode, code, metadataKey, upsertLegalEntityAccessMetadataRequest, effectiveAt, effectiveUntil, _callback);
+        }
+
+        /**
+         * Execute upsertLegalEntityAccessMetadata request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfAccessMetadataValueOf> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertLegalEntityAccessMetadataAsync(idTypeScope, idTypeCode, code, metadataKey, upsertLegalEntityAccessMetadataRequest, effectiveAt, effectiveUntil, _callback, opts);
         }
     }
 

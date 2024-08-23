@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -78,6 +79,10 @@ public class ComplexMarketDataApi {
     }
 
     private okhttp3.Call deleteComplexMarketDataCall(String scope, Map<String, ComplexMarketDataId> requestBody, final ApiCallback _callback) throws ApiException {
+        return deleteComplexMarketDataCall(scope, requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteComplexMarketDataCall(String scope, Map<String, ComplexMarketDataId> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -125,11 +130,11 @@ public class ComplexMarketDataApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteComplexMarketDataValidateBeforeCall(String scope, Map<String, ComplexMarketDataId> requestBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteComplexMarketDataValidateBeforeCall(String scope, Map<String, ComplexMarketDataId> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteComplexMarketData(Async)");
@@ -140,20 +145,34 @@ public class ComplexMarketDataApi {
             throw new ApiException("Missing the required parameter 'requestBody' when calling deleteComplexMarketData(Async)");
         }
 
-        return deleteComplexMarketDataCall(scope, requestBody, _callback);
+        return deleteComplexMarketDataCall(scope, requestBody, _callback, opts);
 
     }
 
 
     private ApiResponse<AnnulStructuredDataResponse> deleteComplexMarketDataWithHttpInfo(String scope, Map<String, ComplexMarketDataId> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = deleteComplexMarketDataValidateBeforeCall(scope, requestBody, null);
+        okhttp3.Call localVarCall = deleteComplexMarketDataValidateBeforeCall(scope, requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AnnulStructuredDataResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AnnulStructuredDataResponse> deleteComplexMarketDataWithHttpInfo(String scope, Map<String, ComplexMarketDataId> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteComplexMarketDataValidateBeforeCall(scope, requestBody, null, opts);
         Type localVarReturnType = new TypeToken<AnnulStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteComplexMarketDataAsync(String scope, Map<String, ComplexMarketDataId> requestBody, final ApiCallback<AnnulStructuredDataResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteComplexMarketDataValidateBeforeCall(scope, requestBody, _callback);
+        okhttp3.Call localVarCall = deleteComplexMarketDataValidateBeforeCall(scope, requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AnnulStructuredDataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteComplexMarketDataAsync(String scope, Map<String, ComplexMarketDataId> requestBody, final ApiCallback<AnnulStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteComplexMarketDataValidateBeforeCall(scope, requestBody, _callback, opts);
         Type localVarReturnType = new TypeToken<AnnulStructuredDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -203,6 +222,23 @@ public class ComplexMarketDataApi {
         }
 
         /**
+         * Execute deleteComplexMarketData request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AnnulStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted ComplexMarketData along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AnnulStructuredDataResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AnnulStructuredDataResponse> localVarResp = deleteComplexMarketDataWithHttpInfo(scope, requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteComplexMarketData request with HTTP info returned
          * @return ApiResponse&lt;AnnulStructuredDataResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -216,6 +252,22 @@ public class ComplexMarketDataApi {
          */
         public ApiResponse<AnnulStructuredDataResponse> executeWithHttpInfo() throws ApiException {
             return deleteComplexMarketDataWithHttpInfo(scope, requestBody);
+        }
+
+        /**
+         * Execute deleteComplexMarketData request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AnnulStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted ComplexMarketData along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AnnulStructuredDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteComplexMarketDataWithHttpInfo(scope, requestBody, opts);
         }
 
         /**
@@ -233,6 +285,23 @@ public class ComplexMarketDataApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<AnnulStructuredDataResponse> _callback) throws ApiException {
             return deleteComplexMarketDataAsync(scope, requestBody, _callback);
+        }
+
+        /**
+         * Execute deleteComplexMarketData request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted ComplexMarketData along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AnnulStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteComplexMarketDataAsync(scope, requestBody, _callback, opts);
         }
     }
 
@@ -254,6 +323,10 @@ public class ComplexMarketDataApi {
         return new APIdeleteComplexMarketDataRequest(scope, requestBody);
     }
     private okhttp3.Call getComplexMarketDataCall(String scope, Map<String, ComplexMarketDataId> requestBody, String effectiveAt, OffsetDateTime asAt, String maxAge, final ApiCallback _callback) throws ApiException {
+        return getComplexMarketDataCall(scope, requestBody, effectiveAt, asAt, maxAge,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getComplexMarketDataCall(String scope, Map<String, ComplexMarketDataId> requestBody, String effectiveAt, OffsetDateTime asAt, String maxAge, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -313,11 +386,11 @@ public class ComplexMarketDataApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getComplexMarketDataValidateBeforeCall(String scope, Map<String, ComplexMarketDataId> requestBody, String effectiveAt, OffsetDateTime asAt, String maxAge, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getComplexMarketDataValidateBeforeCall(String scope, Map<String, ComplexMarketDataId> requestBody, String effectiveAt, OffsetDateTime asAt, String maxAge, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getComplexMarketData(Async)");
@@ -328,20 +401,34 @@ public class ComplexMarketDataApi {
             throw new ApiException("Missing the required parameter 'requestBody' when calling getComplexMarketData(Async)");
         }
 
-        return getComplexMarketDataCall(scope, requestBody, effectiveAt, asAt, maxAge, _callback);
+        return getComplexMarketDataCall(scope, requestBody, effectiveAt, asAt, maxAge, _callback, opts);
 
     }
 
 
     private ApiResponse<GetComplexMarketDataResponse> getComplexMarketDataWithHttpInfo(String scope, Map<String, ComplexMarketDataId> requestBody, String effectiveAt, OffsetDateTime asAt, String maxAge) throws ApiException {
-        okhttp3.Call localVarCall = getComplexMarketDataValidateBeforeCall(scope, requestBody, effectiveAt, asAt, maxAge, null);
+        okhttp3.Call localVarCall = getComplexMarketDataValidateBeforeCall(scope, requestBody, effectiveAt, asAt, maxAge, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GetComplexMarketDataResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<GetComplexMarketDataResponse> getComplexMarketDataWithHttpInfo(String scope, Map<String, ComplexMarketDataId> requestBody, String effectiveAt, OffsetDateTime asAt, String maxAge, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getComplexMarketDataValidateBeforeCall(scope, requestBody, effectiveAt, asAt, maxAge, null, opts);
         Type localVarReturnType = new TypeToken<GetComplexMarketDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getComplexMarketDataAsync(String scope, Map<String, ComplexMarketDataId> requestBody, String effectiveAt, OffsetDateTime asAt, String maxAge, final ApiCallback<GetComplexMarketDataResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getComplexMarketDataValidateBeforeCall(scope, requestBody, effectiveAt, asAt, maxAge, _callback);
+        okhttp3.Call localVarCall = getComplexMarketDataValidateBeforeCall(scope, requestBody, effectiveAt, asAt, maxAge, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GetComplexMarketDataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getComplexMarketDataAsync(String scope, Map<String, ComplexMarketDataId> requestBody, String effectiveAt, OffsetDateTime asAt, String maxAge, final ApiCallback<GetComplexMarketDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getComplexMarketDataValidateBeforeCall(scope, requestBody, effectiveAt, asAt, maxAge, _callback, opts);
         Type localVarReturnType = new TypeToken<GetComplexMarketDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -424,6 +511,23 @@ public class ComplexMarketDataApi {
         }
 
         /**
+         * Execute getComplexMarketData request. Use any specified configuration options to override any other configuration for this request only.
+         * @return GetComplexMarketDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved complex market data along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GetComplexMarketDataResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<GetComplexMarketDataResponse> localVarResp = getComplexMarketDataWithHttpInfo(scope, requestBody, effectiveAt, asAt, maxAge, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getComplexMarketData request with HTTP info returned
          * @return ApiResponse&lt;GetComplexMarketDataResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -437,6 +541,22 @@ public class ComplexMarketDataApi {
          */
         public ApiResponse<GetComplexMarketDataResponse> executeWithHttpInfo() throws ApiException {
             return getComplexMarketDataWithHttpInfo(scope, requestBody, effectiveAt, asAt, maxAge);
+        }
+
+        /**
+         * Execute getComplexMarketData request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;GetComplexMarketDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved complex market data along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GetComplexMarketDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getComplexMarketDataWithHttpInfo(scope, requestBody, effectiveAt, asAt, maxAge, opts);
         }
 
         /**
@@ -454,6 +574,23 @@ public class ComplexMarketDataApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<GetComplexMarketDataResponse> _callback) throws ApiException {
             return getComplexMarketDataAsync(scope, requestBody, effectiveAt, asAt, maxAge, _callback);
+        }
+
+        /**
+         * Execute getComplexMarketData request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved complex market data along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GetComplexMarketDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return getComplexMarketDataAsync(scope, requestBody, effectiveAt, asAt, maxAge, _callback, opts);
         }
     }
 
@@ -475,6 +612,10 @@ public class ComplexMarketDataApi {
         return new APIgetComplexMarketDataRequest(scope, requestBody);
     }
     private okhttp3.Call listComplexMarketDataCall(OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return listComplexMarketDataCall(asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listComplexMarketDataCall(OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -521,25 +662,39 @@ public class ComplexMarketDataApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listComplexMarketDataValidateBeforeCall(OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
-        return listComplexMarketDataCall(asAt, _callback);
+    private okhttp3.Call listComplexMarketDataValidateBeforeCall(OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listComplexMarketDataCall(asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfListComplexMarketDataWithMetaDataResponse> listComplexMarketDataWithHttpInfo(OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = listComplexMarketDataValidateBeforeCall(asAt, null);
+        okhttp3.Call localVarCall = listComplexMarketDataValidateBeforeCall(asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfListComplexMarketDataWithMetaDataResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfListComplexMarketDataWithMetaDataResponse> listComplexMarketDataWithHttpInfo(OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listComplexMarketDataValidateBeforeCall(asAt, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfListComplexMarketDataWithMetaDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listComplexMarketDataAsync(OffsetDateTime asAt, final ApiCallback<ResourceListOfListComplexMarketDataWithMetaDataResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listComplexMarketDataValidateBeforeCall(asAt, _callback);
+        okhttp3.Call localVarCall = listComplexMarketDataValidateBeforeCall(asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfListComplexMarketDataWithMetaDataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listComplexMarketDataAsync(OffsetDateTime asAt, final ApiCallback<ResourceListOfListComplexMarketDataWithMetaDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listComplexMarketDataValidateBeforeCall(asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfListComplexMarketDataWithMetaDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -596,6 +751,23 @@ public class ComplexMarketDataApi {
         }
 
         /**
+         * Execute listComplexMarketData request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfListComplexMarketDataWithMetaDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested ComplexMarketData </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfListComplexMarketDataWithMetaDataResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfListComplexMarketDataWithMetaDataResponse> localVarResp = listComplexMarketDataWithHttpInfo(asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listComplexMarketData request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfListComplexMarketDataWithMetaDataResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -609,6 +781,22 @@ public class ComplexMarketDataApi {
          */
         public ApiResponse<ResourceListOfListComplexMarketDataWithMetaDataResponse> executeWithHttpInfo() throws ApiException {
             return listComplexMarketDataWithHttpInfo(asAt);
+        }
+
+        /**
+         * Execute listComplexMarketData request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfListComplexMarketDataWithMetaDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested ComplexMarketData </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfListComplexMarketDataWithMetaDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listComplexMarketDataWithHttpInfo(asAt, opts);
         }
 
         /**
@@ -626,6 +814,23 @@ public class ComplexMarketDataApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfListComplexMarketDataWithMetaDataResponse> _callback) throws ApiException {
             return listComplexMarketDataAsync(asAt, _callback);
+        }
+
+        /**
+         * Execute listComplexMarketData request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested ComplexMarketData </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfListComplexMarketDataWithMetaDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return listComplexMarketDataAsync(asAt, _callback, opts);
         }
     }
 
@@ -645,6 +850,10 @@ public class ComplexMarketDataApi {
         return new APIlistComplexMarketDataRequest();
     }
     private okhttp3.Call upsertComplexMarketDataCall(String scope, Map<String, UpsertComplexMarketDataRequest> requestBody, final ApiCallback _callback) throws ApiException {
+        return upsertComplexMarketDataCall(scope, requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertComplexMarketDataCall(String scope, Map<String, UpsertComplexMarketDataRequest> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -692,11 +901,11 @@ public class ComplexMarketDataApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertComplexMarketDataValidateBeforeCall(String scope, Map<String, UpsertComplexMarketDataRequest> requestBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertComplexMarketDataValidateBeforeCall(String scope, Map<String, UpsertComplexMarketDataRequest> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling upsertComplexMarketData(Async)");
@@ -707,20 +916,34 @@ public class ComplexMarketDataApi {
             throw new ApiException("Missing the required parameter 'requestBody' when calling upsertComplexMarketData(Async)");
         }
 
-        return upsertComplexMarketDataCall(scope, requestBody, _callback);
+        return upsertComplexMarketDataCall(scope, requestBody, _callback, opts);
 
     }
 
 
     private ApiResponse<UpsertStructuredDataResponse> upsertComplexMarketDataWithHttpInfo(String scope, Map<String, UpsertComplexMarketDataRequest> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = upsertComplexMarketDataValidateBeforeCall(scope, requestBody, null);
+        okhttp3.Call localVarCall = upsertComplexMarketDataValidateBeforeCall(scope, requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertStructuredDataResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<UpsertStructuredDataResponse> upsertComplexMarketDataWithHttpInfo(String scope, Map<String, UpsertComplexMarketDataRequest> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertComplexMarketDataValidateBeforeCall(scope, requestBody, null, opts);
         Type localVarReturnType = new TypeToken<UpsertStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertComplexMarketDataAsync(String scope, Map<String, UpsertComplexMarketDataRequest> requestBody, final ApiCallback<UpsertStructuredDataResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertComplexMarketDataValidateBeforeCall(scope, requestBody, _callback);
+        okhttp3.Call localVarCall = upsertComplexMarketDataValidateBeforeCall(scope, requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertStructuredDataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertComplexMarketDataAsync(String scope, Map<String, UpsertComplexMarketDataRequest> requestBody, final ApiCallback<UpsertStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertComplexMarketDataValidateBeforeCall(scope, requestBody, _callback, opts);
         Type localVarReturnType = new TypeToken<UpsertStructuredDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -770,6 +993,23 @@ public class ComplexMarketDataApi {
         }
 
         /**
+         * Execute upsertComplexMarketData request. Use any specified configuration options to override any other configuration for this request only.
+         * @return UpsertStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted ComplexMarketData along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertStructuredDataResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<UpsertStructuredDataResponse> localVarResp = upsertComplexMarketDataWithHttpInfo(scope, requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertComplexMarketData request with HTTP info returned
          * @return ApiResponse&lt;UpsertStructuredDataResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -783,6 +1023,22 @@ public class ComplexMarketDataApi {
          */
         public ApiResponse<UpsertStructuredDataResponse> executeWithHttpInfo() throws ApiException {
             return upsertComplexMarketDataWithHttpInfo(scope, requestBody);
+        }
+
+        /**
+         * Execute upsertComplexMarketData request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;UpsertStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted ComplexMarketData along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertStructuredDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertComplexMarketDataWithHttpInfo(scope, requestBody, opts);
         }
 
         /**
@@ -800,6 +1056,23 @@ public class ComplexMarketDataApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<UpsertStructuredDataResponse> _callback) throws ApiException {
             return upsertComplexMarketDataAsync(scope, requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertComplexMarketData request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted ComplexMarketData along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertComplexMarketDataAsync(scope, requestBody, _callback, opts);
         }
     }
 

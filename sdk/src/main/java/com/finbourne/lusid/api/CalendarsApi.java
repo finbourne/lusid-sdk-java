@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -83,6 +84,10 @@ public class CalendarsApi {
     }
 
     private okhttp3.Call addBusinessDaysToDateCall(String scope, AddBusinessDaysToDateRequest addBusinessDaysToDateRequest, final ApiCallback _callback) throws ApiException {
+        return addBusinessDaysToDateCall(scope, addBusinessDaysToDateRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call addBusinessDaysToDateCall(String scope, AddBusinessDaysToDateRequest addBusinessDaysToDateRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -130,11 +135,11 @@ public class CalendarsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call addBusinessDaysToDateValidateBeforeCall(String scope, AddBusinessDaysToDateRequest addBusinessDaysToDateRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call addBusinessDaysToDateValidateBeforeCall(String scope, AddBusinessDaysToDateRequest addBusinessDaysToDateRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling addBusinessDaysToDate(Async)");
@@ -145,20 +150,34 @@ public class CalendarsApi {
             throw new ApiException("Missing the required parameter 'addBusinessDaysToDateRequest' when calling addBusinessDaysToDate(Async)");
         }
 
-        return addBusinessDaysToDateCall(scope, addBusinessDaysToDateRequest, _callback);
+        return addBusinessDaysToDateCall(scope, addBusinessDaysToDateRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<AddBusinessDaysToDateResponse> addBusinessDaysToDateWithHttpInfo(String scope, AddBusinessDaysToDateRequest addBusinessDaysToDateRequest) throws ApiException {
-        okhttp3.Call localVarCall = addBusinessDaysToDateValidateBeforeCall(scope, addBusinessDaysToDateRequest, null);
+        okhttp3.Call localVarCall = addBusinessDaysToDateValidateBeforeCall(scope, addBusinessDaysToDateRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AddBusinessDaysToDateResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AddBusinessDaysToDateResponse> addBusinessDaysToDateWithHttpInfo(String scope, AddBusinessDaysToDateRequest addBusinessDaysToDateRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = addBusinessDaysToDateValidateBeforeCall(scope, addBusinessDaysToDateRequest, null, opts);
         Type localVarReturnType = new TypeToken<AddBusinessDaysToDateResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call addBusinessDaysToDateAsync(String scope, AddBusinessDaysToDateRequest addBusinessDaysToDateRequest, final ApiCallback<AddBusinessDaysToDateResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = addBusinessDaysToDateValidateBeforeCall(scope, addBusinessDaysToDateRequest, _callback);
+        okhttp3.Call localVarCall = addBusinessDaysToDateValidateBeforeCall(scope, addBusinessDaysToDateRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AddBusinessDaysToDateResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call addBusinessDaysToDateAsync(String scope, AddBusinessDaysToDateRequest addBusinessDaysToDateRequest, final ApiCallback<AddBusinessDaysToDateResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = addBusinessDaysToDateValidateBeforeCall(scope, addBusinessDaysToDateRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<AddBusinessDaysToDateResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -208,6 +227,23 @@ public class CalendarsApi {
         }
 
         /**
+         * Execute addBusinessDaysToDate request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AddBusinessDaysToDateResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The business day that is a number of business days after the given date as determined by the given calendar codes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AddBusinessDaysToDateResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AddBusinessDaysToDateResponse> localVarResp = addBusinessDaysToDateWithHttpInfo(scope, addBusinessDaysToDateRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute addBusinessDaysToDate request with HTTP info returned
          * @return ApiResponse&lt;AddBusinessDaysToDateResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -221,6 +257,22 @@ public class CalendarsApi {
          */
         public ApiResponse<AddBusinessDaysToDateResponse> executeWithHttpInfo() throws ApiException {
             return addBusinessDaysToDateWithHttpInfo(scope, addBusinessDaysToDateRequest);
+        }
+
+        /**
+         * Execute addBusinessDaysToDate request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AddBusinessDaysToDateResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The business day that is a number of business days after the given date as determined by the given calendar codes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AddBusinessDaysToDateResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return addBusinessDaysToDateWithHttpInfo(scope, addBusinessDaysToDateRequest, opts);
         }
 
         /**
@@ -238,6 +290,23 @@ public class CalendarsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<AddBusinessDaysToDateResponse> _callback) throws ApiException {
             return addBusinessDaysToDateAsync(scope, addBusinessDaysToDateRequest, _callback);
+        }
+
+        /**
+         * Execute addBusinessDaysToDate request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The business day that is a number of business days after the given date as determined by the given calendar codes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AddBusinessDaysToDateResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return addBusinessDaysToDateAsync(scope, addBusinessDaysToDateRequest, _callback, opts);
         }
     }
 
@@ -259,6 +328,10 @@ public class CalendarsApi {
         return new APIaddBusinessDaysToDateRequest(scope, addBusinessDaysToDateRequest);
     }
     private okhttp3.Call addDateToCalendarCall(String scope, String code, CreateDateRequest createDateRequest, final ApiCallback _callback) throws ApiException {
+        return addDateToCalendarCall(scope, code, createDateRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call addDateToCalendarCall(String scope, String code, CreateDateRequest createDateRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -307,11 +380,11 @@ public class CalendarsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call addDateToCalendarValidateBeforeCall(String scope, String code, CreateDateRequest createDateRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call addDateToCalendarValidateBeforeCall(String scope, String code, CreateDateRequest createDateRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling addDateToCalendar(Async)");
@@ -327,20 +400,34 @@ public class CalendarsApi {
             throw new ApiException("Missing the required parameter 'createDateRequest' when calling addDateToCalendar(Async)");
         }
 
-        return addDateToCalendarCall(scope, code, createDateRequest, _callback);
+        return addDateToCalendarCall(scope, code, createDateRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<CalendarDate> addDateToCalendarWithHttpInfo(String scope, String code, CreateDateRequest createDateRequest) throws ApiException {
-        okhttp3.Call localVarCall = addDateToCalendarValidateBeforeCall(scope, code, createDateRequest, null);
+        okhttp3.Call localVarCall = addDateToCalendarValidateBeforeCall(scope, code, createDateRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CalendarDate>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<CalendarDate> addDateToCalendarWithHttpInfo(String scope, String code, CreateDateRequest createDateRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = addDateToCalendarValidateBeforeCall(scope, code, createDateRequest, null, opts);
         Type localVarReturnType = new TypeToken<CalendarDate>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call addDateToCalendarAsync(String scope, String code, CreateDateRequest createDateRequest, final ApiCallback<CalendarDate> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = addDateToCalendarValidateBeforeCall(scope, code, createDateRequest, _callback);
+        okhttp3.Call localVarCall = addDateToCalendarValidateBeforeCall(scope, code, createDateRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CalendarDate>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call addDateToCalendarAsync(String scope, String code, CreateDateRequest createDateRequest, final ApiCallback<CalendarDate> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = addDateToCalendarValidateBeforeCall(scope, code, createDateRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<CalendarDate>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -392,6 +479,23 @@ public class CalendarsApi {
         }
 
         /**
+         * Execute addDateToCalendar request. Use any specified configuration options to override any other configuration for this request only.
+         * @return CalendarDate
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The created date </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CalendarDate execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<CalendarDate> localVarResp = addDateToCalendarWithHttpInfo(scope, code, createDateRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute addDateToCalendar request with HTTP info returned
          * @return ApiResponse&lt;CalendarDate&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -405,6 +509,22 @@ public class CalendarsApi {
          */
         public ApiResponse<CalendarDate> executeWithHttpInfo() throws ApiException {
             return addDateToCalendarWithHttpInfo(scope, code, createDateRequest);
+        }
+
+        /**
+         * Execute addDateToCalendar request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;CalendarDate&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The created date </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CalendarDate> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return addDateToCalendarWithHttpInfo(scope, code, createDateRequest, opts);
         }
 
         /**
@@ -422,6 +542,23 @@ public class CalendarsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<CalendarDate> _callback) throws ApiException {
             return addDateToCalendarAsync(scope, code, createDateRequest, _callback);
+        }
+
+        /**
+         * Execute addDateToCalendar request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The created date </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CalendarDate> _callback, ConfigurationOptions opts) throws ApiException {
+            return addDateToCalendarAsync(scope, code, createDateRequest, _callback, opts);
         }
     }
 
@@ -444,6 +581,10 @@ public class CalendarsApi {
         return new APIaddDateToCalendarRequest(scope, code, createDateRequest);
     }
     private okhttp3.Call createCalendarCall(CreateCalendarRequest createCalendarRequest, final ApiCallback _callback) throws ApiException {
+        return createCalendarCall(createCalendarRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call createCalendarCall(CreateCalendarRequest createCalendarRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -490,30 +631,44 @@ public class CalendarsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createCalendarValidateBeforeCall(CreateCalendarRequest createCalendarRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createCalendarValidateBeforeCall(CreateCalendarRequest createCalendarRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'createCalendarRequest' is set
         if (createCalendarRequest == null) {
             throw new ApiException("Missing the required parameter 'createCalendarRequest' when calling createCalendar(Async)");
         }
 
-        return createCalendarCall(createCalendarRequest, _callback);
+        return createCalendarCall(createCalendarRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<Calendar> createCalendarWithHttpInfo(CreateCalendarRequest createCalendarRequest) throws ApiException {
-        okhttp3.Call localVarCall = createCalendarValidateBeforeCall(createCalendarRequest, null);
+        okhttp3.Call localVarCall = createCalendarValidateBeforeCall(createCalendarRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Calendar>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Calendar> createCalendarWithHttpInfo(CreateCalendarRequest createCalendarRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createCalendarValidateBeforeCall(createCalendarRequest, null, opts);
         Type localVarReturnType = new TypeToken<Calendar>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call createCalendarAsync(CreateCalendarRequest createCalendarRequest, final ApiCallback<Calendar> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createCalendarValidateBeforeCall(createCalendarRequest, _callback);
+        okhttp3.Call localVarCall = createCalendarValidateBeforeCall(createCalendarRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Calendar>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call createCalendarAsync(CreateCalendarRequest createCalendarRequest, final ApiCallback<Calendar> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = createCalendarValidateBeforeCall(createCalendarRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<Calendar>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -561,6 +716,23 @@ public class CalendarsApi {
         }
 
         /**
+         * Execute createCalendar request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Calendar
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The created calendar </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Calendar execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Calendar> localVarResp = createCalendarWithHttpInfo(createCalendarRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute createCalendar request with HTTP info returned
          * @return ApiResponse&lt;Calendar&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -574,6 +746,22 @@ public class CalendarsApi {
          */
         public ApiResponse<Calendar> executeWithHttpInfo() throws ApiException {
             return createCalendarWithHttpInfo(createCalendarRequest);
+        }
+
+        /**
+         * Execute createCalendar request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Calendar&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The created calendar </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Calendar> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return createCalendarWithHttpInfo(createCalendarRequest, opts);
         }
 
         /**
@@ -591,6 +779,23 @@ public class CalendarsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Calendar> _callback) throws ApiException {
             return createCalendarAsync(createCalendarRequest, _callback);
+        }
+
+        /**
+         * Execute createCalendar request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The created calendar </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Calendar> _callback, ConfigurationOptions opts) throws ApiException {
+            return createCalendarAsync(createCalendarRequest, _callback, opts);
         }
     }
 
@@ -611,6 +816,10 @@ public class CalendarsApi {
         return new APIcreateCalendarRequest(createCalendarRequest);
     }
     private okhttp3.Call deleteCalendarCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+        return deleteCalendarCall(scope, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteCalendarCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -655,11 +864,11 @@ public class CalendarsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteCalendarValidateBeforeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCalendarValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteCalendar(Async)");
@@ -670,20 +879,34 @@ public class CalendarsApi {
             throw new ApiException("Missing the required parameter 'code' when calling deleteCalendar(Async)");
         }
 
-        return deleteCalendarCall(scope, code, _callback);
+        return deleteCalendarCall(scope, code, _callback, opts);
 
     }
 
 
     private ApiResponse<Calendar> deleteCalendarWithHttpInfo(String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = deleteCalendarValidateBeforeCall(scope, code, null);
+        okhttp3.Call localVarCall = deleteCalendarValidateBeforeCall(scope, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Calendar>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Calendar> deleteCalendarWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteCalendarValidateBeforeCall(scope, code, null, opts);
         Type localVarReturnType = new TypeToken<Calendar>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteCalendarAsync(String scope, String code, final ApiCallback<Calendar> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteCalendarValidateBeforeCall(scope, code, _callback);
+        okhttp3.Call localVarCall = deleteCalendarValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Calendar>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteCalendarAsync(String scope, String code, final ApiCallback<Calendar> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteCalendarValidateBeforeCall(scope, code, _callback, opts);
         Type localVarReturnType = new TypeToken<Calendar>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -733,6 +956,23 @@ public class CalendarsApi {
         }
 
         /**
+         * Execute deleteCalendar request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Calendar
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The deleted calendar </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Calendar execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Calendar> localVarResp = deleteCalendarWithHttpInfo(scope, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteCalendar request with HTTP info returned
          * @return ApiResponse&lt;Calendar&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -746,6 +986,22 @@ public class CalendarsApi {
          */
         public ApiResponse<Calendar> executeWithHttpInfo() throws ApiException {
             return deleteCalendarWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteCalendar request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Calendar&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The deleted calendar </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Calendar> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteCalendarWithHttpInfo(scope, code, opts);
         }
 
         /**
@@ -763,6 +1019,23 @@ public class CalendarsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Calendar> _callback) throws ApiException {
             return deleteCalendarAsync(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteCalendar request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The deleted calendar </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Calendar> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteCalendarAsync(scope, code, _callback, opts);
         }
     }
 
@@ -784,6 +1057,10 @@ public class CalendarsApi {
         return new APIdeleteCalendarRequest(scope, code);
     }
     private okhttp3.Call deleteDateFromCalendarCall(String scope, String code, String dateId, final ApiCallback _callback) throws ApiException {
+        return deleteDateFromCalendarCall(scope, code, dateId,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteDateFromCalendarCall(String scope, String code, String dateId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -829,11 +1106,11 @@ public class CalendarsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteDateFromCalendarValidateBeforeCall(String scope, String code, String dateId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteDateFromCalendarValidateBeforeCall(String scope, String code, String dateId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteDateFromCalendar(Async)");
@@ -849,20 +1126,34 @@ public class CalendarsApi {
             throw new ApiException("Missing the required parameter 'dateId' when calling deleteDateFromCalendar(Async)");
         }
 
-        return deleteDateFromCalendarCall(scope, code, dateId, _callback);
+        return deleteDateFromCalendarCall(scope, code, dateId, _callback, opts);
 
     }
 
 
     private ApiResponse<CalendarDate> deleteDateFromCalendarWithHttpInfo(String scope, String code, String dateId) throws ApiException {
-        okhttp3.Call localVarCall = deleteDateFromCalendarValidateBeforeCall(scope, code, dateId, null);
+        okhttp3.Call localVarCall = deleteDateFromCalendarValidateBeforeCall(scope, code, dateId, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CalendarDate>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<CalendarDate> deleteDateFromCalendarWithHttpInfo(String scope, String code, String dateId, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteDateFromCalendarValidateBeforeCall(scope, code, dateId, null, opts);
         Type localVarReturnType = new TypeToken<CalendarDate>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteDateFromCalendarAsync(String scope, String code, String dateId, final ApiCallback<CalendarDate> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteDateFromCalendarValidateBeforeCall(scope, code, dateId, _callback);
+        okhttp3.Call localVarCall = deleteDateFromCalendarValidateBeforeCall(scope, code, dateId, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CalendarDate>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteDateFromCalendarAsync(String scope, String code, String dateId, final ApiCallback<CalendarDate> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteDateFromCalendarValidateBeforeCall(scope, code, dateId, _callback, opts);
         Type localVarReturnType = new TypeToken<CalendarDate>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -914,6 +1205,23 @@ public class CalendarsApi {
         }
 
         /**
+         * Execute deleteDateFromCalendar request. Use any specified configuration options to override any other configuration for this request only.
+         * @return CalendarDate
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The deleted date </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CalendarDate execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<CalendarDate> localVarResp = deleteDateFromCalendarWithHttpInfo(scope, code, dateId, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteDateFromCalendar request with HTTP info returned
          * @return ApiResponse&lt;CalendarDate&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -927,6 +1235,22 @@ public class CalendarsApi {
          */
         public ApiResponse<CalendarDate> executeWithHttpInfo() throws ApiException {
             return deleteDateFromCalendarWithHttpInfo(scope, code, dateId);
+        }
+
+        /**
+         * Execute deleteDateFromCalendar request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;CalendarDate&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The deleted date </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CalendarDate> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteDateFromCalendarWithHttpInfo(scope, code, dateId, opts);
         }
 
         /**
@@ -944,6 +1268,23 @@ public class CalendarsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<CalendarDate> _callback) throws ApiException {
             return deleteDateFromCalendarAsync(scope, code, dateId, _callback);
+        }
+
+        /**
+         * Execute deleteDateFromCalendar request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The deleted date </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CalendarDate> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteDateFromCalendarAsync(scope, code, dateId, _callback, opts);
         }
     }
 
@@ -966,6 +1307,10 @@ public class CalendarsApi {
         return new APIdeleteDateFromCalendarRequest(scope, code, dateId);
     }
     private okhttp3.Call generateScheduleCall(String scope, ValuationSchedule valuationSchedule, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return generateScheduleCall(scope, valuationSchedule, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call generateScheduleCall(String scope, ValuationSchedule valuationSchedule, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1017,11 +1362,11 @@ public class CalendarsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call generateScheduleValidateBeforeCall(String scope, ValuationSchedule valuationSchedule, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call generateScheduleValidateBeforeCall(String scope, ValuationSchedule valuationSchedule, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling generateSchedule(Async)");
@@ -1032,20 +1377,34 @@ public class CalendarsApi {
             throw new ApiException("Missing the required parameter 'valuationSchedule' when calling generateSchedule(Async)");
         }
 
-        return generateScheduleCall(scope, valuationSchedule, asAt, _callback);
+        return generateScheduleCall(scope, valuationSchedule, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<List<OffsetDateTime>> generateScheduleWithHttpInfo(String scope, ValuationSchedule valuationSchedule, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = generateScheduleValidateBeforeCall(scope, valuationSchedule, asAt, null);
+        okhttp3.Call localVarCall = generateScheduleValidateBeforeCall(scope, valuationSchedule, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<List<OffsetDateTime>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<List<OffsetDateTime>> generateScheduleWithHttpInfo(String scope, ValuationSchedule valuationSchedule, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = generateScheduleValidateBeforeCall(scope, valuationSchedule, asAt, null, opts);
         Type localVarReturnType = new TypeToken<List<OffsetDateTime>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call generateScheduleAsync(String scope, ValuationSchedule valuationSchedule, OffsetDateTime asAt, final ApiCallback<List<OffsetDateTime>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = generateScheduleValidateBeforeCall(scope, valuationSchedule, asAt, _callback);
+        okhttp3.Call localVarCall = generateScheduleValidateBeforeCall(scope, valuationSchedule, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<List<OffsetDateTime>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call generateScheduleAsync(String scope, ValuationSchedule valuationSchedule, OffsetDateTime asAt, final ApiCallback<List<OffsetDateTime>> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = generateScheduleValidateBeforeCall(scope, valuationSchedule, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<List<OffsetDateTime>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1106,6 +1465,23 @@ public class CalendarsApi {
         }
 
         /**
+         * Execute generateSchedule request. Use any specified configuration options to override any other configuration for this request only.
+         * @return List&lt;OffsetDateTime&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> An array of dates in chronological order. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public List<OffsetDateTime> execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<List<OffsetDateTime>> localVarResp = generateScheduleWithHttpInfo(scope, valuationSchedule, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute generateSchedule request with HTTP info returned
          * @return ApiResponse&lt;List&lt;OffsetDateTime&gt;&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1119,6 +1495,22 @@ public class CalendarsApi {
          */
         public ApiResponse<List<OffsetDateTime>> executeWithHttpInfo() throws ApiException {
             return generateScheduleWithHttpInfo(scope, valuationSchedule, asAt);
+        }
+
+        /**
+         * Execute generateSchedule request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;List&lt;OffsetDateTime&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> An array of dates in chronological order. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<List<OffsetDateTime>> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return generateScheduleWithHttpInfo(scope, valuationSchedule, asAt, opts);
         }
 
         /**
@@ -1136,6 +1528,23 @@ public class CalendarsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<List<OffsetDateTime>> _callback) throws ApiException {
             return generateScheduleAsync(scope, valuationSchedule, asAt, _callback);
+        }
+
+        /**
+         * Execute generateSchedule request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> An array of dates in chronological order. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<List<OffsetDateTime>> _callback, ConfigurationOptions opts) throws ApiException {
+            return generateScheduleAsync(scope, valuationSchedule, asAt, _callback, opts);
         }
     }
 
@@ -1157,6 +1566,10 @@ public class CalendarsApi {
         return new APIgenerateScheduleRequest(scope, valuationSchedule);
     }
     private okhttp3.Call getCalendarCall(String scope, String code, List<String> propertyKeys, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getCalendarCall(scope, code, propertyKeys, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getCalendarCall(String scope, String code, List<String> propertyKeys, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1209,11 +1622,11 @@ public class CalendarsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCalendarValidateBeforeCall(String scope, String code, List<String> propertyKeys, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCalendarValidateBeforeCall(String scope, String code, List<String> propertyKeys, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getCalendar(Async)");
@@ -1224,20 +1637,34 @@ public class CalendarsApi {
             throw new ApiException("Missing the required parameter 'code' when calling getCalendar(Async)");
         }
 
-        return getCalendarCall(scope, code, propertyKeys, asAt, _callback);
+        return getCalendarCall(scope, code, propertyKeys, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<Calendar> getCalendarWithHttpInfo(String scope, String code, List<String> propertyKeys, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getCalendarValidateBeforeCall(scope, code, propertyKeys, asAt, null);
+        okhttp3.Call localVarCall = getCalendarValidateBeforeCall(scope, code, propertyKeys, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Calendar>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Calendar> getCalendarWithHttpInfo(String scope, String code, List<String> propertyKeys, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getCalendarValidateBeforeCall(scope, code, propertyKeys, asAt, null, opts);
         Type localVarReturnType = new TypeToken<Calendar>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getCalendarAsync(String scope, String code, List<String> propertyKeys, OffsetDateTime asAt, final ApiCallback<Calendar> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getCalendarValidateBeforeCall(scope, code, propertyKeys, asAt, _callback);
+        okhttp3.Call localVarCall = getCalendarValidateBeforeCall(scope, code, propertyKeys, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Calendar>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getCalendarAsync(String scope, String code, List<String> propertyKeys, OffsetDateTime asAt, final ApiCallback<Calendar> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getCalendarValidateBeforeCall(scope, code, propertyKeys, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<Calendar>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1309,6 +1736,23 @@ public class CalendarsApi {
         }
 
         /**
+         * Execute getCalendar request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Calendar
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested calendar </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Calendar execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Calendar> localVarResp = getCalendarWithHttpInfo(scope, code, propertyKeys, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getCalendar request with HTTP info returned
          * @return ApiResponse&lt;Calendar&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1322,6 +1766,22 @@ public class CalendarsApi {
          */
         public ApiResponse<Calendar> executeWithHttpInfo() throws ApiException {
             return getCalendarWithHttpInfo(scope, code, propertyKeys, asAt);
+        }
+
+        /**
+         * Execute getCalendar request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Calendar&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested calendar </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Calendar> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getCalendarWithHttpInfo(scope, code, propertyKeys, asAt, opts);
         }
 
         /**
@@ -1339,6 +1799,23 @@ public class CalendarsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Calendar> _callback) throws ApiException {
             return getCalendarAsync(scope, code, propertyKeys, asAt, _callback);
+        }
+
+        /**
+         * Execute getCalendar request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested calendar </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Calendar> _callback, ConfigurationOptions opts) throws ApiException {
+            return getCalendarAsync(scope, code, propertyKeys, asAt, _callback, opts);
         }
     }
 
@@ -1360,6 +1837,10 @@ public class CalendarsApi {
         return new APIgetCalendarRequest(scope, code);
     }
     private okhttp3.Call getDatesCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, List<String> idFilter, final ApiCallback _callback) throws ApiException {
+        return getDatesCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, idFilter,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getDatesCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, List<String> idFilter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1420,11 +1901,11 @@ public class CalendarsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getDatesValidateBeforeCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, List<String> idFilter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getDatesValidateBeforeCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, List<String> idFilter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getDates(Async)");
@@ -1435,20 +1916,34 @@ public class CalendarsApi {
             throw new ApiException("Missing the required parameter 'code' when calling getDates(Async)");
         }
 
-        return getDatesCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, idFilter, _callback);
+        return getDatesCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, idFilter, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfCalendarDate> getDatesWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, List<String> idFilter) throws ApiException {
-        okhttp3.Call localVarCall = getDatesValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, idFilter, null);
+        okhttp3.Call localVarCall = getDatesValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, idFilter, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfCalendarDate>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfCalendarDate> getDatesWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, List<String> idFilter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getDatesValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, idFilter, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfCalendarDate>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getDatesAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, List<String> idFilter, final ApiCallback<ResourceListOfCalendarDate> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getDatesValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, idFilter, _callback);
+        okhttp3.Call localVarCall = getDatesValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, idFilter, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfCalendarDate>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getDatesAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, List<String> idFilter, final ApiCallback<ResourceListOfCalendarDate> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getDatesValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, idFilter, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfCalendarDate>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1542,6 +2037,23 @@ public class CalendarsApi {
         }
 
         /**
+         * Execute getDates request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfCalendarDate
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested date </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfCalendarDate execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfCalendarDate> localVarResp = getDatesWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, idFilter, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getDates request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfCalendarDate&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1555,6 +2067,22 @@ public class CalendarsApi {
          */
         public ApiResponse<ResourceListOfCalendarDate> executeWithHttpInfo() throws ApiException {
             return getDatesWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, idFilter);
+        }
+
+        /**
+         * Execute getDates request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfCalendarDate&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested date </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfCalendarDate> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getDatesWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, idFilter, opts);
         }
 
         /**
@@ -1572,6 +2100,23 @@ public class CalendarsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfCalendarDate> _callback) throws ApiException {
             return getDatesAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, idFilter, _callback);
+        }
+
+        /**
+         * Execute getDates request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested date </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfCalendarDate> _callback, ConfigurationOptions opts) throws ApiException {
+            return getDatesAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, idFilter, _callback, opts);
         }
     }
 
@@ -1593,6 +2138,10 @@ public class CalendarsApi {
         return new APIgetDatesRequest(scope, code);
     }
     private okhttp3.Call isBusinessDateTimeCall(OffsetDateTime dateTime, String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return isBusinessDateTimeCall(dateTime, scope, code, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call isBusinessDateTimeCall(OffsetDateTime dateTime, String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1645,11 +2194,11 @@ public class CalendarsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call isBusinessDateTimeValidateBeforeCall(OffsetDateTime dateTime, String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call isBusinessDateTimeValidateBeforeCall(OffsetDateTime dateTime, String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'dateTime' is set
         if (dateTime == null) {
             throw new ApiException("Missing the required parameter 'dateTime' when calling isBusinessDateTime(Async)");
@@ -1665,20 +2214,34 @@ public class CalendarsApi {
             throw new ApiException("Missing the required parameter 'code' when calling isBusinessDateTime(Async)");
         }
 
-        return isBusinessDateTimeCall(dateTime, scope, code, asAt, _callback);
+        return isBusinessDateTimeCall(dateTime, scope, code, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<IsBusinessDayResponse> isBusinessDateTimeWithHttpInfo(OffsetDateTime dateTime, String scope, String code, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = isBusinessDateTimeValidateBeforeCall(dateTime, scope, code, asAt, null);
+        okhttp3.Call localVarCall = isBusinessDateTimeValidateBeforeCall(dateTime, scope, code, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<IsBusinessDayResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<IsBusinessDayResponse> isBusinessDateTimeWithHttpInfo(OffsetDateTime dateTime, String scope, String code, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = isBusinessDateTimeValidateBeforeCall(dateTime, scope, code, asAt, null, opts);
         Type localVarReturnType = new TypeToken<IsBusinessDayResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call isBusinessDateTimeAsync(OffsetDateTime dateTime, String scope, String code, OffsetDateTime asAt, final ApiCallback<IsBusinessDayResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = isBusinessDateTimeValidateBeforeCall(dateTime, scope, code, asAt, _callback);
+        okhttp3.Call localVarCall = isBusinessDateTimeValidateBeforeCall(dateTime, scope, code, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<IsBusinessDayResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call isBusinessDateTimeAsync(OffsetDateTime dateTime, String scope, String code, OffsetDateTime asAt, final ApiCallback<IsBusinessDayResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = isBusinessDateTimeValidateBeforeCall(dateTime, scope, code, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<IsBusinessDayResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1741,6 +2304,23 @@ public class CalendarsApi {
         }
 
         /**
+         * Execute isBusinessDateTime request. Use any specified configuration options to override any other configuration for this request only.
+         * @return IsBusinessDayResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Whether or not the requested DateTime is a BusinessDay or not </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public IsBusinessDayResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<IsBusinessDayResponse> localVarResp = isBusinessDateTimeWithHttpInfo(dateTime, scope, code, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute isBusinessDateTime request with HTTP info returned
          * @return ApiResponse&lt;IsBusinessDayResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1754,6 +2334,22 @@ public class CalendarsApi {
          */
         public ApiResponse<IsBusinessDayResponse> executeWithHttpInfo() throws ApiException {
             return isBusinessDateTimeWithHttpInfo(dateTime, scope, code, asAt);
+        }
+
+        /**
+         * Execute isBusinessDateTime request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;IsBusinessDayResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Whether or not the requested DateTime is a BusinessDay or not </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<IsBusinessDayResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return isBusinessDateTimeWithHttpInfo(dateTime, scope, code, asAt, opts);
         }
 
         /**
@@ -1771,6 +2367,23 @@ public class CalendarsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<IsBusinessDayResponse> _callback) throws ApiException {
             return isBusinessDateTimeAsync(dateTime, scope, code, asAt, _callback);
+        }
+
+        /**
+         * Execute isBusinessDateTime request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Whether or not the requested DateTime is a BusinessDay or not </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<IsBusinessDayResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return isBusinessDateTimeAsync(dateTime, scope, code, asAt, _callback, opts);
         }
     }
 
@@ -1793,6 +2406,10 @@ public class CalendarsApi {
         return new APIisBusinessDateTimeRequest(dateTime, scope, code);
     }
     private okhttp3.Call listCalendarsCall(OffsetDateTime asAt, String page, Integer limit, List<String> propertyKeys, String filter, final ApiCallback _callback) throws ApiException {
+        return listCalendarsCall(asAt, page, limit, propertyKeys, filter,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listCalendarsCall(OffsetDateTime asAt, String page, Integer limit, List<String> propertyKeys, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1855,25 +2472,39 @@ public class CalendarsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listCalendarsValidateBeforeCall(OffsetDateTime asAt, String page, Integer limit, List<String> propertyKeys, String filter, final ApiCallback _callback) throws ApiException {
-        return listCalendarsCall(asAt, page, limit, propertyKeys, filter, _callback);
+    private okhttp3.Call listCalendarsValidateBeforeCall(OffsetDateTime asAt, String page, Integer limit, List<String> propertyKeys, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listCalendarsCall(asAt, page, limit, propertyKeys, filter, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfCalendar> listCalendarsWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, List<String> propertyKeys, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listCalendarsValidateBeforeCall(asAt, page, limit, propertyKeys, filter, null);
+        okhttp3.Call localVarCall = listCalendarsValidateBeforeCall(asAt, page, limit, propertyKeys, filter, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfCalendar>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfCalendar> listCalendarsWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, List<String> propertyKeys, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listCalendarsValidateBeforeCall(asAt, page, limit, propertyKeys, filter, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfCalendar>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listCalendarsAsync(OffsetDateTime asAt, String page, Integer limit, List<String> propertyKeys, String filter, final ApiCallback<PagedResourceListOfCalendar> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listCalendarsValidateBeforeCall(asAt, page, limit, propertyKeys, filter, _callback);
+        okhttp3.Call localVarCall = listCalendarsValidateBeforeCall(asAt, page, limit, propertyKeys, filter, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfCalendar>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listCalendarsAsync(OffsetDateTime asAt, String page, Integer limit, List<String> propertyKeys, String filter, final ApiCallback<PagedResourceListOfCalendar> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listCalendarsValidateBeforeCall(asAt, page, limit, propertyKeys, filter, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfCalendar>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1974,6 +2605,23 @@ public class CalendarsApi {
         }
 
         /**
+         * Execute listCalendars request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfCalendar
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List Calendars </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfCalendar execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfCalendar> localVarResp = listCalendarsWithHttpInfo(asAt, page, limit, propertyKeys, filter, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listCalendars request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfCalendar&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1987,6 +2635,22 @@ public class CalendarsApi {
          */
         public ApiResponse<PagedResourceListOfCalendar> executeWithHttpInfo() throws ApiException {
             return listCalendarsWithHttpInfo(asAt, page, limit, propertyKeys, filter);
+        }
+
+        /**
+         * Execute listCalendars request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfCalendar&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List Calendars </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfCalendar> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listCalendarsWithHttpInfo(asAt, page, limit, propertyKeys, filter, opts);
         }
 
         /**
@@ -2004,6 +2668,23 @@ public class CalendarsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfCalendar> _callback) throws ApiException {
             return listCalendarsAsync(asAt, page, limit, propertyKeys, filter, _callback);
+        }
+
+        /**
+         * Execute listCalendars request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List Calendars </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfCalendar> _callback, ConfigurationOptions opts) throws ApiException {
+            return listCalendarsAsync(asAt, page, limit, propertyKeys, filter, _callback, opts);
         }
     }
 
@@ -2023,6 +2704,10 @@ public class CalendarsApi {
         return new APIlistCalendarsRequest();
     }
     private okhttp3.Call listCalendarsInScopeCall(String scope, OffsetDateTime asAt, String page, Integer limit, List<String> propertyKeys, String filter, final ApiCallback _callback) throws ApiException {
+        return listCalendarsInScopeCall(scope, asAt, page, limit, propertyKeys, filter,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listCalendarsInScopeCall(String scope, OffsetDateTime asAt, String page, Integer limit, List<String> propertyKeys, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2086,30 +2771,44 @@ public class CalendarsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listCalendarsInScopeValidateBeforeCall(String scope, OffsetDateTime asAt, String page, Integer limit, List<String> propertyKeys, String filter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listCalendarsInScopeValidateBeforeCall(String scope, OffsetDateTime asAt, String page, Integer limit, List<String> propertyKeys, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listCalendarsInScope(Async)");
         }
 
-        return listCalendarsInScopeCall(scope, asAt, page, limit, propertyKeys, filter, _callback);
+        return listCalendarsInScopeCall(scope, asAt, page, limit, propertyKeys, filter, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfCalendar> listCalendarsInScopeWithHttpInfo(String scope, OffsetDateTime asAt, String page, Integer limit, List<String> propertyKeys, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listCalendarsInScopeValidateBeforeCall(scope, asAt, page, limit, propertyKeys, filter, null);
+        okhttp3.Call localVarCall = listCalendarsInScopeValidateBeforeCall(scope, asAt, page, limit, propertyKeys, filter, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfCalendar>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfCalendar> listCalendarsInScopeWithHttpInfo(String scope, OffsetDateTime asAt, String page, Integer limit, List<String> propertyKeys, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listCalendarsInScopeValidateBeforeCall(scope, asAt, page, limit, propertyKeys, filter, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfCalendar>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listCalendarsInScopeAsync(String scope, OffsetDateTime asAt, String page, Integer limit, List<String> propertyKeys, String filter, final ApiCallback<PagedResourceListOfCalendar> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listCalendarsInScopeValidateBeforeCall(scope, asAt, page, limit, propertyKeys, filter, _callback);
+        okhttp3.Call localVarCall = listCalendarsInScopeValidateBeforeCall(scope, asAt, page, limit, propertyKeys, filter, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfCalendar>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listCalendarsInScopeAsync(String scope, OffsetDateTime asAt, String page, Integer limit, List<String> propertyKeys, String filter, final ApiCallback<PagedResourceListOfCalendar> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listCalendarsInScopeValidateBeforeCall(scope, asAt, page, limit, propertyKeys, filter, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfCalendar>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2212,6 +2911,23 @@ public class CalendarsApi {
         }
 
         /**
+         * Execute listCalendarsInScope request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfCalendar
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Calendars in the requested scope </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfCalendar execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfCalendar> localVarResp = listCalendarsInScopeWithHttpInfo(scope, asAt, page, limit, propertyKeys, filter, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listCalendarsInScope request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfCalendar&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2225,6 +2941,22 @@ public class CalendarsApi {
          */
         public ApiResponse<PagedResourceListOfCalendar> executeWithHttpInfo() throws ApiException {
             return listCalendarsInScopeWithHttpInfo(scope, asAt, page, limit, propertyKeys, filter);
+        }
+
+        /**
+         * Execute listCalendarsInScope request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfCalendar&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Calendars in the requested scope </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfCalendar> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listCalendarsInScopeWithHttpInfo(scope, asAt, page, limit, propertyKeys, filter, opts);
         }
 
         /**
@@ -2242,6 +2974,23 @@ public class CalendarsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfCalendar> _callback) throws ApiException {
             return listCalendarsInScopeAsync(scope, asAt, page, limit, propertyKeys, filter, _callback);
+        }
+
+        /**
+         * Execute listCalendarsInScope request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Calendars in the requested scope </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfCalendar> _callback, ConfigurationOptions opts) throws ApiException {
+            return listCalendarsInScopeAsync(scope, asAt, page, limit, propertyKeys, filter, _callback, opts);
         }
     }
 
@@ -2262,6 +3011,10 @@ public class CalendarsApi {
         return new APIlistCalendarsInScopeRequest(scope);
     }
     private okhttp3.Call updateCalendarCall(String scope, String code, UpdateCalendarRequest updateCalendarRequest, final ApiCallback _callback) throws ApiException {
+        return updateCalendarCall(scope, code, updateCalendarRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call updateCalendarCall(String scope, String code, UpdateCalendarRequest updateCalendarRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2310,11 +3063,11 @@ public class CalendarsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateCalendarValidateBeforeCall(String scope, String code, UpdateCalendarRequest updateCalendarRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateCalendarValidateBeforeCall(String scope, String code, UpdateCalendarRequest updateCalendarRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling updateCalendar(Async)");
@@ -2330,20 +3083,34 @@ public class CalendarsApi {
             throw new ApiException("Missing the required parameter 'updateCalendarRequest' when calling updateCalendar(Async)");
         }
 
-        return updateCalendarCall(scope, code, updateCalendarRequest, _callback);
+        return updateCalendarCall(scope, code, updateCalendarRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<Calendar> updateCalendarWithHttpInfo(String scope, String code, UpdateCalendarRequest updateCalendarRequest) throws ApiException {
-        okhttp3.Call localVarCall = updateCalendarValidateBeforeCall(scope, code, updateCalendarRequest, null);
+        okhttp3.Call localVarCall = updateCalendarValidateBeforeCall(scope, code, updateCalendarRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Calendar>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Calendar> updateCalendarWithHttpInfo(String scope, String code, UpdateCalendarRequest updateCalendarRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = updateCalendarValidateBeforeCall(scope, code, updateCalendarRequest, null, opts);
         Type localVarReturnType = new TypeToken<Calendar>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call updateCalendarAsync(String scope, String code, UpdateCalendarRequest updateCalendarRequest, final ApiCallback<Calendar> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateCalendarValidateBeforeCall(scope, code, updateCalendarRequest, _callback);
+        okhttp3.Call localVarCall = updateCalendarValidateBeforeCall(scope, code, updateCalendarRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Calendar>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call updateCalendarAsync(String scope, String code, UpdateCalendarRequest updateCalendarRequest, final ApiCallback<Calendar> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = updateCalendarValidateBeforeCall(scope, code, updateCalendarRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<Calendar>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2395,6 +3162,23 @@ public class CalendarsApi {
         }
 
         /**
+         * Execute updateCalendar request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Calendar
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated calendar </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Calendar execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Calendar> localVarResp = updateCalendarWithHttpInfo(scope, code, updateCalendarRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute updateCalendar request with HTTP info returned
          * @return ApiResponse&lt;Calendar&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2408,6 +3192,22 @@ public class CalendarsApi {
          */
         public ApiResponse<Calendar> executeWithHttpInfo() throws ApiException {
             return updateCalendarWithHttpInfo(scope, code, updateCalendarRequest);
+        }
+
+        /**
+         * Execute updateCalendar request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Calendar&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated calendar </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Calendar> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return updateCalendarWithHttpInfo(scope, code, updateCalendarRequest, opts);
         }
 
         /**
@@ -2425,6 +3225,23 @@ public class CalendarsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Calendar> _callback) throws ApiException {
             return updateCalendarAsync(scope, code, updateCalendarRequest, _callback);
+        }
+
+        /**
+         * Execute updateCalendar request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated calendar </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Calendar> _callback, ConfigurationOptions opts) throws ApiException {
+            return updateCalendarAsync(scope, code, updateCalendarRequest, _callback, opts);
         }
     }
 

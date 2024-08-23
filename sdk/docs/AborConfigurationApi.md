@@ -50,10 +50,21 @@ public class AborConfigurationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AborConfigurationApi apiInstance = apiFactory.build(AborConfigurationApi.class);
+
         AborConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(AborConfigurationApi.class);
         String scope = "scope_example"; // String | The scope of the AborConfiguration.
         AborConfigurationRequest aborConfigurationRequest = new AborConfigurationRequest(); // AborConfigurationRequest | The definition of the AborConfiguration.
         try {
+            // uncomment the below to set overrides at the request level
+            // AborConfiguration result = apiInstance.createAborConfiguration(scope, aborConfigurationRequest).execute(opts);
+
             AborConfiguration result = apiInstance.createAborConfiguration(scope, aborConfigurationRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -132,10 +143,21 @@ public class AborConfigurationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AborConfigurationApi apiInstance = apiFactory.build(AborConfigurationApi.class);
+
         AborConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(AborConfigurationApi.class);
         String scope = "scope_example"; // String | The scope of the AborConfiguration to be deleted.
         String code = "code_example"; // String | The code of the AborConfiguration to be deleted. Together with the scope this uniquely identifies the AborConfiguration.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteAborConfiguration(scope, code).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteAborConfiguration(scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -214,6 +236,14 @@ public class AborConfigurationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AborConfigurationApi apiInstance = apiFactory.build(AborConfigurationApi.class);
+
         AborConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(AborConfigurationApi.class);
         String scope = "scope_example"; // String | The scope of the AborConfiguration.
         String code = "code_example"; // String | The code of the AborConfiguration. Together with the scope this uniquely identifies the AborConfiguration.
@@ -221,6 +251,9 @@ public class AborConfigurationApiExample {
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the AborConfiguration definition. Defaults to returning the latest version of the AborConfiguration definition if not specified.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'AborConfiguration' domain to decorate onto the AborConfiguration.   These must take the format {domain}/{scope}/{code}, for example 'AborConfiguration/Manager/Id'. If no properties are specified, then no properties will be returned.
         try {
+            // uncomment the below to set overrides at the request level
+            // AborConfiguration result = apiInstance.getAborConfiguration(scope, code, effectiveAt, asAt, propertyKeys).execute(opts);
+
             AborConfiguration result = apiInstance.getAborConfiguration(scope, code, effectiveAt, asAt, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -302,6 +335,14 @@ public class AborConfigurationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AborConfigurationApi apiInstance = apiFactory.build(AborConfigurationApi.class);
+
         AborConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(AborConfigurationApi.class);
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the TimeVariant properties for the AborConfiguration. Defaults to the current LUSID   system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the AborConfiguration. Defaults to returning the latest version of each AAborConfigurationbor if not specified.
@@ -311,6 +352,9 @@ public class AborConfigurationApiExample {
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\".
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'AborConfiguration' domain to decorate onto each AborConfiguration.   These must take the format {domain}/{scope}/{code}, for example 'AborConfiguration/Manager/Id'.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfAborConfiguration result = apiInstance.listAborConfigurations(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys).execute(opts);
+
             PagedResourceListOfAborConfiguration result = apiInstance.listAborConfigurations(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -394,11 +438,22 @@ public class AborConfigurationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AborConfigurationApi apiInstance = apiFactory.build(AborConfigurationApi.class);
+
         AborConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(AborConfigurationApi.class);
         String scope = "scope_example"; // String | The scope of the AborConfiguration to update or insert the properties onto.
         String code = "code_example"; // String | The code of the AborConfiguration to update or insert the properties onto. Together with the scope this uniquely identifies the AborConfiguration.
         Map<String, Property> requestBody = new HashMap(); // Map<String, Property> | The properties to be updated or inserted onto the chart of account. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \"AborConfiguration/Manager/Id\".
         try {
+            // uncomment the below to set overrides at the request level
+            // AborConfigurationProperties result = apiInstance.upsertAborConfigurationProperties(scope, code, requestBody).execute(opts);
+
             AborConfigurationProperties result = apiInstance.upsertAborConfigurationProperties(scope, code, requestBody).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

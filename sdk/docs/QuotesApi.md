@@ -54,6 +54,14 @@ public class QuotesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // QuotesApi apiInstance = apiFactory.build(QuotesApi.class);
+
         QuotesApi apiInstance = ApiFactoryBuilder.build(fileName).build(QuotesApi.class);
         String scope = "scope_example"; // String | The scope of the Quote Access Metadata Rule to retrieve.
         String provider = "provider_example"; // String | The Provider of the rule
@@ -64,6 +72,9 @@ public class QuotesApiExample {
         String field = "field_example"; // String | The Field of the rule
         String effectiveAt = "effectiveAt_example"; // String | The effective date to delete at, if this is not supplied, it will delete all data found
         try {
+            // uncomment the below to set overrides at the request level
+            // QuoteAccessMetadataRule result = apiInstance.deleteQuoteAccessMetadataRule(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt).execute(opts);
+
             QuoteAccessMetadataRule result = apiInstance.deleteQuoteAccessMetadataRule(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -148,10 +159,21 @@ public class QuotesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // QuotesApi apiInstance = apiFactory.build(QuotesApi.class);
+
         QuotesApi apiInstance = ApiFactoryBuilder.build(fileName).build(QuotesApi.class);
         String scope = "scope_example"; // String | The scope of the quotes to delete.
         Map<String, QuoteId> requestBody = new HashMap(); // Map<String, QuoteId> | The quotes to delete keyed by a unique correlation id.
         try {
+            // uncomment the below to set overrides at the request level
+            // AnnulQuotesResponse result = apiInstance.deleteQuotes(scope, requestBody).execute(opts);
+
             AnnulQuotesResponse result = apiInstance.deleteQuotes(scope, requestBody).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -230,6 +252,14 @@ public class QuotesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // QuotesApi apiInstance = apiFactory.build(QuotesApi.class);
+
         QuotesApi apiInstance = ApiFactoryBuilder.build(fileName).build(QuotesApi.class);
         String scope = "scope_example"; // String | The scope of the quotes to retrieve.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the quotes. Defaults to the current LUSID system datetime if not specified.
@@ -237,6 +267,9 @@ public class QuotesApiExample {
         String maxAge = "maxAge_example"; // String | The duration of the look back window in an ISO8601 time interval format e.g. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).   This is subtracted from the provided effectiveAt datetime or cut label to generate a effective datetime window inside which a quote must exist to be retrieved.
         Map<String, QuoteSeriesId> requestBody = new HashMap(); // Map<String, QuoteSeriesId> | The time invariant quote series ids of the quotes to retrieve. These need to be   keyed by a unique correlation id allowing the retrieved quote to be identified in the response.
         try {
+            // uncomment the below to set overrides at the request level
+            // GetQuotesResponse result = apiInstance.getQuotes(scope, effectiveAt, asAt, maxAge, requestBody).execute(opts);
+
             GetQuotesResponse result = apiInstance.getQuotes(scope, effectiveAt, asAt, maxAge, requestBody).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -318,6 +351,14 @@ public class QuotesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // QuotesApi apiInstance = apiFactory.build(QuotesApi.class);
+
         QuotesApi apiInstance = ApiFactoryBuilder.build(fileName).build(QuotesApi.class);
         String scope = "scope_example"; // String | The scope of the Quote Access Metadata Rule to retrieve.
         String provider = "provider_example"; // String | The Provider of the rule
@@ -329,6 +370,9 @@ public class QuotesApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The effective date of the rule
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the access metadata rule. Defaults to return the latest version if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // QuoteAccessMetadataRule result = apiInstance.getQuotesAccessMetadataRule(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, asAt).execute(opts);
+
             QuoteAccessMetadataRule result = apiInstance.getQuotesAccessMetadataRule(scope, provider, priceSource, instrumentIdType, instrumentId, quoteType, field, effectiveAt, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -414,6 +458,14 @@ public class QuotesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // QuotesApi apiInstance = apiFactory.build(QuotesApi.class);
+
         QuotesApi apiInstance = ApiFactoryBuilder.build(fileName).build(QuotesApi.class);
         String scope = "scope_example"; // String | The scope of the quotes to list.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the quotes. Defaults to latest if not specified.
@@ -421,6 +473,9 @@ public class QuotesApiExample {
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
         String filter = "filter_example"; // String | Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfQuote result = apiInstance.listQuotes(scope, asAt, page, limit, filter).execute(opts);
+
             ResourceListOfQuote result = apiInstance.listQuotes(scope, asAt, page, limit, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -502,10 +557,21 @@ public class QuotesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // QuotesApi apiInstance = apiFactory.build(QuotesApi.class);
+
         QuotesApi apiInstance = ApiFactoryBuilder.build(fileName).build(QuotesApi.class);
         String scope = "scope_example"; // String | The scope of the Quote Access Metadata Rule to retrieve.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the access metadata rule. Defaults to return the latest version if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfQuoteAccessMetadataRule result = apiInstance.listQuotesAccessMetadataRules(scope, asAt).execute(opts);
+
             ResourceListOfQuoteAccessMetadataRule result = apiInstance.listQuotesAccessMetadataRules(scope, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -584,6 +650,14 @@ public class QuotesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // QuotesApi apiInstance = apiFactory.build(QuotesApi.class);
+
         QuotesApi apiInstance = ApiFactoryBuilder.build(fileName).build(QuotesApi.class);
         String scope = "scope_example"; // String | The scope of the quotes to list.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the quotes. Defaults to latest if not specified.
@@ -591,6 +665,9 @@ public class QuotesApiExample {
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
         String filter = "filter_example"; // String | Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfQuote result = apiInstance.listQuotesForScope(scope, asAt, page, limit, filter).execute(opts);
+
             ResourceListOfQuote result = apiInstance.listQuotesForScope(scope, asAt, page, limit, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -672,12 +749,23 @@ public class QuotesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // QuotesApi apiInstance = apiFactory.build(QuotesApi.class);
+
         QuotesApi apiInstance = ApiFactoryBuilder.build(fileName).build(QuotesApi.class);
         String scope = "scope_example"; // String | The scope to use when updating or inserting the Quote Access Metadata Rule.
         UpsertQuoteAccessMetadataRuleRequest upsertQuoteAccessMetadataRuleRequest = new UpsertQuoteAccessMetadataRuleRequest(); // UpsertQuoteAccessMetadataRuleRequest | The Quote Access Metadata Rule to update or insert
         String effectiveAt = "effectiveAt_example"; // String | The date this rule will effective from
         OffsetDateTime effectiveUntil = OffsetDateTime.now(); // OffsetDateTime | The effective date until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next 'effectiveAt' date of the Access Metadata
         try {
+            // uncomment the below to set overrides at the request level
+            // QuoteAccessMetadataRule result = apiInstance.upsertQuoteAccessMetadataRule(scope, upsertQuoteAccessMetadataRuleRequest, effectiveAt, effectiveUntil).execute(opts);
+
             QuoteAccessMetadataRule result = apiInstance.upsertQuoteAccessMetadataRule(scope, upsertQuoteAccessMetadataRuleRequest, effectiveAt, effectiveUntil).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -758,10 +846,21 @@ public class QuotesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // QuotesApi apiInstance = apiFactory.build(QuotesApi.class);
+
         QuotesApi apiInstance = ApiFactoryBuilder.build(fileName).build(QuotesApi.class);
         String scope = "scope_example"; // String | The scope to use when updating or inserting the quotes.
         Map<String, UpsertQuoteRequest> requestBody = new HashMap(); // Map<String, UpsertQuoteRequest> | The quotes to update or insert keyed by a unique correlation id.
         try {
+            // uncomment the below to set overrides at the request level
+            // UpsertQuotesResponse result = apiInstance.upsertQuotes(scope, requestBody).execute(opts);
+
             UpsertQuotesResponse result = apiInstance.upsertQuotes(scope, requestBody).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

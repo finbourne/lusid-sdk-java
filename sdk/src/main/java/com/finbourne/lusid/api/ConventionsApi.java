@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -83,6 +84,10 @@ public class ConventionsApi {
     }
 
     private okhttp3.Call deleteCdsFlowConventionsCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+        return deleteCdsFlowConventionsCall(scope, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteCdsFlowConventionsCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -127,11 +132,11 @@ public class ConventionsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteCdsFlowConventionsValidateBeforeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCdsFlowConventionsValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteCdsFlowConventions(Async)");
@@ -142,20 +147,34 @@ public class ConventionsApi {
             throw new ApiException("Missing the required parameter 'code' when calling deleteCdsFlowConventions(Async)");
         }
 
-        return deleteCdsFlowConventionsCall(scope, code, _callback);
+        return deleteCdsFlowConventionsCall(scope, code, _callback, opts);
 
     }
 
 
     private ApiResponse<AnnulSingleStructuredDataResponse> deleteCdsFlowConventionsWithHttpInfo(String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = deleteCdsFlowConventionsValidateBeforeCall(scope, code, null);
+        okhttp3.Call localVarCall = deleteCdsFlowConventionsValidateBeforeCall(scope, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AnnulSingleStructuredDataResponse> deleteCdsFlowConventionsWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteCdsFlowConventionsValidateBeforeCall(scope, code, null, opts);
         Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteCdsFlowConventionsAsync(String scope, String code, final ApiCallback<AnnulSingleStructuredDataResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteCdsFlowConventionsValidateBeforeCall(scope, code, _callback);
+        okhttp3.Call localVarCall = deleteCdsFlowConventionsValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteCdsFlowConventionsAsync(String scope, String code, final ApiCallback<AnnulSingleStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteCdsFlowConventionsValidateBeforeCall(scope, code, _callback, opts);
         Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -205,6 +224,23 @@ public class ConventionsApi {
         }
 
         /**
+         * Execute deleteCdsFlowConventions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AnnulSingleStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AnnulSingleStructuredDataResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AnnulSingleStructuredDataResponse> localVarResp = deleteCdsFlowConventionsWithHttpInfo(scope, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteCdsFlowConventions request with HTTP info returned
          * @return ApiResponse&lt;AnnulSingleStructuredDataResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -218,6 +254,22 @@ public class ConventionsApi {
          */
         public ApiResponse<AnnulSingleStructuredDataResponse> executeWithHttpInfo() throws ApiException {
             return deleteCdsFlowConventionsWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteCdsFlowConventions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AnnulSingleStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AnnulSingleStructuredDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteCdsFlowConventionsWithHttpInfo(scope, code, opts);
         }
 
         /**
@@ -235,6 +287,23 @@ public class ConventionsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<AnnulSingleStructuredDataResponse> _callback) throws ApiException {
             return deleteCdsFlowConventionsAsync(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteCdsFlowConventions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AnnulSingleStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteCdsFlowConventionsAsync(scope, code, _callback, opts);
         }
     }
 
@@ -256,6 +325,10 @@ public class ConventionsApi {
         return new APIdeleteCdsFlowConventionsRequest(scope, code);
     }
     private okhttp3.Call deleteFlowConventionsCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+        return deleteFlowConventionsCall(scope, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteFlowConventionsCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -300,11 +373,11 @@ public class ConventionsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteFlowConventionsValidateBeforeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteFlowConventionsValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteFlowConventions(Async)");
@@ -315,20 +388,34 @@ public class ConventionsApi {
             throw new ApiException("Missing the required parameter 'code' when calling deleteFlowConventions(Async)");
         }
 
-        return deleteFlowConventionsCall(scope, code, _callback);
+        return deleteFlowConventionsCall(scope, code, _callback, opts);
 
     }
 
 
     private ApiResponse<AnnulSingleStructuredDataResponse> deleteFlowConventionsWithHttpInfo(String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = deleteFlowConventionsValidateBeforeCall(scope, code, null);
+        okhttp3.Call localVarCall = deleteFlowConventionsValidateBeforeCall(scope, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AnnulSingleStructuredDataResponse> deleteFlowConventionsWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteFlowConventionsValidateBeforeCall(scope, code, null, opts);
         Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteFlowConventionsAsync(String scope, String code, final ApiCallback<AnnulSingleStructuredDataResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteFlowConventionsValidateBeforeCall(scope, code, _callback);
+        okhttp3.Call localVarCall = deleteFlowConventionsValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteFlowConventionsAsync(String scope, String code, final ApiCallback<AnnulSingleStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteFlowConventionsValidateBeforeCall(scope, code, _callback, opts);
         Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -378,6 +465,23 @@ public class ConventionsApi {
         }
 
         /**
+         * Execute deleteFlowConventions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AnnulSingleStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AnnulSingleStructuredDataResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AnnulSingleStructuredDataResponse> localVarResp = deleteFlowConventionsWithHttpInfo(scope, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteFlowConventions request with HTTP info returned
          * @return ApiResponse&lt;AnnulSingleStructuredDataResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -391,6 +495,22 @@ public class ConventionsApi {
          */
         public ApiResponse<AnnulSingleStructuredDataResponse> executeWithHttpInfo() throws ApiException {
             return deleteFlowConventionsWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteFlowConventions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AnnulSingleStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AnnulSingleStructuredDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteFlowConventionsWithHttpInfo(scope, code, opts);
         }
 
         /**
@@ -408,6 +528,23 @@ public class ConventionsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<AnnulSingleStructuredDataResponse> _callback) throws ApiException {
             return deleteFlowConventionsAsync(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteFlowConventions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AnnulSingleStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteFlowConventionsAsync(scope, code, _callback, opts);
         }
     }
 
@@ -429,6 +566,10 @@ public class ConventionsApi {
         return new APIdeleteFlowConventionsRequest(scope, code);
     }
     private okhttp3.Call deleteIndexConventionCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+        return deleteIndexConventionCall(scope, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteIndexConventionCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -473,11 +614,11 @@ public class ConventionsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteIndexConventionValidateBeforeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteIndexConventionValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteIndexConvention(Async)");
@@ -488,20 +629,34 @@ public class ConventionsApi {
             throw new ApiException("Missing the required parameter 'code' when calling deleteIndexConvention(Async)");
         }
 
-        return deleteIndexConventionCall(scope, code, _callback);
+        return deleteIndexConventionCall(scope, code, _callback, opts);
 
     }
 
 
     private ApiResponse<AnnulSingleStructuredDataResponse> deleteIndexConventionWithHttpInfo(String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = deleteIndexConventionValidateBeforeCall(scope, code, null);
+        okhttp3.Call localVarCall = deleteIndexConventionValidateBeforeCall(scope, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AnnulSingleStructuredDataResponse> deleteIndexConventionWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteIndexConventionValidateBeforeCall(scope, code, null, opts);
         Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteIndexConventionAsync(String scope, String code, final ApiCallback<AnnulSingleStructuredDataResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteIndexConventionValidateBeforeCall(scope, code, _callback);
+        okhttp3.Call localVarCall = deleteIndexConventionValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteIndexConventionAsync(String scope, String code, final ApiCallback<AnnulSingleStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteIndexConventionValidateBeforeCall(scope, code, _callback, opts);
         Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -551,6 +706,23 @@ public class ConventionsApi {
         }
 
         /**
+         * Execute deleteIndexConvention request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AnnulSingleStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AnnulSingleStructuredDataResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AnnulSingleStructuredDataResponse> localVarResp = deleteIndexConventionWithHttpInfo(scope, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteIndexConvention request with HTTP info returned
          * @return ApiResponse&lt;AnnulSingleStructuredDataResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -564,6 +736,22 @@ public class ConventionsApi {
          */
         public ApiResponse<AnnulSingleStructuredDataResponse> executeWithHttpInfo() throws ApiException {
             return deleteIndexConventionWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteIndexConvention request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AnnulSingleStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AnnulSingleStructuredDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteIndexConventionWithHttpInfo(scope, code, opts);
         }
 
         /**
@@ -581,6 +769,23 @@ public class ConventionsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<AnnulSingleStructuredDataResponse> _callback) throws ApiException {
             return deleteIndexConventionAsync(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteIndexConvention request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AnnulSingleStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteIndexConventionAsync(scope, code, _callback, opts);
         }
     }
 
@@ -602,6 +807,10 @@ public class ConventionsApi {
         return new APIdeleteIndexConventionRequest(scope, code);
     }
     private okhttp3.Call getCdsFlowConventionsCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getCdsFlowConventionsCall(scope, code, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getCdsFlowConventionsCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -650,11 +859,11 @@ public class ConventionsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCdsFlowConventionsValidateBeforeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCdsFlowConventionsValidateBeforeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getCdsFlowConventions(Async)");
@@ -665,20 +874,34 @@ public class ConventionsApi {
             throw new ApiException("Missing the required parameter 'code' when calling getCdsFlowConventions(Async)");
         }
 
-        return getCdsFlowConventionsCall(scope, code, asAt, _callback);
+        return getCdsFlowConventionsCall(scope, code, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<GetCdsFlowConventionsResponse> getCdsFlowConventionsWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getCdsFlowConventionsValidateBeforeCall(scope, code, asAt, null);
+        okhttp3.Call localVarCall = getCdsFlowConventionsValidateBeforeCall(scope, code, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GetCdsFlowConventionsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<GetCdsFlowConventionsResponse> getCdsFlowConventionsWithHttpInfo(String scope, String code, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getCdsFlowConventionsValidateBeforeCall(scope, code, asAt, null, opts);
         Type localVarReturnType = new TypeToken<GetCdsFlowConventionsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getCdsFlowConventionsAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<GetCdsFlowConventionsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getCdsFlowConventionsValidateBeforeCall(scope, code, asAt, _callback);
+        okhttp3.Call localVarCall = getCdsFlowConventionsValidateBeforeCall(scope, code, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GetCdsFlowConventionsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getCdsFlowConventionsAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<GetCdsFlowConventionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getCdsFlowConventionsValidateBeforeCall(scope, code, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<GetCdsFlowConventionsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -739,6 +962,23 @@ public class ConventionsApi {
         }
 
         /**
+         * Execute getCdsFlowConventions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return GetCdsFlowConventionsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved CDS Flow Conventions or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GetCdsFlowConventionsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<GetCdsFlowConventionsResponse> localVarResp = getCdsFlowConventionsWithHttpInfo(scope, code, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getCdsFlowConventions request with HTTP info returned
          * @return ApiResponse&lt;GetCdsFlowConventionsResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -752,6 +992,22 @@ public class ConventionsApi {
          */
         public ApiResponse<GetCdsFlowConventionsResponse> executeWithHttpInfo() throws ApiException {
             return getCdsFlowConventionsWithHttpInfo(scope, code, asAt);
+        }
+
+        /**
+         * Execute getCdsFlowConventions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;GetCdsFlowConventionsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved CDS Flow Conventions or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GetCdsFlowConventionsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getCdsFlowConventionsWithHttpInfo(scope, code, asAt, opts);
         }
 
         /**
@@ -769,6 +1025,23 @@ public class ConventionsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<GetCdsFlowConventionsResponse> _callback) throws ApiException {
             return getCdsFlowConventionsAsync(scope, code, asAt, _callback);
+        }
+
+        /**
+         * Execute getCdsFlowConventions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved CDS Flow Conventions or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GetCdsFlowConventionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return getCdsFlowConventionsAsync(scope, code, asAt, _callback, opts);
         }
     }
 
@@ -790,6 +1063,10 @@ public class ConventionsApi {
         return new APIgetCdsFlowConventionsRequest(scope, code);
     }
     private okhttp3.Call getFlowConventionsCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getFlowConventionsCall(scope, code, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getFlowConventionsCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -838,11 +1115,11 @@ public class ConventionsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getFlowConventionsValidateBeforeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getFlowConventionsValidateBeforeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getFlowConventions(Async)");
@@ -853,20 +1130,34 @@ public class ConventionsApi {
             throw new ApiException("Missing the required parameter 'code' when calling getFlowConventions(Async)");
         }
 
-        return getFlowConventionsCall(scope, code, asAt, _callback);
+        return getFlowConventionsCall(scope, code, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<GetFlowConventionsResponse> getFlowConventionsWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getFlowConventionsValidateBeforeCall(scope, code, asAt, null);
+        okhttp3.Call localVarCall = getFlowConventionsValidateBeforeCall(scope, code, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GetFlowConventionsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<GetFlowConventionsResponse> getFlowConventionsWithHttpInfo(String scope, String code, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getFlowConventionsValidateBeforeCall(scope, code, asAt, null, opts);
         Type localVarReturnType = new TypeToken<GetFlowConventionsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getFlowConventionsAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<GetFlowConventionsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getFlowConventionsValidateBeforeCall(scope, code, asAt, _callback);
+        okhttp3.Call localVarCall = getFlowConventionsValidateBeforeCall(scope, code, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GetFlowConventionsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getFlowConventionsAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<GetFlowConventionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getFlowConventionsValidateBeforeCall(scope, code, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<GetFlowConventionsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -927,6 +1218,23 @@ public class ConventionsApi {
         }
 
         /**
+         * Execute getFlowConventions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return GetFlowConventionsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Flow Conventions or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GetFlowConventionsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<GetFlowConventionsResponse> localVarResp = getFlowConventionsWithHttpInfo(scope, code, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getFlowConventions request with HTTP info returned
          * @return ApiResponse&lt;GetFlowConventionsResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -940,6 +1248,22 @@ public class ConventionsApi {
          */
         public ApiResponse<GetFlowConventionsResponse> executeWithHttpInfo() throws ApiException {
             return getFlowConventionsWithHttpInfo(scope, code, asAt);
+        }
+
+        /**
+         * Execute getFlowConventions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;GetFlowConventionsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Flow Conventions or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GetFlowConventionsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getFlowConventionsWithHttpInfo(scope, code, asAt, opts);
         }
 
         /**
@@ -957,6 +1281,23 @@ public class ConventionsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<GetFlowConventionsResponse> _callback) throws ApiException {
             return getFlowConventionsAsync(scope, code, asAt, _callback);
+        }
+
+        /**
+         * Execute getFlowConventions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Flow Conventions or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GetFlowConventionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return getFlowConventionsAsync(scope, code, asAt, _callback, opts);
         }
     }
 
@@ -978,6 +1319,10 @@ public class ConventionsApi {
         return new APIgetFlowConventionsRequest(scope, code);
     }
     private okhttp3.Call getIndexConventionCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getIndexConventionCall(scope, code, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getIndexConventionCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1026,11 +1371,11 @@ public class ConventionsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIndexConventionValidateBeforeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getIndexConventionValidateBeforeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getIndexConvention(Async)");
@@ -1041,20 +1386,34 @@ public class ConventionsApi {
             throw new ApiException("Missing the required parameter 'code' when calling getIndexConvention(Async)");
         }
 
-        return getIndexConventionCall(scope, code, asAt, _callback);
+        return getIndexConventionCall(scope, code, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<GetIndexConventionResponse> getIndexConventionWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getIndexConventionValidateBeforeCall(scope, code, asAt, null);
+        okhttp3.Call localVarCall = getIndexConventionValidateBeforeCall(scope, code, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GetIndexConventionResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<GetIndexConventionResponse> getIndexConventionWithHttpInfo(String scope, String code, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getIndexConventionValidateBeforeCall(scope, code, asAt, null, opts);
         Type localVarReturnType = new TypeToken<GetIndexConventionResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getIndexConventionAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<GetIndexConventionResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getIndexConventionValidateBeforeCall(scope, code, asAt, _callback);
+        okhttp3.Call localVarCall = getIndexConventionValidateBeforeCall(scope, code, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GetIndexConventionResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getIndexConventionAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<GetIndexConventionResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getIndexConventionValidateBeforeCall(scope, code, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<GetIndexConventionResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1115,6 +1474,23 @@ public class ConventionsApi {
         }
 
         /**
+         * Execute getIndexConvention request. Use any specified configuration options to override any other configuration for this request only.
+         * @return GetIndexConventionResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Index Convention or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GetIndexConventionResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<GetIndexConventionResponse> localVarResp = getIndexConventionWithHttpInfo(scope, code, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getIndexConvention request with HTTP info returned
          * @return ApiResponse&lt;GetIndexConventionResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1128,6 +1504,22 @@ public class ConventionsApi {
          */
         public ApiResponse<GetIndexConventionResponse> executeWithHttpInfo() throws ApiException {
             return getIndexConventionWithHttpInfo(scope, code, asAt);
+        }
+
+        /**
+         * Execute getIndexConvention request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;GetIndexConventionResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Index Convention or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GetIndexConventionResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getIndexConventionWithHttpInfo(scope, code, asAt, opts);
         }
 
         /**
@@ -1145,6 +1537,23 @@ public class ConventionsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<GetIndexConventionResponse> _callback) throws ApiException {
             return getIndexConventionAsync(scope, code, asAt, _callback);
+        }
+
+        /**
+         * Execute getIndexConvention request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Index Convention or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GetIndexConventionResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return getIndexConventionAsync(scope, code, asAt, _callback, opts);
         }
     }
 
@@ -1166,6 +1575,10 @@ public class ConventionsApi {
         return new APIgetIndexConventionRequest(scope, code);
     }
     private okhttp3.Call listCdsFlowConventionsCall(OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return listCdsFlowConventionsCall(asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listCdsFlowConventionsCall(OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1212,25 +1625,39 @@ public class ConventionsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listCdsFlowConventionsValidateBeforeCall(OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
-        return listCdsFlowConventionsCall(asAt, _callback);
+    private okhttp3.Call listCdsFlowConventionsValidateBeforeCall(OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listCdsFlowConventionsCall(asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfGetCdsFlowConventionsResponse> listCdsFlowConventionsWithHttpInfo(OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = listCdsFlowConventionsValidateBeforeCall(asAt, null);
+        okhttp3.Call localVarCall = listCdsFlowConventionsValidateBeforeCall(asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfGetCdsFlowConventionsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfGetCdsFlowConventionsResponse> listCdsFlowConventionsWithHttpInfo(OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listCdsFlowConventionsValidateBeforeCall(asAt, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfGetCdsFlowConventionsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listCdsFlowConventionsAsync(OffsetDateTime asAt, final ApiCallback<ResourceListOfGetCdsFlowConventionsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listCdsFlowConventionsValidateBeforeCall(asAt, _callback);
+        okhttp3.Call localVarCall = listCdsFlowConventionsValidateBeforeCall(asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfGetCdsFlowConventionsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listCdsFlowConventionsAsync(OffsetDateTime asAt, final ApiCallback<ResourceListOfGetCdsFlowConventionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listCdsFlowConventionsValidateBeforeCall(asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfGetCdsFlowConventionsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1287,6 +1714,23 @@ public class ConventionsApi {
         }
 
         /**
+         * Execute listCdsFlowConventions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfGetCdsFlowConventionsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested CDS Flow conventions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfGetCdsFlowConventionsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfGetCdsFlowConventionsResponse> localVarResp = listCdsFlowConventionsWithHttpInfo(asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listCdsFlowConventions request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfGetCdsFlowConventionsResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1300,6 +1744,22 @@ public class ConventionsApi {
          */
         public ApiResponse<ResourceListOfGetCdsFlowConventionsResponse> executeWithHttpInfo() throws ApiException {
             return listCdsFlowConventionsWithHttpInfo(asAt);
+        }
+
+        /**
+         * Execute listCdsFlowConventions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfGetCdsFlowConventionsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested CDS Flow conventions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfGetCdsFlowConventionsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listCdsFlowConventionsWithHttpInfo(asAt, opts);
         }
 
         /**
@@ -1317,6 +1777,23 @@ public class ConventionsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfGetCdsFlowConventionsResponse> _callback) throws ApiException {
             return listCdsFlowConventionsAsync(asAt, _callback);
+        }
+
+        /**
+         * Execute listCdsFlowConventions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested CDS Flow conventions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfGetCdsFlowConventionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return listCdsFlowConventionsAsync(asAt, _callback, opts);
         }
     }
 
@@ -1336,6 +1813,10 @@ public class ConventionsApi {
         return new APIlistCdsFlowConventionsRequest();
     }
     private okhttp3.Call listFlowConventionsCall(OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return listFlowConventionsCall(asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listFlowConventionsCall(OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1382,25 +1863,39 @@ public class ConventionsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listFlowConventionsValidateBeforeCall(OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
-        return listFlowConventionsCall(asAt, _callback);
+    private okhttp3.Call listFlowConventionsValidateBeforeCall(OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listFlowConventionsCall(asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfGetFlowConventionsResponse> listFlowConventionsWithHttpInfo(OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = listFlowConventionsValidateBeforeCall(asAt, null);
+        okhttp3.Call localVarCall = listFlowConventionsValidateBeforeCall(asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfGetFlowConventionsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfGetFlowConventionsResponse> listFlowConventionsWithHttpInfo(OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listFlowConventionsValidateBeforeCall(asAt, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfGetFlowConventionsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listFlowConventionsAsync(OffsetDateTime asAt, final ApiCallback<ResourceListOfGetFlowConventionsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listFlowConventionsValidateBeforeCall(asAt, _callback);
+        okhttp3.Call localVarCall = listFlowConventionsValidateBeforeCall(asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfGetFlowConventionsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listFlowConventionsAsync(OffsetDateTime asAt, final ApiCallback<ResourceListOfGetFlowConventionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listFlowConventionsValidateBeforeCall(asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfGetFlowConventionsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1457,6 +1952,23 @@ public class ConventionsApi {
         }
 
         /**
+         * Execute listFlowConventions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfGetFlowConventionsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Flow conventions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfGetFlowConventionsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfGetFlowConventionsResponse> localVarResp = listFlowConventionsWithHttpInfo(asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listFlowConventions request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfGetFlowConventionsResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1470,6 +1982,22 @@ public class ConventionsApi {
          */
         public ApiResponse<ResourceListOfGetFlowConventionsResponse> executeWithHttpInfo() throws ApiException {
             return listFlowConventionsWithHttpInfo(asAt);
+        }
+
+        /**
+         * Execute listFlowConventions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfGetFlowConventionsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Flow conventions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfGetFlowConventionsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listFlowConventionsWithHttpInfo(asAt, opts);
         }
 
         /**
@@ -1487,6 +2015,23 @@ public class ConventionsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfGetFlowConventionsResponse> _callback) throws ApiException {
             return listFlowConventionsAsync(asAt, _callback);
+        }
+
+        /**
+         * Execute listFlowConventions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Flow conventions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfGetFlowConventionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return listFlowConventionsAsync(asAt, _callback, opts);
         }
     }
 
@@ -1506,6 +2051,10 @@ public class ConventionsApi {
         return new APIlistFlowConventionsRequest();
     }
     private okhttp3.Call listIndexConventionCall(OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return listIndexConventionCall(asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listIndexConventionCall(OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1552,25 +2101,39 @@ public class ConventionsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listIndexConventionValidateBeforeCall(OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
-        return listIndexConventionCall(asAt, _callback);
+    private okhttp3.Call listIndexConventionValidateBeforeCall(OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listIndexConventionCall(asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfGetIndexConventionResponse> listIndexConventionWithHttpInfo(OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = listIndexConventionValidateBeforeCall(asAt, null);
+        okhttp3.Call localVarCall = listIndexConventionValidateBeforeCall(asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfGetIndexConventionResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfGetIndexConventionResponse> listIndexConventionWithHttpInfo(OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listIndexConventionValidateBeforeCall(asAt, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfGetIndexConventionResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listIndexConventionAsync(OffsetDateTime asAt, final ApiCallback<ResourceListOfGetIndexConventionResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listIndexConventionValidateBeforeCall(asAt, _callback);
+        okhttp3.Call localVarCall = listIndexConventionValidateBeforeCall(asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfGetIndexConventionResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listIndexConventionAsync(OffsetDateTime asAt, final ApiCallback<ResourceListOfGetIndexConventionResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listIndexConventionValidateBeforeCall(asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfGetIndexConventionResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1627,6 +2190,23 @@ public class ConventionsApi {
         }
 
         /**
+         * Execute listIndexConvention request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfGetIndexConventionResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Index conventions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfGetIndexConventionResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfGetIndexConventionResponse> localVarResp = listIndexConventionWithHttpInfo(asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listIndexConvention request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfGetIndexConventionResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1640,6 +2220,22 @@ public class ConventionsApi {
          */
         public ApiResponse<ResourceListOfGetIndexConventionResponse> executeWithHttpInfo() throws ApiException {
             return listIndexConventionWithHttpInfo(asAt);
+        }
+
+        /**
+         * Execute listIndexConvention request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfGetIndexConventionResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Index conventions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfGetIndexConventionResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listIndexConventionWithHttpInfo(asAt, opts);
         }
 
         /**
@@ -1657,6 +2253,23 @@ public class ConventionsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfGetIndexConventionResponse> _callback) throws ApiException {
             return listIndexConventionAsync(asAt, _callback);
+        }
+
+        /**
+         * Execute listIndexConvention request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Index conventions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfGetIndexConventionResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return listIndexConventionAsync(asAt, _callback, opts);
         }
     }
 
@@ -1676,6 +2289,10 @@ public class ConventionsApi {
         return new APIlistIndexConventionRequest();
     }
     private okhttp3.Call upsertCdsFlowConventionsCall(UpsertCdsFlowConventionsRequest upsertCdsFlowConventionsRequest, final ApiCallback _callback) throws ApiException {
+        return upsertCdsFlowConventionsCall(upsertCdsFlowConventionsRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertCdsFlowConventionsCall(UpsertCdsFlowConventionsRequest upsertCdsFlowConventionsRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1722,30 +2339,44 @@ public class ConventionsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertCdsFlowConventionsValidateBeforeCall(UpsertCdsFlowConventionsRequest upsertCdsFlowConventionsRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertCdsFlowConventionsValidateBeforeCall(UpsertCdsFlowConventionsRequest upsertCdsFlowConventionsRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'upsertCdsFlowConventionsRequest' is set
         if (upsertCdsFlowConventionsRequest == null) {
             throw new ApiException("Missing the required parameter 'upsertCdsFlowConventionsRequest' when calling upsertCdsFlowConventions(Async)");
         }
 
-        return upsertCdsFlowConventionsCall(upsertCdsFlowConventionsRequest, _callback);
+        return upsertCdsFlowConventionsCall(upsertCdsFlowConventionsRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<UpsertSingleStructuredDataResponse> upsertCdsFlowConventionsWithHttpInfo(UpsertCdsFlowConventionsRequest upsertCdsFlowConventionsRequest) throws ApiException {
-        okhttp3.Call localVarCall = upsertCdsFlowConventionsValidateBeforeCall(upsertCdsFlowConventionsRequest, null);
+        okhttp3.Call localVarCall = upsertCdsFlowConventionsValidateBeforeCall(upsertCdsFlowConventionsRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<UpsertSingleStructuredDataResponse> upsertCdsFlowConventionsWithHttpInfo(UpsertCdsFlowConventionsRequest upsertCdsFlowConventionsRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertCdsFlowConventionsValidateBeforeCall(upsertCdsFlowConventionsRequest, null, opts);
         Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertCdsFlowConventionsAsync(UpsertCdsFlowConventionsRequest upsertCdsFlowConventionsRequest, final ApiCallback<UpsertSingleStructuredDataResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertCdsFlowConventionsValidateBeforeCall(upsertCdsFlowConventionsRequest, _callback);
+        okhttp3.Call localVarCall = upsertCdsFlowConventionsValidateBeforeCall(upsertCdsFlowConventionsRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertCdsFlowConventionsAsync(UpsertCdsFlowConventionsRequest upsertCdsFlowConventionsRequest, final ApiCallback<UpsertSingleStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertCdsFlowConventionsValidateBeforeCall(upsertCdsFlowConventionsRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1793,6 +2424,23 @@ public class ConventionsApi {
         }
 
         /**
+         * Execute upsertCdsFlowConventions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return UpsertSingleStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertSingleStructuredDataResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<UpsertSingleStructuredDataResponse> localVarResp = upsertCdsFlowConventionsWithHttpInfo(upsertCdsFlowConventionsRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertCdsFlowConventions request with HTTP info returned
          * @return ApiResponse&lt;UpsertSingleStructuredDataResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1806,6 +2454,22 @@ public class ConventionsApi {
          */
         public ApiResponse<UpsertSingleStructuredDataResponse> executeWithHttpInfo() throws ApiException {
             return upsertCdsFlowConventionsWithHttpInfo(upsertCdsFlowConventionsRequest);
+        }
+
+        /**
+         * Execute upsertCdsFlowConventions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;UpsertSingleStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertSingleStructuredDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertCdsFlowConventionsWithHttpInfo(upsertCdsFlowConventionsRequest, opts);
         }
 
         /**
@@ -1823,6 +2487,23 @@ public class ConventionsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<UpsertSingleStructuredDataResponse> _callback) throws ApiException {
             return upsertCdsFlowConventionsAsync(upsertCdsFlowConventionsRequest, _callback);
+        }
+
+        /**
+         * Execute upsertCdsFlowConventions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertSingleStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertCdsFlowConventionsAsync(upsertCdsFlowConventionsRequest, _callback, opts);
         }
     }
 
@@ -1843,6 +2524,10 @@ public class ConventionsApi {
         return new APIupsertCdsFlowConventionsRequest(upsertCdsFlowConventionsRequest);
     }
     private okhttp3.Call upsertFlowConventionsCall(UpsertFlowConventionsRequest upsertFlowConventionsRequest, final ApiCallback _callback) throws ApiException {
+        return upsertFlowConventionsCall(upsertFlowConventionsRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertFlowConventionsCall(UpsertFlowConventionsRequest upsertFlowConventionsRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1889,30 +2574,44 @@ public class ConventionsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertFlowConventionsValidateBeforeCall(UpsertFlowConventionsRequest upsertFlowConventionsRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertFlowConventionsValidateBeforeCall(UpsertFlowConventionsRequest upsertFlowConventionsRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'upsertFlowConventionsRequest' is set
         if (upsertFlowConventionsRequest == null) {
             throw new ApiException("Missing the required parameter 'upsertFlowConventionsRequest' when calling upsertFlowConventions(Async)");
         }
 
-        return upsertFlowConventionsCall(upsertFlowConventionsRequest, _callback);
+        return upsertFlowConventionsCall(upsertFlowConventionsRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<UpsertSingleStructuredDataResponse> upsertFlowConventionsWithHttpInfo(UpsertFlowConventionsRequest upsertFlowConventionsRequest) throws ApiException {
-        okhttp3.Call localVarCall = upsertFlowConventionsValidateBeforeCall(upsertFlowConventionsRequest, null);
+        okhttp3.Call localVarCall = upsertFlowConventionsValidateBeforeCall(upsertFlowConventionsRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<UpsertSingleStructuredDataResponse> upsertFlowConventionsWithHttpInfo(UpsertFlowConventionsRequest upsertFlowConventionsRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertFlowConventionsValidateBeforeCall(upsertFlowConventionsRequest, null, opts);
         Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertFlowConventionsAsync(UpsertFlowConventionsRequest upsertFlowConventionsRequest, final ApiCallback<UpsertSingleStructuredDataResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertFlowConventionsValidateBeforeCall(upsertFlowConventionsRequest, _callback);
+        okhttp3.Call localVarCall = upsertFlowConventionsValidateBeforeCall(upsertFlowConventionsRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertFlowConventionsAsync(UpsertFlowConventionsRequest upsertFlowConventionsRequest, final ApiCallback<UpsertSingleStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertFlowConventionsValidateBeforeCall(upsertFlowConventionsRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1960,6 +2659,23 @@ public class ConventionsApi {
         }
 
         /**
+         * Execute upsertFlowConventions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return UpsertSingleStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertSingleStructuredDataResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<UpsertSingleStructuredDataResponse> localVarResp = upsertFlowConventionsWithHttpInfo(upsertFlowConventionsRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertFlowConventions request with HTTP info returned
          * @return ApiResponse&lt;UpsertSingleStructuredDataResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1973,6 +2689,22 @@ public class ConventionsApi {
          */
         public ApiResponse<UpsertSingleStructuredDataResponse> executeWithHttpInfo() throws ApiException {
             return upsertFlowConventionsWithHttpInfo(upsertFlowConventionsRequest);
+        }
+
+        /**
+         * Execute upsertFlowConventions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;UpsertSingleStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertSingleStructuredDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertFlowConventionsWithHttpInfo(upsertFlowConventionsRequest, opts);
         }
 
         /**
@@ -1990,6 +2722,23 @@ public class ConventionsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<UpsertSingleStructuredDataResponse> _callback) throws ApiException {
             return upsertFlowConventionsAsync(upsertFlowConventionsRequest, _callback);
+        }
+
+        /**
+         * Execute upsertFlowConventions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertSingleStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertFlowConventionsAsync(upsertFlowConventionsRequest, _callback, opts);
         }
     }
 
@@ -2010,6 +2759,10 @@ public class ConventionsApi {
         return new APIupsertFlowConventionsRequest(upsertFlowConventionsRequest);
     }
     private okhttp3.Call upsertIndexConventionCall(UpsertIndexConventionRequest upsertIndexConventionRequest, final ApiCallback _callback) throws ApiException {
+        return upsertIndexConventionCall(upsertIndexConventionRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertIndexConventionCall(UpsertIndexConventionRequest upsertIndexConventionRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2056,30 +2809,44 @@ public class ConventionsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertIndexConventionValidateBeforeCall(UpsertIndexConventionRequest upsertIndexConventionRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertIndexConventionValidateBeforeCall(UpsertIndexConventionRequest upsertIndexConventionRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'upsertIndexConventionRequest' is set
         if (upsertIndexConventionRequest == null) {
             throw new ApiException("Missing the required parameter 'upsertIndexConventionRequest' when calling upsertIndexConvention(Async)");
         }
 
-        return upsertIndexConventionCall(upsertIndexConventionRequest, _callback);
+        return upsertIndexConventionCall(upsertIndexConventionRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<UpsertSingleStructuredDataResponse> upsertIndexConventionWithHttpInfo(UpsertIndexConventionRequest upsertIndexConventionRequest) throws ApiException {
-        okhttp3.Call localVarCall = upsertIndexConventionValidateBeforeCall(upsertIndexConventionRequest, null);
+        okhttp3.Call localVarCall = upsertIndexConventionValidateBeforeCall(upsertIndexConventionRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<UpsertSingleStructuredDataResponse> upsertIndexConventionWithHttpInfo(UpsertIndexConventionRequest upsertIndexConventionRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertIndexConventionValidateBeforeCall(upsertIndexConventionRequest, null, opts);
         Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertIndexConventionAsync(UpsertIndexConventionRequest upsertIndexConventionRequest, final ApiCallback<UpsertSingleStructuredDataResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertIndexConventionValidateBeforeCall(upsertIndexConventionRequest, _callback);
+        okhttp3.Call localVarCall = upsertIndexConventionValidateBeforeCall(upsertIndexConventionRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertIndexConventionAsync(UpsertIndexConventionRequest upsertIndexConventionRequest, final ApiCallback<UpsertSingleStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertIndexConventionValidateBeforeCall(upsertIndexConventionRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2127,6 +2894,23 @@ public class ConventionsApi {
         }
 
         /**
+         * Execute upsertIndexConvention request. Use any specified configuration options to override any other configuration for this request only.
+         * @return UpsertSingleStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertSingleStructuredDataResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<UpsertSingleStructuredDataResponse> localVarResp = upsertIndexConventionWithHttpInfo(upsertIndexConventionRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertIndexConvention request with HTTP info returned
          * @return ApiResponse&lt;UpsertSingleStructuredDataResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2140,6 +2924,22 @@ public class ConventionsApi {
          */
         public ApiResponse<UpsertSingleStructuredDataResponse> executeWithHttpInfo() throws ApiException {
             return upsertIndexConventionWithHttpInfo(upsertIndexConventionRequest);
+        }
+
+        /**
+         * Execute upsertIndexConvention request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;UpsertSingleStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertSingleStructuredDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertIndexConventionWithHttpInfo(upsertIndexConventionRequest, opts);
         }
 
         /**
@@ -2157,6 +2957,23 @@ public class ConventionsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<UpsertSingleStructuredDataResponse> _callback) throws ApiException {
             return upsertIndexConventionAsync(upsertIndexConventionRequest, _callback);
+        }
+
+        /**
+         * Execute upsertIndexConvention request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertSingleStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertIndexConventionAsync(upsertIndexConventionRequest, _callback, opts);
         }
     }
 

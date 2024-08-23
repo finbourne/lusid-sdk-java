@@ -56,10 +56,21 @@ public class ConfigurationRecipeApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ConfigurationRecipeApi apiInstance = apiFactory.build(ConfigurationRecipeApi.class);
+
         ConfigurationRecipeApi apiInstance = ApiFactoryBuilder.build(fileName).build(ConfigurationRecipeApi.class);
         String scope = "scope_example"; // String | The scope of the Configuration Recipe to delete.
         String code = "code_example"; // String | The Configuration Recipe to delete.
         try {
+            // uncomment the below to set overrides at the request level
+            // AnnulSingleStructuredDataResponse result = apiInstance.deleteConfigurationRecipe(scope, code).execute(opts);
+
             AnnulSingleStructuredDataResponse result = apiInstance.deleteConfigurationRecipe(scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -138,10 +149,21 @@ public class ConfigurationRecipeApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ConfigurationRecipeApi apiInstance = apiFactory.build(ConfigurationRecipeApi.class);
+
         ConfigurationRecipeApi apiInstance = ApiFactoryBuilder.build(fileName).build(ConfigurationRecipeApi.class);
         String scope = "scope_example"; // String | The scope of the Recipe Composer to delete.
         String code = "code_example"; // String | The Recipe Composer to delete.
         try {
+            // uncomment the below to set overrides at the request level
+            // AnnulSingleStructuredDataResponse result = apiInstance.deleteRecipeComposer(scope, code).execute(opts);
+
             AnnulSingleStructuredDataResponse result = apiInstance.deleteRecipeComposer(scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -220,11 +242,22 @@ public class ConfigurationRecipeApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ConfigurationRecipeApi apiInstance = apiFactory.build(ConfigurationRecipeApi.class);
+
         ConfigurationRecipeApi apiInstance = ApiFactoryBuilder.build(fileName).build(ConfigurationRecipeApi.class);
         String scope = "scope_example"; // String | The scope of the Configuration Recipe to retrieve.
         String code = "code_example"; // String | The name of the recipe to retrieve the data for.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Configuration Recipe. Defaults to return the latest version if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // GetRecipeResponse result = apiInstance.getConfigurationRecipe(scope, code, asAt).execute(opts);
+
             GetRecipeResponse result = apiInstance.getConfigurationRecipe(scope, code, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -304,11 +337,22 @@ public class ConfigurationRecipeApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ConfigurationRecipeApi apiInstance = apiFactory.build(ConfigurationRecipeApi.class);
+
         ConfigurationRecipeApi apiInstance = ApiFactoryBuilder.build(fileName).build(ConfigurationRecipeApi.class);
         String scope = "scope_example"; // String | The scope of the Configuration Recipe or Recipe Composer to return.
         String code = "code_example"; // String | The code of the Configuration Recipe or Recipe Composer to return.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Configuration Recipe. Defaults to return the latest version if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // GetRecipeResponse result = apiInstance.getDerivedRecipe(scope, code, asAt).execute(opts);
+
             GetRecipeResponse result = apiInstance.getDerivedRecipe(scope, code, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -388,11 +432,22 @@ public class ConfigurationRecipeApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ConfigurationRecipeApi apiInstance = apiFactory.build(ConfigurationRecipeApi.class);
+
         ConfigurationRecipeApi apiInstance = ApiFactoryBuilder.build(fileName).build(ConfigurationRecipeApi.class);
         String scope = "scope_example"; // String | The scope of the Recipe Composer to retrieve.
         String code = "code_example"; // String | The name of the Recipe Composer to retrieve the data for.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Recipe Composer. Defaults to return the latest version if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // GetRecipeComposerResponse result = apiInstance.getRecipeComposer(scope, code, asAt).execute(opts);
+
             GetRecipeComposerResponse result = apiInstance.getRecipeComposer(scope, code, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -472,9 +527,20 @@ public class ConfigurationRecipeApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ConfigurationRecipeApi apiInstance = apiFactory.build(ConfigurationRecipeApi.class);
+
         ConfigurationRecipeApi apiInstance = ApiFactoryBuilder.build(fileName).build(ConfigurationRecipeApi.class);
         UpsertRecipeComposerRequest upsertRecipeComposerRequest = new UpsertRecipeComposerRequest(); // UpsertRecipeComposerRequest | Recipe composer used to expand into the Configuration Recipe.
         try {
+            // uncomment the below to set overrides at the request level
+            // GetRecipeResponse result = apiInstance.getRecipeComposerResolvedInline(upsertRecipeComposerRequest).execute(opts);
+
             GetRecipeResponse result = apiInstance.getRecipeComposerResolvedInline(upsertRecipeComposerRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -552,10 +618,21 @@ public class ConfigurationRecipeApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ConfigurationRecipeApi apiInstance = apiFactory.build(ConfigurationRecipeApi.class);
+
         ConfigurationRecipeApi apiInstance = ApiFactoryBuilder.build(fileName).build(ConfigurationRecipeApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the Configuration Recipes. Defaults to latest if not specified.
         String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfGetRecipeResponse result = apiInstance.listConfigurationRecipes(asAt, filter).execute(opts);
+
             ResourceListOfGetRecipeResponse result = apiInstance.listConfigurationRecipes(asAt, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -634,10 +711,21 @@ public class ConfigurationRecipeApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ConfigurationRecipeApi apiInstance = apiFactory.build(ConfigurationRecipeApi.class);
+
         ConfigurationRecipeApi apiInstance = ApiFactoryBuilder.build(fileName).build(ConfigurationRecipeApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the Configuration Recipes. Defaults to latest if not specified.
         String filter = "filter_example"; // String | Expression to filter the result set, note this functionality is not yet enabled for this endpoint.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfGetRecipeResponse result = apiInstance.listDerivedRecipes(asAt, filter).execute(opts);
+
             ResourceListOfGetRecipeResponse result = apiInstance.listDerivedRecipes(asAt, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -716,10 +804,21 @@ public class ConfigurationRecipeApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ConfigurationRecipeApi apiInstance = apiFactory.build(ConfigurationRecipeApi.class);
+
         ConfigurationRecipeApi apiInstance = ApiFactoryBuilder.build(fileName).build(ConfigurationRecipeApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the Recipes Composers. Defaults to latest if not specified.
         String filter = "filter_example"; // String | Expression to filter the result set, note this functionality is not yet enabled for this endpoint.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfGetRecipeComposerResponse result = apiInstance.listRecipeComposers(asAt, filter).execute(opts);
+
             ResourceListOfGetRecipeComposerResponse result = apiInstance.listRecipeComposers(asAt, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -798,9 +897,20 @@ public class ConfigurationRecipeApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ConfigurationRecipeApi apiInstance = apiFactory.build(ConfigurationRecipeApi.class);
+
         ConfigurationRecipeApi apiInstance = ApiFactoryBuilder.build(fileName).build(ConfigurationRecipeApi.class);
         UpsertRecipeRequest upsertRecipeRequest = new UpsertRecipeRequest(); // UpsertRecipeRequest | The Configuration Recipe to update or insert
         try {
+            // uncomment the below to set overrides at the request level
+            // UpsertSingleStructuredDataResponse result = apiInstance.upsertConfigurationRecipe(upsertRecipeRequest).execute(opts);
+
             UpsertSingleStructuredDataResponse result = apiInstance.upsertConfigurationRecipe(upsertRecipeRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -878,9 +988,20 @@ public class ConfigurationRecipeApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ConfigurationRecipeApi apiInstance = apiFactory.build(ConfigurationRecipeApi.class);
+
         ConfigurationRecipeApi apiInstance = ApiFactoryBuilder.build(fileName).build(ConfigurationRecipeApi.class);
         UpsertRecipeComposerRequest upsertRecipeComposerRequest = new UpsertRecipeComposerRequest(); // UpsertRecipeComposerRequest | The Recipe Composer to update or insert
         try {
+            // uncomment the below to set overrides at the request level
+            // UpsertSingleStructuredDataResponse result = apiInstance.upsertRecipeComposer(upsertRecipeComposerRequest).execute(opts);
+
             UpsertSingleStructuredDataResponse result = apiInstance.upsertRecipeComposer(upsertRecipeComposerRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

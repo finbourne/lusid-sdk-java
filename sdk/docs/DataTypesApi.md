@@ -53,9 +53,20 @@ public class DataTypesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // DataTypesApi apiInstance = apiFactory.build(DataTypesApi.class);
+
         DataTypesApi apiInstance = ApiFactoryBuilder.build(fileName).build(DataTypesApi.class);
         CreateDataTypeRequest createDataTypeRequest = new CreateDataTypeRequest(); // CreateDataTypeRequest | The definition of the new data type
         try {
+            // uncomment the below to set overrides at the request level
+            // DataType result = apiInstance.createDataType(createDataTypeRequest).execute(opts);
+
             DataType result = apiInstance.createDataType(createDataTypeRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -133,10 +144,21 @@ public class DataTypesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // DataTypesApi apiInstance = apiFactory.build(DataTypesApi.class);
+
         DataTypesApi apiInstance = ApiFactoryBuilder.build(fileName).build(DataTypesApi.class);
         String scope = "scope_example"; // String | The scope of the data type
         String code = "code_example"; // String | The code of the data type
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteDataType(scope, code).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteDataType(scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -215,11 +237,22 @@ public class DataTypesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // DataTypesApi apiInstance = apiFactory.build(DataTypesApi.class);
+
         DataTypesApi apiInstance = ApiFactoryBuilder.build(fileName).build(DataTypesApi.class);
         String scope = "scope_example"; // String | The scope of the data type
         String code = "code_example"; // String | The code of the data type
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the data type definition. Defaults to   return the latest version of the instrument definition if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // DataType result = apiInstance.getDataType(scope, code, asAt).execute(opts);
+
             DataType result = apiInstance.getDataType(scope, code, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -299,6 +332,14 @@ public class DataTypesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // DataTypesApi apiInstance = apiFactory.build(DataTypesApi.class);
+
         DataTypesApi apiInstance = ApiFactoryBuilder.build(fileName).build(DataTypesApi.class);
         String scope = "scope_example"; // String | The scope of the data type
         String code = "code_example"; // String | The code of the data type
@@ -306,6 +347,9 @@ public class DataTypesApiExample {
         String filter = "filter_example"; // String | Optional. Expression to filter the result set.    For example, to filter on the Schema, use \"schema eq 'string'\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. The as at of the requested data type
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfIUnitDefinitionDto result = apiInstance.getUnitsFromDataType(scope, code, units, filter, asAt).execute(opts);
+
             ResourceListOfIUnitDefinitionDto result = apiInstance.getUnitsFromDataType(scope, code, units, filter, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -387,6 +431,14 @@ public class DataTypesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // DataTypesApi apiInstance = apiFactory.build(DataTypesApi.class);
+
         DataTypesApi apiInstance = ApiFactoryBuilder.build(fileName).build(DataTypesApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the data type summaries. Defaults to returning the latest version   of each summary if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing data type summaries. This  value is returned from the previous call. If a pagination token is provided, the filter, sortBy  and asAt fields must not have changed since the original request.
@@ -394,6 +446,9 @@ public class DataTypesApiExample {
         String filter = "filter_example"; // String | Optional. Expression to filter the result set.    For example, to filter on the Scope, use \"id.scope eq 'myscope'\", to filter on Schema, use \"schema eq 'string'\",   to filter on AcceptableValues use \"acceptableValues any (~ eq 'value')\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names to sort by, each suffixed by \" ASC\" or \" DESC\"
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfDataTypeSummary result = apiInstance.listDataTypeSummaries(asAt, page, limit, filter, sortBy).execute(opts);
+
             PagedResourceListOfDataTypeSummary result = apiInstance.listDataTypeSummaries(asAt, page, limit, filter, sortBy).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -475,6 +530,14 @@ public class DataTypesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // DataTypesApi apiInstance = apiFactory.build(DataTypesApi.class);
+
         DataTypesApi apiInstance = ApiFactoryBuilder.build(fileName).build(DataTypesApi.class);
         String scope = "scope_example"; // String | The requested scope of the data types
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The as at of the requested data types
@@ -483,6 +546,9 @@ public class DataTypesApiExample {
         Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
         String filter = "filter_example"; // String | Optional. Expression to filter the result set.   For example, to filter on the Display Name, use \"displayName eq 'string'\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfDataType result = apiInstance.listDataTypes(scope, asAt, includeSystem, sortBy, limit, filter).execute(opts);
+
             ResourceListOfDataType result = apiInstance.listDataTypes(scope, asAt, includeSystem, sortBy, limit, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -565,11 +631,22 @@ public class DataTypesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // DataTypesApi apiInstance = apiFactory.build(DataTypesApi.class);
+
         DataTypesApi apiInstance = ApiFactoryBuilder.build(fileName).build(DataTypesApi.class);
         String scope = "scope_example"; // String | The scope of the data type
         String code = "code_example"; // String | The code of the data type
         UpdateDataTypeRequest updateDataTypeRequest = new UpdateDataTypeRequest(); // UpdateDataTypeRequest | The updated definition of the data type
         try {
+            // uncomment the below to set overrides at the request level
+            // DataType result = apiInstance.updateDataType(scope, code, updateDataTypeRequest).execute(opts);
+
             DataType result = apiInstance.updateDataType(scope, code, updateDataTypeRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -649,11 +726,22 @@ public class DataTypesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // DataTypesApi apiInstance = apiFactory.build(DataTypesApi.class);
+
         DataTypesApi apiInstance = ApiFactoryBuilder.build(fileName).build(DataTypesApi.class);
         String scope = "scope_example"; // String | The scope of the data type
         String code = "code_example"; // String | The code of the data type
         List<FieldValue> fieldValue = Arrays.asList(); // List<FieldValue> | The updated reference values
         try {
+            // uncomment the below to set overrides at the request level
+            // DataType result = apiInstance.updateReferenceValues(scope, code, fieldValue).execute(opts);
+
             DataType result = apiInstance.updateReferenceValues(scope, code, fieldValue).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

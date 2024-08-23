@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -102,6 +103,10 @@ public class PortfoliosApi {
     }
 
     private okhttp3.Call deleteInstrumentEventInstructionCall(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, final ApiCallback _callback) throws ApiException {
+        return deleteInstrumentEventInstructionCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteInstrumentEventInstructionCall(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -151,11 +156,11 @@ public class PortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteInstrumentEventInstructionValidateBeforeCall(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteInstrumentEventInstructionValidateBeforeCall(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteInstrumentEventInstruction(Async)");
@@ -171,20 +176,34 @@ public class PortfoliosApi {
             throw new ApiException("Missing the required parameter 'instrumentEventInstructionId' when calling deleteInstrumentEventInstruction(Async)");
         }
 
-        return deleteInstrumentEventInstructionCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, _callback);
+        return deleteInstrumentEventInstructionCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deleteInstrumentEventInstructionWithHttpInfo(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt) throws ApiException {
-        okhttp3.Call localVarCall = deleteInstrumentEventInstructionValidateBeforeCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, null);
+        okhttp3.Call localVarCall = deleteInstrumentEventInstructionValidateBeforeCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteInstrumentEventInstructionWithHttpInfo(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteInstrumentEventInstructionValidateBeforeCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteInstrumentEventInstructionAsync(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteInstrumentEventInstructionValidateBeforeCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, _callback);
+        okhttp3.Call localVarCall = deleteInstrumentEventInstructionValidateBeforeCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteInstrumentEventInstructionAsync(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteInstrumentEventInstructionValidateBeforeCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -247,6 +266,23 @@ public class PortfoliosApi {
         }
 
         /**
+         * Execute deleteInstrumentEventInstruction request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the instruction was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteInstrumentEventInstructionWithHttpInfo(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteInstrumentEventInstruction request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -260,6 +296,22 @@ public class PortfoliosApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deleteInstrumentEventInstructionWithHttpInfo(scope, code, instrumentEventInstructionId, portfolioEffectiveAt);
+        }
+
+        /**
+         * Execute deleteInstrumentEventInstruction request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the instruction was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteInstrumentEventInstructionWithHttpInfo(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, opts);
         }
 
         /**
@@ -277,6 +329,23 @@ public class PortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deleteInstrumentEventInstructionAsync(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, _callback);
+        }
+
+        /**
+         * Execute deleteInstrumentEventInstruction request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the instruction was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteInstrumentEventInstructionAsync(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, _callback, opts);
         }
     }
 
@@ -299,6 +368,10 @@ public class PortfoliosApi {
         return new APIdeleteInstrumentEventInstructionRequest(scope, code, instrumentEventInstructionId);
     }
     private okhttp3.Call deleteKeyFromPortfolioAccessMetadataCall(String scope, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+        return deleteKeyFromPortfolioAccessMetadataCall(scope, code, metadataKey, effectiveAt, effectiveUntil,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteKeyFromPortfolioAccessMetadataCall(String scope, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -352,11 +425,11 @@ public class PortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteKeyFromPortfolioAccessMetadataValidateBeforeCall(String scope, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteKeyFromPortfolioAccessMetadataValidateBeforeCall(String scope, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteKeyFromPortfolioAccessMetadata(Async)");
@@ -372,20 +445,34 @@ public class PortfoliosApi {
             throw new ApiException("Missing the required parameter 'metadataKey' when calling deleteKeyFromPortfolioAccessMetadata(Async)");
         }
 
-        return deleteKeyFromPortfolioAccessMetadataCall(scope, code, metadataKey, effectiveAt, effectiveUntil, _callback);
+        return deleteKeyFromPortfolioAccessMetadataCall(scope, code, metadataKey, effectiveAt, effectiveUntil, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deleteKeyFromPortfolioAccessMetadataWithHttpInfo(String scope, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
-        okhttp3.Call localVarCall = deleteKeyFromPortfolioAccessMetadataValidateBeforeCall(scope, code, metadataKey, effectiveAt, effectiveUntil, null);
+        okhttp3.Call localVarCall = deleteKeyFromPortfolioAccessMetadataValidateBeforeCall(scope, code, metadataKey, effectiveAt, effectiveUntil, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteKeyFromPortfolioAccessMetadataWithHttpInfo(String scope, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteKeyFromPortfolioAccessMetadataValidateBeforeCall(scope, code, metadataKey, effectiveAt, effectiveUntil, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteKeyFromPortfolioAccessMetadataAsync(String scope, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteKeyFromPortfolioAccessMetadataValidateBeforeCall(scope, code, metadataKey, effectiveAt, effectiveUntil, _callback);
+        okhttp3.Call localVarCall = deleteKeyFromPortfolioAccessMetadataValidateBeforeCall(scope, code, metadataKey, effectiveAt, effectiveUntil, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteKeyFromPortfolioAccessMetadataAsync(String scope, String code, String metadataKey, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteKeyFromPortfolioAccessMetadataValidateBeforeCall(scope, code, metadataKey, effectiveAt, effectiveUntil, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -459,6 +546,23 @@ public class PortfoliosApi {
         }
 
         /**
+         * Execute deleteKeyFromPortfolioAccessMetadata request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rule that has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteKeyFromPortfolioAccessMetadataWithHttpInfo(scope, code, metadataKey, effectiveAt, effectiveUntil, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteKeyFromPortfolioAccessMetadata request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -472,6 +576,22 @@ public class PortfoliosApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deleteKeyFromPortfolioAccessMetadataWithHttpInfo(scope, code, metadataKey, effectiveAt, effectiveUntil);
+        }
+
+        /**
+         * Execute deleteKeyFromPortfolioAccessMetadata request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rule that has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteKeyFromPortfolioAccessMetadataWithHttpInfo(scope, code, metadataKey, effectiveAt, effectiveUntil, opts);
         }
 
         /**
@@ -489,6 +609,23 @@ public class PortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deleteKeyFromPortfolioAccessMetadataAsync(scope, code, metadataKey, effectiveAt, effectiveUntil, _callback);
+        }
+
+        /**
+         * Execute deleteKeyFromPortfolioAccessMetadata request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rule that has been deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteKeyFromPortfolioAccessMetadataAsync(scope, code, metadataKey, effectiveAt, effectiveUntil, _callback, opts);
         }
     }
 
@@ -511,6 +648,10 @@ public class PortfoliosApi {
         return new APIdeleteKeyFromPortfolioAccessMetadataRequest(scope, code, metadataKey);
     }
     private okhttp3.Call deletePortfolioCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+        return deletePortfolioCall(scope, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deletePortfolioCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -555,11 +696,11 @@ public class PortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deletePortfolioValidateBeforeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deletePortfolioValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deletePortfolio(Async)");
@@ -570,20 +711,34 @@ public class PortfoliosApi {
             throw new ApiException("Missing the required parameter 'code' when calling deletePortfolio(Async)");
         }
 
-        return deletePortfolioCall(scope, code, _callback);
+        return deletePortfolioCall(scope, code, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deletePortfolioWithHttpInfo(String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = deletePortfolioValidateBeforeCall(scope, code, null);
+        okhttp3.Call localVarCall = deletePortfolioValidateBeforeCall(scope, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deletePortfolioWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deletePortfolioValidateBeforeCall(scope, code, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deletePortfolioAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deletePortfolioValidateBeforeCall(scope, code, _callback);
+        okhttp3.Call localVarCall = deletePortfolioValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deletePortfolioAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deletePortfolioValidateBeforeCall(scope, code, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -633,6 +788,23 @@ public class PortfoliosApi {
         }
 
         /**
+         * Execute deletePortfolio request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the portfolio was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deletePortfolioWithHttpInfo(scope, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deletePortfolio request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -646,6 +818,22 @@ public class PortfoliosApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deletePortfolioWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deletePortfolio request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the portfolio was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deletePortfolioWithHttpInfo(scope, code, opts);
         }
 
         /**
@@ -663,6 +851,23 @@ public class PortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deletePortfolioAsync(scope, code, _callback);
+        }
+
+        /**
+         * Execute deletePortfolio request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the portfolio was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deletePortfolioAsync(scope, code, _callback, opts);
         }
     }
 
@@ -684,6 +889,10 @@ public class PortfoliosApi {
         return new APIdeletePortfolioRequest(scope, code);
     }
     private okhttp3.Call deletePortfolioPropertiesCall(String scope, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback _callback) throws ApiException {
+        return deletePortfolioPropertiesCall(scope, code, propertyKeys, effectiveAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deletePortfolioPropertiesCall(String scope, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -736,11 +945,11 @@ public class PortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deletePortfolioPropertiesValidateBeforeCall(String scope, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deletePortfolioPropertiesValidateBeforeCall(String scope, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deletePortfolioProperties(Async)");
@@ -756,20 +965,34 @@ public class PortfoliosApi {
             throw new ApiException("Missing the required parameter 'propertyKeys' when calling deletePortfolioProperties(Async)");
         }
 
-        return deletePortfolioPropertiesCall(scope, code, propertyKeys, effectiveAt, _callback);
+        return deletePortfolioPropertiesCall(scope, code, propertyKeys, effectiveAt, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deletePortfolioPropertiesWithHttpInfo(String scope, String code, List<String> propertyKeys, String effectiveAt) throws ApiException {
-        okhttp3.Call localVarCall = deletePortfolioPropertiesValidateBeforeCall(scope, code, propertyKeys, effectiveAt, null);
+        okhttp3.Call localVarCall = deletePortfolioPropertiesValidateBeforeCall(scope, code, propertyKeys, effectiveAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deletePortfolioPropertiesWithHttpInfo(String scope, String code, List<String> propertyKeys, String effectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deletePortfolioPropertiesValidateBeforeCall(scope, code, propertyKeys, effectiveAt, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deletePortfolioPropertiesAsync(String scope, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deletePortfolioPropertiesValidateBeforeCall(scope, code, propertyKeys, effectiveAt, _callback);
+        okhttp3.Call localVarCall = deletePortfolioPropertiesValidateBeforeCall(scope, code, propertyKeys, effectiveAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deletePortfolioPropertiesAsync(String scope, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deletePortfolioPropertiesValidateBeforeCall(scope, code, propertyKeys, effectiveAt, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -832,6 +1055,23 @@ public class PortfoliosApi {
         }
 
         /**
+         * Execute deletePortfolioProperties request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deletePortfolioPropertiesWithHttpInfo(scope, code, propertyKeys, effectiveAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deletePortfolioProperties request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -845,6 +1085,22 @@ public class PortfoliosApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deletePortfolioPropertiesWithHttpInfo(scope, code, propertyKeys, effectiveAt);
+        }
+
+        /**
+         * Execute deletePortfolioProperties request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deletePortfolioPropertiesWithHttpInfo(scope, code, propertyKeys, effectiveAt, opts);
         }
 
         /**
@@ -862,6 +1118,23 @@ public class PortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deletePortfolioPropertiesAsync(scope, code, propertyKeys, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute deletePortfolioProperties request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the properties were deleted from the specified portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deletePortfolioPropertiesAsync(scope, code, propertyKeys, effectiveAt, _callback, opts);
         }
     }
 
@@ -884,6 +1157,10 @@ public class PortfoliosApi {
         return new APIdeletePortfolioPropertiesRequest(scope, code, propertyKeys);
     }
     private okhttp3.Call deletePortfolioReturnsCall(String scope, String code, String returnScope, String returnCode, String fromEffectiveAt, String toEffectiveAt, String period, final ApiCallback _callback) throws ApiException {
+        return deletePortfolioReturnsCall(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deletePortfolioReturnsCall(String scope, String code, String returnScope, String returnCode, String fromEffectiveAt, String toEffectiveAt, String period, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -942,11 +1219,11 @@ public class PortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deletePortfolioReturnsValidateBeforeCall(String scope, String code, String returnScope, String returnCode, String fromEffectiveAt, String toEffectiveAt, String period, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deletePortfolioReturnsValidateBeforeCall(String scope, String code, String returnScope, String returnCode, String fromEffectiveAt, String toEffectiveAt, String period, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deletePortfolioReturns(Async)");
@@ -977,20 +1254,34 @@ public class PortfoliosApi {
             throw new ApiException("Missing the required parameter 'toEffectiveAt' when calling deletePortfolioReturns(Async)");
         }
 
-        return deletePortfolioReturnsCall(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, _callback);
+        return deletePortfolioReturnsCall(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deletePortfolioReturnsWithHttpInfo(String scope, String code, String returnScope, String returnCode, String fromEffectiveAt, String toEffectiveAt, String period) throws ApiException {
-        okhttp3.Call localVarCall = deletePortfolioReturnsValidateBeforeCall(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, null);
+        okhttp3.Call localVarCall = deletePortfolioReturnsValidateBeforeCall(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deletePortfolioReturnsWithHttpInfo(String scope, String code, String returnScope, String returnCode, String fromEffectiveAt, String toEffectiveAt, String period, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deletePortfolioReturnsValidateBeforeCall(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deletePortfolioReturnsAsync(String scope, String code, String returnScope, String returnCode, String fromEffectiveAt, String toEffectiveAt, String period, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deletePortfolioReturnsValidateBeforeCall(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, _callback);
+        okhttp3.Call localVarCall = deletePortfolioReturnsValidateBeforeCall(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deletePortfolioReturnsAsync(String scope, String code, String returnScope, String returnCode, String fromEffectiveAt, String toEffectiveAt, String period, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deletePortfolioReturnsValidateBeforeCall(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1059,6 +1350,23 @@ public class PortfoliosApi {
         }
 
         /**
+         * Execute deletePortfolioReturns request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted Returns data along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deletePortfolioReturnsWithHttpInfo(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deletePortfolioReturns request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1072,6 +1380,22 @@ public class PortfoliosApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deletePortfolioReturnsWithHttpInfo(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period);
+        }
+
+        /**
+         * Execute deletePortfolioReturns request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted Returns data along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deletePortfolioReturnsWithHttpInfo(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, opts);
         }
 
         /**
@@ -1089,6 +1413,23 @@ public class PortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deletePortfolioReturnsAsync(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, _callback);
+        }
+
+        /**
+         * Execute deletePortfolioReturns request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted Returns data along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deletePortfolioReturnsAsync(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, _callback, opts);
         }
     }
 
@@ -1114,6 +1455,10 @@ public class PortfoliosApi {
         return new APIdeletePortfolioReturnsRequest(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt);
     }
     private okhttp3.Call getAggregatedReturnsDispersionMetricsCall(String scope, String code, AggregatedReturnsDispersionRequest aggregatedReturnsDispersionRequest, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getAggregatedReturnsDispersionMetricsCall(scope, code, aggregatedReturnsDispersionRequest, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getAggregatedReturnsDispersionMetricsCall(String scope, String code, AggregatedReturnsDispersionRequest aggregatedReturnsDispersionRequest, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1166,11 +1511,11 @@ public class PortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAggregatedReturnsDispersionMetricsValidateBeforeCall(String scope, String code, AggregatedReturnsDispersionRequest aggregatedReturnsDispersionRequest, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAggregatedReturnsDispersionMetricsValidateBeforeCall(String scope, String code, AggregatedReturnsDispersionRequest aggregatedReturnsDispersionRequest, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getAggregatedReturnsDispersionMetrics(Async)");
@@ -1186,20 +1531,34 @@ public class PortfoliosApi {
             throw new ApiException("Missing the required parameter 'aggregatedReturnsDispersionRequest' when calling getAggregatedReturnsDispersionMetrics(Async)");
         }
 
-        return getAggregatedReturnsDispersionMetricsCall(scope, code, aggregatedReturnsDispersionRequest, asAt, _callback);
+        return getAggregatedReturnsDispersionMetricsCall(scope, code, aggregatedReturnsDispersionRequest, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<CompositeDispersionResponse> getAggregatedReturnsDispersionMetricsWithHttpInfo(String scope, String code, AggregatedReturnsDispersionRequest aggregatedReturnsDispersionRequest, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getAggregatedReturnsDispersionMetricsValidateBeforeCall(scope, code, aggregatedReturnsDispersionRequest, asAt, null);
+        okhttp3.Call localVarCall = getAggregatedReturnsDispersionMetricsValidateBeforeCall(scope, code, aggregatedReturnsDispersionRequest, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CompositeDispersionResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<CompositeDispersionResponse> getAggregatedReturnsDispersionMetricsWithHttpInfo(String scope, String code, AggregatedReturnsDispersionRequest aggregatedReturnsDispersionRequest, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getAggregatedReturnsDispersionMetricsValidateBeforeCall(scope, code, aggregatedReturnsDispersionRequest, asAt, null, opts);
         Type localVarReturnType = new TypeToken<CompositeDispersionResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getAggregatedReturnsDispersionMetricsAsync(String scope, String code, AggregatedReturnsDispersionRequest aggregatedReturnsDispersionRequest, OffsetDateTime asAt, final ApiCallback<CompositeDispersionResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAggregatedReturnsDispersionMetricsValidateBeforeCall(scope, code, aggregatedReturnsDispersionRequest, asAt, _callback);
+        okhttp3.Call localVarCall = getAggregatedReturnsDispersionMetricsValidateBeforeCall(scope, code, aggregatedReturnsDispersionRequest, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CompositeDispersionResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getAggregatedReturnsDispersionMetricsAsync(String scope, String code, AggregatedReturnsDispersionRequest aggregatedReturnsDispersionRequest, OffsetDateTime asAt, final ApiCallback<CompositeDispersionResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getAggregatedReturnsDispersionMetricsValidateBeforeCall(scope, code, aggregatedReturnsDispersionRequest, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<CompositeDispersionResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1262,6 +1621,23 @@ public class PortfoliosApi {
         }
 
         /**
+         * Execute getAggregatedReturnsDispersionMetrics request. Use any specified configuration options to override any other configuration for this request only.
+         * @return CompositeDispersionResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns grouped by return stream. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CompositeDispersionResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<CompositeDispersionResponse> localVarResp = getAggregatedReturnsDispersionMetricsWithHttpInfo(scope, code, aggregatedReturnsDispersionRequest, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getAggregatedReturnsDispersionMetrics request with HTTP info returned
          * @return ApiResponse&lt;CompositeDispersionResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1275,6 +1651,22 @@ public class PortfoliosApi {
          */
         public ApiResponse<CompositeDispersionResponse> executeWithHttpInfo() throws ApiException {
             return getAggregatedReturnsDispersionMetricsWithHttpInfo(scope, code, aggregatedReturnsDispersionRequest, asAt);
+        }
+
+        /**
+         * Execute getAggregatedReturnsDispersionMetrics request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;CompositeDispersionResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns grouped by return stream. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CompositeDispersionResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getAggregatedReturnsDispersionMetricsWithHttpInfo(scope, code, aggregatedReturnsDispersionRequest, asAt, opts);
         }
 
         /**
@@ -1292,6 +1684,23 @@ public class PortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<CompositeDispersionResponse> _callback) throws ApiException {
             return getAggregatedReturnsDispersionMetricsAsync(scope, code, aggregatedReturnsDispersionRequest, asAt, _callback);
+        }
+
+        /**
+         * Execute getAggregatedReturnsDispersionMetrics request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns grouped by return stream. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CompositeDispersionResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return getAggregatedReturnsDispersionMetricsAsync(scope, code, aggregatedReturnsDispersionRequest, asAt, _callback, opts);
         }
     }
 
@@ -1314,6 +1723,10 @@ public class PortfoliosApi {
         return new APIgetAggregatedReturnsDispersionMetricsRequest(scope, code, aggregatedReturnsDispersionRequest);
     }
     private okhttp3.Call getCompositeBreakdownCall(String scope, String code, CompositeBreakdownRequest compositeBreakdownRequest, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getCompositeBreakdownCall(scope, code, compositeBreakdownRequest, fromEffectiveAt, toEffectiveAt, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getCompositeBreakdownCall(String scope, String code, CompositeBreakdownRequest compositeBreakdownRequest, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1374,11 +1787,11 @@ public class PortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCompositeBreakdownValidateBeforeCall(String scope, String code, CompositeBreakdownRequest compositeBreakdownRequest, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCompositeBreakdownValidateBeforeCall(String scope, String code, CompositeBreakdownRequest compositeBreakdownRequest, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getCompositeBreakdown(Async)");
@@ -1394,20 +1807,34 @@ public class PortfoliosApi {
             throw new ApiException("Missing the required parameter 'compositeBreakdownRequest' when calling getCompositeBreakdown(Async)");
         }
 
-        return getCompositeBreakdownCall(scope, code, compositeBreakdownRequest, fromEffectiveAt, toEffectiveAt, asAt, _callback);
+        return getCompositeBreakdownCall(scope, code, compositeBreakdownRequest, fromEffectiveAt, toEffectiveAt, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<CompositeBreakdownResponse> getCompositeBreakdownWithHttpInfo(String scope, String code, CompositeBreakdownRequest compositeBreakdownRequest, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getCompositeBreakdownValidateBeforeCall(scope, code, compositeBreakdownRequest, fromEffectiveAt, toEffectiveAt, asAt, null);
+        okhttp3.Call localVarCall = getCompositeBreakdownValidateBeforeCall(scope, code, compositeBreakdownRequest, fromEffectiveAt, toEffectiveAt, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CompositeBreakdownResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<CompositeBreakdownResponse> getCompositeBreakdownWithHttpInfo(String scope, String code, CompositeBreakdownRequest compositeBreakdownRequest, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getCompositeBreakdownValidateBeforeCall(scope, code, compositeBreakdownRequest, fromEffectiveAt, toEffectiveAt, asAt, null, opts);
         Type localVarReturnType = new TypeToken<CompositeBreakdownResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getCompositeBreakdownAsync(String scope, String code, CompositeBreakdownRequest compositeBreakdownRequest, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback<CompositeBreakdownResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getCompositeBreakdownValidateBeforeCall(scope, code, compositeBreakdownRequest, fromEffectiveAt, toEffectiveAt, asAt, _callback);
+        okhttp3.Call localVarCall = getCompositeBreakdownValidateBeforeCall(scope, code, compositeBreakdownRequest, fromEffectiveAt, toEffectiveAt, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CompositeBreakdownResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getCompositeBreakdownAsync(String scope, String code, CompositeBreakdownRequest compositeBreakdownRequest, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback<CompositeBreakdownResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getCompositeBreakdownValidateBeforeCall(scope, code, compositeBreakdownRequest, fromEffectiveAt, toEffectiveAt, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<CompositeBreakdownResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1492,6 +1919,23 @@ public class PortfoliosApi {
         }
 
         /**
+         * Execute getCompositeBreakdown request. Use any specified configuration options to override any other configuration for this request only.
+         * @return CompositeBreakdownResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns grouped by return stream. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CompositeBreakdownResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<CompositeBreakdownResponse> localVarResp = getCompositeBreakdownWithHttpInfo(scope, code, compositeBreakdownRequest, fromEffectiveAt, toEffectiveAt, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getCompositeBreakdown request with HTTP info returned
          * @return ApiResponse&lt;CompositeBreakdownResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1505,6 +1949,22 @@ public class PortfoliosApi {
          */
         public ApiResponse<CompositeBreakdownResponse> executeWithHttpInfo() throws ApiException {
             return getCompositeBreakdownWithHttpInfo(scope, code, compositeBreakdownRequest, fromEffectiveAt, toEffectiveAt, asAt);
+        }
+
+        /**
+         * Execute getCompositeBreakdown request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;CompositeBreakdownResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns grouped by return stream. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CompositeBreakdownResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getCompositeBreakdownWithHttpInfo(scope, code, compositeBreakdownRequest, fromEffectiveAt, toEffectiveAt, asAt, opts);
         }
 
         /**
@@ -1522,6 +1982,23 @@ public class PortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<CompositeBreakdownResponse> _callback) throws ApiException {
             return getCompositeBreakdownAsync(scope, code, compositeBreakdownRequest, fromEffectiveAt, toEffectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getCompositeBreakdown request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns grouped by return stream. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CompositeBreakdownResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return getCompositeBreakdownAsync(scope, code, compositeBreakdownRequest, fromEffectiveAt, toEffectiveAt, asAt, _callback, opts);
         }
     }
 
@@ -1544,6 +2021,10 @@ public class PortfoliosApi {
         return new APIgetCompositeBreakdownRequest(scope, code, compositeBreakdownRequest);
     }
     private okhttp3.Call getInstrumentEventInstructionCall(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getInstrumentEventInstructionCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getInstrumentEventInstructionCall(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1597,11 +2078,11 @@ public class PortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getInstrumentEventInstructionValidateBeforeCall(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getInstrumentEventInstructionValidateBeforeCall(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getInstrumentEventInstruction(Async)");
@@ -1617,20 +2098,34 @@ public class PortfoliosApi {
             throw new ApiException("Missing the required parameter 'instrumentEventInstructionId' when calling getInstrumentEventInstruction(Async)");
         }
 
-        return getInstrumentEventInstructionCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, _callback);
+        return getInstrumentEventInstructionCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<InstrumentEventInstruction> getInstrumentEventInstructionWithHttpInfo(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getInstrumentEventInstructionValidateBeforeCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, null);
+        okhttp3.Call localVarCall = getInstrumentEventInstructionValidateBeforeCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<InstrumentEventInstruction>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<InstrumentEventInstruction> getInstrumentEventInstructionWithHttpInfo(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getInstrumentEventInstructionValidateBeforeCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, null, opts);
         Type localVarReturnType = new TypeToken<InstrumentEventInstruction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getInstrumentEventInstructionAsync(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, OffsetDateTime asAt, final ApiCallback<InstrumentEventInstruction> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getInstrumentEventInstructionValidateBeforeCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, _callback);
+        okhttp3.Call localVarCall = getInstrumentEventInstructionValidateBeforeCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<InstrumentEventInstruction>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getInstrumentEventInstructionAsync(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, OffsetDateTime asAt, final ApiCallback<InstrumentEventInstruction> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getInstrumentEventInstructionValidateBeforeCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<InstrumentEventInstruction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1704,6 +2199,23 @@ public class PortfoliosApi {
         }
 
         /**
+         * Execute getInstrumentEventInstruction request. Use any specified configuration options to override any other configuration for this request only.
+         * @return InstrumentEventInstruction
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instrument event instruction </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public InstrumentEventInstruction execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<InstrumentEventInstruction> localVarResp = getInstrumentEventInstructionWithHttpInfo(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getInstrumentEventInstruction request with HTTP info returned
          * @return ApiResponse&lt;InstrumentEventInstruction&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1717,6 +2229,22 @@ public class PortfoliosApi {
          */
         public ApiResponse<InstrumentEventInstruction> executeWithHttpInfo() throws ApiException {
             return getInstrumentEventInstructionWithHttpInfo(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt);
+        }
+
+        /**
+         * Execute getInstrumentEventInstruction request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;InstrumentEventInstruction&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instrument event instruction </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<InstrumentEventInstruction> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getInstrumentEventInstructionWithHttpInfo(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, opts);
         }
 
         /**
@@ -1734,6 +2262,23 @@ public class PortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<InstrumentEventInstruction> _callback) throws ApiException {
             return getInstrumentEventInstructionAsync(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getInstrumentEventInstruction request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instrument event instruction </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<InstrumentEventInstruction> _callback, ConfigurationOptions opts) throws ApiException {
+            return getInstrumentEventInstructionAsync(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, _callback, opts);
         }
     }
 
@@ -1756,6 +2301,10 @@ public class PortfoliosApi {
         return new APIgetInstrumentEventInstructionRequest(scope, code, instrumentEventInstructionId);
     }
     private okhttp3.Call getPortfolioCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+        return getPortfolioCall(scope, code, effectiveAt, asAt, propertyKeys, relationshipDefinitionIds,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getPortfolioCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1816,11 +2365,11 @@ public class PortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPortfolioValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPortfolioValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getPortfolio(Async)");
@@ -1831,20 +2380,34 @@ public class PortfoliosApi {
             throw new ApiException("Missing the required parameter 'code' when calling getPortfolio(Async)");
         }
 
-        return getPortfolioCall(scope, code, effectiveAt, asAt, propertyKeys, relationshipDefinitionIds, _callback);
+        return getPortfolioCall(scope, code, effectiveAt, asAt, propertyKeys, relationshipDefinitionIds, _callback, opts);
 
     }
 
 
     private ApiResponse<Portfolio> getPortfolioWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
-        okhttp3.Call localVarCall = getPortfolioValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, relationshipDefinitionIds, null);
+        okhttp3.Call localVarCall = getPortfolioValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, relationshipDefinitionIds, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Portfolio> getPortfolioWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, List<String> relationshipDefinitionIds, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPortfolioValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, relationshipDefinitionIds, null, opts);
         Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getPortfolioAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<Portfolio> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPortfolioValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, relationshipDefinitionIds, _callback);
+        okhttp3.Call localVarCall = getPortfolioValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, relationshipDefinitionIds, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getPortfolioAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<Portfolio> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getPortfolioValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, relationshipDefinitionIds, _callback, opts);
         Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1938,6 +2501,23 @@ public class PortfoliosApi {
         }
 
         /**
+         * Execute getPortfolio request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Portfolio
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Portfolio execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Portfolio> localVarResp = getPortfolioWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys, relationshipDefinitionIds, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getPortfolio request with HTTP info returned
          * @return ApiResponse&lt;Portfolio&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1951,6 +2531,22 @@ public class PortfoliosApi {
          */
         public ApiResponse<Portfolio> executeWithHttpInfo() throws ApiException {
             return getPortfolioWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys, relationshipDefinitionIds);
+        }
+
+        /**
+         * Execute getPortfolio request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Portfolio&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Portfolio> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getPortfolioWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys, relationshipDefinitionIds, opts);
         }
 
         /**
@@ -1968,6 +2564,23 @@ public class PortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Portfolio> _callback) throws ApiException {
             return getPortfolioAsync(scope, code, effectiveAt, asAt, propertyKeys, relationshipDefinitionIds, _callback);
+        }
+
+        /**
+         * Execute getPortfolio request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Portfolio> _callback, ConfigurationOptions opts) throws ApiException {
+            return getPortfolioAsync(scope, code, effectiveAt, asAt, propertyKeys, relationshipDefinitionIds, _callback, opts);
         }
     }
 
@@ -1989,6 +2602,10 @@ public class PortfoliosApi {
         return new APIgetPortfolioRequest(scope, code);
     }
     private okhttp3.Call getPortfolioAggregateReturnsCall(String scope, String code, String returnScope, String returnCode, String recipeIdScope, String recipeIdCode, String fromEffectiveAt, String toEffectiveAt, String compositeMethod, String period, String outputFrequency, List<String> metrics, OffsetDateTime asAt, String alternativeIncDate, final ApiCallback _callback) throws ApiException {
+        return getPortfolioAggregateReturnsCall(scope, code, returnScope, returnCode, recipeIdScope, recipeIdCode, fromEffectiveAt, toEffectiveAt, compositeMethod, period, outputFrequency, metrics, asAt, alternativeIncDate,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getPortfolioAggregateReturnsCall(String scope, String code, String returnScope, String returnCode, String recipeIdScope, String recipeIdCode, String fromEffectiveAt, String toEffectiveAt, String compositeMethod, String period, String outputFrequency, List<String> metrics, OffsetDateTime asAt, String alternativeIncDate, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2075,11 +2692,11 @@ public class PortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPortfolioAggregateReturnsValidateBeforeCall(String scope, String code, String returnScope, String returnCode, String recipeIdScope, String recipeIdCode, String fromEffectiveAt, String toEffectiveAt, String compositeMethod, String period, String outputFrequency, List<String> metrics, OffsetDateTime asAt, String alternativeIncDate, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPortfolioAggregateReturnsValidateBeforeCall(String scope, String code, String returnScope, String returnCode, String recipeIdScope, String recipeIdCode, String fromEffectiveAt, String toEffectiveAt, String compositeMethod, String period, String outputFrequency, List<String> metrics, OffsetDateTime asAt, String alternativeIncDate, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getPortfolioAggregateReturns(Async)");
@@ -2100,20 +2717,34 @@ public class PortfoliosApi {
             throw new ApiException("Missing the required parameter 'returnCode' when calling getPortfolioAggregateReturns(Async)");
         }
 
-        return getPortfolioAggregateReturnsCall(scope, code, returnScope, returnCode, recipeIdScope, recipeIdCode, fromEffectiveAt, toEffectiveAt, compositeMethod, period, outputFrequency, metrics, asAt, alternativeIncDate, _callback);
+        return getPortfolioAggregateReturnsCall(scope, code, returnScope, returnCode, recipeIdScope, recipeIdCode, fromEffectiveAt, toEffectiveAt, compositeMethod, period, outputFrequency, metrics, asAt, alternativeIncDate, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfAggregatedReturn> getPortfolioAggregateReturnsWithHttpInfo(String scope, String code, String returnScope, String returnCode, String recipeIdScope, String recipeIdCode, String fromEffectiveAt, String toEffectiveAt, String compositeMethod, String period, String outputFrequency, List<String> metrics, OffsetDateTime asAt, String alternativeIncDate) throws ApiException {
-        okhttp3.Call localVarCall = getPortfolioAggregateReturnsValidateBeforeCall(scope, code, returnScope, returnCode, recipeIdScope, recipeIdCode, fromEffectiveAt, toEffectiveAt, compositeMethod, period, outputFrequency, metrics, asAt, alternativeIncDate, null);
+        okhttp3.Call localVarCall = getPortfolioAggregateReturnsValidateBeforeCall(scope, code, returnScope, returnCode, recipeIdScope, recipeIdCode, fromEffectiveAt, toEffectiveAt, compositeMethod, period, outputFrequency, metrics, asAt, alternativeIncDate, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfAggregatedReturn>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfAggregatedReturn> getPortfolioAggregateReturnsWithHttpInfo(String scope, String code, String returnScope, String returnCode, String recipeIdScope, String recipeIdCode, String fromEffectiveAt, String toEffectiveAt, String compositeMethod, String period, String outputFrequency, List<String> metrics, OffsetDateTime asAt, String alternativeIncDate, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPortfolioAggregateReturnsValidateBeforeCall(scope, code, returnScope, returnCode, recipeIdScope, recipeIdCode, fromEffectiveAt, toEffectiveAt, compositeMethod, period, outputFrequency, metrics, asAt, alternativeIncDate, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfAggregatedReturn>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getPortfolioAggregateReturnsAsync(String scope, String code, String returnScope, String returnCode, String recipeIdScope, String recipeIdCode, String fromEffectiveAt, String toEffectiveAt, String compositeMethod, String period, String outputFrequency, List<String> metrics, OffsetDateTime asAt, String alternativeIncDate, final ApiCallback<ResourceListOfAggregatedReturn> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPortfolioAggregateReturnsValidateBeforeCall(scope, code, returnScope, returnCode, recipeIdScope, recipeIdCode, fromEffectiveAt, toEffectiveAt, compositeMethod, period, outputFrequency, metrics, asAt, alternativeIncDate, _callback);
+        okhttp3.Call localVarCall = getPortfolioAggregateReturnsValidateBeforeCall(scope, code, returnScope, returnCode, recipeIdScope, recipeIdCode, fromEffectiveAt, toEffectiveAt, compositeMethod, period, outputFrequency, metrics, asAt, alternativeIncDate, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfAggregatedReturn>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getPortfolioAggregateReturnsAsync(String scope, String code, String returnScope, String returnCode, String recipeIdScope, String recipeIdCode, String fromEffectiveAt, String toEffectiveAt, String compositeMethod, String period, String outputFrequency, List<String> metrics, OffsetDateTime asAt, String alternativeIncDate, final ApiCallback<ResourceListOfAggregatedReturn> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getPortfolioAggregateReturnsValidateBeforeCall(scope, code, returnScope, returnCode, recipeIdScope, recipeIdCode, fromEffectiveAt, toEffectiveAt, compositeMethod, period, outputFrequency, metrics, asAt, alternativeIncDate, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfAggregatedReturn>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2277,6 +2908,23 @@ public class PortfoliosApi {
         }
 
         /**
+         * Execute getPortfolioAggregateReturns request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfAggregatedReturn
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfAggregatedReturn execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfAggregatedReturn> localVarResp = getPortfolioAggregateReturnsWithHttpInfo(scope, code, returnScope, returnCode, recipeIdScope, recipeIdCode, fromEffectiveAt, toEffectiveAt, compositeMethod, period, outputFrequency, metrics, asAt, alternativeIncDate, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getPortfolioAggregateReturns request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfAggregatedReturn&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2290,6 +2938,22 @@ public class PortfoliosApi {
          */
         public ApiResponse<ResourceListOfAggregatedReturn> executeWithHttpInfo() throws ApiException {
             return getPortfolioAggregateReturnsWithHttpInfo(scope, code, returnScope, returnCode, recipeIdScope, recipeIdCode, fromEffectiveAt, toEffectiveAt, compositeMethod, period, outputFrequency, metrics, asAt, alternativeIncDate);
+        }
+
+        /**
+         * Execute getPortfolioAggregateReturns request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfAggregatedReturn&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfAggregatedReturn> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getPortfolioAggregateReturnsWithHttpInfo(scope, code, returnScope, returnCode, recipeIdScope, recipeIdCode, fromEffectiveAt, toEffectiveAt, compositeMethod, period, outputFrequency, metrics, asAt, alternativeIncDate, opts);
         }
 
         /**
@@ -2307,6 +2971,23 @@ public class PortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfAggregatedReturn> _callback) throws ApiException {
             return getPortfolioAggregateReturnsAsync(scope, code, returnScope, returnCode, recipeIdScope, recipeIdCode, fromEffectiveAt, toEffectiveAt, compositeMethod, period, outputFrequency, metrics, asAt, alternativeIncDate, _callback);
+        }
+
+        /**
+         * Execute getPortfolioAggregateReturns request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfAggregatedReturn> _callback, ConfigurationOptions opts) throws ApiException {
+            return getPortfolioAggregateReturnsAsync(scope, code, returnScope, returnCode, recipeIdScope, recipeIdCode, fromEffectiveAt, toEffectiveAt, compositeMethod, period, outputFrequency, metrics, asAt, alternativeIncDate, _callback, opts);
         }
     }
 
@@ -2330,6 +3011,10 @@ public class PortfoliosApi {
         return new APIgetPortfolioAggregateReturnsRequest(scope, code, returnScope, returnCode);
     }
     private okhttp3.Call getPortfolioAggregatedReturnsCall(String scope, String code, AggregatedReturnsRequest aggregatedReturnsRequest, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getPortfolioAggregatedReturnsCall(scope, code, aggregatedReturnsRequest, fromEffectiveAt, toEffectiveAt, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getPortfolioAggregatedReturnsCall(String scope, String code, AggregatedReturnsRequest aggregatedReturnsRequest, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2390,11 +3075,11 @@ public class PortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPortfolioAggregatedReturnsValidateBeforeCall(String scope, String code, AggregatedReturnsRequest aggregatedReturnsRequest, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPortfolioAggregatedReturnsValidateBeforeCall(String scope, String code, AggregatedReturnsRequest aggregatedReturnsRequest, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getPortfolioAggregatedReturns(Async)");
@@ -2410,20 +3095,34 @@ public class PortfoliosApi {
             throw new ApiException("Missing the required parameter 'aggregatedReturnsRequest' when calling getPortfolioAggregatedReturns(Async)");
         }
 
-        return getPortfolioAggregatedReturnsCall(scope, code, aggregatedReturnsRequest, fromEffectiveAt, toEffectiveAt, asAt, _callback);
+        return getPortfolioAggregatedReturnsCall(scope, code, aggregatedReturnsRequest, fromEffectiveAt, toEffectiveAt, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<AggregatedReturnsResponse> getPortfolioAggregatedReturnsWithHttpInfo(String scope, String code, AggregatedReturnsRequest aggregatedReturnsRequest, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getPortfolioAggregatedReturnsValidateBeforeCall(scope, code, aggregatedReturnsRequest, fromEffectiveAt, toEffectiveAt, asAt, null);
+        okhttp3.Call localVarCall = getPortfolioAggregatedReturnsValidateBeforeCall(scope, code, aggregatedReturnsRequest, fromEffectiveAt, toEffectiveAt, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AggregatedReturnsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AggregatedReturnsResponse> getPortfolioAggregatedReturnsWithHttpInfo(String scope, String code, AggregatedReturnsRequest aggregatedReturnsRequest, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPortfolioAggregatedReturnsValidateBeforeCall(scope, code, aggregatedReturnsRequest, fromEffectiveAt, toEffectiveAt, asAt, null, opts);
         Type localVarReturnType = new TypeToken<AggregatedReturnsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getPortfolioAggregatedReturnsAsync(String scope, String code, AggregatedReturnsRequest aggregatedReturnsRequest, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback<AggregatedReturnsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPortfolioAggregatedReturnsValidateBeforeCall(scope, code, aggregatedReturnsRequest, fromEffectiveAt, toEffectiveAt, asAt, _callback);
+        okhttp3.Call localVarCall = getPortfolioAggregatedReturnsValidateBeforeCall(scope, code, aggregatedReturnsRequest, fromEffectiveAt, toEffectiveAt, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AggregatedReturnsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getPortfolioAggregatedReturnsAsync(String scope, String code, AggregatedReturnsRequest aggregatedReturnsRequest, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback<AggregatedReturnsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getPortfolioAggregatedReturnsValidateBeforeCall(scope, code, aggregatedReturnsRequest, fromEffectiveAt, toEffectiveAt, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<AggregatedReturnsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2508,6 +3207,23 @@ public class PortfoliosApi {
         }
 
         /**
+         * Execute getPortfolioAggregatedReturns request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AggregatedReturnsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns grouped by return stream. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AggregatedReturnsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AggregatedReturnsResponse> localVarResp = getPortfolioAggregatedReturnsWithHttpInfo(scope, code, aggregatedReturnsRequest, fromEffectiveAt, toEffectiveAt, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getPortfolioAggregatedReturns request with HTTP info returned
          * @return ApiResponse&lt;AggregatedReturnsResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2521,6 +3237,22 @@ public class PortfoliosApi {
          */
         public ApiResponse<AggregatedReturnsResponse> executeWithHttpInfo() throws ApiException {
             return getPortfolioAggregatedReturnsWithHttpInfo(scope, code, aggregatedReturnsRequest, fromEffectiveAt, toEffectiveAt, asAt);
+        }
+
+        /**
+         * Execute getPortfolioAggregatedReturns request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AggregatedReturnsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns grouped by return stream. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AggregatedReturnsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getPortfolioAggregatedReturnsWithHttpInfo(scope, code, aggregatedReturnsRequest, fromEffectiveAt, toEffectiveAt, asAt, opts);
         }
 
         /**
@@ -2538,6 +3270,23 @@ public class PortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<AggregatedReturnsResponse> _callback) throws ApiException {
             return getPortfolioAggregatedReturnsAsync(scope, code, aggregatedReturnsRequest, fromEffectiveAt, toEffectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getPortfolioAggregatedReturns request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The aggregated returns grouped by return stream. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AggregatedReturnsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return getPortfolioAggregatedReturnsAsync(scope, code, aggregatedReturnsRequest, fromEffectiveAt, toEffectiveAt, asAt, _callback, opts);
         }
     }
 
@@ -2560,6 +3309,10 @@ public class PortfoliosApi {
         return new APIgetPortfolioAggregatedReturnsRequest(scope, code, aggregatedReturnsRequest);
     }
     private okhttp3.Call getPortfolioCommandsCall(String scope, String code, OffsetDateTime fromAsAt, OffsetDateTime toAsAt, String filter, String page, Integer limit, final ApiCallback _callback) throws ApiException {
+        return getPortfolioCommandsCall(scope, code, fromAsAt, toAsAt, filter, page, limit,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getPortfolioCommandsCall(String scope, String code, OffsetDateTime fromAsAt, OffsetDateTime toAsAt, String filter, String page, Integer limit, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2624,11 +3377,11 @@ public class PortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPortfolioCommandsValidateBeforeCall(String scope, String code, OffsetDateTime fromAsAt, OffsetDateTime toAsAt, String filter, String page, Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPortfolioCommandsValidateBeforeCall(String scope, String code, OffsetDateTime fromAsAt, OffsetDateTime toAsAt, String filter, String page, Integer limit, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getPortfolioCommands(Async)");
@@ -2639,20 +3392,34 @@ public class PortfoliosApi {
             throw new ApiException("Missing the required parameter 'code' when calling getPortfolioCommands(Async)");
         }
 
-        return getPortfolioCommandsCall(scope, code, fromAsAt, toAsAt, filter, page, limit, _callback);
+        return getPortfolioCommandsCall(scope, code, fromAsAt, toAsAt, filter, page, limit, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfProcessedCommand> getPortfolioCommandsWithHttpInfo(String scope, String code, OffsetDateTime fromAsAt, OffsetDateTime toAsAt, String filter, String page, Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getPortfolioCommandsValidateBeforeCall(scope, code, fromAsAt, toAsAt, filter, page, limit, null);
+        okhttp3.Call localVarCall = getPortfolioCommandsValidateBeforeCall(scope, code, fromAsAt, toAsAt, filter, page, limit, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfProcessedCommand>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfProcessedCommand> getPortfolioCommandsWithHttpInfo(String scope, String code, OffsetDateTime fromAsAt, OffsetDateTime toAsAt, String filter, String page, Integer limit, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPortfolioCommandsValidateBeforeCall(scope, code, fromAsAt, toAsAt, filter, page, limit, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfProcessedCommand>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getPortfolioCommandsAsync(String scope, String code, OffsetDateTime fromAsAt, OffsetDateTime toAsAt, String filter, String page, Integer limit, final ApiCallback<ResourceListOfProcessedCommand> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPortfolioCommandsValidateBeforeCall(scope, code, fromAsAt, toAsAt, filter, page, limit, _callback);
+        okhttp3.Call localVarCall = getPortfolioCommandsValidateBeforeCall(scope, code, fromAsAt, toAsAt, filter, page, limit, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfProcessedCommand>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getPortfolioCommandsAsync(String scope, String code, OffsetDateTime fromAsAt, OffsetDateTime toAsAt, String filter, String page, Integer limit, final ApiCallback<ResourceListOfProcessedCommand> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getPortfolioCommandsValidateBeforeCall(scope, code, fromAsAt, toAsAt, filter, page, limit, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfProcessedCommand>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2757,6 +3524,23 @@ public class PortfoliosApi {
         }
 
         /**
+         * Execute getPortfolioCommands request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfProcessedCommand
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The commands that modified the specified portfolio. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfProcessedCommand execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfProcessedCommand> localVarResp = getPortfolioCommandsWithHttpInfo(scope, code, fromAsAt, toAsAt, filter, page, limit, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getPortfolioCommands request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfProcessedCommand&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2770,6 +3554,22 @@ public class PortfoliosApi {
          */
         public ApiResponse<ResourceListOfProcessedCommand> executeWithHttpInfo() throws ApiException {
             return getPortfolioCommandsWithHttpInfo(scope, code, fromAsAt, toAsAt, filter, page, limit);
+        }
+
+        /**
+         * Execute getPortfolioCommands request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfProcessedCommand&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The commands that modified the specified portfolio. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfProcessedCommand> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getPortfolioCommandsWithHttpInfo(scope, code, fromAsAt, toAsAt, filter, page, limit, opts);
         }
 
         /**
@@ -2787,6 +3587,23 @@ public class PortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfProcessedCommand> _callback) throws ApiException {
             return getPortfolioCommandsAsync(scope, code, fromAsAt, toAsAt, filter, page, limit, _callback);
+        }
+
+        /**
+         * Execute getPortfolioCommands request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The commands that modified the specified portfolio. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfProcessedCommand> _callback, ConfigurationOptions opts) throws ApiException {
+            return getPortfolioCommandsAsync(scope, code, fromAsAt, toAsAt, filter, page, limit, _callback, opts);
         }
     }
 
@@ -2808,6 +3625,10 @@ public class PortfoliosApi {
         return new APIgetPortfolioCommandsRequest(scope, code);
     }
     private okhttp3.Call getPortfolioMetadataCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getPortfolioMetadataCall(scope, code, effectiveAt, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getPortfolioMetadataCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2860,11 +3681,11 @@ public class PortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPortfolioMetadataValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPortfolioMetadataValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getPortfolioMetadata(Async)");
@@ -2875,20 +3696,34 @@ public class PortfoliosApi {
             throw new ApiException("Missing the required parameter 'code' when calling getPortfolioMetadata(Async)");
         }
 
-        return getPortfolioMetadataCall(scope, code, effectiveAt, asAt, _callback);
+        return getPortfolioMetadataCall(scope, code, effectiveAt, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<Map<String, List<AccessMetadataValue>>> getPortfolioMetadataWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getPortfolioMetadataValidateBeforeCall(scope, code, effectiveAt, asAt, null);
+        okhttp3.Call localVarCall = getPortfolioMetadataValidateBeforeCall(scope, code, effectiveAt, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Map<String, List<AccessMetadataValue>>> getPortfolioMetadataWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPortfolioMetadataValidateBeforeCall(scope, code, effectiveAt, asAt, null, opts);
         Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getPortfolioMetadataAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPortfolioMetadataValidateBeforeCall(scope, code, effectiveAt, asAt, _callback);
+        okhttp3.Call localVarCall = getPortfolioMetadataValidateBeforeCall(scope, code, effectiveAt, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getPortfolioMetadataAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getPortfolioMetadataValidateBeforeCall(scope, code, effectiveAt, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2960,6 +3795,23 @@ public class PortfoliosApi {
         }
 
         /**
+         * Execute getPortfolioMetadata request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The filtered list of results </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Map<String, List<AccessMetadataValue>> execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Map<String, List<AccessMetadataValue>>> localVarResp = getPortfolioMetadataWithHttpInfo(scope, code, effectiveAt, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getPortfolioMetadata request with HTTP info returned
          * @return ApiResponse&lt;Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2973,6 +3825,22 @@ public class PortfoliosApi {
          */
         public ApiResponse<Map<String, List<AccessMetadataValue>>> executeWithHttpInfo() throws ApiException {
             return getPortfolioMetadataWithHttpInfo(scope, code, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getPortfolioMetadata request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The filtered list of results </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Map<String, List<AccessMetadataValue>>> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getPortfolioMetadataWithHttpInfo(scope, code, effectiveAt, asAt, opts);
         }
 
         /**
@@ -2990,6 +3858,23 @@ public class PortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
             return getPortfolioMetadataAsync(scope, code, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getPortfolioMetadata request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The filtered list of results </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback, ConfigurationOptions opts) throws ApiException {
+            return getPortfolioMetadataAsync(scope, code, effectiveAt, asAt, _callback, opts);
         }
     }
 
@@ -3011,6 +3896,10 @@ public class PortfoliosApi {
         return new APIgetPortfolioMetadataRequest(scope, code);
     }
     private okhttp3.Call getPortfolioPropertiesCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getPortfolioPropertiesCall(scope, code, effectiveAt, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getPortfolioPropertiesCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3063,11 +3952,11 @@ public class PortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPortfolioPropertiesValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPortfolioPropertiesValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getPortfolioProperties(Async)");
@@ -3078,20 +3967,34 @@ public class PortfoliosApi {
             throw new ApiException("Missing the required parameter 'code' when calling getPortfolioProperties(Async)");
         }
 
-        return getPortfolioPropertiesCall(scope, code, effectiveAt, asAt, _callback);
+        return getPortfolioPropertiesCall(scope, code, effectiveAt, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<PortfolioProperties> getPortfolioPropertiesWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getPortfolioPropertiesValidateBeforeCall(scope, code, effectiveAt, asAt, null);
+        okhttp3.Call localVarCall = getPortfolioPropertiesValidateBeforeCall(scope, code, effectiveAt, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PortfolioProperties>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PortfolioProperties> getPortfolioPropertiesWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPortfolioPropertiesValidateBeforeCall(scope, code, effectiveAt, asAt, null, opts);
         Type localVarReturnType = new TypeToken<PortfolioProperties>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getPortfolioPropertiesAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<PortfolioProperties> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPortfolioPropertiesValidateBeforeCall(scope, code, effectiveAt, asAt, _callback);
+        okhttp3.Call localVarCall = getPortfolioPropertiesValidateBeforeCall(scope, code, effectiveAt, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PortfolioProperties>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getPortfolioPropertiesAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<PortfolioProperties> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getPortfolioPropertiesValidateBeforeCall(scope, code, effectiveAt, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<PortfolioProperties>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3163,6 +4066,23 @@ public class PortfoliosApi {
         }
 
         /**
+         * Execute getPortfolioProperties request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PortfolioProperties
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The properties of the specified portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PortfolioProperties execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PortfolioProperties> localVarResp = getPortfolioPropertiesWithHttpInfo(scope, code, effectiveAt, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getPortfolioProperties request with HTTP info returned
          * @return ApiResponse&lt;PortfolioProperties&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3176,6 +4096,22 @@ public class PortfoliosApi {
          */
         public ApiResponse<PortfolioProperties> executeWithHttpInfo() throws ApiException {
             return getPortfolioPropertiesWithHttpInfo(scope, code, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getPortfolioProperties request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PortfolioProperties&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The properties of the specified portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PortfolioProperties> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getPortfolioPropertiesWithHttpInfo(scope, code, effectiveAt, asAt, opts);
         }
 
         /**
@@ -3193,6 +4129,23 @@ public class PortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PortfolioProperties> _callback) throws ApiException {
             return getPortfolioPropertiesAsync(scope, code, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getPortfolioProperties request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The properties of the specified portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PortfolioProperties> _callback, ConfigurationOptions opts) throws ApiException {
+            return getPortfolioPropertiesAsync(scope, code, effectiveAt, asAt, _callback, opts);
         }
     }
 
@@ -3214,6 +4167,10 @@ public class PortfoliosApi {
         return new APIgetPortfolioPropertiesRequest(scope, code);
     }
     private okhttp3.Call getPortfolioPropertyTimeSeriesCall(String scope, String code, String propertyKey, String portfolioEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback _callback) throws ApiException {
+        return getPortfolioPropertyTimeSeriesCall(scope, code, propertyKey, portfolioEffectiveAt, asAt, filter, page, limit,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getPortfolioPropertyTimeSeriesCall(String scope, String code, String propertyKey, String portfolioEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3282,11 +4239,11 @@ public class PortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPortfolioPropertyTimeSeriesValidateBeforeCall(String scope, String code, String propertyKey, String portfolioEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPortfolioPropertyTimeSeriesValidateBeforeCall(String scope, String code, String propertyKey, String portfolioEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getPortfolioPropertyTimeSeries(Async)");
@@ -3302,20 +4259,34 @@ public class PortfoliosApi {
             throw new ApiException("Missing the required parameter 'propertyKey' when calling getPortfolioPropertyTimeSeries(Async)");
         }
 
-        return getPortfolioPropertyTimeSeriesCall(scope, code, propertyKey, portfolioEffectiveAt, asAt, filter, page, limit, _callback);
+        return getPortfolioPropertyTimeSeriesCall(scope, code, propertyKey, portfolioEffectiveAt, asAt, filter, page, limit, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfPropertyInterval> getPortfolioPropertyTimeSeriesWithHttpInfo(String scope, String code, String propertyKey, String portfolioEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getPortfolioPropertyTimeSeriesValidateBeforeCall(scope, code, propertyKey, portfolioEffectiveAt, asAt, filter, page, limit, null);
+        okhttp3.Call localVarCall = getPortfolioPropertyTimeSeriesValidateBeforeCall(scope, code, propertyKey, portfolioEffectiveAt, asAt, filter, page, limit, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPropertyInterval>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfPropertyInterval> getPortfolioPropertyTimeSeriesWithHttpInfo(String scope, String code, String propertyKey, String portfolioEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPortfolioPropertyTimeSeriesValidateBeforeCall(scope, code, propertyKey, portfolioEffectiveAt, asAt, filter, page, limit, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPropertyInterval>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getPortfolioPropertyTimeSeriesAsync(String scope, String code, String propertyKey, String portfolioEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback<ResourceListOfPropertyInterval> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPortfolioPropertyTimeSeriesValidateBeforeCall(scope, code, propertyKey, portfolioEffectiveAt, asAt, filter, page, limit, _callback);
+        okhttp3.Call localVarCall = getPortfolioPropertyTimeSeriesValidateBeforeCall(scope, code, propertyKey, portfolioEffectiveAt, asAt, filter, page, limit, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPropertyInterval>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getPortfolioPropertyTimeSeriesAsync(String scope, String code, String propertyKey, String portfolioEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit, final ApiCallback<ResourceListOfPropertyInterval> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getPortfolioPropertyTimeSeriesValidateBeforeCall(scope, code, propertyKey, portfolioEffectiveAt, asAt, filter, page, limit, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPropertyInterval>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3422,6 +4393,23 @@ public class PortfoliosApi {
         }
 
         /**
+         * Execute getPortfolioPropertyTimeSeries request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfPropertyInterval
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfPropertyInterval execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfPropertyInterval> localVarResp = getPortfolioPropertyTimeSeriesWithHttpInfo(scope, code, propertyKey, portfolioEffectiveAt, asAt, filter, page, limit, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getPortfolioPropertyTimeSeries request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfPropertyInterval&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3435,6 +4423,22 @@ public class PortfoliosApi {
          */
         public ApiResponse<ResourceListOfPropertyInterval> executeWithHttpInfo() throws ApiException {
             return getPortfolioPropertyTimeSeriesWithHttpInfo(scope, code, propertyKey, portfolioEffectiveAt, asAt, filter, page, limit);
+        }
+
+        /**
+         * Execute getPortfolioPropertyTimeSeries request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfPropertyInterval&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfPropertyInterval> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getPortfolioPropertyTimeSeriesWithHttpInfo(scope, code, propertyKey, portfolioEffectiveAt, asAt, filter, page, limit, opts);
         }
 
         /**
@@ -3452,6 +4456,23 @@ public class PortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPropertyInterval> _callback) throws ApiException {
             return getPortfolioPropertyTimeSeriesAsync(scope, code, propertyKey, portfolioEffectiveAt, asAt, filter, page, limit, _callback);
+        }
+
+        /**
+         * Execute getPortfolioPropertyTimeSeries request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPropertyInterval> _callback, ConfigurationOptions opts) throws ApiException {
+            return getPortfolioPropertyTimeSeriesAsync(scope, code, propertyKey, portfolioEffectiveAt, asAt, filter, page, limit, _callback, opts);
         }
     }
 
@@ -3474,6 +4495,10 @@ public class PortfoliosApi {
         return new APIgetPortfolioPropertyTimeSeriesRequest(scope, code, propertyKey);
     }
     private okhttp3.Call getPortfolioRelationsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback) throws ApiException {
+        return getPortfolioRelationsCall(scope, code, effectiveAt, asAt, filter, identifierTypes,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getPortfolioRelationsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3534,11 +4559,11 @@ public class PortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPortfolioRelationsValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPortfolioRelationsValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getPortfolioRelations(Async)");
@@ -3549,20 +4574,34 @@ public class PortfoliosApi {
             throw new ApiException("Missing the required parameter 'code' when calling getPortfolioRelations(Async)");
         }
 
-        return getPortfolioRelationsCall(scope, code, effectiveAt, asAt, filter, identifierTypes, _callback);
+        return getPortfolioRelationsCall(scope, code, effectiveAt, asAt, filter, identifierTypes, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfRelation> getPortfolioRelationsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes) throws ApiException {
-        okhttp3.Call localVarCall = getPortfolioRelationsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, identifierTypes, null);
+        okhttp3.Call localVarCall = getPortfolioRelationsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, identifierTypes, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfRelation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfRelation> getPortfolioRelationsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPortfolioRelationsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, identifierTypes, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfRelation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getPortfolioRelationsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback<ResourceListOfRelation> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPortfolioRelationsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, identifierTypes, _callback);
+        okhttp3.Call localVarCall = getPortfolioRelationsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, identifierTypes, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfRelation>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getPortfolioRelationsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback<ResourceListOfRelation> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getPortfolioRelationsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, identifierTypes, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfRelation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3656,6 +4695,23 @@ public class PortfoliosApi {
         }
 
         /**
+         * Execute getPortfolioRelations request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfRelation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relations for the specified portfolio. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfRelation execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfRelation> localVarResp = getPortfolioRelationsWithHttpInfo(scope, code, effectiveAt, asAt, filter, identifierTypes, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getPortfolioRelations request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfRelation&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3669,6 +4725,22 @@ public class PortfoliosApi {
          */
         public ApiResponse<ResourceListOfRelation> executeWithHttpInfo() throws ApiException {
             return getPortfolioRelationsWithHttpInfo(scope, code, effectiveAt, asAt, filter, identifierTypes);
+        }
+
+        /**
+         * Execute getPortfolioRelations request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfRelation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relations for the specified portfolio. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfRelation> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getPortfolioRelationsWithHttpInfo(scope, code, effectiveAt, asAt, filter, identifierTypes, opts);
         }
 
         /**
@@ -3686,6 +4758,23 @@ public class PortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfRelation> _callback) throws ApiException {
             return getPortfolioRelationsAsync(scope, code, effectiveAt, asAt, filter, identifierTypes, _callback);
+        }
+
+        /**
+         * Execute getPortfolioRelations request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relations for the specified portfolio. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfRelation> _callback, ConfigurationOptions opts) throws ApiException {
+            return getPortfolioRelationsAsync(scope, code, effectiveAt, asAt, filter, identifierTypes, _callback, opts);
         }
     }
 
@@ -3707,6 +4796,10 @@ public class PortfoliosApi {
         return new APIgetPortfolioRelationsRequest(scope, code);
     }
     private okhttp3.Call getPortfolioRelationshipsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback) throws ApiException {
+        return getPortfolioRelationshipsCall(scope, code, effectiveAt, asAt, filter, identifierTypes,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getPortfolioRelationshipsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3767,11 +4860,11 @@ public class PortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPortfolioRelationshipsValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPortfolioRelationshipsValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getPortfolioRelationships(Async)");
@@ -3782,20 +4875,34 @@ public class PortfoliosApi {
             throw new ApiException("Missing the required parameter 'code' when calling getPortfolioRelationships(Async)");
         }
 
-        return getPortfolioRelationshipsCall(scope, code, effectiveAt, asAt, filter, identifierTypes, _callback);
+        return getPortfolioRelationshipsCall(scope, code, effectiveAt, asAt, filter, identifierTypes, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfRelationship> getPortfolioRelationshipsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes) throws ApiException {
-        okhttp3.Call localVarCall = getPortfolioRelationshipsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, identifierTypes, null);
+        okhttp3.Call localVarCall = getPortfolioRelationshipsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, identifierTypes, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfRelationship>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfRelationship> getPortfolioRelationshipsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPortfolioRelationshipsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, identifierTypes, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfRelationship>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getPortfolioRelationshipsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback<ResourceListOfRelationship> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPortfolioRelationshipsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, identifierTypes, _callback);
+        okhttp3.Call localVarCall = getPortfolioRelationshipsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, identifierTypes, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfRelationship>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getPortfolioRelationshipsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, final ApiCallback<ResourceListOfRelationship> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getPortfolioRelationshipsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, identifierTypes, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfRelationship>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3889,6 +4996,23 @@ public class PortfoliosApi {
         }
 
         /**
+         * Execute getPortfolioRelationships request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfRelationship
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified portfolio. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfRelationship execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfRelationship> localVarResp = getPortfolioRelationshipsWithHttpInfo(scope, code, effectiveAt, asAt, filter, identifierTypes, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getPortfolioRelationships request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfRelationship&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3902,6 +5026,22 @@ public class PortfoliosApi {
          */
         public ApiResponse<ResourceListOfRelationship> executeWithHttpInfo() throws ApiException {
             return getPortfolioRelationshipsWithHttpInfo(scope, code, effectiveAt, asAt, filter, identifierTypes);
+        }
+
+        /**
+         * Execute getPortfolioRelationships request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfRelationship&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified portfolio. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfRelationship> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getPortfolioRelationshipsWithHttpInfo(scope, code, effectiveAt, asAt, filter, identifierTypes, opts);
         }
 
         /**
@@ -3919,6 +5059,23 @@ public class PortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfRelationship> _callback) throws ApiException {
             return getPortfolioRelationshipsAsync(scope, code, effectiveAt, asAt, filter, identifierTypes, _callback);
+        }
+
+        /**
+         * Execute getPortfolioRelationships request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified portfolio. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfRelationship> _callback, ConfigurationOptions opts) throws ApiException {
+            return getPortfolioRelationshipsAsync(scope, code, effectiveAt, asAt, filter, identifierTypes, _callback, opts);
         }
     }
 
@@ -3940,6 +5097,10 @@ public class PortfoliosApi {
         return new APIgetPortfolioRelationshipsRequest(scope, code);
     }
     private okhttp3.Call getPortfolioReturnsCall(String scope, String code, String returnScope, String returnCode, String fromEffectiveAt, String toEffectiveAt, String period, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getPortfolioReturnsCall(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getPortfolioReturnsCall(String scope, String code, String returnScope, String returnCode, String fromEffectiveAt, String toEffectiveAt, String period, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4002,11 +5163,11 @@ public class PortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPortfolioReturnsValidateBeforeCall(String scope, String code, String returnScope, String returnCode, String fromEffectiveAt, String toEffectiveAt, String period, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPortfolioReturnsValidateBeforeCall(String scope, String code, String returnScope, String returnCode, String fromEffectiveAt, String toEffectiveAt, String period, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getPortfolioReturns(Async)");
@@ -4027,20 +5188,34 @@ public class PortfoliosApi {
             throw new ApiException("Missing the required parameter 'returnCode' when calling getPortfolioReturns(Async)");
         }
 
-        return getPortfolioReturnsCall(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, asAt, _callback);
+        return getPortfolioReturnsCall(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfPerformanceReturn> getPortfolioReturnsWithHttpInfo(String scope, String code, String returnScope, String returnCode, String fromEffectiveAt, String toEffectiveAt, String period, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getPortfolioReturnsValidateBeforeCall(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, asAt, null);
+        okhttp3.Call localVarCall = getPortfolioReturnsValidateBeforeCall(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPerformanceReturn>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfPerformanceReturn> getPortfolioReturnsWithHttpInfo(String scope, String code, String returnScope, String returnCode, String fromEffectiveAt, String toEffectiveAt, String period, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPortfolioReturnsValidateBeforeCall(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, asAt, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPerformanceReturn>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getPortfolioReturnsAsync(String scope, String code, String returnScope, String returnCode, String fromEffectiveAt, String toEffectiveAt, String period, OffsetDateTime asAt, final ApiCallback<ResourceListOfPerformanceReturn> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPortfolioReturnsValidateBeforeCall(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, asAt, _callback);
+        okhttp3.Call localVarCall = getPortfolioReturnsValidateBeforeCall(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPerformanceReturn>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getPortfolioReturnsAsync(String scope, String code, String returnScope, String returnCode, String fromEffectiveAt, String toEffectiveAt, String period, OffsetDateTime asAt, final ApiCallback<ResourceListOfPerformanceReturn> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getPortfolioReturnsValidateBeforeCall(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPerformanceReturn>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4138,6 +5313,23 @@ public class PortfoliosApi {
         }
 
         /**
+         * Execute getPortfolioReturns request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfPerformanceReturn
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Returns on the given time period. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfPerformanceReturn execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfPerformanceReturn> localVarResp = getPortfolioReturnsWithHttpInfo(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getPortfolioReturns request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfPerformanceReturn&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4151,6 +5343,22 @@ public class PortfoliosApi {
          */
         public ApiResponse<ResourceListOfPerformanceReturn> executeWithHttpInfo() throws ApiException {
             return getPortfolioReturnsWithHttpInfo(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, asAt);
+        }
+
+        /**
+         * Execute getPortfolioReturns request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfPerformanceReturn&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Returns on the given time period. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfPerformanceReturn> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getPortfolioReturnsWithHttpInfo(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, asAt, opts);
         }
 
         /**
@@ -4168,6 +5376,23 @@ public class PortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPerformanceReturn> _callback) throws ApiException {
             return getPortfolioReturnsAsync(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, asAt, _callback);
+        }
+
+        /**
+         * Execute getPortfolioReturns request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Returns on the given time period. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPerformanceReturn> _callback, ConfigurationOptions opts) throws ApiException {
+            return getPortfolioReturnsAsync(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, asAt, _callback, opts);
         }
     }
 
@@ -4191,6 +5416,10 @@ public class PortfoliosApi {
         return new APIgetPortfolioReturnsRequest(scope, code, returnScope, returnCode);
     }
     private okhttp3.Call getPortfoliosAccessMetadataByKeyCall(String scope, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getPortfoliosAccessMetadataByKeyCall(scope, code, metadataKey, effectiveAt, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getPortfoliosAccessMetadataByKeyCall(String scope, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4244,11 +5473,11 @@ public class PortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPortfoliosAccessMetadataByKeyValidateBeforeCall(String scope, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPortfoliosAccessMetadataByKeyValidateBeforeCall(String scope, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getPortfoliosAccessMetadataByKey(Async)");
@@ -4264,20 +5493,34 @@ public class PortfoliosApi {
             throw new ApiException("Missing the required parameter 'metadataKey' when calling getPortfoliosAccessMetadataByKey(Async)");
         }
 
-        return getPortfoliosAccessMetadataByKeyCall(scope, code, metadataKey, effectiveAt, asAt, _callback);
+        return getPortfoliosAccessMetadataByKeyCall(scope, code, metadataKey, effectiveAt, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<List<AccessMetadataValue>> getPortfoliosAccessMetadataByKeyWithHttpInfo(String scope, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getPortfoliosAccessMetadataByKeyValidateBeforeCall(scope, code, metadataKey, effectiveAt, asAt, null);
+        okhttp3.Call localVarCall = getPortfoliosAccessMetadataByKeyValidateBeforeCall(scope, code, metadataKey, effectiveAt, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<List<AccessMetadataValue>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<List<AccessMetadataValue>> getPortfoliosAccessMetadataByKeyWithHttpInfo(String scope, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPortfoliosAccessMetadataByKeyValidateBeforeCall(scope, code, metadataKey, effectiveAt, asAt, null, opts);
         Type localVarReturnType = new TypeToken<List<AccessMetadataValue>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getPortfoliosAccessMetadataByKeyAsync(String scope, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt, final ApiCallback<List<AccessMetadataValue>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPortfoliosAccessMetadataByKeyValidateBeforeCall(scope, code, metadataKey, effectiveAt, asAt, _callback);
+        okhttp3.Call localVarCall = getPortfoliosAccessMetadataByKeyValidateBeforeCall(scope, code, metadataKey, effectiveAt, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<List<AccessMetadataValue>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getPortfoliosAccessMetadataByKeyAsync(String scope, String code, String metadataKey, String effectiveAt, OffsetDateTime asAt, final ApiCallback<List<AccessMetadataValue>> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getPortfoliosAccessMetadataByKeyValidateBeforeCall(scope, code, metadataKey, effectiveAt, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<List<AccessMetadataValue>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4351,6 +5594,23 @@ public class PortfoliosApi {
         }
 
         /**
+         * Execute getPortfoliosAccessMetadataByKey request. Use any specified configuration options to override any other configuration for this request only.
+         * @return List&lt;AccessMetadataValue&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Portfolio Access Metadata Rule or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public List<AccessMetadataValue> execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<List<AccessMetadataValue>> localVarResp = getPortfoliosAccessMetadataByKeyWithHttpInfo(scope, code, metadataKey, effectiveAt, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getPortfoliosAccessMetadataByKey request with HTTP info returned
          * @return ApiResponse&lt;List&lt;AccessMetadataValue&gt;&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4364,6 +5624,22 @@ public class PortfoliosApi {
          */
         public ApiResponse<List<AccessMetadataValue>> executeWithHttpInfo() throws ApiException {
             return getPortfoliosAccessMetadataByKeyWithHttpInfo(scope, code, metadataKey, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getPortfoliosAccessMetadataByKey request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;List&lt;AccessMetadataValue&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Portfolio Access Metadata Rule or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<List<AccessMetadataValue>> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getPortfoliosAccessMetadataByKeyWithHttpInfo(scope, code, metadataKey, effectiveAt, asAt, opts);
         }
 
         /**
@@ -4381,6 +5657,23 @@ public class PortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<List<AccessMetadataValue>> _callback) throws ApiException {
             return getPortfoliosAccessMetadataByKeyAsync(scope, code, metadataKey, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getPortfoliosAccessMetadataByKey request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Portfolio Access Metadata Rule or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<List<AccessMetadataValue>> _callback, ConfigurationOptions opts) throws ApiException {
+            return getPortfoliosAccessMetadataByKeyAsync(scope, code, metadataKey, effectiveAt, asAt, _callback, opts);
         }
     }
 
@@ -4403,6 +5696,10 @@ public class PortfoliosApi {
         return new APIgetPortfoliosAccessMetadataByKeyRequest(scope, code, metadataKey);
     }
     private okhttp3.Call listInstrumentEventInstructionsCall(String scope, String code, String portfolioEffectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
+        return listInstrumentEventInstructionsCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listInstrumentEventInstructionsCall(String scope, String code, String portfolioEffectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4471,11 +5768,11 @@ public class PortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listInstrumentEventInstructionsValidateBeforeCall(String scope, String code, String portfolioEffectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listInstrumentEventInstructionsValidateBeforeCall(String scope, String code, String portfolioEffectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listInstrumentEventInstructions(Async)");
@@ -4486,20 +5783,34 @@ public class PortfoliosApi {
             throw new ApiException("Missing the required parameter 'code' when calling listInstrumentEventInstructions(Async)");
         }
 
-        return listInstrumentEventInstructionsCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, _callback);
+        return listInstrumentEventInstructionsCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfInstrumentEventInstruction> listInstrumentEventInstructionsWithHttpInfo(String scope, String code, String portfolioEffectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy) throws ApiException {
-        okhttp3.Call localVarCall = listInstrumentEventInstructionsValidateBeforeCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, null);
+        okhttp3.Call localVarCall = listInstrumentEventInstructionsValidateBeforeCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfInstrumentEventInstruction>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfInstrumentEventInstruction> listInstrumentEventInstructionsWithHttpInfo(String scope, String code, String portfolioEffectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listInstrumentEventInstructionsValidateBeforeCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfInstrumentEventInstruction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listInstrumentEventInstructionsAsync(String scope, String code, String portfolioEffectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfInstrumentEventInstruction> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listInstrumentEventInstructionsValidateBeforeCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, _callback);
+        okhttp3.Call localVarCall = listInstrumentEventInstructionsValidateBeforeCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfInstrumentEventInstruction>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listInstrumentEventInstructionsAsync(String scope, String code, String portfolioEffectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfInstrumentEventInstruction> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listInstrumentEventInstructionsValidateBeforeCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfInstrumentEventInstruction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4615,6 +5926,23 @@ public class PortfoliosApi {
         }
 
         /**
+         * Execute listInstrumentEventInstructions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfInstrumentEventInstruction
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instrument event instructions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfInstrumentEventInstruction execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfInstrumentEventInstruction> localVarResp = listInstrumentEventInstructionsWithHttpInfo(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listInstrumentEventInstructions request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfInstrumentEventInstruction&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4628,6 +5956,22 @@ public class PortfoliosApi {
          */
         public ApiResponse<PagedResourceListOfInstrumentEventInstruction> executeWithHttpInfo() throws ApiException {
             return listInstrumentEventInstructionsWithHttpInfo(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy);
+        }
+
+        /**
+         * Execute listInstrumentEventInstructions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfInstrumentEventInstruction&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instrument event instructions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfInstrumentEventInstruction> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listInstrumentEventInstructionsWithHttpInfo(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, opts);
         }
 
         /**
@@ -4645,6 +5989,23 @@ public class PortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfInstrumentEventInstruction> _callback) throws ApiException {
             return listInstrumentEventInstructionsAsync(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, _callback);
+        }
+
+        /**
+         * Execute listInstrumentEventInstructions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instrument event instructions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfInstrumentEventInstruction> _callback, ConfigurationOptions opts) throws ApiException {
+            return listInstrumentEventInstructionsAsync(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, _callback, opts);
         }
     }
 
@@ -4666,6 +6027,10 @@ public class PortfoliosApi {
         return new APIlistInstrumentEventInstructionsRequest(scope, code);
     }
     private okhttp3.Call listPortfolioPropertiesCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, final ApiCallback _callback) throws ApiException {
+        return listPortfolioPropertiesCall(scope, code, effectiveAt, asAt, page, limit,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listPortfolioPropertiesCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4726,11 +6091,11 @@ public class PortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listPortfolioPropertiesValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listPortfolioPropertiesValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listPortfolioProperties(Async)");
@@ -4741,20 +6106,34 @@ public class PortfoliosApi {
             throw new ApiException("Missing the required parameter 'code' when calling listPortfolioProperties(Async)");
         }
 
-        return listPortfolioPropertiesCall(scope, code, effectiveAt, asAt, page, limit, _callback);
+        return listPortfolioPropertiesCall(scope, code, effectiveAt, asAt, page, limit, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfProperty> listPortfolioPropertiesWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = listPortfolioPropertiesValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, null);
+        okhttp3.Call localVarCall = listPortfolioPropertiesValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfProperty>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfProperty> listPortfolioPropertiesWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listPortfolioPropertiesValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfProperty>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listPortfolioPropertiesAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, final ApiCallback<ResourceListOfProperty> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listPortfolioPropertiesValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, _callback);
+        okhttp3.Call localVarCall = listPortfolioPropertiesValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfProperty>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listPortfolioPropertiesAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, final ApiCallback<ResourceListOfProperty> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listPortfolioPropertiesValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfProperty>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4848,6 +6227,23 @@ public class PortfoliosApi {
         }
 
         /**
+         * Execute listPortfolioProperties request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfProperty
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The properties of the specified portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfProperty execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfProperty> localVarResp = listPortfolioPropertiesWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listPortfolioProperties request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfProperty&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4861,6 +6257,22 @@ public class PortfoliosApi {
          */
         public ApiResponse<ResourceListOfProperty> executeWithHttpInfo() throws ApiException {
             return listPortfolioPropertiesWithHttpInfo(scope, code, effectiveAt, asAt, page, limit);
+        }
+
+        /**
+         * Execute listPortfolioProperties request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfProperty&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The properties of the specified portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfProperty> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listPortfolioPropertiesWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, opts);
         }
 
         /**
@@ -4878,6 +6290,23 @@ public class PortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfProperty> _callback) throws ApiException {
             return listPortfolioPropertiesAsync(scope, code, effectiveAt, asAt, page, limit, _callback);
+        }
+
+        /**
+         * Execute listPortfolioProperties request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The properties of the specified portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfProperty> _callback, ConfigurationOptions opts) throws ApiException {
+            return listPortfolioPropertiesAsync(scope, code, effectiveAt, asAt, page, limit, _callback, opts);
         }
     }
 
@@ -4899,6 +6328,10 @@ public class PortfoliosApi {
         return new APIlistPortfolioPropertiesRequest(scope, code);
     }
     private okhttp3.Call listPortfoliosCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, String query, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+        return listPortfoliosCall(effectiveAt, asAt, page, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listPortfoliosCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, String query, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4977,25 +6410,39 @@ public class PortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listPortfoliosValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, String query, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
-        return listPortfoliosCall(effectiveAt, asAt, page, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds, _callback);
+    private okhttp3.Call listPortfoliosValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, String query, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listPortfoliosCall(effectiveAt, asAt, page, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfPortfolio> listPortfoliosWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, String query, List<String> propertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
-        okhttp3.Call localVarCall = listPortfoliosValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds, null);
+        okhttp3.Call localVarCall = listPortfoliosValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPortfolio>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfPortfolio> listPortfoliosWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, String query, List<String> propertyKeys, List<String> relationshipDefinitionIds, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listPortfoliosValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPortfolio>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listPortfoliosAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, String query, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<ResourceListOfPortfolio> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listPortfoliosValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds, _callback);
+        okhttp3.Call localVarCall = listPortfoliosValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPortfolio>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listPortfoliosAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, String query, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<ResourceListOfPortfolio> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listPortfoliosValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPortfolio>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -5140,6 +6587,23 @@ public class PortfoliosApi {
         }
 
         /**
+         * Execute listPortfolios request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfPortfolio
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolios </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfPortfolio execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfPortfolio> localVarResp = listPortfoliosWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listPortfolios request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfPortfolio&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -5153,6 +6617,22 @@ public class PortfoliosApi {
          */
         public ApiResponse<ResourceListOfPortfolio> executeWithHttpInfo() throws ApiException {
             return listPortfoliosWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds);
+        }
+
+        /**
+         * Execute listPortfolios request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfPortfolio&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolios </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfPortfolio> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listPortfoliosWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds, opts);
         }
 
         /**
@@ -5170,6 +6650,23 @@ public class PortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPortfolio> _callback) throws ApiException {
             return listPortfoliosAsync(effectiveAt, asAt, page, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds, _callback);
+        }
+
+        /**
+         * Execute listPortfolios request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolios </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPortfolio> _callback, ConfigurationOptions opts) throws ApiException {
+            return listPortfoliosAsync(effectiveAt, asAt, page, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds, _callback, opts);
         }
     }
 
@@ -5189,6 +6686,10 @@ public class PortfoliosApi {
         return new APIlistPortfoliosRequest();
     }
     private okhttp3.Call listPortfoliosForScopeCall(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+        return listPortfoliosForScopeCall(scope, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listPortfoliosForScopeCall(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5264,30 +6765,44 @@ public class PortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listPortfoliosForScopeValidateBeforeCall(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listPortfoliosForScopeValidateBeforeCall(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listPortfoliosForScope(Async)");
         }
 
-        return listPortfoliosForScopeCall(scope, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback);
+        return listPortfoliosForScopeCall(scope, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfPortfolio> listPortfoliosForScopeWithHttpInfo(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
-        okhttp3.Call localVarCall = listPortfoliosForScopeValidateBeforeCall(scope, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, null);
+        okhttp3.Call localVarCall = listPortfoliosForScopeValidateBeforeCall(scope, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPortfolio>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfPortfolio> listPortfoliosForScopeWithHttpInfo(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listPortfoliosForScopeValidateBeforeCall(scope, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPortfolio>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listPortfoliosForScopeAsync(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<ResourceListOfPortfolio> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listPortfoliosForScopeValidateBeforeCall(scope, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback);
+        okhttp3.Call localVarCall = listPortfoliosForScopeValidateBeforeCall(scope, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPortfolio>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listPortfoliosForScopeAsync(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<ResourceListOfPortfolio> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listPortfoliosForScopeValidateBeforeCall(scope, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPortfolio>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -5423,6 +6938,23 @@ public class PortfoliosApi {
         }
 
         /**
+         * Execute listPortfoliosForScope request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfPortfolio
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The portfolios in the specified scope </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfPortfolio execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfPortfolio> localVarResp = listPortfoliosForScopeWithHttpInfo(scope, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listPortfoliosForScope request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfPortfolio&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -5436,6 +6968,22 @@ public class PortfoliosApi {
          */
         public ApiResponse<ResourceListOfPortfolio> executeWithHttpInfo() throws ApiException {
             return listPortfoliosForScopeWithHttpInfo(scope, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds);
+        }
+
+        /**
+         * Execute listPortfoliosForScope request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfPortfolio&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The portfolios in the specified scope </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfPortfolio> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listPortfoliosForScopeWithHttpInfo(scope, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, opts);
         }
 
         /**
@@ -5453,6 +7001,23 @@ public class PortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPortfolio> _callback) throws ApiException {
             return listPortfoliosForScopeAsync(scope, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback);
+        }
+
+        /**
+         * Execute listPortfoliosForScope request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The portfolios in the specified scope </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPortfolio> _callback, ConfigurationOptions opts) throws ApiException {
+            return listPortfoliosForScopeAsync(scope, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds, _callback, opts);
         }
     }
 
@@ -5473,6 +7038,10 @@ public class PortfoliosApi {
         return new APIlistPortfoliosForScopeRequest(scope);
     }
     private okhttp3.Call patchPortfolioCall(String scope, String code, List<Operation> operation, final ApiCallback _callback) throws ApiException {
+        return patchPortfolioCall(scope, code, operation,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call patchPortfolioCall(String scope, String code, List<Operation> operation, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5521,11 +7090,11 @@ public class PortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchPortfolioValidateBeforeCall(String scope, String code, List<Operation> operation, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchPortfolioValidateBeforeCall(String scope, String code, List<Operation> operation, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling patchPortfolio(Async)");
@@ -5541,20 +7110,34 @@ public class PortfoliosApi {
             throw new ApiException("Missing the required parameter 'operation' when calling patchPortfolio(Async)");
         }
 
-        return patchPortfolioCall(scope, code, operation, _callback);
+        return patchPortfolioCall(scope, code, operation, _callback, opts);
 
     }
 
 
     private ApiResponse<Portfolio> patchPortfolioWithHttpInfo(String scope, String code, List<Operation> operation) throws ApiException {
-        okhttp3.Call localVarCall = patchPortfolioValidateBeforeCall(scope, code, operation, null);
+        okhttp3.Call localVarCall = patchPortfolioValidateBeforeCall(scope, code, operation, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Portfolio> patchPortfolioWithHttpInfo(String scope, String code, List<Operation> operation, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = patchPortfolioValidateBeforeCall(scope, code, operation, null, opts);
         Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call patchPortfolioAsync(String scope, String code, List<Operation> operation, final ApiCallback<Portfolio> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchPortfolioValidateBeforeCall(scope, code, operation, _callback);
+        okhttp3.Call localVarCall = patchPortfolioValidateBeforeCall(scope, code, operation, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call patchPortfolioAsync(String scope, String code, List<Operation> operation, final ApiCallback<Portfolio> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = patchPortfolioValidateBeforeCall(scope, code, operation, _callback, opts);
         Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -5606,6 +7189,23 @@ public class PortfoliosApi {
         }
 
         /**
+         * Execute patchPortfolio request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Portfolio
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly patched portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Portfolio execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Portfolio> localVarResp = patchPortfolioWithHttpInfo(scope, code, operation, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute patchPortfolio request with HTTP info returned
          * @return ApiResponse&lt;Portfolio&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -5619,6 +7219,22 @@ public class PortfoliosApi {
          */
         public ApiResponse<Portfolio> executeWithHttpInfo() throws ApiException {
             return patchPortfolioWithHttpInfo(scope, code, operation);
+        }
+
+        /**
+         * Execute patchPortfolio request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Portfolio&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly patched portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Portfolio> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return patchPortfolioWithHttpInfo(scope, code, operation, opts);
         }
 
         /**
@@ -5636,6 +7252,23 @@ public class PortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Portfolio> _callback) throws ApiException {
             return patchPortfolioAsync(scope, code, operation, _callback);
+        }
+
+        /**
+         * Execute patchPortfolio request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly patched portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Portfolio> _callback, ConfigurationOptions opts) throws ApiException {
+            return patchPortfolioAsync(scope, code, operation, _callback, opts);
         }
     }
 
@@ -5658,6 +7291,10 @@ public class PortfoliosApi {
         return new APIpatchPortfolioRequest(scope, code, operation);
     }
     private okhttp3.Call patchPortfolioAccessMetadataCall(String scope, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+        return patchPortfolioAccessMetadataCall(scope, code, accessMetadataOperation, effectiveAt, effectiveUntil,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call patchPortfolioAccessMetadataCall(String scope, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5714,11 +7351,11 @@ public class PortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchPortfolioAccessMetadataValidateBeforeCall(String scope, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchPortfolioAccessMetadataValidateBeforeCall(String scope, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling patchPortfolioAccessMetadata(Async)");
@@ -5734,20 +7371,34 @@ public class PortfoliosApi {
             throw new ApiException("Missing the required parameter 'accessMetadataOperation' when calling patchPortfolioAccessMetadata(Async)");
         }
 
-        return patchPortfolioAccessMetadataCall(scope, code, accessMetadataOperation, effectiveAt, effectiveUntil, _callback);
+        return patchPortfolioAccessMetadataCall(scope, code, accessMetadataOperation, effectiveAt, effectiveUntil, _callback, opts);
 
     }
 
 
     private ApiResponse<Map<String, List<AccessMetadataValue>>> patchPortfolioAccessMetadataWithHttpInfo(String scope, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
-        okhttp3.Call localVarCall = patchPortfolioAccessMetadataValidateBeforeCall(scope, code, accessMetadataOperation, effectiveAt, effectiveUntil, null);
+        okhttp3.Call localVarCall = patchPortfolioAccessMetadataValidateBeforeCall(scope, code, accessMetadataOperation, effectiveAt, effectiveUntil, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Map<String, List<AccessMetadataValue>>> patchPortfolioAccessMetadataWithHttpInfo(String scope, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = patchPortfolioAccessMetadataValidateBeforeCall(scope, code, accessMetadataOperation, effectiveAt, effectiveUntil, null, opts);
         Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call patchPortfolioAccessMetadataAsync(String scope, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchPortfolioAccessMetadataValidateBeforeCall(scope, code, accessMetadataOperation, effectiveAt, effectiveUntil, _callback);
+        okhttp3.Call localVarCall = patchPortfolioAccessMetadataValidateBeforeCall(scope, code, accessMetadataOperation, effectiveAt, effectiveUntil, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call patchPortfolioAccessMetadataAsync(String scope, String code, List<AccessMetadataOperation> accessMetadataOperation, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = patchPortfolioAccessMetadataValidateBeforeCall(scope, code, accessMetadataOperation, effectiveAt, effectiveUntil, _callback, opts);
         Type localVarReturnType = new TypeToken<Map<String, List<AccessMetadataValue>>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -5821,6 +7472,23 @@ public class PortfoliosApi {
         }
 
         /**
+         * Execute patchPortfolioAccessMetadata request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Map<String, List<AccessMetadataValue>> execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Map<String, List<AccessMetadataValue>>> localVarResp = patchPortfolioAccessMetadataWithHttpInfo(scope, code, accessMetadataOperation, effectiveAt, effectiveUntil, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute patchPortfolioAccessMetadata request with HTTP info returned
          * @return ApiResponse&lt;Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -5834,6 +7502,22 @@ public class PortfoliosApi {
          */
         public ApiResponse<Map<String, List<AccessMetadataValue>>> executeWithHttpInfo() throws ApiException {
             return patchPortfolioAccessMetadataWithHttpInfo(scope, code, accessMetadataOperation, effectiveAt, effectiveUntil);
+        }
+
+        /**
+         * Execute patchPortfolioAccessMetadata request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Map<String, List<AccessMetadataValue>>> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return patchPortfolioAccessMetadataWithHttpInfo(scope, code, accessMetadataOperation, effectiveAt, effectiveUntil, opts);
         }
 
         /**
@@ -5851,6 +7535,23 @@ public class PortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback) throws ApiException {
             return patchPortfolioAccessMetadataAsync(scope, code, accessMetadataOperation, effectiveAt, effectiveUntil, _callback);
+        }
+
+        /**
+         * Execute patchPortfolioAccessMetadata request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully patched items. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Map<String, List<AccessMetadataValue>>> _callback, ConfigurationOptions opts) throws ApiException {
+            return patchPortfolioAccessMetadataAsync(scope, code, accessMetadataOperation, effectiveAt, effectiveUntil, _callback, opts);
         }
     }
 
@@ -5873,6 +7574,10 @@ public class PortfoliosApi {
         return new APIpatchPortfolioAccessMetadataRequest(scope, code, accessMetadataOperation);
     }
     private okhttp3.Call updatePortfolioCall(String scope, String code, UpdatePortfolioRequest updatePortfolioRequest, String effectiveAt, final ApiCallback _callback) throws ApiException {
+        return updatePortfolioCall(scope, code, updatePortfolioRequest, effectiveAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call updatePortfolioCall(String scope, String code, UpdatePortfolioRequest updatePortfolioRequest, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5925,11 +7630,11 @@ public class PortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updatePortfolioValidateBeforeCall(String scope, String code, UpdatePortfolioRequest updatePortfolioRequest, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updatePortfolioValidateBeforeCall(String scope, String code, UpdatePortfolioRequest updatePortfolioRequest, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling updatePortfolio(Async)");
@@ -5945,20 +7650,34 @@ public class PortfoliosApi {
             throw new ApiException("Missing the required parameter 'updatePortfolioRequest' when calling updatePortfolio(Async)");
         }
 
-        return updatePortfolioCall(scope, code, updatePortfolioRequest, effectiveAt, _callback);
+        return updatePortfolioCall(scope, code, updatePortfolioRequest, effectiveAt, _callback, opts);
 
     }
 
 
     private ApiResponse<Portfolio> updatePortfolioWithHttpInfo(String scope, String code, UpdatePortfolioRequest updatePortfolioRequest, String effectiveAt) throws ApiException {
-        okhttp3.Call localVarCall = updatePortfolioValidateBeforeCall(scope, code, updatePortfolioRequest, effectiveAt, null);
+        okhttp3.Call localVarCall = updatePortfolioValidateBeforeCall(scope, code, updatePortfolioRequest, effectiveAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Portfolio> updatePortfolioWithHttpInfo(String scope, String code, UpdatePortfolioRequest updatePortfolioRequest, String effectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = updatePortfolioValidateBeforeCall(scope, code, updatePortfolioRequest, effectiveAt, null, opts);
         Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call updatePortfolioAsync(String scope, String code, UpdatePortfolioRequest updatePortfolioRequest, String effectiveAt, final ApiCallback<Portfolio> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updatePortfolioValidateBeforeCall(scope, code, updatePortfolioRequest, effectiveAt, _callback);
+        okhttp3.Call localVarCall = updatePortfolioValidateBeforeCall(scope, code, updatePortfolioRequest, effectiveAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call updatePortfolioAsync(String scope, String code, UpdatePortfolioRequest updatePortfolioRequest, String effectiveAt, final ApiCallback<Portfolio> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = updatePortfolioValidateBeforeCall(scope, code, updatePortfolioRequest, effectiveAt, _callback, opts);
         Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -6021,6 +7740,23 @@ public class PortfoliosApi {
         }
 
         /**
+         * Execute updatePortfolio request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Portfolio
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated definition of the portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Portfolio execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Portfolio> localVarResp = updatePortfolioWithHttpInfo(scope, code, updatePortfolioRequest, effectiveAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute updatePortfolio request with HTTP info returned
          * @return ApiResponse&lt;Portfolio&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -6034,6 +7770,22 @@ public class PortfoliosApi {
          */
         public ApiResponse<Portfolio> executeWithHttpInfo() throws ApiException {
             return updatePortfolioWithHttpInfo(scope, code, updatePortfolioRequest, effectiveAt);
+        }
+
+        /**
+         * Execute updatePortfolio request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Portfolio&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated definition of the portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Portfolio> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return updatePortfolioWithHttpInfo(scope, code, updatePortfolioRequest, effectiveAt, opts);
         }
 
         /**
@@ -6051,6 +7803,23 @@ public class PortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Portfolio> _callback) throws ApiException {
             return updatePortfolioAsync(scope, code, updatePortfolioRequest, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute updatePortfolio request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated definition of the portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Portfolio> _callback, ConfigurationOptions opts) throws ApiException {
+            return updatePortfolioAsync(scope, code, updatePortfolioRequest, effectiveAt, _callback, opts);
         }
     }
 
@@ -6073,6 +7842,10 @@ public class PortfoliosApi {
         return new APIupdatePortfolioRequest(scope, code, updatePortfolioRequest);
     }
     private okhttp3.Call upsertInstrumentEventInstructionsCall(String scope, String code, String successMode, Map<String, InstrumentEventInstructionRequest> requestBody, String portfolioEffectiveAt, final ApiCallback _callback) throws ApiException {
+        return upsertInstrumentEventInstructionsCall(scope, code, successMode, requestBody, portfolioEffectiveAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertInstrumentEventInstructionsCall(String scope, String code, String successMode, Map<String, InstrumentEventInstructionRequest> requestBody, String portfolioEffectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -6129,11 +7902,11 @@ public class PortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertInstrumentEventInstructionsValidateBeforeCall(String scope, String code, String successMode, Map<String, InstrumentEventInstructionRequest> requestBody, String portfolioEffectiveAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertInstrumentEventInstructionsValidateBeforeCall(String scope, String code, String successMode, Map<String, InstrumentEventInstructionRequest> requestBody, String portfolioEffectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling upsertInstrumentEventInstructions(Async)");
@@ -6154,20 +7927,34 @@ public class PortfoliosApi {
             throw new ApiException("Missing the required parameter 'requestBody' when calling upsertInstrumentEventInstructions(Async)");
         }
 
-        return upsertInstrumentEventInstructionsCall(scope, code, successMode, requestBody, portfolioEffectiveAt, _callback);
+        return upsertInstrumentEventInstructionsCall(scope, code, successMode, requestBody, portfolioEffectiveAt, _callback, opts);
 
     }
 
 
     private ApiResponse<InstrumentEventInstructionsResponse> upsertInstrumentEventInstructionsWithHttpInfo(String scope, String code, String successMode, Map<String, InstrumentEventInstructionRequest> requestBody, String portfolioEffectiveAt) throws ApiException {
-        okhttp3.Call localVarCall = upsertInstrumentEventInstructionsValidateBeforeCall(scope, code, successMode, requestBody, portfolioEffectiveAt, null);
+        okhttp3.Call localVarCall = upsertInstrumentEventInstructionsValidateBeforeCall(scope, code, successMode, requestBody, portfolioEffectiveAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<InstrumentEventInstructionsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<InstrumentEventInstructionsResponse> upsertInstrumentEventInstructionsWithHttpInfo(String scope, String code, String successMode, Map<String, InstrumentEventInstructionRequest> requestBody, String portfolioEffectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertInstrumentEventInstructionsValidateBeforeCall(scope, code, successMode, requestBody, portfolioEffectiveAt, null, opts);
         Type localVarReturnType = new TypeToken<InstrumentEventInstructionsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertInstrumentEventInstructionsAsync(String scope, String code, String successMode, Map<String, InstrumentEventInstructionRequest> requestBody, String portfolioEffectiveAt, final ApiCallback<InstrumentEventInstructionsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertInstrumentEventInstructionsValidateBeforeCall(scope, code, successMode, requestBody, portfolioEffectiveAt, _callback);
+        okhttp3.Call localVarCall = upsertInstrumentEventInstructionsValidateBeforeCall(scope, code, successMode, requestBody, portfolioEffectiveAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<InstrumentEventInstructionsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertInstrumentEventInstructionsAsync(String scope, String code, String successMode, Map<String, InstrumentEventInstructionRequest> requestBody, String portfolioEffectiveAt, final ApiCallback<InstrumentEventInstructionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertInstrumentEventInstructionsValidateBeforeCall(scope, code, successMode, requestBody, portfolioEffectiveAt, _callback, opts);
         Type localVarReturnType = new TypeToken<InstrumentEventInstructionsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -6232,6 +8019,23 @@ public class PortfoliosApi {
         }
 
         /**
+         * Execute upsertInstrumentEventInstructions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return InstrumentEventInstructionsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly inserted or updated instrument event instructions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public InstrumentEventInstructionsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<InstrumentEventInstructionsResponse> localVarResp = upsertInstrumentEventInstructionsWithHttpInfo(scope, code, successMode, requestBody, portfolioEffectiveAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertInstrumentEventInstructions request with HTTP info returned
          * @return ApiResponse&lt;InstrumentEventInstructionsResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -6245,6 +8049,22 @@ public class PortfoliosApi {
          */
         public ApiResponse<InstrumentEventInstructionsResponse> executeWithHttpInfo() throws ApiException {
             return upsertInstrumentEventInstructionsWithHttpInfo(scope, code, successMode, requestBody, portfolioEffectiveAt);
+        }
+
+        /**
+         * Execute upsertInstrumentEventInstructions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;InstrumentEventInstructionsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly inserted or updated instrument event instructions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<InstrumentEventInstructionsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertInstrumentEventInstructionsWithHttpInfo(scope, code, successMode, requestBody, portfolioEffectiveAt, opts);
         }
 
         /**
@@ -6262,6 +8082,23 @@ public class PortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<InstrumentEventInstructionsResponse> _callback) throws ApiException {
             return upsertInstrumentEventInstructionsAsync(scope, code, successMode, requestBody, portfolioEffectiveAt, _callback);
+        }
+
+        /**
+         * Execute upsertInstrumentEventInstructions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly inserted or updated instrument event instructions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<InstrumentEventInstructionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertInstrumentEventInstructionsAsync(scope, code, successMode, requestBody, portfolioEffectiveAt, _callback, opts);
         }
     }
 
@@ -6285,6 +8122,10 @@ public class PortfoliosApi {
         return new APIupsertInstrumentEventInstructionsRequest(scope, code, successMode, requestBody);
     }
     private okhttp3.Call upsertPortfolioAccessMetadataCall(String scope, String code, String metadataKey, UpsertPortfolioAccessMetadataRequest upsertPortfolioAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+        return upsertPortfolioAccessMetadataCall(scope, code, metadataKey, upsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertPortfolioAccessMetadataCall(String scope, String code, String metadataKey, UpsertPortfolioAccessMetadataRequest upsertPortfolioAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -6342,11 +8183,11 @@ public class PortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertPortfolioAccessMetadataValidateBeforeCall(String scope, String code, String metadataKey, UpsertPortfolioAccessMetadataRequest upsertPortfolioAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertPortfolioAccessMetadataValidateBeforeCall(String scope, String code, String metadataKey, UpsertPortfolioAccessMetadataRequest upsertPortfolioAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling upsertPortfolioAccessMetadata(Async)");
@@ -6367,20 +8208,34 @@ public class PortfoliosApi {
             throw new ApiException("Missing the required parameter 'upsertPortfolioAccessMetadataRequest' when calling upsertPortfolioAccessMetadata(Async)");
         }
 
-        return upsertPortfolioAccessMetadataCall(scope, code, metadataKey, upsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil, _callback);
+        return upsertPortfolioAccessMetadataCall(scope, code, metadataKey, upsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfAccessMetadataValueOf> upsertPortfolioAccessMetadataWithHttpInfo(String scope, String code, String metadataKey, UpsertPortfolioAccessMetadataRequest upsertPortfolioAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
-        okhttp3.Call localVarCall = upsertPortfolioAccessMetadataValidateBeforeCall(scope, code, metadataKey, upsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil, null);
+        okhttp3.Call localVarCall = upsertPortfolioAccessMetadataValidateBeforeCall(scope, code, metadataKey, upsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfAccessMetadataValueOf>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfAccessMetadataValueOf> upsertPortfolioAccessMetadataWithHttpInfo(String scope, String code, String metadataKey, UpsertPortfolioAccessMetadataRequest upsertPortfolioAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertPortfolioAccessMetadataValidateBeforeCall(scope, code, metadataKey, upsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfAccessMetadataValueOf>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertPortfolioAccessMetadataAsync(String scope, String code, String metadataKey, UpsertPortfolioAccessMetadataRequest upsertPortfolioAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<ResourceListOfAccessMetadataValueOf> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertPortfolioAccessMetadataValidateBeforeCall(scope, code, metadataKey, upsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil, _callback);
+        okhttp3.Call localVarCall = upsertPortfolioAccessMetadataValidateBeforeCall(scope, code, metadataKey, upsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfAccessMetadataValueOf>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertPortfolioAccessMetadataAsync(String scope, String code, String metadataKey, UpsertPortfolioAccessMetadataRequest upsertPortfolioAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<ResourceListOfAccessMetadataValueOf> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertPortfolioAccessMetadataValidateBeforeCall(scope, code, metadataKey, upsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfAccessMetadataValueOf>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -6456,6 +8311,23 @@ public class PortfoliosApi {
         }
 
         /**
+         * Execute upsertPortfolioAccessMetadata request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfAccessMetadataValueOf
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfAccessMetadataValueOf execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfAccessMetadataValueOf> localVarResp = upsertPortfolioAccessMetadataWithHttpInfo(scope, code, metadataKey, upsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertPortfolioAccessMetadata request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfAccessMetadataValueOf&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -6469,6 +8341,22 @@ public class PortfoliosApi {
          */
         public ApiResponse<ResourceListOfAccessMetadataValueOf> executeWithHttpInfo() throws ApiException {
             return upsertPortfolioAccessMetadataWithHttpInfo(scope, code, metadataKey, upsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil);
+        }
+
+        /**
+         * Execute upsertPortfolioAccessMetadata request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfAccessMetadataValueOf&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfAccessMetadataValueOf> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertPortfolioAccessMetadataWithHttpInfo(scope, code, metadataKey, upsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil, opts);
         }
 
         /**
@@ -6486,6 +8374,23 @@ public class PortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfAccessMetadataValueOf> _callback) throws ApiException {
             return upsertPortfolioAccessMetadataAsync(scope, code, metadataKey, upsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil, _callback);
+        }
+
+        /**
+         * Execute upsertPortfolioAccessMetadata request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfAccessMetadataValueOf> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertPortfolioAccessMetadataAsync(scope, code, metadataKey, upsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil, _callback, opts);
         }
     }
 
@@ -6509,6 +8414,10 @@ public class PortfoliosApi {
         return new APIupsertPortfolioAccessMetadataRequest(scope, code, metadataKey, upsertPortfolioAccessMetadataRequest);
     }
     private okhttp3.Call upsertPortfolioPropertiesCall(String scope, String code, Map<String, Property> requestBody, final ApiCallback _callback) throws ApiException {
+        return upsertPortfolioPropertiesCall(scope, code, requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertPortfolioPropertiesCall(String scope, String code, Map<String, Property> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -6557,11 +8466,11 @@ public class PortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertPortfolioPropertiesValidateBeforeCall(String scope, String code, Map<String, Property> requestBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertPortfolioPropertiesValidateBeforeCall(String scope, String code, Map<String, Property> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling upsertPortfolioProperties(Async)");
@@ -6577,20 +8486,34 @@ public class PortfoliosApi {
             throw new ApiException("Missing the required parameter 'requestBody' when calling upsertPortfolioProperties(Async)");
         }
 
-        return upsertPortfolioPropertiesCall(scope, code, requestBody, _callback);
+        return upsertPortfolioPropertiesCall(scope, code, requestBody, _callback, opts);
 
     }
 
 
     private ApiResponse<PortfolioProperties> upsertPortfolioPropertiesWithHttpInfo(String scope, String code, Map<String, Property> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = upsertPortfolioPropertiesValidateBeforeCall(scope, code, requestBody, null);
+        okhttp3.Call localVarCall = upsertPortfolioPropertiesValidateBeforeCall(scope, code, requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PortfolioProperties>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PortfolioProperties> upsertPortfolioPropertiesWithHttpInfo(String scope, String code, Map<String, Property> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertPortfolioPropertiesValidateBeforeCall(scope, code, requestBody, null, opts);
         Type localVarReturnType = new TypeToken<PortfolioProperties>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertPortfolioPropertiesAsync(String scope, String code, Map<String, Property> requestBody, final ApiCallback<PortfolioProperties> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertPortfolioPropertiesValidateBeforeCall(scope, code, requestBody, _callback);
+        okhttp3.Call localVarCall = upsertPortfolioPropertiesValidateBeforeCall(scope, code, requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PortfolioProperties>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertPortfolioPropertiesAsync(String scope, String code, Map<String, Property> requestBody, final ApiCallback<PortfolioProperties> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertPortfolioPropertiesValidateBeforeCall(scope, code, requestBody, _callback, opts);
         Type localVarReturnType = new TypeToken<PortfolioProperties>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -6642,6 +8565,23 @@ public class PortfoliosApi {
         }
 
         /**
+         * Execute upsertPortfolioProperties request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PortfolioProperties
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PortfolioProperties execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PortfolioProperties> localVarResp = upsertPortfolioPropertiesWithHttpInfo(scope, code, requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertPortfolioProperties request with HTTP info returned
          * @return ApiResponse&lt;PortfolioProperties&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -6655,6 +8595,22 @@ public class PortfoliosApi {
          */
         public ApiResponse<PortfolioProperties> executeWithHttpInfo() throws ApiException {
             return upsertPortfolioPropertiesWithHttpInfo(scope, code, requestBody);
+        }
+
+        /**
+         * Execute upsertPortfolioProperties request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PortfolioProperties&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PortfolioProperties> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertPortfolioPropertiesWithHttpInfo(scope, code, requestBody, opts);
         }
 
         /**
@@ -6672,6 +8628,23 @@ public class PortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PortfolioProperties> _callback) throws ApiException {
             return upsertPortfolioPropertiesAsync(scope, code, requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertPortfolioProperties request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PortfolioProperties> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertPortfolioPropertiesAsync(scope, code, requestBody, _callback, opts);
         }
     }
 
@@ -6694,6 +8667,10 @@ public class PortfoliosApi {
         return new APIupsertPortfolioPropertiesRequest(scope, code, requestBody);
     }
     private okhttp3.Call upsertPortfolioReturnsCall(String scope, String code, String returnScope, String returnCode, List<PerformanceReturn> performanceReturn, final ApiCallback _callback) throws ApiException {
+        return upsertPortfolioReturnsCall(scope, code, returnScope, returnCode, performanceReturn,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertPortfolioReturnsCall(String scope, String code, String returnScope, String returnCode, List<PerformanceReturn> performanceReturn, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -6744,11 +8721,11 @@ public class PortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertPortfolioReturnsValidateBeforeCall(String scope, String code, String returnScope, String returnCode, List<PerformanceReturn> performanceReturn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertPortfolioReturnsValidateBeforeCall(String scope, String code, String returnScope, String returnCode, List<PerformanceReturn> performanceReturn, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling upsertPortfolioReturns(Async)");
@@ -6774,20 +8751,34 @@ public class PortfoliosApi {
             throw new ApiException("Missing the required parameter 'performanceReturn' when calling upsertPortfolioReturns(Async)");
         }
 
-        return upsertPortfolioReturnsCall(scope, code, returnScope, returnCode, performanceReturn, _callback);
+        return upsertPortfolioReturnsCall(scope, code, returnScope, returnCode, performanceReturn, _callback, opts);
 
     }
 
 
     private ApiResponse<UpsertReturnsResponse> upsertPortfolioReturnsWithHttpInfo(String scope, String code, String returnScope, String returnCode, List<PerformanceReturn> performanceReturn) throws ApiException {
-        okhttp3.Call localVarCall = upsertPortfolioReturnsValidateBeforeCall(scope, code, returnScope, returnCode, performanceReturn, null);
+        okhttp3.Call localVarCall = upsertPortfolioReturnsValidateBeforeCall(scope, code, returnScope, returnCode, performanceReturn, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertReturnsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<UpsertReturnsResponse> upsertPortfolioReturnsWithHttpInfo(String scope, String code, String returnScope, String returnCode, List<PerformanceReturn> performanceReturn, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertPortfolioReturnsValidateBeforeCall(scope, code, returnScope, returnCode, performanceReturn, null, opts);
         Type localVarReturnType = new TypeToken<UpsertReturnsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertPortfolioReturnsAsync(String scope, String code, String returnScope, String returnCode, List<PerformanceReturn> performanceReturn, final ApiCallback<UpsertReturnsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertPortfolioReturnsValidateBeforeCall(scope, code, returnScope, returnCode, performanceReturn, _callback);
+        okhttp3.Call localVarCall = upsertPortfolioReturnsValidateBeforeCall(scope, code, returnScope, returnCode, performanceReturn, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertReturnsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertPortfolioReturnsAsync(String scope, String code, String returnScope, String returnCode, List<PerformanceReturn> performanceReturn, final ApiCallback<UpsertReturnsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertPortfolioReturnsValidateBeforeCall(scope, code, returnScope, returnCode, performanceReturn, _callback, opts);
         Type localVarReturnType = new TypeToken<UpsertReturnsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -6843,6 +8834,23 @@ public class PortfoliosApi {
         }
 
         /**
+         * Execute upsertPortfolioReturns request. Use any specified configuration options to override any other configuration for this request only.
+         * @return UpsertReturnsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the portfolio that contains the newly updated or inserted Returns. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertReturnsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<UpsertReturnsResponse> localVarResp = upsertPortfolioReturnsWithHttpInfo(scope, code, returnScope, returnCode, performanceReturn, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertPortfolioReturns request with HTTP info returned
          * @return ApiResponse&lt;UpsertReturnsResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -6856,6 +8864,22 @@ public class PortfoliosApi {
          */
         public ApiResponse<UpsertReturnsResponse> executeWithHttpInfo() throws ApiException {
             return upsertPortfolioReturnsWithHttpInfo(scope, code, returnScope, returnCode, performanceReturn);
+        }
+
+        /**
+         * Execute upsertPortfolioReturns request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;UpsertReturnsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the portfolio that contains the newly updated or inserted Returns. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertReturnsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertPortfolioReturnsWithHttpInfo(scope, code, returnScope, returnCode, performanceReturn, opts);
         }
 
         /**
@@ -6873,6 +8897,23 @@ public class PortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<UpsertReturnsResponse> _callback) throws ApiException {
             return upsertPortfolioReturnsAsync(scope, code, returnScope, returnCode, performanceReturn, _callback);
+        }
+
+        /**
+         * Execute upsertPortfolioReturns request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the portfolio that contains the newly updated or inserted Returns. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertReturnsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertPortfolioReturnsAsync(scope, code, returnScope, returnCode, performanceReturn, _callback, opts);
         }
     }
 

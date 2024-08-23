@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -114,6 +115,10 @@ public class TransactionPortfoliosApi {
     }
 
     private okhttp3.Call adjustHoldingsCall(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, final ApiCallback _callback) throws ApiException {
+        return adjustHoldingsCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call adjustHoldingsCall(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -170,11 +175,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call adjustHoldingsValidateBeforeCall(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call adjustHoldingsValidateBeforeCall(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling adjustHoldings(Async)");
@@ -195,20 +200,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'adjustHoldingRequest' when calling adjustHoldings(Async)");
         }
 
-        return adjustHoldingsCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, _callback);
+        return adjustHoldingsCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, _callback, opts);
 
     }
 
 
     private ApiResponse<AdjustHolding> adjustHoldingsWithHttpInfo(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods) throws ApiException {
-        okhttp3.Call localVarCall = adjustHoldingsValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, null);
+        okhttp3.Call localVarCall = adjustHoldingsValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AdjustHolding>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AdjustHolding> adjustHoldingsWithHttpInfo(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = adjustHoldingsValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, null, opts);
         Type localVarReturnType = new TypeToken<AdjustHolding>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call adjustHoldingsAsync(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, final ApiCallback<AdjustHolding> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = adjustHoldingsValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, _callback);
+        okhttp3.Call localVarCall = adjustHoldingsValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AdjustHolding>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call adjustHoldingsAsync(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, final ApiCallback<AdjustHolding> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = adjustHoldingsValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, _callback, opts);
         Type localVarReturnType = new TypeToken<AdjustHolding>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -273,6 +292,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute adjustHoldings request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AdjustHolding
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly adjusted holdings </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AdjustHolding execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AdjustHolding> localVarResp = adjustHoldingsWithHttpInfo(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute adjustHoldings request with HTTP info returned
          * @return ApiResponse&lt;AdjustHolding&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -286,6 +322,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<AdjustHolding> executeWithHttpInfo() throws ApiException {
             return adjustHoldingsWithHttpInfo(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods);
+        }
+
+        /**
+         * Execute adjustHoldings request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AdjustHolding&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly adjusted holdings </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AdjustHolding> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return adjustHoldingsWithHttpInfo(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, opts);
         }
 
         /**
@@ -303,6 +355,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<AdjustHolding> _callback) throws ApiException {
             return adjustHoldingsAsync(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, _callback);
+        }
+
+        /**
+         * Execute adjustHoldings request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly adjusted holdings </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AdjustHolding> _callback, ConfigurationOptions opts) throws ApiException {
+            return adjustHoldingsAsync(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, _callback, opts);
         }
     }
 
@@ -326,6 +395,10 @@ public class TransactionPortfoliosApi {
         return new APIadjustHoldingsRequest(scope, code, effectiveAt, adjustHoldingRequest);
     }
     private okhttp3.Call batchAdjustHoldingsCall(String scope, String code, String successMode, Map<String, AdjustHoldingForDateRequest> requestBody, List<String> reconciliationMethods, final ApiCallback _callback) throws ApiException {
+        return batchAdjustHoldingsCall(scope, code, successMode, requestBody, reconciliationMethods,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call batchAdjustHoldingsCall(String scope, String code, String successMode, Map<String, AdjustHoldingForDateRequest> requestBody, List<String> reconciliationMethods, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -382,11 +455,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call batchAdjustHoldingsValidateBeforeCall(String scope, String code, String successMode, Map<String, AdjustHoldingForDateRequest> requestBody, List<String> reconciliationMethods, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call batchAdjustHoldingsValidateBeforeCall(String scope, String code, String successMode, Map<String, AdjustHoldingForDateRequest> requestBody, List<String> reconciliationMethods, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling batchAdjustHoldings(Async)");
@@ -407,20 +480,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'requestBody' when calling batchAdjustHoldings(Async)");
         }
 
-        return batchAdjustHoldingsCall(scope, code, successMode, requestBody, reconciliationMethods, _callback);
+        return batchAdjustHoldingsCall(scope, code, successMode, requestBody, reconciliationMethods, _callback, opts);
 
     }
 
 
     private ApiResponse<BatchAdjustHoldingsResponse> batchAdjustHoldingsWithHttpInfo(String scope, String code, String successMode, Map<String, AdjustHoldingForDateRequest> requestBody, List<String> reconciliationMethods) throws ApiException {
-        okhttp3.Call localVarCall = batchAdjustHoldingsValidateBeforeCall(scope, code, successMode, requestBody, reconciliationMethods, null);
+        okhttp3.Call localVarCall = batchAdjustHoldingsValidateBeforeCall(scope, code, successMode, requestBody, reconciliationMethods, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<BatchAdjustHoldingsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<BatchAdjustHoldingsResponse> batchAdjustHoldingsWithHttpInfo(String scope, String code, String successMode, Map<String, AdjustHoldingForDateRequest> requestBody, List<String> reconciliationMethods, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = batchAdjustHoldingsValidateBeforeCall(scope, code, successMode, requestBody, reconciliationMethods, null, opts);
         Type localVarReturnType = new TypeToken<BatchAdjustHoldingsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call batchAdjustHoldingsAsync(String scope, String code, String successMode, Map<String, AdjustHoldingForDateRequest> requestBody, List<String> reconciliationMethods, final ApiCallback<BatchAdjustHoldingsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = batchAdjustHoldingsValidateBeforeCall(scope, code, successMode, requestBody, reconciliationMethods, _callback);
+        okhttp3.Call localVarCall = batchAdjustHoldingsValidateBeforeCall(scope, code, successMode, requestBody, reconciliationMethods, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<BatchAdjustHoldingsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call batchAdjustHoldingsAsync(String scope, String code, String successMode, Map<String, AdjustHoldingForDateRequest> requestBody, List<String> reconciliationMethods, final ApiCallback<BatchAdjustHoldingsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = batchAdjustHoldingsValidateBeforeCall(scope, code, successMode, requestBody, reconciliationMethods, _callback, opts);
         Type localVarReturnType = new TypeToken<BatchAdjustHoldingsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -485,6 +572,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute batchAdjustHoldings request. Use any specified configuration options to override any other configuration for this request only.
+         * @return BatchAdjustHoldingsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successful AdjustHolding requests along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public BatchAdjustHoldingsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<BatchAdjustHoldingsResponse> localVarResp = batchAdjustHoldingsWithHttpInfo(scope, code, successMode, requestBody, reconciliationMethods, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute batchAdjustHoldings request with HTTP info returned
          * @return ApiResponse&lt;BatchAdjustHoldingsResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -498,6 +602,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<BatchAdjustHoldingsResponse> executeWithHttpInfo() throws ApiException {
             return batchAdjustHoldingsWithHttpInfo(scope, code, successMode, requestBody, reconciliationMethods);
+        }
+
+        /**
+         * Execute batchAdjustHoldings request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;BatchAdjustHoldingsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successful AdjustHolding requests along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<BatchAdjustHoldingsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return batchAdjustHoldingsWithHttpInfo(scope, code, successMode, requestBody, reconciliationMethods, opts);
         }
 
         /**
@@ -515,6 +635,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<BatchAdjustHoldingsResponse> _callback) throws ApiException {
             return batchAdjustHoldingsAsync(scope, code, successMode, requestBody, reconciliationMethods, _callback);
+        }
+
+        /**
+         * Execute batchAdjustHoldings request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successful AdjustHolding requests along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<BatchAdjustHoldingsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return batchAdjustHoldingsAsync(scope, code, successMode, requestBody, reconciliationMethods, _callback, opts);
         }
     }
 
@@ -538,6 +675,10 @@ public class TransactionPortfoliosApi {
         return new APIbatchAdjustHoldingsRequest(scope, code, successMode, requestBody);
     }
     private okhttp3.Call batchCreateTradeTicketsCall(String scope, String code, List<LusidTradeTicket> lusidTradeTicket, final ApiCallback _callback) throws ApiException {
+        return batchCreateTradeTicketsCall(scope, code, lusidTradeTicket,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call batchCreateTradeTicketsCall(String scope, String code, List<LusidTradeTicket> lusidTradeTicket, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -586,11 +727,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call batchCreateTradeTicketsValidateBeforeCall(String scope, String code, List<LusidTradeTicket> lusidTradeTicket, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call batchCreateTradeTicketsValidateBeforeCall(String scope, String code, List<LusidTradeTicket> lusidTradeTicket, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling batchCreateTradeTickets(Async)");
@@ -606,20 +747,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'lusidTradeTicket' when calling batchCreateTradeTickets(Async)");
         }
 
-        return batchCreateTradeTicketsCall(scope, code, lusidTradeTicket, _callback);
+        return batchCreateTradeTicketsCall(scope, code, lusidTradeTicket, _callback, opts);
 
     }
 
 
     private ApiResponse<CreateTradeTicketsResponse> batchCreateTradeTicketsWithHttpInfo(String scope, String code, List<LusidTradeTicket> lusidTradeTicket) throws ApiException {
-        okhttp3.Call localVarCall = batchCreateTradeTicketsValidateBeforeCall(scope, code, lusidTradeTicket, null);
+        okhttp3.Call localVarCall = batchCreateTradeTicketsValidateBeforeCall(scope, code, lusidTradeTicket, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CreateTradeTicketsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<CreateTradeTicketsResponse> batchCreateTradeTicketsWithHttpInfo(String scope, String code, List<LusidTradeTicket> lusidTradeTicket, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = batchCreateTradeTicketsValidateBeforeCall(scope, code, lusidTradeTicket, null, opts);
         Type localVarReturnType = new TypeToken<CreateTradeTicketsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call batchCreateTradeTicketsAsync(String scope, String code, List<LusidTradeTicket> lusidTradeTicket, final ApiCallback<CreateTradeTicketsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = batchCreateTradeTicketsValidateBeforeCall(scope, code, lusidTradeTicket, _callback);
+        okhttp3.Call localVarCall = batchCreateTradeTicketsValidateBeforeCall(scope, code, lusidTradeTicket, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CreateTradeTicketsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call batchCreateTradeTicketsAsync(String scope, String code, List<LusidTradeTicket> lusidTradeTicket, final ApiCallback<CreateTradeTicketsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = batchCreateTradeTicketsValidateBeforeCall(scope, code, lusidTradeTicket, _callback, opts);
         Type localVarReturnType = new TypeToken<CreateTradeTicketsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -671,6 +826,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute batchCreateTradeTickets request. Use any specified configuration options to override any other configuration for this request only.
+         * @return CreateTradeTicketsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully created trade ticket requests along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CreateTradeTicketsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<CreateTradeTicketsResponse> localVarResp = batchCreateTradeTicketsWithHttpInfo(scope, code, lusidTradeTicket, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute batchCreateTradeTickets request with HTTP info returned
          * @return ApiResponse&lt;CreateTradeTicketsResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -684,6 +856,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<CreateTradeTicketsResponse> executeWithHttpInfo() throws ApiException {
             return batchCreateTradeTicketsWithHttpInfo(scope, code, lusidTradeTicket);
+        }
+
+        /**
+         * Execute batchCreateTradeTickets request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;CreateTradeTicketsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully created trade ticket requests along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CreateTradeTicketsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return batchCreateTradeTicketsWithHttpInfo(scope, code, lusidTradeTicket, opts);
         }
 
         /**
@@ -701,6 +889,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<CreateTradeTicketsResponse> _callback) throws ApiException {
             return batchCreateTradeTicketsAsync(scope, code, lusidTradeTicket, _callback);
+        }
+
+        /**
+         * Execute batchCreateTradeTickets request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully created trade ticket requests along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CreateTradeTicketsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return batchCreateTradeTicketsAsync(scope, code, lusidTradeTicket, _callback, opts);
         }
     }
 
@@ -723,6 +928,10 @@ public class TransactionPortfoliosApi {
         return new APIbatchCreateTradeTicketsRequest(scope, code, lusidTradeTicket);
     }
     private okhttp3.Call batchUpsertTransactionsCall(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody, Boolean preserveProperties, final ApiCallback _callback) throws ApiException {
+        return batchUpsertTransactionsCall(scope, code, successMode, requestBody, preserveProperties,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call batchUpsertTransactionsCall(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody, Boolean preserveProperties, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -779,11 +988,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call batchUpsertTransactionsValidateBeforeCall(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody, Boolean preserveProperties, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call batchUpsertTransactionsValidateBeforeCall(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody, Boolean preserveProperties, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling batchUpsertTransactions(Async)");
@@ -804,20 +1013,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'requestBody' when calling batchUpsertTransactions(Async)");
         }
 
-        return batchUpsertTransactionsCall(scope, code, successMode, requestBody, preserveProperties, _callback);
+        return batchUpsertTransactionsCall(scope, code, successMode, requestBody, preserveProperties, _callback, opts);
 
     }
 
 
     private ApiResponse<BatchUpsertPortfolioTransactionsResponse> batchUpsertTransactionsWithHttpInfo(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody, Boolean preserveProperties) throws ApiException {
-        okhttp3.Call localVarCall = batchUpsertTransactionsValidateBeforeCall(scope, code, successMode, requestBody, preserveProperties, null);
+        okhttp3.Call localVarCall = batchUpsertTransactionsValidateBeforeCall(scope, code, successMode, requestBody, preserveProperties, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<BatchUpsertPortfolioTransactionsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<BatchUpsertPortfolioTransactionsResponse> batchUpsertTransactionsWithHttpInfo(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody, Boolean preserveProperties, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = batchUpsertTransactionsValidateBeforeCall(scope, code, successMode, requestBody, preserveProperties, null, opts);
         Type localVarReturnType = new TypeToken<BatchUpsertPortfolioTransactionsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call batchUpsertTransactionsAsync(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody, Boolean preserveProperties, final ApiCallback<BatchUpsertPortfolioTransactionsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = batchUpsertTransactionsValidateBeforeCall(scope, code, successMode, requestBody, preserveProperties, _callback);
+        okhttp3.Call localVarCall = batchUpsertTransactionsValidateBeforeCall(scope, code, successMode, requestBody, preserveProperties, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<BatchUpsertPortfolioTransactionsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call batchUpsertTransactionsAsync(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody, Boolean preserveProperties, final ApiCallback<BatchUpsertPortfolioTransactionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = batchUpsertTransactionsValidateBeforeCall(scope, code, successMode, requestBody, preserveProperties, _callback, opts);
         Type localVarReturnType = new TypeToken<BatchUpsertPortfolioTransactionsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -882,6 +1105,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute batchUpsertTransactions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return BatchUpsertPortfolioTransactionsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully upserted transaction requests along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public BatchUpsertPortfolioTransactionsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<BatchUpsertPortfolioTransactionsResponse> localVarResp = batchUpsertTransactionsWithHttpInfo(scope, code, successMode, requestBody, preserveProperties, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute batchUpsertTransactions request with HTTP info returned
          * @return ApiResponse&lt;BatchUpsertPortfolioTransactionsResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -895,6 +1135,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<BatchUpsertPortfolioTransactionsResponse> executeWithHttpInfo() throws ApiException {
             return batchUpsertTransactionsWithHttpInfo(scope, code, successMode, requestBody, preserveProperties);
+        }
+
+        /**
+         * Execute batchUpsertTransactions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;BatchUpsertPortfolioTransactionsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully upserted transaction requests along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<BatchUpsertPortfolioTransactionsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return batchUpsertTransactionsWithHttpInfo(scope, code, successMode, requestBody, preserveProperties, opts);
         }
 
         /**
@@ -912,6 +1168,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<BatchUpsertPortfolioTransactionsResponse> _callback) throws ApiException {
             return batchUpsertTransactionsAsync(scope, code, successMode, requestBody, preserveProperties, _callback);
+        }
+
+        /**
+         * Execute batchUpsertTransactions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully upserted transaction requests along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<BatchUpsertPortfolioTransactionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return batchUpsertTransactionsAsync(scope, code, successMode, requestBody, preserveProperties, _callback, opts);
         }
     }
 
@@ -935,6 +1208,10 @@ public class TransactionPortfoliosApi {
         return new APIbatchUpsertTransactionsRequest(scope, code, successMode, requestBody);
     }
     private okhttp3.Call buildTransactionsCall(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, final ApiCallback _callback) throws ApiException {
+        return buildTransactionsCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call buildTransactionsCall(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1003,11 +1280,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call buildTransactionsValidateBeforeCall(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call buildTransactionsValidateBeforeCall(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling buildTransactions(Async)");
@@ -1023,20 +1300,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'transactionQueryParameters' when calling buildTransactions(Async)");
         }
 
-        return buildTransactionsCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, _callback);
+        return buildTransactionsCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, _callback, opts);
 
     }
 
 
     private ApiResponse<VersionedResourceListOfOutputTransaction> buildTransactionsWithHttpInfo(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page) throws ApiException {
-        okhttp3.Call localVarCall = buildTransactionsValidateBeforeCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, null);
+        okhttp3.Call localVarCall = buildTransactionsValidateBeforeCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfOutputTransaction>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<VersionedResourceListOfOutputTransaction> buildTransactionsWithHttpInfo(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = buildTransactionsValidateBeforeCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, null, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfOutputTransaction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call buildTransactionsAsync(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, final ApiCallback<VersionedResourceListOfOutputTransaction> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = buildTransactionsValidateBeforeCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, _callback);
+        okhttp3.Call localVarCall = buildTransactionsValidateBeforeCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfOutputTransaction>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call buildTransactionsAsync(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, final ApiCallback<VersionedResourceListOfOutputTransaction> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = buildTransactionsValidateBeforeCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, _callback, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfOutputTransaction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1143,6 +1434,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute buildTransactions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return VersionedResourceListOfOutputTransaction
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested transactions from the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionedResourceListOfOutputTransaction execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<VersionedResourceListOfOutputTransaction> localVarResp = buildTransactionsWithHttpInfo(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute buildTransactions request with HTTP info returned
          * @return ApiResponse&lt;VersionedResourceListOfOutputTransaction&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1156,6 +1464,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<VersionedResourceListOfOutputTransaction> executeWithHttpInfo() throws ApiException {
             return buildTransactionsWithHttpInfo(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page);
+        }
+
+        /**
+         * Execute buildTransactions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;VersionedResourceListOfOutputTransaction&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested transactions from the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionedResourceListOfOutputTransaction> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return buildTransactionsWithHttpInfo(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, opts);
         }
 
         /**
@@ -1173,6 +1497,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfOutputTransaction> _callback) throws ApiException {
             return buildTransactionsAsync(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, _callback);
+        }
+
+        /**
+         * Execute buildTransactions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested transactions from the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfOutputTransaction> _callback, ConfigurationOptions opts) throws ApiException {
+            return buildTransactionsAsync(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, _callback, opts);
         }
     }
 
@@ -1195,6 +1536,10 @@ public class TransactionPortfoliosApi {
         return new APIbuildTransactionsRequest(scope, code, transactionQueryParameters);
     }
     private okhttp3.Call cancelAdjustHoldingsCall(String scope, String code, String effectiveAt, final ApiCallback _callback) throws ApiException {
+        return cancelAdjustHoldingsCall(scope, code, effectiveAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call cancelAdjustHoldingsCall(String scope, String code, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1243,11 +1588,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cancelAdjustHoldingsValidateBeforeCall(String scope, String code, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call cancelAdjustHoldingsValidateBeforeCall(String scope, String code, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling cancelAdjustHoldings(Async)");
@@ -1263,20 +1608,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'effectiveAt' when calling cancelAdjustHoldings(Async)");
         }
 
-        return cancelAdjustHoldingsCall(scope, code, effectiveAt, _callback);
+        return cancelAdjustHoldingsCall(scope, code, effectiveAt, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> cancelAdjustHoldingsWithHttpInfo(String scope, String code, String effectiveAt) throws ApiException {
-        okhttp3.Call localVarCall = cancelAdjustHoldingsValidateBeforeCall(scope, code, effectiveAt, null);
+        okhttp3.Call localVarCall = cancelAdjustHoldingsValidateBeforeCall(scope, code, effectiveAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> cancelAdjustHoldingsWithHttpInfo(String scope, String code, String effectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = cancelAdjustHoldingsValidateBeforeCall(scope, code, effectiveAt, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call cancelAdjustHoldingsAsync(String scope, String code, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cancelAdjustHoldingsValidateBeforeCall(scope, code, effectiveAt, _callback);
+        okhttp3.Call localVarCall = cancelAdjustHoldingsValidateBeforeCall(scope, code, effectiveAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call cancelAdjustHoldingsAsync(String scope, String code, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = cancelAdjustHoldingsValidateBeforeCall(scope, code, effectiveAt, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1328,6 +1687,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute cancelAdjustHoldings request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the holding adjustments were cancelled </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = cancelAdjustHoldingsWithHttpInfo(scope, code, effectiveAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute cancelAdjustHoldings request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1341,6 +1717,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return cancelAdjustHoldingsWithHttpInfo(scope, code, effectiveAt);
+        }
+
+        /**
+         * Execute cancelAdjustHoldings request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the holding adjustments were cancelled </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return cancelAdjustHoldingsWithHttpInfo(scope, code, effectiveAt, opts);
         }
 
         /**
@@ -1358,6 +1750,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return cancelAdjustHoldingsAsync(scope, code, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute cancelAdjustHoldings request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the holding adjustments were cancelled </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return cancelAdjustHoldingsAsync(scope, code, effectiveAt, _callback, opts);
         }
     }
 
@@ -1380,6 +1789,10 @@ public class TransactionPortfoliosApi {
         return new APIcancelAdjustHoldingsRequest(scope, code, effectiveAt);
     }
     private okhttp3.Call cancelTransactionsCall(String scope, String code, List<String> transactionIds, final ApiCallback _callback) throws ApiException {
+        return cancelTransactionsCall(scope, code, transactionIds,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call cancelTransactionsCall(String scope, String code, List<String> transactionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1428,11 +1841,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cancelTransactionsValidateBeforeCall(String scope, String code, List<String> transactionIds, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call cancelTransactionsValidateBeforeCall(String scope, String code, List<String> transactionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling cancelTransactions(Async)");
@@ -1448,20 +1861,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'transactionIds' when calling cancelTransactions(Async)");
         }
 
-        return cancelTransactionsCall(scope, code, transactionIds, _callback);
+        return cancelTransactionsCall(scope, code, transactionIds, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> cancelTransactionsWithHttpInfo(String scope, String code, List<String> transactionIds) throws ApiException {
-        okhttp3.Call localVarCall = cancelTransactionsValidateBeforeCall(scope, code, transactionIds, null);
+        okhttp3.Call localVarCall = cancelTransactionsValidateBeforeCall(scope, code, transactionIds, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> cancelTransactionsWithHttpInfo(String scope, String code, List<String> transactionIds, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = cancelTransactionsValidateBeforeCall(scope, code, transactionIds, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call cancelTransactionsAsync(String scope, String code, List<String> transactionIds, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cancelTransactionsValidateBeforeCall(scope, code, transactionIds, _callback);
+        okhttp3.Call localVarCall = cancelTransactionsValidateBeforeCall(scope, code, transactionIds, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call cancelTransactionsAsync(String scope, String code, List<String> transactionIds, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = cancelTransactionsValidateBeforeCall(scope, code, transactionIds, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1513,6 +1940,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute cancelTransactions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the transactions were cancelled </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = cancelTransactionsWithHttpInfo(scope, code, transactionIds, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute cancelTransactions request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1526,6 +1970,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return cancelTransactionsWithHttpInfo(scope, code, transactionIds);
+        }
+
+        /**
+         * Execute cancelTransactions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the transactions were cancelled </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return cancelTransactionsWithHttpInfo(scope, code, transactionIds, opts);
         }
 
         /**
@@ -1543,6 +2003,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return cancelTransactionsAsync(scope, code, transactionIds, _callback);
+        }
+
+        /**
+         * Execute cancelTransactions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the transactions were cancelled </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return cancelTransactionsAsync(scope, code, transactionIds, _callback, opts);
         }
     }
 
@@ -1565,6 +2042,10 @@ public class TransactionPortfoliosApi {
         return new APIcancelTransactionsRequest(scope, code, transactionIds);
     }
     private okhttp3.Call createPortfolioCall(String scope, CreateTransactionPortfolioRequest createTransactionPortfolioRequest, final ApiCallback _callback) throws ApiException {
+        return createPortfolioCall(scope, createTransactionPortfolioRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call createPortfolioCall(String scope, CreateTransactionPortfolioRequest createTransactionPortfolioRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1612,11 +2093,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createPortfolioValidateBeforeCall(String scope, CreateTransactionPortfolioRequest createTransactionPortfolioRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createPortfolioValidateBeforeCall(String scope, CreateTransactionPortfolioRequest createTransactionPortfolioRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling createPortfolio(Async)");
@@ -1627,20 +2108,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'createTransactionPortfolioRequest' when calling createPortfolio(Async)");
         }
 
-        return createPortfolioCall(scope, createTransactionPortfolioRequest, _callback);
+        return createPortfolioCall(scope, createTransactionPortfolioRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<Portfolio> createPortfolioWithHttpInfo(String scope, CreateTransactionPortfolioRequest createTransactionPortfolioRequest) throws ApiException {
-        okhttp3.Call localVarCall = createPortfolioValidateBeforeCall(scope, createTransactionPortfolioRequest, null);
+        okhttp3.Call localVarCall = createPortfolioValidateBeforeCall(scope, createTransactionPortfolioRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Portfolio> createPortfolioWithHttpInfo(String scope, CreateTransactionPortfolioRequest createTransactionPortfolioRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createPortfolioValidateBeforeCall(scope, createTransactionPortfolioRequest, null, opts);
         Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call createPortfolioAsync(String scope, CreateTransactionPortfolioRequest createTransactionPortfolioRequest, final ApiCallback<Portfolio> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createPortfolioValidateBeforeCall(scope, createTransactionPortfolioRequest, _callback);
+        okhttp3.Call localVarCall = createPortfolioValidateBeforeCall(scope, createTransactionPortfolioRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call createPortfolioAsync(String scope, CreateTransactionPortfolioRequest createTransactionPortfolioRequest, final ApiCallback<Portfolio> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = createPortfolioValidateBeforeCall(scope, createTransactionPortfolioRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1690,6 +2185,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute createPortfolio request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Portfolio
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly-created transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Portfolio execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Portfolio> localVarResp = createPortfolioWithHttpInfo(scope, createTransactionPortfolioRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute createPortfolio request with HTTP info returned
          * @return ApiResponse&lt;Portfolio&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1703,6 +2215,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<Portfolio> executeWithHttpInfo() throws ApiException {
             return createPortfolioWithHttpInfo(scope, createTransactionPortfolioRequest);
+        }
+
+        /**
+         * Execute createPortfolio request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Portfolio&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly-created transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Portfolio> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return createPortfolioWithHttpInfo(scope, createTransactionPortfolioRequest, opts);
         }
 
         /**
@@ -1720,6 +2248,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Portfolio> _callback) throws ApiException {
             return createPortfolioAsync(scope, createTransactionPortfolioRequest, _callback);
+        }
+
+        /**
+         * Execute createPortfolio request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly-created transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Portfolio> _callback, ConfigurationOptions opts) throws ApiException {
+            return createPortfolioAsync(scope, createTransactionPortfolioRequest, _callback, opts);
         }
     }
 
@@ -1741,6 +2286,10 @@ public class TransactionPortfoliosApi {
         return new APIcreatePortfolioRequest(scope, createTransactionPortfolioRequest);
     }
     private okhttp3.Call createTradeTicketCall(String scope, String code, LusidTradeTicket lusidTradeTicket, final ApiCallback _callback) throws ApiException {
+        return createTradeTicketCall(scope, code, lusidTradeTicket,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call createTradeTicketCall(String scope, String code, LusidTradeTicket lusidTradeTicket, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1789,11 +2338,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createTradeTicketValidateBeforeCall(String scope, String code, LusidTradeTicket lusidTradeTicket, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createTradeTicketValidateBeforeCall(String scope, String code, LusidTradeTicket lusidTradeTicket, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling createTradeTicket(Async)");
@@ -1804,20 +2353,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'code' when calling createTradeTicket(Async)");
         }
 
-        return createTradeTicketCall(scope, code, lusidTradeTicket, _callback);
+        return createTradeTicketCall(scope, code, lusidTradeTicket, _callback, opts);
 
     }
 
 
     private ApiResponse<LusidTradeTicket> createTradeTicketWithHttpInfo(String scope, String code, LusidTradeTicket lusidTradeTicket) throws ApiException {
-        okhttp3.Call localVarCall = createTradeTicketValidateBeforeCall(scope, code, lusidTradeTicket, null);
+        okhttp3.Call localVarCall = createTradeTicketValidateBeforeCall(scope, code, lusidTradeTicket, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<LusidTradeTicket>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<LusidTradeTicket> createTradeTicketWithHttpInfo(String scope, String code, LusidTradeTicket lusidTradeTicket, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createTradeTicketValidateBeforeCall(scope, code, lusidTradeTicket, null, opts);
         Type localVarReturnType = new TypeToken<LusidTradeTicket>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call createTradeTicketAsync(String scope, String code, LusidTradeTicket lusidTradeTicket, final ApiCallback<LusidTradeTicket> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createTradeTicketValidateBeforeCall(scope, code, lusidTradeTicket, _callback);
+        okhttp3.Call localVarCall = createTradeTicketValidateBeforeCall(scope, code, lusidTradeTicket, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<LusidTradeTicket>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call createTradeTicketAsync(String scope, String code, LusidTradeTicket lusidTradeTicket, final ApiCallback<LusidTradeTicket> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = createTradeTicketValidateBeforeCall(scope, code, lusidTradeTicket, _callback, opts);
         Type localVarReturnType = new TypeToken<LusidTradeTicket>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1878,6 +2441,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute createTradeTicket request. Use any specified configuration options to override any other configuration for this request only.
+         * @return LusidTradeTicket
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The created trade ticket, possibly populated with created LUID and identifiers if missing on the request. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public LusidTradeTicket execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<LusidTradeTicket> localVarResp = createTradeTicketWithHttpInfo(scope, code, lusidTradeTicket, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute createTradeTicket request with HTTP info returned
          * @return ApiResponse&lt;LusidTradeTicket&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1891,6 +2471,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<LusidTradeTicket> executeWithHttpInfo() throws ApiException {
             return createTradeTicketWithHttpInfo(scope, code, lusidTradeTicket);
+        }
+
+        /**
+         * Execute createTradeTicket request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;LusidTradeTicket&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The created trade ticket, possibly populated with created LUID and identifiers if missing on the request. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<LusidTradeTicket> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return createTradeTicketWithHttpInfo(scope, code, lusidTradeTicket, opts);
         }
 
         /**
@@ -1908,6 +2504,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<LusidTradeTicket> _callback) throws ApiException {
             return createTradeTicketAsync(scope, code, lusidTradeTicket, _callback);
+        }
+
+        /**
+         * Execute createTradeTicket request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The created trade ticket, possibly populated with created LUID and identifiers if missing on the request. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<LusidTradeTicket> _callback, ConfigurationOptions opts) throws ApiException {
+            return createTradeTicketAsync(scope, code, lusidTradeTicket, _callback, opts);
         }
     }
 
@@ -1929,6 +2542,10 @@ public class TransactionPortfoliosApi {
         return new APIcreateTradeTicketRequest(scope, code);
     }
     private okhttp3.Call deleteCustodianAccountsCall(String scope, String code, List<ResourceId> resourceId, String deleteMode, final ApiCallback _callback) throws ApiException {
+        return deleteCustodianAccountsCall(scope, code, resourceId, deleteMode,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteCustodianAccountsCall(String scope, String code, List<ResourceId> resourceId, String deleteMode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1981,11 +2598,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteCustodianAccountsValidateBeforeCall(String scope, String code, List<ResourceId> resourceId, String deleteMode, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCustodianAccountsValidateBeforeCall(String scope, String code, List<ResourceId> resourceId, String deleteMode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteCustodianAccounts(Async)");
@@ -2001,20 +2618,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'resourceId' when calling deleteCustodianAccounts(Async)");
         }
 
-        return deleteCustodianAccountsCall(scope, code, resourceId, deleteMode, _callback);
+        return deleteCustodianAccountsCall(scope, code, resourceId, deleteMode, _callback, opts);
 
     }
 
 
     private ApiResponse<DeleteCustodianAccountsResponse> deleteCustodianAccountsWithHttpInfo(String scope, String code, List<ResourceId> resourceId, String deleteMode) throws ApiException {
-        okhttp3.Call localVarCall = deleteCustodianAccountsValidateBeforeCall(scope, code, resourceId, deleteMode, null);
+        okhttp3.Call localVarCall = deleteCustodianAccountsValidateBeforeCall(scope, code, resourceId, deleteMode, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeleteCustodianAccountsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeleteCustodianAccountsResponse> deleteCustodianAccountsWithHttpInfo(String scope, String code, List<ResourceId> resourceId, String deleteMode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteCustodianAccountsValidateBeforeCall(scope, code, resourceId, deleteMode, null, opts);
         Type localVarReturnType = new TypeToken<DeleteCustodianAccountsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteCustodianAccountsAsync(String scope, String code, List<ResourceId> resourceId, String deleteMode, final ApiCallback<DeleteCustodianAccountsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteCustodianAccountsValidateBeforeCall(scope, code, resourceId, deleteMode, _callback);
+        okhttp3.Call localVarCall = deleteCustodianAccountsValidateBeforeCall(scope, code, resourceId, deleteMode, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeleteCustodianAccountsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteCustodianAccountsAsync(String scope, String code, List<ResourceId> resourceId, String deleteMode, final ApiCallback<DeleteCustodianAccountsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteCustodianAccountsValidateBeforeCall(scope, code, resourceId, deleteMode, _callback, opts);
         Type localVarReturnType = new TypeToken<DeleteCustodianAccountsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2077,6 +2708,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute deleteCustodianAccounts request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeleteCustodianAccountsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the custodian accounts were deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeleteCustodianAccountsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeleteCustodianAccountsResponse> localVarResp = deleteCustodianAccountsWithHttpInfo(scope, code, resourceId, deleteMode, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteCustodianAccounts request with HTTP info returned
          * @return ApiResponse&lt;DeleteCustodianAccountsResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2090,6 +2738,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<DeleteCustodianAccountsResponse> executeWithHttpInfo() throws ApiException {
             return deleteCustodianAccountsWithHttpInfo(scope, code, resourceId, deleteMode);
+        }
+
+        /**
+         * Execute deleteCustodianAccounts request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeleteCustodianAccountsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the custodian accounts were deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeleteCustodianAccountsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteCustodianAccountsWithHttpInfo(scope, code, resourceId, deleteMode, opts);
         }
 
         /**
@@ -2107,6 +2771,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeleteCustodianAccountsResponse> _callback) throws ApiException {
             return deleteCustodianAccountsAsync(scope, code, resourceId, deleteMode, _callback);
+        }
+
+        /**
+         * Execute deleteCustodianAccounts request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the custodian accounts were deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeleteCustodianAccountsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteCustodianAccountsAsync(scope, code, resourceId, deleteMode, _callback, opts);
         }
     }
 
@@ -2129,6 +2810,10 @@ public class TransactionPortfoliosApi {
         return new APIdeleteCustodianAccountsRequest(scope, code, resourceId);
     }
     private okhttp3.Call deletePropertiesFromTransactionCall(String scope, String code, String transactionId, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return deletePropertiesFromTransactionCall(scope, code, transactionId, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deletePropertiesFromTransactionCall(String scope, String code, String transactionId, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2178,11 +2863,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deletePropertiesFromTransactionValidateBeforeCall(String scope, String code, String transactionId, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deletePropertiesFromTransactionValidateBeforeCall(String scope, String code, String transactionId, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deletePropertiesFromTransaction(Async)");
@@ -2203,20 +2888,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'propertyKeys' when calling deletePropertiesFromTransaction(Async)");
         }
 
-        return deletePropertiesFromTransactionCall(scope, code, transactionId, propertyKeys, _callback);
+        return deletePropertiesFromTransactionCall(scope, code, transactionId, propertyKeys, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deletePropertiesFromTransactionWithHttpInfo(String scope, String code, String transactionId, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = deletePropertiesFromTransactionValidateBeforeCall(scope, code, transactionId, propertyKeys, null);
+        okhttp3.Call localVarCall = deletePropertiesFromTransactionValidateBeforeCall(scope, code, transactionId, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deletePropertiesFromTransactionWithHttpInfo(String scope, String code, String transactionId, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deletePropertiesFromTransactionValidateBeforeCall(scope, code, transactionId, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deletePropertiesFromTransactionAsync(String scope, String code, String transactionId, List<String> propertyKeys, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deletePropertiesFromTransactionValidateBeforeCall(scope, code, transactionId, propertyKeys, _callback);
+        okhttp3.Call localVarCall = deletePropertiesFromTransactionValidateBeforeCall(scope, code, transactionId, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deletePropertiesFromTransactionAsync(String scope, String code, String transactionId, List<String> propertyKeys, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deletePropertiesFromTransactionValidateBeforeCall(scope, code, transactionId, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2270,6 +2969,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute deletePropertiesFromTransaction request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the property was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deletePropertiesFromTransactionWithHttpInfo(scope, code, transactionId, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deletePropertiesFromTransaction request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2283,6 +2999,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deletePropertiesFromTransactionWithHttpInfo(scope, code, transactionId, propertyKeys);
+        }
+
+        /**
+         * Execute deletePropertiesFromTransaction request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the property was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deletePropertiesFromTransactionWithHttpInfo(scope, code, transactionId, propertyKeys, opts);
         }
 
         /**
@@ -2300,6 +3032,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deletePropertiesFromTransactionAsync(scope, code, transactionId, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute deletePropertiesFromTransaction request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the property was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deletePropertiesFromTransactionAsync(scope, code, transactionId, propertyKeys, _callback, opts);
         }
     }
 
@@ -2323,6 +3072,10 @@ public class TransactionPortfoliosApi {
         return new APIdeletePropertiesFromTransactionRequest(scope, code, transactionId, propertyKeys);
     }
     private okhttp3.Call getA2BDataCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, final ApiCallback _callback) throws ApiException {
+        return getA2BDataCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getA2BDataCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2395,11 +3148,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getA2BDataValidateBeforeCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getA2BDataValidateBeforeCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getA2BData(Async)");
@@ -2420,20 +3173,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'toEffectiveAt' when calling getA2BData(Async)");
         }
 
-        return getA2BDataCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, _callback);
+        return getA2BDataCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, _callback, opts);
 
     }
 
 
     private ApiResponse<VersionedResourceListOfA2BDataRecord> getA2BDataWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter) throws ApiException {
-        okhttp3.Call localVarCall = getA2BDataValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, null);
+        okhttp3.Call localVarCall = getA2BDataValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfA2BDataRecord>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<VersionedResourceListOfA2BDataRecord> getA2BDataWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getA2BDataValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, null, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfA2BDataRecord>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getA2BDataAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, final ApiCallback<VersionedResourceListOfA2BDataRecord> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getA2BDataValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, _callback);
+        okhttp3.Call localVarCall = getA2BDataValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfA2BDataRecord>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getA2BDataAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, final ApiCallback<VersionedResourceListOfA2BDataRecord> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getA2BDataValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, _callback, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfA2BDataRecord>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2542,6 +3309,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute getA2BData request. Use any specified configuration options to override any other configuration for this request only.
+         * @return VersionedResourceListOfA2BDataRecord
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio A2B data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionedResourceListOfA2BDataRecord execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<VersionedResourceListOfA2BDataRecord> localVarResp = getA2BDataWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getA2BData request with HTTP info returned
          * @return ApiResponse&lt;VersionedResourceListOfA2BDataRecord&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2555,6 +3339,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<VersionedResourceListOfA2BDataRecord> executeWithHttpInfo() throws ApiException {
             return getA2BDataWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter);
+        }
+
+        /**
+         * Execute getA2BData request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;VersionedResourceListOfA2BDataRecord&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio A2B data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionedResourceListOfA2BDataRecord> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getA2BDataWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, opts);
         }
 
         /**
@@ -2572,6 +3372,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfA2BDataRecord> _callback) throws ApiException {
             return getA2BDataAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, _callback);
+        }
+
+        /**
+         * Execute getA2BData request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio A2B data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfA2BDataRecord> _callback, ConfigurationOptions opts) throws ApiException {
+            return getA2BDataAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, _callback, opts);
         }
     }
 
@@ -2595,6 +3412,10 @@ public class TransactionPortfoliosApi {
         return new APIgetA2BDataRequest(scope, code, fromEffectiveAt, toEffectiveAt);
     }
     private okhttp3.Call getA2BMovementsCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, final ApiCallback _callback) throws ApiException {
+        return getA2BMovementsCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getA2BMovementsCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2667,11 +3488,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getA2BMovementsValidateBeforeCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getA2BMovementsValidateBeforeCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getA2BMovements(Async)");
@@ -2692,20 +3513,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'toEffectiveAt' when calling getA2BMovements(Async)");
         }
 
-        return getA2BMovementsCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, _callback);
+        return getA2BMovementsCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, _callback, opts);
 
     }
 
 
     private ApiResponse<VersionedResourceListOfA2BMovementRecord> getA2BMovementsWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter) throws ApiException {
-        okhttp3.Call localVarCall = getA2BMovementsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, null);
+        okhttp3.Call localVarCall = getA2BMovementsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfA2BMovementRecord>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<VersionedResourceListOfA2BMovementRecord> getA2BMovementsWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getA2BMovementsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, null, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfA2BMovementRecord>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getA2BMovementsAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, final ApiCallback<VersionedResourceListOfA2BMovementRecord> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getA2BMovementsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, _callback);
+        okhttp3.Call localVarCall = getA2BMovementsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfA2BMovementRecord>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getA2BMovementsAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, final ApiCallback<VersionedResourceListOfA2BMovementRecord> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getA2BMovementsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, _callback, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfA2BMovementRecord>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2814,6 +3649,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute getA2BMovements request. Use any specified configuration options to override any other configuration for this request only.
+         * @return VersionedResourceListOfA2BMovementRecord
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio A2B movement data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionedResourceListOfA2BMovementRecord execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<VersionedResourceListOfA2BMovementRecord> localVarResp = getA2BMovementsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getA2BMovements request with HTTP info returned
          * @return ApiResponse&lt;VersionedResourceListOfA2BMovementRecord&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2827,6 +3679,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<VersionedResourceListOfA2BMovementRecord> executeWithHttpInfo() throws ApiException {
             return getA2BMovementsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter);
+        }
+
+        /**
+         * Execute getA2BMovements request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;VersionedResourceListOfA2BMovementRecord&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio A2B movement data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionedResourceListOfA2BMovementRecord> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getA2BMovementsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, opts);
         }
 
         /**
@@ -2844,6 +3712,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfA2BMovementRecord> _callback) throws ApiException {
             return getA2BMovementsAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, _callback);
+        }
+
+        /**
+         * Execute getA2BMovements request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio A2B movement data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfA2BMovementRecord> _callback, ConfigurationOptions opts) throws ApiException {
+            return getA2BMovementsAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter, _callback, opts);
         }
     }
 
@@ -2867,6 +3752,10 @@ public class TransactionPortfoliosApi {
         return new APIgetA2BMovementsRequest(scope, code, fromEffectiveAt, toEffectiveAt);
     }
     private okhttp3.Call getBucketedCashFlowsCall(String scope, String code, BucketedCashFlowRequest bucketedCashFlowRequest, final ApiCallback _callback) throws ApiException {
+        return getBucketedCashFlowsCall(scope, code, bucketedCashFlowRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getBucketedCashFlowsCall(String scope, String code, BucketedCashFlowRequest bucketedCashFlowRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2915,11 +3804,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getBucketedCashFlowsValidateBeforeCall(String scope, String code, BucketedCashFlowRequest bucketedCashFlowRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getBucketedCashFlowsValidateBeforeCall(String scope, String code, BucketedCashFlowRequest bucketedCashFlowRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getBucketedCashFlows(Async)");
@@ -2930,20 +3819,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'code' when calling getBucketedCashFlows(Async)");
         }
 
-        return getBucketedCashFlowsCall(scope, code, bucketedCashFlowRequest, _callback);
+        return getBucketedCashFlowsCall(scope, code, bucketedCashFlowRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<BucketedCashFlowResponse> getBucketedCashFlowsWithHttpInfo(String scope, String code, BucketedCashFlowRequest bucketedCashFlowRequest) throws ApiException {
-        okhttp3.Call localVarCall = getBucketedCashFlowsValidateBeforeCall(scope, code, bucketedCashFlowRequest, null);
+        okhttp3.Call localVarCall = getBucketedCashFlowsValidateBeforeCall(scope, code, bucketedCashFlowRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<BucketedCashFlowResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<BucketedCashFlowResponse> getBucketedCashFlowsWithHttpInfo(String scope, String code, BucketedCashFlowRequest bucketedCashFlowRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getBucketedCashFlowsValidateBeforeCall(scope, code, bucketedCashFlowRequest, null, opts);
         Type localVarReturnType = new TypeToken<BucketedCashFlowResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getBucketedCashFlowsAsync(String scope, String code, BucketedCashFlowRequest bucketedCashFlowRequest, final ApiCallback<BucketedCashFlowResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getBucketedCashFlowsValidateBeforeCall(scope, code, bucketedCashFlowRequest, _callback);
+        okhttp3.Call localVarCall = getBucketedCashFlowsValidateBeforeCall(scope, code, bucketedCashFlowRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<BucketedCashFlowResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getBucketedCashFlowsAsync(String scope, String code, BucketedCashFlowRequest bucketedCashFlowRequest, final ApiCallback<BucketedCashFlowResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getBucketedCashFlowsValidateBeforeCall(scope, code, bucketedCashFlowRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<BucketedCashFlowResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3004,6 +3907,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute getBucketedCashFlows request. Use any specified configuration options to override any other configuration for this request only.
+         * @return BucketedCashFlowResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; bucketed cash flow data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public BucketedCashFlowResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<BucketedCashFlowResponse> localVarResp = getBucketedCashFlowsWithHttpInfo(scope, code, bucketedCashFlowRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getBucketedCashFlows request with HTTP info returned
          * @return ApiResponse&lt;BucketedCashFlowResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3017,6 +3937,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<BucketedCashFlowResponse> executeWithHttpInfo() throws ApiException {
             return getBucketedCashFlowsWithHttpInfo(scope, code, bucketedCashFlowRequest);
+        }
+
+        /**
+         * Execute getBucketedCashFlows request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;BucketedCashFlowResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; bucketed cash flow data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<BucketedCashFlowResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getBucketedCashFlowsWithHttpInfo(scope, code, bucketedCashFlowRequest, opts);
         }
 
         /**
@@ -3034,6 +3970,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<BucketedCashFlowResponse> _callback) throws ApiException {
             return getBucketedCashFlowsAsync(scope, code, bucketedCashFlowRequest, _callback);
+        }
+
+        /**
+         * Execute getBucketedCashFlows request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; bucketed cash flow data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<BucketedCashFlowResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return getBucketedCashFlowsAsync(scope, code, bucketedCashFlowRequest, _callback, opts);
         }
     }
 
@@ -3055,6 +4008,10 @@ public class TransactionPortfoliosApi {
         return new APIgetBucketedCashFlowsRequest(scope, code);
     }
     private okhttp3.Call getCustodianAccountCall(String scope, String code, String custodianAccountScope, String custodianAccountCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return getCustodianAccountCall(scope, code, custodianAccountScope, custodianAccountCode, effectiveAt, asAt, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getCustodianAccountCall(String scope, String code, String custodianAccountScope, String custodianAccountCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3113,11 +4070,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCustodianAccountValidateBeforeCall(String scope, String code, String custodianAccountScope, String custodianAccountCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCustodianAccountValidateBeforeCall(String scope, String code, String custodianAccountScope, String custodianAccountCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getCustodianAccount(Async)");
@@ -3138,20 +4095,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'custodianAccountCode' when calling getCustodianAccount(Async)");
         }
 
-        return getCustodianAccountCall(scope, code, custodianAccountScope, custodianAccountCode, effectiveAt, asAt, propertyKeys, _callback);
+        return getCustodianAccountCall(scope, code, custodianAccountScope, custodianAccountCode, effectiveAt, asAt, propertyKeys, _callback, opts);
 
     }
 
 
     private ApiResponse<CustodianAccount> getCustodianAccountWithHttpInfo(String scope, String code, String custodianAccountScope, String custodianAccountCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = getCustodianAccountValidateBeforeCall(scope, code, custodianAccountScope, custodianAccountCode, effectiveAt, asAt, propertyKeys, null);
+        okhttp3.Call localVarCall = getCustodianAccountValidateBeforeCall(scope, code, custodianAccountScope, custodianAccountCode, effectiveAt, asAt, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CustodianAccount>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<CustodianAccount> getCustodianAccountWithHttpInfo(String scope, String code, String custodianAccountScope, String custodianAccountCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getCustodianAccountValidateBeforeCall(scope, code, custodianAccountScope, custodianAccountCode, effectiveAt, asAt, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<CustodianAccount>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getCustodianAccountAsync(String scope, String code, String custodianAccountScope, String custodianAccountCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<CustodianAccount> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getCustodianAccountValidateBeforeCall(scope, code, custodianAccountScope, custodianAccountCode, effectiveAt, asAt, propertyKeys, _callback);
+        okhttp3.Call localVarCall = getCustodianAccountValidateBeforeCall(scope, code, custodianAccountScope, custodianAccountCode, effectiveAt, asAt, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CustodianAccount>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getCustodianAccountAsync(String scope, String code, String custodianAccountScope, String custodianAccountCode, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<CustodianAccount> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getCustodianAccountValidateBeforeCall(scope, code, custodianAccountScope, custodianAccountCode, effectiveAt, asAt, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<CustodianAccount>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3238,6 +4209,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute getCustodianAccount request. Use any specified configuration options to override any other configuration for this request only.
+         * @return CustodianAccount
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Custodian Account definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CustodianAccount execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<CustodianAccount> localVarResp = getCustodianAccountWithHttpInfo(scope, code, custodianAccountScope, custodianAccountCode, effectiveAt, asAt, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getCustodianAccount request with HTTP info returned
          * @return ApiResponse&lt;CustodianAccount&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3251,6 +4239,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<CustodianAccount> executeWithHttpInfo() throws ApiException {
             return getCustodianAccountWithHttpInfo(scope, code, custodianAccountScope, custodianAccountCode, effectiveAt, asAt, propertyKeys);
+        }
+
+        /**
+         * Execute getCustodianAccount request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;CustodianAccount&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Custodian Account definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CustodianAccount> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getCustodianAccountWithHttpInfo(scope, code, custodianAccountScope, custodianAccountCode, effectiveAt, asAt, propertyKeys, opts);
         }
 
         /**
@@ -3268,6 +4272,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<CustodianAccount> _callback) throws ApiException {
             return getCustodianAccountAsync(scope, code, custodianAccountScope, custodianAccountCode, effectiveAt, asAt, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getCustodianAccount request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Custodian Account definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CustodianAccount> _callback, ConfigurationOptions opts) throws ApiException {
+            return getCustodianAccountAsync(scope, code, custodianAccountScope, custodianAccountCode, effectiveAt, asAt, propertyKeys, _callback, opts);
         }
     }
 
@@ -3291,6 +4312,10 @@ public class TransactionPortfoliosApi {
         return new APIgetCustodianAccountRequest(scope, code, custodianAccountScope, custodianAccountCode);
     }
     private okhttp3.Call getDetailsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getDetailsCall(scope, code, effectiveAt, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getDetailsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3343,11 +4368,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getDetailsValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getDetailsValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getDetails(Async)");
@@ -3358,20 +4383,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'code' when calling getDetails(Async)");
         }
 
-        return getDetailsCall(scope, code, effectiveAt, asAt, _callback);
+        return getDetailsCall(scope, code, effectiveAt, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<PortfolioDetails> getDetailsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getDetailsValidateBeforeCall(scope, code, effectiveAt, asAt, null);
+        okhttp3.Call localVarCall = getDetailsValidateBeforeCall(scope, code, effectiveAt, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PortfolioDetails>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PortfolioDetails> getDetailsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getDetailsValidateBeforeCall(scope, code, effectiveAt, asAt, null, opts);
         Type localVarReturnType = new TypeToken<PortfolioDetails>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getDetailsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<PortfolioDetails> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getDetailsValidateBeforeCall(scope, code, effectiveAt, asAt, _callback);
+        okhttp3.Call localVarCall = getDetailsValidateBeforeCall(scope, code, effectiveAt, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PortfolioDetails>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getDetailsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<PortfolioDetails> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getDetailsValidateBeforeCall(scope, code, effectiveAt, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<PortfolioDetails>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3443,6 +4482,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute getDetails request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PortfolioDetails
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The details of the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PortfolioDetails execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PortfolioDetails> localVarResp = getDetailsWithHttpInfo(scope, code, effectiveAt, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getDetails request with HTTP info returned
          * @return ApiResponse&lt;PortfolioDetails&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3456,6 +4512,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<PortfolioDetails> executeWithHttpInfo() throws ApiException {
             return getDetailsWithHttpInfo(scope, code, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getDetails request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PortfolioDetails&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The details of the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PortfolioDetails> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getDetailsWithHttpInfo(scope, code, effectiveAt, asAt, opts);
         }
 
         /**
@@ -3473,6 +4545,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PortfolioDetails> _callback) throws ApiException {
             return getDetailsAsync(scope, code, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getDetails request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The details of the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PortfolioDetails> _callback, ConfigurationOptions opts) throws ApiException {
+            return getDetailsAsync(scope, code, effectiveAt, asAt, _callback, opts);
         }
     }
 
@@ -3494,6 +4583,10 @@ public class TransactionPortfoliosApi {
         return new APIgetDetailsRequest(scope, code);
     }
     private okhttp3.Call getHoldingContributorsCall(String scope, String code, Long holdingId, String effectiveDate, String fromTradeDate, String toTradeDate, Boolean includeHistoric, String taxLotId, Integer limit, OffsetDateTime asAt, String page, final ApiCallback _callback) throws ApiException {
+        return getHoldingContributorsCall(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, limit, asAt, page,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getHoldingContributorsCall(String scope, String code, Long holdingId, String effectiveDate, String fromTradeDate, String toTradeDate, Boolean includeHistoric, String taxLotId, Integer limit, OffsetDateTime asAt, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3571,11 +4664,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getHoldingContributorsValidateBeforeCall(String scope, String code, Long holdingId, String effectiveDate, String fromTradeDate, String toTradeDate, Boolean includeHistoric, String taxLotId, Integer limit, OffsetDateTime asAt, String page, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getHoldingContributorsValidateBeforeCall(String scope, String code, Long holdingId, String effectiveDate, String fromTradeDate, String toTradeDate, Boolean includeHistoric, String taxLotId, Integer limit, OffsetDateTime asAt, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getHoldingContributors(Async)");
@@ -3591,20 +4684,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'holdingId' when calling getHoldingContributors(Async)");
         }
 
-        return getHoldingContributorsCall(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, limit, asAt, page, _callback);
+        return getHoldingContributorsCall(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, limit, asAt, page, _callback, opts);
 
     }
 
 
     private ApiResponse<VersionedResourceListOfHoldingContributor> getHoldingContributorsWithHttpInfo(String scope, String code, Long holdingId, String effectiveDate, String fromTradeDate, String toTradeDate, Boolean includeHistoric, String taxLotId, Integer limit, OffsetDateTime asAt, String page) throws ApiException {
-        okhttp3.Call localVarCall = getHoldingContributorsValidateBeforeCall(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, limit, asAt, page, null);
+        okhttp3.Call localVarCall = getHoldingContributorsValidateBeforeCall(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, limit, asAt, page, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfHoldingContributor>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<VersionedResourceListOfHoldingContributor> getHoldingContributorsWithHttpInfo(String scope, String code, Long holdingId, String effectiveDate, String fromTradeDate, String toTradeDate, Boolean includeHistoric, String taxLotId, Integer limit, OffsetDateTime asAt, String page, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getHoldingContributorsValidateBeforeCall(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, limit, asAt, page, null, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfHoldingContributor>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getHoldingContributorsAsync(String scope, String code, Long holdingId, String effectiveDate, String fromTradeDate, String toTradeDate, Boolean includeHistoric, String taxLotId, Integer limit, OffsetDateTime asAt, String page, final ApiCallback<VersionedResourceListOfHoldingContributor> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getHoldingContributorsValidateBeforeCall(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, limit, asAt, page, _callback);
+        okhttp3.Call localVarCall = getHoldingContributorsValidateBeforeCall(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, limit, asAt, page, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfHoldingContributor>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getHoldingContributorsAsync(String scope, String code, Long holdingId, String effectiveDate, String fromTradeDate, String toTradeDate, Boolean includeHistoric, String taxLotId, Integer limit, OffsetDateTime asAt, String page, final ApiCallback<VersionedResourceListOfHoldingContributor> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getHoldingContributorsValidateBeforeCall(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, limit, asAt, page, _callback, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfHoldingContributor>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3744,6 +4851,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute getHoldingContributors request. Use any specified configuration options to override any other configuration for this request only.
+         * @return VersionedResourceListOfHoldingContributor
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested holding contributors from the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionedResourceListOfHoldingContributor execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<VersionedResourceListOfHoldingContributor> localVarResp = getHoldingContributorsWithHttpInfo(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, limit, asAt, page, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getHoldingContributors request with HTTP info returned
          * @return ApiResponse&lt;VersionedResourceListOfHoldingContributor&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3757,6 +4881,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<VersionedResourceListOfHoldingContributor> executeWithHttpInfo() throws ApiException {
             return getHoldingContributorsWithHttpInfo(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, limit, asAt, page);
+        }
+
+        /**
+         * Execute getHoldingContributors request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;VersionedResourceListOfHoldingContributor&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested holding contributors from the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionedResourceListOfHoldingContributor> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getHoldingContributorsWithHttpInfo(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, limit, asAt, page, opts);
         }
 
         /**
@@ -3774,6 +4914,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfHoldingContributor> _callback) throws ApiException {
             return getHoldingContributorsAsync(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, limit, asAt, page, _callback);
+        }
+
+        /**
+         * Execute getHoldingContributors request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested holding contributors from the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfHoldingContributor> _callback, ConfigurationOptions opts) throws ApiException {
+            return getHoldingContributorsAsync(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, limit, asAt, page, _callback, opts);
         }
     }
 
@@ -3796,6 +4953,10 @@ public class TransactionPortfoliosApi {
         return new APIgetHoldingContributorsRequest(scope, code, holdingId);
     }
     private okhttp3.Call getHoldingsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, final ApiCallback _callback) throws ApiException {
+        return getHoldingsCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getHoldingsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3864,11 +5025,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getHoldingsValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getHoldingsValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getHoldings(Async)");
@@ -3879,20 +5040,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'code' when calling getHoldings(Async)");
         }
 
-        return getHoldingsCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, _callback);
+        return getHoldingsCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, _callback, opts);
 
     }
 
 
     private ApiResponse<VersionedResourceListOfPortfolioHolding> getHoldingsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays) throws ApiException {
-        okhttp3.Call localVarCall = getHoldingsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, null);
+        okhttp3.Call localVarCall = getHoldingsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfPortfolioHolding>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<VersionedResourceListOfPortfolioHolding> getHoldingsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getHoldingsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, null, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfPortfolioHolding>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getHoldingsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, final ApiCallback<VersionedResourceListOfPortfolioHolding> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getHoldingsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, _callback);
+        okhttp3.Call localVarCall = getHoldingsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfPortfolioHolding>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getHoldingsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, final ApiCallback<VersionedResourceListOfPortfolioHolding> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getHoldingsValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, _callback, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfPortfolioHolding>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4008,6 +5183,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute getHoldings request. Use any specified configuration options to override any other configuration for this request only.
+         * @return VersionedResourceListOfPortfolioHolding
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The holdings and version of the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionedResourceListOfPortfolioHolding execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<VersionedResourceListOfPortfolioHolding> localVarResp = getHoldingsWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getHoldings request with HTTP info returned
          * @return ApiResponse&lt;VersionedResourceListOfPortfolioHolding&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4021,6 +5213,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<VersionedResourceListOfPortfolioHolding> executeWithHttpInfo() throws ApiException {
             return getHoldingsWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays);
+        }
+
+        /**
+         * Execute getHoldings request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;VersionedResourceListOfPortfolioHolding&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The holdings and version of the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionedResourceListOfPortfolioHolding> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getHoldingsWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, opts);
         }
 
         /**
@@ -4038,6 +5246,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfPortfolioHolding> _callback) throws ApiException {
             return getHoldingsAsync(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, _callback);
+        }
+
+        /**
+         * Execute getHoldings request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The holdings and version of the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfPortfolioHolding> _callback, ConfigurationOptions opts) throws ApiException {
+            return getHoldingsAsync(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, _callback, opts);
         }
     }
 
@@ -4059,6 +5284,10 @@ public class TransactionPortfoliosApi {
         return new APIgetHoldingsRequest(scope, code);
     }
     private okhttp3.Call getHoldingsAdjustmentCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return getHoldingsAdjustmentCall(scope, code, effectiveAt, asAt, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getHoldingsAdjustmentCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4112,11 +5341,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getHoldingsAdjustmentValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getHoldingsAdjustmentValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getHoldingsAdjustment(Async)");
@@ -4132,20 +5361,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'effectiveAt' when calling getHoldingsAdjustment(Async)");
         }
 
-        return getHoldingsAdjustmentCall(scope, code, effectiveAt, asAt, propertyKeys, _callback);
+        return getHoldingsAdjustmentCall(scope, code, effectiveAt, asAt, propertyKeys, _callback, opts);
 
     }
 
 
     private ApiResponse<HoldingsAdjustment> getHoldingsAdjustmentWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = getHoldingsAdjustmentValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, null);
+        okhttp3.Call localVarCall = getHoldingsAdjustmentValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<HoldingsAdjustment>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<HoldingsAdjustment> getHoldingsAdjustmentWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getHoldingsAdjustmentValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<HoldingsAdjustment>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getHoldingsAdjustmentAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<HoldingsAdjustment> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getHoldingsAdjustmentValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback);
+        okhttp3.Call localVarCall = getHoldingsAdjustmentValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<HoldingsAdjustment>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getHoldingsAdjustmentAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<HoldingsAdjustment> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getHoldingsAdjustmentValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<HoldingsAdjustment>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4219,6 +5462,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute getHoldingsAdjustment request. Use any specified configuration options to override any other configuration for this request only.
+         * @return HoldingsAdjustment
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The details of the requested holdings adjustment </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public HoldingsAdjustment execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<HoldingsAdjustment> localVarResp = getHoldingsAdjustmentWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getHoldingsAdjustment request with HTTP info returned
          * @return ApiResponse&lt;HoldingsAdjustment&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4232,6 +5492,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<HoldingsAdjustment> executeWithHttpInfo() throws ApiException {
             return getHoldingsAdjustmentWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
+        }
+
+        /**
+         * Execute getHoldingsAdjustment request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;HoldingsAdjustment&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The details of the requested holdings adjustment </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<HoldingsAdjustment> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getHoldingsAdjustmentWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys, opts);
         }
 
         /**
@@ -4249,6 +5525,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<HoldingsAdjustment> _callback) throws ApiException {
             return getHoldingsAdjustmentAsync(scope, code, effectiveAt, asAt, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getHoldingsAdjustment request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The details of the requested holdings adjustment </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<HoldingsAdjustment> _callback, ConfigurationOptions opts) throws ApiException {
+            return getHoldingsAdjustmentAsync(scope, code, effectiveAt, asAt, propertyKeys, _callback, opts);
         }
     }
 
@@ -4271,6 +5564,10 @@ public class TransactionPortfoliosApi {
         return new APIgetHoldingsAdjustmentRequest(scope, code, effectiveAt);
     }
     private okhttp3.Call getHoldingsWithOrdersCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, String recipeIdScope, String recipeIdCode, Integer includeSettlementEventsAfterDays, final ApiCallback _callback) throws ApiException {
+        return getHoldingsWithOrdersCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getHoldingsWithOrdersCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, String recipeIdScope, String recipeIdCode, Integer includeSettlementEventsAfterDays, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4347,11 +5644,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getHoldingsWithOrdersValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, String recipeIdScope, String recipeIdCode, Integer includeSettlementEventsAfterDays, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getHoldingsWithOrdersValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, String recipeIdScope, String recipeIdCode, Integer includeSettlementEventsAfterDays, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getHoldingsWithOrders(Async)");
@@ -4362,20 +5659,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'code' when calling getHoldingsWithOrders(Async)");
         }
 
-        return getHoldingsWithOrdersCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, _callback);
+        return getHoldingsWithOrdersCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, _callback, opts);
 
     }
 
 
     private ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding> getHoldingsWithOrdersWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, String recipeIdScope, String recipeIdCode, Integer includeSettlementEventsAfterDays) throws ApiException {
-        okhttp3.Call localVarCall = getHoldingsWithOrdersValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, null);
+        okhttp3.Call localVarCall = getHoldingsWithOrdersValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<VersionedResourceListWithWarningsOfPortfolioHolding>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding> getHoldingsWithOrdersWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, String recipeIdScope, String recipeIdCode, Integer includeSettlementEventsAfterDays, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getHoldingsWithOrdersValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, null, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListWithWarningsOfPortfolioHolding>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getHoldingsWithOrdersAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, String recipeIdScope, String recipeIdCode, Integer includeSettlementEventsAfterDays, final ApiCallback<VersionedResourceListWithWarningsOfPortfolioHolding> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getHoldingsWithOrdersValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, _callback);
+        okhttp3.Call localVarCall = getHoldingsWithOrdersValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<VersionedResourceListWithWarningsOfPortfolioHolding>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getHoldingsWithOrdersAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, String recipeIdScope, String recipeIdCode, Integer includeSettlementEventsAfterDays, final ApiCallback<VersionedResourceListWithWarningsOfPortfolioHolding> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getHoldingsWithOrdersValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, _callback, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListWithWarningsOfPortfolioHolding>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4513,6 +5824,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute getHoldingsWithOrders request. Use any specified configuration options to override any other configuration for this request only.
+         * @return VersionedResourceListWithWarningsOfPortfolioHolding
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The holdings and version of the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionedResourceListWithWarningsOfPortfolioHolding execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding> localVarResp = getHoldingsWithOrdersWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getHoldingsWithOrders request with HTTP info returned
          * @return ApiResponse&lt;VersionedResourceListWithWarningsOfPortfolioHolding&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4526,6 +5854,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding> executeWithHttpInfo() throws ApiException {
             return getHoldingsWithOrdersWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays);
+        }
+
+        /**
+         * Execute getHoldingsWithOrders request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;VersionedResourceListWithWarningsOfPortfolioHolding&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The holdings and version of the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionedResourceListWithWarningsOfPortfolioHolding> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getHoldingsWithOrdersWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, opts);
         }
 
         /**
@@ -4543,6 +5887,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListWithWarningsOfPortfolioHolding> _callback) throws ApiException {
             return getHoldingsWithOrdersAsync(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, _callback);
+        }
+
+        /**
+         * Execute getHoldingsWithOrders request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The holdings and version of the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListWithWarningsOfPortfolioHolding> _callback, ConfigurationOptions opts) throws ApiException {
+            return getHoldingsWithOrdersAsync(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays, _callback, opts);
         }
     }
 
@@ -4564,6 +5925,10 @@ public class TransactionPortfoliosApi {
         return new APIgetHoldingsWithOrdersRequest(scope, code);
     }
     private okhttp3.Call getPortfolioCashFlowsCall(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback _callback) throws ApiException {
+        return getPortfolioCashFlowsCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getPortfolioCashFlowsCall(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4640,11 +6005,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPortfolioCashFlowsValidateBeforeCall(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPortfolioCashFlowsValidateBeforeCall(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getPortfolioCashFlows(Async)");
@@ -4655,20 +6020,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'code' when calling getPortfolioCashFlows(Async)");
         }
 
-        return getPortfolioCashFlowsCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback);
+        return getPortfolioCashFlowsCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfInstrumentCashFlow> getPortfolioCashFlowsWithHttpInfo(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades) throws ApiException {
-        okhttp3.Call localVarCall = getPortfolioCashFlowsValidateBeforeCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, null);
+        okhttp3.Call localVarCall = getPortfolioCashFlowsValidateBeforeCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfInstrumentCashFlow>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfInstrumentCashFlow> getPortfolioCashFlowsWithHttpInfo(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPortfolioCashFlowsValidateBeforeCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfInstrumentCashFlow>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getPortfolioCashFlowsAsync(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback<ResourceListOfInstrumentCashFlow> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPortfolioCashFlowsValidateBeforeCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback);
+        okhttp3.Call localVarCall = getPortfolioCashFlowsValidateBeforeCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfInstrumentCashFlow>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getPortfolioCashFlowsAsync(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback<ResourceListOfInstrumentCashFlow> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getPortfolioCashFlowsValidateBeforeCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfInstrumentCashFlow>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4806,6 +6185,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute getPortfolioCashFlows request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfInstrumentCashFlow
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfInstrumentCashFlow execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfInstrumentCashFlow> localVarResp = getPortfolioCashFlowsWithHttpInfo(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getPortfolioCashFlows request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfInstrumentCashFlow&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4819,6 +6215,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<ResourceListOfInstrumentCashFlow> executeWithHttpInfo() throws ApiException {
             return getPortfolioCashFlowsWithHttpInfo(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades);
+        }
+
+        /**
+         * Execute getPortfolioCashFlows request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfInstrumentCashFlow&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfInstrumentCashFlow> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getPortfolioCashFlowsWithHttpInfo(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, opts);
         }
 
         /**
@@ -4836,6 +6248,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfInstrumentCashFlow> _callback) throws ApiException {
             return getPortfolioCashFlowsAsync(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback);
+        }
+
+        /**
+         * Execute getPortfolioCashFlows request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfInstrumentCashFlow> _callback, ConfigurationOptions opts) throws ApiException {
+            return getPortfolioCashFlowsAsync(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback, opts);
         }
     }
 
@@ -4857,6 +6286,10 @@ public class TransactionPortfoliosApi {
         return new APIgetPortfolioCashFlowsRequest(scope, code);
     }
     private okhttp3.Call getPortfolioCashLadderCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, String effectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback _callback) throws ApiException {
+        return getPortfolioCashLadderCall(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getPortfolioCashLadderCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, String effectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4933,11 +6366,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPortfolioCashLadderValidateBeforeCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, String effectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPortfolioCashLadderValidateBeforeCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, String effectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getPortfolioCashLadder(Async)");
@@ -4963,20 +6396,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'effectiveAt' when calling getPortfolioCashLadder(Async)");
         }
 
-        return getPortfolioCashLadderCall(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback);
+        return getPortfolioCashLadderCall(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfPortfolioCashLadder> getPortfolioCashLadderWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, String effectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades) throws ApiException {
-        okhttp3.Call localVarCall = getPortfolioCashLadderValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, null);
+        okhttp3.Call localVarCall = getPortfolioCashLadderValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPortfolioCashLadder>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfPortfolioCashLadder> getPortfolioCashLadderWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, String effectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPortfolioCashLadderValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPortfolioCashLadder>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getPortfolioCashLadderAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, String effectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback<ResourceListOfPortfolioCashLadder> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPortfolioCashLadderValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback);
+        okhttp3.Call localVarCall = getPortfolioCashLadderValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPortfolioCashLadder>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getPortfolioCashLadderAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, String effectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback<ResourceListOfPortfolioCashLadder> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getPortfolioCashLadderValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPortfolioCashLadder>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -5087,6 +6534,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute getPortfolioCashLadder request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfPortfolioCashLadder
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio cash-ladder </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfPortfolioCashLadder execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfPortfolioCashLadder> localVarResp = getPortfolioCashLadderWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getPortfolioCashLadder request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfPortfolioCashLadder&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -5100,6 +6564,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<ResourceListOfPortfolioCashLadder> executeWithHttpInfo() throws ApiException {
             return getPortfolioCashLadderWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades);
+        }
+
+        /**
+         * Execute getPortfolioCashLadder request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfPortfolioCashLadder&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio cash-ladder </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfPortfolioCashLadder> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getPortfolioCashLadderWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, opts);
         }
 
         /**
@@ -5117,6 +6597,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPortfolioCashLadder> _callback) throws ApiException {
             return getPortfolioCashLadderAsync(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback);
+        }
+
+        /**
+         * Execute getPortfolioCashLadder request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio cash-ladder </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPortfolioCashLadder> _callback, ConfigurationOptions opts) throws ApiException {
+            return getPortfolioCashLadderAsync(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback, opts);
         }
     }
 
@@ -5141,6 +6638,10 @@ public class TransactionPortfoliosApi {
         return new APIgetPortfolioCashLadderRequest(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt);
     }
     private okhttp3.Call getPortfolioCashStatementCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, final ApiCallback _callback) throws ApiException {
+        return getPortfolioCashStatementCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getPortfolioCashStatementCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5209,11 +6710,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPortfolioCashStatementValidateBeforeCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPortfolioCashStatementValidateBeforeCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getPortfolioCashStatement(Async)");
@@ -5234,20 +6735,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'toEffectiveAt' when calling getPortfolioCashStatement(Async)");
         }
 
-        return getPortfolioCashStatementCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, _callback);
+        return getPortfolioCashStatementCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfPortfolioCashFlow> getPortfolioCashStatementWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode) throws ApiException {
-        okhttp3.Call localVarCall = getPortfolioCashStatementValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, null);
+        okhttp3.Call localVarCall = getPortfolioCashStatementValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPortfolioCashFlow>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfPortfolioCashFlow> getPortfolioCashStatementWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPortfolioCashStatementValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPortfolioCashFlow>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getPortfolioCashStatementAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, final ApiCallback<ResourceListOfPortfolioCashFlow> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPortfolioCashStatementValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, _callback);
+        okhttp3.Call localVarCall = getPortfolioCashStatementValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPortfolioCashFlow>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getPortfolioCashStatementAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, final ApiCallback<ResourceListOfPortfolioCashFlow> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getPortfolioCashStatementValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPortfolioCashFlow>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -5345,6 +6860,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute getPortfolioCashStatement request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfPortfolioCashFlow
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio cash flow data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfPortfolioCashFlow execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfPortfolioCashFlow> localVarResp = getPortfolioCashStatementWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getPortfolioCashStatement request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfPortfolioCashFlow&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -5358,6 +6890,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<ResourceListOfPortfolioCashFlow> executeWithHttpInfo() throws ApiException {
             return getPortfolioCashStatementWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode);
+        }
+
+        /**
+         * Execute getPortfolioCashStatement request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfPortfolioCashFlow&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio cash flow data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfPortfolioCashFlow> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getPortfolioCashStatementWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, opts);
         }
 
         /**
@@ -5375,6 +6923,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPortfolioCashFlow> _callback) throws ApiException {
             return getPortfolioCashStatementAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, _callback);
+        }
+
+        /**
+         * Execute getPortfolioCashStatement request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio cash flow data </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPortfolioCashFlow> _callback, ConfigurationOptions opts) throws ApiException {
+            return getPortfolioCashStatementAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, _callback, opts);
         }
     }
 
@@ -5398,6 +6963,10 @@ public class TransactionPortfoliosApi {
         return new APIgetPortfolioCashStatementRequest(scope, code, fromEffectiveAt, toEffectiveAt);
     }
     private okhttp3.Call getTransactionHistoryCall(String scope, String code, String transactionId, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getTransactionHistoryCall(scope, code, transactionId, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getTransactionHistoryCall(String scope, String code, String transactionId, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5447,11 +7016,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTransactionHistoryValidateBeforeCall(String scope, String code, String transactionId, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getTransactionHistoryValidateBeforeCall(String scope, String code, String transactionId, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getTransactionHistory(Async)");
@@ -5467,20 +7036,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'transactionId' when calling getTransactionHistory(Async)");
         }
 
-        return getTransactionHistoryCall(scope, code, transactionId, asAt, _callback);
+        return getTransactionHistoryCall(scope, code, transactionId, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfChangeHistory> getTransactionHistoryWithHttpInfo(String scope, String code, String transactionId, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getTransactionHistoryValidateBeforeCall(scope, code, transactionId, asAt, null);
+        okhttp3.Call localVarCall = getTransactionHistoryValidateBeforeCall(scope, code, transactionId, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfChangeHistory>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfChangeHistory> getTransactionHistoryWithHttpInfo(String scope, String code, String transactionId, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getTransactionHistoryValidateBeforeCall(scope, code, transactionId, asAt, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfChangeHistory>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getTransactionHistoryAsync(String scope, String code, String transactionId, OffsetDateTime asAt, final ApiCallback<ResourceListOfChangeHistory> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getTransactionHistoryValidateBeforeCall(scope, code, transactionId, asAt, _callback);
+        okhttp3.Call localVarCall = getTransactionHistoryValidateBeforeCall(scope, code, transactionId, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfChangeHistory>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getTransactionHistoryAsync(String scope, String code, String transactionId, OffsetDateTime asAt, final ApiCallback<ResourceListOfChangeHistory> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getTransactionHistoryValidateBeforeCall(scope, code, transactionId, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfChangeHistory>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -5543,6 +7126,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute getTransactionHistory request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfChangeHistory
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The history of the specified transaction (changes that have been made to it). </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfChangeHistory execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfChangeHistory> localVarResp = getTransactionHistoryWithHttpInfo(scope, code, transactionId, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getTransactionHistory request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfChangeHistory&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -5556,6 +7156,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<ResourceListOfChangeHistory> executeWithHttpInfo() throws ApiException {
             return getTransactionHistoryWithHttpInfo(scope, code, transactionId, asAt);
+        }
+
+        /**
+         * Execute getTransactionHistory request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfChangeHistory&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The history of the specified transaction (changes that have been made to it). </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfChangeHistory> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getTransactionHistoryWithHttpInfo(scope, code, transactionId, asAt, opts);
         }
 
         /**
@@ -5573,6 +7189,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfChangeHistory> _callback) throws ApiException {
             return getTransactionHistoryAsync(scope, code, transactionId, asAt, _callback);
+        }
+
+        /**
+         * Execute getTransactionHistory request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The history of the specified transaction (changes that have been made to it). </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfChangeHistory> _callback, ConfigurationOptions opts) throws ApiException {
+            return getTransactionHistoryAsync(scope, code, transactionId, asAt, _callback, opts);
         }
     }
 
@@ -5595,6 +7228,10 @@ public class TransactionPortfoliosApi {
         return new APIgetTransactionHistoryRequest(scope, code, transactionId);
     }
     private okhttp3.Call getTransactionsCall(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, String page, Integer limit, Boolean showCancelledTransactions, List<String> sortBy, final ApiCallback _callback) throws ApiException {
+        return getTransactionsCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, showCancelledTransactions, sortBy,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getTransactionsCall(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, String page, Integer limit, Boolean showCancelledTransactions, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5675,11 +7312,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTransactionsValidateBeforeCall(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, String page, Integer limit, Boolean showCancelledTransactions, List<String> sortBy, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getTransactionsValidateBeforeCall(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, String page, Integer limit, Boolean showCancelledTransactions, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getTransactions(Async)");
@@ -5690,20 +7327,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'code' when calling getTransactions(Async)");
         }
 
-        return getTransactionsCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, showCancelledTransactions, sortBy, _callback);
+        return getTransactionsCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, showCancelledTransactions, sortBy, _callback, opts);
 
     }
 
 
     private ApiResponse<VersionedResourceListOfTransaction> getTransactionsWithHttpInfo(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, String page, Integer limit, Boolean showCancelledTransactions, List<String> sortBy) throws ApiException {
-        okhttp3.Call localVarCall = getTransactionsValidateBeforeCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, showCancelledTransactions, sortBy, null);
+        okhttp3.Call localVarCall = getTransactionsValidateBeforeCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, showCancelledTransactions, sortBy, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfTransaction>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<VersionedResourceListOfTransaction> getTransactionsWithHttpInfo(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, String page, Integer limit, Boolean showCancelledTransactions, List<String> sortBy, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getTransactionsValidateBeforeCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, showCancelledTransactions, sortBy, null, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfTransaction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getTransactionsAsync(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, String page, Integer limit, Boolean showCancelledTransactions, List<String> sortBy, final ApiCallback<VersionedResourceListOfTransaction> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getTransactionsValidateBeforeCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, showCancelledTransactions, sortBy, _callback);
+        okhttp3.Call localVarCall = getTransactionsValidateBeforeCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, showCancelledTransactions, sortBy, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfTransaction>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getTransactionsAsync(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, String page, Integer limit, Boolean showCancelledTransactions, List<String> sortBy, final ApiCallback<VersionedResourceListOfTransaction> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getTransactionsValidateBeforeCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, showCancelledTransactions, sortBy, _callback, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfTransaction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -5852,6 +7503,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute getTransactions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return VersionedResourceListOfTransaction
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested transactions from the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionedResourceListOfTransaction execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<VersionedResourceListOfTransaction> localVarResp = getTransactionsWithHttpInfo(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, showCancelledTransactions, sortBy, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getTransactions request with HTTP info returned
          * @return ApiResponse&lt;VersionedResourceListOfTransaction&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -5865,6 +7533,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<VersionedResourceListOfTransaction> executeWithHttpInfo() throws ApiException {
             return getTransactionsWithHttpInfo(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, showCancelledTransactions, sortBy);
+        }
+
+        /**
+         * Execute getTransactions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;VersionedResourceListOfTransaction&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested transactions from the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionedResourceListOfTransaction> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getTransactionsWithHttpInfo(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, showCancelledTransactions, sortBy, opts);
         }
 
         /**
@@ -5882,6 +7566,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfTransaction> _callback) throws ApiException {
             return getTransactionsAsync(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, showCancelledTransactions, sortBy, _callback);
+        }
+
+        /**
+         * Execute getTransactions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested transactions from the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfTransaction> _callback, ConfigurationOptions opts) throws ApiException {
+            return getTransactionsAsync(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, showCancelledTransactions, sortBy, _callback, opts);
         }
     }
 
@@ -5903,6 +7604,10 @@ public class TransactionPortfoliosApi {
         return new APIgetTransactionsRequest(scope, code);
     }
     private okhttp3.Call getUpsertablePortfolioCashFlowsCall(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback _callback) throws ApiException {
+        return getUpsertablePortfolioCashFlowsCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getUpsertablePortfolioCashFlowsCall(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5979,11 +7684,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getUpsertablePortfolioCashFlowsValidateBeforeCall(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getUpsertablePortfolioCashFlowsValidateBeforeCall(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getUpsertablePortfolioCashFlows(Async)");
@@ -5994,20 +7699,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'code' when calling getUpsertablePortfolioCashFlows(Async)");
         }
 
-        return getUpsertablePortfolioCashFlowsCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback);
+        return getUpsertablePortfolioCashFlowsCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfTransaction> getUpsertablePortfolioCashFlowsWithHttpInfo(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades) throws ApiException {
-        okhttp3.Call localVarCall = getUpsertablePortfolioCashFlowsValidateBeforeCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, null);
+        okhttp3.Call localVarCall = getUpsertablePortfolioCashFlowsValidateBeforeCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfTransaction>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfTransaction> getUpsertablePortfolioCashFlowsWithHttpInfo(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getUpsertablePortfolioCashFlowsValidateBeforeCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfTransaction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getUpsertablePortfolioCashFlowsAsync(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback<ResourceListOfTransaction> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getUpsertablePortfolioCashFlowsValidateBeforeCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback);
+        okhttp3.Call localVarCall = getUpsertablePortfolioCashFlowsValidateBeforeCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfTransaction>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getUpsertablePortfolioCashFlowsAsync(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback<ResourceListOfTransaction> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getUpsertablePortfolioCashFlowsValidateBeforeCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfTransaction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -6145,6 +7864,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute getUpsertablePortfolioCashFlows request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfTransaction
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data as a set of upsertable transactions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfTransaction execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfTransaction> localVarResp = getUpsertablePortfolioCashFlowsWithHttpInfo(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getUpsertablePortfolioCashFlows request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfTransaction&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -6158,6 +7894,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<ResourceListOfTransaction> executeWithHttpInfo() throws ApiException {
             return getUpsertablePortfolioCashFlowsWithHttpInfo(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades);
+        }
+
+        /**
+         * Execute getUpsertablePortfolioCashFlows request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfTransaction&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data as a set of upsertable transactions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfTransaction> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getUpsertablePortfolioCashFlowsWithHttpInfo(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, opts);
         }
 
         /**
@@ -6175,6 +7927,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfTransaction> _callback) throws ApiException {
             return getUpsertablePortfolioCashFlowsAsync(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback);
+        }
+
+        /**
+         * Execute getUpsertablePortfolioCashFlows request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested portfolio instruments&#39; cash flow data as a set of upsertable transactions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfTransaction> _callback, ConfigurationOptions opts) throws ApiException {
+            return getUpsertablePortfolioCashFlowsAsync(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades, _callback, opts);
         }
     }
 
@@ -6196,6 +7965,10 @@ public class TransactionPortfoliosApi {
         return new APIgetUpsertablePortfolioCashFlowsRequest(scope, code);
     }
     private okhttp3.Call listCustodianAccountsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return listCustodianAccountsCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listCustodianAccountsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -6264,11 +8037,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listCustodianAccountsValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listCustodianAccountsValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listCustodianAccounts(Async)");
@@ -6279,20 +8052,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'code' when calling listCustodianAccounts(Async)");
         }
 
-        return listCustodianAccountsCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
+        return listCustodianAccountsCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfCustodianAccount> listCustodianAccountsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = listCustodianAccountsValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, null);
+        okhttp3.Call localVarCall = listCustodianAccountsValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfCustodianAccount>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfCustodianAccount> listCustodianAccountsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listCustodianAccountsValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfCustodianAccount>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listCustodianAccountsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfCustodianAccount> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listCustodianAccountsValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
+        okhttp3.Call localVarCall = listCustodianAccountsValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfCustodianAccount>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listCustodianAccountsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfCustodianAccount> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listCustodianAccountsValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfCustodianAccount>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -6408,6 +8195,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute listCustodianAccounts request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfCustodianAccount
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The custodian accounts in the given Transaction Portfolios. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfCustodianAccount execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfCustodianAccount> localVarResp = listCustodianAccountsWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listCustodianAccounts request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfCustodianAccount&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -6421,6 +8225,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<PagedResourceListOfCustodianAccount> executeWithHttpInfo() throws ApiException {
             return listCustodianAccountsWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys);
+        }
+
+        /**
+         * Execute listCustodianAccounts request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfCustodianAccount&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The custodian accounts in the given Transaction Portfolios. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfCustodianAccount> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listCustodianAccountsWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, opts);
         }
 
         /**
@@ -6438,6 +8258,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfCustodianAccount> _callback) throws ApiException {
             return listCustodianAccountsAsync(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute listCustodianAccounts request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The custodian accounts in the given Transaction Portfolios. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfCustodianAccount> _callback, ConfigurationOptions opts) throws ApiException {
+            return listCustodianAccountsAsync(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback, opts);
         }
     }
 
@@ -6459,6 +8296,10 @@ public class TransactionPortfoliosApi {
         return new APIlistCustodianAccountsRequest(scope, code);
     }
     private okhttp3.Call listHoldingsAdjustmentsCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return listHoldingsAdjustmentsCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listHoldingsAdjustmentsCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -6515,11 +8356,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listHoldingsAdjustmentsValidateBeforeCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listHoldingsAdjustmentsValidateBeforeCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listHoldingsAdjustments(Async)");
@@ -6530,20 +8371,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'code' when calling listHoldingsAdjustments(Async)");
         }
 
-        return listHoldingsAdjustmentsCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, _callback);
+        return listHoldingsAdjustmentsCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfHoldingsAdjustmentHeader> listHoldingsAdjustmentsWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = listHoldingsAdjustmentsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, null);
+        okhttp3.Call localVarCall = listHoldingsAdjustmentsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfHoldingsAdjustmentHeader>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfHoldingsAdjustmentHeader> listHoldingsAdjustmentsWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listHoldingsAdjustmentsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfHoldingsAdjustmentHeader>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listHoldingsAdjustmentsAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback<ResourceListOfHoldingsAdjustmentHeader> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listHoldingsAdjustmentsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, _callback);
+        okhttp3.Call localVarCall = listHoldingsAdjustmentsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfHoldingsAdjustmentHeader>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listHoldingsAdjustmentsAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback<ResourceListOfHoldingsAdjustmentHeader> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listHoldingsAdjustmentsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfHoldingsAdjustmentHeader>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -6626,6 +8481,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute listHoldingsAdjustments request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfHoldingsAdjustmentHeader
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The record of holdings adjustments made to the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfHoldingsAdjustmentHeader execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfHoldingsAdjustmentHeader> localVarResp = listHoldingsAdjustmentsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listHoldingsAdjustments request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfHoldingsAdjustmentHeader&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -6639,6 +8511,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<ResourceListOfHoldingsAdjustmentHeader> executeWithHttpInfo() throws ApiException {
             return listHoldingsAdjustmentsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt);
+        }
+
+        /**
+         * Execute listHoldingsAdjustments request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfHoldingsAdjustmentHeader&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The record of holdings adjustments made to the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfHoldingsAdjustmentHeader> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listHoldingsAdjustmentsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, opts);
         }
 
         /**
@@ -6656,6 +8544,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfHoldingsAdjustmentHeader> _callback) throws ApiException {
             return listHoldingsAdjustmentsAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute listHoldingsAdjustments request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The record of holdings adjustments made to the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfHoldingsAdjustmentHeader> _callback, ConfigurationOptions opts) throws ApiException {
+            return listHoldingsAdjustmentsAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, _callback, opts);
         }
     }
 
@@ -6677,6 +8582,10 @@ public class TransactionPortfoliosApi {
         return new APIlistHoldingsAdjustmentsRequest(scope, code);
     }
     private okhttp3.Call patchPortfolioDetailsCall(String scope, String code, List<Operation> operation, String effectiveAt, final ApiCallback _callback) throws ApiException {
+        return patchPortfolioDetailsCall(scope, code, operation, effectiveAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call patchPortfolioDetailsCall(String scope, String code, List<Operation> operation, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -6729,11 +8638,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchPortfolioDetailsValidateBeforeCall(String scope, String code, List<Operation> operation, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchPortfolioDetailsValidateBeforeCall(String scope, String code, List<Operation> operation, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling patchPortfolioDetails(Async)");
@@ -6749,20 +8658,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'operation' when calling patchPortfolioDetails(Async)");
         }
 
-        return patchPortfolioDetailsCall(scope, code, operation, effectiveAt, _callback);
+        return patchPortfolioDetailsCall(scope, code, operation, effectiveAt, _callback, opts);
 
     }
 
 
     private ApiResponse<PortfolioDetails> patchPortfolioDetailsWithHttpInfo(String scope, String code, List<Operation> operation, String effectiveAt) throws ApiException {
-        okhttp3.Call localVarCall = patchPortfolioDetailsValidateBeforeCall(scope, code, operation, effectiveAt, null);
+        okhttp3.Call localVarCall = patchPortfolioDetailsValidateBeforeCall(scope, code, operation, effectiveAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PortfolioDetails>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PortfolioDetails> patchPortfolioDetailsWithHttpInfo(String scope, String code, List<Operation> operation, String effectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = patchPortfolioDetailsValidateBeforeCall(scope, code, operation, effectiveAt, null, opts);
         Type localVarReturnType = new TypeToken<PortfolioDetails>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call patchPortfolioDetailsAsync(String scope, String code, List<Operation> operation, String effectiveAt, final ApiCallback<PortfolioDetails> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchPortfolioDetailsValidateBeforeCall(scope, code, operation, effectiveAt, _callback);
+        okhttp3.Call localVarCall = patchPortfolioDetailsValidateBeforeCall(scope, code, operation, effectiveAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PortfolioDetails>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call patchPortfolioDetailsAsync(String scope, String code, List<Operation> operation, String effectiveAt, final ApiCallback<PortfolioDetails> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = patchPortfolioDetailsValidateBeforeCall(scope, code, operation, effectiveAt, _callback, opts);
         Type localVarReturnType = new TypeToken<PortfolioDetails>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -6825,6 +8748,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute patchPortfolioDetails request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PortfolioDetails
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly patched details </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PortfolioDetails execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PortfolioDetails> localVarResp = patchPortfolioDetailsWithHttpInfo(scope, code, operation, effectiveAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute patchPortfolioDetails request with HTTP info returned
          * @return ApiResponse&lt;PortfolioDetails&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -6838,6 +8778,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<PortfolioDetails> executeWithHttpInfo() throws ApiException {
             return patchPortfolioDetailsWithHttpInfo(scope, code, operation, effectiveAt);
+        }
+
+        /**
+         * Execute patchPortfolioDetails request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PortfolioDetails&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly patched details </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PortfolioDetails> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return patchPortfolioDetailsWithHttpInfo(scope, code, operation, effectiveAt, opts);
         }
 
         /**
@@ -6855,6 +8811,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PortfolioDetails> _callback) throws ApiException {
             return patchPortfolioDetailsAsync(scope, code, operation, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute patchPortfolioDetails request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly patched details </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PortfolioDetails> _callback, ConfigurationOptions opts) throws ApiException {
+            return patchPortfolioDetailsAsync(scope, code, operation, effectiveAt, _callback, opts);
         }
     }
 
@@ -6877,6 +8850,10 @@ public class TransactionPortfoliosApi {
         return new APIpatchPortfolioDetailsRequest(scope, code, operation);
     }
     private okhttp3.Call resolveInstrumentCall(String scope, String code, String instrumentIdentifierType, String instrumentIdentifierValue, String fromEffectiveAt, Boolean reResolve, Map<String, String> requestBody, final ApiCallback _callback) throws ApiException {
+        return resolveInstrumentCall(scope, code, instrumentIdentifierType, instrumentIdentifierValue, fromEffectiveAt, reResolve, requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call resolveInstrumentCall(String scope, String code, String instrumentIdentifierType, String instrumentIdentifierValue, String fromEffectiveAt, Boolean reResolve, Map<String, String> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -6941,11 +8918,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call resolveInstrumentValidateBeforeCall(String scope, String code, String instrumentIdentifierType, String instrumentIdentifierValue, String fromEffectiveAt, Boolean reResolve, Map<String, String> requestBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call resolveInstrumentValidateBeforeCall(String scope, String code, String instrumentIdentifierType, String instrumentIdentifierValue, String fromEffectiveAt, Boolean reResolve, Map<String, String> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling resolveInstrument(Async)");
@@ -6966,20 +8943,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'instrumentIdentifierValue' when calling resolveInstrument(Async)");
         }
 
-        return resolveInstrumentCall(scope, code, instrumentIdentifierType, instrumentIdentifierValue, fromEffectiveAt, reResolve, requestBody, _callback);
+        return resolveInstrumentCall(scope, code, instrumentIdentifierType, instrumentIdentifierValue, fromEffectiveAt, reResolve, requestBody, _callback, opts);
 
     }
 
 
     private ApiResponse<UpsertPortfolioTransactionsResponse> resolveInstrumentWithHttpInfo(String scope, String code, String instrumentIdentifierType, String instrumentIdentifierValue, String fromEffectiveAt, Boolean reResolve, Map<String, String> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = resolveInstrumentValidateBeforeCall(scope, code, instrumentIdentifierType, instrumentIdentifierValue, fromEffectiveAt, reResolve, requestBody, null);
+        okhttp3.Call localVarCall = resolveInstrumentValidateBeforeCall(scope, code, instrumentIdentifierType, instrumentIdentifierValue, fromEffectiveAt, reResolve, requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertPortfolioTransactionsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<UpsertPortfolioTransactionsResponse> resolveInstrumentWithHttpInfo(String scope, String code, String instrumentIdentifierType, String instrumentIdentifierValue, String fromEffectiveAt, Boolean reResolve, Map<String, String> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = resolveInstrumentValidateBeforeCall(scope, code, instrumentIdentifierType, instrumentIdentifierValue, fromEffectiveAt, reResolve, requestBody, null, opts);
         Type localVarReturnType = new TypeToken<UpsertPortfolioTransactionsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call resolveInstrumentAsync(String scope, String code, String instrumentIdentifierType, String instrumentIdentifierValue, String fromEffectiveAt, Boolean reResolve, Map<String, String> requestBody, final ApiCallback<UpsertPortfolioTransactionsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = resolveInstrumentValidateBeforeCall(scope, code, instrumentIdentifierType, instrumentIdentifierValue, fromEffectiveAt, reResolve, requestBody, _callback);
+        okhttp3.Call localVarCall = resolveInstrumentValidateBeforeCall(scope, code, instrumentIdentifierType, instrumentIdentifierValue, fromEffectiveAt, reResolve, requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertPortfolioTransactionsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call resolveInstrumentAsync(String scope, String code, String instrumentIdentifierType, String instrumentIdentifierValue, String fromEffectiveAt, Boolean reResolve, Map<String, String> requestBody, final ApiCallback<UpsertPortfolioTransactionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = resolveInstrumentValidateBeforeCall(scope, code, instrumentIdentifierType, instrumentIdentifierValue, fromEffectiveAt, reResolve, requestBody, _callback, opts);
         Type localVarReturnType = new TypeToken<UpsertPortfolioTransactionsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -7066,6 +9057,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute resolveInstrument request. Use any specified configuration options to override any other configuration for this request only.
+         * @return UpsertPortfolioTransactionsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly updated or inserted transactions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertPortfolioTransactionsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<UpsertPortfolioTransactionsResponse> localVarResp = resolveInstrumentWithHttpInfo(scope, code, instrumentIdentifierType, instrumentIdentifierValue, fromEffectiveAt, reResolve, requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute resolveInstrument request with HTTP info returned
          * @return ApiResponse&lt;UpsertPortfolioTransactionsResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -7079,6 +9087,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<UpsertPortfolioTransactionsResponse> executeWithHttpInfo() throws ApiException {
             return resolveInstrumentWithHttpInfo(scope, code, instrumentIdentifierType, instrumentIdentifierValue, fromEffectiveAt, reResolve, requestBody);
+        }
+
+        /**
+         * Execute resolveInstrument request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;UpsertPortfolioTransactionsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly updated or inserted transactions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertPortfolioTransactionsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return resolveInstrumentWithHttpInfo(scope, code, instrumentIdentifierType, instrumentIdentifierValue, fromEffectiveAt, reResolve, requestBody, opts);
         }
 
         /**
@@ -7096,6 +9120,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<UpsertPortfolioTransactionsResponse> _callback) throws ApiException {
             return resolveInstrumentAsync(scope, code, instrumentIdentifierType, instrumentIdentifierValue, fromEffectiveAt, reResolve, requestBody, _callback);
+        }
+
+        /**
+         * Execute resolveInstrument request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly updated or inserted transactions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertPortfolioTransactionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return resolveInstrumentAsync(scope, code, instrumentIdentifierType, instrumentIdentifierValue, fromEffectiveAt, reResolve, requestBody, _callback, opts);
         }
     }
 
@@ -7119,6 +9160,10 @@ public class TransactionPortfoliosApi {
         return new APIresolveInstrumentRequest(scope, code, instrumentIdentifierType, instrumentIdentifierValue);
     }
     private okhttp3.Call setHoldingsCall(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, final ApiCallback _callback) throws ApiException {
+        return setHoldingsCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call setHoldingsCall(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -7175,11 +9220,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call setHoldingsValidateBeforeCall(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call setHoldingsValidateBeforeCall(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling setHoldings(Async)");
@@ -7200,20 +9245,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'adjustHoldingRequest' when calling setHoldings(Async)");
         }
 
-        return setHoldingsCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, _callback);
+        return setHoldingsCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, _callback, opts);
 
     }
 
 
     private ApiResponse<AdjustHolding> setHoldingsWithHttpInfo(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods) throws ApiException {
-        okhttp3.Call localVarCall = setHoldingsValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, null);
+        okhttp3.Call localVarCall = setHoldingsValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AdjustHolding>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AdjustHolding> setHoldingsWithHttpInfo(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = setHoldingsValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, null, opts);
         Type localVarReturnType = new TypeToken<AdjustHolding>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call setHoldingsAsync(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, final ApiCallback<AdjustHolding> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = setHoldingsValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, _callback);
+        okhttp3.Call localVarCall = setHoldingsValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AdjustHolding>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call setHoldingsAsync(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, final ApiCallback<AdjustHolding> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = setHoldingsValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, _callback, opts);
         Type localVarReturnType = new TypeToken<AdjustHolding>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -7278,6 +9337,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute setHoldings request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AdjustHolding
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly set holdings </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AdjustHolding execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AdjustHolding> localVarResp = setHoldingsWithHttpInfo(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute setHoldings request with HTTP info returned
          * @return ApiResponse&lt;AdjustHolding&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -7291,6 +9367,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<AdjustHolding> executeWithHttpInfo() throws ApiException {
             return setHoldingsWithHttpInfo(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods);
+        }
+
+        /**
+         * Execute setHoldings request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AdjustHolding&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly set holdings </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AdjustHolding> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return setHoldingsWithHttpInfo(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, opts);
         }
 
         /**
@@ -7308,6 +9400,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<AdjustHolding> _callback) throws ApiException {
             return setHoldingsAsync(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, _callback);
+        }
+
+        /**
+         * Execute setHoldings request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly set holdings </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AdjustHolding> _callback, ConfigurationOptions opts) throws ApiException {
+            return setHoldingsAsync(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, _callback, opts);
         }
     }
 
@@ -7331,6 +9440,10 @@ public class TransactionPortfoliosApi {
         return new APIsetHoldingsRequest(scope, code, effectiveAt, adjustHoldingRequest);
     }
     private okhttp3.Call upsertCustodianAccountsCall(String scope, String code, List<CustodianAccountRequest> custodianAccountRequest, final ApiCallback _callback) throws ApiException {
+        return upsertCustodianAccountsCall(scope, code, custodianAccountRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertCustodianAccountsCall(String scope, String code, List<CustodianAccountRequest> custodianAccountRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -7379,11 +9492,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertCustodianAccountsValidateBeforeCall(String scope, String code, List<CustodianAccountRequest> custodianAccountRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertCustodianAccountsValidateBeforeCall(String scope, String code, List<CustodianAccountRequest> custodianAccountRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling upsertCustodianAccounts(Async)");
@@ -7399,20 +9512,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'custodianAccountRequest' when calling upsertCustodianAccounts(Async)");
         }
 
-        return upsertCustodianAccountsCall(scope, code, custodianAccountRequest, _callback);
+        return upsertCustodianAccountsCall(scope, code, custodianAccountRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<CustodianAccountsUpsertResponse> upsertCustodianAccountsWithHttpInfo(String scope, String code, List<CustodianAccountRequest> custodianAccountRequest) throws ApiException {
-        okhttp3.Call localVarCall = upsertCustodianAccountsValidateBeforeCall(scope, code, custodianAccountRequest, null);
+        okhttp3.Call localVarCall = upsertCustodianAccountsValidateBeforeCall(scope, code, custodianAccountRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CustodianAccountsUpsertResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<CustodianAccountsUpsertResponse> upsertCustodianAccountsWithHttpInfo(String scope, String code, List<CustodianAccountRequest> custodianAccountRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertCustodianAccountsValidateBeforeCall(scope, code, custodianAccountRequest, null, opts);
         Type localVarReturnType = new TypeToken<CustodianAccountsUpsertResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertCustodianAccountsAsync(String scope, String code, List<CustodianAccountRequest> custodianAccountRequest, final ApiCallback<CustodianAccountsUpsertResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertCustodianAccountsValidateBeforeCall(scope, code, custodianAccountRequest, _callback);
+        okhttp3.Call localVarCall = upsertCustodianAccountsValidateBeforeCall(scope, code, custodianAccountRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CustodianAccountsUpsertResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertCustodianAccountsAsync(String scope, String code, List<CustodianAccountRequest> custodianAccountRequest, final ApiCallback<CustodianAccountsUpsertResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertCustodianAccountsValidateBeforeCall(scope, code, custodianAccountRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<CustodianAccountsUpsertResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -7464,6 +9591,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute upsertCustodianAccounts request. Use any specified configuration options to override any other configuration for this request only.
+         * @return CustodianAccountsUpsertResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly upserted custodian accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CustodianAccountsUpsertResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<CustodianAccountsUpsertResponse> localVarResp = upsertCustodianAccountsWithHttpInfo(scope, code, custodianAccountRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertCustodianAccounts request with HTTP info returned
          * @return ApiResponse&lt;CustodianAccountsUpsertResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -7477,6 +9621,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<CustodianAccountsUpsertResponse> executeWithHttpInfo() throws ApiException {
             return upsertCustodianAccountsWithHttpInfo(scope, code, custodianAccountRequest);
+        }
+
+        /**
+         * Execute upsertCustodianAccounts request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;CustodianAccountsUpsertResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly upserted custodian accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CustodianAccountsUpsertResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertCustodianAccountsWithHttpInfo(scope, code, custodianAccountRequest, opts);
         }
 
         /**
@@ -7494,6 +9654,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<CustodianAccountsUpsertResponse> _callback) throws ApiException {
             return upsertCustodianAccountsAsync(scope, code, custodianAccountRequest, _callback);
+        }
+
+        /**
+         * Execute upsertCustodianAccounts request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly upserted custodian accounts. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CustodianAccountsUpsertResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertCustodianAccountsAsync(scope, code, custodianAccountRequest, _callback, opts);
         }
     }
 
@@ -7516,6 +9693,10 @@ public class TransactionPortfoliosApi {
         return new APIupsertCustodianAccountsRequest(scope, code, custodianAccountRequest);
     }
     private okhttp3.Call upsertCustodianAccountsPropertiesCall(String scope, String code, String custodianAccountScope, String custodianAccountCode, Map<String, Property> requestBody, final ApiCallback _callback) throws ApiException {
+        return upsertCustodianAccountsPropertiesCall(scope, code, custodianAccountScope, custodianAccountCode, requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertCustodianAccountsPropertiesCall(String scope, String code, String custodianAccountScope, String custodianAccountCode, Map<String, Property> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -7566,11 +9747,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertCustodianAccountsPropertiesValidateBeforeCall(String scope, String code, String custodianAccountScope, String custodianAccountCode, Map<String, Property> requestBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertCustodianAccountsPropertiesValidateBeforeCall(String scope, String code, String custodianAccountScope, String custodianAccountCode, Map<String, Property> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling upsertCustodianAccountsProperties(Async)");
@@ -7591,20 +9772,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'custodianAccountCode' when calling upsertCustodianAccountsProperties(Async)");
         }
 
-        return upsertCustodianAccountsPropertiesCall(scope, code, custodianAccountScope, custodianAccountCode, requestBody, _callback);
+        return upsertCustodianAccountsPropertiesCall(scope, code, custodianAccountScope, custodianAccountCode, requestBody, _callback, opts);
 
     }
 
 
     private ApiResponse<CustodianAccountProperties> upsertCustodianAccountsPropertiesWithHttpInfo(String scope, String code, String custodianAccountScope, String custodianAccountCode, Map<String, Property> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = upsertCustodianAccountsPropertiesValidateBeforeCall(scope, code, custodianAccountScope, custodianAccountCode, requestBody, null);
+        okhttp3.Call localVarCall = upsertCustodianAccountsPropertiesValidateBeforeCall(scope, code, custodianAccountScope, custodianAccountCode, requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CustodianAccountProperties>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<CustodianAccountProperties> upsertCustodianAccountsPropertiesWithHttpInfo(String scope, String code, String custodianAccountScope, String custodianAccountCode, Map<String, Property> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertCustodianAccountsPropertiesValidateBeforeCall(scope, code, custodianAccountScope, custodianAccountCode, requestBody, null, opts);
         Type localVarReturnType = new TypeToken<CustodianAccountProperties>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertCustodianAccountsPropertiesAsync(String scope, String code, String custodianAccountScope, String custodianAccountCode, Map<String, Property> requestBody, final ApiCallback<CustodianAccountProperties> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertCustodianAccountsPropertiesValidateBeforeCall(scope, code, custodianAccountScope, custodianAccountCode, requestBody, _callback);
+        okhttp3.Call localVarCall = upsertCustodianAccountsPropertiesValidateBeforeCall(scope, code, custodianAccountScope, custodianAccountCode, requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CustodianAccountProperties>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertCustodianAccountsPropertiesAsync(String scope, String code, String custodianAccountScope, String custodianAccountCode, Map<String, Property> requestBody, final ApiCallback<CustodianAccountProperties> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertCustodianAccountsPropertiesValidateBeforeCall(scope, code, custodianAccountScope, custodianAccountCode, requestBody, _callback, opts);
         Type localVarReturnType = new TypeToken<CustodianAccountProperties>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -7669,6 +9864,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute upsertCustodianAccountsProperties request. Use any specified configuration options to override any other configuration for this request only.
+         * @return CustodianAccountProperties
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CustodianAccountProperties execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<CustodianAccountProperties> localVarResp = upsertCustodianAccountsPropertiesWithHttpInfo(scope, code, custodianAccountScope, custodianAccountCode, requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertCustodianAccountsProperties request with HTTP info returned
          * @return ApiResponse&lt;CustodianAccountProperties&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -7682,6 +9894,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<CustodianAccountProperties> executeWithHttpInfo() throws ApiException {
             return upsertCustodianAccountsPropertiesWithHttpInfo(scope, code, custodianAccountScope, custodianAccountCode, requestBody);
+        }
+
+        /**
+         * Execute upsertCustodianAccountsProperties request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;CustodianAccountProperties&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CustodianAccountProperties> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertCustodianAccountsPropertiesWithHttpInfo(scope, code, custodianAccountScope, custodianAccountCode, requestBody, opts);
         }
 
         /**
@@ -7699,6 +9927,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<CustodianAccountProperties> _callback) throws ApiException {
             return upsertCustodianAccountsPropertiesAsync(scope, code, custodianAccountScope, custodianAccountCode, requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertCustodianAccountsProperties request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CustodianAccountProperties> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertCustodianAccountsPropertiesAsync(scope, code, custodianAccountScope, custodianAccountCode, requestBody, _callback, opts);
         }
     }
 
@@ -7722,6 +9967,10 @@ public class TransactionPortfoliosApi {
         return new APIupsertCustodianAccountsPropertiesRequest(scope, code, custodianAccountScope, custodianAccountCode);
     }
     private okhttp3.Call upsertPortfolioDetailsCall(String scope, String code, CreatePortfolioDetails createPortfolioDetails, String effectiveAt, final ApiCallback _callback) throws ApiException {
+        return upsertPortfolioDetailsCall(scope, code, createPortfolioDetails, effectiveAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertPortfolioDetailsCall(String scope, String code, CreatePortfolioDetails createPortfolioDetails, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -7774,11 +10023,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertPortfolioDetailsValidateBeforeCall(String scope, String code, CreatePortfolioDetails createPortfolioDetails, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertPortfolioDetailsValidateBeforeCall(String scope, String code, CreatePortfolioDetails createPortfolioDetails, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling upsertPortfolioDetails(Async)");
@@ -7794,20 +10043,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'createPortfolioDetails' when calling upsertPortfolioDetails(Async)");
         }
 
-        return upsertPortfolioDetailsCall(scope, code, createPortfolioDetails, effectiveAt, _callback);
+        return upsertPortfolioDetailsCall(scope, code, createPortfolioDetails, effectiveAt, _callback, opts);
 
     }
 
 
     private ApiResponse<PortfolioDetails> upsertPortfolioDetailsWithHttpInfo(String scope, String code, CreatePortfolioDetails createPortfolioDetails, String effectiveAt) throws ApiException {
-        okhttp3.Call localVarCall = upsertPortfolioDetailsValidateBeforeCall(scope, code, createPortfolioDetails, effectiveAt, null);
+        okhttp3.Call localVarCall = upsertPortfolioDetailsValidateBeforeCall(scope, code, createPortfolioDetails, effectiveAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PortfolioDetails>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PortfolioDetails> upsertPortfolioDetailsWithHttpInfo(String scope, String code, CreatePortfolioDetails createPortfolioDetails, String effectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertPortfolioDetailsValidateBeforeCall(scope, code, createPortfolioDetails, effectiveAt, null, opts);
         Type localVarReturnType = new TypeToken<PortfolioDetails>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertPortfolioDetailsAsync(String scope, String code, CreatePortfolioDetails createPortfolioDetails, String effectiveAt, final ApiCallback<PortfolioDetails> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertPortfolioDetailsValidateBeforeCall(scope, code, createPortfolioDetails, effectiveAt, _callback);
+        okhttp3.Call localVarCall = upsertPortfolioDetailsValidateBeforeCall(scope, code, createPortfolioDetails, effectiveAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PortfolioDetails>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertPortfolioDetailsAsync(String scope, String code, CreatePortfolioDetails createPortfolioDetails, String effectiveAt, final ApiCallback<PortfolioDetails> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertPortfolioDetailsValidateBeforeCall(scope, code, createPortfolioDetails, effectiveAt, _callback, opts);
         Type localVarReturnType = new TypeToken<PortfolioDetails>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -7870,6 +10133,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute upsertPortfolioDetails request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PortfolioDetails
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly updated or inserted details </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PortfolioDetails execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PortfolioDetails> localVarResp = upsertPortfolioDetailsWithHttpInfo(scope, code, createPortfolioDetails, effectiveAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertPortfolioDetails request with HTTP info returned
          * @return ApiResponse&lt;PortfolioDetails&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -7883,6 +10163,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<PortfolioDetails> executeWithHttpInfo() throws ApiException {
             return upsertPortfolioDetailsWithHttpInfo(scope, code, createPortfolioDetails, effectiveAt);
+        }
+
+        /**
+         * Execute upsertPortfolioDetails request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PortfolioDetails&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly updated or inserted details </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PortfolioDetails> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertPortfolioDetailsWithHttpInfo(scope, code, createPortfolioDetails, effectiveAt, opts);
         }
 
         /**
@@ -7900,6 +10196,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PortfolioDetails> _callback) throws ApiException {
             return upsertPortfolioDetailsAsync(scope, code, createPortfolioDetails, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute upsertPortfolioDetails request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly updated or inserted details </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PortfolioDetails> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertPortfolioDetailsAsync(scope, code, createPortfolioDetails, effectiveAt, _callback, opts);
         }
     }
 
@@ -7922,6 +10235,10 @@ public class TransactionPortfoliosApi {
         return new APIupsertPortfolioDetailsRequest(scope, code, createPortfolioDetails);
     }
     private okhttp3.Call upsertTransactionPropertiesCall(String scope, String code, String transactionId, Map<String, PerpetualProperty> requestBody, final ApiCallback _callback) throws ApiException {
+        return upsertTransactionPropertiesCall(scope, code, transactionId, requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertTransactionPropertiesCall(String scope, String code, String transactionId, Map<String, PerpetualProperty> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -7971,11 +10288,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertTransactionPropertiesValidateBeforeCall(String scope, String code, String transactionId, Map<String, PerpetualProperty> requestBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertTransactionPropertiesValidateBeforeCall(String scope, String code, String transactionId, Map<String, PerpetualProperty> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling upsertTransactionProperties(Async)");
@@ -7996,20 +10313,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'requestBody' when calling upsertTransactionProperties(Async)");
         }
 
-        return upsertTransactionPropertiesCall(scope, code, transactionId, requestBody, _callback);
+        return upsertTransactionPropertiesCall(scope, code, transactionId, requestBody, _callback, opts);
 
     }
 
 
     private ApiResponse<UpsertTransactionPropertiesResponse> upsertTransactionPropertiesWithHttpInfo(String scope, String code, String transactionId, Map<String, PerpetualProperty> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = upsertTransactionPropertiesValidateBeforeCall(scope, code, transactionId, requestBody, null);
+        okhttp3.Call localVarCall = upsertTransactionPropertiesValidateBeforeCall(scope, code, transactionId, requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertTransactionPropertiesResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<UpsertTransactionPropertiesResponse> upsertTransactionPropertiesWithHttpInfo(String scope, String code, String transactionId, Map<String, PerpetualProperty> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertTransactionPropertiesValidateBeforeCall(scope, code, transactionId, requestBody, null, opts);
         Type localVarReturnType = new TypeToken<UpsertTransactionPropertiesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertTransactionPropertiesAsync(String scope, String code, String transactionId, Map<String, PerpetualProperty> requestBody, final ApiCallback<UpsertTransactionPropertiesResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertTransactionPropertiesValidateBeforeCall(scope, code, transactionId, requestBody, _callback);
+        okhttp3.Call localVarCall = upsertTransactionPropertiesValidateBeforeCall(scope, code, transactionId, requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertTransactionPropertiesResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertTransactionPropertiesAsync(String scope, String code, String transactionId, Map<String, PerpetualProperty> requestBody, final ApiCallback<UpsertTransactionPropertiesResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertTransactionPropertiesValidateBeforeCall(scope, code, transactionId, requestBody, _callback, opts);
         Type localVarReturnType = new TypeToken<UpsertTransactionPropertiesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -8063,6 +10394,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute upsertTransactionProperties request. Use any specified configuration options to override any other configuration for this request only.
+         * @return UpsertTransactionPropertiesResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly updated or inserted transaction property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertTransactionPropertiesResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<UpsertTransactionPropertiesResponse> localVarResp = upsertTransactionPropertiesWithHttpInfo(scope, code, transactionId, requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertTransactionProperties request with HTTP info returned
          * @return ApiResponse&lt;UpsertTransactionPropertiesResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -8076,6 +10424,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<UpsertTransactionPropertiesResponse> executeWithHttpInfo() throws ApiException {
             return upsertTransactionPropertiesWithHttpInfo(scope, code, transactionId, requestBody);
+        }
+
+        /**
+         * Execute upsertTransactionProperties request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;UpsertTransactionPropertiesResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly updated or inserted transaction property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertTransactionPropertiesResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertTransactionPropertiesWithHttpInfo(scope, code, transactionId, requestBody, opts);
         }
 
         /**
@@ -8093,6 +10457,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<UpsertTransactionPropertiesResponse> _callback) throws ApiException {
             return upsertTransactionPropertiesAsync(scope, code, transactionId, requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertTransactionProperties request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly updated or inserted transaction property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertTransactionPropertiesResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertTransactionPropertiesAsync(scope, code, transactionId, requestBody, _callback, opts);
         }
     }
 
@@ -8116,6 +10497,10 @@ public class TransactionPortfoliosApi {
         return new APIupsertTransactionPropertiesRequest(scope, code, transactionId, requestBody);
     }
     private okhttp3.Call upsertTransactionsCall(String scope, String code, List<TransactionRequest> transactionRequest, Boolean preserveProperties, final ApiCallback _callback) throws ApiException {
+        return upsertTransactionsCall(scope, code, transactionRequest, preserveProperties,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertTransactionsCall(String scope, String code, List<TransactionRequest> transactionRequest, Boolean preserveProperties, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -8168,11 +10553,11 @@ public class TransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertTransactionsValidateBeforeCall(String scope, String code, List<TransactionRequest> transactionRequest, Boolean preserveProperties, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertTransactionsValidateBeforeCall(String scope, String code, List<TransactionRequest> transactionRequest, Boolean preserveProperties, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling upsertTransactions(Async)");
@@ -8188,20 +10573,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'transactionRequest' when calling upsertTransactions(Async)");
         }
 
-        return upsertTransactionsCall(scope, code, transactionRequest, preserveProperties, _callback);
+        return upsertTransactionsCall(scope, code, transactionRequest, preserveProperties, _callback, opts);
 
     }
 
 
     private ApiResponse<UpsertPortfolioTransactionsResponse> upsertTransactionsWithHttpInfo(String scope, String code, List<TransactionRequest> transactionRequest, Boolean preserveProperties) throws ApiException {
-        okhttp3.Call localVarCall = upsertTransactionsValidateBeforeCall(scope, code, transactionRequest, preserveProperties, null);
+        okhttp3.Call localVarCall = upsertTransactionsValidateBeforeCall(scope, code, transactionRequest, preserveProperties, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertPortfolioTransactionsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<UpsertPortfolioTransactionsResponse> upsertTransactionsWithHttpInfo(String scope, String code, List<TransactionRequest> transactionRequest, Boolean preserveProperties, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertTransactionsValidateBeforeCall(scope, code, transactionRequest, preserveProperties, null, opts);
         Type localVarReturnType = new TypeToken<UpsertPortfolioTransactionsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertTransactionsAsync(String scope, String code, List<TransactionRequest> transactionRequest, Boolean preserveProperties, final ApiCallback<UpsertPortfolioTransactionsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertTransactionsValidateBeforeCall(scope, code, transactionRequest, preserveProperties, _callback);
+        okhttp3.Call localVarCall = upsertTransactionsValidateBeforeCall(scope, code, transactionRequest, preserveProperties, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertPortfolioTransactionsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertTransactionsAsync(String scope, String code, List<TransactionRequest> transactionRequest, Boolean preserveProperties, final ApiCallback<UpsertPortfolioTransactionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertTransactionsValidateBeforeCall(scope, code, transactionRequest, preserveProperties, _callback, opts);
         Type localVarReturnType = new TypeToken<UpsertPortfolioTransactionsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -8264,6 +10663,23 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Execute upsertTransactions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return UpsertPortfolioTransactionsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly updated or inserted transactions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertPortfolioTransactionsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<UpsertPortfolioTransactionsResponse> localVarResp = upsertTransactionsWithHttpInfo(scope, code, transactionRequest, preserveProperties, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertTransactions request with HTTP info returned
          * @return ApiResponse&lt;UpsertPortfolioTransactionsResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -8277,6 +10693,22 @@ public class TransactionPortfoliosApi {
          */
         public ApiResponse<UpsertPortfolioTransactionsResponse> executeWithHttpInfo() throws ApiException {
             return upsertTransactionsWithHttpInfo(scope, code, transactionRequest, preserveProperties);
+        }
+
+        /**
+         * Execute upsertTransactions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;UpsertPortfolioTransactionsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly updated or inserted transactions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertPortfolioTransactionsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertTransactionsWithHttpInfo(scope, code, transactionRequest, preserveProperties, opts);
         }
 
         /**
@@ -8294,6 +10726,23 @@ public class TransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<UpsertPortfolioTransactionsResponse> _callback) throws ApiException {
             return upsertTransactionsAsync(scope, code, transactionRequest, preserveProperties, _callback);
+        }
+
+        /**
+         * Execute upsertTransactions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the transaction portfolio that contains the newly updated or inserted transactions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertPortfolioTransactionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertTransactionsAsync(scope, code, transactionRequest, preserveProperties, _callback, opts);
         }
     }
 

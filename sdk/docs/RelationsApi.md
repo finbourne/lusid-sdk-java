@@ -47,12 +47,23 @@ public class RelationsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // RelationsApi apiInstance = apiFactory.build(RelationsApi.class);
+
         RelationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(RelationsApi.class);
         String scope = "scope_example"; // String | The scope of the relation definition
         String code = "code_example"; // String | The code of the relation definition
         CreateRelationRequest createRelationRequest = new CreateRelationRequest(); // CreateRelationRequest | The details of the relation to create.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which the relation should be effective from. Defaults to the current LUSID system datetime if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // CompleteRelation result = apiInstance.createRelation(scope, code, createRelationRequest, effectiveAt).execute(opts);
+
             CompleteRelation result = apiInstance.createRelation(scope, code, createRelationRequest, effectiveAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -133,12 +144,23 @@ public class RelationsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // RelationsApi apiInstance = apiFactory.build(RelationsApi.class);
+
         RelationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(RelationsApi.class);
         String scope = "scope_example"; // String | The scope of the relation definition
         String code = "code_example"; // String | The code of the relation definition
         DeleteRelationRequest deleteRelationRequest = new DeleteRelationRequest(); // DeleteRelationRequest | The details of the relation to delete.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which the relation should the deletion be effective from. Defaults to the current LUSID system datetime if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteRelation(scope, code, deleteRelationRequest, effectiveAt).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteRelation(scope, code, deleteRelationRequest, effectiveAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -82,6 +83,10 @@ public class InstrumentEventsApi {
     }
 
     private okhttp3.Call queryApplicableInstrumentEventsCall(OffsetDateTime asAt, Integer limit, String page, QueryApplicableInstrumentEventsRequest queryApplicableInstrumentEventsRequest, final ApiCallback _callback) throws ApiException {
+        return queryApplicableInstrumentEventsCall(asAt, limit, page, queryApplicableInstrumentEventsRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call queryApplicableInstrumentEventsCall(OffsetDateTime asAt, Integer limit, String page, QueryApplicableInstrumentEventsRequest queryApplicableInstrumentEventsRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -140,25 +145,39 @@ public class InstrumentEventsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call queryApplicableInstrumentEventsValidateBeforeCall(OffsetDateTime asAt, Integer limit, String page, QueryApplicableInstrumentEventsRequest queryApplicableInstrumentEventsRequest, final ApiCallback _callback) throws ApiException {
-        return queryApplicableInstrumentEventsCall(asAt, limit, page, queryApplicableInstrumentEventsRequest, _callback);
+    private okhttp3.Call queryApplicableInstrumentEventsValidateBeforeCall(OffsetDateTime asAt, Integer limit, String page, QueryApplicableInstrumentEventsRequest queryApplicableInstrumentEventsRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return queryApplicableInstrumentEventsCall(asAt, limit, page, queryApplicableInstrumentEventsRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfApplicableInstrumentEvent> queryApplicableInstrumentEventsWithHttpInfo(OffsetDateTime asAt, Integer limit, String page, QueryApplicableInstrumentEventsRequest queryApplicableInstrumentEventsRequest) throws ApiException {
-        okhttp3.Call localVarCall = queryApplicableInstrumentEventsValidateBeforeCall(asAt, limit, page, queryApplicableInstrumentEventsRequest, null);
+        okhttp3.Call localVarCall = queryApplicableInstrumentEventsValidateBeforeCall(asAt, limit, page, queryApplicableInstrumentEventsRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfApplicableInstrumentEvent>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfApplicableInstrumentEvent> queryApplicableInstrumentEventsWithHttpInfo(OffsetDateTime asAt, Integer limit, String page, QueryApplicableInstrumentEventsRequest queryApplicableInstrumentEventsRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = queryApplicableInstrumentEventsValidateBeforeCall(asAt, limit, page, queryApplicableInstrumentEventsRequest, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfApplicableInstrumentEvent>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call queryApplicableInstrumentEventsAsync(OffsetDateTime asAt, Integer limit, String page, QueryApplicableInstrumentEventsRequest queryApplicableInstrumentEventsRequest, final ApiCallback<ResourceListOfApplicableInstrumentEvent> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = queryApplicableInstrumentEventsValidateBeforeCall(asAt, limit, page, queryApplicableInstrumentEventsRequest, _callback);
+        okhttp3.Call localVarCall = queryApplicableInstrumentEventsValidateBeforeCall(asAt, limit, page, queryApplicableInstrumentEventsRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfApplicableInstrumentEvent>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call queryApplicableInstrumentEventsAsync(OffsetDateTime asAt, Integer limit, String page, QueryApplicableInstrumentEventsRequest queryApplicableInstrumentEventsRequest, final ApiCallback<ResourceListOfApplicableInstrumentEvent> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = queryApplicableInstrumentEventsValidateBeforeCall(asAt, limit, page, queryApplicableInstrumentEventsRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfApplicableInstrumentEvent>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -248,6 +267,23 @@ public class InstrumentEventsApi {
         }
 
         /**
+         * Execute queryApplicableInstrumentEvents request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfApplicableInstrumentEvent
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Applicable Instrument Events </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfApplicableInstrumentEvent execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfApplicableInstrumentEvent> localVarResp = queryApplicableInstrumentEventsWithHttpInfo(asAt, limit, page, queryApplicableInstrumentEventsRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute queryApplicableInstrumentEvents request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfApplicableInstrumentEvent&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -261,6 +297,22 @@ public class InstrumentEventsApi {
          */
         public ApiResponse<ResourceListOfApplicableInstrumentEvent> executeWithHttpInfo() throws ApiException {
             return queryApplicableInstrumentEventsWithHttpInfo(asAt, limit, page, queryApplicableInstrumentEventsRequest);
+        }
+
+        /**
+         * Execute queryApplicableInstrumentEvents request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfApplicableInstrumentEvent&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Applicable Instrument Events </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfApplicableInstrumentEvent> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return queryApplicableInstrumentEventsWithHttpInfo(asAt, limit, page, queryApplicableInstrumentEventsRequest, opts);
         }
 
         /**
@@ -278,6 +330,23 @@ public class InstrumentEventsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfApplicableInstrumentEvent> _callback) throws ApiException {
             return queryApplicableInstrumentEventsAsync(asAt, limit, page, queryApplicableInstrumentEventsRequest, _callback);
+        }
+
+        /**
+         * Execute queryApplicableInstrumentEvents request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Applicable Instrument Events </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfApplicableInstrumentEvent> _callback, ConfigurationOptions opts) throws ApiException {
+            return queryApplicableInstrumentEventsAsync(asAt, limit, page, queryApplicableInstrumentEventsRequest, _callback, opts);
         }
     }
 
@@ -297,6 +366,10 @@ public class InstrumentEventsApi {
         return new APIqueryApplicableInstrumentEventsRequest();
     }
     private okhttp3.Call queryBucketedCashFlowsCall(QueryBucketedCashFlowsRequest queryBucketedCashFlowsRequest, final ApiCallback _callback) throws ApiException {
+        return queryBucketedCashFlowsCall(queryBucketedCashFlowsRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call queryBucketedCashFlowsCall(QueryBucketedCashFlowsRequest queryBucketedCashFlowsRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -343,25 +416,39 @@ public class InstrumentEventsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call queryBucketedCashFlowsValidateBeforeCall(QueryBucketedCashFlowsRequest queryBucketedCashFlowsRequest, final ApiCallback _callback) throws ApiException {
-        return queryBucketedCashFlowsCall(queryBucketedCashFlowsRequest, _callback);
+    private okhttp3.Call queryBucketedCashFlowsValidateBeforeCall(QueryBucketedCashFlowsRequest queryBucketedCashFlowsRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return queryBucketedCashFlowsCall(queryBucketedCashFlowsRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<BucketedCashFlowResponse> queryBucketedCashFlowsWithHttpInfo(QueryBucketedCashFlowsRequest queryBucketedCashFlowsRequest) throws ApiException {
-        okhttp3.Call localVarCall = queryBucketedCashFlowsValidateBeforeCall(queryBucketedCashFlowsRequest, null);
+        okhttp3.Call localVarCall = queryBucketedCashFlowsValidateBeforeCall(queryBucketedCashFlowsRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<BucketedCashFlowResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<BucketedCashFlowResponse> queryBucketedCashFlowsWithHttpInfo(QueryBucketedCashFlowsRequest queryBucketedCashFlowsRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = queryBucketedCashFlowsValidateBeforeCall(queryBucketedCashFlowsRequest, null, opts);
         Type localVarReturnType = new TypeToken<BucketedCashFlowResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call queryBucketedCashFlowsAsync(QueryBucketedCashFlowsRequest queryBucketedCashFlowsRequest, final ApiCallback<BucketedCashFlowResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = queryBucketedCashFlowsValidateBeforeCall(queryBucketedCashFlowsRequest, _callback);
+        okhttp3.Call localVarCall = queryBucketedCashFlowsValidateBeforeCall(queryBucketedCashFlowsRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<BucketedCashFlowResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call queryBucketedCashFlowsAsync(QueryBucketedCashFlowsRequest queryBucketedCashFlowsRequest, final ApiCallback<BucketedCashFlowResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = queryBucketedCashFlowsValidateBeforeCall(queryBucketedCashFlowsRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<BucketedCashFlowResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -418,6 +505,23 @@ public class InstrumentEventsApi {
         }
 
         /**
+         * Execute queryBucketedCashFlows request. Use any specified configuration options to override any other configuration for this request only.
+         * @return BucketedCashFlowResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Query bucketed cashflows across portfolios. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public BucketedCashFlowResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<BucketedCashFlowResponse> localVarResp = queryBucketedCashFlowsWithHttpInfo(queryBucketedCashFlowsRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute queryBucketedCashFlows request with HTTP info returned
          * @return ApiResponse&lt;BucketedCashFlowResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -431,6 +535,22 @@ public class InstrumentEventsApi {
          */
         public ApiResponse<BucketedCashFlowResponse> executeWithHttpInfo() throws ApiException {
             return queryBucketedCashFlowsWithHttpInfo(queryBucketedCashFlowsRequest);
+        }
+
+        /**
+         * Execute queryBucketedCashFlows request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;BucketedCashFlowResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Query bucketed cashflows across portfolios. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<BucketedCashFlowResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return queryBucketedCashFlowsWithHttpInfo(queryBucketedCashFlowsRequest, opts);
         }
 
         /**
@@ -448,6 +568,23 @@ public class InstrumentEventsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<BucketedCashFlowResponse> _callback) throws ApiException {
             return queryBucketedCashFlowsAsync(queryBucketedCashFlowsRequest, _callback);
+        }
+
+        /**
+         * Execute queryBucketedCashFlows request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Query bucketed cashflows across portfolios. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<BucketedCashFlowResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return queryBucketedCashFlowsAsync(queryBucketedCashFlowsRequest, _callback, opts);
         }
     }
 
@@ -467,6 +604,10 @@ public class InstrumentEventsApi {
         return new APIqueryBucketedCashFlowsRequest();
     }
     private okhttp3.Call queryCashFlowsCall(Integer limit, String page, QueryCashFlowsRequest queryCashFlowsRequest, final ApiCallback _callback) throws ApiException {
+        return queryCashFlowsCall(limit, page, queryCashFlowsRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call queryCashFlowsCall(Integer limit, String page, QueryCashFlowsRequest queryCashFlowsRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -521,25 +662,39 @@ public class InstrumentEventsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call queryCashFlowsValidateBeforeCall(Integer limit, String page, QueryCashFlowsRequest queryCashFlowsRequest, final ApiCallback _callback) throws ApiException {
-        return queryCashFlowsCall(limit, page, queryCashFlowsRequest, _callback);
+    private okhttp3.Call queryCashFlowsValidateBeforeCall(Integer limit, String page, QueryCashFlowsRequest queryCashFlowsRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return queryCashFlowsCall(limit, page, queryCashFlowsRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfInstrumentCashFlow> queryCashFlowsWithHttpInfo(Integer limit, String page, QueryCashFlowsRequest queryCashFlowsRequest) throws ApiException {
-        okhttp3.Call localVarCall = queryCashFlowsValidateBeforeCall(limit, page, queryCashFlowsRequest, null);
+        okhttp3.Call localVarCall = queryCashFlowsValidateBeforeCall(limit, page, queryCashFlowsRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfInstrumentCashFlow>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfInstrumentCashFlow> queryCashFlowsWithHttpInfo(Integer limit, String page, QueryCashFlowsRequest queryCashFlowsRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = queryCashFlowsValidateBeforeCall(limit, page, queryCashFlowsRequest, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfInstrumentCashFlow>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call queryCashFlowsAsync(Integer limit, String page, QueryCashFlowsRequest queryCashFlowsRequest, final ApiCallback<ResourceListOfInstrumentCashFlow> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = queryCashFlowsValidateBeforeCall(limit, page, queryCashFlowsRequest, _callback);
+        okhttp3.Call localVarCall = queryCashFlowsValidateBeforeCall(limit, page, queryCashFlowsRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfInstrumentCashFlow>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call queryCashFlowsAsync(Integer limit, String page, QueryCashFlowsRequest queryCashFlowsRequest, final ApiCallback<ResourceListOfInstrumentCashFlow> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = queryCashFlowsValidateBeforeCall(limit, page, queryCashFlowsRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfInstrumentCashFlow>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -618,6 +773,23 @@ public class InstrumentEventsApi {
         }
 
         /**
+         * Execute queryCashFlows request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfInstrumentCashFlow
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events as Cashflows. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfInstrumentCashFlow execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfInstrumentCashFlow> localVarResp = queryCashFlowsWithHttpInfo(limit, page, queryCashFlowsRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute queryCashFlows request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfInstrumentCashFlow&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -631,6 +803,22 @@ public class InstrumentEventsApi {
          */
         public ApiResponse<ResourceListOfInstrumentCashFlow> executeWithHttpInfo() throws ApiException {
             return queryCashFlowsWithHttpInfo(limit, page, queryCashFlowsRequest);
+        }
+
+        /**
+         * Execute queryCashFlows request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfInstrumentCashFlow&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events as Cashflows. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfInstrumentCashFlow> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return queryCashFlowsWithHttpInfo(limit, page, queryCashFlowsRequest, opts);
         }
 
         /**
@@ -648,6 +836,23 @@ public class InstrumentEventsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfInstrumentCashFlow> _callback) throws ApiException {
             return queryCashFlowsAsync(limit, page, queryCashFlowsRequest, _callback);
+        }
+
+        /**
+         * Execute queryCashFlows request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events as Cashflows. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfInstrumentCashFlow> _callback, ConfigurationOptions opts) throws ApiException {
+            return queryCashFlowsAsync(limit, page, queryCashFlowsRequest, _callback, opts);
         }
     }
 
@@ -667,6 +872,10 @@ public class InstrumentEventsApi {
         return new APIqueryCashFlowsRequest();
     }
     private okhttp3.Call queryInstrumentEventsCall(Integer limit, String page, QueryInstrumentEventsRequest queryInstrumentEventsRequest, final ApiCallback _callback) throws ApiException {
+        return queryInstrumentEventsCall(limit, page, queryInstrumentEventsRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call queryInstrumentEventsCall(Integer limit, String page, QueryInstrumentEventsRequest queryInstrumentEventsRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -721,25 +930,39 @@ public class InstrumentEventsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call queryInstrumentEventsValidateBeforeCall(Integer limit, String page, QueryInstrumentEventsRequest queryInstrumentEventsRequest, final ApiCallback _callback) throws ApiException {
-        return queryInstrumentEventsCall(limit, page, queryInstrumentEventsRequest, _callback);
+    private okhttp3.Call queryInstrumentEventsValidateBeforeCall(Integer limit, String page, QueryInstrumentEventsRequest queryInstrumentEventsRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return queryInstrumentEventsCall(limit, page, queryInstrumentEventsRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfInstrumentEventHolder> queryInstrumentEventsWithHttpInfo(Integer limit, String page, QueryInstrumentEventsRequest queryInstrumentEventsRequest) throws ApiException {
-        okhttp3.Call localVarCall = queryInstrumentEventsValidateBeforeCall(limit, page, queryInstrumentEventsRequest, null);
+        okhttp3.Call localVarCall = queryInstrumentEventsValidateBeforeCall(limit, page, queryInstrumentEventsRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfInstrumentEventHolder>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfInstrumentEventHolder> queryInstrumentEventsWithHttpInfo(Integer limit, String page, QueryInstrumentEventsRequest queryInstrumentEventsRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = queryInstrumentEventsValidateBeforeCall(limit, page, queryInstrumentEventsRequest, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfInstrumentEventHolder>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call queryInstrumentEventsAsync(Integer limit, String page, QueryInstrumentEventsRequest queryInstrumentEventsRequest, final ApiCallback<ResourceListOfInstrumentEventHolder> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = queryInstrumentEventsValidateBeforeCall(limit, page, queryInstrumentEventsRequest, _callback);
+        okhttp3.Call localVarCall = queryInstrumentEventsValidateBeforeCall(limit, page, queryInstrumentEventsRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfInstrumentEventHolder>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call queryInstrumentEventsAsync(Integer limit, String page, QueryInstrumentEventsRequest queryInstrumentEventsRequest, final ApiCallback<ResourceListOfInstrumentEventHolder> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = queryInstrumentEventsValidateBeforeCall(limit, page, queryInstrumentEventsRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfInstrumentEventHolder>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -818,6 +1041,23 @@ public class InstrumentEventsApi {
         }
 
         /**
+         * Execute queryInstrumentEvents request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfInstrumentEventHolder
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfInstrumentEventHolder execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfInstrumentEventHolder> localVarResp = queryInstrumentEventsWithHttpInfo(limit, page, queryInstrumentEventsRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute queryInstrumentEvents request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfInstrumentEventHolder&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -831,6 +1071,22 @@ public class InstrumentEventsApi {
          */
         public ApiResponse<ResourceListOfInstrumentEventHolder> executeWithHttpInfo() throws ApiException {
             return queryInstrumentEventsWithHttpInfo(limit, page, queryInstrumentEventsRequest);
+        }
+
+        /**
+         * Execute queryInstrumentEvents request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfInstrumentEventHolder&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfInstrumentEventHolder> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return queryInstrumentEventsWithHttpInfo(limit, page, queryInstrumentEventsRequest, opts);
         }
 
         /**
@@ -848,6 +1104,23 @@ public class InstrumentEventsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfInstrumentEventHolder> _callback) throws ApiException {
             return queryInstrumentEventsAsync(limit, page, queryInstrumentEventsRequest, _callback);
+        }
+
+        /**
+         * Execute queryInstrumentEvents request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfInstrumentEventHolder> _callback, ConfigurationOptions opts) throws ApiException {
+            return queryInstrumentEventsAsync(limit, page, queryInstrumentEventsRequest, _callback, opts);
         }
     }
 
@@ -867,6 +1140,10 @@ public class InstrumentEventsApi {
         return new APIqueryInstrumentEventsRequest();
     }
     private okhttp3.Call queryTradeTicketsCall(Integer limit, String page, QueryTradeTicketsRequest queryTradeTicketsRequest, final ApiCallback _callback) throws ApiException {
+        return queryTradeTicketsCall(limit, page, queryTradeTicketsRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call queryTradeTicketsCall(Integer limit, String page, QueryTradeTicketsRequest queryTradeTicketsRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -921,25 +1198,39 @@ public class InstrumentEventsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call queryTradeTicketsValidateBeforeCall(Integer limit, String page, QueryTradeTicketsRequest queryTradeTicketsRequest, final ApiCallback _callback) throws ApiException {
-        return queryTradeTicketsCall(limit, page, queryTradeTicketsRequest, _callback);
+    private okhttp3.Call queryTradeTicketsValidateBeforeCall(Integer limit, String page, QueryTradeTicketsRequest queryTradeTicketsRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return queryTradeTicketsCall(limit, page, queryTradeTicketsRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfPortfolioTradeTicket> queryTradeTicketsWithHttpInfo(Integer limit, String page, QueryTradeTicketsRequest queryTradeTicketsRequest) throws ApiException {
-        okhttp3.Call localVarCall = queryTradeTicketsValidateBeforeCall(limit, page, queryTradeTicketsRequest, null);
+        okhttp3.Call localVarCall = queryTradeTicketsValidateBeforeCall(limit, page, queryTradeTicketsRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPortfolioTradeTicket>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfPortfolioTradeTicket> queryTradeTicketsWithHttpInfo(Integer limit, String page, QueryTradeTicketsRequest queryTradeTicketsRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = queryTradeTicketsValidateBeforeCall(limit, page, queryTradeTicketsRequest, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPortfolioTradeTicket>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call queryTradeTicketsAsync(Integer limit, String page, QueryTradeTicketsRequest queryTradeTicketsRequest, final ApiCallback<ResourceListOfPortfolioTradeTicket> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = queryTradeTicketsValidateBeforeCall(limit, page, queryTradeTicketsRequest, _callback);
+        okhttp3.Call localVarCall = queryTradeTicketsValidateBeforeCall(limit, page, queryTradeTicketsRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPortfolioTradeTicket>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call queryTradeTicketsAsync(Integer limit, String page, QueryTradeTicketsRequest queryTradeTicketsRequest, final ApiCallback<ResourceListOfPortfolioTradeTicket> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = queryTradeTicketsValidateBeforeCall(limit, page, queryTradeTicketsRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPortfolioTradeTicket>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1018,6 +1309,23 @@ public class InstrumentEventsApi {
         }
 
         /**
+         * Execute queryTradeTickets request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfPortfolioTradeTicket
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events as Upsertable TradeTickets. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfPortfolioTradeTicket execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfPortfolioTradeTicket> localVarResp = queryTradeTicketsWithHttpInfo(limit, page, queryTradeTicketsRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute queryTradeTickets request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfPortfolioTradeTicket&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1031,6 +1339,22 @@ public class InstrumentEventsApi {
          */
         public ApiResponse<ResourceListOfPortfolioTradeTicket> executeWithHttpInfo() throws ApiException {
             return queryTradeTicketsWithHttpInfo(limit, page, queryTradeTicketsRequest);
+        }
+
+        /**
+         * Execute queryTradeTickets request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfPortfolioTradeTicket&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events as Upsertable TradeTickets. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfPortfolioTradeTicket> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return queryTradeTicketsWithHttpInfo(limit, page, queryTradeTicketsRequest, opts);
         }
 
         /**
@@ -1048,6 +1372,23 @@ public class InstrumentEventsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPortfolioTradeTicket> _callback) throws ApiException {
             return queryTradeTicketsAsync(limit, page, queryTradeTicketsRequest, _callback);
+        }
+
+        /**
+         * Execute queryTradeTickets request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Instrument Events as Upsertable TradeTickets. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPortfolioTradeTicket> _callback, ConfigurationOptions opts) throws ApiException {
+            return queryTradeTicketsAsync(limit, page, queryTradeTicketsRequest, _callback, opts);
         }
     }
 

@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -81,6 +82,10 @@ public class ScriptedTranslationApi {
     }
 
     private okhttp3.Call getTranslationDialectCall(String scope, String vendor, String sourceSystem, String entityType, String serialisationFormat, String version, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getTranslationDialectCall(scope, vendor, sourceSystem, entityType, serialisationFormat, version, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getTranslationDialectCall(String scope, String vendor, String sourceSystem, String entityType, String serialisationFormat, String version, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -133,11 +138,11 @@ public class ScriptedTranslationApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTranslationDialectValidateBeforeCall(String scope, String vendor, String sourceSystem, String entityType, String serialisationFormat, String version, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getTranslationDialectValidateBeforeCall(String scope, String vendor, String sourceSystem, String entityType, String serialisationFormat, String version, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getTranslationDialect(Async)");
@@ -168,20 +173,34 @@ public class ScriptedTranslationApi {
             throw new ApiException("Missing the required parameter 'version' when calling getTranslationDialect(Async)");
         }
 
-        return getTranslationDialectCall(scope, vendor, sourceSystem, entityType, serialisationFormat, version, asAt, _callback);
+        return getTranslationDialectCall(scope, vendor, sourceSystem, entityType, serialisationFormat, version, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<Dialect> getTranslationDialectWithHttpInfo(String scope, String vendor, String sourceSystem, String entityType, String serialisationFormat, String version, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getTranslationDialectValidateBeforeCall(scope, vendor, sourceSystem, entityType, serialisationFormat, version, asAt, null);
+        okhttp3.Call localVarCall = getTranslationDialectValidateBeforeCall(scope, vendor, sourceSystem, entityType, serialisationFormat, version, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Dialect>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Dialect> getTranslationDialectWithHttpInfo(String scope, String vendor, String sourceSystem, String entityType, String serialisationFormat, String version, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getTranslationDialectValidateBeforeCall(scope, vendor, sourceSystem, entityType, serialisationFormat, version, asAt, null, opts);
         Type localVarReturnType = new TypeToken<Dialect>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getTranslationDialectAsync(String scope, String vendor, String sourceSystem, String entityType, String serialisationFormat, String version, OffsetDateTime asAt, final ApiCallback<Dialect> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getTranslationDialectValidateBeforeCall(scope, vendor, sourceSystem, entityType, serialisationFormat, version, asAt, _callback);
+        okhttp3.Call localVarCall = getTranslationDialectValidateBeforeCall(scope, vendor, sourceSystem, entityType, serialisationFormat, version, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Dialect>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getTranslationDialectAsync(String scope, String vendor, String sourceSystem, String entityType, String serialisationFormat, String version, OffsetDateTime asAt, final ApiCallback<Dialect> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getTranslationDialectValidateBeforeCall(scope, vendor, sourceSystem, entityType, serialisationFormat, version, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<Dialect>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -250,6 +269,23 @@ public class ScriptedTranslationApi {
         }
 
         /**
+         * Execute getTranslationDialect request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Dialect
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The dialect with the given ID. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Dialect execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Dialect> localVarResp = getTranslationDialectWithHttpInfo(scope, vendor, sourceSystem, entityType, serialisationFormat, version, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getTranslationDialect request with HTTP info returned
          * @return ApiResponse&lt;Dialect&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -263,6 +299,22 @@ public class ScriptedTranslationApi {
          */
         public ApiResponse<Dialect> executeWithHttpInfo() throws ApiException {
             return getTranslationDialectWithHttpInfo(scope, vendor, sourceSystem, entityType, serialisationFormat, version, asAt);
+        }
+
+        /**
+         * Execute getTranslationDialect request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Dialect&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The dialect with the given ID. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Dialect> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getTranslationDialectWithHttpInfo(scope, vendor, sourceSystem, entityType, serialisationFormat, version, asAt, opts);
         }
 
         /**
@@ -280,6 +332,23 @@ public class ScriptedTranslationApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Dialect> _callback) throws ApiException {
             return getTranslationDialectAsync(scope, vendor, sourceSystem, entityType, serialisationFormat, version, asAt, _callback);
+        }
+
+        /**
+         * Execute getTranslationDialect request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The dialect with the given ID. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Dialect> _callback, ConfigurationOptions opts) throws ApiException {
+            return getTranslationDialectAsync(scope, vendor, sourceSystem, entityType, serialisationFormat, version, asAt, _callback, opts);
         }
     }
 
@@ -305,6 +374,10 @@ public class ScriptedTranslationApi {
         return new APIgetTranslationDialectRequest(scope, vendor, sourceSystem, entityType, serialisationFormat, version);
     }
     private okhttp3.Call getTranslationScriptCall(String scope, String code, String version, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getTranslationScriptCall(scope, code, version, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getTranslationScriptCall(String scope, String code, String version, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -354,11 +427,11 @@ public class ScriptedTranslationApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTranslationScriptValidateBeforeCall(String scope, String code, String version, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getTranslationScriptValidateBeforeCall(String scope, String code, String version, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getTranslationScript(Async)");
@@ -374,20 +447,34 @@ public class ScriptedTranslationApi {
             throw new ApiException("Missing the required parameter 'version' when calling getTranslationScript(Async)");
         }
 
-        return getTranslationScriptCall(scope, code, version, asAt, _callback);
+        return getTranslationScriptCall(scope, code, version, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<TranslationScript> getTranslationScriptWithHttpInfo(String scope, String code, String version, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getTranslationScriptValidateBeforeCall(scope, code, version, asAt, null);
+        okhttp3.Call localVarCall = getTranslationScriptValidateBeforeCall(scope, code, version, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TranslationScript>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<TranslationScript> getTranslationScriptWithHttpInfo(String scope, String code, String version, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getTranslationScriptValidateBeforeCall(scope, code, version, asAt, null, opts);
         Type localVarReturnType = new TypeToken<TranslationScript>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getTranslationScriptAsync(String scope, String code, String version, OffsetDateTime asAt, final ApiCallback<TranslationScript> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getTranslationScriptValidateBeforeCall(scope, code, version, asAt, _callback);
+        okhttp3.Call localVarCall = getTranslationScriptValidateBeforeCall(scope, code, version, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TranslationScript>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getTranslationScriptAsync(String scope, String code, String version, OffsetDateTime asAt, final ApiCallback<TranslationScript> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getTranslationScriptValidateBeforeCall(scope, code, version, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<TranslationScript>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -450,6 +537,23 @@ public class ScriptedTranslationApi {
         }
 
         /**
+         * Execute getTranslationScript request. Use any specified configuration options to override any other configuration for this request only.
+         * @return TranslationScript
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested translation script. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TranslationScript execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<TranslationScript> localVarResp = getTranslationScriptWithHttpInfo(scope, code, version, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getTranslationScript request with HTTP info returned
          * @return ApiResponse&lt;TranslationScript&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -463,6 +567,22 @@ public class ScriptedTranslationApi {
          */
         public ApiResponse<TranslationScript> executeWithHttpInfo() throws ApiException {
             return getTranslationScriptWithHttpInfo(scope, code, version, asAt);
+        }
+
+        /**
+         * Execute getTranslationScript request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;TranslationScript&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested translation script. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TranslationScript> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getTranslationScriptWithHttpInfo(scope, code, version, asAt, opts);
         }
 
         /**
@@ -480,6 +600,23 @@ public class ScriptedTranslationApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<TranslationScript> _callback) throws ApiException {
             return getTranslationScriptAsync(scope, code, version, asAt, _callback);
+        }
+
+        /**
+         * Execute getTranslationScript request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested translation script. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TranslationScript> _callback, ConfigurationOptions opts) throws ApiException {
+            return getTranslationScriptAsync(scope, code, version, asAt, _callback, opts);
         }
     }
 
@@ -502,6 +639,10 @@ public class ScriptedTranslationApi {
         return new APIgetTranslationScriptRequest(scope, code, version);
     }
     private okhttp3.Call listDialectIdsCall(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+        return listDialectIdsCall(asAt, page, limit, filter,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listDialectIdsCall(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -560,25 +701,39 @@ public class ScriptedTranslationApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listDialectIdsValidateBeforeCall(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
-        return listDialectIdsCall(asAt, page, limit, filter, _callback);
+    private okhttp3.Call listDialectIdsValidateBeforeCall(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listDialectIdsCall(asAt, page, limit, filter, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfDialectId> listDialectIdsWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listDialectIdsValidateBeforeCall(asAt, page, limit, filter, null);
+        okhttp3.Call localVarCall = listDialectIdsValidateBeforeCall(asAt, page, limit, filter, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfDialectId>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfDialectId> listDialectIdsWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listDialectIdsValidateBeforeCall(asAt, page, limit, filter, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfDialectId>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listDialectIdsAsync(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfDialectId> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listDialectIdsValidateBeforeCall(asAt, page, limit, filter, _callback);
+        okhttp3.Call localVarCall = listDialectIdsValidateBeforeCall(asAt, page, limit, filter, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfDialectId>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listDialectIdsAsync(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfDialectId> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listDialectIdsValidateBeforeCall(asAt, page, limit, filter, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfDialectId>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -668,6 +823,23 @@ public class ScriptedTranslationApi {
         }
 
         /**
+         * Execute listDialectIds request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfDialectId
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of dialect IDs. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfDialectId execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfDialectId> localVarResp = listDialectIdsWithHttpInfo(asAt, page, limit, filter, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listDialectIds request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfDialectId&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -681,6 +853,22 @@ public class ScriptedTranslationApi {
          */
         public ApiResponse<PagedResourceListOfDialectId> executeWithHttpInfo() throws ApiException {
             return listDialectIdsWithHttpInfo(asAt, page, limit, filter);
+        }
+
+        /**
+         * Execute listDialectIds request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfDialectId&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of dialect IDs. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfDialectId> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listDialectIdsWithHttpInfo(asAt, page, limit, filter, opts);
         }
 
         /**
@@ -698,6 +886,23 @@ public class ScriptedTranslationApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfDialectId> _callback) throws ApiException {
             return listDialectIdsAsync(asAt, page, limit, filter, _callback);
+        }
+
+        /**
+         * Execute listDialectIds request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of dialect IDs. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfDialectId> _callback, ConfigurationOptions opts) throws ApiException {
+            return listDialectIdsAsync(asAt, page, limit, filter, _callback, opts);
         }
     }
 
@@ -717,6 +922,10 @@ public class ScriptedTranslationApi {
         return new APIlistDialectIdsRequest();
     }
     private okhttp3.Call listTranslationScriptIdsCall(OffsetDateTime asAt, Integer limit, String filter, String page, final ApiCallback _callback) throws ApiException {
+        return listTranslationScriptIdsCall(asAt, limit, filter, page,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listTranslationScriptIdsCall(OffsetDateTime asAt, Integer limit, String filter, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -775,25 +984,39 @@ public class ScriptedTranslationApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listTranslationScriptIdsValidateBeforeCall(OffsetDateTime asAt, Integer limit, String filter, String page, final ApiCallback _callback) throws ApiException {
-        return listTranslationScriptIdsCall(asAt, limit, filter, page, _callback);
+    private okhttp3.Call listTranslationScriptIdsValidateBeforeCall(OffsetDateTime asAt, Integer limit, String filter, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listTranslationScriptIdsCall(asAt, limit, filter, page, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfTranslationScriptId> listTranslationScriptIdsWithHttpInfo(OffsetDateTime asAt, Integer limit, String filter, String page) throws ApiException {
-        okhttp3.Call localVarCall = listTranslationScriptIdsValidateBeforeCall(asAt, limit, filter, page, null);
+        okhttp3.Call localVarCall = listTranslationScriptIdsValidateBeforeCall(asAt, limit, filter, page, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfTranslationScriptId>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfTranslationScriptId> listTranslationScriptIdsWithHttpInfo(OffsetDateTime asAt, Integer limit, String filter, String page, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listTranslationScriptIdsValidateBeforeCall(asAt, limit, filter, page, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfTranslationScriptId>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listTranslationScriptIdsAsync(OffsetDateTime asAt, Integer limit, String filter, String page, final ApiCallback<PagedResourceListOfTranslationScriptId> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listTranslationScriptIdsValidateBeforeCall(asAt, limit, filter, page, _callback);
+        okhttp3.Call localVarCall = listTranslationScriptIdsValidateBeforeCall(asAt, limit, filter, page, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfTranslationScriptId>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listTranslationScriptIdsAsync(OffsetDateTime asAt, Integer limit, String filter, String page, final ApiCallback<PagedResourceListOfTranslationScriptId> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listTranslationScriptIdsValidateBeforeCall(asAt, limit, filter, page, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfTranslationScriptId>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -883,6 +1106,23 @@ public class ScriptedTranslationApi {
         }
 
         /**
+         * Execute listTranslationScriptIds request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfTranslationScriptId
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested translation script IDs. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfTranslationScriptId execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfTranslationScriptId> localVarResp = listTranslationScriptIdsWithHttpInfo(asAt, limit, filter, page, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listTranslationScriptIds request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfTranslationScriptId&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -896,6 +1136,22 @@ public class ScriptedTranslationApi {
          */
         public ApiResponse<PagedResourceListOfTranslationScriptId> executeWithHttpInfo() throws ApiException {
             return listTranslationScriptIdsWithHttpInfo(asAt, limit, filter, page);
+        }
+
+        /**
+         * Execute listTranslationScriptIds request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfTranslationScriptId&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested translation script IDs. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfTranslationScriptId> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listTranslationScriptIdsWithHttpInfo(asAt, limit, filter, page, opts);
         }
 
         /**
@@ -913,6 +1169,23 @@ public class ScriptedTranslationApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfTranslationScriptId> _callback) throws ApiException {
             return listTranslationScriptIdsAsync(asAt, limit, filter, page, _callback);
+        }
+
+        /**
+         * Execute listTranslationScriptIds request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested translation script IDs. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfTranslationScriptId> _callback, ConfigurationOptions opts) throws ApiException {
+            return listTranslationScriptIdsAsync(asAt, limit, filter, page, _callback, opts);
         }
     }
 
@@ -932,6 +1205,10 @@ public class ScriptedTranslationApi {
         return new APIlistTranslationScriptIdsRequest();
     }
     private okhttp3.Call translateEntitiesCall(TranslateEntitiesRequest translateEntitiesRequest, final ApiCallback _callback) throws ApiException {
+        return translateEntitiesCall(translateEntitiesRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call translateEntitiesCall(TranslateEntitiesRequest translateEntitiesRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -978,30 +1255,44 @@ public class ScriptedTranslationApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call translateEntitiesValidateBeforeCall(TranslateEntitiesRequest translateEntitiesRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call translateEntitiesValidateBeforeCall(TranslateEntitiesRequest translateEntitiesRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'translateEntitiesRequest' is set
         if (translateEntitiesRequest == null) {
             throw new ApiException("Missing the required parameter 'translateEntitiesRequest' when calling translateEntities(Async)");
         }
 
-        return translateEntitiesCall(translateEntitiesRequest, _callback);
+        return translateEntitiesCall(translateEntitiesRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<TranslateEntitiesResponse> translateEntitiesWithHttpInfo(TranslateEntitiesRequest translateEntitiesRequest) throws ApiException {
-        okhttp3.Call localVarCall = translateEntitiesValidateBeforeCall(translateEntitiesRequest, null);
+        okhttp3.Call localVarCall = translateEntitiesValidateBeforeCall(translateEntitiesRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TranslateEntitiesResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<TranslateEntitiesResponse> translateEntitiesWithHttpInfo(TranslateEntitiesRequest translateEntitiesRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = translateEntitiesValidateBeforeCall(translateEntitiesRequest, null, opts);
         Type localVarReturnType = new TypeToken<TranslateEntitiesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call translateEntitiesAsync(TranslateEntitiesRequest translateEntitiesRequest, final ApiCallback<TranslateEntitiesResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = translateEntitiesValidateBeforeCall(translateEntitiesRequest, _callback);
+        okhttp3.Call localVarCall = translateEntitiesValidateBeforeCall(translateEntitiesRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TranslateEntitiesResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call translateEntitiesAsync(TranslateEntitiesRequest translateEntitiesRequest, final ApiCallback<TranslateEntitiesResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = translateEntitiesValidateBeforeCall(translateEntitiesRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<TranslateEntitiesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1049,6 +1340,23 @@ public class ScriptedTranslationApi {
         }
 
         /**
+         * Execute translateEntities request. Use any specified configuration options to override any other configuration for this request only.
+         * @return TranslateEntitiesResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The translated entities along with any errors for entities that failed to be translated indexed by their correlation IDs. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TranslateEntitiesResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<TranslateEntitiesResponse> localVarResp = translateEntitiesWithHttpInfo(translateEntitiesRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute translateEntities request with HTTP info returned
          * @return ApiResponse&lt;TranslateEntitiesResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1062,6 +1370,22 @@ public class ScriptedTranslationApi {
          */
         public ApiResponse<TranslateEntitiesResponse> executeWithHttpInfo() throws ApiException {
             return translateEntitiesWithHttpInfo(translateEntitiesRequest);
+        }
+
+        /**
+         * Execute translateEntities request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;TranslateEntitiesResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The translated entities along with any errors for entities that failed to be translated indexed by their correlation IDs. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TranslateEntitiesResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return translateEntitiesWithHttpInfo(translateEntitiesRequest, opts);
         }
 
         /**
@@ -1079,6 +1403,23 @@ public class ScriptedTranslationApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<TranslateEntitiesResponse> _callback) throws ApiException {
             return translateEntitiesAsync(translateEntitiesRequest, _callback);
+        }
+
+        /**
+         * Execute translateEntities request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The translated entities along with any errors for entities that failed to be translated indexed by their correlation IDs. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TranslateEntitiesResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return translateEntitiesAsync(translateEntitiesRequest, _callback, opts);
         }
     }
 
@@ -1099,6 +1440,10 @@ public class ScriptedTranslationApi {
         return new APItranslateEntitiesRequest(translateEntitiesRequest);
     }
     private okhttp3.Call translateEntitiesInlinedCall(TranslateEntitiesInlinedRequest translateEntitiesInlinedRequest, final ApiCallback _callback) throws ApiException {
+        return translateEntitiesInlinedCall(translateEntitiesInlinedRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call translateEntitiesInlinedCall(TranslateEntitiesInlinedRequest translateEntitiesInlinedRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1145,30 +1490,44 @@ public class ScriptedTranslationApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call translateEntitiesInlinedValidateBeforeCall(TranslateEntitiesInlinedRequest translateEntitiesInlinedRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call translateEntitiesInlinedValidateBeforeCall(TranslateEntitiesInlinedRequest translateEntitiesInlinedRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'translateEntitiesInlinedRequest' is set
         if (translateEntitiesInlinedRequest == null) {
             throw new ApiException("Missing the required parameter 'translateEntitiesInlinedRequest' when calling translateEntitiesInlined(Async)");
         }
 
-        return translateEntitiesInlinedCall(translateEntitiesInlinedRequest, _callback);
+        return translateEntitiesInlinedCall(translateEntitiesInlinedRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<TranslateEntitiesResponse> translateEntitiesInlinedWithHttpInfo(TranslateEntitiesInlinedRequest translateEntitiesInlinedRequest) throws ApiException {
-        okhttp3.Call localVarCall = translateEntitiesInlinedValidateBeforeCall(translateEntitiesInlinedRequest, null);
+        okhttp3.Call localVarCall = translateEntitiesInlinedValidateBeforeCall(translateEntitiesInlinedRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TranslateEntitiesResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<TranslateEntitiesResponse> translateEntitiesInlinedWithHttpInfo(TranslateEntitiesInlinedRequest translateEntitiesInlinedRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = translateEntitiesInlinedValidateBeforeCall(translateEntitiesInlinedRequest, null, opts);
         Type localVarReturnType = new TypeToken<TranslateEntitiesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call translateEntitiesInlinedAsync(TranslateEntitiesInlinedRequest translateEntitiesInlinedRequest, final ApiCallback<TranslateEntitiesResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = translateEntitiesInlinedValidateBeforeCall(translateEntitiesInlinedRequest, _callback);
+        okhttp3.Call localVarCall = translateEntitiesInlinedValidateBeforeCall(translateEntitiesInlinedRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TranslateEntitiesResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call translateEntitiesInlinedAsync(TranslateEntitiesInlinedRequest translateEntitiesInlinedRequest, final ApiCallback<TranslateEntitiesResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = translateEntitiesInlinedValidateBeforeCall(translateEntitiesInlinedRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<TranslateEntitiesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1216,6 +1575,23 @@ public class ScriptedTranslationApi {
         }
 
         /**
+         * Execute translateEntitiesInlined request. Use any specified configuration options to override any other configuration for this request only.
+         * @return TranslateEntitiesResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The translated entities along with any errors for entities that failed to be translated indexed by their correlation IDs. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TranslateEntitiesResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<TranslateEntitiesResponse> localVarResp = translateEntitiesInlinedWithHttpInfo(translateEntitiesInlinedRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute translateEntitiesInlined request with HTTP info returned
          * @return ApiResponse&lt;TranslateEntitiesResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1229,6 +1605,22 @@ public class ScriptedTranslationApi {
          */
         public ApiResponse<TranslateEntitiesResponse> executeWithHttpInfo() throws ApiException {
             return translateEntitiesInlinedWithHttpInfo(translateEntitiesInlinedRequest);
+        }
+
+        /**
+         * Execute translateEntitiesInlined request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;TranslateEntitiesResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The translated entities along with any errors for entities that failed to be translated indexed by their correlation IDs. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TranslateEntitiesResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return translateEntitiesInlinedWithHttpInfo(translateEntitiesInlinedRequest, opts);
         }
 
         /**
@@ -1246,6 +1638,23 @@ public class ScriptedTranslationApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<TranslateEntitiesResponse> _callback) throws ApiException {
             return translateEntitiesInlinedAsync(translateEntitiesInlinedRequest, _callback);
+        }
+
+        /**
+         * Execute translateEntitiesInlined request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The translated entities along with any errors for entities that failed to be translated indexed by their correlation IDs. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TranslateEntitiesResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return translateEntitiesInlinedAsync(translateEntitiesInlinedRequest, _callback, opts);
         }
     }
 
@@ -1266,6 +1675,10 @@ public class ScriptedTranslationApi {
         return new APItranslateEntitiesInlinedRequest(translateEntitiesInlinedRequest);
     }
     private okhttp3.Call upsertTranslationDialectCall(UpsertDialectRequest upsertDialectRequest, final ApiCallback _callback) throws ApiException {
+        return upsertTranslationDialectCall(upsertDialectRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertTranslationDialectCall(UpsertDialectRequest upsertDialectRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1312,30 +1725,44 @@ public class ScriptedTranslationApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertTranslationDialectValidateBeforeCall(UpsertDialectRequest upsertDialectRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertTranslationDialectValidateBeforeCall(UpsertDialectRequest upsertDialectRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'upsertDialectRequest' is set
         if (upsertDialectRequest == null) {
             throw new ApiException("Missing the required parameter 'upsertDialectRequest' when calling upsertTranslationDialect(Async)");
         }
 
-        return upsertTranslationDialectCall(upsertDialectRequest, _callback);
+        return upsertTranslationDialectCall(upsertDialectRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<Dialect> upsertTranslationDialectWithHttpInfo(UpsertDialectRequest upsertDialectRequest) throws ApiException {
-        okhttp3.Call localVarCall = upsertTranslationDialectValidateBeforeCall(upsertDialectRequest, null);
+        okhttp3.Call localVarCall = upsertTranslationDialectValidateBeforeCall(upsertDialectRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Dialect>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Dialect> upsertTranslationDialectWithHttpInfo(UpsertDialectRequest upsertDialectRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertTranslationDialectValidateBeforeCall(upsertDialectRequest, null, opts);
         Type localVarReturnType = new TypeToken<Dialect>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertTranslationDialectAsync(UpsertDialectRequest upsertDialectRequest, final ApiCallback<Dialect> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertTranslationDialectValidateBeforeCall(upsertDialectRequest, _callback);
+        okhttp3.Call localVarCall = upsertTranslationDialectValidateBeforeCall(upsertDialectRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Dialect>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertTranslationDialectAsync(UpsertDialectRequest upsertDialectRequest, final ApiCallback<Dialect> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertTranslationDialectValidateBeforeCall(upsertDialectRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<Dialect>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1383,6 +1810,23 @@ public class ScriptedTranslationApi {
         }
 
         /**
+         * Execute upsertTranslationDialect request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Dialect
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The upserted dialect. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Dialect execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Dialect> localVarResp = upsertTranslationDialectWithHttpInfo(upsertDialectRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertTranslationDialect request with HTTP info returned
          * @return ApiResponse&lt;Dialect&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1396,6 +1840,22 @@ public class ScriptedTranslationApi {
          */
         public ApiResponse<Dialect> executeWithHttpInfo() throws ApiException {
             return upsertTranslationDialectWithHttpInfo(upsertDialectRequest);
+        }
+
+        /**
+         * Execute upsertTranslationDialect request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Dialect&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The upserted dialect. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Dialect> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertTranslationDialectWithHttpInfo(upsertDialectRequest, opts);
         }
 
         /**
@@ -1413,6 +1873,23 @@ public class ScriptedTranslationApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Dialect> _callback) throws ApiException {
             return upsertTranslationDialectAsync(upsertDialectRequest, _callback);
+        }
+
+        /**
+         * Execute upsertTranslationDialect request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The upserted dialect. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Dialect> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertTranslationDialectAsync(upsertDialectRequest, _callback, opts);
         }
     }
 
@@ -1433,6 +1910,10 @@ public class ScriptedTranslationApi {
         return new APIupsertTranslationDialectRequest(upsertDialectRequest);
     }
     private okhttp3.Call upsertTranslationScriptCall(UpsertTranslationScriptRequest upsertTranslationScriptRequest, final ApiCallback _callback) throws ApiException {
+        return upsertTranslationScriptCall(upsertTranslationScriptRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertTranslationScriptCall(UpsertTranslationScriptRequest upsertTranslationScriptRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1479,30 +1960,44 @@ public class ScriptedTranslationApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertTranslationScriptValidateBeforeCall(UpsertTranslationScriptRequest upsertTranslationScriptRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertTranslationScriptValidateBeforeCall(UpsertTranslationScriptRequest upsertTranslationScriptRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'upsertTranslationScriptRequest' is set
         if (upsertTranslationScriptRequest == null) {
             throw new ApiException("Missing the required parameter 'upsertTranslationScriptRequest' when calling upsertTranslationScript(Async)");
         }
 
-        return upsertTranslationScriptCall(upsertTranslationScriptRequest, _callback);
+        return upsertTranslationScriptCall(upsertTranslationScriptRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<TranslationScript> upsertTranslationScriptWithHttpInfo(UpsertTranslationScriptRequest upsertTranslationScriptRequest) throws ApiException {
-        okhttp3.Call localVarCall = upsertTranslationScriptValidateBeforeCall(upsertTranslationScriptRequest, null);
+        okhttp3.Call localVarCall = upsertTranslationScriptValidateBeforeCall(upsertTranslationScriptRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TranslationScript>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<TranslationScript> upsertTranslationScriptWithHttpInfo(UpsertTranslationScriptRequest upsertTranslationScriptRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertTranslationScriptValidateBeforeCall(upsertTranslationScriptRequest, null, opts);
         Type localVarReturnType = new TypeToken<TranslationScript>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertTranslationScriptAsync(UpsertTranslationScriptRequest upsertTranslationScriptRequest, final ApiCallback<TranslationScript> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertTranslationScriptValidateBeforeCall(upsertTranslationScriptRequest, _callback);
+        okhttp3.Call localVarCall = upsertTranslationScriptValidateBeforeCall(upsertTranslationScriptRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TranslationScript>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertTranslationScriptAsync(UpsertTranslationScriptRequest upsertTranslationScriptRequest, final ApiCallback<TranslationScript> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertTranslationScriptValidateBeforeCall(upsertTranslationScriptRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<TranslationScript>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1550,6 +2045,23 @@ public class ScriptedTranslationApi {
         }
 
         /**
+         * Execute upsertTranslationScript request. Use any specified configuration options to override any other configuration for this request only.
+         * @return TranslationScript
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully created translation script. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TranslationScript execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<TranslationScript> localVarResp = upsertTranslationScriptWithHttpInfo(upsertTranslationScriptRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertTranslationScript request with HTTP info returned
          * @return ApiResponse&lt;TranslationScript&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1563,6 +2075,22 @@ public class ScriptedTranslationApi {
          */
         public ApiResponse<TranslationScript> executeWithHttpInfo() throws ApiException {
             return upsertTranslationScriptWithHttpInfo(upsertTranslationScriptRequest);
+        }
+
+        /**
+         * Execute upsertTranslationScript request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;TranslationScript&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully created translation script. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TranslationScript> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertTranslationScriptWithHttpInfo(upsertTranslationScriptRequest, opts);
         }
 
         /**
@@ -1580,6 +2108,23 @@ public class ScriptedTranslationApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<TranslationScript> _callback) throws ApiException {
             return upsertTranslationScriptAsync(upsertTranslationScriptRequest, _callback);
+        }
+
+        /**
+         * Execute upsertTranslationScript request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully created translation script. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TranslationScript> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertTranslationScriptAsync(upsertTranslationScriptRequest, _callback, opts);
         }
     }
 

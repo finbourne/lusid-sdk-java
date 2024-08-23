@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -93,6 +94,10 @@ public class InstrumentsApi {
     }
 
     private okhttp3.Call batchUpsertInstrumentPropertiesCall(Map<String, UpsertInstrumentPropertyRequest> requestBody, String scope, String identifierEffectiveAt, String successMode, final ApiCallback _callback) throws ApiException {
+        return batchUpsertInstrumentPropertiesCall(requestBody, scope, identifierEffectiveAt, successMode,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call batchUpsertInstrumentPropertiesCall(Map<String, UpsertInstrumentPropertyRequest> requestBody, String scope, String identifierEffectiveAt, String successMode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -151,30 +156,44 @@ public class InstrumentsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call batchUpsertInstrumentPropertiesValidateBeforeCall(Map<String, UpsertInstrumentPropertyRequest> requestBody, String scope, String identifierEffectiveAt, String successMode, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call batchUpsertInstrumentPropertiesValidateBeforeCall(Map<String, UpsertInstrumentPropertyRequest> requestBody, String scope, String identifierEffectiveAt, String successMode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'requestBody' is set
         if (requestBody == null) {
             throw new ApiException("Missing the required parameter 'requestBody' when calling batchUpsertInstrumentProperties(Async)");
         }
 
-        return batchUpsertInstrumentPropertiesCall(requestBody, scope, identifierEffectiveAt, successMode, _callback);
+        return batchUpsertInstrumentPropertiesCall(requestBody, scope, identifierEffectiveAt, successMode, _callback, opts);
 
     }
 
 
     private ApiResponse<BatchUpsertInstrumentPropertiesResponse> batchUpsertInstrumentPropertiesWithHttpInfo(Map<String, UpsertInstrumentPropertyRequest> requestBody, String scope, String identifierEffectiveAt, String successMode) throws ApiException {
-        okhttp3.Call localVarCall = batchUpsertInstrumentPropertiesValidateBeforeCall(requestBody, scope, identifierEffectiveAt, successMode, null);
+        okhttp3.Call localVarCall = batchUpsertInstrumentPropertiesValidateBeforeCall(requestBody, scope, identifierEffectiveAt, successMode, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<BatchUpsertInstrumentPropertiesResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<BatchUpsertInstrumentPropertiesResponse> batchUpsertInstrumentPropertiesWithHttpInfo(Map<String, UpsertInstrumentPropertyRequest> requestBody, String scope, String identifierEffectiveAt, String successMode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = batchUpsertInstrumentPropertiesValidateBeforeCall(requestBody, scope, identifierEffectiveAt, successMode, null, opts);
         Type localVarReturnType = new TypeToken<BatchUpsertInstrumentPropertiesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call batchUpsertInstrumentPropertiesAsync(Map<String, UpsertInstrumentPropertyRequest> requestBody, String scope, String identifierEffectiveAt, String successMode, final ApiCallback<BatchUpsertInstrumentPropertiesResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = batchUpsertInstrumentPropertiesValidateBeforeCall(requestBody, scope, identifierEffectiveAt, successMode, _callback);
+        okhttp3.Call localVarCall = batchUpsertInstrumentPropertiesValidateBeforeCall(requestBody, scope, identifierEffectiveAt, successMode, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<BatchUpsertInstrumentPropertiesResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call batchUpsertInstrumentPropertiesAsync(Map<String, UpsertInstrumentPropertyRequest> requestBody, String scope, String identifierEffectiveAt, String successMode, final ApiCallback<BatchUpsertInstrumentPropertiesResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = batchUpsertInstrumentPropertiesValidateBeforeCall(requestBody, scope, identifierEffectiveAt, successMode, _callback, opts);
         Type localVarReturnType = new TypeToken<BatchUpsertInstrumentPropertiesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -255,6 +274,23 @@ public class InstrumentsApi {
         }
 
         /**
+         * Execute batchUpsertInstrumentProperties request. Use any specified configuration options to override any other configuration for this request only.
+         * @return BatchUpsertInstrumentPropertiesResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The successfully upserted properties along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public BatchUpsertInstrumentPropertiesResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<BatchUpsertInstrumentPropertiesResponse> localVarResp = batchUpsertInstrumentPropertiesWithHttpInfo(requestBody, scope, identifierEffectiveAt, successMode, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute batchUpsertInstrumentProperties request with HTTP info returned
          * @return ApiResponse&lt;BatchUpsertInstrumentPropertiesResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -268,6 +304,22 @@ public class InstrumentsApi {
          */
         public ApiResponse<BatchUpsertInstrumentPropertiesResponse> executeWithHttpInfo() throws ApiException {
             return batchUpsertInstrumentPropertiesWithHttpInfo(requestBody, scope, identifierEffectiveAt, successMode);
+        }
+
+        /**
+         * Execute batchUpsertInstrumentProperties request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;BatchUpsertInstrumentPropertiesResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The successfully upserted properties along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<BatchUpsertInstrumentPropertiesResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return batchUpsertInstrumentPropertiesWithHttpInfo(requestBody, scope, identifierEffectiveAt, successMode, opts);
         }
 
         /**
@@ -285,6 +337,23 @@ public class InstrumentsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<BatchUpsertInstrumentPropertiesResponse> _callback) throws ApiException {
             return batchUpsertInstrumentPropertiesAsync(requestBody, scope, identifierEffectiveAt, successMode, _callback);
+        }
+
+        /**
+         * Execute batchUpsertInstrumentProperties request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The successfully upserted properties along with any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<BatchUpsertInstrumentPropertiesResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return batchUpsertInstrumentPropertiesAsync(requestBody, scope, identifierEffectiveAt, successMode, _callback, opts);
         }
     }
 
@@ -305,6 +374,10 @@ public class InstrumentsApi {
         return new APIbatchUpsertInstrumentPropertiesRequest(requestBody);
     }
     private okhttp3.Call deleteInstrumentCall(String identifierType, String identifier, String scope, final ApiCallback _callback) throws ApiException {
+        return deleteInstrumentCall(identifierType, identifier, scope,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteInstrumentCall(String identifierType, String identifier, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -353,11 +426,11 @@ public class InstrumentsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteInstrumentValidateBeforeCall(String identifierType, String identifier, String scope, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteInstrumentValidateBeforeCall(String identifierType, String identifier, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'identifierType' is set
         if (identifierType == null) {
             throw new ApiException("Missing the required parameter 'identifierType' when calling deleteInstrument(Async)");
@@ -368,20 +441,34 @@ public class InstrumentsApi {
             throw new ApiException("Missing the required parameter 'identifier' when calling deleteInstrument(Async)");
         }
 
-        return deleteInstrumentCall(identifierType, identifier, scope, _callback);
+        return deleteInstrumentCall(identifierType, identifier, scope, _callback, opts);
 
     }
 
 
     private ApiResponse<DeleteInstrumentResponse> deleteInstrumentWithHttpInfo(String identifierType, String identifier, String scope) throws ApiException {
-        okhttp3.Call localVarCall = deleteInstrumentValidateBeforeCall(identifierType, identifier, scope, null);
+        okhttp3.Call localVarCall = deleteInstrumentValidateBeforeCall(identifierType, identifier, scope, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeleteInstrumentResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeleteInstrumentResponse> deleteInstrumentWithHttpInfo(String identifierType, String identifier, String scope, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteInstrumentValidateBeforeCall(identifierType, identifier, scope, null, opts);
         Type localVarReturnType = new TypeToken<DeleteInstrumentResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteInstrumentAsync(String identifierType, String identifier, String scope, final ApiCallback<DeleteInstrumentResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteInstrumentValidateBeforeCall(identifierType, identifier, scope, _callback);
+        okhttp3.Call localVarCall = deleteInstrumentValidateBeforeCall(identifierType, identifier, scope, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeleteInstrumentResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteInstrumentAsync(String identifierType, String identifier, String scope, final ApiCallback<DeleteInstrumentResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteInstrumentValidateBeforeCall(identifierType, identifier, scope, _callback, opts);
         Type localVarReturnType = new TypeToken<DeleteInstrumentResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -442,6 +529,23 @@ public class InstrumentsApi {
         }
 
         /**
+         * Execute deleteInstrument request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeleteInstrumentResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the instrument was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeleteInstrumentResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeleteInstrumentResponse> localVarResp = deleteInstrumentWithHttpInfo(identifierType, identifier, scope, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteInstrument request with HTTP info returned
          * @return ApiResponse&lt;DeleteInstrumentResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -455,6 +559,22 @@ public class InstrumentsApi {
          */
         public ApiResponse<DeleteInstrumentResponse> executeWithHttpInfo() throws ApiException {
             return deleteInstrumentWithHttpInfo(identifierType, identifier, scope);
+        }
+
+        /**
+         * Execute deleteInstrument request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeleteInstrumentResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the instrument was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeleteInstrumentResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteInstrumentWithHttpInfo(identifierType, identifier, scope, opts);
         }
 
         /**
@@ -472,6 +592,23 @@ public class InstrumentsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeleteInstrumentResponse> _callback) throws ApiException {
             return deleteInstrumentAsync(identifierType, identifier, scope, _callback);
+        }
+
+        /**
+         * Execute deleteInstrument request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the instrument was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeleteInstrumentResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteInstrumentAsync(identifierType, identifier, scope, _callback, opts);
         }
     }
 
@@ -493,6 +630,10 @@ public class InstrumentsApi {
         return new APIdeleteInstrumentRequest(identifierType, identifier);
     }
     private okhttp3.Call deleteInstrumentPropertiesCall(String identifierType, String identifier, List<String> requestBody, String effectiveAt, String scope, final ApiCallback _callback) throws ApiException {
+        return deleteInstrumentPropertiesCall(identifierType, identifier, requestBody, effectiveAt, scope,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteInstrumentPropertiesCall(String identifierType, String identifier, List<String> requestBody, String effectiveAt, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -549,11 +690,11 @@ public class InstrumentsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteInstrumentPropertiesValidateBeforeCall(String identifierType, String identifier, List<String> requestBody, String effectiveAt, String scope, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteInstrumentPropertiesValidateBeforeCall(String identifierType, String identifier, List<String> requestBody, String effectiveAt, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'identifierType' is set
         if (identifierType == null) {
             throw new ApiException("Missing the required parameter 'identifierType' when calling deleteInstrumentProperties(Async)");
@@ -569,20 +710,34 @@ public class InstrumentsApi {
             throw new ApiException("Missing the required parameter 'requestBody' when calling deleteInstrumentProperties(Async)");
         }
 
-        return deleteInstrumentPropertiesCall(identifierType, identifier, requestBody, effectiveAt, scope, _callback);
+        return deleteInstrumentPropertiesCall(identifierType, identifier, requestBody, effectiveAt, scope, _callback, opts);
 
     }
 
 
     private ApiResponse<DeleteInstrumentPropertiesResponse> deleteInstrumentPropertiesWithHttpInfo(String identifierType, String identifier, List<String> requestBody, String effectiveAt, String scope) throws ApiException {
-        okhttp3.Call localVarCall = deleteInstrumentPropertiesValidateBeforeCall(identifierType, identifier, requestBody, effectiveAt, scope, null);
+        okhttp3.Call localVarCall = deleteInstrumentPropertiesValidateBeforeCall(identifierType, identifier, requestBody, effectiveAt, scope, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeleteInstrumentPropertiesResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeleteInstrumentPropertiesResponse> deleteInstrumentPropertiesWithHttpInfo(String identifierType, String identifier, List<String> requestBody, String effectiveAt, String scope, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteInstrumentPropertiesValidateBeforeCall(identifierType, identifier, requestBody, effectiveAt, scope, null, opts);
         Type localVarReturnType = new TypeToken<DeleteInstrumentPropertiesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteInstrumentPropertiesAsync(String identifierType, String identifier, List<String> requestBody, String effectiveAt, String scope, final ApiCallback<DeleteInstrumentPropertiesResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteInstrumentPropertiesValidateBeforeCall(identifierType, identifier, requestBody, effectiveAt, scope, _callback);
+        okhttp3.Call localVarCall = deleteInstrumentPropertiesValidateBeforeCall(identifierType, identifier, requestBody, effectiveAt, scope, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeleteInstrumentPropertiesResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteInstrumentPropertiesAsync(String identifierType, String identifier, List<String> requestBody, String effectiveAt, String scope, final ApiCallback<DeleteInstrumentPropertiesResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteInstrumentPropertiesValidateBeforeCall(identifierType, identifier, requestBody, effectiveAt, scope, _callback, opts);
         Type localVarReturnType = new TypeToken<DeleteInstrumentPropertiesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -656,6 +811,23 @@ public class InstrumentsApi {
         }
 
         /**
+         * Execute deleteInstrumentProperties request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeleteInstrumentPropertiesResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The asAt datetime at which properties were deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeleteInstrumentPropertiesResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeleteInstrumentPropertiesResponse> localVarResp = deleteInstrumentPropertiesWithHttpInfo(identifierType, identifier, requestBody, effectiveAt, scope, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteInstrumentProperties request with HTTP info returned
          * @return ApiResponse&lt;DeleteInstrumentPropertiesResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -669,6 +841,22 @@ public class InstrumentsApi {
          */
         public ApiResponse<DeleteInstrumentPropertiesResponse> executeWithHttpInfo() throws ApiException {
             return deleteInstrumentPropertiesWithHttpInfo(identifierType, identifier, requestBody, effectiveAt, scope);
+        }
+
+        /**
+         * Execute deleteInstrumentProperties request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeleteInstrumentPropertiesResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The asAt datetime at which properties were deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeleteInstrumentPropertiesResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteInstrumentPropertiesWithHttpInfo(identifierType, identifier, requestBody, effectiveAt, scope, opts);
         }
 
         /**
@@ -686,6 +874,23 @@ public class InstrumentsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeleteInstrumentPropertiesResponse> _callback) throws ApiException {
             return deleteInstrumentPropertiesAsync(identifierType, identifier, requestBody, effectiveAt, scope, _callback);
+        }
+
+        /**
+         * Execute deleteInstrumentProperties request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The asAt datetime at which properties were deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeleteInstrumentPropertiesResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteInstrumentPropertiesAsync(identifierType, identifier, requestBody, effectiveAt, scope, _callback, opts);
         }
     }
 
@@ -708,6 +913,10 @@ public class InstrumentsApi {
         return new APIdeleteInstrumentPropertiesRequest(identifierType, identifier, requestBody);
     }
     private okhttp3.Call deleteInstrumentsCall(List<String> requestBody, String deleteMode, String scope, final ApiCallback _callback) throws ApiException {
+        return deleteInstrumentsCall(requestBody, deleteMode, scope,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteInstrumentsCall(List<String> requestBody, String deleteMode, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -762,30 +971,44 @@ public class InstrumentsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteInstrumentsValidateBeforeCall(List<String> requestBody, String deleteMode, String scope, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteInstrumentsValidateBeforeCall(List<String> requestBody, String deleteMode, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'requestBody' is set
         if (requestBody == null) {
             throw new ApiException("Missing the required parameter 'requestBody' when calling deleteInstruments(Async)");
         }
 
-        return deleteInstrumentsCall(requestBody, deleteMode, scope, _callback);
+        return deleteInstrumentsCall(requestBody, deleteMode, scope, _callback, opts);
 
     }
 
 
     private ApiResponse<DeleteInstrumentsResponse> deleteInstrumentsWithHttpInfo(List<String> requestBody, String deleteMode, String scope) throws ApiException {
-        okhttp3.Call localVarCall = deleteInstrumentsValidateBeforeCall(requestBody, deleteMode, scope, null);
+        okhttp3.Call localVarCall = deleteInstrumentsValidateBeforeCall(requestBody, deleteMode, scope, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeleteInstrumentsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeleteInstrumentsResponse> deleteInstrumentsWithHttpInfo(List<String> requestBody, String deleteMode, String scope, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteInstrumentsValidateBeforeCall(requestBody, deleteMode, scope, null, opts);
         Type localVarReturnType = new TypeToken<DeleteInstrumentsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteInstrumentsAsync(List<String> requestBody, String deleteMode, String scope, final ApiCallback<DeleteInstrumentsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteInstrumentsValidateBeforeCall(requestBody, deleteMode, scope, _callback);
+        okhttp3.Call localVarCall = deleteInstrumentsValidateBeforeCall(requestBody, deleteMode, scope, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeleteInstrumentsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteInstrumentsAsync(List<String> requestBody, String deleteMode, String scope, final ApiCallback<DeleteInstrumentsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteInstrumentsValidateBeforeCall(requestBody, deleteMode, scope, _callback, opts);
         Type localVarReturnType = new TypeToken<DeleteInstrumentsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -855,6 +1078,23 @@ public class InstrumentsApi {
         }
 
         /**
+         * Execute deleteInstruments request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeleteInstrumentsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the instruments were deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeleteInstrumentsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeleteInstrumentsResponse> localVarResp = deleteInstrumentsWithHttpInfo(requestBody, deleteMode, scope, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteInstruments request with HTTP info returned
          * @return ApiResponse&lt;DeleteInstrumentsResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -868,6 +1108,22 @@ public class InstrumentsApi {
          */
         public ApiResponse<DeleteInstrumentsResponse> executeWithHttpInfo() throws ApiException {
             return deleteInstrumentsWithHttpInfo(requestBody, deleteMode, scope);
+        }
+
+        /**
+         * Execute deleteInstruments request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeleteInstrumentsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the instruments were deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeleteInstrumentsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteInstrumentsWithHttpInfo(requestBody, deleteMode, scope, opts);
         }
 
         /**
@@ -885,6 +1141,23 @@ public class InstrumentsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeleteInstrumentsResponse> _callback) throws ApiException {
             return deleteInstrumentsAsync(requestBody, deleteMode, scope, _callback);
+        }
+
+        /**
+         * Execute deleteInstruments request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the instruments were deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeleteInstrumentsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteInstrumentsAsync(requestBody, deleteMode, scope, _callback, opts);
         }
     }
 
@@ -905,6 +1178,10 @@ public class InstrumentsApi {
         return new APIdeleteInstrumentsRequest(requestBody);
     }
     private okhttp3.Call getAllPossibleFeaturesCall(String instrumentType, final ApiCallback _callback) throws ApiException {
+        return getAllPossibleFeaturesCall(instrumentType,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getAllPossibleFeaturesCall(String instrumentType, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -948,30 +1225,44 @@ public class InstrumentsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAllPossibleFeaturesValidateBeforeCall(String instrumentType, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAllPossibleFeaturesValidateBeforeCall(String instrumentType, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'instrumentType' is set
         if (instrumentType == null) {
             throw new ApiException("Missing the required parameter 'instrumentType' when calling getAllPossibleFeatures(Async)");
         }
 
-        return getAllPossibleFeaturesCall(instrumentType, _callback);
+        return getAllPossibleFeaturesCall(instrumentType, _callback, opts);
 
     }
 
 
     private ApiResponse<Map<String, List<String>>> getAllPossibleFeaturesWithHttpInfo(String instrumentType) throws ApiException {
-        okhttp3.Call localVarCall = getAllPossibleFeaturesValidateBeforeCall(instrumentType, null);
+        okhttp3.Call localVarCall = getAllPossibleFeaturesValidateBeforeCall(instrumentType, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Map<String, List<String>>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Map<String, List<String>>> getAllPossibleFeaturesWithHttpInfo(String instrumentType, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getAllPossibleFeaturesValidateBeforeCall(instrumentType, null, opts);
         Type localVarReturnType = new TypeToken<Map<String, List<String>>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getAllPossibleFeaturesAsync(String instrumentType, final ApiCallback<Map<String, List<String>>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAllPossibleFeaturesValidateBeforeCall(instrumentType, _callback);
+        okhttp3.Call localVarCall = getAllPossibleFeaturesValidateBeforeCall(instrumentType, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Map<String, List<String>>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getAllPossibleFeaturesAsync(String instrumentType, final ApiCallback<Map<String, List<String>>> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getAllPossibleFeaturesValidateBeforeCall(instrumentType, _callback, opts);
         Type localVarReturnType = new TypeToken<Map<String, List<String>>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1019,6 +1310,23 @@ public class InstrumentsApi {
         }
 
         /**
+         * Execute getAllPossibleFeatures request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Map&lt;String, List&lt;String&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Provides all possible instrument features an instrument of a given type can provide. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Map<String, List<String>> execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Map<String, List<String>>> localVarResp = getAllPossibleFeaturesWithHttpInfo(instrumentType, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getAllPossibleFeatures request with HTTP info returned
          * @return ApiResponse&lt;Map&lt;String, List&lt;String&gt;&gt;&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1032,6 +1340,22 @@ public class InstrumentsApi {
          */
         public ApiResponse<Map<String, List<String>>> executeWithHttpInfo() throws ApiException {
             return getAllPossibleFeaturesWithHttpInfo(instrumentType);
+        }
+
+        /**
+         * Execute getAllPossibleFeatures request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Map&lt;String, List&lt;String&gt;&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Provides all possible instrument features an instrument of a given type can provide. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Map<String, List<String>>> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getAllPossibleFeaturesWithHttpInfo(instrumentType, opts);
         }
 
         /**
@@ -1049,6 +1373,23 @@ public class InstrumentsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Map<String, List<String>>> _callback) throws ApiException {
             return getAllPossibleFeaturesAsync(instrumentType, _callback);
+        }
+
+        /**
+         * Execute getAllPossibleFeatures request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Provides all possible instrument features an instrument of a given type can provide. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Map<String, List<String>>> _callback, ConfigurationOptions opts) throws ApiException {
+            return getAllPossibleFeaturesAsync(instrumentType, _callback, opts);
         }
     }
 
@@ -1069,6 +1410,10 @@ public class InstrumentsApi {
         return new APIgetAllPossibleFeaturesRequest(instrumentType);
     }
     private okhttp3.Call getExistingInstrumentCapabilitiesCall(String identifier, String model, String effectiveAt, OffsetDateTime asAt, String instrumentScope, String recipeScope, String recipeCode, final ApiCallback _callback) throws ApiException {
+        return getExistingInstrumentCapabilitiesCall(identifier, model, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getExistingInstrumentCapabilitiesCall(String identifier, String model, String effectiveAt, OffsetDateTime asAt, String instrumentScope, String recipeScope, String recipeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1136,30 +1481,44 @@ public class InstrumentsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getExistingInstrumentCapabilitiesValidateBeforeCall(String identifier, String model, String effectiveAt, OffsetDateTime asAt, String instrumentScope, String recipeScope, String recipeCode, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getExistingInstrumentCapabilitiesValidateBeforeCall(String identifier, String model, String effectiveAt, OffsetDateTime asAt, String instrumentScope, String recipeScope, String recipeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
             throw new ApiException("Missing the required parameter 'identifier' when calling getExistingInstrumentCapabilities(Async)");
         }
 
-        return getExistingInstrumentCapabilitiesCall(identifier, model, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode, _callback);
+        return getExistingInstrumentCapabilitiesCall(identifier, model, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode, _callback, opts);
 
     }
 
 
     private ApiResponse<InstrumentCapabilities> getExistingInstrumentCapabilitiesWithHttpInfo(String identifier, String model, String effectiveAt, OffsetDateTime asAt, String instrumentScope, String recipeScope, String recipeCode) throws ApiException {
-        okhttp3.Call localVarCall = getExistingInstrumentCapabilitiesValidateBeforeCall(identifier, model, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode, null);
+        okhttp3.Call localVarCall = getExistingInstrumentCapabilitiesValidateBeforeCall(identifier, model, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<InstrumentCapabilities>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<InstrumentCapabilities> getExistingInstrumentCapabilitiesWithHttpInfo(String identifier, String model, String effectiveAt, OffsetDateTime asAt, String instrumentScope, String recipeScope, String recipeCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getExistingInstrumentCapabilitiesValidateBeforeCall(identifier, model, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode, null, opts);
         Type localVarReturnType = new TypeToken<InstrumentCapabilities>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getExistingInstrumentCapabilitiesAsync(String identifier, String model, String effectiveAt, OffsetDateTime asAt, String instrumentScope, String recipeScope, String recipeCode, final ApiCallback<InstrumentCapabilities> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getExistingInstrumentCapabilitiesValidateBeforeCall(identifier, model, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode, _callback);
+        okhttp3.Call localVarCall = getExistingInstrumentCapabilitiesValidateBeforeCall(identifier, model, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<InstrumentCapabilities>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getExistingInstrumentCapabilitiesAsync(String identifier, String model, String effectiveAt, OffsetDateTime asAt, String instrumentScope, String recipeScope, String recipeCode, final ApiCallback<InstrumentCapabilities> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getExistingInstrumentCapabilitiesValidateBeforeCall(identifier, model, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode, _callback, opts);
         Type localVarReturnType = new TypeToken<InstrumentCapabilities>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1273,6 +1632,23 @@ public class InstrumentsApi {
         }
 
         /**
+         * Execute getExistingInstrumentCapabilities request. Use any specified configuration options to override any other configuration for this request only.
+         * @return InstrumentCapabilities
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Capabilities for a given instrument, with more details should the model be provided. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public InstrumentCapabilities execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<InstrumentCapabilities> localVarResp = getExistingInstrumentCapabilitiesWithHttpInfo(identifier, model, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getExistingInstrumentCapabilities request with HTTP info returned
          * @return ApiResponse&lt;InstrumentCapabilities&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1286,6 +1662,22 @@ public class InstrumentsApi {
          */
         public ApiResponse<InstrumentCapabilities> executeWithHttpInfo() throws ApiException {
             return getExistingInstrumentCapabilitiesWithHttpInfo(identifier, model, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode);
+        }
+
+        /**
+         * Execute getExistingInstrumentCapabilities request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;InstrumentCapabilities&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Capabilities for a given instrument, with more details should the model be provided. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<InstrumentCapabilities> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getExistingInstrumentCapabilitiesWithHttpInfo(identifier, model, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode, opts);
         }
 
         /**
@@ -1303,6 +1695,23 @@ public class InstrumentsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<InstrumentCapabilities> _callback) throws ApiException {
             return getExistingInstrumentCapabilitiesAsync(identifier, model, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode, _callback);
+        }
+
+        /**
+         * Execute getExistingInstrumentCapabilities request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Capabilities for a given instrument, with more details should the model be provided. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<InstrumentCapabilities> _callback, ConfigurationOptions opts) throws ApiException {
+            return getExistingInstrumentCapabilitiesAsync(identifier, model, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode, _callback, opts);
         }
     }
 
@@ -1323,6 +1732,10 @@ public class InstrumentsApi {
         return new APIgetExistingInstrumentCapabilitiesRequest(identifier);
     }
     private okhttp3.Call getExistingInstrumentModelsCall(String identifier, String effectiveAt, OffsetDateTime asAt, String instrumentScope, String recipeScope, String recipeCode, final ApiCallback _callback) throws ApiException {
+        return getExistingInstrumentModelsCall(identifier, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getExistingInstrumentModelsCall(String identifier, String effectiveAt, OffsetDateTime asAt, String instrumentScope, String recipeScope, String recipeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1386,30 +1799,44 @@ public class InstrumentsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getExistingInstrumentModelsValidateBeforeCall(String identifier, String effectiveAt, OffsetDateTime asAt, String instrumentScope, String recipeScope, String recipeCode, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getExistingInstrumentModelsValidateBeforeCall(String identifier, String effectiveAt, OffsetDateTime asAt, String instrumentScope, String recipeScope, String recipeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
             throw new ApiException("Missing the required parameter 'identifier' when calling getExistingInstrumentModels(Async)");
         }
 
-        return getExistingInstrumentModelsCall(identifier, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode, _callback);
+        return getExistingInstrumentModelsCall(identifier, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode, _callback, opts);
 
     }
 
 
     private ApiResponse<InstrumentModels> getExistingInstrumentModelsWithHttpInfo(String identifier, String effectiveAt, OffsetDateTime asAt, String instrumentScope, String recipeScope, String recipeCode) throws ApiException {
-        okhttp3.Call localVarCall = getExistingInstrumentModelsValidateBeforeCall(identifier, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode, null);
+        okhttp3.Call localVarCall = getExistingInstrumentModelsValidateBeforeCall(identifier, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<InstrumentModels>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<InstrumentModels> getExistingInstrumentModelsWithHttpInfo(String identifier, String effectiveAt, OffsetDateTime asAt, String instrumentScope, String recipeScope, String recipeCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getExistingInstrumentModelsValidateBeforeCall(identifier, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode, null, opts);
         Type localVarReturnType = new TypeToken<InstrumentModels>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getExistingInstrumentModelsAsync(String identifier, String effectiveAt, OffsetDateTime asAt, String instrumentScope, String recipeScope, String recipeCode, final ApiCallback<InstrumentModels> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getExistingInstrumentModelsValidateBeforeCall(identifier, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode, _callback);
+        okhttp3.Call localVarCall = getExistingInstrumentModelsValidateBeforeCall(identifier, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<InstrumentModels>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getExistingInstrumentModelsAsync(String identifier, String effectiveAt, OffsetDateTime asAt, String instrumentScope, String recipeScope, String recipeCode, final ApiCallback<InstrumentModels> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getExistingInstrumentModelsValidateBeforeCall(identifier, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode, _callback, opts);
         Type localVarReturnType = new TypeToken<InstrumentModels>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1512,6 +1939,23 @@ public class InstrumentsApi {
         }
 
         /**
+         * Execute getExistingInstrumentModels request. Use any specified configuration options to override any other configuration for this request only.
+         * @return InstrumentModels
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Models which can be used to value a given instrument. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public InstrumentModels execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<InstrumentModels> localVarResp = getExistingInstrumentModelsWithHttpInfo(identifier, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getExistingInstrumentModels request with HTTP info returned
          * @return ApiResponse&lt;InstrumentModels&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1525,6 +1969,22 @@ public class InstrumentsApi {
          */
         public ApiResponse<InstrumentModels> executeWithHttpInfo() throws ApiException {
             return getExistingInstrumentModelsWithHttpInfo(identifier, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode);
+        }
+
+        /**
+         * Execute getExistingInstrumentModels request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;InstrumentModels&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Models which can be used to value a given instrument. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<InstrumentModels> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getExistingInstrumentModelsWithHttpInfo(identifier, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode, opts);
         }
 
         /**
@@ -1542,6 +2002,23 @@ public class InstrumentsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<InstrumentModels> _callback) throws ApiException {
             return getExistingInstrumentModelsAsync(identifier, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode, _callback);
+        }
+
+        /**
+         * Execute getExistingInstrumentModels request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Models which can be used to value a given instrument. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<InstrumentModels> _callback, ConfigurationOptions opts) throws ApiException {
+            return getExistingInstrumentModelsAsync(identifier, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode, _callback, opts);
         }
     }
 
@@ -1562,6 +2039,10 @@ public class InstrumentsApi {
         return new APIgetExistingInstrumentModelsRequest(identifier);
     }
     private okhttp3.Call getInstrumentCall(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+        return getInstrumentCall(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getInstrumentCall(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1626,11 +2107,11 @@ public class InstrumentsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getInstrumentValidateBeforeCall(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getInstrumentValidateBeforeCall(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'identifierType' is set
         if (identifierType == null) {
             throw new ApiException("Missing the required parameter 'identifierType' when calling getInstrument(Async)");
@@ -1641,20 +2122,34 @@ public class InstrumentsApi {
             throw new ApiException("Missing the required parameter 'identifier' when calling getInstrument(Async)");
         }
 
-        return getInstrumentCall(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, _callback);
+        return getInstrumentCall(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, _callback, opts);
 
     }
 
 
     private ApiResponse<Instrument> getInstrumentWithHttpInfo(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds) throws ApiException {
-        okhttp3.Call localVarCall = getInstrumentValidateBeforeCall(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, null);
+        okhttp3.Call localVarCall = getInstrumentValidateBeforeCall(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Instrument>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Instrument> getInstrumentWithHttpInfo(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getInstrumentValidateBeforeCall(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, null, opts);
         Type localVarReturnType = new TypeToken<Instrument>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getInstrumentAsync(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback<Instrument> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getInstrumentValidateBeforeCall(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, _callback);
+        okhttp3.Call localVarCall = getInstrumentValidateBeforeCall(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Instrument>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getInstrumentAsync(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback<Instrument> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getInstrumentValidateBeforeCall(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, _callback, opts);
         Type localVarReturnType = new TypeToken<Instrument>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1759,6 +2254,23 @@ public class InstrumentsApi {
         }
 
         /**
+         * Execute getInstrument request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Instrument
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instrument. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Instrument execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Instrument> localVarResp = getInstrumentWithHttpInfo(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getInstrument request with HTTP info returned
          * @return ApiResponse&lt;Instrument&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1772,6 +2284,22 @@ public class InstrumentsApi {
          */
         public ApiResponse<Instrument> executeWithHttpInfo() throws ApiException {
             return getInstrumentWithHttpInfo(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds);
+        }
+
+        /**
+         * Execute getInstrument request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Instrument&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instrument. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Instrument> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getInstrumentWithHttpInfo(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, opts);
         }
 
         /**
@@ -1789,6 +2317,23 @@ public class InstrumentsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Instrument> _callback) throws ApiException {
             return getInstrumentAsync(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, _callback);
+        }
+
+        /**
+         * Execute getInstrument request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instrument. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Instrument> _callback, ConfigurationOptions opts) throws ApiException {
+            return getInstrumentAsync(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, _callback, opts);
         }
     }
 
@@ -1810,6 +2355,10 @@ public class InstrumentsApi {
         return new APIgetInstrumentRequest(identifierType, identifier);
     }
     private okhttp3.Call getInstrumentIdentifierTypesCall(final ApiCallback _callback) throws ApiException {
+        return getInstrumentIdentifierTypesCall( _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getInstrumentIdentifierTypesCall(final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1852,25 +2401,39 @@ public class InstrumentsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getInstrumentIdentifierTypesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getInstrumentIdentifierTypesCall(_callback);
+    private okhttp3.Call getInstrumentIdentifierTypesValidateBeforeCall(final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return getInstrumentIdentifierTypesCall(_callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfInstrumentIdTypeDescriptor> getInstrumentIdentifierTypesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getInstrumentIdentifierTypesValidateBeforeCall(null);
+        okhttp3.Call localVarCall = getInstrumentIdentifierTypesValidateBeforeCall(null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfInstrumentIdTypeDescriptor>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfInstrumentIdTypeDescriptor> getInstrumentIdentifierTypesWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getInstrumentIdentifierTypesValidateBeforeCall(null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfInstrumentIdTypeDescriptor>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getInstrumentIdentifierTypesAsync(final ApiCallback<ResourceListOfInstrumentIdTypeDescriptor> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getInstrumentIdentifierTypesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getInstrumentIdentifierTypesValidateBeforeCall(_callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfInstrumentIdTypeDescriptor>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getInstrumentIdentifierTypesAsync(final ApiCallback<ResourceListOfInstrumentIdTypeDescriptor> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getInstrumentIdentifierTypesValidateBeforeCall(_callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfInstrumentIdTypeDescriptor>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1914,6 +2477,22 @@ public class InstrumentsApi {
         }
 
         /**
+         * Execute getInstrumentIdentifierTypes request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfInstrumentIdTypeDescriptor
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of valid instrument identifier types. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfInstrumentIdTypeDescriptor execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfInstrumentIdTypeDescriptor> localVarResp = getInstrumentIdentifierTypesWithHttpInfo(opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getInstrumentIdentifierTypes request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfInstrumentIdTypeDescriptor&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1926,6 +2505,21 @@ public class InstrumentsApi {
          */
         public ApiResponse<ResourceListOfInstrumentIdTypeDescriptor> executeWithHttpInfo() throws ApiException {
             return getInstrumentIdentifierTypesWithHttpInfo();
+        }
+
+        /**
+         * Execute getInstrumentIdentifierTypes request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfInstrumentIdTypeDescriptor&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of valid instrument identifier types. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfInstrumentIdTypeDescriptor> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getInstrumentIdentifierTypesWithHttpInfo(opts);
         }
 
         /**
@@ -1942,6 +2536,22 @@ public class InstrumentsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfInstrumentIdTypeDescriptor> _callback) throws ApiException {
             return getInstrumentIdentifierTypesAsync(_callback);
+        }
+
+        /**
+         * Execute getInstrumentIdentifierTypes request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of valid instrument identifier types. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfInstrumentIdTypeDescriptor> _callback, ConfigurationOptions opts) throws ApiException {
+            return getInstrumentIdentifierTypesAsync(_callback, opts);
         }
     }
 
@@ -1960,6 +2570,10 @@ public class InstrumentsApi {
         return new APIgetInstrumentIdentifierTypesRequest();
     }
     private okhttp3.Call getInstrumentPaymentDiaryCall(String identifierType, String identifier, String recipeScope, String recipeCode, String effectiveAt, OffsetDateTime asAt, String scope, final ApiCallback _callback) throws ApiException {
+        return getInstrumentPaymentDiaryCall(identifierType, identifier, recipeScope, recipeCode, effectiveAt, asAt, scope,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getInstrumentPaymentDiaryCall(String identifierType, String identifier, String recipeScope, String recipeCode, String effectiveAt, OffsetDateTime asAt, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2024,11 +2638,11 @@ public class InstrumentsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getInstrumentPaymentDiaryValidateBeforeCall(String identifierType, String identifier, String recipeScope, String recipeCode, String effectiveAt, OffsetDateTime asAt, String scope, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getInstrumentPaymentDiaryValidateBeforeCall(String identifierType, String identifier, String recipeScope, String recipeCode, String effectiveAt, OffsetDateTime asAt, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'identifierType' is set
         if (identifierType == null) {
             throw new ApiException("Missing the required parameter 'identifierType' when calling getInstrumentPaymentDiary(Async)");
@@ -2049,20 +2663,34 @@ public class InstrumentsApi {
             throw new ApiException("Missing the required parameter 'recipeCode' when calling getInstrumentPaymentDiary(Async)");
         }
 
-        return getInstrumentPaymentDiaryCall(identifierType, identifier, recipeScope, recipeCode, effectiveAt, asAt, scope, _callback);
+        return getInstrumentPaymentDiaryCall(identifierType, identifier, recipeScope, recipeCode, effectiveAt, asAt, scope, _callback, opts);
 
     }
 
 
     private ApiResponse<InstrumentPaymentDiary> getInstrumentPaymentDiaryWithHttpInfo(String identifierType, String identifier, String recipeScope, String recipeCode, String effectiveAt, OffsetDateTime asAt, String scope) throws ApiException {
-        okhttp3.Call localVarCall = getInstrumentPaymentDiaryValidateBeforeCall(identifierType, identifier, recipeScope, recipeCode, effectiveAt, asAt, scope, null);
+        okhttp3.Call localVarCall = getInstrumentPaymentDiaryValidateBeforeCall(identifierType, identifier, recipeScope, recipeCode, effectiveAt, asAt, scope, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<InstrumentPaymentDiary>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<InstrumentPaymentDiary> getInstrumentPaymentDiaryWithHttpInfo(String identifierType, String identifier, String recipeScope, String recipeCode, String effectiveAt, OffsetDateTime asAt, String scope, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getInstrumentPaymentDiaryValidateBeforeCall(identifierType, identifier, recipeScope, recipeCode, effectiveAt, asAt, scope, null, opts);
         Type localVarReturnType = new TypeToken<InstrumentPaymentDiary>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getInstrumentPaymentDiaryAsync(String identifierType, String identifier, String recipeScope, String recipeCode, String effectiveAt, OffsetDateTime asAt, String scope, final ApiCallback<InstrumentPaymentDiary> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getInstrumentPaymentDiaryValidateBeforeCall(identifierType, identifier, recipeScope, recipeCode, effectiveAt, asAt, scope, _callback);
+        okhttp3.Call localVarCall = getInstrumentPaymentDiaryValidateBeforeCall(identifierType, identifier, recipeScope, recipeCode, effectiveAt, asAt, scope, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<InstrumentPaymentDiary>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getInstrumentPaymentDiaryAsync(String identifierType, String identifier, String recipeScope, String recipeCode, String effectiveAt, OffsetDateTime asAt, String scope, final ApiCallback<InstrumentPaymentDiary> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getInstrumentPaymentDiaryValidateBeforeCall(identifierType, identifier, recipeScope, recipeCode, effectiveAt, asAt, scope, _callback, opts);
         Type localVarReturnType = new TypeToken<InstrumentPaymentDiary>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2149,6 +2777,23 @@ public class InstrumentsApi {
         }
 
         /**
+         * Execute getInstrumentPaymentDiary request. Use any specified configuration options to override any other configuration for this request only.
+         * @return InstrumentPaymentDiary
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The payment diary of the specified instrument </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public InstrumentPaymentDiary execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<InstrumentPaymentDiary> localVarResp = getInstrumentPaymentDiaryWithHttpInfo(identifierType, identifier, recipeScope, recipeCode, effectiveAt, asAt, scope, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getInstrumentPaymentDiary request with HTTP info returned
          * @return ApiResponse&lt;InstrumentPaymentDiary&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2162,6 +2807,22 @@ public class InstrumentsApi {
          */
         public ApiResponse<InstrumentPaymentDiary> executeWithHttpInfo() throws ApiException {
             return getInstrumentPaymentDiaryWithHttpInfo(identifierType, identifier, recipeScope, recipeCode, effectiveAt, asAt, scope);
+        }
+
+        /**
+         * Execute getInstrumentPaymentDiary request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;InstrumentPaymentDiary&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The payment diary of the specified instrument </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<InstrumentPaymentDiary> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getInstrumentPaymentDiaryWithHttpInfo(identifierType, identifier, recipeScope, recipeCode, effectiveAt, asAt, scope, opts);
         }
 
         /**
@@ -2179,6 +2840,23 @@ public class InstrumentsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<InstrumentPaymentDiary> _callback) throws ApiException {
             return getInstrumentPaymentDiaryAsync(identifierType, identifier, recipeScope, recipeCode, effectiveAt, asAt, scope, _callback);
+        }
+
+        /**
+         * Execute getInstrumentPaymentDiary request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The payment diary of the specified instrument </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<InstrumentPaymentDiary> _callback, ConfigurationOptions opts) throws ApiException {
+            return getInstrumentPaymentDiaryAsync(identifierType, identifier, recipeScope, recipeCode, effectiveAt, asAt, scope, _callback, opts);
         }
     }
 
@@ -2202,6 +2880,10 @@ public class InstrumentsApi {
         return new APIgetInstrumentPaymentDiaryRequest(identifierType, identifier, recipeScope, recipeCode);
     }
     private okhttp3.Call getInstrumentPropertiesCall(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String scope, final ApiCallback _callback) throws ApiException {
+        return getInstrumentPropertiesCall(identifierType, identifier, effectiveAt, asAt, scope,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getInstrumentPropertiesCall(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2258,11 +2940,11 @@ public class InstrumentsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getInstrumentPropertiesValidateBeforeCall(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String scope, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getInstrumentPropertiesValidateBeforeCall(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'identifierType' is set
         if (identifierType == null) {
             throw new ApiException("Missing the required parameter 'identifierType' when calling getInstrumentProperties(Async)");
@@ -2273,20 +2955,34 @@ public class InstrumentsApi {
             throw new ApiException("Missing the required parameter 'identifier' when calling getInstrumentProperties(Async)");
         }
 
-        return getInstrumentPropertiesCall(identifierType, identifier, effectiveAt, asAt, scope, _callback);
+        return getInstrumentPropertiesCall(identifierType, identifier, effectiveAt, asAt, scope, _callback, opts);
 
     }
 
 
     private ApiResponse<InstrumentProperties> getInstrumentPropertiesWithHttpInfo(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String scope) throws ApiException {
-        okhttp3.Call localVarCall = getInstrumentPropertiesValidateBeforeCall(identifierType, identifier, effectiveAt, asAt, scope, null);
+        okhttp3.Call localVarCall = getInstrumentPropertiesValidateBeforeCall(identifierType, identifier, effectiveAt, asAt, scope, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<InstrumentProperties>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<InstrumentProperties> getInstrumentPropertiesWithHttpInfo(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String scope, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getInstrumentPropertiesValidateBeforeCall(identifierType, identifier, effectiveAt, asAt, scope, null, opts);
         Type localVarReturnType = new TypeToken<InstrumentProperties>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getInstrumentPropertiesAsync(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String scope, final ApiCallback<InstrumentProperties> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getInstrumentPropertiesValidateBeforeCall(identifierType, identifier, effectiveAt, asAt, scope, _callback);
+        okhttp3.Call localVarCall = getInstrumentPropertiesValidateBeforeCall(identifierType, identifier, effectiveAt, asAt, scope, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<InstrumentProperties>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getInstrumentPropertiesAsync(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String scope, final ApiCallback<InstrumentProperties> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getInstrumentPropertiesValidateBeforeCall(identifierType, identifier, effectiveAt, asAt, scope, _callback, opts);
         Type localVarReturnType = new TypeToken<InstrumentProperties>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2369,6 +3065,23 @@ public class InstrumentsApi {
         }
 
         /**
+         * Execute getInstrumentProperties request. Use any specified configuration options to override any other configuration for this request only.
+         * @return InstrumentProperties
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The properties of the specified instrument </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public InstrumentProperties execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<InstrumentProperties> localVarResp = getInstrumentPropertiesWithHttpInfo(identifierType, identifier, effectiveAt, asAt, scope, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getInstrumentProperties request with HTTP info returned
          * @return ApiResponse&lt;InstrumentProperties&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2382,6 +3095,22 @@ public class InstrumentsApi {
          */
         public ApiResponse<InstrumentProperties> executeWithHttpInfo() throws ApiException {
             return getInstrumentPropertiesWithHttpInfo(identifierType, identifier, effectiveAt, asAt, scope);
+        }
+
+        /**
+         * Execute getInstrumentProperties request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;InstrumentProperties&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The properties of the specified instrument </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<InstrumentProperties> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getInstrumentPropertiesWithHttpInfo(identifierType, identifier, effectiveAt, asAt, scope, opts);
         }
 
         /**
@@ -2399,6 +3128,23 @@ public class InstrumentsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<InstrumentProperties> _callback) throws ApiException {
             return getInstrumentPropertiesAsync(identifierType, identifier, effectiveAt, asAt, scope, _callback);
+        }
+
+        /**
+         * Execute getInstrumentProperties request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The properties of the specified instrument </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<InstrumentProperties> _callback, ConfigurationOptions opts) throws ApiException {
+            return getInstrumentPropertiesAsync(identifierType, identifier, effectiveAt, asAt, scope, _callback, opts);
         }
     }
 
@@ -2420,6 +3166,10 @@ public class InstrumentsApi {
         return new APIgetInstrumentPropertiesRequest(identifierType, identifier);
     }
     private okhttp3.Call getInstrumentPropertyTimeSeriesCall(String identifierType, String identifier, String propertyKey, String identifierEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit, String scope, final ApiCallback _callback) throws ApiException {
+        return getInstrumentPropertyTimeSeriesCall(identifierType, identifier, propertyKey, identifierEffectiveAt, asAt, filter, page, limit, scope,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getInstrumentPropertyTimeSeriesCall(String identifierType, String identifier, String propertyKey, String identifierEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2492,11 +3242,11 @@ public class InstrumentsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getInstrumentPropertyTimeSeriesValidateBeforeCall(String identifierType, String identifier, String propertyKey, String identifierEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit, String scope, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getInstrumentPropertyTimeSeriesValidateBeforeCall(String identifierType, String identifier, String propertyKey, String identifierEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'identifierType' is set
         if (identifierType == null) {
             throw new ApiException("Missing the required parameter 'identifierType' when calling getInstrumentPropertyTimeSeries(Async)");
@@ -2512,20 +3262,34 @@ public class InstrumentsApi {
             throw new ApiException("Missing the required parameter 'propertyKey' when calling getInstrumentPropertyTimeSeries(Async)");
         }
 
-        return getInstrumentPropertyTimeSeriesCall(identifierType, identifier, propertyKey, identifierEffectiveAt, asAt, filter, page, limit, scope, _callback);
+        return getInstrumentPropertyTimeSeriesCall(identifierType, identifier, propertyKey, identifierEffectiveAt, asAt, filter, page, limit, scope, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfPropertyInterval> getInstrumentPropertyTimeSeriesWithHttpInfo(String identifierType, String identifier, String propertyKey, String identifierEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit, String scope) throws ApiException {
-        okhttp3.Call localVarCall = getInstrumentPropertyTimeSeriesValidateBeforeCall(identifierType, identifier, propertyKey, identifierEffectiveAt, asAt, filter, page, limit, scope, null);
+        okhttp3.Call localVarCall = getInstrumentPropertyTimeSeriesValidateBeforeCall(identifierType, identifier, propertyKey, identifierEffectiveAt, asAt, filter, page, limit, scope, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPropertyInterval>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfPropertyInterval> getInstrumentPropertyTimeSeriesWithHttpInfo(String identifierType, String identifier, String propertyKey, String identifierEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit, String scope, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getInstrumentPropertyTimeSeriesValidateBeforeCall(identifierType, identifier, propertyKey, identifierEffectiveAt, asAt, filter, page, limit, scope, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPropertyInterval>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getInstrumentPropertyTimeSeriesAsync(String identifierType, String identifier, String propertyKey, String identifierEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit, String scope, final ApiCallback<ResourceListOfPropertyInterval> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getInstrumentPropertyTimeSeriesValidateBeforeCall(identifierType, identifier, propertyKey, identifierEffectiveAt, asAt, filter, page, limit, scope, _callback);
+        okhttp3.Call localVarCall = getInstrumentPropertyTimeSeriesValidateBeforeCall(identifierType, identifier, propertyKey, identifierEffectiveAt, asAt, filter, page, limit, scope, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPropertyInterval>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getInstrumentPropertyTimeSeriesAsync(String identifierType, String identifier, String propertyKey, String identifierEffectiveAt, OffsetDateTime asAt, String filter, String page, Integer limit, String scope, final ApiCallback<ResourceListOfPropertyInterval> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getInstrumentPropertyTimeSeriesValidateBeforeCall(identifierType, identifier, propertyKey, identifierEffectiveAt, asAt, filter, page, limit, scope, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPropertyInterval>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2643,6 +3407,23 @@ public class InstrumentsApi {
         }
 
         /**
+         * Execute getInstrumentPropertyTimeSeries request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfPropertyInterval
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfPropertyInterval execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfPropertyInterval> localVarResp = getInstrumentPropertyTimeSeriesWithHttpInfo(identifierType, identifier, propertyKey, identifierEffectiveAt, asAt, filter, page, limit, scope, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getInstrumentPropertyTimeSeries request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfPropertyInterval&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2656,6 +3437,22 @@ public class InstrumentsApi {
          */
         public ApiResponse<ResourceListOfPropertyInterval> executeWithHttpInfo() throws ApiException {
             return getInstrumentPropertyTimeSeriesWithHttpInfo(identifierType, identifier, propertyKey, identifierEffectiveAt, asAt, filter, page, limit, scope);
+        }
+
+        /**
+         * Execute getInstrumentPropertyTimeSeries request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfPropertyInterval&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfPropertyInterval> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getInstrumentPropertyTimeSeriesWithHttpInfo(identifierType, identifier, propertyKey, identifierEffectiveAt, asAt, filter, page, limit, scope, opts);
         }
 
         /**
@@ -2673,6 +3470,23 @@ public class InstrumentsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPropertyInterval> _callback) throws ApiException {
             return getInstrumentPropertyTimeSeriesAsync(identifierType, identifier, propertyKey, identifierEffectiveAt, asAt, filter, page, limit, scope, _callback);
+        }
+
+        /**
+         * Execute getInstrumentPropertyTimeSeries request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The time series of the property </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPropertyInterval> _callback, ConfigurationOptions opts) throws ApiException {
+            return getInstrumentPropertyTimeSeriesAsync(identifierType, identifier, propertyKey, identifierEffectiveAt, asAt, filter, page, limit, scope, _callback, opts);
         }
     }
 
@@ -2695,6 +3509,10 @@ public class InstrumentsApi {
         return new APIgetInstrumentPropertyTimeSeriesRequest(identifierType, identifier, propertyKey);
     }
     private okhttp3.Call getInstrumentRelationshipsCall(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, String scope, final ApiCallback _callback) throws ApiException {
+        return getInstrumentRelationshipsCall(identifierType, identifier, effectiveAt, asAt, filter, identifierTypes, scope,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getInstrumentRelationshipsCall(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2759,11 +3577,11 @@ public class InstrumentsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getInstrumentRelationshipsValidateBeforeCall(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, String scope, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getInstrumentRelationshipsValidateBeforeCall(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'identifierType' is set
         if (identifierType == null) {
             throw new ApiException("Missing the required parameter 'identifierType' when calling getInstrumentRelationships(Async)");
@@ -2774,20 +3592,34 @@ public class InstrumentsApi {
             throw new ApiException("Missing the required parameter 'identifier' when calling getInstrumentRelationships(Async)");
         }
 
-        return getInstrumentRelationshipsCall(identifierType, identifier, effectiveAt, asAt, filter, identifierTypes, scope, _callback);
+        return getInstrumentRelationshipsCall(identifierType, identifier, effectiveAt, asAt, filter, identifierTypes, scope, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfRelationship> getInstrumentRelationshipsWithHttpInfo(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, String scope) throws ApiException {
-        okhttp3.Call localVarCall = getInstrumentRelationshipsValidateBeforeCall(identifierType, identifier, effectiveAt, asAt, filter, identifierTypes, scope, null);
+        okhttp3.Call localVarCall = getInstrumentRelationshipsValidateBeforeCall(identifierType, identifier, effectiveAt, asAt, filter, identifierTypes, scope, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfRelationship>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfRelationship> getInstrumentRelationshipsWithHttpInfo(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, String scope, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getInstrumentRelationshipsValidateBeforeCall(identifierType, identifier, effectiveAt, asAt, filter, identifierTypes, scope, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfRelationship>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getInstrumentRelationshipsAsync(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, String scope, final ApiCallback<ResourceListOfRelationship> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getInstrumentRelationshipsValidateBeforeCall(identifierType, identifier, effectiveAt, asAt, filter, identifierTypes, scope, _callback);
+        okhttp3.Call localVarCall = getInstrumentRelationshipsValidateBeforeCall(identifierType, identifier, effectiveAt, asAt, filter, identifierTypes, scope, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfRelationship>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getInstrumentRelationshipsAsync(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String filter, List<String> identifierTypes, String scope, final ApiCallback<ResourceListOfRelationship> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getInstrumentRelationshipsValidateBeforeCall(identifierType, identifier, effectiveAt, asAt, filter, identifierTypes, scope, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfRelationship>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2892,6 +3724,23 @@ public class InstrumentsApi {
         }
 
         /**
+         * Execute getInstrumentRelationships request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfRelationship
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified instrument. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfRelationship execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfRelationship> localVarResp = getInstrumentRelationshipsWithHttpInfo(identifierType, identifier, effectiveAt, asAt, filter, identifierTypes, scope, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getInstrumentRelationships request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfRelationship&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2905,6 +3754,22 @@ public class InstrumentsApi {
          */
         public ApiResponse<ResourceListOfRelationship> executeWithHttpInfo() throws ApiException {
             return getInstrumentRelationshipsWithHttpInfo(identifierType, identifier, effectiveAt, asAt, filter, identifierTypes, scope);
+        }
+
+        /**
+         * Execute getInstrumentRelationships request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfRelationship&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified instrument. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfRelationship> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getInstrumentRelationshipsWithHttpInfo(identifierType, identifier, effectiveAt, asAt, filter, identifierTypes, scope, opts);
         }
 
         /**
@@ -2922,6 +3787,23 @@ public class InstrumentsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfRelationship> _callback) throws ApiException {
             return getInstrumentRelationshipsAsync(identifierType, identifier, effectiveAt, asAt, filter, identifierTypes, scope, _callback);
+        }
+
+        /**
+         * Execute getInstrumentRelationships request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The relationships for the specified instrument. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfRelationship> _callback, ConfigurationOptions opts) throws ApiException {
+            return getInstrumentRelationshipsAsync(identifierType, identifier, effectiveAt, asAt, filter, identifierTypes, scope, _callback, opts);
         }
     }
 
@@ -2943,6 +3825,10 @@ public class InstrumentsApi {
         return new APIgetInstrumentRelationshipsRequest(identifierType, identifier);
     }
     private okhttp3.Call getInstrumentsCall(String identifierType, List<String> requestBody, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+        return getInstrumentsCall(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getInstrumentsCall(String identifierType, List<String> requestBody, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3013,11 +3899,11 @@ public class InstrumentsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getInstrumentsValidateBeforeCall(String identifierType, List<String> requestBody, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getInstrumentsValidateBeforeCall(String identifierType, List<String> requestBody, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'identifierType' is set
         if (identifierType == null) {
             throw new ApiException("Missing the required parameter 'identifierType' when calling getInstruments(Async)");
@@ -3028,20 +3914,34 @@ public class InstrumentsApi {
             throw new ApiException("Missing the required parameter 'requestBody' when calling getInstruments(Async)");
         }
 
-        return getInstrumentsCall(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, _callback);
+        return getInstrumentsCall(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, _callback, opts);
 
     }
 
 
     private ApiResponse<GetInstrumentsResponse> getInstrumentsWithHttpInfo(String identifierType, List<String> requestBody, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds) throws ApiException {
-        okhttp3.Call localVarCall = getInstrumentsValidateBeforeCall(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, null);
+        okhttp3.Call localVarCall = getInstrumentsValidateBeforeCall(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GetInstrumentsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<GetInstrumentsResponse> getInstrumentsWithHttpInfo(String identifierType, List<String> requestBody, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getInstrumentsValidateBeforeCall(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, null, opts);
         Type localVarReturnType = new TypeToken<GetInstrumentsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getInstrumentsAsync(String identifierType, List<String> requestBody, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback<GetInstrumentsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getInstrumentsValidateBeforeCall(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, _callback);
+        okhttp3.Call localVarCall = getInstrumentsValidateBeforeCall(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GetInstrumentsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getInstrumentsAsync(String identifierType, List<String> requestBody, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback<GetInstrumentsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getInstrumentsValidateBeforeCall(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, _callback, opts);
         Type localVarReturnType = new TypeToken<GetInstrumentsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3146,6 +4046,23 @@ public class InstrumentsApi {
         }
 
         /**
+         * Execute getInstruments request. Use any specified configuration options to override any other configuration for this request only.
+         * @return GetInstrumentsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instruments which could be identified along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GetInstrumentsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<GetInstrumentsResponse> localVarResp = getInstrumentsWithHttpInfo(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getInstruments request with HTTP info returned
          * @return ApiResponse&lt;GetInstrumentsResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3159,6 +4076,22 @@ public class InstrumentsApi {
          */
         public ApiResponse<GetInstrumentsResponse> executeWithHttpInfo() throws ApiException {
             return getInstrumentsWithHttpInfo(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds);
+        }
+
+        /**
+         * Execute getInstruments request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;GetInstrumentsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instruments which could be identified along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GetInstrumentsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getInstrumentsWithHttpInfo(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, opts);
         }
 
         /**
@@ -3176,6 +4109,23 @@ public class InstrumentsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<GetInstrumentsResponse> _callback) throws ApiException {
             return getInstrumentsAsync(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, _callback);
+        }
+
+        /**
+         * Execute getInstruments request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instruments which could be identified along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GetInstrumentsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return getInstrumentsAsync(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds, _callback, opts);
         }
     }
 
@@ -3197,6 +4147,10 @@ public class InstrumentsApi {
         return new APIgetInstrumentsRequest(identifierType, requestBody);
     }
     private okhttp3.Call listInstrumentPropertiesCall(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String scope, final ApiCallback _callback) throws ApiException {
+        return listInstrumentPropertiesCall(identifierType, identifier, effectiveAt, asAt, page, limit, scope,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listInstrumentPropertiesCall(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3261,11 +4215,11 @@ public class InstrumentsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listInstrumentPropertiesValidateBeforeCall(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String scope, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listInstrumentPropertiesValidateBeforeCall(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'identifierType' is set
         if (identifierType == null) {
             throw new ApiException("Missing the required parameter 'identifierType' when calling listInstrumentProperties(Async)");
@@ -3276,20 +4230,34 @@ public class InstrumentsApi {
             throw new ApiException("Missing the required parameter 'identifier' when calling listInstrumentProperties(Async)");
         }
 
-        return listInstrumentPropertiesCall(identifierType, identifier, effectiveAt, asAt, page, limit, scope, _callback);
+        return listInstrumentPropertiesCall(identifierType, identifier, effectiveAt, asAt, page, limit, scope, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfProperty> listInstrumentPropertiesWithHttpInfo(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String scope) throws ApiException {
-        okhttp3.Call localVarCall = listInstrumentPropertiesValidateBeforeCall(identifierType, identifier, effectiveAt, asAt, page, limit, scope, null);
+        okhttp3.Call localVarCall = listInstrumentPropertiesValidateBeforeCall(identifierType, identifier, effectiveAt, asAt, page, limit, scope, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfProperty>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfProperty> listInstrumentPropertiesWithHttpInfo(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String scope, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listInstrumentPropertiesValidateBeforeCall(identifierType, identifier, effectiveAt, asAt, page, limit, scope, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfProperty>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listInstrumentPropertiesAsync(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String scope, final ApiCallback<ResourceListOfProperty> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listInstrumentPropertiesValidateBeforeCall(identifierType, identifier, effectiveAt, asAt, page, limit, scope, _callback);
+        okhttp3.Call localVarCall = listInstrumentPropertiesValidateBeforeCall(identifierType, identifier, effectiveAt, asAt, page, limit, scope, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfProperty>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listInstrumentPropertiesAsync(String identifierType, String identifier, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String scope, final ApiCallback<ResourceListOfProperty> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listInstrumentPropertiesValidateBeforeCall(identifierType, identifier, effectiveAt, asAt, page, limit, scope, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfProperty>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3394,6 +4362,23 @@ public class InstrumentsApi {
         }
 
         /**
+         * Execute listInstrumentProperties request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfProperty
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The properties of the specified instrument </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfProperty execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfProperty> localVarResp = listInstrumentPropertiesWithHttpInfo(identifierType, identifier, effectiveAt, asAt, page, limit, scope, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listInstrumentProperties request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfProperty&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3407,6 +4392,22 @@ public class InstrumentsApi {
          */
         public ApiResponse<ResourceListOfProperty> executeWithHttpInfo() throws ApiException {
             return listInstrumentPropertiesWithHttpInfo(identifierType, identifier, effectiveAt, asAt, page, limit, scope);
+        }
+
+        /**
+         * Execute listInstrumentProperties request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfProperty&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The properties of the specified instrument </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfProperty> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listInstrumentPropertiesWithHttpInfo(identifierType, identifier, effectiveAt, asAt, page, limit, scope, opts);
         }
 
         /**
@@ -3424,6 +4425,23 @@ public class InstrumentsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfProperty> _callback) throws ApiException {
             return listInstrumentPropertiesAsync(identifierType, identifier, effectiveAt, asAt, page, limit, scope, _callback);
+        }
+
+        /**
+         * Execute listInstrumentProperties request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The properties of the specified instrument </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfProperty> _callback, ConfigurationOptions opts) throws ApiException {
+            return listInstrumentPropertiesAsync(identifierType, identifier, effectiveAt, asAt, page, limit, scope, _callback, opts);
         }
     }
 
@@ -3445,6 +4463,10 @@ public class InstrumentsApi {
         return new APIlistInstrumentPropertiesRequest(identifierType, identifier);
     }
     private okhttp3.Call listInstrumentsCall(OffsetDateTime asAt, String effectiveAt, String page, List<String> sortBy, Integer limit, String filter, List<String> instrumentPropertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+        return listInstrumentsCall(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listInstrumentsCall(OffsetDateTime asAt, String effectiveAt, String page, List<String> sortBy, Integer limit, String filter, List<String> instrumentPropertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3523,25 +4545,39 @@ public class InstrumentsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listInstrumentsValidateBeforeCall(OffsetDateTime asAt, String effectiveAt, String page, List<String> sortBy, Integer limit, String filter, List<String> instrumentPropertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
-        return listInstrumentsCall(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, _callback);
+    private okhttp3.Call listInstrumentsValidateBeforeCall(OffsetDateTime asAt, String effectiveAt, String page, List<String> sortBy, Integer limit, String filter, List<String> instrumentPropertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listInstrumentsCall(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfInstrument> listInstrumentsWithHttpInfo(OffsetDateTime asAt, String effectiveAt, String page, List<String> sortBy, Integer limit, String filter, List<String> instrumentPropertyKeys, String scope, List<String> relationshipDefinitionIds) throws ApiException {
-        okhttp3.Call localVarCall = listInstrumentsValidateBeforeCall(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, null);
+        okhttp3.Call localVarCall = listInstrumentsValidateBeforeCall(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfInstrument>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfInstrument> listInstrumentsWithHttpInfo(OffsetDateTime asAt, String effectiveAt, String page, List<String> sortBy, Integer limit, String filter, List<String> instrumentPropertyKeys, String scope, List<String> relationshipDefinitionIds, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listInstrumentsValidateBeforeCall(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfInstrument>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listInstrumentsAsync(OffsetDateTime asAt, String effectiveAt, String page, List<String> sortBy, Integer limit, String filter, List<String> instrumentPropertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback<PagedResourceListOfInstrument> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listInstrumentsValidateBeforeCall(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, _callback);
+        okhttp3.Call localVarCall = listInstrumentsValidateBeforeCall(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfInstrument>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listInstrumentsAsync(OffsetDateTime asAt, String effectiveAt, String page, List<String> sortBy, Integer limit, String filter, List<String> instrumentPropertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback<PagedResourceListOfInstrument> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listInstrumentsValidateBeforeCall(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfInstrument>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3686,6 +4722,23 @@ public class InstrumentsApi {
         }
 
         /**
+         * Execute listInstruments request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfInstrument
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instruments </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfInstrument execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfInstrument> localVarResp = listInstrumentsWithHttpInfo(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listInstruments request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfInstrument&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3699,6 +4752,22 @@ public class InstrumentsApi {
          */
         public ApiResponse<PagedResourceListOfInstrument> executeWithHttpInfo() throws ApiException {
             return listInstrumentsWithHttpInfo(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds);
+        }
+
+        /**
+         * Execute listInstruments request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfInstrument&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instruments </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfInstrument> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listInstrumentsWithHttpInfo(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, opts);
         }
 
         /**
@@ -3716,6 +4785,23 @@ public class InstrumentsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfInstrument> _callback) throws ApiException {
             return listInstrumentsAsync(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, _callback);
+        }
+
+        /**
+         * Execute listInstruments request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested instruments </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfInstrument> _callback, ConfigurationOptions opts) throws ApiException {
+            return listInstrumentsAsync(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, _callback, opts);
         }
     }
 
@@ -3735,6 +4821,10 @@ public class InstrumentsApi {
         return new APIlistInstrumentsRequest();
     }
     private okhttp3.Call queryInstrumentCapabilitiesCall(LusidInstrument lusidInstrument, String model, final ApiCallback _callback) throws ApiException {
+        return queryInstrumentCapabilitiesCall(lusidInstrument, model,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call queryInstrumentCapabilitiesCall(LusidInstrument lusidInstrument, String model, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3785,30 +4875,44 @@ public class InstrumentsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call queryInstrumentCapabilitiesValidateBeforeCall(LusidInstrument lusidInstrument, String model, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call queryInstrumentCapabilitiesValidateBeforeCall(LusidInstrument lusidInstrument, String model, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'lusidInstrument' is set
         if (lusidInstrument == null) {
             throw new ApiException("Missing the required parameter 'lusidInstrument' when calling queryInstrumentCapabilities(Async)");
         }
 
-        return queryInstrumentCapabilitiesCall(lusidInstrument, model, _callback);
+        return queryInstrumentCapabilitiesCall(lusidInstrument, model, _callback, opts);
 
     }
 
 
     private ApiResponse<InstrumentCapabilities> queryInstrumentCapabilitiesWithHttpInfo(LusidInstrument lusidInstrument, String model) throws ApiException {
-        okhttp3.Call localVarCall = queryInstrumentCapabilitiesValidateBeforeCall(lusidInstrument, model, null);
+        okhttp3.Call localVarCall = queryInstrumentCapabilitiesValidateBeforeCall(lusidInstrument, model, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<InstrumentCapabilities>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<InstrumentCapabilities> queryInstrumentCapabilitiesWithHttpInfo(LusidInstrument lusidInstrument, String model, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = queryInstrumentCapabilitiesValidateBeforeCall(lusidInstrument, model, null, opts);
         Type localVarReturnType = new TypeToken<InstrumentCapabilities>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call queryInstrumentCapabilitiesAsync(LusidInstrument lusidInstrument, String model, final ApiCallback<InstrumentCapabilities> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = queryInstrumentCapabilitiesValidateBeforeCall(lusidInstrument, model, _callback);
+        okhttp3.Call localVarCall = queryInstrumentCapabilitiesValidateBeforeCall(lusidInstrument, model, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<InstrumentCapabilities>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call queryInstrumentCapabilitiesAsync(LusidInstrument lusidInstrument, String model, final ApiCallback<InstrumentCapabilities> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = queryInstrumentCapabilitiesValidateBeforeCall(lusidInstrument, model, _callback, opts);
         Type localVarReturnType = new TypeToken<InstrumentCapabilities>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3867,6 +4971,23 @@ public class InstrumentsApi {
         }
 
         /**
+         * Execute queryInstrumentCapabilities request. Use any specified configuration options to override any other configuration for this request only.
+         * @return InstrumentCapabilities
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Capabilities for a given instrument, with more details should the model be provided. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public InstrumentCapabilities execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<InstrumentCapabilities> localVarResp = queryInstrumentCapabilitiesWithHttpInfo(lusidInstrument, model, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute queryInstrumentCapabilities request with HTTP info returned
          * @return ApiResponse&lt;InstrumentCapabilities&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3880,6 +5001,22 @@ public class InstrumentsApi {
          */
         public ApiResponse<InstrumentCapabilities> executeWithHttpInfo() throws ApiException {
             return queryInstrumentCapabilitiesWithHttpInfo(lusidInstrument, model);
+        }
+
+        /**
+         * Execute queryInstrumentCapabilities request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;InstrumentCapabilities&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Capabilities for a given instrument, with more details should the model be provided. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<InstrumentCapabilities> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return queryInstrumentCapabilitiesWithHttpInfo(lusidInstrument, model, opts);
         }
 
         /**
@@ -3897,6 +5034,23 @@ public class InstrumentsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<InstrumentCapabilities> _callback) throws ApiException {
             return queryInstrumentCapabilitiesAsync(lusidInstrument, model, _callback);
+        }
+
+        /**
+         * Execute queryInstrumentCapabilities request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Capabilities for a given instrument, with more details should the model be provided. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<InstrumentCapabilities> _callback, ConfigurationOptions opts) throws ApiException {
+            return queryInstrumentCapabilitiesAsync(lusidInstrument, model, _callback, opts);
         }
     }
 
@@ -3917,6 +5071,10 @@ public class InstrumentsApi {
         return new APIqueryInstrumentCapabilitiesRequest(lusidInstrument);
     }
     private okhttp3.Call updateInstrumentIdentifierCall(String identifierType, String identifier, UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest, String scope, final ApiCallback _callback) throws ApiException {
+        return updateInstrumentIdentifierCall(identifierType, identifier, updateInstrumentIdentifierRequest, scope,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call updateInstrumentIdentifierCall(String identifierType, String identifier, UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3969,11 +5127,11 @@ public class InstrumentsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateInstrumentIdentifierValidateBeforeCall(String identifierType, String identifier, UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest, String scope, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateInstrumentIdentifierValidateBeforeCall(String identifierType, String identifier, UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'identifierType' is set
         if (identifierType == null) {
             throw new ApiException("Missing the required parameter 'identifierType' when calling updateInstrumentIdentifier(Async)");
@@ -3989,20 +5147,34 @@ public class InstrumentsApi {
             throw new ApiException("Missing the required parameter 'updateInstrumentIdentifierRequest' when calling updateInstrumentIdentifier(Async)");
         }
 
-        return updateInstrumentIdentifierCall(identifierType, identifier, updateInstrumentIdentifierRequest, scope, _callback);
+        return updateInstrumentIdentifierCall(identifierType, identifier, updateInstrumentIdentifierRequest, scope, _callback, opts);
 
     }
 
 
     private ApiResponse<Instrument> updateInstrumentIdentifierWithHttpInfo(String identifierType, String identifier, UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest, String scope) throws ApiException {
-        okhttp3.Call localVarCall = updateInstrumentIdentifierValidateBeforeCall(identifierType, identifier, updateInstrumentIdentifierRequest, scope, null);
+        okhttp3.Call localVarCall = updateInstrumentIdentifierValidateBeforeCall(identifierType, identifier, updateInstrumentIdentifierRequest, scope, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Instrument>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Instrument> updateInstrumentIdentifierWithHttpInfo(String identifierType, String identifier, UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest, String scope, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = updateInstrumentIdentifierValidateBeforeCall(identifierType, identifier, updateInstrumentIdentifierRequest, scope, null, opts);
         Type localVarReturnType = new TypeToken<Instrument>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call updateInstrumentIdentifierAsync(String identifierType, String identifier, UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest, String scope, final ApiCallback<Instrument> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateInstrumentIdentifierValidateBeforeCall(identifierType, identifier, updateInstrumentIdentifierRequest, scope, _callback);
+        okhttp3.Call localVarCall = updateInstrumentIdentifierValidateBeforeCall(identifierType, identifier, updateInstrumentIdentifierRequest, scope, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Instrument>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call updateInstrumentIdentifierAsync(String identifierType, String identifier, UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest, String scope, final ApiCallback<Instrument> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = updateInstrumentIdentifierValidateBeforeCall(identifierType, identifier, updateInstrumentIdentifierRequest, scope, _callback, opts);
         Type localVarReturnType = new TypeToken<Instrument>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4065,6 +5237,23 @@ public class InstrumentsApi {
         }
 
         /**
+         * Execute updateInstrumentIdentifier request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Instrument
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated instrument definition with the identifier created, updated or deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Instrument execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Instrument> localVarResp = updateInstrumentIdentifierWithHttpInfo(identifierType, identifier, updateInstrumentIdentifierRequest, scope, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute updateInstrumentIdentifier request with HTTP info returned
          * @return ApiResponse&lt;Instrument&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4078,6 +5267,22 @@ public class InstrumentsApi {
          */
         public ApiResponse<Instrument> executeWithHttpInfo() throws ApiException {
             return updateInstrumentIdentifierWithHttpInfo(identifierType, identifier, updateInstrumentIdentifierRequest, scope);
+        }
+
+        /**
+         * Execute updateInstrumentIdentifier request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Instrument&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated instrument definition with the identifier created, updated or deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Instrument> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return updateInstrumentIdentifierWithHttpInfo(identifierType, identifier, updateInstrumentIdentifierRequest, scope, opts);
         }
 
         /**
@@ -4095,6 +5300,23 @@ public class InstrumentsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Instrument> _callback) throws ApiException {
             return updateInstrumentIdentifierAsync(identifierType, identifier, updateInstrumentIdentifierRequest, scope, _callback);
+        }
+
+        /**
+         * Execute updateInstrumentIdentifier request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated instrument definition with the identifier created, updated or deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Instrument> _callback, ConfigurationOptions opts) throws ApiException {
+            return updateInstrumentIdentifierAsync(identifierType, identifier, updateInstrumentIdentifierRequest, scope, _callback, opts);
         }
     }
 
@@ -4117,6 +5339,10 @@ public class InstrumentsApi {
         return new APIupdateInstrumentIdentifierRequest(identifierType, identifier, updateInstrumentIdentifierRequest);
     }
     private okhttp3.Call upsertInstrumentsCall(Map<String, InstrumentDefinition> requestBody, String scope, final ApiCallback _callback) throws ApiException {
+        return upsertInstrumentsCall(requestBody, scope,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertInstrumentsCall(Map<String, InstrumentDefinition> requestBody, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4167,30 +5393,44 @@ public class InstrumentsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertInstrumentsValidateBeforeCall(Map<String, InstrumentDefinition> requestBody, String scope, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertInstrumentsValidateBeforeCall(Map<String, InstrumentDefinition> requestBody, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'requestBody' is set
         if (requestBody == null) {
             throw new ApiException("Missing the required parameter 'requestBody' when calling upsertInstruments(Async)");
         }
 
-        return upsertInstrumentsCall(requestBody, scope, _callback);
+        return upsertInstrumentsCall(requestBody, scope, _callback, opts);
 
     }
 
 
     private ApiResponse<UpsertInstrumentsResponse> upsertInstrumentsWithHttpInfo(Map<String, InstrumentDefinition> requestBody, String scope) throws ApiException {
-        okhttp3.Call localVarCall = upsertInstrumentsValidateBeforeCall(requestBody, scope, null);
+        okhttp3.Call localVarCall = upsertInstrumentsValidateBeforeCall(requestBody, scope, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertInstrumentsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<UpsertInstrumentsResponse> upsertInstrumentsWithHttpInfo(Map<String, InstrumentDefinition> requestBody, String scope, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertInstrumentsValidateBeforeCall(requestBody, scope, null, opts);
         Type localVarReturnType = new TypeToken<UpsertInstrumentsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertInstrumentsAsync(Map<String, InstrumentDefinition> requestBody, String scope, final ApiCallback<UpsertInstrumentsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertInstrumentsValidateBeforeCall(requestBody, scope, _callback);
+        okhttp3.Call localVarCall = upsertInstrumentsValidateBeforeCall(requestBody, scope, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertInstrumentsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertInstrumentsAsync(Map<String, InstrumentDefinition> requestBody, String scope, final ApiCallback<UpsertInstrumentsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertInstrumentsValidateBeforeCall(requestBody, scope, _callback, opts);
         Type localVarReturnType = new TypeToken<UpsertInstrumentsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4249,6 +5489,23 @@ public class InstrumentsApi {
         }
 
         /**
+         * Execute upsertInstruments request. Use any specified configuration options to override any other configuration for this request only.
+         * @return UpsertInstrumentsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The successfully created or updated instruments along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertInstrumentsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<UpsertInstrumentsResponse> localVarResp = upsertInstrumentsWithHttpInfo(requestBody, scope, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertInstruments request with HTTP info returned
          * @return ApiResponse&lt;UpsertInstrumentsResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4262,6 +5519,22 @@ public class InstrumentsApi {
          */
         public ApiResponse<UpsertInstrumentsResponse> executeWithHttpInfo() throws ApiException {
             return upsertInstrumentsWithHttpInfo(requestBody, scope);
+        }
+
+        /**
+         * Execute upsertInstruments request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;UpsertInstrumentsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The successfully created or updated instruments along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertInstrumentsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertInstrumentsWithHttpInfo(requestBody, scope, opts);
         }
 
         /**
@@ -4279,6 +5552,23 @@ public class InstrumentsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<UpsertInstrumentsResponse> _callback) throws ApiException {
             return upsertInstrumentsAsync(requestBody, scope, _callback);
+        }
+
+        /**
+         * Execute upsertInstruments request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The successfully created or updated instruments along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertInstrumentsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertInstrumentsAsync(requestBody, scope, _callback, opts);
         }
     }
 
@@ -4299,6 +5589,10 @@ public class InstrumentsApi {
         return new APIupsertInstrumentsRequest(requestBody);
     }
     private okhttp3.Call upsertInstrumentsPropertiesCall(List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest, String scope, final ApiCallback _callback) throws ApiException {
+        return upsertInstrumentsPropertiesCall(upsertInstrumentPropertyRequest, scope,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertInstrumentsPropertiesCall(List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4349,30 +5643,44 @@ public class InstrumentsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertInstrumentsPropertiesValidateBeforeCall(List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest, String scope, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertInstrumentsPropertiesValidateBeforeCall(List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'upsertInstrumentPropertyRequest' is set
         if (upsertInstrumentPropertyRequest == null) {
             throw new ApiException("Missing the required parameter 'upsertInstrumentPropertyRequest' when calling upsertInstrumentsProperties(Async)");
         }
 
-        return upsertInstrumentsPropertiesCall(upsertInstrumentPropertyRequest, scope, _callback);
+        return upsertInstrumentsPropertiesCall(upsertInstrumentPropertyRequest, scope, _callback, opts);
 
     }
 
 
     private ApiResponse<UpsertInstrumentPropertiesResponse> upsertInstrumentsPropertiesWithHttpInfo(List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest, String scope) throws ApiException {
-        okhttp3.Call localVarCall = upsertInstrumentsPropertiesValidateBeforeCall(upsertInstrumentPropertyRequest, scope, null);
+        okhttp3.Call localVarCall = upsertInstrumentsPropertiesValidateBeforeCall(upsertInstrumentPropertyRequest, scope, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertInstrumentPropertiesResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<UpsertInstrumentPropertiesResponse> upsertInstrumentsPropertiesWithHttpInfo(List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest, String scope, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertInstrumentsPropertiesValidateBeforeCall(upsertInstrumentPropertyRequest, scope, null, opts);
         Type localVarReturnType = new TypeToken<UpsertInstrumentPropertiesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertInstrumentsPropertiesAsync(List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest, String scope, final ApiCallback<UpsertInstrumentPropertiesResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertInstrumentsPropertiesValidateBeforeCall(upsertInstrumentPropertyRequest, scope, _callback);
+        okhttp3.Call localVarCall = upsertInstrumentsPropertiesValidateBeforeCall(upsertInstrumentPropertyRequest, scope, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertInstrumentPropertiesResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertInstrumentsPropertiesAsync(List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest, String scope, final ApiCallback<UpsertInstrumentPropertiesResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertInstrumentsPropertiesValidateBeforeCall(upsertInstrumentPropertyRequest, scope, _callback, opts);
         Type localVarReturnType = new TypeToken<UpsertInstrumentPropertiesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4431,6 +5739,23 @@ public class InstrumentsApi {
         }
 
         /**
+         * Execute upsertInstrumentsProperties request. Use any specified configuration options to override any other configuration for this request only.
+         * @return UpsertInstrumentPropertiesResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The asAt datetime at which the properties were created or updated. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertInstrumentPropertiesResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<UpsertInstrumentPropertiesResponse> localVarResp = upsertInstrumentsPropertiesWithHttpInfo(upsertInstrumentPropertyRequest, scope, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertInstrumentsProperties request with HTTP info returned
          * @return ApiResponse&lt;UpsertInstrumentPropertiesResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -4444,6 +5769,22 @@ public class InstrumentsApi {
          */
         public ApiResponse<UpsertInstrumentPropertiesResponse> executeWithHttpInfo() throws ApiException {
             return upsertInstrumentsPropertiesWithHttpInfo(upsertInstrumentPropertyRequest, scope);
+        }
+
+        /**
+         * Execute upsertInstrumentsProperties request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;UpsertInstrumentPropertiesResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The asAt datetime at which the properties were created or updated. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertInstrumentPropertiesResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertInstrumentsPropertiesWithHttpInfo(upsertInstrumentPropertyRequest, scope, opts);
         }
 
         /**
@@ -4461,6 +5802,23 @@ public class InstrumentsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<UpsertInstrumentPropertiesResponse> _callback) throws ApiException {
             return upsertInstrumentsPropertiesAsync(upsertInstrumentPropertyRequest, scope, _callback);
+        }
+
+        /**
+         * Execute upsertInstrumentsProperties request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The asAt datetime at which the properties were created or updated. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertInstrumentPropertiesResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertInstrumentsPropertiesAsync(upsertInstrumentPropertyRequest, scope, _callback, opts);
         }
     }
 

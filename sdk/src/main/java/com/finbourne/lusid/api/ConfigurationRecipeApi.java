@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -80,6 +81,10 @@ public class ConfigurationRecipeApi {
     }
 
     private okhttp3.Call deleteConfigurationRecipeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+        return deleteConfigurationRecipeCall(scope, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteConfigurationRecipeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -124,11 +129,11 @@ public class ConfigurationRecipeApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteConfigurationRecipeValidateBeforeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteConfigurationRecipeValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteConfigurationRecipe(Async)");
@@ -139,20 +144,34 @@ public class ConfigurationRecipeApi {
             throw new ApiException("Missing the required parameter 'code' when calling deleteConfigurationRecipe(Async)");
         }
 
-        return deleteConfigurationRecipeCall(scope, code, _callback);
+        return deleteConfigurationRecipeCall(scope, code, _callback, opts);
 
     }
 
 
     private ApiResponse<AnnulSingleStructuredDataResponse> deleteConfigurationRecipeWithHttpInfo(String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = deleteConfigurationRecipeValidateBeforeCall(scope, code, null);
+        okhttp3.Call localVarCall = deleteConfigurationRecipeValidateBeforeCall(scope, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AnnulSingleStructuredDataResponse> deleteConfigurationRecipeWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteConfigurationRecipeValidateBeforeCall(scope, code, null, opts);
         Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteConfigurationRecipeAsync(String scope, String code, final ApiCallback<AnnulSingleStructuredDataResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteConfigurationRecipeValidateBeforeCall(scope, code, _callback);
+        okhttp3.Call localVarCall = deleteConfigurationRecipeValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteConfigurationRecipeAsync(String scope, String code, final ApiCallback<AnnulSingleStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteConfigurationRecipeValidateBeforeCall(scope, code, _callback, opts);
         Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -202,6 +221,23 @@ public class ConfigurationRecipeApi {
         }
 
         /**
+         * Execute deleteConfigurationRecipe request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AnnulSingleStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AnnulSingleStructuredDataResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AnnulSingleStructuredDataResponse> localVarResp = deleteConfigurationRecipeWithHttpInfo(scope, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteConfigurationRecipe request with HTTP info returned
          * @return ApiResponse&lt;AnnulSingleStructuredDataResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -215,6 +251,22 @@ public class ConfigurationRecipeApi {
          */
         public ApiResponse<AnnulSingleStructuredDataResponse> executeWithHttpInfo() throws ApiException {
             return deleteConfigurationRecipeWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteConfigurationRecipe request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AnnulSingleStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AnnulSingleStructuredDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteConfigurationRecipeWithHttpInfo(scope, code, opts);
         }
 
         /**
@@ -232,6 +284,23 @@ public class ConfigurationRecipeApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<AnnulSingleStructuredDataResponse> _callback) throws ApiException {
             return deleteConfigurationRecipeAsync(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteConfigurationRecipe request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AnnulSingleStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteConfigurationRecipeAsync(scope, code, _callback, opts);
         }
     }
 
@@ -253,6 +322,10 @@ public class ConfigurationRecipeApi {
         return new APIdeleteConfigurationRecipeRequest(scope, code);
     }
     private okhttp3.Call deleteRecipeComposerCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+        return deleteRecipeComposerCall(scope, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteRecipeComposerCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -297,11 +370,11 @@ public class ConfigurationRecipeApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteRecipeComposerValidateBeforeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteRecipeComposerValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteRecipeComposer(Async)");
@@ -312,20 +385,34 @@ public class ConfigurationRecipeApi {
             throw new ApiException("Missing the required parameter 'code' when calling deleteRecipeComposer(Async)");
         }
 
-        return deleteRecipeComposerCall(scope, code, _callback);
+        return deleteRecipeComposerCall(scope, code, _callback, opts);
 
     }
 
 
     private ApiResponse<AnnulSingleStructuredDataResponse> deleteRecipeComposerWithHttpInfo(String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = deleteRecipeComposerValidateBeforeCall(scope, code, null);
+        okhttp3.Call localVarCall = deleteRecipeComposerValidateBeforeCall(scope, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AnnulSingleStructuredDataResponse> deleteRecipeComposerWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteRecipeComposerValidateBeforeCall(scope, code, null, opts);
         Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteRecipeComposerAsync(String scope, String code, final ApiCallback<AnnulSingleStructuredDataResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteRecipeComposerValidateBeforeCall(scope, code, _callback);
+        okhttp3.Call localVarCall = deleteRecipeComposerValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteRecipeComposerAsync(String scope, String code, final ApiCallback<AnnulSingleStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteRecipeComposerValidateBeforeCall(scope, code, _callback, opts);
         Type localVarReturnType = new TypeToken<AnnulSingleStructuredDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -375,6 +462,23 @@ public class ConfigurationRecipeApi {
         }
 
         /**
+         * Execute deleteRecipeComposer request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AnnulSingleStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AnnulSingleStructuredDataResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AnnulSingleStructuredDataResponse> localVarResp = deleteRecipeComposerWithHttpInfo(scope, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteRecipeComposer request with HTTP info returned
          * @return ApiResponse&lt;AnnulSingleStructuredDataResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -388,6 +492,22 @@ public class ConfigurationRecipeApi {
          */
         public ApiResponse<AnnulSingleStructuredDataResponse> executeWithHttpInfo() throws ApiException {
             return deleteRecipeComposerWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteRecipeComposer request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AnnulSingleStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AnnulSingleStructuredDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteRecipeComposerWithHttpInfo(scope, code, opts);
         }
 
         /**
@@ -405,6 +525,23 @@ public class ConfigurationRecipeApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<AnnulSingleStructuredDataResponse> _callback) throws ApiException {
             return deleteRecipeComposerAsync(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteRecipeComposer request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt of deletion or failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AnnulSingleStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteRecipeComposerAsync(scope, code, _callback, opts);
         }
     }
 
@@ -426,6 +563,10 @@ public class ConfigurationRecipeApi {
         return new APIdeleteRecipeComposerRequest(scope, code);
     }
     private okhttp3.Call getConfigurationRecipeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getConfigurationRecipeCall(scope, code, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getConfigurationRecipeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -474,11 +615,11 @@ public class ConfigurationRecipeApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getConfigurationRecipeValidateBeforeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getConfigurationRecipeValidateBeforeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getConfigurationRecipe(Async)");
@@ -489,20 +630,34 @@ public class ConfigurationRecipeApi {
             throw new ApiException("Missing the required parameter 'code' when calling getConfigurationRecipe(Async)");
         }
 
-        return getConfigurationRecipeCall(scope, code, asAt, _callback);
+        return getConfigurationRecipeCall(scope, code, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<GetRecipeResponse> getConfigurationRecipeWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getConfigurationRecipeValidateBeforeCall(scope, code, asAt, null);
+        okhttp3.Call localVarCall = getConfigurationRecipeValidateBeforeCall(scope, code, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GetRecipeResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<GetRecipeResponse> getConfigurationRecipeWithHttpInfo(String scope, String code, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getConfigurationRecipeValidateBeforeCall(scope, code, asAt, null, opts);
         Type localVarReturnType = new TypeToken<GetRecipeResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getConfigurationRecipeAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<GetRecipeResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getConfigurationRecipeValidateBeforeCall(scope, code, asAt, _callback);
+        okhttp3.Call localVarCall = getConfigurationRecipeValidateBeforeCall(scope, code, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GetRecipeResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getConfigurationRecipeAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<GetRecipeResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getConfigurationRecipeValidateBeforeCall(scope, code, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<GetRecipeResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -563,6 +718,23 @@ public class ConfigurationRecipeApi {
         }
 
         /**
+         * Execute getConfigurationRecipe request. Use any specified configuration options to override any other configuration for this request only.
+         * @return GetRecipeResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Configuration Recipe or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GetRecipeResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<GetRecipeResponse> localVarResp = getConfigurationRecipeWithHttpInfo(scope, code, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getConfigurationRecipe request with HTTP info returned
          * @return ApiResponse&lt;GetRecipeResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -576,6 +748,22 @@ public class ConfigurationRecipeApi {
          */
         public ApiResponse<GetRecipeResponse> executeWithHttpInfo() throws ApiException {
             return getConfigurationRecipeWithHttpInfo(scope, code, asAt);
+        }
+
+        /**
+         * Execute getConfigurationRecipe request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;GetRecipeResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Configuration Recipe or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GetRecipeResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getConfigurationRecipeWithHttpInfo(scope, code, asAt, opts);
         }
 
         /**
@@ -593,6 +781,23 @@ public class ConfigurationRecipeApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<GetRecipeResponse> _callback) throws ApiException {
             return getConfigurationRecipeAsync(scope, code, asAt, _callback);
+        }
+
+        /**
+         * Execute getConfigurationRecipe request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Configuration Recipe or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GetRecipeResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return getConfigurationRecipeAsync(scope, code, asAt, _callback, opts);
         }
     }
 
@@ -614,6 +819,10 @@ public class ConfigurationRecipeApi {
         return new APIgetConfigurationRecipeRequest(scope, code);
     }
     private okhttp3.Call getDerivedRecipeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getDerivedRecipeCall(scope, code, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getDerivedRecipeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -662,11 +871,11 @@ public class ConfigurationRecipeApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getDerivedRecipeValidateBeforeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getDerivedRecipeValidateBeforeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getDerivedRecipe(Async)");
@@ -677,20 +886,34 @@ public class ConfigurationRecipeApi {
             throw new ApiException("Missing the required parameter 'code' when calling getDerivedRecipe(Async)");
         }
 
-        return getDerivedRecipeCall(scope, code, asAt, _callback);
+        return getDerivedRecipeCall(scope, code, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<GetRecipeResponse> getDerivedRecipeWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getDerivedRecipeValidateBeforeCall(scope, code, asAt, null);
+        okhttp3.Call localVarCall = getDerivedRecipeValidateBeforeCall(scope, code, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GetRecipeResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<GetRecipeResponse> getDerivedRecipeWithHttpInfo(String scope, String code, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getDerivedRecipeValidateBeforeCall(scope, code, asAt, null, opts);
         Type localVarReturnType = new TypeToken<GetRecipeResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getDerivedRecipeAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<GetRecipeResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getDerivedRecipeValidateBeforeCall(scope, code, asAt, _callback);
+        okhttp3.Call localVarCall = getDerivedRecipeValidateBeforeCall(scope, code, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GetRecipeResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getDerivedRecipeAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<GetRecipeResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getDerivedRecipeValidateBeforeCall(scope, code, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<GetRecipeResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -751,6 +974,23 @@ public class ConfigurationRecipeApi {
         }
 
         /**
+         * Execute getDerivedRecipe request. Use any specified configuration options to override any other configuration for this request only.
+         * @return GetRecipeResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Configuration Recipe or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GetRecipeResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<GetRecipeResponse> localVarResp = getDerivedRecipeWithHttpInfo(scope, code, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getDerivedRecipe request with HTTP info returned
          * @return ApiResponse&lt;GetRecipeResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -764,6 +1004,22 @@ public class ConfigurationRecipeApi {
          */
         public ApiResponse<GetRecipeResponse> executeWithHttpInfo() throws ApiException {
             return getDerivedRecipeWithHttpInfo(scope, code, asAt);
+        }
+
+        /**
+         * Execute getDerivedRecipe request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;GetRecipeResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Configuration Recipe or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GetRecipeResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getDerivedRecipeWithHttpInfo(scope, code, asAt, opts);
         }
 
         /**
@@ -781,6 +1037,23 @@ public class ConfigurationRecipeApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<GetRecipeResponse> _callback) throws ApiException {
             return getDerivedRecipeAsync(scope, code, asAt, _callback);
+        }
+
+        /**
+         * Execute getDerivedRecipe request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Configuration Recipe or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GetRecipeResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return getDerivedRecipeAsync(scope, code, asAt, _callback, opts);
         }
     }
 
@@ -802,6 +1075,10 @@ public class ConfigurationRecipeApi {
         return new APIgetDerivedRecipeRequest(scope, code);
     }
     private okhttp3.Call getRecipeComposerCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getRecipeComposerCall(scope, code, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getRecipeComposerCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -850,11 +1127,11 @@ public class ConfigurationRecipeApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getRecipeComposerValidateBeforeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getRecipeComposerValidateBeforeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getRecipeComposer(Async)");
@@ -865,20 +1142,34 @@ public class ConfigurationRecipeApi {
             throw new ApiException("Missing the required parameter 'code' when calling getRecipeComposer(Async)");
         }
 
-        return getRecipeComposerCall(scope, code, asAt, _callback);
+        return getRecipeComposerCall(scope, code, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<GetRecipeComposerResponse> getRecipeComposerWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getRecipeComposerValidateBeforeCall(scope, code, asAt, null);
+        okhttp3.Call localVarCall = getRecipeComposerValidateBeforeCall(scope, code, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GetRecipeComposerResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<GetRecipeComposerResponse> getRecipeComposerWithHttpInfo(String scope, String code, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getRecipeComposerValidateBeforeCall(scope, code, asAt, null, opts);
         Type localVarReturnType = new TypeToken<GetRecipeComposerResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getRecipeComposerAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<GetRecipeComposerResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getRecipeComposerValidateBeforeCall(scope, code, asAt, _callback);
+        okhttp3.Call localVarCall = getRecipeComposerValidateBeforeCall(scope, code, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GetRecipeComposerResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getRecipeComposerAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<GetRecipeComposerResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getRecipeComposerValidateBeforeCall(scope, code, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<GetRecipeComposerResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -939,6 +1230,23 @@ public class ConfigurationRecipeApi {
         }
 
         /**
+         * Execute getRecipeComposer request. Use any specified configuration options to override any other configuration for this request only.
+         * @return GetRecipeComposerResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Recipe Composer or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GetRecipeComposerResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<GetRecipeComposerResponse> localVarResp = getRecipeComposerWithHttpInfo(scope, code, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getRecipeComposer request with HTTP info returned
          * @return ApiResponse&lt;GetRecipeComposerResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -952,6 +1260,22 @@ public class ConfigurationRecipeApi {
          */
         public ApiResponse<GetRecipeComposerResponse> executeWithHttpInfo() throws ApiException {
             return getRecipeComposerWithHttpInfo(scope, code, asAt);
+        }
+
+        /**
+         * Execute getRecipeComposer request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;GetRecipeComposerResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Recipe Composer or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GetRecipeComposerResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getRecipeComposerWithHttpInfo(scope, code, asAt, opts);
         }
 
         /**
@@ -969,6 +1293,23 @@ public class ConfigurationRecipeApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<GetRecipeComposerResponse> _callback) throws ApiException {
             return getRecipeComposerAsync(scope, code, asAt, _callback);
+        }
+
+        /**
+         * Execute getRecipeComposer request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully retrieved Recipe Composer or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GetRecipeComposerResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return getRecipeComposerAsync(scope, code, asAt, _callback, opts);
         }
     }
 
@@ -990,6 +1331,10 @@ public class ConfigurationRecipeApi {
         return new APIgetRecipeComposerRequest(scope, code);
     }
     private okhttp3.Call getRecipeComposerResolvedInlineCall(UpsertRecipeComposerRequest upsertRecipeComposerRequest, final ApiCallback _callback) throws ApiException {
+        return getRecipeComposerResolvedInlineCall(upsertRecipeComposerRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getRecipeComposerResolvedInlineCall(UpsertRecipeComposerRequest upsertRecipeComposerRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1036,30 +1381,44 @@ public class ConfigurationRecipeApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getRecipeComposerResolvedInlineValidateBeforeCall(UpsertRecipeComposerRequest upsertRecipeComposerRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getRecipeComposerResolvedInlineValidateBeforeCall(UpsertRecipeComposerRequest upsertRecipeComposerRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'upsertRecipeComposerRequest' is set
         if (upsertRecipeComposerRequest == null) {
             throw new ApiException("Missing the required parameter 'upsertRecipeComposerRequest' when calling getRecipeComposerResolvedInline(Async)");
         }
 
-        return getRecipeComposerResolvedInlineCall(upsertRecipeComposerRequest, _callback);
+        return getRecipeComposerResolvedInlineCall(upsertRecipeComposerRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<GetRecipeResponse> getRecipeComposerResolvedInlineWithHttpInfo(UpsertRecipeComposerRequest upsertRecipeComposerRequest) throws ApiException {
-        okhttp3.Call localVarCall = getRecipeComposerResolvedInlineValidateBeforeCall(upsertRecipeComposerRequest, null);
+        okhttp3.Call localVarCall = getRecipeComposerResolvedInlineValidateBeforeCall(upsertRecipeComposerRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GetRecipeResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<GetRecipeResponse> getRecipeComposerResolvedInlineWithHttpInfo(UpsertRecipeComposerRequest upsertRecipeComposerRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getRecipeComposerResolvedInlineValidateBeforeCall(upsertRecipeComposerRequest, null, opts);
         Type localVarReturnType = new TypeToken<GetRecipeResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getRecipeComposerResolvedInlineAsync(UpsertRecipeComposerRequest upsertRecipeComposerRequest, final ApiCallback<GetRecipeResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getRecipeComposerResolvedInlineValidateBeforeCall(upsertRecipeComposerRequest, _callback);
+        okhttp3.Call localVarCall = getRecipeComposerResolvedInlineValidateBeforeCall(upsertRecipeComposerRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GetRecipeResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getRecipeComposerResolvedInlineAsync(UpsertRecipeComposerRequest upsertRecipeComposerRequest, final ApiCallback<GetRecipeResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getRecipeComposerResolvedInlineValidateBeforeCall(upsertRecipeComposerRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<GetRecipeResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1107,6 +1466,23 @@ public class ConfigurationRecipeApi {
         }
 
         /**
+         * Execute getRecipeComposerResolvedInline request. Use any specified configuration options to override any other configuration for this request only.
+         * @return GetRecipeResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully resolved Configuration Recipe. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GetRecipeResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<GetRecipeResponse> localVarResp = getRecipeComposerResolvedInlineWithHttpInfo(upsertRecipeComposerRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getRecipeComposerResolvedInline request with HTTP info returned
          * @return ApiResponse&lt;GetRecipeResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1120,6 +1496,22 @@ public class ConfigurationRecipeApi {
          */
         public ApiResponse<GetRecipeResponse> executeWithHttpInfo() throws ApiException {
             return getRecipeComposerResolvedInlineWithHttpInfo(upsertRecipeComposerRequest);
+        }
+
+        /**
+         * Execute getRecipeComposerResolvedInline request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;GetRecipeResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully resolved Configuration Recipe. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GetRecipeResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getRecipeComposerResolvedInlineWithHttpInfo(upsertRecipeComposerRequest, opts);
         }
 
         /**
@@ -1137,6 +1529,23 @@ public class ConfigurationRecipeApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<GetRecipeResponse> _callback) throws ApiException {
             return getRecipeComposerResolvedInlineAsync(upsertRecipeComposerRequest, _callback);
+        }
+
+        /**
+         * Execute getRecipeComposerResolvedInline request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully resolved Configuration Recipe. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GetRecipeResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return getRecipeComposerResolvedInlineAsync(upsertRecipeComposerRequest, _callback, opts);
         }
     }
 
@@ -1157,6 +1566,10 @@ public class ConfigurationRecipeApi {
         return new APIgetRecipeComposerResolvedInlineRequest(upsertRecipeComposerRequest);
     }
     private okhttp3.Call listConfigurationRecipesCall(OffsetDateTime asAt, String filter, final ApiCallback _callback) throws ApiException {
+        return listConfigurationRecipesCall(asAt, filter,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listConfigurationRecipesCall(OffsetDateTime asAt, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1207,25 +1620,39 @@ public class ConfigurationRecipeApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listConfigurationRecipesValidateBeforeCall(OffsetDateTime asAt, String filter, final ApiCallback _callback) throws ApiException {
-        return listConfigurationRecipesCall(asAt, filter, _callback);
+    private okhttp3.Call listConfigurationRecipesValidateBeforeCall(OffsetDateTime asAt, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listConfigurationRecipesCall(asAt, filter, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfGetRecipeResponse> listConfigurationRecipesWithHttpInfo(OffsetDateTime asAt, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listConfigurationRecipesValidateBeforeCall(asAt, filter, null);
+        okhttp3.Call localVarCall = listConfigurationRecipesValidateBeforeCall(asAt, filter, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfGetRecipeResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfGetRecipeResponse> listConfigurationRecipesWithHttpInfo(OffsetDateTime asAt, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listConfigurationRecipesValidateBeforeCall(asAt, filter, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfGetRecipeResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listConfigurationRecipesAsync(OffsetDateTime asAt, String filter, final ApiCallback<ResourceListOfGetRecipeResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listConfigurationRecipesValidateBeforeCall(asAt, filter, _callback);
+        okhttp3.Call localVarCall = listConfigurationRecipesValidateBeforeCall(asAt, filter, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfGetRecipeResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listConfigurationRecipesAsync(OffsetDateTime asAt, String filter, final ApiCallback<ResourceListOfGetRecipeResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listConfigurationRecipesValidateBeforeCall(asAt, filter, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfGetRecipeResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1293,6 +1720,23 @@ public class ConfigurationRecipeApi {
         }
 
         /**
+         * Execute listConfigurationRecipes request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfGetRecipeResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested configuration recipes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfGetRecipeResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfGetRecipeResponse> localVarResp = listConfigurationRecipesWithHttpInfo(asAt, filter, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listConfigurationRecipes request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfGetRecipeResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1306,6 +1750,22 @@ public class ConfigurationRecipeApi {
          */
         public ApiResponse<ResourceListOfGetRecipeResponse> executeWithHttpInfo() throws ApiException {
             return listConfigurationRecipesWithHttpInfo(asAt, filter);
+        }
+
+        /**
+         * Execute listConfigurationRecipes request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfGetRecipeResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested configuration recipes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfGetRecipeResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listConfigurationRecipesWithHttpInfo(asAt, filter, opts);
         }
 
         /**
@@ -1323,6 +1783,23 @@ public class ConfigurationRecipeApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfGetRecipeResponse> _callback) throws ApiException {
             return listConfigurationRecipesAsync(asAt, filter, _callback);
+        }
+
+        /**
+         * Execute listConfigurationRecipes request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested configuration recipes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfGetRecipeResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return listConfigurationRecipesAsync(asAt, filter, _callback, opts);
         }
     }
 
@@ -1342,6 +1819,10 @@ public class ConfigurationRecipeApi {
         return new APIlistConfigurationRecipesRequest();
     }
     private okhttp3.Call listDerivedRecipesCall(OffsetDateTime asAt, String filter, final ApiCallback _callback) throws ApiException {
+        return listDerivedRecipesCall(asAt, filter,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listDerivedRecipesCall(OffsetDateTime asAt, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1392,25 +1873,39 @@ public class ConfigurationRecipeApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listDerivedRecipesValidateBeforeCall(OffsetDateTime asAt, String filter, final ApiCallback _callback) throws ApiException {
-        return listDerivedRecipesCall(asAt, filter, _callback);
+    private okhttp3.Call listDerivedRecipesValidateBeforeCall(OffsetDateTime asAt, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listDerivedRecipesCall(asAt, filter, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfGetRecipeResponse> listDerivedRecipesWithHttpInfo(OffsetDateTime asAt, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listDerivedRecipesValidateBeforeCall(asAt, filter, null);
+        okhttp3.Call localVarCall = listDerivedRecipesValidateBeforeCall(asAt, filter, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfGetRecipeResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfGetRecipeResponse> listDerivedRecipesWithHttpInfo(OffsetDateTime asAt, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listDerivedRecipesValidateBeforeCall(asAt, filter, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfGetRecipeResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listDerivedRecipesAsync(OffsetDateTime asAt, String filter, final ApiCallback<ResourceListOfGetRecipeResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listDerivedRecipesValidateBeforeCall(asAt, filter, _callback);
+        okhttp3.Call localVarCall = listDerivedRecipesValidateBeforeCall(asAt, filter, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfGetRecipeResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listDerivedRecipesAsync(OffsetDateTime asAt, String filter, final ApiCallback<ResourceListOfGetRecipeResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listDerivedRecipesValidateBeforeCall(asAt, filter, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfGetRecipeResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1478,6 +1973,23 @@ public class ConfigurationRecipeApi {
         }
 
         /**
+         * Execute listDerivedRecipes request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfGetRecipeResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested configuration recipes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfGetRecipeResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfGetRecipeResponse> localVarResp = listDerivedRecipesWithHttpInfo(asAt, filter, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listDerivedRecipes request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfGetRecipeResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1491,6 +2003,22 @@ public class ConfigurationRecipeApi {
          */
         public ApiResponse<ResourceListOfGetRecipeResponse> executeWithHttpInfo() throws ApiException {
             return listDerivedRecipesWithHttpInfo(asAt, filter);
+        }
+
+        /**
+         * Execute listDerivedRecipes request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfGetRecipeResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested configuration recipes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfGetRecipeResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listDerivedRecipesWithHttpInfo(asAt, filter, opts);
         }
 
         /**
@@ -1508,6 +2036,23 @@ public class ConfigurationRecipeApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfGetRecipeResponse> _callback) throws ApiException {
             return listDerivedRecipesAsync(asAt, filter, _callback);
+        }
+
+        /**
+         * Execute listDerivedRecipes request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested configuration recipes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfGetRecipeResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return listDerivedRecipesAsync(asAt, filter, _callback, opts);
         }
     }
 
@@ -1527,6 +2072,10 @@ public class ConfigurationRecipeApi {
         return new APIlistDerivedRecipesRequest();
     }
     private okhttp3.Call listRecipeComposersCall(OffsetDateTime asAt, String filter, final ApiCallback _callback) throws ApiException {
+        return listRecipeComposersCall(asAt, filter,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listRecipeComposersCall(OffsetDateTime asAt, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1577,25 +2126,39 @@ public class ConfigurationRecipeApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listRecipeComposersValidateBeforeCall(OffsetDateTime asAt, String filter, final ApiCallback _callback) throws ApiException {
-        return listRecipeComposersCall(asAt, filter, _callback);
+    private okhttp3.Call listRecipeComposersValidateBeforeCall(OffsetDateTime asAt, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listRecipeComposersCall(asAt, filter, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfGetRecipeComposerResponse> listRecipeComposersWithHttpInfo(OffsetDateTime asAt, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listRecipeComposersValidateBeforeCall(asAt, filter, null);
+        okhttp3.Call localVarCall = listRecipeComposersValidateBeforeCall(asAt, filter, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfGetRecipeComposerResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfGetRecipeComposerResponse> listRecipeComposersWithHttpInfo(OffsetDateTime asAt, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listRecipeComposersValidateBeforeCall(asAt, filter, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfGetRecipeComposerResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listRecipeComposersAsync(OffsetDateTime asAt, String filter, final ApiCallback<ResourceListOfGetRecipeComposerResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listRecipeComposersValidateBeforeCall(asAt, filter, _callback);
+        okhttp3.Call localVarCall = listRecipeComposersValidateBeforeCall(asAt, filter, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfGetRecipeComposerResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listRecipeComposersAsync(OffsetDateTime asAt, String filter, final ApiCallback<ResourceListOfGetRecipeComposerResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listRecipeComposersValidateBeforeCall(asAt, filter, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfGetRecipeComposerResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1663,6 +2226,23 @@ public class ConfigurationRecipeApi {
         }
 
         /**
+         * Execute listRecipeComposers request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfGetRecipeComposerResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested recipe composers </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfGetRecipeComposerResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfGetRecipeComposerResponse> localVarResp = listRecipeComposersWithHttpInfo(asAt, filter, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listRecipeComposers request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfGetRecipeComposerResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1676,6 +2256,22 @@ public class ConfigurationRecipeApi {
          */
         public ApiResponse<ResourceListOfGetRecipeComposerResponse> executeWithHttpInfo() throws ApiException {
             return listRecipeComposersWithHttpInfo(asAt, filter);
+        }
+
+        /**
+         * Execute listRecipeComposers request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfGetRecipeComposerResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested recipe composers </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfGetRecipeComposerResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listRecipeComposersWithHttpInfo(asAt, filter, opts);
         }
 
         /**
@@ -1693,6 +2289,23 @@ public class ConfigurationRecipeApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfGetRecipeComposerResponse> _callback) throws ApiException {
             return listRecipeComposersAsync(asAt, filter, _callback);
+        }
+
+        /**
+         * Execute listRecipeComposers request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested recipe composers </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfGetRecipeComposerResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return listRecipeComposersAsync(asAt, filter, _callback, opts);
         }
     }
 
@@ -1712,6 +2325,10 @@ public class ConfigurationRecipeApi {
         return new APIlistRecipeComposersRequest();
     }
     private okhttp3.Call upsertConfigurationRecipeCall(UpsertRecipeRequest upsertRecipeRequest, final ApiCallback _callback) throws ApiException {
+        return upsertConfigurationRecipeCall(upsertRecipeRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertConfigurationRecipeCall(UpsertRecipeRequest upsertRecipeRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1758,30 +2375,44 @@ public class ConfigurationRecipeApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertConfigurationRecipeValidateBeforeCall(UpsertRecipeRequest upsertRecipeRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertConfigurationRecipeValidateBeforeCall(UpsertRecipeRequest upsertRecipeRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'upsertRecipeRequest' is set
         if (upsertRecipeRequest == null) {
             throw new ApiException("Missing the required parameter 'upsertRecipeRequest' when calling upsertConfigurationRecipe(Async)");
         }
 
-        return upsertConfigurationRecipeCall(upsertRecipeRequest, _callback);
+        return upsertConfigurationRecipeCall(upsertRecipeRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<UpsertSingleStructuredDataResponse> upsertConfigurationRecipeWithHttpInfo(UpsertRecipeRequest upsertRecipeRequest) throws ApiException {
-        okhttp3.Call localVarCall = upsertConfigurationRecipeValidateBeforeCall(upsertRecipeRequest, null);
+        okhttp3.Call localVarCall = upsertConfigurationRecipeValidateBeforeCall(upsertRecipeRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<UpsertSingleStructuredDataResponse> upsertConfigurationRecipeWithHttpInfo(UpsertRecipeRequest upsertRecipeRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertConfigurationRecipeValidateBeforeCall(upsertRecipeRequest, null, opts);
         Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertConfigurationRecipeAsync(UpsertRecipeRequest upsertRecipeRequest, final ApiCallback<UpsertSingleStructuredDataResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertConfigurationRecipeValidateBeforeCall(upsertRecipeRequest, _callback);
+        okhttp3.Call localVarCall = upsertConfigurationRecipeValidateBeforeCall(upsertRecipeRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertConfigurationRecipeAsync(UpsertRecipeRequest upsertRecipeRequest, final ApiCallback<UpsertSingleStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertConfigurationRecipeValidateBeforeCall(upsertRecipeRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1829,6 +2460,23 @@ public class ConfigurationRecipeApi {
         }
 
         /**
+         * Execute upsertConfigurationRecipe request. Use any specified configuration options to override any other configuration for this request only.
+         * @return UpsertSingleStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertSingleStructuredDataResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<UpsertSingleStructuredDataResponse> localVarResp = upsertConfigurationRecipeWithHttpInfo(upsertRecipeRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertConfigurationRecipe request with HTTP info returned
          * @return ApiResponse&lt;UpsertSingleStructuredDataResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1842,6 +2490,22 @@ public class ConfigurationRecipeApi {
          */
         public ApiResponse<UpsertSingleStructuredDataResponse> executeWithHttpInfo() throws ApiException {
             return upsertConfigurationRecipeWithHttpInfo(upsertRecipeRequest);
+        }
+
+        /**
+         * Execute upsertConfigurationRecipe request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;UpsertSingleStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertSingleStructuredDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertConfigurationRecipeWithHttpInfo(upsertRecipeRequest, opts);
         }
 
         /**
@@ -1859,6 +2523,23 @@ public class ConfigurationRecipeApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<UpsertSingleStructuredDataResponse> _callback) throws ApiException {
             return upsertConfigurationRecipeAsync(upsertRecipeRequest, _callback);
+        }
+
+        /**
+         * Execute upsertConfigurationRecipe request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertSingleStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertConfigurationRecipeAsync(upsertRecipeRequest, _callback, opts);
         }
     }
 
@@ -1879,6 +2560,10 @@ public class ConfigurationRecipeApi {
         return new APIupsertConfigurationRecipeRequest(upsertRecipeRequest);
     }
     private okhttp3.Call upsertRecipeComposerCall(UpsertRecipeComposerRequest upsertRecipeComposerRequest, final ApiCallback _callback) throws ApiException {
+        return upsertRecipeComposerCall(upsertRecipeComposerRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertRecipeComposerCall(UpsertRecipeComposerRequest upsertRecipeComposerRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1925,30 +2610,44 @@ public class ConfigurationRecipeApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertRecipeComposerValidateBeforeCall(UpsertRecipeComposerRequest upsertRecipeComposerRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertRecipeComposerValidateBeforeCall(UpsertRecipeComposerRequest upsertRecipeComposerRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'upsertRecipeComposerRequest' is set
         if (upsertRecipeComposerRequest == null) {
             throw new ApiException("Missing the required parameter 'upsertRecipeComposerRequest' when calling upsertRecipeComposer(Async)");
         }
 
-        return upsertRecipeComposerCall(upsertRecipeComposerRequest, _callback);
+        return upsertRecipeComposerCall(upsertRecipeComposerRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<UpsertSingleStructuredDataResponse> upsertRecipeComposerWithHttpInfo(UpsertRecipeComposerRequest upsertRecipeComposerRequest) throws ApiException {
-        okhttp3.Call localVarCall = upsertRecipeComposerValidateBeforeCall(upsertRecipeComposerRequest, null);
+        okhttp3.Call localVarCall = upsertRecipeComposerValidateBeforeCall(upsertRecipeComposerRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<UpsertSingleStructuredDataResponse> upsertRecipeComposerWithHttpInfo(UpsertRecipeComposerRequest upsertRecipeComposerRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertRecipeComposerValidateBeforeCall(upsertRecipeComposerRequest, null, opts);
         Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertRecipeComposerAsync(UpsertRecipeComposerRequest upsertRecipeComposerRequest, final ApiCallback<UpsertSingleStructuredDataResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertRecipeComposerValidateBeforeCall(upsertRecipeComposerRequest, _callback);
+        okhttp3.Call localVarCall = upsertRecipeComposerValidateBeforeCall(upsertRecipeComposerRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertRecipeComposerAsync(UpsertRecipeComposerRequest upsertRecipeComposerRequest, final ApiCallback<UpsertSingleStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertRecipeComposerValidateBeforeCall(upsertRecipeComposerRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<UpsertSingleStructuredDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1996,6 +2695,23 @@ public class ConfigurationRecipeApi {
         }
 
         /**
+         * Execute upsertRecipeComposer request. Use any specified configuration options to override any other configuration for this request only.
+         * @return UpsertSingleStructuredDataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertSingleStructuredDataResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<UpsertSingleStructuredDataResponse> localVarResp = upsertRecipeComposerWithHttpInfo(upsertRecipeComposerRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertRecipeComposer request with HTTP info returned
          * @return ApiResponse&lt;UpsertSingleStructuredDataResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2009,6 +2725,22 @@ public class ConfigurationRecipeApi {
          */
         public ApiResponse<UpsertSingleStructuredDataResponse> executeWithHttpInfo() throws ApiException {
             return upsertRecipeComposerWithHttpInfo(upsertRecipeComposerRequest);
+        }
+
+        /**
+         * Execute upsertRecipeComposer request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;UpsertSingleStructuredDataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertSingleStructuredDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertRecipeComposerWithHttpInfo(upsertRecipeComposerRequest, opts);
         }
 
         /**
@@ -2026,6 +2758,23 @@ public class ConfigurationRecipeApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<UpsertSingleStructuredDataResponse> _callback) throws ApiException {
             return upsertRecipeComposerAsync(upsertRecipeComposerRequest, _callback);
+        }
+
+        /**
+         * Execute upsertRecipeComposer request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertSingleStructuredDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertRecipeComposerAsync(upsertRecipeComposerRequest, _callback, opts);
         }
     }
 

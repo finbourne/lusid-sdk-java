@@ -50,9 +50,20 @@ public class RelationshipDefinitionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // RelationshipDefinitionsApi apiInstance = apiFactory.build(RelationshipDefinitionsApi.class);
+
         RelationshipDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(RelationshipDefinitionsApi.class);
         CreateRelationshipDefinitionRequest createRelationshipDefinitionRequest = new CreateRelationshipDefinitionRequest(); // CreateRelationshipDefinitionRequest | The definition of the new relationship.
         try {
+            // uncomment the below to set overrides at the request level
+            // RelationshipDefinition result = apiInstance.createRelationshipDefinition(createRelationshipDefinitionRequest).execute(opts);
+
             RelationshipDefinition result = apiInstance.createRelationshipDefinition(createRelationshipDefinitionRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -130,10 +141,21 @@ public class RelationshipDefinitionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // RelationshipDefinitionsApi apiInstance = apiFactory.build(RelationshipDefinitionsApi.class);
+
         RelationshipDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(RelationshipDefinitionsApi.class);
         String scope = "scope_example"; // String | The scope of the relationship definition to be deleted.
         String code = "code_example"; // String | The code of the relationship definition to be deleted. Together with the domain and scope this uniquely   identifies the relationship.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteRelationshipDefinition(scope, code).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteRelationshipDefinition(scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -212,11 +234,22 @@ public class RelationshipDefinitionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // RelationshipDefinitionsApi apiInstance = apiFactory.build(RelationshipDefinitionsApi.class);
+
         RelationshipDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(RelationshipDefinitionsApi.class);
         String scope = "scope_example"; // String | The scope of the specified relationship definition.
         String code = "code_example"; // String | The code of the specified relationship definition. Together with the domain and scope this uniquely   identifies the relationship definition.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the relationship definition. Defaults to return   the latest version of the definition if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // RelationshipDefinition result = apiInstance.getRelationshipDefinition(scope, code, asAt).execute(opts);
+
             RelationshipDefinition result = apiInstance.getRelationshipDefinition(scope, code, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -296,6 +329,14 @@ public class RelationshipDefinitionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // RelationshipDefinitionsApi apiInstance = apiFactory.build(RelationshipDefinitionsApi.class);
+
         RelationshipDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(RelationshipDefinitionsApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the relationship definitions. Defaults to return   the latest version of each definition if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing relationship definitions from a previous call to list relationship definitions. This  value is returned from the previous call. If a pagination token is provided the filter, sortBy and asAt field  must not have changed since the original request.
@@ -303,6 +344,9 @@ public class RelationshipDefinitionsApiExample {
         String filter = "filter_example"; // String | Expression to filter the result set.   For example, to filter on the Scope, use \"scope eq 'ExampleScope'\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names to sort by, each suffixed by \" ASC\" or \" DESC\"
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfRelationshipDefinition result = apiInstance.listRelationshipDefinitions(asAt, page, limit, filter, sortBy).execute(opts);
+
             PagedResourceListOfRelationshipDefinition result = apiInstance.listRelationshipDefinitions(asAt, page, limit, filter, sortBy).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -384,11 +428,22 @@ public class RelationshipDefinitionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // RelationshipDefinitionsApi apiInstance = apiFactory.build(RelationshipDefinitionsApi.class);
+
         RelationshipDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(RelationshipDefinitionsApi.class);
         String scope = "scope_example"; // String | The scope of the relationship definition being updated.
         String code = "code_example"; // String | The code of the relationship definition being updated. Together with the scope this uniquely   identifies the relationship definition.
         UpdateRelationshipDefinitionRequest updateRelationshipDefinitionRequest = new UpdateRelationshipDefinitionRequest(); // UpdateRelationshipDefinitionRequest | The details of relationship definition to update.
         try {
+            // uncomment the below to set overrides at the request level
+            // RelationshipDefinition result = apiInstance.updateRelationshipDefinition(scope, code, updateRelationshipDefinitionRequest).execute(opts);
+
             RelationshipDefinition result = apiInstance.updateRelationshipDefinition(scope, code, updateRelationshipDefinitionRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

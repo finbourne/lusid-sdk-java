@@ -49,11 +49,22 @@ public class AggregationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AggregationApi apiInstance = apiFactory.build(AggregationApi.class);
+
         AggregationApi apiInstance = ApiFactoryBuilder.build(fileName).build(AggregationApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio
         String code = "code_example"; // String | The code of the portfolio
         CreateRecipeRequest createRecipeRequest = new CreateRecipeRequest(); // CreateRecipeRequest | The request specifying the parameters to generating the recipe
         try {
+            // uncomment the below to set overrides at the request level
+            // ConfigurationRecipe result = apiInstance.generateConfigurationRecipe(scope, code, createRecipeRequest).execute(opts);
+
             ConfigurationRecipe result = apiInstance.generateConfigurationRecipe(scope, code, createRecipeRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -133,11 +144,22 @@ public class AggregationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AggregationApi apiInstance = apiFactory.build(AggregationApi.class);
+
         AggregationApi apiInstance = ApiFactoryBuilder.build(fileName).build(AggregationApi.class);
         String page = "page_example"; // String | The pagination token to use to continue listing queryable keys from a previous call to list queryable keys.   This value is returned from the previous call.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
         String filter = "filter_example"; // String | Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfAggregationQuery result = apiInstance.getQueryableKeys(page, limit, filter).execute(opts);
+
             ResourceListOfAggregationQuery result = apiInstance.getQueryableKeys(page, limit, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -217,9 +239,20 @@ public class AggregationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AggregationApi apiInstance = apiFactory.build(AggregationApi.class);
+
         AggregationApi apiInstance = ApiFactoryBuilder.build(fileName).build(AggregationApi.class);
         ValuationRequest valuationRequest = new ValuationRequest(); // ValuationRequest | The request specifying the set of portfolios and dates on which to calculate a set of valuation metrics
         try {
+            // uncomment the below to set overrides at the request level
+            // ListAggregationResponse result = apiInstance.getValuation(valuationRequest).execute(opts);
+
             ListAggregationResponse result = apiInstance.getValuation(valuationRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -297,9 +330,20 @@ public class AggregationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AggregationApi apiInstance = apiFactory.build(AggregationApi.class);
+
         AggregationApi apiInstance = ApiFactoryBuilder.build(fileName).build(AggregationApi.class);
         InlineValuationRequest inlineValuationRequest = new InlineValuationRequest(); // InlineValuationRequest | The request specifying the set of portfolios and dates on which to calculate a set of valuation metrics
         try {
+            // uncomment the below to set overrides at the request level
+            // ListAggregationResponse result = apiInstance.getValuationOfWeightedInstruments(inlineValuationRequest).execute(opts);
+
             ListAggregationResponse result = apiInstance.getValuationOfWeightedInstruments(inlineValuationRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

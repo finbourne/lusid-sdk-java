@@ -60,10 +60,21 @@ public class ReconciliationsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ReconciliationsApi apiInstance = apiFactory.build(ReconciliationsApi.class);
+
         ReconciliationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ReconciliationsApi.class);
         String scope = "scope_example"; // String | The scope of the reconciliation
         CreateReconciliationRequest createReconciliationRequest = new CreateReconciliationRequest(); // CreateReconciliationRequest | The definition of the reconciliation
         try {
+            // uncomment the below to set overrides at the request level
+            // Reconciliation result = apiInstance.createScheduledReconciliation(scope, createReconciliationRequest).execute(opts);
+
             Reconciliation result = apiInstance.createScheduledReconciliation(scope, createReconciliationRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -142,10 +153,21 @@ public class ReconciliationsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ReconciliationsApi apiInstance = apiFactory.build(ReconciliationsApi.class);
+
         ReconciliationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ReconciliationsApi.class);
         String scope = "scope_example"; // String | The scope of the scheduled reconciliation
         String code = "code_example"; // String | The code of the scheduled reconciliation
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteReconciliation(scope, code).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteReconciliation(scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -224,10 +246,21 @@ public class ReconciliationsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ReconciliationsApi apiInstance = apiFactory.build(ReconciliationsApi.class);
+
         ReconciliationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ReconciliationsApi.class);
         String scope = "scope_example"; // String | The scope of the mapping.
         String code = "code_example"; // String | The code fof the mapping.
         try {
+            // uncomment the below to set overrides at the request level
+            // String result = apiInstance.deleteReconciliationMapping(scope, code).execute(opts);
+
             String result = apiInstance.deleteReconciliationMapping(scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -306,6 +339,14 @@ public class ReconciliationsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ReconciliationsApi apiInstance = apiFactory.build(ReconciliationsApi.class);
+
         ReconciliationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ReconciliationsApi.class);
         String scope = "scope_example"; // String | The scope of the scheduled reconciliation
         String code = "code_example"; // String | The code of the scheduled reconciliation
@@ -313,6 +354,9 @@ public class ReconciliationsApiExample {
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the scheduled reconciliation. Defaults to returning the latest version of the reconciliation if not specified.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Reconciliation' property domain to decorate onto the reconciliation.   These must take the form {domain}/{scope}/{code}, for example 'Reconciliation/Broker/Id'.
         try {
+            // uncomment the below to set overrides at the request level
+            // Reconciliation result = apiInstance.getReconciliation(scope, code, effectiveAt, asAt, propertyKeys).execute(opts);
+
             Reconciliation result = apiInstance.getReconciliation(scope, code, effectiveAt, asAt, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -394,10 +438,21 @@ public class ReconciliationsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ReconciliationsApi apiInstance = apiFactory.build(ReconciliationsApi.class);
+
         ReconciliationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ReconciliationsApi.class);
         String scope = "scope_example"; // String | The scope of the mapping.
         String code = "code_example"; // String | The code of the mapping.
         try {
+            // uncomment the below to set overrides at the request level
+            // Mapping result = apiInstance.getReconciliationMapping(scope, code).execute(opts);
+
             Mapping result = apiInstance.getReconciliationMapping(scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -476,9 +531,20 @@ public class ReconciliationsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ReconciliationsApi apiInstance = apiFactory.build(ReconciliationsApi.class);
+
         ReconciliationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ReconciliationsApi.class);
         String reconciliationType = "reconciliationType_example"; // String | Optional parameter to specify which type of mappings should be returned.  Defaults to Transaction if not provided.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfMapping result = apiInstance.listReconciliationMappings(reconciliationType).execute(opts);
+
             ResourceListOfMapping result = apiInstance.listReconciliationMappings(reconciliationType).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -556,6 +622,14 @@ public class ReconciliationsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ReconciliationsApi apiInstance = apiFactory.build(ReconciliationsApi.class);
+
         ReconciliationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ReconciliationsApi.class);
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the TimeVariant properties for the reconciliation. Defaults to the current LUSID   system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the reconciliation. Defaults to returning the latest version   of each reconciliation if not specified.
@@ -564,6 +638,9 @@ public class ReconciliationsApiExample {
         String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the reconciliation type, specify \"id.Code eq '001'\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Reconciliation' domain to decorate onto each reconciliation.   These must take the format {domain}/{scope}/{code}, for example 'Reconciliation/Broker/Id'.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfReconciliation result = apiInstance.listReconciliations(effectiveAt, asAt, page, limit, filter, propertyKeys).execute(opts);
+
             PagedResourceListOfReconciliation result = apiInstance.listReconciliations(effectiveAt, asAt, page, limit, filter, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -646,9 +723,20 @@ public class ReconciliationsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ReconciliationsApi apiInstance = apiFactory.build(ReconciliationsApi.class);
+
         ReconciliationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ReconciliationsApi.class);
         ReconciliationRequest reconciliationRequest = new ReconciliationRequest(); // ReconciliationRequest | The specifications of the inputs to the reconciliation
         try {
+            // uncomment the below to set overrides at the request level
+            // ReconciliationResponse result = apiInstance.reconcileGeneric(reconciliationRequest).execute(opts);
+
             ReconciliationResponse result = apiInstance.reconcileGeneric(reconciliationRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -726,12 +814,23 @@ public class ReconciliationsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ReconciliationsApi apiInstance = apiFactory.build(ReconciliationsApi.class);
+
         ReconciliationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ReconciliationsApi.class);
         List<String> sortBy = Arrays.asList(); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
         Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
         String filter = "filter_example"; // String | Optional. Expression to filter the result set.   For example, to filter on the left portfolio Code, use \"left.portfolioId.code eq 'string'\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         PortfoliosReconciliationRequest portfoliosReconciliationRequest = new PortfoliosReconciliationRequest(); // PortfoliosReconciliationRequest | The specifications of the inputs to the reconciliation
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfReconciliationBreak result = apiInstance.reconcileHoldings(sortBy, limit, filter, portfoliosReconciliationRequest).execute(opts);
+
             ResourceListOfReconciliationBreak result = apiInstance.reconcileHoldings(sortBy, limit, filter, portfoliosReconciliationRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -812,9 +911,20 @@ public class ReconciliationsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ReconciliationsApi apiInstance = apiFactory.build(ReconciliationsApi.class);
+
         ReconciliationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ReconciliationsApi.class);
         InlineValuationsReconciliationRequest inlineValuationsReconciliationRequest = new InlineValuationsReconciliationRequest(); // InlineValuationsReconciliationRequest | The specifications of the inputs to the reconciliation
         try {
+            // uncomment the below to set overrides at the request level
+            // ListAggregationReconciliation result = apiInstance.reconcileInline(inlineValuationsReconciliationRequest).execute(opts);
+
             ListAggregationReconciliation result = apiInstance.reconcileInline(inlineValuationsReconciliationRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -892,9 +1002,20 @@ public class ReconciliationsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ReconciliationsApi apiInstance = apiFactory.build(ReconciliationsApi.class);
+
         ReconciliationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ReconciliationsApi.class);
         TransactionReconciliationRequest transactionReconciliationRequest = new TransactionReconciliationRequest(); // TransactionReconciliationRequest | 
         try {
+            // uncomment the below to set overrides at the request level
+            // TransactionsReconciliationsResponse result = apiInstance.reconcileTransactions(transactionReconciliationRequest).execute(opts);
+
             TransactionsReconciliationsResponse result = apiInstance.reconcileTransactions(transactionReconciliationRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -972,9 +1093,20 @@ public class ReconciliationsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ReconciliationsApi apiInstance = apiFactory.build(ReconciliationsApi.class);
+
         ReconciliationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ReconciliationsApi.class);
         TransactionReconciliationRequestV2 transactionReconciliationRequestV2 = new TransactionReconciliationRequestV2(); // TransactionReconciliationRequestV2 | 
         try {
+            // uncomment the below to set overrides at the request level
+            // ReconciliationResponse result = apiInstance.reconcileTransactionsV2(transactionReconciliationRequestV2).execute(opts);
+
             ReconciliationResponse result = apiInstance.reconcileTransactionsV2(transactionReconciliationRequestV2).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1052,9 +1184,20 @@ public class ReconciliationsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ReconciliationsApi apiInstance = apiFactory.build(ReconciliationsApi.class);
+
         ReconciliationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ReconciliationsApi.class);
         ValuationsReconciliationRequest valuationsReconciliationRequest = new ValuationsReconciliationRequest(); // ValuationsReconciliationRequest | The specifications of the inputs to the reconciliation
         try {
+            // uncomment the below to set overrides at the request level
+            // ListAggregationReconciliation result = apiInstance.reconcileValuation(valuationsReconciliationRequest).execute(opts);
+
             ListAggregationReconciliation result = apiInstance.reconcileValuation(valuationsReconciliationRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1132,11 +1275,22 @@ public class ReconciliationsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ReconciliationsApi apiInstance = apiFactory.build(ReconciliationsApi.class);
+
         ReconciliationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ReconciliationsApi.class);
         String scope = "scope_example"; // String | The scope of the reconciliation to be updated
         String code = "code_example"; // String | The code of the reconciliation to be updated
         UpdateReconciliationRequest updateReconciliationRequest = new UpdateReconciliationRequest(); // UpdateReconciliationRequest | The updated definition of the reconciliation
         try {
+            // uncomment the below to set overrides at the request level
+            // Reconciliation result = apiInstance.updateReconciliation(scope, code, updateReconciliationRequest).execute(opts);
+
             Reconciliation result = apiInstance.updateReconciliation(scope, code, updateReconciliationRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1216,9 +1370,20 @@ public class ReconciliationsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ReconciliationsApi apiInstance = apiFactory.build(ReconciliationsApi.class);
+
         ReconciliationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ReconciliationsApi.class);
         Mapping mapping = new Mapping(); // Mapping | The mapping to be created / updated.
         try {
+            // uncomment the below to set overrides at the request level
+            // Mapping result = apiInstance.upsertReconciliationMapping(mapping).execute(opts);
+
             Mapping result = apiInstance.upsertReconciliationMapping(mapping).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

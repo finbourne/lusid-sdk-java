@@ -50,12 +50,23 @@ public class InstrumentEventsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InstrumentEventsApi apiInstance = apiFactory.build(InstrumentEventsApi.class);
+
         InstrumentEventsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentEventsApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The as at time to use.
         Integer limit = 100; // Integer | Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 100 is used.
         String page = "page_example"; // String | Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this
         QueryApplicableInstrumentEventsRequest queryApplicableInstrumentEventsRequest = new QueryApplicableInstrumentEventsRequest(); // QueryApplicableInstrumentEventsRequest | The filter parameters used to retrieve applicable instrument events.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfApplicableInstrumentEvent result = apiInstance.queryApplicableInstrumentEvents(asAt, limit, page, queryApplicableInstrumentEventsRequest).execute(opts);
+
             ResourceListOfApplicableInstrumentEvent result = apiInstance.queryApplicableInstrumentEvents(asAt, limit, page, queryApplicableInstrumentEventsRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -136,9 +147,20 @@ public class InstrumentEventsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InstrumentEventsApi apiInstance = apiFactory.build(InstrumentEventsApi.class);
+
         InstrumentEventsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentEventsApi.class);
         QueryBucketedCashFlowsRequest queryBucketedCashFlowsRequest = new QueryBucketedCashFlowsRequest(); // QueryBucketedCashFlowsRequest | The Query Information.
         try {
+            // uncomment the below to set overrides at the request level
+            // BucketedCashFlowResponse result = apiInstance.queryBucketedCashFlows(queryBucketedCashFlowsRequest).execute(opts);
+
             BucketedCashFlowResponse result = apiInstance.queryBucketedCashFlows(queryBucketedCashFlowsRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -216,11 +238,22 @@ public class InstrumentEventsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InstrumentEventsApi apiInstance = apiFactory.build(InstrumentEventsApi.class);
+
         InstrumentEventsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentEventsApi.class);
         Integer limit = 1000; // Integer | Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used.
         String page = "page_example"; // String | Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, queryBody, and limit must not  be modified.
         QueryCashFlowsRequest queryCashFlowsRequest = new QueryCashFlowsRequest(); // QueryCashFlowsRequest | The filter parameters used to retrieve instrument events.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfInstrumentCashFlow result = apiInstance.queryCashFlows(limit, page, queryCashFlowsRequest).execute(opts);
+
             ResourceListOfInstrumentCashFlow result = apiInstance.queryCashFlows(limit, page, queryCashFlowsRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -300,11 +333,22 @@ public class InstrumentEventsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InstrumentEventsApi apiInstance = apiFactory.build(InstrumentEventsApi.class);
+
         InstrumentEventsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentEventsApi.class);
         Integer limit = 1000; // Integer | Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used.
         String page = "page_example"; // String | Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, queryBody, and limit must not  be modified.
         QueryInstrumentEventsRequest queryInstrumentEventsRequest = new QueryInstrumentEventsRequest(); // QueryInstrumentEventsRequest | The filter parameters used to retrieve instrument events.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfInstrumentEventHolder result = apiInstance.queryInstrumentEvents(limit, page, queryInstrumentEventsRequest).execute(opts);
+
             ResourceListOfInstrumentEventHolder result = apiInstance.queryInstrumentEvents(limit, page, queryInstrumentEventsRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -384,11 +428,22 @@ public class InstrumentEventsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InstrumentEventsApi apiInstance = apiFactory.build(InstrumentEventsApi.class);
+
         InstrumentEventsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentEventsApi.class);
         Integer limit = 1000; // Integer | Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used.
         String page = "page_example"; // String | Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, queryBody, and limit must not  be modified.
         QueryTradeTicketsRequest queryTradeTicketsRequest = new QueryTradeTicketsRequest(); // QueryTradeTicketsRequest | The filter parameters used to retrieve instrument events.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfPortfolioTradeTicket result = apiInstance.queryTradeTickets(limit, page, queryTradeTicketsRequest).execute(opts);
+
             ResourceListOfPortfolioTradeTicket result = apiInstance.queryTradeTickets(limit, page, queryTradeTicketsRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

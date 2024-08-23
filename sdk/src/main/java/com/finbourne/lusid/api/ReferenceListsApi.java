@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -76,6 +77,10 @@ public class ReferenceListsApi {
     }
 
     private okhttp3.Call deleteReferenceListCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+        return deleteReferenceListCall(scope, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteReferenceListCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -120,11 +125,11 @@ public class ReferenceListsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteReferenceListValidateBeforeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteReferenceListValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteReferenceList(Async)");
@@ -135,20 +140,34 @@ public class ReferenceListsApi {
             throw new ApiException("Missing the required parameter 'code' when calling deleteReferenceList(Async)");
         }
 
-        return deleteReferenceListCall(scope, code, _callback);
+        return deleteReferenceListCall(scope, code, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deleteReferenceListWithHttpInfo(String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = deleteReferenceListValidateBeforeCall(scope, code, null);
+        okhttp3.Call localVarCall = deleteReferenceListValidateBeforeCall(scope, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteReferenceListWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteReferenceListValidateBeforeCall(scope, code, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteReferenceListAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteReferenceListValidateBeforeCall(scope, code, _callback);
+        okhttp3.Call localVarCall = deleteReferenceListValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteReferenceListAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteReferenceListValidateBeforeCall(scope, code, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -198,6 +217,23 @@ public class ReferenceListsApi {
         }
 
         /**
+         * Execute deleteReferenceList request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The deleted reference list response. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteReferenceListWithHttpInfo(scope, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteReferenceList request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -211,6 +247,22 @@ public class ReferenceListsApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deleteReferenceListWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteReferenceList request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The deleted reference list response. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteReferenceListWithHttpInfo(scope, code, opts);
         }
 
         /**
@@ -228,6 +280,23 @@ public class ReferenceListsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deleteReferenceListAsync(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteReferenceList request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The deleted reference list response. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteReferenceListAsync(scope, code, _callback, opts);
         }
     }
 
@@ -249,6 +318,10 @@ public class ReferenceListsApi {
         return new APIdeleteReferenceListRequest(scope, code);
     }
     private okhttp3.Call getReferenceListCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getReferenceListCall(scope, code, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getReferenceListCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -297,11 +370,11 @@ public class ReferenceListsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getReferenceListValidateBeforeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getReferenceListValidateBeforeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getReferenceList(Async)");
@@ -312,20 +385,34 @@ public class ReferenceListsApi {
             throw new ApiException("Missing the required parameter 'code' when calling getReferenceList(Async)");
         }
 
-        return getReferenceListCall(scope, code, asAt, _callback);
+        return getReferenceListCall(scope, code, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<ReferenceListResponse> getReferenceListWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getReferenceListValidateBeforeCall(scope, code, asAt, null);
+        okhttp3.Call localVarCall = getReferenceListValidateBeforeCall(scope, code, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ReferenceListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ReferenceListResponse> getReferenceListWithHttpInfo(String scope, String code, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getReferenceListValidateBeforeCall(scope, code, asAt, null, opts);
         Type localVarReturnType = new TypeToken<ReferenceListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getReferenceListAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<ReferenceListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getReferenceListValidateBeforeCall(scope, code, asAt, _callback);
+        okhttp3.Call localVarCall = getReferenceListValidateBeforeCall(scope, code, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ReferenceListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getReferenceListAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<ReferenceListResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getReferenceListValidateBeforeCall(scope, code, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<ReferenceListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -386,6 +473,23 @@ public class ReferenceListsApi {
         }
 
         /**
+         * Execute getReferenceList request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ReferenceListResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Reference List matching the requested identifier. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ReferenceListResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ReferenceListResponse> localVarResp = getReferenceListWithHttpInfo(scope, code, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getReferenceList request with HTTP info returned
          * @return ApiResponse&lt;ReferenceListResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -399,6 +503,22 @@ public class ReferenceListsApi {
          */
         public ApiResponse<ReferenceListResponse> executeWithHttpInfo() throws ApiException {
             return getReferenceListWithHttpInfo(scope, code, asAt);
+        }
+
+        /**
+         * Execute getReferenceList request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ReferenceListResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Reference List matching the requested identifier. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ReferenceListResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getReferenceListWithHttpInfo(scope, code, asAt, opts);
         }
 
         /**
@@ -416,6 +536,23 @@ public class ReferenceListsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ReferenceListResponse> _callback) throws ApiException {
             return getReferenceListAsync(scope, code, asAt, _callback);
+        }
+
+        /**
+         * Execute getReferenceList request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Reference List matching the requested identifier. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ReferenceListResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return getReferenceListAsync(scope, code, asAt, _callback, opts);
         }
     }
 
@@ -437,6 +574,10 @@ public class ReferenceListsApi {
         return new APIgetReferenceListRequest(scope, code);
     }
     private okhttp3.Call listReferenceListsCall(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+        return listReferenceListsCall(asAt, page, limit, filter,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listReferenceListsCall(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -495,25 +636,39 @@ public class ReferenceListsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listReferenceListsValidateBeforeCall(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
-        return listReferenceListsCall(asAt, page, limit, filter, _callback);
+    private okhttp3.Call listReferenceListsValidateBeforeCall(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listReferenceListsCall(asAt, page, limit, filter, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfReferenceListResponse> listReferenceListsWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listReferenceListsValidateBeforeCall(asAt, page, limit, filter, null);
+        okhttp3.Call localVarCall = listReferenceListsValidateBeforeCall(asAt, page, limit, filter, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfReferenceListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfReferenceListResponse> listReferenceListsWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listReferenceListsValidateBeforeCall(asAt, page, limit, filter, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfReferenceListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listReferenceListsAsync(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfReferenceListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listReferenceListsValidateBeforeCall(asAt, page, limit, filter, _callback);
+        okhttp3.Call localVarCall = listReferenceListsValidateBeforeCall(asAt, page, limit, filter, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfReferenceListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listReferenceListsAsync(OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfReferenceListResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listReferenceListsValidateBeforeCall(asAt, page, limit, filter, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfReferenceListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -603,6 +758,23 @@ public class ReferenceListsApi {
         }
 
         /**
+         * Execute listReferenceLists request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfReferenceListResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of Reference Lists. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfReferenceListResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfReferenceListResponse> localVarResp = listReferenceListsWithHttpInfo(asAt, page, limit, filter, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listReferenceLists request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfReferenceListResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -616,6 +788,22 @@ public class ReferenceListsApi {
          */
         public ApiResponse<PagedResourceListOfReferenceListResponse> executeWithHttpInfo() throws ApiException {
             return listReferenceListsWithHttpInfo(asAt, page, limit, filter);
+        }
+
+        /**
+         * Execute listReferenceLists request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfReferenceListResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of Reference Lists. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfReferenceListResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listReferenceListsWithHttpInfo(asAt, page, limit, filter, opts);
         }
 
         /**
@@ -633,6 +821,23 @@ public class ReferenceListsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfReferenceListResponse> _callback) throws ApiException {
             return listReferenceListsAsync(asAt, page, limit, filter, _callback);
+        }
+
+        /**
+         * Execute listReferenceLists request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of Reference Lists. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfReferenceListResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return listReferenceListsAsync(asAt, page, limit, filter, _callback, opts);
         }
     }
 
@@ -652,6 +857,10 @@ public class ReferenceListsApi {
         return new APIlistReferenceListsRequest();
     }
     private okhttp3.Call upsertReferenceListCall(ReferenceListRequest referenceListRequest, final ApiCallback _callback) throws ApiException {
+        return upsertReferenceListCall(referenceListRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertReferenceListCall(ReferenceListRequest referenceListRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -698,25 +907,39 @@ public class ReferenceListsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertReferenceListValidateBeforeCall(ReferenceListRequest referenceListRequest, final ApiCallback _callback) throws ApiException {
-        return upsertReferenceListCall(referenceListRequest, _callback);
+    private okhttp3.Call upsertReferenceListValidateBeforeCall(ReferenceListRequest referenceListRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return upsertReferenceListCall(referenceListRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<ReferenceListResponse> upsertReferenceListWithHttpInfo(ReferenceListRequest referenceListRequest) throws ApiException {
-        okhttp3.Call localVarCall = upsertReferenceListValidateBeforeCall(referenceListRequest, null);
+        okhttp3.Call localVarCall = upsertReferenceListValidateBeforeCall(referenceListRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ReferenceListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ReferenceListResponse> upsertReferenceListWithHttpInfo(ReferenceListRequest referenceListRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertReferenceListValidateBeforeCall(referenceListRequest, null, opts);
         Type localVarReturnType = new TypeToken<ReferenceListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertReferenceListAsync(ReferenceListRequest referenceListRequest, final ApiCallback<ReferenceListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertReferenceListValidateBeforeCall(referenceListRequest, _callback);
+        okhttp3.Call localVarCall = upsertReferenceListValidateBeforeCall(referenceListRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ReferenceListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertReferenceListAsync(ReferenceListRequest referenceListRequest, final ApiCallback<ReferenceListResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertReferenceListValidateBeforeCall(referenceListRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<ReferenceListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -773,6 +996,23 @@ public class ReferenceListsApi {
         }
 
         /**
+         * Execute upsertReferenceList request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ReferenceListResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The upserted Reference List instance. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ReferenceListResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ReferenceListResponse> localVarResp = upsertReferenceListWithHttpInfo(referenceListRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertReferenceList request with HTTP info returned
          * @return ApiResponse&lt;ReferenceListResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -786,6 +1026,22 @@ public class ReferenceListsApi {
          */
         public ApiResponse<ReferenceListResponse> executeWithHttpInfo() throws ApiException {
             return upsertReferenceListWithHttpInfo(referenceListRequest);
+        }
+
+        /**
+         * Execute upsertReferenceList request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ReferenceListResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The upserted Reference List instance. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ReferenceListResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertReferenceListWithHttpInfo(referenceListRequest, opts);
         }
 
         /**
@@ -803,6 +1059,23 @@ public class ReferenceListsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ReferenceListResponse> _callback) throws ApiException {
             return upsertReferenceListAsync(referenceListRequest, _callback);
+        }
+
+        /**
+         * Execute upsertReferenceList request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The upserted Reference List instance. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ReferenceListResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertReferenceListAsync(referenceListRequest, _callback, opts);
         }
     }
 

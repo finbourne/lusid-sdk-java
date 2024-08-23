@@ -49,10 +49,21 @@ public class ComplexMarketDataApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ComplexMarketDataApi apiInstance = apiFactory.build(ComplexMarketDataApi.class);
+
         ComplexMarketDataApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplexMarketDataApi.class);
         String scope = "scope_example"; // String | The scope of the complex market data to delete.
         Map<String, ComplexMarketDataId> requestBody = new HashMap(); // Map<String, ComplexMarketDataId> | The complex market data Ids to delete, each keyed by a unique correlation id.
         try {
+            // uncomment the below to set overrides at the request level
+            // AnnulStructuredDataResponse result = apiInstance.deleteComplexMarketData(scope, requestBody).execute(opts);
+
             AnnulStructuredDataResponse result = apiInstance.deleteComplexMarketData(scope, requestBody).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -131,6 +142,14 @@ public class ComplexMarketDataApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ComplexMarketDataApi apiInstance = apiFactory.build(ComplexMarketDataApi.class);
+
         ComplexMarketDataApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplexMarketDataApi.class);
         String scope = "scope_example"; // String | The scope of the complex market data to retrieve.
         Map<String, ComplexMarketDataId> requestBody = new HashMap(); // Map<String, ComplexMarketDataId> | The time invariant set of complex data identifiers to retrieve the data for. These need to be   keyed by a unique correlation id allowing the retrieved item to be identified in the response.
@@ -138,6 +157,9 @@ public class ComplexMarketDataApiExample {
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the complex market data. Defaults to return the latest version if not specified.
         String maxAge = "maxAge_example"; // String | The duration of the look back window in an ISO8601 time interval format e.g. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).   This is subtracted from the provided effectiveAt datetime to generate a effective datetime window inside which a complex market data item must exist to be retrieved.
         try {
+            // uncomment the below to set overrides at the request level
+            // GetComplexMarketDataResponse result = apiInstance.getComplexMarketData(scope, requestBody, effectiveAt, asAt, maxAge).execute(opts);
+
             GetComplexMarketDataResponse result = apiInstance.getComplexMarketData(scope, requestBody, effectiveAt, asAt, maxAge).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -219,9 +241,20 @@ public class ComplexMarketDataApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ComplexMarketDataApi apiInstance = apiFactory.build(ComplexMarketDataApi.class);
+
         ComplexMarketDataApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplexMarketDataApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the ComplexMarketData. Defaults to latest if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfListComplexMarketDataWithMetaDataResponse result = apiInstance.listComplexMarketData(asAt).execute(opts);
+
             ResourceListOfListComplexMarketDataWithMetaDataResponse result = apiInstance.listComplexMarketData(asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -299,10 +332,21 @@ public class ComplexMarketDataApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ComplexMarketDataApi apiInstance = apiFactory.build(ComplexMarketDataApi.class);
+
         ComplexMarketDataApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplexMarketDataApi.class);
         String scope = "scope_example"; // String | The scope to use when updating or inserting the complex market data.
         Map<String, UpsertComplexMarketDataRequest> requestBody = new HashMap(); // Map<String, UpsertComplexMarketDataRequest> | The set of complex market data items to update or insert keyed by a unique correlation id.
         try {
+            // uncomment the below to set overrides at the request level
+            // UpsertStructuredDataResponse result = apiInstance.upsertComplexMarketData(scope, requestBody).execute(opts);
+
             UpsertStructuredDataResponse result = apiInstance.upsertComplexMarketData(scope, requestBody).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

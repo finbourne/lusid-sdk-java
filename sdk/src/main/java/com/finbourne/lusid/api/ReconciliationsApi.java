@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -89,6 +90,10 @@ public class ReconciliationsApi {
     }
 
     private okhttp3.Call createScheduledReconciliationCall(String scope, CreateReconciliationRequest createReconciliationRequest, final ApiCallback _callback) throws ApiException {
+        return createScheduledReconciliationCall(scope, createReconciliationRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call createScheduledReconciliationCall(String scope, CreateReconciliationRequest createReconciliationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -136,30 +141,44 @@ public class ReconciliationsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createScheduledReconciliationValidateBeforeCall(String scope, CreateReconciliationRequest createReconciliationRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createScheduledReconciliationValidateBeforeCall(String scope, CreateReconciliationRequest createReconciliationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling createScheduledReconciliation(Async)");
         }
 
-        return createScheduledReconciliationCall(scope, createReconciliationRequest, _callback);
+        return createScheduledReconciliationCall(scope, createReconciliationRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<Reconciliation> createScheduledReconciliationWithHttpInfo(String scope, CreateReconciliationRequest createReconciliationRequest) throws ApiException {
-        okhttp3.Call localVarCall = createScheduledReconciliationValidateBeforeCall(scope, createReconciliationRequest, null);
+        okhttp3.Call localVarCall = createScheduledReconciliationValidateBeforeCall(scope, createReconciliationRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Reconciliation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Reconciliation> createScheduledReconciliationWithHttpInfo(String scope, CreateReconciliationRequest createReconciliationRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createScheduledReconciliationValidateBeforeCall(scope, createReconciliationRequest, null, opts);
         Type localVarReturnType = new TypeToken<Reconciliation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call createScheduledReconciliationAsync(String scope, CreateReconciliationRequest createReconciliationRequest, final ApiCallback<Reconciliation> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createScheduledReconciliationValidateBeforeCall(scope, createReconciliationRequest, _callback);
+        okhttp3.Call localVarCall = createScheduledReconciliationValidateBeforeCall(scope, createReconciliationRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Reconciliation>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call createScheduledReconciliationAsync(String scope, CreateReconciliationRequest createReconciliationRequest, final ApiCallback<Reconciliation> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = createScheduledReconciliationValidateBeforeCall(scope, createReconciliationRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<Reconciliation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -218,6 +237,23 @@ public class ReconciliationsApi {
         }
 
         /**
+         * Execute createScheduledReconciliation request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Reconciliation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created scheduled reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Reconciliation execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Reconciliation> localVarResp = createScheduledReconciliationWithHttpInfo(scope, createReconciliationRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute createScheduledReconciliation request with HTTP info returned
          * @return ApiResponse&lt;Reconciliation&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -231,6 +267,22 @@ public class ReconciliationsApi {
          */
         public ApiResponse<Reconciliation> executeWithHttpInfo() throws ApiException {
             return createScheduledReconciliationWithHttpInfo(scope, createReconciliationRequest);
+        }
+
+        /**
+         * Execute createScheduledReconciliation request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Reconciliation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created scheduled reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Reconciliation> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return createScheduledReconciliationWithHttpInfo(scope, createReconciliationRequest, opts);
         }
 
         /**
@@ -248,6 +300,23 @@ public class ReconciliationsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Reconciliation> _callback) throws ApiException {
             return createScheduledReconciliationAsync(scope, createReconciliationRequest, _callback);
+        }
+
+        /**
+         * Execute createScheduledReconciliation request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created scheduled reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Reconciliation> _callback, ConfigurationOptions opts) throws ApiException {
+            return createScheduledReconciliationAsync(scope, createReconciliationRequest, _callback, opts);
         }
     }
 
@@ -268,6 +337,10 @@ public class ReconciliationsApi {
         return new APIcreateScheduledReconciliationRequest(scope);
     }
     private okhttp3.Call deleteReconciliationCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+        return deleteReconciliationCall(scope, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteReconciliationCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -312,11 +385,11 @@ public class ReconciliationsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteReconciliationValidateBeforeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteReconciliationValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteReconciliation(Async)");
@@ -327,20 +400,34 @@ public class ReconciliationsApi {
             throw new ApiException("Missing the required parameter 'code' when calling deleteReconciliation(Async)");
         }
 
-        return deleteReconciliationCall(scope, code, _callback);
+        return deleteReconciliationCall(scope, code, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deleteReconciliationWithHttpInfo(String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = deleteReconciliationValidateBeforeCall(scope, code, null);
+        okhttp3.Call localVarCall = deleteReconciliationValidateBeforeCall(scope, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteReconciliationWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteReconciliationValidateBeforeCall(scope, code, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteReconciliationAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteReconciliationValidateBeforeCall(scope, code, _callback);
+        okhttp3.Call localVarCall = deleteReconciliationValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteReconciliationAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteReconciliationValidateBeforeCall(scope, code, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -390,6 +477,23 @@ public class ReconciliationsApi {
         }
 
         /**
+         * Execute deleteReconciliation request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The reconciliation at the requested as at was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteReconciliationWithHttpInfo(scope, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteReconciliation request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -403,6 +507,22 @@ public class ReconciliationsApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deleteReconciliationWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteReconciliation request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The reconciliation at the requested as at was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteReconciliationWithHttpInfo(scope, code, opts);
         }
 
         /**
@@ -420,6 +540,23 @@ public class ReconciliationsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deleteReconciliationAsync(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteReconciliation request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The reconciliation at the requested as at was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteReconciliationAsync(scope, code, _callback, opts);
         }
     }
 
@@ -441,6 +578,10 @@ public class ReconciliationsApi {
         return new APIdeleteReconciliationRequest(scope, code);
     }
     private okhttp3.Call deleteReconciliationMappingCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+        return deleteReconciliationMappingCall(scope, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteReconciliationMappingCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -485,11 +626,11 @@ public class ReconciliationsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteReconciliationMappingValidateBeforeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteReconciliationMappingValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteReconciliationMapping(Async)");
@@ -500,20 +641,34 @@ public class ReconciliationsApi {
             throw new ApiException("Missing the required parameter 'code' when calling deleteReconciliationMapping(Async)");
         }
 
-        return deleteReconciliationMappingCall(scope, code, _callback);
+        return deleteReconciliationMappingCall(scope, code, _callback, opts);
 
     }
 
 
     private ApiResponse<String> deleteReconciliationMappingWithHttpInfo(String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = deleteReconciliationMappingValidateBeforeCall(scope, code, null);
+        okhttp3.Call localVarCall = deleteReconciliationMappingValidateBeforeCall(scope, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<String> deleteReconciliationMappingWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteReconciliationMappingValidateBeforeCall(scope, code, null, opts);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteReconciliationMappingAsync(String scope, String code, final ApiCallback<String> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteReconciliationMappingValidateBeforeCall(scope, code, _callback);
+        okhttp3.Call localVarCall = deleteReconciliationMappingValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteReconciliationMappingAsync(String scope, String code, final ApiCallback<String> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteReconciliationMappingValidateBeforeCall(scope, code, _callback, opts);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -563,6 +718,23 @@ public class ReconciliationsApi {
         }
 
         /**
+         * Execute deleteReconciliationMapping request. Use any specified configuration options to override any other configuration for this request only.
+         * @return String
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A string specifying the scope and code that were deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public String execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<String> localVarResp = deleteReconciliationMappingWithHttpInfo(scope, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteReconciliationMapping request with HTTP info returned
          * @return ApiResponse&lt;String&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -576,6 +748,22 @@ public class ReconciliationsApi {
          */
         public ApiResponse<String> executeWithHttpInfo() throws ApiException {
             return deleteReconciliationMappingWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteReconciliationMapping request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;String&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A string specifying the scope and code that were deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<String> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteReconciliationMappingWithHttpInfo(scope, code, opts);
         }
 
         /**
@@ -593,6 +781,23 @@ public class ReconciliationsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<String> _callback) throws ApiException {
             return deleteReconciliationMappingAsync(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteReconciliationMapping request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A string specifying the scope and code that were deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<String> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteReconciliationMappingAsync(scope, code, _callback, opts);
         }
     }
 
@@ -614,6 +819,10 @@ public class ReconciliationsApi {
         return new APIdeleteReconciliationMappingRequest(scope, code);
     }
     private okhttp3.Call getReconciliationCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return getReconciliationCall(scope, code, effectiveAt, asAt, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getReconciliationCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -670,11 +879,11 @@ public class ReconciliationsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getReconciliationValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getReconciliationValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getReconciliation(Async)");
@@ -685,20 +894,34 @@ public class ReconciliationsApi {
             throw new ApiException("Missing the required parameter 'code' when calling getReconciliation(Async)");
         }
 
-        return getReconciliationCall(scope, code, effectiveAt, asAt, propertyKeys, _callback);
+        return getReconciliationCall(scope, code, effectiveAt, asAt, propertyKeys, _callback, opts);
 
     }
 
 
     private ApiResponse<Reconciliation> getReconciliationWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = getReconciliationValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, null);
+        okhttp3.Call localVarCall = getReconciliationValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Reconciliation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Reconciliation> getReconciliationWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getReconciliationValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<Reconciliation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getReconciliationAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<Reconciliation> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getReconciliationValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback);
+        okhttp3.Call localVarCall = getReconciliationValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Reconciliation>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getReconciliationAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<Reconciliation> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getReconciliationValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<Reconciliation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -781,6 +1004,23 @@ public class ReconciliationsApi {
         }
 
         /**
+         * Execute getReconciliation request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Reconciliation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested scheduled reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Reconciliation execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Reconciliation> localVarResp = getReconciliationWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getReconciliation request with HTTP info returned
          * @return ApiResponse&lt;Reconciliation&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -794,6 +1034,22 @@ public class ReconciliationsApi {
          */
         public ApiResponse<Reconciliation> executeWithHttpInfo() throws ApiException {
             return getReconciliationWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
+        }
+
+        /**
+         * Execute getReconciliation request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Reconciliation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested scheduled reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Reconciliation> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getReconciliationWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys, opts);
         }
 
         /**
@@ -811,6 +1067,23 @@ public class ReconciliationsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Reconciliation> _callback) throws ApiException {
             return getReconciliationAsync(scope, code, effectiveAt, asAt, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getReconciliation request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested scheduled reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Reconciliation> _callback, ConfigurationOptions opts) throws ApiException {
+            return getReconciliationAsync(scope, code, effectiveAt, asAt, propertyKeys, _callback, opts);
         }
     }
 
@@ -832,6 +1105,10 @@ public class ReconciliationsApi {
         return new APIgetReconciliationRequest(scope, code);
     }
     private okhttp3.Call getReconciliationMappingCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+        return getReconciliationMappingCall(scope, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getReconciliationMappingCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -876,11 +1153,11 @@ public class ReconciliationsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getReconciliationMappingValidateBeforeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getReconciliationMappingValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getReconciliationMapping(Async)");
@@ -891,20 +1168,34 @@ public class ReconciliationsApi {
             throw new ApiException("Missing the required parameter 'code' when calling getReconciliationMapping(Async)");
         }
 
-        return getReconciliationMappingCall(scope, code, _callback);
+        return getReconciliationMappingCall(scope, code, _callback, opts);
 
     }
 
 
     private ApiResponse<Mapping> getReconciliationMappingWithHttpInfo(String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = getReconciliationMappingValidateBeforeCall(scope, code, null);
+        okhttp3.Call localVarCall = getReconciliationMappingValidateBeforeCall(scope, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Mapping>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Mapping> getReconciliationMappingWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getReconciliationMappingValidateBeforeCall(scope, code, null, opts);
         Type localVarReturnType = new TypeToken<Mapping>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getReconciliationMappingAsync(String scope, String code, final ApiCallback<Mapping> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getReconciliationMappingValidateBeforeCall(scope, code, _callback);
+        okhttp3.Call localVarCall = getReconciliationMappingValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Mapping>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getReconciliationMappingAsync(String scope, String code, final ApiCallback<Mapping> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getReconciliationMappingValidateBeforeCall(scope, code, _callback, opts);
         Type localVarReturnType = new TypeToken<Mapping>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -954,6 +1245,23 @@ public class ReconciliationsApi {
         }
 
         /**
+         * Execute getReconciliationMapping request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Mapping
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The mapping with the specified scope/code. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Mapping execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Mapping> localVarResp = getReconciliationMappingWithHttpInfo(scope, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getReconciliationMapping request with HTTP info returned
          * @return ApiResponse&lt;Mapping&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -967,6 +1275,22 @@ public class ReconciliationsApi {
          */
         public ApiResponse<Mapping> executeWithHttpInfo() throws ApiException {
             return getReconciliationMappingWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute getReconciliationMapping request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Mapping&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The mapping with the specified scope/code. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Mapping> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getReconciliationMappingWithHttpInfo(scope, code, opts);
         }
 
         /**
@@ -984,6 +1308,23 @@ public class ReconciliationsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Mapping> _callback) throws ApiException {
             return getReconciliationMappingAsync(scope, code, _callback);
+        }
+
+        /**
+         * Execute getReconciliationMapping request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The mapping with the specified scope/code. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Mapping> _callback, ConfigurationOptions opts) throws ApiException {
+            return getReconciliationMappingAsync(scope, code, _callback, opts);
         }
     }
 
@@ -1005,6 +1346,10 @@ public class ReconciliationsApi {
         return new APIgetReconciliationMappingRequest(scope, code);
     }
     private okhttp3.Call listReconciliationMappingsCall(String reconciliationType, final ApiCallback _callback) throws ApiException {
+        return listReconciliationMappingsCall(reconciliationType,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listReconciliationMappingsCall(String reconciliationType, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1051,25 +1396,39 @@ public class ReconciliationsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listReconciliationMappingsValidateBeforeCall(String reconciliationType, final ApiCallback _callback) throws ApiException {
-        return listReconciliationMappingsCall(reconciliationType, _callback);
+    private okhttp3.Call listReconciliationMappingsValidateBeforeCall(String reconciliationType, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listReconciliationMappingsCall(reconciliationType, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfMapping> listReconciliationMappingsWithHttpInfo(String reconciliationType) throws ApiException {
-        okhttp3.Call localVarCall = listReconciliationMappingsValidateBeforeCall(reconciliationType, null);
+        okhttp3.Call localVarCall = listReconciliationMappingsValidateBeforeCall(reconciliationType, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfMapping>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfMapping> listReconciliationMappingsWithHttpInfo(String reconciliationType, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listReconciliationMappingsValidateBeforeCall(reconciliationType, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfMapping>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listReconciliationMappingsAsync(String reconciliationType, final ApiCallback<ResourceListOfMapping> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listReconciliationMappingsValidateBeforeCall(reconciliationType, _callback);
+        okhttp3.Call localVarCall = listReconciliationMappingsValidateBeforeCall(reconciliationType, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfMapping>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listReconciliationMappingsAsync(String reconciliationType, final ApiCallback<ResourceListOfMapping> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listReconciliationMappingsValidateBeforeCall(reconciliationType, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfMapping>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1126,6 +1485,23 @@ public class ReconciliationsApi {
         }
 
         /**
+         * Execute listReconciliationMappings request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfMapping
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The mappings that the caller has access to. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfMapping execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfMapping> localVarResp = listReconciliationMappingsWithHttpInfo(reconciliationType, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listReconciliationMappings request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfMapping&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1139,6 +1515,22 @@ public class ReconciliationsApi {
          */
         public ApiResponse<ResourceListOfMapping> executeWithHttpInfo() throws ApiException {
             return listReconciliationMappingsWithHttpInfo(reconciliationType);
+        }
+
+        /**
+         * Execute listReconciliationMappings request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfMapping&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The mappings that the caller has access to. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfMapping> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listReconciliationMappingsWithHttpInfo(reconciliationType, opts);
         }
 
         /**
@@ -1156,6 +1548,23 @@ public class ReconciliationsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfMapping> _callback) throws ApiException {
             return listReconciliationMappingsAsync(reconciliationType, _callback);
+        }
+
+        /**
+         * Execute listReconciliationMappings request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The mappings that the caller has access to. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfMapping> _callback, ConfigurationOptions opts) throws ApiException {
+            return listReconciliationMappingsAsync(reconciliationType, _callback, opts);
         }
     }
 
@@ -1175,6 +1584,10 @@ public class ReconciliationsApi {
         return new APIlistReconciliationMappingsRequest();
     }
     private okhttp3.Call listReconciliationsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return listReconciliationsCall(effectiveAt, asAt, page, limit, filter, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listReconciliationsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1241,25 +1654,39 @@ public class ReconciliationsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listReconciliationsValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
-        return listReconciliationsCall(effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
+    private okhttp3.Call listReconciliationsValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listReconciliationsCall(effectiveAt, asAt, page, limit, filter, propertyKeys, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfReconciliation> listReconciliationsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = listReconciliationsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, propertyKeys, null);
+        okhttp3.Call localVarCall = listReconciliationsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfReconciliation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfReconciliation> listReconciliationsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listReconciliationsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfReconciliation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listReconciliationsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfReconciliation> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listReconciliationsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
+        okhttp3.Call localVarCall = listReconciliationsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfReconciliation>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listReconciliationsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfReconciliation> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listReconciliationsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfReconciliation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1371,6 +1798,23 @@ public class ReconciliationsApi {
         }
 
         /**
+         * Execute listReconciliations request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfReconciliation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List of all scheduled reconciliations </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfReconciliation execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfReconciliation> localVarResp = listReconciliationsWithHttpInfo(effectiveAt, asAt, page, limit, filter, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listReconciliations request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfReconciliation&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1384,6 +1828,22 @@ public class ReconciliationsApi {
          */
         public ApiResponse<PagedResourceListOfReconciliation> executeWithHttpInfo() throws ApiException {
             return listReconciliationsWithHttpInfo(effectiveAt, asAt, page, limit, filter, propertyKeys);
+        }
+
+        /**
+         * Execute listReconciliations request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfReconciliation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List of all scheduled reconciliations </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfReconciliation> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listReconciliationsWithHttpInfo(effectiveAt, asAt, page, limit, filter, propertyKeys, opts);
         }
 
         /**
@@ -1401,6 +1861,23 @@ public class ReconciliationsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfReconciliation> _callback) throws ApiException {
             return listReconciliationsAsync(effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute listReconciliations request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List of all scheduled reconciliations </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfReconciliation> _callback, ConfigurationOptions opts) throws ApiException {
+            return listReconciliationsAsync(effectiveAt, asAt, page, limit, filter, propertyKeys, _callback, opts);
         }
     }
 
@@ -1420,6 +1897,10 @@ public class ReconciliationsApi {
         return new APIlistReconciliationsRequest();
     }
     private okhttp3.Call reconcileGenericCall(ReconciliationRequest reconciliationRequest, final ApiCallback _callback) throws ApiException {
+        return reconcileGenericCall(reconciliationRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call reconcileGenericCall(ReconciliationRequest reconciliationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1466,25 +1947,39 @@ public class ReconciliationsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call reconcileGenericValidateBeforeCall(ReconciliationRequest reconciliationRequest, final ApiCallback _callback) throws ApiException {
-        return reconcileGenericCall(reconciliationRequest, _callback);
+    private okhttp3.Call reconcileGenericValidateBeforeCall(ReconciliationRequest reconciliationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return reconcileGenericCall(reconciliationRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<ReconciliationResponse> reconcileGenericWithHttpInfo(ReconciliationRequest reconciliationRequest) throws ApiException {
-        okhttp3.Call localVarCall = reconcileGenericValidateBeforeCall(reconciliationRequest, null);
+        okhttp3.Call localVarCall = reconcileGenericValidateBeforeCall(reconciliationRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ReconciliationResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ReconciliationResponse> reconcileGenericWithHttpInfo(ReconciliationRequest reconciliationRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = reconcileGenericValidateBeforeCall(reconciliationRequest, null, opts);
         Type localVarReturnType = new TypeToken<ReconciliationResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call reconcileGenericAsync(ReconciliationRequest reconciliationRequest, final ApiCallback<ReconciliationResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = reconcileGenericValidateBeforeCall(reconciliationRequest, _callback);
+        okhttp3.Call localVarCall = reconcileGenericValidateBeforeCall(reconciliationRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ReconciliationResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call reconcileGenericAsync(ReconciliationRequest reconciliationRequest, final ApiCallback<ReconciliationResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = reconcileGenericValidateBeforeCall(reconciliationRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<ReconciliationResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1541,6 +2036,23 @@ public class ReconciliationsApi {
         }
 
         /**
+         * Execute reconcileGeneric request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ReconciliationResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ReconciliationResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ReconciliationResponse> localVarResp = reconcileGenericWithHttpInfo(reconciliationRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute reconcileGeneric request with HTTP info returned
          * @return ApiResponse&lt;ReconciliationResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1554,6 +2066,22 @@ public class ReconciliationsApi {
          */
         public ApiResponse<ReconciliationResponse> executeWithHttpInfo() throws ApiException {
             return reconcileGenericWithHttpInfo(reconciliationRequest);
+        }
+
+        /**
+         * Execute reconcileGeneric request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ReconciliationResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ReconciliationResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return reconcileGenericWithHttpInfo(reconciliationRequest, opts);
         }
 
         /**
@@ -1571,6 +2099,23 @@ public class ReconciliationsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ReconciliationResponse> _callback) throws ApiException {
             return reconcileGenericAsync(reconciliationRequest, _callback);
+        }
+
+        /**
+         * Execute reconcileGeneric request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ReconciliationResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return reconcileGenericAsync(reconciliationRequest, _callback, opts);
         }
     }
 
@@ -1590,6 +2135,10 @@ public class ReconciliationsApi {
         return new APIreconcileGenericRequest();
     }
     private okhttp3.Call reconcileHoldingsCall(List<String> sortBy, Integer limit, String filter, PortfoliosReconciliationRequest portfoliosReconciliationRequest, final ApiCallback _callback) throws ApiException {
+        return reconcileHoldingsCall(sortBy, limit, filter, portfoliosReconciliationRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call reconcileHoldingsCall(List<String> sortBy, Integer limit, String filter, PortfoliosReconciliationRequest portfoliosReconciliationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1648,25 +2197,39 @@ public class ReconciliationsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call reconcileHoldingsValidateBeforeCall(List<String> sortBy, Integer limit, String filter, PortfoliosReconciliationRequest portfoliosReconciliationRequest, final ApiCallback _callback) throws ApiException {
-        return reconcileHoldingsCall(sortBy, limit, filter, portfoliosReconciliationRequest, _callback);
+    private okhttp3.Call reconcileHoldingsValidateBeforeCall(List<String> sortBy, Integer limit, String filter, PortfoliosReconciliationRequest portfoliosReconciliationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return reconcileHoldingsCall(sortBy, limit, filter, portfoliosReconciliationRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfReconciliationBreak> reconcileHoldingsWithHttpInfo(List<String> sortBy, Integer limit, String filter, PortfoliosReconciliationRequest portfoliosReconciliationRequest) throws ApiException {
-        okhttp3.Call localVarCall = reconcileHoldingsValidateBeforeCall(sortBy, limit, filter, portfoliosReconciliationRequest, null);
+        okhttp3.Call localVarCall = reconcileHoldingsValidateBeforeCall(sortBy, limit, filter, portfoliosReconciliationRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfReconciliationBreak>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfReconciliationBreak> reconcileHoldingsWithHttpInfo(List<String> sortBy, Integer limit, String filter, PortfoliosReconciliationRequest portfoliosReconciliationRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = reconcileHoldingsValidateBeforeCall(sortBy, limit, filter, portfoliosReconciliationRequest, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfReconciliationBreak>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call reconcileHoldingsAsync(List<String> sortBy, Integer limit, String filter, PortfoliosReconciliationRequest portfoliosReconciliationRequest, final ApiCallback<ResourceListOfReconciliationBreak> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = reconcileHoldingsValidateBeforeCall(sortBy, limit, filter, portfoliosReconciliationRequest, _callback);
+        okhttp3.Call localVarCall = reconcileHoldingsValidateBeforeCall(sortBy, limit, filter, portfoliosReconciliationRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfReconciliationBreak>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call reconcileHoldingsAsync(List<String> sortBy, Integer limit, String filter, PortfoliosReconciliationRequest portfoliosReconciliationRequest, final ApiCallback<ResourceListOfReconciliationBreak> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = reconcileHoldingsValidateBeforeCall(sortBy, limit, filter, portfoliosReconciliationRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfReconciliationBreak>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1756,6 +2319,23 @@ public class ReconciliationsApi {
         }
 
         /**
+         * Execute reconcileHoldings request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfReconciliationBreak
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfReconciliationBreak execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfReconciliationBreak> localVarResp = reconcileHoldingsWithHttpInfo(sortBy, limit, filter, portfoliosReconciliationRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute reconcileHoldings request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfReconciliationBreak&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1769,6 +2349,22 @@ public class ReconciliationsApi {
          */
         public ApiResponse<ResourceListOfReconciliationBreak> executeWithHttpInfo() throws ApiException {
             return reconcileHoldingsWithHttpInfo(sortBy, limit, filter, portfoliosReconciliationRequest);
+        }
+
+        /**
+         * Execute reconcileHoldings request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfReconciliationBreak&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfReconciliationBreak> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return reconcileHoldingsWithHttpInfo(sortBy, limit, filter, portfoliosReconciliationRequest, opts);
         }
 
         /**
@@ -1786,6 +2382,23 @@ public class ReconciliationsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfReconciliationBreak> _callback) throws ApiException {
             return reconcileHoldingsAsync(sortBy, limit, filter, portfoliosReconciliationRequest, _callback);
+        }
+
+        /**
+         * Execute reconcileHoldings request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfReconciliationBreak> _callback, ConfigurationOptions opts) throws ApiException {
+            return reconcileHoldingsAsync(sortBy, limit, filter, portfoliosReconciliationRequest, _callback, opts);
         }
     }
 
@@ -1805,6 +2418,10 @@ public class ReconciliationsApi {
         return new APIreconcileHoldingsRequest();
     }
     private okhttp3.Call reconcileInlineCall(InlineValuationsReconciliationRequest inlineValuationsReconciliationRequest, final ApiCallback _callback) throws ApiException {
+        return reconcileInlineCall(inlineValuationsReconciliationRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call reconcileInlineCall(InlineValuationsReconciliationRequest inlineValuationsReconciliationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1851,25 +2468,39 @@ public class ReconciliationsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call reconcileInlineValidateBeforeCall(InlineValuationsReconciliationRequest inlineValuationsReconciliationRequest, final ApiCallback _callback) throws ApiException {
-        return reconcileInlineCall(inlineValuationsReconciliationRequest, _callback);
+    private okhttp3.Call reconcileInlineValidateBeforeCall(InlineValuationsReconciliationRequest inlineValuationsReconciliationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return reconcileInlineCall(inlineValuationsReconciliationRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<ListAggregationReconciliation> reconcileInlineWithHttpInfo(InlineValuationsReconciliationRequest inlineValuationsReconciliationRequest) throws ApiException {
-        okhttp3.Call localVarCall = reconcileInlineValidateBeforeCall(inlineValuationsReconciliationRequest, null);
+        okhttp3.Call localVarCall = reconcileInlineValidateBeforeCall(inlineValuationsReconciliationRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ListAggregationReconciliation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ListAggregationReconciliation> reconcileInlineWithHttpInfo(InlineValuationsReconciliationRequest inlineValuationsReconciliationRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = reconcileInlineValidateBeforeCall(inlineValuationsReconciliationRequest, null, opts);
         Type localVarReturnType = new TypeToken<ListAggregationReconciliation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call reconcileInlineAsync(InlineValuationsReconciliationRequest inlineValuationsReconciliationRequest, final ApiCallback<ListAggregationReconciliation> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = reconcileInlineValidateBeforeCall(inlineValuationsReconciliationRequest, _callback);
+        okhttp3.Call localVarCall = reconcileInlineValidateBeforeCall(inlineValuationsReconciliationRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ListAggregationReconciliation>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call reconcileInlineAsync(InlineValuationsReconciliationRequest inlineValuationsReconciliationRequest, final ApiCallback<ListAggregationReconciliation> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = reconcileInlineValidateBeforeCall(inlineValuationsReconciliationRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<ListAggregationReconciliation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1926,6 +2557,23 @@ public class ReconciliationsApi {
         }
 
         /**
+         * Execute reconcileInline request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ListAggregationReconciliation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ListAggregationReconciliation execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ListAggregationReconciliation> localVarResp = reconcileInlineWithHttpInfo(inlineValuationsReconciliationRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute reconcileInline request with HTTP info returned
          * @return ApiResponse&lt;ListAggregationReconciliation&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1939,6 +2587,22 @@ public class ReconciliationsApi {
          */
         public ApiResponse<ListAggregationReconciliation> executeWithHttpInfo() throws ApiException {
             return reconcileInlineWithHttpInfo(inlineValuationsReconciliationRequest);
+        }
+
+        /**
+         * Execute reconcileInline request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ListAggregationReconciliation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ListAggregationReconciliation> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return reconcileInlineWithHttpInfo(inlineValuationsReconciliationRequest, opts);
         }
 
         /**
@@ -1956,6 +2620,23 @@ public class ReconciliationsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ListAggregationReconciliation> _callback) throws ApiException {
             return reconcileInlineAsync(inlineValuationsReconciliationRequest, _callback);
+        }
+
+        /**
+         * Execute reconcileInline request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ListAggregationReconciliation> _callback, ConfigurationOptions opts) throws ApiException {
+            return reconcileInlineAsync(inlineValuationsReconciliationRequest, _callback, opts);
         }
     }
 
@@ -1975,6 +2656,10 @@ public class ReconciliationsApi {
         return new APIreconcileInlineRequest();
     }
     private okhttp3.Call reconcileTransactionsCall(TransactionReconciliationRequest transactionReconciliationRequest, final ApiCallback _callback) throws ApiException {
+        return reconcileTransactionsCall(transactionReconciliationRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call reconcileTransactionsCall(TransactionReconciliationRequest transactionReconciliationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2021,25 +2706,39 @@ public class ReconciliationsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call reconcileTransactionsValidateBeforeCall(TransactionReconciliationRequest transactionReconciliationRequest, final ApiCallback _callback) throws ApiException {
-        return reconcileTransactionsCall(transactionReconciliationRequest, _callback);
+    private okhttp3.Call reconcileTransactionsValidateBeforeCall(TransactionReconciliationRequest transactionReconciliationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return reconcileTransactionsCall(transactionReconciliationRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<TransactionsReconciliationsResponse> reconcileTransactionsWithHttpInfo(TransactionReconciliationRequest transactionReconciliationRequest) throws ApiException {
-        okhttp3.Call localVarCall = reconcileTransactionsValidateBeforeCall(transactionReconciliationRequest, null);
+        okhttp3.Call localVarCall = reconcileTransactionsValidateBeforeCall(transactionReconciliationRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TransactionsReconciliationsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<TransactionsReconciliationsResponse> reconcileTransactionsWithHttpInfo(TransactionReconciliationRequest transactionReconciliationRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = reconcileTransactionsValidateBeforeCall(transactionReconciliationRequest, null, opts);
         Type localVarReturnType = new TypeToken<TransactionsReconciliationsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call reconcileTransactionsAsync(TransactionReconciliationRequest transactionReconciliationRequest, final ApiCallback<TransactionsReconciliationsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = reconcileTransactionsValidateBeforeCall(transactionReconciliationRequest, _callback);
+        okhttp3.Call localVarCall = reconcileTransactionsValidateBeforeCall(transactionReconciliationRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TransactionsReconciliationsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call reconcileTransactionsAsync(TransactionReconciliationRequest transactionReconciliationRequest, final ApiCallback<TransactionsReconciliationsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = reconcileTransactionsValidateBeforeCall(transactionReconciliationRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<TransactionsReconciliationsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2096,6 +2795,23 @@ public class ReconciliationsApi {
         }
 
         /**
+         * Execute reconcileTransactions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return TransactionsReconciliationsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The transaction reconciliation data for the supplied portfolios. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TransactionsReconciliationsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<TransactionsReconciliationsResponse> localVarResp = reconcileTransactionsWithHttpInfo(transactionReconciliationRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute reconcileTransactions request with HTTP info returned
          * @return ApiResponse&lt;TransactionsReconciliationsResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2109,6 +2825,22 @@ public class ReconciliationsApi {
          */
         public ApiResponse<TransactionsReconciliationsResponse> executeWithHttpInfo() throws ApiException {
             return reconcileTransactionsWithHttpInfo(transactionReconciliationRequest);
+        }
+
+        /**
+         * Execute reconcileTransactions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;TransactionsReconciliationsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The transaction reconciliation data for the supplied portfolios. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TransactionsReconciliationsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return reconcileTransactionsWithHttpInfo(transactionReconciliationRequest, opts);
         }
 
         /**
@@ -2126,6 +2858,23 @@ public class ReconciliationsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<TransactionsReconciliationsResponse> _callback) throws ApiException {
             return reconcileTransactionsAsync(transactionReconciliationRequest, _callback);
+        }
+
+        /**
+         * Execute reconcileTransactions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The transaction reconciliation data for the supplied portfolios. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TransactionsReconciliationsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return reconcileTransactionsAsync(transactionReconciliationRequest, _callback, opts);
         }
     }
 
@@ -2145,6 +2894,10 @@ public class ReconciliationsApi {
         return new APIreconcileTransactionsRequest();
     }
     private okhttp3.Call reconcileTransactionsV2Call(TransactionReconciliationRequestV2 transactionReconciliationRequestV2, final ApiCallback _callback) throws ApiException {
+        return reconcileTransactionsV2Call(transactionReconciliationRequestV2,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call reconcileTransactionsV2Call(TransactionReconciliationRequestV2 transactionReconciliationRequestV2, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2191,25 +2944,39 @@ public class ReconciliationsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call reconcileTransactionsV2ValidateBeforeCall(TransactionReconciliationRequestV2 transactionReconciliationRequestV2, final ApiCallback _callback) throws ApiException {
-        return reconcileTransactionsV2Call(transactionReconciliationRequestV2, _callback);
+    private okhttp3.Call reconcileTransactionsV2ValidateBeforeCall(TransactionReconciliationRequestV2 transactionReconciliationRequestV2, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return reconcileTransactionsV2Call(transactionReconciliationRequestV2, _callback, opts);
 
     }
 
 
     private ApiResponse<ReconciliationResponse> reconcileTransactionsV2WithHttpInfo(TransactionReconciliationRequestV2 transactionReconciliationRequestV2) throws ApiException {
-        okhttp3.Call localVarCall = reconcileTransactionsV2ValidateBeforeCall(transactionReconciliationRequestV2, null);
+        okhttp3.Call localVarCall = reconcileTransactionsV2ValidateBeforeCall(transactionReconciliationRequestV2, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ReconciliationResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ReconciliationResponse> reconcileTransactionsV2WithHttpInfo(TransactionReconciliationRequestV2 transactionReconciliationRequestV2, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = reconcileTransactionsV2ValidateBeforeCall(transactionReconciliationRequestV2, null, opts);
         Type localVarReturnType = new TypeToken<ReconciliationResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call reconcileTransactionsV2Async(TransactionReconciliationRequestV2 transactionReconciliationRequestV2, final ApiCallback<ReconciliationResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = reconcileTransactionsV2ValidateBeforeCall(transactionReconciliationRequestV2, _callback);
+        okhttp3.Call localVarCall = reconcileTransactionsV2ValidateBeforeCall(transactionReconciliationRequestV2, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ReconciliationResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call reconcileTransactionsV2Async(TransactionReconciliationRequestV2 transactionReconciliationRequestV2, final ApiCallback<ReconciliationResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = reconcileTransactionsV2ValidateBeforeCall(transactionReconciliationRequestV2, _callback, opts);
         Type localVarReturnType = new TypeToken<ReconciliationResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2266,6 +3033,23 @@ public class ReconciliationsApi {
         }
 
         /**
+         * Execute reconcileTransactionsV2 request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ReconciliationResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ReconciliationResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ReconciliationResponse> localVarResp = reconcileTransactionsV2WithHttpInfo(transactionReconciliationRequestV2, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute reconcileTransactionsV2 request with HTTP info returned
          * @return ApiResponse&lt;ReconciliationResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2279,6 +3063,22 @@ public class ReconciliationsApi {
          */
         public ApiResponse<ReconciliationResponse> executeWithHttpInfo() throws ApiException {
             return reconcileTransactionsV2WithHttpInfo(transactionReconciliationRequestV2);
+        }
+
+        /**
+         * Execute reconcileTransactionsV2 request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ReconciliationResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ReconciliationResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return reconcileTransactionsV2WithHttpInfo(transactionReconciliationRequestV2, opts);
         }
 
         /**
@@ -2296,6 +3096,23 @@ public class ReconciliationsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ReconciliationResponse> _callback) throws ApiException {
             return reconcileTransactionsV2Async(transactionReconciliationRequestV2, _callback);
+        }
+
+        /**
+         * Execute reconcileTransactionsV2 request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ReconciliationResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return reconcileTransactionsV2Async(transactionReconciliationRequestV2, _callback, opts);
         }
     }
 
@@ -2315,6 +3132,10 @@ public class ReconciliationsApi {
         return new APIreconcileTransactionsV2Request();
     }
     private okhttp3.Call reconcileValuationCall(ValuationsReconciliationRequest valuationsReconciliationRequest, final ApiCallback _callback) throws ApiException {
+        return reconcileValuationCall(valuationsReconciliationRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call reconcileValuationCall(ValuationsReconciliationRequest valuationsReconciliationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2361,25 +3182,39 @@ public class ReconciliationsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call reconcileValuationValidateBeforeCall(ValuationsReconciliationRequest valuationsReconciliationRequest, final ApiCallback _callback) throws ApiException {
-        return reconcileValuationCall(valuationsReconciliationRequest, _callback);
+    private okhttp3.Call reconcileValuationValidateBeforeCall(ValuationsReconciliationRequest valuationsReconciliationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return reconcileValuationCall(valuationsReconciliationRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<ListAggregationReconciliation> reconcileValuationWithHttpInfo(ValuationsReconciliationRequest valuationsReconciliationRequest) throws ApiException {
-        okhttp3.Call localVarCall = reconcileValuationValidateBeforeCall(valuationsReconciliationRequest, null);
+        okhttp3.Call localVarCall = reconcileValuationValidateBeforeCall(valuationsReconciliationRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ListAggregationReconciliation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ListAggregationReconciliation> reconcileValuationWithHttpInfo(ValuationsReconciliationRequest valuationsReconciliationRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = reconcileValuationValidateBeforeCall(valuationsReconciliationRequest, null, opts);
         Type localVarReturnType = new TypeToken<ListAggregationReconciliation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call reconcileValuationAsync(ValuationsReconciliationRequest valuationsReconciliationRequest, final ApiCallback<ListAggregationReconciliation> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = reconcileValuationValidateBeforeCall(valuationsReconciliationRequest, _callback);
+        okhttp3.Call localVarCall = reconcileValuationValidateBeforeCall(valuationsReconciliationRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ListAggregationReconciliation>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call reconcileValuationAsync(ValuationsReconciliationRequest valuationsReconciliationRequest, final ApiCallback<ListAggregationReconciliation> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = reconcileValuationValidateBeforeCall(valuationsReconciliationRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<ListAggregationReconciliation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2436,6 +3271,23 @@ public class ReconciliationsApi {
         }
 
         /**
+         * Execute reconcileValuation request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ListAggregationReconciliation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ListAggregationReconciliation execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ListAggregationReconciliation> localVarResp = reconcileValuationWithHttpInfo(valuationsReconciliationRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute reconcileValuation request with HTTP info returned
          * @return ApiResponse&lt;ListAggregationReconciliation&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2449,6 +3301,22 @@ public class ReconciliationsApi {
          */
         public ApiResponse<ListAggregationReconciliation> executeWithHttpInfo() throws ApiException {
             return reconcileValuationWithHttpInfo(valuationsReconciliationRequest);
+        }
+
+        /**
+         * Execute reconcileValuation request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ListAggregationReconciliation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ListAggregationReconciliation> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return reconcileValuationWithHttpInfo(valuationsReconciliationRequest, opts);
         }
 
         /**
@@ -2466,6 +3334,23 @@ public class ReconciliationsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ListAggregationReconciliation> _callback) throws ApiException {
             return reconcileValuationAsync(valuationsReconciliationRequest, _callback);
+        }
+
+        /**
+         * Execute reconcileValuation request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ListAggregationReconciliation> _callback, ConfigurationOptions opts) throws ApiException {
+            return reconcileValuationAsync(valuationsReconciliationRequest, _callback, opts);
         }
     }
 
@@ -2485,6 +3370,10 @@ public class ReconciliationsApi {
         return new APIreconcileValuationRequest();
     }
     private okhttp3.Call updateReconciliationCall(String scope, String code, UpdateReconciliationRequest updateReconciliationRequest, final ApiCallback _callback) throws ApiException {
+        return updateReconciliationCall(scope, code, updateReconciliationRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call updateReconciliationCall(String scope, String code, UpdateReconciliationRequest updateReconciliationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2533,11 +3422,11 @@ public class ReconciliationsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateReconciliationValidateBeforeCall(String scope, String code, UpdateReconciliationRequest updateReconciliationRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateReconciliationValidateBeforeCall(String scope, String code, UpdateReconciliationRequest updateReconciliationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling updateReconciliation(Async)");
@@ -2548,20 +3437,34 @@ public class ReconciliationsApi {
             throw new ApiException("Missing the required parameter 'code' when calling updateReconciliation(Async)");
         }
 
-        return updateReconciliationCall(scope, code, updateReconciliationRequest, _callback);
+        return updateReconciliationCall(scope, code, updateReconciliationRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<Reconciliation> updateReconciliationWithHttpInfo(String scope, String code, UpdateReconciliationRequest updateReconciliationRequest) throws ApiException {
-        okhttp3.Call localVarCall = updateReconciliationValidateBeforeCall(scope, code, updateReconciliationRequest, null);
+        okhttp3.Call localVarCall = updateReconciliationValidateBeforeCall(scope, code, updateReconciliationRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Reconciliation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Reconciliation> updateReconciliationWithHttpInfo(String scope, String code, UpdateReconciliationRequest updateReconciliationRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = updateReconciliationValidateBeforeCall(scope, code, updateReconciliationRequest, null, opts);
         Type localVarReturnType = new TypeToken<Reconciliation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call updateReconciliationAsync(String scope, String code, UpdateReconciliationRequest updateReconciliationRequest, final ApiCallback<Reconciliation> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateReconciliationValidateBeforeCall(scope, code, updateReconciliationRequest, _callback);
+        okhttp3.Call localVarCall = updateReconciliationValidateBeforeCall(scope, code, updateReconciliationRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Reconciliation>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call updateReconciliationAsync(String scope, String code, UpdateReconciliationRequest updateReconciliationRequest, final ApiCallback<Reconciliation> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = updateReconciliationValidateBeforeCall(scope, code, updateReconciliationRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<Reconciliation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2622,6 +3525,23 @@ public class ReconciliationsApi {
         }
 
         /**
+         * Execute updateReconciliation request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Reconciliation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated scheduled reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Reconciliation execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Reconciliation> localVarResp = updateReconciliationWithHttpInfo(scope, code, updateReconciliationRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute updateReconciliation request with HTTP info returned
          * @return ApiResponse&lt;Reconciliation&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2635,6 +3555,22 @@ public class ReconciliationsApi {
          */
         public ApiResponse<Reconciliation> executeWithHttpInfo() throws ApiException {
             return updateReconciliationWithHttpInfo(scope, code, updateReconciliationRequest);
+        }
+
+        /**
+         * Execute updateReconciliation request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Reconciliation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated scheduled reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Reconciliation> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return updateReconciliationWithHttpInfo(scope, code, updateReconciliationRequest, opts);
         }
 
         /**
@@ -2652,6 +3588,23 @@ public class ReconciliationsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Reconciliation> _callback) throws ApiException {
             return updateReconciliationAsync(scope, code, updateReconciliationRequest, _callback);
+        }
+
+        /**
+         * Execute updateReconciliation request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated scheduled reconciliation </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Reconciliation> _callback, ConfigurationOptions opts) throws ApiException {
+            return updateReconciliationAsync(scope, code, updateReconciliationRequest, _callback, opts);
         }
     }
 
@@ -2673,6 +3626,10 @@ public class ReconciliationsApi {
         return new APIupdateReconciliationRequest(scope, code);
     }
     private okhttp3.Call upsertReconciliationMappingCall(Mapping mapping, final ApiCallback _callback) throws ApiException {
+        return upsertReconciliationMappingCall(mapping,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertReconciliationMappingCall(Mapping mapping, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2719,25 +3676,39 @@ public class ReconciliationsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertReconciliationMappingValidateBeforeCall(Mapping mapping, final ApiCallback _callback) throws ApiException {
-        return upsertReconciliationMappingCall(mapping, _callback);
+    private okhttp3.Call upsertReconciliationMappingValidateBeforeCall(Mapping mapping, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return upsertReconciliationMappingCall(mapping, _callback, opts);
 
     }
 
 
     private ApiResponse<Mapping> upsertReconciliationMappingWithHttpInfo(Mapping mapping) throws ApiException {
-        okhttp3.Call localVarCall = upsertReconciliationMappingValidateBeforeCall(mapping, null);
+        okhttp3.Call localVarCall = upsertReconciliationMappingValidateBeforeCall(mapping, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Mapping>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Mapping> upsertReconciliationMappingWithHttpInfo(Mapping mapping, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertReconciliationMappingValidateBeforeCall(mapping, null, opts);
         Type localVarReturnType = new TypeToken<Mapping>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertReconciliationMappingAsync(Mapping mapping, final ApiCallback<Mapping> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertReconciliationMappingValidateBeforeCall(mapping, _callback);
+        okhttp3.Call localVarCall = upsertReconciliationMappingValidateBeforeCall(mapping, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Mapping>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertReconciliationMappingAsync(Mapping mapping, final ApiCallback<Mapping> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertReconciliationMappingValidateBeforeCall(mapping, _callback, opts);
         Type localVarReturnType = new TypeToken<Mapping>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2794,6 +3765,23 @@ public class ReconciliationsApi {
         }
 
         /**
+         * Execute upsertReconciliationMapping request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Mapping
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The created / updated mapping. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Mapping execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Mapping> localVarResp = upsertReconciliationMappingWithHttpInfo(mapping, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertReconciliationMapping request with HTTP info returned
          * @return ApiResponse&lt;Mapping&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2807,6 +3795,22 @@ public class ReconciliationsApi {
          */
         public ApiResponse<Mapping> executeWithHttpInfo() throws ApiException {
             return upsertReconciliationMappingWithHttpInfo(mapping);
+        }
+
+        /**
+         * Execute upsertReconciliationMapping request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Mapping&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The created / updated mapping. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Mapping> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertReconciliationMappingWithHttpInfo(mapping, opts);
         }
 
         /**
@@ -2824,6 +3828,23 @@ public class ReconciliationsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Mapping> _callback) throws ApiException {
             return upsertReconciliationMappingAsync(mapping, _callback);
+        }
+
+        /**
+         * Execute upsertReconciliationMapping request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The created / updated mapping. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Mapping> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertReconciliationMappingAsync(mapping, _callback, opts);
         }
     }
 

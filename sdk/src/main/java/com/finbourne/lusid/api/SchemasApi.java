@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -76,6 +77,10 @@ public class SchemasApi {
     }
 
     private okhttp3.Call getEntitySchemaCall(String entity, final ApiCallback _callback) throws ApiException {
+        return getEntitySchemaCall(entity,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getEntitySchemaCall(String entity, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -119,30 +124,44 @@ public class SchemasApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getEntitySchemaValidateBeforeCall(String entity, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getEntitySchemaValidateBeforeCall(String entity, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'entity' is set
         if (entity == null) {
             throw new ApiException("Missing the required parameter 'entity' when calling getEntitySchema(Async)");
         }
 
-        return getEntitySchemaCall(entity, _callback);
+        return getEntitySchemaCall(entity, _callback, opts);
 
     }
 
 
     private ApiResponse<Schema> getEntitySchemaWithHttpInfo(String entity) throws ApiException {
-        okhttp3.Call localVarCall = getEntitySchemaValidateBeforeCall(entity, null);
+        okhttp3.Call localVarCall = getEntitySchemaValidateBeforeCall(entity, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Schema>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Schema> getEntitySchemaWithHttpInfo(String entity, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getEntitySchemaValidateBeforeCall(entity, null, opts);
         Type localVarReturnType = new TypeToken<Schema>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getEntitySchemaAsync(String entity, final ApiCallback<Schema> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getEntitySchemaValidateBeforeCall(entity, _callback);
+        okhttp3.Call localVarCall = getEntitySchemaValidateBeforeCall(entity, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Schema>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getEntitySchemaAsync(String entity, final ApiCallback<Schema> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getEntitySchemaValidateBeforeCall(entity, _callback, opts);
         Type localVarReturnType = new TypeToken<Schema>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -190,6 +209,23 @@ public class SchemasApi {
         }
 
         /**
+         * Execute getEntitySchema request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Schema
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Schema execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Schema> localVarResp = getEntitySchemaWithHttpInfo(entity, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getEntitySchema request with HTTP info returned
          * @return ApiResponse&lt;Schema&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -203,6 +239,22 @@ public class SchemasApi {
          */
         public ApiResponse<Schema> executeWithHttpInfo() throws ApiException {
             return getEntitySchemaWithHttpInfo(entity);
+        }
+
+        /**
+         * Execute getEntitySchema request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Schema&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Schema> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getEntitySchemaWithHttpInfo(entity, opts);
         }
 
         /**
@@ -220,6 +272,23 @@ public class SchemasApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Schema> _callback) throws ApiException {
             return getEntitySchemaAsync(entity, _callback);
+        }
+
+        /**
+         * Execute getEntitySchema request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Schema> _callback, ConfigurationOptions opts) throws ApiException {
+            return getEntitySchemaAsync(entity, _callback, opts);
         }
     }
 
@@ -240,6 +309,10 @@ public class SchemasApi {
         return new APIgetEntitySchemaRequest(entity);
     }
     private okhttp3.Call getPropertySchemaCall(List<String> propertyKeys, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getPropertySchemaCall(propertyKeys, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getPropertySchemaCall(List<String> propertyKeys, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -290,25 +363,39 @@ public class SchemasApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPropertySchemaValidateBeforeCall(List<String> propertyKeys, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
-        return getPropertySchemaCall(propertyKeys, asAt, _callback);
+    private okhttp3.Call getPropertySchemaValidateBeforeCall(List<String> propertyKeys, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return getPropertySchemaCall(propertyKeys, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<PropertySchema> getPropertySchemaWithHttpInfo(List<String> propertyKeys, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getPropertySchemaValidateBeforeCall(propertyKeys, asAt, null);
+        okhttp3.Call localVarCall = getPropertySchemaValidateBeforeCall(propertyKeys, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PropertySchema>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PropertySchema> getPropertySchemaWithHttpInfo(List<String> propertyKeys, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPropertySchemaValidateBeforeCall(propertyKeys, asAt, null, opts);
         Type localVarReturnType = new TypeToken<PropertySchema>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getPropertySchemaAsync(List<String> propertyKeys, OffsetDateTime asAt, final ApiCallback<PropertySchema> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPropertySchemaValidateBeforeCall(propertyKeys, asAt, _callback);
+        okhttp3.Call localVarCall = getPropertySchemaValidateBeforeCall(propertyKeys, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PropertySchema>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getPropertySchemaAsync(List<String> propertyKeys, OffsetDateTime asAt, final ApiCallback<PropertySchema> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getPropertySchemaValidateBeforeCall(propertyKeys, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<PropertySchema>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -376,6 +463,23 @@ public class SchemasApi {
         }
 
         /**
+         * Execute getPropertySchema request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PropertySchema
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PropertySchema execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PropertySchema> localVarResp = getPropertySchemaWithHttpInfo(propertyKeys, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getPropertySchema request with HTTP info returned
          * @return ApiResponse&lt;PropertySchema&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -389,6 +493,22 @@ public class SchemasApi {
          */
         public ApiResponse<PropertySchema> executeWithHttpInfo() throws ApiException {
             return getPropertySchemaWithHttpInfo(propertyKeys, asAt);
+        }
+
+        /**
+         * Execute getPropertySchema request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PropertySchema&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PropertySchema> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getPropertySchemaWithHttpInfo(propertyKeys, asAt, opts);
         }
 
         /**
@@ -406,6 +526,23 @@ public class SchemasApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PropertySchema> _callback) throws ApiException {
             return getPropertySchemaAsync(propertyKeys, asAt, _callback);
+        }
+
+        /**
+         * Execute getPropertySchema request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PropertySchema> _callback, ConfigurationOptions opts) throws ApiException {
+            return getPropertySchemaAsync(propertyKeys, asAt, _callback, opts);
         }
     }
 
@@ -425,6 +562,10 @@ public class SchemasApi {
         return new APIgetPropertySchemaRequest();
     }
     private okhttp3.Call getValueTypesCall(List<String> sortBy, Integer limit, final ApiCallback _callback) throws ApiException {
+        return getValueTypesCall(sortBy, limit,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getValueTypesCall(List<String> sortBy, Integer limit, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -475,25 +616,39 @@ public class SchemasApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getValueTypesValidateBeforeCall(List<String> sortBy, Integer limit, final ApiCallback _callback) throws ApiException {
-        return getValueTypesCall(sortBy, limit, _callback);
+    private okhttp3.Call getValueTypesValidateBeforeCall(List<String> sortBy, Integer limit, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return getValueTypesCall(sortBy, limit, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfValueType> getValueTypesWithHttpInfo(List<String> sortBy, Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getValueTypesValidateBeforeCall(sortBy, limit, null);
+        okhttp3.Call localVarCall = getValueTypesValidateBeforeCall(sortBy, limit, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfValueType>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfValueType> getValueTypesWithHttpInfo(List<String> sortBy, Integer limit, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getValueTypesValidateBeforeCall(sortBy, limit, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfValueType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getValueTypesAsync(List<String> sortBy, Integer limit, final ApiCallback<ResourceListOfValueType> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getValueTypesValidateBeforeCall(sortBy, limit, _callback);
+        okhttp3.Call localVarCall = getValueTypesValidateBeforeCall(sortBy, limit, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfValueType>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getValueTypesAsync(List<String> sortBy, Integer limit, final ApiCallback<ResourceListOfValueType> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getValueTypesValidateBeforeCall(sortBy, limit, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfValueType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -561,6 +716,23 @@ public class SchemasApi {
         }
 
         /**
+         * Execute getValueTypes request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfValueType
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfValueType execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfValueType> localVarResp = getValueTypesWithHttpInfo(sortBy, limit, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getValueTypes request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfValueType&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -574,6 +746,22 @@ public class SchemasApi {
          */
         public ApiResponse<ResourceListOfValueType> executeWithHttpInfo() throws ApiException {
             return getValueTypesWithHttpInfo(sortBy, limit);
+        }
+
+        /**
+         * Execute getValueTypes request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfValueType&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfValueType> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getValueTypesWithHttpInfo(sortBy, limit, opts);
         }
 
         /**
@@ -591,6 +779,23 @@ public class SchemasApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfValueType> _callback) throws ApiException {
             return getValueTypesAsync(sortBy, limit, _callback);
+        }
+
+        /**
+         * Execute getValueTypes request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfValueType> _callback, ConfigurationOptions opts) throws ApiException {
+            return getValueTypesAsync(sortBy, limit, _callback, opts);
         }
     }
 
@@ -610,6 +815,10 @@ public class SchemasApi {
         return new APIgetValueTypesRequest();
     }
     private okhttp3.Call listEntitiesCall(final ApiCallback _callback) throws ApiException {
+        return listEntitiesCall( _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listEntitiesCall(final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -652,25 +861,39 @@ public class SchemasApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listEntitiesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return listEntitiesCall(_callback);
+    private okhttp3.Call listEntitiesValidateBeforeCall(final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listEntitiesCall(_callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfString> listEntitiesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = listEntitiesValidateBeforeCall(null);
+        okhttp3.Call localVarCall = listEntitiesValidateBeforeCall(null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfString>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfString> listEntitiesWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listEntitiesValidateBeforeCall(null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfString>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listEntitiesAsync(final ApiCallback<ResourceListOfString> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listEntitiesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = listEntitiesValidateBeforeCall(_callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfString>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listEntitiesAsync(final ApiCallback<ResourceListOfString> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listEntitiesValidateBeforeCall(_callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfString>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -714,6 +937,22 @@ public class SchemasApi {
         }
 
         /**
+         * Execute listEntities request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfString
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfString execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfString> localVarResp = listEntitiesWithHttpInfo(opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listEntities request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfString&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -726,6 +965,21 @@ public class SchemasApi {
          */
         public ApiResponse<ResourceListOfString> executeWithHttpInfo() throws ApiException {
             return listEntitiesWithHttpInfo();
+        }
+
+        /**
+         * Execute listEntities request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfString&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfString> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listEntitiesWithHttpInfo(opts);
         }
 
         /**
@@ -742,6 +996,22 @@ public class SchemasApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfString> _callback) throws ApiException {
             return listEntitiesAsync(_callback);
+        }
+
+        /**
+         * Execute listEntities request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfString> _callback, ConfigurationOptions opts) throws ApiException {
+            return listEntitiesAsync(_callback, opts);
         }
     }
 

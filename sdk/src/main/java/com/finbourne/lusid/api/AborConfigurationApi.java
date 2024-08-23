@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -78,6 +79,10 @@ public class AborConfigurationApi {
     }
 
     private okhttp3.Call createAborConfigurationCall(String scope, AborConfigurationRequest aborConfigurationRequest, final ApiCallback _callback) throws ApiException {
+        return createAborConfigurationCall(scope, aborConfigurationRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call createAborConfigurationCall(String scope, AborConfigurationRequest aborConfigurationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -125,11 +130,11 @@ public class AborConfigurationApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createAborConfigurationValidateBeforeCall(String scope, AborConfigurationRequest aborConfigurationRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createAborConfigurationValidateBeforeCall(String scope, AborConfigurationRequest aborConfigurationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling createAborConfiguration(Async)");
@@ -140,20 +145,34 @@ public class AborConfigurationApi {
             throw new ApiException("Missing the required parameter 'aborConfigurationRequest' when calling createAborConfiguration(Async)");
         }
 
-        return createAborConfigurationCall(scope, aborConfigurationRequest, _callback);
+        return createAborConfigurationCall(scope, aborConfigurationRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<AborConfiguration> createAborConfigurationWithHttpInfo(String scope, AborConfigurationRequest aborConfigurationRequest) throws ApiException {
-        okhttp3.Call localVarCall = createAborConfigurationValidateBeforeCall(scope, aborConfigurationRequest, null);
+        okhttp3.Call localVarCall = createAborConfigurationValidateBeforeCall(scope, aborConfigurationRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AborConfiguration>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AborConfiguration> createAborConfigurationWithHttpInfo(String scope, AborConfigurationRequest aborConfigurationRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createAborConfigurationValidateBeforeCall(scope, aborConfigurationRequest, null, opts);
         Type localVarReturnType = new TypeToken<AborConfiguration>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call createAborConfigurationAsync(String scope, AborConfigurationRequest aborConfigurationRequest, final ApiCallback<AborConfiguration> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createAborConfigurationValidateBeforeCall(scope, aborConfigurationRequest, _callback);
+        okhttp3.Call localVarCall = createAborConfigurationValidateBeforeCall(scope, aborConfigurationRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AborConfiguration>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call createAborConfigurationAsync(String scope, AborConfigurationRequest aborConfigurationRequest, final ApiCallback<AborConfiguration> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = createAborConfigurationValidateBeforeCall(scope, aborConfigurationRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<AborConfiguration>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -203,6 +222,23 @@ public class AborConfigurationApi {
         }
 
         /**
+         * Execute createAborConfiguration request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AborConfiguration
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created abor configuration. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AborConfiguration execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AborConfiguration> localVarResp = createAborConfigurationWithHttpInfo(scope, aborConfigurationRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute createAborConfiguration request with HTTP info returned
          * @return ApiResponse&lt;AborConfiguration&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -216,6 +252,22 @@ public class AborConfigurationApi {
          */
         public ApiResponse<AborConfiguration> executeWithHttpInfo() throws ApiException {
             return createAborConfigurationWithHttpInfo(scope, aborConfigurationRequest);
+        }
+
+        /**
+         * Execute createAborConfiguration request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AborConfiguration&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created abor configuration. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AborConfiguration> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return createAborConfigurationWithHttpInfo(scope, aborConfigurationRequest, opts);
         }
 
         /**
@@ -233,6 +285,23 @@ public class AborConfigurationApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<AborConfiguration> _callback) throws ApiException {
             return createAborConfigurationAsync(scope, aborConfigurationRequest, _callback);
+        }
+
+        /**
+         * Execute createAborConfiguration request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created abor configuration. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AborConfiguration> _callback, ConfigurationOptions opts) throws ApiException {
+            return createAborConfigurationAsync(scope, aborConfigurationRequest, _callback, opts);
         }
     }
 
@@ -254,6 +323,10 @@ public class AborConfigurationApi {
         return new APIcreateAborConfigurationRequest(scope, aborConfigurationRequest);
     }
     private okhttp3.Call deleteAborConfigurationCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+        return deleteAborConfigurationCall(scope, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteAborConfigurationCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -298,11 +371,11 @@ public class AborConfigurationApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteAborConfigurationValidateBeforeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteAborConfigurationValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteAborConfiguration(Async)");
@@ -313,20 +386,34 @@ public class AborConfigurationApi {
             throw new ApiException("Missing the required parameter 'code' when calling deleteAborConfiguration(Async)");
         }
 
-        return deleteAborConfigurationCall(scope, code, _callback);
+        return deleteAborConfigurationCall(scope, code, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deleteAborConfigurationWithHttpInfo(String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = deleteAborConfigurationValidateBeforeCall(scope, code, null);
+        okhttp3.Call localVarCall = deleteAborConfigurationValidateBeforeCall(scope, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteAborConfigurationWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteAborConfigurationValidateBeforeCall(scope, code, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteAborConfigurationAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteAborConfigurationValidateBeforeCall(scope, code, _callback);
+        okhttp3.Call localVarCall = deleteAborConfigurationValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteAborConfigurationAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteAborConfigurationValidateBeforeCall(scope, code, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -376,6 +463,23 @@ public class AborConfigurationApi {
         }
 
         /**
+         * Execute deleteAborConfiguration request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Abor was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteAborConfigurationWithHttpInfo(scope, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteAborConfiguration request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -389,6 +493,22 @@ public class AborConfigurationApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deleteAborConfigurationWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteAborConfiguration request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Abor was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteAborConfigurationWithHttpInfo(scope, code, opts);
         }
 
         /**
@@ -406,6 +526,23 @@ public class AborConfigurationApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deleteAborConfigurationAsync(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteAborConfiguration request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Abor was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteAborConfigurationAsync(scope, code, _callback, opts);
         }
     }
 
@@ -427,6 +564,10 @@ public class AborConfigurationApi {
         return new APIdeleteAborConfigurationRequest(scope, code);
     }
     private okhttp3.Call getAborConfigurationCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return getAborConfigurationCall(scope, code, effectiveAt, asAt, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getAborConfigurationCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -483,11 +624,11 @@ public class AborConfigurationApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAborConfigurationValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAborConfigurationValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getAborConfiguration(Async)");
@@ -498,20 +639,34 @@ public class AborConfigurationApi {
             throw new ApiException("Missing the required parameter 'code' when calling getAborConfiguration(Async)");
         }
 
-        return getAborConfigurationCall(scope, code, effectiveAt, asAt, propertyKeys, _callback);
+        return getAborConfigurationCall(scope, code, effectiveAt, asAt, propertyKeys, _callback, opts);
 
     }
 
 
     private ApiResponse<AborConfiguration> getAborConfigurationWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = getAborConfigurationValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, null);
+        okhttp3.Call localVarCall = getAborConfigurationValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AborConfiguration>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AborConfiguration> getAborConfigurationWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getAborConfigurationValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<AborConfiguration>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getAborConfigurationAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<AborConfiguration> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAborConfigurationValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback);
+        okhttp3.Call localVarCall = getAborConfigurationValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AborConfiguration>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getAborConfigurationAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<AborConfiguration> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getAborConfigurationValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<AborConfiguration>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -594,6 +749,23 @@ public class AborConfigurationApi {
         }
 
         /**
+         * Execute getAborConfiguration request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AborConfiguration
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested AborConfiguration definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AborConfiguration execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AborConfiguration> localVarResp = getAborConfigurationWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getAborConfiguration request with HTTP info returned
          * @return ApiResponse&lt;AborConfiguration&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -607,6 +779,22 @@ public class AborConfigurationApi {
          */
         public ApiResponse<AborConfiguration> executeWithHttpInfo() throws ApiException {
             return getAborConfigurationWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
+        }
+
+        /**
+         * Execute getAborConfiguration request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AborConfiguration&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested AborConfiguration definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AborConfiguration> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getAborConfigurationWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys, opts);
         }
 
         /**
@@ -624,6 +812,23 @@ public class AborConfigurationApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<AborConfiguration> _callback) throws ApiException {
             return getAborConfigurationAsync(scope, code, effectiveAt, asAt, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getAborConfiguration request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested AborConfiguration definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AborConfiguration> _callback, ConfigurationOptions opts) throws ApiException {
+            return getAborConfigurationAsync(scope, code, effectiveAt, asAt, propertyKeys, _callback, opts);
         }
     }
 
@@ -645,6 +850,10 @@ public class AborConfigurationApi {
         return new APIgetAborConfigurationRequest(scope, code);
     }
     private okhttp3.Call listAborConfigurationsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return listAborConfigurationsCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listAborConfigurationsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -715,25 +924,39 @@ public class AborConfigurationApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listAborConfigurationsValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
-        return listAborConfigurationsCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
+    private okhttp3.Call listAborConfigurationsValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listAborConfigurationsCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfAborConfiguration> listAborConfigurationsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = listAborConfigurationsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, null);
+        okhttp3.Call localVarCall = listAborConfigurationsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfAborConfiguration>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfAborConfiguration> listAborConfigurationsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listAborConfigurationsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfAborConfiguration>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listAborConfigurationsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback<PagedResourceListOfAborConfiguration> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listAborConfigurationsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
+        okhttp3.Call localVarCall = listAborConfigurationsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfAborConfiguration>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listAborConfigurationsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback<PagedResourceListOfAborConfiguration> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listAborConfigurationsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfAborConfiguration>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -856,6 +1079,23 @@ public class AborConfigurationApi {
         }
 
         /**
+         * Execute listAborConfigurations request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfAborConfiguration
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested abor configurations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfAborConfiguration execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfAborConfiguration> localVarResp = listAborConfigurationsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listAborConfigurations request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfAborConfiguration&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -869,6 +1109,22 @@ public class AborConfigurationApi {
          */
         public ApiResponse<PagedResourceListOfAborConfiguration> executeWithHttpInfo() throws ApiException {
             return listAborConfigurationsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys);
+        }
+
+        /**
+         * Execute listAborConfigurations request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfAborConfiguration&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested abor configurations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfAborConfiguration> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listAborConfigurationsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, opts);
         }
 
         /**
@@ -886,6 +1142,23 @@ public class AborConfigurationApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfAborConfiguration> _callback) throws ApiException {
             return listAborConfigurationsAsync(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute listAborConfigurations request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested abor configurations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfAborConfiguration> _callback, ConfigurationOptions opts) throws ApiException {
+            return listAborConfigurationsAsync(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
         }
     }
 
@@ -905,6 +1178,10 @@ public class AborConfigurationApi {
         return new APIlistAborConfigurationsRequest();
     }
     private okhttp3.Call upsertAborConfigurationPropertiesCall(String scope, String code, Map<String, Property> requestBody, final ApiCallback _callback) throws ApiException {
+        return upsertAborConfigurationPropertiesCall(scope, code, requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertAborConfigurationPropertiesCall(String scope, String code, Map<String, Property> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -953,11 +1230,11 @@ public class AborConfigurationApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertAborConfigurationPropertiesValidateBeforeCall(String scope, String code, Map<String, Property> requestBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertAborConfigurationPropertiesValidateBeforeCall(String scope, String code, Map<String, Property> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling upsertAborConfigurationProperties(Async)");
@@ -968,20 +1245,34 @@ public class AborConfigurationApi {
             throw new ApiException("Missing the required parameter 'code' when calling upsertAborConfigurationProperties(Async)");
         }
 
-        return upsertAborConfigurationPropertiesCall(scope, code, requestBody, _callback);
+        return upsertAborConfigurationPropertiesCall(scope, code, requestBody, _callback, opts);
 
     }
 
 
     private ApiResponse<AborConfigurationProperties> upsertAborConfigurationPropertiesWithHttpInfo(String scope, String code, Map<String, Property> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = upsertAborConfigurationPropertiesValidateBeforeCall(scope, code, requestBody, null);
+        okhttp3.Call localVarCall = upsertAborConfigurationPropertiesValidateBeforeCall(scope, code, requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AborConfigurationProperties>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AborConfigurationProperties> upsertAborConfigurationPropertiesWithHttpInfo(String scope, String code, Map<String, Property> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertAborConfigurationPropertiesValidateBeforeCall(scope, code, requestBody, null, opts);
         Type localVarReturnType = new TypeToken<AborConfigurationProperties>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertAborConfigurationPropertiesAsync(String scope, String code, Map<String, Property> requestBody, final ApiCallback<AborConfigurationProperties> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertAborConfigurationPropertiesValidateBeforeCall(scope, code, requestBody, _callback);
+        okhttp3.Call localVarCall = upsertAborConfigurationPropertiesValidateBeforeCall(scope, code, requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AborConfigurationProperties>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertAborConfigurationPropertiesAsync(String scope, String code, Map<String, Property> requestBody, final ApiCallback<AborConfigurationProperties> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertAborConfigurationPropertiesValidateBeforeCall(scope, code, requestBody, _callback, opts);
         Type localVarReturnType = new TypeToken<AborConfigurationProperties>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1042,6 +1333,23 @@ public class AborConfigurationApi {
         }
 
         /**
+         * Execute upsertAborConfigurationProperties request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AborConfigurationProperties
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AborConfigurationProperties execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AborConfigurationProperties> localVarResp = upsertAborConfigurationPropertiesWithHttpInfo(scope, code, requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertAborConfigurationProperties request with HTTP info returned
          * @return ApiResponse&lt;AborConfigurationProperties&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1055,6 +1363,22 @@ public class AborConfigurationApi {
          */
         public ApiResponse<AborConfigurationProperties> executeWithHttpInfo() throws ApiException {
             return upsertAborConfigurationPropertiesWithHttpInfo(scope, code, requestBody);
+        }
+
+        /**
+         * Execute upsertAborConfigurationProperties request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AborConfigurationProperties&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AborConfigurationProperties> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertAborConfigurationPropertiesWithHttpInfo(scope, code, requestBody, opts);
         }
 
         /**
@@ -1072,6 +1396,23 @@ public class AborConfigurationApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<AborConfigurationProperties> _callback) throws ApiException {
             return upsertAborConfigurationPropertiesAsync(scope, code, requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertAborConfigurationProperties request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AborConfigurationProperties> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertAborConfigurationPropertiesAsync(scope, code, requestBody, _callback, opts);
         }
     }
 

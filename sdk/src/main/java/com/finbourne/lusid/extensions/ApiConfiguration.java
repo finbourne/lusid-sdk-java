@@ -49,7 +49,7 @@ public class ApiConfiguration {
     /**
      * Proxy port (if required)
      */
-    private Integer proxyPort;
+    private int proxyPort;
 
     /**
      * Proxy username (if required)
@@ -61,9 +61,23 @@ public class ApiConfiguration {
      */
     private String proxyPassword;
 
+    /**
+     * Timeout in ms
+     */
+    private int totalTimeoutMs;
+
+    private int connectTimeoutMs;
+
+    private int readTimeoutMs;
+
+    private int writeTimeoutMs;
+
+    private int rateLimitRetries;
+
 
     public ApiConfiguration(String tokenUrl, String username, String password, String clientId, String clientSecret, String apiUrl, String applicationName,
-                            String personalAccessToken, String proxyAddress, Integer proxyPort, String proxyUsername, String proxyPassword) {
+                            String personalAccessToken, String proxyAddress, int proxyPort, String proxyUsername, String proxyPassword, int totalTimeoutMs,
+                            int connectTimeoutMs, int readTimeoutMs, int writeTimeoutMs, int rateLimitRetries) {
         this.tokenUrl = tokenUrl;
         this.username = username;
         this.password = password;
@@ -76,6 +90,11 @@ public class ApiConfiguration {
         this.proxyPort = proxyPort;
         this.proxyUsername = proxyUsername;
         this.proxyPassword = proxyPassword;
+        this.totalTimeoutMs = totalTimeoutMs;
+        this.connectTimeoutMs = connectTimeoutMs;
+        this.readTimeoutMs = readTimeoutMs;
+        this.writeTimeoutMs = writeTimeoutMs;
+        this.rateLimitRetries = rateLimitRetries;
     }
 
     public String getTokenUrl() {
@@ -160,11 +179,11 @@ public class ApiConfiguration {
         this.proxyAddress = proxyAddress;
     }
 
-    public Integer getProxyPort() {
+    public int getProxyPort() {
         return proxyPort;
     }
 
-    public void setProxyPort(Integer proxyPort) {
+    public void setProxyPort(int proxyPort) {
         this.proxyPort = proxyPort;
     }
 
@@ -174,5 +193,45 @@ public class ApiConfiguration {
 
     public void setPersonalAccessToken(String personalAccessToken) {
         this.personalAccessToken = personalAccessToken;
+    }
+
+    public int getTotalTimeoutMs() {
+        return totalTimeoutMs;
+    }
+
+    public void setTotalTimeoutMs(int totalTimeoutMs) {
+        this.totalTimeoutMs = totalTimeoutMs;
+    }
+
+    public int getConnectTimeoutMs() {
+        return connectTimeoutMs;
+    }
+
+    public void setConnectTimeoutMs(int connectTimeoutMs) {
+        this.connectTimeoutMs = connectTimeoutMs;
+    }
+
+    public int getReadTimeoutMs() {
+        return readTimeoutMs;
+    }
+
+    public void setReadTimeoutMs(int readTimeoutMs) {
+        this.readTimeoutMs = readTimeoutMs;
+    }
+
+    public int getWriteTimeoutMs() {
+        return writeTimeoutMs;
+    }
+
+    public void setWriteTimeoutMs(int writeTimeoutMs) {
+        this.writeTimeoutMs = writeTimeoutMs;
+    }
+
+    public int getRateLimitRetries() {
+        return rateLimitRetries;
+    }
+
+    public void setRateLimitRetries(int rateLimitRetries) {
+        this.rateLimitRetries = rateLimitRetries;
     }
 }

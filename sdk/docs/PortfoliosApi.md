@@ -75,12 +75,23 @@ public class PortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio.
         String code = "code_example"; // String | The code of the portfolio. Together with the scope this uniquely identifies the portfolio.
         String instrumentEventInstructionId = "instrumentEventInstructionId_example"; // String | The id of the instruction to be deleted.
         String portfolioEffectiveAt = "portfolioEffectiveAt_example"; // String | The effective date at which the portfolio will be resolved. Defaults to current time if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteInstrumentEventInstruction(scope, code, instrumentEventInstructionId, portfolioEffectiveAt).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteInstrumentEventInstruction(scope, code, instrumentEventInstructionId, portfolioEffectiveAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -161,6 +172,14 @@ public class PortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the Quote Access Metadata Rule to retrieve.
         String code = "code_example"; // String | Portfolio code
@@ -168,6 +187,9 @@ public class PortfoliosApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The effective date to delete at, if this is not supplied, it will delete all data found
         OffsetDateTime effectiveUntil = OffsetDateTime.now(); // OffsetDateTime | The effective date until which the delete is valid. If not supplied this will be valid indefinitely, or until the next 'effectiveAt' date of the Access Metadata
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteKeyFromPortfolioAccessMetadata(scope, code, metadataKey, effectiveAt, effectiveUntil).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteKeyFromPortfolioAccessMetadata(scope, code, metadataKey, effectiveAt, effectiveUntil).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -249,10 +271,21 @@ public class PortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio.
         String code = "code_example"; // String | The code of the portfolio. Together with the scope this uniquely identifies the portfolio.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deletePortfolio(scope, code).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deletePortfolio(scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -331,12 +364,23 @@ public class PortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio.
         String code = "code_example"; // String | The code of the portfolio. Together with the scope this uniquely identifies the portfolio.
         List<String> propertyKeys = Arrays.asList(); // List<String> | The property keys of the properties to delete. These must take the format   {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'. Each property must be from the 'Portfolio' domain.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified 'effectiveAt' datetime. If the 'effectiveAt' is not provided or is   before the time-variant property exists then a failure is returned. Do not specify this parameter if any of   the properties to delete are perpetual.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deletePortfolioProperties(scope, code, propertyKeys, effectiveAt).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deletePortfolioProperties(scope, code, propertyKeys, effectiveAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -417,6 +461,14 @@ public class PortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the Portfolio.
         String code = "code_example"; // String | The code of the Portfolio.
@@ -426,6 +478,9 @@ public class PortfoliosApiExample {
         String toEffectiveAt = "toEffectiveAt_example"; // String | The end date from which to delete the Returns.
         String period = "period_example"; // String | The Period (Daily or Monthly) of the Returns to be deleted. Defaults to Daily.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deletePortfolioReturns(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deletePortfolioReturns(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -509,12 +564,23 @@ public class PortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the Portfolio.
         String code = "code_example"; // String | The code of the Portfolio.
         AggregatedReturnsDispersionRequest aggregatedReturnsDispersionRequest = new AggregatedReturnsDispersionRequest(); // AggregatedReturnsDispersionRequest | The request used in the AggregatedReturnsDispersionMetric.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Returns. Defaults to the latest.
         try {
+            // uncomment the below to set overrides at the request level
+            // CompositeDispersionResponse result = apiInstance.getAggregatedReturnsDispersionMetrics(scope, code, aggregatedReturnsDispersionRequest, asAt).execute(opts);
+
             CompositeDispersionResponse result = apiInstance.getAggregatedReturnsDispersionMetrics(scope, code, aggregatedReturnsDispersionRequest, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -595,6 +661,14 @@ public class PortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the Portfolio.
         String code = "code_example"; // String | The code of the Portfolio.
@@ -603,6 +677,9 @@ public class PortfoliosApiExample {
         String toEffectiveAt = "toEffectiveAt_example"; // String | The end date for which to calculate the Returns.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Returns. Defaults to the latest.
         try {
+            // uncomment the below to set overrides at the request level
+            // CompositeBreakdownResponse result = apiInstance.getCompositeBreakdown(scope, code, compositeBreakdownRequest, fromEffectiveAt, toEffectiveAt, asAt).execute(opts);
+
             CompositeBreakdownResponse result = apiInstance.getCompositeBreakdown(scope, code, compositeBreakdownRequest, fromEffectiveAt, toEffectiveAt, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -685,6 +762,14 @@ public class PortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio.
         String code = "code_example"; // String | The code of the portfolio. Together with the scope this uniquely identifies the portfolio.
@@ -692,6 +777,9 @@ public class PortfoliosApiExample {
         String portfolioEffectiveAt = "portfolioEffectiveAt_example"; // String | The effective date at which the portfolio will be resolved. Defaults to current time if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the instruction. Defaults to return the latest version of the instruction if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // InstrumentEventInstruction result = apiInstance.getInstrumentEventInstruction(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt).execute(opts);
+
             InstrumentEventInstruction result = apiInstance.getInstrumentEventInstruction(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -773,6 +861,14 @@ public class PortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio.
         String code = "code_example"; // String | The code of the portfolio. Together with the scope this uniquely identifies the portfolio.
@@ -781,6 +877,9 @@ public class PortfoliosApiExample {
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Portfolio' domain to decorate onto the portfolio,   or from any domain that supports relationships to decorate onto related entities. These must take the format   {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'.
         List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto the portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
         try {
+            // uncomment the below to set overrides at the request level
+            // Portfolio result = apiInstance.getPortfolio(scope, code, effectiveAt, asAt, propertyKeys, relationshipDefinitionIds).execute(opts);
+
             Portfolio result = apiInstance.getPortfolio(scope, code, effectiveAt, asAt, propertyKeys, relationshipDefinitionIds).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -863,6 +962,14 @@ public class PortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the Portfolio.
         String code = "code_example"; // String | The code of the Portfolio.
@@ -879,6 +986,9 @@ public class PortfoliosApiExample {
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Returns. Defaults to the latest.
         String alternativeIncDate = "alternativeIncDate_example"; // String | The date from which to consider the Returns on the Portfolio, if this is different from the date when Returns begin. Can be a date string or Portfolio property.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfAggregatedReturn result = apiInstance.getPortfolioAggregateReturns(scope, code, returnScope, returnCode, recipeIdScope, recipeIdCode, fromEffectiveAt, toEffectiveAt, compositeMethod, period, outputFrequency, metrics, asAt, alternativeIncDate).execute(opts);
+
             ResourceListOfAggregatedReturn result = apiInstance.getPortfolioAggregateReturns(scope, code, returnScope, returnCode, recipeIdScope, recipeIdCode, fromEffectiveAt, toEffectiveAt, compositeMethod, period, outputFrequency, metrics, asAt, alternativeIncDate).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -969,6 +1079,14 @@ public class PortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the Portfolio.
         String code = "code_example"; // String | The code of the Portfolio.
@@ -977,6 +1095,9 @@ public class PortfoliosApiExample {
         String toEffectiveAt = "toEffectiveAt_example"; // String | The end date for which to calculate the Returns.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Returns. Defaults to the latest.
         try {
+            // uncomment the below to set overrides at the request level
+            // AggregatedReturnsResponse result = apiInstance.getPortfolioAggregatedReturns(scope, code, aggregatedReturnsRequest, fromEffectiveAt, toEffectiveAt, asAt).execute(opts);
+
             AggregatedReturnsResponse result = apiInstance.getPortfolioAggregatedReturns(scope, code, aggregatedReturnsRequest, fromEffectiveAt, toEffectiveAt, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1059,6 +1180,14 @@ public class PortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio.
         String code = "code_example"; // String | The code of the portfolio. Together with the scope this uniquely identifies the portfolio.
@@ -1068,6 +1197,9 @@ public class PortfoliosApiExample {
         String page = "page_example"; // String | The pagination token to use to continue listing commands; this value is returned from the previous call.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 500 if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfProcessedCommand result = apiInstance.getPortfolioCommands(scope, code, fromAsAt, toAsAt, filter, page, limit).execute(opts);
+
             ResourceListOfProcessedCommand result = apiInstance.getPortfolioCommands(scope, code, fromAsAt, toAsAt, filter, page, limit).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1151,12 +1283,23 @@ public class PortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the Portfolio Access Metadata Rule to retrieve.
         String code = "code_example"; // String | Portfolio code
         String effectiveAt = "effectiveAt_example"; // String | The effectiveAt datetime at which to retrieve the access metadata rule.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the portfolio access metadata.
         try {
+            // uncomment the below to set overrides at the request level
+            // Map<String, List<AccessMetadataValue>> result = apiInstance.getPortfolioMetadata(scope, code, effectiveAt, asAt).execute(opts);
+
             Map<String, List<AccessMetadataValue>> result = apiInstance.getPortfolioMetadata(scope, code, effectiveAt, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1237,12 +1380,23 @@ public class PortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio.
         String code = "code_example"; // String | The code of the portfolio. Together with the scope this uniquely identifies the portfolio.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the portfolio's properties. Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the portfolio's properties. Defaults to returning the latest version of each property if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // PortfolioProperties result = apiInstance.getPortfolioProperties(scope, code, effectiveAt, asAt).execute(opts);
+
             PortfolioProperties result = apiInstance.getPortfolioProperties(scope, code, effectiveAt, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1323,6 +1477,14 @@ public class PortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio.
         String code = "code_example"; // String | The code of the portfolio. Together with the scope this uniquely identifies the portfolio.
@@ -1333,6 +1495,9 @@ public class PortfoliosApiExample {
         String page = "page_example"; // String | The pagination token to use to continue listing properties; this value is returned from   the previous call. If a pagination token is provided, the filter, portfolioEffectiveAt, and asAt fields   must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the results to this number.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfPropertyInterval result = apiInstance.getPortfolioPropertyTimeSeries(scope, code, propertyKey, portfolioEffectiveAt, asAt, filter, page, limit).execute(opts);
+
             ResourceListOfPropertyInterval result = apiInstance.getPortfolioPropertyTimeSeries(scope, code, propertyKey, portfolioEffectiveAt, asAt, filter, page, limit).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1417,6 +1582,14 @@ public class PortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio.
         String code = "code_example"; // String | The code of the portfolio. Together with the scope this uniquely identifies the portfolio.
@@ -1425,6 +1598,9 @@ public class PortfoliosApiExample {
         String filter = "filter_example"; // String | Expression to filter the relations. Provide a null or empty string for this field until further notice.
         List<String> identifierTypes = Arrays.asList(); // List<String> | Identifier types (as property keys) used for referencing Persons or Legal Entities.   These must be from the 'Person' or 'LegalEntity' domains and have the format {domain}/{scope}/{code}, for example   'Person/CompanyDetails/Role'. Only identifier types provided will be used to look up relevant entities in relations. If not applicable, provide an empty array.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfRelation result = apiInstance.getPortfolioRelations(scope, code, effectiveAt, asAt, filter, identifierTypes).execute(opts);
+
             ResourceListOfRelation result = apiInstance.getPortfolioRelations(scope, code, effectiveAt, asAt, filter, identifierTypes).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1507,6 +1683,14 @@ public class PortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio.
         String code = "code_example"; // String | The code of the portfolio. Together with the scope this uniquely identifies the portfolio.
@@ -1515,6 +1699,9 @@ public class PortfoliosApiExample {
         String filter = "filter_example"; // String | Expression to filter the relationships. Provide a null or empty string for this field until further notice.
         List<String> identifierTypes = Arrays.asList(); // List<String> | Identifier types (as property keys) used for referencing Persons or Legal Entities.   These can be specified from the 'Person' or 'LegalEntity' domains and have the format {domain}/{scope}/{code}, for example   'Person/CompanyDetails/Role'. An Empty array may be used to return all related Entities.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfRelationship result = apiInstance.getPortfolioRelationships(scope, code, effectiveAt, asAt, filter, identifierTypes).execute(opts);
+
             ResourceListOfRelationship result = apiInstance.getPortfolioRelationships(scope, code, effectiveAt, asAt, filter, identifierTypes).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1597,6 +1784,14 @@ public class PortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the Portfolio.
         String code = "code_example"; // String | The code of the Portfolio.
@@ -1607,6 +1802,9 @@ public class PortfoliosApiExample {
         String period = "period_example"; // String | Show the Returns on a Daily or Monthly period. Defaults to Daily.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Returns. Defaults to the latest.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfPerformanceReturn result = apiInstance.getPortfolioReturns(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, asAt).execute(opts);
+
             ResourceListOfPerformanceReturn result = apiInstance.getPortfolioReturns(scope, code, returnScope, returnCode, fromEffectiveAt, toEffectiveAt, period, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1691,6 +1889,14 @@ public class PortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the Portfolio Access Metadata Rule to retrieve.
         String code = "code_example"; // String | The code of the portfolio
@@ -1698,6 +1904,9 @@ public class PortfoliosApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The effective date of the rule
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the portfolio access metadata.
         try {
+            // uncomment the below to set overrides at the request level
+            // List<AccessMetadataValue> result = apiInstance.getPortfoliosAccessMetadataByKey(scope, code, metadataKey, effectiveAt, asAt).execute(opts);
+
             List<AccessMetadataValue> result = apiInstance.getPortfoliosAccessMetadataByKey(scope, code, metadataKey, effectiveAt, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1779,6 +1988,14 @@ public class PortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio.
         String code = "code_example"; // String | The code of the portfolio. Together with the scope this uniquely identifies the portfolio.
@@ -1789,6 +2006,9 @@ public class PortfoliosApiExample {
         String filter = "filter_example"; // String | Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names to sort by, each suffixed by \" ASC\" or \" DESC\".
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfInstrumentEventInstruction result = apiInstance.listInstrumentEventInstructions(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy).execute(opts);
+
             PagedResourceListOfInstrumentEventInstruction result = apiInstance.listInstrumentEventInstructions(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1873,6 +2093,14 @@ public class PortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio.
         String code = "code_example"; // String | The code of the portfolio. Together with the scope this uniquely identifies the portfolio.
@@ -1881,6 +2109,9 @@ public class PortfoliosApiExample {
         String page = "page_example"; // String | The pagination token to use to continue listing commands; this value is returned from the previous call.
         Integer limit = 56; // Integer | When paginating, limit the results per page to this number.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfProperty result = apiInstance.listPortfolioProperties(scope, code, effectiveAt, asAt, page, limit).execute(opts);
+
             ResourceListOfProperty result = apiInstance.listPortfolioProperties(scope, code, effectiveAt, asAt, page, limit).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1963,6 +2194,14 @@ public class PortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the portfolios. Defaults to the current LUSID   system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the portfolios. Defaults to returning the latest version   of each portfolio if not specified.
@@ -1974,6 +2213,9 @@ public class PortfoliosApiExample {
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Portfolio' domain to decorate onto each portfolio,   or from any domain that supports relationships to decorate onto related entities. These must take the   format {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'.
         List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto the portfolios in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfPortfolio result = apiInstance.listPortfolios(effectiveAt, asAt, page, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds).execute(opts);
+
             ResourceListOfPortfolio result = apiInstance.listPortfolios(effectiveAt, asAt, page, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -2059,6 +2301,14 @@ public class PortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String scope = "scope_example"; // String | The scope whose portfolios to list.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the portfolios. Defaults to the current LUSID   system datetime if not specified.
@@ -2070,6 +2320,9 @@ public class PortfoliosApiExample {
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Portfolio' domain to decorate onto each portfolio,   or from any domain that supports relationships to decorate onto related entities. These must take the   format {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'.
         List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto the portfolios in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfPortfolio result = apiInstance.listPortfoliosForScope(scope, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds).execute(opts);
+
             ResourceListOfPortfolio result = apiInstance.listPortfoliosForScope(scope, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -2155,11 +2408,22 @@ public class PortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio.
         String code = "code_example"; // String | The code of the portfolio. Together with the   scope this uniquely identifies the portfolio.
         List<Operation> operation = Arrays.asList(); // List<Operation> | The json patch document. For more check: https://datatracker.ietf.org/doc/html/rfc6902.
         try {
+            // uncomment the below to set overrides at the request level
+            // Portfolio result = apiInstance.patchPortfolio(scope, code, operation).execute(opts);
+
             Portfolio result = apiInstance.patchPortfolio(scope, code, operation).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -2239,6 +2503,14 @@ public class PortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the Portfolio Access Metadata Rule.
         String code = "code_example"; // String | Portfolio code
@@ -2246,6 +2518,9 @@ public class PortfoliosApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The date this rule will effective from
         OffsetDateTime effectiveUntil = OffsetDateTime.now(); // OffsetDateTime | The effective date until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next 'effectiveAt' date of the Access Metadata
         try {
+            // uncomment the below to set overrides at the request level
+            // Map<String, List<AccessMetadataValue>> result = apiInstance.patchPortfolioAccessMetadata(scope, code, accessMetadataOperation, effectiveAt, effectiveUntil).execute(opts);
+
             Map<String, List<AccessMetadataValue>> result = apiInstance.patchPortfolioAccessMetadata(scope, code, accessMetadataOperation, effectiveAt, effectiveUntil).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -2327,12 +2602,23 @@ public class PortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio.
         String code = "code_example"; // String | The code of the portfolio. Together with the scope this uniquely identifies the portfolio.
         UpdatePortfolioRequest updatePortfolioRequest = new UpdatePortfolioRequest(); // UpdatePortfolioRequest | The updated portfolio definition.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to update the definition. Defaults to the current   LUSID system datetime if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // Portfolio result = apiInstance.updatePortfolio(scope, code, updatePortfolioRequest, effectiveAt).execute(opts);
+
             Portfolio result = apiInstance.updatePortfolio(scope, code, updatePortfolioRequest, effectiveAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -2413,6 +2699,14 @@ public class PortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio.
         String code = "code_example"; // String | The code of the portfolio. Together with the scope this uniquely identifies the portfolio.
@@ -2420,6 +2714,9 @@ public class PortfoliosApiExample {
         Map<String, InstrumentEventInstructionRequest> requestBody = new HashMap(); // Map<String, InstrumentEventInstructionRequest> | The instructions to be upserted to the portfolio.
         String portfolioEffectiveAt = "portfolioEffectiveAt_example"; // String | The effective date at which the portfolio will be resolved. Defaults to current time if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // InstrumentEventInstructionsResponse result = apiInstance.upsertInstrumentEventInstructions(scope, code, successMode, requestBody, portfolioEffectiveAt).execute(opts);
+
             InstrumentEventInstructionsResponse result = apiInstance.upsertInstrumentEventInstructions(scope, code, successMode, requestBody, portfolioEffectiveAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -2501,6 +2798,14 @@ public class PortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String scope = "scope_example"; // String | The scope to use when updating or inserting the Portfolio Access Metadata Rule.
         String code = "code_example"; // String | Portfolio code
@@ -2509,6 +2814,9 @@ public class PortfoliosApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The date this rule will effective from
         OffsetDateTime effectiveUntil = OffsetDateTime.now(); // OffsetDateTime | The effective date until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next 'effectiveAt' date of the Access Metadata
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfAccessMetadataValueOf result = apiInstance.upsertPortfolioAccessMetadata(scope, code, metadataKey, upsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil).execute(opts);
+
             ResourceListOfAccessMetadataValueOf result = apiInstance.upsertPortfolioAccessMetadata(scope, code, metadataKey, upsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -2591,11 +2899,22 @@ public class PortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio.
         String code = "code_example"; // String | The code of the portfolio. Together with the scope this uniquely identifies the portfolio.
         Map<String, Property> requestBody = new HashMap(); // Map<String, Property> | The properties to be created or updated. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example   'Portfolio/Manager/Id'.
         try {
+            // uncomment the below to set overrides at the request level
+            // PortfolioProperties result = apiInstance.upsertPortfolioProperties(scope, code, requestBody).execute(opts);
+
             PortfolioProperties result = apiInstance.upsertPortfolioProperties(scope, code, requestBody).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -2675,6 +2994,14 @@ public class PortfoliosApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the Portfolio.
         String code = "code_example"; // String | The code of the Portfolio.
@@ -2682,6 +3009,9 @@ public class PortfoliosApiExample {
         String returnCode = "returnCode_example"; // String | The code of the Returns.
         List<PerformanceReturn> performanceReturn = Arrays.asList(); // List<PerformanceReturn> | This contains the Returns which need to be upsert.
         try {
+            // uncomment the below to set overrides at the request level
+            // UpsertReturnsResponse result = apiInstance.upsertPortfolioReturns(scope, code, returnScope, returnCode, performanceReturn).execute(opts);
+
             UpsertReturnsResponse result = apiInstance.upsertPortfolioReturns(scope, code, returnScope, returnCode, performanceReturn).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

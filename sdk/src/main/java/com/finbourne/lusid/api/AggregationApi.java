@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -77,6 +78,10 @@ public class AggregationApi {
     }
 
     private okhttp3.Call generateConfigurationRecipeCall(String scope, String code, CreateRecipeRequest createRecipeRequest, final ApiCallback _callback) throws ApiException {
+        return generateConfigurationRecipeCall(scope, code, createRecipeRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call generateConfigurationRecipeCall(String scope, String code, CreateRecipeRequest createRecipeRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -125,11 +130,11 @@ public class AggregationApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call generateConfigurationRecipeValidateBeforeCall(String scope, String code, CreateRecipeRequest createRecipeRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call generateConfigurationRecipeValidateBeforeCall(String scope, String code, CreateRecipeRequest createRecipeRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling generateConfigurationRecipe(Async)");
@@ -140,20 +145,34 @@ public class AggregationApi {
             throw new ApiException("Missing the required parameter 'code' when calling generateConfigurationRecipe(Async)");
         }
 
-        return generateConfigurationRecipeCall(scope, code, createRecipeRequest, _callback);
+        return generateConfigurationRecipeCall(scope, code, createRecipeRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<ConfigurationRecipe> generateConfigurationRecipeWithHttpInfo(String scope, String code, CreateRecipeRequest createRecipeRequest) throws ApiException {
-        okhttp3.Call localVarCall = generateConfigurationRecipeValidateBeforeCall(scope, code, createRecipeRequest, null);
+        okhttp3.Call localVarCall = generateConfigurationRecipeValidateBeforeCall(scope, code, createRecipeRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ConfigurationRecipe>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ConfigurationRecipe> generateConfigurationRecipeWithHttpInfo(String scope, String code, CreateRecipeRequest createRecipeRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = generateConfigurationRecipeValidateBeforeCall(scope, code, createRecipeRequest, null, opts);
         Type localVarReturnType = new TypeToken<ConfigurationRecipe>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call generateConfigurationRecipeAsync(String scope, String code, CreateRecipeRequest createRecipeRequest, final ApiCallback<ConfigurationRecipe> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = generateConfigurationRecipeValidateBeforeCall(scope, code, createRecipeRequest, _callback);
+        okhttp3.Call localVarCall = generateConfigurationRecipeValidateBeforeCall(scope, code, createRecipeRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ConfigurationRecipe>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call generateConfigurationRecipeAsync(String scope, String code, CreateRecipeRequest createRecipeRequest, final ApiCallback<ConfigurationRecipe> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = generateConfigurationRecipeValidateBeforeCall(scope, code, createRecipeRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<ConfigurationRecipe>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -214,6 +233,23 @@ public class AggregationApi {
         }
 
         /**
+         * Execute generateConfigurationRecipe request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ConfigurationRecipe
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ConfigurationRecipe execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ConfigurationRecipe> localVarResp = generateConfigurationRecipeWithHttpInfo(scope, code, createRecipeRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute generateConfigurationRecipe request with HTTP info returned
          * @return ApiResponse&lt;ConfigurationRecipe&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -227,6 +263,22 @@ public class AggregationApi {
          */
         public ApiResponse<ConfigurationRecipe> executeWithHttpInfo() throws ApiException {
             return generateConfigurationRecipeWithHttpInfo(scope, code, createRecipeRequest);
+        }
+
+        /**
+         * Execute generateConfigurationRecipe request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ConfigurationRecipe&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ConfigurationRecipe> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return generateConfigurationRecipeWithHttpInfo(scope, code, createRecipeRequest, opts);
         }
 
         /**
@@ -244,6 +296,23 @@ public class AggregationApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ConfigurationRecipe> _callback) throws ApiException {
             return generateConfigurationRecipeAsync(scope, code, createRecipeRequest, _callback);
+        }
+
+        /**
+         * Execute generateConfigurationRecipe request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ConfigurationRecipe> _callback, ConfigurationOptions opts) throws ApiException {
+            return generateConfigurationRecipeAsync(scope, code, createRecipeRequest, _callback, opts);
         }
     }
 
@@ -265,6 +334,10 @@ public class AggregationApi {
         return new APIgenerateConfigurationRecipeRequest(scope, code);
     }
     private okhttp3.Call getQueryableKeysCall(String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+        return getQueryableKeysCall(page, limit, filter,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getQueryableKeysCall(String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -319,25 +392,39 @@ public class AggregationApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getQueryableKeysValidateBeforeCall(String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
-        return getQueryableKeysCall(page, limit, filter, _callback);
+    private okhttp3.Call getQueryableKeysValidateBeforeCall(String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return getQueryableKeysCall(page, limit, filter, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfAggregationQuery> getQueryableKeysWithHttpInfo(String page, Integer limit, String filter) throws ApiException {
-        okhttp3.Call localVarCall = getQueryableKeysValidateBeforeCall(page, limit, filter, null);
+        okhttp3.Call localVarCall = getQueryableKeysValidateBeforeCall(page, limit, filter, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfAggregationQuery>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfAggregationQuery> getQueryableKeysWithHttpInfo(String page, Integer limit, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getQueryableKeysValidateBeforeCall(page, limit, filter, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfAggregationQuery>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getQueryableKeysAsync(String page, Integer limit, String filter, final ApiCallback<ResourceListOfAggregationQuery> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getQueryableKeysValidateBeforeCall(page, limit, filter, _callback);
+        okhttp3.Call localVarCall = getQueryableKeysValidateBeforeCall(page, limit, filter, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfAggregationQuery>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getQueryableKeysAsync(String page, Integer limit, String filter, final ApiCallback<ResourceListOfAggregationQuery> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getQueryableKeysValidateBeforeCall(page, limit, filter, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfAggregationQuery>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -416,6 +503,23 @@ public class AggregationApi {
         }
 
         /**
+         * Execute getQueryableKeys request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfAggregationQuery
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfAggregationQuery execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfAggregationQuery> localVarResp = getQueryableKeysWithHttpInfo(page, limit, filter, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getQueryableKeys request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfAggregationQuery&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -429,6 +533,22 @@ public class AggregationApi {
          */
         public ApiResponse<ResourceListOfAggregationQuery> executeWithHttpInfo() throws ApiException {
             return getQueryableKeysWithHttpInfo(page, limit, filter);
+        }
+
+        /**
+         * Execute getQueryableKeys request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfAggregationQuery&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfAggregationQuery> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getQueryableKeysWithHttpInfo(page, limit, filter, opts);
         }
 
         /**
@@ -446,6 +566,23 @@ public class AggregationApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfAggregationQuery> _callback) throws ApiException {
             return getQueryableKeysAsync(page, limit, filter, _callback);
+        }
+
+        /**
+         * Execute getQueryableKeys request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfAggregationQuery> _callback, ConfigurationOptions opts) throws ApiException {
+            return getQueryableKeysAsync(page, limit, filter, _callback, opts);
         }
     }
 
@@ -465,6 +602,10 @@ public class AggregationApi {
         return new APIgetQueryableKeysRequest();
     }
     private okhttp3.Call getValuationCall(ValuationRequest valuationRequest, final ApiCallback _callback) throws ApiException {
+        return getValuationCall(valuationRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getValuationCall(ValuationRequest valuationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -511,25 +652,39 @@ public class AggregationApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getValuationValidateBeforeCall(ValuationRequest valuationRequest, final ApiCallback _callback) throws ApiException {
-        return getValuationCall(valuationRequest, _callback);
+    private okhttp3.Call getValuationValidateBeforeCall(ValuationRequest valuationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return getValuationCall(valuationRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<ListAggregationResponse> getValuationWithHttpInfo(ValuationRequest valuationRequest) throws ApiException {
-        okhttp3.Call localVarCall = getValuationValidateBeforeCall(valuationRequest, null);
+        okhttp3.Call localVarCall = getValuationValidateBeforeCall(valuationRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ListAggregationResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ListAggregationResponse> getValuationWithHttpInfo(ValuationRequest valuationRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getValuationValidateBeforeCall(valuationRequest, null, opts);
         Type localVarReturnType = new TypeToken<ListAggregationResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getValuationAsync(ValuationRequest valuationRequest, final ApiCallback<ListAggregationResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getValuationValidateBeforeCall(valuationRequest, _callback);
+        okhttp3.Call localVarCall = getValuationValidateBeforeCall(valuationRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ListAggregationResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getValuationAsync(ValuationRequest valuationRequest, final ApiCallback<ListAggregationResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getValuationValidateBeforeCall(valuationRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<ListAggregationResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -586,6 +741,23 @@ public class AggregationApi {
         }
 
         /**
+         * Execute getValuation request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ListAggregationResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ListAggregationResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ListAggregationResponse> localVarResp = getValuationWithHttpInfo(valuationRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getValuation request with HTTP info returned
          * @return ApiResponse&lt;ListAggregationResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -599,6 +771,22 @@ public class AggregationApi {
          */
         public ApiResponse<ListAggregationResponse> executeWithHttpInfo() throws ApiException {
             return getValuationWithHttpInfo(valuationRequest);
+        }
+
+        /**
+         * Execute getValuation request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ListAggregationResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ListAggregationResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getValuationWithHttpInfo(valuationRequest, opts);
         }
 
         /**
@@ -616,6 +804,23 @@ public class AggregationApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ListAggregationResponse> _callback) throws ApiException {
             return getValuationAsync(valuationRequest, _callback);
+        }
+
+        /**
+         * Execute getValuation request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ListAggregationResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return getValuationAsync(valuationRequest, _callback, opts);
         }
     }
 
@@ -635,6 +840,10 @@ public class AggregationApi {
         return new APIgetValuationRequest();
     }
     private okhttp3.Call getValuationOfWeightedInstrumentsCall(InlineValuationRequest inlineValuationRequest, final ApiCallback _callback) throws ApiException {
+        return getValuationOfWeightedInstrumentsCall(inlineValuationRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getValuationOfWeightedInstrumentsCall(InlineValuationRequest inlineValuationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -681,25 +890,39 @@ public class AggregationApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getValuationOfWeightedInstrumentsValidateBeforeCall(InlineValuationRequest inlineValuationRequest, final ApiCallback _callback) throws ApiException {
-        return getValuationOfWeightedInstrumentsCall(inlineValuationRequest, _callback);
+    private okhttp3.Call getValuationOfWeightedInstrumentsValidateBeforeCall(InlineValuationRequest inlineValuationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return getValuationOfWeightedInstrumentsCall(inlineValuationRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<ListAggregationResponse> getValuationOfWeightedInstrumentsWithHttpInfo(InlineValuationRequest inlineValuationRequest) throws ApiException {
-        okhttp3.Call localVarCall = getValuationOfWeightedInstrumentsValidateBeforeCall(inlineValuationRequest, null);
+        okhttp3.Call localVarCall = getValuationOfWeightedInstrumentsValidateBeforeCall(inlineValuationRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ListAggregationResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ListAggregationResponse> getValuationOfWeightedInstrumentsWithHttpInfo(InlineValuationRequest inlineValuationRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getValuationOfWeightedInstrumentsValidateBeforeCall(inlineValuationRequest, null, opts);
         Type localVarReturnType = new TypeToken<ListAggregationResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getValuationOfWeightedInstrumentsAsync(InlineValuationRequest inlineValuationRequest, final ApiCallback<ListAggregationResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getValuationOfWeightedInstrumentsValidateBeforeCall(inlineValuationRequest, _callback);
+        okhttp3.Call localVarCall = getValuationOfWeightedInstrumentsValidateBeforeCall(inlineValuationRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ListAggregationResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getValuationOfWeightedInstrumentsAsync(InlineValuationRequest inlineValuationRequest, final ApiCallback<ListAggregationResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getValuationOfWeightedInstrumentsValidateBeforeCall(inlineValuationRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<ListAggregationResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -756,6 +979,23 @@ public class AggregationApi {
         }
 
         /**
+         * Execute getValuationOfWeightedInstruments request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ListAggregationResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ListAggregationResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ListAggregationResponse> localVarResp = getValuationOfWeightedInstrumentsWithHttpInfo(inlineValuationRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getValuationOfWeightedInstruments request with HTTP info returned
          * @return ApiResponse&lt;ListAggregationResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -769,6 +1009,22 @@ public class AggregationApi {
          */
         public ApiResponse<ListAggregationResponse> executeWithHttpInfo() throws ApiException {
             return getValuationOfWeightedInstrumentsWithHttpInfo(inlineValuationRequest);
+        }
+
+        /**
+         * Execute getValuationOfWeightedInstruments request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ListAggregationResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ListAggregationResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getValuationOfWeightedInstrumentsWithHttpInfo(inlineValuationRequest, opts);
         }
 
         /**
@@ -786,6 +1042,23 @@ public class AggregationApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ListAggregationResponse> _callback) throws ApiException {
             return getValuationOfWeightedInstrumentsAsync(inlineValuationRequest, _callback);
+        }
+
+        /**
+         * Execute getValuationOfWeightedInstruments request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ListAggregationResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return getValuationOfWeightedInstrumentsAsync(inlineValuationRequest, _callback, opts);
         }
     }
 

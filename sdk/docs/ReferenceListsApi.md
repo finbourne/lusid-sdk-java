@@ -49,10 +49,21 @@ public class ReferenceListsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ReferenceListsApi apiInstance = apiFactory.build(ReferenceListsApi.class);
+
         ReferenceListsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ReferenceListsApi.class);
         String scope = "scope_example"; // String | The scope to which the Reference List belongs.
         String code = "code_example"; // String | The Reference List's unique identifier.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteReferenceList(scope, code).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteReferenceList(scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -131,11 +142,22 @@ public class ReferenceListsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ReferenceListsApi apiInstance = apiFactory.build(ReferenceListsApi.class);
+
         ReferenceListsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ReferenceListsApi.class);
         String scope = "scope_example"; // String | The scope to which the Reference List belongs.
         String code = "code_example"; // String | The Reference List's unique identifier.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Reference List. Defaults to return the latest version of the Reference List if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // ReferenceListResponse result = apiInstance.getReferenceList(scope, code, asAt).execute(opts);
+
             ReferenceListResponse result = apiInstance.getReferenceList(scope, code, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -215,12 +237,23 @@ public class ReferenceListsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ReferenceListsApi apiInstance = apiFactory.build(ReferenceListsApi.class);
+
         ReferenceListsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ReferenceListsApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list Reference Lists. Defaults to return the latest version of Reference Lists if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing Reference Lists from a previous call to list Reference Lists.   This value is returned from the previous call. If a pagination token is provided, the filter, limit and asAt fields   must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this number. Defaults to 100 if not specified.
         String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfReferenceListResponse result = apiInstance.listReferenceLists(asAt, page, limit, filter).execute(opts);
+
             PagedResourceListOfReferenceListResponse result = apiInstance.listReferenceLists(asAt, page, limit, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -301,9 +334,20 @@ public class ReferenceListsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ReferenceListsApi apiInstance = apiFactory.build(ReferenceListsApi.class);
+
         ReferenceListsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ReferenceListsApi.class);
         ReferenceListRequest referenceListRequest = new ReferenceListRequest(); // ReferenceListRequest | The payload describing the Reference List instance.
         try {
+            // uncomment the below to set overrides at the request level
+            // ReferenceListResponse result = apiInstance.upsertReferenceList(referenceListRequest).execute(opts);
+
             ReferenceListResponse result = apiInstance.upsertReferenceList(referenceListRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

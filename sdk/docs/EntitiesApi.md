@@ -50,11 +50,22 @@ public class EntitiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // EntitiesApi apiInstance = apiFactory.build(EntitiesApi.class);
+
         EntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(EntitiesApi.class);
         String entityUniqueId = "entityUniqueId_example"; // String | The universally unique identifier of the DataType definition.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the DataType definition. Defaults to returning the latest version of the DataType definition if not specified.
         List<String> previews = Arrays.asList(); // List<String> | The ids of the staged modifications to be previewed in the response.
         try {
+            // uncomment the below to set overrides at the request level
+            // DataTypeEntity result = apiInstance.getDataTypeByEntityUniqueId(entityUniqueId, asAt, previews).execute(opts);
+
             DataTypeEntity result = apiInstance.getDataTypeByEntityUniqueId(entityUniqueId, asAt, previews).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -134,12 +145,23 @@ public class EntitiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // EntitiesApi apiInstance = apiFactory.build(EntitiesApi.class);
+
         EntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(EntitiesApi.class);
         String entityUniqueId = "entityUniqueId_example"; // String | The universally unique identifier of the instrument definition.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the Instrument definition. Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument definition. Defaults to returning the latest version of the instrument definition if not specified.
         List<String> previews = Arrays.asList(); // List<String> | The ids of the staged modifications to be previewed in the response.
         try {
+            // uncomment the below to set overrides at the request level
+            // InstrumentEntity result = apiInstance.getInstrumentByEntityUniqueId(entityUniqueId, effectiveAt, asAt, previews).execute(opts);
+
             InstrumentEntity result = apiInstance.getInstrumentByEntityUniqueId(entityUniqueId, effectiveAt, asAt, previews).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -220,12 +242,23 @@ public class EntitiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // EntitiesApi apiInstance = apiFactory.build(EntitiesApi.class);
+
         EntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(EntitiesApi.class);
         String entityUniqueId = "entityUniqueId_example"; // String | The universally unique identifier of the portfolio definition.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the portfolio definition. Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the portfolio definition. Defaults to returning the latest version of the portfolio definition if not specified.
         List<String> previews = Arrays.asList(); // List<String> | The ids of the staged modifications to be previewed in the response.
         try {
+            // uncomment the below to set overrides at the request level
+            // PortfolioEntity result = apiInstance.getPortfolioByEntityUniqueId(entityUniqueId, effectiveAt, asAt, previews).execute(opts);
+
             PortfolioEntity result = apiInstance.getPortfolioByEntityUniqueId(entityUniqueId, effectiveAt, asAt, previews).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -306,11 +339,22 @@ public class EntitiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // EntitiesApi apiInstance = apiFactory.build(EntitiesApi.class);
+
         EntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(EntitiesApi.class);
         String scope = "scope_example"; // String | The scope
         String effectiveAt = "effectiveAt_example"; // String | The effective date of the origin.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The as-at date of the origin.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfChange result = apiInstance.getPortfolioChanges(scope, effectiveAt, asAt).execute(opts);
+
             ResourceListOfChange result = apiInstance.getPortfolioChanges(scope, effectiveAt, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -390,12 +434,23 @@ public class EntitiesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // EntitiesApi apiInstance = apiFactory.build(EntitiesApi.class);
+
         EntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(EntitiesApi.class);
         String entityUniqueId = "entityUniqueId_example"; // String | The universally unique identifier of the property definition.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime at which to retrieve the property definition. Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the property definition. Defaults to returning the latest version of the property definition if not specified.
         List<String> previews = Arrays.asList(); // List<String> | The ids of the staged modifications to be previewed in the response.
         try {
+            // uncomment the below to set overrides at the request level
+            // PropertyDefinitionEntity result = apiInstance.getPropertyDefinitionByEntityUniqueId(entityUniqueId, effectiveAt, asAt, previews).execute(opts);
+
             PropertyDefinitionEntity result = apiInstance.getPropertyDefinitionByEntityUniqueId(entityUniqueId, effectiveAt, asAt, previews).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

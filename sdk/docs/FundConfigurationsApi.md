@@ -50,10 +50,21 @@ public class FundConfigurationsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // FundConfigurationsApi apiInstance = apiFactory.build(FundConfigurationsApi.class);
+
         FundConfigurationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundConfigurationsApi.class);
         String scope = "scope_example"; // String | The scope of the FundConfiguration.
         FundConfigurationRequest fundConfigurationRequest = new FundConfigurationRequest(); // FundConfigurationRequest | The definition of the FundConfiguration.
         try {
+            // uncomment the below to set overrides at the request level
+            // FundConfiguration result = apiInstance.createFundConfiguration(scope, fundConfigurationRequest).execute(opts);
+
             FundConfiguration result = apiInstance.createFundConfiguration(scope, fundConfigurationRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -132,10 +143,21 @@ public class FundConfigurationsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // FundConfigurationsApi apiInstance = apiFactory.build(FundConfigurationsApi.class);
+
         FundConfigurationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundConfigurationsApi.class);
         String scope = "scope_example"; // String | The scope of the FundConfiguration to be deleted.
         String code = "code_example"; // String | The code of the FundConfiguration to be deleted.    Together with the scope this uniquely identifies the FundConfiguration.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteFundConfiguration(scope, code).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteFundConfiguration(scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -214,6 +236,14 @@ public class FundConfigurationsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // FundConfigurationsApi apiInstance = apiFactory.build(FundConfigurationsApi.class);
+
         FundConfigurationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundConfigurationsApi.class);
         String scope = "scope_example"; // String | The scope of the FundConfiguration.
         String code = "code_example"; // String | The code of the FundConfiguration. Together with the scope this uniquely identifies the FundConfiguration.
@@ -221,6 +251,9 @@ public class FundConfigurationsApiExample {
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the FundConfiguration definition. Defaults to returning the latest version of the FundConfiguration definition if not specified.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'FundConfiguration' domain to decorate onto the FundConfiguration.   These must take the format {domain}/{scope}/{code}, for example 'FundConfiguration/Manager/Id'. If no properties are specified, then no properties will be returned.
         try {
+            // uncomment the below to set overrides at the request level
+            // FundConfiguration result = apiInstance.getFundConfiguration(scope, code, effectiveAt, asAt, propertyKeys).execute(opts);
+
             FundConfiguration result = apiInstance.getFundConfiguration(scope, code, effectiveAt, asAt, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -302,6 +335,14 @@ public class FundConfigurationsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // FundConfigurationsApi apiInstance = apiFactory.build(FundConfigurationsApi.class);
+
         FundConfigurationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundConfigurationsApi.class);
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the TimeVariant properties for the FundConfiguration.   Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the FundConfiguration. Defaults to returning the latest version of each FundConfiguration if not specified.
@@ -311,6 +352,9 @@ public class FundConfigurationsApiExample {
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\".
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'FundConfiguration' domain to decorate onto each FundConfiguration.   These must take the format {domain}/{scope}/{code}, for example 'FundConfiguration/Manager/Id'.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfFundConfiguration result = apiInstance.listFundConfigurations(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys).execute(opts);
+
             PagedResourceListOfFundConfiguration result = apiInstance.listFundConfigurations(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -394,11 +438,22 @@ public class FundConfigurationsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // FundConfigurationsApi apiInstance = apiFactory.build(FundConfigurationsApi.class);
+
         FundConfigurationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundConfigurationsApi.class);
         String scope = "scope_example"; // String | The scope of the FundConfiguration to update or insert the properties onto.
         String code = "code_example"; // String | The code of the FundConfiguration to update or insert the properties onto. Together with the scope this uniquely identifies the FundConfiguration.
         Map<String, Property> requestBody = new HashMap(); // Map<String, Property> | The properties to be updated or inserted onto the Fund Configuration. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \"FundConfiguration/Manager/Id\".
         try {
+            // uncomment the below to set overrides at the request level
+            // FundConfigurationProperties result = apiInstance.upsertFundConfigurationProperties(scope, code, requestBody).execute(opts);
+
             FundConfigurationProperties result = apiInstance.upsertFundConfigurationProperties(scope, code, requestBody).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

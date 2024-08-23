@@ -49,10 +49,21 @@ public class ExecutionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ExecutionsApi apiInstance = apiFactory.build(ExecutionsApi.class);
+
         ExecutionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ExecutionsApi.class);
         String scope = "scope_example"; // String | The execution scope.
         String code = "code_example"; // String | The execution's code. This, together with the scope uniquely identifies the execution to delete.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteExecution(scope, code).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteExecution(scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -131,12 +142,23 @@ public class ExecutionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ExecutionsApi apiInstance = apiFactory.build(ExecutionsApi.class);
+
         ExecutionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ExecutionsApi.class);
         String scope = "scope_example"; // String | The scope to which the execution belongs.
         String code = "code_example"; // String | The execution's unique identifier.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the execution. Defaults to return the latest version of the execution if not specified.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Execution\" domain to decorate onto the execution.   These take the format {domain}/{scope}/{code} e.g. \"Execution/system/Name\".
         try {
+            // uncomment the below to set overrides at the request level
+            // Execution result = apiInstance.getExecution(scope, code, asAt, propertyKeys).execute(opts);
+
             Execution result = apiInstance.getExecution(scope, code, asAt, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -217,6 +239,14 @@ public class ExecutionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ExecutionsApi apiInstance = apiFactory.build(ExecutionsApi.class);
+
         ExecutionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ExecutionsApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the execution. Defaults to return the latest version of the execution if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing execution from a previous call to list executions.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request.
@@ -225,6 +255,9 @@ public class ExecutionsApiExample {
         String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Execution\" domain to decorate onto each execution.   These take the format {domain}/{scope}/{code} e.g. \"Execution/system/Name\".
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfExecution result = apiInstance.listExecutions(asAt, page, sortBy, limit, filter, propertyKeys).execute(opts);
+
             PagedResourceListOfExecution result = apiInstance.listExecutions(asAt, page, sortBy, limit, filter, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -307,9 +340,20 @@ public class ExecutionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ExecutionsApi apiInstance = apiFactory.build(ExecutionsApi.class);
+
         ExecutionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ExecutionsApi.class);
         ExecutionSetRequest executionSetRequest = new ExecutionSetRequest(); // ExecutionSetRequest | The collection of execution requests.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfExecution result = apiInstance.upsertExecutions(executionSetRequest).execute(opts);
+
             ResourceListOfExecution result = apiInstance.upsertExecutions(executionSetRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

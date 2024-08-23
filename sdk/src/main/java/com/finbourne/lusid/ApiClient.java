@@ -15,6 +15,7 @@ import okhttp3.internal.http.HttpMethod;
 import okhttp3.internal.tls.OkHostnameVerifier;
 import okhttp3.logging.HttpLoggingInterceptor;
 import okhttp3.logging.HttpLoggingInterceptor.Level;
+import okhttp3.OkHttpClient.Builder;
 import okio.Buffer;
 import okio.BufferedSink;
 import okio.Okio;
@@ -40,6 +41,7 @@ import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 import java.text.DateFormat;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
@@ -56,6 +58,8 @@ import com.finbourne.lusid.auth.ApiKeyAuth;
 import com.finbourne.lusid.auth.OAuth;
 import com.finbourne.lusid.auth.RetryingOAuth;
 import com.finbourne.lusid.auth.OAuthFlow;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
+import com.finbourne.lusid.extensions.RateLimitRetryInterceptor;
 
 /**
  * <p>ApiClient class.</p>
@@ -208,7 +212,7 @@ public class ApiClient {
         json = new JSON();
 
         // Set default User-Agent.
-        setUserAgent("OpenAPI-Generator/2.0.1019/java");
+        setUserAgent("OpenAPI-Generator/2.0.1023/java");
 
         authentications = new HashMap<String, Authentication>();
     }
@@ -1228,6 +1232,41 @@ public class ApiClient {
 
         return httpClient.newCall(request);
     }
+
+    public Call buildCall(String baseUrl, String path, String method, List<Pair> queryParams, List<Pair> collectionQueryParams, Object body, Map<String, String> headerParams, Map<String, String> cookieParams, Map<String, Object> formParams, String[] authNames, ApiCallback callback, ConfigurationOptions opts) throws ApiException {
+        Request request = buildRequest(baseUrl, path, method, queryParams, collectionQueryParams, body, headerParams, cookieParams, formParams, authNames, callback);
+
+        if (opts == null || opts.noOptionsSet()) {
+            return httpClient.newCall(request);
+        }
+
+        // these options are being set for a single request - do not modify the existing http client
+        Builder clientBuilder = httpClient.newBuilder();
+
+        if (opts.getRateLimitRetries() != null) {
+            clientBuilder.interceptors().removeIf(i -> (i instanceof RateLimitRetryInterceptor));
+            clientBuilder.addInterceptor(new RateLimitRetryInterceptor(opts.getRateLimitRetries()));
+        }
+
+        if (opts.getTotalTimeoutMs() != null) {
+            clientBuilder.callTimeout(Duration.ofMillis(opts.getTotalTimeoutMs()));
+        }
+
+        if (opts.getConnectTimeoutMs() != null) {
+            clientBuilder.connectTimeout(Duration.ofMillis(opts.getConnectTimeoutMs()));
+        }
+
+        if (opts.getReadTimeoutMs() != null) {
+            clientBuilder.readTimeout(Duration.ofMillis(opts.getReadTimeoutMs()));
+        }
+
+        if (opts.getWriteTimeoutMs() != null) {
+            clientBuilder.writeTimeout(Duration.ofMillis(opts.getWriteTimeoutMs()));
+        }
+
+        return clientBuilder.build().newCall(request);
+    }
+
 
     /**
      * Build an HTTP request with the given options.

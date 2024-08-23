@@ -56,10 +56,21 @@ public class TransactionConfigurationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionConfigurationApi apiInstance = apiFactory.build(TransactionConfigurationApi.class);
+
         TransactionConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionConfigurationApi.class);
         String side = "side_example"; // String | The label to uniquely identify the side.
         String scope = "default"; // String | The scope in which the side exists. When not supplied the scope is 'default'.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteSideDefinition(side, scope).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteSideDefinition(side, scope).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -138,11 +149,22 @@ public class TransactionConfigurationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionConfigurationApi apiInstance = apiFactory.build(TransactionConfigurationApi.class);
+
         TransactionConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionConfigurationApi.class);
         String source = "source_example"; // String | The source that the type is in
         String type = "type_example"; // String | One of the type's aliases
         String scope = "default"; // String | The scope in which the transaction types exists. When not supplied the scope is 'default'.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteTransactionType(source, type, scope).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteTransactionType(source, type, scope).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -222,10 +244,21 @@ public class TransactionConfigurationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionConfigurationApi apiInstance = apiFactory.build(TransactionConfigurationApi.class);
+
         TransactionConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionConfigurationApi.class);
         String source = "source_example"; // String | The source to set the transaction types for.
         String scope = "default"; // String | The scope in which the transaction types exists. When not supplied the scope is 'default'.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteTransactionTypeSource(source, scope).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteTransactionTypeSource(source, scope).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -304,11 +337,22 @@ public class TransactionConfigurationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionConfigurationApi apiInstance = apiFactory.build(TransactionConfigurationApi.class);
+
         TransactionConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionConfigurationApi.class);
         String side = "side_example"; // String | The label to uniquely identify the side.
         String scope = "default"; // String | The scope in which the side exists. When not supplied the scope is 'default'.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // SideDefinition result = apiInstance.getSideDefinition(side, scope, asAt).execute(opts);
+
             SideDefinition result = apiInstance.getSideDefinition(side, scope, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -388,12 +432,23 @@ public class TransactionConfigurationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionConfigurationApi apiInstance = apiFactory.build(TransactionConfigurationApi.class);
+
         TransactionConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionConfigurationApi.class);
         String source = "source_example"; // String | The source that the type is in
         String type = "type_example"; // String | One of the type's aliases
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction configuration.   Defaults to returning the latest version of the transaction configuration type if not specified
         String scope = "default"; // String | The scope in which the transaction types exists. When not supplied the scope is 'default'.
         try {
+            // uncomment the below to set overrides at the request level
+            // TransactionType result = apiInstance.getTransactionType(source, type, asAt, scope).execute(opts);
+
             TransactionType result = apiInstance.getTransactionType(source, type, asAt, scope).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -474,10 +529,21 @@ public class TransactionConfigurationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionConfigurationApi apiInstance = apiFactory.build(TransactionConfigurationApi.class);
+
         TransactionConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionConfigurationApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified.
         String scope = "default"; // String | The scope in which the side exists. When not supplied the scope is 'default'.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfSideDefinition result = apiInstance.listSideDefinitions(asAt, scope).execute(opts);
+
             ResourceListOfSideDefinition result = apiInstance.listSideDefinitions(asAt, scope).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -556,10 +622,21 @@ public class TransactionConfigurationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionConfigurationApi apiInstance = apiFactory.build(TransactionConfigurationApi.class);
+
         TransactionConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionConfigurationApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction types. Defaults   to returning the latest versions if not specified.
         String scope = "default"; // String | The scope in which the side exists. When not supplied the scope is 'default'.
         try {
+            // uncomment the below to set overrides at the request level
+            // Map<String, List<TransactionType>> result = apiInstance.listTransactionTypes(asAt, scope).execute(opts);
+
             Map<String, List<TransactionType>> result = apiInstance.listTransactionTypes(asAt, scope).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -638,11 +715,22 @@ public class TransactionConfigurationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionConfigurationApi apiInstance = apiFactory.build(TransactionConfigurationApi.class);
+
         TransactionConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionConfigurationApi.class);
         String side = "side_example"; // String | The label to uniquely identify the side.
         SideDefinitionRequest sideDefinitionRequest = new SideDefinitionRequest(); // SideDefinitionRequest | The side definition to create or replace.
         String scope = "default"; // String | The scope in which the side exists. When not supplied the scope is 'default'.
         try {
+            // uncomment the below to set overrides at the request level
+            // SideDefinition result = apiInstance.setSideDefinition(side, sideDefinitionRequest, scope).execute(opts);
+
             SideDefinition result = apiInstance.setSideDefinition(side, sideDefinitionRequest, scope).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -722,10 +810,21 @@ public class TransactionConfigurationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionConfigurationApi apiInstance = apiFactory.build(TransactionConfigurationApi.class);
+
         TransactionConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionConfigurationApi.class);
         List<SidesDefinitionRequest> sidesDefinitionRequest = Arrays.asList(); // List<SidesDefinitionRequest> | The list of side definitions to create, or replace.
         String scope = "default"; // String | The scope in which the side exists. When not supplied the scope is 'default'.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfSideDefinition result = apiInstance.setSideDefinitions(sidesDefinitionRequest, scope).execute(opts);
+
             ResourceListOfSideDefinition result = apiInstance.setSideDefinitions(sidesDefinitionRequest, scope).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -804,12 +903,23 @@ public class TransactionConfigurationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionConfigurationApi apiInstance = apiFactory.build(TransactionConfigurationApi.class);
+
         TransactionConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionConfigurationApi.class);
         String source = "source_example"; // String | The source to set the transaction configuration for
         String type = "type_example"; // String | One of the transaction configuration alias types to uniquely identify the configuration. If this type does not exist, then a new transaction type is created using the body of the request in the given source, without including this type
         TransactionTypeRequest transactionTypeRequest = new TransactionTypeRequest(); // TransactionTypeRequest | The transaction configuration to set
         String scope = "default"; // String | The scope in which the transaction types exists. When not supplied the scope is 'default'.
         try {
+            // uncomment the below to set overrides at the request level
+            // TransactionType result = apiInstance.setTransactionType(source, type, transactionTypeRequest, scope).execute(opts);
+
             TransactionType result = apiInstance.setTransactionType(source, type, transactionTypeRequest, scope).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -890,11 +1000,22 @@ public class TransactionConfigurationApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionConfigurationApi apiInstance = apiFactory.build(TransactionConfigurationApi.class);
+
         TransactionConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionConfigurationApi.class);
         String source = "source_example"; // String | The source to set the transaction types for.
         List<TransactionTypeRequest> transactionTypeRequest = Arrays.asList(); // List<TransactionTypeRequest> | The set of transaction types.
         String scope = "default"; // String | The scope in which the transaction types exists. When not supplied the scope is 'default'.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfTransactionType result = apiInstance.setTransactionTypeSource(source, transactionTypeRequest, scope).execute(opts);
+
             ResourceListOfTransactionType result = apiInstance.setTransactionTypeSource(source, transactionTypeRequest, scope).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -74,6 +75,10 @@ public class ApplicationMetadataApi {
     }
 
     private okhttp3.Call getExcelAddinCall(String version, final ApiCallback _callback) throws ApiException {
+        return getExcelAddinCall(version,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getExcelAddinCall(String version, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -120,25 +125,39 @@ public class ApplicationMetadataApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getExcelAddinValidateBeforeCall(String version, final ApiCallback _callback) throws ApiException {
-        return getExcelAddinCall(version, _callback);
+    private okhttp3.Call getExcelAddinValidateBeforeCall(String version, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return getExcelAddinCall(version, _callback, opts);
 
     }
 
 
     private ApiResponse<FileResponse> getExcelAddinWithHttpInfo(String version) throws ApiException {
-        okhttp3.Call localVarCall = getExcelAddinValidateBeforeCall(version, null);
+        okhttp3.Call localVarCall = getExcelAddinValidateBeforeCall(version, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FileResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<FileResponse> getExcelAddinWithHttpInfo(String version, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getExcelAddinValidateBeforeCall(version, null, opts);
         Type localVarReturnType = new TypeToken<FileResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getExcelAddinAsync(String version, final ApiCallback<FileResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getExcelAddinValidateBeforeCall(version, _callback);
+        okhttp3.Call localVarCall = getExcelAddinValidateBeforeCall(version, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FileResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getExcelAddinAsync(String version, final ApiCallback<FileResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getExcelAddinValidateBeforeCall(version, _callback, opts);
         Type localVarReturnType = new TypeToken<FileResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -195,6 +214,23 @@ public class ApplicationMetadataApi {
         }
 
         /**
+         * Execute getExcelAddin request. Use any specified configuration options to override any other configuration for this request only.
+         * @return FileResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public FileResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<FileResponse> localVarResp = getExcelAddinWithHttpInfo(version, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getExcelAddin request with HTTP info returned
          * @return ApiResponse&lt;FileResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -208,6 +244,22 @@ public class ApplicationMetadataApi {
          */
         public ApiResponse<FileResponse> executeWithHttpInfo() throws ApiException {
             return getExcelAddinWithHttpInfo(version);
+        }
+
+        /**
+         * Execute getExcelAddin request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;FileResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<FileResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getExcelAddinWithHttpInfo(version, opts);
         }
 
         /**
@@ -225,6 +277,23 @@ public class ApplicationMetadataApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<FileResponse> _callback) throws ApiException {
             return getExcelAddinAsync(version, _callback);
+        }
+
+        /**
+         * Execute getExcelAddin request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<FileResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return getExcelAddinAsync(version, _callback, opts);
         }
     }
 
@@ -244,6 +313,10 @@ public class ApplicationMetadataApi {
         return new APIgetExcelAddinRequest();
     }
     private okhttp3.Call getLusidVersionsCall(final ApiCallback _callback) throws ApiException {
+        return getLusidVersionsCall( _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getLusidVersionsCall(final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -286,25 +359,39 @@ public class ApplicationMetadataApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLusidVersionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getLusidVersionsCall(_callback);
+    private okhttp3.Call getLusidVersionsValidateBeforeCall(final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return getLusidVersionsCall(_callback, opts);
 
     }
 
 
     private ApiResponse<VersionSummaryDto> getLusidVersionsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getLusidVersionsValidateBeforeCall(null);
+        okhttp3.Call localVarCall = getLusidVersionsValidateBeforeCall(null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<VersionSummaryDto>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<VersionSummaryDto> getLusidVersionsWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getLusidVersionsValidateBeforeCall(null, opts);
         Type localVarReturnType = new TypeToken<VersionSummaryDto>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getLusidVersionsAsync(final ApiCallback<VersionSummaryDto> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getLusidVersionsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getLusidVersionsValidateBeforeCall(_callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<VersionSummaryDto>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getLusidVersionsAsync(final ApiCallback<VersionSummaryDto> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getLusidVersionsValidateBeforeCall(_callback, opts);
         Type localVarReturnType = new TypeToken<VersionSummaryDto>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -348,6 +435,22 @@ public class ApplicationMetadataApi {
         }
 
         /**
+         * Execute getLusidVersions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return VersionSummaryDto
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Collection of versions associated with LUSID </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionSummaryDto execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<VersionSummaryDto> localVarResp = getLusidVersionsWithHttpInfo(opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getLusidVersions request with HTTP info returned
          * @return ApiResponse&lt;VersionSummaryDto&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -360,6 +463,21 @@ public class ApplicationMetadataApi {
          */
         public ApiResponse<VersionSummaryDto> executeWithHttpInfo() throws ApiException {
             return getLusidVersionsWithHttpInfo();
+        }
+
+        /**
+         * Execute getLusidVersions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;VersionSummaryDto&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Collection of versions associated with LUSID </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionSummaryDto> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getLusidVersionsWithHttpInfo(opts);
         }
 
         /**
@@ -376,6 +494,22 @@ public class ApplicationMetadataApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionSummaryDto> _callback) throws ApiException {
             return getLusidVersionsAsync(_callback);
+        }
+
+        /**
+         * Execute getLusidVersions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Collection of versions associated with LUSID </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionSummaryDto> _callback, ConfigurationOptions opts) throws ApiException {
+            return getLusidVersionsAsync(_callback, opts);
         }
     }
 
@@ -394,6 +528,10 @@ public class ApplicationMetadataApi {
         return new APIgetLusidVersionsRequest();
     }
     private okhttp3.Call listAccessControlledResourcesCall(String filter, final ApiCallback _callback) throws ApiException {
+        return listAccessControlledResourcesCall(filter,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listAccessControlledResourcesCall(String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -440,25 +578,39 @@ public class ApplicationMetadataApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listAccessControlledResourcesValidateBeforeCall(String filter, final ApiCallback _callback) throws ApiException {
-        return listAccessControlledResourcesCall(filter, _callback);
+    private okhttp3.Call listAccessControlledResourcesValidateBeforeCall(String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listAccessControlledResourcesCall(filter, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfAccessControlledResource> listAccessControlledResourcesWithHttpInfo(String filter) throws ApiException {
-        okhttp3.Call localVarCall = listAccessControlledResourcesValidateBeforeCall(filter, null);
+        okhttp3.Call localVarCall = listAccessControlledResourcesValidateBeforeCall(filter, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfAccessControlledResource>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfAccessControlledResource> listAccessControlledResourcesWithHttpInfo(String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listAccessControlledResourcesValidateBeforeCall(filter, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfAccessControlledResource>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listAccessControlledResourcesAsync(String filter, final ApiCallback<ResourceListOfAccessControlledResource> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listAccessControlledResourcesValidateBeforeCall(filter, _callback);
+        okhttp3.Call localVarCall = listAccessControlledResourcesValidateBeforeCall(filter, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfAccessControlledResource>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listAccessControlledResourcesAsync(String filter, final ApiCallback<ResourceListOfAccessControlledResource> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listAccessControlledResourcesValidateBeforeCall(filter, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfAccessControlledResource>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -515,6 +667,23 @@ public class ApplicationMetadataApi {
         }
 
         /**
+         * Execute listAccessControlledResources request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfAccessControlledResource
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfAccessControlledResource execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfAccessControlledResource> localVarResp = listAccessControlledResourcesWithHttpInfo(filter, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listAccessControlledResources request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfAccessControlledResource&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -528,6 +697,22 @@ public class ApplicationMetadataApi {
          */
         public ApiResponse<ResourceListOfAccessControlledResource> executeWithHttpInfo() throws ApiException {
             return listAccessControlledResourcesWithHttpInfo(filter);
+        }
+
+        /**
+         * Execute listAccessControlledResources request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfAccessControlledResource&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfAccessControlledResource> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listAccessControlledResourcesWithHttpInfo(filter, opts);
         }
 
         /**
@@ -545,6 +730,23 @@ public class ApplicationMetadataApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfAccessControlledResource> _callback) throws ApiException {
             return listAccessControlledResourcesAsync(filter, _callback);
+        }
+
+        /**
+         * Execute listAccessControlledResources request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfAccessControlledResource> _callback, ConfigurationOptions opts) throws ApiException {
+            return listAccessControlledResourcesAsync(filter, _callback, opts);
         }
     }
 

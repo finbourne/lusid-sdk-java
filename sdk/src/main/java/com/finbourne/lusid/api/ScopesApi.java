@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -73,6 +74,10 @@ public class ScopesApi {
     }
 
     private okhttp3.Call listEntityScopesCall(String entityType, OffsetDateTime asAt, String page, Integer limit, final ApiCallback _callback) throws ApiException {
+        return listEntityScopesCall(entityType, asAt, page, limit,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listEntityScopesCall(String entityType, OffsetDateTime asAt, String page, Integer limit, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -128,30 +133,44 @@ public class ScopesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listEntityScopesValidateBeforeCall(String entityType, OffsetDateTime asAt, String page, Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listEntityScopesValidateBeforeCall(String entityType, OffsetDateTime asAt, String page, Integer limit, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'entityType' is set
         if (entityType == null) {
             throw new ApiException("Missing the required parameter 'entityType' when calling listEntityScopes(Async)");
         }
 
-        return listEntityScopesCall(entityType, asAt, page, limit, _callback);
+        return listEntityScopesCall(entityType, asAt, page, limit, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfScopeDefinition> listEntityScopesWithHttpInfo(String entityType, OffsetDateTime asAt, String page, Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = listEntityScopesValidateBeforeCall(entityType, asAt, page, limit, null);
+        okhttp3.Call localVarCall = listEntityScopesValidateBeforeCall(entityType, asAt, page, limit, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfScopeDefinition>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfScopeDefinition> listEntityScopesWithHttpInfo(String entityType, OffsetDateTime asAt, String page, Integer limit, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listEntityScopesValidateBeforeCall(entityType, asAt, page, limit, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfScopeDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listEntityScopesAsync(String entityType, OffsetDateTime asAt, String page, Integer limit, final ApiCallback<ResourceListOfScopeDefinition> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listEntityScopesValidateBeforeCall(entityType, asAt, page, limit, _callback);
+        okhttp3.Call localVarCall = listEntityScopesValidateBeforeCall(entityType, asAt, page, limit, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfScopeDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listEntityScopesAsync(String entityType, OffsetDateTime asAt, String page, Integer limit, final ApiCallback<ResourceListOfScopeDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listEntityScopesValidateBeforeCall(entityType, asAt, page, limit, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfScopeDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -232,6 +251,23 @@ public class ScopesApi {
         }
 
         /**
+         * Execute listEntityScopes request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfScopeDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of scopes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfScopeDefinition execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfScopeDefinition> localVarResp = listEntityScopesWithHttpInfo(entityType, asAt, page, limit, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listEntityScopes request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfScopeDefinition&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -245,6 +281,22 @@ public class ScopesApi {
          */
         public ApiResponse<ResourceListOfScopeDefinition> executeWithHttpInfo() throws ApiException {
             return listEntityScopesWithHttpInfo(entityType, asAt, page, limit);
+        }
+
+        /**
+         * Execute listEntityScopes request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfScopeDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of scopes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfScopeDefinition> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listEntityScopesWithHttpInfo(entityType, asAt, page, limit, opts);
         }
 
         /**
@@ -262,6 +314,23 @@ public class ScopesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfScopeDefinition> _callback) throws ApiException {
             return listEntityScopesAsync(entityType, asAt, page, limit, _callback);
+        }
+
+        /**
+         * Execute listEntityScopes request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of scopes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfScopeDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+            return listEntityScopesAsync(entityType, asAt, page, limit, _callback, opts);
         }
     }
 
@@ -282,6 +351,10 @@ public class ScopesApi {
         return new APIlistEntityScopesRequest(entityType);
     }
     private okhttp3.Call listScopesCall(String filter, final ApiCallback _callback) throws ApiException {
+        return listScopesCall(filter,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listScopesCall(String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -328,25 +401,39 @@ public class ScopesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listScopesValidateBeforeCall(String filter, final ApiCallback _callback) throws ApiException {
-        return listScopesCall(filter, _callback);
+    private okhttp3.Call listScopesValidateBeforeCall(String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listScopesCall(filter, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfScopeDefinition> listScopesWithHttpInfo(String filter) throws ApiException {
-        okhttp3.Call localVarCall = listScopesValidateBeforeCall(filter, null);
+        okhttp3.Call localVarCall = listScopesValidateBeforeCall(filter, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfScopeDefinition>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfScopeDefinition> listScopesWithHttpInfo(String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listScopesValidateBeforeCall(filter, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfScopeDefinition>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listScopesAsync(String filter, final ApiCallback<ResourceListOfScopeDefinition> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listScopesValidateBeforeCall(filter, _callback);
+        okhttp3.Call localVarCall = listScopesValidateBeforeCall(filter, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfScopeDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listScopesAsync(String filter, final ApiCallback<ResourceListOfScopeDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listScopesValidateBeforeCall(filter, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfScopeDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -403,6 +490,23 @@ public class ScopesApi {
         }
 
         /**
+         * Execute listScopes request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfScopeDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of scopes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfScopeDefinition execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfScopeDefinition> localVarResp = listScopesWithHttpInfo(filter, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listScopes request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfScopeDefinition&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -416,6 +520,22 @@ public class ScopesApi {
          */
         public ApiResponse<ResourceListOfScopeDefinition> executeWithHttpInfo() throws ApiException {
             return listScopesWithHttpInfo(filter);
+        }
+
+        /**
+         * Execute listScopes request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfScopeDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of scopes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfScopeDefinition> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listScopesWithHttpInfo(filter, opts);
         }
 
         /**
@@ -433,6 +553,23 @@ public class ScopesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfScopeDefinition> _callback) throws ApiException {
             return listScopesAsync(filter, _callback);
+        }
+
+        /**
+         * Execute listScopes request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A list of scopes </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfScopeDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+            return listScopesAsync(filter, _callback, opts);
         }
     }
 

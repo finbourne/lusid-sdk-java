@@ -48,9 +48,20 @@ public class ApplicationMetadataApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ApplicationMetadataApi apiInstance = apiFactory.build(ApplicationMetadataApi.class);
+
         ApplicationMetadataApi apiInstance = ApiFactoryBuilder.build(fileName).build(ApplicationMetadataApi.class);
         String version = "version_example"; // String | The requested version of the Excel plugin
         try {
+            // uncomment the below to set overrides at the request level
+            // FileResponse result = apiInstance.getExcelAddin(version).execute(opts);
+
             FileResponse result = apiInstance.getExcelAddin(version).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -128,8 +139,19 @@ public class ApplicationMetadataApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ApplicationMetadataApi apiInstance = apiFactory.build(ApplicationMetadataApi.class);
+
         ApplicationMetadataApi apiInstance = ApiFactoryBuilder.build(fileName).build(ApplicationMetadataApi.class);
         try {
+            // uncomment the below to set overrides at the request level
+            // VersionSummaryDto result = apiInstance.getLusidVersions().execute(opts);
+
             VersionSummaryDto result = apiInstance.getLusidVersions().execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -203,9 +225,20 @@ public class ApplicationMetadataApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ApplicationMetadataApi apiInstance = apiFactory.build(ApplicationMetadataApi.class);
+
         ApplicationMetadataApi apiInstance = ApiFactoryBuilder.build(fileName).build(ApplicationMetadataApi.class);
         String filter = "filter_example"; // String | Optional. Expression to filter the result set.    For example, to filter on the Application, use \"application eq 'string'\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfAccessControlledResource result = apiInstance.listAccessControlledResources(filter).execute(opts);
+
             ResourceListOfAccessControlledResource result = apiInstance.listAccessControlledResources(filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

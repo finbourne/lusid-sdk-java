@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -76,6 +77,10 @@ public class SearchApi {
     }
 
     private okhttp3.Call instrumentsSearchCall(List<InstrumentSearchProperty> instrumentSearchProperty, String masteredEffectiveAt, Boolean masteredOnly, String scope, final ApiCallback _callback) throws ApiException {
+        return instrumentsSearchCall(instrumentSearchProperty, masteredEffectiveAt, masteredOnly, scope,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call instrumentsSearchCall(List<InstrumentSearchProperty> instrumentSearchProperty, String masteredEffectiveAt, Boolean masteredOnly, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -134,30 +139,44 @@ public class SearchApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call instrumentsSearchValidateBeforeCall(List<InstrumentSearchProperty> instrumentSearchProperty, String masteredEffectiveAt, Boolean masteredOnly, String scope, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call instrumentsSearchValidateBeforeCall(List<InstrumentSearchProperty> instrumentSearchProperty, String masteredEffectiveAt, Boolean masteredOnly, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'instrumentSearchProperty' is set
         if (instrumentSearchProperty == null) {
             throw new ApiException("Missing the required parameter 'instrumentSearchProperty' when calling instrumentsSearch(Async)");
         }
 
-        return instrumentsSearchCall(instrumentSearchProperty, masteredEffectiveAt, masteredOnly, scope, _callback);
+        return instrumentsSearchCall(instrumentSearchProperty, masteredEffectiveAt, masteredOnly, scope, _callback, opts);
 
     }
 
 
     private ApiResponse<List<InstrumentMatch>> instrumentsSearchWithHttpInfo(List<InstrumentSearchProperty> instrumentSearchProperty, String masteredEffectiveAt, Boolean masteredOnly, String scope) throws ApiException {
-        okhttp3.Call localVarCall = instrumentsSearchValidateBeforeCall(instrumentSearchProperty, masteredEffectiveAt, masteredOnly, scope, null);
+        okhttp3.Call localVarCall = instrumentsSearchValidateBeforeCall(instrumentSearchProperty, masteredEffectiveAt, masteredOnly, scope, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<List<InstrumentMatch>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<List<InstrumentMatch>> instrumentsSearchWithHttpInfo(List<InstrumentSearchProperty> instrumentSearchProperty, String masteredEffectiveAt, Boolean masteredOnly, String scope, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = instrumentsSearchValidateBeforeCall(instrumentSearchProperty, masteredEffectiveAt, masteredOnly, scope, null, opts);
         Type localVarReturnType = new TypeToken<List<InstrumentMatch>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call instrumentsSearchAsync(List<InstrumentSearchProperty> instrumentSearchProperty, String masteredEffectiveAt, Boolean masteredOnly, String scope, final ApiCallback<List<InstrumentMatch>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = instrumentsSearchValidateBeforeCall(instrumentSearchProperty, masteredEffectiveAt, masteredOnly, scope, _callback);
+        okhttp3.Call localVarCall = instrumentsSearchValidateBeforeCall(instrumentSearchProperty, masteredEffectiveAt, masteredOnly, scope, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<List<InstrumentMatch>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call instrumentsSearchAsync(List<InstrumentSearchProperty> instrumentSearchProperty, String masteredEffectiveAt, Boolean masteredOnly, String scope, final ApiCallback<List<InstrumentMatch>> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = instrumentsSearchValidateBeforeCall(instrumentSearchProperty, masteredEffectiveAt, masteredOnly, scope, _callback, opts);
         Type localVarReturnType = new TypeToken<List<InstrumentMatch>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -238,6 +257,23 @@ public class SearchApi {
         }
 
         /**
+         * Execute instrumentsSearch request. Use any specified configuration options to override any other configuration for this request only.
+         * @return List&lt;InstrumentMatch&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The instruments found by the search </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public List<InstrumentMatch> execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<List<InstrumentMatch>> localVarResp = instrumentsSearchWithHttpInfo(instrumentSearchProperty, masteredEffectiveAt, masteredOnly, scope, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute instrumentsSearch request with HTTP info returned
          * @return ApiResponse&lt;List&lt;InstrumentMatch&gt;&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -251,6 +287,22 @@ public class SearchApi {
          */
         public ApiResponse<List<InstrumentMatch>> executeWithHttpInfo() throws ApiException {
             return instrumentsSearchWithHttpInfo(instrumentSearchProperty, masteredEffectiveAt, masteredOnly, scope);
+        }
+
+        /**
+         * Execute instrumentsSearch request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;List&lt;InstrumentMatch&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The instruments found by the search </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<List<InstrumentMatch>> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return instrumentsSearchWithHttpInfo(instrumentSearchProperty, masteredEffectiveAt, masteredOnly, scope, opts);
         }
 
         /**
@@ -268,6 +320,23 @@ public class SearchApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<List<InstrumentMatch>> _callback) throws ApiException {
             return instrumentsSearchAsync(instrumentSearchProperty, masteredEffectiveAt, masteredOnly, scope, _callback);
+        }
+
+        /**
+         * Execute instrumentsSearch request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The instruments found by the search </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<List<InstrumentMatch>> _callback, ConfigurationOptions opts) throws ApiException {
+            return instrumentsSearchAsync(instrumentSearchProperty, masteredEffectiveAt, masteredOnly, scope, _callback, opts);
         }
     }
 
@@ -288,6 +357,10 @@ public class SearchApi {
         return new APIinstrumentsSearchRequest(instrumentSearchProperty);
     }
     private okhttp3.Call searchPortfolioGroupsCall(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback _callback) throws ApiException {
+        return searchPortfolioGroupsCall(search, filter, sortBy, limit, page,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call searchPortfolioGroupsCall(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -350,25 +423,39 @@ public class SearchApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchPortfolioGroupsValidateBeforeCall(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback _callback) throws ApiException {
-        return searchPortfolioGroupsCall(search, filter, sortBy, limit, page, _callback);
+    private okhttp3.Call searchPortfolioGroupsValidateBeforeCall(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return searchPortfolioGroupsCall(search, filter, sortBy, limit, page, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfPortfolioGroupSearchResult> searchPortfolioGroupsWithHttpInfo(String search, String filter, String sortBy, Integer limit, String page) throws ApiException {
-        okhttp3.Call localVarCall = searchPortfolioGroupsValidateBeforeCall(search, filter, sortBy, limit, page, null);
+        okhttp3.Call localVarCall = searchPortfolioGroupsValidateBeforeCall(search, filter, sortBy, limit, page, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfPortfolioGroupSearchResult>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfPortfolioGroupSearchResult> searchPortfolioGroupsWithHttpInfo(String search, String filter, String sortBy, Integer limit, String page, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = searchPortfolioGroupsValidateBeforeCall(search, filter, sortBy, limit, page, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPortfolioGroupSearchResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call searchPortfolioGroupsAsync(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback<PagedResourceListOfPortfolioGroupSearchResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = searchPortfolioGroupsValidateBeforeCall(search, filter, sortBy, limit, page, _callback);
+        okhttp3.Call localVarCall = searchPortfolioGroupsValidateBeforeCall(search, filter, sortBy, limit, page, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfPortfolioGroupSearchResult>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call searchPortfolioGroupsAsync(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback<PagedResourceListOfPortfolioGroupSearchResult> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = searchPortfolioGroupsValidateBeforeCall(search, filter, sortBy, limit, page, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPortfolioGroupSearchResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -469,6 +556,23 @@ public class SearchApi {
         }
 
         /**
+         * Execute searchPortfolioGroups request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfPortfolioGroupSearchResult
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfPortfolioGroupSearchResult execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfPortfolioGroupSearchResult> localVarResp = searchPortfolioGroupsWithHttpInfo(search, filter, sortBy, limit, page, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute searchPortfolioGroups request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfPortfolioGroupSearchResult&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -482,6 +586,22 @@ public class SearchApi {
          */
         public ApiResponse<PagedResourceListOfPortfolioGroupSearchResult> executeWithHttpInfo() throws ApiException {
             return searchPortfolioGroupsWithHttpInfo(search, filter, sortBy, limit, page);
+        }
+
+        /**
+         * Execute searchPortfolioGroups request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfPortfolioGroupSearchResult&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfPortfolioGroupSearchResult> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return searchPortfolioGroupsWithHttpInfo(search, filter, sortBy, limit, page, opts);
         }
 
         /**
@@ -499,6 +619,23 @@ public class SearchApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPortfolioGroupSearchResult> _callback) throws ApiException {
             return searchPortfolioGroupsAsync(search, filter, sortBy, limit, page, _callback);
+        }
+
+        /**
+         * Execute searchPortfolioGroups request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPortfolioGroupSearchResult> _callback, ConfigurationOptions opts) throws ApiException {
+            return searchPortfolioGroupsAsync(search, filter, sortBy, limit, page, _callback, opts);
         }
     }
 
@@ -518,6 +655,10 @@ public class SearchApi {
         return new APIsearchPortfolioGroupsRequest();
     }
     private okhttp3.Call searchPortfoliosCall(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback _callback) throws ApiException {
+        return searchPortfoliosCall(search, filter, sortBy, limit, page,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call searchPortfoliosCall(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -580,25 +721,39 @@ public class SearchApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchPortfoliosValidateBeforeCall(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback _callback) throws ApiException {
-        return searchPortfoliosCall(search, filter, sortBy, limit, page, _callback);
+    private okhttp3.Call searchPortfoliosValidateBeforeCall(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return searchPortfoliosCall(search, filter, sortBy, limit, page, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfPortfolioSearchResult> searchPortfoliosWithHttpInfo(String search, String filter, String sortBy, Integer limit, String page) throws ApiException {
-        okhttp3.Call localVarCall = searchPortfoliosValidateBeforeCall(search, filter, sortBy, limit, page, null);
+        okhttp3.Call localVarCall = searchPortfoliosValidateBeforeCall(search, filter, sortBy, limit, page, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfPortfolioSearchResult>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfPortfolioSearchResult> searchPortfoliosWithHttpInfo(String search, String filter, String sortBy, Integer limit, String page, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = searchPortfoliosValidateBeforeCall(search, filter, sortBy, limit, page, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPortfolioSearchResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call searchPortfoliosAsync(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback<PagedResourceListOfPortfolioSearchResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = searchPortfoliosValidateBeforeCall(search, filter, sortBy, limit, page, _callback);
+        okhttp3.Call localVarCall = searchPortfoliosValidateBeforeCall(search, filter, sortBy, limit, page, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfPortfolioSearchResult>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call searchPortfoliosAsync(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback<PagedResourceListOfPortfolioSearchResult> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = searchPortfoliosValidateBeforeCall(search, filter, sortBy, limit, page, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPortfolioSearchResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -699,6 +854,23 @@ public class SearchApi {
         }
 
         /**
+         * Execute searchPortfolios request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfPortfolioSearchResult
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfPortfolioSearchResult execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfPortfolioSearchResult> localVarResp = searchPortfoliosWithHttpInfo(search, filter, sortBy, limit, page, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute searchPortfolios request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfPortfolioSearchResult&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -712,6 +884,22 @@ public class SearchApi {
          */
         public ApiResponse<PagedResourceListOfPortfolioSearchResult> executeWithHttpInfo() throws ApiException {
             return searchPortfoliosWithHttpInfo(search, filter, sortBy, limit, page);
+        }
+
+        /**
+         * Execute searchPortfolios request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfPortfolioSearchResult&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfPortfolioSearchResult> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return searchPortfoliosWithHttpInfo(search, filter, sortBy, limit, page, opts);
         }
 
         /**
@@ -729,6 +917,23 @@ public class SearchApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPortfolioSearchResult> _callback) throws ApiException {
             return searchPortfoliosAsync(search, filter, sortBy, limit, page, _callback);
+        }
+
+        /**
+         * Execute searchPortfolios request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPortfolioSearchResult> _callback, ConfigurationOptions opts) throws ApiException {
+            return searchPortfoliosAsync(search, filter, sortBy, limit, page, _callback, opts);
         }
     }
 
@@ -748,6 +953,10 @@ public class SearchApi {
         return new APIsearchPortfoliosRequest();
     }
     private okhttp3.Call searchPropertiesCall(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback _callback) throws ApiException {
+        return searchPropertiesCall(search, filter, sortBy, limit, page,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call searchPropertiesCall(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -810,25 +1019,39 @@ public class SearchApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchPropertiesValidateBeforeCall(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback _callback) throws ApiException {
-        return searchPropertiesCall(search, filter, sortBy, limit, page, _callback);
+    private okhttp3.Call searchPropertiesValidateBeforeCall(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return searchPropertiesCall(search, filter, sortBy, limit, page, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfPropertyDefinitionSearchResult> searchPropertiesWithHttpInfo(String search, String filter, String sortBy, Integer limit, String page) throws ApiException {
-        okhttp3.Call localVarCall = searchPropertiesValidateBeforeCall(search, filter, sortBy, limit, page, null);
+        okhttp3.Call localVarCall = searchPropertiesValidateBeforeCall(search, filter, sortBy, limit, page, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfPropertyDefinitionSearchResult>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfPropertyDefinitionSearchResult> searchPropertiesWithHttpInfo(String search, String filter, String sortBy, Integer limit, String page, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = searchPropertiesValidateBeforeCall(search, filter, sortBy, limit, page, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPropertyDefinitionSearchResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call searchPropertiesAsync(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback<PagedResourceListOfPropertyDefinitionSearchResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = searchPropertiesValidateBeforeCall(search, filter, sortBy, limit, page, _callback);
+        okhttp3.Call localVarCall = searchPropertiesValidateBeforeCall(search, filter, sortBy, limit, page, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfPropertyDefinitionSearchResult>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call searchPropertiesAsync(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback<PagedResourceListOfPropertyDefinitionSearchResult> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = searchPropertiesValidateBeforeCall(search, filter, sortBy, limit, page, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPropertyDefinitionSearchResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -929,6 +1152,23 @@ public class SearchApi {
         }
 
         /**
+         * Execute searchProperties request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfPropertyDefinitionSearchResult
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfPropertyDefinitionSearchResult execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfPropertyDefinitionSearchResult> localVarResp = searchPropertiesWithHttpInfo(search, filter, sortBy, limit, page, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute searchProperties request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfPropertyDefinitionSearchResult&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -942,6 +1182,22 @@ public class SearchApi {
          */
         public ApiResponse<PagedResourceListOfPropertyDefinitionSearchResult> executeWithHttpInfo() throws ApiException {
             return searchPropertiesWithHttpInfo(search, filter, sortBy, limit, page);
+        }
+
+        /**
+         * Execute searchProperties request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfPropertyDefinitionSearchResult&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfPropertyDefinitionSearchResult> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return searchPropertiesWithHttpInfo(search, filter, sortBy, limit, page, opts);
         }
 
         /**
@@ -959,6 +1215,23 @@ public class SearchApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPropertyDefinitionSearchResult> _callback) throws ApiException {
             return searchPropertiesAsync(search, filter, sortBy, limit, page, _callback);
+        }
+
+        /**
+         * Execute searchProperties request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPropertyDefinitionSearchResult> _callback, ConfigurationOptions opts) throws ApiException {
+            return searchPropertiesAsync(search, filter, sortBy, limit, page, _callback, opts);
         }
     }
 

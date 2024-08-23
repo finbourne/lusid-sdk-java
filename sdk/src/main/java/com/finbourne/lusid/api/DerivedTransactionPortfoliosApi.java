@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -74,6 +75,10 @@ public class DerivedTransactionPortfoliosApi {
     }
 
     private okhttp3.Call createDerivedPortfolioCall(String scope, CreateDerivedTransactionPortfolioRequest createDerivedTransactionPortfolioRequest, final ApiCallback _callback) throws ApiException {
+        return createDerivedPortfolioCall(scope, createDerivedTransactionPortfolioRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call createDerivedPortfolioCall(String scope, CreateDerivedTransactionPortfolioRequest createDerivedTransactionPortfolioRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,30 +126,44 @@ public class DerivedTransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createDerivedPortfolioValidateBeforeCall(String scope, CreateDerivedTransactionPortfolioRequest createDerivedTransactionPortfolioRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createDerivedPortfolioValidateBeforeCall(String scope, CreateDerivedTransactionPortfolioRequest createDerivedTransactionPortfolioRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling createDerivedPortfolio(Async)");
         }
 
-        return createDerivedPortfolioCall(scope, createDerivedTransactionPortfolioRequest, _callback);
+        return createDerivedPortfolioCall(scope, createDerivedTransactionPortfolioRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<Portfolio> createDerivedPortfolioWithHttpInfo(String scope, CreateDerivedTransactionPortfolioRequest createDerivedTransactionPortfolioRequest) throws ApiException {
-        okhttp3.Call localVarCall = createDerivedPortfolioValidateBeforeCall(scope, createDerivedTransactionPortfolioRequest, null);
+        okhttp3.Call localVarCall = createDerivedPortfolioValidateBeforeCall(scope, createDerivedTransactionPortfolioRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Portfolio> createDerivedPortfolioWithHttpInfo(String scope, CreateDerivedTransactionPortfolioRequest createDerivedTransactionPortfolioRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createDerivedPortfolioValidateBeforeCall(scope, createDerivedTransactionPortfolioRequest, null, opts);
         Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call createDerivedPortfolioAsync(String scope, CreateDerivedTransactionPortfolioRequest createDerivedTransactionPortfolioRequest, final ApiCallback<Portfolio> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createDerivedPortfolioValidateBeforeCall(scope, createDerivedTransactionPortfolioRequest, _callback);
+        okhttp3.Call localVarCall = createDerivedPortfolioValidateBeforeCall(scope, createDerivedTransactionPortfolioRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call createDerivedPortfolioAsync(String scope, CreateDerivedTransactionPortfolioRequest createDerivedTransactionPortfolioRequest, final ApiCallback<Portfolio> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = createDerivedPortfolioValidateBeforeCall(scope, createDerivedTransactionPortfolioRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -203,6 +222,23 @@ public class DerivedTransactionPortfoliosApi {
         }
 
         /**
+         * Execute createDerivedPortfolio request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Portfolio
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created derived portfolio, with populated id </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Portfolio execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Portfolio> localVarResp = createDerivedPortfolioWithHttpInfo(scope, createDerivedTransactionPortfolioRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute createDerivedPortfolio request with HTTP info returned
          * @return ApiResponse&lt;Portfolio&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -216,6 +252,22 @@ public class DerivedTransactionPortfoliosApi {
          */
         public ApiResponse<Portfolio> executeWithHttpInfo() throws ApiException {
             return createDerivedPortfolioWithHttpInfo(scope, createDerivedTransactionPortfolioRequest);
+        }
+
+        /**
+         * Execute createDerivedPortfolio request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Portfolio&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created derived portfolio, with populated id </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Portfolio> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return createDerivedPortfolioWithHttpInfo(scope, createDerivedTransactionPortfolioRequest, opts);
         }
 
         /**
@@ -233,6 +285,23 @@ public class DerivedTransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<Portfolio> _callback) throws ApiException {
             return createDerivedPortfolioAsync(scope, createDerivedTransactionPortfolioRequest, _callback);
+        }
+
+        /**
+         * Execute createDerivedPortfolio request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The created derived portfolio, with populated id </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Portfolio> _callback, ConfigurationOptions opts) throws ApiException {
+            return createDerivedPortfolioAsync(scope, createDerivedTransactionPortfolioRequest, _callback, opts);
         }
     }
 
@@ -253,6 +322,10 @@ public class DerivedTransactionPortfoliosApi {
         return new APIcreateDerivedPortfolioRequest(scope);
     }
     private okhttp3.Call deleteDerivedPortfolioDetailsCall(String scope, String code, String effectiveAt, final ApiCallback _callback) throws ApiException {
+        return deleteDerivedPortfolioDetailsCall(scope, code, effectiveAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteDerivedPortfolioDetailsCall(String scope, String code, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -301,11 +374,11 @@ public class DerivedTransactionPortfoliosApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteDerivedPortfolioDetailsValidateBeforeCall(String scope, String code, String effectiveAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteDerivedPortfolioDetailsValidateBeforeCall(String scope, String code, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteDerivedPortfolioDetails(Async)");
@@ -316,20 +389,34 @@ public class DerivedTransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'code' when calling deleteDerivedPortfolioDetails(Async)");
         }
 
-        return deleteDerivedPortfolioDetailsCall(scope, code, effectiveAt, _callback);
+        return deleteDerivedPortfolioDetailsCall(scope, code, effectiveAt, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deleteDerivedPortfolioDetailsWithHttpInfo(String scope, String code, String effectiveAt) throws ApiException {
-        okhttp3.Call localVarCall = deleteDerivedPortfolioDetailsValidateBeforeCall(scope, code, effectiveAt, null);
+        okhttp3.Call localVarCall = deleteDerivedPortfolioDetailsValidateBeforeCall(scope, code, effectiveAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteDerivedPortfolioDetailsWithHttpInfo(String scope, String code, String effectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteDerivedPortfolioDetailsValidateBeforeCall(scope, code, effectiveAt, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteDerivedPortfolioDetailsAsync(String scope, String code, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteDerivedPortfolioDetailsValidateBeforeCall(scope, code, effectiveAt, _callback);
+        okhttp3.Call localVarCall = deleteDerivedPortfolioDetailsValidateBeforeCall(scope, code, effectiveAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteDerivedPortfolioDetailsAsync(String scope, String code, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteDerivedPortfolioDetailsValidateBeforeCall(scope, code, effectiveAt, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -390,6 +477,23 @@ public class DerivedTransactionPortfoliosApi {
         }
 
         /**
+         * Execute deleteDerivedPortfolioDetails request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteDerivedPortfolioDetailsWithHttpInfo(scope, code, effectiveAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteDerivedPortfolioDetails request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -403,6 +507,22 @@ public class DerivedTransactionPortfoliosApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deleteDerivedPortfolioDetailsWithHttpInfo(scope, code, effectiveAt);
+        }
+
+        /**
+         * Execute deleteDerivedPortfolioDetails request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteDerivedPortfolioDetailsWithHttpInfo(scope, code, effectiveAt, opts);
         }
 
         /**
@@ -420,6 +540,23 @@ public class DerivedTransactionPortfoliosApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deleteDerivedPortfolioDetailsAsync(scope, code, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute deleteDerivedPortfolioDetails request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteDerivedPortfolioDetailsAsync(scope, code, effectiveAt, _callback, opts);
         }
     }
 

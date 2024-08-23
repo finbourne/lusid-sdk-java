@@ -56,9 +56,20 @@ public class PropertyDefinitionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PropertyDefinitionsApi apiInstance = apiFactory.build(PropertyDefinitionsApi.class);
+
         PropertyDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PropertyDefinitionsApi.class);
         CreateDerivedPropertyDefinitionRequest createDerivedPropertyDefinitionRequest = new CreateDerivedPropertyDefinitionRequest(); // CreateDerivedPropertyDefinitionRequest | The definition of the new derived property.
         try {
+            // uncomment the below to set overrides at the request level
+            // PropertyDefinition result = apiInstance.createDerivedPropertyDefinition(createDerivedPropertyDefinitionRequest).execute(opts);
+
             PropertyDefinition result = apiInstance.createDerivedPropertyDefinition(createDerivedPropertyDefinitionRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -136,9 +147,20 @@ public class PropertyDefinitionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PropertyDefinitionsApi apiInstance = apiFactory.build(PropertyDefinitionsApi.class);
+
         PropertyDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PropertyDefinitionsApi.class);
         CreatePropertyDefinitionRequest createPropertyDefinitionRequest = new CreatePropertyDefinitionRequest(); // CreatePropertyDefinitionRequest | The definition of the new property.
         try {
+            // uncomment the below to set overrides at the request level
+            // PropertyDefinition result = apiInstance.createPropertyDefinition(createPropertyDefinitionRequest).execute(opts);
+
             PropertyDefinition result = apiInstance.createPropertyDefinition(createPropertyDefinitionRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -216,11 +238,22 @@ public class PropertyDefinitionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PropertyDefinitionsApi apiInstance = apiFactory.build(PropertyDefinitionsApi.class);
+
         PropertyDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PropertyDefinitionsApi.class);
         String domain = "NotDefined"; // String | The domain of the property to be deleted.
         String scope = "scope_example"; // String | The scope of the property to be deleted.
         String code = "code_example"; // String | The code of the property to be deleted. Together with the domain and scope this uniquely   identifies the property.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deletePropertyDefinition(domain, scope, code).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deletePropertyDefinition(domain, scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -300,6 +333,14 @@ public class PropertyDefinitionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PropertyDefinitionsApi apiInstance = apiFactory.build(PropertyDefinitionsApi.class);
+
         PropertyDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PropertyDefinitionsApi.class);
         String domain = "NotDefined"; // String | The domain of the property definition to delete properties from.
         String scope = "scope_example"; // String | The scope of the property definition to delete properties from.
@@ -307,6 +348,9 @@ public class PropertyDefinitionsApiExample {
         List<String> requestBody = ["PropertyDefinition/MyScope/MyPropertyName","PropertyDefinition/MyScope/MyPropertyName2"]; // List<String> | The property keys of the properties to delete. These must take the format   {domain}/{scope}/{code} e.g \"PropertyDefinition/myScope/someAttributeKey\". Each property must be from the \"PropertyDefinition\" domain.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified 'effectiveAt' datetime. If the 'effectiveAt' is not provided or is before   the time-variant property exists then a failure is returned. Do not specify this parameter if an of the properties to delete are perpetual.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deletePropertyDefinitionProperties(domain, scope, code, requestBody, effectiveAt).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deletePropertyDefinitionProperties(domain, scope, code, requestBody, effectiveAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -388,12 +432,23 @@ public class PropertyDefinitionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PropertyDefinitionsApi apiInstance = apiFactory.build(PropertyDefinitionsApi.class);
+
         PropertyDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PropertyDefinitionsApi.class);
         List<String> propertyKeys = Arrays.asList(); // List<String> | One or more property keys which identify each property that a definition should   be retrieved for. The format for each property key is {domain}/{scope}/{code}, e.g. 'Portfolio/Manager/Id'.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the property definitions. Defaults to return   the latest version of each definition if not specified.
         String filter = "filter_example"; // String | Expression to filter the result set.    For example, to filter on the Lifetime, use \"lifeTime eq 'Perpetual'\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list properties attached to the Property Definition.   Defaults to the current LUSID system datetime if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfPropertyDefinition result = apiInstance.getMultiplePropertyDefinitions(propertyKeys, asAt, filter, effectiveAt).execute(opts);
+
             ResourceListOfPropertyDefinition result = apiInstance.getMultiplePropertyDefinitions(propertyKeys, asAt, filter, effectiveAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -474,6 +529,14 @@ public class PropertyDefinitionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PropertyDefinitionsApi apiInstance = apiFactory.build(PropertyDefinitionsApi.class);
+
         PropertyDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PropertyDefinitionsApi.class);
         String domain = "NotDefined"; // String | The domain of the specified property.
         String scope = "scope_example"; // String | The scope of the specified property.
@@ -481,6 +544,9 @@ public class PropertyDefinitionsApiExample {
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the property definition. Defaults to return   the latest version of the definition if not specified.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list properties attached to the Property Definition.   Defaults to the current LUSID system datetime if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // PropertyDefinition result = apiInstance.getPropertyDefinition(domain, scope, code, asAt, effectiveAt).execute(opts);
+
             PropertyDefinition result = apiInstance.getPropertyDefinition(domain, scope, code, asAt, effectiveAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -562,6 +628,14 @@ public class PropertyDefinitionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PropertyDefinitionsApi apiInstance = apiFactory.build(PropertyDefinitionsApi.class);
+
         PropertyDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PropertyDefinitionsApi.class);
         String domain = "NotDefined"; // String | The domain of the property definition to which the property is attached
         String scope = "scope_example"; // String | The scope of the property definition to which the property is attached
@@ -572,6 +646,9 @@ public class PropertyDefinitionsApiExample {
         String page = "page_example"; // String | The pagination token to use to continue listing properties from a previous call to get property time series.   This value is returned from the previous call. If a pagination token is provided the filter and asAt fields   must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfPropertyInterval result = apiInstance.getPropertyDefinitionPropertyTimeSeries(domain, scope, code, propertyKey, asAt, filter, page, limit).execute(opts);
+
             ResourceListOfPropertyInterval result = apiInstance.getPropertyDefinitionPropertyTimeSeries(domain, scope, code, propertyKey, asAt, filter, page, limit).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -656,6 +733,14 @@ public class PropertyDefinitionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PropertyDefinitionsApi apiInstance = apiFactory.build(PropertyDefinitionsApi.class);
+
         PropertyDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PropertyDefinitionsApi.class);
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the property definitions. Defaults to the current LUSID   system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the property definitions. Defaults to returning the latest version   of each property definition if not specified.
@@ -665,6 +750,9 @@ public class PropertyDefinitionsApiExample {
         String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the display name, specify \"DisplayName eq 'DisplayName'\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\"
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfPropertyDefinition result = apiInstance.listPropertyDefinitions(effectiveAt, asAt, propertyKeys, page, limit, filter, sortBy).execute(opts);
+
             PagedResourceListOfPropertyDefinition result = apiInstance.listPropertyDefinitions(effectiveAt, asAt, propertyKeys, page, limit, filter, sortBy).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -748,12 +836,23 @@ public class PropertyDefinitionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PropertyDefinitionsApi apiInstance = apiFactory.build(PropertyDefinitionsApi.class);
+
         PropertyDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PropertyDefinitionsApi.class);
         String domain = "NotDefined"; // String | Domain of the property definition
         String scope = "scope_example"; // String | Scope of the property definition
         String code = "code_example"; // String | Code of the property definition
         UpdateDerivedPropertyDefinitionRequest updateDerivedPropertyDefinitionRequest = new UpdateDerivedPropertyDefinitionRequest(); // UpdateDerivedPropertyDefinitionRequest | Information about the derived property definition being updated
         try {
+            // uncomment the below to set overrides at the request level
+            // PropertyDefinition result = apiInstance.updateDerivedPropertyDefinition(domain, scope, code, updateDerivedPropertyDefinitionRequest).execute(opts);
+
             PropertyDefinition result = apiInstance.updateDerivedPropertyDefinition(domain, scope, code, updateDerivedPropertyDefinitionRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -834,12 +933,23 @@ public class PropertyDefinitionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PropertyDefinitionsApi apiInstance = apiFactory.build(PropertyDefinitionsApi.class);
+
         PropertyDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PropertyDefinitionsApi.class);
         String domain = "NotDefined"; // String | The domain of the property being updated.
         String scope = "scope_example"; // String | The scope of the property being updated.
         String code = "code_example"; // String | The code of the property being updated. Together with the domain and scope this uniquely   identifies the property.
         UpdatePropertyDefinitionRequest updatePropertyDefinitionRequest = new UpdatePropertyDefinitionRequest(); // UpdatePropertyDefinitionRequest | The updated definition of the property.
         try {
+            // uncomment the below to set overrides at the request level
+            // PropertyDefinition result = apiInstance.updatePropertyDefinition(domain, scope, code, updatePropertyDefinitionRequest).execute(opts);
+
             PropertyDefinition result = apiInstance.updatePropertyDefinition(domain, scope, code, updatePropertyDefinitionRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -920,6 +1030,14 @@ public class PropertyDefinitionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PropertyDefinitionsApi apiInstance = apiFactory.build(PropertyDefinitionsApi.class);
+
         PropertyDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PropertyDefinitionsApi.class);
         String domain = "NotDefined"; // String | The domain of the specified property.
         String scope = "scope_example"; // String | The scope of the specified property.
@@ -927,6 +1045,9 @@ public class PropertyDefinitionsApiExample {
         Map<String, Property> requestBody = new HashMap(); // Map<String, Property> | The properties to be created or updated. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example   'PropertyDefinition/Manager/Id'.
         String successMode = "Partial"; // String | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial.
         try {
+            // uncomment the below to set overrides at the request level
+            // BatchUpsertPropertyDefinitionPropertiesResponse result = apiInstance.upsertPropertyDefinitionProperties(domain, scope, code, requestBody, successMode).execute(opts);
+
             BatchUpsertPropertyDefinitionPropertiesResponse result = apiInstance.upsertPropertyDefinitionProperties(domain, scope, code, requestBody, successMode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

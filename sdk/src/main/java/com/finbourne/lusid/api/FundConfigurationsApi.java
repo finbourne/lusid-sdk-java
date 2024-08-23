@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -78,6 +79,10 @@ public class FundConfigurationsApi {
     }
 
     private okhttp3.Call createFundConfigurationCall(String scope, FundConfigurationRequest fundConfigurationRequest, final ApiCallback _callback) throws ApiException {
+        return createFundConfigurationCall(scope, fundConfigurationRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call createFundConfigurationCall(String scope, FundConfigurationRequest fundConfigurationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -125,11 +130,11 @@ public class FundConfigurationsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createFundConfigurationValidateBeforeCall(String scope, FundConfigurationRequest fundConfigurationRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createFundConfigurationValidateBeforeCall(String scope, FundConfigurationRequest fundConfigurationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling createFundConfiguration(Async)");
@@ -140,20 +145,34 @@ public class FundConfigurationsApi {
             throw new ApiException("Missing the required parameter 'fundConfigurationRequest' when calling createFundConfiguration(Async)");
         }
 
-        return createFundConfigurationCall(scope, fundConfigurationRequest, _callback);
+        return createFundConfigurationCall(scope, fundConfigurationRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<FundConfiguration> createFundConfigurationWithHttpInfo(String scope, FundConfigurationRequest fundConfigurationRequest) throws ApiException {
-        okhttp3.Call localVarCall = createFundConfigurationValidateBeforeCall(scope, fundConfigurationRequest, null);
+        okhttp3.Call localVarCall = createFundConfigurationValidateBeforeCall(scope, fundConfigurationRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FundConfiguration>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<FundConfiguration> createFundConfigurationWithHttpInfo(String scope, FundConfigurationRequest fundConfigurationRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createFundConfigurationValidateBeforeCall(scope, fundConfigurationRequest, null, opts);
         Type localVarReturnType = new TypeToken<FundConfiguration>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call createFundConfigurationAsync(String scope, FundConfigurationRequest fundConfigurationRequest, final ApiCallback<FundConfiguration> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createFundConfigurationValidateBeforeCall(scope, fundConfigurationRequest, _callback);
+        okhttp3.Call localVarCall = createFundConfigurationValidateBeforeCall(scope, fundConfigurationRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FundConfiguration>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call createFundConfigurationAsync(String scope, FundConfigurationRequest fundConfigurationRequest, final ApiCallback<FundConfiguration> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = createFundConfigurationValidateBeforeCall(scope, fundConfigurationRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<FundConfiguration>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -203,6 +222,23 @@ public class FundConfigurationsApi {
         }
 
         /**
+         * Execute createFundConfiguration request. Use any specified configuration options to override any other configuration for this request only.
+         * @return FundConfiguration
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Fund configuration. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public FundConfiguration execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<FundConfiguration> localVarResp = createFundConfigurationWithHttpInfo(scope, fundConfigurationRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute createFundConfiguration request with HTTP info returned
          * @return ApiResponse&lt;FundConfiguration&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -216,6 +252,22 @@ public class FundConfigurationsApi {
          */
         public ApiResponse<FundConfiguration> executeWithHttpInfo() throws ApiException {
             return createFundConfigurationWithHttpInfo(scope, fundConfigurationRequest);
+        }
+
+        /**
+         * Execute createFundConfiguration request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;FundConfiguration&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Fund configuration. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<FundConfiguration> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return createFundConfigurationWithHttpInfo(scope, fundConfigurationRequest, opts);
         }
 
         /**
@@ -233,6 +285,23 @@ public class FundConfigurationsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<FundConfiguration> _callback) throws ApiException {
             return createFundConfigurationAsync(scope, fundConfigurationRequest, _callback);
+        }
+
+        /**
+         * Execute createFundConfiguration request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Fund configuration. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<FundConfiguration> _callback, ConfigurationOptions opts) throws ApiException {
+            return createFundConfigurationAsync(scope, fundConfigurationRequest, _callback, opts);
         }
     }
 
@@ -254,6 +323,10 @@ public class FundConfigurationsApi {
         return new APIcreateFundConfigurationRequest(scope, fundConfigurationRequest);
     }
     private okhttp3.Call deleteFundConfigurationCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+        return deleteFundConfigurationCall(scope, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteFundConfigurationCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -298,11 +371,11 @@ public class FundConfigurationsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteFundConfigurationValidateBeforeCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteFundConfigurationValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteFundConfiguration(Async)");
@@ -313,20 +386,34 @@ public class FundConfigurationsApi {
             throw new ApiException("Missing the required parameter 'code' when calling deleteFundConfiguration(Async)");
         }
 
-        return deleteFundConfigurationCall(scope, code, _callback);
+        return deleteFundConfigurationCall(scope, code, _callback, opts);
 
     }
 
 
     private ApiResponse<DeletedEntityResponse> deleteFundConfigurationWithHttpInfo(String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = deleteFundConfigurationValidateBeforeCall(scope, code, null);
+        okhttp3.Call localVarCall = deleteFundConfigurationValidateBeforeCall(scope, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteFundConfigurationWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteFundConfigurationValidateBeforeCall(scope, code, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteFundConfigurationAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteFundConfigurationValidateBeforeCall(scope, code, _callback);
+        okhttp3.Call localVarCall = deleteFundConfigurationValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteFundConfigurationAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteFundConfigurationValidateBeforeCall(scope, code, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -376,6 +463,23 @@ public class FundConfigurationsApi {
         }
 
         /**
+         * Execute deleteFundConfiguration request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the FundConfiguration was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteFundConfigurationWithHttpInfo(scope, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteFundConfiguration request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -389,6 +493,22 @@ public class FundConfigurationsApi {
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
             return deleteFundConfigurationWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteFundConfiguration request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the FundConfiguration was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteFundConfigurationWithHttpInfo(scope, code, opts);
         }
 
         /**
@@ -406,6 +526,23 @@ public class FundConfigurationsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
             return deleteFundConfigurationAsync(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteFundConfiguration request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the FundConfiguration was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteFundConfigurationAsync(scope, code, _callback, opts);
         }
     }
 
@@ -427,6 +564,10 @@ public class FundConfigurationsApi {
         return new APIdeleteFundConfigurationRequest(scope, code);
     }
     private okhttp3.Call getFundConfigurationCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return getFundConfigurationCall(scope, code, effectiveAt, asAt, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getFundConfigurationCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -483,11 +624,11 @@ public class FundConfigurationsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getFundConfigurationValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getFundConfigurationValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getFundConfiguration(Async)");
@@ -498,20 +639,34 @@ public class FundConfigurationsApi {
             throw new ApiException("Missing the required parameter 'code' when calling getFundConfiguration(Async)");
         }
 
-        return getFundConfigurationCall(scope, code, effectiveAt, asAt, propertyKeys, _callback);
+        return getFundConfigurationCall(scope, code, effectiveAt, asAt, propertyKeys, _callback, opts);
 
     }
 
 
     private ApiResponse<FundConfiguration> getFundConfigurationWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = getFundConfigurationValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, null);
+        okhttp3.Call localVarCall = getFundConfigurationValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FundConfiguration>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<FundConfiguration> getFundConfigurationWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getFundConfigurationValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<FundConfiguration>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getFundConfigurationAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<FundConfiguration> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getFundConfigurationValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback);
+        okhttp3.Call localVarCall = getFundConfigurationValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FundConfiguration>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getFundConfigurationAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<FundConfiguration> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getFundConfigurationValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<FundConfiguration>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -594,6 +749,23 @@ public class FundConfigurationsApi {
         }
 
         /**
+         * Execute getFundConfiguration request. Use any specified configuration options to override any other configuration for this request only.
+         * @return FundConfiguration
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested FundConfiguration definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public FundConfiguration execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<FundConfiguration> localVarResp = getFundConfigurationWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getFundConfiguration request with HTTP info returned
          * @return ApiResponse&lt;FundConfiguration&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -607,6 +779,22 @@ public class FundConfigurationsApi {
          */
         public ApiResponse<FundConfiguration> executeWithHttpInfo() throws ApiException {
             return getFundConfigurationWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys);
+        }
+
+        /**
+         * Execute getFundConfiguration request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;FundConfiguration&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested FundConfiguration definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<FundConfiguration> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getFundConfigurationWithHttpInfo(scope, code, effectiveAt, asAt, propertyKeys, opts);
         }
 
         /**
@@ -624,6 +812,23 @@ public class FundConfigurationsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<FundConfiguration> _callback) throws ApiException {
             return getFundConfigurationAsync(scope, code, effectiveAt, asAt, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getFundConfiguration request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested FundConfiguration definition. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<FundConfiguration> _callback, ConfigurationOptions opts) throws ApiException {
+            return getFundConfigurationAsync(scope, code, effectiveAt, asAt, propertyKeys, _callback, opts);
         }
     }
 
@@ -645,6 +850,10 @@ public class FundConfigurationsApi {
         return new APIgetFundConfigurationRequest(scope, code);
     }
     private okhttp3.Call listFundConfigurationsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return listFundConfigurationsCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listFundConfigurationsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -715,25 +924,39 @@ public class FundConfigurationsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listFundConfigurationsValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
-        return listFundConfigurationsCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
+    private okhttp3.Call listFundConfigurationsValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listFundConfigurationsCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfFundConfiguration> listFundConfigurationsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = listFundConfigurationsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, null);
+        okhttp3.Call localVarCall = listFundConfigurationsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfFundConfiguration>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfFundConfiguration> listFundConfigurationsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listFundConfigurationsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfFundConfiguration>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listFundConfigurationsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback<PagedResourceListOfFundConfiguration> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listFundConfigurationsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
+        okhttp3.Call localVarCall = listFundConfigurationsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfFundConfiguration>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listFundConfigurationsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback<PagedResourceListOfFundConfiguration> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listFundConfigurationsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfFundConfiguration>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -856,6 +1079,23 @@ public class FundConfigurationsApi {
         }
 
         /**
+         * Execute listFundConfigurations request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfFundConfiguration
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Fund configurations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfFundConfiguration execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfFundConfiguration> localVarResp = listFundConfigurationsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listFundConfigurations request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfFundConfiguration&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -869,6 +1109,22 @@ public class FundConfigurationsApi {
          */
         public ApiResponse<PagedResourceListOfFundConfiguration> executeWithHttpInfo() throws ApiException {
             return listFundConfigurationsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys);
+        }
+
+        /**
+         * Execute listFundConfigurations request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfFundConfiguration&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Fund configurations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfFundConfiguration> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listFundConfigurationsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, opts);
         }
 
         /**
@@ -886,6 +1142,23 @@ public class FundConfigurationsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfFundConfiguration> _callback) throws ApiException {
             return listFundConfigurationsAsync(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute listFundConfigurations request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Fund configurations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfFundConfiguration> _callback, ConfigurationOptions opts) throws ApiException {
+            return listFundConfigurationsAsync(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
         }
     }
 
@@ -905,6 +1178,10 @@ public class FundConfigurationsApi {
         return new APIlistFundConfigurationsRequest();
     }
     private okhttp3.Call upsertFundConfigurationPropertiesCall(String scope, String code, Map<String, Property> requestBody, final ApiCallback _callback) throws ApiException {
+        return upsertFundConfigurationPropertiesCall(scope, code, requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertFundConfigurationPropertiesCall(String scope, String code, Map<String, Property> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -953,11 +1230,11 @@ public class FundConfigurationsApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertFundConfigurationPropertiesValidateBeforeCall(String scope, String code, Map<String, Property> requestBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call upsertFundConfigurationPropertiesValidateBeforeCall(String scope, String code, Map<String, Property> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling upsertFundConfigurationProperties(Async)");
@@ -968,20 +1245,34 @@ public class FundConfigurationsApi {
             throw new ApiException("Missing the required parameter 'code' when calling upsertFundConfigurationProperties(Async)");
         }
 
-        return upsertFundConfigurationPropertiesCall(scope, code, requestBody, _callback);
+        return upsertFundConfigurationPropertiesCall(scope, code, requestBody, _callback, opts);
 
     }
 
 
     private ApiResponse<FundConfigurationProperties> upsertFundConfigurationPropertiesWithHttpInfo(String scope, String code, Map<String, Property> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = upsertFundConfigurationPropertiesValidateBeforeCall(scope, code, requestBody, null);
+        okhttp3.Call localVarCall = upsertFundConfigurationPropertiesValidateBeforeCall(scope, code, requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FundConfigurationProperties>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<FundConfigurationProperties> upsertFundConfigurationPropertiesWithHttpInfo(String scope, String code, Map<String, Property> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertFundConfigurationPropertiesValidateBeforeCall(scope, code, requestBody, null, opts);
         Type localVarReturnType = new TypeToken<FundConfigurationProperties>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call upsertFundConfigurationPropertiesAsync(String scope, String code, Map<String, Property> requestBody, final ApiCallback<FundConfigurationProperties> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertFundConfigurationPropertiesValidateBeforeCall(scope, code, requestBody, _callback);
+        okhttp3.Call localVarCall = upsertFundConfigurationPropertiesValidateBeforeCall(scope, code, requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FundConfigurationProperties>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertFundConfigurationPropertiesAsync(String scope, String code, Map<String, Property> requestBody, final ApiCallback<FundConfigurationProperties> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertFundConfigurationPropertiesValidateBeforeCall(scope, code, requestBody, _callback, opts);
         Type localVarReturnType = new TypeToken<FundConfigurationProperties>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1042,6 +1333,23 @@ public class FundConfigurationsApi {
         }
 
         /**
+         * Execute upsertFundConfigurationProperties request. Use any specified configuration options to override any other configuration for this request only.
+         * @return FundConfigurationProperties
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public FundConfigurationProperties execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<FundConfigurationProperties> localVarResp = upsertFundConfigurationPropertiesWithHttpInfo(scope, code, requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute upsertFundConfigurationProperties request with HTTP info returned
          * @return ApiResponse&lt;FundConfigurationProperties&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1055,6 +1363,22 @@ public class FundConfigurationsApi {
          */
         public ApiResponse<FundConfigurationProperties> executeWithHttpInfo() throws ApiException {
             return upsertFundConfigurationPropertiesWithHttpInfo(scope, code, requestBody);
+        }
+
+        /**
+         * Execute upsertFundConfigurationProperties request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;FundConfigurationProperties&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<FundConfigurationProperties> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertFundConfigurationPropertiesWithHttpInfo(scope, code, requestBody, opts);
         }
 
         /**
@@ -1072,6 +1396,23 @@ public class FundConfigurationsApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<FundConfigurationProperties> _callback) throws ApiException {
             return upsertFundConfigurationPropertiesAsync(scope, code, requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertFundConfigurationProperties request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<FundConfigurationProperties> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertFundConfigurationPropertiesAsync(scope, code, requestBody, _callback, opts);
         }
     }
 

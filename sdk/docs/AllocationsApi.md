@@ -49,10 +49,21 @@ public class AllocationsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AllocationsApi apiInstance = apiFactory.build(AllocationsApi.class);
+
         AllocationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(AllocationsApi.class);
         String scope = "scope_example"; // String | The allocation scope.
         String code = "code_example"; // String | The allocation's code. This, together with the scope uniquely identifies the allocation to delete.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteAllocation(scope, code).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteAllocation(scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -131,12 +142,23 @@ public class AllocationsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AllocationsApi apiInstance = apiFactory.build(AllocationsApi.class);
+
         AllocationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(AllocationsApi.class);
         String scope = "scope_example"; // String | The scope to which the allocation belongs.
         String code = "code_example"; // String | The allocation's unique identifier.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the allocation. Defaults to return the latest version of the allocation if not specified.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Allocations\" domain to decorate onto the allocation.   These take the format {domain}/{scope}/{code} e.g. \"Allocations/system/Name\".
         try {
+            // uncomment the below to set overrides at the request level
+            // Allocation result = apiInstance.getAllocation(scope, code, asAt, propertyKeys).execute(opts);
+
             Allocation result = apiInstance.getAllocation(scope, code, asAt, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -217,6 +239,14 @@ public class AllocationsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AllocationsApi apiInstance = apiFactory.build(AllocationsApi.class);
+
         AllocationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(AllocationsApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the allocation. Defaults to return the latest version of the allocation if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing allocations from a previous call to list allocations.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request.
@@ -225,6 +255,9 @@ public class AllocationsApiExample {
         String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Allocations\" domain to decorate onto each allocation.   These take the format {domain}/{scope}/{code} e.g. \"Allocations/system/Name\".
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfAllocation result = apiInstance.listAllocations(asAt, page, sortBy, limit, filter, propertyKeys).execute(opts);
+
             PagedResourceListOfAllocation result = apiInstance.listAllocations(asAt, page, sortBy, limit, filter, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -307,9 +340,20 @@ public class AllocationsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AllocationsApi apiInstance = apiFactory.build(AllocationsApi.class);
+
         AllocationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(AllocationsApi.class);
         AllocationSetRequest allocationSetRequest = new AllocationSetRequest(); // AllocationSetRequest | The collection of allocation requests.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfAllocation result = apiInstance.upsertAllocations(allocationSetRequest).execute(opts);
+
             ResourceListOfAllocation result = apiInstance.upsertAllocations(allocationSetRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

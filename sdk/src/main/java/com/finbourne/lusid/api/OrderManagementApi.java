@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -87,6 +88,10 @@ public class OrderManagementApi {
     }
 
     private okhttp3.Call bookTransactionsCall(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, final ApiCallback _callback) throws ApiException {
+        return bookTransactionsCall(bookTransactionsRequest, applyFeesAndCommission,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call bookTransactionsCall(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -137,30 +142,44 @@ public class OrderManagementApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call bookTransactionsValidateBeforeCall(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call bookTransactionsValidateBeforeCall(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'bookTransactionsRequest' is set
         if (bookTransactionsRequest == null) {
             throw new ApiException("Missing the required parameter 'bookTransactionsRequest' when calling bookTransactions(Async)");
         }
 
-        return bookTransactionsCall(bookTransactionsRequest, applyFeesAndCommission, _callback);
+        return bookTransactionsCall(bookTransactionsRequest, applyFeesAndCommission, _callback, opts);
 
     }
 
 
     private ApiResponse<BookTransactionsResponse> bookTransactionsWithHttpInfo(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission) throws ApiException {
-        okhttp3.Call localVarCall = bookTransactionsValidateBeforeCall(bookTransactionsRequest, applyFeesAndCommission, null);
+        okhttp3.Call localVarCall = bookTransactionsValidateBeforeCall(bookTransactionsRequest, applyFeesAndCommission, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<BookTransactionsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<BookTransactionsResponse> bookTransactionsWithHttpInfo(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = bookTransactionsValidateBeforeCall(bookTransactionsRequest, applyFeesAndCommission, null, opts);
         Type localVarReturnType = new TypeToken<BookTransactionsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call bookTransactionsAsync(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, final ApiCallback<BookTransactionsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = bookTransactionsValidateBeforeCall(bookTransactionsRequest, applyFeesAndCommission, _callback);
+        okhttp3.Call localVarCall = bookTransactionsValidateBeforeCall(bookTransactionsRequest, applyFeesAndCommission, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<BookTransactionsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call bookTransactionsAsync(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, final ApiCallback<BookTransactionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = bookTransactionsValidateBeforeCall(bookTransactionsRequest, applyFeesAndCommission, _callback, opts);
         Type localVarReturnType = new TypeToken<BookTransactionsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -219,6 +238,23 @@ public class OrderManagementApi {
         }
 
         /**
+         * Execute bookTransactions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return BookTransactionsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The results from booking transactions from allocations </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public BookTransactionsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<BookTransactionsResponse> localVarResp = bookTransactionsWithHttpInfo(bookTransactionsRequest, applyFeesAndCommission, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute bookTransactions request with HTTP info returned
          * @return ApiResponse&lt;BookTransactionsResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -232,6 +268,22 @@ public class OrderManagementApi {
          */
         public ApiResponse<BookTransactionsResponse> executeWithHttpInfo() throws ApiException {
             return bookTransactionsWithHttpInfo(bookTransactionsRequest, applyFeesAndCommission);
+        }
+
+        /**
+         * Execute bookTransactions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;BookTransactionsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The results from booking transactions from allocations </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<BookTransactionsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return bookTransactionsWithHttpInfo(bookTransactionsRequest, applyFeesAndCommission, opts);
         }
 
         /**
@@ -249,6 +301,23 @@ public class OrderManagementApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<BookTransactionsResponse> _callback) throws ApiException {
             return bookTransactionsAsync(bookTransactionsRequest, applyFeesAndCommission, _callback);
+        }
+
+        /**
+         * Execute bookTransactions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The results from booking transactions from allocations </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<BookTransactionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return bookTransactionsAsync(bookTransactionsRequest, applyFeesAndCommission, _callback, opts);
         }
     }
 
@@ -269,6 +338,10 @@ public class OrderManagementApi {
         return new APIbookTransactionsRequest(bookTransactionsRequest);
     }
     private okhttp3.Call cancelOrdersCall(Map<String, ResourceId> requestBody, final ApiCallback _callback) throws ApiException {
+        return cancelOrdersCall(requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call cancelOrdersCall(Map<String, ResourceId> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -315,30 +388,44 @@ public class OrderManagementApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cancelOrdersValidateBeforeCall(Map<String, ResourceId> requestBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call cancelOrdersValidateBeforeCall(Map<String, ResourceId> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'requestBody' is set
         if (requestBody == null) {
             throw new ApiException("Missing the required parameter 'requestBody' when calling cancelOrders(Async)");
         }
 
-        return cancelOrdersCall(requestBody, _callback);
+        return cancelOrdersCall(requestBody, _callback, opts);
 
     }
 
 
     private ApiResponse<CancelOrdersResponse> cancelOrdersWithHttpInfo(Map<String, ResourceId> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = cancelOrdersValidateBeforeCall(requestBody, null);
+        okhttp3.Call localVarCall = cancelOrdersValidateBeforeCall(requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CancelOrdersResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<CancelOrdersResponse> cancelOrdersWithHttpInfo(Map<String, ResourceId> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = cancelOrdersValidateBeforeCall(requestBody, null, opts);
         Type localVarReturnType = new TypeToken<CancelOrdersResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call cancelOrdersAsync(Map<String, ResourceId> requestBody, final ApiCallback<CancelOrdersResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cancelOrdersValidateBeforeCall(requestBody, _callback);
+        okhttp3.Call localVarCall = cancelOrdersValidateBeforeCall(requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CancelOrdersResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call cancelOrdersAsync(Map<String, ResourceId> requestBody, final ApiCallback<CancelOrdersResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = cancelOrdersValidateBeforeCall(requestBody, _callback, opts);
         Type localVarReturnType = new TypeToken<CancelOrdersResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -386,6 +473,23 @@ public class OrderManagementApi {
         }
 
         /**
+         * Execute cancelOrders request. Use any specified configuration options to override any other configuration for this request only.
+         * @return CancelOrdersResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully cancelled orders along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CancelOrdersResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<CancelOrdersResponse> localVarResp = cancelOrdersWithHttpInfo(requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute cancelOrders request with HTTP info returned
          * @return ApiResponse&lt;CancelOrdersResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -399,6 +503,22 @@ public class OrderManagementApi {
          */
         public ApiResponse<CancelOrdersResponse> executeWithHttpInfo() throws ApiException {
             return cancelOrdersWithHttpInfo(requestBody);
+        }
+
+        /**
+         * Execute cancelOrders request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;CancelOrdersResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully cancelled orders along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CancelOrdersResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return cancelOrdersWithHttpInfo(requestBody, opts);
         }
 
         /**
@@ -416,6 +536,23 @@ public class OrderManagementApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<CancelOrdersResponse> _callback) throws ApiException {
             return cancelOrdersAsync(requestBody, _callback);
+        }
+
+        /**
+         * Execute cancelOrders request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully cancelled orders along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CancelOrdersResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return cancelOrdersAsync(requestBody, _callback, opts);
         }
     }
 
@@ -436,6 +573,10 @@ public class OrderManagementApi {
         return new APIcancelOrdersRequest(requestBody);
     }
     private okhttp3.Call cancelPlacementsCall(Map<String, ResourceId> requestBody, final ApiCallback _callback) throws ApiException {
+        return cancelPlacementsCall(requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call cancelPlacementsCall(Map<String, ResourceId> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -482,30 +623,44 @@ public class OrderManagementApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cancelPlacementsValidateBeforeCall(Map<String, ResourceId> requestBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call cancelPlacementsValidateBeforeCall(Map<String, ResourceId> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'requestBody' is set
         if (requestBody == null) {
             throw new ApiException("Missing the required parameter 'requestBody' when calling cancelPlacements(Async)");
         }
 
-        return cancelPlacementsCall(requestBody, _callback);
+        return cancelPlacementsCall(requestBody, _callback, opts);
 
     }
 
 
     private ApiResponse<CancelPlacementsResponse> cancelPlacementsWithHttpInfo(Map<String, ResourceId> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = cancelPlacementsValidateBeforeCall(requestBody, null);
+        okhttp3.Call localVarCall = cancelPlacementsValidateBeforeCall(requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CancelPlacementsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<CancelPlacementsResponse> cancelPlacementsWithHttpInfo(Map<String, ResourceId> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = cancelPlacementsValidateBeforeCall(requestBody, null, opts);
         Type localVarReturnType = new TypeToken<CancelPlacementsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call cancelPlacementsAsync(Map<String, ResourceId> requestBody, final ApiCallback<CancelPlacementsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cancelPlacementsValidateBeforeCall(requestBody, _callback);
+        okhttp3.Call localVarCall = cancelPlacementsValidateBeforeCall(requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CancelPlacementsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call cancelPlacementsAsync(Map<String, ResourceId> requestBody, final ApiCallback<CancelPlacementsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = cancelPlacementsValidateBeforeCall(requestBody, _callback, opts);
         Type localVarReturnType = new TypeToken<CancelPlacementsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -553,6 +708,23 @@ public class OrderManagementApi {
         }
 
         /**
+         * Execute cancelPlacements request. Use any specified configuration options to override any other configuration for this request only.
+         * @return CancelPlacementsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully cancelled placements along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CancelPlacementsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<CancelPlacementsResponse> localVarResp = cancelPlacementsWithHttpInfo(requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute cancelPlacements request with HTTP info returned
          * @return ApiResponse&lt;CancelPlacementsResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -566,6 +738,22 @@ public class OrderManagementApi {
          */
         public ApiResponse<CancelPlacementsResponse> executeWithHttpInfo() throws ApiException {
             return cancelPlacementsWithHttpInfo(requestBody);
+        }
+
+        /**
+         * Execute cancelPlacements request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;CancelPlacementsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully cancelled placements along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CancelPlacementsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return cancelPlacementsWithHttpInfo(requestBody, opts);
         }
 
         /**
@@ -583,6 +771,23 @@ public class OrderManagementApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<CancelPlacementsResponse> _callback) throws ApiException {
             return cancelPlacementsAsync(requestBody, _callback);
+        }
+
+        /**
+         * Execute cancelPlacements request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully cancelled placements along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CancelPlacementsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return cancelPlacementsAsync(requestBody, _callback, opts);
         }
     }
 
@@ -603,6 +808,10 @@ public class OrderManagementApi {
         return new APIcancelPlacementsRequest(requestBody);
     }
     private okhttp3.Call createOrdersCall(BlockAndOrdersCreateRequest blockAndOrdersCreateRequest, final ApiCallback _callback) throws ApiException {
+        return createOrdersCall(blockAndOrdersCreateRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call createOrdersCall(BlockAndOrdersCreateRequest blockAndOrdersCreateRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -649,30 +858,44 @@ public class OrderManagementApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createOrdersValidateBeforeCall(BlockAndOrdersCreateRequest blockAndOrdersCreateRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createOrdersValidateBeforeCall(BlockAndOrdersCreateRequest blockAndOrdersCreateRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'blockAndOrdersCreateRequest' is set
         if (blockAndOrdersCreateRequest == null) {
             throw new ApiException("Missing the required parameter 'blockAndOrdersCreateRequest' when calling createOrders(Async)");
         }
 
-        return createOrdersCall(blockAndOrdersCreateRequest, _callback);
+        return createOrdersCall(blockAndOrdersCreateRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfBlockAndOrders> createOrdersWithHttpInfo(BlockAndOrdersCreateRequest blockAndOrdersCreateRequest) throws ApiException {
-        okhttp3.Call localVarCall = createOrdersValidateBeforeCall(blockAndOrdersCreateRequest, null);
+        okhttp3.Call localVarCall = createOrdersValidateBeforeCall(blockAndOrdersCreateRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfBlockAndOrders>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfBlockAndOrders> createOrdersWithHttpInfo(BlockAndOrdersCreateRequest blockAndOrdersCreateRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createOrdersValidateBeforeCall(blockAndOrdersCreateRequest, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfBlockAndOrders>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call createOrdersAsync(BlockAndOrdersCreateRequest blockAndOrdersCreateRequest, final ApiCallback<ResourceListOfBlockAndOrders> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createOrdersValidateBeforeCall(blockAndOrdersCreateRequest, _callback);
+        okhttp3.Call localVarCall = createOrdersValidateBeforeCall(blockAndOrdersCreateRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfBlockAndOrders>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call createOrdersAsync(BlockAndOrdersCreateRequest blockAndOrdersCreateRequest, final ApiCallback<ResourceListOfBlockAndOrders> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = createOrdersValidateBeforeCall(blockAndOrdersCreateRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfBlockAndOrders>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -720,6 +943,23 @@ public class OrderManagementApi {
         }
 
         /**
+         * Execute createOrders request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfBlockAndOrders
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> A collection of block and associated orders. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfBlockAndOrders execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfBlockAndOrders> localVarResp = createOrdersWithHttpInfo(blockAndOrdersCreateRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute createOrders request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfBlockAndOrders&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -733,6 +973,22 @@ public class OrderManagementApi {
          */
         public ApiResponse<ResourceListOfBlockAndOrders> executeWithHttpInfo() throws ApiException {
             return createOrdersWithHttpInfo(blockAndOrdersCreateRequest);
+        }
+
+        /**
+         * Execute createOrders request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfBlockAndOrders&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> A collection of block and associated orders. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfBlockAndOrders> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return createOrdersWithHttpInfo(blockAndOrdersCreateRequest, opts);
         }
 
         /**
@@ -750,6 +1006,23 @@ public class OrderManagementApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfBlockAndOrders> _callback) throws ApiException {
             return createOrdersAsync(blockAndOrdersCreateRequest, _callback);
+        }
+
+        /**
+         * Execute createOrders request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> A collection of block and associated orders. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfBlockAndOrders> _callback, ConfigurationOptions opts) throws ApiException {
+            return createOrdersAsync(blockAndOrdersCreateRequest, _callback, opts);
         }
     }
 
@@ -770,6 +1043,10 @@ public class OrderManagementApi {
         return new APIcreateOrdersRequest(blockAndOrdersCreateRequest);
     }
     private okhttp3.Call moveOrdersCall(MoveOrdersToDifferentBlocksRequest moveOrdersToDifferentBlocksRequest, final ApiCallback _callback) throws ApiException {
+        return moveOrdersCall(moveOrdersToDifferentBlocksRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call moveOrdersCall(MoveOrdersToDifferentBlocksRequest moveOrdersToDifferentBlocksRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -816,30 +1093,44 @@ public class OrderManagementApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call moveOrdersValidateBeforeCall(MoveOrdersToDifferentBlocksRequest moveOrdersToDifferentBlocksRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call moveOrdersValidateBeforeCall(MoveOrdersToDifferentBlocksRequest moveOrdersToDifferentBlocksRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'moveOrdersToDifferentBlocksRequest' is set
         if (moveOrdersToDifferentBlocksRequest == null) {
             throw new ApiException("Missing the required parameter 'moveOrdersToDifferentBlocksRequest' when calling moveOrders(Async)");
         }
 
-        return moveOrdersCall(moveOrdersToDifferentBlocksRequest, _callback);
+        return moveOrdersCall(moveOrdersToDifferentBlocksRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfMovedOrderToDifferentBlockResponse> moveOrdersWithHttpInfo(MoveOrdersToDifferentBlocksRequest moveOrdersToDifferentBlocksRequest) throws ApiException {
-        okhttp3.Call localVarCall = moveOrdersValidateBeforeCall(moveOrdersToDifferentBlocksRequest, null);
+        okhttp3.Call localVarCall = moveOrdersValidateBeforeCall(moveOrdersToDifferentBlocksRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfMovedOrderToDifferentBlockResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfMovedOrderToDifferentBlockResponse> moveOrdersWithHttpInfo(MoveOrdersToDifferentBlocksRequest moveOrdersToDifferentBlocksRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = moveOrdersValidateBeforeCall(moveOrdersToDifferentBlocksRequest, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfMovedOrderToDifferentBlockResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call moveOrdersAsync(MoveOrdersToDifferentBlocksRequest moveOrdersToDifferentBlocksRequest, final ApiCallback<ResourceListOfMovedOrderToDifferentBlockResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = moveOrdersValidateBeforeCall(moveOrdersToDifferentBlocksRequest, _callback);
+        okhttp3.Call localVarCall = moveOrdersValidateBeforeCall(moveOrdersToDifferentBlocksRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfMovedOrderToDifferentBlockResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call moveOrdersAsync(MoveOrdersToDifferentBlocksRequest moveOrdersToDifferentBlocksRequest, final ApiCallback<ResourceListOfMovedOrderToDifferentBlockResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = moveOrdersValidateBeforeCall(moveOrdersToDifferentBlocksRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfMovedOrderToDifferentBlockResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -887,6 +1178,23 @@ public class OrderManagementApi {
         }
 
         /**
+         * Execute moveOrders request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfMovedOrderToDifferentBlockResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of block and order pairs for each order moved into a block, and the Id of the order&#39;s previous block (if any). </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfMovedOrderToDifferentBlockResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfMovedOrderToDifferentBlockResponse> localVarResp = moveOrdersWithHttpInfo(moveOrdersToDifferentBlocksRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute moveOrders request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfMovedOrderToDifferentBlockResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -900,6 +1208,22 @@ public class OrderManagementApi {
          */
         public ApiResponse<ResourceListOfMovedOrderToDifferentBlockResponse> executeWithHttpInfo() throws ApiException {
             return moveOrdersWithHttpInfo(moveOrdersToDifferentBlocksRequest);
+        }
+
+        /**
+         * Execute moveOrders request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfMovedOrderToDifferentBlockResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of block and order pairs for each order moved into a block, and the Id of the order&#39;s previous block (if any). </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfMovedOrderToDifferentBlockResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return moveOrdersWithHttpInfo(moveOrdersToDifferentBlocksRequest, opts);
         }
 
         /**
@@ -917,6 +1241,23 @@ public class OrderManagementApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfMovedOrderToDifferentBlockResponse> _callback) throws ApiException {
             return moveOrdersAsync(moveOrdersToDifferentBlocksRequest, _callback);
+        }
+
+        /**
+         * Execute moveOrders request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> A collection of block and order pairs for each order moved into a block, and the Id of the order&#39;s previous block (if any). </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfMovedOrderToDifferentBlockResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return moveOrdersAsync(moveOrdersToDifferentBlocksRequest, _callback, opts);
         }
     }
 
@@ -937,6 +1278,10 @@ public class OrderManagementApi {
         return new APImoveOrdersRequest(moveOrdersToDifferentBlocksRequest);
     }
     private okhttp3.Call placeBlocksCall(PlaceBlocksRequest placeBlocksRequest, final ApiCallback _callback) throws ApiException {
+        return placeBlocksCall(placeBlocksRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call placeBlocksCall(PlaceBlocksRequest placeBlocksRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -983,25 +1328,39 @@ public class OrderManagementApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call placeBlocksValidateBeforeCall(PlaceBlocksRequest placeBlocksRequest, final ApiCallback _callback) throws ApiException {
-        return placeBlocksCall(placeBlocksRequest, _callback);
+    private okhttp3.Call placeBlocksValidateBeforeCall(PlaceBlocksRequest placeBlocksRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return placeBlocksCall(placeBlocksRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfPlacement> placeBlocksWithHttpInfo(PlaceBlocksRequest placeBlocksRequest) throws ApiException {
-        okhttp3.Call localVarCall = placeBlocksValidateBeforeCall(placeBlocksRequest, null);
+        okhttp3.Call localVarCall = placeBlocksValidateBeforeCall(placeBlocksRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPlacement>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfPlacement> placeBlocksWithHttpInfo(PlaceBlocksRequest placeBlocksRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = placeBlocksValidateBeforeCall(placeBlocksRequest, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPlacement>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call placeBlocksAsync(PlaceBlocksRequest placeBlocksRequest, final ApiCallback<ResourceListOfPlacement> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = placeBlocksValidateBeforeCall(placeBlocksRequest, _callback);
+        okhttp3.Call localVarCall = placeBlocksValidateBeforeCall(placeBlocksRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPlacement>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call placeBlocksAsync(PlaceBlocksRequest placeBlocksRequest, final ApiCallback<ResourceListOfPlacement> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = placeBlocksValidateBeforeCall(placeBlocksRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPlacement>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1058,6 +1417,23 @@ public class OrderManagementApi {
         }
 
         /**
+         * Execute placeBlocks request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfPlacement
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The block placements. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfPlacement execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfPlacement> localVarResp = placeBlocksWithHttpInfo(placeBlocksRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute placeBlocks request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfPlacement&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1071,6 +1447,22 @@ public class OrderManagementApi {
          */
         public ApiResponse<ResourceListOfPlacement> executeWithHttpInfo() throws ApiException {
             return placeBlocksWithHttpInfo(placeBlocksRequest);
+        }
+
+        /**
+         * Execute placeBlocks request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfPlacement&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The block placements. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfPlacement> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return placeBlocksWithHttpInfo(placeBlocksRequest, opts);
         }
 
         /**
@@ -1088,6 +1480,23 @@ public class OrderManagementApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPlacement> _callback) throws ApiException {
             return placeBlocksAsync(placeBlocksRequest, _callback);
+        }
+
+        /**
+         * Execute placeBlocks request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The block placements. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPlacement> _callback, ConfigurationOptions opts) throws ApiException {
+            return placeBlocksAsync(placeBlocksRequest, _callback, opts);
         }
     }
 
@@ -1107,6 +1516,10 @@ public class OrderManagementApi {
         return new APIplaceBlocksRequest();
     }
     private okhttp3.Call runAllocationServiceCall(List<ResourceId> resourceId, String allocationAlgorithm, final ApiCallback _callback) throws ApiException {
+        return runAllocationServiceCall(resourceId, allocationAlgorithm,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call runAllocationServiceCall(List<ResourceId> resourceId, String allocationAlgorithm, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1157,30 +1570,44 @@ public class OrderManagementApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call runAllocationServiceValidateBeforeCall(List<ResourceId> resourceId, String allocationAlgorithm, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call runAllocationServiceValidateBeforeCall(List<ResourceId> resourceId, String allocationAlgorithm, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'resourceId' is set
         if (resourceId == null) {
             throw new ApiException("Missing the required parameter 'resourceId' when calling runAllocationService(Async)");
         }
 
-        return runAllocationServiceCall(resourceId, allocationAlgorithm, _callback);
+        return runAllocationServiceCall(resourceId, allocationAlgorithm, _callback, opts);
 
     }
 
 
     private ApiResponse<AllocationServiceRunResponse> runAllocationServiceWithHttpInfo(List<ResourceId> resourceId, String allocationAlgorithm) throws ApiException {
-        okhttp3.Call localVarCall = runAllocationServiceValidateBeforeCall(resourceId, allocationAlgorithm, null);
+        okhttp3.Call localVarCall = runAllocationServiceValidateBeforeCall(resourceId, allocationAlgorithm, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AllocationServiceRunResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AllocationServiceRunResponse> runAllocationServiceWithHttpInfo(List<ResourceId> resourceId, String allocationAlgorithm, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = runAllocationServiceValidateBeforeCall(resourceId, allocationAlgorithm, null, opts);
         Type localVarReturnType = new TypeToken<AllocationServiceRunResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call runAllocationServiceAsync(List<ResourceId> resourceId, String allocationAlgorithm, final ApiCallback<AllocationServiceRunResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = runAllocationServiceValidateBeforeCall(resourceId, allocationAlgorithm, _callback);
+        okhttp3.Call localVarCall = runAllocationServiceValidateBeforeCall(resourceId, allocationAlgorithm, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AllocationServiceRunResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call runAllocationServiceAsync(List<ResourceId> resourceId, String allocationAlgorithm, final ApiCallback<AllocationServiceRunResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = runAllocationServiceValidateBeforeCall(resourceId, allocationAlgorithm, _callback, opts);
         Type localVarReturnType = new TypeToken<AllocationServiceRunResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1239,6 +1666,23 @@ public class OrderManagementApi {
         }
 
         /**
+         * Execute runAllocationService request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AllocationServiceRunResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The results from a run of the Allocation Service </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AllocationServiceRunResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AllocationServiceRunResponse> localVarResp = runAllocationServiceWithHttpInfo(resourceId, allocationAlgorithm, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute runAllocationService request with HTTP info returned
          * @return ApiResponse&lt;AllocationServiceRunResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1252,6 +1696,22 @@ public class OrderManagementApi {
          */
         public ApiResponse<AllocationServiceRunResponse> executeWithHttpInfo() throws ApiException {
             return runAllocationServiceWithHttpInfo(resourceId, allocationAlgorithm);
+        }
+
+        /**
+         * Execute runAllocationService request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AllocationServiceRunResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The results from a run of the Allocation Service </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AllocationServiceRunResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return runAllocationServiceWithHttpInfo(resourceId, allocationAlgorithm, opts);
         }
 
         /**
@@ -1269,6 +1729,23 @@ public class OrderManagementApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<AllocationServiceRunResponse> _callback) throws ApiException {
             return runAllocationServiceAsync(resourceId, allocationAlgorithm, _callback);
+        }
+
+        /**
+         * Execute runAllocationService request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The results from a run of the Allocation Service </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AllocationServiceRunResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return runAllocationServiceAsync(resourceId, allocationAlgorithm, _callback, opts);
         }
     }
 
@@ -1289,6 +1766,10 @@ public class OrderManagementApi {
         return new APIrunAllocationServiceRequest(resourceId);
     }
     private okhttp3.Call updateOrdersCall(Map<String, OrderUpdateRequest> requestBody, final ApiCallback _callback) throws ApiException {
+        return updateOrdersCall(requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call updateOrdersCall(Map<String, OrderUpdateRequest> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1335,30 +1816,44 @@ public class OrderManagementApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateOrdersValidateBeforeCall(Map<String, OrderUpdateRequest> requestBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateOrdersValidateBeforeCall(Map<String, OrderUpdateRequest> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'requestBody' is set
         if (requestBody == null) {
             throw new ApiException("Missing the required parameter 'requestBody' when calling updateOrders(Async)");
         }
 
-        return updateOrdersCall(requestBody, _callback);
+        return updateOrdersCall(requestBody, _callback, opts);
 
     }
 
 
     private ApiResponse<UpdateOrdersResponse> updateOrdersWithHttpInfo(Map<String, OrderUpdateRequest> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = updateOrdersValidateBeforeCall(requestBody, null);
+        okhttp3.Call localVarCall = updateOrdersValidateBeforeCall(requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpdateOrdersResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<UpdateOrdersResponse> updateOrdersWithHttpInfo(Map<String, OrderUpdateRequest> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = updateOrdersValidateBeforeCall(requestBody, null, opts);
         Type localVarReturnType = new TypeToken<UpdateOrdersResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call updateOrdersAsync(Map<String, OrderUpdateRequest> requestBody, final ApiCallback<UpdateOrdersResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateOrdersValidateBeforeCall(requestBody, _callback);
+        okhttp3.Call localVarCall = updateOrdersValidateBeforeCall(requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpdateOrdersResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call updateOrdersAsync(Map<String, OrderUpdateRequest> requestBody, final ApiCallback<UpdateOrdersResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = updateOrdersValidateBeforeCall(requestBody, _callback, opts);
         Type localVarReturnType = new TypeToken<UpdateOrdersResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1406,6 +1901,23 @@ public class OrderManagementApi {
         }
 
         /**
+         * Execute updateOrders request. Use any specified configuration options to override any other configuration for this request only.
+         * @return UpdateOrdersResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated orders along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpdateOrdersResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<UpdateOrdersResponse> localVarResp = updateOrdersWithHttpInfo(requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute updateOrders request with HTTP info returned
          * @return ApiResponse&lt;UpdateOrdersResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1419,6 +1931,22 @@ public class OrderManagementApi {
          */
         public ApiResponse<UpdateOrdersResponse> executeWithHttpInfo() throws ApiException {
             return updateOrdersWithHttpInfo(requestBody);
+        }
+
+        /**
+         * Execute updateOrders request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;UpdateOrdersResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated orders along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpdateOrdersResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return updateOrdersWithHttpInfo(requestBody, opts);
         }
 
         /**
@@ -1436,6 +1964,23 @@ public class OrderManagementApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<UpdateOrdersResponse> _callback) throws ApiException {
             return updateOrdersAsync(requestBody, _callback);
+        }
+
+        /**
+         * Execute updateOrders request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated orders along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpdateOrdersResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return updateOrdersAsync(requestBody, _callback, opts);
         }
     }
 
@@ -1456,6 +2001,10 @@ public class OrderManagementApi {
         return new APIupdateOrdersRequest(requestBody);
     }
     private okhttp3.Call updatePlacementsCall(Map<String, PlacementUpdateRequest> requestBody, final ApiCallback _callback) throws ApiException {
+        return updatePlacementsCall(requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call updatePlacementsCall(Map<String, PlacementUpdateRequest> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1502,30 +2051,44 @@ public class OrderManagementApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updatePlacementsValidateBeforeCall(Map<String, PlacementUpdateRequest> requestBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updatePlacementsValidateBeforeCall(Map<String, PlacementUpdateRequest> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'requestBody' is set
         if (requestBody == null) {
             throw new ApiException("Missing the required parameter 'requestBody' when calling updatePlacements(Async)");
         }
 
-        return updatePlacementsCall(requestBody, _callback);
+        return updatePlacementsCall(requestBody, _callback, opts);
 
     }
 
 
     private ApiResponse<UpdatePlacementsResponse> updatePlacementsWithHttpInfo(Map<String, PlacementUpdateRequest> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = updatePlacementsValidateBeforeCall(requestBody, null);
+        okhttp3.Call localVarCall = updatePlacementsValidateBeforeCall(requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpdatePlacementsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<UpdatePlacementsResponse> updatePlacementsWithHttpInfo(Map<String, PlacementUpdateRequest> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = updatePlacementsValidateBeforeCall(requestBody, null, opts);
         Type localVarReturnType = new TypeToken<UpdatePlacementsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call updatePlacementsAsync(Map<String, PlacementUpdateRequest> requestBody, final ApiCallback<UpdatePlacementsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updatePlacementsValidateBeforeCall(requestBody, _callback);
+        okhttp3.Call localVarCall = updatePlacementsValidateBeforeCall(requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpdatePlacementsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call updatePlacementsAsync(Map<String, PlacementUpdateRequest> requestBody, final ApiCallback<UpdatePlacementsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = updatePlacementsValidateBeforeCall(requestBody, _callback, opts);
         Type localVarReturnType = new TypeToken<UpdatePlacementsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1573,6 +2136,23 @@ public class OrderManagementApi {
         }
 
         /**
+         * Execute updatePlacements request. Use any specified configuration options to override any other configuration for this request only.
+         * @return UpdatePlacementsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated placements along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpdatePlacementsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<UpdatePlacementsResponse> localVarResp = updatePlacementsWithHttpInfo(requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute updatePlacements request with HTTP info returned
          * @return ApiResponse&lt;UpdatePlacementsResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1586,6 +2166,22 @@ public class OrderManagementApi {
          */
         public ApiResponse<UpdatePlacementsResponse> executeWithHttpInfo() throws ApiException {
             return updatePlacementsWithHttpInfo(requestBody);
+        }
+
+        /**
+         * Execute updatePlacements request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;UpdatePlacementsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated placements along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpdatePlacementsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return updatePlacementsWithHttpInfo(requestBody, opts);
         }
 
         /**
@@ -1603,6 +2199,23 @@ public class OrderManagementApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<UpdatePlacementsResponse> _callback) throws ApiException {
             return updatePlacementsAsync(requestBody, _callback);
+        }
+
+        /**
+         * Execute updatePlacements request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated placements along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpdatePlacementsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return updatePlacementsAsync(requestBody, _callback, opts);
         }
     }
 

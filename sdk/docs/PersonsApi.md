@@ -63,11 +63,22 @@ public class PersonsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PersonsApi apiInstance = apiFactory.build(PersonsApi.class);
+
         PersonsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PersonsApi.class);
         String idTypeScope = "idTypeScope_example"; // String | The scope of the person identifier type.
         String idTypeCode = "idTypeCode_example"; // String | The code of the person identifier type.
         String code = "code_example"; // String | Code of the person under specified identifier type scope and code. This together with defined   identifier type uniquely identifies the person to delete.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deletePerson(idTypeScope, idTypeCode, code).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deletePerson(idTypeScope, idTypeCode, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -147,6 +158,14 @@ public class PersonsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PersonsApi apiInstance = apiFactory.build(PersonsApi.class);
+
         PersonsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PersonsApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the person identifier.
         String idTypeCode = "idTypeCode_example"; // String | Code of the person identifier.
@@ -155,6 +174,9 @@ public class PersonsApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The effective date to delete at, if this is not supplied, it will delete all data found
         OffsetDateTime effectiveUntil = OffsetDateTime.now(); // OffsetDateTime | The effective date until which the delete is valid. If not supplied this will be valid indefinitely, or until the next 'effectiveAt' date of the Access Metadata
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deletePersonAccessMetadata(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deletePersonAccessMetadata(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -237,6 +259,14 @@ public class PersonsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PersonsApi apiInstance = apiFactory.build(PersonsApi.class);
+
         PersonsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PersonsApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the person identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the person identifier type.
@@ -244,6 +274,9 @@ public class PersonsApiExample {
         List<String> propertyKeys = Arrays.asList(); // List<String> | The property keys of the identifiers to delete. These take the format   {domain}/{scope}/{code} e.g. \"Person/CompanyDetails/Role\". Each property must be from the \"Person\" domain. Identifiers or identifiers not specified in request will not be changed.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to delete the identifiers. Defaults to the current LUSID system datetime if not specified.   Must not include an effective datetime if identifiers are perpetual.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deletePersonIdentifiers(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deletePersonIdentifiers(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -325,6 +358,14 @@ public class PersonsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PersonsApi apiInstance = apiFactory.build(PersonsApi.class);
+
         PersonsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PersonsApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the person identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the person identifier type.
@@ -332,6 +373,9 @@ public class PersonsApiExample {
         List<String> propertyKeys = Arrays.asList(); // List<String> | The property keys of the person's properties to delete. These take the format   {domain}/{scope}/{code} e.g. \"Person/CompanyDetails/Role\". Each property must be from the \"Person\" domain. Properties or identifiers not specified in request will not be changed.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified 'effectiveAt' datetime. If the 'effectiveAt' is not provided or is   before the time-variant property exists then a failure is returned. Do not specify this parameter if any of   the properties to delete are perpetual.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deletePersonProperties(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deletePersonProperties(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -413,6 +457,14 @@ public class PersonsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PersonsApi apiInstance = apiFactory.build(PersonsApi.class);
+
         PersonsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PersonsApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the person identifier.
         String idTypeCode = "idTypeCode_example"; // String | Code of the person identifier.
@@ -420,6 +472,9 @@ public class PersonsApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The effectiveAt datetime at which to retrieve the Access Metadata
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Access Metadata
         try {
+            // uncomment the below to set overrides at the request level
+            // Map<String, List<AccessMetadataValue>> result = apiInstance.getAllPersonAccessMetadata(idTypeScope, idTypeCode, code, effectiveAt, asAt).execute(opts);
+
             Map<String, List<AccessMetadataValue>> result = apiInstance.getAllPersonAccessMetadata(idTypeScope, idTypeCode, code, effectiveAt, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -501,6 +556,14 @@ public class PersonsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PersonsApi apiInstance = apiFactory.build(PersonsApi.class);
+
         PersonsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PersonsApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the person identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the person identifier type.
@@ -510,6 +573,9 @@ public class PersonsApiExample {
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the person. Defaults to return the latest version of the person if not specified.
         List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto the person in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
         try {
+            // uncomment the below to set overrides at the request level
+            // Person result = apiInstance.getPerson(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds).execute(opts);
+
             Person result = apiInstance.getPerson(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -593,6 +659,14 @@ public class PersonsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PersonsApi apiInstance = apiFactory.build(PersonsApi.class);
+
         PersonsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PersonsApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the person identifier.
         String idTypeCode = "idTypeCode_example"; // String | Code of the person identifier.
@@ -601,6 +675,9 @@ public class PersonsApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The effectiveAt datetime at which to retrieve the Access Metadata
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Access Metadata
         try {
+            // uncomment the below to set overrides at the request level
+            // List<AccessMetadataValue> result = apiInstance.getPersonAccessMetadataByKey(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt).execute(opts);
+
             List<AccessMetadataValue> result = apiInstance.getPersonAccessMetadataByKey(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -683,6 +760,14 @@ public class PersonsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PersonsApi apiInstance = apiFactory.build(PersonsApi.class);
+
         PersonsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PersonsApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the person identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the person identifier type.
@@ -693,6 +778,9 @@ public class PersonsApiExample {
         String page = "page_example"; // String | The pagination token to use to continue listing properties from a previous call to get property time series.   This value is returned from the previous call. If a pagination token is provided the filter and asAt fields   must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfPropertyInterval result = apiInstance.getPersonPropertyTimeSeries(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit).execute(opts);
+
             ResourceListOfPropertyInterval result = apiInstance.getPersonPropertyTimeSeries(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -777,6 +865,14 @@ public class PersonsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PersonsApi apiInstance = apiFactory.build(PersonsApi.class);
+
         PersonsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PersonsApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the person identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the person identifier type.
@@ -786,6 +882,9 @@ public class PersonsApiExample {
         String filter = "filter_example"; // String | Expression to filter the relations. Users should provide null or empty string for this field until further notice.
         List<String> identifierTypes = Arrays.asList(); // List<String> | Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format   {domain}/{scope}/{code} e.g. \"Person/CompanyDetails/Role\". They must be from the \"Person\" or \"LegalEntity\" domain.   Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfRelation result = apiInstance.getPersonRelations(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes).execute(opts);
+
             ResourceListOfRelation result = apiInstance.getPersonRelations(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -869,6 +968,14 @@ public class PersonsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PersonsApi apiInstance = apiFactory.build(PersonsApi.class);
+
         PersonsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PersonsApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the person's identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the person's identifier type.
@@ -878,6 +985,9 @@ public class PersonsApiExample {
         String filter = "filter_example"; // String | Expression to filter relationships. Users should provide null or empty string for this field until further notice.
         List<String> identifierTypes = Arrays.asList(); // List<String> | Identifier types (as property keys) used for referencing Persons or Legal Entities.   These can be specified from the 'Person' or 'LegalEntity' domains and have the format {domain}/{scope}/{code}, for example   'Person/CompanyDetails/Role'. An Empty array may be used to return all related Entities.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfRelationship result = apiInstance.getPersonRelationships(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes).execute(opts);
+
             ResourceListOfRelationship result = apiInstance.getPersonRelationships(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -961,6 +1071,14 @@ public class PersonsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PersonsApi apiInstance = apiFactory.build(PersonsApi.class);
+
         PersonsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PersonsApi.class);
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the people. Defaults to the current LUSID   system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the people. Defaults to return the latest version   of each people if not specified.
@@ -970,6 +1088,9 @@ public class PersonsApiExample {
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Person\" domain to decorate onto each person,    or from any domain that supports relationships to decorate onto related entities.   These take the format {domain}/{scope}/{code} e.g. \"Person/ContactDetails/Address\".
         List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto the persons in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfPerson result = apiInstance.listAllPersons(effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds).execute(opts);
+
             ResourceListOfPerson result = apiInstance.listAllPersons(effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1053,6 +1174,14 @@ public class PersonsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PersonsApi apiInstance = apiFactory.build(PersonsApi.class);
+
         PersonsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PersonsApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the person identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the person identifier type.
@@ -1064,6 +1193,9 @@ public class PersonsApiExample {
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Person\" domain to decorate onto each person,    or from any domain that supports relationships to decorate onto related entities.   These take the format {domain}/{scope}/{code} e.g. \"Person/ContactDetails/Address\".
         List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto the persons in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfPerson result = apiInstance.listPersons(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds).execute(opts);
+
             PagedResourceListOfPerson result = apiInstance.listPersons(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1149,6 +1281,14 @@ public class PersonsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PersonsApi apiInstance = apiFactory.build(PersonsApi.class);
+
         PersonsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PersonsApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the person identifier.
         String idTypeCode = "idTypeCode_example"; // String | Code of the person identifier.
@@ -1157,6 +1297,9 @@ public class PersonsApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The effectiveAt datetime at which to upsert the Access Metadata
         OffsetDateTime effectiveUntil = OffsetDateTime.now(); // OffsetDateTime | The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next 'effectiveAt' datetime of the Access Metadata
         try {
+            // uncomment the below to set overrides at the request level
+            // Map<String, List<AccessMetadataValue>> result = apiInstance.patchPersonAccessMetadata(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil).execute(opts);
+
             Map<String, List<AccessMetadataValue>> result = apiInstance.patchPersonAccessMetadata(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1239,12 +1382,23 @@ public class PersonsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PersonsApi apiInstance = apiFactory.build(PersonsApi.class);
+
         PersonsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PersonsApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the person identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the person identifier type.
         String code = "code_example"; // String | Code of the person under specified identifier type's scope and code. This together with stated identifier type uniquely   identifies the person.
         SetPersonIdentifiersRequest setPersonIdentifiersRequest = new SetPersonIdentifiersRequest(); // SetPersonIdentifiersRequest | Request containing identifiers to set for the person. Identifiers not specified in request will not be changed.
         try {
+            // uncomment the below to set overrides at the request level
+            // Person result = apiInstance.setPersonIdentifiers(idTypeScope, idTypeCode, code, setPersonIdentifiersRequest).execute(opts);
+
             Person result = apiInstance.setPersonIdentifiers(idTypeScope, idTypeCode, code, setPersonIdentifiersRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1325,12 +1479,23 @@ public class PersonsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PersonsApi apiInstance = apiFactory.build(PersonsApi.class);
+
         PersonsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PersonsApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the person identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the person identifier type.
         String code = "code_example"; // String | Code of the person under specified identifier type's scope and code. This together with stated identifier type uniquely   identifies the person.
         SetPersonPropertiesRequest setPersonPropertiesRequest = new SetPersonPropertiesRequest(); // SetPersonPropertiesRequest | Request containing properties to set for the person. Properties not specified in request will not be changed.
         try {
+            // uncomment the below to set overrides at the request level
+            // Person result = apiInstance.setPersonProperties(idTypeScope, idTypeCode, code, setPersonPropertiesRequest).execute(opts);
+
             Person result = apiInstance.setPersonProperties(idTypeScope, idTypeCode, code, setPersonPropertiesRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1411,9 +1576,20 @@ public class PersonsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PersonsApi apiInstance = apiFactory.build(PersonsApi.class);
+
         PersonsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PersonsApi.class);
         UpsertPersonRequest upsertPersonRequest = new UpsertPersonRequest(); // UpsertPersonRequest | Request to create or update a person.
         try {
+            // uncomment the below to set overrides at the request level
+            // Person result = apiInstance.upsertPerson(upsertPersonRequest).execute(opts);
+
             Person result = apiInstance.upsertPerson(upsertPersonRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1491,6 +1667,14 @@ public class PersonsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PersonsApi apiInstance = apiFactory.build(PersonsApi.class);
+
         PersonsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PersonsApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the person identifier.
         String idTypeCode = "idTypeCode_example"; // String | Code of the person identifier.
@@ -1500,6 +1684,9 @@ public class PersonsApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The effectiveAt datetime at which to upsert the Access Metadata
         OffsetDateTime effectiveUntil = OffsetDateTime.now(); // OffsetDateTime | The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next 'effectiveAt' datetime of the Access Metadata
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfAccessMetadataValueOf result = apiInstance.upsertPersonAccessMetadata(idTypeScope, idTypeCode, code, metadataKey, upsertPersonAccessMetadataRequest, effectiveAt, effectiveUntil).execute(opts);
+
             ResourceListOfAccessMetadataValueOf result = apiInstance.upsertPersonAccessMetadata(idTypeScope, idTypeCode, code, metadataKey, upsertPersonAccessMetadataRequest, effectiveAt, effectiveUntil).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -1583,10 +1770,21 @@ public class PersonsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PersonsApi apiInstance = apiFactory.build(PersonsApi.class);
+
         PersonsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PersonsApi.class);
         String successMode = "successMode_example"; // String | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial
         Map<String, UpsertPersonRequest> requestBody = new HashMap(); // Map<String, UpsertPersonRequest> | A collection of requests to create or update Person(s).
         try {
+            // uncomment the below to set overrides at the request level
+            // UpsertPersonsResponse result = apiInstance.upsertPersons(successMode, requestBody).execute(opts);
+
             UpsertPersonsResponse result = apiInstance.upsertPersons(successMode, requestBody).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

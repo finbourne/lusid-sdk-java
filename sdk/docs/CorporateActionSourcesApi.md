@@ -54,11 +54,22 @@ public class CorporateActionSourcesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CorporateActionSourcesApi apiInstance = apiFactory.build(CorporateActionSourcesApi.class);
+
         CorporateActionSourcesApi apiInstance = ApiFactoryBuilder.build(fileName).build(CorporateActionSourcesApi.class);
         String scope = "scope_example"; // String | The scope of corporate action source
         String code = "code_example"; // String | The code of the corporate action source
         List<UpsertCorporateActionRequest> upsertCorporateActionRequest = Arrays.asList(); // List<UpsertCorporateActionRequest> | The corporate action definitions
         try {
+            // uncomment the below to set overrides at the request level
+            // UpsertCorporateActionsResponse result = apiInstance.batchUpsertCorporateActions(scope, code, upsertCorporateActionRequest).execute(opts);
+
             UpsertCorporateActionsResponse result = apiInstance.batchUpsertCorporateActions(scope, code, upsertCorporateActionRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -138,9 +149,20 @@ public class CorporateActionSourcesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CorporateActionSourcesApi apiInstance = apiFactory.build(CorporateActionSourcesApi.class);
+
         CorporateActionSourcesApi apiInstance = ApiFactoryBuilder.build(fileName).build(CorporateActionSourcesApi.class);
         CreateCorporateActionSourceRequest createCorporateActionSourceRequest = new CreateCorporateActionSourceRequest(); // CreateCorporateActionSourceRequest | The corporate action source definition
         try {
+            // uncomment the below to set overrides at the request level
+            // CorporateActionSource result = apiInstance.createCorporateActionSource(createCorporateActionSourceRequest).execute(opts);
+
             CorporateActionSource result = apiInstance.createCorporateActionSource(createCorporateActionSourceRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -218,10 +240,21 @@ public class CorporateActionSourcesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CorporateActionSourcesApi apiInstance = apiFactory.build(CorporateActionSourcesApi.class);
+
         CorporateActionSourcesApi apiInstance = ApiFactoryBuilder.build(fileName).build(CorporateActionSourcesApi.class);
         String scope = "scope_example"; // String | The scope of the corporate action source to be deleted
         String code = "code_example"; // String | The code of the corporate action source to be deleted
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteCorporateActionSource(scope, code).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteCorporateActionSource(scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -300,11 +333,22 @@ public class CorporateActionSourcesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CorporateActionSourcesApi apiInstance = apiFactory.build(CorporateActionSourcesApi.class);
+
         CorporateActionSourcesApi apiInstance = ApiFactoryBuilder.build(fileName).build(CorporateActionSourcesApi.class);
         String scope = "scope_example"; // String | The scope of the corporate action source
         String code = "code_example"; // String | The code of the corporate action source
         List<String> corporateActionIds = Arrays.asList(); // List<String> | The IDs of the corporate actions to delete
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteCorporateActions(scope, code, corporateActionIds).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteCorporateActions(scope, code, corporateActionIds).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -384,11 +428,22 @@ public class CorporateActionSourcesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CorporateActionSourcesApi apiInstance = apiFactory.build(CorporateActionSourcesApi.class);
+
         CorporateActionSourcesApi apiInstance = ApiFactoryBuilder.build(fileName).build(CorporateActionSourcesApi.class);
         String scope = "scope_example"; // String | The scope of the corporate action source
         String code = "code_example"; // String | The code of the corporate action source
         List<String> instrumentEventIds = Arrays.asList(); // List<String> | The IDs of the instrument events to delete
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteInstrumentEvents(scope, code, instrumentEventIds).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteInstrumentEvents(scope, code, instrumentEventIds).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -468,6 +523,14 @@ public class CorporateActionSourcesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CorporateActionSourcesApi apiInstance = apiFactory.build(CorporateActionSourcesApi.class);
+
         CorporateActionSourcesApi apiInstance = ApiFactoryBuilder.build(fileName).build(CorporateActionSourcesApi.class);
         String scope = "scope_example"; // String | The scope of the corporate action source.
         String code = "code_example"; // String | The code of the corporate action source.
@@ -478,6 +541,9 @@ public class CorporateActionSourcesApiExample {
         Integer limit = 56; // Integer | Optional. When paginating, limit the results to this number.
         String filter = "filter_example"; // String | Optional. Expression to filter the result set.   For example, to filter on the Announcement Date, use \"announcementDate eq '2020-03-06'\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfCorporateAction result = apiInstance.getCorporateActions(scope, code, fromEffectiveAt, toEffectiveAt, asAt, sortBy, limit, filter).execute(opts);
+
             ResourceListOfCorporateAction result = apiInstance.getCorporateActions(scope, code, fromEffectiveAt, toEffectiveAt, asAt, sortBy, limit, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -562,6 +628,14 @@ public class CorporateActionSourcesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CorporateActionSourcesApi apiInstance = apiFactory.build(CorporateActionSourcesApi.class);
+
         CorporateActionSourcesApi apiInstance = ApiFactoryBuilder.build(fileName).build(CorporateActionSourcesApi.class);
         String scope = "scope_example"; // String | The scope of the corporate action source.
         String code = "code_example"; // String | The code of the corporate action source.
@@ -570,6 +644,9 @@ public class CorporateActionSourcesApiExample {
         String page = "page_example"; // String | Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, asAt, filter and limit must not  be modified.
         String filter = "filter_example"; // String | Optional. Expression to filter the result set.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfInstrumentEventHolder result = apiInstance.getInstrumentEvents(scope, code, asAt, limit, page, filter).execute(opts);
+
             PagedResourceListOfInstrumentEventHolder result = apiInstance.getInstrumentEvents(scope, code, asAt, limit, page, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -652,6 +729,14 @@ public class CorporateActionSourcesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CorporateActionSourcesApi apiInstance = apiFactory.build(CorporateActionSourcesApi.class);
+
         CorporateActionSourcesApi apiInstance = ApiFactoryBuilder.build(fileName).build(CorporateActionSourcesApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. The AsAt date of the data
         List<String> sortBy = Arrays.asList(); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
@@ -659,6 +744,9 @@ public class CorporateActionSourcesApiExample {
         String filter = "filter_example"; // String | Optional. Expression to filter the result set. For example, to  filter on the Display Name, use \"displayName eq 'string'\"  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         String page = "page_example"; // String | Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, the filter, asAt, and limit must not  be modified.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfCorporateActionSource result = apiInstance.listCorporateActionSources(asAt, sortBy, limit, filter, page).execute(opts);
+
             PagedResourceListOfCorporateActionSource result = apiInstance.listCorporateActionSources(asAt, sortBy, limit, filter, page).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -740,11 +828,22 @@ public class CorporateActionSourcesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CorporateActionSourcesApi apiInstance = apiFactory.build(CorporateActionSourcesApi.class);
+
         CorporateActionSourcesApi apiInstance = ApiFactoryBuilder.build(fileName).build(CorporateActionSourcesApi.class);
         String scope = "scope_example"; // String | The scope of the corporate action source.
         String code = "code_example"; // String | The code of the corporate action source.
         List<UpsertInstrumentEventRequest> upsertInstrumentEventRequest = Arrays.asList(); // List<UpsertInstrumentEventRequest> | The instrument event definitions.
         try {
+            // uncomment the below to set overrides at the request level
+            // UpsertInstrumentEventsResponse result = apiInstance.upsertInstrumentEvents(scope, code, upsertInstrumentEventRequest).execute(opts);
+
             UpsertInstrumentEventsResponse result = apiInstance.upsertInstrumentEvents(scope, code, upsertInstrumentEventRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

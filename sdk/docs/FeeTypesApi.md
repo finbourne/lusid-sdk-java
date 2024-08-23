@@ -51,10 +51,21 @@ public class FeeTypesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // FeeTypesApi apiInstance = apiFactory.build(FeeTypesApi.class);
+
         FeeTypesApi apiInstance = ApiFactoryBuilder.build(fileName).build(FeeTypesApi.class);
         String scope = "scope_example"; // String | The scope of the FeeType.
         FeeTypeRequest feeTypeRequest = new FeeTypeRequest(); // FeeTypeRequest | The contents of the FeeType.
         try {
+            // uncomment the below to set overrides at the request level
+            // FeeType result = apiInstance.createFeeType(scope, feeTypeRequest).execute(opts);
+
             FeeType result = apiInstance.createFeeType(scope, feeTypeRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -133,10 +144,21 @@ public class FeeTypesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // FeeTypesApi apiInstance = apiFactory.build(FeeTypesApi.class);
+
         FeeTypesApi apiInstance = ApiFactoryBuilder.build(fileName).build(FeeTypesApi.class);
         String scope = "scope_example"; // String | The scope of the FeeType.
         String code = "code_example"; // String | The code of the fee type
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteFeeType(scope, code).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteFeeType(scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -215,8 +237,19 @@ public class FeeTypesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // FeeTypesApi apiInstance = apiFactory.build(FeeTypesApi.class);
+
         FeeTypesApi apiInstance = ApiFactoryBuilder.build(fileName).build(FeeTypesApi.class);
         try {
+            // uncomment the below to set overrides at the request level
+            // FeeTransactionTemplateSpecification result = apiInstance.getFeeTemplateSpecifications().execute(opts);
+
             FeeTransactionTemplateSpecification result = apiInstance.getFeeTemplateSpecifications().execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -290,11 +323,22 @@ public class FeeTypesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // FeeTypesApi apiInstance = apiFactory.build(FeeTypesApi.class);
+
         FeeTypesApi apiInstance = ApiFactoryBuilder.build(fileName).build(FeeTypesApi.class);
         String scope = "scope_example"; // String | The scope of the FeeType
         String code = "code_example"; // String | The code of the FeeType
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the FeeType. Defaults to returning the latest version of the FeeType, if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // FeeType result = apiInstance.getFeeType(scope, code, asAt).execute(opts);
+
             FeeType result = apiInstance.getFeeType(scope, code, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -374,6 +418,14 @@ public class FeeTypesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // FeeTypesApi apiInstance = apiFactory.build(FeeTypesApi.class);
+
         FeeTypesApi apiInstance = ApiFactoryBuilder.build(fileName).build(FeeTypesApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the FeeTypes. Defaults to returning the latest version of each FeeType if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing FeeTypes; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request.
@@ -381,6 +433,9 @@ public class FeeTypesApiExample {
         String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the Code of the FeeType type, specify \"id.Code eq 'FeeType1'\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\"
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfFeeType result = apiInstance.listFeeTypes(asAt, page, limit, filter, sortBy).execute(opts);
+
             PagedResourceListOfFeeType result = apiInstance.listFeeTypes(asAt, page, limit, filter, sortBy).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -462,11 +517,22 @@ public class FeeTypesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // FeeTypesApi apiInstance = apiFactory.build(FeeTypesApi.class);
+
         FeeTypesApi apiInstance = ApiFactoryBuilder.build(fileName).build(FeeTypesApi.class);
         String scope = "scope_example"; // String | The scope of the FeeType.
         String code = "code_example"; // String | The code of the fee type
         UpdateFeeTypeRequest updateFeeTypeRequest = new UpdateFeeTypeRequest(); // UpdateFeeTypeRequest | The contents of the FeeType.
         try {
+            // uncomment the below to set overrides at the request level
+            // FeeType result = apiInstance.updateFeeType(scope, code, updateFeeTypeRequest).execute(opts);
+
             FeeType result = apiInstance.updateFeeType(scope, code, updateFeeTypeRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

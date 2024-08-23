@@ -50,10 +50,21 @@ public class StagingRuleSetApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // StagingRuleSetApi apiInstance = apiFactory.build(StagingRuleSetApi.class);
+
         StagingRuleSetApi apiInstance = ApiFactoryBuilder.build(fileName).build(StagingRuleSetApi.class);
         String entityType = "entityType_example"; // String | The entity type for which to create the staging rule set.
         CreateStagingRuleSetRequest createStagingRuleSetRequest = new CreateStagingRuleSetRequest(); // CreateStagingRuleSetRequest | Request to create a staging rule set.
         try {
+            // uncomment the below to set overrides at the request level
+            // StagingRuleSet result = apiInstance.createStagingRuleSet(entityType, createStagingRuleSetRequest).execute(opts);
+
             StagingRuleSet result = apiInstance.createStagingRuleSet(entityType, createStagingRuleSetRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -132,9 +143,20 @@ public class StagingRuleSetApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // StagingRuleSetApi apiInstance = apiFactory.build(StagingRuleSetApi.class);
+
         StagingRuleSetApi apiInstance = ApiFactoryBuilder.build(fileName).build(StagingRuleSetApi.class);
         String entityType = "entityType_example"; // String | The entity type for which to delete the staging rule set.
         try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteStagingRuleSet(entityType).execute(opts);
+
             DeletedEntityResponse result = apiInstance.deleteStagingRuleSet(entityType).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -212,10 +234,21 @@ public class StagingRuleSetApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // StagingRuleSetApi apiInstance = apiFactory.build(StagingRuleSetApi.class);
+
         StagingRuleSetApi apiInstance = ApiFactoryBuilder.build(fileName).build(StagingRuleSetApi.class);
         String entityType = "entityType_example"; // String | The entity type for which to retrieve the staging rule set.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the staging rule set. Defaults to return the latest   version of the staging rule set if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // StagingRuleSet result = apiInstance.getStagingRuleSet(entityType, asAt).execute(opts);
+
             StagingRuleSet result = apiInstance.getStagingRuleSet(entityType, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -294,6 +327,14 @@ public class StagingRuleSetApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // StagingRuleSetApi apiInstance = apiFactory.build(StagingRuleSetApi.class);
+
         StagingRuleSetApi apiInstance = ApiFactoryBuilder.build(fileName).build(StagingRuleSetApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the staging rule sets. Defaults to return the latest   version of the staging rule sets if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing staging rule sets from a previous call to list   staging rule sets. This value is returned from the previous call. If a pagination token is provided the sortBy,   filter, effectiveAt, and asAt fields must not have changed since the original request.
@@ -301,6 +342,9 @@ public class StagingRuleSetApiExample {
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
         String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfStagingRuleSet result = apiInstance.listStagingRuleSets(asAt, page, sortBy, limit, filter).execute(opts);
+
             PagedResourceListOfStagingRuleSet result = apiInstance.listStagingRuleSets(asAt, page, sortBy, limit, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -382,10 +426,21 @@ public class StagingRuleSetApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // StagingRuleSetApi apiInstance = apiFactory.build(StagingRuleSetApi.class);
+
         StagingRuleSetApi apiInstance = ApiFactoryBuilder.build(fileName).build(StagingRuleSetApi.class);
         String entityType = "entityType_example"; // String | The entity type for which to update the staging rule set.
         UpdateStagingRuleSetRequest updateStagingRuleSetRequest = new UpdateStagingRuleSetRequest(); // UpdateStagingRuleSetRequest | Request to update a staging rule set.
         try {
+            // uncomment the below to set overrides at the request level
+            // StagingRuleSet result = apiInstance.updateStagingRuleSet(entityType, updateStagingRuleSetRequest).execute(opts);
+
             StagingRuleSet result = apiInstance.updateStagingRuleSet(entityType, updateStagingRuleSetRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

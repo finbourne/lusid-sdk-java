@@ -27,7 +27,7 @@ public class FileConfigurationLoader {
             return configFileFromPath.get();
         }
 
-        throw new IOException("Cannot find " + apiConfigurationFile + "in either classpath resources or as an absolute path.");
+        throw new IOException("Cannot find '" + apiConfigurationFile + "' in either classpath resources or as an absolute path.");
     }
 
     private Optional<File> getConfigFileFromResources(String apiConfig){
@@ -42,11 +42,11 @@ public class FileConfigurationLoader {
     }
 
     // factory methods for test mocking purposes.
-    ClassLoader getClassLoader(){
+    public ClassLoader getClassLoader(){
         return getClass().getClassLoader();
     }
 
-    File getFile(String path){
+    public File getFile(String path){
         return new File(path);
     }
 

@@ -49,10 +49,21 @@ public class SequencesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // SequencesApi apiInstance = apiFactory.build(SequencesApi.class);
+
         SequencesApi apiInstance = ApiFactoryBuilder.build(fileName).build(SequencesApi.class);
         String scope = "scope_example"; // String | Scope of the sequence.
         CreateSequenceRequest createSequenceRequest = new CreateSequenceRequest(); // CreateSequenceRequest | Request to create sequence
         try {
+            // uncomment the below to set overrides at the request level
+            // SequenceDefinition result = apiInstance.createSequence(scope, createSequenceRequest).execute(opts);
+
             SequenceDefinition result = apiInstance.createSequence(scope, createSequenceRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -131,10 +142,21 @@ public class SequencesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // SequencesApi apiInstance = apiFactory.build(SequencesApi.class);
+
         SequencesApi apiInstance = ApiFactoryBuilder.build(fileName).build(SequencesApi.class);
         String scope = "scope_example"; // String | Scope of the sequence.
         String code = "code_example"; // String | Code of the sequence. This together with stated scope uniquely   identifies the sequence.
         try {
+            // uncomment the below to set overrides at the request level
+            // SequenceDefinition result = apiInstance.getSequence(scope, code).execute(opts);
+
             SequenceDefinition result = apiInstance.getSequence(scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -213,11 +235,22 @@ public class SequencesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // SequencesApi apiInstance = apiFactory.build(SequencesApi.class);
+
         SequencesApi apiInstance = ApiFactoryBuilder.build(fileName).build(SequencesApi.class);
         String page = "page_example"; // String | The pagination token to use to continue listing sequences from a previous call to list sequences. This  value is returned from the previous call.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 500 if not specified.
         String filter = "filter_example"; // String | Expression to filter the result set.    Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfSequenceDefinition result = apiInstance.listSequences(page, limit, filter).execute(opts);
+
             PagedResourceListOfSequenceDefinition result = apiInstance.listSequences(page, limit, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -297,11 +330,22 @@ public class SequencesApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // SequencesApi apiInstance = apiFactory.build(SequencesApi.class);
+
         SequencesApi apiInstance = ApiFactoryBuilder.build(fileName).build(SequencesApi.class);
         String scope = "scope_example"; // String | Scope of the sequence.
         String code = "code_example"; // String | Code of the sequence. This together with stated scope uniquely   identifies the sequence.
         Integer batch = 56; // Integer | Number of sequences items to return for the specified sequence. Default to 1 if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // NextValueInSequenceResponse result = apiInstance.next(scope, code, batch).execute(opts);
+
             NextValueInSequenceResponse result = apiInstance.next(scope, code, batch).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

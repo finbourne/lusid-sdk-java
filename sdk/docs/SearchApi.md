@@ -49,12 +49,23 @@ public class SearchApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // SearchApi apiInstance = apiFactory.build(SearchApi.class);
+
         SearchApi apiInstance = ApiFactoryBuilder.build(fileName).build(SearchApi.class);
         List<InstrumentSearchProperty> instrumentSearchProperty = Arrays.asList(); // List<InstrumentSearchProperty> | A collection of instrument properties to search for. LUSID will return instruments for any matched   properties.
         String masteredEffectiveAt = "masteredEffectiveAt_example"; // String | The effective datetime or cut label to use when searching mastered instruments. This parameter has no effect on instruments that  have not been mastered within LUSID. Defaults to the current LUSID system datetime if not specified.
         Boolean masteredOnly = false; // Boolean | If set to true, only search over instruments that have been mastered within LUSID. Defaults to false.
         String scope = "scope_example"; // String | The scope in which the instrument lies.
         try {
+            // uncomment the below to set overrides at the request level
+            // List<InstrumentMatch> result = apiInstance.instrumentsSearch(instrumentSearchProperty, masteredEffectiveAt, masteredOnly, scope).execute(opts);
+
             List<InstrumentMatch> result = apiInstance.instrumentsSearch(instrumentSearchProperty, masteredEffectiveAt, masteredOnly, scope).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -135,6 +146,14 @@ public class SearchApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // SearchApi apiInstance = apiFactory.build(SearchApi.class);
+
         SearchApi apiInstance = ApiFactoryBuilder.build(fileName).build(SearchApi.class);
         String search = "search_example"; // String | A parameter used for searching any portfolio group field. Wildcards(*) are supported at the end of words (e.g. 'Port*'). Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         String filter = "filter_example"; // String | Expression to filter the result set.   For example, to filter on the Scope, use \"id.scope eq 'string'\"  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
@@ -142,6 +161,9 @@ public class SearchApiExample {
         Integer limit = 56; // Integer | When paginating, only return this number of records
         String page = "page_example"; // String | Encoded page string returned from a previous search result that will retrieve the next page of data. When this field is supplied, filter, sortBy and search fields should not be supplied.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfPortfolioGroupSearchResult result = apiInstance.searchPortfolioGroups(search, filter, sortBy, limit, page).execute(opts);
+
             PagedResourceListOfPortfolioGroupSearchResult result = apiInstance.searchPortfolioGroups(search, filter, sortBy, limit, page).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -223,6 +245,14 @@ public class SearchApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // SearchApi apiInstance = apiFactory.build(SearchApi.class);
+
         SearchApi apiInstance = ApiFactoryBuilder.build(fileName).build(SearchApi.class);
         String search = "search_example"; // String | A parameter used for searching any portfolio field. Wildcards(*) are supported at the end of words (e.g. 'Port*'). Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         String filter = "filter_example"; // String | Expression to filter the result set.   For example, to filter on the portfolio Type, use \"type eq 'Transaction'\"  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
@@ -230,6 +260,9 @@ public class SearchApiExample {
         Integer limit = 56; // Integer | When paginating, only return this number of records
         String page = "page_example"; // String | Encoded page string returned from a previous search result that will retrieve the next page of data. When this field is supplied, filter, sortBy and search fields should not be supplied.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfPortfolioSearchResult result = apiInstance.searchPortfolios(search, filter, sortBy, limit, page).execute(opts);
+
             PagedResourceListOfPortfolioSearchResult result = apiInstance.searchPortfolios(search, filter, sortBy, limit, page).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -311,6 +344,14 @@ public class SearchApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // SearchApi apiInstance = apiFactory.build(SearchApi.class);
+
         SearchApi apiInstance = ApiFactoryBuilder.build(fileName).build(SearchApi.class);
         String search = "search_example"; // String | A parameter used for searching any field. Wildcards(*) are supported at the end of words (e.g. 'Port*'). Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         String filter = "filter_example"; // String | Expression to filter the result set.   For example, to filter on the Value Type, use \"valueType eq 'string'\"  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
@@ -318,6 +359,9 @@ public class SearchApiExample {
         Integer limit = 56; // Integer | When paginating, only return this number of records
         String page = "page_example"; // String | Encoded page string returned from a previous search result that will retrieve the next page of data. When this field is supplied, filter, sortBy and search fields should not be supplied.
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfPropertyDefinitionSearchResult result = apiInstance.searchProperties(search, filter, sortBy, limit, page).execute(opts);
+
             PagedResourceListOfPropertyDefinitionSearchResult result = apiInstance.searchProperties(search, filter, sortBy, limit, page).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

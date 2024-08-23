@@ -48,6 +48,14 @@ public class OrderGraphApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // OrderGraphApi apiInstance = apiFactory.build(OrderGraphApi.class);
+
         OrderGraphApi apiInstance = ApiFactoryBuilder.build(fileName).build(OrderGraphApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | See https://support.lusid.com/knowledgebase/article/KA-01832/
         String paginationToken = "paginationToken_example"; // String | See https://support.lusid.com/knowledgebase/article/KA-01915/
@@ -57,6 +65,9 @@ public class OrderGraphApiExample {
         List<String> propertyKeys = Arrays.asList(); // List<String> | Must be block-level properties. See https://support.lusid.com/knowledgebase/article/KA-01855/
         Boolean useComplianceV2 = false; // Boolean | Whether to use the V2 compliance engine when deriving compliance statuses for orders. (default: false)
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfOrderGraphBlock result = apiInstance.listOrderGraphBlocks(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2).execute(opts);
+
             PagedResourceListOfOrderGraphBlock result = apiInstance.listOrderGraphBlocks(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -140,6 +151,14 @@ public class OrderGraphApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // OrderGraphApi apiInstance = apiFactory.build(OrderGraphApi.class);
+
         OrderGraphApi apiInstance = ApiFactoryBuilder.build(fileName).build(OrderGraphApi.class);
         String scope = "scope_example"; // String | The parent placement's scope
         String code = "code_example"; // String | The parent placement's code
@@ -149,6 +168,9 @@ public class OrderGraphApiExample {
         Integer limit = 56; // Integer | See https://support.lusid.com/knowledgebase/article/KA-01915/
         List<String> propertyKeys = Arrays.asList(); // List<String> | Must be placement properties. See https://support.lusid.com/knowledgebase/article/KA-01855/
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfOrderGraphPlacement result = apiInstance.listOrderGraphPlacementChildren(scope, code, asAt, paginationToken, sortBy, limit, propertyKeys).execute(opts);
+
             PagedResourceListOfOrderGraphPlacement result = apiInstance.listOrderGraphPlacementChildren(scope, code, asAt, paginationToken, sortBy, limit, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -232,6 +254,14 @@ public class OrderGraphApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // OrderGraphApi apiInstance = apiFactory.build(OrderGraphApi.class);
+
         OrderGraphApi apiInstance = ApiFactoryBuilder.build(fileName).build(OrderGraphApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | See https://support.lusid.com/knowledgebase/article/KA-01832/
         String paginationToken = "paginationToken_example"; // String | See https://support.lusid.com/knowledgebase/article/KA-01915/
@@ -240,6 +270,9 @@ public class OrderGraphApiExample {
         String filter = ""; // String | See https://support.lusid.com/knowledgebase/article/KA-01914/
         List<String> propertyKeys = Arrays.asList(); // List<String> | Must be placement properties. See https://support.lusid.com/knowledgebase/article/KA-01855/
         try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfOrderGraphPlacement result = apiInstance.listOrderGraphPlacements(asAt, paginationToken, sortBy, limit, filter, propertyKeys).execute(opts);
+
             PagedResourceListOfOrderGraphPlacement result = apiInstance.listOrderGraphPlacements(asAt, paginationToken, sortBy, limit, filter, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {

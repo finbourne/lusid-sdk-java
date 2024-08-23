@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -73,6 +74,10 @@ public class QueryableKeysApi {
     }
 
     private okhttp3.Call getAllQueryableKeysCall(OffsetDateTime asAt, String filter, final ApiCallback _callback) throws ApiException {
+        return getAllQueryableKeysCall(asAt, filter,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getAllQueryableKeysCall(OffsetDateTime asAt, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -123,25 +128,39 @@ public class QueryableKeysApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAllQueryableKeysValidateBeforeCall(OffsetDateTime asAt, String filter, final ApiCallback _callback) throws ApiException {
-        return getAllQueryableKeysCall(asAt, filter, _callback);
+    private okhttp3.Call getAllQueryableKeysValidateBeforeCall(OffsetDateTime asAt, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return getAllQueryableKeysCall(asAt, filter, _callback, opts);
 
     }
 
 
     private ApiResponse<ResourceListOfQueryableKey> getAllQueryableKeysWithHttpInfo(OffsetDateTime asAt, String filter) throws ApiException {
-        okhttp3.Call localVarCall = getAllQueryableKeysValidateBeforeCall(asAt, filter, null);
+        okhttp3.Call localVarCall = getAllQueryableKeysValidateBeforeCall(asAt, filter, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfQueryableKey>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfQueryableKey> getAllQueryableKeysWithHttpInfo(OffsetDateTime asAt, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getAllQueryableKeysValidateBeforeCall(asAt, filter, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfQueryableKey>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getAllQueryableKeysAsync(OffsetDateTime asAt, String filter, final ApiCallback<ResourceListOfQueryableKey> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAllQueryableKeysValidateBeforeCall(asAt, filter, _callback);
+        okhttp3.Call localVarCall = getAllQueryableKeysValidateBeforeCall(asAt, filter, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfQueryableKey>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getAllQueryableKeysAsync(OffsetDateTime asAt, String filter, final ApiCallback<ResourceListOfQueryableKey> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getAllQueryableKeysValidateBeforeCall(asAt, filter, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfQueryableKey>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -209,6 +228,23 @@ public class QueryableKeysApi {
         }
 
         /**
+         * Execute getAllQueryableKeys request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfQueryableKey
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfQueryableKey execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfQueryableKey> localVarResp = getAllQueryableKeysWithHttpInfo(asAt, filter, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getAllQueryableKeys request with HTTP info returned
          * @return ApiResponse&lt;ResourceListOfQueryableKey&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -222,6 +258,22 @@ public class QueryableKeysApi {
          */
         public ApiResponse<ResourceListOfQueryableKey> executeWithHttpInfo() throws ApiException {
             return getAllQueryableKeysWithHttpInfo(asAt, filter);
+        }
+
+        /**
+         * Execute getAllQueryableKeys request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfQueryableKey&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfQueryableKey> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getAllQueryableKeysWithHttpInfo(asAt, filter, opts);
         }
 
         /**
@@ -239,6 +291,23 @@ public class QueryableKeysApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfQueryableKey> _callback) throws ApiException {
             return getAllQueryableKeysAsync(asAt, filter, _callback);
+        }
+
+        /**
+         * Execute getAllQueryableKeys request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfQueryableKey> _callback, ConfigurationOptions opts) throws ApiException {
+            return getAllQueryableKeysAsync(asAt, filter, _callback, opts);
         }
     }
 

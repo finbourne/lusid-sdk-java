@@ -18,6 +18,7 @@ import com.finbourne.lusid.Configuration;
 import com.finbourne.lusid.Pair;
 import com.finbourne.lusid.ProgressRequestBody;
 import com.finbourne.lusid.ProgressResponseBody;
+import com.finbourne.lusid.extensions.ConfigurationOptions;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -77,6 +78,10 @@ public class InstrumentEventTypesApi {
     }
 
     private okhttp3.Call createTransactionTemplateCall(String instrumentEventType, String instrumentType, String scope, TransactionTemplateRequest transactionTemplateRequest, final ApiCallback _callback) throws ApiException {
+        return createTransactionTemplateCall(instrumentEventType, instrumentType, scope, transactionTemplateRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call createTransactionTemplateCall(String instrumentEventType, String instrumentType, String scope, TransactionTemplateRequest transactionTemplateRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -126,11 +131,11 @@ public class InstrumentEventTypesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createTransactionTemplateValidateBeforeCall(String instrumentEventType, String instrumentType, String scope, TransactionTemplateRequest transactionTemplateRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createTransactionTemplateValidateBeforeCall(String instrumentEventType, String instrumentType, String scope, TransactionTemplateRequest transactionTemplateRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'instrumentEventType' is set
         if (instrumentEventType == null) {
             throw new ApiException("Missing the required parameter 'instrumentEventType' when calling createTransactionTemplate(Async)");
@@ -151,20 +156,34 @@ public class InstrumentEventTypesApi {
             throw new ApiException("Missing the required parameter 'transactionTemplateRequest' when calling createTransactionTemplate(Async)");
         }
 
-        return createTransactionTemplateCall(instrumentEventType, instrumentType, scope, transactionTemplateRequest, _callback);
+        return createTransactionTemplateCall(instrumentEventType, instrumentType, scope, transactionTemplateRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<TransactionTemplate> createTransactionTemplateWithHttpInfo(String instrumentEventType, String instrumentType, String scope, TransactionTemplateRequest transactionTemplateRequest) throws ApiException {
-        okhttp3.Call localVarCall = createTransactionTemplateValidateBeforeCall(instrumentEventType, instrumentType, scope, transactionTemplateRequest, null);
+        okhttp3.Call localVarCall = createTransactionTemplateValidateBeforeCall(instrumentEventType, instrumentType, scope, transactionTemplateRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TransactionTemplate>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<TransactionTemplate> createTransactionTemplateWithHttpInfo(String instrumentEventType, String instrumentType, String scope, TransactionTemplateRequest transactionTemplateRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createTransactionTemplateValidateBeforeCall(instrumentEventType, instrumentType, scope, transactionTemplateRequest, null, opts);
         Type localVarReturnType = new TypeToken<TransactionTemplate>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call createTransactionTemplateAsync(String instrumentEventType, String instrumentType, String scope, TransactionTemplateRequest transactionTemplateRequest, final ApiCallback<TransactionTemplate> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createTransactionTemplateValidateBeforeCall(instrumentEventType, instrumentType, scope, transactionTemplateRequest, _callback);
+        okhttp3.Call localVarCall = createTransactionTemplateValidateBeforeCall(instrumentEventType, instrumentType, scope, transactionTemplateRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TransactionTemplate>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call createTransactionTemplateAsync(String instrumentEventType, String instrumentType, String scope, TransactionTemplateRequest transactionTemplateRequest, final ApiCallback<TransactionTemplate> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = createTransactionTemplateValidateBeforeCall(instrumentEventType, instrumentType, scope, transactionTemplateRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<TransactionTemplate>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -218,6 +237,23 @@ public class InstrumentEventTypesApi {
         }
 
         /**
+         * Execute createTransactionTemplate request. Use any specified configuration options to override any other configuration for this request only.
+         * @return TransactionTemplate
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The response of the transaction template that was created. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TransactionTemplate execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<TransactionTemplate> localVarResp = createTransactionTemplateWithHttpInfo(instrumentEventType, instrumentType, scope, transactionTemplateRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute createTransactionTemplate request with HTTP info returned
          * @return ApiResponse&lt;TransactionTemplate&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -231,6 +267,22 @@ public class InstrumentEventTypesApi {
          */
         public ApiResponse<TransactionTemplate> executeWithHttpInfo() throws ApiException {
             return createTransactionTemplateWithHttpInfo(instrumentEventType, instrumentType, scope, transactionTemplateRequest);
+        }
+
+        /**
+         * Execute createTransactionTemplate request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;TransactionTemplate&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The response of the transaction template that was created. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TransactionTemplate> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return createTransactionTemplateWithHttpInfo(instrumentEventType, instrumentType, scope, transactionTemplateRequest, opts);
         }
 
         /**
@@ -248,6 +300,23 @@ public class InstrumentEventTypesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<TransactionTemplate> _callback) throws ApiException {
             return createTransactionTemplateAsync(instrumentEventType, instrumentType, scope, transactionTemplateRequest, _callback);
+        }
+
+        /**
+         * Execute createTransactionTemplate request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The response of the transaction template that was created. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TransactionTemplate> _callback, ConfigurationOptions opts) throws ApiException {
+            return createTransactionTemplateAsync(instrumentEventType, instrumentType, scope, transactionTemplateRequest, _callback, opts);
         }
     }
 
@@ -271,6 +340,10 @@ public class InstrumentEventTypesApi {
         return new APIcreateTransactionTemplateRequest(instrumentEventType, instrumentType, scope, transactionTemplateRequest);
     }
     private okhttp3.Call deleteTransactionTemplateCall(String instrumentEventType, String instrumentType, String scope, final ApiCallback _callback) throws ApiException {
+        return deleteTransactionTemplateCall(instrumentEventType, instrumentType, scope,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteTransactionTemplateCall(String instrumentEventType, String instrumentType, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -316,11 +389,11 @@ public class InstrumentEventTypesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteTransactionTemplateValidateBeforeCall(String instrumentEventType, String instrumentType, String scope, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteTransactionTemplateValidateBeforeCall(String instrumentEventType, String instrumentType, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'instrumentEventType' is set
         if (instrumentEventType == null) {
             throw new ApiException("Missing the required parameter 'instrumentEventType' when calling deleteTransactionTemplate(Async)");
@@ -336,20 +409,34 @@ public class InstrumentEventTypesApi {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteTransactionTemplate(Async)");
         }
 
-        return deleteTransactionTemplateCall(instrumentEventType, instrumentType, scope, _callback);
+        return deleteTransactionTemplateCall(instrumentEventType, instrumentType, scope, _callback, opts);
 
     }
 
 
     private ApiResponse<OffsetDateTime> deleteTransactionTemplateWithHttpInfo(String instrumentEventType, String instrumentType, String scope) throws ApiException {
-        okhttp3.Call localVarCall = deleteTransactionTemplateValidateBeforeCall(instrumentEventType, instrumentType, scope, null);
+        okhttp3.Call localVarCall = deleteTransactionTemplateValidateBeforeCall(instrumentEventType, instrumentType, scope, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<OffsetDateTime>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<OffsetDateTime> deleteTransactionTemplateWithHttpInfo(String instrumentEventType, String instrumentType, String scope, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteTransactionTemplateValidateBeforeCall(instrumentEventType, instrumentType, scope, null, opts);
         Type localVarReturnType = new TypeToken<OffsetDateTime>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call deleteTransactionTemplateAsync(String instrumentEventType, String instrumentType, String scope, final ApiCallback<OffsetDateTime> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteTransactionTemplateValidateBeforeCall(instrumentEventType, instrumentType, scope, _callback);
+        okhttp3.Call localVarCall = deleteTransactionTemplateValidateBeforeCall(instrumentEventType, instrumentType, scope, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<OffsetDateTime>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteTransactionTemplateAsync(String instrumentEventType, String instrumentType, String scope, final ApiCallback<OffsetDateTime> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteTransactionTemplateValidateBeforeCall(instrumentEventType, instrumentType, scope, _callback, opts);
         Type localVarReturnType = new TypeToken<OffsetDateTime>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -401,6 +488,23 @@ public class InstrumentEventTypesApi {
         }
 
         /**
+         * Execute deleteTransactionTemplate request. Use any specified configuration options to override any other configuration for this request only.
+         * @return OffsetDateTime
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt Time the Template was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public OffsetDateTime execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<OffsetDateTime> localVarResp = deleteTransactionTemplateWithHttpInfo(instrumentEventType, instrumentType, scope, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute deleteTransactionTemplate request with HTTP info returned
          * @return ApiResponse&lt;OffsetDateTime&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -414,6 +518,22 @@ public class InstrumentEventTypesApi {
          */
         public ApiResponse<OffsetDateTime> executeWithHttpInfo() throws ApiException {
             return deleteTransactionTemplateWithHttpInfo(instrumentEventType, instrumentType, scope);
+        }
+
+        /**
+         * Execute deleteTransactionTemplate request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;OffsetDateTime&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt Time the Template was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<OffsetDateTime> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteTransactionTemplateWithHttpInfo(instrumentEventType, instrumentType, scope, opts);
         }
 
         /**
@@ -431,6 +551,23 @@ public class InstrumentEventTypesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<OffsetDateTime> _callback) throws ApiException {
             return deleteTransactionTemplateAsync(instrumentEventType, instrumentType, scope, _callback);
+        }
+
+        /**
+         * Execute deleteTransactionTemplate request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The AsAt Time the Template was deleted. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<OffsetDateTime> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteTransactionTemplateAsync(instrumentEventType, instrumentType, scope, _callback, opts);
         }
     }
 
@@ -453,6 +590,10 @@ public class InstrumentEventTypesApi {
         return new APIdeleteTransactionTemplateRequest(instrumentEventType, instrumentType, scope);
     }
     private okhttp3.Call getTransactionTemplateCall(String instrumentEventType, String instrumentType, String scope, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getTransactionTemplateCall(instrumentEventType, instrumentType, scope, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getTransactionTemplateCall(String instrumentEventType, String instrumentType, String scope, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -502,11 +643,11 @@ public class InstrumentEventTypesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTransactionTemplateValidateBeforeCall(String instrumentEventType, String instrumentType, String scope, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getTransactionTemplateValidateBeforeCall(String instrumentEventType, String instrumentType, String scope, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'instrumentEventType' is set
         if (instrumentEventType == null) {
             throw new ApiException("Missing the required parameter 'instrumentEventType' when calling getTransactionTemplate(Async)");
@@ -522,20 +663,34 @@ public class InstrumentEventTypesApi {
             throw new ApiException("Missing the required parameter 'scope' when calling getTransactionTemplate(Async)");
         }
 
-        return getTransactionTemplateCall(instrumentEventType, instrumentType, scope, asAt, _callback);
+        return getTransactionTemplateCall(instrumentEventType, instrumentType, scope, asAt, _callback, opts);
 
     }
 
 
     private ApiResponse<TransactionTemplate> getTransactionTemplateWithHttpInfo(String instrumentEventType, String instrumentType, String scope, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getTransactionTemplateValidateBeforeCall(instrumentEventType, instrumentType, scope, asAt, null);
+        okhttp3.Call localVarCall = getTransactionTemplateValidateBeforeCall(instrumentEventType, instrumentType, scope, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TransactionTemplate>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<TransactionTemplate> getTransactionTemplateWithHttpInfo(String instrumentEventType, String instrumentType, String scope, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getTransactionTemplateValidateBeforeCall(instrumentEventType, instrumentType, scope, asAt, null, opts);
         Type localVarReturnType = new TypeToken<TransactionTemplate>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getTransactionTemplateAsync(String instrumentEventType, String instrumentType, String scope, OffsetDateTime asAt, final ApiCallback<TransactionTemplate> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getTransactionTemplateValidateBeforeCall(instrumentEventType, instrumentType, scope, asAt, _callback);
+        okhttp3.Call localVarCall = getTransactionTemplateValidateBeforeCall(instrumentEventType, instrumentType, scope, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TransactionTemplate>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getTransactionTemplateAsync(String instrumentEventType, String instrumentType, String scope, OffsetDateTime asAt, final ApiCallback<TransactionTemplate> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getTransactionTemplateValidateBeforeCall(instrumentEventType, instrumentType, scope, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<TransactionTemplate>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -598,6 +753,23 @@ public class InstrumentEventTypesApi {
         }
 
         /**
+         * Execute getTransactionTemplate request. Use any specified configuration options to override any other configuration for this request only.
+         * @return TransactionTemplate
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The transaction template. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TransactionTemplate execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<TransactionTemplate> localVarResp = getTransactionTemplateWithHttpInfo(instrumentEventType, instrumentType, scope, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getTransactionTemplate request with HTTP info returned
          * @return ApiResponse&lt;TransactionTemplate&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -611,6 +783,22 @@ public class InstrumentEventTypesApi {
          */
         public ApiResponse<TransactionTemplate> executeWithHttpInfo() throws ApiException {
             return getTransactionTemplateWithHttpInfo(instrumentEventType, instrumentType, scope, asAt);
+        }
+
+        /**
+         * Execute getTransactionTemplate request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;TransactionTemplate&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The transaction template. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TransactionTemplate> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getTransactionTemplateWithHttpInfo(instrumentEventType, instrumentType, scope, asAt, opts);
         }
 
         /**
@@ -628,6 +816,23 @@ public class InstrumentEventTypesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<TransactionTemplate> _callback) throws ApiException {
             return getTransactionTemplateAsync(instrumentEventType, instrumentType, scope, asAt, _callback);
+        }
+
+        /**
+         * Execute getTransactionTemplate request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The transaction template. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TransactionTemplate> _callback, ConfigurationOptions opts) throws ApiException {
+            return getTransactionTemplateAsync(instrumentEventType, instrumentType, scope, asAt, _callback, opts);
         }
     }
 
@@ -650,6 +855,10 @@ public class InstrumentEventTypesApi {
         return new APIgetTransactionTemplateRequest(instrumentEventType, instrumentType, scope);
     }
     private okhttp3.Call getTransactionTemplateSpecificationCall(String instrumentEventType, final ApiCallback _callback) throws ApiException {
+        return getTransactionTemplateSpecificationCall(instrumentEventType,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getTransactionTemplateSpecificationCall(String instrumentEventType, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -693,30 +902,44 @@ public class InstrumentEventTypesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTransactionTemplateSpecificationValidateBeforeCall(String instrumentEventType, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getTransactionTemplateSpecificationValidateBeforeCall(String instrumentEventType, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'instrumentEventType' is set
         if (instrumentEventType == null) {
             throw new ApiException("Missing the required parameter 'instrumentEventType' when calling getTransactionTemplateSpecification(Async)");
         }
 
-        return getTransactionTemplateSpecificationCall(instrumentEventType, _callback);
+        return getTransactionTemplateSpecificationCall(instrumentEventType, _callback, opts);
 
     }
 
 
     private ApiResponse<TransactionTemplateSpecification> getTransactionTemplateSpecificationWithHttpInfo(String instrumentEventType) throws ApiException {
-        okhttp3.Call localVarCall = getTransactionTemplateSpecificationValidateBeforeCall(instrumentEventType, null);
+        okhttp3.Call localVarCall = getTransactionTemplateSpecificationValidateBeforeCall(instrumentEventType, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TransactionTemplateSpecification>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<TransactionTemplateSpecification> getTransactionTemplateSpecificationWithHttpInfo(String instrumentEventType, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getTransactionTemplateSpecificationValidateBeforeCall(instrumentEventType, null, opts);
         Type localVarReturnType = new TypeToken<TransactionTemplateSpecification>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getTransactionTemplateSpecificationAsync(String instrumentEventType, final ApiCallback<TransactionTemplateSpecification> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getTransactionTemplateSpecificationValidateBeforeCall(instrumentEventType, _callback);
+        okhttp3.Call localVarCall = getTransactionTemplateSpecificationValidateBeforeCall(instrumentEventType, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TransactionTemplateSpecification>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getTransactionTemplateSpecificationAsync(String instrumentEventType, final ApiCallback<TransactionTemplateSpecification> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getTransactionTemplateSpecificationValidateBeforeCall(instrumentEventType, _callback, opts);
         Type localVarReturnType = new TypeToken<TransactionTemplateSpecification>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -764,6 +987,23 @@ public class InstrumentEventTypesApi {
         }
 
         /**
+         * Execute getTransactionTemplateSpecification request. Use any specified configuration options to override any other configuration for this request only.
+         * @return TransactionTemplateSpecification
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Transaction Template Specification. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TransactionTemplateSpecification execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<TransactionTemplateSpecification> localVarResp = getTransactionTemplateSpecificationWithHttpInfo(instrumentEventType, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute getTransactionTemplateSpecification request with HTTP info returned
          * @return ApiResponse&lt;TransactionTemplateSpecification&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -777,6 +1017,22 @@ public class InstrumentEventTypesApi {
          */
         public ApiResponse<TransactionTemplateSpecification> executeWithHttpInfo() throws ApiException {
             return getTransactionTemplateSpecificationWithHttpInfo(instrumentEventType);
+        }
+
+        /**
+         * Execute getTransactionTemplateSpecification request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;TransactionTemplateSpecification&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Transaction Template Specification. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TransactionTemplateSpecification> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getTransactionTemplateSpecificationWithHttpInfo(instrumentEventType, opts);
         }
 
         /**
@@ -794,6 +1050,23 @@ public class InstrumentEventTypesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<TransactionTemplateSpecification> _callback) throws ApiException {
             return getTransactionTemplateSpecificationAsync(instrumentEventType, _callback);
+        }
+
+        /**
+         * Execute getTransactionTemplateSpecification request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Transaction Template Specification. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TransactionTemplateSpecification> _callback, ConfigurationOptions opts) throws ApiException {
+            return getTransactionTemplateSpecificationAsync(instrumentEventType, _callback, opts);
         }
     }
 
@@ -814,6 +1087,10 @@ public class InstrumentEventTypesApi {
         return new APIgetTransactionTemplateSpecificationRequest(instrumentEventType);
     }
     private okhttp3.Call listTransactionTemplateSpecificationsCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
+        return listTransactionTemplateSpecificationsCall(asAt, page, limit, filter, sortBy,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listTransactionTemplateSpecificationsCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -876,25 +1153,39 @@ public class InstrumentEventTypesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listTransactionTemplateSpecificationsValidateBeforeCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
-        return listTransactionTemplateSpecificationsCall(asAt, page, limit, filter, sortBy, _callback);
+    private okhttp3.Call listTransactionTemplateSpecificationsValidateBeforeCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listTransactionTemplateSpecificationsCall(asAt, page, limit, filter, sortBy, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfTransactionTemplateSpecification> listTransactionTemplateSpecificationsWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy) throws ApiException {
-        okhttp3.Call localVarCall = listTransactionTemplateSpecificationsValidateBeforeCall(asAt, page, limit, filter, sortBy, null);
+        okhttp3.Call localVarCall = listTransactionTemplateSpecificationsValidateBeforeCall(asAt, page, limit, filter, sortBy, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfTransactionTemplateSpecification>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfTransactionTemplateSpecification> listTransactionTemplateSpecificationsWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listTransactionTemplateSpecificationsValidateBeforeCall(asAt, page, limit, filter, sortBy, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfTransactionTemplateSpecification>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listTransactionTemplateSpecificationsAsync(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfTransactionTemplateSpecification> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listTransactionTemplateSpecificationsValidateBeforeCall(asAt, page, limit, filter, sortBy, _callback);
+        okhttp3.Call localVarCall = listTransactionTemplateSpecificationsValidateBeforeCall(asAt, page, limit, filter, sortBy, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfTransactionTemplateSpecification>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listTransactionTemplateSpecificationsAsync(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfTransactionTemplateSpecification> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listTransactionTemplateSpecificationsValidateBeforeCall(asAt, page, limit, filter, sortBy, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfTransactionTemplateSpecification>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -995,6 +1286,23 @@ public class InstrumentEventTypesApi {
         }
 
         /**
+         * Execute listTransactionTemplateSpecifications request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfTransactionTemplateSpecification
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Transaction Template Specifications. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfTransactionTemplateSpecification execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfTransactionTemplateSpecification> localVarResp = listTransactionTemplateSpecificationsWithHttpInfo(asAt, page, limit, filter, sortBy, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listTransactionTemplateSpecifications request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfTransactionTemplateSpecification&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1008,6 +1316,22 @@ public class InstrumentEventTypesApi {
          */
         public ApiResponse<PagedResourceListOfTransactionTemplateSpecification> executeWithHttpInfo() throws ApiException {
             return listTransactionTemplateSpecificationsWithHttpInfo(asAt, page, limit, filter, sortBy);
+        }
+
+        /**
+         * Execute listTransactionTemplateSpecifications request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfTransactionTemplateSpecification&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Transaction Template Specifications. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfTransactionTemplateSpecification> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listTransactionTemplateSpecificationsWithHttpInfo(asAt, page, limit, filter, sortBy, opts);
         }
 
         /**
@@ -1025,6 +1349,23 @@ public class InstrumentEventTypesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfTransactionTemplateSpecification> _callback) throws ApiException {
             return listTransactionTemplateSpecificationsAsync(asAt, page, limit, filter, sortBy, _callback);
+        }
+
+        /**
+         * Execute listTransactionTemplateSpecifications request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Transaction Template Specifications. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfTransactionTemplateSpecification> _callback, ConfigurationOptions opts) throws ApiException {
+            return listTransactionTemplateSpecificationsAsync(asAt, page, limit, filter, sortBy, _callback, opts);
         }
     }
 
@@ -1044,6 +1385,10 @@ public class InstrumentEventTypesApi {
         return new APIlistTransactionTemplateSpecificationsRequest();
     }
     private okhttp3.Call listTransactionTemplatesCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
+        return listTransactionTemplatesCall(asAt, page, limit, filter, sortBy,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listTransactionTemplatesCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1106,25 +1451,39 @@ public class InstrumentEventTypesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listTransactionTemplatesValidateBeforeCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
-        return listTransactionTemplatesCall(asAt, page, limit, filter, sortBy, _callback);
+    private okhttp3.Call listTransactionTemplatesValidateBeforeCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listTransactionTemplatesCall(asAt, page, limit, filter, sortBy, _callback, opts);
 
     }
 
 
     private ApiResponse<PagedResourceListOfTransactionTemplate> listTransactionTemplatesWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy) throws ApiException {
-        okhttp3.Call localVarCall = listTransactionTemplatesValidateBeforeCall(asAt, page, limit, filter, sortBy, null);
+        okhttp3.Call localVarCall = listTransactionTemplatesValidateBeforeCall(asAt, page, limit, filter, sortBy, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfTransactionTemplate>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfTransactionTemplate> listTransactionTemplatesWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listTransactionTemplatesValidateBeforeCall(asAt, page, limit, filter, sortBy, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfTransactionTemplate>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listTransactionTemplatesAsync(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfTransactionTemplate> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listTransactionTemplatesValidateBeforeCall(asAt, page, limit, filter, sortBy, _callback);
+        okhttp3.Call localVarCall = listTransactionTemplatesValidateBeforeCall(asAt, page, limit, filter, sortBy, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfTransactionTemplate>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listTransactionTemplatesAsync(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfTransactionTemplate> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listTransactionTemplatesValidateBeforeCall(asAt, page, limit, filter, sortBy, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfTransactionTemplate>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1225,6 +1584,23 @@ public class InstrumentEventTypesApi {
         }
 
         /**
+         * Execute listTransactionTemplates request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfTransactionTemplate
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The transaction templates. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfTransactionTemplate execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfTransactionTemplate> localVarResp = listTransactionTemplatesWithHttpInfo(asAt, page, limit, filter, sortBy, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute listTransactionTemplates request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfTransactionTemplate&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1238,6 +1614,22 @@ public class InstrumentEventTypesApi {
          */
         public ApiResponse<PagedResourceListOfTransactionTemplate> executeWithHttpInfo() throws ApiException {
             return listTransactionTemplatesWithHttpInfo(asAt, page, limit, filter, sortBy);
+        }
+
+        /**
+         * Execute listTransactionTemplates request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfTransactionTemplate&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The transaction templates. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfTransactionTemplate> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listTransactionTemplatesWithHttpInfo(asAt, page, limit, filter, sortBy, opts);
         }
 
         /**
@@ -1255,6 +1647,23 @@ public class InstrumentEventTypesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfTransactionTemplate> _callback) throws ApiException {
             return listTransactionTemplatesAsync(asAt, page, limit, filter, sortBy, _callback);
+        }
+
+        /**
+         * Execute listTransactionTemplates request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The transaction templates. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfTransactionTemplate> _callback, ConfigurationOptions opts) throws ApiException {
+            return listTransactionTemplatesAsync(asAt, page, limit, filter, sortBy, _callback, opts);
         }
     }
 
@@ -1274,6 +1683,10 @@ public class InstrumentEventTypesApi {
         return new APIlistTransactionTemplatesRequest();
     }
     private okhttp3.Call updateTransactionTemplateCall(String instrumentEventType, String instrumentType, String scope, TransactionTemplateRequest transactionTemplateRequest, final ApiCallback _callback) throws ApiException {
+        return updateTransactionTemplateCall(instrumentEventType, instrumentType, scope, transactionTemplateRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call updateTransactionTemplateCall(String instrumentEventType, String instrumentType, String scope, TransactionTemplateRequest transactionTemplateRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1323,11 +1736,11 @@ public class InstrumentEventTypesApi {
         }
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateTransactionTemplateValidateBeforeCall(String instrumentEventType, String instrumentType, String scope, TransactionTemplateRequest transactionTemplateRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateTransactionTemplateValidateBeforeCall(String instrumentEventType, String instrumentType, String scope, TransactionTemplateRequest transactionTemplateRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'instrumentEventType' is set
         if (instrumentEventType == null) {
             throw new ApiException("Missing the required parameter 'instrumentEventType' when calling updateTransactionTemplate(Async)");
@@ -1348,20 +1761,34 @@ public class InstrumentEventTypesApi {
             throw new ApiException("Missing the required parameter 'transactionTemplateRequest' when calling updateTransactionTemplate(Async)");
         }
 
-        return updateTransactionTemplateCall(instrumentEventType, instrumentType, scope, transactionTemplateRequest, _callback);
+        return updateTransactionTemplateCall(instrumentEventType, instrumentType, scope, transactionTemplateRequest, _callback, opts);
 
     }
 
 
     private ApiResponse<TransactionTemplate> updateTransactionTemplateWithHttpInfo(String instrumentEventType, String instrumentType, String scope, TransactionTemplateRequest transactionTemplateRequest) throws ApiException {
-        okhttp3.Call localVarCall = updateTransactionTemplateValidateBeforeCall(instrumentEventType, instrumentType, scope, transactionTemplateRequest, null);
+        okhttp3.Call localVarCall = updateTransactionTemplateValidateBeforeCall(instrumentEventType, instrumentType, scope, transactionTemplateRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TransactionTemplate>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<TransactionTemplate> updateTransactionTemplateWithHttpInfo(String instrumentEventType, String instrumentType, String scope, TransactionTemplateRequest transactionTemplateRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = updateTransactionTemplateValidateBeforeCall(instrumentEventType, instrumentType, scope, transactionTemplateRequest, null, opts);
         Type localVarReturnType = new TypeToken<TransactionTemplate>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call updateTransactionTemplateAsync(String instrumentEventType, String instrumentType, String scope, TransactionTemplateRequest transactionTemplateRequest, final ApiCallback<TransactionTemplate> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateTransactionTemplateValidateBeforeCall(instrumentEventType, instrumentType, scope, transactionTemplateRequest, _callback);
+        okhttp3.Call localVarCall = updateTransactionTemplateValidateBeforeCall(instrumentEventType, instrumentType, scope, transactionTemplateRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TransactionTemplate>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call updateTransactionTemplateAsync(String instrumentEventType, String instrumentType, String scope, TransactionTemplateRequest transactionTemplateRequest, final ApiCallback<TransactionTemplate> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = updateTransactionTemplateValidateBeforeCall(instrumentEventType, instrumentType, scope, transactionTemplateRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<TransactionTemplate>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1415,6 +1842,23 @@ public class InstrumentEventTypesApi {
         }
 
         /**
+         * Execute updateTransactionTemplate request. Use any specified configuration options to override any other configuration for this request only.
+         * @return TransactionTemplate
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response of the transaction template that was updated. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TransactionTemplate execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<TransactionTemplate> localVarResp = updateTransactionTemplateWithHttpInfo(instrumentEventType, instrumentType, scope, transactionTemplateRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
          * Execute updateTransactionTemplate request with HTTP info returned
          * @return ApiResponse&lt;TransactionTemplate&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1428,6 +1872,22 @@ public class InstrumentEventTypesApi {
          */
         public ApiResponse<TransactionTemplate> executeWithHttpInfo() throws ApiException {
             return updateTransactionTemplateWithHttpInfo(instrumentEventType, instrumentType, scope, transactionTemplateRequest);
+        }
+
+        /**
+         * Execute updateTransactionTemplate request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;TransactionTemplate&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response of the transaction template that was updated. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TransactionTemplate> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return updateTransactionTemplateWithHttpInfo(instrumentEventType, instrumentType, scope, transactionTemplateRequest, opts);
         }
 
         /**
@@ -1445,6 +1905,23 @@ public class InstrumentEventTypesApi {
          */
         public okhttp3.Call executeAsync(final ApiCallback<TransactionTemplate> _callback) throws ApiException {
             return updateTransactionTemplateAsync(instrumentEventType, instrumentType, scope, transactionTemplateRequest, _callback);
+        }
+
+        /**
+         * Execute updateTransactionTemplate request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response of the transaction template that was updated. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TransactionTemplate> _callback, ConfigurationOptions opts) throws ApiException {
+            return updateTransactionTemplateAsync(instrumentEventType, instrumentType, scope, transactionTemplateRequest, _callback, opts);
         }
     }
 

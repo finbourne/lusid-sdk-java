@@ -57,10 +57,21 @@ public class ConventionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ConventionsApi apiInstance = apiFactory.build(ConventionsApi.class);
+
         ConventionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ConventionsApi.class);
         String scope = "scope_example"; // String | The scope of the CDS Flow Conventions to delete.
         String code = "code_example"; // String | The CDS Flow Conventions to delete.
         try {
+            // uncomment the below to set overrides at the request level
+            // AnnulSingleStructuredDataResponse result = apiInstance.deleteCdsFlowConventions(scope, code).execute(opts);
+
             AnnulSingleStructuredDataResponse result = apiInstance.deleteCdsFlowConventions(scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -139,10 +150,21 @@ public class ConventionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ConventionsApi apiInstance = apiFactory.build(ConventionsApi.class);
+
         ConventionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ConventionsApi.class);
         String scope = "scope_example"; // String | The scope of the Flow Conventions to delete.
         String code = "code_example"; // String | The Flow Conventions to delete.
         try {
+            // uncomment the below to set overrides at the request level
+            // AnnulSingleStructuredDataResponse result = apiInstance.deleteFlowConventions(scope, code).execute(opts);
+
             AnnulSingleStructuredDataResponse result = apiInstance.deleteFlowConventions(scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -221,10 +243,21 @@ public class ConventionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ConventionsApi apiInstance = apiFactory.build(ConventionsApi.class);
+
         ConventionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ConventionsApi.class);
         String scope = "scope_example"; // String | The scope of the Index Convention to delete.
         String code = "code_example"; // String | The Index Convention to delete.
         try {
+            // uncomment the below to set overrides at the request level
+            // AnnulSingleStructuredDataResponse result = apiInstance.deleteIndexConvention(scope, code).execute(opts);
+
             AnnulSingleStructuredDataResponse result = apiInstance.deleteIndexConvention(scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -303,11 +336,22 @@ public class ConventionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ConventionsApi apiInstance = apiFactory.build(ConventionsApi.class);
+
         ConventionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ConventionsApi.class);
         String scope = "scope_example"; // String | The scope of the CDS Flow Conventions to retrieve.
         String code = "code_example"; // String | The name of the CDS Flow Conventions to retrieve the data for.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the CDS Flow Conventions. Defaults to return the latest version if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // GetCdsFlowConventionsResponse result = apiInstance.getCdsFlowConventions(scope, code, asAt).execute(opts);
+
             GetCdsFlowConventionsResponse result = apiInstance.getCdsFlowConventions(scope, code, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -387,11 +431,22 @@ public class ConventionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ConventionsApi apiInstance = apiFactory.build(ConventionsApi.class);
+
         ConventionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ConventionsApi.class);
         String scope = "scope_example"; // String | The scope of the Flow Conventions to retrieve.
         String code = "code_example"; // String | The name of the Flow Conventions to retrieve the data for.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Flow Conventions. Defaults to return the latest version if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // GetFlowConventionsResponse result = apiInstance.getFlowConventions(scope, code, asAt).execute(opts);
+
             GetFlowConventionsResponse result = apiInstance.getFlowConventions(scope, code, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -471,11 +526,22 @@ public class ConventionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ConventionsApi apiInstance = apiFactory.build(ConventionsApi.class);
+
         ConventionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ConventionsApi.class);
         String scope = "scope_example"; // String | The scope of the Index Convention to retrieve.
         String code = "code_example"; // String | The name of the Index Convention to retrieve the data for.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Index Convention. Defaults to return the latest version if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // GetIndexConventionResponse result = apiInstance.getIndexConvention(scope, code, asAt).execute(opts);
+
             GetIndexConventionResponse result = apiInstance.getIndexConvention(scope, code, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -555,9 +621,20 @@ public class ConventionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ConventionsApi apiInstance = apiFactory.build(ConventionsApi.class);
+
         ConventionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ConventionsApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the conventions. Defaults to latest if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfGetCdsFlowConventionsResponse result = apiInstance.listCdsFlowConventions(asAt).execute(opts);
+
             ResourceListOfGetCdsFlowConventionsResponse result = apiInstance.listCdsFlowConventions(asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -635,9 +712,20 @@ public class ConventionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ConventionsApi apiInstance = apiFactory.build(ConventionsApi.class);
+
         ConventionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ConventionsApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the conventions. Defaults to latest if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfGetFlowConventionsResponse result = apiInstance.listFlowConventions(asAt).execute(opts);
+
             ResourceListOfGetFlowConventionsResponse result = apiInstance.listFlowConventions(asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -715,9 +803,20 @@ public class ConventionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ConventionsApi apiInstance = apiFactory.build(ConventionsApi.class);
+
         ConventionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ConventionsApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the conventions. Defaults to latest if not specified.
         try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfGetIndexConventionResponse result = apiInstance.listIndexConvention(asAt).execute(opts);
+
             ResourceListOfGetIndexConventionResponse result = apiInstance.listIndexConvention(asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -795,9 +894,20 @@ public class ConventionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ConventionsApi apiInstance = apiFactory.build(ConventionsApi.class);
+
         ConventionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ConventionsApi.class);
         UpsertCdsFlowConventionsRequest upsertCdsFlowConventionsRequest = new UpsertCdsFlowConventionsRequest(); // UpsertCdsFlowConventionsRequest | The CDS Flow Conventions to update or insert
         try {
+            // uncomment the below to set overrides at the request level
+            // UpsertSingleStructuredDataResponse result = apiInstance.upsertCdsFlowConventions(upsertCdsFlowConventionsRequest).execute(opts);
+
             UpsertSingleStructuredDataResponse result = apiInstance.upsertCdsFlowConventions(upsertCdsFlowConventionsRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -875,9 +985,20 @@ public class ConventionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ConventionsApi apiInstance = apiFactory.build(ConventionsApi.class);
+
         ConventionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ConventionsApi.class);
         UpsertFlowConventionsRequest upsertFlowConventionsRequest = new UpsertFlowConventionsRequest(); // UpsertFlowConventionsRequest | The Flow Conventions to update or insert
         try {
+            // uncomment the below to set overrides at the request level
+            // UpsertSingleStructuredDataResponse result = apiInstance.upsertFlowConventions(upsertFlowConventionsRequest).execute(opts);
+
             UpsertSingleStructuredDataResponse result = apiInstance.upsertFlowConventions(upsertFlowConventionsRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
@@ -955,9 +1076,20 @@ public class ConventionsApiExample {
             "}");
         }
 
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ConventionsApi apiInstance = apiFactory.build(ConventionsApi.class);
+
         ConventionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ConventionsApi.class);
         UpsertIndexConventionRequest upsertIndexConventionRequest = new UpsertIndexConventionRequest(); // UpsertIndexConventionRequest | The Index Conventions to update or insert
         try {
+            // uncomment the below to set overrides at the request level
+            // UpsertSingleStructuredDataResponse result = apiInstance.upsertIndexConvention(upsertIndexConventionRequest).execute(opts);
+
             UpsertSingleStructuredDataResponse result = apiInstance.upsertIndexConvention(upsertIndexConventionRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
