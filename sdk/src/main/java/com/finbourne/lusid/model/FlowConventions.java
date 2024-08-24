@@ -323,7 +323,7 @@ public class FlowConventions {
   }
 
    /**
-   * Indicates if the accrual dates are adjusted to the payment dates. The default value is &#39;Adjusted&#39;.    Supported string (enumeration) values are: [Adjusted, Unadjusted].
+   * Indicates if the accrual dates are adjusted using the business day convention. The default value is &#39;Adjusted&#39;.    Supported string (enumeration) values are: [Adjusted, Unadjusted].
    * @return accrualDateAdjustment
   **/
   @jakarta.annotation.Nullable
