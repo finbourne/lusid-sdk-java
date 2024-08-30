@@ -112,7 +112,7 @@ public class PlacementUpdateRequest {
    * The quantity of given instrument ordered.
    * @return quantity
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public java.math.BigDecimal getQuantity() {
     return quantity;
   }
@@ -291,7 +291,6 @@ public class PlacementUpdateRequest {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("id");
-    openapiRequiredFields.add("quantity");
   }
 
  /**

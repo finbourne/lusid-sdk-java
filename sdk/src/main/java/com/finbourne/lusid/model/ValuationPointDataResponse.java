@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.FeeAccrual;
+import com.finbourne.lusid.model.FundDetails;
 import com.finbourne.lusid.model.FundValuationPointData;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.ShareClassData;
@@ -98,6 +99,10 @@ public class ValuationPointDataResponse {
   public static final String SERIALIZED_NAME_PREVIOUS_NAV = "previousNav";
   @SerializedName(SERIALIZED_NAME_PREVIOUS_NAV)
   private java.math.BigDecimal previousNav;
+
+  public static final String SERIALIZED_NAME_FUND_DETAILS = "fundDetails";
+  @SerializedName(SERIALIZED_NAME_FUND_DETAILS)
+  private FundDetails fundDetails;
 
   public static final String SERIALIZED_NAME_FUND_VALUATION_POINT_DATA = "fundValuationPointData";
   @SerializedName(SERIALIZED_NAME_FUND_VALUATION_POINT_DATA)
@@ -364,6 +369,27 @@ public class ValuationPointDataResponse {
   }
 
 
+  public ValuationPointDataResponse fundDetails(FundDetails fundDetails) {
+    
+    this.fundDetails = fundDetails;
+    return this;
+  }
+
+   /**
+   * Get fundDetails
+   * @return fundDetails
+  **/
+  @jakarta.annotation.Nonnull
+  public FundDetails getFundDetails() {
+    return fundDetails;
+  }
+
+
+  public void setFundDetails(FundDetails fundDetails) {
+    this.fundDetails = fundDetails;
+  }
+
+
   public ValuationPointDataResponse fundValuationPointData(FundValuationPointData fundValuationPointData) {
     
     this.fundValuationPointData = fundValuationPointData;
@@ -505,6 +531,7 @@ public class ValuationPointDataResponse {
         Objects.equals(this.fees, valuationPointDataResponse.fees) &&
         (this.nav.compareTo(valuationPointDataResponse.getNav()) == 0) &&
         (this.previousNav.compareTo(valuationPointDataResponse.getPreviousNav()) == 0) &&
+        Objects.equals(this.fundDetails, valuationPointDataResponse.fundDetails) &&
         Objects.equals(this.fundValuationPointData, valuationPointDataResponse.fundValuationPointData) &&
         Objects.equals(this.shareClassData, valuationPointDataResponse.shareClassData) &&
         Objects.equals(this.valuationPointCode, valuationPointDataResponse.valuationPointCode) &&
@@ -518,7 +545,7 @@ public class ValuationPointDataResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, type, status, backout, dealing, pnL, gav, fees, nav, previousNav, fundValuationPointData, shareClassData, valuationPointCode, previousValuationPointCode, links);
+    return Objects.hash(href, type, status, backout, dealing, pnL, gav, fees, nav, previousNav, fundDetails, fundValuationPointData, shareClassData, valuationPointCode, previousValuationPointCode, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -542,6 +569,7 @@ public class ValuationPointDataResponse {
     sb.append("    fees: ").append(toIndentedString(fees)).append("\n");
     sb.append("    nav: ").append(toIndentedString(nav)).append("\n");
     sb.append("    previousNav: ").append(toIndentedString(previousNav)).append("\n");
+    sb.append("    fundDetails: ").append(toIndentedString(fundDetails)).append("\n");
     sb.append("    fundValuationPointData: ").append(toIndentedString(fundValuationPointData)).append("\n");
     sb.append("    shareClassData: ").append(toIndentedString(shareClassData)).append("\n");
     sb.append("    valuationPointCode: ").append(toIndentedString(valuationPointCode)).append("\n");
@@ -579,6 +607,7 @@ public class ValuationPointDataResponse {
     openapiFields.add("fees");
     openapiFields.add("nav");
     openapiFields.add("previousNav");
+    openapiFields.add("fundDetails");
     openapiFields.add("fundValuationPointData");
     openapiFields.add("shareClassData");
     openapiFields.add("valuationPointCode");
@@ -596,6 +625,7 @@ public class ValuationPointDataResponse {
     openapiRequiredFields.add("fees");
     openapiRequiredFields.add("nav");
     openapiRequiredFields.add("previousNav");
+    openapiRequiredFields.add("fundDetails");
     openapiRequiredFields.add("fundValuationPointData");
     openapiRequiredFields.add("shareClassData");
   }
@@ -629,6 +659,8 @@ public class ValuationPointDataResponse {
       if (!jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
+      // validate the required field `fundDetails`
+      FundDetails.validateJsonElement(jsonObj.get("fundDetails"));
       // validate the required field `fundValuationPointData`
       FundValuationPointData.validateJsonElement(jsonObj.get("fundValuationPointData"));
       if ((jsonObj.get("valuationPointCode") != null && !jsonObj.get("valuationPointCode").isJsonNull()) && !jsonObj.get("valuationPointCode").isJsonPrimitive()) {

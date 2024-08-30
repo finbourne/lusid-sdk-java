@@ -9,7 +9,7 @@ A request to create or update a Placement.
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**id** | [**ResourceId**](ResourceId.md) |  |  |
-|**quantity** | **java.math.BigDecimal** | The quantity of given instrument ordered. |  |
+|**quantity** | **java.math.BigDecimal** | The quantity of given instrument ordered. |  [optional] |
 |**properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Client-defined properties associated with this placement. |  [optional] |
 |**counterparty** | **String** | Optionally specifies the market entity this placement is placed with. |  [optional] |
 |**executionSystem** | **String** | Optionally specifies the execution system in use. |  [optional] |

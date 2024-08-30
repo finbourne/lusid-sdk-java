@@ -18,6 +18,7 @@ The Valuation Point Data Response for the Fund and specified date.
 |**fees** | [**Map&lt;String, FeeAccrual&gt;**](FeeAccrual.md) | DEPRECATED. Bucket of detail for any &#39;Fees&#39; that have been charged in the selected period. |  |
 |**nav** | **java.math.BigDecimal** | DEPRECATED. The Net Asset Value of the Fund at the Period end. This represents the GAV with any fees applied in the period. |  |
 |**previousNav** | **java.math.BigDecimal** | DEPRECATED. The Net Asset Value of the Fund at the End of the last Period. |  |
+|**fundDetails** | [**FundDetails**](FundDetails.md) |  |  |
 |**fundValuationPointData** | [**FundValuationPointData**](FundValuationPointData.md) |  |  |
 |**shareClassData** | [**Map&lt;String, ShareClassData&gt;**](ShareClassData.md) | The data for all share classes in fund. Share classes are identified by their short codes. |  |
 |**valuationPointCode** | **String** | The code of the valuation point. |  [optional] |

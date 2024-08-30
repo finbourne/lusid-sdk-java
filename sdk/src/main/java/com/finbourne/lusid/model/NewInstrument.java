@@ -64,17 +64,23 @@ public class NewInstrument {
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_SCOPE)
   private String instrumentScope;
 
+  public static final String SERIALIZED_NAME_DOM_CCY = "domCcy";
+  @SerializedName(SERIALIZED_NAME_DOM_CCY)
+  private String domCcy;
+
   public NewInstrument() {
   }
 
   
   public NewInstrument(
      String lusidInstrumentId, 
-     String instrumentScope
+     String instrumentScope, 
+     String domCcy
   ) {
     this();
     this.lusidInstrumentId = lusidInstrumentId;
     this.instrumentScope = instrumentScope;
+    this.domCcy = domCcy;
   }
 
   public NewInstrument instrumentIdentifiers(Map<String, String> instrumentIdentifiers) {
@@ -130,6 +136,18 @@ public class NewInstrument {
 
 
 
+   /**
+   * The domestic currency of the instrument, resolved from the instrument identifiers.
+   * @return domCcy
+  **/
+  @jakarta.annotation.Nullable
+  public String getDomCcy() {
+    return domCcy;
+  }
+
+
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -142,7 +160,8 @@ public class NewInstrument {
     NewInstrument newInstrument = (NewInstrument) o;
     return Objects.equals(this.instrumentIdentifiers, newInstrument.instrumentIdentifiers) &&
         Objects.equals(this.lusidInstrumentId, newInstrument.lusidInstrumentId) &&
-        Objects.equals(this.instrumentScope, newInstrument.instrumentScope);
+        Objects.equals(this.instrumentScope, newInstrument.instrumentScope) &&
+        Objects.equals(this.domCcy, newInstrument.domCcy);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -151,7 +170,7 @@ public class NewInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentIdentifiers, lusidInstrumentId, instrumentScope);
+    return Objects.hash(instrumentIdentifiers, lusidInstrumentId, instrumentScope, domCcy);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -168,6 +187,7 @@ public class NewInstrument {
     sb.append("    instrumentIdentifiers: ").append(toIndentedString(instrumentIdentifiers)).append("\n");
     sb.append("    lusidInstrumentId: ").append(toIndentedString(lusidInstrumentId)).append("\n");
     sb.append("    instrumentScope: ").append(toIndentedString(instrumentScope)).append("\n");
+    sb.append("    domCcy: ").append(toIndentedString(domCcy)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -193,6 +213,7 @@ public class NewInstrument {
     openapiFields.add("instrumentIdentifiers");
     openapiFields.add("lusidInstrumentId");
     openapiFields.add("instrumentScope");
+    openapiFields.add("domCcy");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -224,6 +245,9 @@ public class NewInstrument {
       }
       if ((jsonObj.get("instrumentScope") != null && !jsonObj.get("instrumentScope").isJsonNull()) && !jsonObj.get("instrumentScope").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `instrumentScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instrumentScope").toString()));
+      }
+      if ((jsonObj.get("domCcy") != null && !jsonObj.get("domCcy").isJsonNull()) && !jsonObj.get("domCcy").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `domCcy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("domCcy").toString()));
       }
   }
 
