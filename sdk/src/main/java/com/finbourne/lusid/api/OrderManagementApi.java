@@ -39,6 +39,7 @@ import com.finbourne.lusid.model.PlaceBlocksRequest;
 import com.finbourne.lusid.model.PlacementUpdateRequest;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.ResourceListOfBlockAndOrders;
+import com.finbourne.lusid.model.ResourceListOfEntityChangeItem;
 import com.finbourne.lusid.model.ResourceListOfMovedOrderToDifferentBlockResponse;
 import com.finbourne.lusid.model.ResourceListOfPlacement;
 import com.finbourne.lusid.model.UpdateOrdersResponse;
@@ -1041,6 +1042,255 @@ public class OrderManagementApi {
      */
     public APIcreateOrdersRequest createOrders(BlockAndOrdersCreateRequest blockAndOrdersCreateRequest) {
         return new APIcreateOrdersRequest(blockAndOrdersCreateRequest);
+    }
+    private okhttp3.Call getOrderHistoryCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+        return getOrderHistoryCall(scope, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getOrderHistoryCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/ordermanagement/order/{scope}/{code}/$history"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getOrderHistoryValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getOrderHistory(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling getOrderHistory(Async)");
+        }
+
+        return getOrderHistoryCall(scope, code, _callback, opts);
+
+    }
+
+
+    private ApiResponse<ResourceListOfEntityChangeItem> getOrderHistoryWithHttpInfo(String scope, String code) throws ApiException {
+        okhttp3.Call localVarCall = getOrderHistoryValidateBeforeCall(scope, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfEntityChangeItem>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfEntityChangeItem> getOrderHistoryWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getOrderHistoryValidateBeforeCall(scope, code, null, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfEntityChangeItem>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getOrderHistoryAsync(String scope, String code, final ApiCallback<ResourceListOfEntityChangeItem> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getOrderHistoryValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfEntityChangeItem>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getOrderHistoryAsync(String scope, String code, final ApiCallback<ResourceListOfEntityChangeItem> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getOrderHistoryValidateBeforeCall(scope, code, _callback, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfEntityChangeItem>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetOrderHistoryRequest {
+        private final String scope;
+        private final String code;
+
+        private APIgetOrderHistoryRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Build call for getOrderHistory
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The history of the specified order and related entities (changes that have been made to it). </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> Order not found. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getOrderHistoryCall(scope, code, _callback);
+        }
+
+        /**
+         * Execute getOrderHistory request
+         * @return ResourceListOfEntityChangeItem
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The history of the specified order and related entities (changes that have been made to it). </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> Order not found. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfEntityChangeItem execute() throws ApiException {
+            ApiResponse<ResourceListOfEntityChangeItem> localVarResp = getOrderHistoryWithHttpInfo(scope, code);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getOrderHistory request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfEntityChangeItem
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The history of the specified order and related entities (changes that have been made to it). </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> Order not found. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfEntityChangeItem execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfEntityChangeItem> localVarResp = getOrderHistoryWithHttpInfo(scope, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getOrderHistory request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfEntityChangeItem&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The history of the specified order and related entities (changes that have been made to it). </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> Order not found. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfEntityChangeItem> executeWithHttpInfo() throws ApiException {
+            return getOrderHistoryWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute getOrderHistory request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfEntityChangeItem&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The history of the specified order and related entities (changes that have been made to it). </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> Order not found. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfEntityChangeItem> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getOrderHistoryWithHttpInfo(scope, code, opts);
+        }
+
+        /**
+         * Execute getOrderHistory request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The history of the specified order and related entities (changes that have been made to it). </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> Order not found. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfEntityChangeItem> _callback) throws ApiException {
+            return getOrderHistoryAsync(scope, code, _callback);
+        }
+
+        /**
+         * Execute getOrderHistory request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The history of the specified order and related entities (changes that have been made to it). </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td> Order not found. </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfEntityChangeItem> _callback, ConfigurationOptions opts) throws ApiException {
+            return getOrderHistoryAsync(scope, code, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] GetOrderHistory: Get the history of an order and related entity changes
+     * Get the changes that have happened to an order and related entities.
+     * @param scope The scope of the order. (required)
+     * @param code The code of the order. (required)
+     * @return APIgetOrderHistoryRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The history of the specified order and related entities (changes that have been made to it). </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Order not found. </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetOrderHistoryRequest getOrderHistory(String scope, String code) {
+        return new APIgetOrderHistoryRequest(scope, code);
     }
     private okhttp3.Call moveOrdersCall(MoveOrdersToDifferentBlocksRequest moveOrdersToDifferentBlocksRequest, final ApiCallback _callback) throws ApiException {
         return moveOrdersCall(moveOrdersToDifferentBlocksRequest,  _callback, new ConfigurationOptions());

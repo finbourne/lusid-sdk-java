@@ -63,7 +63,7 @@ public class FundAmount {
   }
 
    /**
-   * The value of the amount.
+   * The value of the amount in the fund currency.
    * @return value
   **/
   @jakarta.annotation.Nullable

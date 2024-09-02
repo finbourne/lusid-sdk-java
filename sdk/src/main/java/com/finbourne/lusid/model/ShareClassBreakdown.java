@@ -12,7 +12,6 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.FeeAccrual;
-import com.finbourne.lusid.model.MultiCurrencyAmounts;
 import com.finbourne.lusid.model.PreviousShareClassBreakdown;
 import com.finbourne.lusid.model.ShareClassAmount;
 import com.finbourne.lusid.model.ShareClassDealingBreakdown;
@@ -73,7 +72,7 @@ public class ShareClassBreakdown {
 
   public static final String SERIALIZED_NAME_GAV = "gav";
   @SerializedName(SERIALIZED_NAME_GAV)
-  private MultiCurrencyAmounts gav;
+  private ShareClassAmount gav;
 
   public static final String SERIALIZED_NAME_FEES = "fees";
   @SerializedName(SERIALIZED_NAME_FEES)
@@ -81,7 +80,7 @@ public class ShareClassBreakdown {
 
   public static final String SERIALIZED_NAME_NAV = "nav";
   @SerializedName(SERIALIZED_NAME_NAV)
-  private MultiCurrencyAmounts nav;
+  private ShareClassAmount nav;
 
   public static final String SERIALIZED_NAME_UNITISATION = "unitisation";
   @SerializedName(SERIALIZED_NAME_UNITISATION)
@@ -177,7 +176,7 @@ public class ShareClassBreakdown {
   }
 
 
-  public ShareClassBreakdown gav(MultiCurrencyAmounts gav) {
+  public ShareClassBreakdown gav(ShareClassAmount gav) {
     
     this.gav = gav;
     return this;
@@ -188,12 +187,12 @@ public class ShareClassBreakdown {
    * @return gav
   **/
   @jakarta.annotation.Nonnull
-  public MultiCurrencyAmounts getGav() {
+  public ShareClassAmount getGav() {
     return gav;
   }
 
 
-  public void setGav(MultiCurrencyAmounts gav) {
+  public void setGav(ShareClassAmount gav) {
     this.gav = gav;
   }
 
@@ -227,7 +226,7 @@ public class ShareClassBreakdown {
   }
 
 
-  public ShareClassBreakdown nav(MultiCurrencyAmounts nav) {
+  public ShareClassBreakdown nav(ShareClassAmount nav) {
     
     this.nav = nav;
     return this;
@@ -238,12 +237,12 @@ public class ShareClassBreakdown {
    * @return nav
   **/
   @jakarta.annotation.Nonnull
-  public MultiCurrencyAmounts getNav() {
+  public ShareClassAmount getNav() {
     return nav;
   }
 
 
-  public void setNav(MultiCurrencyAmounts nav) {
+  public void setNav(ShareClassAmount nav) {
     this.nav = nav;
   }
 
@@ -487,9 +486,9 @@ public class ShareClassBreakdown {
       // validate the required field `pnL`
       ShareClassPnlBreakdown.validateJsonElement(jsonObj.get("pnL"));
       // validate the required field `gav`
-      MultiCurrencyAmounts.validateJsonElement(jsonObj.get("gav"));
+      ShareClassAmount.validateJsonElement(jsonObj.get("gav"));
       // validate the required field `nav`
-      MultiCurrencyAmounts.validateJsonElement(jsonObj.get("nav"));
+      ShareClassAmount.validateJsonElement(jsonObj.get("nav"));
       // validate the optional field `unitisation`
       if (jsonObj.get("unitisation") != null && !jsonObj.get("unitisation").isJsonNull()) {
         UnitisationData.validateJsonElement(jsonObj.get("unitisation"));

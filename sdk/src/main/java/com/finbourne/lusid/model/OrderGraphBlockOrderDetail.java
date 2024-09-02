@@ -110,7 +110,7 @@ public class OrderGraphBlockOrderDetail {
   }
 
    /**
-   * The compliance state of this order. Possible values are &#39;Pending&#39;, &#39;Failed&#39;, &#39;Manually approved&#39; and &#39;Passed&#39;.
+   * The compliance state of this order. Possible values are &#39;Pending&#39;, &#39;Failed&#39;, &#39;Manually approved&#39;, &#39;Passed&#39; and &#39;Warning&#39;.
    * @return complianceState
   **/
   @jakarta.annotation.Nonnull

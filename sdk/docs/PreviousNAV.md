@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**amount** | [**MultiCurrencyAmounts**](MultiCurrencyAmounts.md) |  |  [optional] |
+|**amount** | [**ShareClassAmount**](ShareClassAmount.md) |  |  [optional] |
 
 
 

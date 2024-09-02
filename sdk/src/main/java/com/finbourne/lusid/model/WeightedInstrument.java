@@ -68,6 +68,10 @@ public class WeightedInstrument {
   @SerializedName(SERIALIZED_NAME_IN_LINE_LOOKUP_IDENTIFIERS)
   private WeightedInstrumentInLineLookupIdentifiers inLineLookupIdentifiers;
 
+  public static final String SERIALIZED_NAME_INSTRUMENT_SCOPE = "instrumentScope";
+  @SerializedName(SERIALIZED_NAME_INSTRUMENT_SCOPE)
+  private String instrumentScope;
+
   public WeightedInstrument() {
   }
 
@@ -155,6 +159,27 @@ public class WeightedInstrument {
   }
 
 
+  public WeightedInstrument instrumentScope(String instrumentScope) {
+    
+    this.instrumentScope = instrumentScope;
+    return this;
+  }
+
+   /**
+   * The scope in which to resolve the instrument, if no inlined definition is provided.  If left empty, the default scope will be used.
+   * @return instrumentScope
+  **/
+  @jakarta.annotation.Nullable
+  public String getInstrumentScope() {
+    return instrumentScope;
+  }
+
+
+  public void setInstrumentScope(String instrumentScope) {
+    this.instrumentScope = instrumentScope;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -168,7 +193,8 @@ public class WeightedInstrument {
     return (this.quantity.compareTo(weightedInstrument.getQuantity()) == 0) &&
         Objects.equals(this.holdingIdentifier, weightedInstrument.holdingIdentifier) &&
         Objects.equals(this.instrument, weightedInstrument.instrument) &&
-        Objects.equals(this.inLineLookupIdentifiers, weightedInstrument.inLineLookupIdentifiers);
+        Objects.equals(this.inLineLookupIdentifiers, weightedInstrument.inLineLookupIdentifiers) &&
+        Objects.equals(this.instrumentScope, weightedInstrument.instrumentScope);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -177,7 +203,7 @@ public class WeightedInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(quantity, holdingIdentifier, instrument, inLineLookupIdentifiers);
+    return Objects.hash(quantity, holdingIdentifier, instrument, inLineLookupIdentifiers, instrumentScope);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -195,6 +221,7 @@ public class WeightedInstrument {
     sb.append("    holdingIdentifier: ").append(toIndentedString(holdingIdentifier)).append("\n");
     sb.append("    instrument: ").append(toIndentedString(instrument)).append("\n");
     sb.append("    inLineLookupIdentifiers: ").append(toIndentedString(inLineLookupIdentifiers)).append("\n");
+    sb.append("    instrumentScope: ").append(toIndentedString(instrumentScope)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -221,6 +248,7 @@ public class WeightedInstrument {
     openapiFields.add("holdingIdentifier");
     openapiFields.add("instrument");
     openapiFields.add("inLineLookupIdentifiers");
+    openapiFields.add("instrumentScope");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -249,6 +277,9 @@ public class WeightedInstrument {
       // validate the optional field `inLineLookupIdentifiers`
       if (jsonObj.get("inLineLookupIdentifiers") != null && !jsonObj.get("inLineLookupIdentifiers").isJsonNull()) {
         WeightedInstrumentInLineLookupIdentifiers.validateJsonElement(jsonObj.get("inLineLookupIdentifiers"));
+      }
+      if ((jsonObj.get("instrumentScope") != null && !jsonObj.get("instrumentScope").isJsonNull()) && !jsonObj.get("instrumentScope").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `instrumentScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instrumentScope").toString()));
       }
   }
 

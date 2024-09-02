@@ -11,7 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.MultiCurrencyAmounts;
+import com.finbourne.lusid.model.ShareClassAmount;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -52,12 +52,12 @@ import com.finbourne.lusid.JSON;
 public class PreviousNAV {
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
-  private MultiCurrencyAmounts amount;
+  private ShareClassAmount amount;
 
   public PreviousNAV() {
   }
 
-  public PreviousNAV amount(MultiCurrencyAmounts amount) {
+  public PreviousNAV amount(ShareClassAmount amount) {
     
     this.amount = amount;
     return this;
@@ -68,12 +68,12 @@ public class PreviousNAV {
    * @return amount
   **/
   @jakarta.annotation.Nullable
-  public MultiCurrencyAmounts getAmount() {
+  public ShareClassAmount getAmount() {
     return amount;
   }
 
 
-  public void setAmount(MultiCurrencyAmounts amount) {
+  public void setAmount(ShareClassAmount amount) {
     this.amount = amount;
   }
 
@@ -144,7 +144,7 @@ public class PreviousNAV {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `amount`
       if (jsonObj.get("amount") != null && !jsonObj.get("amount").isJsonNull()) {
-        MultiCurrencyAmounts.validateJsonElement(jsonObj.get("amount"));
+        ShareClassAmount.validateJsonElement(jsonObj.get("amount"));
       }
   }
 

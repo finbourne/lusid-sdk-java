@@ -11,7 +11,6 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.MultiCurrencyAmounts;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -50,31 +49,56 @@ import com.finbourne.lusid.JSON;
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ShareClassAmount {
-  public static final String SERIALIZED_NAME_VALUE = "value";
-  @SerializedName(SERIALIZED_NAME_VALUE)
-  private MultiCurrencyAmounts value;
+  public static final String SERIALIZED_NAME_FUND_CURRENCY_AMOUNT = "fundCurrencyAmount";
+  @SerializedName(SERIALIZED_NAME_FUND_CURRENCY_AMOUNT)
+  private java.math.BigDecimal fundCurrencyAmount;
+
+  public static final String SERIALIZED_NAME_SHARE_CLASS_CURRENCY_AMOUNT = "shareClassCurrencyAmount";
+  @SerializedName(SERIALIZED_NAME_SHARE_CLASS_CURRENCY_AMOUNT)
+  private java.math.BigDecimal shareClassCurrencyAmount;
 
   public ShareClassAmount() {
   }
 
-  public ShareClassAmount value(MultiCurrencyAmounts value) {
+  public ShareClassAmount fundCurrencyAmount(java.math.BigDecimal fundCurrencyAmount) {
     
-    this.value = value;
+    this.fundCurrencyAmount = fundCurrencyAmount;
     return this;
   }
 
    /**
-   * Get value
-   * @return value
+   * The value of the amount in the fund currency.
+   * @return fundCurrencyAmount
   **/
   @jakarta.annotation.Nullable
-  public MultiCurrencyAmounts getValue() {
-    return value;
+  public java.math.BigDecimal getFundCurrencyAmount() {
+    return fundCurrencyAmount;
   }
 
 
-  public void setValue(MultiCurrencyAmounts value) {
-    this.value = value;
+  public void setFundCurrencyAmount(java.math.BigDecimal fundCurrencyAmount) {
+    this.fundCurrencyAmount = fundCurrencyAmount;
+  }
+
+
+  public ShareClassAmount shareClassCurrencyAmount(java.math.BigDecimal shareClassCurrencyAmount) {
+    
+    this.shareClassCurrencyAmount = shareClassCurrencyAmount;
+    return this;
+  }
+
+   /**
+   * The value of the amount in the share class currency.
+   * @return shareClassCurrencyAmount
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getShareClassCurrencyAmount() {
+    return shareClassCurrencyAmount;
+  }
+
+
+  public void setShareClassCurrencyAmount(java.math.BigDecimal shareClassCurrencyAmount) {
+    this.shareClassCurrencyAmount = shareClassCurrencyAmount;
   }
 
 
@@ -88,19 +112,21 @@ public class ShareClassAmount {
       return false;
     }
     ShareClassAmount shareClassAmount = (ShareClassAmount) o;
-    return Objects.equals(this.value, shareClassAmount.value);
+    return (this.fundCurrencyAmount.compareTo(shareClassAmount.getFundCurrencyAmount()) == 0) &&
+        (this.shareClassCurrencyAmount.compareTo(shareClassAmount.getShareClassCurrencyAmount()) == 0);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(value);
+    return Objects.hash(fundCurrencyAmount, shareClassCurrencyAmount);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ShareClassAmount {\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    fundCurrencyAmount: ").append(toIndentedString(fundCurrencyAmount)).append("\n");
+    sb.append("    shareClassCurrencyAmount: ").append(toIndentedString(shareClassCurrencyAmount)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -123,7 +149,8 @@ public class ShareClassAmount {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("value");
+    openapiFields.add("fundCurrencyAmount");
+    openapiFields.add("shareClassCurrencyAmount");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -142,10 +169,6 @@ public class ShareClassAmount {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `value`
-      if (jsonObj.get("value") != null && !jsonObj.get("value").isJsonNull()) {
-        MultiCurrencyAmounts.validateJsonElement(jsonObj.get("value"));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

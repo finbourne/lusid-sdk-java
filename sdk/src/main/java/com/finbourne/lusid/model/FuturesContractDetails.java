@@ -209,7 +209,7 @@ public class FuturesContractDetails {
    * Which month does the contract trade for.    Supported string (enumeration) values are: [F, G, H, J, K, M, N, Q, U, V, X, Z].
    * @return contractMonth
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getContractMonth() {
     return contractMonth;
   }
@@ -542,7 +542,6 @@ public class FuturesContractDetails {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("domCcy");
     openapiRequiredFields.add("contractCode");
-    openapiRequiredFields.add("contractMonth");
     openapiRequiredFields.add("contractSize");
     openapiRequiredFields.add("exchangeCode");
   }
@@ -579,7 +578,7 @@ public class FuturesContractDetails {
       if (!jsonObj.get("contractCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `contractCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("contractCode").toString()));
       }
-      if (!jsonObj.get("contractMonth").isJsonPrimitive()) {
+      if ((jsonObj.get("contractMonth") != null && !jsonObj.get("contractMonth").isJsonNull()) && !jsonObj.get("contractMonth").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `contractMonth` to be a primitive type in the JSON string but got `%s`", jsonObj.get("contractMonth").toString()));
       }
       if ((jsonObj.get("convention") != null && !jsonObj.get("convention").isJsonNull()) && !jsonObj.get("convention").isJsonPrimitive()) {

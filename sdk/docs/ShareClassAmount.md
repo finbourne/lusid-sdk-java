@@ -7,7 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**value** | [**MultiCurrencyAmounts**](MultiCurrencyAmounts.md) |  |  [optional] |
+|**fundCurrencyAmount** | **java.math.BigDecimal** | The value of the amount in the fund currency. |  [optional] |
+|**shareClassCurrencyAmount** | **java.math.BigDecimal** | The value of the amount in the share class currency. |  [optional] |
 
 
 
