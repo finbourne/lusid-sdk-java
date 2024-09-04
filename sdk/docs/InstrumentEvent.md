@@ -8,7 +8,7 @@ Base class for representing instrument events in LUSID, such as dividends, stock
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**instrumentEventType** | [**InstrumentEventTypeEnum**](#InstrumentEventTypeEnum) | The Type of Event. The available values are: TransitionEvent, InformationalEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent, AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent, RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent, AccumulationEvent, BondPrincipalEvent, DividendOptionEvent, MaturityEvent, FxForwardSettlementEvent, ExpiryEvent, ScripDividendEvent, StockDividendEvent, ReverseStockSplitEvent, CapitalDistributionEvent, SpinOffEvent, MergerEvent, FutureExpiryEvent, SwapCashFlowEvent, SwapPrincipalEvent |  |
+|**instrumentEventType** | [**InstrumentEventTypeEnum**](#InstrumentEventTypeEnum) | The Type of Event. The available values are: TransitionEvent, InformationalEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent, AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent, RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent, AccumulationEvent, BondPrincipalEvent, DividendOptionEvent, MaturityEvent, FxForwardSettlementEvent, ExpiryEvent, ScripDividendEvent, StockDividendEvent, ReverseStockSplitEvent, CapitalDistributionEvent, SpinOffEvent, MergerEvent, FutureExpiryEvent, SwapCashFlowEvent, SwapPrincipalEvent, CreditPremiumCashFlowEvent, CdsCreditEvent, CdxCreditEvent |  |
 
 
 
@@ -47,6 +47,9 @@ Base class for representing instrument events in LUSID, such as dividends, stock
 | FUTUREEXPIRYEVENT | &quot;FutureExpiryEvent&quot; |
 | SWAPCASHFLOWEVENT | &quot;SwapCashFlowEvent&quot; |
 | SWAPPRINCIPALEVENT | &quot;SwapPrincipalEvent&quot; |
+| CREDITPREMIUMCASHFLOWEVENT | &quot;CreditPremiumCashFlowEvent&quot; |
+| CDSCREDITEVENT | &quot;CdsCreditEvent&quot; |
+| CDXCREDITEVENT | &quot;CdxCreditEvent&quot; |
 
 
 

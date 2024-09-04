@@ -85,7 +85,13 @@ public enum InstrumentEventType {
   
   SWAPCASHFLOWEVENT("SwapCashFlowEvent"),
   
-  SWAPPRINCIPALEVENT("SwapPrincipalEvent");
+  SWAPPRINCIPALEVENT("SwapPrincipalEvent"),
+  
+  CREDITPREMIUMCASHFLOWEVENT("CreditPremiumCashFlowEvent"),
+  
+  CDSCREDITEVENT("CdsCreditEvent"),
+  
+  CDXCREDITEVENT("CdxCreditEvent");
 
   private String value;
 

@@ -96,8 +96,20 @@ public class FxForwardSettlementEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_DOMESTIC_TO_SETTLEMENT_RATE)
   private java.math.BigDecimal domesticToSettlementRate;
 
+  public static final String SERIALIZED_NAME_FOREIGN_TO_SETTLEMENT_RATE = "foreignToSettlementRate";
+  @SerializedName(SERIALIZED_NAME_FOREIGN_TO_SETTLEMENT_RATE)
+  private java.math.BigDecimal foreignToSettlementRate;
+
   public FxForwardSettlementEvent() {
     // this.instrumentEventType = this.getClass().getSimpleName();
+  }
+
+  
+  public FxForwardSettlementEvent(
+     java.math.BigDecimal foreignToSettlementRate
+  ) {
+    this();
+    this.foreignToSettlementRate = foreignToSettlementRate;
   }
 
   public FxForwardSettlementEvent maturityDate(OffsetDateTime maturityDate) {
@@ -331,6 +343,18 @@ public class FxForwardSettlementEvent extends InstrumentEvent {
   }
 
 
+   /**
+   * Foreign currency to settlement currency FX rate  Not required, only used to override quotes.
+   * @return foreignToSettlementRate
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getForeignToSettlementRate() {
+    return foreignToSettlementRate;
+  }
+
+
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -352,6 +376,7 @@ public class FxForwardSettlementEvent extends InstrumentEvent {
         (this.cashFlowPerUnit.compareTo(fxForwardSettlementEvent.getCashFlowPerUnit()) == 0) &&
         (this.domesticToForeignRate.compareTo(fxForwardSettlementEvent.getDomesticToForeignRate()) == 0) &&
         (this.domesticToSettlementRate.compareTo(fxForwardSettlementEvent.getDomesticToSettlementRate()) == 0) &&
+        (this.foreignToSettlementRate.compareTo(fxForwardSettlementEvent.getForeignToSettlementRate()) == 0) &&
         super.equals(o);
   }
 
@@ -361,7 +386,7 @@ public class FxForwardSettlementEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(maturityDate, domAmountPerUnit, domCcy, fgnAmountPerUnit, fgnCcy, isNdf, fixingDate, settlementCcy, cashFlowPerUnit, domesticToForeignRate, domesticToSettlementRate, super.hashCode());
+    return Objects.hash(maturityDate, domAmountPerUnit, domCcy, fgnAmountPerUnit, fgnCcy, isNdf, fixingDate, settlementCcy, cashFlowPerUnit, domesticToForeignRate, domesticToSettlementRate, foreignToSettlementRate, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -387,6 +412,7 @@ public class FxForwardSettlementEvent extends InstrumentEvent {
     sb.append("    cashFlowPerUnit: ").append(toIndentedString(cashFlowPerUnit)).append("\n");
     sb.append("    domesticToForeignRate: ").append(toIndentedString(domesticToForeignRate)).append("\n");
     sb.append("    domesticToSettlementRate: ").append(toIndentedString(domesticToSettlementRate)).append("\n");
+    sb.append("    foreignToSettlementRate: ").append(toIndentedString(foreignToSettlementRate)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -421,6 +447,7 @@ public class FxForwardSettlementEvent extends InstrumentEvent {
     openapiFields.add("cashFlowPerUnit");
     openapiFields.add("domesticToForeignRate");
     openapiFields.add("domesticToSettlementRate");
+    openapiFields.add("foreignToSettlementRate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

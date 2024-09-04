@@ -19,6 +19,7 @@ Settlement for FX Forward, including NDF and deliverable.
 |**cashFlowPerUnit** | **java.math.BigDecimal** | Optional. Required if the event is an NDF (i.e. if IsNdf &#x3D; true).  CashFlow per unit. Paid in the SettlementCcy. |  [optional] |
 |**domesticToForeignRate** | **java.math.BigDecimal** | Domestic currency to foreign currency FX rate.  Not required, only used to override quotes. |  [optional] |
 |**domesticToSettlementRate** | **java.math.BigDecimal** | Domestic currency to settlement currency FX rate  Not required, only used to override quotes. |  [optional] |
+|**foreignToSettlementRate** | **java.math.BigDecimal** | Foreign currency to settlement currency FX rate  Not required, only used to override quotes. |  [optional] [readonly] |
 
 
 

@@ -67,6 +67,12 @@
 
 * `SWAPPRINCIPALEVENT` (value: `"SwapPrincipalEvent"`)
 
+* `CREDITPREMIUMCASHFLOWEVENT` (value: `"CreditPremiumCashFlowEvent"`)
+
+* `CDSCREDITEVENT` (value: `"CdsCreditEvent"`)
+
+* `CDXCREDITEVENT` (value: `"CdxCreditEvent"`)
+
 
 
 [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
