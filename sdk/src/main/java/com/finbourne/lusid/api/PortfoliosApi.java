@@ -30,6 +30,8 @@ import com.finbourne.lusid.model.AccessMetadataValue;
 import com.finbourne.lusid.model.AggregatedReturnsDispersionRequest;
 import com.finbourne.lusid.model.AggregatedReturnsRequest;
 import com.finbourne.lusid.model.AggregatedReturnsResponse;
+import com.finbourne.lusid.model.BatchUpsertPortfolioAccessMetadataRequest;
+import com.finbourne.lusid.model.BatchUpsertPortfolioAccessMetadataResponse;
 import com.finbourne.lusid.model.CompositeBreakdownRequest;
 import com.finbourne.lusid.model.CompositeBreakdownResponse;
 import com.finbourne.lusid.model.CompositeDispersionResponse;
@@ -102,6 +104,271 @@ public class PortfoliosApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    private okhttp3.Call batchUpsertPortfolioAccessMetadataCall(BatchUpsertPortfolioAccessMetadataRequest batchUpsertPortfolioAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback) throws ApiException {
+        return batchUpsertPortfolioAccessMetadataCall(batchUpsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call batchUpsertPortfolioAccessMetadataCall(BatchUpsertPortfolioAccessMetadataRequest batchUpsertPortfolioAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = batchUpsertPortfolioAccessMetadataRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/portfolios/metadata";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        if (effectiveUntil != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveUntil", effectiveUntil));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call batchUpsertPortfolioAccessMetadataValidateBeforeCall(BatchUpsertPortfolioAccessMetadataRequest batchUpsertPortfolioAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'batchUpsertPortfolioAccessMetadataRequest' is set
+        if (batchUpsertPortfolioAccessMetadataRequest == null) {
+            throw new ApiException("Missing the required parameter 'batchUpsertPortfolioAccessMetadataRequest' when calling batchUpsertPortfolioAccessMetadata(Async)");
+        }
+
+        return batchUpsertPortfolioAccessMetadataCall(batchUpsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil, _callback, opts);
+
+    }
+
+
+    private ApiResponse<BatchUpsertPortfolioAccessMetadataResponse> batchUpsertPortfolioAccessMetadataWithHttpInfo(BatchUpsertPortfolioAccessMetadataRequest batchUpsertPortfolioAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil) throws ApiException {
+        okhttp3.Call localVarCall = batchUpsertPortfolioAccessMetadataValidateBeforeCall(batchUpsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<BatchUpsertPortfolioAccessMetadataResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<BatchUpsertPortfolioAccessMetadataResponse> batchUpsertPortfolioAccessMetadataWithHttpInfo(BatchUpsertPortfolioAccessMetadataRequest batchUpsertPortfolioAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = batchUpsertPortfolioAccessMetadataValidateBeforeCall(batchUpsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil, null, opts);
+        Type localVarReturnType = new TypeToken<BatchUpsertPortfolioAccessMetadataResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call batchUpsertPortfolioAccessMetadataAsync(BatchUpsertPortfolioAccessMetadataRequest batchUpsertPortfolioAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<BatchUpsertPortfolioAccessMetadataResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = batchUpsertPortfolioAccessMetadataValidateBeforeCall(batchUpsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<BatchUpsertPortfolioAccessMetadataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call batchUpsertPortfolioAccessMetadataAsync(BatchUpsertPortfolioAccessMetadataRequest batchUpsertPortfolioAccessMetadataRequest, String effectiveAt, OffsetDateTime effectiveUntil, final ApiCallback<BatchUpsertPortfolioAccessMetadataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = batchUpsertPortfolioAccessMetadataValidateBeforeCall(batchUpsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil, _callback, opts);
+        Type localVarReturnType = new TypeToken<BatchUpsertPortfolioAccessMetadataResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIbatchUpsertPortfolioAccessMetadataRequest {
+        private final BatchUpsertPortfolioAccessMetadataRequest batchUpsertPortfolioAccessMetadataRequest;
+        private String effectiveAt;
+        private OffsetDateTime effectiveUntil;
+
+        private APIbatchUpsertPortfolioAccessMetadataRequest(BatchUpsertPortfolioAccessMetadataRequest batchUpsertPortfolioAccessMetadataRequest) {
+            this.batchUpsertPortfolioAccessMetadataRequest = batchUpsertPortfolioAccessMetadataRequest;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The date this rule will effective from (optional)
+         * @return APIbatchUpsertPortfolioAccessMetadataRequest
+         */
+        public APIbatchUpsertPortfolioAccessMetadataRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set effectiveUntil
+         * @param effectiveUntil The effective date until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata (optional)
+         * @return APIbatchUpsertPortfolioAccessMetadataRequest
+         */
+        public APIbatchUpsertPortfolioAccessMetadataRequest effectiveUntil(OffsetDateTime effectiveUntil) {
+            this.effectiveUntil = effectiveUntil;
+            return this;
+        }
+
+        /**
+         * Build call for batchUpsertPortfolioAccessMetadata
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return batchUpsertPortfolioAccessMetadataCall(batchUpsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil, _callback);
+        }
+
+        /**
+         * Execute batchUpsertPortfolioAccessMetadata request
+         * @return BatchUpsertPortfolioAccessMetadataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public BatchUpsertPortfolioAccessMetadataResponse execute() throws ApiException {
+            ApiResponse<BatchUpsertPortfolioAccessMetadataResponse> localVarResp = batchUpsertPortfolioAccessMetadataWithHttpInfo(batchUpsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute batchUpsertPortfolioAccessMetadata request. Use any specified configuration options to override any other configuration for this request only.
+         * @return BatchUpsertPortfolioAccessMetadataResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public BatchUpsertPortfolioAccessMetadataResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<BatchUpsertPortfolioAccessMetadataResponse> localVarResp = batchUpsertPortfolioAccessMetadataWithHttpInfo(batchUpsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute batchUpsertPortfolioAccessMetadata request with HTTP info returned
+         * @return ApiResponse&lt;BatchUpsertPortfolioAccessMetadataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<BatchUpsertPortfolioAccessMetadataResponse> executeWithHttpInfo() throws ApiException {
+            return batchUpsertPortfolioAccessMetadataWithHttpInfo(batchUpsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil);
+        }
+
+        /**
+         * Execute batchUpsertPortfolioAccessMetadata request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;BatchUpsertPortfolioAccessMetadataResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<BatchUpsertPortfolioAccessMetadataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return batchUpsertPortfolioAccessMetadataWithHttpInfo(batchUpsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil, opts);
+        }
+
+        /**
+         * Execute batchUpsertPortfolioAccessMetadata request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<BatchUpsertPortfolioAccessMetadataResponse> _callback) throws ApiException {
+            return batchUpsertPortfolioAccessMetadataAsync(batchUpsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil, _callback);
+        }
+
+        /**
+         * Execute batchUpsertPortfolioAccessMetadata request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<BatchUpsertPortfolioAccessMetadataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return batchUpsertPortfolioAccessMetadataAsync(batchUpsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] BatchUpsertPortfolioAccessMetadata: Upsert multiple portfolio access metadata with different keys to multiple portfolios
+     * Update or insert multiple Portfolios Access Metadata Rule in multiple scopes. Items will be updated if it already exists  and inserted if it does not. No other items will be affected    The response will return the successfully updated or inserted Portfolio Access Metadata Rules or failure message if unsuccessful    It is important to always check to verify success (or failure).     Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched
+     * @param batchUpsertPortfolioAccessMetadataRequest The Portfolio Access Metadata Rule to update or insert (required)
+     * @return APIbatchUpsertPortfolioAccessMetadataRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The successfully updated or inserted item or any failure </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIbatchUpsertPortfolioAccessMetadataRequest batchUpsertPortfolioAccessMetadata(BatchUpsertPortfolioAccessMetadataRequest batchUpsertPortfolioAccessMetadataRequest) {
+        return new APIbatchUpsertPortfolioAccessMetadataRequest(batchUpsertPortfolioAccessMetadataRequest);
+    }
     private okhttp3.Call deleteInstrumentEventInstructionCall(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, final ApiCallback _callback) throws ApiException {
         return deleteInstrumentEventInstructionCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt,  _callback, new ConfigurationOptions());
     }

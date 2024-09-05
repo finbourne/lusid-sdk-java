@@ -94,6 +94,10 @@ public class StagedModification {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private String status;
 
+  public static final String SERIALIZED_NAME_AS_AT_CLOSED = "asAtClosed";
+  @SerializedName(SERIALIZED_NAME_AS_AT_CLOSED)
+  private OffsetDateTime asAtClosed;
+
   public static final String SERIALIZED_NAME_ENTITY_TYPE = "entityType";
   @SerializedName(SERIALIZED_NAME_ENTITY_TYPE)
   private String entityType;
@@ -322,6 +326,27 @@ public class StagedModification {
   }
 
 
+  public StagedModification asAtClosed(OffsetDateTime asAtClosed) {
+    
+    this.asAtClosed = asAtClosed;
+    return this;
+  }
+
+   /**
+   * Time at which the modification was closed by either rejection or approval.
+   * @return asAtClosed
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getAsAtClosed() {
+    return asAtClosed;
+  }
+
+
+  public void setAsAtClosed(OffsetDateTime asAtClosed) {
+    this.asAtClosed = asAtClosed;
+  }
+
+
   public StagedModification entityType(String entityType) {
     
     this.entityType = entityType;
@@ -496,6 +521,7 @@ public class StagedModification {
         Objects.equals(this.decisions, stagedModification.decisions) &&
         Objects.equals(this.decisionsCount, stagedModification.decisionsCount) &&
         Objects.equals(this.status, stagedModification.status) &&
+        Objects.equals(this.asAtClosed, stagedModification.asAtClosed) &&
         Objects.equals(this.entityType, stagedModification.entityType) &&
         Objects.equals(this.scope, stagedModification.scope) &&
         Objects.equals(this.entityUniqueId, stagedModification.entityUniqueId) &&
@@ -511,7 +537,7 @@ public class StagedModification {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, asAtStaged, userIdStaged, requestedIdStaged, action, stagingRule, decisions, decisionsCount, status, entityType, scope, entityUniqueId, requestedChanges, entityHrefs, displayName, links);
+    return Objects.hash(id, asAtStaged, userIdStaged, requestedIdStaged, action, stagingRule, decisions, decisionsCount, status, asAtClosed, entityType, scope, entityUniqueId, requestedChanges, entityHrefs, displayName, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -534,6 +560,7 @@ public class StagedModification {
     sb.append("    decisions: ").append(toIndentedString(decisions)).append("\n");
     sb.append("    decisionsCount: ").append(toIndentedString(decisionsCount)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    asAtClosed: ").append(toIndentedString(asAtClosed)).append("\n");
     sb.append("    entityType: ").append(toIndentedString(entityType)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("    entityUniqueId: ").append(toIndentedString(entityUniqueId)).append("\n");
@@ -572,6 +599,7 @@ public class StagedModification {
     openapiFields.add("decisions");
     openapiFields.add("decisionsCount");
     openapiFields.add("status");
+    openapiFields.add("asAtClosed");
     openapiFields.add("entityType");
     openapiFields.add("scope");
     openapiFields.add("entityUniqueId");
