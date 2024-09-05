@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.HoldingPricingInfo;
 import com.finbourne.lusid.model.ModelSelection;
 import com.finbourne.lusid.model.PricingOptions;
 import com.finbourne.lusid.model.ResultKeyRule;
@@ -73,6 +74,10 @@ public class PricingContext {
   public static final String SERIALIZED_NAME_RESULT_DATA_RULES = "resultDataRules";
   @SerializedName(SERIALIZED_NAME_RESULT_DATA_RULES)
   private List<ResultKeyRule> resultDataRules;
+
+  public static final String SERIALIZED_NAME_HOLDING_PRICING_INFO = "holdingPricingInfo";
+  @SerializedName(SERIALIZED_NAME_HOLDING_PRICING_INFO)
+  private HoldingPricingInfo holdingPricingInfo;
 
   public PricingContext() {
   }
@@ -185,6 +190,27 @@ public class PricingContext {
   }
 
 
+  public PricingContext holdingPricingInfo(HoldingPricingInfo holdingPricingInfo) {
+    
+    this.holdingPricingInfo = holdingPricingInfo;
+    return this;
+  }
+
+   /**
+   * Get holdingPricingInfo
+   * @return holdingPricingInfo
+  **/
+  @jakarta.annotation.Nullable
+  public HoldingPricingInfo getHoldingPricingInfo() {
+    return holdingPricingInfo;
+  }
+
+
+  public void setHoldingPricingInfo(HoldingPricingInfo holdingPricingInfo) {
+    this.holdingPricingInfo = holdingPricingInfo;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -198,7 +224,8 @@ public class PricingContext {
     return Objects.equals(this.modelRules, pricingContext.modelRules) &&
         Objects.equals(this.modelChoice, pricingContext.modelChoice) &&
         Objects.equals(this.options, pricingContext.options) &&
-        Objects.equals(this.resultDataRules, pricingContext.resultDataRules);
+        Objects.equals(this.resultDataRules, pricingContext.resultDataRules) &&
+        Objects.equals(this.holdingPricingInfo, pricingContext.holdingPricingInfo);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -207,7 +234,7 @@ public class PricingContext {
 
   @Override
   public int hashCode() {
-    return Objects.hash(modelRules, modelChoice, options, resultDataRules);
+    return Objects.hash(modelRules, modelChoice, options, resultDataRules, holdingPricingInfo);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -225,6 +252,7 @@ public class PricingContext {
     sb.append("    modelChoice: ").append(toIndentedString(modelChoice)).append("\n");
     sb.append("    options: ").append(toIndentedString(options)).append("\n");
     sb.append("    resultDataRules: ").append(toIndentedString(resultDataRules)).append("\n");
+    sb.append("    holdingPricingInfo: ").append(toIndentedString(holdingPricingInfo)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -251,6 +279,7 @@ public class PricingContext {
     openapiFields.add("modelChoice");
     openapiFields.add("options");
     openapiFields.add("resultDataRules");
+    openapiFields.add("holdingPricingInfo");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -300,6 +329,10 @@ public class PricingContext {
             ResultKeyRule.validateJsonElement(jsonArrayresultDataRules.get(i));
           };
         }
+      }
+      // validate the optional field `holdingPricingInfo`
+      if (jsonObj.get("holdingPricingInfo") != null && !jsonObj.get("holdingPricingInfo").isJsonNull()) {
+        HoldingPricingInfo.validateJsonElement(jsonObj.get("holdingPricingInfo"));
       }
   }
 
