@@ -320,7 +320,7 @@ public class PersonsApi {
     }
 
     /**
-     * [EARLY ACCESS] DeletePerson: Delete person
+     * DeletePerson: Delete person
      * Delete a person. Deletion will be valid from the person&#39;s creation datetime.  This means that the person will no longer exist at any effective datetime from the asAt datetime of deletion.
      * @param idTypeScope The scope of the person identifier type. (required)
      * @param idTypeCode The code of the person identifier type. (required)
@@ -4711,7 +4711,7 @@ public class PersonsApi {
     }
 
     /**
-     * [EARLY ACCESS] UpsertPerson: Upsert Person
+     * UpsertPerson: Upsert Person
      * Create or update a new person under the specified scope.
      * @param upsertPersonRequest Request to create or update a person. (required)
      * @return APIupsertPersonRequest

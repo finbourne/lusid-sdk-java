@@ -34,12 +34,13 @@ import com.finbourne.lusid.model.CancelPlacementsResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import com.finbourne.lusid.model.MoveOrdersToDifferentBlocksRequest;
+import java.time.OffsetDateTime;
 import com.finbourne.lusid.model.OrderUpdateRequest;
 import com.finbourne.lusid.model.PlaceBlocksRequest;
 import com.finbourne.lusid.model.PlacementUpdateRequest;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.ResourceListOfBlockAndOrders;
-import com.finbourne.lusid.model.ResourceListOfEntityChangeItem;
+import com.finbourne.lusid.model.ResourceListOfChangeIntervalWithOrderManagementDetail;
 import com.finbourne.lusid.model.ResourceListOfMovedOrderToDifferentBlockResponse;
 import com.finbourne.lusid.model.ResourceListOfPlacement;
 import com.finbourne.lusid.model.UpdateOrdersResponse;
@@ -1043,11 +1044,11 @@ public class OrderManagementApi {
     public APIcreateOrdersRequest createOrders(BlockAndOrdersCreateRequest blockAndOrdersCreateRequest) {
         return new APIcreateOrdersRequest(blockAndOrdersCreateRequest);
     }
-    private okhttp3.Call getOrderHistoryCall(String scope, String code, final ApiCallback _callback) throws ApiException {
-        return getOrderHistoryCall(scope, code,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getOrderHistoryCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getOrderHistoryCall(scope, code, asAt,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getOrderHistoryCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getOrderHistoryCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1074,6 +1075,10 @@ public class OrderManagementApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -1096,7 +1101,7 @@ public class OrderManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getOrderHistoryValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getOrderHistoryValidateBeforeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getOrderHistory(Async)");
@@ -1107,35 +1112,35 @@ public class OrderManagementApi {
             throw new ApiException("Missing the required parameter 'code' when calling getOrderHistory(Async)");
         }
 
-        return getOrderHistoryCall(scope, code, _callback, opts);
+        return getOrderHistoryCall(scope, code, asAt, _callback, opts);
 
     }
 
 
-    private ApiResponse<ResourceListOfEntityChangeItem> getOrderHistoryWithHttpInfo(String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = getOrderHistoryValidateBeforeCall(scope, code, null, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<ResourceListOfEntityChangeItem>(){}.getType();
+    private ApiResponse<ResourceListOfChangeIntervalWithOrderManagementDetail> getOrderHistoryWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = getOrderHistoryValidateBeforeCall(scope, code, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfChangeIntervalWithOrderManagementDetail>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ResourceListOfEntityChangeItem> getOrderHistoryWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getOrderHistoryValidateBeforeCall(scope, code, null, opts);
-        Type localVarReturnType = new TypeToken<ResourceListOfEntityChangeItem>(){}.getType();
+    private ApiResponse<ResourceListOfChangeIntervalWithOrderManagementDetail> getOrderHistoryWithHttpInfo(String scope, String code, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getOrderHistoryValidateBeforeCall(scope, code, asAt, null, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfChangeIntervalWithOrderManagementDetail>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getOrderHistoryAsync(String scope, String code, final ApiCallback<ResourceListOfEntityChangeItem> _callback) throws ApiException {
+    private okhttp3.Call getOrderHistoryAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<ResourceListOfChangeIntervalWithOrderManagementDetail> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getOrderHistoryValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<ResourceListOfEntityChangeItem>(){}.getType();
+        okhttp3.Call localVarCall = getOrderHistoryValidateBeforeCall(scope, code, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfChangeIntervalWithOrderManagementDetail>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getOrderHistoryAsync(String scope, String code, final ApiCallback<ResourceListOfEntityChangeItem> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getOrderHistoryAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<ResourceListOfChangeIntervalWithOrderManagementDetail> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getOrderHistoryValidateBeforeCall(scope, code, _callback, opts);
-        Type localVarReturnType = new TypeToken<ResourceListOfEntityChangeItem>(){}.getType();
+        okhttp3.Call localVarCall = getOrderHistoryValidateBeforeCall(scope, code, asAt, _callback, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfChangeIntervalWithOrderManagementDetail>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1143,10 +1148,21 @@ public class OrderManagementApi {
     public class APIgetOrderHistoryRequest {
         private final String scope;
         private final String code;
+        private OffsetDateTime asAt;
 
         private APIgetOrderHistoryRequest(String scope, String code) {
             this.scope = scope;
             this.code = code;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the history of the order and related entities. Defaults   to return the latest version if not specified. (optional)
+         * @return APIgetOrderHistoryRequest
+         */
+        public APIgetOrderHistoryRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
         }
 
         /**
@@ -1164,12 +1180,12 @@ public class OrderManagementApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getOrderHistoryCall(scope, code, _callback);
+            return getOrderHistoryCall(scope, code, asAt, _callback);
         }
 
         /**
          * Execute getOrderHistory request
-         * @return ResourceListOfEntityChangeItem
+         * @return ResourceListOfChangeIntervalWithOrderManagementDetail
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -1180,14 +1196,14 @@ public class OrderManagementApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ResourceListOfEntityChangeItem execute() throws ApiException {
-            ApiResponse<ResourceListOfEntityChangeItem> localVarResp = getOrderHistoryWithHttpInfo(scope, code);
+        public ResourceListOfChangeIntervalWithOrderManagementDetail execute() throws ApiException {
+            ApiResponse<ResourceListOfChangeIntervalWithOrderManagementDetail> localVarResp = getOrderHistoryWithHttpInfo(scope, code, asAt);
             return localVarResp.getData();
         }
 
         /**
          * Execute getOrderHistory request. Use any specified configuration options to override any other configuration for this request only.
-         * @return ResourceListOfEntityChangeItem
+         * @return ResourceListOfChangeIntervalWithOrderManagementDetail
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -1198,14 +1214,14 @@ public class OrderManagementApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ResourceListOfEntityChangeItem execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ResourceListOfEntityChangeItem> localVarResp = getOrderHistoryWithHttpInfo(scope, code, opts);
+        public ResourceListOfChangeIntervalWithOrderManagementDetail execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfChangeIntervalWithOrderManagementDetail> localVarResp = getOrderHistoryWithHttpInfo(scope, code, asAt, opts);
             return localVarResp.getData();
         }
 
         /**
          * Execute getOrderHistory request with HTTP info returned
-         * @return ApiResponse&lt;ResourceListOfEntityChangeItem&gt;
+         * @return ApiResponse&lt;ResourceListOfChangeIntervalWithOrderManagementDetail&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -1216,13 +1232,13 @@ public class OrderManagementApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<ResourceListOfEntityChangeItem> executeWithHttpInfo() throws ApiException {
-            return getOrderHistoryWithHttpInfo(scope, code);
+        public ApiResponse<ResourceListOfChangeIntervalWithOrderManagementDetail> executeWithHttpInfo() throws ApiException {
+            return getOrderHistoryWithHttpInfo(scope, code, asAt);
         }
 
         /**
          * Execute getOrderHistory request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
-         * @return ApiResponse&lt;ResourceListOfEntityChangeItem&gt;
+         * @return ApiResponse&lt;ResourceListOfChangeIntervalWithOrderManagementDetail&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -1233,8 +1249,8 @@ public class OrderManagementApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<ResourceListOfEntityChangeItem> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getOrderHistoryWithHttpInfo(scope, code, opts);
+        public ApiResponse<ResourceListOfChangeIntervalWithOrderManagementDetail> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getOrderHistoryWithHttpInfo(scope, code, asAt, opts);
         }
 
         /**
@@ -1251,8 +1267,8 @@ public class OrderManagementApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfEntityChangeItem> _callback) throws ApiException {
-            return getOrderHistoryAsync(scope, code, _callback);
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfChangeIntervalWithOrderManagementDetail> _callback) throws ApiException {
+            return getOrderHistoryAsync(scope, code, asAt, _callback);
         }
 
         /**
@@ -1269,8 +1285,8 @@ public class OrderManagementApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfEntityChangeItem> _callback, ConfigurationOptions opts) throws ApiException {
-            return getOrderHistoryAsync(scope, code, _callback, opts);
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfChangeIntervalWithOrderManagementDetail> _callback, ConfigurationOptions opts) throws ApiException {
+            return getOrderHistoryAsync(scope, code, asAt, _callback, opts);
         }
     }
 

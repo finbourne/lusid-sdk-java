@@ -4,7 +4,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deletePerson**](PersonsApi.md#deletePerson) | **DELETE** /api/persons/{idTypeScope}/{idTypeCode}/{code} | [EARLY ACCESS] DeletePerson: Delete person |
+| [**deletePerson**](PersonsApi.md#deletePerson) | **DELETE** /api/persons/{idTypeScope}/{idTypeCode}/{code} | DeletePerson: Delete person |
 | [**deletePersonAccessMetadata**](PersonsApi.md#deletePersonAccessMetadata) | **DELETE** /api/persons/{idTypeScope}/{idTypeCode}/{code}/metadata/{metadataKey} | [EARLY ACCESS] DeletePersonAccessMetadata: Delete a Person Access Metadata entry |
 | [**deletePersonIdentifiers**](PersonsApi.md#deletePersonIdentifiers) | **DELETE** /api/persons/{idTypeScope}/{idTypeCode}/{code}/identifiers | [EARLY ACCESS] DeletePersonIdentifiers: Delete Person Identifiers |
 | [**deletePersonProperties**](PersonsApi.md#deletePersonProperties) | **DELETE** /api/persons/{idTypeScope}/{idTypeCode}/{code}/properties | [EARLY ACCESS] DeletePersonProperties: Delete Person Properties |
@@ -19,7 +19,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**patchPersonAccessMetadata**](PersonsApi.md#patchPersonAccessMetadata) | **PATCH** /api/persons/{idTypeScope}/{idTypeCode}/{code}/metadata | [EARLY ACCESS] PatchPersonAccessMetadata: Patch Access Metadata rules for a Person. |
 | [**setPersonIdentifiers**](PersonsApi.md#setPersonIdentifiers) | **POST** /api/persons/{idTypeScope}/{idTypeCode}/{code}/identifiers | [EARLY ACCESS] SetPersonIdentifiers: Set Person Identifiers |
 | [**setPersonProperties**](PersonsApi.md#setPersonProperties) | **POST** /api/persons/{idTypeScope}/{idTypeCode}/{code}/properties | [EARLY ACCESS] SetPersonProperties: Set Person Properties |
-| [**upsertPerson**](PersonsApi.md#upsertPerson) | **POST** /api/persons | [EARLY ACCESS] UpsertPerson: Upsert Person |
+| [**upsertPerson**](PersonsApi.md#upsertPerson) | **POST** /api/persons | UpsertPerson: Upsert Person |
 | [**upsertPersonAccessMetadata**](PersonsApi.md#upsertPersonAccessMetadata) | **PUT** /api/persons/{idTypeScope}/{idTypeCode}/{code}/metadata/{metadataKey} | [EARLY ACCESS] UpsertPersonAccessMetadata: Upsert a Person Access Metadata entry associated with a specific metadataKey. This creates or updates the data in LUSID. |
 | [**upsertPersons**](PersonsApi.md#upsertPersons) | **POST** /api/persons/$batchUpsert | [EARLY ACCESS] UpsertPersons: Pluralised Upsert of Persons |
 
@@ -29,7 +29,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 > DeletedEntityResponse deletePerson(idTypeScope, idTypeCode, code)
 
-[EARLY ACCESS] DeletePerson: Delete person
+DeletePerson: Delete person
 
 Delete a person. Deletion will be valid from the person&#39;s creation datetime.  This means that the person will no longer exist at any effective datetime from the asAt datetime of deletion.
 
@@ -1542,7 +1542,7 @@ public class PersonsApiExample {
 
 > Person upsertPerson(upsertPersonRequest)
 
-[EARLY ACCESS] UpsertPerson: Upsert Person
+UpsertPerson: Upsert Person
 
 Create or update a new person under the specified scope.
 

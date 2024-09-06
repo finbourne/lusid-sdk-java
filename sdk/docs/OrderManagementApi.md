@@ -385,7 +385,7 @@ public class OrderManagementApiExample {
 
 ## getOrderHistory
 
-> ResourceListOfEntityChangeItem getOrderHistory(scope, code)
+> ResourceListOfChangeIntervalWithOrderManagementDetail getOrderHistory(scope, code, asAt)
 
 [EXPERIMENTAL] GetOrderHistory: Get the history of an order and related entity changes
 
@@ -432,11 +432,12 @@ public class OrderManagementApiExample {
         OrderManagementApi apiInstance = ApiFactoryBuilder.build(fileName).build(OrderManagementApi.class);
         String scope = "scope_example"; // String | The scope of the order.
         String code = "code_example"; // String | The code of the order.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the history of the order and related entities. Defaults   to return the latest version if not specified.
         try {
             // uncomment the below to set overrides at the request level
-            // ResourceListOfEntityChangeItem result = apiInstance.getOrderHistory(scope, code).execute(opts);
+            // ResourceListOfChangeIntervalWithOrderManagementDetail result = apiInstance.getOrderHistory(scope, code, asAt).execute(opts);
 
-            ResourceListOfEntityChangeItem result = apiInstance.getOrderHistory(scope, code).execute();
+            ResourceListOfChangeIntervalWithOrderManagementDetail result = apiInstance.getOrderHistory(scope, code, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling OrderManagementApi#getOrderHistory");
@@ -455,10 +456,11 @@ public class OrderManagementApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the order. | |
 | **code** | **String**| The code of the order. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the history of the order and related entities. Defaults   to return the latest version if not specified. | [optional] |
 
 ### Return type
 
-[**ResourceListOfEntityChangeItem**](ResourceListOfEntityChangeItem.md)
+[**ResourceListOfChangeIntervalWithOrderManagementDetail**](ResourceListOfChangeIntervalWithOrderManagementDetail.md)
 
 ### HTTP request headers
 
