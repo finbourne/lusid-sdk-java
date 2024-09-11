@@ -118,7 +118,7 @@ public class GroupReconciliationAggregateAttributeRule {
    * Get tolerance
    * @return tolerance
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public GroupReconciliationComparisonRuleTolerance getTolerance() {
     return tolerance;
   }
@@ -186,7 +186,6 @@ public class GroupReconciliationAggregateAttributeRule {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("left");
     openapiRequiredFields.add("right");
-    openapiRequiredFields.add("tolerance");
   }
 
  /**
@@ -213,8 +212,10 @@ public class GroupReconciliationAggregateAttributeRule {
       GroupReconciliationAggregateComparisonRuleOperand.validateJsonElement(jsonObj.get("left"));
       // validate the required field `right`
       GroupReconciliationAggregateComparisonRuleOperand.validateJsonElement(jsonObj.get("right"));
-      // validate the required field `tolerance`
-      GroupReconciliationComparisonRuleTolerance.validateJsonElement(jsonObj.get("tolerance"));
+      // validate the optional field `tolerance`
+      if (jsonObj.get("tolerance") != null && !jsonObj.get("tolerance").isJsonNull()) {
+        GroupReconciliationComparisonRuleTolerance.validateJsonElement(jsonObj.get("tolerance"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

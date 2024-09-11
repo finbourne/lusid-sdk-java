@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.RelativeDateOffset;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -99,6 +100,10 @@ public class FlowConventions {
   public static final String SERIALIZED_NAME_ACCRUAL_DAY_COUNT_CONVENTION = "accrualDayCountConvention";
   @SerializedName(SERIALIZED_NAME_ACCRUAL_DAY_COUNT_CONVENTION)
   private String accrualDayCountConvention;
+
+  public static final String SERIALIZED_NAME_COUPON_PAYMENT_LAG = "couponPaymentLag";
+  @SerializedName(SERIALIZED_NAME_COUPON_PAYMENT_LAG)
+  private RelativeDateOffset couponPaymentLag;
 
   public static final String SERIALIZED_NAME_SCOPE = "scope";
   @SerializedName(SERIALIZED_NAME_SCOPE)
@@ -379,6 +384,27 @@ public class FlowConventions {
   }
 
 
+  public FlowConventions couponPaymentLag(RelativeDateOffset couponPaymentLag) {
+    
+    this.couponPaymentLag = couponPaymentLag;
+    return this;
+  }
+
+   /**
+   * Get couponPaymentLag
+   * @return couponPaymentLag
+  **/
+  @jakarta.annotation.Nullable
+  public RelativeDateOffset getCouponPaymentLag() {
+    return couponPaymentLag;
+  }
+
+
+  public void setCouponPaymentLag(RelativeDateOffset couponPaymentLag) {
+    this.couponPaymentLag = couponPaymentLag;
+  }
+
+
   public FlowConventions scope(String scope) {
     
     this.scope = scope;
@@ -443,6 +469,7 @@ public class FlowConventions {
         Objects.equals(this.accrualDateAdjustment, flowConventions.accrualDateAdjustment) &&
         Objects.equals(this.businessDayConvention, flowConventions.businessDayConvention) &&
         Objects.equals(this.accrualDayCountConvention, flowConventions.accrualDayCountConvention) &&
+        Objects.equals(this.couponPaymentLag, flowConventions.couponPaymentLag) &&
         Objects.equals(this.scope, flowConventions.scope) &&
         Objects.equals(this.code, flowConventions.code);
   }
@@ -453,7 +480,7 @@ public class FlowConventions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(currency, paymentFrequency, dayCountConvention, rollConvention, paymentCalendars, resetCalendars, settleDays, resetDays, leapDaysIncluded, accrualDateAdjustment, businessDayConvention, accrualDayCountConvention, scope, code);
+    return Objects.hash(currency, paymentFrequency, dayCountConvention, rollConvention, paymentCalendars, resetCalendars, settleDays, resetDays, leapDaysIncluded, accrualDateAdjustment, businessDayConvention, accrualDayCountConvention, couponPaymentLag, scope, code);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -479,6 +506,7 @@ public class FlowConventions {
     sb.append("    accrualDateAdjustment: ").append(toIndentedString(accrualDateAdjustment)).append("\n");
     sb.append("    businessDayConvention: ").append(toIndentedString(businessDayConvention)).append("\n");
     sb.append("    accrualDayCountConvention: ").append(toIndentedString(accrualDayCountConvention)).append("\n");
+    sb.append("    couponPaymentLag: ").append(toIndentedString(couponPaymentLag)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("}");
@@ -515,6 +543,7 @@ public class FlowConventions {
     openapiFields.add("accrualDateAdjustment");
     openapiFields.add("businessDayConvention");
     openapiFields.add("accrualDayCountConvention");
+    openapiFields.add("couponPaymentLag");
     openapiFields.add("scope");
     openapiFields.add("code");
 
@@ -580,6 +609,10 @@ public class FlowConventions {
       }
       if ((jsonObj.get("accrualDayCountConvention") != null && !jsonObj.get("accrualDayCountConvention").isJsonNull()) && !jsonObj.get("accrualDayCountConvention").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `accrualDayCountConvention` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accrualDayCountConvention").toString()));
+      }
+      // validate the optional field `couponPaymentLag`
+      if (jsonObj.get("couponPaymentLag") != null && !jsonObj.get("couponPaymentLag").isJsonNull()) {
+        RelativeDateOffset.validateJsonElement(jsonObj.get("couponPaymentLag"));
       }
       if ((jsonObj.get("scope") != null && !jsonObj.get("scope").isJsonNull()) && !jsonObj.get("scope").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));

@@ -4,7 +4,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**batchUpsertPortfolioAccessMetadata**](PortfoliosApi.md#batchUpsertPortfolioAccessMetadata) | **PUT** /api/portfolios/metadata | [EXPERIMENTAL] BatchUpsertPortfolioAccessMetadata: Upsert multiple portfolio access metadata with different keys to multiple portfolios |
+| [**batchUpsertPortfolioAccessMetadata**](PortfoliosApi.md#batchUpsertPortfolioAccessMetadata) | **PUT** /api/portfolios/metadata | [EARLY ACCESS] BatchUpsertPortfolioAccessMetadata: Upsert multiple Portfolio Access Metadata Rules to multiple Portfolios |
 | [**deleteInstrumentEventInstruction**](PortfoliosApi.md#deleteInstrumentEventInstruction) | **DELETE** /api/portfolios/{scope}/{code}/instrumenteventinstructions/{instrumentEventInstructionId} | [EARLY ACCESS] DeleteInstrumentEventInstruction: Delete Instrument Event Instruction |
 | [**deleteKeyFromPortfolioAccessMetadata**](PortfoliosApi.md#deleteKeyFromPortfolioAccessMetadata) | **DELETE** /api/portfolios/{scope}/{code}/metadata/{metadataKey} | DeleteKeyFromPortfolioAccessMetadata: Delete a Portfolio Access Metadata Rule |
 | [**deletePortfolio**](PortfoliosApi.md#deletePortfolio) | **DELETE** /api/portfolios/{scope}/{code} | DeletePortfolio: Delete portfolio |
@@ -40,11 +40,11 @@ All URIs are relative to *https://www.lusid.com/api*
 
 ## batchUpsertPortfolioAccessMetadata
 
-> BatchUpsertPortfolioAccessMetadataResponse batchUpsertPortfolioAccessMetadata(batchUpsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil)
+> BatchUpsertPortfolioAccessMetadataResponse batchUpsertPortfolioAccessMetadata(requestBody, effectiveAt, effectiveUntil)
 
-[EXPERIMENTAL] BatchUpsertPortfolioAccessMetadata: Upsert multiple portfolio access metadata with different keys to multiple portfolios
+[EARLY ACCESS] BatchUpsertPortfolioAccessMetadata: Upsert multiple Portfolio Access Metadata Rules to multiple Portfolios
 
-Update or insert multiple Portfolios Access Metadata Rule in multiple scopes. Items will be updated if it already exists  and inserted if it does not. No other items will be affected    The response will return the successfully updated or inserted Portfolio Access Metadata Rules or failure message if unsuccessful    It is important to always check to verify success (or failure).     Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched
+Update or insert multiple Access Metadata rules for multiple Portfolios. Items will be updated if they already exist  and inserted if they do not. No other items will be affected    The response will return the successfully updated or inserted Portfolio Access Metadata Rules or a failure message if unsuccessful     Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched
 
 ### Example
 
@@ -85,14 +85,14 @@ public class PortfoliosApiExample {
         // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
 
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
-        BatchUpsertPortfolioAccessMetadataRequest batchUpsertPortfolioAccessMetadataRequest = new BatchUpsertPortfolioAccessMetadataRequest(); // BatchUpsertPortfolioAccessMetadataRequest | The Portfolio Access Metadata Rule to update or insert
-        String effectiveAt = "effectiveAt_example"; // String | The date this rule will effective from
-        OffsetDateTime effectiveUntil = OffsetDateTime.now(); // OffsetDateTime | The effective date until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next 'effectiveAt' date of the Access Metadata
+        Map<String, BatchUpsertPortfolioAccessMetadataRequest> requestBody = new HashMap(); // Map<String, BatchUpsertPortfolioAccessMetadataRequest> | The Access Metadata Rules to upsert and the Portfolio identifiers to upsert for
+        String effectiveAt = "effectiveAt_example"; // String | The date these rules will be effective from
+        String effectiveUntil = "effectiveUntil_example"; // String | The effective date until which the Access Metadata is valid. If not supplied, this will be valid indefinitely, or until the next 'effectiveAt' date of the Access Metadata
         try {
             // uncomment the below to set overrides at the request level
-            // BatchUpsertPortfolioAccessMetadataResponse result = apiInstance.batchUpsertPortfolioAccessMetadata(batchUpsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil).execute(opts);
+            // BatchUpsertPortfolioAccessMetadataResponse result = apiInstance.batchUpsertPortfolioAccessMetadata(requestBody, effectiveAt, effectiveUntil).execute(opts);
 
-            BatchUpsertPortfolioAccessMetadataResponse result = apiInstance.batchUpsertPortfolioAccessMetadata(batchUpsertPortfolioAccessMetadataRequest, effectiveAt, effectiveUntil).execute();
+            BatchUpsertPortfolioAccessMetadataResponse result = apiInstance.batchUpsertPortfolioAccessMetadata(requestBody, effectiveAt, effectiveUntil).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling PortfoliosApi#batchUpsertPortfolioAccessMetadata");
@@ -109,9 +109,9 @@ public class PortfoliosApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **batchUpsertPortfolioAccessMetadataRequest** | [**BatchUpsertPortfolioAccessMetadataRequest**](BatchUpsertPortfolioAccessMetadataRequest.md)| The Portfolio Access Metadata Rule to update or insert | |
-| **effectiveAt** | **String**| The date this rule will effective from | [optional] |
-| **effectiveUntil** | **OffsetDateTime**| The effective date until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata | [optional] |
+| **requestBody** | [**Map&lt;String, BatchUpsertPortfolioAccessMetadataRequest&gt;**](BatchUpsertPortfolioAccessMetadataRequest.md)| The Access Metadata Rules to upsert and the Portfolio identifiers to upsert for | |
+| **effectiveAt** | **String**| The date these rules will be effective from | [optional] |
+| **effectiveUntil** | **String**| The effective date until which the Access Metadata is valid. If not supplied, this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata | [optional] |
 
 ### Return type
 
@@ -126,7 +126,7 @@ public class PortfoliosApiExample {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The successfully updated or inserted item or any failure |  -  |
+| **200** | The successfully updated or inserted items or any failures |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

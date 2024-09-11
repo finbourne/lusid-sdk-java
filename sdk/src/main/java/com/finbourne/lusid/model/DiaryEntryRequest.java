@@ -54,6 +54,10 @@ import com.finbourne.lusid.JSON;
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DiaryEntryRequest {
+  public static final String SERIALIZED_NAME_DIARY_ENTRY_CODE = "diaryEntryCode";
+  @SerializedName(SERIALIZED_NAME_DIARY_ENTRY_CODE)
+  private String diaryEntryCode;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -76,6 +80,27 @@ public class DiaryEntryRequest {
 
   public DiaryEntryRequest() {
   }
+
+  public DiaryEntryRequest diaryEntryCode(String diaryEntryCode) {
+    
+    this.diaryEntryCode = diaryEntryCode;
+    return this;
+  }
+
+   /**
+   * The code of the diary entry.
+   * @return diaryEntryCode
+  **/
+  @jakarta.annotation.Nonnull
+  public String getDiaryEntryCode() {
+    return diaryEntryCode;
+  }
+
+
+  public void setDiaryEntryCode(String diaryEntryCode) {
+    this.diaryEntryCode = diaryEntryCode;
+  }
+
 
   public DiaryEntryRequest name(String name) {
     
@@ -200,7 +225,8 @@ public class DiaryEntryRequest {
       return false;
     }
     DiaryEntryRequest diaryEntryRequest = (DiaryEntryRequest) o;
-    return Objects.equals(this.name, diaryEntryRequest.name) &&
+    return Objects.equals(this.diaryEntryCode, diaryEntryRequest.diaryEntryCode) &&
+        Objects.equals(this.name, diaryEntryRequest.name) &&
         Objects.equals(this.status, diaryEntryRequest.status) &&
         Objects.equals(this.effectiveAt, diaryEntryRequest.effectiveAt) &&
         Objects.equals(this.queryAsAt, diaryEntryRequest.queryAsAt) &&
@@ -213,7 +239,7 @@ public class DiaryEntryRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, status, effectiveAt, queryAsAt, properties);
+    return Objects.hash(diaryEntryCode, name, status, effectiveAt, queryAsAt, properties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -227,6 +253,7 @@ public class DiaryEntryRequest {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class DiaryEntryRequest {\n");
+    sb.append("    diaryEntryCode: ").append(toIndentedString(diaryEntryCode)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    effectiveAt: ").append(toIndentedString(effectiveAt)).append("\n");
@@ -254,6 +281,7 @@ public class DiaryEntryRequest {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("diaryEntryCode");
     openapiFields.add("name");
     openapiFields.add("status");
     openapiFields.add("effectiveAt");
@@ -262,6 +290,7 @@ public class DiaryEntryRequest {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("diaryEntryCode");
     openapiRequiredFields.add("effectiveAt");
   }
 
@@ -285,6 +314,9 @@ public class DiaryEntryRequest {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (!jsonObj.get("diaryEntryCode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `diaryEntryCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("diaryEntryCode").toString()));
+      }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }

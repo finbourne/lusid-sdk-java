@@ -11,7 +11,8 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.MetadataKeyValue;
+import com.finbourne.lusid.model.AccessMetadataValue;
+import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -20,6 +21,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.google.gson.Gson;
@@ -52,39 +54,64 @@ import com.finbourne.lusid.JSON;
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class BatchUpsertPortfolioAccessMetadataRequest {
-  public static final String SERIALIZED_NAME_PORTFOLIOS_WITH_METADATA = "portfoliosWithMetadata";
-  @SerializedName(SERIALIZED_NAME_PORTFOLIOS_WITH_METADATA)
-  private Map<String, MetadataKeyValue> portfoliosWithMetadata = new HashMap<>();
+  public static final String SERIALIZED_NAME_PORTFOLIO_ID = "portfolioId";
+  @SerializedName(SERIALIZED_NAME_PORTFOLIO_ID)
+  private ResourceId portfolioId;
+
+  public static final String SERIALIZED_NAME_METADATA = "metadata";
+  @SerializedName(SERIALIZED_NAME_METADATA)
+  private Map<String, List<AccessMetadataValue>> metadata = new HashMap<>();
 
   public BatchUpsertPortfolioAccessMetadataRequest() {
   }
 
-  public BatchUpsertPortfolioAccessMetadataRequest portfoliosWithMetadata(Map<String, MetadataKeyValue> portfoliosWithMetadata) {
+  public BatchUpsertPortfolioAccessMetadataRequest portfolioId(ResourceId portfolioId) {
     
-    this.portfoliosWithMetadata = portfoliosWithMetadata;
-    return this;
-  }
-
-  public BatchUpsertPortfolioAccessMetadataRequest putPortfoliosWithMetadataItem(String key, MetadataKeyValue portfoliosWithMetadataItem) {
-    if (this.portfoliosWithMetadata == null) {
-      this.portfoliosWithMetadata = new HashMap<>();
-    }
-    this.portfoliosWithMetadata.put(key, portfoliosWithMetadataItem);
+    this.portfolioId = portfolioId;
     return this;
   }
 
    /**
-   * The set of portfolios with the access control metadata
-   * @return portfoliosWithMetadata
+   * Get portfolioId
+   * @return portfolioId
   **/
   @jakarta.annotation.Nonnull
-  public Map<String, MetadataKeyValue> getPortfoliosWithMetadata() {
-    return portfoliosWithMetadata;
+  public ResourceId getPortfolioId() {
+    return portfolioId;
   }
 
 
-  public void setPortfoliosWithMetadata(Map<String, MetadataKeyValue> portfoliosWithMetadata) {
-    this.portfoliosWithMetadata = portfoliosWithMetadata;
+  public void setPortfolioId(ResourceId portfolioId) {
+    this.portfolioId = portfolioId;
+  }
+
+
+  public BatchUpsertPortfolioAccessMetadataRequest metadata(Map<String, List<AccessMetadataValue>> metadata) {
+    
+    this.metadata = metadata;
+    return this;
+  }
+
+  public BatchUpsertPortfolioAccessMetadataRequest putMetadataItem(String key, List<AccessMetadataValue> metadataItem) {
+    if (this.metadata == null) {
+      this.metadata = new HashMap<>();
+    }
+    this.metadata.put(key, metadataItem);
+    return this;
+  }
+
+   /**
+   * Get metadata
+   * @return metadata
+  **/
+  @jakarta.annotation.Nonnull
+  public Map<String, List<AccessMetadataValue>> getMetadata() {
+    return metadata;
+  }
+
+
+  public void setMetadata(Map<String, List<AccessMetadataValue>> metadata) {
+    this.metadata = metadata;
   }
 
 
@@ -98,19 +125,21 @@ public class BatchUpsertPortfolioAccessMetadataRequest {
       return false;
     }
     BatchUpsertPortfolioAccessMetadataRequest batchUpsertPortfolioAccessMetadataRequest = (BatchUpsertPortfolioAccessMetadataRequest) o;
-    return Objects.equals(this.portfoliosWithMetadata, batchUpsertPortfolioAccessMetadataRequest.portfoliosWithMetadata);
+    return Objects.equals(this.portfolioId, batchUpsertPortfolioAccessMetadataRequest.portfolioId) &&
+        Objects.equals(this.metadata, batchUpsertPortfolioAccessMetadataRequest.metadata);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(portfoliosWithMetadata);
+    return Objects.hash(portfolioId, metadata);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BatchUpsertPortfolioAccessMetadataRequest {\n");
-    sb.append("    portfoliosWithMetadata: ").append(toIndentedString(portfoliosWithMetadata)).append("\n");
+    sb.append("    portfolioId: ").append(toIndentedString(portfolioId)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -133,11 +162,13 @@ public class BatchUpsertPortfolioAccessMetadataRequest {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("portfoliosWithMetadata");
+    openapiFields.add("portfolioId");
+    openapiFields.add("metadata");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("portfoliosWithMetadata");
+    openapiRequiredFields.add("portfolioId");
+    openapiRequiredFields.add("metadata");
   }
 
  /**
@@ -160,6 +191,8 @@ public class BatchUpsertPortfolioAccessMetadataRequest {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // validate the required field `portfolioId`
+      ResourceId.validateJsonElement(jsonObj.get("portfolioId"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

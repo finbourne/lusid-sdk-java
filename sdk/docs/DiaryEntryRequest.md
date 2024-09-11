@@ -8,6 +8,7 @@ The request to add a diary entry
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**diaryEntryCode** | **String** | The code of the diary entry. |  |
 |**name** | **String** | The name of the diary entry. |  [optional] |
 |**status** | **String** | The status of a Diary Entry of Type &#39;Other&#39;. Defaults to &#39;Undefined&#39; and supports &#39;Undefined&#39;, &#39;Estimate&#39;, &#39;Candidate&#39;, and &#39;Final&#39;. |  [optional] |
 |**effectiveAt** | **OffsetDateTime** | The effective time of the diary entry. |  |

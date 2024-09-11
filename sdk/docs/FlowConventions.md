@@ -20,6 +20,7 @@ A flow convention defines the specification for generation of the date schedule 
 |**accrualDateAdjustment** | **String** | Indicates if the accrual dates are adjusted using the business day convention. The default value is &#39;Adjusted&#39;.    Supported string (enumeration) values are: [Adjusted, Unadjusted]. |  [optional] |
 |**businessDayConvention** | **String** | When generating a set of dates, what convention should be used for adjusting dates that coincide with a non-business day.    Supported string (enumeration) values are: [NoAdjustment, None, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest]. |  [optional] |
 |**accrualDayCountConvention** | **String** | Optional, if not set the main DayCountConvention is used for all accrual calculations.  This only needs to be set when accrual uses a different day count to the coupon calculation. |  [optional] |
+|**couponPaymentLag** | [**RelativeDateOffset**](RelativeDateOffset.md) |  |  [optional] |
 |**scope** | **String** | The scope used when updating or inserting the convention. |  [optional] |
 |**code** | **String** | The code of the convention. |  [optional] |
 

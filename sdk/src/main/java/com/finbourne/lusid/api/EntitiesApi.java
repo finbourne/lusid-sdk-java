@@ -25,6 +25,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.finbourne.lusid.model.CustomEntityEntity;
 import com.finbourne.lusid.model.DataTypeEntity;
 import com.finbourne.lusid.model.InstrumentEntity;
 import com.finbourne.lusid.model.LusidProblemDetails;
@@ -77,6 +78,283 @@ public class EntitiesApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    private okhttp3.Call getCustomEntityByEntityUniqueIdCall(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback _callback) throws ApiException {
+        return getCustomEntityByEntityUniqueIdCall(entityUniqueId, effectiveAt, asAt, previews,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getCustomEntityByEntityUniqueIdCall(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/entities/customentities/{entityUniqueId}"
+            .replace("{" + "entityUniqueId" + "}", localVarApiClient.escapeString(entityUniqueId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (previews != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "previews", previews));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCustomEntityByEntityUniqueIdValidateBeforeCall(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'entityUniqueId' is set
+        if (entityUniqueId == null) {
+            throw new ApiException("Missing the required parameter 'entityUniqueId' when calling getCustomEntityByEntityUniqueId(Async)");
+        }
+
+        return getCustomEntityByEntityUniqueIdCall(entityUniqueId, effectiveAt, asAt, previews, _callback, opts);
+
+    }
+
+
+    private ApiResponse<CustomEntityEntity> getCustomEntityByEntityUniqueIdWithHttpInfo(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews) throws ApiException {
+        okhttp3.Call localVarCall = getCustomEntityByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, previews, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CustomEntityEntity>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<CustomEntityEntity> getCustomEntityByEntityUniqueIdWithHttpInfo(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getCustomEntityByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, previews, null, opts);
+        Type localVarReturnType = new TypeToken<CustomEntityEntity>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getCustomEntityByEntityUniqueIdAsync(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback<CustomEntityEntity> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCustomEntityByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, previews, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CustomEntityEntity>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getCustomEntityByEntityUniqueIdAsync(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback<CustomEntityEntity> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getCustomEntityByEntityUniqueIdValidateBeforeCall(entityUniqueId, effectiveAt, asAt, previews, _callback, opts);
+        Type localVarReturnType = new TypeToken<CustomEntityEntity>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetCustomEntityByEntityUniqueIdRequest {
+        private final String entityUniqueId;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private List<String> previews;
+
+        private APIgetCustomEntityByEntityUniqueIdRequest(String entityUniqueId) {
+            this.entityUniqueId = entityUniqueId;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the Custom Entity. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetCustomEntityByEntityUniqueIdRequest
+         */
+        public APIgetCustomEntityByEntityUniqueIdRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the Custom Entity. Defaults to returning the latest version of the Custom Entity if not specified. (optional)
+         * @return APIgetCustomEntityByEntityUniqueIdRequest
+         */
+        public APIgetCustomEntityByEntityUniqueIdRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set previews
+         * @param previews The ids of the staged modifications to be previewed in the response. (optional)
+         * @return APIgetCustomEntityByEntityUniqueIdRequest
+         */
+        public APIgetCustomEntityByEntityUniqueIdRequest previews(List<String> previews) {
+            this.previews = previews;
+            return this;
+        }
+
+        /**
+         * Build call for getCustomEntityByEntityUniqueId
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested CustomEntity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getCustomEntityByEntityUniqueIdCall(entityUniqueId, effectiveAt, asAt, previews, _callback);
+        }
+
+        /**
+         * Execute getCustomEntityByEntityUniqueId request
+         * @return CustomEntityEntity
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested CustomEntity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CustomEntityEntity execute() throws ApiException {
+            ApiResponse<CustomEntityEntity> localVarResp = getCustomEntityByEntityUniqueIdWithHttpInfo(entityUniqueId, effectiveAt, asAt, previews);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getCustomEntityByEntityUniqueId request. Use any specified configuration options to override any other configuration for this request only.
+         * @return CustomEntityEntity
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested CustomEntity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CustomEntityEntity execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<CustomEntityEntity> localVarResp = getCustomEntityByEntityUniqueIdWithHttpInfo(entityUniqueId, effectiveAt, asAt, previews, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getCustomEntityByEntityUniqueId request with HTTP info returned
+         * @return ApiResponse&lt;CustomEntityEntity&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested CustomEntity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CustomEntityEntity> executeWithHttpInfo() throws ApiException {
+            return getCustomEntityByEntityUniqueIdWithHttpInfo(entityUniqueId, effectiveAt, asAt, previews);
+        }
+
+        /**
+         * Execute getCustomEntityByEntityUniqueId request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;CustomEntityEntity&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested CustomEntity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CustomEntityEntity> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getCustomEntityByEntityUniqueIdWithHttpInfo(entityUniqueId, effectiveAt, asAt, previews, opts);
+        }
+
+        /**
+         * Execute getCustomEntityByEntityUniqueId request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested CustomEntity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CustomEntityEntity> _callback) throws ApiException {
+            return getCustomEntityByEntityUniqueIdAsync(entityUniqueId, effectiveAt, asAt, previews, _callback);
+        }
+
+        /**
+         * Execute getCustomEntityByEntityUniqueId request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested CustomEntity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CustomEntityEntity> _callback, ConfigurationOptions opts) throws ApiException {
+            return getCustomEntityByEntityUniqueIdAsync(entityUniqueId, effectiveAt, asAt, previews, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] GetCustomEntityByEntityUniqueId: Get a Custom Entity instance by its EntityUniqueId
+     * Retrieve a particular Custom Entity instance.  If the Custom Entity is deleted, this will return the state of the Custom Entity immediately prior to deletion.
+     * @param entityUniqueId The universally unique identifier of the Custom Entity. (required)
+     * @return APIgetCustomEntityByEntityUniqueIdRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested CustomEntity </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetCustomEntityByEntityUniqueIdRequest getCustomEntityByEntityUniqueId(String entityUniqueId) {
+        return new APIgetCustomEntityByEntityUniqueIdRequest(entityUniqueId);
+    }
     private okhttp3.Call getDataTypeByEntityUniqueIdCall(String entityUniqueId, OffsetDateTime asAt, List<String> previews, final ApiCallback _callback) throws ApiException {
         return getDataTypeByEntityUniqueIdCall(entityUniqueId, asAt, previews,  _callback, new ConfigurationOptions());
     }

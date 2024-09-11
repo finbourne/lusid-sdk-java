@@ -7,7 +7,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**portfoliosWithMetadata** | [**Map&lt;String, MetadataKeyValueResponse&gt;**](MetadataKeyValueResponse.md) | The set of portfolios with the access control metadata |  |
+|**values** | [**Map&lt;String, BatchUpsertPortfolioAccessMetadataResponseItem&gt;**](BatchUpsertPortfolioAccessMetadataResponseItem.md) | The items have been successfully updated or created. |  [optional] |
+|**failed** | [**Map&lt;String, ErrorDetail&gt;**](ErrorDetail.md) | The items that could not be updated or created along with a reason for their failure. |  [optional] |
+|**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 
 

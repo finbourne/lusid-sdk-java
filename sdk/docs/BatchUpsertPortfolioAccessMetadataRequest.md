@@ -7,7 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**portfoliosWithMetadata** | [**Map&lt;String, MetadataKeyValue&gt;**](MetadataKeyValue.md) | The set of portfolios with the access control metadata |  |
+|**portfolioId** | [**ResourceId**](ResourceId.md) |  |  |
+|**metadata** | **Map&lt;String, List&lt;AccessMetadataValue&gt;&gt;** |  |  |
 
 
 

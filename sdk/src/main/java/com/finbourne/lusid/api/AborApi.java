@@ -90,11 +90,11 @@ public class AborApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    private okhttp3.Call addDiaryEntryCall(String scope, String code, String diaryEntryCode, DiaryEntryRequest diaryEntryRequest, final ApiCallback _callback) throws ApiException {
-        return addDiaryEntryCall(scope, code, diaryEntryCode, diaryEntryRequest,  _callback, new ConfigurationOptions());
+    private okhttp3.Call addDiaryEntryCall(String scope, String code, DiaryEntryRequest diaryEntryRequest, final ApiCallback _callback) throws ApiException {
+        return addDiaryEntryCall(scope, code, diaryEntryRequest,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call addDiaryEntryCall(String scope, String code, String diaryEntryCode, DiaryEntryRequest diaryEntryRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call addDiaryEntryCall(String scope, String code, DiaryEntryRequest diaryEntryRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -111,10 +111,9 @@ public class AborApi {
         Object localVarPostBody = diaryEntryRequest;
 
         // create path and map variables
-        String localVarPath = "/api/abor/{scope}/{code}/accountingdiary/{diaryEntryCode}"
+        String localVarPath = "/api/abor/{scope}/{code}/accountingdiary"
             .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
-            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
-            .replace("{" + "diaryEntryCode" + "}", localVarApiClient.escapeString(diaryEntryCode.toString()));
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -148,7 +147,7 @@ public class AborApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call addDiaryEntryValidateBeforeCall(String scope, String code, String diaryEntryCode, DiaryEntryRequest diaryEntryRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call addDiaryEntryValidateBeforeCall(String scope, String code, DiaryEntryRequest diaryEntryRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling addDiaryEntry(Async)");
@@ -159,44 +158,39 @@ public class AborApi {
             throw new ApiException("Missing the required parameter 'code' when calling addDiaryEntry(Async)");
         }
 
-        // verify the required parameter 'diaryEntryCode' is set
-        if (diaryEntryCode == null) {
-            throw new ApiException("Missing the required parameter 'diaryEntryCode' when calling addDiaryEntry(Async)");
-        }
-
         // verify the required parameter 'diaryEntryRequest' is set
         if (diaryEntryRequest == null) {
             throw new ApiException("Missing the required parameter 'diaryEntryRequest' when calling addDiaryEntry(Async)");
         }
 
-        return addDiaryEntryCall(scope, code, diaryEntryCode, diaryEntryRequest, _callback, opts);
+        return addDiaryEntryCall(scope, code, diaryEntryRequest, _callback, opts);
 
     }
 
 
-    private ApiResponse<DiaryEntry> addDiaryEntryWithHttpInfo(String scope, String code, String diaryEntryCode, DiaryEntryRequest diaryEntryRequest) throws ApiException {
-        okhttp3.Call localVarCall = addDiaryEntryValidateBeforeCall(scope, code, diaryEntryCode, diaryEntryRequest, null, new ConfigurationOptions());
+    private ApiResponse<DiaryEntry> addDiaryEntryWithHttpInfo(String scope, String code, DiaryEntryRequest diaryEntryRequest) throws ApiException {
+        okhttp3.Call localVarCall = addDiaryEntryValidateBeforeCall(scope, code, diaryEntryRequest, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<DiaryEntry>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<DiaryEntry> addDiaryEntryWithHttpInfo(String scope, String code, String diaryEntryCode, DiaryEntryRequest diaryEntryRequest, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = addDiaryEntryValidateBeforeCall(scope, code, diaryEntryCode, diaryEntryRequest, null, opts);
+    private ApiResponse<DiaryEntry> addDiaryEntryWithHttpInfo(String scope, String code, DiaryEntryRequest diaryEntryRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = addDiaryEntryValidateBeforeCall(scope, code, diaryEntryRequest, null, opts);
         Type localVarReturnType = new TypeToken<DiaryEntry>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call addDiaryEntryAsync(String scope, String code, String diaryEntryCode, DiaryEntryRequest diaryEntryRequest, final ApiCallback<DiaryEntry> _callback) throws ApiException {
+    private okhttp3.Call addDiaryEntryAsync(String scope, String code, DiaryEntryRequest diaryEntryRequest, final ApiCallback<DiaryEntry> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = addDiaryEntryValidateBeforeCall(scope, code, diaryEntryCode, diaryEntryRequest, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = addDiaryEntryValidateBeforeCall(scope, code, diaryEntryRequest, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<DiaryEntry>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call addDiaryEntryAsync(String scope, String code, String diaryEntryCode, DiaryEntryRequest diaryEntryRequest, final ApiCallback<DiaryEntry> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call addDiaryEntryAsync(String scope, String code, DiaryEntryRequest diaryEntryRequest, final ApiCallback<DiaryEntry> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = addDiaryEntryValidateBeforeCall(scope, code, diaryEntryCode, diaryEntryRequest, _callback, opts);
+        okhttp3.Call localVarCall = addDiaryEntryValidateBeforeCall(scope, code, diaryEntryRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<DiaryEntry>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -205,13 +199,11 @@ public class AborApi {
     public class APIaddDiaryEntryRequest {
         private final String scope;
         private final String code;
-        private final String diaryEntryCode;
         private final DiaryEntryRequest diaryEntryRequest;
 
-        private APIaddDiaryEntryRequest(String scope, String code, String diaryEntryCode, DiaryEntryRequest diaryEntryRequest) {
+        private APIaddDiaryEntryRequest(String scope, String code, DiaryEntryRequest diaryEntryRequest) {
             this.scope = scope;
             this.code = code;
-            this.diaryEntryCode = diaryEntryCode;
             this.diaryEntryRequest = diaryEntryRequest;
         }
 
@@ -229,7 +221,7 @@ public class AborApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return addDiaryEntryCall(scope, code, diaryEntryCode, diaryEntryRequest, _callback);
+            return addDiaryEntryCall(scope, code, diaryEntryRequest, _callback);
         }
 
         /**
@@ -245,7 +237,7 @@ public class AborApi {
          </table>
          */
         public DiaryEntry execute() throws ApiException {
-            ApiResponse<DiaryEntry> localVarResp = addDiaryEntryWithHttpInfo(scope, code, diaryEntryCode, diaryEntryRequest);
+            ApiResponse<DiaryEntry> localVarResp = addDiaryEntryWithHttpInfo(scope, code, diaryEntryRequest);
             return localVarResp.getData();
         }
 
@@ -262,7 +254,7 @@ public class AborApi {
          </table>
          */
         public DiaryEntry execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<DiaryEntry> localVarResp = addDiaryEntryWithHttpInfo(scope, code, diaryEntryCode, diaryEntryRequest, opts);
+            ApiResponse<DiaryEntry> localVarResp = addDiaryEntryWithHttpInfo(scope, code, diaryEntryRequest, opts);
             return localVarResp.getData();
         }
 
@@ -279,7 +271,7 @@ public class AborApi {
          </table>
          */
         public ApiResponse<DiaryEntry> executeWithHttpInfo() throws ApiException {
-            return addDiaryEntryWithHttpInfo(scope, code, diaryEntryCode, diaryEntryRequest);
+            return addDiaryEntryWithHttpInfo(scope, code, diaryEntryRequest);
         }
 
         /**
@@ -295,7 +287,7 @@ public class AborApi {
          </table>
          */
         public ApiResponse<DiaryEntry> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return addDiaryEntryWithHttpInfo(scope, code, diaryEntryCode, diaryEntryRequest, opts);
+            return addDiaryEntryWithHttpInfo(scope, code, diaryEntryRequest, opts);
         }
 
         /**
@@ -312,7 +304,7 @@ public class AborApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<DiaryEntry> _callback) throws ApiException {
-            return addDiaryEntryAsync(scope, code, diaryEntryCode, diaryEntryRequest, _callback);
+            return addDiaryEntryAsync(scope, code, diaryEntryRequest, _callback);
         }
 
         /**
@@ -329,7 +321,7 @@ public class AborApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<DiaryEntry> _callback, ConfigurationOptions opts) throws ApiException {
-            return addDiaryEntryAsync(scope, code, diaryEntryCode, diaryEntryRequest, _callback, opts);
+            return addDiaryEntryAsync(scope, code, diaryEntryRequest, _callback, opts);
         }
     }
 
@@ -338,7 +330,6 @@ public class AborApi {
      * Adds a new diary entry to the specified Abor
      * @param scope The scope of the Abor. (required)
      * @param code The code of the Abor. (required)
-     * @param diaryEntryCode Diary entry code (required)
      * @param diaryEntryRequest The diary entry to add. (required)
      * @return APIaddDiaryEntryRequest
      * @http.response.details
@@ -349,8 +340,8 @@ public class AborApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIaddDiaryEntryRequest addDiaryEntry(String scope, String code, String diaryEntryCode, DiaryEntryRequest diaryEntryRequest) {
-        return new APIaddDiaryEntryRequest(scope, code, diaryEntryCode, diaryEntryRequest);
+    public APIaddDiaryEntryRequest addDiaryEntry(String scope, String code, DiaryEntryRequest diaryEntryRequest) {
+        return new APIaddDiaryEntryRequest(scope, code, diaryEntryRequest);
     }
     private okhttp3.Call closePeriodCall(String scope, String code, ClosePeriodDiaryEntryRequest closePeriodDiaryEntryRequest, final ApiCallback _callback) throws ApiException {
         return closePeriodCall(scope, code, closePeriodDiaryEntryRequest,  _callback, new ConfigurationOptions());

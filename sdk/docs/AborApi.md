@@ -4,7 +4,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**addDiaryEntry**](AborApi.md#addDiaryEntry) | **POST** /api/abor/{scope}/{code}/accountingdiary/{diaryEntryCode} | [EXPERIMENTAL] AddDiaryEntry: Add a diary entry to the specified Abor. |
+| [**addDiaryEntry**](AborApi.md#addDiaryEntry) | **POST** /api/abor/{scope}/{code}/accountingdiary | [EXPERIMENTAL] AddDiaryEntry: Add a diary entry to the specified Abor. |
 | [**closePeriod**](AborApi.md#closePeriod) | **POST** /api/abor/{scope}/{code}/accountingdiary/$closeperiod | [EXPERIMENTAL] ClosePeriod: Closes or locks the current period for the given Abor. |
 | [**createAbor**](AborApi.md#createAbor) | **POST** /api/abor/{scope} | [EXPERIMENTAL] CreateAbor: Create an Abor. |
 | [**deleteAbor**](AborApi.md#deleteAbor) | **DELETE** /api/abor/{scope}/{code} | [EXPERIMENTAL] DeleteAbor: Delete an Abor. |
@@ -22,7 +22,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 ## addDiaryEntry
 
-> DiaryEntry addDiaryEntry(scope, code, diaryEntryCode, diaryEntryRequest)
+> DiaryEntry addDiaryEntry(scope, code, diaryEntryRequest)
 
 [EXPERIMENTAL] AddDiaryEntry: Add a diary entry to the specified Abor.
 
@@ -69,13 +69,12 @@ public class AborApiExample {
         AborApi apiInstance = ApiFactoryBuilder.build(fileName).build(AborApi.class);
         String scope = "scope_example"; // String | The scope of the Abor.
         String code = "code_example"; // String | The code of the Abor.
-        String diaryEntryCode = "diaryEntryCode_example"; // String | Diary entry code
         DiaryEntryRequest diaryEntryRequest = new DiaryEntryRequest(); // DiaryEntryRequest | The diary entry to add.
         try {
             // uncomment the below to set overrides at the request level
-            // DiaryEntry result = apiInstance.addDiaryEntry(scope, code, diaryEntryCode, diaryEntryRequest).execute(opts);
+            // DiaryEntry result = apiInstance.addDiaryEntry(scope, code, diaryEntryRequest).execute(opts);
 
-            DiaryEntry result = apiInstance.addDiaryEntry(scope, code, diaryEntryCode, diaryEntryRequest).execute();
+            DiaryEntry result = apiInstance.addDiaryEntry(scope, code, diaryEntryRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling AborApi#addDiaryEntry");
@@ -94,7 +93,6 @@ public class AborApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the Abor. | |
 | **code** | **String**| The code of the Abor. | |
-| **diaryEntryCode** | **String**| Diary entry code | |
 | **diaryEntryRequest** | [**DiaryEntryRequest**](DiaryEntryRequest.md)| The diary entry to add. | |
 
 ### Return type
