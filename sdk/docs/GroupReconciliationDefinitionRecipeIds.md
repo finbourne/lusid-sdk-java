@@ -1,13 +1,14 @@
 
 
-# ComponentRule
+# GroupReconciliationDefinitionRecipeIds
 
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**components** | [**List&lt;ComponentFilter&gt;**](ComponentFilter.md) |  |  [optional] |
+|**left** | [**ResourceId**](ResourceId.md) |  |  |
+|**right** | [**ResourceId**](ResourceId.md) |  |  |
 
 
 

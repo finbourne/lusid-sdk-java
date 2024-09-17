@@ -196,6 +196,10 @@ public class Transaction {
   @SerializedName(SERIALIZED_NAME_CUSTODIAN_ACCOUNT)
   private CustodianAccount custodianAccount;
 
+  public static final String SERIALIZED_NAME_TRANSACTION_GROUP_ID = "transactionGroupId";
+  @SerializedName(SERIALIZED_NAME_TRANSACTION_GROUP_ID)
+  private String transactionGroupId;
+
   public Transaction() {
   }
 
@@ -677,6 +681,27 @@ public class Transaction {
   }
 
 
+  public Transaction transactionGroupId(String transactionGroupId) {
+    
+    this.transactionGroupId = transactionGroupId;
+    return this;
+  }
+
+   /**
+   * The identifier for grouping economic events across multiple transactions
+   * @return transactionGroupId
+  **/
+  @jakarta.annotation.Nullable
+  public String getTransactionGroupId() {
+    return transactionGroupId;
+  }
+
+
+  public void setTransactionGroupId(String transactionGroupId) {
+    this.transactionGroupId = transactionGroupId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -708,7 +733,8 @@ public class Transaction {
         Objects.equals(this.cancelDateTime, transaction.cancelDateTime) &&
         Objects.equals(this.orderId, transaction.orderId) &&
         Objects.equals(this.allocationId, transaction.allocationId) &&
-        Objects.equals(this.custodianAccount, transaction.custodianAccount);
+        Objects.equals(this.custodianAccount, transaction.custodianAccount) &&
+        Objects.equals(this.transactionGroupId, transaction.transactionGroupId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -717,7 +743,7 @@ public class Transaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transactionId, type, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionPrice, totalConsideration, exchangeRate, transactionCurrency, properties, counterpartyId, source, entryDateTime, otcConfirmation, transactionStatus, cancelDateTime, orderId, allocationId, custodianAccount);
+    return Objects.hash(transactionId, type, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionPrice, totalConsideration, exchangeRate, transactionCurrency, properties, counterpartyId, source, entryDateTime, otcConfirmation, transactionStatus, cancelDateTime, orderId, allocationId, custodianAccount, transactionGroupId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -753,6 +779,7 @@ public class Transaction {
     sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
     sb.append("    allocationId: ").append(toIndentedString(allocationId)).append("\n");
     sb.append("    custodianAccount: ").append(toIndentedString(custodianAccount)).append("\n");
+    sb.append("    transactionGroupId: ").append(toIndentedString(transactionGroupId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -797,6 +824,7 @@ public class Transaction {
     openapiFields.add("orderId");
     openapiFields.add("allocationId");
     openapiFields.add("custodianAccount");
+    openapiFields.add("transactionGroupId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -874,6 +902,9 @@ public class Transaction {
       // validate the optional field `custodianAccount`
       if (jsonObj.get("custodianAccount") != null && !jsonObj.get("custodianAccount").isJsonNull()) {
         CustodianAccount.validateJsonElement(jsonObj.get("custodianAccount"));
+      }
+      if ((jsonObj.get("transactionGroupId") != null && !jsonObj.get("transactionGroupId").isJsonNull()) && !jsonObj.get("transactionGroupId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `transactionGroupId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transactionGroupId").toString()));
       }
   }
 

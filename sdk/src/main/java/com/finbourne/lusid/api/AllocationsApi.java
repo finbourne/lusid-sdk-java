@@ -888,7 +888,7 @@ public class AllocationsApi {
     }
 
     /**
-     * [EARLY ACCESS] ListAllocations: List Allocations
+     * ListAllocations: List Allocations
      * Fetch the last pre-AsAt date version of each allocation in scope (does not fetch the entire history).
      * @return APIlistAllocationsRequest
      * @http.response.details

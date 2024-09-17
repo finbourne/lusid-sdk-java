@@ -41,16 +41,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class FundConfigurationsApi {
+public class FundConfigurationEntitiesApi {
     private ApiClient localVarApiClient;
     private int localHostIndex;
     private String localCustomBaseUrl;
 
-    public FundConfigurationsApi() {
+    public FundConfigurationEntitiesApi() {
         this(Configuration.getDefaultApiClient());
     }
 
-    public FundConfigurationsApi(ApiClient apiClient) {
+    public FundConfigurationEntitiesApi(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
     }
 

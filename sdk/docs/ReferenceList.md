@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**referenceListType** | [**ReferenceListTypeEnum**](#ReferenceListTypeEnum) | The reference list values. The available values are: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList |  |
+|**referenceListType** | [**ReferenceListTypeEnum**](#ReferenceListTypeEnum) | The reference list values. The available values are: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList |  |
 
 
 
@@ -22,6 +22,7 @@
 | INSTRUMENTLIST | &quot;InstrumentList&quot; |
 | DECIMALLIST | &quot;DecimalList&quot; |
 | PROPERTYLIST | &quot;PropertyList&quot; |
+| FUNDIDLIST | &quot;FundIdList&quot; |
 
 
 

@@ -11,7 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.ComponentRule;
+import com.finbourne.lusid.model.ComponentFilter;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.ResourceId;
@@ -76,17 +76,17 @@ public class FundConfiguration {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
-  public static final String SERIALIZED_NAME_DEALING_RULE = "dealingRule";
-  @SerializedName(SERIALIZED_NAME_DEALING_RULE)
-  private ComponentRule dealingRule;
+  public static final String SERIALIZED_NAME_DEALING_FILTERS = "dealingFilters";
+  @SerializedName(SERIALIZED_NAME_DEALING_FILTERS)
+  private List<ComponentFilter> dealingFilters;
 
-  public static final String SERIALIZED_NAME_PNL_RULE = "pnlRule";
-  @SerializedName(SERIALIZED_NAME_PNL_RULE)
-  private ComponentRule pnlRule;
+  public static final String SERIALIZED_NAME_PNL_FILTERS = "pnlFilters";
+  @SerializedName(SERIALIZED_NAME_PNL_FILTERS)
+  private List<ComponentFilter> pnlFilters;
 
-  public static final String SERIALIZED_NAME_BACK_OUT_RULE = "backOutRule";
-  @SerializedName(SERIALIZED_NAME_BACK_OUT_RULE)
-  private ComponentRule backOutRule;
+  public static final String SERIALIZED_NAME_BACK_OUT_FILTERS = "backOutFilters";
+  @SerializedName(SERIALIZED_NAME_BACK_OUT_FILTERS)
+  private List<ComponentFilter> backOutFilters;
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
@@ -187,66 +187,90 @@ public class FundConfiguration {
   }
 
 
-  public FundConfiguration dealingRule(ComponentRule dealingRule) {
+  public FundConfiguration dealingFilters(List<ComponentFilter> dealingFilters) {
     
-    this.dealingRule = dealingRule;
+    this.dealingFilters = dealingFilters;
+    return this;
+  }
+
+  public FundConfiguration addDealingFiltersItem(ComponentFilter dealingFiltersItem) {
+    if (this.dealingFilters == null) {
+      this.dealingFilters = new ArrayList<>();
+    }
+    this.dealingFilters.add(dealingFiltersItem);
     return this;
   }
 
    /**
-   * Get dealingRule
-   * @return dealingRule
+   * The set of filters used to decide which JE lines are included in the dealing.
+   * @return dealingFilters
   **/
   @jakarta.annotation.Nullable
-  public ComponentRule getDealingRule() {
-    return dealingRule;
+  public List<ComponentFilter> getDealingFilters() {
+    return dealingFilters;
   }
 
 
-  public void setDealingRule(ComponentRule dealingRule) {
-    this.dealingRule = dealingRule;
+  public void setDealingFilters(List<ComponentFilter> dealingFilters) {
+    this.dealingFilters = dealingFilters;
   }
 
 
-  public FundConfiguration pnlRule(ComponentRule pnlRule) {
+  public FundConfiguration pnlFilters(List<ComponentFilter> pnlFilters) {
     
-    this.pnlRule = pnlRule;
+    this.pnlFilters = pnlFilters;
+    return this;
+  }
+
+  public FundConfiguration addPnlFiltersItem(ComponentFilter pnlFiltersItem) {
+    if (this.pnlFilters == null) {
+      this.pnlFilters = new ArrayList<>();
+    }
+    this.pnlFilters.add(pnlFiltersItem);
     return this;
   }
 
    /**
-   * Get pnlRule
-   * @return pnlRule
+   * The set of filters used to decide which JE lines are included in the PnL.
+   * @return pnlFilters
   **/
   @jakarta.annotation.Nullable
-  public ComponentRule getPnlRule() {
-    return pnlRule;
+  public List<ComponentFilter> getPnlFilters() {
+    return pnlFilters;
   }
 
 
-  public void setPnlRule(ComponentRule pnlRule) {
-    this.pnlRule = pnlRule;
+  public void setPnlFilters(List<ComponentFilter> pnlFilters) {
+    this.pnlFilters = pnlFilters;
   }
 
 
-  public FundConfiguration backOutRule(ComponentRule backOutRule) {
+  public FundConfiguration backOutFilters(List<ComponentFilter> backOutFilters) {
     
-    this.backOutRule = backOutRule;
+    this.backOutFilters = backOutFilters;
+    return this;
+  }
+
+  public FundConfiguration addBackOutFiltersItem(ComponentFilter backOutFiltersItem) {
+    if (this.backOutFilters == null) {
+      this.backOutFilters = new ArrayList<>();
+    }
+    this.backOutFilters.add(backOutFiltersItem);
     return this;
   }
 
    /**
-   * Get backOutRule
-   * @return backOutRule
+   * The set of filters used to decide which JE lines are included in the back outs.
+   * @return backOutFilters
   **/
   @jakarta.annotation.Nullable
-  public ComponentRule getBackOutRule() {
-    return backOutRule;
+  public List<ComponentFilter> getBackOutFilters() {
+    return backOutFilters;
   }
 
 
-  public void setBackOutRule(ComponentRule backOutRule) {
-    this.backOutRule = backOutRule;
+  public void setBackOutFilters(List<ComponentFilter> backOutFilters) {
+    this.backOutFilters = backOutFilters;
   }
 
 
@@ -343,9 +367,9 @@ public class FundConfiguration {
         Objects.equals(this.id, fundConfiguration.id) &&
         Objects.equals(this.displayName, fundConfiguration.displayName) &&
         Objects.equals(this.description, fundConfiguration.description) &&
-        Objects.equals(this.dealingRule, fundConfiguration.dealingRule) &&
-        Objects.equals(this.pnlRule, fundConfiguration.pnlRule) &&
-        Objects.equals(this.backOutRule, fundConfiguration.backOutRule) &&
+        Objects.equals(this.dealingFilters, fundConfiguration.dealingFilters) &&
+        Objects.equals(this.pnlFilters, fundConfiguration.pnlFilters) &&
+        Objects.equals(this.backOutFilters, fundConfiguration.backOutFilters) &&
         Objects.equals(this.properties, fundConfiguration.properties) &&
         Objects.equals(this.version, fundConfiguration.version) &&
         Objects.equals(this.links, fundConfiguration.links);
@@ -357,7 +381,7 @@ public class FundConfiguration {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, displayName, description, dealingRule, pnlRule, backOutRule, properties, version, links);
+    return Objects.hash(href, id, displayName, description, dealingFilters, pnlFilters, backOutFilters, properties, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -375,9 +399,9 @@ public class FundConfiguration {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    dealingRule: ").append(toIndentedString(dealingRule)).append("\n");
-    sb.append("    pnlRule: ").append(toIndentedString(pnlRule)).append("\n");
-    sb.append("    backOutRule: ").append(toIndentedString(backOutRule)).append("\n");
+    sb.append("    dealingFilters: ").append(toIndentedString(dealingFilters)).append("\n");
+    sb.append("    pnlFilters: ").append(toIndentedString(pnlFilters)).append("\n");
+    sb.append("    backOutFilters: ").append(toIndentedString(backOutFilters)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
@@ -407,9 +431,9 @@ public class FundConfiguration {
     openapiFields.add("id");
     openapiFields.add("displayName");
     openapiFields.add("description");
-    openapiFields.add("dealingRule");
-    openapiFields.add("pnlRule");
-    openapiFields.add("backOutRule");
+    openapiFields.add("dealingFilters");
+    openapiFields.add("pnlFilters");
+    openapiFields.add("backOutFilters");
     openapiFields.add("properties");
     openapiFields.add("version");
     openapiFields.add("links");
@@ -450,17 +474,47 @@ public class FundConfiguration {
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      // validate the optional field `dealingRule`
-      if (jsonObj.get("dealingRule") != null && !jsonObj.get("dealingRule").isJsonNull()) {
-        ComponentRule.validateJsonElement(jsonObj.get("dealingRule"));
+      if (jsonObj.get("dealingFilters") != null && !jsonObj.get("dealingFilters").isJsonNull()) {
+        JsonArray jsonArraydealingFilters = jsonObj.getAsJsonArray("dealingFilters");
+        if (jsonArraydealingFilters != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("dealingFilters").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `dealingFilters` to be an array in the JSON string but got `%s`", jsonObj.get("dealingFilters").toString()));
+          }
+
+          // validate the optional field `dealingFilters` (array)
+          for (int i = 0; i < jsonArraydealingFilters.size(); i++) {
+            ComponentFilter.validateJsonElement(jsonArraydealingFilters.get(i));
+          };
+        }
       }
-      // validate the optional field `pnlRule`
-      if (jsonObj.get("pnlRule") != null && !jsonObj.get("pnlRule").isJsonNull()) {
-        ComponentRule.validateJsonElement(jsonObj.get("pnlRule"));
+      if (jsonObj.get("pnlFilters") != null && !jsonObj.get("pnlFilters").isJsonNull()) {
+        JsonArray jsonArraypnlFilters = jsonObj.getAsJsonArray("pnlFilters");
+        if (jsonArraypnlFilters != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("pnlFilters").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `pnlFilters` to be an array in the JSON string but got `%s`", jsonObj.get("pnlFilters").toString()));
+          }
+
+          // validate the optional field `pnlFilters` (array)
+          for (int i = 0; i < jsonArraypnlFilters.size(); i++) {
+            ComponentFilter.validateJsonElement(jsonArraypnlFilters.get(i));
+          };
+        }
       }
-      // validate the optional field `backOutRule`
-      if (jsonObj.get("backOutRule") != null && !jsonObj.get("backOutRule").isJsonNull()) {
-        ComponentRule.validateJsonElement(jsonObj.get("backOutRule"));
+      if (jsonObj.get("backOutFilters") != null && !jsonObj.get("backOutFilters").isJsonNull()) {
+        JsonArray jsonArraybackOutFilters = jsonObj.getAsJsonArray("backOutFilters");
+        if (jsonArraybackOutFilters != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("backOutFilters").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `backOutFilters` to be an array in the JSON string but got `%s`", jsonObj.get("backOutFilters").toString()));
+          }
+
+          // validate the optional field `backOutFilters` (array)
+          for (int i = 0; i < jsonArraybackOutFilters.size(); i++) {
+            ComponentFilter.validateJsonElement(jsonArraybackOutFilters.get(i));
+          };
+        }
       }
       // validate the optional field `version`
       if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {

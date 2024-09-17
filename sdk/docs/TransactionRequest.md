@@ -24,6 +24,7 @@
 |**orderId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 |**allocationId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 |**custodianAccountId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
+|**transactionGroupId** | **String** | The identifier for grouping economic events across multiple transactions |  [optional] |
 
 
 

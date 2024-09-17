@@ -10,9 +10,9 @@
 |**code** | **String** |  |  |
 |**displayName** | **String** | The name of the Fund. |  [optional] |
 |**description** | **String** | A description for the Fund. |  [optional] |
-|**dealingRule** | [**ComponentRule**](ComponentRule.md) |  |  |
-|**pnlRule** | [**ComponentRule**](ComponentRule.md) |  |  |
-|**backOutRule** | [**ComponentRule**](ComponentRule.md) |  |  |
+|**dealingFilters** | [**List&lt;ComponentFilter&gt;**](ComponentFilter.md) | The set of filters used to decide which JE lines are included in the dealing. |  |
+|**pnlFilters** | [**List&lt;ComponentFilter&gt;**](ComponentFilter.md) | The set of filters used to decide which JE lines are included in the PnL. |  |
+|**backOutFilters** | [**List&lt;ComponentFilter&gt;**](ComponentFilter.md) | The set of filters used to decide which JE lines are included in the back outs. |  |
 |**properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the Fund Configuration. |  [optional] |
 
 

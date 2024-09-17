@@ -26,11 +26,17 @@ import java.io.IOException;
 
 
 import com.finbourne.lusid.model.CreateGroupReconciliationComparisonRulesetRequest;
+import com.finbourne.lusid.model.CreateGroupReconciliationDefinitionRequest;
 import com.finbourne.lusid.model.DeletedEntityResponse;
 import com.finbourne.lusid.model.GroupReconciliationComparisonRuleset;
+import com.finbourne.lusid.model.GroupReconciliationDefinition;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import java.time.OffsetDateTime;
+import com.finbourne.lusid.model.PagedResourceListOfGroupReconciliationComparisonRuleset;
+import com.finbourne.lusid.model.PagedResourceListOfGroupReconciliationDefinition;
+import com.finbourne.lusid.model.UpdateGroupReconciliationComparisonRulesetRequest;
+import com.finbourne.lusid.model.UpdateGroupReconciliationDefinitionRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -313,6 +319,244 @@ public class GroupReconciliationsApi {
     public APIcreateComparisonRulesetRequest createComparisonRuleset() {
         return new APIcreateComparisonRulesetRequest();
     }
+    private okhttp3.Call createGroupReconciliationDefinitionCall(CreateGroupReconciliationDefinitionRequest createGroupReconciliationDefinitionRequest, final ApiCallback _callback) throws ApiException {
+        return createGroupReconciliationDefinitionCall(createGroupReconciliationDefinitionRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call createGroupReconciliationDefinitionCall(CreateGroupReconciliationDefinitionRequest createGroupReconciliationDefinitionRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = createGroupReconciliationDefinitionRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/reconciliations/groupreconciliationdefinitions";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createGroupReconciliationDefinitionValidateBeforeCall(CreateGroupReconciliationDefinitionRequest createGroupReconciliationDefinitionRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return createGroupReconciliationDefinitionCall(createGroupReconciliationDefinitionRequest, _callback, opts);
+
+    }
+
+
+    private ApiResponse<GroupReconciliationDefinition> createGroupReconciliationDefinitionWithHttpInfo(CreateGroupReconciliationDefinitionRequest createGroupReconciliationDefinitionRequest) throws ApiException {
+        okhttp3.Call localVarCall = createGroupReconciliationDefinitionValidateBeforeCall(createGroupReconciliationDefinitionRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GroupReconciliationDefinition>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<GroupReconciliationDefinition> createGroupReconciliationDefinitionWithHttpInfo(CreateGroupReconciliationDefinitionRequest createGroupReconciliationDefinitionRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createGroupReconciliationDefinitionValidateBeforeCall(createGroupReconciliationDefinitionRequest, null, opts);
+        Type localVarReturnType = new TypeToken<GroupReconciliationDefinition>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call createGroupReconciliationDefinitionAsync(CreateGroupReconciliationDefinitionRequest createGroupReconciliationDefinitionRequest, final ApiCallback<GroupReconciliationDefinition> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createGroupReconciliationDefinitionValidateBeforeCall(createGroupReconciliationDefinitionRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GroupReconciliationDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call createGroupReconciliationDefinitionAsync(CreateGroupReconciliationDefinitionRequest createGroupReconciliationDefinitionRequest, final ApiCallback<GroupReconciliationDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = createGroupReconciliationDefinitionValidateBeforeCall(createGroupReconciliationDefinitionRequest, _callback, opts);
+        Type localVarReturnType = new TypeToken<GroupReconciliationDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIcreateGroupReconciliationDefinitionRequest {
+        private CreateGroupReconciliationDefinitionRequest createGroupReconciliationDefinitionRequest;
+
+        private APIcreateGroupReconciliationDefinitionRequest() {
+        }
+
+        /**
+         * Set createGroupReconciliationDefinitionRequest
+         * @param createGroupReconciliationDefinitionRequest The definition Group Reconciliation Definition details (optional)
+         * @return APIcreateGroupReconciliationDefinitionRequest
+         */
+        public APIcreateGroupReconciliationDefinitionRequest createGroupReconciliationDefinitionRequest(CreateGroupReconciliationDefinitionRequest createGroupReconciliationDefinitionRequest) {
+            this.createGroupReconciliationDefinitionRequest = createGroupReconciliationDefinitionRequest;
+            return this;
+        }
+
+        /**
+         * Build call for createGroupReconciliationDefinition
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Group Reconciliation Definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return createGroupReconciliationDefinitionCall(createGroupReconciliationDefinitionRequest, _callback);
+        }
+
+        /**
+         * Execute createGroupReconciliationDefinition request
+         * @return GroupReconciliationDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Group Reconciliation Definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GroupReconciliationDefinition execute() throws ApiException {
+            ApiResponse<GroupReconciliationDefinition> localVarResp = createGroupReconciliationDefinitionWithHttpInfo(createGroupReconciliationDefinitionRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute createGroupReconciliationDefinition request. Use any specified configuration options to override any other configuration for this request only.
+         * @return GroupReconciliationDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Group Reconciliation Definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GroupReconciliationDefinition execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<GroupReconciliationDefinition> localVarResp = createGroupReconciliationDefinitionWithHttpInfo(createGroupReconciliationDefinitionRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute createGroupReconciliationDefinition request with HTTP info returned
+         * @return ApiResponse&lt;GroupReconciliationDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Group Reconciliation Definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GroupReconciliationDefinition> executeWithHttpInfo() throws ApiException {
+            return createGroupReconciliationDefinitionWithHttpInfo(createGroupReconciliationDefinitionRequest);
+        }
+
+        /**
+         * Execute createGroupReconciliationDefinition request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;GroupReconciliationDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Group Reconciliation Definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GroupReconciliationDefinition> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return createGroupReconciliationDefinitionWithHttpInfo(createGroupReconciliationDefinitionRequest, opts);
+        }
+
+        /**
+         * Execute createGroupReconciliationDefinition request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Group Reconciliation Definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GroupReconciliationDefinition> _callback) throws ApiException {
+            return createGroupReconciliationDefinitionAsync(createGroupReconciliationDefinitionRequest, _callback);
+        }
+
+        /**
+         * Execute createGroupReconciliationDefinition request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Group Reconciliation Definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GroupReconciliationDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+            return createGroupReconciliationDefinitionAsync(createGroupReconciliationDefinitionRequest, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] CreateGroupReconciliationDefinition: Create Group Reconciliation Definition
+     * Creates a Group Reconciliation Definition
+     * @return APIcreateGroupReconciliationDefinitionRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The newly created Group Reconciliation Definition </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIcreateGroupReconciliationDefinitionRequest createGroupReconciliationDefinition() {
+        return new APIcreateGroupReconciliationDefinitionRequest();
+    }
     private okhttp3.Call deleteComparisonRulesetCall(String scope, String code, final ApiCallback _callback) throws ApiException {
         return deleteComparisonRulesetCall(scope, code,  _callback, new ConfigurationOptions());
     }
@@ -553,6 +797,247 @@ public class GroupReconciliationsApi {
      */
     public APIdeleteComparisonRulesetRequest deleteComparisonRuleset(String scope, String code) {
         return new APIdeleteComparisonRulesetRequest(scope, code);
+    }
+    private okhttp3.Call deleteGroupReconciliationDefinitionCall(String scope, String code, final ApiCallback _callback) throws ApiException {
+        return deleteGroupReconciliationDefinitionCall(scope, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteGroupReconciliationDefinitionCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/reconciliations/groupreconciliationdefinitions/{scope}/{code}"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteGroupReconciliationDefinitionValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling deleteGroupReconciliationDefinition(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling deleteGroupReconciliationDefinition(Async)");
+        }
+
+        return deleteGroupReconciliationDefinitionCall(scope, code, _callback, opts);
+
+    }
+
+
+    private ApiResponse<DeletedEntityResponse> deleteGroupReconciliationDefinitionWithHttpInfo(String scope, String code) throws ApiException {
+        okhttp3.Call localVarCall = deleteGroupReconciliationDefinitionValidateBeforeCall(scope, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteGroupReconciliationDefinitionWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteGroupReconciliationDefinitionValidateBeforeCall(scope, code, null, opts);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call deleteGroupReconciliationDefinitionAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteGroupReconciliationDefinitionValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteGroupReconciliationDefinitionAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteGroupReconciliationDefinitionValidateBeforeCall(scope, code, _callback, opts);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIdeleteGroupReconciliationDefinitionRequest {
+        private final String scope;
+        private final String code;
+
+        private APIdeleteGroupReconciliationDefinitionRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Build call for deleteGroupReconciliationDefinition
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the group reconciliation definition was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteGroupReconciliationDefinitionCall(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteGroupReconciliationDefinition request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the group reconciliation definition was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteGroupReconciliationDefinitionWithHttpInfo(scope, code);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteGroupReconciliationDefinition request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the group reconciliation definition was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteGroupReconciliationDefinitionWithHttpInfo(scope, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteGroupReconciliationDefinition request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the group reconciliation definition was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteGroupReconciliationDefinitionWithHttpInfo(scope, code);
+        }
+
+        /**
+         * Execute deleteGroupReconciliationDefinition request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the group reconciliation definition was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteGroupReconciliationDefinitionWithHttpInfo(scope, code, opts);
+        }
+
+        /**
+         * Execute deleteGroupReconciliationDefinition request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the group reconciliation definition was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteGroupReconciliationDefinitionAsync(scope, code, _callback);
+        }
+
+        /**
+         * Execute deleteGroupReconciliationDefinition request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the group reconciliation definition was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteGroupReconciliationDefinitionAsync(scope, code, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] DeleteGroupReconciliationDefinition: Delete Group Reconciliation Definition
+     * Delete the group reconciliation definition.
+     * @param scope The scope of the group reconciliation definition to delete. (required)
+     * @param code The code of the group reconciliation definition to delete. Together with the scope this uniquely identifies the group reconciliation definition to delete. (required)
+     * @return APIdeleteGroupReconciliationDefinitionRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The datetime that the group reconciliation definition was deleted </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIdeleteGroupReconciliationDefinitionRequest deleteGroupReconciliationDefinition(String scope, String code) {
+        return new APIdeleteGroupReconciliationDefinitionRequest(scope, code);
     }
     private okhttp3.Call getComparisonRulesetCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         return getComparisonRulesetCall(scope, code, asAt,  _callback, new ConfigurationOptions());
@@ -809,5 +1294,1399 @@ public class GroupReconciliationsApi {
      */
     public APIgetComparisonRulesetRequest getComparisonRuleset(String scope, String code) {
         return new APIgetComparisonRulesetRequest(scope, code);
+    }
+    private okhttp3.Call getGroupReconciliationDefinitionCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getGroupReconciliationDefinitionCall(scope, code, effectiveAt, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getGroupReconciliationDefinitionCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/reconciliations/groupreconciliationdefinitions/{scope}/{code}"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getGroupReconciliationDefinitionValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getGroupReconciliationDefinition(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling getGroupReconciliationDefinition(Async)");
+        }
+
+        return getGroupReconciliationDefinitionCall(scope, code, effectiveAt, asAt, _callback, opts);
+
+    }
+
+
+    private ApiResponse<GroupReconciliationDefinition> getGroupReconciliationDefinitionWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = getGroupReconciliationDefinitionValidateBeforeCall(scope, code, effectiveAt, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GroupReconciliationDefinition>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<GroupReconciliationDefinition> getGroupReconciliationDefinitionWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getGroupReconciliationDefinitionValidateBeforeCall(scope, code, effectiveAt, asAt, null, opts);
+        Type localVarReturnType = new TypeToken<GroupReconciliationDefinition>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getGroupReconciliationDefinitionAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<GroupReconciliationDefinition> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getGroupReconciliationDefinitionValidateBeforeCall(scope, code, effectiveAt, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GroupReconciliationDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getGroupReconciliationDefinitionAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<GroupReconciliationDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getGroupReconciliationDefinitionValidateBeforeCall(scope, code, effectiveAt, asAt, _callback, opts);
+        Type localVarReturnType = new TypeToken<GroupReconciliationDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetGroupReconciliationDefinitionRequest {
+        private final String scope;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+
+        private APIgetGroupReconciliationDefinitionRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the group reconciliation definition. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetGroupReconciliationDefinitionRequest
+         */
+        public APIgetGroupReconciliationDefinitionRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the group reconciliation definition. Defaults to return the latest version of the portfolio group definition if not specified. (optional)
+         * @return APIgetGroupReconciliationDefinitionRequest
+         */
+        public APIgetGroupReconciliationDefinitionRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getGroupReconciliationDefinition
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested group reconciliation definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getGroupReconciliationDefinitionCall(scope, code, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getGroupReconciliationDefinition request
+         * @return GroupReconciliationDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested group reconciliation definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GroupReconciliationDefinition execute() throws ApiException {
+            ApiResponse<GroupReconciliationDefinition> localVarResp = getGroupReconciliationDefinitionWithHttpInfo(scope, code, effectiveAt, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getGroupReconciliationDefinition request. Use any specified configuration options to override any other configuration for this request only.
+         * @return GroupReconciliationDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested group reconciliation definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GroupReconciliationDefinition execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<GroupReconciliationDefinition> localVarResp = getGroupReconciliationDefinitionWithHttpInfo(scope, code, effectiveAt, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getGroupReconciliationDefinition request with HTTP info returned
+         * @return ApiResponse&lt;GroupReconciliationDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested group reconciliation definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GroupReconciliationDefinition> executeWithHttpInfo() throws ApiException {
+            return getGroupReconciliationDefinitionWithHttpInfo(scope, code, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getGroupReconciliationDefinition request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;GroupReconciliationDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested group reconciliation definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GroupReconciliationDefinition> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getGroupReconciliationDefinitionWithHttpInfo(scope, code, effectiveAt, asAt, opts);
+        }
+
+        /**
+         * Execute getGroupReconciliationDefinition request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested group reconciliation definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GroupReconciliationDefinition> _callback) throws ApiException {
+            return getGroupReconciliationDefinitionAsync(scope, code, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getGroupReconciliationDefinition request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested group reconciliation definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GroupReconciliationDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+            return getGroupReconciliationDefinitionAsync(scope, code, effectiveAt, asAt, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] GetGroupReconciliationDefinition: Get group reconciliation definition
+     * Retrieves a Group Reconciliation Definition by scope and code
+     * @param scope The scope of the group reconciliation definition to retrieve. (required)
+     * @param code The code of the group reconciliation definition to retrieve. Together with the scope   this uniquely identifies the group reconciliation definition. (required)
+     * @return APIgetGroupReconciliationDefinitionRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested group reconciliation definition </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetGroupReconciliationDefinitionRequest getGroupReconciliationDefinition(String scope, String code) {
+        return new APIgetGroupReconciliationDefinitionRequest(scope, code);
+    }
+    private okhttp3.Call listComparisonRulesetsCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+        return listComparisonRulesetsCall(asAt, page, sortBy, limit, filter,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listComparisonRulesetsCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/reconciliations/comparisonrulesets";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (sortBy != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "sortBy", sortBy));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listComparisonRulesetsValidateBeforeCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listComparisonRulesetsCall(asAt, page, sortBy, limit, filter, _callback, opts);
+
+    }
+
+
+    private ApiResponse<PagedResourceListOfGroupReconciliationComparisonRuleset> listComparisonRulesetsWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter) throws ApiException {
+        okhttp3.Call localVarCall = listComparisonRulesetsValidateBeforeCall(asAt, page, sortBy, limit, filter, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfGroupReconciliationComparisonRuleset>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfGroupReconciliationComparisonRuleset> listComparisonRulesetsWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listComparisonRulesetsValidateBeforeCall(asAt, page, sortBy, limit, filter, null, opts);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfGroupReconciliationComparisonRuleset>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listComparisonRulesetsAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback<PagedResourceListOfGroupReconciliationComparisonRuleset> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listComparisonRulesetsValidateBeforeCall(asAt, page, sortBy, limit, filter, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfGroupReconciliationComparisonRuleset>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listComparisonRulesetsAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback<PagedResourceListOfGroupReconciliationComparisonRuleset> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listComparisonRulesetsValidateBeforeCall(asAt, page, sortBy, limit, filter, _callback, opts);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfGroupReconciliationComparisonRuleset>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIlistComparisonRulesetsRequest {
+        private OffsetDateTime asAt;
+        private String page;
+        private List<String> sortBy;
+        private Integer limit;
+        private String filter;
+
+        private APIlistComparisonRulesetsRequest() {
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the staging rule sets. Defaults to return the latest   version of the staging rule sets if not specified. (optional)
+         * @return APIlistComparisonRulesetsRequest
+         */
+        public APIlistComparisonRulesetsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing comparison rulesets from a previous call to list   comparison rulesets. This value is returned from the previous call. If a pagination token is provided the sortBy,   filter, effectiveAt, and asAt fields must not have changed since the original request. (optional)
+         * @return APIlistComparisonRulesetsRequest
+         */
+        public APIlistComparisonRulesetsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @return APIlistComparisonRulesetsRequest
+         */
+        public APIlistComparisonRulesetsRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many per page. (optional)
+         * @return APIlistComparisonRulesetsRequest
+         */
+        public APIlistComparisonRulesetsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIlistComparisonRulesetsRequest
+         */
+        public APIlistComparisonRulesetsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Build call for listComparisonRulesets
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested list of comparison rulesets </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listComparisonRulesetsCall(asAt, page, sortBy, limit, filter, _callback);
+        }
+
+        /**
+         * Execute listComparisonRulesets request
+         * @return PagedResourceListOfGroupReconciliationComparisonRuleset
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested list of comparison rulesets </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfGroupReconciliationComparisonRuleset execute() throws ApiException {
+            ApiResponse<PagedResourceListOfGroupReconciliationComparisonRuleset> localVarResp = listComparisonRulesetsWithHttpInfo(asAt, page, sortBy, limit, filter);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listComparisonRulesets request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfGroupReconciliationComparisonRuleset
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested list of comparison rulesets </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfGroupReconciliationComparisonRuleset execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfGroupReconciliationComparisonRuleset> localVarResp = listComparisonRulesetsWithHttpInfo(asAt, page, sortBy, limit, filter, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listComparisonRulesets request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfGroupReconciliationComparisonRuleset&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested list of comparison rulesets </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfGroupReconciliationComparisonRuleset> executeWithHttpInfo() throws ApiException {
+            return listComparisonRulesetsWithHttpInfo(asAt, page, sortBy, limit, filter);
+        }
+
+        /**
+         * Execute listComparisonRulesets request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfGroupReconciliationComparisonRuleset&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested list of comparison rulesets </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfGroupReconciliationComparisonRuleset> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listComparisonRulesetsWithHttpInfo(asAt, page, sortBy, limit, filter, opts);
+        }
+
+        /**
+         * Execute listComparisonRulesets request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested list of comparison rulesets </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfGroupReconciliationComparisonRuleset> _callback) throws ApiException {
+            return listComparisonRulesetsAsync(asAt, page, sortBy, limit, filter, _callback);
+        }
+
+        /**
+         * Execute listComparisonRulesets request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested list of comparison rulesets </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfGroupReconciliationComparisonRuleset> _callback, ConfigurationOptions opts) throws ApiException {
+            return listComparisonRulesetsAsync(asAt, page, sortBy, limit, filter, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] ListComparisonRulesets: Get a set of Group Reconciliation Comparison Rulesets
+     * Retrieves all Group Reconciliation Comparison Ruleset that fit the filter, in a specific order if sortBy is provided  Supports pagination
+     * @return APIlistComparisonRulesetsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested list of comparison rulesets </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIlistComparisonRulesetsRequest listComparisonRulesets() {
+        return new APIlistComparisonRulesetsRequest();
+    }
+    private okhttp3.Call listGroupReconciliationDefinitionsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
+        return listGroupReconciliationDefinitionsCall(effectiveAt, asAt, page, limit, filter, sortBy,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listGroupReconciliationDefinitionsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/reconciliations/groupreconciliationdefinitions";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
+        if (sortBy != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "sortBy", sortBy));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listGroupReconciliationDefinitionsValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listGroupReconciliationDefinitionsCall(effectiveAt, asAt, page, limit, filter, sortBy, _callback, opts);
+
+    }
+
+
+    private ApiResponse<PagedResourceListOfGroupReconciliationDefinition> listGroupReconciliationDefinitionsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy) throws ApiException {
+        okhttp3.Call localVarCall = listGroupReconciliationDefinitionsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfGroupReconciliationDefinition>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfGroupReconciliationDefinition> listGroupReconciliationDefinitionsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listGroupReconciliationDefinitionsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, null, opts);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfGroupReconciliationDefinition>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listGroupReconciliationDefinitionsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfGroupReconciliationDefinition> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listGroupReconciliationDefinitionsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfGroupReconciliationDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listGroupReconciliationDefinitionsAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfGroupReconciliationDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listGroupReconciliationDefinitionsValidateBeforeCall(effectiveAt, asAt, page, limit, filter, sortBy, _callback, opts);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfGroupReconciliationDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIlistGroupReconciliationDefinitionsRequest {
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer limit;
+        private String filter;
+        private List<String> sortBy;
+
+        private APIlistGroupReconciliationDefinitionsRequest() {
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to list the group reconciliation definitions. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIlistGroupReconciliationDefinitionsRequest
+         */
+        public APIlistGroupReconciliationDefinitionsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the group reconciliation definitions. Defaults to return the latest version of each group reconciliation definition if not specified. (optional)
+         * @return APIlistGroupReconciliationDefinitionsRequest
+         */
+        public APIlistGroupReconciliationDefinitionsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing group reconciliation definitions from a previous call to list group reconciliation definitions. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy  and asAt fields must not have changed since the original request. (optional)
+         * @return APIlistGroupReconciliationDefinitionsRequest
+         */
+        public APIlistGroupReconciliationDefinitionsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. Defaults to no limit if not specified. (optional)
+         * @return APIlistGroupReconciliationDefinitionsRequest
+         */
+        public APIlistGroupReconciliationDefinitionsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set.   For example, to filter on the Display Name, use \&quot;displayName eq &#39;string&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIlistGroupReconciliationDefinitionsRequest
+         */
+        public APIlistGroupReconciliationDefinitionsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @return APIlistGroupReconciliationDefinitionsRequest
+         */
+        public APIlistGroupReconciliationDefinitionsRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Build call for listGroupReconciliationDefinitions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The group reconciliation definition in the specified scope </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listGroupReconciliationDefinitionsCall(effectiveAt, asAt, page, limit, filter, sortBy, _callback);
+        }
+
+        /**
+         * Execute listGroupReconciliationDefinitions request
+         * @return PagedResourceListOfGroupReconciliationDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The group reconciliation definition in the specified scope </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfGroupReconciliationDefinition execute() throws ApiException {
+            ApiResponse<PagedResourceListOfGroupReconciliationDefinition> localVarResp = listGroupReconciliationDefinitionsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listGroupReconciliationDefinitions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfGroupReconciliationDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The group reconciliation definition in the specified scope </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfGroupReconciliationDefinition execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfGroupReconciliationDefinition> localVarResp = listGroupReconciliationDefinitionsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listGroupReconciliationDefinitions request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfGroupReconciliationDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The group reconciliation definition in the specified scope </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfGroupReconciliationDefinition> executeWithHttpInfo() throws ApiException {
+            return listGroupReconciliationDefinitionsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy);
+        }
+
+        /**
+         * Execute listGroupReconciliationDefinitions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfGroupReconciliationDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The group reconciliation definition in the specified scope </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfGroupReconciliationDefinition> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listGroupReconciliationDefinitionsWithHttpInfo(effectiveAt, asAt, page, limit, filter, sortBy, opts);
+        }
+
+        /**
+         * Execute listGroupReconciliationDefinitions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The group reconciliation definition in the specified scope </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfGroupReconciliationDefinition> _callback) throws ApiException {
+            return listGroupReconciliationDefinitionsAsync(effectiveAt, asAt, page, limit, filter, sortBy, _callback);
+        }
+
+        /**
+         * Execute listGroupReconciliationDefinitions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The group reconciliation definition in the specified scope </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfGroupReconciliationDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+            return listGroupReconciliationDefinitionsAsync(effectiveAt, asAt, page, limit, filter, sortBy, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] ListGroupReconciliationDefinitions: List group reconciliation definitions
+     * Lists Group Reconciliation Definitions matching any provided filter, limit and sorting rules
+     * @return APIlistGroupReconciliationDefinitionsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The group reconciliation definition in the specified scope </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIlistGroupReconciliationDefinitionsRequest listGroupReconciliationDefinitions() {
+        return new APIlistGroupReconciliationDefinitionsRequest();
+    }
+    private okhttp3.Call updateComparisonRulesetCall(String scope, String code, UpdateGroupReconciliationComparisonRulesetRequest updateGroupReconciliationComparisonRulesetRequest, final ApiCallback _callback) throws ApiException {
+        return updateComparisonRulesetCall(scope, code, updateGroupReconciliationComparisonRulesetRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call updateComparisonRulesetCall(String scope, String code, UpdateGroupReconciliationComparisonRulesetRequest updateGroupReconciliationComparisonRulesetRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = updateGroupReconciliationComparisonRulesetRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/reconciliations/comparisonrulesets/{scope}/{code}"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateComparisonRulesetValidateBeforeCall(String scope, String code, UpdateGroupReconciliationComparisonRulesetRequest updateGroupReconciliationComparisonRulesetRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling updateComparisonRuleset(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling updateComparisonRuleset(Async)");
+        }
+
+        return updateComparisonRulesetCall(scope, code, updateGroupReconciliationComparisonRulesetRequest, _callback, opts);
+
+    }
+
+
+    private ApiResponse<GroupReconciliationComparisonRuleset> updateComparisonRulesetWithHttpInfo(String scope, String code, UpdateGroupReconciliationComparisonRulesetRequest updateGroupReconciliationComparisonRulesetRequest) throws ApiException {
+        okhttp3.Call localVarCall = updateComparisonRulesetValidateBeforeCall(scope, code, updateGroupReconciliationComparisonRulesetRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GroupReconciliationComparisonRuleset>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<GroupReconciliationComparisonRuleset> updateComparisonRulesetWithHttpInfo(String scope, String code, UpdateGroupReconciliationComparisonRulesetRequest updateGroupReconciliationComparisonRulesetRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = updateComparisonRulesetValidateBeforeCall(scope, code, updateGroupReconciliationComparisonRulesetRequest, null, opts);
+        Type localVarReturnType = new TypeToken<GroupReconciliationComparisonRuleset>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call updateComparisonRulesetAsync(String scope, String code, UpdateGroupReconciliationComparisonRulesetRequest updateGroupReconciliationComparisonRulesetRequest, final ApiCallback<GroupReconciliationComparisonRuleset> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateComparisonRulesetValidateBeforeCall(scope, code, updateGroupReconciliationComparisonRulesetRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GroupReconciliationComparisonRuleset>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call updateComparisonRulesetAsync(String scope, String code, UpdateGroupReconciliationComparisonRulesetRequest updateGroupReconciliationComparisonRulesetRequest, final ApiCallback<GroupReconciliationComparisonRuleset> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = updateComparisonRulesetValidateBeforeCall(scope, code, updateGroupReconciliationComparisonRulesetRequest, _callback, opts);
+        Type localVarReturnType = new TypeToken<GroupReconciliationComparisonRuleset>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupdateComparisonRulesetRequest {
+        private final String scope;
+        private final String code;
+        private UpdateGroupReconciliationComparisonRulesetRequest updateGroupReconciliationComparisonRulesetRequest;
+
+        private APIupdateComparisonRulesetRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set updateGroupReconciliationComparisonRulesetRequest
+         * @param updateGroupReconciliationComparisonRulesetRequest The request containing the updated details of the ruleset (optional)
+         * @return APIupdateComparisonRulesetRequest
+         */
+        public APIupdateComparisonRulesetRequest updateGroupReconciliationComparisonRulesetRequest(UpdateGroupReconciliationComparisonRulesetRequest updateGroupReconciliationComparisonRulesetRequest) {
+            this.updateGroupReconciliationComparisonRulesetRequest = updateGroupReconciliationComparisonRulesetRequest;
+            return this;
+        }
+
+        /**
+         * Build call for updateComparisonRuleset
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated version of the requested comparison ruleset </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return updateComparisonRulesetCall(scope, code, updateGroupReconciliationComparisonRulesetRequest, _callback);
+        }
+
+        /**
+         * Execute updateComparisonRuleset request
+         * @return GroupReconciliationComparisonRuleset
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated version of the requested comparison ruleset </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GroupReconciliationComparisonRuleset execute() throws ApiException {
+            ApiResponse<GroupReconciliationComparisonRuleset> localVarResp = updateComparisonRulesetWithHttpInfo(scope, code, updateGroupReconciliationComparisonRulesetRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute updateComparisonRuleset request. Use any specified configuration options to override any other configuration for this request only.
+         * @return GroupReconciliationComparisonRuleset
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated version of the requested comparison ruleset </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GroupReconciliationComparisonRuleset execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<GroupReconciliationComparisonRuleset> localVarResp = updateComparisonRulesetWithHttpInfo(scope, code, updateGroupReconciliationComparisonRulesetRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute updateComparisonRuleset request with HTTP info returned
+         * @return ApiResponse&lt;GroupReconciliationComparisonRuleset&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated version of the requested comparison ruleset </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GroupReconciliationComparisonRuleset> executeWithHttpInfo() throws ApiException {
+            return updateComparisonRulesetWithHttpInfo(scope, code, updateGroupReconciliationComparisonRulesetRequest);
+        }
+
+        /**
+         * Execute updateComparisonRuleset request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;GroupReconciliationComparisonRuleset&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated version of the requested comparison ruleset </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GroupReconciliationComparisonRuleset> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return updateComparisonRulesetWithHttpInfo(scope, code, updateGroupReconciliationComparisonRulesetRequest, opts);
+        }
+
+        /**
+         * Execute updateComparisonRuleset request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated version of the requested comparison ruleset </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GroupReconciliationComparisonRuleset> _callback) throws ApiException {
+            return updateComparisonRulesetAsync(scope, code, updateGroupReconciliationComparisonRulesetRequest, _callback);
+        }
+
+        /**
+         * Execute updateComparisonRuleset request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated version of the requested comparison ruleset </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GroupReconciliationComparisonRuleset> _callback, ConfigurationOptions opts) throws ApiException {
+            return updateComparisonRulesetAsync(scope, code, updateGroupReconciliationComparisonRulesetRequest, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] UpdateComparisonRuleset: Update Group Reconciliation Comparison Ruleset defined by scope and code
+     * Overwrites an existing Group Reconciliation Comparison Ruleset  Update request has the same required fields as Create apart from the Id
+     * @param scope The scope of the specified comparison ruleset. (required)
+     * @param code The code of the specified comparison ruleset. Together with the domain and scope this uniquely   identifies the reconciliation comparison ruleset. (required)
+     * @return APIupdateComparisonRulesetRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The updated version of the requested comparison ruleset </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIupdateComparisonRulesetRequest updateComparisonRuleset(String scope, String code) {
+        return new APIupdateComparisonRulesetRequest(scope, code);
+    }
+    private okhttp3.Call updateGroupReconciliationDefinitionCall(String scope, String code, UpdateGroupReconciliationDefinitionRequest updateGroupReconciliationDefinitionRequest, final ApiCallback _callback) throws ApiException {
+        return updateGroupReconciliationDefinitionCall(scope, code, updateGroupReconciliationDefinitionRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call updateGroupReconciliationDefinitionCall(String scope, String code, UpdateGroupReconciliationDefinitionRequest updateGroupReconciliationDefinitionRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = updateGroupReconciliationDefinitionRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/reconciliations/groupreconciliationdefinitions/{scope}/{code}"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateGroupReconciliationDefinitionValidateBeforeCall(String scope, String code, UpdateGroupReconciliationDefinitionRequest updateGroupReconciliationDefinitionRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling updateGroupReconciliationDefinition(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling updateGroupReconciliationDefinition(Async)");
+        }
+
+        return updateGroupReconciliationDefinitionCall(scope, code, updateGroupReconciliationDefinitionRequest, _callback, opts);
+
+    }
+
+
+    private ApiResponse<GroupReconciliationDefinition> updateGroupReconciliationDefinitionWithHttpInfo(String scope, String code, UpdateGroupReconciliationDefinitionRequest updateGroupReconciliationDefinitionRequest) throws ApiException {
+        okhttp3.Call localVarCall = updateGroupReconciliationDefinitionValidateBeforeCall(scope, code, updateGroupReconciliationDefinitionRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GroupReconciliationDefinition>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<GroupReconciliationDefinition> updateGroupReconciliationDefinitionWithHttpInfo(String scope, String code, UpdateGroupReconciliationDefinitionRequest updateGroupReconciliationDefinitionRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = updateGroupReconciliationDefinitionValidateBeforeCall(scope, code, updateGroupReconciliationDefinitionRequest, null, opts);
+        Type localVarReturnType = new TypeToken<GroupReconciliationDefinition>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call updateGroupReconciliationDefinitionAsync(String scope, String code, UpdateGroupReconciliationDefinitionRequest updateGroupReconciliationDefinitionRequest, final ApiCallback<GroupReconciliationDefinition> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateGroupReconciliationDefinitionValidateBeforeCall(scope, code, updateGroupReconciliationDefinitionRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<GroupReconciliationDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call updateGroupReconciliationDefinitionAsync(String scope, String code, UpdateGroupReconciliationDefinitionRequest updateGroupReconciliationDefinitionRequest, final ApiCallback<GroupReconciliationDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = updateGroupReconciliationDefinitionValidateBeforeCall(scope, code, updateGroupReconciliationDefinitionRequest, _callback, opts);
+        Type localVarReturnType = new TypeToken<GroupReconciliationDefinition>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupdateGroupReconciliationDefinitionRequest {
+        private final String scope;
+        private final String code;
+        private UpdateGroupReconciliationDefinitionRequest updateGroupReconciliationDefinitionRequest;
+
+        private APIupdateGroupReconciliationDefinitionRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set updateGroupReconciliationDefinitionRequest
+         * @param updateGroupReconciliationDefinitionRequest The updated group reconciliation definition. (optional)
+         * @return APIupdateGroupReconciliationDefinitionRequest
+         */
+        public APIupdateGroupReconciliationDefinitionRequest updateGroupReconciliationDefinitionRequest(UpdateGroupReconciliationDefinitionRequest updateGroupReconciliationDefinitionRequest) {
+            this.updateGroupReconciliationDefinitionRequest = updateGroupReconciliationDefinitionRequest;
+            return this;
+        }
+
+        /**
+         * Build call for updateGroupReconciliationDefinition
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated details of the group reconciliation definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return updateGroupReconciliationDefinitionCall(scope, code, updateGroupReconciliationDefinitionRequest, _callback);
+        }
+
+        /**
+         * Execute updateGroupReconciliationDefinition request
+         * @return GroupReconciliationDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated details of the group reconciliation definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GroupReconciliationDefinition execute() throws ApiException {
+            ApiResponse<GroupReconciliationDefinition> localVarResp = updateGroupReconciliationDefinitionWithHttpInfo(scope, code, updateGroupReconciliationDefinitionRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute updateGroupReconciliationDefinition request. Use any specified configuration options to override any other configuration for this request only.
+         * @return GroupReconciliationDefinition
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated details of the group reconciliation definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public GroupReconciliationDefinition execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<GroupReconciliationDefinition> localVarResp = updateGroupReconciliationDefinitionWithHttpInfo(scope, code, updateGroupReconciliationDefinitionRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute updateGroupReconciliationDefinition request with HTTP info returned
+         * @return ApiResponse&lt;GroupReconciliationDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated details of the group reconciliation definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GroupReconciliationDefinition> executeWithHttpInfo() throws ApiException {
+            return updateGroupReconciliationDefinitionWithHttpInfo(scope, code, updateGroupReconciliationDefinitionRequest);
+        }
+
+        /**
+         * Execute updateGroupReconciliationDefinition request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;GroupReconciliationDefinition&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated details of the group reconciliation definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<GroupReconciliationDefinition> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return updateGroupReconciliationDefinitionWithHttpInfo(scope, code, updateGroupReconciliationDefinitionRequest, opts);
+        }
+
+        /**
+         * Execute updateGroupReconciliationDefinition request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated details of the group reconciliation definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GroupReconciliationDefinition> _callback) throws ApiException {
+            return updateGroupReconciliationDefinitionAsync(scope, code, updateGroupReconciliationDefinitionRequest, _callback);
+        }
+
+        /**
+         * Execute updateGroupReconciliationDefinition request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated details of the group reconciliation definition </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<GroupReconciliationDefinition> _callback, ConfigurationOptions opts) throws ApiException {
+            return updateGroupReconciliationDefinitionAsync(scope, code, updateGroupReconciliationDefinitionRequest, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] UpdateGroupReconciliationDefinition: Update group reconciliation definition
+     * Update the group reconciliation definition.
+     * @param scope The scope of the group reconciliation definition to update the details for. (required)
+     * @param code The code of the group reconciliation definition to update the details for. Together with the scope this uniquely identifies the group reconciliation definition. (required)
+     * @return APIupdateGroupReconciliationDefinitionRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The updated details of the group reconciliation definition </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIupdateGroupReconciliationDefinitionRequest updateGroupReconciliationDefinition(String scope, String code) {
+        return new APIupdateGroupReconciliationDefinitionRequest(scope, code);
     }
 }

@@ -16,6 +16,7 @@ import com.finbourne.lusid.model.LusidInstrument;
 import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.Relationship;
 import com.finbourne.lusid.model.ResourceId;
+import com.finbourne.lusid.model.SettlementCycle;
 import com.finbourne.lusid.model.StagedModificationsInfo;
 import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
@@ -225,6 +226,10 @@ public class Instrument {
   public static final String SERIALIZED_NAME_RELATIONSHIPS = "relationships";
   @SerializedName(SERIALIZED_NAME_RELATIONSHIPS)
   private List<Relationship> relationships;
+
+  public static final String SERIALIZED_NAME_SETTLEMENT_CYCLE = "settlementCycle";
+  @SerializedName(SERIALIZED_NAME_SETTLEMENT_CYCLE)
+  private SettlementCycle settlementCycle;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -551,6 +556,27 @@ public class Instrument {
   }
 
 
+  public Instrument settlementCycle(SettlementCycle settlementCycle) {
+    
+    this.settlementCycle = settlementCycle;
+    return this;
+  }
+
+   /**
+   * Get settlementCycle
+   * @return settlementCycle
+  **/
+  @jakarta.annotation.Nullable
+  public SettlementCycle getSettlementCycle() {
+    return settlementCycle;
+  }
+
+
+  public void setSettlementCycle(SettlementCycle settlementCycle) {
+    this.settlementCycle = settlementCycle;
+  }
+
+
   public Instrument links(List<Link> links) {
     
     this.links = links;
@@ -604,6 +630,7 @@ public class Instrument {
         Objects.equals(this.assetClass, instrument.assetClass) &&
         Objects.equals(this.domCcy, instrument.domCcy) &&
         Objects.equals(this.relationships, instrument.relationships) &&
+        Objects.equals(this.settlementCycle, instrument.settlementCycle) &&
         Objects.equals(this.links, instrument.links);
   }
 
@@ -613,7 +640,7 @@ public class Instrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, scope, lusidInstrumentId, version, stagedModifications, name, identifiers, properties, lookthroughPortfolio, instrumentDefinition, state, assetClass, domCcy, relationships, links);
+    return Objects.hash(href, scope, lusidInstrumentId, version, stagedModifications, name, identifiers, properties, lookthroughPortfolio, instrumentDefinition, state, assetClass, domCcy, relationships, settlementCycle, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -641,6 +668,7 @@ public class Instrument {
     sb.append("    assetClass: ").append(toIndentedString(assetClass)).append("\n");
     sb.append("    domCcy: ").append(toIndentedString(domCcy)).append("\n");
     sb.append("    relationships: ").append(toIndentedString(relationships)).append("\n");
+    sb.append("    settlementCycle: ").append(toIndentedString(settlementCycle)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -678,6 +706,7 @@ public class Instrument {
     openapiFields.add("assetClass");
     openapiFields.add("domCcy");
     openapiFields.add("relationships");
+    openapiFields.add("settlementCycle");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -771,6 +800,10 @@ public class Instrument {
             Relationship.validateJsonElement(jsonArrayrelationships.get(i));
           };
         }
+      }
+      // validate the optional field `settlementCycle`
+      if (jsonObj.get("settlementCycle") != null && !jsonObj.get("settlementCycle").isJsonNull()) {
+        SettlementCycle.validateJsonElement(jsonObj.get("settlementCycle"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

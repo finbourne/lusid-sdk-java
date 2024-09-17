@@ -30,6 +30,7 @@ A list of transactions.
 |**orderId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 |**allocationId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 |**custodianAccount** | [**CustodianAccount**](CustodianAccount.md) |  |  [optional] |
+|**transactionGroupId** | **String** | The identifier for grouping economic events across multiple transactions |  [optional] |
 
 
 

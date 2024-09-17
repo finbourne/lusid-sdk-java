@@ -4,7 +4,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**batchUpsertInstrumentProperties**](InstrumentsApi.md#batchUpsertInstrumentProperties) | **POST** /api/instruments/$batchupsertproperties | [EARLY ACCESS] BatchUpsertInstrumentProperties: Batch upsert instruments properties |
+| [**batchUpsertInstrumentProperties**](InstrumentsApi.md#batchUpsertInstrumentProperties) | **POST** /api/instruments/$batchupsertproperties | BatchUpsertInstrumentProperties: Batch upsert instruments properties |
 | [**deleteInstrument**](InstrumentsApi.md#deleteInstrument) | **DELETE** /api/instruments/{identifierType}/{identifier} | DeleteInstrument: Soft delete a single instrument |
 | [**deleteInstrumentProperties**](InstrumentsApi.md#deleteInstrumentProperties) | **POST** /api/instruments/{identifierType}/{identifier}/properties/$delete | [EARLY ACCESS] DeleteInstrumentProperties: Delete instrument properties |
 | [**deleteInstruments**](InstrumentsApi.md#deleteInstruments) | **POST** /api/instruments/$delete | DeleteInstruments: Soft or hard delete multiple instruments |
@@ -14,8 +14,8 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**getInstrument**](InstrumentsApi.md#getInstrument) | **GET** /api/instruments/{identifierType}/{identifier} | GetInstrument: Get instrument |
 | [**getInstrumentIdentifierTypes**](InstrumentsApi.md#getInstrumentIdentifierTypes) | **GET** /api/instruments/identifierTypes | GetInstrumentIdentifierTypes: Get instrument identifier types |
 | [**getInstrumentPaymentDiary**](InstrumentsApi.md#getInstrumentPaymentDiary) | **GET** /api/instruments/{identifierType}/{identifier}/paymentdiary | [EXPERIMENTAL] GetInstrumentPaymentDiary: Get instrument payment diary |
-| [**getInstrumentProperties**](InstrumentsApi.md#getInstrumentProperties) | **GET** /api/instruments/{identifierType}/{identifier}/properties | [EARLY ACCESS] GetInstrumentProperties: Get instrument properties |
-| [**getInstrumentPropertyTimeSeries**](InstrumentsApi.md#getInstrumentPropertyTimeSeries) | **GET** /api/instruments/{identifierType}/{identifier}/properties/time-series | [EARLY ACCESS] GetInstrumentPropertyTimeSeries: Get instrument property time series |
+| [**getInstrumentProperties**](InstrumentsApi.md#getInstrumentProperties) | **GET** /api/instruments/{identifierType}/{identifier}/properties | GetInstrumentProperties: Get instrument properties |
+| [**getInstrumentPropertyTimeSeries**](InstrumentsApi.md#getInstrumentPropertyTimeSeries) | **GET** /api/instruments/{identifierType}/{identifier}/properties/time-series | GetInstrumentPropertyTimeSeries: Get instrument property time series |
 | [**getInstrumentRelationships**](InstrumentsApi.md#getInstrumentRelationships) | **GET** /api/instruments/{identifierType}/{identifier}/relationships | [EARLY ACCESS] GetInstrumentRelationships: Get Instrument relationships |
 | [**getInstruments**](InstrumentsApi.md#getInstruments) | **POST** /api/instruments/$get | GetInstruments: Get instruments |
 | [**listInstrumentProperties**](InstrumentsApi.md#listInstrumentProperties) | **GET** /api/instruments/{identifierType}/{identifier}/properties/list | [EARLY ACCESS] ListInstrumentProperties: Get instrument properties (with Pagination) |
@@ -31,7 +31,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 > BatchUpsertInstrumentPropertiesResponse batchUpsertInstrumentProperties(requestBody, scope, identifierEffectiveAt, successMode)
 
-[EARLY ACCESS] BatchUpsertInstrumentProperties: Batch upsert instruments properties
+BatchUpsertInstrumentProperties: Batch upsert instruments properties
 
 Create or update one or more properties for particular instruments.    Each instrument property is updated if it exists and created if it does not. For any failures, a reason  is provided.    Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime from which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
 
@@ -1004,7 +1004,7 @@ public class InstrumentsApiExample {
 
 > InstrumentProperties getInstrumentProperties(identifierType, identifier, effectiveAt, asAt, scope)
 
-[EARLY ACCESS] GetInstrumentProperties: Get instrument properties
+GetInstrumentProperties: Get instrument properties
 
 List all the properties of a particular instrument, as identified by a particular unique identifier.
 
@@ -1103,7 +1103,7 @@ public class InstrumentsApiExample {
 
 > ResourceListOfPropertyInterval getInstrumentPropertyTimeSeries(identifierType, identifier, propertyKey, identifierEffectiveAt, asAt, filter, page, limit, scope)
 
-[EARLY ACCESS] GetInstrumentPropertyTimeSeries: Get instrument property time series
+GetInstrumentPropertyTimeSeries: Get instrument property time series
 
 Retrieve the complete time series (history) for a particular property of an instrument.
 

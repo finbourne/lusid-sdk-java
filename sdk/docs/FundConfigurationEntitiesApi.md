@@ -1,14 +1,14 @@
-# FundConfigurationsApi
+# FundConfigurationEntitiesApi
 
 All URIs are relative to *https://www.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createFundConfiguration**](FundConfigurationsApi.md#createFundConfiguration) | **POST** /api/fundconfigurations/{scope} | [EXPERIMENTAL] CreateFundConfiguration: Create a FundConfiguration. |
-| [**deleteFundConfiguration**](FundConfigurationsApi.md#deleteFundConfiguration) | **DELETE** /api/fundconfigurations/{scope}/{code} | [EXPERIMENTAL] DeleteFundConfiguration: Delete a FundConfiguration. |
-| [**getFundConfiguration**](FundConfigurationsApi.md#getFundConfiguration) | **GET** /api/fundconfigurations/{scope}/{code} | [EXPERIMENTAL] GetFundConfiguration: Get FundConfiguration. |
-| [**listFundConfigurations**](FundConfigurationsApi.md#listFundConfigurations) | **GET** /api/fundconfigurations | [EXPERIMENTAL] ListFundConfigurations: List FundConfiguration. |
-| [**upsertFundConfigurationProperties**](FundConfigurationsApi.md#upsertFundConfigurationProperties) | **POST** /api/fundconfigurations/{scope}/{code}/properties/$upsert | [EXPERIMENTAL] UpsertFundConfigurationProperties: Upsert FundConfiguration properties |
+| [**createFundConfiguration**](FundConfigurationEntitiesApi.md#createFundConfiguration) | **POST** /api/fundconfigurations/{scope} | [EXPERIMENTAL] CreateFundConfiguration: Create a FundConfiguration. |
+| [**deleteFundConfiguration**](FundConfigurationEntitiesApi.md#deleteFundConfiguration) | **DELETE** /api/fundconfigurations/{scope}/{code} | [EXPERIMENTAL] DeleteFundConfiguration: Delete a FundConfiguration. |
+| [**getFundConfiguration**](FundConfigurationEntitiesApi.md#getFundConfiguration) | **GET** /api/fundconfigurations/{scope}/{code} | [EXPERIMENTAL] GetFundConfiguration: Get FundConfiguration. |
+| [**listFundConfigurations**](FundConfigurationEntitiesApi.md#listFundConfigurations) | **GET** /api/fundconfigurations | [EXPERIMENTAL] ListFundConfigurations: List FundConfiguration. |
+| [**upsertFundConfigurationProperties**](FundConfigurationEntitiesApi.md#upsertFundConfigurationProperties) | **POST** /api/fundconfigurations/{scope}/{code}/properties/$upsert | [EXPERIMENTAL] UpsertFundConfigurationProperties: Upsert FundConfiguration properties |
 
 
 
@@ -24,7 +24,7 @@ Create the given FundConfiguration.
 
 ```java
 import com.finbourne.lusid.model.*;
-import com.finbourne.lusid.api.FundConfigurationsApi;
+import com.finbourne.lusid.api.FundConfigurationEntitiesApi;
 import com.finbourne.lusid.extensions.ApiConfigurationException;
 import com.finbourne.lusid.extensions.ApiFactoryBuilder;
 import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
@@ -33,7 +33,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 
-public class FundConfigurationsApiExample {
+public class FundConfigurationEntitiesApiExample {
 
     public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
         String fileName = "secrets.json";
@@ -56,9 +56,9 @@ public class FundConfigurationsApiExample {
         
         // uncomment the below to use an api factory with overrides
         // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
-        // FundConfigurationsApi apiInstance = apiFactory.build(FundConfigurationsApi.class);
+        // FundConfigurationEntitiesApi apiInstance = apiFactory.build(FundConfigurationEntitiesApi.class);
 
-        FundConfigurationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundConfigurationsApi.class);
+        FundConfigurationEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundConfigurationEntitiesApi.class);
         String scope = "scope_example"; // String | The scope of the FundConfiguration.
         FundConfigurationRequest fundConfigurationRequest = new FundConfigurationRequest(); // FundConfigurationRequest | The definition of the FundConfiguration.
         try {
@@ -68,7 +68,7 @@ public class FundConfigurationsApiExample {
             FundConfiguration result = apiInstance.createFundConfiguration(scope, fundConfigurationRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
-            System.err.println("Exception when calling FundConfigurationsApi#createFundConfiguration");
+            System.err.println("Exception when calling FundConfigurationEntitiesApi#createFundConfiguration");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             e.printStackTrace();
@@ -117,7 +117,7 @@ Delete the given FundConfiguration.
 
 ```java
 import com.finbourne.lusid.model.*;
-import com.finbourne.lusid.api.FundConfigurationsApi;
+import com.finbourne.lusid.api.FundConfigurationEntitiesApi;
 import com.finbourne.lusid.extensions.ApiConfigurationException;
 import com.finbourne.lusid.extensions.ApiFactoryBuilder;
 import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
@@ -126,7 +126,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 
-public class FundConfigurationsApiExample {
+public class FundConfigurationEntitiesApiExample {
 
     public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
         String fileName = "secrets.json";
@@ -149,9 +149,9 @@ public class FundConfigurationsApiExample {
         
         // uncomment the below to use an api factory with overrides
         // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
-        // FundConfigurationsApi apiInstance = apiFactory.build(FundConfigurationsApi.class);
+        // FundConfigurationEntitiesApi apiInstance = apiFactory.build(FundConfigurationEntitiesApi.class);
 
-        FundConfigurationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundConfigurationsApi.class);
+        FundConfigurationEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundConfigurationEntitiesApi.class);
         String scope = "scope_example"; // String | The scope of the FundConfiguration to be deleted.
         String code = "code_example"; // String | The code of the FundConfiguration to be deleted.    Together with the scope this uniquely identifies the FundConfiguration.
         try {
@@ -161,7 +161,7 @@ public class FundConfigurationsApiExample {
             DeletedEntityResponse result = apiInstance.deleteFundConfiguration(scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
-            System.err.println("Exception when calling FundConfigurationsApi#deleteFundConfiguration");
+            System.err.println("Exception when calling FundConfigurationEntitiesApi#deleteFundConfiguration");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             e.printStackTrace();
@@ -210,7 +210,7 @@ Retrieve the definition of a particular FundConfiguration.
 
 ```java
 import com.finbourne.lusid.model.*;
-import com.finbourne.lusid.api.FundConfigurationsApi;
+import com.finbourne.lusid.api.FundConfigurationEntitiesApi;
 import com.finbourne.lusid.extensions.ApiConfigurationException;
 import com.finbourne.lusid.extensions.ApiFactoryBuilder;
 import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
@@ -219,7 +219,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 
-public class FundConfigurationsApiExample {
+public class FundConfigurationEntitiesApiExample {
 
     public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
         String fileName = "secrets.json";
@@ -242,9 +242,9 @@ public class FundConfigurationsApiExample {
         
         // uncomment the below to use an api factory with overrides
         // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
-        // FundConfigurationsApi apiInstance = apiFactory.build(FundConfigurationsApi.class);
+        // FundConfigurationEntitiesApi apiInstance = apiFactory.build(FundConfigurationEntitiesApi.class);
 
-        FundConfigurationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundConfigurationsApi.class);
+        FundConfigurationEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundConfigurationEntitiesApi.class);
         String scope = "scope_example"; // String | The scope of the FundConfiguration.
         String code = "code_example"; // String | The code of the FundConfiguration. Together with the scope this uniquely identifies the FundConfiguration.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the FundConfiguration properties. Defaults to the current LUSID system datetime if not specified.
@@ -257,7 +257,7 @@ public class FundConfigurationsApiExample {
             FundConfiguration result = apiInstance.getFundConfiguration(scope, code, effectiveAt, asAt, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
-            System.err.println("Exception when calling FundConfigurationsApi#getFundConfiguration");
+            System.err.println("Exception when calling FundConfigurationEntitiesApi#getFundConfiguration");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             e.printStackTrace();
@@ -309,7 +309,7 @@ List all the FundConfiguration matching particular criteria.
 
 ```java
 import com.finbourne.lusid.model.*;
-import com.finbourne.lusid.api.FundConfigurationsApi;
+import com.finbourne.lusid.api.FundConfigurationEntitiesApi;
 import com.finbourne.lusid.extensions.ApiConfigurationException;
 import com.finbourne.lusid.extensions.ApiFactoryBuilder;
 import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
@@ -318,7 +318,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 
-public class FundConfigurationsApiExample {
+public class FundConfigurationEntitiesApiExample {
 
     public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
         String fileName = "secrets.json";
@@ -341,9 +341,9 @@ public class FundConfigurationsApiExample {
         
         // uncomment the below to use an api factory with overrides
         // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
-        // FundConfigurationsApi apiInstance = apiFactory.build(FundConfigurationsApi.class);
+        // FundConfigurationEntitiesApi apiInstance = apiFactory.build(FundConfigurationEntitiesApi.class);
 
-        FundConfigurationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundConfigurationsApi.class);
+        FundConfigurationEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundConfigurationEntitiesApi.class);
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the TimeVariant properties for the FundConfiguration.   Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the FundConfiguration. Defaults to returning the latest version of each FundConfiguration if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing FundConfiguration; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request.
@@ -358,7 +358,7 @@ public class FundConfigurationsApiExample {
             PagedResourceListOfFundConfiguration result = apiInstance.listFundConfigurations(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
-            System.err.println("Exception when calling FundConfigurationsApi#listFundConfigurations");
+            System.err.println("Exception when calling FundConfigurationEntitiesApi#listFundConfigurations");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             e.printStackTrace();
@@ -412,7 +412,7 @@ Update or insert one or more properties onto a single FundConfiguration. A prope
 
 ```java
 import com.finbourne.lusid.model.*;
-import com.finbourne.lusid.api.FundConfigurationsApi;
+import com.finbourne.lusid.api.FundConfigurationEntitiesApi;
 import com.finbourne.lusid.extensions.ApiConfigurationException;
 import com.finbourne.lusid.extensions.ApiFactoryBuilder;
 import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
@@ -421,7 +421,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 
-public class FundConfigurationsApiExample {
+public class FundConfigurationEntitiesApiExample {
 
     public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
         String fileName = "secrets.json";
@@ -444,9 +444,9 @@ public class FundConfigurationsApiExample {
         
         // uncomment the below to use an api factory with overrides
         // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
-        // FundConfigurationsApi apiInstance = apiFactory.build(FundConfigurationsApi.class);
+        // FundConfigurationEntitiesApi apiInstance = apiFactory.build(FundConfigurationEntitiesApi.class);
 
-        FundConfigurationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundConfigurationsApi.class);
+        FundConfigurationEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundConfigurationEntitiesApi.class);
         String scope = "scope_example"; // String | The scope of the FundConfiguration to update or insert the properties onto.
         String code = "code_example"; // String | The code of the FundConfiguration to update or insert the properties onto. Together with the scope this uniquely identifies the FundConfiguration.
         Map<String, Property> requestBody = new HashMap(); // Map<String, Property> | The properties to be updated or inserted onto the Fund Configuration. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \"FundConfiguration/Manager/Id\".
@@ -457,7 +457,7 @@ public class FundConfigurationsApiExample {
             FundConfigurationProperties result = apiInstance.upsertFundConfigurationProperties(scope, code, requestBody).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
-            System.err.println("Exception when calling FundConfigurationsApi#upsertFundConfigurationProperties");
+            System.err.println("Exception when calling FundConfigurationEntitiesApi#upsertFundConfigurationProperties");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             e.printStackTrace();

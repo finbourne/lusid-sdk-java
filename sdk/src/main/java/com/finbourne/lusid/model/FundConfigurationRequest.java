@@ -11,7 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.ComponentRule;
+import com.finbourne.lusid.model.ComponentFilter;
 import com.finbourne.lusid.model.Property;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -19,8 +19,10 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -66,17 +68,17 @@ public class FundConfigurationRequest {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
-  public static final String SERIALIZED_NAME_DEALING_RULE = "dealingRule";
-  @SerializedName(SERIALIZED_NAME_DEALING_RULE)
-  private ComponentRule dealingRule;
+  public static final String SERIALIZED_NAME_DEALING_FILTERS = "dealingFilters";
+  @SerializedName(SERIALIZED_NAME_DEALING_FILTERS)
+  private List<ComponentFilter> dealingFilters = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_PNL_RULE = "pnlRule";
-  @SerializedName(SERIALIZED_NAME_PNL_RULE)
-  private ComponentRule pnlRule;
+  public static final String SERIALIZED_NAME_PNL_FILTERS = "pnlFilters";
+  @SerializedName(SERIALIZED_NAME_PNL_FILTERS)
+  private List<ComponentFilter> pnlFilters = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_BACK_OUT_RULE = "backOutRule";
-  @SerializedName(SERIALIZED_NAME_BACK_OUT_RULE)
-  private ComponentRule backOutRule;
+  public static final String SERIALIZED_NAME_BACK_OUT_FILTERS = "backOutFilters";
+  @SerializedName(SERIALIZED_NAME_BACK_OUT_FILTERS)
+  private List<ComponentFilter> backOutFilters = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
@@ -148,66 +150,90 @@ public class FundConfigurationRequest {
   }
 
 
-  public FundConfigurationRequest dealingRule(ComponentRule dealingRule) {
+  public FundConfigurationRequest dealingFilters(List<ComponentFilter> dealingFilters) {
     
-    this.dealingRule = dealingRule;
+    this.dealingFilters = dealingFilters;
+    return this;
+  }
+
+  public FundConfigurationRequest addDealingFiltersItem(ComponentFilter dealingFiltersItem) {
+    if (this.dealingFilters == null) {
+      this.dealingFilters = new ArrayList<>();
+    }
+    this.dealingFilters.add(dealingFiltersItem);
     return this;
   }
 
    /**
-   * Get dealingRule
-   * @return dealingRule
+   * The set of filters used to decide which JE lines are included in the dealing.
+   * @return dealingFilters
   **/
   @jakarta.annotation.Nonnull
-  public ComponentRule getDealingRule() {
-    return dealingRule;
+  public List<ComponentFilter> getDealingFilters() {
+    return dealingFilters;
   }
 
 
-  public void setDealingRule(ComponentRule dealingRule) {
-    this.dealingRule = dealingRule;
+  public void setDealingFilters(List<ComponentFilter> dealingFilters) {
+    this.dealingFilters = dealingFilters;
   }
 
 
-  public FundConfigurationRequest pnlRule(ComponentRule pnlRule) {
+  public FundConfigurationRequest pnlFilters(List<ComponentFilter> pnlFilters) {
     
-    this.pnlRule = pnlRule;
+    this.pnlFilters = pnlFilters;
+    return this;
+  }
+
+  public FundConfigurationRequest addPnlFiltersItem(ComponentFilter pnlFiltersItem) {
+    if (this.pnlFilters == null) {
+      this.pnlFilters = new ArrayList<>();
+    }
+    this.pnlFilters.add(pnlFiltersItem);
     return this;
   }
 
    /**
-   * Get pnlRule
-   * @return pnlRule
+   * The set of filters used to decide which JE lines are included in the PnL.
+   * @return pnlFilters
   **/
   @jakarta.annotation.Nonnull
-  public ComponentRule getPnlRule() {
-    return pnlRule;
+  public List<ComponentFilter> getPnlFilters() {
+    return pnlFilters;
   }
 
 
-  public void setPnlRule(ComponentRule pnlRule) {
-    this.pnlRule = pnlRule;
+  public void setPnlFilters(List<ComponentFilter> pnlFilters) {
+    this.pnlFilters = pnlFilters;
   }
 
 
-  public FundConfigurationRequest backOutRule(ComponentRule backOutRule) {
+  public FundConfigurationRequest backOutFilters(List<ComponentFilter> backOutFilters) {
     
-    this.backOutRule = backOutRule;
+    this.backOutFilters = backOutFilters;
+    return this;
+  }
+
+  public FundConfigurationRequest addBackOutFiltersItem(ComponentFilter backOutFiltersItem) {
+    if (this.backOutFilters == null) {
+      this.backOutFilters = new ArrayList<>();
+    }
+    this.backOutFilters.add(backOutFiltersItem);
     return this;
   }
 
    /**
-   * Get backOutRule
-   * @return backOutRule
+   * The set of filters used to decide which JE lines are included in the back outs.
+   * @return backOutFilters
   **/
   @jakarta.annotation.Nonnull
-  public ComponentRule getBackOutRule() {
-    return backOutRule;
+  public List<ComponentFilter> getBackOutFilters() {
+    return backOutFilters;
   }
 
 
-  public void setBackOutRule(ComponentRule backOutRule) {
-    this.backOutRule = backOutRule;
+  public void setBackOutFilters(List<ComponentFilter> backOutFilters) {
+    this.backOutFilters = backOutFilters;
   }
 
 
@@ -253,9 +279,9 @@ public class FundConfigurationRequest {
     return Objects.equals(this.code, fundConfigurationRequest.code) &&
         Objects.equals(this.displayName, fundConfigurationRequest.displayName) &&
         Objects.equals(this.description, fundConfigurationRequest.description) &&
-        Objects.equals(this.dealingRule, fundConfigurationRequest.dealingRule) &&
-        Objects.equals(this.pnlRule, fundConfigurationRequest.pnlRule) &&
-        Objects.equals(this.backOutRule, fundConfigurationRequest.backOutRule) &&
+        Objects.equals(this.dealingFilters, fundConfigurationRequest.dealingFilters) &&
+        Objects.equals(this.pnlFilters, fundConfigurationRequest.pnlFilters) &&
+        Objects.equals(this.backOutFilters, fundConfigurationRequest.backOutFilters) &&
         Objects.equals(this.properties, fundConfigurationRequest.properties);
   }
 
@@ -265,7 +291,7 @@ public class FundConfigurationRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, displayName, description, dealingRule, pnlRule, backOutRule, properties);
+    return Objects.hash(code, displayName, description, dealingFilters, pnlFilters, backOutFilters, properties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -282,9 +308,9 @@ public class FundConfigurationRequest {
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    dealingRule: ").append(toIndentedString(dealingRule)).append("\n");
-    sb.append("    pnlRule: ").append(toIndentedString(pnlRule)).append("\n");
-    sb.append("    backOutRule: ").append(toIndentedString(backOutRule)).append("\n");
+    sb.append("    dealingFilters: ").append(toIndentedString(dealingFilters)).append("\n");
+    sb.append("    pnlFilters: ").append(toIndentedString(pnlFilters)).append("\n");
+    sb.append("    backOutFilters: ").append(toIndentedString(backOutFilters)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -311,17 +337,17 @@ public class FundConfigurationRequest {
     openapiFields.add("code");
     openapiFields.add("displayName");
     openapiFields.add("description");
-    openapiFields.add("dealingRule");
-    openapiFields.add("pnlRule");
-    openapiFields.add("backOutRule");
+    openapiFields.add("dealingFilters");
+    openapiFields.add("pnlFilters");
+    openapiFields.add("backOutFilters");
     openapiFields.add("properties");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("code");
-    openapiRequiredFields.add("dealingRule");
-    openapiRequiredFields.add("pnlRule");
-    openapiRequiredFields.add("backOutRule");
+    openapiRequiredFields.add("dealingFilters");
+    openapiRequiredFields.add("pnlFilters");
+    openapiRequiredFields.add("backOutFilters");
   }
 
  /**
@@ -353,12 +379,36 @@ public class FundConfigurationRequest {
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      // validate the required field `dealingRule`
-      ComponentRule.validateJsonElement(jsonObj.get("dealingRule"));
-      // validate the required field `pnlRule`
-      ComponentRule.validateJsonElement(jsonObj.get("pnlRule"));
-      // validate the required field `backOutRule`
-      ComponentRule.validateJsonElement(jsonObj.get("backOutRule"));
+      // ensure the json data is an array
+      if (!jsonObj.get("dealingFilters").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `dealingFilters` to be an array in the JSON string but got `%s`", jsonObj.get("dealingFilters").toString()));
+      }
+
+      JsonArray jsonArraydealingFilters = jsonObj.getAsJsonArray("dealingFilters");
+      // validate the required field `dealingFilters` (array)
+      for (int i = 0; i < jsonArraydealingFilters.size(); i++) {
+        ComponentFilter.validateJsonElement(jsonArraydealingFilters.get(i));
+      };
+      // ensure the json data is an array
+      if (!jsonObj.get("pnlFilters").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `pnlFilters` to be an array in the JSON string but got `%s`", jsonObj.get("pnlFilters").toString()));
+      }
+
+      JsonArray jsonArraypnlFilters = jsonObj.getAsJsonArray("pnlFilters");
+      // validate the required field `pnlFilters` (array)
+      for (int i = 0; i < jsonArraypnlFilters.size(); i++) {
+        ComponentFilter.validateJsonElement(jsonArraypnlFilters.get(i));
+      };
+      // ensure the json data is an array
+      if (!jsonObj.get("backOutFilters").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `backOutFilters` to be an array in the JSON string but got `%s`", jsonObj.get("backOutFilters").toString()));
+      }
+
+      JsonArray jsonArraybackOutFilters = jsonObj.getAsJsonArray("backOutFilters");
+      // validate the required field `backOutFilters` (array)
+      for (int i = 0; i < jsonArraybackOutFilters.size(); i++) {
+        ComponentFilter.validateJsonElement(jsonArraybackOutFilters.get(i));
+      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

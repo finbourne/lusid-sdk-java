@@ -7210,7 +7210,7 @@ public class TransactionPortfoliosApi {
     }
 
     /**
-     * [EARLY ACCESS] GetTransactionHistory: Get the history of a transaction
+     * GetTransactionHistory: Get the history of a transaction
      * Get all of the changes that have happened to a transaction.
      * @param scope The scope of the transaction portfolio. (required)
      * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)

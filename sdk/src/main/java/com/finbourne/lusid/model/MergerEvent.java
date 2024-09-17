@@ -66,9 +66,9 @@ public class MergerEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_CASH_AND_SECURITY_OFFER_ELECTIONS)
   private List<CashAndSecurityOfferElection> cashAndSecurityOfferElections;
 
-  public static final String SERIALIZED_NAME_CASH_ELECTIONS = "cashElections";
-  @SerializedName(SERIALIZED_NAME_CASH_ELECTIONS)
-  private List<CashOfferElection> cashElections;
+  public static final String SERIALIZED_NAME_CASH_OFFER_ELECTIONS = "cashOfferElections";
+  @SerializedName(SERIALIZED_NAME_CASH_OFFER_ELECTIONS)
+  private List<CashOfferElection> cashOfferElections;
 
   public static final String SERIALIZED_NAME_EX_DATE = "exDate";
   @SerializedName(SERIALIZED_NAME_EX_DATE)
@@ -94,9 +94,9 @@ public class MergerEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_RECORD_DATE)
   private OffsetDateTime recordDate;
 
-  public static final String SERIALIZED_NAME_SECURITY_ELECTIONS = "securityElections";
-  @SerializedName(SERIALIZED_NAME_SECURITY_ELECTIONS)
-  private List<SecurityOfferElection> securityElections;
+  public static final String SERIALIZED_NAME_SECURITY_OFFER_ELECTIONS = "securityOfferElections";
+  @SerializedName(SERIALIZED_NAME_SECURITY_OFFER_ELECTIONS)
+  private List<SecurityOfferElection> securityOfferElections;
 
   public MergerEvent() {
     // this.instrumentEventType = this.getClass().getSimpleName();
@@ -152,32 +152,32 @@ public class MergerEvent extends InstrumentEvent {
   }
 
 
-  public MergerEvent cashElections(List<CashOfferElection> cashElections) {
+  public MergerEvent cashOfferElections(List<CashOfferElection> cashOfferElections) {
     
-    this.cashElections = cashElections;
+    this.cashOfferElections = cashOfferElections;
     return this;
   }
 
-  public MergerEvent addCashElectionsItem(CashOfferElection cashElectionsItem) {
-    if (this.cashElections == null) {
-      this.cashElections = new ArrayList<>();
+  public MergerEvent addCashOfferElectionsItem(CashOfferElection cashOfferElectionsItem) {
+    if (this.cashOfferElections == null) {
+      this.cashOfferElections = new ArrayList<>();
     }
-    this.cashElections.add(cashElectionsItem);
+    this.cashOfferElections.add(cashOfferElectionsItem);
     return this;
   }
 
    /**
    * List of possible CashOfferElections for this merger event
-   * @return cashElections
+   * @return cashOfferElections
   **/
   @jakarta.annotation.Nullable
-  public List<CashOfferElection> getCashElections() {
-    return cashElections;
+  public List<CashOfferElection> getCashOfferElections() {
+    return cashOfferElections;
   }
 
 
-  public void setCashElections(List<CashOfferElection> cashElections) {
-    this.cashElections = cashElections;
+  public void setCashOfferElections(List<CashOfferElection> cashOfferElections) {
+    this.cashOfferElections = cashOfferElections;
   }
 
 
@@ -307,32 +307,32 @@ public class MergerEvent extends InstrumentEvent {
   }
 
 
-  public MergerEvent securityElections(List<SecurityOfferElection> securityElections) {
+  public MergerEvent securityOfferElections(List<SecurityOfferElection> securityOfferElections) {
     
-    this.securityElections = securityElections;
+    this.securityOfferElections = securityOfferElections;
     return this;
   }
 
-  public MergerEvent addSecurityElectionsItem(SecurityOfferElection securityElectionsItem) {
-    if (this.securityElections == null) {
-      this.securityElections = new ArrayList<>();
+  public MergerEvent addSecurityOfferElectionsItem(SecurityOfferElection securityOfferElectionsItem) {
+    if (this.securityOfferElections == null) {
+      this.securityOfferElections = new ArrayList<>();
     }
-    this.securityElections.add(securityElectionsItem);
+    this.securityOfferElections.add(securityOfferElectionsItem);
     return this;
   }
 
    /**
    * List of possible SecurityOfferElections for this merger event
-   * @return securityElections
+   * @return securityOfferElections
   **/
   @jakarta.annotation.Nullable
-  public List<SecurityOfferElection> getSecurityElections() {
-    return securityElections;
+  public List<SecurityOfferElection> getSecurityOfferElections() {
+    return securityOfferElections;
   }
 
 
-  public void setSecurityElections(List<SecurityOfferElection> securityElections) {
-    this.securityElections = securityElections;
+  public void setSecurityOfferElections(List<SecurityOfferElection> securityOfferElections) {
+    this.securityOfferElections = securityOfferElections;
   }
 
 
@@ -348,14 +348,14 @@ public class MergerEvent extends InstrumentEvent {
     MergerEvent mergerEvent = (MergerEvent) o;
     return Objects.equals(this.announcementDate, mergerEvent.announcementDate) &&
         Objects.equals(this.cashAndSecurityOfferElections, mergerEvent.cashAndSecurityOfferElections) &&
-        Objects.equals(this.cashElections, mergerEvent.cashElections) &&
+        Objects.equals(this.cashOfferElections, mergerEvent.cashOfferElections) &&
         Objects.equals(this.exDate, mergerEvent.exDate) &&
         Objects.equals(this.fractionalUnitsCashCurrency, mergerEvent.fractionalUnitsCashCurrency) &&
         (this.fractionalUnitsCashPrice.compareTo(mergerEvent.getFractionalUnitsCashPrice()) == 0) &&
         Objects.equals(this.newInstrument, mergerEvent.newInstrument) &&
         Objects.equals(this.paymentDate, mergerEvent.paymentDate) &&
         Objects.equals(this.recordDate, mergerEvent.recordDate) &&
-        Objects.equals(this.securityElections, mergerEvent.securityElections) &&
+        Objects.equals(this.securityOfferElections, mergerEvent.securityOfferElections) &&
         super.equals(o);
   }
 
@@ -365,7 +365,7 @@ public class MergerEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(announcementDate, cashAndSecurityOfferElections, cashElections, exDate, fractionalUnitsCashCurrency, fractionalUnitsCashPrice, newInstrument, paymentDate, recordDate, securityElections, super.hashCode());
+    return Objects.hash(announcementDate, cashAndSecurityOfferElections, cashOfferElections, exDate, fractionalUnitsCashCurrency, fractionalUnitsCashPrice, newInstrument, paymentDate, recordDate, securityOfferElections, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -382,14 +382,14 @@ public class MergerEvent extends InstrumentEvent {
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    announcementDate: ").append(toIndentedString(announcementDate)).append("\n");
     sb.append("    cashAndSecurityOfferElections: ").append(toIndentedString(cashAndSecurityOfferElections)).append("\n");
-    sb.append("    cashElections: ").append(toIndentedString(cashElections)).append("\n");
+    sb.append("    cashOfferElections: ").append(toIndentedString(cashOfferElections)).append("\n");
     sb.append("    exDate: ").append(toIndentedString(exDate)).append("\n");
     sb.append("    fractionalUnitsCashCurrency: ").append(toIndentedString(fractionalUnitsCashCurrency)).append("\n");
     sb.append("    fractionalUnitsCashPrice: ").append(toIndentedString(fractionalUnitsCashPrice)).append("\n");
     sb.append("    newInstrument: ").append(toIndentedString(newInstrument)).append("\n");
     sb.append("    paymentDate: ").append(toIndentedString(paymentDate)).append("\n");
     sb.append("    recordDate: ").append(toIndentedString(recordDate)).append("\n");
-    sb.append("    securityElections: ").append(toIndentedString(securityElections)).append("\n");
+    sb.append("    securityOfferElections: ").append(toIndentedString(securityOfferElections)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -415,14 +415,14 @@ public class MergerEvent extends InstrumentEvent {
     openapiFields.add("instrumentEventType");
     openapiFields.add("announcementDate");
     openapiFields.add("cashAndSecurityOfferElections");
-    openapiFields.add("cashElections");
+    openapiFields.add("cashOfferElections");
     openapiFields.add("exDate");
     openapiFields.add("fractionalUnitsCashCurrency");
     openapiFields.add("fractionalUnitsCashPrice");
     openapiFields.add("newInstrument");
     openapiFields.add("paymentDate");
     openapiFields.add("recordDate");
-    openapiFields.add("securityElections");
+    openapiFields.add("securityOfferElections");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

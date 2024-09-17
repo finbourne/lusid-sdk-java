@@ -5,7 +5,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**deleteReferenceList**](ReferenceListsApi.md#deleteReferenceList) | **DELETE** /api/referencelists/{scope}/{code} | [EARLY ACCESS] DeleteReferenceList: Delete Reference List |
-| [**getReferenceList**](ReferenceListsApi.md#getReferenceList) | **GET** /api/referencelists/{scope}/{code} | [EARLY ACCESS] GetReferenceList: Get Reference List |
+| [**getReferenceList**](ReferenceListsApi.md#getReferenceList) | **GET** /api/referencelists/{scope}/{code} | GetReferenceList: Get Reference List |
 | [**listReferenceLists**](ReferenceListsApi.md#listReferenceLists) | **GET** /api/referencelists | [EARLY ACCESS] ListReferenceLists: List Reference Lists |
 | [**upsertReferenceList**](ReferenceListsApi.md#upsertReferenceList) | **POST** /api/referencelists | [EARLY ACCESS] UpsertReferenceList: Upsert Reference List |
 
@@ -108,7 +108,7 @@ public class ReferenceListsApiExample {
 
 > ReferenceListResponse getReferenceList(scope, code, asAt)
 
-[EARLY ACCESS] GetReferenceList: Get Reference List
+GetReferenceList: Get Reference List
 
 Retrieve a Reference List instance at a point in AsAt time.
 

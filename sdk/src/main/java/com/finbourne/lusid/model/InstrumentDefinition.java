@@ -15,6 +15,7 @@ import com.finbourne.lusid.model.InstrumentIdValue;
 import com.finbourne.lusid.model.LusidInstrument;
 import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.ResourceId;
+import com.finbourne.lusid.model.SettlementCycle;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -77,6 +78,10 @@ public class InstrumentDefinition {
   public static final String SERIALIZED_NAME_DEFINITION = "definition";
   @SerializedName(SERIALIZED_NAME_DEFINITION)
   private LusidInstrument definition;
+
+  public static final String SERIALIZED_NAME_SETTLEMENT_CYCLE = "settlementCycle";
+  @SerializedName(SERIALIZED_NAME_SETTLEMENT_CYCLE)
+  private SettlementCycle settlementCycle;
 
   public InstrumentDefinition() {
   }
@@ -202,6 +207,27 @@ public class InstrumentDefinition {
   }
 
 
+  public InstrumentDefinition settlementCycle(SettlementCycle settlementCycle) {
+    
+    this.settlementCycle = settlementCycle;
+    return this;
+  }
+
+   /**
+   * Get settlementCycle
+   * @return settlementCycle
+  **/
+  @jakarta.annotation.Nullable
+  public SettlementCycle getSettlementCycle() {
+    return settlementCycle;
+  }
+
+
+  public void setSettlementCycle(SettlementCycle settlementCycle) {
+    this.settlementCycle = settlementCycle;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -216,7 +242,8 @@ public class InstrumentDefinition {
         Objects.equals(this.identifiers, instrumentDefinition.identifiers) &&
         Objects.equals(this.properties, instrumentDefinition.properties) &&
         Objects.equals(this.lookThroughPortfolioId, instrumentDefinition.lookThroughPortfolioId) &&
-        Objects.equals(this.definition, instrumentDefinition.definition);
+        Objects.equals(this.definition, instrumentDefinition.definition) &&
+        Objects.equals(this.settlementCycle, instrumentDefinition.settlementCycle);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -225,7 +252,7 @@ public class InstrumentDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, identifiers, properties, lookThroughPortfolioId, definition);
+    return Objects.hash(name, identifiers, properties, lookThroughPortfolioId, definition, settlementCycle);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -244,6 +271,7 @@ public class InstrumentDefinition {
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    lookThroughPortfolioId: ").append(toIndentedString(lookThroughPortfolioId)).append("\n");
     sb.append("    definition: ").append(toIndentedString(definition)).append("\n");
+    sb.append("    settlementCycle: ").append(toIndentedString(settlementCycle)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -271,6 +299,7 @@ public class InstrumentDefinition {
     openapiFields.add("properties");
     openapiFields.add("lookThroughPortfolioId");
     openapiFields.add("definition");
+    openapiFields.add("settlementCycle");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -322,6 +351,10 @@ public class InstrumentDefinition {
       // validate the optional field `definition`
       if (jsonObj.get("definition") != null && !jsonObj.get("definition").isJsonNull()) {
         LusidInstrument.validateJsonElement(jsonObj.get("definition"));
+      }
+      // validate the optional field `settlementCycle`
+      if (jsonObj.get("settlementCycle") != null && !jsonObj.get("settlementCycle").isJsonNull()) {
+        SettlementCycle.validateJsonElement(jsonObj.get("settlementCycle"));
       }
   }
 

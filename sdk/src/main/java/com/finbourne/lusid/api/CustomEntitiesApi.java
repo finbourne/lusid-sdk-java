@@ -325,7 +325,7 @@ public class CustomEntitiesApi {
     }
 
     /**
-     * [EARLY ACCESS] DeleteCustomEntity: Delete a Custom Entity instance.
+     * DeleteCustomEntity: Delete a Custom Entity instance.
      * Delete a Custom Entity instance by a specific entity type.
      * @param entityType The type of Custom Entity to remove. (required)
      * @param identifierType An identifier type attached to the Custom Entity instance. (required)

@@ -11,9 +11,9 @@
 |**id** | [**ResourceId**](ResourceId.md) |  |  |
 |**displayName** | **String** | The name of the FundConfiguration. |  [optional] |
 |**description** | **String** | A description for the FundConfiguration. |  [optional] |
-|**dealingRule** | [**ComponentRule**](ComponentRule.md) |  |  [optional] |
-|**pnlRule** | [**ComponentRule**](ComponentRule.md) |  |  [optional] |
-|**backOutRule** | [**ComponentRule**](ComponentRule.md) |  |  [optional] |
+|**dealingFilters** | [**List&lt;ComponentFilter&gt;**](ComponentFilter.md) | The set of filters used to decide which JE lines are included in the dealing. |  [optional] |
+|**pnlFilters** | [**List&lt;ComponentFilter&gt;**](ComponentFilter.md) | The set of filters used to decide which JE lines are included in the PnL. |  [optional] |
+|**backOutFilters** | [**List&lt;ComponentFilter&gt;**](ComponentFilter.md) | The set of filters used to decide which JE lines are included in the back outs. |  [optional] |
 |**properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the Fund Configuration. |  [optional] |
 |**version** | [**Version**](Version.md) |  |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |

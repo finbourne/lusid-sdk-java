@@ -168,6 +168,10 @@ public class MarketDataKeyRule {
   @SerializedName(SERIALIZED_NAME_SOURCE_SYSTEM)
   private String sourceSystem;
 
+  public static final String SERIALIZED_NAME_FALL_THROUGH_ON_ACCESS_DENIED = "fallThroughOnAccessDenied";
+  @SerializedName(SERIALIZED_NAME_FALL_THROUGH_ON_ACCESS_DENIED)
+  private Boolean fallThroughOnAccessDenied;
+
   public MarketDataKeyRule() {
   }
 
@@ -381,6 +385,27 @@ public class MarketDataKeyRule {
   }
 
 
+  public MarketDataKeyRule fallThroughOnAccessDenied(Boolean fallThroughOnAccessDenied) {
+    
+    this.fallThroughOnAccessDenied = fallThroughOnAccessDenied;
+    return this;
+  }
+
+   /**
+   * When a user attempts to use a rule to access data to which they are not entitled,  the rule will fail to resolve any market data.  By default, such an access denied failure will stop any further attempts to resolve market data.  This is so that differently entitled users always receive the same market data from market data resolution,  if they have sufficient entitlements to retrieve the required data.  If set to true, then an access denied failure will not stop further market data resolution,  and resolution will continue with the next specified MarketDataKeyRule.  Optional, and defaults to false.
+   * @return fallThroughOnAccessDenied
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getFallThroughOnAccessDenied() {
+    return fallThroughOnAccessDenied;
+  }
+
+
+  public void setFallThroughOnAccessDenied(Boolean fallThroughOnAccessDenied) {
+    this.fallThroughOnAccessDenied = fallThroughOnAccessDenied;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -400,7 +425,8 @@ public class MarketDataKeyRule {
         Objects.equals(this.asAt, marketDataKeyRule.asAt) &&
         Objects.equals(this.priceSource, marketDataKeyRule.priceSource) &&
         Objects.equals(this.mask, marketDataKeyRule.mask) &&
-        Objects.equals(this.sourceSystem, marketDataKeyRule.sourceSystem);
+        Objects.equals(this.sourceSystem, marketDataKeyRule.sourceSystem) &&
+        Objects.equals(this.fallThroughOnAccessDenied, marketDataKeyRule.fallThroughOnAccessDenied);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -409,7 +435,7 @@ public class MarketDataKeyRule {
 
   @Override
   public int hashCode() {
-    return Objects.hash(key, supplier, dataScope, quoteType, field, quoteInterval, asAt, priceSource, mask, sourceSystem);
+    return Objects.hash(key, supplier, dataScope, quoteType, field, quoteInterval, asAt, priceSource, mask, sourceSystem, fallThroughOnAccessDenied);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -433,6 +459,7 @@ public class MarketDataKeyRule {
     sb.append("    priceSource: ").append(toIndentedString(priceSource)).append("\n");
     sb.append("    mask: ").append(toIndentedString(mask)).append("\n");
     sb.append("    sourceSystem: ").append(toIndentedString(sourceSystem)).append("\n");
+    sb.append("    fallThroughOnAccessDenied: ").append(toIndentedString(fallThroughOnAccessDenied)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -465,6 +492,7 @@ public class MarketDataKeyRule {
     openapiFields.add("priceSource");
     openapiFields.add("mask");
     openapiFields.add("sourceSystem");
+    openapiFields.add("fallThroughOnAccessDenied");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

@@ -37,7 +37,9 @@ public enum ReferenceListType {
   
   DECIMALLIST("DecimalList"),
   
-  PROPERTYLIST("PropertyList");
+  PROPERTYLIST("PropertyList"),
+  
+  FUNDIDLIST("FundIdList");
 
   private String value;
 

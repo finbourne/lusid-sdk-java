@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.Amount;
 import com.finbourne.lusid.model.ShareClassAmount;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -58,7 +59,7 @@ public class ShareClassDealingBreakdown {
 
   public static final String SERIALIZED_NAME_CLASS_DEALING_UNITS = "classDealingUnits";
   @SerializedName(SERIALIZED_NAME_CLASS_DEALING_UNITS)
-  private Map<String, ShareClassAmount> classDealingUnits = new HashMap<>();
+  private Map<String, Amount> classDealingUnits = new HashMap<>();
 
   public ShareClassDealingBreakdown() {
   }
@@ -92,13 +93,13 @@ public class ShareClassDealingBreakdown {
   }
 
 
-  public ShareClassDealingBreakdown classDealingUnits(Map<String, ShareClassAmount> classDealingUnits) {
+  public ShareClassDealingBreakdown classDealingUnits(Map<String, Amount> classDealingUnits) {
     
     this.classDealingUnits = classDealingUnits;
     return this;
   }
 
-  public ShareClassDealingBreakdown putClassDealingUnitsItem(String key, ShareClassAmount classDealingUnitsItem) {
+  public ShareClassDealingBreakdown putClassDealingUnitsItem(String key, Amount classDealingUnitsItem) {
     if (this.classDealingUnits == null) {
       this.classDealingUnits = new HashMap<>();
     }
@@ -111,12 +112,12 @@ public class ShareClassDealingBreakdown {
    * @return classDealingUnits
   **/
   @jakarta.annotation.Nonnull
-  public Map<String, ShareClassAmount> getClassDealingUnits() {
+  public Map<String, Amount> getClassDealingUnits() {
     return classDealingUnits;
   }
 
 
-  public void setClassDealingUnits(Map<String, ShareClassAmount> classDealingUnits) {
+  public void setClassDealingUnits(Map<String, Amount> classDealingUnits) {
     this.classDealingUnits = classDealingUnits;
   }
 

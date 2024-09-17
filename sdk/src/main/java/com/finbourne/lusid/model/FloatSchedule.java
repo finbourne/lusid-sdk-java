@@ -53,7 +53,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Schedule for fixed coupon payments
+ * Schedule for floating rate coupon payments.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FloatSchedule extends Schedule {
@@ -128,7 +128,7 @@ public class FloatSchedule extends Schedule {
   }
 
    /**
-   * Date to start generate from
+   * Date from which LUSID starts generating the payment schedule.
    * @return startDate
   **/
   @jakarta.annotation.Nullable
@@ -149,7 +149,7 @@ public class FloatSchedule extends Schedule {
   }
 
    /**
-   * Date to generate to
+   * Last date of the payment generation schedule. May not necessarily be the maturity date  of the underlying instrument (e.g. in case the instrument has multiple payment schedules).
    * @return maturityDate
   **/
   @jakarta.annotation.Nullable
@@ -338,7 +338,7 @@ public class FloatSchedule extends Schedule {
   }
 
    /**
-   * StubType required of the schedule    Supported string (enumeration) values are: [ShortFront, ShortBack, LongBack, LongFront, Both].
+   * When a payment schedule doesn&#39;t have regular payment intervals just because of the  first and/or last coupons of the schedule, we call those irregular coupons stubs.  This configuration specifies what type of stub is used when building the schedule  Supported values are:  None &#x3D; this is a regular payment schedule with no stubs. DO NOT use it with irregular schedules or you will get incorrect and unexpected behaviour.  ShortFront &#x3D; this is an irregular payment schedule where only the first coupon is irregular, and covers a payment period that is shorter than the regular payment period.  ShortBack &#x3D; this is an irregular payment schedule where only the last coupon is irregular, and covers a payment period that is shorter than the regular payment period.  LongFront &#x3D; this is an irregular payment schedule where only the first coupon is irregular, and covers a payment period that is longer than the regular payment period.  LongBack &#x3D; this is an irregular payment schedule where only the last coupon is irregular, and covers a payment period that is longer than the regular payment period.  Both &#x3D; this is an irregular payment schedule where both the first and the last coupons are irregular, and the length of these periods is calculated based on the first coupon payment date that should have been explicitly set.
    * @return stubType
   **/
   @jakarta.annotation.Nullable

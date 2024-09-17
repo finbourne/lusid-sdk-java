@@ -27,7 +27,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**getPortfolioCashFlows**](TransactionPortfoliosApi.md#getPortfolioCashFlows) | **GET** /api/transactionportfolios/{scope}/{code}/cashflows | GetPortfolioCashFlows: Get portfolio cash flows |
 | [**getPortfolioCashLadder**](TransactionPortfoliosApi.md#getPortfolioCashLadder) | **GET** /api/transactionportfolios/{scope}/{code}/cashladder | GetPortfolioCashLadder: Get portfolio cash ladder |
 | [**getPortfolioCashStatement**](TransactionPortfoliosApi.md#getPortfolioCashStatement) | **GET** /api/transactionportfolios/{scope}/{code}/cashstatement | GetPortfolioCashStatement: Get portfolio cash statement |
-| [**getTransactionHistory**](TransactionPortfoliosApi.md#getTransactionHistory) | **GET** /api/transactionportfolios/{scope}/{code}/transactions/{transactionId}/history | [EARLY ACCESS] GetTransactionHistory: Get the history of a transaction |
+| [**getTransactionHistory**](TransactionPortfoliosApi.md#getTransactionHistory) | **GET** /api/transactionportfolios/{scope}/{code}/transactions/{transactionId}/history | GetTransactionHistory: Get the history of a transaction |
 | [**getTransactions**](TransactionPortfoliosApi.md#getTransactions) | **GET** /api/transactionportfolios/{scope}/{code}/transactions | GetTransactions: Get transactions |
 | [**getUpsertablePortfolioCashFlows**](TransactionPortfoliosApi.md#getUpsertablePortfolioCashFlows) | **GET** /api/transactionportfolios/{scope}/{code}/upsertablecashflows | GetUpsertablePortfolioCashFlows: Get upsertable portfolio cash flows. |
 | [**listCustodianAccounts**](TransactionPortfoliosApi.md#listCustodianAccounts) | **GET** /api/transactionportfolios/{scope}/{code}/custodianaccounts | [EXPERIMENTAL] ListCustodianAccounts: List Custodian Accounts |
@@ -2372,7 +2372,7 @@ public class TransactionPortfoliosApiExample {
 
 > ResourceListOfChangeHistory getTransactionHistory(scope, code, transactionId, asAt)
 
-[EARLY ACCESS] GetTransactionHistory: Get the history of a transaction
+GetTransactionHistory: Get the history of a transaction
 
 Get all of the changes that have happened to a transaction.
 

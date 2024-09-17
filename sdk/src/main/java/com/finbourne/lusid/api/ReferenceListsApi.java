@@ -557,7 +557,7 @@ public class ReferenceListsApi {
     }
 
     /**
-     * [EARLY ACCESS] GetReferenceList: Get Reference List
+     * GetReferenceList: Get Reference List
      * Retrieve a Reference List instance at a point in AsAt time.
      * @param scope The scope to which the Reference List belongs. (required)
      * @param code The Reference List&#39;s unique identifier. (required)

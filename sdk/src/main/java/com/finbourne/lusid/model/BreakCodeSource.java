@@ -11,16 +11,14 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.ComponentFilter;
+import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -48,43 +46,35 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * ComponentRule
+ * BreakCodeSource
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ComponentRule {
-  public static final String SERIALIZED_NAME_COMPONENTS = "components";
-  @SerializedName(SERIALIZED_NAME_COMPONENTS)
-  private List<ComponentFilter> components;
+public class BreakCodeSource {
+  public static final String SERIALIZED_NAME_DATA_TYPE_ID = "dataTypeId";
+  @SerializedName(SERIALIZED_NAME_DATA_TYPE_ID)
+  private ResourceId dataTypeId;
 
-  public ComponentRule() {
+  public BreakCodeSource() {
   }
 
-  public ComponentRule components(List<ComponentFilter> components) {
+  public BreakCodeSource dataTypeId(ResourceId dataTypeId) {
     
-    this.components = components;
-    return this;
-  }
-
-  public ComponentRule addComponentsItem(ComponentFilter componentsItem) {
-    if (this.components == null) {
-      this.components = new ArrayList<>();
-    }
-    this.components.add(componentsItem);
+    this.dataTypeId = dataTypeId;
     return this;
   }
 
    /**
-   * Get components
-   * @return components
+   * Get dataTypeId
+   * @return dataTypeId
   **/
-  @jakarta.annotation.Nullable
-  public List<ComponentFilter> getComponents() {
-    return components;
+  @jakarta.annotation.Nonnull
+  public ResourceId getDataTypeId() {
+    return dataTypeId;
   }
 
 
-  public void setComponents(List<ComponentFilter> components) {
-    this.components = components;
+  public void setDataTypeId(ResourceId dataTypeId) {
+    this.dataTypeId = dataTypeId;
   }
 
 
@@ -97,20 +87,20 @@ public class ComponentRule {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ComponentRule componentRule = (ComponentRule) o;
-    return Objects.equals(this.components, componentRule.components);
+    BreakCodeSource breakCodeSource = (BreakCodeSource) o;
+    return Objects.equals(this.dataTypeId, breakCodeSource.dataTypeId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(components);
+    return Objects.hash(dataTypeId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ComponentRule {\n");
-    sb.append("    components: ").append(toIndentedString(components)).append("\n");
+    sb.append("class BreakCodeSource {\n");
+    sb.append("    dataTypeId: ").append(toIndentedString(dataTypeId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -133,61 +123,57 @@ public class ComponentRule {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("components");
+    openapiFields.add("dataTypeId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("dataTypeId");
   }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to ComponentRule
+  * @throws IOException if the JSON Element is invalid with respect to BreakCodeSource
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!ComponentRule.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ComponentRule is not found in the empty JSON string", ComponentRule.openapiRequiredFields.toString()));
+        if (!BreakCodeSource.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in BreakCodeSource is not found in the empty JSON string", BreakCodeSource.openapiRequiredFields.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : BreakCodeSource.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("components") != null && !jsonObj.get("components").isJsonNull()) {
-        JsonArray jsonArraycomponents = jsonObj.getAsJsonArray("components");
-        if (jsonArraycomponents != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("components").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `components` to be an array in the JSON string but got `%s`", jsonObj.get("components").toString()));
-          }
-
-          // validate the optional field `components` (array)
-          for (int i = 0; i < jsonArraycomponents.size(); i++) {
-            ComponentFilter.validateJsonElement(jsonArraycomponents.get(i));
-          };
-        }
-      }
+      // validate the required field `dataTypeId`
+      ResourceId.validateJsonElement(jsonObj.get("dataTypeId"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ComponentRule.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ComponentRule' and its subtypes
+       if (!BreakCodeSource.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'BreakCodeSource' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ComponentRule> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ComponentRule.class));
+       final TypeAdapter<BreakCodeSource> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(BreakCodeSource.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ComponentRule>() {
+       return (TypeAdapter<T>) new TypeAdapter<BreakCodeSource>() {
            @Override
-           public void write(JsonWriter out, ComponentRule value) throws IOException {
+           public void write(JsonWriter out, BreakCodeSource value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public ComponentRule read(JsonReader in) throws IOException {
+           public BreakCodeSource read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -198,18 +184,18 @@ public class ComponentRule {
   }
 
  /**
-  * Create an instance of ComponentRule given an JSON string
+  * Create an instance of BreakCodeSource given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ComponentRule
-  * @throws IOException if the JSON string is invalid with respect to ComponentRule
+  * @return An instance of BreakCodeSource
+  * @throws IOException if the JSON string is invalid with respect to BreakCodeSource
   */
-  public static ComponentRule fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ComponentRule.class);
+  public static BreakCodeSource fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, BreakCodeSource.class);
   }
 
  /**
-  * Convert an instance of ComponentRule to an JSON string
+  * Convert an instance of BreakCodeSource to an JSON string
   *
   * @return JSON string
   */

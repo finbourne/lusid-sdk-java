@@ -358,7 +358,7 @@ public class InstrumentsApi {
     }
 
     /**
-     * [EARLY ACCESS] BatchUpsertInstrumentProperties: Batch upsert instruments properties
+     * BatchUpsertInstrumentProperties: Batch upsert instruments properties
      * Create or update one or more properties for particular instruments.    Each instrument property is updated if it exists and created if it does not. For any failures, a reason  is provided.    Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime from which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
      * @param requestBody A list of instruments and associated instrument properties to create or update. (required)
      * @return APIbatchUpsertInstrumentPropertiesRequest
@@ -3149,7 +3149,7 @@ public class InstrumentsApi {
     }
 
     /**
-     * [EARLY ACCESS] GetInstrumentProperties: Get instrument properties
+     * GetInstrumentProperties: Get instrument properties
      * List all the properties of a particular instrument, as identified by a particular unique identifier.
      * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
      * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
@@ -3491,7 +3491,7 @@ public class InstrumentsApi {
     }
 
     /**
-     * [EARLY ACCESS] GetInstrumentPropertyTimeSeries: Get instrument property time series
+     * GetInstrumentPropertyTimeSeries: Get instrument property time series
      * Retrieve the complete time series (history) for a particular property of an instrument.
      * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
      * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)

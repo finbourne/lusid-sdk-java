@@ -4,7 +4,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteCustomEntity**](CustomEntitiesApi.md#deleteCustomEntity) | **DELETE** /api/customentities/{entityType}/{identifierType}/{identifierValue} | [EARLY ACCESS] DeleteCustomEntity: Delete a Custom Entity instance. |
+| [**deleteCustomEntity**](CustomEntitiesApi.md#deleteCustomEntity) | **DELETE** /api/customentities/{entityType}/{identifierType}/{identifierValue} | DeleteCustomEntity: Delete a Custom Entity instance. |
 | [**deleteCustomEntityAccessMetadata**](CustomEntitiesApi.md#deleteCustomEntityAccessMetadata) | **DELETE** /api/customentities/{entityType}/{identifierType}/{identifierValue}/metadata/{metadataKey} | [EARLY ACCESS] DeleteCustomEntityAccessMetadata: Delete a Custom Entity Access Metadata entry |
 | [**getAllCustomEntityAccessMetadata**](CustomEntitiesApi.md#getAllCustomEntityAccessMetadata) | **GET** /api/customentities/{entityType}/{identifierType}/{identifierValue}/metadata | [EARLY ACCESS] GetAllCustomEntityAccessMetadata: Get all the Access Metadata rules for a Custom Entity |
 | [**getCustomEntity**](CustomEntitiesApi.md#getCustomEntity) | **GET** /api/customentities/{entityType}/{identifierType}/{identifierValue} | GetCustomEntity: Get a Custom Entity instance. |
@@ -22,7 +22,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 > DeletedEntityResponse deleteCustomEntity(entityType, identifierType, identifierValue, identifierScope)
 
-[EARLY ACCESS] DeleteCustomEntity: Delete a Custom Entity instance.
+DeleteCustomEntity: Delete a Custom Entity instance.
 
 Delete a Custom Entity instance by a specific entity type.
 

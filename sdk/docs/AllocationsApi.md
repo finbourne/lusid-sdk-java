@@ -6,7 +6,7 @@ All URIs are relative to *https://www.lusid.com/api*
 |------------- | ------------- | -------------|
 | [**deleteAllocation**](AllocationsApi.md#deleteAllocation) | **DELETE** /api/allocations/{scope}/{code} | [EARLY ACCESS] DeleteAllocation: Delete allocation |
 | [**getAllocation**](AllocationsApi.md#getAllocation) | **GET** /api/allocations/{scope}/{code} | [EARLY ACCESS] GetAllocation: Get Allocation |
-| [**listAllocations**](AllocationsApi.md#listAllocations) | **GET** /api/allocations | [EARLY ACCESS] ListAllocations: List Allocations |
+| [**listAllocations**](AllocationsApi.md#listAllocations) | **GET** /api/allocations | ListAllocations: List Allocations |
 | [**upsertAllocations**](AllocationsApi.md#upsertAllocations) | **POST** /api/allocations | UpsertAllocations: Upsert Allocations |
 
 
@@ -205,7 +205,7 @@ public class AllocationsApiExample {
 
 > PagedResourceListOfAllocation listAllocations(asAt, page, sortBy, limit, filter, propertyKeys)
 
-[EARLY ACCESS] ListAllocations: List Allocations
+ListAllocations: List Allocations
 
 Fetch the last pre-AsAt date version of each allocation in scope (does not fetch the entire history).
 
