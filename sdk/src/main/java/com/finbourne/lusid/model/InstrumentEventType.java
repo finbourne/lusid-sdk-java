@@ -91,7 +91,11 @@ public enum InstrumentEventType {
   
   CDSCREDITEVENT("CdsCreditEvent"),
   
-  CDXCREDITEVENT("CdxCreditEvent");
+  CDXCREDITEVENT("CdxCreditEvent"),
+  
+  MBSCOUPONEVENT("MbsCouponEvent"),
+  
+  MBSPRINCIPALEVENT("MbsPrincipalEvent");
 
   private String value;
 

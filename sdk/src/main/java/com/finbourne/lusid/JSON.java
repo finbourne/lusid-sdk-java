@@ -1144,6 +1144,8 @@ public class JSON {
                         classByDiscriminatorValue.put("InformationalErrorEvent", com.finbourne.lusid.model.InformationalErrorEvent.class);
                         classByDiscriminatorValue.put("InformationalEvent", com.finbourne.lusid.model.InformationalEvent.class);
                         classByDiscriminatorValue.put("MaturityEvent", com.finbourne.lusid.model.MaturityEvent.class);
+                        classByDiscriminatorValue.put("MbsCouponEvent", com.finbourne.lusid.model.MbsCouponEvent.class);
+                        classByDiscriminatorValue.put("MbsPrincipalEvent", com.finbourne.lusid.model.MbsPrincipalEvent.class);
                         classByDiscriminatorValue.put("MergerEvent", com.finbourne.lusid.model.MergerEvent.class);
                         classByDiscriminatorValue.put("OpenEvent", com.finbourne.lusid.model.OpenEvent.class);
                         classByDiscriminatorValue.put("RawVendorEvent", com.finbourne.lusid.model.RawVendorEvent.class);
@@ -1327,6 +1329,24 @@ public class JSON {
                     public Class<? extends com.finbourne.lusid.model.MaturityEvent> getClassForElement(JsonElement readElement) {
                         Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
                         classByDiscriminatorValue.put("MaturityEvent", com.finbourne.lusid.model.MaturityEvent.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentEventType"));
+                    }
+          })
+                .registerTypeSelector(com.finbourne.lusid.model.MbsCouponEvent.class, new TypeSelector<com.finbourne.lusid.model.MbsCouponEvent>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.MbsCouponEvent> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("MbsCouponEvent", com.finbourne.lusid.model.MbsCouponEvent.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentEventType"));
+                    }
+          })
+                .registerTypeSelector(com.finbourne.lusid.model.MbsPrincipalEvent.class, new TypeSelector<com.finbourne.lusid.model.MbsPrincipalEvent>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.MbsPrincipalEvent> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("MbsPrincipalEvent", com.finbourne.lusid.model.MbsPrincipalEvent.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "instrumentEventType"));
                     }
@@ -2471,6 +2491,8 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.MarketOptions.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.MarketQuote.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.MaturityEvent.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.MbsCouponEvent.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.MbsPrincipalEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.MergerEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.MetricValue.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ModelPackage.CustomTypeAdapterFactory());
