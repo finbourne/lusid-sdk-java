@@ -6,9 +6,11 @@ All URIs are relative to *https://www.lusid.com/api*
 |------------- | ------------- | -------------|
 | [**addBusinessDaysToDate**](CalendarsApi.md#addBusinessDaysToDate) | **POST** /api/calendars/businessday/{scope}/add | [EARLY ACCESS] AddBusinessDaysToDate: Adds the requested number of Business Days to the provided date. |
 | [**addDateToCalendar**](CalendarsApi.md#addDateToCalendar) | **PUT** /api/calendars/generic/{scope}/{code}/dates | AddDateToCalendar: Add a date to a calendar |
+| [**batchUpsertDatesForCalendar**](CalendarsApi.md#batchUpsertDatesForCalendar) | **POST** /api/calendars/generic/{scope}/{code}/dates/$batchUpsert | BatchUpsertDatesForCalendar: Batch upsert dates to a calendar |
 | [**createCalendar**](CalendarsApi.md#createCalendar) | **POST** /api/calendars/generic | [EARLY ACCESS] CreateCalendar: Create a calendar in its generic form |
 | [**deleteCalendar**](CalendarsApi.md#deleteCalendar) | **DELETE** /api/calendars/generic/{scope}/{code} | [EARLY ACCESS] DeleteCalendar: Delete a calendar |
-| [**deleteDateFromCalendar**](CalendarsApi.md#deleteDateFromCalendar) | **DELETE** /api/calendars/generic/{scope}/{code}/dates/{dateId} | [EARLY ACCESS] DeleteDateFromCalendar: Remove a date from a calendar |
+| [**deleteDateFromCalendar**](CalendarsApi.md#deleteDateFromCalendar) | **DELETE** /api/calendars/generic/{scope}/{code}/dates/{dateId} | DeleteDateFromCalendar: Remove a date from a calendar |
+| [**deleteDatesFromCalendar**](CalendarsApi.md#deleteDatesFromCalendar) | **POST** /api/calendars/generic/{scope}/{code}/dates/$delete | DeleteDatesFromCalendar: Delete dates from a calendar |
 | [**generateSchedule**](CalendarsApi.md#generateSchedule) | **POST** /api/calendars/schedule/{scope} | [EARLY ACCESS] GenerateSchedule: Generate an ordered schedule of dates. |
 | [**getCalendar**](CalendarsApi.md#getCalendar) | **GET** /api/calendars/generic/{scope}/{code} | GetCalendar: Get a calendar in its generic form |
 | [**getDates**](CalendarsApi.md#getDates) | **GET** /api/calendars/generic/{scope}/{code}/dates | [EARLY ACCESS] GetDates: Get dates for a specific calendar |
@@ -207,6 +209,103 @@ public class CalendarsApiExample {
 [Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 
+## batchUpsertDatesForCalendar
+
+> BatchUpsertDatesForCalendarResponse batchUpsertDatesForCalendar(scope, code, successMode, requestBody)
+
+BatchUpsertDatesForCalendar: Batch upsert dates to a calendar
+
+Create or update events in the calendar. These Events can be a maximum of 24 hours and must be specified in UTC.  A local date will be calculated by the system and applied to the calendar before processing.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.CalendarsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class CalendarsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CalendarsApi apiInstance = apiFactory.build(CalendarsApi.class);
+
+        CalendarsApi apiInstance = ApiFactoryBuilder.build(fileName).build(CalendarsApi.class);
+        String scope = "scope_example"; // String | Scope of the calendar
+        String code = "code_example"; // String | Code of the calendar
+        String successMode = "Partial"; // String | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial.
+        Map<String, CreateDateRequest> requestBody = new HashMap(); // Map<String, CreateDateRequest> | Create Date Requests of dates to upsert
+        try {
+            // uncomment the below to set overrides at the request level
+            // BatchUpsertDatesForCalendarResponse result = apiInstance.batchUpsertDatesForCalendar(scope, code, successMode, requestBody).execute(opts);
+
+            BatchUpsertDatesForCalendarResponse result = apiInstance.batchUpsertDatesForCalendar(scope, code, successMode, requestBody).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CalendarsApi#batchUpsertDatesForCalendar");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| Scope of the calendar | |
+| **code** | **String**| Code of the calendar | |
+| **successMode** | **String**| Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial. | [default to Partial] |
+| **requestBody** | [**Map&lt;String, CreateDateRequest&gt;**](CreateDateRequest.md)| Create Date Requests of dates to upsert | |
+
+### Return type
+
+[**BatchUpsertDatesForCalendarResponse**](BatchUpsertDatesForCalendarResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The successfully upserted date requests along with any failures |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
 ## createCalendar
 
 > Calendar createCalendar(createCalendarRequest)
@@ -395,7 +494,7 @@ public class CalendarsApiExample {
 
 > CalendarDate deleteDateFromCalendar(scope, code, dateId)
 
-[EARLY ACCESS] DeleteDateFromCalendar: Remove a date from a calendar
+DeleteDateFromCalendar: Remove a date from a calendar
 
 Remove a date from a calendar.
 
@@ -480,6 +579,101 @@ public class CalendarsApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The deleted date |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## deleteDatesFromCalendar
+
+> Map&lt;String, CalendarDate&gt; deleteDatesFromCalendar(scope, code, requestBody)
+
+DeleteDatesFromCalendar: Delete dates from a calendar
+
+Delete dates from a calendar.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.CalendarsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class CalendarsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CalendarsApi apiInstance = apiFactory.build(CalendarsApi.class);
+
+        CalendarsApi apiInstance = ApiFactoryBuilder.build(fileName).build(CalendarsApi.class);
+        String scope = "scope_example"; // String | Scope of the calendar
+        String code = "code_example"; // String | Code of the calendar
+        List<String> requestBody = ["dateId1","dateId2"]; // List<String> | Identifiers of the dates to be removed
+        try {
+            // uncomment the below to set overrides at the request level
+            // Map<String, CalendarDate> result = apiInstance.deleteDatesFromCalendar(scope, code, requestBody).execute(opts);
+
+            Map<String, CalendarDate> result = apiInstance.deleteDatesFromCalendar(scope, code, requestBody).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CalendarsApi#deleteDatesFromCalendar");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| Scope of the calendar | |
+| **code** | **String**| Code of the calendar | |
+| **requestBody** | [**List&lt;String&gt;**](String.md)| Identifiers of the dates to be removed | |
+
+### Return type
+
+[**Map&lt;String, CalendarDate&gt;**](CalendarDate.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The dateIds and details of the dates that were deleted |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

@@ -27,6 +27,7 @@ import java.io.IOException;
 
 import com.finbourne.lusid.model.AddBusinessDaysToDateRequest;
 import com.finbourne.lusid.model.AddBusinessDaysToDateResponse;
+import com.finbourne.lusid.model.BatchUpsertDatesForCalendarResponse;
 import com.finbourne.lusid.model.Calendar;
 import com.finbourne.lusid.model.CalendarDate;
 import com.finbourne.lusid.model.CreateCalendarRequest;
@@ -579,6 +580,271 @@ public class CalendarsApi {
      */
     public APIaddDateToCalendarRequest addDateToCalendar(String scope, String code, CreateDateRequest createDateRequest) {
         return new APIaddDateToCalendarRequest(scope, code, createDateRequest);
+    }
+    private okhttp3.Call batchUpsertDatesForCalendarCall(String scope, String code, String successMode, Map<String, CreateDateRequest> requestBody, final ApiCallback _callback) throws ApiException {
+        return batchUpsertDatesForCalendarCall(scope, code, successMode, requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call batchUpsertDatesForCalendarCall(String scope, String code, String successMode, Map<String, CreateDateRequest> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = requestBody;
+
+        // create path and map variables
+        String localVarPath = "/api/calendars/generic/{scope}/{code}/dates/$batchUpsert"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (successMode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("successMode", successMode));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call batchUpsertDatesForCalendarValidateBeforeCall(String scope, String code, String successMode, Map<String, CreateDateRequest> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling batchUpsertDatesForCalendar(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling batchUpsertDatesForCalendar(Async)");
+        }
+
+        // verify the required parameter 'successMode' is set
+        if (successMode == null) {
+            throw new ApiException("Missing the required parameter 'successMode' when calling batchUpsertDatesForCalendar(Async)");
+        }
+
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException("Missing the required parameter 'requestBody' when calling batchUpsertDatesForCalendar(Async)");
+        }
+
+        return batchUpsertDatesForCalendarCall(scope, code, successMode, requestBody, _callback, opts);
+
+    }
+
+
+    private ApiResponse<BatchUpsertDatesForCalendarResponse> batchUpsertDatesForCalendarWithHttpInfo(String scope, String code, String successMode, Map<String, CreateDateRequest> requestBody) throws ApiException {
+        okhttp3.Call localVarCall = batchUpsertDatesForCalendarValidateBeforeCall(scope, code, successMode, requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<BatchUpsertDatesForCalendarResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<BatchUpsertDatesForCalendarResponse> batchUpsertDatesForCalendarWithHttpInfo(String scope, String code, String successMode, Map<String, CreateDateRequest> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = batchUpsertDatesForCalendarValidateBeforeCall(scope, code, successMode, requestBody, null, opts);
+        Type localVarReturnType = new TypeToken<BatchUpsertDatesForCalendarResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call batchUpsertDatesForCalendarAsync(String scope, String code, String successMode, Map<String, CreateDateRequest> requestBody, final ApiCallback<BatchUpsertDatesForCalendarResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = batchUpsertDatesForCalendarValidateBeforeCall(scope, code, successMode, requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<BatchUpsertDatesForCalendarResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call batchUpsertDatesForCalendarAsync(String scope, String code, String successMode, Map<String, CreateDateRequest> requestBody, final ApiCallback<BatchUpsertDatesForCalendarResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = batchUpsertDatesForCalendarValidateBeforeCall(scope, code, successMode, requestBody, _callback, opts);
+        Type localVarReturnType = new TypeToken<BatchUpsertDatesForCalendarResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIbatchUpsertDatesForCalendarRequest {
+        private final String scope;
+        private final String code;
+        private final String successMode;
+        private final Map<String, CreateDateRequest> requestBody;
+
+        private APIbatchUpsertDatesForCalendarRequest(String scope, String code, String successMode, Map<String, CreateDateRequest> requestBody) {
+            this.scope = scope;
+            this.code = code;
+            this.successMode = successMode;
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Build call for batchUpsertDatesForCalendar
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully upserted date requests along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return batchUpsertDatesForCalendarCall(scope, code, successMode, requestBody, _callback);
+        }
+
+        /**
+         * Execute batchUpsertDatesForCalendar request
+         * @return BatchUpsertDatesForCalendarResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully upserted date requests along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public BatchUpsertDatesForCalendarResponse execute() throws ApiException {
+            ApiResponse<BatchUpsertDatesForCalendarResponse> localVarResp = batchUpsertDatesForCalendarWithHttpInfo(scope, code, successMode, requestBody);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute batchUpsertDatesForCalendar request. Use any specified configuration options to override any other configuration for this request only.
+         * @return BatchUpsertDatesForCalendarResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully upserted date requests along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public BatchUpsertDatesForCalendarResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<BatchUpsertDatesForCalendarResponse> localVarResp = batchUpsertDatesForCalendarWithHttpInfo(scope, code, successMode, requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute batchUpsertDatesForCalendar request with HTTP info returned
+         * @return ApiResponse&lt;BatchUpsertDatesForCalendarResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully upserted date requests along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<BatchUpsertDatesForCalendarResponse> executeWithHttpInfo() throws ApiException {
+            return batchUpsertDatesForCalendarWithHttpInfo(scope, code, successMode, requestBody);
+        }
+
+        /**
+         * Execute batchUpsertDatesForCalendar request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;BatchUpsertDatesForCalendarResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully upserted date requests along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<BatchUpsertDatesForCalendarResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return batchUpsertDatesForCalendarWithHttpInfo(scope, code, successMode, requestBody, opts);
+        }
+
+        /**
+         * Execute batchUpsertDatesForCalendar request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully upserted date requests along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<BatchUpsertDatesForCalendarResponse> _callback) throws ApiException {
+            return batchUpsertDatesForCalendarAsync(scope, code, successMode, requestBody, _callback);
+        }
+
+        /**
+         * Execute batchUpsertDatesForCalendar request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully upserted date requests along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<BatchUpsertDatesForCalendarResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return batchUpsertDatesForCalendarAsync(scope, code, successMode, requestBody, _callback, opts);
+        }
+    }
+
+    /**
+     * BatchUpsertDatesForCalendar: Batch upsert dates to a calendar
+     * Create or update events in the calendar. These Events can be a maximum of 24 hours and must be specified in UTC.  A local date will be calculated by the system and applied to the calendar before processing.
+     * @param scope Scope of the calendar (required)
+     * @param code Code of the calendar (required)
+     * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial. (required)
+     * @param requestBody Create Date Requests of dates to upsert (required)
+     * @return APIbatchUpsertDatesForCalendarRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The successfully upserted date requests along with any failures </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIbatchUpsertDatesForCalendarRequest batchUpsertDatesForCalendar(String scope, String code, String successMode, Map<String, CreateDateRequest> requestBody) {
+        return new APIbatchUpsertDatesForCalendarRequest(scope, code, successMode, requestBody);
     }
     private okhttp3.Call createCalendarCall(CreateCalendarRequest createCalendarRequest, final ApiCallback _callback) throws ApiException {
         return createCalendarCall(createCalendarRequest,  _callback, new ConfigurationOptions());
@@ -1289,7 +1555,7 @@ public class CalendarsApi {
     }
 
     /**
-     * [EARLY ACCESS] DeleteDateFromCalendar: Remove a date from a calendar
+     * DeleteDateFromCalendar: Remove a date from a calendar
      * Remove a date from a calendar.
      * @param scope Scope of the calendar (required)
      * @param code Code of the calendar (required)
@@ -1305,6 +1571,259 @@ public class CalendarsApi {
      */
     public APIdeleteDateFromCalendarRequest deleteDateFromCalendar(String scope, String code, String dateId) {
         return new APIdeleteDateFromCalendarRequest(scope, code, dateId);
+    }
+    private okhttp3.Call deleteDatesFromCalendarCall(String scope, String code, List<String> requestBody, final ApiCallback _callback) throws ApiException {
+        return deleteDatesFromCalendarCall(scope, code, requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteDatesFromCalendarCall(String scope, String code, List<String> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = requestBody;
+
+        // create path and map variables
+        String localVarPath = "/api/calendars/generic/{scope}/{code}/dates/$delete"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteDatesFromCalendarValidateBeforeCall(String scope, String code, List<String> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling deleteDatesFromCalendar(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling deleteDatesFromCalendar(Async)");
+        }
+
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException("Missing the required parameter 'requestBody' when calling deleteDatesFromCalendar(Async)");
+        }
+
+        return deleteDatesFromCalendarCall(scope, code, requestBody, _callback, opts);
+
+    }
+
+
+    private ApiResponse<Map<String, CalendarDate>> deleteDatesFromCalendarWithHttpInfo(String scope, String code, List<String> requestBody) throws ApiException {
+        okhttp3.Call localVarCall = deleteDatesFromCalendarValidateBeforeCall(scope, code, requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Map<String, CalendarDate>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Map<String, CalendarDate>> deleteDatesFromCalendarWithHttpInfo(String scope, String code, List<String> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteDatesFromCalendarValidateBeforeCall(scope, code, requestBody, null, opts);
+        Type localVarReturnType = new TypeToken<Map<String, CalendarDate>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call deleteDatesFromCalendarAsync(String scope, String code, List<String> requestBody, final ApiCallback<Map<String, CalendarDate>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteDatesFromCalendarValidateBeforeCall(scope, code, requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Map<String, CalendarDate>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteDatesFromCalendarAsync(String scope, String code, List<String> requestBody, final ApiCallback<Map<String, CalendarDate>> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteDatesFromCalendarValidateBeforeCall(scope, code, requestBody, _callback, opts);
+        Type localVarReturnType = new TypeToken<Map<String, CalendarDate>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIdeleteDatesFromCalendarRequest {
+        private final String scope;
+        private final String code;
+        private final List<String> requestBody;
+
+        private APIdeleteDatesFromCalendarRequest(String scope, String code, List<String> requestBody) {
+            this.scope = scope;
+            this.code = code;
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Build call for deleteDatesFromCalendar
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The dateIds and details of the dates that were deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteDatesFromCalendarCall(scope, code, requestBody, _callback);
+        }
+
+        /**
+         * Execute deleteDatesFromCalendar request
+         * @return Map&lt;String, CalendarDate&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The dateIds and details of the dates that were deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Map<String, CalendarDate> execute() throws ApiException {
+            ApiResponse<Map<String, CalendarDate>> localVarResp = deleteDatesFromCalendarWithHttpInfo(scope, code, requestBody);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteDatesFromCalendar request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Map&lt;String, CalendarDate&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The dateIds and details of the dates that were deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Map<String, CalendarDate> execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Map<String, CalendarDate>> localVarResp = deleteDatesFromCalendarWithHttpInfo(scope, code, requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteDatesFromCalendar request with HTTP info returned
+         * @return ApiResponse&lt;Map&lt;String, CalendarDate&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The dateIds and details of the dates that were deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Map<String, CalendarDate>> executeWithHttpInfo() throws ApiException {
+            return deleteDatesFromCalendarWithHttpInfo(scope, code, requestBody);
+        }
+
+        /**
+         * Execute deleteDatesFromCalendar request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Map&lt;String, CalendarDate&gt;&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The dateIds and details of the dates that were deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Map<String, CalendarDate>> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteDatesFromCalendarWithHttpInfo(scope, code, requestBody, opts);
+        }
+
+        /**
+         * Execute deleteDatesFromCalendar request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The dateIds and details of the dates that were deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Map<String, CalendarDate>> _callback) throws ApiException {
+            return deleteDatesFromCalendarAsync(scope, code, requestBody, _callback);
+        }
+
+        /**
+         * Execute deleteDatesFromCalendar request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The dateIds and details of the dates that were deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Map<String, CalendarDate>> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteDatesFromCalendarAsync(scope, code, requestBody, _callback, opts);
+        }
+    }
+
+    /**
+     * DeleteDatesFromCalendar: Delete dates from a calendar
+     * Delete dates from a calendar.
+     * @param scope Scope of the calendar (required)
+     * @param code Code of the calendar (required)
+     * @param requestBody Identifiers of the dates to be removed (required)
+     * @return APIdeleteDatesFromCalendarRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The dateIds and details of the dates that were deleted </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIdeleteDatesFromCalendarRequest deleteDatesFromCalendar(String scope, String code, List<String> requestBody) {
+        return new APIdeleteDatesFromCalendarRequest(scope, code, requestBody);
     }
     private okhttp3.Call generateScheduleCall(String scope, ValuationSchedule valuationSchedule, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         return generateScheduleCall(scope, valuationSchedule, asAt,  _callback, new ConfigurationOptions());

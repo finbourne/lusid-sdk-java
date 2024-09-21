@@ -36,6 +36,7 @@ import com.finbourne.lusid.model.PagedResourceListOfDataTypeSummary;
 import com.finbourne.lusid.model.ResourceListOfDataType;
 import com.finbourne.lusid.model.ResourceListOfIUnitDefinitionDto;
 import com.finbourne.lusid.model.UpdateDataTypeRequest;
+import com.finbourne.lusid.model.UpdateReferenceDataRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -1958,6 +1959,259 @@ public class DataTypesApi {
      */
     public APIupdateDataTypeRequest updateDataType(String scope, String code, UpdateDataTypeRequest updateDataTypeRequest) {
         return new APIupdateDataTypeRequest(scope, code, updateDataTypeRequest);
+    }
+    private okhttp3.Call updateReferenceDataCall(String scope, String code, UpdateReferenceDataRequest updateReferenceDataRequest, final ApiCallback _callback) throws ApiException {
+        return updateReferenceDataCall(scope, code, updateReferenceDataRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call updateReferenceDataCall(String scope, String code, UpdateReferenceDataRequest updateReferenceDataRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = updateReferenceDataRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/datatypes/{scope}/{code}/referencedata"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateReferenceDataValidateBeforeCall(String scope, String code, UpdateReferenceDataRequest updateReferenceDataRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling updateReferenceData(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling updateReferenceData(Async)");
+        }
+
+        // verify the required parameter 'updateReferenceDataRequest' is set
+        if (updateReferenceDataRequest == null) {
+            throw new ApiException("Missing the required parameter 'updateReferenceDataRequest' when calling updateReferenceData(Async)");
+        }
+
+        return updateReferenceDataCall(scope, code, updateReferenceDataRequest, _callback, opts);
+
+    }
+
+
+    private ApiResponse<DataType> updateReferenceDataWithHttpInfo(String scope, String code, UpdateReferenceDataRequest updateReferenceDataRequest) throws ApiException {
+        okhttp3.Call localVarCall = updateReferenceDataValidateBeforeCall(scope, code, updateReferenceDataRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DataType>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DataType> updateReferenceDataWithHttpInfo(String scope, String code, UpdateReferenceDataRequest updateReferenceDataRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = updateReferenceDataValidateBeforeCall(scope, code, updateReferenceDataRequest, null, opts);
+        Type localVarReturnType = new TypeToken<DataType>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call updateReferenceDataAsync(String scope, String code, UpdateReferenceDataRequest updateReferenceDataRequest, final ApiCallback<DataType> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateReferenceDataValidateBeforeCall(scope, code, updateReferenceDataRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DataType>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call updateReferenceDataAsync(String scope, String code, UpdateReferenceDataRequest updateReferenceDataRequest, final ApiCallback<DataType> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = updateReferenceDataValidateBeforeCall(scope, code, updateReferenceDataRequest, _callback, opts);
+        Type localVarReturnType = new TypeToken<DataType>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupdateReferenceDataRequest {
+        private final String scope;
+        private final String code;
+        private final UpdateReferenceDataRequest updateReferenceDataRequest;
+
+        private APIupdateReferenceDataRequest(String scope, String code, UpdateReferenceDataRequest updateReferenceDataRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.updateReferenceDataRequest = updateReferenceDataRequest;
+        }
+
+        /**
+         * Build call for updateReferenceData
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return updateReferenceDataCall(scope, code, updateReferenceDataRequest, _callback);
+        }
+
+        /**
+         * Execute updateReferenceData request
+         * @return DataType
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DataType execute() throws ApiException {
+            ApiResponse<DataType> localVarResp = updateReferenceDataWithHttpInfo(scope, code, updateReferenceDataRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute updateReferenceData request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DataType
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DataType execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DataType> localVarResp = updateReferenceDataWithHttpInfo(scope, code, updateReferenceDataRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute updateReferenceData request with HTTP info returned
+         * @return ApiResponse&lt;DataType&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DataType> executeWithHttpInfo() throws ApiException {
+            return updateReferenceDataWithHttpInfo(scope, code, updateReferenceDataRequest);
+        }
+
+        /**
+         * Execute updateReferenceData request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DataType&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DataType> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return updateReferenceDataWithHttpInfo(scope, code, updateReferenceDataRequest, opts);
+        }
+
+        /**
+         * Execute updateReferenceData request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DataType> _callback) throws ApiException {
+            return updateReferenceDataAsync(scope, code, updateReferenceDataRequest, _callback);
+        }
+
+        /**
+         * Execute updateReferenceData request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DataType> _callback, ConfigurationOptions opts) throws ApiException {
+            return updateReferenceDataAsync(scope, code, updateReferenceDataRequest, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] UpdateReferenceData: Update all reference data on a data type, includes the reference values, the field definitions, field values
+     * Replaces the whole set of reference data
+     * @param scope The scope of the data type (required)
+     * @param code The code of the data type (required)
+     * @param updateReferenceDataRequest The updated reference data (required)
+     * @return APIupdateReferenceDataRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIupdateReferenceDataRequest updateReferenceData(String scope, String code, UpdateReferenceDataRequest updateReferenceDataRequest) {
+        return new APIupdateReferenceDataRequest(scope, code, updateReferenceDataRequest);
     }
     private okhttp3.Call updateReferenceValuesCall(String scope, String code, List<FieldValue> fieldValue, final ApiCallback _callback) throws ApiException {
         return updateReferenceValuesCall(scope, code, fieldValue,  _callback, new ConfigurationOptions());

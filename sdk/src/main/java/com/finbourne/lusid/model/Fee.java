@@ -69,13 +69,13 @@ public class Fee {
   @SerializedName(SERIALIZED_NAME_FEE_CODE)
   private String feeCode;
 
-  public static final String SERIALIZED_NAME_FEE_TYPE = "feeType";
-  @SerializedName(SERIALIZED_NAME_FEE_TYPE)
-  private ResourceId feeType;
+  public static final String SERIALIZED_NAME_FEE_TYPE_ID = "feeTypeId";
+  @SerializedName(SERIALIZED_NAME_FEE_TYPE_ID)
+  private ResourceId feeTypeId;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
+  public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
+  @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+  private String displayName;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -186,45 +186,45 @@ public class Fee {
   }
 
 
-  public Fee feeType(ResourceId feeType) {
+  public Fee feeTypeId(ResourceId feeTypeId) {
     
-    this.feeType = feeType;
+    this.feeTypeId = feeTypeId;
     return this;
   }
 
    /**
-   * Get feeType
-   * @return feeType
+   * Get feeTypeId
+   * @return feeTypeId
   **/
   @jakarta.annotation.Nonnull
-  public ResourceId getFeeType() {
-    return feeType;
+  public ResourceId getFeeTypeId() {
+    return feeTypeId;
   }
 
 
-  public void setFeeType(ResourceId feeType) {
-    this.feeType = feeType;
+  public void setFeeTypeId(ResourceId feeTypeId) {
+    this.feeTypeId = feeTypeId;
   }
 
 
-  public Fee name(String name) {
+  public Fee displayName(String displayName) {
     
-    this.name = name;
+    this.displayName = displayName;
     return this;
   }
 
    /**
    * The name of the Fee.
-   * @return name
+   * @return displayName
   **/
   @jakarta.annotation.Nonnull
-  public String getName() {
-    return name;
+  public String getDisplayName() {
+    return displayName;
   }
 
 
-  public void setName(String name) {
-    this.name = name;
+  public void setDisplayName(String displayName) {
+    this.displayName = displayName;
   }
 
 
@@ -592,8 +592,8 @@ public class Fee {
     Fee fee = (Fee) o;
     return Objects.equals(this.href, fee.href) &&
         Objects.equals(this.feeCode, fee.feeCode) &&
-        Objects.equals(this.feeType, fee.feeType) &&
-        Objects.equals(this.name, fee.name) &&
+        Objects.equals(this.feeTypeId, fee.feeTypeId) &&
+        Objects.equals(this.displayName, fee.displayName) &&
         Objects.equals(this.description, fee.description) &&
         Objects.equals(this.origin, fee.origin) &&
         Objects.equals(this.calculationBase, fee.calculationBase) &&
@@ -618,7 +618,7 @@ public class Fee {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, feeCode, feeType, name, description, origin, calculationBase, accrualCurrency, treatment, totalAnnualAccrualAmount, feeRatePercentage, payableFrequency, businessDayConvention, startDate, endDate, anchorDate, properties, version, portfolioId, links);
+    return Objects.hash(href, feeCode, feeTypeId, displayName, description, origin, calculationBase, accrualCurrency, treatment, totalAnnualAccrualAmount, feeRatePercentage, payableFrequency, businessDayConvention, startDate, endDate, anchorDate, properties, version, portfolioId, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -634,8 +634,8 @@ public class Fee {
     sb.append("class Fee {\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    feeCode: ").append(toIndentedString(feeCode)).append("\n");
-    sb.append("    feeType: ").append(toIndentedString(feeType)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    feeTypeId: ").append(toIndentedString(feeTypeId)).append("\n");
+    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    origin: ").append(toIndentedString(origin)).append("\n");
     sb.append("    calculationBase: ").append(toIndentedString(calculationBase)).append("\n");
@@ -676,8 +676,8 @@ public class Fee {
     openapiFields = new HashSet<String>();
     openapiFields.add("href");
     openapiFields.add("feeCode");
-    openapiFields.add("feeType");
-    openapiFields.add("name");
+    openapiFields.add("feeTypeId");
+    openapiFields.add("displayName");
     openapiFields.add("description");
     openapiFields.add("origin");
     openapiFields.add("calculationBase");
@@ -697,8 +697,8 @@ public class Fee {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("feeType");
-    openapiRequiredFields.add("name");
+    openapiRequiredFields.add("feeTypeId");
+    openapiRequiredFields.add("displayName");
     openapiRequiredFields.add("accrualCurrency");
     openapiRequiredFields.add("treatment");
     openapiRequiredFields.add("payableFrequency");
@@ -732,10 +732,10 @@ public class Fee {
       if ((jsonObj.get("feeCode") != null && !jsonObj.get("feeCode").isJsonNull()) && !jsonObj.get("feeCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `feeCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("feeCode").toString()));
       }
-      // validate the required field `feeType`
-      ResourceId.validateJsonElement(jsonObj.get("feeType"));
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      // validate the required field `feeTypeId`
+      ResourceId.validateJsonElement(jsonObj.get("feeTypeId"));
+      if (!jsonObj.get("displayName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));

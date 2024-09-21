@@ -52,9 +52,9 @@ import com.finbourne.lusid.JSON;
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CdsCreditEvent extends InstrumentEvent {
-  public static final String SERIALIZED_NAME_DEFAULT_DATE = "defaultDate";
-  @SerializedName(SERIALIZED_NAME_DEFAULT_DATE)
-  private OffsetDateTime defaultDate;
+  public static final String SERIALIZED_NAME_EFFECTIVE_DATE = "effectiveDate";
+  @SerializedName(SERIALIZED_NAME_EFFECTIVE_DATE)
+  private OffsetDateTime effectiveDate;
 
   public static final String SERIALIZED_NAME_AUCTION_DATE = "auctionDate";
   @SerializedName(SERIALIZED_NAME_AUCTION_DATE)
@@ -68,24 +68,24 @@ public class CdsCreditEvent extends InstrumentEvent {
     // this.instrumentEventType = this.getClass().getSimpleName();
   }
 
-  public CdsCreditEvent defaultDate(OffsetDateTime defaultDate) {
+  public CdsCreditEvent effectiveDate(OffsetDateTime effectiveDate) {
     
-    this.defaultDate = defaultDate;
+    this.effectiveDate = effectiveDate;
     return this;
   }
 
    /**
    * The date of the credit default - i.e. date on which the debt issuer defaulted on its repayment obligation.
-   * @return defaultDate
+   * @return effectiveDate
   **/
   @jakarta.annotation.Nonnull
-  public OffsetDateTime getDefaultDate() {
-    return defaultDate;
+  public OffsetDateTime getEffectiveDate() {
+    return effectiveDate;
   }
 
 
-  public void setDefaultDate(OffsetDateTime defaultDate) {
-    this.defaultDate = defaultDate;
+  public void setEffectiveDate(OffsetDateTime effectiveDate) {
+    this.effectiveDate = effectiveDate;
   }
 
 
@@ -141,7 +141,7 @@ public class CdsCreditEvent extends InstrumentEvent {
       return false;
     }
     CdsCreditEvent cdsCreditEvent = (CdsCreditEvent) o;
-    return Objects.equals(this.defaultDate, cdsCreditEvent.defaultDate) &&
+    return Objects.equals(this.effectiveDate, cdsCreditEvent.effectiveDate) &&
         Objects.equals(this.auctionDate, cdsCreditEvent.auctionDate) &&
         (this.recoveryRate.compareTo(cdsCreditEvent.getRecoveryRate()) == 0) &&
         super.equals(o);
@@ -153,7 +153,7 @@ public class CdsCreditEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultDate, auctionDate, recoveryRate, super.hashCode());
+    return Objects.hash(effectiveDate, auctionDate, recoveryRate, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -168,7 +168,7 @@ public class CdsCreditEvent extends InstrumentEvent {
     StringBuilder sb = new StringBuilder();
     sb.append("class CdsCreditEvent {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    defaultDate: ").append(toIndentedString(defaultDate)).append("\n");
+    sb.append("    effectiveDate: ").append(toIndentedString(effectiveDate)).append("\n");
     sb.append("    auctionDate: ").append(toIndentedString(auctionDate)).append("\n");
     sb.append("    recoveryRate: ").append(toIndentedString(recoveryRate)).append("\n");
     sb.append("}");
@@ -194,13 +194,13 @@ public class CdsCreditEvent extends InstrumentEvent {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("instrumentEventType");
-    openapiFields.add("defaultDate");
+    openapiFields.add("effectiveDate");
     openapiFields.add("auctionDate");
     openapiFields.add("recoveryRate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("defaultDate");
+    openapiRequiredFields.add("effectiveDate");
     openapiRequiredFields.add("instrumentEventType");
   }
 

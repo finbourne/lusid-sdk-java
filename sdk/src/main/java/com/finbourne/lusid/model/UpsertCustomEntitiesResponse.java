@@ -66,6 +66,10 @@ public class UpsertCustomEntitiesResponse {
   @SerializedName(SERIALIZED_NAME_VALUES)
   private Map<String, CustomEntityResponse> values;
 
+  public static final String SERIALIZED_NAME_STAGED = "staged";
+  @SerializedName(SERIALIZED_NAME_STAGED)
+  private Map<String, CustomEntityResponse> staged;
+
   public static final String SERIALIZED_NAME_FAILED = "failed";
   @SerializedName(SERIALIZED_NAME_FAILED)
   private Map<String, ErrorDetail> failed;
@@ -124,6 +128,35 @@ public class UpsertCustomEntitiesResponse {
 
   public void setValues(Map<String, CustomEntityResponse> values) {
     this.values = values;
+  }
+
+
+  public UpsertCustomEntitiesResponse staged(Map<String, CustomEntityResponse> staged) {
+    
+    this.staged = staged;
+    return this;
+  }
+
+  public UpsertCustomEntitiesResponse putStagedItem(String key, CustomEntityResponse stagedItem) {
+    if (this.staged == null) {
+      this.staged = new HashMap<>();
+    }
+    this.staged.put(key, stagedItem);
+    return this;
+  }
+
+   /**
+   * The custom-entities that have been staged for update or creation.
+   * @return staged
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, CustomEntityResponse> getStaged() {
+    return staged;
+  }
+
+
+  public void setStaged(Map<String, CustomEntityResponse> staged) {
+    this.staged = staged;
   }
 
 
@@ -197,6 +230,7 @@ public class UpsertCustomEntitiesResponse {
     UpsertCustomEntitiesResponse upsertCustomEntitiesResponse = (UpsertCustomEntitiesResponse) o;
     return Objects.equals(this.href, upsertCustomEntitiesResponse.href) &&
         Objects.equals(this.values, upsertCustomEntitiesResponse.values) &&
+        Objects.equals(this.staged, upsertCustomEntitiesResponse.staged) &&
         Objects.equals(this.failed, upsertCustomEntitiesResponse.failed) &&
         Objects.equals(this.links, upsertCustomEntitiesResponse.links);
   }
@@ -207,7 +241,7 @@ public class UpsertCustomEntitiesResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, values, failed, links);
+    return Objects.hash(href, values, staged, failed, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -223,6 +257,7 @@ public class UpsertCustomEntitiesResponse {
     sb.append("class UpsertCustomEntitiesResponse {\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    values: ").append(toIndentedString(values)).append("\n");
+    sb.append("    staged: ").append(toIndentedString(staged)).append("\n");
     sb.append("    failed: ").append(toIndentedString(failed)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
@@ -249,6 +284,7 @@ public class UpsertCustomEntitiesResponse {
     openapiFields = new HashSet<String>();
     openapiFields.add("href");
     openapiFields.add("values");
+    openapiFields.add("staged");
     openapiFields.add("failed");
     openapiFields.add("links");
 

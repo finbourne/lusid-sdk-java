@@ -65,9 +65,9 @@ public class FeeType {
   @SerializedName(SERIALIZED_NAME_ID)
   private ResourceId id;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
+  public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
+  @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+  private String displayName;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -130,24 +130,24 @@ public class FeeType {
   }
 
 
-  public FeeType name(String name) {
+  public FeeType displayName(String displayName) {
     
-    this.name = name;
+    this.displayName = displayName;
     return this;
   }
 
    /**
    * The name of the fee type.
-   * @return name
+   * @return displayName
   **/
   @jakarta.annotation.Nonnull
-  public String getName() {
-    return name;
+  public String getDisplayName() {
+    return displayName;
   }
 
 
-  public void setName(String name) {
-    this.name = name;
+  public void setDisplayName(String displayName) {
+    this.displayName = displayName;
   }
 
 
@@ -187,7 +187,7 @@ public class FeeType {
   }
 
    /**
-   * A set of component transactions that relate to the fee type.
+   * A set of component transactions that relate to the fee type to be created.
    * @return componentTransactions
   **/
   @jakarta.annotation.Nonnull
@@ -263,7 +263,7 @@ public class FeeType {
     FeeType feeType = (FeeType) o;
     return Objects.equals(this.href, feeType.href) &&
         Objects.equals(this.id, feeType.id) &&
-        Objects.equals(this.name, feeType.name) &&
+        Objects.equals(this.displayName, feeType.displayName) &&
         Objects.equals(this.description, feeType.description) &&
         Objects.equals(this.componentTransactions, feeType.componentTransactions) &&
         Objects.equals(this.version, feeType.version) &&
@@ -276,7 +276,7 @@ public class FeeType {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, name, description, componentTransactions, version, links);
+    return Objects.hash(href, id, displayName, description, componentTransactions, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -292,7 +292,7 @@ public class FeeType {
     sb.append("class FeeType {\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    componentTransactions: ").append(toIndentedString(componentTransactions)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
@@ -321,7 +321,7 @@ public class FeeType {
     openapiFields = new HashSet<String>();
     openapiFields.add("href");
     openapiFields.add("id");
-    openapiFields.add("name");
+    openapiFields.add("displayName");
     openapiFields.add("description");
     openapiFields.add("componentTransactions");
     openapiFields.add("version");
@@ -330,7 +330,7 @@ public class FeeType {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("id");
-    openapiRequiredFields.add("name");
+    openapiRequiredFields.add("displayName");
     openapiRequiredFields.add("description");
     openapiRequiredFields.add("componentTransactions");
   }
@@ -360,8 +360,8 @@ public class FeeType {
       }
       // validate the required field `id`
       ResourceId.validateJsonElement(jsonObj.get("id"));
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      if (!jsonObj.get("displayName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
       }
       if (!jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));

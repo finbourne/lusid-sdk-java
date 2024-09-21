@@ -49,9 +49,11 @@ Class | Method | HTTP request | Description
 *BlocksApi* | [**upsertBlocks**](docs/BlocksApi.md#upsertblocks) | **POST** /api/blocks | [EARLY ACCESS] UpsertBlocks: Upsert Block
 *CalendarsApi* | [**addBusinessDaysToDate**](docs/CalendarsApi.md#addbusinessdaystodate) | **POST** /api/calendars/businessday/{scope}/add | [EARLY ACCESS] AddBusinessDaysToDate: Adds the requested number of Business Days to the provided date.
 *CalendarsApi* | [**addDateToCalendar**](docs/CalendarsApi.md#adddatetocalendar) | **PUT** /api/calendars/generic/{scope}/{code}/dates | AddDateToCalendar: Add a date to a calendar
+*CalendarsApi* | [**batchUpsertDatesForCalendar**](docs/CalendarsApi.md#batchupsertdatesforcalendar) | **POST** /api/calendars/generic/{scope}/{code}/dates/$batchUpsert | BatchUpsertDatesForCalendar: Batch upsert dates to a calendar
 *CalendarsApi* | [**createCalendar**](docs/CalendarsApi.md#createcalendar) | **POST** /api/calendars/generic | [EARLY ACCESS] CreateCalendar: Create a calendar in its generic form
 *CalendarsApi* | [**deleteCalendar**](docs/CalendarsApi.md#deletecalendar) | **DELETE** /api/calendars/generic/{scope}/{code} | [EARLY ACCESS] DeleteCalendar: Delete a calendar
-*CalendarsApi* | [**deleteDateFromCalendar**](docs/CalendarsApi.md#deletedatefromcalendar) | **DELETE** /api/calendars/generic/{scope}/{code}/dates/{dateId} | [EARLY ACCESS] DeleteDateFromCalendar: Remove a date from a calendar
+*CalendarsApi* | [**deleteDateFromCalendar**](docs/CalendarsApi.md#deletedatefromcalendar) | **DELETE** /api/calendars/generic/{scope}/{code}/dates/{dateId} | DeleteDateFromCalendar: Remove a date from a calendar
+*CalendarsApi* | [**deleteDatesFromCalendar**](docs/CalendarsApi.md#deletedatesfromcalendar) | **POST** /api/calendars/generic/{scope}/{code}/dates/$delete | DeleteDatesFromCalendar: Delete dates from a calendar
 *CalendarsApi* | [**generateSchedule**](docs/CalendarsApi.md#generateschedule) | **POST** /api/calendars/schedule/{scope} | [EARLY ACCESS] GenerateSchedule: Generate an ordered schedule of dates.
 *CalendarsApi* | [**getCalendar**](docs/CalendarsApi.md#getcalendar) | **GET** /api/calendars/generic/{scope}/{code} | GetCalendar: Get a calendar in its generic form
 *CalendarsApi* | [**getDates**](docs/CalendarsApi.md#getdates) | **GET** /api/calendars/generic/{scope}/{code}/dates | [EARLY ACCESS] GetDates: Get dates for a specific calendar
@@ -181,6 +183,7 @@ Class | Method | HTTP request | Description
 *DataTypesApi* | [**listDataTypeSummaries**](docs/DataTypesApi.md#listdatatypesummaries) | **GET** /api/datatypes | [EARLY ACCESS] ListDataTypeSummaries: List all data type summaries, without the reference data
 *DataTypesApi* | [**listDataTypes**](docs/DataTypesApi.md#listdatatypes) | **GET** /api/datatypes/{scope} | ListDataTypes: List data types
 *DataTypesApi* | [**updateDataType**](docs/DataTypesApi.md#updatedatatype) | **PUT** /api/datatypes/{scope}/{code} | [EARLY ACCESS] UpdateDataType: Update data type definition
+*DataTypesApi* | [**updateReferenceData**](docs/DataTypesApi.md#updatereferencedata) | **PUT** /api/datatypes/{scope}/{code}/referencedata | [EARLY ACCESS] UpdateReferenceData: Update all reference data on a data type, includes the reference values, the field definitions, field values
 *DataTypesApi* | [**updateReferenceValues**](docs/DataTypesApi.md#updatereferencevalues) | **PUT** /api/datatypes/{scope}/{code}/referencedatavalues | [EARLY ACCESS] UpdateReferenceValues: Update reference data on a data type
 *DerivedTransactionPortfoliosApi* | [**createDerivedPortfolio**](docs/DerivedTransactionPortfoliosApi.md#createderivedportfolio) | **POST** /api/derivedtransactionportfolios/{scope} | CreateDerivedPortfolio: Create derived portfolio
 *DerivedTransactionPortfoliosApi* | [**deleteDerivedPortfolioDetails**](docs/DerivedTransactionPortfoliosApi.md#deletederivedportfoliodetails) | **DELETE** /api/derivedtransactionportfolios/{scope}/{code}/details | [EARLY ACCESS] DeleteDerivedPortfolioDetails: Delete derived portfolio details
@@ -200,11 +203,11 @@ Class | Method | HTTP request | Description
 *FeeTypesApi* | [**getFeeType**](docs/FeeTypesApi.md#getfeetype) | **GET** /api/feetypes/{scope}/{code} | [EXPERIMENTAL] GetFeeType: Get a FeeType
 *FeeTypesApi* | [**listFeeTypes**](docs/FeeTypesApi.md#listfeetypes) | **GET** /api/feetypes | [EXPERIMENTAL] ListFeeTypes: List FeeTypes
 *FeeTypesApi* | [**updateFeeType**](docs/FeeTypesApi.md#updatefeetype) | **PUT** /api/feetypes/{scope}/{code} | [EXPERIMENTAL] UpdateFeeType: Update a FeeType.
-*FundConfigurationEntitiesApi* | [**createFundConfiguration**](docs/FundConfigurationEntitiesApi.md#createfundconfiguration) | **POST** /api/fundconfigurations/{scope} | [EXPERIMENTAL] CreateFundConfiguration: Create a FundConfiguration.
-*FundConfigurationEntitiesApi* | [**deleteFundConfiguration**](docs/FundConfigurationEntitiesApi.md#deletefundconfiguration) | **DELETE** /api/fundconfigurations/{scope}/{code} | [EXPERIMENTAL] DeleteFundConfiguration: Delete a FundConfiguration.
-*FundConfigurationEntitiesApi* | [**getFundConfiguration**](docs/FundConfigurationEntitiesApi.md#getfundconfiguration) | **GET** /api/fundconfigurations/{scope}/{code} | [EXPERIMENTAL] GetFundConfiguration: Get FundConfiguration.
-*FundConfigurationEntitiesApi* | [**listFundConfigurations**](docs/FundConfigurationEntitiesApi.md#listfundconfigurations) | **GET** /api/fundconfigurations | [EXPERIMENTAL] ListFundConfigurations: List FundConfiguration.
-*FundConfigurationEntitiesApi* | [**upsertFundConfigurationProperties**](docs/FundConfigurationEntitiesApi.md#upsertfundconfigurationproperties) | **POST** /api/fundconfigurations/{scope}/{code}/properties/$upsert | [EXPERIMENTAL] UpsertFundConfigurationProperties: Upsert FundConfiguration properties
+*FundConfigurationApi* | [**createFundConfiguration**](docs/FundConfigurationApi.md#createfundconfiguration) | **POST** /api/fundconfigurations/{scope} | [EXPERIMENTAL] CreateFundConfiguration: Create a FundConfiguration.
+*FundConfigurationApi* | [**deleteFundConfiguration**](docs/FundConfigurationApi.md#deletefundconfiguration) | **DELETE** /api/fundconfigurations/{scope}/{code} | [EXPERIMENTAL] DeleteFundConfiguration: Delete a FundConfiguration.
+*FundConfigurationApi* | [**getFundConfiguration**](docs/FundConfigurationApi.md#getfundconfiguration) | **GET** /api/fundconfigurations/{scope}/{code} | [EXPERIMENTAL] GetFundConfiguration: Get FundConfiguration.
+*FundConfigurationApi* | [**listFundConfigurations**](docs/FundConfigurationApi.md#listfundconfigurations) | **GET** /api/fundconfigurations | [EXPERIMENTAL] ListFundConfigurations: List FundConfiguration.
+*FundConfigurationApi* | [**upsertFundConfigurationProperties**](docs/FundConfigurationApi.md#upsertfundconfigurationproperties) | **POST** /api/fundconfigurations/{scope}/{code}/properties/$upsert | [EXPERIMENTAL] UpsertFundConfigurationProperties: Upsert FundConfiguration properties
 *FundsApi* | [**acceptEstimateValuationPoint**](docs/FundsApi.md#acceptestimatevaluationpoint) | **POST** /api/funds/{scope}/{code}/valuationpoints/$acceptestimate | [EXPERIMENTAL] AcceptEstimateValuationPoint: Accepts an Estimate Valuation Point.
 *FundsApi* | [**createFee**](docs/FundsApi.md#createfee) | **POST** /api/funds/{scope}/{code}/fees | [EXPERIMENTAL] CreateFee: Create a Fee.
 *FundsApi* | [**createFund**](docs/FundsApi.md#createfund) | **POST** /api/funds/{scope} | [EXPERIMENTAL] CreateFund: Create a Fund.
@@ -651,6 +654,7 @@ Class | Method | HTTP request | Description
  - [Basket](docs/Basket.md)
  - [BasketIdentifier](docs/BasketIdentifier.md)
  - [BatchAdjustHoldingsResponse](docs/BatchAdjustHoldingsResponse.md)
+ - [BatchUpsertDatesForCalendarResponse](docs/BatchUpsertDatesForCalendarResponse.md)
  - [BatchUpsertInstrumentPropertiesResponse](docs/BatchUpsertInstrumentPropertiesResponse.md)
  - [BatchUpsertPortfolioAccessMetadataRequest](docs/BatchUpsertPortfolioAccessMetadataRequest.md)
  - [BatchUpsertPortfolioAccessMetadataResponse](docs/BatchUpsertPortfolioAccessMetadataResponse.md)
@@ -1585,6 +1589,7 @@ Class | Method | HTTP request | Description
  - [UpdatePortfolioRequest](docs/UpdatePortfolioRequest.md)
  - [UpdatePropertyDefinitionRequest](docs/UpdatePropertyDefinitionRequest.md)
  - [UpdateReconciliationRequest](docs/UpdateReconciliationRequest.md)
+ - [UpdateReferenceDataRequest](docs/UpdateReferenceDataRequest.md)
  - [UpdateRelationshipDefinitionRequest](docs/UpdateRelationshipDefinitionRequest.md)
  - [UpdateStagingRuleSetRequest](docs/UpdateStagingRuleSetRequest.md)
  - [UpdateTaxRuleSetRequest](docs/UpdateTaxRuleSetRequest.md)

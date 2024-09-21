@@ -10,6 +10,7 @@
 |**href** | **URI** | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |  [optional] |
 |**entityType** | **String** | The type of custom entity this is. |  |
 |**version** | [**Version**](Version.md) |  |  |
+|**stagedModifications** | [**StagedModificationsInfo**](StagedModificationsInfo.md) |  |  [optional] |
 |**displayName** | **String** | A display label for the custom entity. |  |
 |**description** | **String** | A description of the custom entity. |  [optional] |
 |**identifiers** | [**List&lt;CustomEntityId&gt;**](CustomEntityId.md) | The identifiers the custom entity will be upserted with. |  |

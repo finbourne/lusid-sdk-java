@@ -15,6 +15,7 @@ import com.finbourne.lusid.model.CustomEntityField;
 import com.finbourne.lusid.model.CustomEntityId;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.Relationship;
+import com.finbourne.lusid.model.StagedModificationsInfo;
 import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -69,6 +70,10 @@ public class CustomEntityResponse {
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
   private Version version;
+
+  public static final String SERIALIZED_NAME_STAGED_MODIFICATIONS = "stagedModifications";
+  @SerializedName(SERIALIZED_NAME_STAGED_MODIFICATIONS)
+  private StagedModificationsInfo stagedModifications;
 
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
@@ -157,6 +162,27 @@ public class CustomEntityResponse {
 
   public void setVersion(Version version) {
     this.version = version;
+  }
+
+
+  public CustomEntityResponse stagedModifications(StagedModificationsInfo stagedModifications) {
+    
+    this.stagedModifications = stagedModifications;
+    return this;
+  }
+
+   /**
+   * Get stagedModifications
+   * @return stagedModifications
+  **/
+  @jakarta.annotation.Nullable
+  public StagedModificationsInfo getStagedModifications() {
+    return stagedModifications;
+  }
+
+
+  public void setStagedModifications(StagedModificationsInfo stagedModifications) {
+    this.stagedModifications = stagedModifications;
   }
 
 
@@ -331,6 +357,7 @@ public class CustomEntityResponse {
     return Objects.equals(this.href, customEntityResponse.href) &&
         Objects.equals(this.entityType, customEntityResponse.entityType) &&
         Objects.equals(this.version, customEntityResponse.version) &&
+        Objects.equals(this.stagedModifications, customEntityResponse.stagedModifications) &&
         Objects.equals(this.displayName, customEntityResponse.displayName) &&
         Objects.equals(this.description, customEntityResponse.description) &&
         Objects.equals(this.identifiers, customEntityResponse.identifiers) &&
@@ -345,7 +372,7 @@ public class CustomEntityResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, entityType, version, displayName, description, identifiers, fields, relationships, links);
+    return Objects.hash(href, entityType, version, stagedModifications, displayName, description, identifiers, fields, relationships, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -362,6 +389,7 @@ public class CustomEntityResponse {
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    entityType: ").append(toIndentedString(entityType)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
+    sb.append("    stagedModifications: ").append(toIndentedString(stagedModifications)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    identifiers: ").append(toIndentedString(identifiers)).append("\n");
@@ -393,6 +421,7 @@ public class CustomEntityResponse {
     openapiFields.add("href");
     openapiFields.add("entityType");
     openapiFields.add("version");
+    openapiFields.add("stagedModifications");
     openapiFields.add("displayName");
     openapiFields.add("description");
     openapiFields.add("identifiers");
@@ -438,6 +467,10 @@ public class CustomEntityResponse {
       }
       // validate the required field `version`
       Version.validateJsonElement(jsonObj.get("version"));
+      // validate the optional field `stagedModifications`
+      if (jsonObj.get("stagedModifications") != null && !jsonObj.get("stagedModifications").isJsonNull()) {
+        StagedModificationsInfo.validateJsonElement(jsonObj.get("stagedModifications"));
+      }
       if (!jsonObj.get("displayName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
       }
