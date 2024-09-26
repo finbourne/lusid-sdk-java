@@ -110,7 +110,7 @@ public class ValuationPointDataResponse {
 
   public static final String SERIALIZED_NAME_SHARE_CLASS_DATA = "shareClassData";
   @SerializedName(SERIALIZED_NAME_SHARE_CLASS_DATA)
-  private Map<String, ShareClassData> shareClassData = new HashMap<>();
+  private List<ShareClassData> shareClassData = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_VALUATION_POINT_CODE = "valuationPointCode";
   @SerializedName(SERIALIZED_NAME_VALUATION_POINT_CODE)
@@ -411,17 +411,17 @@ public class ValuationPointDataResponse {
   }
 
 
-  public ValuationPointDataResponse shareClassData(Map<String, ShareClassData> shareClassData) {
+  public ValuationPointDataResponse shareClassData(List<ShareClassData> shareClassData) {
     
     this.shareClassData = shareClassData;
     return this;
   }
 
-  public ValuationPointDataResponse putShareClassDataItem(String key, ShareClassData shareClassDataItem) {
+  public ValuationPointDataResponse addShareClassDataItem(ShareClassData shareClassDataItem) {
     if (this.shareClassData == null) {
-      this.shareClassData = new HashMap<>();
+      this.shareClassData = new ArrayList<>();
     }
-    this.shareClassData.put(key, shareClassDataItem);
+    this.shareClassData.add(shareClassDataItem);
     return this;
   }
 
@@ -430,12 +430,12 @@ public class ValuationPointDataResponse {
    * @return shareClassData
   **/
   @jakarta.annotation.Nonnull
-  public Map<String, ShareClassData> getShareClassData() {
+  public List<ShareClassData> getShareClassData() {
     return shareClassData;
   }
 
 
-  public void setShareClassData(Map<String, ShareClassData> shareClassData) {
+  public void setShareClassData(List<ShareClassData> shareClassData) {
     this.shareClassData = shareClassData;
   }
 
@@ -663,6 +663,16 @@ public class ValuationPointDataResponse {
       FundDetails.validateJsonElement(jsonObj.get("fundDetails"));
       // validate the required field `fundValuationPointData`
       FundValuationPointData.validateJsonElement(jsonObj.get("fundValuationPointData"));
+      // ensure the json data is an array
+      if (!jsonObj.get("shareClassData").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `shareClassData` to be an array in the JSON string but got `%s`", jsonObj.get("shareClassData").toString()));
+      }
+
+      JsonArray jsonArrayshareClassData = jsonObj.getAsJsonArray("shareClassData");
+      // validate the required field `shareClassData` (array)
+      for (int i = 0; i < jsonArrayshareClassData.size(); i++) {
+        ShareClassData.validateJsonElement(jsonArrayshareClassData.get(i));
+      };
       if ((jsonObj.get("valuationPointCode") != null && !jsonObj.get("valuationPointCode").isJsonNull()) && !jsonObj.get("valuationPointCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `valuationPointCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("valuationPointCode").toString()));
       }

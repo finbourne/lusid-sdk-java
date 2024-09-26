@@ -58,6 +58,10 @@ public class ShareClassDetails {
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_SCOPE)
   private String instrumentScope;
 
+  public static final String SERIALIZED_NAME_SHORT_CODE = "shortCode";
+  @SerializedName(SERIALIZED_NAME_SHORT_CODE)
+  private String shortCode;
+
   public static final String SERIALIZED_NAME_DOM_CURRENCY = "domCurrency";
   @SerializedName(SERIALIZED_NAME_DOM_CURRENCY)
   private String domCurrency;
@@ -108,6 +112,27 @@ public class ShareClassDetails {
 
   public void setInstrumentScope(String instrumentScope) {
     this.instrumentScope = instrumentScope;
+  }
+
+
+  public ShareClassDetails shortCode(String shortCode) {
+    
+    this.shortCode = shortCode;
+    return this;
+  }
+
+   /**
+   * The unique code within the fund for the share class instrument.
+   * @return shortCode
+  **/
+  @jakarta.annotation.Nullable
+  public String getShortCode() {
+    return shortCode;
+  }
+
+
+  public void setShortCode(String shortCode) {
+    this.shortCode = shortCode;
   }
 
 
@@ -165,6 +190,7 @@ public class ShareClassDetails {
     ShareClassDetails shareClassDetails = (ShareClassDetails) o;
     return Objects.equals(this.lusidInstrumentId, shareClassDetails.lusidInstrumentId) &&
         Objects.equals(this.instrumentScope, shareClassDetails.instrumentScope) &&
+        Objects.equals(this.shortCode, shareClassDetails.shortCode) &&
         Objects.equals(this.domCurrency, shareClassDetails.domCurrency) &&
         Objects.equals(this.instrumentActive, shareClassDetails.instrumentActive);
   }
@@ -175,7 +201,7 @@ public class ShareClassDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(lusidInstrumentId, instrumentScope, domCurrency, instrumentActive);
+    return Objects.hash(lusidInstrumentId, instrumentScope, shortCode, domCurrency, instrumentActive);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -191,6 +217,7 @@ public class ShareClassDetails {
     sb.append("class ShareClassDetails {\n");
     sb.append("    lusidInstrumentId: ").append(toIndentedString(lusidInstrumentId)).append("\n");
     sb.append("    instrumentScope: ").append(toIndentedString(instrumentScope)).append("\n");
+    sb.append("    shortCode: ").append(toIndentedString(shortCode)).append("\n");
     sb.append("    domCurrency: ").append(toIndentedString(domCurrency)).append("\n");
     sb.append("    instrumentActive: ").append(toIndentedString(instrumentActive)).append("\n");
     sb.append("}");
@@ -217,6 +244,7 @@ public class ShareClassDetails {
     openapiFields = new HashSet<String>();
     openapiFields.add("lusidInstrumentId");
     openapiFields.add("instrumentScope");
+    openapiFields.add("shortCode");
     openapiFields.add("domCurrency");
     openapiFields.add("instrumentActive");
 
@@ -242,6 +270,9 @@ public class ShareClassDetails {
       }
       if ((jsonObj.get("instrumentScope") != null && !jsonObj.get("instrumentScope").isJsonNull()) && !jsonObj.get("instrumentScope").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `instrumentScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instrumentScope").toString()));
+      }
+      if ((jsonObj.get("shortCode") != null && !jsonObj.get("shortCode").isJsonNull()) && !jsonObj.get("shortCode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `shortCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("shortCode").toString()));
       }
       if ((jsonObj.get("domCurrency") != null && !jsonObj.get("domCurrency").isJsonNull()) && !jsonObj.get("domCurrency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `domCurrency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("domCurrency").toString()));

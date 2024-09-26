@@ -189,6 +189,7 @@ Class | Method | HTTP request | Description
 *DerivedTransactionPortfoliosApi* | [**deleteDerivedPortfolioDetails**](docs/DerivedTransactionPortfoliosApi.md#deletederivedportfoliodetails) | **DELETE** /api/derivedtransactionportfolios/{scope}/{code}/details | [EARLY ACCESS] DeleteDerivedPortfolioDetails: Delete derived portfolio details
 *EntitiesApi* | [**getCustomEntityByEntityUniqueId**](docs/EntitiesApi.md#getcustomentitybyentityuniqueid) | **GET** /api/entities/customentities/{entityUniqueId} | [EXPERIMENTAL] GetCustomEntityByEntityUniqueId: Get a Custom Entity instance by its EntityUniqueId
 *EntitiesApi* | [**getDataTypeByEntityUniqueId**](docs/EntitiesApi.md#getdatatypebyentityuniqueid) | **GET** /api/entities/datatypes/{entityUniqueId} | [EXPERIMENTAL] GetDataTypeByEntityUniqueId: Get DataType by EntityUniqueId
+*EntitiesApi* | [**getEntityHistory**](docs/EntitiesApi.md#getentityhistory) | **GET** /api/entities/{entityType}/{entityUniqueId}/history | [EXPERIMENTAL] GetEntityHistory: List an entity's history information
 *EntitiesApi* | [**getInstrumentByEntityUniqueId**](docs/EntitiesApi.md#getinstrumentbyentityuniqueid) | **GET** /api/entities/instruments/{entityUniqueId} | [EXPERIMENTAL] GetInstrumentByEntityUniqueId: Get instrument by EntityUniqueId
 *EntitiesApi* | [**getPortfolioByEntityUniqueId**](docs/EntitiesApi.md#getportfoliobyentityuniqueid) | **GET** /api/entities/portfolios/{entityUniqueId} | [EXPERIMENTAL] GetPortfolioByEntityUniqueId: Get portfolio by EntityUniqueId
 *EntitiesApi* | [**getPortfolioChanges**](docs/EntitiesApi.md#getportfoliochanges) | **GET** /api/entities/changes/portfolios | GetPortfolioChanges: Get the next change to each portfolio in a scope.
@@ -207,6 +208,7 @@ Class | Method | HTTP request | Description
 *FundConfigurationApi* | [**deleteFundConfiguration**](docs/FundConfigurationApi.md#deletefundconfiguration) | **DELETE** /api/fundconfigurations/{scope}/{code} | [EXPERIMENTAL] DeleteFundConfiguration: Delete a FundConfiguration.
 *FundConfigurationApi* | [**getFundConfiguration**](docs/FundConfigurationApi.md#getfundconfiguration) | **GET** /api/fundconfigurations/{scope}/{code} | [EXPERIMENTAL] GetFundConfiguration: Get FundConfiguration.
 *FundConfigurationApi* | [**listFundConfigurations**](docs/FundConfigurationApi.md#listfundconfigurations) | **GET** /api/fundconfigurations | [EXPERIMENTAL] ListFundConfigurations: List FundConfiguration.
+*FundConfigurationApi* | [**patchFundConfiguration**](docs/FundConfigurationApi.md#patchfundconfiguration) | **PATCH** /api/fundconfigurations/{scope}/{code} | [EXPERIMENTAL] PatchFundConfiguration: Patch Fund Configuration.
 *FundConfigurationApi* | [**upsertFundConfigurationProperties**](docs/FundConfigurationApi.md#upsertfundconfigurationproperties) | **POST** /api/fundconfigurations/{scope}/{code}/properties/$upsert | [EXPERIMENTAL] UpsertFundConfigurationProperties: Upsert FundConfiguration properties
 *FundsApi* | [**acceptEstimateValuationPoint**](docs/FundsApi.md#acceptestimatevaluationpoint) | **POST** /api/funds/{scope}/{code}/valuationpoints/$acceptestimate | [EXPERIMENTAL] AcceptEstimateValuationPoint: Accepts an Estimate Valuation Point.
 *FundsApi* | [**createFee**](docs/FundsApi.md#createfee) | **POST** /api/funds/{scope}/{code}/fees | [EXPERIMENTAL] CreateFee: Create a Fee.
@@ -675,6 +677,7 @@ Class | Method | HTTP request | Description
  - [BondCouponEvent](docs/BondCouponEvent.md)
  - [BondDefaultEvent](docs/BondDefaultEvent.md)
  - [BondPrincipalEvent](docs/BondPrincipalEvent.md)
+ - [BonusIssueEvent](docs/BonusIssueEvent.md)
  - [BookTransactionsRequest](docs/BookTransactionsRequest.md)
  - [BookTransactionsResponse](docs/BookTransactionsResponse.md)
  - [BoolComplianceParameter](docs/BoolComplianceParameter.md)
@@ -715,6 +718,7 @@ Class | Method | HTTP request | Description
  - [Change](docs/Change.md)
  - [ChangeHistory](docs/ChangeHistory.md)
  - [ChangeHistoryAction](docs/ChangeHistoryAction.md)
+ - [ChangeInterval](docs/ChangeInterval.md)
  - [ChangeIntervalWithOrderManagementDetail](docs/ChangeIntervalWithOrderManagementDetail.md)
  - [ChangeItem](docs/ChangeItem.md)
  - [ChartOfAccounts](docs/ChartOfAccounts.md)
@@ -883,6 +887,7 @@ Class | Method | HTTP request | Description
  - [EconomicDependencyType](docs/EconomicDependencyType.md)
  - [EconomicDependencyWithComplexMarketData](docs/EconomicDependencyWithComplexMarketData.md)
  - [EconomicDependencyWithQuote](docs/EconomicDependencyWithQuote.md)
+ - [EffectiveRange](docs/EffectiveRange.md)
  - [ElectionSpecification](docs/ElectionSpecification.md)
  - [EligibilityCalculation](docs/EligibilityCalculation.md)
  - [EmptyModelOptions](docs/EmptyModelOptions.md)
@@ -1072,6 +1077,7 @@ Class | Method | HTTP request | Description
  - [JournalEntryLine](docs/JournalEntryLine.md)
  - [JournalEntryLinesQueryParameters](docs/JournalEntryLinesQueryParameters.md)
  - [LabelValueSet](docs/LabelValueSet.md)
+ - [LapseElection](docs/LapseElection.md)
  - [LegDefinition](docs/LegDefinition.md)
  - [LegalEntity](docs/LegalEntity.md)
  - [LevelStep](docs/LevelStep.md)
@@ -1103,6 +1109,7 @@ Class | Method | HTTP request | Description
  - [MarketObservableType](docs/MarketObservableType.md)
  - [MarketOptions](docs/MarketOptions.md)
  - [MarketQuote](docs/MarketQuote.md)
+ - [MasteredInstrument](docs/MasteredInstrument.md)
  - [MatchCriterion](docs/MatchCriterion.md)
  - [MaturityEvent](docs/MaturityEvent.md)
  - [MbsCouponEvent](docs/MbsCouponEvent.md)
@@ -1370,6 +1377,7 @@ Class | Method | HTTP request | Description
  - [ResourceListOfCalendarDate](docs/ResourceListOfCalendarDate.md)
  - [ResourceListOfChange](docs/ResourceListOfChange.md)
  - [ResourceListOfChangeHistory](docs/ResourceListOfChangeHistory.md)
+ - [ResourceListOfChangeInterval](docs/ResourceListOfChangeInterval.md)
  - [ResourceListOfChangeIntervalWithOrderManagementDetail](docs/ResourceListOfChangeIntervalWithOrderManagementDetail.md)
  - [ResourceListOfComplianceBreachedOrderInfo](docs/ResourceListOfComplianceBreachedOrderInfo.md)
  - [ResourceListOfComplianceRule](docs/ResourceListOfComplianceRule.md)

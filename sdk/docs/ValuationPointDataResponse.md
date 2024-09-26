@@ -20,7 +20,7 @@ The Valuation Point Data Response for the Fund and specified date.
 |**previousNav** | **java.math.BigDecimal** | DEPRECATED. The Net Asset Value of the Fund at the End of the last Period. |  |
 |**fundDetails** | [**FundDetails**](FundDetails.md) |  |  |
 |**fundValuationPointData** | [**FundValuationPointData**](FundValuationPointData.md) |  |  |
-|**shareClassData** | [**Map&lt;String, ShareClassData&gt;**](ShareClassData.md) | The data for all share classes in fund. Share classes are identified by their short codes. |  |
+|**shareClassData** | [**List&lt;ShareClassData&gt;**](ShareClassData.md) | The data for all share classes in fund. Share classes are identified by their short codes. |  |
 |**valuationPointCode** | **String** | The code of the valuation point. |  [optional] |
 |**previousValuationPointCode** | **String** | The code of the previous valuation point. |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |

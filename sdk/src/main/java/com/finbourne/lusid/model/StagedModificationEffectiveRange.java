@@ -68,7 +68,7 @@ public class StagedModificationEffectiveRange {
   }
 
    /**
-   * Time the decision request is made.
+   * The datetime that this requested change is effective from.
    * @return fromDate
   **/
   @jakarta.annotation.Nullable
@@ -89,7 +89,7 @@ public class StagedModificationEffectiveRange {
   }
 
    /**
-   * ID of user that approved the request.
+   * The datetime that this requested change is effective until.
    * @return untilDate
   **/
   @jakarta.annotation.Nullable

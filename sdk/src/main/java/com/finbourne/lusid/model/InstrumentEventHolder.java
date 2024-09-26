@@ -86,6 +86,10 @@ public class InstrumentEventHolder {
   @SerializedName(SERIALIZED_NAME_EVENT_DATE_RANGE)
   private EventDateRange eventDateRange;
 
+  public static final String SERIALIZED_NAME_COMPLETENESS = "completeness";
+  @SerializedName(SERIALIZED_NAME_COMPLETENESS)
+  private String completeness;
+
   public static final String SERIALIZED_NAME_INSTRUMENT_EVENT = "instrumentEvent";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_EVENT)
   private InstrumentEvent instrumentEvent;
@@ -103,6 +107,14 @@ public class InstrumentEventHolder {
   private String participationType = "Mandatory";
 
   public InstrumentEventHolder() {
+  }
+
+  
+  public InstrumentEventHolder(
+     String completeness
+  ) {
+    this();
+    this.completeness = completeness;
   }
 
   public InstrumentEventHolder instrumentEventId(String instrumentEventId) {
@@ -260,6 +272,18 @@ public class InstrumentEventHolder {
   }
 
 
+   /**
+   * Is the event Economically Complete, or is it missing some DataDependent fields (Incomplete).
+   * @return completeness
+  **/
+  @jakarta.annotation.Nullable
+  public String getCompleteness() {
+    return completeness;
+  }
+
+
+
+
   public InstrumentEventHolder instrumentEvent(InstrumentEvent instrumentEvent) {
     
     this.instrumentEvent = instrumentEvent;
@@ -369,6 +393,7 @@ public class InstrumentEventHolder {
         Objects.equals(this.instrumentScope, instrumentEventHolder.instrumentScope) &&
         Objects.equals(this.description, instrumentEventHolder.description) &&
         Objects.equals(this.eventDateRange, instrumentEventHolder.eventDateRange) &&
+        Objects.equals(this.completeness, instrumentEventHolder.completeness) &&
         Objects.equals(this.instrumentEvent, instrumentEventHolder.instrumentEvent) &&
         Objects.equals(this.properties, instrumentEventHolder.properties) &&
         Objects.equals(this.sequenceNumber, instrumentEventHolder.sequenceNumber) &&
@@ -381,7 +406,7 @@ public class InstrumentEventHolder {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentEventId, corporateActionSourceId, instrumentIdentifiers, lusidInstrumentId, instrumentScope, description, eventDateRange, instrumentEvent, properties, sequenceNumber, participationType);
+    return Objects.hash(instrumentEventId, corporateActionSourceId, instrumentIdentifiers, lusidInstrumentId, instrumentScope, description, eventDateRange, completeness, instrumentEvent, properties, sequenceNumber, participationType);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -402,6 +427,7 @@ public class InstrumentEventHolder {
     sb.append("    instrumentScope: ").append(toIndentedString(instrumentScope)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    eventDateRange: ").append(toIndentedString(eventDateRange)).append("\n");
+    sb.append("    completeness: ").append(toIndentedString(completeness)).append("\n");
     sb.append("    instrumentEvent: ").append(toIndentedString(instrumentEvent)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    sequenceNumber: ").append(toIndentedString(sequenceNumber)).append("\n");
@@ -435,6 +461,7 @@ public class InstrumentEventHolder {
     openapiFields.add("instrumentScope");
     openapiFields.add("description");
     openapiFields.add("eventDateRange");
+    openapiFields.add("completeness");
     openapiFields.add("instrumentEvent");
     openapiFields.add("properties");
     openapiFields.add("sequenceNumber");
@@ -489,6 +516,9 @@ public class InstrumentEventHolder {
       }
       // validate the required field `eventDateRange`
       EventDateRange.validateJsonElement(jsonObj.get("eventDateRange"));
+      if ((jsonObj.get("completeness") != null && !jsonObj.get("completeness").isJsonNull()) && !jsonObj.get("completeness").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `completeness` to be a primitive type in the JSON string but got `%s`", jsonObj.get("completeness").toString()));
+      }
       // validate the required field `instrumentEvent`
       InstrumentEvent.validateJsonElement(jsonObj.get("instrumentEvent"));
       if (jsonObj.get("properties") != null && !jsonObj.get("properties").isJsonNull()) {

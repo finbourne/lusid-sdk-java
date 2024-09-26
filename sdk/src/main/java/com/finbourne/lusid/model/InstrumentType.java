@@ -103,7 +103,9 @@ public enum InstrumentType {
   
   UNSETTLEDCASH("UnsettledCash"),
   
-  CASH("Cash");
+  CASH("Cash"),
+  
+  MASTEREDINSTRUMENT("MasteredInstrument");
 
   private String value;
 

@@ -6,6 +6,7 @@ All URIs are relative to *https://www.lusid.com/api*
 |------------- | ------------- | -------------|
 | [**getCustomEntityByEntityUniqueId**](EntitiesApi.md#getCustomEntityByEntityUniqueId) | **GET** /api/entities/customentities/{entityUniqueId} | [EXPERIMENTAL] GetCustomEntityByEntityUniqueId: Get a Custom Entity instance by its EntityUniqueId |
 | [**getDataTypeByEntityUniqueId**](EntitiesApi.md#getDataTypeByEntityUniqueId) | **GET** /api/entities/datatypes/{entityUniqueId} | [EXPERIMENTAL] GetDataTypeByEntityUniqueId: Get DataType by EntityUniqueId |
+| [**getEntityHistory**](EntitiesApi.md#getEntityHistory) | **GET** /api/entities/{entityType}/{entityUniqueId}/history | [EXPERIMENTAL] GetEntityHistory: List an entity&#39;s history information |
 | [**getInstrumentByEntityUniqueId**](EntitiesApi.md#getInstrumentByEntityUniqueId) | **GET** /api/entities/instruments/{entityUniqueId} | [EXPERIMENTAL] GetInstrumentByEntityUniqueId: Get instrument by EntityUniqueId |
 | [**getPortfolioByEntityUniqueId**](EntitiesApi.md#getPortfolioByEntityUniqueId) | **GET** /api/entities/portfolios/{entityUniqueId} | [EXPERIMENTAL] GetPortfolioByEntityUniqueId: Get portfolio by EntityUniqueId |
 | [**getPortfolioChanges**](EntitiesApi.md#getPortfolioChanges) | **GET** /api/entities/changes/portfolios | GetPortfolioChanges: Get the next change to each portfolio in a scope. |
@@ -199,6 +200,109 @@ public class EntitiesApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The requested DataType entity |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## getEntityHistory
+
+> ResourceListOfChangeInterval getEntityHistory(entityType, entityUniqueId, asAt, page, limit, filter, sortBy)
+
+[EXPERIMENTAL] GetEntityHistory: List an entity&#39;s history information
+
+Retrieve a page of an entity&#39;s change history up to a particular point in AsAt time.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.EntitiesApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class EntitiesApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // EntitiesApi apiInstance = apiFactory.build(EntitiesApi.class);
+
+        EntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(EntitiesApi.class);
+        String entityType = "entityType_example"; // String | The type of the entity to list the change history for.
+        String entityUniqueId = "entityUniqueId_example"; // String | The universally unique identifier of the entity.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list change history information. Defaults to return the change history at the latest datetime if not specified.
+        String page = "page_example"; // String | The pagination token to use to continue listing change history information from a previous call to list change   history information. This value is returned from the previous call. If a pagination token is provided the filter, sortBy   and asAt fields must not have changed since the original request.
+        Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
+        String filter = "filter_example"; // String | Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        List<String> sortBy = Arrays.asList(); // List<String> | A list of field names suffixed by \" ASC\" or \" DESC\"
+        try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfChangeInterval result = apiInstance.getEntityHistory(entityType, entityUniqueId, asAt, page, limit, filter, sortBy).execute(opts);
+
+            ResourceListOfChangeInterval result = apiInstance.getEntityHistory(entityType, entityUniqueId, asAt, page, limit, filter, sortBy).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling EntitiesApi#getEntityHistory");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityType** | **String**| The type of the entity to list the change history for. | |
+| **entityUniqueId** | **String**| The universally unique identifier of the entity. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list change history information. Defaults to return the change history at the latest datetime if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing change history information from a previous call to list change   history information. This value is returned from the previous call. If a pagination token is provided the filter, sortBy   and asAt fields must not have changed since the original request. | [optional] |
+| **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. | [optional] |
+| **filter** | **String**| Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
+
+### Return type
+
+[**ResourceListOfChangeInterval**](ResourceListOfChangeInterval.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The change history of the provided entity. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

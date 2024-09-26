@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**fromDate** | **OffsetDateTime** | Time the decision request is made. |  [optional] |
-|**untilDate** | **OffsetDateTime** | ID of user that approved the request. |  [optional] |
+|**fromDate** | **OffsetDateTime** | The datetime that this requested change is effective from. |  [optional] |
+|**untilDate** | **OffsetDateTime** | The datetime that this requested change is effective until. |  [optional] |
 
 
 

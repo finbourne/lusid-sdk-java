@@ -34,6 +34,7 @@ import java.time.OffsetDateTime;
 import com.finbourne.lusid.model.PortfolioEntity;
 import com.finbourne.lusid.model.PropertyDefinitionEntity;
 import com.finbourne.lusid.model.ResourceListOfChange;
+import com.finbourne.lusid.model.ResourceListOfChangeInterval;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -616,6 +617,322 @@ public class EntitiesApi {
      */
     public APIgetDataTypeByEntityUniqueIdRequest getDataTypeByEntityUniqueId(String entityUniqueId) {
         return new APIgetDataTypeByEntityUniqueIdRequest(entityUniqueId);
+    }
+    private okhttp3.Call getEntityHistoryCall(String entityType, String entityUniqueId, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
+        return getEntityHistoryCall(entityType, entityUniqueId, asAt, page, limit, filter, sortBy,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getEntityHistoryCall(String entityType, String entityUniqueId, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/entities/{entityType}/{entityUniqueId}/history"
+            .replace("{" + "entityType" + "}", localVarApiClient.escapeString(entityType.toString()))
+            .replace("{" + "entityUniqueId" + "}", localVarApiClient.escapeString(entityUniqueId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
+        if (sortBy != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "sortBy", sortBy));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getEntityHistoryValidateBeforeCall(String entityType, String entityUniqueId, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'entityType' is set
+        if (entityType == null) {
+            throw new ApiException("Missing the required parameter 'entityType' when calling getEntityHistory(Async)");
+        }
+
+        // verify the required parameter 'entityUniqueId' is set
+        if (entityUniqueId == null) {
+            throw new ApiException("Missing the required parameter 'entityUniqueId' when calling getEntityHistory(Async)");
+        }
+
+        return getEntityHistoryCall(entityType, entityUniqueId, asAt, page, limit, filter, sortBy, _callback, opts);
+
+    }
+
+
+    private ApiResponse<ResourceListOfChangeInterval> getEntityHistoryWithHttpInfo(String entityType, String entityUniqueId, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy) throws ApiException {
+        okhttp3.Call localVarCall = getEntityHistoryValidateBeforeCall(entityType, entityUniqueId, asAt, page, limit, filter, sortBy, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfChangeInterval>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfChangeInterval> getEntityHistoryWithHttpInfo(String entityType, String entityUniqueId, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getEntityHistoryValidateBeforeCall(entityType, entityUniqueId, asAt, page, limit, filter, sortBy, null, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfChangeInterval>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getEntityHistoryAsync(String entityType, String entityUniqueId, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<ResourceListOfChangeInterval> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getEntityHistoryValidateBeforeCall(entityType, entityUniqueId, asAt, page, limit, filter, sortBy, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfChangeInterval>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getEntityHistoryAsync(String entityType, String entityUniqueId, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<ResourceListOfChangeInterval> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getEntityHistoryValidateBeforeCall(entityType, entityUniqueId, asAt, page, limit, filter, sortBy, _callback, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfChangeInterval>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetEntityHistoryRequest {
+        private final String entityType;
+        private final String entityUniqueId;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer limit;
+        private String filter;
+        private List<String> sortBy;
+
+        private APIgetEntityHistoryRequest(String entityType, String entityUniqueId) {
+            this.entityType = entityType;
+            this.entityUniqueId = entityUniqueId;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list change history information. Defaults to return the change history at the latest datetime if not specified. (optional)
+         * @return APIgetEntityHistoryRequest
+         */
+        public APIgetEntityHistoryRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing change history information from a previous call to list change   history information. This value is returned from the previous call. If a pagination token is provided the filter, sortBy   and asAt fields must not have changed since the original request. (optional)
+         * @return APIgetEntityHistoryRequest
+         */
+        public APIgetEntityHistoryRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
+         * @return APIgetEntityHistoryRequest
+         */
+        public APIgetEntityHistoryRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIgetEntityHistoryRequest
+         */
+        public APIgetEntityHistoryRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy A list of field names suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @return APIgetEntityHistoryRequest
+         */
+        public APIgetEntityHistoryRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Build call for getEntityHistory
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The change history of the provided entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getEntityHistoryCall(entityType, entityUniqueId, asAt, page, limit, filter, sortBy, _callback);
+        }
+
+        /**
+         * Execute getEntityHistory request
+         * @return ResourceListOfChangeInterval
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The change history of the provided entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfChangeInterval execute() throws ApiException {
+            ApiResponse<ResourceListOfChangeInterval> localVarResp = getEntityHistoryWithHttpInfo(entityType, entityUniqueId, asAt, page, limit, filter, sortBy);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getEntityHistory request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfChangeInterval
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The change history of the provided entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfChangeInterval execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfChangeInterval> localVarResp = getEntityHistoryWithHttpInfo(entityType, entityUniqueId, asAt, page, limit, filter, sortBy, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getEntityHistory request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfChangeInterval&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The change history of the provided entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfChangeInterval> executeWithHttpInfo() throws ApiException {
+            return getEntityHistoryWithHttpInfo(entityType, entityUniqueId, asAt, page, limit, filter, sortBy);
+        }
+
+        /**
+         * Execute getEntityHistory request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfChangeInterval&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The change history of the provided entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfChangeInterval> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getEntityHistoryWithHttpInfo(entityType, entityUniqueId, asAt, page, limit, filter, sortBy, opts);
+        }
+
+        /**
+         * Execute getEntityHistory request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The change history of the provided entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfChangeInterval> _callback) throws ApiException {
+            return getEntityHistoryAsync(entityType, entityUniqueId, asAt, page, limit, filter, sortBy, _callback);
+        }
+
+        /**
+         * Execute getEntityHistory request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The change history of the provided entity. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfChangeInterval> _callback, ConfigurationOptions opts) throws ApiException {
+            return getEntityHistoryAsync(entityType, entityUniqueId, asAt, page, limit, filter, sortBy, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] GetEntityHistory: List an entity&#39;s history information
+     * Retrieve a page of an entity&#39;s change history up to a particular point in AsAt time.
+     * @param entityType The type of the entity to list the change history for. (required)
+     * @param entityUniqueId The universally unique identifier of the entity. (required)
+     * @return APIgetEntityHistoryRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The change history of the provided entity. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetEntityHistoryRequest getEntityHistory(String entityType, String entityUniqueId) {
+        return new APIgetEntityHistoryRequest(entityType, entityUniqueId);
     }
     private okhttp3.Call getInstrumentByEntityUniqueIdCall(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, final ApiCallback _callback) throws ApiException {
         return getInstrumentByEntityUniqueIdCall(entityUniqueId, effectiveAt, asAt, previews,  _callback, new ConfigurationOptions());

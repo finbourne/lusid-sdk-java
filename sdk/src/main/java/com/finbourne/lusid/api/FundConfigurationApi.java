@@ -32,6 +32,7 @@ import com.finbourne.lusid.model.FundConfigurationRequest;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import java.time.OffsetDateTime;
+import com.finbourne.lusid.model.Operation;
 import com.finbourne.lusid.model.PagedResourceListOfFundConfiguration;
 import com.finbourne.lusid.model.Property;
 
@@ -1176,6 +1177,259 @@ public class FundConfigurationApi {
      */
     public APIlistFundConfigurationsRequest listFundConfigurations() {
         return new APIlistFundConfigurationsRequest();
+    }
+    private okhttp3.Call patchFundConfigurationCall(String scope, String code, List<Operation> operation, final ApiCallback _callback) throws ApiException {
+        return patchFundConfigurationCall(scope, code, operation,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call patchFundConfigurationCall(String scope, String code, List<Operation> operation, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = operation;
+
+        // create path and map variables
+        String localVarPath = "/api/fundconfigurations/{scope}/{code}"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call patchFundConfigurationValidateBeforeCall(String scope, String code, List<Operation> operation, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling patchFundConfiguration(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling patchFundConfiguration(Async)");
+        }
+
+        // verify the required parameter 'operation' is set
+        if (operation == null) {
+            throw new ApiException("Missing the required parameter 'operation' when calling patchFundConfiguration(Async)");
+        }
+
+        return patchFundConfigurationCall(scope, code, operation, _callback, opts);
+
+    }
+
+
+    private ApiResponse<FundConfiguration> patchFundConfigurationWithHttpInfo(String scope, String code, List<Operation> operation) throws ApiException {
+        okhttp3.Call localVarCall = patchFundConfigurationValidateBeforeCall(scope, code, operation, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FundConfiguration>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<FundConfiguration> patchFundConfigurationWithHttpInfo(String scope, String code, List<Operation> operation, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = patchFundConfigurationValidateBeforeCall(scope, code, operation, null, opts);
+        Type localVarReturnType = new TypeToken<FundConfiguration>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call patchFundConfigurationAsync(String scope, String code, List<Operation> operation, final ApiCallback<FundConfiguration> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = patchFundConfigurationValidateBeforeCall(scope, code, operation, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FundConfiguration>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call patchFundConfigurationAsync(String scope, String code, List<Operation> operation, final ApiCallback<FundConfiguration> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = patchFundConfigurationValidateBeforeCall(scope, code, operation, _callback, opts);
+        Type localVarReturnType = new TypeToken<FundConfiguration>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIpatchFundConfigurationRequest {
+        private final String scope;
+        private final String code;
+        private final List<Operation> operation;
+
+        private APIpatchFundConfigurationRequest(String scope, String code, List<Operation> operation) {
+            this.scope = scope;
+            this.code = code;
+            this.operation = operation;
+        }
+
+        /**
+         * Build call for patchFundConfiguration
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly patched FundConfiguration </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return patchFundConfigurationCall(scope, code, operation, _callback);
+        }
+
+        /**
+         * Execute patchFundConfiguration request
+         * @return FundConfiguration
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly patched FundConfiguration </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public FundConfiguration execute() throws ApiException {
+            ApiResponse<FundConfiguration> localVarResp = patchFundConfigurationWithHttpInfo(scope, code, operation);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute patchFundConfiguration request. Use any specified configuration options to override any other configuration for this request only.
+         * @return FundConfiguration
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly patched FundConfiguration </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public FundConfiguration execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<FundConfiguration> localVarResp = patchFundConfigurationWithHttpInfo(scope, code, operation, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute patchFundConfiguration request with HTTP info returned
+         * @return ApiResponse&lt;FundConfiguration&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly patched FundConfiguration </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<FundConfiguration> executeWithHttpInfo() throws ApiException {
+            return patchFundConfigurationWithHttpInfo(scope, code, operation);
+        }
+
+        /**
+         * Execute patchFundConfiguration request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;FundConfiguration&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly patched FundConfiguration </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<FundConfiguration> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return patchFundConfigurationWithHttpInfo(scope, code, operation, opts);
+        }
+
+        /**
+         * Execute patchFundConfiguration request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly patched FundConfiguration </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<FundConfiguration> _callback) throws ApiException {
+            return patchFundConfigurationAsync(scope, code, operation, _callback);
+        }
+
+        /**
+         * Execute patchFundConfiguration request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly patched FundConfiguration </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<FundConfiguration> _callback, ConfigurationOptions opts) throws ApiException {
+            return patchFundConfigurationAsync(scope, code, operation, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] PatchFundConfiguration: Patch Fund Configuration.
+     * Create or update certain fields for a particular FundConfiguration.  The behaviour is defined by the JSON Patch specification.     Currently supported fields are: displayName, description, dealingFilters, pnlFilters, backOutFilters.
+     * @param scope The scope of the FundConfiguration. (required)
+     * @param code The code of the FundConfiguration. Together with the   scope this uniquely identifies the FundConfiguration. (required)
+     * @param operation The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902. (required)
+     * @return APIpatchFundConfigurationRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The newly patched FundConfiguration </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIpatchFundConfigurationRequest patchFundConfiguration(String scope, String code, List<Operation> operation) {
+        return new APIpatchFundConfigurationRequest(scope, code, operation);
     }
     private okhttp3.Call upsertFundConfigurationPropertiesCall(String scope, String code, Map<String, Property> requestBody, final ApiCallback _callback) throws ApiException {
         return upsertFundConfigurationPropertiesCall(scope, code, requestBody,  _callback, new ConfigurationOptions());

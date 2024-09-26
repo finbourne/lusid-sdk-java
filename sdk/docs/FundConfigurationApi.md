@@ -8,6 +8,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**deleteFundConfiguration**](FundConfigurationApi.md#deleteFundConfiguration) | **DELETE** /api/fundconfigurations/{scope}/{code} | [EXPERIMENTAL] DeleteFundConfiguration: Delete a FundConfiguration. |
 | [**getFundConfiguration**](FundConfigurationApi.md#getFundConfiguration) | **GET** /api/fundconfigurations/{scope}/{code} | [EXPERIMENTAL] GetFundConfiguration: Get FundConfiguration. |
 | [**listFundConfigurations**](FundConfigurationApi.md#listFundConfigurations) | **GET** /api/fundconfigurations | [EXPERIMENTAL] ListFundConfigurations: List FundConfiguration. |
+| [**patchFundConfiguration**](FundConfigurationApi.md#patchFundConfiguration) | **PATCH** /api/fundconfigurations/{scope}/{code} | [EXPERIMENTAL] PatchFundConfiguration: Patch Fund Configuration. |
 | [**upsertFundConfigurationProperties**](FundConfigurationApi.md#upsertFundConfigurationProperties) | **POST** /api/fundconfigurations/{scope}/{code}/properties/$upsert | [EXPERIMENTAL] UpsertFundConfigurationProperties: Upsert FundConfiguration properties |
 
 
@@ -394,6 +395,101 @@ public class FundConfigurationApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The requested Fund configurations. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## patchFundConfiguration
+
+> FundConfiguration patchFundConfiguration(scope, code, operation)
+
+[EXPERIMENTAL] PatchFundConfiguration: Patch Fund Configuration.
+
+Create or update certain fields for a particular FundConfiguration.  The behaviour is defined by the JSON Patch specification.     Currently supported fields are: displayName, description, dealingFilters, pnlFilters, backOutFilters.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.FundConfigurationApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class FundConfigurationApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // FundConfigurationApi apiInstance = apiFactory.build(FundConfigurationApi.class);
+
+        FundConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundConfigurationApi.class);
+        String scope = "scope_example"; // String | The scope of the FundConfiguration.
+        String code = "code_example"; // String | The code of the FundConfiguration. Together with the   scope this uniquely identifies the FundConfiguration.
+        List<Operation> operation = Arrays.asList(); // List<Operation> | The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902.
+        try {
+            // uncomment the below to set overrides at the request level
+            // FundConfiguration result = apiInstance.patchFundConfiguration(scope, code, operation).execute(opts);
+
+            FundConfiguration result = apiInstance.patchFundConfiguration(scope, code, operation).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling FundConfigurationApi#patchFundConfiguration");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the FundConfiguration. | |
+| **code** | **String**| The code of the FundConfiguration. Together with the   scope this uniquely identifies the FundConfiguration. | |
+| **operation** | [**List&lt;Operation&gt;**](Operation.md)| The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902. | |
+
+### Return type
+
+[**FundConfiguration**](FundConfiguration.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The newly patched FundConfiguration |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

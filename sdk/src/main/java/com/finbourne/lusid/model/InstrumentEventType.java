@@ -95,7 +95,9 @@ public enum InstrumentEventType {
   
   MBSCOUPONEVENT("MbsCouponEvent"),
   
-  MBSPRINCIPALEVENT("MbsPrincipalEvent");
+  MBSPRINCIPALEVENT("MbsPrincipalEvent"),
+  
+  BONUSISSUEEVENT("BonusIssueEvent");
 
   private String value;
 

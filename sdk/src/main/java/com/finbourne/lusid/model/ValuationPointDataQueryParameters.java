@@ -67,7 +67,7 @@ public class ValuationPointDataQueryParameters {
    * Get end
    * @return end
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public DateOrDiaryEntry getEnd() {
     return end;
   }
@@ -127,6 +127,7 @@ public class ValuationPointDataQueryParameters {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("end");
   }
 
  /**
@@ -141,11 +142,16 @@ public class ValuationPointDataQueryParameters {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ValuationPointDataQueryParameters is not found in the empty JSON string", ValuationPointDataQueryParameters.openapiRequiredFields.toString()));
         }
       }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `end`
-      if (jsonObj.get("end") != null && !jsonObj.get("end").isJsonNull()) {
-        DateOrDiaryEntry.validateJsonElement(jsonObj.get("end"));
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : ValuationPointDataQueryParameters.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // validate the required field `end`
+      DateOrDiaryEntry.validateJsonElement(jsonObj.get("end"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -15,6 +15,7 @@ An instrument event equipped with additional metadata.
 |**instrumentScope** | **String** | The scope of the instrument. |  |
 |**description** | **String** | The description of the instrument event. |  |
 |**eventDateRange** | [**EventDateRange**](EventDateRange.md) |  |  |
+|**completeness** | **String** | Is the event Economically Complete, or is it missing some DataDependent fields (Incomplete). |  [optional] [readonly] |
 |**instrumentEvent** | [**InstrumentEvent**](InstrumentEvent.md) |  |  |
 |**properties** | [**List&lt;PerpetualProperty&gt;**](PerpetualProperty.md) | The properties attached to this instrument event. |  [optional] |
 |**sequenceNumber** | **Integer** | The order of the instrument event relative others on the same date (0 being processed first). Must be non negative. |  [optional] |

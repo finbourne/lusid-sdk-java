@@ -19,7 +19,7 @@ Defines a change that occured for an entity, with extra detail about the change
 |**attributeName** | **String** | The name of the field or property that has been changed. |  [optional] |
 |**previousValue** | [**PropertyValue**](PropertyValue.md) |  |  [optional] |
 |**newValue** | [**PropertyValue**](PropertyValue.md) |  |  [optional] |
-|**effectiveRange** | [**StagedModificationEffectiveRange**](StagedModificationEffectiveRange.md) |  |  [optional] |
+|**effectiveRange** | [**EffectiveRange**](EffectiveRange.md) |  |  [optional] |
 
 
 

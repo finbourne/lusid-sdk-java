@@ -11,8 +11,8 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.EffectiveRange;
 import com.finbourne.lusid.model.PropertyValue;
-import com.finbourne.lusid.model.StagedModificationEffectiveRange;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -101,7 +101,7 @@ public class ChangeIntervalWithOrderManagementDetail {
 
   public static final String SERIALIZED_NAME_EFFECTIVE_RANGE = "effectiveRange";
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_RANGE)
-  private StagedModificationEffectiveRange effectiveRange;
+  private EffectiveRange effectiveRange;
 
   public ChangeIntervalWithOrderManagementDetail() {
   }
@@ -345,7 +345,7 @@ public class ChangeIntervalWithOrderManagementDetail {
   }
 
 
-  public ChangeIntervalWithOrderManagementDetail effectiveRange(StagedModificationEffectiveRange effectiveRange) {
+  public ChangeIntervalWithOrderManagementDetail effectiveRange(EffectiveRange effectiveRange) {
     
     this.effectiveRange = effectiveRange;
     return this;
@@ -356,12 +356,12 @@ public class ChangeIntervalWithOrderManagementDetail {
    * @return effectiveRange
   **/
   @jakarta.annotation.Nullable
-  public StagedModificationEffectiveRange getEffectiveRange() {
+  public EffectiveRange getEffectiveRange() {
     return effectiveRange;
   }
 
 
-  public void setEffectiveRange(StagedModificationEffectiveRange effectiveRange) {
+  public void setEffectiveRange(EffectiveRange effectiveRange) {
     this.effectiveRange = effectiveRange;
   }
 
@@ -502,7 +502,7 @@ public class ChangeIntervalWithOrderManagementDetail {
       }
       // validate the optional field `effectiveRange`
       if (jsonObj.get("effectiveRange") != null && !jsonObj.get("effectiveRange").isJsonNull()) {
-        StagedModificationEffectiveRange.validateJsonElement(jsonObj.get("effectiveRange"));
+        EffectiveRange.validateJsonElement(jsonObj.get("effectiveRange"));
       }
   }
 
