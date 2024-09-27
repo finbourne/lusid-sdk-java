@@ -41,7 +41,21 @@ public enum AccountingMethod {
   
   PRORATEBYCOST("ProRateByCost"),
   
-  PRORATEBYCOSTPORTFOLIOCURRENCY("ProRateByCostPortfolioCurrency");
+  PRORATEBYCOSTPORTFOLIOCURRENCY("ProRateByCostPortfolioCurrency"),
+  
+  INTRADAYTHENFIRSTINFIRSTOUT("IntraDayThenFirstInFirstOut"),
+  
+  LONGTERMHIGHESTCOSTFIRST("LongTermHighestCostFirst"),
+  
+  LONGTERMHIGHESTCOSTFIRSTPORTFOLIOCURRENCY("LongTermHighestCostFirstPortfolioCurrency"),
+  
+  HIGHESTCOSTFIRSTPORTFOLIOCURRENCY("HighestCostFirstPortfolioCurrency"),
+  
+  LOWESTCOSTFIRSTPORTFOLIOCURRENCY("LowestCostFirstPortfolioCurrency"),
+  
+  MAXIMUMLOSSMINIMUMGAIN("MaximumLossMinimumGain"),
+  
+  MAXIMUMLOSSMINIMUMGAINPORTFOLIOCURRENCY("MaximumLossMinimumGainPortfolioCurrency");
 
   private String value;
 

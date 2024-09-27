@@ -2,7 +2,7 @@
 
 # FundShareClass
 
-LUSID representation of a FundShareClass.  A ShareClass represents a pool of shares, held by investors, within a fund. A ShareClass can represent a differing investment approach by either Fees, Income, Currency Risk and Investor type.
+LUSID representation of a FundShareClass.  A ShareClass represents a pool of shares, held by investors, within a fund.   A ShareClass can represent a differing investment approach by either Fees,   Income, Currency Risk and Investor type.
 
 ## Properties
 
@@ -13,6 +13,7 @@ LUSID representation of a FundShareClass.  A ShareClass represents a pool of sha
 |**distributionPaymentType** | **String** | The tax treatment applied to any distributions calculated within the ShareClass. Can be either &#39;Net&#39; (Distribution Calculated net of tax) or &#39;Gross&#39; (Distribution calculated gross of tax).    Supported string (enumeration) values are: [Gross, Net]. |  |
 |**hedging** | **String** | A flag to indicate the ShareClass is operating currency hedging as a means to limit currency risk as part of it&#39;s investment strategy.    Supported string (enumeration) values are: [Invalid, None, ApplyHedging]. |  |
 |**domCcy** | **String** | The domestic currency of the instrument. |  |
+|**roundingConventions** | [**List&lt;SimpleRoundingConvention&gt;**](SimpleRoundingConvention.md) | Rounding Convention used for the FundShareClass quotes |  [optional] |
 
 
 

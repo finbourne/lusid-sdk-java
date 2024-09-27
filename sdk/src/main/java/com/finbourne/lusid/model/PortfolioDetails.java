@@ -87,7 +87,7 @@ public class PortfolioDetails {
   private List<String> instrumentScopes;
 
   /**
-   * . The available values are: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency
+   * . The available values are: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency
    */
   @JsonAdapter(AccountingMethodEnum.Adapter.class)
   public enum AccountingMethodEnum {
@@ -107,7 +107,21 @@ public class PortfolioDetails {
     
     PRORATEBYCOST("ProRateByCost"),
     
-    PRORATEBYCOSTPORTFOLIOCURRENCY("ProRateByCostPortfolioCurrency");
+    PRORATEBYCOSTPORTFOLIOCURRENCY("ProRateByCostPortfolioCurrency"),
+    
+    INTRADAYTHENFIRSTINFIRSTOUT("IntraDayThenFirstInFirstOut"),
+    
+    LONGTERMHIGHESTCOSTFIRST("LongTermHighestCostFirst"),
+    
+    LONGTERMHIGHESTCOSTFIRSTPORTFOLIOCURRENCY("LongTermHighestCostFirstPortfolioCurrency"),
+    
+    HIGHESTCOSTFIRSTPORTFOLIOCURRENCY("HighestCostFirstPortfolioCurrency"),
+    
+    LOWESTCOSTFIRSTPORTFOLIOCURRENCY("LowestCostFirstPortfolioCurrency"),
+    
+    MAXIMUMLOSSMINIMUMGAIN("MaximumLossMinimumGain"),
+    
+    MAXIMUMLOSSMINIMUMGAINPORTFOLIOCURRENCY("MaximumLossMinimumGainPortfolioCurrency");
 
     private String value;
 
@@ -352,7 +366,7 @@ public class PortfolioDetails {
   }
 
    /**
-   * . The available values are: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency
+   * . The available values are: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency
    * @return accountingMethod
   **/
   @jakarta.annotation.Nullable

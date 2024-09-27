@@ -14,7 +14,7 @@
 |**corporateActionSourceId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 |**subHoldingKeys** | **List&lt;String&gt;** |  |  [optional] |
 |**instrumentScopes** | **List&lt;String&gt;** | The resolution strategy used to resolve instruments of transactions/holdings upserted to the transaction portfolio. |  [optional] |
-|**accountingMethod** | [**AccountingMethodEnum**](#AccountingMethodEnum) | . The available values are: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency |  [optional] |
+|**accountingMethod** | [**AccountingMethodEnum**](#AccountingMethodEnum) | . The available values are: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency |  [optional] |
 |**amortisationMethod** | **String** | The amortisation method used by the portfolio for the calculation. The available values are: NoAmortisation, StraightLine, EffectiveYield, StraightLineSettlementDate, EffectiveYieldSettlementDate |  [optional] |
 |**transactionTypeScope** | **String** | The scope of the transaction types. |  [optional] |
 |**cashGainLossCalculationDate** | **String** | The option when the Cash Gain Loss to be calulated, TransactionDate/SettlementDate. Defaults to SettlementDate. |  [optional] |
@@ -38,6 +38,13 @@
 | PRORATEBYUNITS | &quot;ProRateByUnits&quot; |
 | PRORATEBYCOST | &quot;ProRateByCost&quot; |
 | PRORATEBYCOSTPORTFOLIOCURRENCY | &quot;ProRateByCostPortfolioCurrency&quot; |
+| INTRADAYTHENFIRSTINFIRSTOUT | &quot;IntraDayThenFirstInFirstOut&quot; |
+| LONGTERMHIGHESTCOSTFIRST | &quot;LongTermHighestCostFirst&quot; |
+| LONGTERMHIGHESTCOSTFIRSTPORTFOLIOCURRENCY | &quot;LongTermHighestCostFirstPortfolioCurrency&quot; |
+| HIGHESTCOSTFIRSTPORTFOLIOCURRENCY | &quot;HighestCostFirstPortfolioCurrency&quot; |
+| LOWESTCOSTFIRSTPORTFOLIOCURRENCY | &quot;LowestCostFirstPortfolioCurrency&quot; |
+| MAXIMUMLOSSMINIMUMGAIN | &quot;MaximumLossMinimumGain&quot; |
+| MAXIMUMLOSSMINIMUMGAINPORTFOLIOCURRENCY | &quot;MaximumLossMinimumGainPortfolioCurrency&quot; |
 
 
 

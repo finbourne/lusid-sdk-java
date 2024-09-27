@@ -22,7 +22,7 @@ A list of portfolios.
 |**properties** | [**Map&lt;String, Property&gt;**](Property.md) | The requested portfolio properties. These will be from the &#39;Portfolio&#39; domain. |  [optional] |
 |**relationships** | [**List&lt;Relationship&gt;**](Relationship.md) | A set of relationships associated to the portfolio. |  [optional] |
 |**instrumentScopes** | **List&lt;String&gt;** | The instrument scope resolution strategy of this portfolio. |  [optional] |
-|**accountingMethod** | [**AccountingMethodEnum**](#AccountingMethodEnum) | . The available values are: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency |  [optional] |
+|**accountingMethod** | [**AccountingMethodEnum**](#AccountingMethodEnum) | . The available values are: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency |  [optional] |
 |**amortisationMethod** | **String** | The amortisation method used by the portfolio for the calculation. The available values are: NoAmortisation, StraightLine, EffectiveYield, StraightLineSettlementDate, EffectiveYieldSettlementDate |  [optional] |
 |**transactionTypeScope** | **String** | The scope of the transaction types. |  [optional] |
 |**cashGainLossCalculationDate** | **String** | The scope of the transaction types. |  [optional] |
@@ -55,6 +55,13 @@ A list of portfolios.
 | PRORATEBYUNITS | &quot;ProRateByUnits&quot; |
 | PRORATEBYCOST | &quot;ProRateByCost&quot; |
 | PRORATEBYCOSTPORTFOLIOCURRENCY | &quot;ProRateByCostPortfolioCurrency&quot; |
+| INTRADAYTHENFIRSTINFIRSTOUT | &quot;IntraDayThenFirstInFirstOut&quot; |
+| LONGTERMHIGHESTCOSTFIRST | &quot;LongTermHighestCostFirst&quot; |
+| LONGTERMHIGHESTCOSTFIRSTPORTFOLIOCURRENCY | &quot;LongTermHighestCostFirstPortfolioCurrency&quot; |
+| HIGHESTCOSTFIRSTPORTFOLIOCURRENCY | &quot;HighestCostFirstPortfolioCurrency&quot; |
+| LOWESTCOSTFIRSTPORTFOLIOCURRENCY | &quot;LowestCostFirstPortfolioCurrency&quot; |
+| MAXIMUMLOSSMINIMUMGAIN | &quot;MaximumLossMinimumGain&quot; |
+| MAXIMUMLOSSMINIMUMGAINPORTFOLIOCURRENCY | &quot;MaximumLossMinimumGainPortfolioCurrency&quot; |
 
 
 

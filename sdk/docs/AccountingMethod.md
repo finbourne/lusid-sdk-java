@@ -23,6 +23,20 @@
 
 * `PRORATEBYCOSTPORTFOLIOCURRENCY` (value: `"ProRateByCostPortfolioCurrency"`)
 
+* `INTRADAYTHENFIRSTINFIRSTOUT` (value: `"IntraDayThenFirstInFirstOut"`)
+
+* `LONGTERMHIGHESTCOSTFIRST` (value: `"LongTermHighestCostFirst"`)
+
+* `LONGTERMHIGHESTCOSTFIRSTPORTFOLIOCURRENCY` (value: `"LongTermHighestCostFirstPortfolioCurrency"`)
+
+* `HIGHESTCOSTFIRSTPORTFOLIOCURRENCY` (value: `"HighestCostFirstPortfolioCurrency"`)
+
+* `LOWESTCOSTFIRSTPORTFOLIOCURRENCY` (value: `"LowestCostFirstPortfolioCurrency"`)
+
+* `MAXIMUMLOSSMINIMUMGAIN` (value: `"MaximumLossMinimumGain"`)
+
+* `MAXIMUMLOSSMINIMUMGAINPORTFOLIOCURRENCY` (value: `"MaximumLossMinimumGainPortfolioCurrency"`)
+
 
 
 [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
