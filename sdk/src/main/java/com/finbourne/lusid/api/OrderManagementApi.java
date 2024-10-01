@@ -29,6 +29,8 @@ import com.finbourne.lusid.model.AllocationServiceRunResponse;
 import com.finbourne.lusid.model.BlockAndOrdersCreateRequest;
 import com.finbourne.lusid.model.BookTransactionsRequest;
 import com.finbourne.lusid.model.BookTransactionsResponse;
+import com.finbourne.lusid.model.CancelOrdersAndMoveRemainingRequest;
+import com.finbourne.lusid.model.CancelOrdersAndMoveRemainingResponse;
 import com.finbourne.lusid.model.CancelOrdersResponse;
 import com.finbourne.lusid.model.CancelPlacementsResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
@@ -573,6 +575,241 @@ public class OrderManagementApi {
      */
     public APIcancelOrdersRequest cancelOrders(Map<String, ResourceId> requestBody) {
         return new APIcancelOrdersRequest(requestBody);
+    }
+    private okhttp3.Call cancelOrdersAndMoveRemainingCall(Map<String, CancelOrdersAndMoveRemainingRequest> requestBody, final ApiCallback _callback) throws ApiException {
+        return cancelOrdersAndMoveRemainingCall(requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call cancelOrdersAndMoveRemainingCall(Map<String, CancelOrdersAndMoveRemainingRequest> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = requestBody;
+
+        // create path and map variables
+        String localVarPath = "/api/ordermanagement/cancelordersandmoveremaining";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call cancelOrdersAndMoveRemainingValidateBeforeCall(Map<String, CancelOrdersAndMoveRemainingRequest> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException("Missing the required parameter 'requestBody' when calling cancelOrdersAndMoveRemaining(Async)");
+        }
+
+        return cancelOrdersAndMoveRemainingCall(requestBody, _callback, opts);
+
+    }
+
+
+    private ApiResponse<CancelOrdersAndMoveRemainingResponse> cancelOrdersAndMoveRemainingWithHttpInfo(Map<String, CancelOrdersAndMoveRemainingRequest> requestBody) throws ApiException {
+        okhttp3.Call localVarCall = cancelOrdersAndMoveRemainingValidateBeforeCall(requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CancelOrdersAndMoveRemainingResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<CancelOrdersAndMoveRemainingResponse> cancelOrdersAndMoveRemainingWithHttpInfo(Map<String, CancelOrdersAndMoveRemainingRequest> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = cancelOrdersAndMoveRemainingValidateBeforeCall(requestBody, null, opts);
+        Type localVarReturnType = new TypeToken<CancelOrdersAndMoveRemainingResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call cancelOrdersAndMoveRemainingAsync(Map<String, CancelOrdersAndMoveRemainingRequest> requestBody, final ApiCallback<CancelOrdersAndMoveRemainingResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = cancelOrdersAndMoveRemainingValidateBeforeCall(requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CancelOrdersAndMoveRemainingResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call cancelOrdersAndMoveRemainingAsync(Map<String, CancelOrdersAndMoveRemainingRequest> requestBody, final ApiCallback<CancelOrdersAndMoveRemainingResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = cancelOrdersAndMoveRemainingValidateBeforeCall(requestBody, _callback, opts);
+        Type localVarReturnType = new TypeToken<CancelOrdersAndMoveRemainingResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIcancelOrdersAndMoveRemainingRequest {
+        private final Map<String, CancelOrdersAndMoveRemainingRequest> requestBody;
+
+        private APIcancelOrdersAndMoveRemainingRequest(Map<String, CancelOrdersAndMoveRemainingRequest> requestBody) {
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Build call for cancelOrdersAndMoveRemaining
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully cancelled and moved orders, along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return cancelOrdersAndMoveRemainingCall(requestBody, _callback);
+        }
+
+        /**
+         * Execute cancelOrdersAndMoveRemaining request
+         * @return CancelOrdersAndMoveRemainingResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully cancelled and moved orders, along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CancelOrdersAndMoveRemainingResponse execute() throws ApiException {
+            ApiResponse<CancelOrdersAndMoveRemainingResponse> localVarResp = cancelOrdersAndMoveRemainingWithHttpInfo(requestBody);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute cancelOrdersAndMoveRemaining request. Use any specified configuration options to override any other configuration for this request only.
+         * @return CancelOrdersAndMoveRemainingResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully cancelled and moved orders, along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CancelOrdersAndMoveRemainingResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<CancelOrdersAndMoveRemainingResponse> localVarResp = cancelOrdersAndMoveRemainingWithHttpInfo(requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute cancelOrdersAndMoveRemaining request with HTTP info returned
+         * @return ApiResponse&lt;CancelOrdersAndMoveRemainingResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully cancelled and moved orders, along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CancelOrdersAndMoveRemainingResponse> executeWithHttpInfo() throws ApiException {
+            return cancelOrdersAndMoveRemainingWithHttpInfo(requestBody);
+        }
+
+        /**
+         * Execute cancelOrdersAndMoveRemaining request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;CancelOrdersAndMoveRemainingResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully cancelled and moved orders, along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CancelOrdersAndMoveRemainingResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return cancelOrdersAndMoveRemainingWithHttpInfo(requestBody, opts);
+        }
+
+        /**
+         * Execute cancelOrdersAndMoveRemaining request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully cancelled and moved orders, along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CancelOrdersAndMoveRemainingResponse> _callback) throws ApiException {
+            return cancelOrdersAndMoveRemainingAsync(requestBody, _callback);
+        }
+
+        /**
+         * Execute cancelOrdersAndMoveRemaining request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully cancelled and moved orders, along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CancelOrdersAndMoveRemainingResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return cancelOrdersAndMoveRemainingAsync(requestBody, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] CancelOrdersAndMoveRemaining: Cancel existing orders and move any unplaced quantities to new orders in new blocks
+     * Cancels existing orders, reducing their quantities to those aleady placed. Any remaining quantities are moved  to new orders in new blocks. The placed quantities are distributed to the cancelled orders on a pro-rata basis.
+     * @param requestBody The request containing the orders to be cancelled, and the destinations of remaining quantities. (required)
+     * @return APIcancelOrdersAndMoveRemainingRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The successfully cancelled and moved orders, along with any failures </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIcancelOrdersAndMoveRemainingRequest cancelOrdersAndMoveRemaining(Map<String, CancelOrdersAndMoveRemainingRequest> requestBody) {
+        return new APIcancelOrdersAndMoveRemainingRequest(requestBody);
     }
     private okhttp3.Call cancelPlacementsCall(Map<String, ResourceId> requestBody, final ApiCallback _callback) throws ApiException {
         return cancelPlacementsCall(requestBody,  _callback, new ConfigurationOptions());

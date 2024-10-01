@@ -73,6 +73,14 @@ public class ReverseStockSplitEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_ANNOUNCEMENT_DATE)
   private OffsetDateTime announcementDate;
 
+  public static final String SERIALIZED_NAME_FRACTIONAL_UNITS_CASH_CURRENCY = "fractionalUnitsCashCurrency";
+  @SerializedName(SERIALIZED_NAME_FRACTIONAL_UNITS_CASH_CURRENCY)
+  private String fractionalUnitsCashCurrency;
+
+  public static final String SERIALIZED_NAME_FRACTIONAL_UNITS_CASH_PRICE = "fractionalUnitsCashPrice";
+  @SerializedName(SERIALIZED_NAME_FRACTIONAL_UNITS_CASH_PRICE)
+  private java.math.BigDecimal fractionalUnitsCashPrice;
+
   public ReverseStockSplitEvent() {
     // this.instrumentEventType = this.getClass().getSimpleName();
   }
@@ -182,6 +190,48 @@ public class ReverseStockSplitEvent extends InstrumentEvent {
   }
 
 
+  public ReverseStockSplitEvent fractionalUnitsCashCurrency(String fractionalUnitsCashCurrency) {
+    
+    this.fractionalUnitsCashCurrency = fractionalUnitsCashCurrency;
+    return this;
+  }
+
+   /**
+   * The currency of the cash paid in lieu of fractionalUnits.
+   * @return fractionalUnitsCashCurrency
+  **/
+  @jakarta.annotation.Nullable
+  public String getFractionalUnitsCashCurrency() {
+    return fractionalUnitsCashCurrency;
+  }
+
+
+  public void setFractionalUnitsCashCurrency(String fractionalUnitsCashCurrency) {
+    this.fractionalUnitsCashCurrency = fractionalUnitsCashCurrency;
+  }
+
+
+  public ReverseStockSplitEvent fractionalUnitsCashPrice(java.math.BigDecimal fractionalUnitsCashPrice) {
+    
+    this.fractionalUnitsCashPrice = fractionalUnitsCashPrice;
+    return this;
+  }
+
+   /**
+   * The cash price paid in lieu of fractionalUnits.
+   * @return fractionalUnitsCashPrice
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getFractionalUnitsCashPrice() {
+    return fractionalUnitsCashPrice;
+  }
+
+
+  public void setFractionalUnitsCashPrice(java.math.BigDecimal fractionalUnitsCashPrice) {
+    this.fractionalUnitsCashPrice = fractionalUnitsCashPrice;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -197,6 +247,8 @@ public class ReverseStockSplitEvent extends InstrumentEvent {
         Objects.equals(this.unitsRatio, reverseStockSplitEvent.unitsRatio) &&
         Objects.equals(this.recordDate, reverseStockSplitEvent.recordDate) &&
         Objects.equals(this.announcementDate, reverseStockSplitEvent.announcementDate) &&
+        Objects.equals(this.fractionalUnitsCashCurrency, reverseStockSplitEvent.fractionalUnitsCashCurrency) &&
+        (this.fractionalUnitsCashPrice.compareTo(reverseStockSplitEvent.getFractionalUnitsCashPrice()) == 0) &&
         super.equals(o);
   }
 
@@ -206,7 +258,7 @@ public class ReverseStockSplitEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(paymentDate, exDate, unitsRatio, recordDate, announcementDate, super.hashCode());
+    return Objects.hash(paymentDate, exDate, unitsRatio, recordDate, announcementDate, fractionalUnitsCashCurrency, fractionalUnitsCashPrice, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -226,6 +278,8 @@ public class ReverseStockSplitEvent extends InstrumentEvent {
     sb.append("    unitsRatio: ").append(toIndentedString(unitsRatio)).append("\n");
     sb.append("    recordDate: ").append(toIndentedString(recordDate)).append("\n");
     sb.append("    announcementDate: ").append(toIndentedString(announcementDate)).append("\n");
+    sb.append("    fractionalUnitsCashCurrency: ").append(toIndentedString(fractionalUnitsCashCurrency)).append("\n");
+    sb.append("    fractionalUnitsCashPrice: ").append(toIndentedString(fractionalUnitsCashPrice)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -254,6 +308,8 @@ public class ReverseStockSplitEvent extends InstrumentEvent {
     openapiFields.add("unitsRatio");
     openapiFields.add("recordDate");
     openapiFields.add("announcementDate");
+    openapiFields.add("fractionalUnitsCashCurrency");
+    openapiFields.add("fractionalUnitsCashPrice");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

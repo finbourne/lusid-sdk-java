@@ -13,6 +13,8 @@ A reverse split in the company's shares. Shareholders have their number of share
 |**unitsRatio** | [**UnitsRatio**](UnitsRatio.md) |  |  |
 |**recordDate** | **OffsetDateTime** | Date you have to be the holder of record in order to have their shares merged. |  [optional] |
 |**announcementDate** | **OffsetDateTime** | Date the reverse stock split was announced. |  [optional] |
+|**fractionalUnitsCashCurrency** | **String** | The currency of the cash paid in lieu of fractionalUnits. |  [optional] |
+|**fractionalUnitsCashPrice** | **java.math.BigDecimal** | The cash price paid in lieu of fractionalUnits. |  [optional] |
 
 
 
