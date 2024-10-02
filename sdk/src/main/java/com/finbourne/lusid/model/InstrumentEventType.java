@@ -101,7 +101,11 @@ public enum InstrumentEventType {
   
   MBSPRINCIPALWRITEOFFEVENT("MbsPrincipalWriteOffEvent"),
   
-  MBSINTERESTDEFERRALEVENT("MbsInterestDeferralEvent");
+  MBSINTERESTDEFERRALEVENT("MbsInterestDeferralEvent"),
+  
+  MBSINTERESTSHORTFALLEVENT("MbsInterestShortfallEvent"),
+  
+  TENDEREVENT("TenderEvent");
 
   private String value;
 
