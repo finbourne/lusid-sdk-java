@@ -105,7 +105,9 @@ public enum InstrumentType {
   
   CASH("Cash"),
   
-  MASTEREDINSTRUMENT("MasteredInstrument");
+  MASTEREDINSTRUMENT("MasteredInstrument"),
+  
+  LOANFACILITY("LoanFacility");
 
   private String value;
 

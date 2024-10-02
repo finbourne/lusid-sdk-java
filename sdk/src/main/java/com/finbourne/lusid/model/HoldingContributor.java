@@ -19,6 +19,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -54,6 +55,10 @@ public class HoldingContributor {
   @SerializedName(SERIALIZED_NAME_TRANSACTION)
   private Transaction transaction;
 
+  public static final String SERIALIZED_NAME_HOLDING_ID = "holdingId";
+  @SerializedName(SERIALIZED_NAME_HOLDING_ID)
+  private Long holdingId;
+
   public HoldingContributor() {
   }
 
@@ -78,6 +83,27 @@ public class HoldingContributor {
   }
 
 
+  public HoldingContributor holdingId(Long holdingId) {
+    
+    this.holdingId = holdingId;
+    return this;
+  }
+
+   /**
+   * The unique holding identifier
+   * @return holdingId
+  **/
+  @jakarta.annotation.Nullable
+  public Long getHoldingId() {
+    return holdingId;
+  }
+
+
+  public void setHoldingId(Long holdingId) {
+    this.holdingId = holdingId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -88,12 +114,24 @@ public class HoldingContributor {
       return false;
     }
     HoldingContributor holdingContributor = (HoldingContributor) o;
-    return Objects.equals(this.transaction, holdingContributor.transaction);
+    return Objects.equals(this.transaction, holdingContributor.transaction) &&
+        Objects.equals(this.holdingId, holdingContributor.holdingId);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(transaction);
+    return Objects.hash(transaction, holdingId);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -101,6 +139,7 @@ public class HoldingContributor {
     StringBuilder sb = new StringBuilder();
     sb.append("class HoldingContributor {\n");
     sb.append("    transaction: ").append(toIndentedString(transaction)).append("\n");
+    sb.append("    holdingId: ").append(toIndentedString(holdingId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -124,6 +163,7 @@ public class HoldingContributor {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("transaction");
+    openapiFields.add("holdingId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

@@ -41,6 +41,7 @@ import com.finbourne.lusid.model.CustodianAccountRequest;
 import com.finbourne.lusid.model.CustodianAccountsUpsertResponse;
 import com.finbourne.lusid.model.DeleteCustodianAccountsResponse;
 import com.finbourne.lusid.model.DeletedEntityResponse;
+import com.finbourne.lusid.model.HoldingIdsRequest;
 import com.finbourne.lusid.model.HoldingsAdjustment;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidTradeTicket;
@@ -5923,6 +5924,379 @@ public class TransactionPortfoliosApi {
      */
     public APIgetHoldingsWithOrdersRequest getHoldingsWithOrders(String scope, String code) {
         return new APIgetHoldingsWithOrdersRequest(scope, code);
+    }
+    private okhttp3.Call getMultipleHoldingContributorsCall(String scope, String code, HoldingIdsRequest holdingIdsRequest, String effectiveDate, String fromTransactionDate, String toTransactionDate, Boolean includeHistoric, String taxLotId, Integer limit, OffsetDateTime asAt, String page, final ApiCallback _callback) throws ApiException {
+        return getMultipleHoldingContributorsCall(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, limit, asAt, page,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getMultipleHoldingContributorsCall(String scope, String code, HoldingIdsRequest holdingIdsRequest, String effectiveDate, String fromTransactionDate, String toTransactionDate, Boolean includeHistoric, String taxLotId, Integer limit, OffsetDateTime asAt, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = holdingIdsRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/transactionportfolios/{scope}/{code}/holdings/contributors/$get"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveDate != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveDate", effectiveDate));
+        }
+
+        if (fromTransactionDate != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("fromTransactionDate", fromTransactionDate));
+        }
+
+        if (toTransactionDate != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("toTransactionDate", toTransactionDate));
+        }
+
+        if (includeHistoric != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("includeHistoric", includeHistoric));
+        }
+
+        if (taxLotId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("taxLotId", taxLotId));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getMultipleHoldingContributorsValidateBeforeCall(String scope, String code, HoldingIdsRequest holdingIdsRequest, String effectiveDate, String fromTransactionDate, String toTransactionDate, Boolean includeHistoric, String taxLotId, Integer limit, OffsetDateTime asAt, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getMultipleHoldingContributors(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling getMultipleHoldingContributors(Async)");
+        }
+
+        // verify the required parameter 'holdingIdsRequest' is set
+        if (holdingIdsRequest == null) {
+            throw new ApiException("Missing the required parameter 'holdingIdsRequest' when calling getMultipleHoldingContributors(Async)");
+        }
+
+        return getMultipleHoldingContributorsCall(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, limit, asAt, page, _callback, opts);
+
+    }
+
+
+    private ApiResponse<VersionedResourceListOfHoldingContributor> getMultipleHoldingContributorsWithHttpInfo(String scope, String code, HoldingIdsRequest holdingIdsRequest, String effectiveDate, String fromTransactionDate, String toTransactionDate, Boolean includeHistoric, String taxLotId, Integer limit, OffsetDateTime asAt, String page) throws ApiException {
+        okhttp3.Call localVarCall = getMultipleHoldingContributorsValidateBeforeCall(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, limit, asAt, page, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfHoldingContributor>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<VersionedResourceListOfHoldingContributor> getMultipleHoldingContributorsWithHttpInfo(String scope, String code, HoldingIdsRequest holdingIdsRequest, String effectiveDate, String fromTransactionDate, String toTransactionDate, Boolean includeHistoric, String taxLotId, Integer limit, OffsetDateTime asAt, String page, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getMultipleHoldingContributorsValidateBeforeCall(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, limit, asAt, page, null, opts);
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfHoldingContributor>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getMultipleHoldingContributorsAsync(String scope, String code, HoldingIdsRequest holdingIdsRequest, String effectiveDate, String fromTransactionDate, String toTransactionDate, Boolean includeHistoric, String taxLotId, Integer limit, OffsetDateTime asAt, String page, final ApiCallback<VersionedResourceListOfHoldingContributor> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getMultipleHoldingContributorsValidateBeforeCall(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, limit, asAt, page, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfHoldingContributor>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getMultipleHoldingContributorsAsync(String scope, String code, HoldingIdsRequest holdingIdsRequest, String effectiveDate, String fromTransactionDate, String toTransactionDate, Boolean includeHistoric, String taxLotId, Integer limit, OffsetDateTime asAt, String page, final ApiCallback<VersionedResourceListOfHoldingContributor> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getMultipleHoldingContributorsValidateBeforeCall(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, limit, asAt, page, _callback, opts);
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfHoldingContributor>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetMultipleHoldingContributorsRequest {
+        private final String scope;
+        private final String code;
+        private final HoldingIdsRequest holdingIdsRequest;
+        private String effectiveDate;
+        private String fromTransactionDate;
+        private String toTransactionDate;
+        private Boolean includeHistoric;
+        private String taxLotId;
+        private Integer limit;
+        private OffsetDateTime asAt;
+        private String page;
+
+        private APIgetMultipleHoldingContributorsRequest(String scope, String code, HoldingIdsRequest holdingIdsRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.holdingIdsRequest = holdingIdsRequest;
+        }
+
+        /**
+         * Set effectiveDate
+         * @param effectiveDate Effective date (optional)
+         * @return APIgetMultipleHoldingContributorsRequest
+         */
+        public APIgetMultipleHoldingContributorsRequest effectiveDate(String effectiveDate) {
+            this.effectiveDate = effectiveDate;
+            return this;
+        }
+
+        /**
+         * Set fromTransactionDate
+         * @param fromTransactionDate The from trade date, defaults to first time this holding is opened, lower bound for transactions (optional)
+         * @return APIgetMultipleHoldingContributorsRequest
+         */
+        public APIgetMultipleHoldingContributorsRequest fromTransactionDate(String fromTransactionDate) {
+            this.fromTransactionDate = fromTransactionDate;
+            return this;
+        }
+
+        /**
+         * Set toTransactionDate
+         * @param toTransactionDate The to trade date upper bound date, defaults to effectiveDate. upper bound for transactions (optional)
+         * @return APIgetMultipleHoldingContributorsRequest
+         */
+        public APIgetMultipleHoldingContributorsRequest toTransactionDate(String toTransactionDate) {
+            this.toTransactionDate = toTransactionDate;
+            return this;
+        }
+
+        /**
+         * Set includeHistoric
+         * @param includeHistoric If true, transactions from previously closed holdings are returned.   If false, only transactions from last time position is opened. (optional, default to false)
+         * @return APIgetMultipleHoldingContributorsRequest
+         */
+        public APIgetMultipleHoldingContributorsRequest includeHistoric(Boolean includeHistoric) {
+            this.includeHistoric = includeHistoric;
+            return this;
+        }
+
+        /**
+         * Set taxLotId
+         * @param taxLotId Constrains the Holding Contributors to those which contributed to the specified tax lot. (optional)
+         * @return APIgetMultipleHoldingContributorsRequest
+         */
+        public APIgetMultipleHoldingContributorsRequest taxLotId(String taxLotId) {
+            this.taxLotId = taxLotId;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
+         * @return APIgetMultipleHoldingContributorsRequest
+         */
+        public APIgetMultipleHoldingContributorsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to build the transactions. Defaults to return the latest   version of each transaction if not specified. (optional)
+         * @return APIgetMultipleHoldingContributorsRequest
+         */
+        public APIgetMultipleHoldingContributorsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing transactions from a previous call to GetHoldingContributors. (optional)
+         * @return APIgetMultipleHoldingContributorsRequest
+         */
+        public APIgetMultipleHoldingContributorsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Build call for getMultipleHoldingContributors
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested holding contributors for each specified holding from the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getMultipleHoldingContributorsCall(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, limit, asAt, page, _callback);
+        }
+
+        /**
+         * Execute getMultipleHoldingContributors request
+         * @return VersionedResourceListOfHoldingContributor
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested holding contributors for each specified holding from the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionedResourceListOfHoldingContributor execute() throws ApiException {
+            ApiResponse<VersionedResourceListOfHoldingContributor> localVarResp = getMultipleHoldingContributorsWithHttpInfo(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, limit, asAt, page);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getMultipleHoldingContributors request. Use any specified configuration options to override any other configuration for this request only.
+         * @return VersionedResourceListOfHoldingContributor
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested holding contributors for each specified holding from the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionedResourceListOfHoldingContributor execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<VersionedResourceListOfHoldingContributor> localVarResp = getMultipleHoldingContributorsWithHttpInfo(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, limit, asAt, page, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getMultipleHoldingContributors request with HTTP info returned
+         * @return ApiResponse&lt;VersionedResourceListOfHoldingContributor&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested holding contributors for each specified holding from the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionedResourceListOfHoldingContributor> executeWithHttpInfo() throws ApiException {
+            return getMultipleHoldingContributorsWithHttpInfo(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, limit, asAt, page);
+        }
+
+        /**
+         * Execute getMultipleHoldingContributors request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;VersionedResourceListOfHoldingContributor&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested holding contributors for each specified holding from the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionedResourceListOfHoldingContributor> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getMultipleHoldingContributorsWithHttpInfo(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, limit, asAt, page, opts);
+        }
+
+        /**
+         * Execute getMultipleHoldingContributors request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested holding contributors for each specified holding from the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfHoldingContributor> _callback) throws ApiException {
+            return getMultipleHoldingContributorsAsync(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, limit, asAt, page, _callback);
+        }
+
+        /**
+         * Execute getMultipleHoldingContributors request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested holding contributors for each specified holding from the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfHoldingContributor> _callback, ConfigurationOptions opts) throws ApiException {
+            return getMultipleHoldingContributorsAsync(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, limit, asAt, page, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] GetMultipleHoldingContributors: Get Multiple Holding Contributors
+     * Lists all transactions that affect multiple specified holdings of a portfolio over a given effective interval. This includes  transactions automatically generated by LUSID such as holding adjustments.
+     * @param scope The scope of the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param holdingIdsRequest The array of unique holding identifiers (required)
+     * @return APIgetMultipleHoldingContributorsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested holding contributors for each specified holding from the specified transaction portfolio </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetMultipleHoldingContributorsRequest getMultipleHoldingContributors(String scope, String code, HoldingIdsRequest holdingIdsRequest) {
+        return new APIgetMultipleHoldingContributorsRequest(scope, code, holdingIdsRequest);
     }
     private okhttp3.Call getPortfolioCashFlowsCall(String scope, String code, String effectiveAt, String windowStart, String windowEnd, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, Boolean excludeUnsettledTrades, final ApiCallback _callback) throws ApiException {
         return getPortfolioCashFlowsCall(scope, code, effectiveAt, windowStart, windowEnd, asAt, filter, recipeIdScope, recipeIdCode, excludeUnsettledTrades,  _callback, new ConfigurationOptions());

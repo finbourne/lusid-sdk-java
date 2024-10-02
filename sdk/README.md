@@ -551,6 +551,7 @@ Class | Method | HTTP request | Description
 *TransactionPortfoliosApi* | [**getHoldings**](docs/TransactionPortfoliosApi.md#getholdings) | **GET** /api/transactionportfolios/{scope}/{code}/holdings | GetHoldings: Get holdings
 *TransactionPortfoliosApi* | [**getHoldingsAdjustment**](docs/TransactionPortfoliosApi.md#getholdingsadjustment) | **GET** /api/transactionportfolios/{scope}/{code}/holdingsadjustments/{effectiveAt} | GetHoldingsAdjustment: Get holdings adjustment
 *TransactionPortfoliosApi* | [**getHoldingsWithOrders**](docs/TransactionPortfoliosApi.md#getholdingswithorders) | **GET** /api/transactionportfolios/{scope}/{code}/holdingsWithOrders | [EXPERIMENTAL] GetHoldingsWithOrders: Get holdings with orders
+*TransactionPortfoliosApi* | [**getMultipleHoldingContributors**](docs/TransactionPortfoliosApi.md#getmultipleholdingcontributors) | **POST** /api/transactionportfolios/{scope}/{code}/holdings/contributors/$get | [EARLY ACCESS] GetMultipleHoldingContributors: Get Multiple Holding Contributors
 *TransactionPortfoliosApi* | [**getPortfolioCashFlows**](docs/TransactionPortfoliosApi.md#getportfoliocashflows) | **GET** /api/transactionportfolios/{scope}/{code}/cashflows | GetPortfolioCashFlows: Get portfolio cash flows
 *TransactionPortfoliosApi* | [**getPortfolioCashLadder**](docs/TransactionPortfoliosApi.md#getportfoliocashladder) | **GET** /api/transactionportfolios/{scope}/{code}/cashladder | GetPortfolioCashLadder: Get portfolio cash ladder
 *TransactionPortfoliosApi* | [**getPortfolioCashStatement**](docs/TransactionPortfoliosApi.md#getportfoliocashstatement) | **GET** /api/transactionportfolios/{scope}/{code}/cashstatement | GetPortfolioCashStatement: Get portfolio cash statement
@@ -1024,6 +1025,7 @@ Class | Method | HTTP request | Description
  - [HoldingAdjustmentWithDate](docs/HoldingAdjustmentWithDate.md)
  - [HoldingContext](docs/HoldingContext.md)
  - [HoldingContributor](docs/HoldingContributor.md)
+ - [HoldingIdsRequest](docs/HoldingIdsRequest.md)
  - [HoldingPricingInfo](docs/HoldingPricingInfo.md)
  - [HoldingsAdjustment](docs/HoldingsAdjustment.md)
  - [HoldingsAdjustmentHeader](docs/HoldingsAdjustmentHeader.md)
@@ -1093,6 +1095,7 @@ Class | Method | HTTP request | Description
  - [ListAggregationReconciliation](docs/ListAggregationReconciliation.md)
  - [ListAggregationResponse](docs/ListAggregationResponse.md)
  - [ListComplexMarketDataWithMetaDataResponse](docs/ListComplexMarketDataWithMetaDataResponse.md)
+ - [LoanFacility](docs/LoanFacility.md)
  - [LoanPeriod](docs/LoanPeriod.md)
  - [LockPeriodDiaryEntryRequest](docs/LockPeriodDiaryEntryRequest.md)
  - [LusidInstrument](docs/LusidInstrument.md)
