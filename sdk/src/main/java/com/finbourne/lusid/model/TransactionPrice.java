@@ -54,7 +54,7 @@ public class TransactionPrice {
   private java.math.BigDecimal price;
 
   /**
-   * The available values are: Price, Yield, Spread, CashFlowPerUnit
+   * The available values are: Price, Yield, Spread, CashFlowPerUnit, CleanPrice, DirtyPrice
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
@@ -64,7 +64,11 @@ public class TransactionPrice {
     
     SPREAD("Spread"),
     
-    CASHFLOWPERUNIT("CashFlowPerUnit");
+    CASHFLOWPERUNIT("CashFlowPerUnit"),
+    
+    CLEANPRICE("CleanPrice"),
+    
+    DIRTYPRICE("DirtyPrice");
 
     private String value;
 
@@ -139,7 +143,7 @@ public class TransactionPrice {
   }
 
    /**
-   * The available values are: Price, Yield, Spread, CashFlowPerUnit
+   * The available values are: Price, Yield, Spread, CashFlowPerUnit, CleanPrice, DirtyPrice
    * @return type
   **/
   @jakarta.annotation.Nullable

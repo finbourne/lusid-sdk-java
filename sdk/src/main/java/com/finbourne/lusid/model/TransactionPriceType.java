@@ -31,7 +31,11 @@ public enum TransactionPriceType {
   
   SPREAD("Spread"),
   
-  CASHFLOWPERUNIT("CashFlowPerUnit");
+  CASHFLOWPERUNIT("CashFlowPerUnit"),
+  
+  CLEANPRICE("CleanPrice"),
+  
+  DIRTYPRICE("DirtyPrice");
 
   private String value;
 

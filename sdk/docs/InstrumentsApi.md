@@ -5,6 +5,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**batchUpsertInstrumentProperties**](InstrumentsApi.md#batchUpsertInstrumentProperties) | **POST** /api/instruments/$batchupsertproperties | BatchUpsertInstrumentProperties: Batch upsert instruments properties |
+| [**calculateSettlementDate**](InstrumentsApi.md#calculateSettlementDate) | **GET** /api/instruments/{identifierType}/{identifier}/settlementdate | [EARLY ACCESS] CalculateSettlementDate: Get the settlement date for an instrument. |
 | [**deleteInstrument**](InstrumentsApi.md#deleteInstrument) | **DELETE** /api/instruments/{identifierType}/{identifier} | DeleteInstrument: Soft delete a single instrument |
 | [**deleteInstrumentProperties**](InstrumentsApi.md#deleteInstrumentProperties) | **POST** /api/instruments/{identifierType}/{identifier}/properties/$delete | [EARLY ACCESS] DeleteInstrumentProperties: Delete instrument properties |
 | [**deleteInstruments**](InstrumentsApi.md#deleteInstruments) | **POST** /api/instruments/$delete | DeleteInstruments: Soft or hard delete multiple instruments |
@@ -118,6 +119,105 @@ public class InstrumentsApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | The successfully upserted properties along with any failures. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## calculateSettlementDate
+
+> AddBusinessDaysToDateResponse calculateSettlementDate(identifierType, identifier, transactionDate, scope, asAt)
+
+[EARLY ACCESS] CalculateSettlementDate: Get the settlement date for an instrument.
+
+Get the settlement date for a given trade date and instrument. The calculated settlement date will be in UTC.  If a cut label transaction date is provided, the settlement date will be calculated relative to the absolute UTC datetime.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.InstrumentsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class InstrumentsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InstrumentsApi apiInstance = apiFactory.build(InstrumentsApi.class);
+
+        InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
+        String identifierType = "identifierType_example"; // String | An identifier type attached to the Instrument.
+        String identifier = "identifier_example"; // String | The identifier value.
+        String transactionDate = "transactionDate_example"; // String | The transaction date to calculate the settlement date from. This can be a UTC datetime offset or a cut label.
+        String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the related instrument and calendars for calculation. Defaults to   returning the latest version if not specified.
+        try {
+            // uncomment the below to set overrides at the request level
+            // AddBusinessDaysToDateResponse result = apiInstance.calculateSettlementDate(identifierType, identifier, transactionDate, scope, asAt).execute(opts);
+
+            AddBusinessDaysToDateResponse result = apiInstance.calculateSettlementDate(identifierType, identifier, transactionDate, scope, asAt).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InstrumentsApi#calculateSettlementDate");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **identifierType** | **String**| An identifier type attached to the Instrument. | |
+| **identifier** | **String**| The identifier value. | |
+| **transactionDate** | **String**| The transaction date to calculate the settlement date from. This can be a UTC datetime offset or a cut label. | [optional] |
+| **scope** | **String**| The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the related instrument and calendars for calculation. Defaults to   returning the latest version if not specified. | [optional] |
+
+### Return type
+
+[**AddBusinessDaysToDateResponse**](AddBusinessDaysToDateResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The calculated settlement date. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

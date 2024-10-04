@@ -25,6 +25,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.finbourne.lusid.model.AddBusinessDaysToDateResponse;
 import com.finbourne.lusid.model.BatchUpsertInstrumentPropertiesResponse;
 import com.finbourne.lusid.model.DeleteInstrumentPropertiesResponse;
 import com.finbourne.lusid.model.DeleteInstrumentResponse;
@@ -372,6 +373,292 @@ public class InstrumentsApi {
      */
     public APIbatchUpsertInstrumentPropertiesRequest batchUpsertInstrumentProperties(Map<String, UpsertInstrumentPropertyRequest> requestBody) {
         return new APIbatchUpsertInstrumentPropertiesRequest(requestBody);
+    }
+    private okhttp3.Call calculateSettlementDateCall(String identifierType, String identifier, String transactionDate, String scope, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return calculateSettlementDateCall(identifierType, identifier, transactionDate, scope, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call calculateSettlementDateCall(String identifierType, String identifier, String transactionDate, String scope, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/instruments/{identifierType}/{identifier}/settlementdate"
+            .replace("{" + "identifierType" + "}", localVarApiClient.escapeString(identifierType.toString()))
+            .replace("{" + "identifier" + "}", localVarApiClient.escapeString(identifier.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (transactionDate != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("transactionDate", transactionDate));
+        }
+
+        if (scope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("scope", scope));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call calculateSettlementDateValidateBeforeCall(String identifierType, String identifier, String transactionDate, String scope, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'identifierType' is set
+        if (identifierType == null) {
+            throw new ApiException("Missing the required parameter 'identifierType' when calling calculateSettlementDate(Async)");
+        }
+
+        // verify the required parameter 'identifier' is set
+        if (identifier == null) {
+            throw new ApiException("Missing the required parameter 'identifier' when calling calculateSettlementDate(Async)");
+        }
+
+        return calculateSettlementDateCall(identifierType, identifier, transactionDate, scope, asAt, _callback, opts);
+
+    }
+
+
+    private ApiResponse<AddBusinessDaysToDateResponse> calculateSettlementDateWithHttpInfo(String identifierType, String identifier, String transactionDate, String scope, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = calculateSettlementDateValidateBeforeCall(identifierType, identifier, transactionDate, scope, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AddBusinessDaysToDateResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AddBusinessDaysToDateResponse> calculateSettlementDateWithHttpInfo(String identifierType, String identifier, String transactionDate, String scope, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = calculateSettlementDateValidateBeforeCall(identifierType, identifier, transactionDate, scope, asAt, null, opts);
+        Type localVarReturnType = new TypeToken<AddBusinessDaysToDateResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call calculateSettlementDateAsync(String identifierType, String identifier, String transactionDate, String scope, OffsetDateTime asAt, final ApiCallback<AddBusinessDaysToDateResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = calculateSettlementDateValidateBeforeCall(identifierType, identifier, transactionDate, scope, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AddBusinessDaysToDateResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call calculateSettlementDateAsync(String identifierType, String identifier, String transactionDate, String scope, OffsetDateTime asAt, final ApiCallback<AddBusinessDaysToDateResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = calculateSettlementDateValidateBeforeCall(identifierType, identifier, transactionDate, scope, asAt, _callback, opts);
+        Type localVarReturnType = new TypeToken<AddBusinessDaysToDateResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIcalculateSettlementDateRequest {
+        private final String identifierType;
+        private final String identifier;
+        private String transactionDate;
+        private String scope;
+        private OffsetDateTime asAt;
+
+        private APIcalculateSettlementDateRequest(String identifierType, String identifier) {
+            this.identifierType = identifierType;
+            this.identifier = identifier;
+        }
+
+        /**
+         * Set transactionDate
+         * @param transactionDate The transaction date to calculate the settlement date from. This can be a UTC datetime offset or a cut label. (optional)
+         * @return APIcalculateSettlementDateRequest
+         */
+        public APIcalculateSettlementDateRequest transactionDate(String transactionDate) {
+            this.transactionDate = transactionDate;
+            return this;
+        }
+
+        /**
+         * Set scope
+         * @param scope The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. (optional, default to default)
+         * @return APIcalculateSettlementDateRequest
+         */
+        public APIcalculateSettlementDateRequest scope(String scope) {
+            this.scope = scope;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the related instrument and calendars for calculation. Defaults to   returning the latest version if not specified. (optional)
+         * @return APIcalculateSettlementDateRequest
+         */
+        public APIcalculateSettlementDateRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for calculateSettlementDate
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The calculated settlement date. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return calculateSettlementDateCall(identifierType, identifier, transactionDate, scope, asAt, _callback);
+        }
+
+        /**
+         * Execute calculateSettlementDate request
+         * @return AddBusinessDaysToDateResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The calculated settlement date. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AddBusinessDaysToDateResponse execute() throws ApiException {
+            ApiResponse<AddBusinessDaysToDateResponse> localVarResp = calculateSettlementDateWithHttpInfo(identifierType, identifier, transactionDate, scope, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute calculateSettlementDate request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AddBusinessDaysToDateResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The calculated settlement date. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AddBusinessDaysToDateResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AddBusinessDaysToDateResponse> localVarResp = calculateSettlementDateWithHttpInfo(identifierType, identifier, transactionDate, scope, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute calculateSettlementDate request with HTTP info returned
+         * @return ApiResponse&lt;AddBusinessDaysToDateResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The calculated settlement date. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AddBusinessDaysToDateResponse> executeWithHttpInfo() throws ApiException {
+            return calculateSettlementDateWithHttpInfo(identifierType, identifier, transactionDate, scope, asAt);
+        }
+
+        /**
+         * Execute calculateSettlementDate request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AddBusinessDaysToDateResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The calculated settlement date. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AddBusinessDaysToDateResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return calculateSettlementDateWithHttpInfo(identifierType, identifier, transactionDate, scope, asAt, opts);
+        }
+
+        /**
+         * Execute calculateSettlementDate request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The calculated settlement date. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AddBusinessDaysToDateResponse> _callback) throws ApiException {
+            return calculateSettlementDateAsync(identifierType, identifier, transactionDate, scope, asAt, _callback);
+        }
+
+        /**
+         * Execute calculateSettlementDate request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The calculated settlement date. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AddBusinessDaysToDateResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return calculateSettlementDateAsync(identifierType, identifier, transactionDate, scope, asAt, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] CalculateSettlementDate: Get the settlement date for an instrument.
+     * Get the settlement date for a given trade date and instrument. The calculated settlement date will be in UTC.  If a cut label transaction date is provided, the settlement date will be calculated relative to the absolute UTC datetime.
+     * @param identifierType An identifier type attached to the Instrument. (required)
+     * @param identifier The identifier value. (required)
+     * @return APIcalculateSettlementDateRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The calculated settlement date. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIcalculateSettlementDateRequest calculateSettlementDate(String identifierType, String identifier) {
+        return new APIcalculateSettlementDateRequest(identifierType, identifier);
     }
     private okhttp3.Call deleteInstrumentCall(String identifierType, String identifier, String scope, final ApiCallback _callback) throws ApiException {
         return deleteInstrumentCall(identifierType, identifier, scope,  _callback, new ConfigurationOptions());
