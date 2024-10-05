@@ -70,6 +70,10 @@ public class ComponentTransaction {
   @SerializedName(SERIALIZED_NAME_TRANSACTION_PROPERTY_MAP)
   private List<TransactionPropertyMap> transactionPropertyMap = new ArrayList<>();
 
+  public static final String SERIALIZED_NAME_PRESERVE_TAX_LOT_STRUCTURE = "preserveTaxLotStructure";
+  @SerializedName(SERIALIZED_NAME_PRESERVE_TAX_LOT_STRUCTURE)
+  private Boolean preserveTaxLotStructure;
+
   public ComponentTransaction() {
   }
 
@@ -165,6 +169,27 @@ public class ComponentTransaction {
   }
 
 
+  public ComponentTransaction preserveTaxLotStructure(Boolean preserveTaxLotStructure) {
+    
+    this.preserveTaxLotStructure = preserveTaxLotStructure;
+    return this;
+  }
+
+   /**
+   * Controls if tax lot structure should be preserved when cost base is transferred to a new holding. For example in Spin Off instrument events.
+   * @return preserveTaxLotStructure
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getPreserveTaxLotStructure() {
+    return preserveTaxLotStructure;
+  }
+
+
+  public void setPreserveTaxLotStructure(Boolean preserveTaxLotStructure) {
+    this.preserveTaxLotStructure = preserveTaxLotStructure;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -178,7 +203,8 @@ public class ComponentTransaction {
     return Objects.equals(this.displayName, componentTransaction.displayName) &&
         Objects.equals(this.condition, componentTransaction.condition) &&
         Objects.equals(this.transactionFieldMap, componentTransaction.transactionFieldMap) &&
-        Objects.equals(this.transactionPropertyMap, componentTransaction.transactionPropertyMap);
+        Objects.equals(this.transactionPropertyMap, componentTransaction.transactionPropertyMap) &&
+        Objects.equals(this.preserveTaxLotStructure, componentTransaction.preserveTaxLotStructure);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -187,7 +213,7 @@ public class ComponentTransaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, condition, transactionFieldMap, transactionPropertyMap);
+    return Objects.hash(displayName, condition, transactionFieldMap, transactionPropertyMap, preserveTaxLotStructure);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -205,6 +231,7 @@ public class ComponentTransaction {
     sb.append("    condition: ").append(toIndentedString(condition)).append("\n");
     sb.append("    transactionFieldMap: ").append(toIndentedString(transactionFieldMap)).append("\n");
     sb.append("    transactionPropertyMap: ").append(toIndentedString(transactionPropertyMap)).append("\n");
+    sb.append("    preserveTaxLotStructure: ").append(toIndentedString(preserveTaxLotStructure)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -231,6 +258,7 @@ public class ComponentTransaction {
     openapiFields.add("condition");
     openapiFields.add("transactionFieldMap");
     openapiFields.add("transactionPropertyMap");
+    openapiFields.add("preserveTaxLotStructure");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

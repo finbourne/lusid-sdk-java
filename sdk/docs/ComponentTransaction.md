@@ -11,6 +11,7 @@
 |**condition** | **String** |  |  [optional] |
 |**transactionFieldMap** | [**TransactionFieldMap**](TransactionFieldMap.md) |  |  |
 |**transactionPropertyMap** | [**List&lt;TransactionPropertyMap&gt;**](TransactionPropertyMap.md) |  |  |
+|**preserveTaxLotStructure** | **Boolean** | Controls if tax lot structure should be preserved when cost base is transferred to a new holding. For example in Spin Off instrument events. |  [optional] |
 
 
 
