@@ -105,7 +105,9 @@ public enum InstrumentEventType {
   
   MBSINTERESTSHORTFALLEVENT("MbsInterestShortfallEvent"),
   
-  TENDEREVENT("TenderEvent");
+  TENDEREVENT("TenderEvent"),
+  
+  CALLONINTERMEDIATESECURITIESEVENT("CallOnIntermediateSecuritiesEvent");
 
   private String value;
 

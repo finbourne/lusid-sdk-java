@@ -9515,7 +9515,7 @@ public class TransactionPortfoliosApi {
     }
 
     /**
-     * [EARLY ACCESS] ResolveInstrument: Resolve instrument
+     * ResolveInstrument: Resolve instrument
      * Try to resolve the instrument for transaction and holdings for a given instrument identifier and a specified  period of time. Also update the instrument identifiers with the given instrument identifiers collection.
      * @param scope The scope of the transaction portfolio. (required)
      * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)

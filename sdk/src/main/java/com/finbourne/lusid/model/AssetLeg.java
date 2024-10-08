@@ -46,7 +46,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * The underlying instrument representing one side of the TRS and its pay-receive direction.
+ * The underlying instrument representing one side of the TRS and its pay-receive direction.     Note that TRS currently only supports an asset of Bond or ComplexBond, no other instruments are allowed.  Support for additional instrument types will be added in the future.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AssetLeg {

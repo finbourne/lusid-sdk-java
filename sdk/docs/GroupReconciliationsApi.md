@@ -8,8 +8,10 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**createGroupReconciliationDefinition**](GroupReconciliationsApi.md#createGroupReconciliationDefinition) | **POST** /api/reconciliations/groupreconciliationdefinitions | [EXPERIMENTAL] CreateGroupReconciliationDefinition: Create Group Reconciliation Definition |
 | [**deleteComparisonRuleset**](GroupReconciliationsApi.md#deleteComparisonRuleset) | **DELETE** /api/reconciliations/comparisonrulesets/{scope}/{code} | [EXPERIMENTAL] DeleteComparisonRuleset: Deletes a particular Group Reconciliation Comparison Ruleset |
 | [**deleteGroupReconciliationDefinition**](GroupReconciliationsApi.md#deleteGroupReconciliationDefinition) | **DELETE** /api/reconciliations/groupreconciliationdefinitions/{scope}/{code} | [EXPERIMENTAL] DeleteGroupReconciliationDefinition: Delete Group Reconciliation Definition |
-| [**getComparisonRuleset**](GroupReconciliationsApi.md#getComparisonRuleset) | **GET** /api/reconciliations/comparisonrulesets/{scope}/{code} | [EXPERIMENTAL] GetComparisonRuleset: Get a single Group Reconciliation Comparison Ruleset by scope and code |
+| [**getComparisonResult**](GroupReconciliationsApi.md#getComparisonResult) | **GET** /api/reconciliations/groupreconciliationdefinitions/{scope}/{code}/{resultId} | [EXPERIMENTAL] GetComparisonResult: Get a single Group Reconciliation Comparison Result by scope and code. |
+| [**getComparisonRuleset**](GroupReconciliationsApi.md#getComparisonRuleset) | **GET** /api/reconciliations/comparisonrulesets/{scope}/{code} | [EXPERIMENTAL] GetComparisonRuleset: Get a single Group Reconciliation Comparison Ruleset by scope and code. |
 | [**getGroupReconciliationDefinition**](GroupReconciliationsApi.md#getGroupReconciliationDefinition) | **GET** /api/reconciliations/groupreconciliationdefinitions/{scope}/{code} | [EXPERIMENTAL] GetGroupReconciliationDefinition: Get group reconciliation definition |
+| [**listComparisonResults**](GroupReconciliationsApi.md#listComparisonResults) | **GET** /api/reconciliations/comparisonresults | [EXPERIMENTAL] ListComparisonResults: Get a set of Group Reconciliation Comparison Results. |
 | [**listComparisonRulesets**](GroupReconciliationsApi.md#listComparisonRulesets) | **GET** /api/reconciliations/comparisonrulesets | [EXPERIMENTAL] ListComparisonRulesets: Get a set of Group Reconciliation Comparison Rulesets |
 | [**listGroupReconciliationDefinitions**](GroupReconciliationsApi.md#listGroupReconciliationDefinitions) | **GET** /api/reconciliations/groupreconciliationdefinitions | [EXPERIMENTAL] ListGroupReconciliationDefinitions: List group reconciliation definitions |
 | [**updateComparisonRuleset**](GroupReconciliationsApi.md#updateComparisonRuleset) | **PUT** /api/reconciliations/comparisonrulesets/{scope}/{code} | [EXPERIMENTAL] UpdateComparisonRuleset: Update Group Reconciliation Comparison Ruleset defined by scope and code |
@@ -385,13 +387,110 @@ public class GroupReconciliationsApiExample {
 [Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 
+## getComparisonResult
+
+> GroupReconciliationComparisonResult getComparisonResult(scope, code, resultId, asAt)
+
+[EXPERIMENTAL] GetComparisonResult: Get a single Group Reconciliation Comparison Result by scope and code.
+
+Retrieves one Group Reconciliation Comparison Result by scope and code  with the prior validation that its related reconciliation definition exists.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.GroupReconciliationsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class GroupReconciliationsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // GroupReconciliationsApi apiInstance = apiFactory.build(GroupReconciliationsApi.class);
+
+        GroupReconciliationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(GroupReconciliationsApi.class);
+        String scope = "scope_example"; // String | The scope of the specified comparison result and its related reconciliation definition.
+        String code = "code_example"; // String | The code of the reconciliation definition that was used to produce the reconciliation result.
+        String resultId = "resultId_example"; // String | The code of the specified reconciliation result. Together with the domain and scope this uniquely   identifies the reconciliation comparison result. This value is also the same as the computed result hash based on property values.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the comparison result definition. Defaults to return   the latest version if not specified.
+        try {
+            // uncomment the below to set overrides at the request level
+            // GroupReconciliationComparisonResult result = apiInstance.getComparisonResult(scope, code, resultId, asAt).execute(opts);
+
+            GroupReconciliationComparisonResult result = apiInstance.getComparisonResult(scope, code, resultId, asAt).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling GroupReconciliationsApi#getComparisonResult");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the specified comparison result and its related reconciliation definition. | |
+| **code** | **String**| The code of the reconciliation definition that was used to produce the reconciliation result. | |
+| **resultId** | **String**| The code of the specified reconciliation result. Together with the domain and scope this uniquely   identifies the reconciliation comparison result. This value is also the same as the computed result hash based on property values. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the comparison result definition. Defaults to return   the latest version if not specified. | [optional] |
+
+### Return type
+
+[**GroupReconciliationComparisonResult**](GroupReconciliationComparisonResult.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested comparison result |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
 ## getComparisonRuleset
 
 > GroupReconciliationComparisonRuleset getComparisonRuleset(scope, code, asAt)
 
-[EXPERIMENTAL] GetComparisonRuleset: Get a single Group Reconciliation Comparison Ruleset by scope and code
+[EXPERIMENTAL] GetComparisonRuleset: Get a single Group Reconciliation Comparison Ruleset by scope and code.
 
-Retrieves one Group Reconciliation Comparison Ruleset by scope and code
+Retrieves one Group Reconciliation Comparison Ruleset by scope and code.
 
 ### Example
 
@@ -577,6 +676,105 @@ public class GroupReconciliationsApiExample {
 [Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 
+## listComparisonResults
+
+> PagedResourceListOfGroupReconciliationComparisonResult listComparisonResults(asAt, page, sortBy, limit, filter)
+
+[EXPERIMENTAL] ListComparisonResults: Get a set of Group Reconciliation Comparison Results.
+
+Retrieves all Group Reconciliation Comparison Results that fit the filter, in a specific order if sortBy is provided.  Supports pagination.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.GroupReconciliationsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class GroupReconciliationsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // GroupReconciliationsApi apiInstance = apiFactory.build(GroupReconciliationsApi.class);
+
+        GroupReconciliationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(GroupReconciliationsApi.class);
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the comparison results. Defaults to return the latest   version of the comparison results if not specified.
+        String page = "page_example"; // String | The pagination token to use to continue listing comparison results from a previous call to list   comparison results. This value is returned from the previous call. If a pagination token is provided the sortBy,   filter, effectiveAt, and asAt fields must not have changed since the original request.
+        List<String> sortBy = Arrays.asList(); // List<String> | A list of field names to sort by, each suffixed by \" ASC\" or \" DESC\".
+        Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many per page.
+        String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
+        try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfGroupReconciliationComparisonResult result = apiInstance.listComparisonResults(asAt, page, sortBy, limit, filter).execute(opts);
+
+            PagedResourceListOfGroupReconciliationComparisonResult result = apiInstance.listComparisonResults(asAt, page, sortBy, limit, filter).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling GroupReconciliationsApi#listComparisonResults");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the comparison results. Defaults to return the latest   version of the comparison results if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing comparison results from a previous call to list   comparison results. This value is returned from the previous call. If a pagination token is provided the sortBy,   filter, effectiveAt, and asAt fields must not have changed since the original request. | [optional] |
+| **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. | [optional] |
+| **limit** | **Integer**| When paginating, limit the number of returned results to this many per page. | [optional] |
+| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+
+### Return type
+
+[**PagedResourceListOfGroupReconciliationComparisonResult**](PagedResourceListOfGroupReconciliationComparisonResult.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested list of comparison results |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
 ## listComparisonRulesets
 
 > PagedResourceListOfGroupReconciliationComparisonRuleset listComparisonRulesets(asAt, page, sortBy, limit, filter)
@@ -624,7 +822,7 @@ public class GroupReconciliationsApiExample {
         // GroupReconciliationsApi apiInstance = apiFactory.build(GroupReconciliationsApi.class);
 
         GroupReconciliationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(GroupReconciliationsApi.class);
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the staging rule sets. Defaults to return the latest   version of the staging rule sets if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the comparison rulesets. Defaults to return the latest   version of the comparison rulesets if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing comparison rulesets from a previous call to list   comparison rulesets. This value is returned from the previous call. If a pagination token is provided the sortBy,   filter, effectiveAt, and asAt fields must not have changed since the original request.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names to sort by, each suffixed by \" ASC\" or \" DESC\"
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many per page.
@@ -650,7 +848,7 @@ public class GroupReconciliationsApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the staging rule sets. Defaults to return the latest   version of the staging rule sets if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the comparison rulesets. Defaults to return the latest   version of the comparison rulesets if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing comparison rulesets from a previous call to list   comparison rulesets. This value is returned from the previous call. If a pagination token is provided the sortBy,   filter, effectiveAt, and asAt fields must not have changed since the original request. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many per page. | [optional] |
