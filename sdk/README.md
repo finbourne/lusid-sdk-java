@@ -564,6 +564,7 @@ Class | Method | HTTP request | Description
 *TransactionPortfoliosApi* | [**listCustodianAccounts**](docs/TransactionPortfoliosApi.md#listcustodianaccounts) | **GET** /api/transactionportfolios/{scope}/{code}/custodianaccounts | [EXPERIMENTAL] ListCustodianAccounts: List Custodian Accounts
 *TransactionPortfoliosApi* | [**listHoldingsAdjustments**](docs/TransactionPortfoliosApi.md#listholdingsadjustments) | **GET** /api/transactionportfolios/{scope}/{code}/holdingsadjustments | ListHoldingsAdjustments: List holdings adjustments
 *TransactionPortfoliosApi* | [**patchPortfolioDetails**](docs/TransactionPortfoliosApi.md#patchportfoliodetails) | **PATCH** /api/transactionportfolios/{scope}/{code}/details | PatchPortfolioDetails: Patch portfolio details
+*TransactionPortfoliosApi* | [**previewTransaction**](docs/TransactionPortfoliosApi.md#previewtransaction) | **POST** /api/transactionportfolios/{scope}/{code}/previewTransaction | [EARLY ACCESS] PreviewTransaction: Preview a transaction
 *TransactionPortfoliosApi* | [**resolveInstrument**](docs/TransactionPortfoliosApi.md#resolveinstrument) | **POST** /api/transactionportfolios/{scope}/{code}/$resolve | ResolveInstrument: Resolve instrument
 *TransactionPortfoliosApi* | [**setHoldings**](docs/TransactionPortfoliosApi.md#setholdings) | **PUT** /api/transactionportfolios/{scope}/{code}/holdings | SetHoldings: Set holdings
 *TransactionPortfoliosApi* | [**upsertCustodianAccounts**](docs/TransactionPortfoliosApi.md#upsertcustodianaccounts) | **POST** /api/transactionportfolios/{scope}/{code}/custodianaccounts | [EXPERIMENTAL] UpsertCustodianAccounts: Upsert Custodian Accounts
@@ -1434,6 +1435,7 @@ Class | Method | HTTP request | Description
  - [ResourceListOfMovedOrderToDifferentBlockResponse](docs/ResourceListOfMovedOrderToDifferentBlockResponse.md)
  - [ResourceListOfOrder](docs/ResourceListOfOrder.md)
  - [ResourceListOfOrderInstruction](docs/ResourceListOfOrderInstruction.md)
+ - [ResourceListOfOutputTransaction](docs/ResourceListOfOutputTransaction.md)
  - [ResourceListOfPackage](docs/ResourceListOfPackage.md)
  - [ResourceListOfParticipation](docs/ResourceListOfParticipation.md)
  - [ResourceListOfPerformanceReturn](docs/ResourceListOfPerformanceReturn.md)

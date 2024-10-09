@@ -57,6 +57,7 @@ import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.ResourceListOfChangeHistory;
 import com.finbourne.lusid.model.ResourceListOfHoldingsAdjustmentHeader;
 import com.finbourne.lusid.model.ResourceListOfInstrumentCashFlow;
+import com.finbourne.lusid.model.ResourceListOfOutputTransaction;
 import com.finbourne.lusid.model.ResourceListOfPortfolioCashFlow;
 import com.finbourne.lusid.model.ResourceListOfPortfolioCashLadder;
 import com.finbourne.lusid.model.ResourceListOfTransaction;
@@ -9222,6 +9223,304 @@ public class TransactionPortfoliosApi {
      */
     public APIpatchPortfolioDetailsRequest patchPortfolioDetails(String scope, String code, List<Operation> operation) {
         return new APIpatchPortfolioDetailsRequest(scope, code, operation);
+    }
+    private okhttp3.Call previewTransactionCall(String scope, String code, TransactionRequest transactionRequest, List<String> propertyKeys, Boolean showCancelledTransactions, Boolean preserveProperties, final ApiCallback _callback) throws ApiException {
+        return previewTransactionCall(scope, code, transactionRequest, propertyKeys, showCancelledTransactions, preserveProperties,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call previewTransactionCall(String scope, String code, TransactionRequest transactionRequest, List<String> propertyKeys, Boolean showCancelledTransactions, Boolean preserveProperties, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = transactionRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/transactionportfolios/{scope}/{code}/previewTransaction"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (propertyKeys != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
+        }
+
+        if (showCancelledTransactions != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("showCancelledTransactions", showCancelledTransactions));
+        }
+
+        if (preserveProperties != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("preserveProperties", preserveProperties));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call previewTransactionValidateBeforeCall(String scope, String code, TransactionRequest transactionRequest, List<String> propertyKeys, Boolean showCancelledTransactions, Boolean preserveProperties, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling previewTransaction(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling previewTransaction(Async)");
+        }
+
+        // verify the required parameter 'transactionRequest' is set
+        if (transactionRequest == null) {
+            throw new ApiException("Missing the required parameter 'transactionRequest' when calling previewTransaction(Async)");
+        }
+
+        return previewTransactionCall(scope, code, transactionRequest, propertyKeys, showCancelledTransactions, preserveProperties, _callback, opts);
+
+    }
+
+
+    private ApiResponse<ResourceListOfOutputTransaction> previewTransactionWithHttpInfo(String scope, String code, TransactionRequest transactionRequest, List<String> propertyKeys, Boolean showCancelledTransactions, Boolean preserveProperties) throws ApiException {
+        okhttp3.Call localVarCall = previewTransactionValidateBeforeCall(scope, code, transactionRequest, propertyKeys, showCancelledTransactions, preserveProperties, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfOutputTransaction>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfOutputTransaction> previewTransactionWithHttpInfo(String scope, String code, TransactionRequest transactionRequest, List<String> propertyKeys, Boolean showCancelledTransactions, Boolean preserveProperties, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = previewTransactionValidateBeforeCall(scope, code, transactionRequest, propertyKeys, showCancelledTransactions, preserveProperties, null, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfOutputTransaction>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call previewTransactionAsync(String scope, String code, TransactionRequest transactionRequest, List<String> propertyKeys, Boolean showCancelledTransactions, Boolean preserveProperties, final ApiCallback<ResourceListOfOutputTransaction> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = previewTransactionValidateBeforeCall(scope, code, transactionRequest, propertyKeys, showCancelledTransactions, preserveProperties, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfOutputTransaction>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call previewTransactionAsync(String scope, String code, TransactionRequest transactionRequest, List<String> propertyKeys, Boolean showCancelledTransactions, Boolean preserveProperties, final ApiCallback<ResourceListOfOutputTransaction> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = previewTransactionValidateBeforeCall(scope, code, transactionRequest, propertyKeys, showCancelledTransactions, preserveProperties, _callback, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfOutputTransaction>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIpreviewTransactionRequest {
+        private final String scope;
+        private final String code;
+        private final TransactionRequest transactionRequest;
+        private List<String> propertyKeys;
+        private Boolean showCancelledTransactions;
+        private Boolean preserveProperties;
+
+        private APIpreviewTransactionRequest(String scope, String code, TransactionRequest transactionRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.transactionRequest = transactionRequest;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; or \&quot;Transaction\&quot; domain to decorate onto   the transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or   \&quot;Transaction/strategy/quantsignal\&quot;. (optional)
+         * @return APIpreviewTransactionRequest
+         */
+        public APIpreviewTransactionRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Set showCancelledTransactions
+         * @param showCancelledTransactions Option to specify whether to include previous versions of an amended transaction in the response.   Defaults to False if not specified. (optional)
+         * @return APIpreviewTransactionRequest
+         */
+        public APIpreviewTransactionRequest showCancelledTransactions(Boolean showCancelledTransactions) {
+            this.showCancelledTransactions = showCancelledTransactions;
+            return this;
+        }
+
+        /**
+         * Set preserveProperties
+         * @param preserveProperties If the preview transaction is an amendment to an existing transaction, then setting this to true will carry forward any unmodified properties from the earlier version. (optional)
+         * @return APIpreviewTransactionRequest
+         */
+        public APIpreviewTransactionRequest preserveProperties(Boolean preserveProperties) {
+            this.preserveProperties = preserveProperties;
+            return this;
+        }
+
+        /**
+         * Build call for previewTransaction
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The predicted output relating to the Preview Transaction. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return previewTransactionCall(scope, code, transactionRequest, propertyKeys, showCancelledTransactions, preserveProperties, _callback);
+        }
+
+        /**
+         * Execute previewTransaction request
+         * @return ResourceListOfOutputTransaction
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The predicted output relating to the Preview Transaction. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfOutputTransaction execute() throws ApiException {
+            ApiResponse<ResourceListOfOutputTransaction> localVarResp = previewTransactionWithHttpInfo(scope, code, transactionRequest, propertyKeys, showCancelledTransactions, preserveProperties);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute previewTransaction request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfOutputTransaction
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The predicted output relating to the Preview Transaction. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfOutputTransaction execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfOutputTransaction> localVarResp = previewTransactionWithHttpInfo(scope, code, transactionRequest, propertyKeys, showCancelledTransactions, preserveProperties, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute previewTransaction request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfOutputTransaction&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The predicted output relating to the Preview Transaction. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfOutputTransaction> executeWithHttpInfo() throws ApiException {
+            return previewTransactionWithHttpInfo(scope, code, transactionRequest, propertyKeys, showCancelledTransactions, preserveProperties);
+        }
+
+        /**
+         * Execute previewTransaction request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfOutputTransaction&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The predicted output relating to the Preview Transaction. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfOutputTransaction> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return previewTransactionWithHttpInfo(scope, code, transactionRequest, propertyKeys, showCancelledTransactions, preserveProperties, opts);
+        }
+
+        /**
+         * Execute previewTransaction request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The predicted output relating to the Preview Transaction. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfOutputTransaction> _callback) throws ApiException {
+            return previewTransactionAsync(scope, code, transactionRequest, propertyKeys, showCancelledTransactions, preserveProperties, _callback);
+        }
+
+        /**
+         * Execute previewTransaction request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The predicted output relating to the Preview Transaction. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfOutputTransaction> _callback, ConfigurationOptions opts) throws ApiException {
+            return previewTransactionAsync(scope, code, transactionRequest, propertyKeys, showCancelledTransactions, preserveProperties, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] PreviewTransaction: Preview a transaction
+     * Returns the output-transaction(s) - e.g. as returned by BuildTransactions  that would come out of LUSID if the provided TransactionRequest was booked.
+     * @param scope The scope of the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param transactionRequest The transaction to be previewed. (required)
+     * @return APIpreviewTransactionRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The predicted output relating to the Preview Transaction. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIpreviewTransactionRequest previewTransaction(String scope, String code, TransactionRequest transactionRequest) {
+        return new APIpreviewTransactionRequest(scope, code, transactionRequest);
     }
     private okhttp3.Call resolveInstrumentCall(String scope, String code, String instrumentIdentifierType, String instrumentIdentifierValue, String fromEffectiveAt, Boolean reResolve, Map<String, String> requestBody, final ApiCallback _callback) throws ApiException {
         return resolveInstrumentCall(scope, code, instrumentIdentifierType, instrumentIdentifierValue, fromEffectiveAt, reResolve, requestBody,  _callback, new ConfigurationOptions());
