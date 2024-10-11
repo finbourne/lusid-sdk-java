@@ -107,7 +107,9 @@ public enum InstrumentEventType {
   
   TENDEREVENT("TenderEvent"),
   
-  CALLONINTERMEDIATESECURITIESEVENT("CallOnIntermediateSecuritiesEvent");
+  CALLONINTERMEDIATESECURITIESEVENT("CallOnIntermediateSecuritiesEvent"),
+  
+  INTERMEDIATESECURITIESDISTRIBUTIONEVENT("IntermediateSecuritiesDistributionEvent");
 
   private String value;
 
