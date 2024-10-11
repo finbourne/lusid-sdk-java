@@ -14,6 +14,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**listComparisonResults**](GroupReconciliationsApi.md#listComparisonResults) | **GET** /api/reconciliations/comparisonresults | [EXPERIMENTAL] ListComparisonResults: Get a set of Group Reconciliation Comparison Results. |
 | [**listComparisonRulesets**](GroupReconciliationsApi.md#listComparisonRulesets) | **GET** /api/reconciliations/comparisonrulesets | [EXPERIMENTAL] ListComparisonRulesets: Get a set of Group Reconciliation Comparison Rulesets |
 | [**listGroupReconciliationDefinitions**](GroupReconciliationsApi.md#listGroupReconciliationDefinitions) | **GET** /api/reconciliations/groupreconciliationdefinitions | [EXPERIMENTAL] ListGroupReconciliationDefinitions: List group reconciliation definitions |
+| [**runReconciliation**](GroupReconciliationsApi.md#runReconciliation) | **POST** /api/reconciliations/groupreconciliationdefinitions/{scope}/{code}/$run | [EXPERIMENTAL] RunReconciliation: Runs a Group Reconciliation |
 | [**updateComparisonRuleset**](GroupReconciliationsApi.md#updateComparisonRuleset) | **PUT** /api/reconciliations/comparisonrulesets/{scope}/{code} | [EXPERIMENTAL] UpdateComparisonRuleset: Update Group Reconciliation Comparison Ruleset defined by scope and code |
 | [**updateGroupReconciliationDefinition**](GroupReconciliationsApi.md#updateGroupReconciliationDefinition) | **PUT** /api/reconciliations/groupreconciliationdefinitions/{scope}/{code} | [EXPERIMENTAL] UpdateGroupReconciliationDefinition: Update group reconciliation definition |
 
@@ -969,6 +970,101 @@ public class GroupReconciliationsApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The group reconciliation definition in the specified scope |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## runReconciliation
+
+> GroupReconciliationRunResponse runReconciliation(scope, code, groupReconciliationRunRequest)
+
+[EXPERIMENTAL] RunReconciliation: Runs a Group Reconciliation
+
+Runs a Group Reconciliation using the definition specified by the Finbourne.Identifiers.Abstractions.Scope and Finbourne.Identifiers.Abstractions.Code  Supports pagination.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.GroupReconciliationsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class GroupReconciliationsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // GroupReconciliationsApi apiInstance = apiFactory.build(GroupReconciliationsApi.class);
+
+        GroupReconciliationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(GroupReconciliationsApi.class);
+        String scope = "scope_example"; // String | The scope of the group reconciliation definition to use for the reconciliation.
+        String code = "code_example"; // String | The code of the group reconciliation definition to use for the reconciliation.
+        GroupReconciliationRunRequest groupReconciliationRunRequest = new GroupReconciliationRunRequest(); // GroupReconciliationRunRequest | 
+        try {
+            // uncomment the below to set overrides at the request level
+            // GroupReconciliationRunResponse result = apiInstance.runReconciliation(scope, code, groupReconciliationRunRequest).execute(opts);
+
+            GroupReconciliationRunResponse result = apiInstance.runReconciliation(scope, code, groupReconciliationRunRequest).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling GroupReconciliationsApi#runReconciliation");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the group reconciliation definition to use for the reconciliation. | |
+| **code** | **String**| The code of the group reconciliation definition to use for the reconciliation. | |
+| **groupReconciliationRunRequest** | [**GroupReconciliationRunRequest**](GroupReconciliationRunRequest.md)|  | [optional] |
+
+### Return type
+
+[**GroupReconciliationRunResponse**](GroupReconciliationRunResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The results of the reconciliation run |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
