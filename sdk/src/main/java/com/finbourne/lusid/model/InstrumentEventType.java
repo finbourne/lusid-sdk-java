@@ -109,7 +109,11 @@ public enum InstrumentEventType {
   
   CALLONINTERMEDIATESECURITIESEVENT("CallOnIntermediateSecuritiesEvent"),
   
-  INTERMEDIATESECURITIESDISTRIBUTIONEVENT("IntermediateSecuritiesDistributionEvent");
+  INTERMEDIATESECURITIESDISTRIBUTIONEVENT("IntermediateSecuritiesDistributionEvent"),
+  
+  OPTIONEXERCISEPHYSICALEVENT("OptionExercisePhysicalEvent"),
+  
+  PROTECTIONPAYOUTCASHFLOWEVENT("ProtectionPayoutCashFlowEvent");
 
   private String value;
 

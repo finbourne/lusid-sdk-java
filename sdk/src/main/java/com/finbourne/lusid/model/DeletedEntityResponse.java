@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.Link;
+import com.finbourne.lusid.model.StagedModificationsInfo;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -74,6 +75,10 @@ public class DeletedEntityResponse {
   public static final String SERIALIZED_NAME_ENTITY_UNIQUE_ID = "entityUniqueId";
   @SerializedName(SERIALIZED_NAME_ENTITY_UNIQUE_ID)
   private String entityUniqueId;
+
+  public static final String SERIALIZED_NAME_STAGED_MODIFICATIONS = "stagedModifications";
+  @SerializedName(SERIALIZED_NAME_STAGED_MODIFICATIONS)
+  private StagedModificationsInfo stagedModifications;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -187,6 +192,27 @@ public class DeletedEntityResponse {
   }
 
 
+  public DeletedEntityResponse stagedModifications(StagedModificationsInfo stagedModifications) {
+    
+    this.stagedModifications = stagedModifications;
+    return this;
+  }
+
+   /**
+   * Get stagedModifications
+   * @return stagedModifications
+  **/
+  @jakarta.annotation.Nullable
+  public StagedModificationsInfo getStagedModifications() {
+    return stagedModifications;
+  }
+
+
+  public void setStagedModifications(StagedModificationsInfo stagedModifications) {
+    this.stagedModifications = stagedModifications;
+  }
+
+
   public DeletedEntityResponse links(List<Link> links) {
     
     this.links = links;
@@ -231,6 +257,7 @@ public class DeletedEntityResponse {
         Objects.equals(this.asAt, deletedEntityResponse.asAt) &&
         Objects.equals(this.entityType, deletedEntityResponse.entityType) &&
         Objects.equals(this.entityUniqueId, deletedEntityResponse.entityUniqueId) &&
+        Objects.equals(this.stagedModifications, deletedEntityResponse.stagedModifications) &&
         Objects.equals(this.links, deletedEntityResponse.links);
   }
 
@@ -240,7 +267,7 @@ public class DeletedEntityResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, effectiveFrom, asAt, entityType, entityUniqueId, links);
+    return Objects.hash(href, effectiveFrom, asAt, entityType, entityUniqueId, stagedModifications, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -259,6 +286,7 @@ public class DeletedEntityResponse {
     sb.append("    asAt: ").append(toIndentedString(asAt)).append("\n");
     sb.append("    entityType: ").append(toIndentedString(entityType)).append("\n");
     sb.append("    entityUniqueId: ").append(toIndentedString(entityUniqueId)).append("\n");
+    sb.append("    stagedModifications: ").append(toIndentedString(stagedModifications)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -287,6 +315,7 @@ public class DeletedEntityResponse {
     openapiFields.add("asAt");
     openapiFields.add("entityType");
     openapiFields.add("entityUniqueId");
+    openapiFields.add("stagedModifications");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -322,6 +351,10 @@ public class DeletedEntityResponse {
       }
       if ((jsonObj.get("entityUniqueId") != null && !jsonObj.get("entityUniqueId").isJsonNull()) && !jsonObj.get("entityUniqueId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `entityUniqueId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("entityUniqueId").toString()));
+      }
+      // validate the optional field `stagedModifications`
+      if (jsonObj.get("stagedModifications") != null && !jsonObj.get("stagedModifications").isJsonNull()) {
+        StagedModificationsInfo.validateJsonElement(jsonObj.get("stagedModifications"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

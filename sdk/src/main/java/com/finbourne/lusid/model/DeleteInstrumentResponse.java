@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.Link;
+import com.finbourne.lusid.model.StagedModificationsInfo;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -63,6 +64,10 @@ public class DeleteInstrumentResponse {
   @SerializedName(SERIALIZED_NAME_AS_AT)
   private OffsetDateTime asAt;
 
+  public static final String SERIALIZED_NAME_STAGED_MODIFICATIONS = "stagedModifications";
+  @SerializedName(SERIALIZED_NAME_STAGED_MODIFICATIONS)
+  private StagedModificationsInfo stagedModifications;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -112,6 +117,27 @@ public class DeleteInstrumentResponse {
   }
 
 
+  public DeleteInstrumentResponse stagedModifications(StagedModificationsInfo stagedModifications) {
+    
+    this.stagedModifications = stagedModifications;
+    return this;
+  }
+
+   /**
+   * Get stagedModifications
+   * @return stagedModifications
+  **/
+  @jakarta.annotation.Nullable
+  public StagedModificationsInfo getStagedModifications() {
+    return stagedModifications;
+  }
+
+
+  public void setStagedModifications(StagedModificationsInfo stagedModifications) {
+    this.stagedModifications = stagedModifications;
+  }
+
+
   public DeleteInstrumentResponse links(List<Link> links) {
     
     this.links = links;
@@ -153,6 +179,7 @@ public class DeleteInstrumentResponse {
     DeleteInstrumentResponse deleteInstrumentResponse = (DeleteInstrumentResponse) o;
     return Objects.equals(this.href, deleteInstrumentResponse.href) &&
         Objects.equals(this.asAt, deleteInstrumentResponse.asAt) &&
+        Objects.equals(this.stagedModifications, deleteInstrumentResponse.stagedModifications) &&
         Objects.equals(this.links, deleteInstrumentResponse.links);
   }
 
@@ -162,7 +189,7 @@ public class DeleteInstrumentResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, asAt, links);
+    return Objects.hash(href, asAt, stagedModifications, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -178,6 +205,7 @@ public class DeleteInstrumentResponse {
     sb.append("class DeleteInstrumentResponse {\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    asAt: ").append(toIndentedString(asAt)).append("\n");
+    sb.append("    stagedModifications: ").append(toIndentedString(stagedModifications)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -203,6 +231,7 @@ public class DeleteInstrumentResponse {
     openapiFields = new HashSet<String>();
     openapiFields.add("href");
     openapiFields.add("asAt");
+    openapiFields.add("stagedModifications");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -232,6 +261,10 @@ public class DeleteInstrumentResponse {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
+      }
+      // validate the optional field `stagedModifications`
+      if (jsonObj.get("stagedModifications") != null && !jsonObj.get("stagedModifications").isJsonNull()) {
+        StagedModificationsInfo.validateJsonElement(jsonObj.get("stagedModifications"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

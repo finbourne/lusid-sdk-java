@@ -12,6 +12,7 @@
 |**asAt** | **OffsetDateTime** | The asAt datetime at which the deletion was committed to LUSID. |  |
 |**entityType** | **String** | The type of the entity that the deleted response applies to. |  [optional] |
 |**entityUniqueId** | **String** | The unique Id of the entity that the deleted response applies to. |  [optional] |
+|**stagedModifications** | [**StagedModificationsInfo**](StagedModificationsInfo.md) |  |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 
