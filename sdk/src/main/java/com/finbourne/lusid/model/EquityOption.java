@@ -105,6 +105,10 @@ public class EquityOption extends LusidInstrument {
   @SerializedName(SERIALIZED_NAME_EXERCISE_TYPE)
   private String exerciseType;
 
+  public static final String SERIALIZED_NAME_UNDERLYING = "underlying";
+  @SerializedName(SERIALIZED_NAME_UNDERLYING)
+  private LusidInstrument underlying;
+
   public EquityOption() {
     // this.instrumentType = this.getClass().getSimpleName();
   }
@@ -382,6 +386,27 @@ public class EquityOption extends LusidInstrument {
   }
 
 
+  public EquityOption underlying(LusidInstrument underlying) {
+    
+    this.underlying = underlying;
+    return this;
+  }
+
+   /**
+   * Get underlying
+   * @return underlying
+  **/
+  @jakarta.annotation.Nullable
+  public LusidInstrument getUnderlying() {
+    return underlying;
+  }
+
+
+  public void setUnderlying(LusidInstrument underlying) {
+    this.underlying = underlying;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -405,6 +430,7 @@ public class EquityOption extends LusidInstrument {
         (this.numberOfShares.compareTo(equityOption.getNumberOfShares()) == 0) &&
         Objects.equals(this.premium, equityOption.premium) &&
         Objects.equals(this.exerciseType, equityOption.exerciseType) &&
+        Objects.equals(this.underlying, equityOption.underlying) &&
         super.equals(o);
   }
 
@@ -414,7 +440,7 @@ public class EquityOption extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, optionMaturityDate, optionSettlementDate, deliveryType, optionType, strike, domCcy, underlyingIdentifier, code, equityOptionType, numberOfShares, premium, exerciseType, super.hashCode());
+    return Objects.hash(startDate, optionMaturityDate, optionSettlementDate, deliveryType, optionType, strike, domCcy, underlyingIdentifier, code, equityOptionType, numberOfShares, premium, exerciseType, underlying, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -442,6 +468,7 @@ public class EquityOption extends LusidInstrument {
     sb.append("    numberOfShares: ").append(toIndentedString(numberOfShares)).append("\n");
     sb.append("    premium: ").append(toIndentedString(premium)).append("\n");
     sb.append("    exerciseType: ").append(toIndentedString(exerciseType)).append("\n");
+    sb.append("    underlying: ").append(toIndentedString(underlying)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -478,6 +505,7 @@ public class EquityOption extends LusidInstrument {
     openapiFields.add("numberOfShares");
     openapiFields.add("premium");
     openapiFields.add("exerciseType");
+    openapiFields.add("underlying");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

@@ -21,6 +21,7 @@ LUSID representation of a plain vanilla OTC Equity Option.
 |**numberOfShares** | **java.math.BigDecimal** | The amount of shares to exchange if the option is exercised. |  [optional] |
 |**premium** | [**Premium**](Premium.md) |  |  [optional] |
 |**exerciseType** | **String** | Type of optionality that is present; European, American.    Supported string (enumeration) values are: [European, American]. |  [optional] |
+|**underlying** | [**LusidInstrument**](LusidInstrument.md) |  |  [optional] |
 
 
 

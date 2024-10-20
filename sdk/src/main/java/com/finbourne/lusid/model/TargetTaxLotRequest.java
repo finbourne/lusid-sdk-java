@@ -76,6 +76,18 @@ public class TargetTaxLotRequest {
   @SerializedName(SERIALIZED_NAME_SETTLEMENT_DATE)
   private OffsetDateTime settlementDate;
 
+  public static final String SERIALIZED_NAME_NOTIONAL_COST = "notionalCost";
+  @SerializedName(SERIALIZED_NAME_NOTIONAL_COST)
+  private java.math.BigDecimal notionalCost;
+
+  public static final String SERIALIZED_NAME_VARIATION_MARGIN = "variationMargin";
+  @SerializedName(SERIALIZED_NAME_VARIATION_MARGIN)
+  private java.math.BigDecimal variationMargin;
+
+  public static final String SERIALIZED_NAME_VARIATION_MARGIN_PORTFOLIO_CCY = "variationMarginPortfolioCcy";
+  @SerializedName(SERIALIZED_NAME_VARIATION_MARGIN_PORTFOLIO_CCY)
+  private java.math.BigDecimal variationMarginPortfolioCcy;
+
   public TargetTaxLotRequest() {
   }
 
@@ -205,6 +217,69 @@ public class TargetTaxLotRequest {
   }
 
 
+  public TargetTaxLotRequest notionalCost(java.math.BigDecimal notionalCost) {
+    
+    this.notionalCost = notionalCost;
+    return this;
+  }
+
+   /**
+   * The notional cost of the tax-lot&#39;s opening transaction.
+   * @return notionalCost
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getNotionalCost() {
+    return notionalCost;
+  }
+
+
+  public void setNotionalCost(java.math.BigDecimal notionalCost) {
+    this.notionalCost = notionalCost;
+  }
+
+
+  public TargetTaxLotRequest variationMargin(java.math.BigDecimal variationMargin) {
+    
+    this.variationMargin = variationMargin;
+    return this;
+  }
+
+   /**
+   * The variation margin of the tax-lot&#39;s opening transaction.
+   * @return variationMargin
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getVariationMargin() {
+    return variationMargin;
+  }
+
+
+  public void setVariationMargin(java.math.BigDecimal variationMargin) {
+    this.variationMargin = variationMargin;
+  }
+
+
+  public TargetTaxLotRequest variationMarginPortfolioCcy(java.math.BigDecimal variationMarginPortfolioCcy) {
+    
+    this.variationMarginPortfolioCcy = variationMarginPortfolioCcy;
+    return this;
+  }
+
+   /**
+   * The variation margin in portfolio currency of the tax-lot&#39;s opening transaction.
+   * @return variationMarginPortfolioCcy
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getVariationMarginPortfolioCcy() {
+    return variationMarginPortfolioCcy;
+  }
+
+
+  public void setVariationMarginPortfolioCcy(java.math.BigDecimal variationMarginPortfolioCcy) {
+    this.variationMarginPortfolioCcy = variationMarginPortfolioCcy;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -220,7 +295,10 @@ public class TargetTaxLotRequest {
         (this.portfolioCost.compareTo(targetTaxLotRequest.getPortfolioCost()) == 0) &&
         (this.price.compareTo(targetTaxLotRequest.getPrice()) == 0) &&
         Objects.equals(this.purchaseDate, targetTaxLotRequest.purchaseDate) &&
-        Objects.equals(this.settlementDate, targetTaxLotRequest.settlementDate);
+        Objects.equals(this.settlementDate, targetTaxLotRequest.settlementDate) &&
+        (this.notionalCost.compareTo(targetTaxLotRequest.getNotionalCost()) == 0) &&
+        (this.variationMargin.compareTo(targetTaxLotRequest.getVariationMargin()) == 0) &&
+        (this.variationMarginPortfolioCcy.compareTo(targetTaxLotRequest.getVariationMarginPortfolioCcy()) == 0);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -229,7 +307,7 @@ public class TargetTaxLotRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(units, cost, portfolioCost, price, purchaseDate, settlementDate);
+    return Objects.hash(units, cost, portfolioCost, price, purchaseDate, settlementDate, notionalCost, variationMargin, variationMarginPortfolioCcy);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -249,6 +327,9 @@ public class TargetTaxLotRequest {
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
     sb.append("    purchaseDate: ").append(toIndentedString(purchaseDate)).append("\n");
     sb.append("    settlementDate: ").append(toIndentedString(settlementDate)).append("\n");
+    sb.append("    notionalCost: ").append(toIndentedString(notionalCost)).append("\n");
+    sb.append("    variationMargin: ").append(toIndentedString(variationMargin)).append("\n");
+    sb.append("    variationMarginPortfolioCcy: ").append(toIndentedString(variationMarginPortfolioCcy)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -277,6 +358,9 @@ public class TargetTaxLotRequest {
     openapiFields.add("price");
     openapiFields.add("purchaseDate");
     openapiFields.add("settlementDate");
+    openapiFields.add("notionalCost");
+    openapiFields.add("variationMargin");
+    openapiFields.add("variationMarginPortfolioCcy");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

@@ -332,7 +332,7 @@ public class ApplicableInstrumentEvent {
    * Get appliedInstrumentEventInstructionId
    * @return appliedInstrumentEventInstructionId
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getAppliedInstrumentEventInstructionId() {
     return appliedInstrumentEventInstructionId;
   }
@@ -496,7 +496,6 @@ public class ApplicableInstrumentEvent {
     openapiRequiredFields.add("instrumentType");
     openapiRequiredFields.add("instrumentEventType");
     openapiRequiredFields.add("instrumentEventId");
-    openapiRequiredFields.add("appliedInstrumentEventInstructionId");
   }
 
  /**
@@ -548,7 +547,7 @@ public class ApplicableInstrumentEvent {
       if (jsonObj.get("loadedEvent") != null && !jsonObj.get("loadedEvent").isJsonNull()) {
         InstrumentEventHolder.validateJsonElement(jsonObj.get("loadedEvent"));
       }
-      if (!jsonObj.get("appliedInstrumentEventInstructionId").isJsonPrimitive()) {
+      if ((jsonObj.get("appliedInstrumentEventInstructionId") != null && !jsonObj.get("appliedInstrumentEventInstructionId").isJsonNull()) && !jsonObj.get("appliedInstrumentEventInstructionId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `appliedInstrumentEventInstructionId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("appliedInstrumentEventInstructionId").toString()));
       }
       if (jsonObj.get("transactions") != null && !jsonObj.get("transactions").isJsonNull()) {

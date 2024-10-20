@@ -25,6 +25,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.finbourne.lusid.model.BatchUpdateUserReviewForComparisonResultRequest;
+import com.finbourne.lusid.model.BatchUpdateUserReviewForComparisonResultResponse;
 import com.finbourne.lusid.model.CreateGroupReconciliationComparisonRulesetRequest;
 import com.finbourne.lusid.model.CreateGroupReconciliationDefinitionRequest;
 import com.finbourne.lusid.model.DeletedEntityResponse;
@@ -85,6 +87,274 @@ public class GroupReconciliationsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    private okhttp3.Call batchUpdateComparisonResultsCall(String scope, String code, List<BatchUpdateUserReviewForComparisonResultRequest> batchUpdateUserReviewForComparisonResultRequest, String successMode, final ApiCallback _callback) throws ApiException {
+        return batchUpdateComparisonResultsCall(scope, code, batchUpdateUserReviewForComparisonResultRequest, successMode,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call batchUpdateComparisonResultsCall(String scope, String code, List<BatchUpdateUserReviewForComparisonResultRequest> batchUpdateUserReviewForComparisonResultRequest, String successMode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = batchUpdateUserReviewForComparisonResultRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/reconciliations/groupreconciliationdefinitions/{scope}/{code}/comparisonresults/$batchReview"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (successMode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("successMode", successMode));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call batchUpdateComparisonResultsValidateBeforeCall(String scope, String code, List<BatchUpdateUserReviewForComparisonResultRequest> batchUpdateUserReviewForComparisonResultRequest, String successMode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling batchUpdateComparisonResults(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling batchUpdateComparisonResults(Async)");
+        }
+
+        // verify the required parameter 'batchUpdateUserReviewForComparisonResultRequest' is set
+        if (batchUpdateUserReviewForComparisonResultRequest == null) {
+            throw new ApiException("Missing the required parameter 'batchUpdateUserReviewForComparisonResultRequest' when calling batchUpdateComparisonResults(Async)");
+        }
+
+        return batchUpdateComparisonResultsCall(scope, code, batchUpdateUserReviewForComparisonResultRequest, successMode, _callback, opts);
+
+    }
+
+
+    private ApiResponse<BatchUpdateUserReviewForComparisonResultResponse> batchUpdateComparisonResultsWithHttpInfo(String scope, String code, List<BatchUpdateUserReviewForComparisonResultRequest> batchUpdateUserReviewForComparisonResultRequest, String successMode) throws ApiException {
+        okhttp3.Call localVarCall = batchUpdateComparisonResultsValidateBeforeCall(scope, code, batchUpdateUserReviewForComparisonResultRequest, successMode, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<BatchUpdateUserReviewForComparisonResultResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<BatchUpdateUserReviewForComparisonResultResponse> batchUpdateComparisonResultsWithHttpInfo(String scope, String code, List<BatchUpdateUserReviewForComparisonResultRequest> batchUpdateUserReviewForComparisonResultRequest, String successMode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = batchUpdateComparisonResultsValidateBeforeCall(scope, code, batchUpdateUserReviewForComparisonResultRequest, successMode, null, opts);
+        Type localVarReturnType = new TypeToken<BatchUpdateUserReviewForComparisonResultResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call batchUpdateComparisonResultsAsync(String scope, String code, List<BatchUpdateUserReviewForComparisonResultRequest> batchUpdateUserReviewForComparisonResultRequest, String successMode, final ApiCallback<BatchUpdateUserReviewForComparisonResultResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = batchUpdateComparisonResultsValidateBeforeCall(scope, code, batchUpdateUserReviewForComparisonResultRequest, successMode, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<BatchUpdateUserReviewForComparisonResultResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call batchUpdateComparisonResultsAsync(String scope, String code, List<BatchUpdateUserReviewForComparisonResultRequest> batchUpdateUserReviewForComparisonResultRequest, String successMode, final ApiCallback<BatchUpdateUserReviewForComparisonResultResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = batchUpdateComparisonResultsValidateBeforeCall(scope, code, batchUpdateUserReviewForComparisonResultRequest, successMode, _callback, opts);
+        Type localVarReturnType = new TypeToken<BatchUpdateUserReviewForComparisonResultResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIbatchUpdateComparisonResultsRequest {
+        private final String scope;
+        private final String code;
+        private final List<BatchUpdateUserReviewForComparisonResultRequest> batchUpdateUserReviewForComparisonResultRequest;
+        private String successMode;
+
+        private APIbatchUpdateComparisonResultsRequest(String scope, String code, List<BatchUpdateUserReviewForComparisonResultRequest> batchUpdateUserReviewForComparisonResultRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.batchUpdateUserReviewForComparisonResultRequest = batchUpdateUserReviewForComparisonResultRequest;
+        }
+
+        /**
+         * Set successMode
+         * @param successMode Defines whether the request should fail if at least one of the entries is failed to update   or process all the entries regardless and return collections of successful and failed updates. \&quot;Partial\&quot; (default) | \&quot;Atomic\&quot;. (optional, default to Partial)
+         * @return APIbatchUpdateComparisonResultsRequest
+         */
+        public APIbatchUpdateComparisonResultsRequest successMode(String successMode) {
+            this.successMode = successMode;
+            return this;
+        }
+
+        /**
+         * Build call for batchUpdateComparisonResults
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The collections of comparison result Ids that succeeded or failed to update along with the updated entities or error details. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return batchUpdateComparisonResultsCall(scope, code, batchUpdateUserReviewForComparisonResultRequest, successMode, _callback);
+        }
+
+        /**
+         * Execute batchUpdateComparisonResults request
+         * @return BatchUpdateUserReviewForComparisonResultResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The collections of comparison result Ids that succeeded or failed to update along with the updated entities or error details. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public BatchUpdateUserReviewForComparisonResultResponse execute() throws ApiException {
+            ApiResponse<BatchUpdateUserReviewForComparisonResultResponse> localVarResp = batchUpdateComparisonResultsWithHttpInfo(scope, code, batchUpdateUserReviewForComparisonResultRequest, successMode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute batchUpdateComparisonResults request. Use any specified configuration options to override any other configuration for this request only.
+         * @return BatchUpdateUserReviewForComparisonResultResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The collections of comparison result Ids that succeeded or failed to update along with the updated entities or error details. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public BatchUpdateUserReviewForComparisonResultResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<BatchUpdateUserReviewForComparisonResultResponse> localVarResp = batchUpdateComparisonResultsWithHttpInfo(scope, code, batchUpdateUserReviewForComparisonResultRequest, successMode, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute batchUpdateComparisonResults request with HTTP info returned
+         * @return ApiResponse&lt;BatchUpdateUserReviewForComparisonResultResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The collections of comparison result Ids that succeeded or failed to update along with the updated entities or error details. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<BatchUpdateUserReviewForComparisonResultResponse> executeWithHttpInfo() throws ApiException {
+            return batchUpdateComparisonResultsWithHttpInfo(scope, code, batchUpdateUserReviewForComparisonResultRequest, successMode);
+        }
+
+        /**
+         * Execute batchUpdateComparisonResults request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;BatchUpdateUserReviewForComparisonResultResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The collections of comparison result Ids that succeeded or failed to update along with the updated entities or error details. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<BatchUpdateUserReviewForComparisonResultResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return batchUpdateComparisonResultsWithHttpInfo(scope, code, batchUpdateUserReviewForComparisonResultRequest, successMode, opts);
+        }
+
+        /**
+         * Execute batchUpdateComparisonResults request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The collections of comparison result Ids that succeeded or failed to update along with the updated entities or error details. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<BatchUpdateUserReviewForComparisonResultResponse> _callback) throws ApiException {
+            return batchUpdateComparisonResultsAsync(scope, code, batchUpdateUserReviewForComparisonResultRequest, successMode, _callback);
+        }
+
+        /**
+         * Execute batchUpdateComparisonResults request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The collections of comparison result Ids that succeeded or failed to update along with the updated entities or error details. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<BatchUpdateUserReviewForComparisonResultResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return batchUpdateComparisonResultsAsync(scope, code, batchUpdateUserReviewForComparisonResultRequest, successMode, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] BatchUpdateComparisonResults: Add User Review entries for a range of comparison results related to a specific GroupReconciliationDefinition.
+     * Allows to update multiple Group Reconciliation Comparison Results related to the same definition specified by the Finbourne.Identifiers.Abstractions.Scope and Finbourne.Identifiers.Abstractions.Code.  Updates User Review with new entries and sets the relevant Review Status.  Supports partial success when all the entries that haven&#39;t passed validation or are not related to the definition will be returned with respectful error details.
+     * @param scope Shared Scope of the GroupReconciliationDefinition and GroupReconciliationComparisonResults. (required)
+     * @param code GroupReconciliationDefinitionId code. (required)
+     * @param batchUpdateUserReviewForComparisonResultRequest A collection of the comparison result Ids and their user review entries to be added or removed.   Single request contains resultId, break code/match key/comment to add and break code/match key/comment to remove by added timestamp. (required)
+     * @return APIbatchUpdateComparisonResultsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The collections of comparison result Ids that succeeded or failed to update along with the updated entities or error details. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIbatchUpdateComparisonResultsRequest batchUpdateComparisonResults(String scope, String code, List<BatchUpdateUserReviewForComparisonResultRequest> batchUpdateUserReviewForComparisonResultRequest) {
+        return new APIbatchUpdateComparisonResultsRequest(scope, code, batchUpdateUserReviewForComparisonResultRequest);
+    }
     private okhttp3.Call createComparisonRulesetCall(CreateGroupReconciliationComparisonRulesetRequest createGroupReconciliationComparisonRulesetRequest, final ApiCallback _callback) throws ApiException {
         return createComparisonRulesetCall(createGroupReconciliationComparisonRulesetRequest,  _callback, new ConfigurationOptions());
     }

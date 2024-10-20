@@ -229,6 +229,7 @@ Class | Method | HTTP request | Description
 *FundsApi* | [**upsertDiaryEntryTypeValuationPoint**](docs/FundsApi.md#upsertdiaryentrytypevaluationpoint) | **POST** /api/funds/{scope}/{code}/valuationpoints | [EXPERIMENTAL] UpsertDiaryEntryTypeValuationPoint: Upsert Valuation Point.
 *FundsApi* | [**upsertFeeProperties**](docs/FundsApi.md#upsertfeeproperties) | **POST** /api/funds/{scope}/{code}/fees/{feeCode}/properties/$upsert | [EXPERIMENTAL] UpsertFeeProperties: Upsert Fee properties.
 *FundsApi* | [**upsertFundProperties**](docs/FundsApi.md#upsertfundproperties) | **POST** /api/funds/{scope}/{code}/properties/$upsert | [EXPERIMENTAL] UpsertFundProperties: Upsert Fund properties.
+*GroupReconciliationsApi* | [**batchUpdateComparisonResults**](docs/GroupReconciliationsApi.md#batchupdatecomparisonresults) | **POST** /api/reconciliations/groupreconciliationdefinitions/{scope}/{code}/comparisonresults/$batchReview | [EXPERIMENTAL] BatchUpdateComparisonResults: Add User Review entries for a range of comparison results related to a specific GroupReconciliationDefinition.
 *GroupReconciliationsApi* | [**createComparisonRuleset**](docs/GroupReconciliationsApi.md#createcomparisonruleset) | **POST** /api/reconciliations/comparisonrulesets | [EXPERIMENTAL] CreateComparisonRuleset: Create a Group Reconciliation Comparison Ruleset
 *GroupReconciliationsApi* | [**createGroupReconciliationDefinition**](docs/GroupReconciliationsApi.md#creategroupreconciliationdefinition) | **POST** /api/reconciliations/groupreconciliationdefinitions | [EXPERIMENTAL] CreateGroupReconciliationDefinition: Create Group Reconciliation Definition
 *GroupReconciliationsApi* | [**deleteComparisonRuleset**](docs/GroupReconciliationsApi.md#deletecomparisonruleset) | **DELETE** /api/reconciliations/comparisonrulesets/{scope}/{code} | [EXPERIMENTAL] DeleteComparisonRuleset: Deletes a particular Group Reconciliation Comparison Ruleset
@@ -664,6 +665,8 @@ Class | Method | HTTP request | Description
  - [Basket](docs/Basket.md)
  - [BasketIdentifier](docs/BasketIdentifier.md)
  - [BatchAdjustHoldingsResponse](docs/BatchAdjustHoldingsResponse.md)
+ - [BatchUpdateUserReviewForComparisonResultRequest](docs/BatchUpdateUserReviewForComparisonResultRequest.md)
+ - [BatchUpdateUserReviewForComparisonResultResponse](docs/BatchUpdateUserReviewForComparisonResultResponse.md)
  - [BatchUpsertDatesForCalendarResponse](docs/BatchUpsertDatesForCalendarResponse.md)
  - [BatchUpsertInstrumentPropertiesResponse](docs/BatchUpsertInstrumentPropertiesResponse.md)
  - [BatchUpsertPortfolioAccessMetadataRequest](docs/BatchUpsertPortfolioAccessMetadataRequest.md)
@@ -1041,9 +1044,11 @@ Class | Method | HTTP request | Description
  - [GroupReconciliationRunResponse](docs/GroupReconciliationRunResponse.md)
  - [GroupReconciliationSummary](docs/GroupReconciliationSummary.md)
  - [GroupReconciliationUserReview](docs/GroupReconciliationUserReview.md)
+ - [GroupReconciliationUserReviewAdd](docs/GroupReconciliationUserReviewAdd.md)
  - [GroupReconciliationUserReviewBreakCode](docs/GroupReconciliationUserReviewBreakCode.md)
  - [GroupReconciliationUserReviewComment](docs/GroupReconciliationUserReviewComment.md)
  - [GroupReconciliationUserReviewMatchKey](docs/GroupReconciliationUserReviewMatchKey.md)
+ - [GroupReconciliationUserReviewRemove](docs/GroupReconciliationUserReviewRemove.md)
  - [GroupedResultOfAddressKey](docs/GroupedResultOfAddressKey.md)
  - [HoldingAdjustment](docs/HoldingAdjustment.md)
  - [HoldingAdjustmentWithDate](docs/HoldingAdjustmentWithDate.md)

@@ -4,6 +4,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**batchUpdateComparisonResults**](GroupReconciliationsApi.md#batchUpdateComparisonResults) | **POST** /api/reconciliations/groupreconciliationdefinitions/{scope}/{code}/comparisonresults/$batchReview | [EXPERIMENTAL] BatchUpdateComparisonResults: Add User Review entries for a range of comparison results related to a specific GroupReconciliationDefinition. |
 | [**createComparisonRuleset**](GroupReconciliationsApi.md#createComparisonRuleset) | **POST** /api/reconciliations/comparisonrulesets | [EXPERIMENTAL] CreateComparisonRuleset: Create a Group Reconciliation Comparison Ruleset |
 | [**createGroupReconciliationDefinition**](GroupReconciliationsApi.md#createGroupReconciliationDefinition) | **POST** /api/reconciliations/groupreconciliationdefinitions | [EXPERIMENTAL] CreateGroupReconciliationDefinition: Create Group Reconciliation Definition |
 | [**deleteComparisonRuleset**](GroupReconciliationsApi.md#deleteComparisonRuleset) | **DELETE** /api/reconciliations/comparisonrulesets/{scope}/{code} | [EXPERIMENTAL] DeleteComparisonRuleset: Deletes a particular Group Reconciliation Comparison Ruleset |
@@ -18,6 +19,103 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**updateComparisonRuleset**](GroupReconciliationsApi.md#updateComparisonRuleset) | **PUT** /api/reconciliations/comparisonrulesets/{scope}/{code} | [EXPERIMENTAL] UpdateComparisonRuleset: Update Group Reconciliation Comparison Ruleset defined by scope and code |
 | [**updateGroupReconciliationDefinition**](GroupReconciliationsApi.md#updateGroupReconciliationDefinition) | **PUT** /api/reconciliations/groupreconciliationdefinitions/{scope}/{code} | [EXPERIMENTAL] UpdateGroupReconciliationDefinition: Update group reconciliation definition |
 
+
+
+## batchUpdateComparisonResults
+
+> BatchUpdateUserReviewForComparisonResultResponse batchUpdateComparisonResults(scope, code, batchUpdateUserReviewForComparisonResultRequest, successMode)
+
+[EXPERIMENTAL] BatchUpdateComparisonResults: Add User Review entries for a range of comparison results related to a specific GroupReconciliationDefinition.
+
+Allows to update multiple Group Reconciliation Comparison Results related to the same definition specified by the Finbourne.Identifiers.Abstractions.Scope and Finbourne.Identifiers.Abstractions.Code.  Updates User Review with new entries and sets the relevant Review Status.  Supports partial success when all the entries that haven&#39;t passed validation or are not related to the definition will be returned with respectful error details.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.GroupReconciliationsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class GroupReconciliationsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // GroupReconciliationsApi apiInstance = apiFactory.build(GroupReconciliationsApi.class);
+
+        GroupReconciliationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(GroupReconciliationsApi.class);
+        String scope = "scope_example"; // String | Shared Scope of the GroupReconciliationDefinition and GroupReconciliationComparisonResults.
+        String code = "code_example"; // String | GroupReconciliationDefinitionId code.
+        List<BatchUpdateUserReviewForComparisonResultRequest> batchUpdateUserReviewForComparisonResultRequest = Arrays.asList(); // List<BatchUpdateUserReviewForComparisonResultRequest> | A collection of the comparison result Ids and their user review entries to be added or removed.   Single request contains resultId, break code/match key/comment to add and break code/match key/comment to remove by added timestamp.
+        String successMode = "Partial"; // String | Defines whether the request should fail if at least one of the entries is failed to update   or process all the entries regardless and return collections of successful and failed updates. \"Partial\" (default) | \"Atomic\".
+        try {
+            // uncomment the below to set overrides at the request level
+            // BatchUpdateUserReviewForComparisonResultResponse result = apiInstance.batchUpdateComparisonResults(scope, code, batchUpdateUserReviewForComparisonResultRequest, successMode).execute(opts);
+
+            BatchUpdateUserReviewForComparisonResultResponse result = apiInstance.batchUpdateComparisonResults(scope, code, batchUpdateUserReviewForComparisonResultRequest, successMode).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling GroupReconciliationsApi#batchUpdateComparisonResults");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| Shared Scope of the GroupReconciliationDefinition and GroupReconciliationComparisonResults. | |
+| **code** | **String**| GroupReconciliationDefinitionId code. | |
+| **batchUpdateUserReviewForComparisonResultRequest** | [**List&lt;BatchUpdateUserReviewForComparisonResultRequest&gt;**](BatchUpdateUserReviewForComparisonResultRequest.md)| A collection of the comparison result Ids and their user review entries to be added or removed.   Single request contains resultId, break code/match key/comment to add and break code/match key/comment to remove by added timestamp. | |
+| **successMode** | **String**| Defines whether the request should fail if at least one of the entries is failed to update   or process all the entries regardless and return collections of successful and failed updates. \&quot;Partial\&quot; (default) | \&quot;Atomic\&quot;. | [optional] [default to Partial] |
+
+### Return type
+
+[**BatchUpdateUserReviewForComparisonResultResponse**](BatchUpdateUserReviewForComparisonResultResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The collections of comparison result Ids that succeeded or failed to update along with the updated entities or error details. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 
 ## createComparisonRuleset

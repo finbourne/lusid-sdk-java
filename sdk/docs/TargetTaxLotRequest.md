@@ -13,6 +13,9 @@
 |**price** | **java.math.BigDecimal** | The purchase price of each unit of the instrument held in this tax-lot. This forms part of the unique key required for multiple tax-lots. |  [optional] |
 |**purchaseDate** | **OffsetDateTime** | The purchase date of this tax-lot. This forms part of the unique key required for multiple tax-lots. |  [optional] |
 |**settlementDate** | **OffsetDateTime** | The settlement date of the tax-lot&#39;s opening transaction. |  [optional] |
+|**notionalCost** | **java.math.BigDecimal** | The notional cost of the tax-lot&#39;s opening transaction. |  [optional] |
+|**variationMargin** | **java.math.BigDecimal** | The variation margin of the tax-lot&#39;s opening transaction. |  [optional] |
+|**variationMarginPortfolioCcy** | **java.math.BigDecimal** | The variation margin in portfolio currency of the tax-lot&#39;s opening transaction. |  [optional] |
 
 
 

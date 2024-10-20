@@ -18,7 +18,7 @@ Represents applicable instrument event.
 |**generatedEvent** | [**InstrumentEventHolder**](InstrumentEventHolder.md) |  |  [optional] |
 |**generatedEventDiagnostics** | [**GeneratedEventDiagnostics**](GeneratedEventDiagnostics.md) |  |  [optional] |
 |**loadedEvent** | [**InstrumentEventHolder**](InstrumentEventHolder.md) |  |  [optional] |
-|**appliedInstrumentEventInstructionId** | **String** |  |  |
+|**appliedInstrumentEventInstructionId** | **String** |  |  [optional] |
 |**transactions** | [**List&lt;Transaction&gt;**](Transaction.md) |  |  [optional] |
 |**transactionDiagnostics** | [**TransactionDiagnostics**](TransactionDiagnostics.md) |  |  [optional] |
 

@@ -260,7 +260,7 @@ public class ExchangeTradedOptionContractDetails {
   }
 
    /**
-   * Exercise Date.
+   * The last exercise date of the option.
    * @return exerciseDate
   **/
   @jakarta.annotation.Nonnull
