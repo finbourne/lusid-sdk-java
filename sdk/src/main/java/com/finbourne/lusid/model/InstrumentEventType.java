@@ -113,6 +113,8 @@ public enum InstrumentEventType {
   
   OPTIONEXERCISEPHYSICALEVENT("OptionExercisePhysicalEvent"),
   
+  OPTIONEXERCISECASHEVENT("OptionExerciseCashEvent"),
+  
   PROTECTIONPAYOUTCASHFLOWEVENT("ProtectionPayoutCashFlowEvent");
 
   private String value;

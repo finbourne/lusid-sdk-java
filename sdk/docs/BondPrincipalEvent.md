@@ -11,7 +11,7 @@ Definition of a Bond Principal Event  This is an event that describes the occure
 |**currency** | **String** | Currency of the principal payment |  |
 |**exDate** | **OffsetDateTime** | Ex-Dividend date of the principal payment |  |
 |**paymentDate** | **OffsetDateTime** | Payment date of the principal payment |  |
-|**principalPerUnit** | **java.math.BigDecimal** | Principal per unit |  |
+|**principalPerUnit** | **java.math.BigDecimal** | Principal per unit |  [optional] |
 
 
 

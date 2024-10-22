@@ -11,7 +11,7 @@ Definition of an MBS Principal Event  This is an event that describes the occure
 |**exDate** | **OffsetDateTime** | The ex date (entitlement date) of the principal payment, usually several weeks prior to the payment date |  |
 |**paymentDate** | **OffsetDateTime** | The payment date of the principal |  |
 |**currency** | **String** | The currency in which the principal is paid |  |
-|**principalPerUnit** | **java.math.BigDecimal** | The principal amount received for each unit of the instrument held on the ex date |  |
+|**principalPerUnit** | **java.math.BigDecimal** | The principal amount received for each unit of the instrument held on the ex date |  [optional] |
 
 
 

@@ -20,6 +20,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -144,7 +145,7 @@ public class BondCouponEvent extends InstrumentEvent {
    * CouponRate*Principal
    * @return couponPerUnit
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public java.math.BigDecimal getCouponPerUnit() {
     return couponPerUnit;
   }
@@ -172,9 +173,20 @@ public class BondCouponEvent extends InstrumentEvent {
         super.equals(o);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(exDate, paymentDate, currency, couponPerUnit, super.hashCode());
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -219,7 +231,6 @@ public class BondCouponEvent extends InstrumentEvent {
     openapiRequiredFields.add("exDate");
     openapiRequiredFields.add("paymentDate");
     openapiRequiredFields.add("currency");
-    openapiRequiredFields.add("couponPerUnit");
     openapiRequiredFields.add("instrumentEventType");
   }
 

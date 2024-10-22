@@ -190,7 +190,7 @@ public class DividendReinvestmentEvent extends InstrumentEvent {
    * Date you have to be the holder of record in order to participate in the tender.
    * @return recordDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getRecordDate() {
     return recordDate;
   }
@@ -335,7 +335,6 @@ public class DividendReinvestmentEvent extends InstrumentEvent {
     openapiRequiredFields.add("cashElections");
     openapiRequiredFields.add("exDate");
     openapiRequiredFields.add("paymentDate");
-    openapiRequiredFields.add("recordDate");
     openapiRequiredFields.add("securityElections");
     openapiRequiredFields.add("instrumentEventType");
   }

@@ -21,8 +21,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -123,6 +125,10 @@ public class FeeRequest {
   public static final String SERIALIZED_NAME_PORTFOLIO_ID = "portfolioId";
   @SerializedName(SERIALIZED_NAME_PORTFOLIO_ID)
   private ResourceId portfolioId;
+
+  public static final String SERIALIZED_NAME_SHARE_CLASSES = "shareClasses";
+  @SerializedName(SERIALIZED_NAME_SHARE_CLASSES)
+  private List<String> shareClasses;
 
   public FeeRequest() {
   }
@@ -239,7 +245,7 @@ public class FeeRequest {
   }
 
    /**
-   * The calculation base for the Fee that is calculated using a percentage. (TotalAnnualAccrualAmount and CalculationBase cannot both be present)
+   * The calculation base for a Fee that is calculated using a percentage (TotalAnnualAccrualAmount and CalculationBase cannot both be present). When the Fee is a ShareClass Fee (i.e: when ShareClasses contains at least one value), each of the following would be a valid CalculationBase: \&quot;10000.00\&quot;, \&quot;ShareClass.GAV\&quot;, \&quot;ShareClass.GAV - ShareClass.Fees[ShareClassFeeCode1].Amount\&quot;, \&quot;ShareClass.Fees[ShareClassFeeCode1].CalculationBase\&quot;. When the Fee is a NonShareClassSpecific Fee (i.e: when ShareClasses contains no values), each of the following would be a valid CalculationBase: \&quot;10000.00\&quot;, \&quot;GAV\&quot;, \&quot;GAV - Fees[NonClassSpecificFeeCode1].Amount\&quot;, \&quot;Fees[NonClassSpecificFeeCode1].CalculationBase\&quot;. 
    * @return calculationBase
   **/
   @jakarta.annotation.Nullable
@@ -492,6 +498,35 @@ public class FeeRequest {
   }
 
 
+  public FeeRequest shareClasses(List<String> shareClasses) {
+    
+    this.shareClasses = shareClasses;
+    return this;
+  }
+
+  public FeeRequest addShareClassesItem(String shareClassesItem) {
+    if (this.shareClasses == null) {
+      this.shareClasses = new ArrayList<>();
+    }
+    this.shareClasses.add(shareClassesItem);
+    return this;
+  }
+
+   /**
+   * The short codes of the ShareClasses that the Fee should be applied to. Optional: if this is null or empty, then the Fee will be divided between all the ShareClasses of the Fund according to the capital ratio.
+   * @return shareClasses
+  **/
+  @jakarta.annotation.Nullable
+  public List<String> getShareClasses() {
+    return shareClasses;
+  }
+
+
+  public void setShareClasses(List<String> shareClasses) {
+    this.shareClasses = shareClasses;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -518,7 +553,8 @@ public class FeeRequest {
         Objects.equals(this.endDate, feeRequest.endDate) &&
         Objects.equals(this.anchorDate, feeRequest.anchorDate) &&
         Objects.equals(this.properties, feeRequest.properties) &&
-        Objects.equals(this.portfolioId, feeRequest.portfolioId);
+        Objects.equals(this.portfolioId, feeRequest.portfolioId) &&
+        Objects.equals(this.shareClasses, feeRequest.shareClasses);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -527,7 +563,7 @@ public class FeeRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, feeTypeId, displayName, description, origin, calculationBase, accrualCurrency, treatment, totalAnnualAccrualAmount, feeRatePercentage, payableFrequency, businessDayConvention, startDate, endDate, anchorDate, properties, portfolioId);
+    return Objects.hash(code, feeTypeId, displayName, description, origin, calculationBase, accrualCurrency, treatment, totalAnnualAccrualAmount, feeRatePercentage, payableFrequency, businessDayConvention, startDate, endDate, anchorDate, properties, portfolioId, shareClasses);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -558,6 +594,7 @@ public class FeeRequest {
     sb.append("    anchorDate: ").append(toIndentedString(anchorDate)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    portfolioId: ").append(toIndentedString(portfolioId)).append("\n");
+    sb.append("    shareClasses: ").append(toIndentedString(shareClasses)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -597,6 +634,7 @@ public class FeeRequest {
     openapiFields.add("anchorDate");
     openapiFields.add("properties");
     openapiFields.add("portfolioId");
+    openapiFields.add("shareClasses");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -666,6 +704,10 @@ public class FeeRequest {
       // validate the optional field `portfolioId`
       if (jsonObj.get("portfolioId") != null && !jsonObj.get("portfolioId").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("portfolioId"));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("shareClasses") != null && !jsonObj.get("shareClasses").isJsonNull() && !jsonObj.get("shareClasses").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `shareClasses` to be an array in the JSON string but got `%s`", jsonObj.get("shareClasses").toString()));
       }
   }
 

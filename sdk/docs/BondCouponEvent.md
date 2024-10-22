@@ -11,7 +11,7 @@ Definition of a Bond Coupon Event  This is an event that describes the occurence
 |**exDate** | **OffsetDateTime** | Ex-Dividend date of the coupon payment |  |
 |**paymentDate** | **OffsetDateTime** | Payment date of the coupon payment |  |
 |**currency** | **String** | Currency of the coupon payment |  |
-|**couponPerUnit** | **java.math.BigDecimal** | CouponRate*Principal |  |
+|**couponPerUnit** | **java.math.BigDecimal** | CouponRate*Principal |  [optional] |
 
 
 

@@ -93,6 +93,8 @@
 
 * `OPTIONEXERCISEPHYSICALEVENT` (value: `"OptionExercisePhysicalEvent"`)
 
+* `OPTIONEXERCISECASHEVENT` (value: `"OptionExerciseCashEvent"`)
+
 * `PROTECTIONPAYOUTCASHFLOWEVENT` (value: `"ProtectionPayoutCashFlowEvent"`)
 
 
