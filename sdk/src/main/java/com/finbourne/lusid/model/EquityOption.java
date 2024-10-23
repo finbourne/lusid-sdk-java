@@ -267,10 +267,10 @@ public class EquityOption extends LusidInstrument {
   }
 
    /**
-   * The market identifier type of the underlying code, e.g RIC.    Supported string (enumeration) values are: [LusidInstrumentId, Isin, Sedol, Cusip, ClientInternal, Figi, RIC, QuotePermId, REDCode, BBGId, ICECode].
+   * The market identifier type of the underlying code, e.g RIC.    Supported string (enumeration) values are: [LusidInstrumentId, Isin, Sedol, Cusip, ClientInternal, Figi, RIC, QuotePermId, REDCode, BBGId, ICECode].  Optional field, should be used in combination with the Code field.  Not compatible with the Underlying field.
    * @return underlyingIdentifier
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getUnderlyingIdentifier() {
     return underlyingIdentifier;
   }
@@ -288,10 +288,10 @@ public class EquityOption extends LusidInstrument {
   }
 
    /**
-   * The identifying code for the equity underlying, e.g. &#39;IBM.N&#39;.
+   * The identifying code for the equity underlying, e.g. &#39;IBM.N&#39;.  Optional field, should be used in combination with the UnderlyingIdentifier field.  Not compatible with the Underlying field.
    * @return code
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getCode() {
     return code;
   }
@@ -516,8 +516,6 @@ public class EquityOption extends LusidInstrument {
     openapiRequiredFields.add("optionType");
     openapiRequiredFields.add("strike");
     openapiRequiredFields.add("domCcy");
-    openapiRequiredFields.add("underlyingIdentifier");
-    openapiRequiredFields.add("code");
     openapiRequiredFields.add("instrumentType");
   }
 
