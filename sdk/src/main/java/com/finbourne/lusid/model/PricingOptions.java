@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.ModelSelection;
+import com.finbourne.lusid.model.ReturnZeroPvOptions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -94,6 +95,10 @@ public class PricingOptions {
   public static final String SERIALIZED_NAME_CONSERVED_QUANTITY_FOR_LOOKTHROUGH_EXPANSION = "conservedQuantityForLookthroughExpansion";
   @SerializedName(SERIALIZED_NAME_CONSERVED_QUANTITY_FOR_LOOKTHROUGH_EXPANSION)
   private String conservedQuantityForLookthroughExpansion;
+
+  public static final String SERIALIZED_NAME_RETURN_ZERO_PV = "returnZeroPv";
+  @SerializedName(SERIALIZED_NAME_RETURN_ZERO_PV)
+  private ReturnZeroPvOptions returnZeroPv;
 
   public PricingOptions() {
   }
@@ -329,6 +334,27 @@ public class PricingOptions {
   }
 
 
+  public PricingOptions returnZeroPv(ReturnZeroPvOptions returnZeroPv) {
+    
+    this.returnZeroPv = returnZeroPv;
+    return this;
+  }
+
+   /**
+   * Get returnZeroPv
+   * @return returnZeroPv
+  **/
+  @jakarta.annotation.Nullable
+  public ReturnZeroPvOptions getReturnZeroPv() {
+    return returnZeroPv;
+  }
+
+
+  public void setReturnZeroPv(ReturnZeroPvOptions returnZeroPv) {
+    this.returnZeroPv = returnZeroPv;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -349,7 +375,8 @@ public class PricingOptions {
         Objects.equals(this.removeContingentCashflowsInPaymentDiary, pricingOptions.removeContingentCashflowsInPaymentDiary) &&
         Objects.equals(this.useChildSubHoldingKeysForPortfolioExpansion, pricingOptions.useChildSubHoldingKeysForPortfolioExpansion) &&
         Objects.equals(this.validateDomesticAndQuoteCurrenciesAreConsistent, pricingOptions.validateDomesticAndQuoteCurrenciesAreConsistent) &&
-        Objects.equals(this.conservedQuantityForLookthroughExpansion, pricingOptions.conservedQuantityForLookthroughExpansion);
+        Objects.equals(this.conservedQuantityForLookthroughExpansion, pricingOptions.conservedQuantityForLookthroughExpansion) &&
+        Objects.equals(this.returnZeroPv, pricingOptions.returnZeroPv);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -358,7 +385,7 @@ public class PricingOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(modelSelection, useInstrumentTypeToDeterminePricer, allowAnyInstrumentsWithSecUidToPriceOffLookup, allowPartiallySuccessfulEvaluation, produceSeparateResultForLinearOtcLegs, enableUseOfCachedUnitResults, windowValuationOnInstrumentStartEnd, removeContingentCashflowsInPaymentDiary, useChildSubHoldingKeysForPortfolioExpansion, validateDomesticAndQuoteCurrenciesAreConsistent, conservedQuantityForLookthroughExpansion);
+    return Objects.hash(modelSelection, useInstrumentTypeToDeterminePricer, allowAnyInstrumentsWithSecUidToPriceOffLookup, allowPartiallySuccessfulEvaluation, produceSeparateResultForLinearOtcLegs, enableUseOfCachedUnitResults, windowValuationOnInstrumentStartEnd, removeContingentCashflowsInPaymentDiary, useChildSubHoldingKeysForPortfolioExpansion, validateDomesticAndQuoteCurrenciesAreConsistent, conservedQuantityForLookthroughExpansion, returnZeroPv);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -383,6 +410,7 @@ public class PricingOptions {
     sb.append("    useChildSubHoldingKeysForPortfolioExpansion: ").append(toIndentedString(useChildSubHoldingKeysForPortfolioExpansion)).append("\n");
     sb.append("    validateDomesticAndQuoteCurrenciesAreConsistent: ").append(toIndentedString(validateDomesticAndQuoteCurrenciesAreConsistent)).append("\n");
     sb.append("    conservedQuantityForLookthroughExpansion: ").append(toIndentedString(conservedQuantityForLookthroughExpansion)).append("\n");
+    sb.append("    returnZeroPv: ").append(toIndentedString(returnZeroPv)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -416,6 +444,7 @@ public class PricingOptions {
     openapiFields.add("useChildSubHoldingKeysForPortfolioExpansion");
     openapiFields.add("validateDomesticAndQuoteCurrenciesAreConsistent");
     openapiFields.add("conservedQuantityForLookthroughExpansion");
+    openapiFields.add("returnZeroPv");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -440,6 +469,10 @@ public class PricingOptions {
       }
       if ((jsonObj.get("conservedQuantityForLookthroughExpansion") != null && !jsonObj.get("conservedQuantityForLookthroughExpansion").isJsonNull()) && !jsonObj.get("conservedQuantityForLookthroughExpansion").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `conservedQuantityForLookthroughExpansion` to be a primitive type in the JSON string but got `%s`", jsonObj.get("conservedQuantityForLookthroughExpansion").toString()));
+      }
+      // validate the optional field `returnZeroPv`
+      if (jsonObj.get("returnZeroPv") != null && !jsonObj.get("returnZeroPv").isJsonNull()) {
+        ReturnZeroPvOptions.validateJsonElement(jsonObj.get("returnZeroPv"));
       }
   }
 

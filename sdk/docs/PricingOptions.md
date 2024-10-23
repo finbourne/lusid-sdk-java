@@ -19,6 +19,7 @@ Options for controlling the default aspects and behaviour of the pricing engine.
 |**useChildSubHoldingKeysForPortfolioExpansion** | **Boolean** | Should fund constituents inherit subholding keys from the parent subholding keyb |  [optional] |
 |**validateDomesticAndQuoteCurrenciesAreConsistent** | **Boolean** | Do we validate that the instrument domestic currency matches the quote currency (unless unknown/zzz) when using lookup pricing. |  [optional] |
 |**conservedQuantityForLookthroughExpansion** | **String** | When performing lookthrough portfolio expansion with ScalingMethodology set to \&quot;Sum\&quot; or \&quot;AbsoluteSum\&quot;,  the quantity specified here will be conserved and apportioned to lookthrough constituents.  For example, an equal-weighting index with 100 constituents can be modelled as a reference portfolio with 1% weights on each equity.  When expanding a $9000 holding of that index into its constituents while conserving PV, we end up with $90 of each equity.  The number of units of each equity held is then implied.  Note that conservation of one quantity may imply non-conservation of others, especially when some constituents are OTCs.     Allowed values are: \&quot;PV\&quot; (default), \&quot;Exposure\&quot;. |  [optional] |
+|**returnZeroPv** | [**ReturnZeroPvOptions**](ReturnZeroPvOptions.md) |  |  [optional] |
 
 
 
