@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.Link;
+import com.finbourne.lusid.model.StagedModificationsInfo;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -22,7 +23,9 @@ import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -63,11 +66,23 @@ public class DeleteInstrumentsResponse {
   @SerializedName(SERIALIZED_NAME_AS_AT)
   private OffsetDateTime asAt;
 
+  public static final String SERIALIZED_NAME_STAGED = "staged";
+  @SerializedName(SERIALIZED_NAME_STAGED)
+  private Map<String, StagedModificationsInfo> staged;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
 
   public DeleteInstrumentsResponse() {
+  }
+
+  
+  public DeleteInstrumentsResponse(
+     Map<String, StagedModificationsInfo> staged
+  ) {
+    this();
+    this.staged = staged;
   }
 
   public DeleteInstrumentsResponse href(URI href) {
@@ -112,6 +127,18 @@ public class DeleteInstrumentsResponse {
   }
 
 
+   /**
+   * Information about the pending staged modifications for the current entity.
+   * @return staged
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, StagedModificationsInfo> getStaged() {
+    return staged;
+  }
+
+
+
+
   public DeleteInstrumentsResponse links(List<Link> links) {
     
     this.links = links;
@@ -153,6 +180,7 @@ public class DeleteInstrumentsResponse {
     DeleteInstrumentsResponse deleteInstrumentsResponse = (DeleteInstrumentsResponse) o;
     return Objects.equals(this.href, deleteInstrumentsResponse.href) &&
         Objects.equals(this.asAt, deleteInstrumentsResponse.asAt) &&
+        Objects.equals(this.staged, deleteInstrumentsResponse.staged) &&
         Objects.equals(this.links, deleteInstrumentsResponse.links);
   }
 
@@ -162,7 +190,7 @@ public class DeleteInstrumentsResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, asAt, links);
+    return Objects.hash(href, asAt, staged, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -178,6 +206,7 @@ public class DeleteInstrumentsResponse {
     sb.append("class DeleteInstrumentsResponse {\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    asAt: ").append(toIndentedString(asAt)).append("\n");
+    sb.append("    staged: ").append(toIndentedString(staged)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -203,6 +232,7 @@ public class DeleteInstrumentsResponse {
     openapiFields = new HashSet<String>();
     openapiFields.add("href");
     openapiFields.add("asAt");
+    openapiFields.add("staged");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)

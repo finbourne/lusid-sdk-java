@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.Link;
+import com.finbourne.lusid.model.StagedModificationsInfo;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -58,6 +59,10 @@ public class DeleteInstrumentPropertiesResponse {
   @SerializedName(SERIALIZED_NAME_AS_AT)
   private OffsetDateTime asAt;
 
+  public static final String SERIALIZED_NAME_STAGED_MODIFICATIONS = "stagedModifications";
+  @SerializedName(SERIALIZED_NAME_STAGED_MODIFICATIONS)
+  private StagedModificationsInfo stagedModifications;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -83,6 +88,27 @@ public class DeleteInstrumentPropertiesResponse {
 
   public void setAsAt(OffsetDateTime asAt) {
     this.asAt = asAt;
+  }
+
+
+  public DeleteInstrumentPropertiesResponse stagedModifications(StagedModificationsInfo stagedModifications) {
+    
+    this.stagedModifications = stagedModifications;
+    return this;
+  }
+
+   /**
+   * Get stagedModifications
+   * @return stagedModifications
+  **/
+  @jakarta.annotation.Nullable
+  public StagedModificationsInfo getStagedModifications() {
+    return stagedModifications;
+  }
+
+
+  public void setStagedModifications(StagedModificationsInfo stagedModifications) {
+    this.stagedModifications = stagedModifications;
   }
 
 
@@ -126,6 +152,7 @@ public class DeleteInstrumentPropertiesResponse {
     }
     DeleteInstrumentPropertiesResponse deleteInstrumentPropertiesResponse = (DeleteInstrumentPropertiesResponse) o;
     return Objects.equals(this.asAt, deleteInstrumentPropertiesResponse.asAt) &&
+        Objects.equals(this.stagedModifications, deleteInstrumentPropertiesResponse.stagedModifications) &&
         Objects.equals(this.links, deleteInstrumentPropertiesResponse.links);
   }
 
@@ -135,7 +162,7 @@ public class DeleteInstrumentPropertiesResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(asAt, links);
+    return Objects.hash(asAt, stagedModifications, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -150,6 +177,7 @@ public class DeleteInstrumentPropertiesResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class DeleteInstrumentPropertiesResponse {\n");
     sb.append("    asAt: ").append(toIndentedString(asAt)).append("\n");
+    sb.append("    stagedModifications: ").append(toIndentedString(stagedModifications)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -174,6 +202,7 @@ public class DeleteInstrumentPropertiesResponse {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("asAt");
+    openapiFields.add("stagedModifications");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -201,6 +230,10 @@ public class DeleteInstrumentPropertiesResponse {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // validate the optional field `stagedModifications`
+      if (jsonObj.get("stagedModifications") != null && !jsonObj.get("stagedModifications").isJsonNull()) {
+        StagedModificationsInfo.validateJsonElement(jsonObj.get("stagedModifications"));
+      }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
         if (jsonArraylinks != null) {

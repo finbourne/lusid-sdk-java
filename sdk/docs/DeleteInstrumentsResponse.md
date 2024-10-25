@@ -9,6 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**href** | **URI** | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |  [optional] |
 |**asAt** | **OffsetDateTime** | The as-at datetime at which the instrument was deleted. |  |
+|**staged** | [**Map&lt;String, StagedModificationsInfo&gt;**](StagedModificationsInfo.md) | Information about the pending staged modifications for the current entity. |  [optional] [readonly] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 
