@@ -115,7 +115,11 @@ public enum InstrumentEventType {
   
   OPTIONEXERCISECASHEVENT("OptionExerciseCashEvent"),
   
-  PROTECTIONPAYOUTCASHFLOWEVENT("ProtectionPayoutCashFlowEvent");
+  PROTECTIONPAYOUTCASHFLOWEVENT("ProtectionPayoutCashFlowEvent"),
+  
+  TERMDEPOSITINTERESTEVENT("TermDepositInterestEvent"),
+  
+  TERMDEPOSITPRINCIPALEVENT("TermDepositPrincipalEvent");
 
   private String value;
 

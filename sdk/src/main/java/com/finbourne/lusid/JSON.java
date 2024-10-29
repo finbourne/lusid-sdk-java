@@ -1185,6 +1185,8 @@ public class JSON {
                         classByDiscriminatorValue.put("SwapCashFlowEvent", com.finbourne.lusid.model.SwapCashFlowEvent.class);
                         classByDiscriminatorValue.put("SwapPrincipalEvent", com.finbourne.lusid.model.SwapPrincipalEvent.class);
                         classByDiscriminatorValue.put("TenderEvent", com.finbourne.lusid.model.TenderEvent.class);
+                        classByDiscriminatorValue.put("TermDepositInterestEvent", com.finbourne.lusid.model.TermDepositInterestEvent.class);
+                        classByDiscriminatorValue.put("TermDepositPrincipalEvent", com.finbourne.lusid.model.TermDepositPrincipalEvent.class);
                         classByDiscriminatorValue.put("TransitionEvent", com.finbourne.lusid.model.TransitionEvent.class);
                         classByDiscriminatorValue.put("TriggerEvent", com.finbourne.lusid.model.TriggerEvent.class);
                         classByDiscriminatorValue.put("InstrumentEvent", com.finbourne.lusid.model.InstrumentEvent.class);
@@ -2046,6 +2048,24 @@ public class JSON {
                         classByDiscriminatorValue.put("TermDeposit", com.finbourne.lusid.model.TermDeposit.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
+                .registerTypeSelector(com.finbourne.lusid.model.TermDepositInterestEvent.class, new TypeSelector<com.finbourne.lusid.model.TermDepositInterestEvent>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.TermDepositInterestEvent> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("TermDepositInterestEvent", com.finbourne.lusid.model.TermDepositInterestEvent.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentEventType"));
+                    }
+          })
+                .registerTypeSelector(com.finbourne.lusid.model.TermDepositPrincipalEvent.class, new TypeSelector<com.finbourne.lusid.model.TermDepositPrincipalEvent>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.TermDepositPrincipalEvent> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("TermDepositPrincipalEvent", com.finbourne.lusid.model.TermDepositPrincipalEvent.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentEventType"));
                     }
           })
                 .registerTypeSelector(com.finbourne.lusid.model.TotalReturnSwap.class, new TypeSelector<com.finbourne.lusid.model.TotalReturnSwap>() {
@@ -3034,6 +3054,8 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.TemplateField.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.TenderEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.TermDeposit.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.TermDepositInterestEvent.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.TermDepositPrincipalEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.TotalReturnSwap.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.Touch.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.TradeTicket.CustomTypeAdapterFactory());
