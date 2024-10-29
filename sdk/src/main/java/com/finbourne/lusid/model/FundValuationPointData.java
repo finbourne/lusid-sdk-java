@@ -15,7 +15,6 @@ import com.finbourne.lusid.model.FeeAccrual;
 import com.finbourne.lusid.model.FundAmount;
 import com.finbourne.lusid.model.FundPnlBreakdown;
 import com.finbourne.lusid.model.PreviousFundValuationPointData;
-import com.finbourne.lusid.model.UnitisationData;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -80,10 +79,6 @@ public class FundValuationPointData {
   public static final String SERIALIZED_NAME_NAV = "nav";
   @SerializedName(SERIALIZED_NAME_NAV)
   private java.math.BigDecimal nav;
-
-  public static final String SERIALIZED_NAME_UNITISATION = "unitisation";
-  @SerializedName(SERIALIZED_NAME_UNITISATION)
-  private UnitisationData unitisation;
 
   public static final String SERIALIZED_NAME_MISCELLANEOUS = "miscellaneous";
   @SerializedName(SERIALIZED_NAME_MISCELLANEOUS)
@@ -246,27 +241,6 @@ public class FundValuationPointData {
   }
 
 
-  public FundValuationPointData unitisation(UnitisationData unitisation) {
-    
-    this.unitisation = unitisation;
-    return this;
-  }
-
-   /**
-   * Get unitisation
-   * @return unitisation
-  **/
-  @jakarta.annotation.Nullable
-  public UnitisationData getUnitisation() {
-    return unitisation;
-  }
-
-
-  public void setUnitisation(UnitisationData unitisation) {
-    this.unitisation = unitisation;
-  }
-
-
   public FundValuationPointData miscellaneous(Map<String, FundAmount> miscellaneous) {
     
     this.miscellaneous = miscellaneous;
@@ -333,7 +307,6 @@ public class FundValuationPointData {
         (this.gav.compareTo(fundValuationPointData.getGav()) == 0) &&
         Objects.equals(this.fees, fundValuationPointData.fees) &&
         (this.nav.compareTo(fundValuationPointData.getNav()) == 0) &&
-        Objects.equals(this.unitisation, fundValuationPointData.unitisation) &&
         Objects.equals(this.miscellaneous, fundValuationPointData.miscellaneous) &&
         Objects.equals(this.previousValuationPointData, fundValuationPointData.previousValuationPointData);
   }
@@ -344,7 +317,7 @@ public class FundValuationPointData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(backOut, dealing, pnL, gav, fees, nav, unitisation, miscellaneous, previousValuationPointData);
+    return Objects.hash(backOut, dealing, pnL, gav, fees, nav, miscellaneous, previousValuationPointData);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -364,7 +337,6 @@ public class FundValuationPointData {
     sb.append("    gav: ").append(toIndentedString(gav)).append("\n");
     sb.append("    fees: ").append(toIndentedString(fees)).append("\n");
     sb.append("    nav: ").append(toIndentedString(nav)).append("\n");
-    sb.append("    unitisation: ").append(toIndentedString(unitisation)).append("\n");
     sb.append("    miscellaneous: ").append(toIndentedString(miscellaneous)).append("\n");
     sb.append("    previousValuationPointData: ").append(toIndentedString(previousValuationPointData)).append("\n");
     sb.append("}");
@@ -395,7 +367,6 @@ public class FundValuationPointData {
     openapiFields.add("gav");
     openapiFields.add("fees");
     openapiFields.add("nav");
-    openapiFields.add("unitisation");
     openapiFields.add("miscellaneous");
     openapiFields.add("previousValuationPointData");
 
@@ -431,10 +402,6 @@ public class FundValuationPointData {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `pnL`
       FundPnlBreakdown.validateJsonElement(jsonObj.get("pnL"));
-      // validate the optional field `unitisation`
-      if (jsonObj.get("unitisation") != null && !jsonObj.get("unitisation").isJsonNull()) {
-        UnitisationData.validateJsonElement(jsonObj.get("unitisation"));
-      }
       // validate the optional field `previousValuationPointData`
       if (jsonObj.get("previousValuationPointData") != null && !jsonObj.get("previousValuationPointData").isJsonNull()) {
         PreviousFundValuationPointData.validateJsonElement(jsonObj.get("previousValuationPointData"));

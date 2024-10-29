@@ -57,10 +57,6 @@ public class MasteredInstrument extends LusidInstrument {
   @SerializedName(SERIALIZED_NAME_IDENTIFIERS)
   private Map<String, String> identifiers = new HashMap<>();
 
-  public static final String SERIALIZED_NAME_ASSET_CLASS = "assetClass";
-  @SerializedName(SERIALIZED_NAME_ASSET_CLASS)
-  private String assetClass;
-
   public static final String SERIALIZED_NAME_MASTERED_DOM_CCY = "masteredDomCcy";
   @SerializedName(SERIALIZED_NAME_MASTERED_DOM_CCY)
   private String masteredDomCcy;
@@ -81,26 +77,30 @@ public class MasteredInstrument extends LusidInstrument {
   @SerializedName(SERIALIZED_NAME_MASTERED_SCOPE)
   private String masteredScope;
 
+  public static final String SERIALIZED_NAME_MASTERED_ASSET_CLASS = "masteredAssetClass";
+  @SerializedName(SERIALIZED_NAME_MASTERED_ASSET_CLASS)
+  private String masteredAssetClass;
+
   public MasteredInstrument() {
     // this.instrumentType = this.getClass().getSimpleName();
   }
 
   
   public MasteredInstrument(
-     String assetClass, 
      String masteredDomCcy, 
      String masteredInstrumentType, 
      String masteredLusidInstrumentId, 
      String masteredName, 
-     String masteredScope
+     String masteredScope, 
+     String masteredAssetClass
   ) {
     this();
-    this.assetClass = assetClass;
     this.masteredDomCcy = masteredDomCcy;
     this.masteredInstrumentType = masteredInstrumentType;
     this.masteredLusidInstrumentId = masteredLusidInstrumentId;
     this.masteredName = masteredName;
     this.masteredScope = masteredScope;
+    this.masteredAssetClass = masteredAssetClass;
   }
 
   public MasteredInstrument identifiers(Map<String, String> identifiers) {
@@ -130,18 +130,6 @@ public class MasteredInstrument extends LusidInstrument {
   public void setIdentifiers(Map<String, String> identifiers) {
     this.identifiers = identifiers;
   }
-
-
-   /**
-   * Asset class of the mastered instrument - read only field    Supported string (enumeration) values are: [InterestRates, FX, Inflation, Equities, Credit, Commodities, Money].
-   * @return assetClass
-  **/
-  @jakarta.annotation.Nullable
-  public String getAssetClass() {
-    return assetClass;
-  }
-
-
 
 
    /**
@@ -204,6 +192,18 @@ public class MasteredInstrument extends LusidInstrument {
 
 
 
+   /**
+   * Asset class of the underlying mastered instrument - read only field    Supported string (enumeration) values are: [InterestRates, FX, Inflation, Equities, Credit, Commodities, Money].
+   * @return masteredAssetClass
+  **/
+  @jakarta.annotation.Nullable
+  public String getMasteredAssetClass() {
+    return masteredAssetClass;
+  }
+
+
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -215,12 +215,12 @@ public class MasteredInstrument extends LusidInstrument {
     }
     MasteredInstrument masteredInstrument = (MasteredInstrument) o;
     return Objects.equals(this.identifiers, masteredInstrument.identifiers) &&
-        Objects.equals(this.assetClass, masteredInstrument.assetClass) &&
         Objects.equals(this.masteredDomCcy, masteredInstrument.masteredDomCcy) &&
         Objects.equals(this.masteredInstrumentType, masteredInstrument.masteredInstrumentType) &&
         Objects.equals(this.masteredLusidInstrumentId, masteredInstrument.masteredLusidInstrumentId) &&
         Objects.equals(this.masteredName, masteredInstrument.masteredName) &&
         Objects.equals(this.masteredScope, masteredInstrument.masteredScope) &&
+        Objects.equals(this.masteredAssetClass, masteredInstrument.masteredAssetClass) &&
         super.equals(o);
   }
 
@@ -230,7 +230,7 @@ public class MasteredInstrument extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(identifiers, assetClass, masteredDomCcy, masteredInstrumentType, masteredLusidInstrumentId, masteredName, masteredScope, super.hashCode());
+    return Objects.hash(identifiers, masteredDomCcy, masteredInstrumentType, masteredLusidInstrumentId, masteredName, masteredScope, masteredAssetClass, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -246,12 +246,12 @@ public class MasteredInstrument extends LusidInstrument {
     sb.append("class MasteredInstrument {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    identifiers: ").append(toIndentedString(identifiers)).append("\n");
-    sb.append("    assetClass: ").append(toIndentedString(assetClass)).append("\n");
     sb.append("    masteredDomCcy: ").append(toIndentedString(masteredDomCcy)).append("\n");
     sb.append("    masteredInstrumentType: ").append(toIndentedString(masteredInstrumentType)).append("\n");
     sb.append("    masteredLusidInstrumentId: ").append(toIndentedString(masteredLusidInstrumentId)).append("\n");
     sb.append("    masteredName: ").append(toIndentedString(masteredName)).append("\n");
     sb.append("    masteredScope: ").append(toIndentedString(masteredScope)).append("\n");
+    sb.append("    masteredAssetClass: ").append(toIndentedString(masteredAssetClass)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -276,12 +276,12 @@ public class MasteredInstrument extends LusidInstrument {
     openapiFields = new HashSet<String>();
     openapiFields.add("instrumentType");
     openapiFields.add("identifiers");
-    openapiFields.add("assetClass");
     openapiFields.add("masteredDomCcy");
     openapiFields.add("masteredInstrumentType");
     openapiFields.add("masteredLusidInstrumentId");
     openapiFields.add("masteredName");
     openapiFields.add("masteredScope");
+    openapiFields.add("masteredAssetClass");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

@@ -12,7 +12,6 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.FundPreviousNAV;
-import com.finbourne.lusid.model.UnitisationData;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -55,10 +54,6 @@ public class PreviousFundValuationPointData {
   @SerializedName(SERIALIZED_NAME_NAV)
   private FundPreviousNAV nav;
 
-  public static final String SERIALIZED_NAME_UNITISATION = "unitisation";
-  @SerializedName(SERIALIZED_NAME_UNITISATION)
-  private UnitisationData unitisation;
-
   public PreviousFundValuationPointData() {
   }
 
@@ -83,27 +78,6 @@ public class PreviousFundValuationPointData {
   }
 
 
-  public PreviousFundValuationPointData unitisation(UnitisationData unitisation) {
-    
-    this.unitisation = unitisation;
-    return this;
-  }
-
-   /**
-   * Get unitisation
-   * @return unitisation
-  **/
-  @jakarta.annotation.Nullable
-  public UnitisationData getUnitisation() {
-    return unitisation;
-  }
-
-
-  public void setUnitisation(UnitisationData unitisation) {
-    this.unitisation = unitisation;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -114,13 +88,12 @@ public class PreviousFundValuationPointData {
       return false;
     }
     PreviousFundValuationPointData previousFundValuationPointData = (PreviousFundValuationPointData) o;
-    return Objects.equals(this.nav, previousFundValuationPointData.nav) &&
-        Objects.equals(this.unitisation, previousFundValuationPointData.unitisation);
+    return Objects.equals(this.nav, previousFundValuationPointData.nav);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(nav, unitisation);
+    return Objects.hash(nav);
   }
 
   @Override
@@ -128,7 +101,6 @@ public class PreviousFundValuationPointData {
     StringBuilder sb = new StringBuilder();
     sb.append("class PreviousFundValuationPointData {\n");
     sb.append("    nav: ").append(toIndentedString(nav)).append("\n");
-    sb.append("    unitisation: ").append(toIndentedString(unitisation)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -152,7 +124,6 @@ public class PreviousFundValuationPointData {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("nav");
-    openapiFields.add("unitisation");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -181,10 +152,6 @@ public class PreviousFundValuationPointData {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `nav`
       FundPreviousNAV.validateJsonElement(jsonObj.get("nav"));
-      // validate the optional field `unitisation`
-      if (jsonObj.get("unitisation") != null && !jsonObj.get("unitisation").isJsonNull()) {
-        UnitisationData.validateJsonElement(jsonObj.get("unitisation"));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
