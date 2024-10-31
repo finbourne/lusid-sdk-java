@@ -379,7 +379,7 @@ public class TransactionPortfoliosApi {
 
     /**
      * AdjustHoldings: Adjust holdings
-     * Adjust one or more holdings of the specified transaction portfolio to the provided targets. LUSID will  automatically construct adjustment transactions to ensure that the holdings which have been adjusted are  always set to the provided targets for the specified effective datetime. Read more about the difference between  adjusting and setting holdings here https://support.lusid.com/how-do-i-adjust-my-holdings.
+     * Adjust one or more holdings of the specified transaction portfolio to the provided targets. LUSID will  automatically construct adjustment transactions to ensure that the holdings which have been adjusted are  always set to the provided targets for the specified effective datetime. Read more about the difference between  adjusting and setting holdings here https://support.lusid.com/docs/how-do-i-manually-adjust-or-set-holdings.
      * @param scope The scope of the transaction portfolio. (required)
      * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
      * @param effectiveAt The effective datetime or cut label at which the holdings should be set to the provided targets. (required)
@@ -928,6 +928,286 @@ public class TransactionPortfoliosApi {
      */
     public APIbatchCreateTradeTicketsRequest batchCreateTradeTickets(String scope, String code, List<LusidTradeTicket> lusidTradeTicket) {
         return new APIbatchCreateTradeTicketsRequest(scope, code, lusidTradeTicket);
+    }
+    private okhttp3.Call batchSetHoldingsCall(String scope, String code, String successMode, Map<String, AdjustHoldingForDateRequest> requestBody, List<String> reconciliationMethods, final ApiCallback _callback) throws ApiException {
+        return batchSetHoldingsCall(scope, code, successMode, requestBody, reconciliationMethods,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call batchSetHoldingsCall(String scope, String code, String successMode, Map<String, AdjustHoldingForDateRequest> requestBody, List<String> reconciliationMethods, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = requestBody;
+
+        // create path and map variables
+        String localVarPath = "/api/transactionportfolios/{scope}/{code}/holdings/$batchSet"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (successMode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("successMode", successMode));
+        }
+
+        if (reconciliationMethods != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "reconciliationMethods", reconciliationMethods));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call batchSetHoldingsValidateBeforeCall(String scope, String code, String successMode, Map<String, AdjustHoldingForDateRequest> requestBody, List<String> reconciliationMethods, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling batchSetHoldings(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling batchSetHoldings(Async)");
+        }
+
+        // verify the required parameter 'successMode' is set
+        if (successMode == null) {
+            throw new ApiException("Missing the required parameter 'successMode' when calling batchSetHoldings(Async)");
+        }
+
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException("Missing the required parameter 'requestBody' when calling batchSetHoldings(Async)");
+        }
+
+        return batchSetHoldingsCall(scope, code, successMode, requestBody, reconciliationMethods, _callback, opts);
+
+    }
+
+
+    private ApiResponse<BatchAdjustHoldingsResponse> batchSetHoldingsWithHttpInfo(String scope, String code, String successMode, Map<String, AdjustHoldingForDateRequest> requestBody, List<String> reconciliationMethods) throws ApiException {
+        okhttp3.Call localVarCall = batchSetHoldingsValidateBeforeCall(scope, code, successMode, requestBody, reconciliationMethods, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<BatchAdjustHoldingsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<BatchAdjustHoldingsResponse> batchSetHoldingsWithHttpInfo(String scope, String code, String successMode, Map<String, AdjustHoldingForDateRequest> requestBody, List<String> reconciliationMethods, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = batchSetHoldingsValidateBeforeCall(scope, code, successMode, requestBody, reconciliationMethods, null, opts);
+        Type localVarReturnType = new TypeToken<BatchAdjustHoldingsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call batchSetHoldingsAsync(String scope, String code, String successMode, Map<String, AdjustHoldingForDateRequest> requestBody, List<String> reconciliationMethods, final ApiCallback<BatchAdjustHoldingsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = batchSetHoldingsValidateBeforeCall(scope, code, successMode, requestBody, reconciliationMethods, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<BatchAdjustHoldingsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call batchSetHoldingsAsync(String scope, String code, String successMode, Map<String, AdjustHoldingForDateRequest> requestBody, List<String> reconciliationMethods, final ApiCallback<BatchAdjustHoldingsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = batchSetHoldingsValidateBeforeCall(scope, code, successMode, requestBody, reconciliationMethods, _callback, opts);
+        Type localVarReturnType = new TypeToken<BatchAdjustHoldingsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIbatchSetHoldingsRequest {
+        private final String scope;
+        private final String code;
+        private final String successMode;
+        private final Map<String, AdjustHoldingForDateRequest> requestBody;
+        private List<String> reconciliationMethods;
+
+        private APIbatchSetHoldingsRequest(String scope, String code, String successMode, Map<String, AdjustHoldingForDateRequest> requestBody) {
+            this.scope = scope;
+            this.code = code;
+            this.successMode = successMode;
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Set reconciliationMethods
+         * @param reconciliationMethods Optional parameter for specifying a reconciliation method: e.g. FxForward. (optional)
+         * @return APIbatchSetHoldingsRequest
+         */
+        public APIbatchSetHoldingsRequest reconciliationMethods(List<String> reconciliationMethods) {
+            this.reconciliationMethods = reconciliationMethods;
+            return this;
+        }
+
+        /**
+         * Build call for batchSetHoldings
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successful SetHolding requests along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return batchSetHoldingsCall(scope, code, successMode, requestBody, reconciliationMethods, _callback);
+        }
+
+        /**
+         * Execute batchSetHoldings request
+         * @return BatchAdjustHoldingsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successful SetHolding requests along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public BatchAdjustHoldingsResponse execute() throws ApiException {
+            ApiResponse<BatchAdjustHoldingsResponse> localVarResp = batchSetHoldingsWithHttpInfo(scope, code, successMode, requestBody, reconciliationMethods);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute batchSetHoldings request. Use any specified configuration options to override any other configuration for this request only.
+         * @return BatchAdjustHoldingsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successful SetHolding requests along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public BatchAdjustHoldingsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<BatchAdjustHoldingsResponse> localVarResp = batchSetHoldingsWithHttpInfo(scope, code, successMode, requestBody, reconciliationMethods, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute batchSetHoldings request with HTTP info returned
+         * @return ApiResponse&lt;BatchAdjustHoldingsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successful SetHolding requests along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<BatchAdjustHoldingsResponse> executeWithHttpInfo() throws ApiException {
+            return batchSetHoldingsWithHttpInfo(scope, code, successMode, requestBody, reconciliationMethods);
+        }
+
+        /**
+         * Execute batchSetHoldings request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;BatchAdjustHoldingsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successful SetHolding requests along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<BatchAdjustHoldingsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return batchSetHoldingsWithHttpInfo(scope, code, successMode, requestBody, reconciliationMethods, opts);
+        }
+
+        /**
+         * Execute batchSetHoldings request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successful SetHolding requests along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<BatchAdjustHoldingsResponse> _callback) throws ApiException {
+            return batchSetHoldingsAsync(scope, code, successMode, requestBody, reconciliationMethods, _callback);
+        }
+
+        /**
+         * Execute batchSetHoldings request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successful SetHolding requests along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<BatchAdjustHoldingsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return batchSetHoldingsAsync(scope, code, successMode, requestBody, reconciliationMethods, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] BatchSetHoldings: Batch set holdings
+     * Set the holdings of the specified transaction portfolio to the provided targets. LUSID will automatically  construct adjustment transactions to ensure that the entire set of holdings for the transaction portfolio  are always set to the provided targets for the specified effective datetime. Read more about the difference between  adjusting and setting holdings here https://support.lusid.com/docs/how-do-i-manually-adjust-or-set-holdings.     Each request must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each adjustment in the response.    Note: If using partial failure modes, then it is important to check the response body for failures as any failures will still return a 200 status code
+     * @param scope The scope of the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial (required)
+     * @param requestBody The selected set of holdings to adjust to the provided targets for the   transaction portfolio. (required)
+     * @return APIbatchSetHoldingsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The successful SetHolding requests along with any failures </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIbatchSetHoldingsRequest batchSetHoldings(String scope, String code, String successMode, Map<String, AdjustHoldingForDateRequest> requestBody) {
+        return new APIbatchSetHoldingsRequest(scope, code, successMode, requestBody);
     }
     private okhttp3.Call batchUpsertTransactionsCall(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody, Boolean preserveProperties, final ApiCallback _callback) throws ApiException {
         return batchUpsertTransactionsCall(scope, code, successMode, requestBody, preserveProperties,  _callback, new ConfigurationOptions());
@@ -10095,7 +10375,7 @@ public class TransactionPortfoliosApi {
 
     /**
      * SetHoldings: Set holdings
-     * Set the holdings of the specified transaction portfolio to the provided targets. LUSID will automatically  construct adjustment transactions to ensure that the entire set of holdings for the transaction portfolio  are always set to the provided targets for the specified effective datetime. Read more about the difference between  adjusting and setting holdings here https://support.lusid.com/how-do-i-adjust-my-holdings.
+     * Set the holdings of the specified transaction portfolio to the provided targets. LUSID will automatically  construct adjustment transactions to ensure that the entire set of holdings for the transaction portfolio  are always set to the provided targets for the specified effective datetime. Read more about the difference between  adjusting and setting holdings here https://support.lusid.com/docs/how-do-i-manually-adjust-or-set-holdings.
      * @param scope The scope of the transaction portfolio. (required)
      * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
      * @param effectiveAt The effective datetime or cut label at which the holdings should be set to the provided targets. (required)

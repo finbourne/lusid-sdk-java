@@ -57,6 +57,10 @@ public class CutLocalTime {
   @SerializedName(SERIALIZED_NAME_MINUTES)
   private Integer minutes;
 
+  public static final String SERIALIZED_NAME_SECONDS = "seconds";
+  @SerializedName(SERIALIZED_NAME_SECONDS)
+  private java.math.BigDecimal seconds;
+
   public CutLocalTime() {
   }
 
@@ -102,6 +106,27 @@ public class CutLocalTime {
   }
 
 
+  public CutLocalTime seconds(java.math.BigDecimal seconds) {
+    
+    this.seconds = seconds;
+    return this;
+  }
+
+   /**
+   * Get seconds
+   * @return seconds
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getSeconds() {
+    return seconds;
+  }
+
+
+  public void setSeconds(java.math.BigDecimal seconds) {
+    this.seconds = seconds;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -113,12 +138,13 @@ public class CutLocalTime {
     }
     CutLocalTime cutLocalTime = (CutLocalTime) o;
     return Objects.equals(this.hours, cutLocalTime.hours) &&
-        Objects.equals(this.minutes, cutLocalTime.minutes);
+        Objects.equals(this.minutes, cutLocalTime.minutes) &&
+        (this.seconds.compareTo(cutLocalTime.getSeconds()) == 0);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hours, minutes);
+    return Objects.hash(hours, minutes, seconds);
   }
 
   @Override
@@ -127,6 +153,7 @@ public class CutLocalTime {
     sb.append("class CutLocalTime {\n");
     sb.append("    hours: ").append(toIndentedString(hours)).append("\n");
     sb.append("    minutes: ").append(toIndentedString(minutes)).append("\n");
+    sb.append("    seconds: ").append(toIndentedString(seconds)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -151,6 +178,7 @@ public class CutLocalTime {
     openapiFields = new HashSet<String>();
     openapiFields.add("hours");
     openapiFields.add("minutes");
+    openapiFields.add("seconds");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

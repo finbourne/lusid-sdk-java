@@ -9,6 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**hours** | **Integer** |  |  [optional] |
 |**minutes** | **Integer** |  |  [optional] |
+|**seconds** | **java.math.BigDecimal** |  |  [optional] |
 
 
 
