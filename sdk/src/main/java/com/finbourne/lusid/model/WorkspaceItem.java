@@ -72,7 +72,7 @@ public class WorkspaceItem {
 
   public static final String SERIALIZED_NAME_CONTENT = "content";
   @SerializedName(SERIALIZED_NAME_CONTENT)
-  private String content;
+  private Object content = null;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
@@ -169,7 +169,7 @@ public class WorkspaceItem {
   }
 
 
-  public WorkspaceItem content(String content) {
+  public WorkspaceItem content(Object content) {
     
     this.content = content;
     return this;
@@ -179,13 +179,13 @@ public class WorkspaceItem {
    * The content associated with a workspace item.
    * @return content
   **/
-  @jakarta.annotation.Nonnull
-  public String getContent() {
+  @jakarta.annotation.Nullable
+  public Object getContent() {
     return content;
   }
 
 
-  public void setContent(String content) {
+  public void setContent(Object content) {
     this.content = content;
   }
 
@@ -353,9 +353,6 @@ public class WorkspaceItem {
       }
       if (!jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
-      }
-      if (!jsonObj.get("content").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `content` to be a primitive type in the JSON string but got `%s`", jsonObj.get("content").toString()));
       }
       // validate the optional field `version`
       if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {

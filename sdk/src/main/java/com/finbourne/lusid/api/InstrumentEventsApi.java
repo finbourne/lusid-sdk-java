@@ -1125,7 +1125,7 @@ public class InstrumentEventsApi {
     }
 
     /**
-     * [EXPERIMENTAL] QueryInstrumentEvents: Returns a list of instrument events based on the holdings of the portfolios and date range specified in the query.
+     * [EARLY ACCESS] QueryInstrumentEvents: Returns a list of instrument events based on the holdings of the portfolios and date range specified in the query.
      * Returns a list of instrument events based on the holdings of the portfolios and date range specified in the query.
      * @return APIqueryInstrumentEventsRequest
      * @http.response.details

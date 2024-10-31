@@ -63,7 +63,7 @@ public class WorkspaceItemCreationRequest {
 
   public static final String SERIALIZED_NAME_CONTENT = "content";
   @SerializedName(SERIALIZED_NAME_CONTENT)
-  private String content;
+  private Object content = null;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -135,7 +135,7 @@ public class WorkspaceItemCreationRequest {
   }
 
 
-  public WorkspaceItemCreationRequest content(String content) {
+  public WorkspaceItemCreationRequest content(Object content) {
     
     this.content = content;
     return this;
@@ -145,13 +145,13 @@ public class WorkspaceItemCreationRequest {
    * The content associated with a workspace item.
    * @return content
   **/
-  @jakarta.annotation.Nonnull
-  public String getContent() {
+  @jakarta.annotation.Nullable
+  public Object getContent() {
     return content;
   }
 
 
-  public void setContent(String content) {
+  public void setContent(Object content) {
     this.content = content;
   }
 
@@ -270,9 +270,6 @@ public class WorkspaceItemCreationRequest {
       }
       if (!jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
-      }
-      if (!jsonObj.get("content").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `content` to be a primitive type in the JSON string but got `%s`", jsonObj.get("content").toString()));
       }
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));

@@ -11,7 +11,7 @@ A request to create an item in a workspace.
 |**format** | **Integer** | A simple integer format identifier. |  |
 |**name** | **String** | A workspace item&#39;s name; a unique identifier. |  |
 |**description** | **String** | The description of a workspace item. |  |
-|**content** | **String** | The content associated with a workspace item. |  |
+|**content** | **Object** | The content associated with a workspace item. |  |
 |**type** | **String** | The type of the workspace item. |  |
 
 

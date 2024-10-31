@@ -10,7 +10,7 @@ A request to update a workspace item.
 |------------ | ------------- | ------------- | -------------|
 |**format** | **Integer** | A simple integer format identifier. |  |
 |**description** | **String** | The description of a workspace item. |  |
-|**content** | **String** | The content associated with a workspace item. |  |
+|**content** | **Object** | The content associated with a workspace item. |  |
 |**type** | **String** | The type of the workspace item. |  |
 
 

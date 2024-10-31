@@ -21,6 +21,9 @@ Most, if not all, information about contracts is standardised. See, e.g. https:/
 |**optionType** | **String** | The option type, Call or Put.    Supported string (enumeration) values are: [Call, Put]. |  |
 |**underlying** | [**LusidInstrument**](LusidInstrument.md) |  |  |
 |**underlyingCode** | **String** | Code of the underlying, for an option on futures this should be the futures code. |  |
+|**deliveryDays** | **Integer** | Number of business days between exercise date and settlement of the option payoff or underlying. |  [optional] |
+|**businessDayConvention** | **String** | The adjustment type to apply to dates that fall upon a non-business day, e.g. modified following or following.  Supported string (enumeration) values are: [NoAdjustment, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest]. |  [optional] |
+|**settlementCalendars** | **List&lt;String&gt;** | An array of strings denoting calendars used in calculating the option settlement date. |  [optional] |
 
 
 

@@ -19,7 +19,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -102,6 +105,18 @@ public class ExchangeTradedOptionContractDetails {
   public static final String SERIALIZED_NAME_UNDERLYING_CODE = "underlyingCode";
   @SerializedName(SERIALIZED_NAME_UNDERLYING_CODE)
   private String underlyingCode;
+
+  public static final String SERIALIZED_NAME_DELIVERY_DAYS = "deliveryDays";
+  @SerializedName(SERIALIZED_NAME_DELIVERY_DAYS)
+  private Integer deliveryDays;
+
+  public static final String SERIALIZED_NAME_BUSINESS_DAY_CONVENTION = "businessDayConvention";
+  @SerializedName(SERIALIZED_NAME_BUSINESS_DAY_CONVENTION)
+  private String businessDayConvention;
+
+  public static final String SERIALIZED_NAME_SETTLEMENT_CALENDARS = "settlementCalendars";
+  @SerializedName(SERIALIZED_NAME_SETTLEMENT_CALENDARS)
+  private List<String> settlementCalendars;
 
   public ExchangeTradedOptionContractDetails() {
   }
@@ -379,6 +394,77 @@ public class ExchangeTradedOptionContractDetails {
   }
 
 
+  public ExchangeTradedOptionContractDetails deliveryDays(Integer deliveryDays) {
+    
+    this.deliveryDays = deliveryDays;
+    return this;
+  }
+
+   /**
+   * Number of business days between exercise date and settlement of the option payoff or underlying.
+   * @return deliveryDays
+  **/
+  @jakarta.annotation.Nullable
+  public Integer getDeliveryDays() {
+    return deliveryDays;
+  }
+
+
+  public void setDeliveryDays(Integer deliveryDays) {
+    this.deliveryDays = deliveryDays;
+  }
+
+
+  public ExchangeTradedOptionContractDetails businessDayConvention(String businessDayConvention) {
+    
+    this.businessDayConvention = businessDayConvention;
+    return this;
+  }
+
+   /**
+   * The adjustment type to apply to dates that fall upon a non-business day, e.g. modified following or following.  Supported string (enumeration) values are: [NoAdjustment, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest].
+   * @return businessDayConvention
+  **/
+  @jakarta.annotation.Nullable
+  public String getBusinessDayConvention() {
+    return businessDayConvention;
+  }
+
+
+  public void setBusinessDayConvention(String businessDayConvention) {
+    this.businessDayConvention = businessDayConvention;
+  }
+
+
+  public ExchangeTradedOptionContractDetails settlementCalendars(List<String> settlementCalendars) {
+    
+    this.settlementCalendars = settlementCalendars;
+    return this;
+  }
+
+  public ExchangeTradedOptionContractDetails addSettlementCalendarsItem(String settlementCalendarsItem) {
+    if (this.settlementCalendars == null) {
+      this.settlementCalendars = new ArrayList<>();
+    }
+    this.settlementCalendars.add(settlementCalendarsItem);
+    return this;
+  }
+
+   /**
+   * An array of strings denoting calendars used in calculating the option settlement date.
+   * @return settlementCalendars
+  **/
+  @jakarta.annotation.Nullable
+  public List<String> getSettlementCalendars() {
+    return settlementCalendars;
+  }
+
+
+  public void setSettlementCalendars(List<String> settlementCalendars) {
+    this.settlementCalendars = settlementCalendars;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -401,12 +487,26 @@ public class ExchangeTradedOptionContractDetails {
         Objects.equals(this.optionCode, exchangeTradedOptionContractDetails.optionCode) &&
         Objects.equals(this.optionType, exchangeTradedOptionContractDetails.optionType) &&
         Objects.equals(this.underlying, exchangeTradedOptionContractDetails.underlying) &&
-        Objects.equals(this.underlyingCode, exchangeTradedOptionContractDetails.underlyingCode);
+        Objects.equals(this.underlyingCode, exchangeTradedOptionContractDetails.underlyingCode) &&
+        Objects.equals(this.deliveryDays, exchangeTradedOptionContractDetails.deliveryDays) &&
+        Objects.equals(this.businessDayConvention, exchangeTradedOptionContractDetails.businessDayConvention) &&
+        Objects.equals(this.settlementCalendars, exchangeTradedOptionContractDetails.settlementCalendars);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(domCcy, strike, contractSize, country, deliveryType, description, exchangeCode, exerciseDate, exerciseType, optionCode, optionType, underlying, underlyingCode);
+    return Objects.hash(domCcy, strike, contractSize, country, deliveryType, description, exchangeCode, exerciseDate, exerciseType, optionCode, optionType, underlying, underlyingCode, deliveryDays, businessDayConvention, settlementCalendars);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -426,6 +526,9 @@ public class ExchangeTradedOptionContractDetails {
     sb.append("    optionType: ").append(toIndentedString(optionType)).append("\n");
     sb.append("    underlying: ").append(toIndentedString(underlying)).append("\n");
     sb.append("    underlyingCode: ").append(toIndentedString(underlyingCode)).append("\n");
+    sb.append("    deliveryDays: ").append(toIndentedString(deliveryDays)).append("\n");
+    sb.append("    businessDayConvention: ").append(toIndentedString(businessDayConvention)).append("\n");
+    sb.append("    settlementCalendars: ").append(toIndentedString(settlementCalendars)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -461,6 +564,9 @@ public class ExchangeTradedOptionContractDetails {
     openapiFields.add("optionType");
     openapiFields.add("underlying");
     openapiFields.add("underlyingCode");
+    openapiFields.add("deliveryDays");
+    openapiFields.add("businessDayConvention");
+    openapiFields.add("settlementCalendars");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -527,6 +633,13 @@ public class ExchangeTradedOptionContractDetails {
       LusidInstrument.validateJsonElement(jsonObj.get("underlying"));
       if (!jsonObj.get("underlyingCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `underlyingCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("underlyingCode").toString()));
+      }
+      if ((jsonObj.get("businessDayConvention") != null && !jsonObj.get("businessDayConvention").isJsonNull()) && !jsonObj.get("businessDayConvention").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `businessDayConvention` to be a primitive type in the JSON string but got `%s`", jsonObj.get("businessDayConvention").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("settlementCalendars") != null && !jsonObj.get("settlementCalendars").isJsonNull() && !jsonObj.get("settlementCalendars").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `settlementCalendars` to be an array in the JSON string but got `%s`", jsonObj.get("settlementCalendars").toString()));
       }
   }
 
