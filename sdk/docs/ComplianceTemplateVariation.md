@@ -13,6 +13,7 @@
 |**properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Properties associated with the Compliance Template Variation |  |
 |**acceptedAddressKeys** | [**ResourceId**](ResourceId.md) |  |  |
 |**steps** | [**List&lt;ComplianceStep&gt;**](ComplianceStep.md) | The steps expressed in this template, with their required parameters |  |
+|**referencedGroupLabel** | **String** | The label of a given referenced group in a Compliance Rule Template Variation |  [optional] |
 
 
 

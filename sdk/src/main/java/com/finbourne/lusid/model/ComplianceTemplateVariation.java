@@ -26,6 +26,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -80,6 +81,10 @@ public class ComplianceTemplateVariation {
   public static final String SERIALIZED_NAME_STEPS = "steps";
   @SerializedName(SERIALIZED_NAME_STEPS)
   private List<ComplianceStep> steps = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_REFERENCED_GROUP_LABEL = "referencedGroupLabel";
+  @SerializedName(SERIALIZED_NAME_REFERENCED_GROUP_LABEL)
+  private String referencedGroupLabel;
 
   public ComplianceTemplateVariation() {
   }
@@ -234,6 +239,27 @@ public class ComplianceTemplateVariation {
   }
 
 
+  public ComplianceTemplateVariation referencedGroupLabel(String referencedGroupLabel) {
+    
+    this.referencedGroupLabel = referencedGroupLabel;
+    return this;
+  }
+
+   /**
+   * The label of a given referenced group in a Compliance Rule Template Variation
+   * @return referencedGroupLabel
+  **/
+  @jakarta.annotation.Nullable
+  public String getReferencedGroupLabel() {
+    return referencedGroupLabel;
+  }
+
+
+  public void setReferencedGroupLabel(String referencedGroupLabel) {
+    this.referencedGroupLabel = referencedGroupLabel;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -249,12 +275,24 @@ public class ComplianceTemplateVariation {
         Objects.equals(this.requiredParameters, complianceTemplateVariation.requiredParameters) &&
         Objects.equals(this.properties, complianceTemplateVariation.properties) &&
         Objects.equals(this.acceptedAddressKeys, complianceTemplateVariation.acceptedAddressKeys) &&
-        Objects.equals(this.steps, complianceTemplateVariation.steps);
+        Objects.equals(this.steps, complianceTemplateVariation.steps) &&
+        Objects.equals(this.referencedGroupLabel, complianceTemplateVariation.referencedGroupLabel);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(label, description, requiredParameters, properties, acceptedAddressKeys, steps);
+    return Objects.hash(label, description, requiredParameters, properties, acceptedAddressKeys, steps, referencedGroupLabel);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -267,6 +305,7 @@ public class ComplianceTemplateVariation {
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    acceptedAddressKeys: ").append(toIndentedString(acceptedAddressKeys)).append("\n");
     sb.append("    steps: ").append(toIndentedString(steps)).append("\n");
+    sb.append("    referencedGroupLabel: ").append(toIndentedString(referencedGroupLabel)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -295,6 +334,7 @@ public class ComplianceTemplateVariation {
     openapiFields.add("properties");
     openapiFields.add("acceptedAddressKeys");
     openapiFields.add("steps");
+    openapiFields.add("referencedGroupLabel");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -354,6 +394,9 @@ public class ComplianceTemplateVariation {
       for (int i = 0; i < jsonArraysteps.size(); i++) {
         ComplianceStep.validateJsonElement(jsonArraysteps.get(i));
       };
+      if ((jsonObj.get("referencedGroupLabel") != null && !jsonObj.get("referencedGroupLabel").isJsonNull()) && !jsonObj.get("referencedGroupLabel").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `referencedGroupLabel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("referencedGroupLabel").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
