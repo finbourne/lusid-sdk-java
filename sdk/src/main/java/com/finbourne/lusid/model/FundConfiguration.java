@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.ComponentFilter;
+import com.finbourne.lusid.model.ExternalFeeComponentFilter;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.ResourceId;
@@ -87,6 +88,10 @@ public class FundConfiguration {
   public static final String SERIALIZED_NAME_BACK_OUT_FILTERS = "backOutFilters";
   @SerializedName(SERIALIZED_NAME_BACK_OUT_FILTERS)
   private List<ComponentFilter> backOutFilters;
+
+  public static final String SERIALIZED_NAME_EXTERNAL_FEE_FILTERS = "externalFeeFilters";
+  @SerializedName(SERIALIZED_NAME_EXTERNAL_FEE_FILTERS)
+  private List<ExternalFeeComponentFilter> externalFeeFilters;
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
@@ -274,6 +279,35 @@ public class FundConfiguration {
   }
 
 
+  public FundConfiguration externalFeeFilters(List<ExternalFeeComponentFilter> externalFeeFilters) {
+    
+    this.externalFeeFilters = externalFeeFilters;
+    return this;
+  }
+
+  public FundConfiguration addExternalFeeFiltersItem(ExternalFeeComponentFilter externalFeeFiltersItem) {
+    if (this.externalFeeFilters == null) {
+      this.externalFeeFilters = new ArrayList<>();
+    }
+    this.externalFeeFilters.add(externalFeeFiltersItem);
+    return this;
+  }
+
+   /**
+   * The set of filters used to decide which JE lines are used for inputting fees from an external source.
+   * @return externalFeeFilters
+  **/
+  @jakarta.annotation.Nullable
+  public List<ExternalFeeComponentFilter> getExternalFeeFilters() {
+    return externalFeeFilters;
+  }
+
+
+  public void setExternalFeeFilters(List<ExternalFeeComponentFilter> externalFeeFilters) {
+    this.externalFeeFilters = externalFeeFilters;
+  }
+
+
   public FundConfiguration properties(Map<String, Property> properties) {
     
     this.properties = properties;
@@ -370,6 +404,7 @@ public class FundConfiguration {
         Objects.equals(this.dealingFilters, fundConfiguration.dealingFilters) &&
         Objects.equals(this.pnlFilters, fundConfiguration.pnlFilters) &&
         Objects.equals(this.backOutFilters, fundConfiguration.backOutFilters) &&
+        Objects.equals(this.externalFeeFilters, fundConfiguration.externalFeeFilters) &&
         Objects.equals(this.properties, fundConfiguration.properties) &&
         Objects.equals(this.version, fundConfiguration.version) &&
         Objects.equals(this.links, fundConfiguration.links);
@@ -381,7 +416,7 @@ public class FundConfiguration {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, displayName, description, dealingFilters, pnlFilters, backOutFilters, properties, version, links);
+    return Objects.hash(href, id, displayName, description, dealingFilters, pnlFilters, backOutFilters, externalFeeFilters, properties, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -402,6 +437,7 @@ public class FundConfiguration {
     sb.append("    dealingFilters: ").append(toIndentedString(dealingFilters)).append("\n");
     sb.append("    pnlFilters: ").append(toIndentedString(pnlFilters)).append("\n");
     sb.append("    backOutFilters: ").append(toIndentedString(backOutFilters)).append("\n");
+    sb.append("    externalFeeFilters: ").append(toIndentedString(externalFeeFilters)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
@@ -434,6 +470,7 @@ public class FundConfiguration {
     openapiFields.add("dealingFilters");
     openapiFields.add("pnlFilters");
     openapiFields.add("backOutFilters");
+    openapiFields.add("externalFeeFilters");
     openapiFields.add("properties");
     openapiFields.add("version");
     openapiFields.add("links");
@@ -513,6 +550,20 @@ public class FundConfiguration {
           // validate the optional field `backOutFilters` (array)
           for (int i = 0; i < jsonArraybackOutFilters.size(); i++) {
             ComponentFilter.validateJsonElement(jsonArraybackOutFilters.get(i));
+          };
+        }
+      }
+      if (jsonObj.get("externalFeeFilters") != null && !jsonObj.get("externalFeeFilters").isJsonNull()) {
+        JsonArray jsonArrayexternalFeeFilters = jsonObj.getAsJsonArray("externalFeeFilters");
+        if (jsonArrayexternalFeeFilters != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("externalFeeFilters").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `externalFeeFilters` to be an array in the JSON string but got `%s`", jsonObj.get("externalFeeFilters").toString()));
+          }
+
+          // validate the optional field `externalFeeFilters` (array)
+          for (int i = 0; i < jsonArrayexternalFeeFilters.size(); i++) {
+            ExternalFeeComponentFilter.validateJsonElement(jsonArrayexternalFeeFilters.get(i));
           };
         }
       }

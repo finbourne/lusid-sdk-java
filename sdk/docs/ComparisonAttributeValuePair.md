@@ -8,7 +8,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**attributeName** | **String** | Comparison rule attribute name. |  |
-|**value** | **String** | Computed value for the comparison rule attribute. |  |
+|**value** | **String** | Computed value for the comparison rule attribute. |  [optional] |
 
 
 

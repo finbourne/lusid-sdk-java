@@ -9,6 +9,7 @@ Event for physical option exercises.
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**exerciseDate** | **OffsetDateTime** | The exercise date of the option. |  [optional] |
+|**deliveryDate** | **OffsetDateTime** | The delivery date of the option. |  [optional] |
 |**exerciseType** | **String** | The optionality type of the underlying option e.g. American, European.    Supported string (enumeration) values are: [European, Bermudan, American]. |  |
 |**maturityDate** | **OffsetDateTime** | The maturity date of the option. |  |
 |**moneyness** | **String** | The moneyness of the option e.g. InTheMoney, OutOfTheMoney.    Supported string (enumeration) values are: [InTheMoney, OutOfTheMoney, AtTheMoney]. |  [optional] |

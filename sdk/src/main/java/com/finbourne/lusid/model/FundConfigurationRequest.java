@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.ComponentFilter;
+import com.finbourne.lusid.model.ExternalFeeComponentFilter;
 import com.finbourne.lusid.model.Property;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -79,6 +80,10 @@ public class FundConfigurationRequest {
   public static final String SERIALIZED_NAME_BACK_OUT_FILTERS = "backOutFilters";
   @SerializedName(SERIALIZED_NAME_BACK_OUT_FILTERS)
   private List<ComponentFilter> backOutFilters = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_EXTERNAL_FEE_FILTERS = "externalFeeFilters";
+  @SerializedName(SERIALIZED_NAME_EXTERNAL_FEE_FILTERS)
+  private List<ExternalFeeComponentFilter> externalFeeFilters;
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
@@ -237,6 +242,35 @@ public class FundConfigurationRequest {
   }
 
 
+  public FundConfigurationRequest externalFeeFilters(List<ExternalFeeComponentFilter> externalFeeFilters) {
+    
+    this.externalFeeFilters = externalFeeFilters;
+    return this;
+  }
+
+  public FundConfigurationRequest addExternalFeeFiltersItem(ExternalFeeComponentFilter externalFeeFiltersItem) {
+    if (this.externalFeeFilters == null) {
+      this.externalFeeFilters = new ArrayList<>();
+    }
+    this.externalFeeFilters.add(externalFeeFiltersItem);
+    return this;
+  }
+
+   /**
+   * The set of filters used to decide which JE lines are used for inputting fees from an external source.
+   * @return externalFeeFilters
+  **/
+  @jakarta.annotation.Nullable
+  public List<ExternalFeeComponentFilter> getExternalFeeFilters() {
+    return externalFeeFilters;
+  }
+
+
+  public void setExternalFeeFilters(List<ExternalFeeComponentFilter> externalFeeFilters) {
+    this.externalFeeFilters = externalFeeFilters;
+  }
+
+
   public FundConfigurationRequest properties(Map<String, Property> properties) {
     
     this.properties = properties;
@@ -282,6 +316,7 @@ public class FundConfigurationRequest {
         Objects.equals(this.dealingFilters, fundConfigurationRequest.dealingFilters) &&
         Objects.equals(this.pnlFilters, fundConfigurationRequest.pnlFilters) &&
         Objects.equals(this.backOutFilters, fundConfigurationRequest.backOutFilters) &&
+        Objects.equals(this.externalFeeFilters, fundConfigurationRequest.externalFeeFilters) &&
         Objects.equals(this.properties, fundConfigurationRequest.properties);
   }
 
@@ -291,7 +326,7 @@ public class FundConfigurationRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, displayName, description, dealingFilters, pnlFilters, backOutFilters, properties);
+    return Objects.hash(code, displayName, description, dealingFilters, pnlFilters, backOutFilters, externalFeeFilters, properties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -311,6 +346,7 @@ public class FundConfigurationRequest {
     sb.append("    dealingFilters: ").append(toIndentedString(dealingFilters)).append("\n");
     sb.append("    pnlFilters: ").append(toIndentedString(pnlFilters)).append("\n");
     sb.append("    backOutFilters: ").append(toIndentedString(backOutFilters)).append("\n");
+    sb.append("    externalFeeFilters: ").append(toIndentedString(externalFeeFilters)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -340,6 +376,7 @@ public class FundConfigurationRequest {
     openapiFields.add("dealingFilters");
     openapiFields.add("pnlFilters");
     openapiFields.add("backOutFilters");
+    openapiFields.add("externalFeeFilters");
     openapiFields.add("properties");
 
     // a set of required properties/fields (JSON key names)
@@ -409,6 +446,20 @@ public class FundConfigurationRequest {
       for (int i = 0; i < jsonArraybackOutFilters.size(); i++) {
         ComponentFilter.validateJsonElement(jsonArraybackOutFilters.get(i));
       };
+      if (jsonObj.get("externalFeeFilters") != null && !jsonObj.get("externalFeeFilters").isJsonNull()) {
+        JsonArray jsonArrayexternalFeeFilters = jsonObj.getAsJsonArray("externalFeeFilters");
+        if (jsonArrayexternalFeeFilters != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("externalFeeFilters").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `externalFeeFilters` to be an array in the JSON string but got `%s`", jsonObj.get("externalFeeFilters").toString()));
+          }
+
+          // validate the optional field `externalFeeFilters` (array)
+          for (int i = 0; i < jsonArrayexternalFeeFilters.size(); i++) {
+            ExternalFeeComponentFilter.validateJsonElement(jsonArrayexternalFeeFilters.get(i));
+          };
+        }
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

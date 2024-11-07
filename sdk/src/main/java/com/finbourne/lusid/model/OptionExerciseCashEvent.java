@@ -63,6 +63,10 @@ public class OptionExerciseCashEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_EXERCISE_DATE)
   private OffsetDateTime exerciseDate;
 
+  public static final String SERIALIZED_NAME_DELIVERY_DATE = "deliveryDate";
+  @SerializedName(SERIALIZED_NAME_DELIVERY_DATE)
+  private OffsetDateTime deliveryDate;
+
   public static final String SERIALIZED_NAME_EXERCISE_TYPE = "exerciseType";
   @SerializedName(SERIALIZED_NAME_EXERCISE_TYPE)
   private String exerciseType;
@@ -142,6 +146,27 @@ public class OptionExerciseCashEvent extends InstrumentEvent {
 
   public void setExerciseDate(OffsetDateTime exerciseDate) {
     this.exerciseDate = exerciseDate;
+  }
+
+
+  public OptionExerciseCashEvent deliveryDate(OffsetDateTime deliveryDate) {
+    
+    this.deliveryDate = deliveryDate;
+    return this;
+  }
+
+   /**
+   * The delivery date of the option.
+   * @return deliveryDate
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getDeliveryDate() {
+    return deliveryDate;
+  }
+
+
+  public void setDeliveryDate(OffsetDateTime deliveryDate) {
+    this.deliveryDate = deliveryDate;
   }
 
 
@@ -354,6 +379,7 @@ public class OptionExerciseCashEvent extends InstrumentEvent {
     OptionExerciseCashEvent optionExerciseCashEvent = (OptionExerciseCashEvent) o;
     return (this.cashFlowPerUnit.compareTo(optionExerciseCashEvent.getCashFlowPerUnit()) == 0) &&
         Objects.equals(this.exerciseDate, optionExerciseCashEvent.exerciseDate) &&
+        Objects.equals(this.deliveryDate, optionExerciseCashEvent.deliveryDate) &&
         Objects.equals(this.exerciseType, optionExerciseCashEvent.exerciseType) &&
         Objects.equals(this.maturityDate, optionExerciseCashEvent.maturityDate) &&
         Objects.equals(this.moneyness, optionExerciseCashEvent.moneyness) &&
@@ -372,7 +398,7 @@ public class OptionExerciseCashEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(cashFlowPerUnit, exerciseDate, exerciseType, maturityDate, moneyness, optionExerciseElections, optionType, startDate, strikeCurrency, strikePerUnit, underlyingValuePerUnit, super.hashCode());
+    return Objects.hash(cashFlowPerUnit, exerciseDate, deliveryDate, exerciseType, maturityDate, moneyness, optionExerciseElections, optionType, startDate, strikeCurrency, strikePerUnit, underlyingValuePerUnit, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -389,6 +415,7 @@ public class OptionExerciseCashEvent extends InstrumentEvent {
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    cashFlowPerUnit: ").append(toIndentedString(cashFlowPerUnit)).append("\n");
     sb.append("    exerciseDate: ").append(toIndentedString(exerciseDate)).append("\n");
+    sb.append("    deliveryDate: ").append(toIndentedString(deliveryDate)).append("\n");
     sb.append("    exerciseType: ").append(toIndentedString(exerciseType)).append("\n");
     sb.append("    maturityDate: ").append(toIndentedString(maturityDate)).append("\n");
     sb.append("    moneyness: ").append(toIndentedString(moneyness)).append("\n");
@@ -423,6 +450,7 @@ public class OptionExerciseCashEvent extends InstrumentEvent {
     openapiFields.add("instrumentEventType");
     openapiFields.add("cashFlowPerUnit");
     openapiFields.add("exerciseDate");
+    openapiFields.add("deliveryDate");
     openapiFields.add("exerciseType");
     openapiFields.add("maturityDate");
     openapiFields.add("moneyness");

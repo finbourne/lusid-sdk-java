@@ -18,6 +18,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -91,7 +92,7 @@ public class ComparisonAttributeValuePair {
    * Computed value for the comparison rule attribute.
    * @return value
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getValue() {
     return value;
   }
@@ -116,9 +117,20 @@ public class ComparisonAttributeValuePair {
         Objects.equals(this.value, comparisonAttributeValuePair.value);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(attributeName, value);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -155,7 +167,6 @@ public class ComparisonAttributeValuePair {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("attributeName");
-    openapiRequiredFields.add("value");
   }
 
  /**
@@ -181,7 +192,7 @@ public class ComparisonAttributeValuePair {
       if (!jsonObj.get("attributeName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `attributeName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("attributeName").toString()));
       }
-      if (!jsonObj.get("value").isJsonPrimitive()) {
+      if ((jsonObj.get("value") != null && !jsonObj.get("value").isJsonNull()) && !jsonObj.get("value").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `value` to be a primitive type in the JSON string but got `%s`", jsonObj.get("value").toString()));
       }
   }

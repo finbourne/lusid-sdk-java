@@ -15,6 +15,7 @@ import com.finbourne.lusid.model.CurrencyAndAmount;
 import com.finbourne.lusid.model.OtcConfirmation;
 import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.ResourceId;
+import com.finbourne.lusid.model.Strategy;
 import com.finbourne.lusid.model.TransactionPrice;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -22,8 +23,10 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -128,6 +131,10 @@ public class TransactionRequest {
   public static final String SERIALIZED_NAME_TRANSACTION_GROUP_ID = "transactionGroupId";
   @SerializedName(SERIALIZED_NAME_TRANSACTION_GROUP_ID)
   private String transactionGroupId;
+
+  public static final String SERIALIZED_NAME_STRATEGY_TAG = "strategyTag";
+  @SerializedName(SERIALIZED_NAME_STRATEGY_TAG)
+  private List<Strategy> strategyTag;
 
   public TransactionRequest() {
   }
@@ -526,6 +533,35 @@ public class TransactionRequest {
   }
 
 
+  public TransactionRequest strategyTag(List<Strategy> strategyTag) {
+    
+    this.strategyTag = strategyTag;
+    return this;
+  }
+
+  public TransactionRequest addStrategyTagItem(Strategy strategyTagItem) {
+    if (this.strategyTag == null) {
+      this.strategyTag = new ArrayList<>();
+    }
+    this.strategyTag.add(strategyTagItem);
+    return this;
+  }
+
+   /**
+   * A Json representing the allocation of units accross multiple sub-holding keys
+   * @return strategyTag
+  **/
+  @jakarta.annotation.Nullable
+  public List<Strategy> getStrategyTag() {
+    return strategyTag;
+  }
+
+
+  public void setStrategyTag(List<Strategy> strategyTag) {
+    this.strategyTag = strategyTag;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -553,7 +589,8 @@ public class TransactionRequest {
         Objects.equals(this.orderId, transactionRequest.orderId) &&
         Objects.equals(this.allocationId, transactionRequest.allocationId) &&
         Objects.equals(this.custodianAccountId, transactionRequest.custodianAccountId) &&
-        Objects.equals(this.transactionGroupId, transactionRequest.transactionGroupId);
+        Objects.equals(this.transactionGroupId, transactionRequest.transactionGroupId) &&
+        Objects.equals(this.strategyTag, transactionRequest.strategyTag);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -562,7 +599,7 @@ public class TransactionRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transactionId, type, instrumentIdentifiers, transactionDate, settlementDate, units, transactionPrice, totalConsideration, exchangeRate, transactionCurrency, properties, counterpartyId, source, otcConfirmation, orderId, allocationId, custodianAccountId, transactionGroupId);
+    return Objects.hash(transactionId, type, instrumentIdentifiers, transactionDate, settlementDate, units, transactionPrice, totalConsideration, exchangeRate, transactionCurrency, properties, counterpartyId, source, otcConfirmation, orderId, allocationId, custodianAccountId, transactionGroupId, strategyTag);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -594,6 +631,7 @@ public class TransactionRequest {
     sb.append("    allocationId: ").append(toIndentedString(allocationId)).append("\n");
     sb.append("    custodianAccountId: ").append(toIndentedString(custodianAccountId)).append("\n");
     sb.append("    transactionGroupId: ").append(toIndentedString(transactionGroupId)).append("\n");
+    sb.append("    strategyTag: ").append(toIndentedString(strategyTag)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -634,6 +672,7 @@ public class TransactionRequest {
     openapiFields.add("allocationId");
     openapiFields.add("custodianAccountId");
     openapiFields.add("transactionGroupId");
+    openapiFields.add("strategyTag");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -711,6 +750,20 @@ public class TransactionRequest {
       }
       if ((jsonObj.get("transactionGroupId") != null && !jsonObj.get("transactionGroupId").isJsonNull()) && !jsonObj.get("transactionGroupId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `transactionGroupId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transactionGroupId").toString()));
+      }
+      if (jsonObj.get("strategyTag") != null && !jsonObj.get("strategyTag").isJsonNull()) {
+        JsonArray jsonArraystrategyTag = jsonObj.getAsJsonArray("strategyTag");
+        if (jsonArraystrategyTag != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("strategyTag").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `strategyTag` to be an array in the JSON string but got `%s`", jsonObj.get("strategyTag").toString()));
+          }
+
+          // validate the optional field `strategyTag` (array)
+          for (int i = 0; i < jsonArraystrategyTag.size(); i++) {
+            Strategy.validateJsonElement(jsonArraystrategyTag.get(i));
+          };
+        }
       }
   }
 
