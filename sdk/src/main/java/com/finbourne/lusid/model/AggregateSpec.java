@@ -57,11 +57,13 @@ public class AggregateSpec {
   private String key;
 
   /**
-   * The available values are: Sum, Proportion, Average, Count, Min, Max, Value, SumOfPositiveValues, SumOfNegativeValues, SumOfAbsoluteValues, ProportionOfAbsoluteValues, SumCumulativeInAdvance, SumCumulativeInArrears
+   * The available values are: Sum, DefaultSum, Proportion, Average, Count, Min, Max, Value, SumOfPositiveValues, SumOfNegativeValues, SumOfAbsoluteValues, ProportionOfAbsoluteValues, SumCumulativeInAdvance, SumCumulativeInArrears
    */
   @JsonAdapter(OpEnum.Adapter.class)
   public enum OpEnum {
     SUM("Sum"),
+    
+    DEFAULTSUM("DefaultSum"),
     
     PROPORTION("Proportion"),
     
@@ -164,7 +166,7 @@ public class AggregateSpec {
   }
 
    /**
-   * The available values are: Sum, Proportion, Average, Count, Min, Max, Value, SumOfPositiveValues, SumOfNegativeValues, SumOfAbsoluteValues, ProportionOfAbsoluteValues, SumCumulativeInAdvance, SumCumulativeInArrears
+   * The available values are: Sum, DefaultSum, Proportion, Average, Count, Min, Max, Value, SumOfPositiveValues, SumOfNegativeValues, SumOfAbsoluteValues, ProportionOfAbsoluteValues, SumCumulativeInAdvance, SumCumulativeInArrears
    * @return op
   **/
   @jakarta.annotation.Nonnull

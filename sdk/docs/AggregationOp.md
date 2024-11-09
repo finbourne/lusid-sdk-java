@@ -7,6 +7,8 @@
 
 * `SUM` (value: `"Sum"`)
 
+* `DEFAULTSUM` (value: `"DefaultSum"`)
+
 * `PROPORTION` (value: `"Proportion"`)
 
 * `AVERAGE` (value: `"Average"`)

@@ -16,7 +16,9 @@ import com.finbourne.lusid.model.CustodianAccount;
 import com.finbourne.lusid.model.OtcConfirmation;
 import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.ResourceId;
+import com.finbourne.lusid.model.Strategy;
 import com.finbourne.lusid.model.TransactionPrice;
+import com.finbourne.lusid.model.TransactionTypeDetails;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -24,8 +26,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -199,6 +203,14 @@ public class Transaction {
   public static final String SERIALIZED_NAME_TRANSACTION_GROUP_ID = "transactionGroupId";
   @SerializedName(SERIALIZED_NAME_TRANSACTION_GROUP_ID)
   private String transactionGroupId;
+
+  public static final String SERIALIZED_NAME_STRATEGY_TAG = "strategyTag";
+  @SerializedName(SERIALIZED_NAME_STRATEGY_TAG)
+  private List<Strategy> strategyTag;
+
+  public static final String SERIALIZED_NAME_RESOLVED_TRANSACTION_TYPE_DETAILS = "resolvedTransactionTypeDetails";
+  @SerializedName(SERIALIZED_NAME_RESOLVED_TRANSACTION_TYPE_DETAILS)
+  private TransactionTypeDetails resolvedTransactionTypeDetails;
 
   public Transaction() {
   }
@@ -702,6 +714,56 @@ public class Transaction {
   }
 
 
+  public Transaction strategyTag(List<Strategy> strategyTag) {
+    
+    this.strategyTag = strategyTag;
+    return this;
+  }
+
+  public Transaction addStrategyTagItem(Strategy strategyTagItem) {
+    if (this.strategyTag == null) {
+      this.strategyTag = new ArrayList<>();
+    }
+    this.strategyTag.add(strategyTagItem);
+    return this;
+  }
+
+   /**
+   * A list of strategies representing the allocation of units across multiple sub-holding keys
+   * @return strategyTag
+  **/
+  @jakarta.annotation.Nullable
+  public List<Strategy> getStrategyTag() {
+    return strategyTag;
+  }
+
+
+  public void setStrategyTag(List<Strategy> strategyTag) {
+    this.strategyTag = strategyTag;
+  }
+
+
+  public Transaction resolvedTransactionTypeDetails(TransactionTypeDetails resolvedTransactionTypeDetails) {
+    
+    this.resolvedTransactionTypeDetails = resolvedTransactionTypeDetails;
+    return this;
+  }
+
+   /**
+   * Get resolvedTransactionTypeDetails
+   * @return resolvedTransactionTypeDetails
+  **/
+  @jakarta.annotation.Nullable
+  public TransactionTypeDetails getResolvedTransactionTypeDetails() {
+    return resolvedTransactionTypeDetails;
+  }
+
+
+  public void setResolvedTransactionTypeDetails(TransactionTypeDetails resolvedTransactionTypeDetails) {
+    this.resolvedTransactionTypeDetails = resolvedTransactionTypeDetails;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -734,7 +796,9 @@ public class Transaction {
         Objects.equals(this.orderId, transaction.orderId) &&
         Objects.equals(this.allocationId, transaction.allocationId) &&
         Objects.equals(this.custodianAccount, transaction.custodianAccount) &&
-        Objects.equals(this.transactionGroupId, transaction.transactionGroupId);
+        Objects.equals(this.transactionGroupId, transaction.transactionGroupId) &&
+        Objects.equals(this.strategyTag, transaction.strategyTag) &&
+        Objects.equals(this.resolvedTransactionTypeDetails, transaction.resolvedTransactionTypeDetails);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -743,7 +807,7 @@ public class Transaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transactionId, type, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionPrice, totalConsideration, exchangeRate, transactionCurrency, properties, counterpartyId, source, entryDateTime, otcConfirmation, transactionStatus, cancelDateTime, orderId, allocationId, custodianAccount, transactionGroupId);
+    return Objects.hash(transactionId, type, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionPrice, totalConsideration, exchangeRate, transactionCurrency, properties, counterpartyId, source, entryDateTime, otcConfirmation, transactionStatus, cancelDateTime, orderId, allocationId, custodianAccount, transactionGroupId, strategyTag, resolvedTransactionTypeDetails);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -780,6 +844,8 @@ public class Transaction {
     sb.append("    allocationId: ").append(toIndentedString(allocationId)).append("\n");
     sb.append("    custodianAccount: ").append(toIndentedString(custodianAccount)).append("\n");
     sb.append("    transactionGroupId: ").append(toIndentedString(transactionGroupId)).append("\n");
+    sb.append("    strategyTag: ").append(toIndentedString(strategyTag)).append("\n");
+    sb.append("    resolvedTransactionTypeDetails: ").append(toIndentedString(resolvedTransactionTypeDetails)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -825,6 +891,8 @@ public class Transaction {
     openapiFields.add("allocationId");
     openapiFields.add("custodianAccount");
     openapiFields.add("transactionGroupId");
+    openapiFields.add("strategyTag");
+    openapiFields.add("resolvedTransactionTypeDetails");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -905,6 +973,24 @@ public class Transaction {
       }
       if ((jsonObj.get("transactionGroupId") != null && !jsonObj.get("transactionGroupId").isJsonNull()) && !jsonObj.get("transactionGroupId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `transactionGroupId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transactionGroupId").toString()));
+      }
+      if (jsonObj.get("strategyTag") != null && !jsonObj.get("strategyTag").isJsonNull()) {
+        JsonArray jsonArraystrategyTag = jsonObj.getAsJsonArray("strategyTag");
+        if (jsonArraystrategyTag != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("strategyTag").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `strategyTag` to be an array in the JSON string but got `%s`", jsonObj.get("strategyTag").toString()));
+          }
+
+          // validate the optional field `strategyTag` (array)
+          for (int i = 0; i < jsonArraystrategyTag.size(); i++) {
+            Strategy.validateJsonElement(jsonArraystrategyTag.get(i));
+          };
+        }
+      }
+      // validate the optional field `resolvedTransactionTypeDetails`
+      if (jsonObj.get("resolvedTransactionTypeDetails") != null && !jsonObj.get("resolvedTransactionTypeDetails").isJsonNull()) {
+        TransactionTypeDetails.validateJsonElement(jsonObj.get("resolvedTransactionTypeDetails"));
       }
   }
 

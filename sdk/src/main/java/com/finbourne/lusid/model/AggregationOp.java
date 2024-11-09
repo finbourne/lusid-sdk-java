@@ -27,6 +27,8 @@ public enum AggregationOp {
   
   SUM("Sum"),
   
+  DEFAULTSUM("DefaultSum"),
+  
   PROPORTION("Proportion"),
   
   AVERAGE("Average"),

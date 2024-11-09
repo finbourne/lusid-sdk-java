@@ -25,7 +25,7 @@
 |**allocationId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 |**custodianAccountId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 |**transactionGroupId** | **String** | The identifier for grouping economic events across multiple transactions |  [optional] |
-|**strategyTag** | [**List&lt;Strategy&gt;**](Strategy.md) | A Json representing the allocation of units accross multiple sub-holding keys |  [optional] |
+|**strategyTag** | [**List&lt;Strategy&gt;**](Strategy.md) | A list of strategies representing the allocation of units across multiple sub-holding keys |  [optional] |
 
 
 

@@ -548,7 +548,7 @@ public class TransactionRequest {
   }
 
    /**
-   * A Json representing the allocation of units accross multiple sub-holding keys
+   * A list of strategies representing the allocation of units across multiple sub-holding keys
    * @return strategyTag
   **/
   @jakarta.annotation.Nullable
