@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.ContributionToNonPassingRuleDetail;
 import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -18,7 +19,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -78,6 +81,10 @@ public class OrderGraphBlockOrderDetail {
   public static final String SERIALIZED_NAME_ORDER_APPROVAL_TASK_DEFINITION_ID = "orderApprovalTaskDefinitionId";
   @SerializedName(SERIALIZED_NAME_ORDER_APPROVAL_TASK_DEFINITION_ID)
   private ResourceId orderApprovalTaskDefinitionId;
+
+  public static final String SERIALIZED_NAME_NON_PASSING_COMPLIANCE_RULE_RESULTS = "nonPassingComplianceRuleResults";
+  @SerializedName(SERIALIZED_NAME_NON_PASSING_COMPLIANCE_RULE_RESULTS)
+  private List<ContributionToNonPassingRuleDetail> nonPassingComplianceRuleResults;
 
   public OrderGraphBlockOrderDetail() {
   }
@@ -229,6 +236,35 @@ public class OrderGraphBlockOrderDetail {
   }
 
 
+  public OrderGraphBlockOrderDetail nonPassingComplianceRuleResults(List<ContributionToNonPassingRuleDetail> nonPassingComplianceRuleResults) {
+    
+    this.nonPassingComplianceRuleResults = nonPassingComplianceRuleResults;
+    return this;
+  }
+
+  public OrderGraphBlockOrderDetail addNonPassingComplianceRuleResultsItem(ContributionToNonPassingRuleDetail nonPassingComplianceRuleResultsItem) {
+    if (this.nonPassingComplianceRuleResults == null) {
+      this.nonPassingComplianceRuleResults = new ArrayList<>();
+    }
+    this.nonPassingComplianceRuleResults.add(nonPassingComplianceRuleResultsItem);
+    return this;
+  }
+
+   /**
+   * The details of compliance rules in non-passing states.
+   * @return nonPassingComplianceRuleResults
+  **/
+  @jakarta.annotation.Nullable
+  public List<ContributionToNonPassingRuleDetail> getNonPassingComplianceRuleResults() {
+    return nonPassingComplianceRuleResults;
+  }
+
+
+  public void setNonPassingComplianceRuleResults(List<ContributionToNonPassingRuleDetail> nonPassingComplianceRuleResults) {
+    this.nonPassingComplianceRuleResults = nonPassingComplianceRuleResults;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -245,7 +281,8 @@ public class OrderGraphBlockOrderDetail {
         Objects.equals(this.portfolioId, orderGraphBlockOrderDetail.portfolioId) &&
         Objects.equals(this.portfolioName, orderGraphBlockOrderDetail.portfolioName) &&
         Objects.equals(this.orderApprovalTaskId, orderGraphBlockOrderDetail.orderApprovalTaskId) &&
-        Objects.equals(this.orderApprovalTaskDefinitionId, orderGraphBlockOrderDetail.orderApprovalTaskDefinitionId);
+        Objects.equals(this.orderApprovalTaskDefinitionId, orderGraphBlockOrderDetail.orderApprovalTaskDefinitionId) &&
+        Objects.equals(this.nonPassingComplianceRuleResults, orderGraphBlockOrderDetail.nonPassingComplianceRuleResults);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -254,7 +291,7 @@ public class OrderGraphBlockOrderDetail {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, complianceState, approvalState, portfolioId, portfolioName, orderApprovalTaskId, orderApprovalTaskDefinitionId);
+    return Objects.hash(id, complianceState, approvalState, portfolioId, portfolioName, orderApprovalTaskId, orderApprovalTaskDefinitionId, nonPassingComplianceRuleResults);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -275,6 +312,7 @@ public class OrderGraphBlockOrderDetail {
     sb.append("    portfolioName: ").append(toIndentedString(portfolioName)).append("\n");
     sb.append("    orderApprovalTaskId: ").append(toIndentedString(orderApprovalTaskId)).append("\n");
     sb.append("    orderApprovalTaskDefinitionId: ").append(toIndentedString(orderApprovalTaskDefinitionId)).append("\n");
+    sb.append("    nonPassingComplianceRuleResults: ").append(toIndentedString(nonPassingComplianceRuleResults)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -304,6 +342,7 @@ public class OrderGraphBlockOrderDetail {
     openapiFields.add("portfolioName");
     openapiFields.add("orderApprovalTaskId");
     openapiFields.add("orderApprovalTaskDefinitionId");
+    openapiFields.add("nonPassingComplianceRuleResults");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -353,6 +392,20 @@ public class OrderGraphBlockOrderDetail {
       // validate the optional field `orderApprovalTaskDefinitionId`
       if (jsonObj.get("orderApprovalTaskDefinitionId") != null && !jsonObj.get("orderApprovalTaskDefinitionId").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("orderApprovalTaskDefinitionId"));
+      }
+      if (jsonObj.get("nonPassingComplianceRuleResults") != null && !jsonObj.get("nonPassingComplianceRuleResults").isJsonNull()) {
+        JsonArray jsonArraynonPassingComplianceRuleResults = jsonObj.getAsJsonArray("nonPassingComplianceRuleResults");
+        if (jsonArraynonPassingComplianceRuleResults != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("nonPassingComplianceRuleResults").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `nonPassingComplianceRuleResults` to be an array in the JSON string but got `%s`", jsonObj.get("nonPassingComplianceRuleResults").toString()));
+          }
+
+          // validate the optional field `nonPassingComplianceRuleResults` (array)
+          for (int i = 0; i < jsonArraynonPassingComplianceRuleResults.size(); i++) {
+            ContributionToNonPassingRuleDetail.validateJsonElement(jsonArraynonPassingComplianceRuleResults.get(i));
+          };
+        }
       }
   }
 

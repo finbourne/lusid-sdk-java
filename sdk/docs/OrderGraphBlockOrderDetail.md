@@ -14,6 +14,7 @@
 |**portfolioName** | **String** | The name of the order&#39;s referenced Portfolio. |  [optional] |
 |**orderApprovalTaskId** | **String** | The task id associated with the approval state of the order. |  [optional] |
 |**orderApprovalTaskDefinitionId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
+|**nonPassingComplianceRuleResults** | [**List&lt;ContributionToNonPassingRuleDetail&gt;**](ContributionToNonPassingRuleDetail.md) | The details of compliance rules in non-passing states. |  [optional] |
 
 
 
