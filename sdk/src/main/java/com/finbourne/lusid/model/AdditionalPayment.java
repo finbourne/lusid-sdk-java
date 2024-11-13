@@ -76,7 +76,7 @@ public class AdditionalPayment {
   }
 
    /**
-   * The upfront amount.
+   * The payment amount.
    * @return amount
   **/
   @jakarta.annotation.Nonnull
@@ -97,7 +97,7 @@ public class AdditionalPayment {
   }
 
    /**
-   * The upfront currency.
+   * The payment currency.
    * @return currency
   **/
   @jakarta.annotation.Nonnull
@@ -118,7 +118,7 @@ public class AdditionalPayment {
   }
 
    /**
-   * Date when the upfront is paid.
+   * Date when the payment is made.
    * @return payDate
   **/
   @jakarta.annotation.Nonnull

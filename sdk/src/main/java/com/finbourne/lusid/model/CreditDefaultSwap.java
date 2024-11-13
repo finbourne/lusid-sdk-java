@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.AdditionalPayment;
 import com.finbourne.lusid.model.CdsFlowConventions;
 import com.finbourne.lusid.model.CdsProtectionDetailSpecification;
 import com.finbourne.lusid.model.FlowConventionName;
@@ -22,7 +23,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -51,7 +54,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * LUSID representation of a Credit Default Swap (CDS).     This instrument has multiple legs, to see how legs are used in LUSID see [knowledge base article KA-02252](https://support.lusid.com/knowledgebase/article/KA-02252).     | Leg Index | Leg Identifier | Description |  | --------- | -------------- | ----------- |  | 1 | ProtectionLeg | Cash flows occurring in the case of default. |  | 2 | PremiumLeg | The premium payments made by the protection buyer. |
+ * LUSID representation of a Credit Default Swap (CDS).     This instrument has multiple legs, to see how legs are used in LUSID see [knowledge base article KA-02252](https://support.lusid.com/knowledgebase/article/KA-02252).     | Leg Index | Leg Identifier | Description |  | --------- | -------------- | ----------- |  | 1 | ProtectionLeg | Cash flows occurring in the case of default. |  | 2 | PremiumLeg | The premium payments made by the protection buyer. |  | 3 | AdditionalPayments | Cash flows relating to any additional payments (optional). |
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreditDefaultSwap extends LusidInstrument {
@@ -87,6 +90,10 @@ public class CreditDefaultSwap extends LusidInstrument {
   @SerializedName(SERIALIZED_NAME_PROTECTION_DETAIL_SPECIFICATION)
   private CdsProtectionDetailSpecification protectionDetailSpecification;
 
+  public static final String SERIALIZED_NAME_ADDITIONAL_PAYMENTS = "additionalPayments";
+  @SerializedName(SERIALIZED_NAME_ADDITIONAL_PAYMENTS)
+  private List<AdditionalPayment> additionalPayments;
+
   public CreditDefaultSwap() {
     // this.instrumentType = this.getClass().getSimpleName();
   }
@@ -98,7 +105,7 @@ public class CreditDefaultSwap extends LusidInstrument {
   }
 
    /**
-   * A ticker to uniquely specify then entity against which the cds is written.
+   * A ticker to uniquely specify the entity against which the CDS is written.
    * @return ticker
   **/
   @jakarta.annotation.Nonnull
@@ -259,6 +266,35 @@ public class CreditDefaultSwap extends LusidInstrument {
   }
 
 
+  public CreditDefaultSwap additionalPayments(List<AdditionalPayment> additionalPayments) {
+    
+    this.additionalPayments = additionalPayments;
+    return this;
+  }
+
+  public CreditDefaultSwap addAdditionalPaymentsItem(AdditionalPayment additionalPaymentsItem) {
+    if (this.additionalPayments == null) {
+      this.additionalPayments = new ArrayList<>();
+    }
+    this.additionalPayments.add(additionalPaymentsItem);
+    return this;
+  }
+
+   /**
+   * Optional additional payments at a given date e.g. to level off an uneven swap.  The dates must be distinct and either all payments are Pay or all payments are Receive.
+   * @return additionalPayments
+  **/
+  @jakarta.annotation.Nullable
+  public List<AdditionalPayment> getAdditionalPayments() {
+    return additionalPayments;
+  }
+
+
+  public void setAdditionalPayments(List<AdditionalPayment> additionalPayments) {
+    this.additionalPayments = additionalPayments;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -277,6 +313,7 @@ public class CreditDefaultSwap extends LusidInstrument {
         Objects.equals(this.conventionName, creditDefaultSwap.conventionName) &&
         (this.notional.compareTo(creditDefaultSwap.getNotional()) == 0) &&
         Objects.equals(this.protectionDetailSpecification, creditDefaultSwap.protectionDetailSpecification) &&
+        Objects.equals(this.additionalPayments, creditDefaultSwap.additionalPayments) &&
         super.equals(o);
   }
 
@@ -286,7 +323,7 @@ public class CreditDefaultSwap extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ticker, startDate, maturityDate, flowConventions, couponRate, conventionName, notional, protectionDetailSpecification, super.hashCode());
+    return Objects.hash(ticker, startDate, maturityDate, flowConventions, couponRate, conventionName, notional, protectionDetailSpecification, additionalPayments, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -309,6 +346,7 @@ public class CreditDefaultSwap extends LusidInstrument {
     sb.append("    conventionName: ").append(toIndentedString(conventionName)).append("\n");
     sb.append("    notional: ").append(toIndentedString(notional)).append("\n");
     sb.append("    protectionDetailSpecification: ").append(toIndentedString(protectionDetailSpecification)).append("\n");
+    sb.append("    additionalPayments: ").append(toIndentedString(additionalPayments)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -340,6 +378,7 @@ public class CreditDefaultSwap extends LusidInstrument {
     openapiFields.add("conventionName");
     openapiFields.add("notional");
     openapiFields.add("protectionDetailSpecification");
+    openapiFields.add("additionalPayments");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

@@ -2,7 +2,7 @@
 
 # CdsIndex
 
-LUSID representation of a Credit Default Swap Index (CDX).     This instrument has multiple legs, to see how legs are used in LUSID see [knowledge base article KA-02252](https://support.lusid.com/knowledgebase/article/KA-02252).     | Leg Index | Leg Identifier | Description |  | --------- | -------------- | ----------- |  | 1 | ProtectionLeg | Payments made by the protection seller in the case of default across all CDS instruments in the index. |  | 2 | PremiumLeg | The premium payments made by the protection buyer across all CDS instruments in the index. |
+LUSID representation of a Credit Default Swap Index (CDX).     This instrument has multiple legs, to see how legs are used in LUSID see [knowledge base article KA-02252](https://support.lusid.com/knowledgebase/article/KA-02252).     | Leg Index | Leg Identifier | Description |  | --------- | -------------- | ----------- |  | 1 | ProtectionLeg | Payments made by the protection seller in the case of default across all CDS instruments in the index. |  | 2 | PremiumLeg | The premium payments made by the protection buyer across all CDS instruments in the index. |  | 3 | AdditionalPayments | Cash flows relating to any additional payments (optional). |
 
 ## Properties
 
@@ -16,6 +16,7 @@ LUSID representation of a Credit Default Swap Index (CDX).     This instrument h
 |**basket** | [**Basket**](Basket.md) |  |  [optional] |
 |**conventionName** | [**FlowConventionName**](FlowConventionName.md) |  |  [optional] |
 |**notional** | **java.math.BigDecimal** | The notional quantity that applies to both the premium and protection legs. |  |
+|**additionalPayments** | [**List&lt;AdditionalPayment&gt;**](AdditionalPayment.md) | Optional additional payments at a given date e.g. to level off an uneven swap.  The dates must be distinct and either all payments are Pay or all payments are Receive. |  [optional] |
 
 
 

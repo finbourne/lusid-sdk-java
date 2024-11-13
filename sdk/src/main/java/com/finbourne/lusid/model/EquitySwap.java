@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.AdditionalPayment;
 import com.finbourne.lusid.model.FlowConventions;
 import com.finbourne.lusid.model.InstrumentLeg;
 import com.finbourne.lusid.model.LusidInstrument;
@@ -21,7 +22,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -50,7 +53,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * LUSID representation of an Equity Swap.     This instrument has multiple legs, to see how legs are used in LUSID see [knowledge base article KA-02252](https://support.lusid.com/knowledgebase/article/KA-02252).     | Leg Index | Leg Identifier | Description |  | --------- | -------------- | ----------- |  | 1 | EquityLeg | Cash flows relating to the performance of the underlying equity. |  | 2 | FundingLeg | The funding leg of the swap. |  | 3 | EquityDividendLeg | Cash flows relating to dividend payments on the underlying equity (optional). |
+ * LUSID representation of an Equity Swap.     This instrument has multiple legs, to see how legs are used in LUSID see [knowledge base article KA-02252](https://support.lusid.com/knowledgebase/article/KA-02252).     | Leg Index | Leg Identifier | Description |  | --------- | -------------- | ----------- |  | 1 | EquityLeg | Cash flows relating to the performance of the underlying equity. |  | 2 | FundingLeg | The funding leg of the swap. |  | 3 | EquityDividendLeg | Cash flows relating to dividend payments on the underlying equity (optional). |  | 4 | AdditionalPayments | Cash flows relating to any additional payments (optional). |
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class EquitySwap extends LusidInstrument {
@@ -97,6 +100,10 @@ public class EquitySwap extends LusidInstrument {
   public static final String SERIALIZED_NAME_EQUITY_SWAP_DIVIDEND_PAYMENT_TIMING = "equitySwapDividendPaymentTiming";
   @SerializedName(SERIALIZED_NAME_EQUITY_SWAP_DIVIDEND_PAYMENT_TIMING)
   private String equitySwapDividendPaymentTiming;
+
+  public static final String SERIALIZED_NAME_ADDITIONAL_PAYMENTS = "additionalPayments";
+  @SerializedName(SERIALIZED_NAME_ADDITIONAL_PAYMENTS)
+  private List<AdditionalPayment> additionalPayments;
 
   public EquitySwap() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -333,6 +340,35 @@ public class EquitySwap extends LusidInstrument {
   }
 
 
+  public EquitySwap additionalPayments(List<AdditionalPayment> additionalPayments) {
+    
+    this.additionalPayments = additionalPayments;
+    return this;
+  }
+
+  public EquitySwap addAdditionalPaymentsItem(AdditionalPayment additionalPaymentsItem) {
+    if (this.additionalPayments == null) {
+      this.additionalPayments = new ArrayList<>();
+    }
+    this.additionalPayments.add(additionalPaymentsItem);
+    return this;
+  }
+
+   /**
+   * Optional additional payments at a given date e.g. to level off an uneven equity swap.  The dates must be distinct and either all payments are Pay or all payments are Receive.
+   * @return additionalPayments
+  **/
+  @jakarta.annotation.Nullable
+  public List<AdditionalPayment> getAdditionalPayments() {
+    return additionalPayments;
+  }
+
+
+  public void setAdditionalPayments(List<AdditionalPayment> additionalPayments) {
+    this.additionalPayments = additionalPayments;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -354,6 +390,7 @@ public class EquitySwap extends LusidInstrument {
         (this.quantity.compareTo(equitySwap.getQuantity()) == 0) &&
         Objects.equals(this.underlyingIdentifier, equitySwap.underlyingIdentifier) &&
         Objects.equals(this.equitySwapDividendPaymentTiming, equitySwap.equitySwapDividendPaymentTiming) &&
+        Objects.equals(this.additionalPayments, equitySwap.additionalPayments) &&
         super.equals(o);
   }
 
@@ -363,7 +400,7 @@ public class EquitySwap extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, code, equityFlowConventions, fundingLeg, includeDividends, initialPrice, notionalReset, quantity, underlyingIdentifier, equitySwapDividendPaymentTiming, super.hashCode());
+    return Objects.hash(startDate, maturityDate, code, equityFlowConventions, fundingLeg, includeDividends, initialPrice, notionalReset, quantity, underlyingIdentifier, equitySwapDividendPaymentTiming, additionalPayments, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -389,6 +426,7 @@ public class EquitySwap extends LusidInstrument {
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("    underlyingIdentifier: ").append(toIndentedString(underlyingIdentifier)).append("\n");
     sb.append("    equitySwapDividendPaymentTiming: ").append(toIndentedString(equitySwapDividendPaymentTiming)).append("\n");
+    sb.append("    additionalPayments: ").append(toIndentedString(additionalPayments)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -423,6 +461,7 @@ public class EquitySwap extends LusidInstrument {
     openapiFields.add("quantity");
     openapiFields.add("underlyingIdentifier");
     openapiFields.add("equitySwapDividendPaymentTiming");
+    openapiFields.add("additionalPayments");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

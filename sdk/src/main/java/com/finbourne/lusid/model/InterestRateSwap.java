@@ -212,7 +212,7 @@ public class InterestRateSwap extends LusidInstrument {
   }
 
    /**
-   * Optional additional payments at a given date e.g. to level off an uneven fixed-floating swap.  The dates must be distinct and either all payments are Pay or all payments are receive
+   * Optional additional payments at a given date e.g. to level off an uneven fixed-floating swap.  The dates must be distinct and either all payments are Pay or all payments are Receive.
    * @return additionalPayments
   **/
   @jakarta.annotation.Nullable

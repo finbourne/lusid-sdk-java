@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.AdditionalPayment;
 import com.finbourne.lusid.model.Basket;
 import com.finbourne.lusid.model.CdsFlowConventions;
 import com.finbourne.lusid.model.FlowConventionName;
@@ -22,9 +23,12 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,7 +56,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * LUSID representation of a Credit Default Swap Index (CDX).     This instrument has multiple legs, to see how legs are used in LUSID see [knowledge base article KA-02252](https://support.lusid.com/knowledgebase/article/KA-02252).     | Leg Index | Leg Identifier | Description |  | --------- | -------------- | ----------- |  | 1 | ProtectionLeg | Payments made by the protection seller in the case of default across all CDS instruments in the index. |  | 2 | PremiumLeg | The premium payments made by the protection buyer across all CDS instruments in the index. |
+ * LUSID representation of a Credit Default Swap Index (CDX).     This instrument has multiple legs, to see how legs are used in LUSID see [knowledge base article KA-02252](https://support.lusid.com/knowledgebase/article/KA-02252).     | Leg Index | Leg Identifier | Description |  | --------- | -------------- | ----------- |  | 1 | ProtectionLeg | Payments made by the protection seller in the case of default across all CDS instruments in the index. |  | 2 | PremiumLeg | The premium payments made by the protection buyer across all CDS instruments in the index. |  | 3 | AdditionalPayments | Cash flows relating to any additional payments (optional). |
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CdsIndex extends LusidInstrument {
@@ -87,6 +91,10 @@ public class CdsIndex extends LusidInstrument {
   public static final String SERIALIZED_NAME_NOTIONAL = "notional";
   @SerializedName(SERIALIZED_NAME_NOTIONAL)
   private java.math.BigDecimal notional;
+
+  public static final String SERIALIZED_NAME_ADDITIONAL_PAYMENTS = "additionalPayments";
+  @SerializedName(SERIALIZED_NAME_ADDITIONAL_PAYMENTS)
+  private List<AdditionalPayment> additionalPayments;
 
   public CdsIndex() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -268,6 +276,35 @@ public class CdsIndex extends LusidInstrument {
   }
 
 
+  public CdsIndex additionalPayments(List<AdditionalPayment> additionalPayments) {
+    
+    this.additionalPayments = additionalPayments;
+    return this;
+  }
+
+  public CdsIndex addAdditionalPaymentsItem(AdditionalPayment additionalPaymentsItem) {
+    if (this.additionalPayments == null) {
+      this.additionalPayments = new ArrayList<>();
+    }
+    this.additionalPayments.add(additionalPaymentsItem);
+    return this;
+  }
+
+   /**
+   * Optional additional payments at a given date e.g. to level off an uneven swap.  The dates must be distinct and either all payments are Pay or all payments are Receive.
+   * @return additionalPayments
+  **/
+  @jakarta.annotation.Nullable
+  public List<AdditionalPayment> getAdditionalPayments() {
+    return additionalPayments;
+  }
+
+
+  public void setAdditionalPayments(List<AdditionalPayment> additionalPayments) {
+    this.additionalPayments = additionalPayments;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -286,12 +323,24 @@ public class CdsIndex extends LusidInstrument {
         Objects.equals(this.basket, cdsIndex.basket) &&
         Objects.equals(this.conventionName, cdsIndex.conventionName) &&
         (this.notional.compareTo(cdsIndex.getNotional()) == 0) &&
+        Objects.equals(this.additionalPayments, cdsIndex.additionalPayments) &&
         super.equals(o);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, flowConventions, couponRate, identifiers, basket, conventionName, notional, super.hashCode());
+    return Objects.hash(startDate, maturityDate, flowConventions, couponRate, identifiers, basket, conventionName, notional, additionalPayments, super.hashCode());
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -307,6 +356,7 @@ public class CdsIndex extends LusidInstrument {
     sb.append("    basket: ").append(toIndentedString(basket)).append("\n");
     sb.append("    conventionName: ").append(toIndentedString(conventionName)).append("\n");
     sb.append("    notional: ").append(toIndentedString(notional)).append("\n");
+    sb.append("    additionalPayments: ").append(toIndentedString(additionalPayments)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -338,6 +388,7 @@ public class CdsIndex extends LusidInstrument {
     openapiFields.add("basket");
     openapiFields.add("conventionName");
     openapiFields.add("notional");
+    openapiFields.add("additionalPayments");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

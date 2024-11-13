@@ -8,9 +8,9 @@ Record describing additional payment entity.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**amount** | **java.math.BigDecimal** | The upfront amount. |  |
-|**currency** | **String** | The upfront currency. |  |
-|**payDate** | **OffsetDateTime** | Date when the upfront is paid. |  |
+|**amount** | **java.math.BigDecimal** | The payment amount. |  |
+|**currency** | **String** | The payment currency. |  |
+|**payDate** | **OffsetDateTime** | Date when the payment is made. |  |
 |**payReceive** | **String** | Is it pay or receive.    Supported string (enumeration) values are: [Pay, Receive]. |  |
 
 

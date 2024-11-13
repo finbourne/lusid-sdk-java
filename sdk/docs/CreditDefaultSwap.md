@@ -2,13 +2,13 @@
 
 # CreditDefaultSwap
 
-LUSID representation of a Credit Default Swap (CDS).     This instrument has multiple legs, to see how legs are used in LUSID see [knowledge base article KA-02252](https://support.lusid.com/knowledgebase/article/KA-02252).     | Leg Index | Leg Identifier | Description |  | --------- | -------------- | ----------- |  | 1 | ProtectionLeg | Cash flows occurring in the case of default. |  | 2 | PremiumLeg | The premium payments made by the protection buyer. |
+LUSID representation of a Credit Default Swap (CDS).     This instrument has multiple legs, to see how legs are used in LUSID see [knowledge base article KA-02252](https://support.lusid.com/knowledgebase/article/KA-02252).     | Leg Index | Leg Identifier | Description |  | --------- | -------------- | ----------- |  | 1 | ProtectionLeg | Cash flows occurring in the case of default. |  | 2 | PremiumLeg | The premium payments made by the protection buyer. |  | 3 | AdditionalPayments | Cash flows relating to any additional payments (optional). |
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**ticker** | **String** | A ticker to uniquely specify then entity against which the cds is written. |  |
+|**ticker** | **String** | A ticker to uniquely specify the entity against which the CDS is written. |  |
 |**startDate** | **OffsetDateTime** | The start date of the instrument. This is normally synonymous with the trade-date. |  |
 |**maturityDate** | **OffsetDateTime** | The final maturity date of the instrument. This means the last date on which the instruments makes a payment of any amount.  For the avoidance of doubt, that is not necessarily prior to its last sensitivity date for the purposes of risk; e.g. instruments such as  Constant Maturity Swaps (CMS) often have sensitivities to rates that may well be observed or set prior to the maturity date, but refer to a termination date beyond it. |  |
 |**flowConventions** | [**CdsFlowConventions**](CdsFlowConventions.md) |  |  [optional] |
@@ -16,6 +16,7 @@ LUSID representation of a Credit Default Swap (CDS).     This instrument has mul
 |**conventionName** | [**FlowConventionName**](FlowConventionName.md) |  |  [optional] |
 |**notional** | **java.math.BigDecimal** | The notional protected by the Credit Default Swap |  [optional] |
 |**protectionDetailSpecification** | [**CdsProtectionDetailSpecification**](CdsProtectionDetailSpecification.md) |  |  |
+|**additionalPayments** | [**List&lt;AdditionalPayment&gt;**](AdditionalPayment.md) | Optional additional payments at a given date e.g. to level off an uneven swap.  The dates must be distinct and either all payments are Pay or all payments are Receive. |  [optional] |
 
 
 

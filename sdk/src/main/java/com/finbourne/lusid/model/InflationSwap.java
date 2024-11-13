@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.AdditionalPayment;
 import com.finbourne.lusid.model.FixedLeg;
 import com.finbourne.lusid.model.InflationLeg;
 import com.finbourne.lusid.model.LusidInstrument;
@@ -21,7 +22,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -49,7 +53,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * LUSID representation of an Inflation Swap.  The implementation supports the following swap types:  * Zero Coupon inflation swap, with a single payment at maturity.  * LPI Swap (capped and floored)  * Year on Year inflation swap     This instrument has multiple legs, to see how legs are used in LUSID see [knowledge base article KA-02252](https://support.lusid.com/knowledgebase/article/KA-02252).     | Leg Index | Leg Identifier | Description |  | --------- | -------------- | ----------- |  | 1 | InflationLeg | Cash flows with a rate relating to an underlying inflation index. |  | 2 | FixedLeg | Cash flows with a fixed rate. |
+ * LUSID representation of an Inflation Swap.  The implementation supports the following swap types:  * Zero Coupon inflation swap, with a single payment at maturity.  * LPI Swap (capped and floored)  * Year on Year inflation swap     This instrument has multiple legs, to see how legs are used in LUSID see [knowledge base article KA-02252](https://support.lusid.com/knowledgebase/article/KA-02252).     | Leg Index | Leg Identifier | Description |  | --------- | -------------- | ----------- |  | 1 | InflationLeg | Cash flows with a rate relating to an underlying inflation index. |  | 2 | FixedLeg | Cash flows with a fixed rate. |  | 3 | AdditionalPayments | Cash flows relating to any additional payments (optional). |
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class InflationSwap extends LusidInstrument {
@@ -68,6 +72,10 @@ public class InflationSwap extends LusidInstrument {
   public static final String SERIALIZED_NAME_FIXED_LEG = "fixedLeg";
   @SerializedName(SERIALIZED_NAME_FIXED_LEG)
   private FixedLeg fixedLeg;
+
+  public static final String SERIALIZED_NAME_ADDITIONAL_PAYMENTS = "additionalPayments";
+  @SerializedName(SERIALIZED_NAME_ADDITIONAL_PAYMENTS)
+  private List<AdditionalPayment> additionalPayments;
 
   public InflationSwap() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -157,6 +165,35 @@ public class InflationSwap extends LusidInstrument {
   }
 
 
+  public InflationSwap additionalPayments(List<AdditionalPayment> additionalPayments) {
+    
+    this.additionalPayments = additionalPayments;
+    return this;
+  }
+
+  public InflationSwap addAdditionalPaymentsItem(AdditionalPayment additionalPaymentsItem) {
+    if (this.additionalPayments == null) {
+      this.additionalPayments = new ArrayList<>();
+    }
+    this.additionalPayments.add(additionalPaymentsItem);
+    return this;
+  }
+
+   /**
+   * Optional additional payments at a given date e.g. to level off an uneven inflation swap.  The dates must be distinct and either all payments are Pay or all payments are Receive.
+   * @return additionalPayments
+  **/
+  @jakarta.annotation.Nullable
+  public List<AdditionalPayment> getAdditionalPayments() {
+    return additionalPayments;
+  }
+
+
+  public void setAdditionalPayments(List<AdditionalPayment> additionalPayments) {
+    this.additionalPayments = additionalPayments;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -171,12 +208,24 @@ public class InflationSwap extends LusidInstrument {
         Objects.equals(this.maturityDate, inflationSwap.maturityDate) &&
         Objects.equals(this.inflationLeg, inflationSwap.inflationLeg) &&
         Objects.equals(this.fixedLeg, inflationSwap.fixedLeg) &&
+        Objects.equals(this.additionalPayments, inflationSwap.additionalPayments) &&
         super.equals(o);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, inflationLeg, fixedLeg, super.hashCode());
+    return Objects.hash(startDate, maturityDate, inflationLeg, fixedLeg, additionalPayments, super.hashCode());
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -188,6 +237,7 @@ public class InflationSwap extends LusidInstrument {
     sb.append("    maturityDate: ").append(toIndentedString(maturityDate)).append("\n");
     sb.append("    inflationLeg: ").append(toIndentedString(inflationLeg)).append("\n");
     sb.append("    fixedLeg: ").append(toIndentedString(fixedLeg)).append("\n");
+    sb.append("    additionalPayments: ").append(toIndentedString(additionalPayments)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -215,6 +265,7 @@ public class InflationSwap extends LusidInstrument {
     openapiFields.add("maturityDate");
     openapiFields.add("inflationLeg");
     openapiFields.add("fixedLeg");
+    openapiFields.add("additionalPayments");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
