@@ -1819,7 +1819,7 @@ public class AborApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve trial balance. Defaults to returning the latest version   of each transaction if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the Trial Balance.   Defaults to returning the latest version if not specified. (optional)
          * @return APIgetTrialBalanceRequest
          */
         public APIgetTrialBalanceRequest asAt(OffsetDateTime asAt) {
@@ -1829,7 +1829,7 @@ public class AborApi {
 
         /**
          * Set filter
-         * @param filter \&quot;Expression to filter the result set.\&quot; (optional)
+         * @param filter Expression to filter the results by.   For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIgetTrialBalanceRequest
          */
         public APIgetTrialBalanceRequest filter(String filter) {
@@ -1839,7 +1839,7 @@ public class AborApi {
 
         /**
          * Set limit
-         * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
+         * @param limit When paginating, limit the number of returned results to this many.   Defaults to 100 if not specified. (optional)
          * @return APIgetTrialBalanceRequest
          */
         public APIgetTrialBalanceRequest limit(Integer limit) {
@@ -1849,7 +1849,7 @@ public class AborApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing Trial balance from a previous call to Trial balance. (optional)
+         * @param page The pagination token to use to continue listing Trial Balances.   This token is returned from the previous call.   If a pagination token is provided, the filter, effectiveAt and asAt fields   must not have changed since the original request. (optional)
          * @return APIgetTrialBalanceRequest
          */
         public APIgetTrialBalanceRequest page(String page) {
@@ -1976,10 +1976,10 @@ public class AborApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetTrialBalance: Get the Trial balance for the given Abor.
-     * Gets the Trial balance for the given Abor    The Trial balance has been generated from transactions, translated via posting rules and aggregated based on a General Ledger Profile (where specified)
+     * [EXPERIMENTAL] GetTrialBalance: Get the Trial Balance for the given Abor.
+     * Gets the Trial Balance for the given Abor.    The Trial Balance has been generated from transactions, translated via Posting Rules  and aggregated based on a General Ledger Profile (where specified).
      * @param scope The scope of the Abor. (required)
-     * @param code The code of the Abor. Together with the scope is the unique identifier for the given Abor. (required)
+     * @param code The code of the Abor. Together with the scope this uniquely identifies the Abor. (required)
      * @param trialBalanceQueryParameters The query parameters used in running the generation of the Trial Balance. (required)
      * @return APIgetTrialBalanceRequest
      * @http.response.details

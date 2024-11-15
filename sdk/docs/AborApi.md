@@ -10,7 +10,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**deleteAbor**](AborApi.md#deleteAbor) | **DELETE** /api/abor/{scope}/{code} | [EXPERIMENTAL] DeleteAbor: Delete an Abor. |
 | [**getAbor**](AborApi.md#getAbor) | **GET** /api/abor/{scope}/{code} | [EXPERIMENTAL] GetAbor: Get Abor. |
 | [**getJournalEntryLines**](AborApi.md#getJournalEntryLines) | **POST** /api/abor/{scope}/{code}/journalentrylines/$query | [EXPERIMENTAL] GetJournalEntryLines: Get the Journal Entry lines for the given Abor. |
-| [**getTrialBalance**](AborApi.md#getTrialBalance) | **POST** /api/abor/{scope}/{code}/trialbalance/$query | [EXPERIMENTAL] GetTrialBalance: Get the Trial balance for the given Abor. |
+| [**getTrialBalance**](AborApi.md#getTrialBalance) | **POST** /api/abor/{scope}/{code}/trialbalance/$query | [EXPERIMENTAL] GetTrialBalance: Get the Trial Balance for the given Abor. |
 | [**listAbors**](AborApi.md#listAbors) | **GET** /api/abor | [EXPERIMENTAL] ListAbors: List Abors. |
 | [**listDiaryEntries**](AborApi.md#listDiaryEntries) | **GET** /api/abor/{scope}/{code}/accountingdiary | [EXPERIMENTAL] ListDiaryEntries: List diary entries. |
 | [**lockPeriod**](AborApi.md#lockPeriod) | **POST** /api/abor/{scope}/{code}/accountingdiary/$lockperiod | [EXPERIMENTAL] LockPeriod: Locks the last Closed or given Closed Period. |
@@ -602,9 +602,9 @@ public class AborApiExample {
 
 > VersionedResourceListOfTrialBalance getTrialBalance(scope, code, trialBalanceQueryParameters, asAt, filter, limit, page)
 
-[EXPERIMENTAL] GetTrialBalance: Get the Trial balance for the given Abor.
+[EXPERIMENTAL] GetTrialBalance: Get the Trial Balance for the given Abor.
 
-Gets the Trial balance for the given Abor    The Trial balance has been generated from transactions, translated via posting rules and aggregated based on a General Ledger Profile (where specified)
+Gets the Trial Balance for the given Abor.    The Trial Balance has been generated from transactions, translated via Posting Rules  and aggregated based on a General Ledger Profile (where specified).
 
 ### Example
 
@@ -646,12 +646,12 @@ public class AborApiExample {
 
         AborApi apiInstance = ApiFactoryBuilder.build(fileName).build(AborApi.class);
         String scope = "scope_example"; // String | The scope of the Abor.
-        String code = "code_example"; // String | The code of the Abor. Together with the scope is the unique identifier for the given Abor.
+        String code = "code_example"; // String | The code of the Abor. Together with the scope this uniquely identifies the Abor.
         TrialBalanceQueryParameters trialBalanceQueryParameters = new TrialBalanceQueryParameters(); // TrialBalanceQueryParameters | The query parameters used in running the generation of the Trial Balance.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve trial balance. Defaults to returning the latest version   of each transaction if not specified.
-        String filter = "filter_example"; // String | \"Expression to filter the result set.\"
-        Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
-        String page = "page_example"; // String | The pagination token to use to continue listing Trial balance from a previous call to Trial balance.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Trial Balance.   Defaults to returning the latest version if not specified.
+        String filter = "filter_example"; // String | Expression to filter the results by.   For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.   Defaults to 100 if not specified.
+        String page = "page_example"; // String | The pagination token to use to continue listing Trial Balances.   This token is returned from the previous call.   If a pagination token is provided, the filter, effectiveAt and asAt fields   must not have changed since the original request.
         try {
             // uncomment the below to set overrides at the request level
             // VersionedResourceListOfTrialBalance result = apiInstance.getTrialBalance(scope, code, trialBalanceQueryParameters, asAt, filter, limit, page).execute(opts);
@@ -674,12 +674,12 @@ public class AborApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the Abor. | |
-| **code** | **String**| The code of the Abor. Together with the scope is the unique identifier for the given Abor. | |
+| **code** | **String**| The code of the Abor. Together with the scope this uniquely identifies the Abor. | |
 | **trialBalanceQueryParameters** | [**TrialBalanceQueryParameters**](TrialBalanceQueryParameters.md)| The query parameters used in running the generation of the Trial Balance. | |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve trial balance. Defaults to returning the latest version   of each transaction if not specified. | [optional] |
-| **filter** | **String**| \&quot;Expression to filter the result set.\&quot; | [optional] |
-| **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing Trial balance from a previous call to Trial balance. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Trial Balance.   Defaults to returning the latest version if not specified. | [optional] |
+| **filter** | **String**| Expression to filter the results by.   For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **limit** | **Integer**| When paginating, limit the number of returned results to this many.   Defaults to 100 if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing Trial Balances.   This token is returned from the previous call.   If a pagination token is provided, the filter, effectiveAt and asAt fields   must not have changed since the original request. | [optional] |
 
 ### Return type
 
