@@ -63,7 +63,11 @@ public enum MovementType {
   
   CAPITAL("Capital"),
   
-  FEE("Fee");
+  FEE("Fee"),
+  
+  LIMITADJUSTMENT("LimitAdjustment"),
+  
+  BALANCEADJUSTMENT("BalanceAdjustment");
 
   private String value;
 

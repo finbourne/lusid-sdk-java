@@ -19,6 +19,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -57,6 +58,10 @@ public class OptionEntry {
   public static final String SERIALIZED_NAME_DATE = "date";
   @SerializedName(SERIALIZED_NAME_DATE)
   private OffsetDateTime date;
+
+  public static final String SERIALIZED_NAME_END_DATE = "endDate";
+  @SerializedName(SERIALIZED_NAME_END_DATE)
+  private OffsetDateTime endDate;
 
   public OptionEntry() {
   }
@@ -103,6 +108,27 @@ public class OptionEntry {
   }
 
 
+  public OptionEntry endDate(OffsetDateTime endDate) {
+    
+    this.endDate = endDate;
+    return this;
+  }
+
+   /**
+   * If American exercise, this is the end of the exercise period.  Optional field. Defaults to the Date field if not set.
+   * @return endDate
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getEndDate() {
+    return endDate;
+  }
+
+
+  public void setEndDate(OffsetDateTime endDate) {
+    this.endDate = endDate;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -114,12 +140,24 @@ public class OptionEntry {
     }
     OptionEntry optionEntry = (OptionEntry) o;
     return (this.strike.compareTo(optionEntry.getStrike()) == 0) &&
-        Objects.equals(this.date, optionEntry.date);
+        Objects.equals(this.date, optionEntry.date) &&
+        Objects.equals(this.endDate, optionEntry.endDate);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(strike, date);
+    return Objects.hash(strike, date, endDate);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -128,6 +166,7 @@ public class OptionEntry {
     sb.append("class OptionEntry {\n");
     sb.append("    strike: ").append(toIndentedString(strike)).append("\n");
     sb.append("    date: ").append(toIndentedString(date)).append("\n");
+    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -152,6 +191,7 @@ public class OptionEntry {
     openapiFields = new HashSet<String>();
     openapiFields.add("strike");
     openapiFields.add("date");
+    openapiFields.add("endDate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

@@ -109,6 +109,8 @@ public enum PropertyDomain {
   
   DERIVEDVALUATION("DerivedValuation"),
   
+  TIMELINE("Timeline"),
+  
   ADDRESSKEYDEFINITION("AddressKeyDefinition"),
   
   AMORTISATIONRULESET("AmortisationRuleSet"),

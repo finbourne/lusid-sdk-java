@@ -34,6 +34,7 @@ A list of output transactions.
 |**sourceType** | **String** | The type of source that the transaction originated from, eg: InputTransaction, InstrumentEvent, HoldingAdjustment |  [optional] |
 |**sourceInstrumentEventId** | **String** | The unique ID of the instrument event that the transaction is related to. |  [optional] |
 |**transactionGroupId** | **String** | The identifier for grouping economic events across multiple transactions |  [optional] |
+|**resolvedTransactionTypeDetails** | [**TransactionTypeDetails**](TransactionTypeDetails.md) |  |  [optional] |
 
 
 

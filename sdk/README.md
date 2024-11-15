@@ -220,6 +220,7 @@ Class | Method | HTTP request | Description
 *FundsApi* | [**getFee**](docs/FundsApi.md#getfee) | **GET** /api/funds/{scope}/{code}/fees/{feeCode} | [EXPERIMENTAL] GetFee: Get a Fee for a specified Fund.
 *FundsApi* | [**getFund**](docs/FundsApi.md#getfund) | **GET** /api/funds/{scope}/{code} | [EXPERIMENTAL] GetFund: Get a Fund.
 *FundsApi* | [**getValuationPointData**](docs/FundsApi.md#getvaluationpointdata) | **POST** /api/funds/{scope}/{code}/valuationpoints/$query | [EXPERIMENTAL] GetValuationPointData: Get Valuation Point Data for a Fund.
+*FundsApi* | [**getValuationPointJournalEntryLines**](docs/FundsApi.md#getvaluationpointjournalentrylines) | **POST** /api/funds/{scope}/{code}/valuationpoints/journalentrylines/$query | [EXPERIMENTAL] GetValuationPointJournalEntryLines: Get the Journal Entry lines for the given Fund.
 *FundsApi* | [**listFees**](docs/FundsApi.md#listfees) | **GET** /api/funds/{scope}/{code}/fees | [EXPERIMENTAL] ListFees: List Fees for a specified Fund.
 *FundsApi* | [**listFunds**](docs/FundsApi.md#listfunds) | **GET** /api/funds | [EXPERIMENTAL] ListFunds: List Funds.
 *FundsApi* | [**listValuationPointOverview**](docs/FundsApi.md#listvaluationpointoverview) | **GET** /api/funds/{scope}/{code}/valuationPointOverview | [EXPERIMENTAL] ListValuationPointOverview: List Valuation Points Overview for a given Fund.
@@ -901,6 +902,8 @@ Class | Method | HTTP request | Description
  - [DiscountingMethod](docs/DiscountingMethod.md)
  - [DividendOptionEvent](docs/DividendOptionEvent.md)
  - [DividendReinvestmentEvent](docs/DividendReinvestmentEvent.md)
+ - [EarlyRedemptionElection](docs/EarlyRedemptionElection.md)
+ - [EarlyRedemptionEvent](docs/EarlyRedemptionEvent.md)
  - [EconomicDependency](docs/EconomicDependency.md)
  - [EconomicDependencyType](docs/EconomicDependencyType.md)
  - [EconomicDependencyWithComplexMarketData](docs/EconomicDependencyWithComplexMarketData.md)
@@ -1709,6 +1712,7 @@ Class | Method | HTTP request | Description
  - [ValuationPointDataRequest](docs/ValuationPointDataRequest.md)
  - [ValuationPointDataResponse](docs/ValuationPointDataResponse.md)
  - [ValuationPointOverview](docs/ValuationPointOverview.md)
+ - [ValuationPointResourceListOfJournalEntryLine](docs/ValuationPointResourceListOfJournalEntryLine.md)
  - [ValuationRequest](docs/ValuationRequest.md)
  - [ValuationSchedule](docs/ValuationSchedule.md)
  - [ValuationsReconciliationRequest](docs/ValuationsReconciliationRequest.md)

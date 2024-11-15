@@ -119,7 +119,9 @@ public enum InstrumentEventType {
   
   TERMDEPOSITINTERESTEVENT("TermDepositInterestEvent"),
   
-  TERMDEPOSITPRINCIPALEVENT("TermDepositPrincipalEvent");
+  TERMDEPOSITPRINCIPALEVENT("TermDepositPrincipalEvent"),
+  
+  EARLYREDEMPTIONEVENT("EarlyRedemptionEvent");
 
   private String value;
 

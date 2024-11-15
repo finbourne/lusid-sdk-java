@@ -89,6 +89,8 @@
 
 * `DERIVEDVALUATION` (value: `"DerivedValuation"`)
 
+* `TIMELINE` (value: `"Timeline"`)
+
 * `ADDRESSKEYDEFINITION` (value: `"AddressKeyDefinition"`)
 
 * `AMORTISATIONRULESET` (value: `"AmortisationRuleSet"`)

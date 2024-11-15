@@ -304,7 +304,7 @@ public class AllocationsApiExample {
 
 ## upsertAllocations
 
-> ResourceListOfAllocation upsertAllocations(allocationSetRequest)
+> ResourceListOfAllocation upsertAllocations(allocationSetRequest, verificationAsAt, retryWithoutChangedEntities)
 
 UpsertAllocations: Upsert Allocations
 
@@ -350,11 +350,13 @@ public class AllocationsApiExample {
 
         AllocationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(AllocationsApi.class);
         AllocationSetRequest allocationSetRequest = new AllocationSetRequest(); // AllocationSetRequest | The collection of allocation requests.
+        OffsetDateTime verificationAsAt = OffsetDateTime.now(); // OffsetDateTime | An optional verification asAt; individual upserts will fail if an existing entity has been updated between the verification asAt and time of upsert.
+        Boolean retryWithoutChangedEntities = false; // Boolean | Optionally choose to keep retrying upsert for remaining entities if some are being updated concurrently. If set to true, any entities that have   changed since the verificationAsAt will be dropped from the set of allocations to upsert and the upsert will be retried. The response will only contain the allocations in the original request   that have been successfully upserted.
         try {
             // uncomment the below to set overrides at the request level
-            // ResourceListOfAllocation result = apiInstance.upsertAllocations(allocationSetRequest).execute(opts);
+            // ResourceListOfAllocation result = apiInstance.upsertAllocations(allocationSetRequest, verificationAsAt, retryWithoutChangedEntities).execute(opts);
 
-            ResourceListOfAllocation result = apiInstance.upsertAllocations(allocationSetRequest).execute();
+            ResourceListOfAllocation result = apiInstance.upsertAllocations(allocationSetRequest, verificationAsAt, retryWithoutChangedEntities).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling AllocationsApi#upsertAllocations");
@@ -371,7 +373,9 @@ public class AllocationsApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **allocationSetRequest** | [**AllocationSetRequest**](AllocationSetRequest.md)| The collection of allocation requests. | [optional] |
+| **allocationSetRequest** | [**AllocationSetRequest**](AllocationSetRequest.md)| The collection of allocation requests. | |
+| **verificationAsAt** | **OffsetDateTime**| An optional verification asAt; individual upserts will fail if an existing entity has been updated between the verification asAt and time of upsert. | [optional] |
+| **retryWithoutChangedEntities** | **Boolean**| Optionally choose to keep retrying upsert for remaining entities if some are being updated concurrently. If set to true, any entities that have   changed since the verificationAsAt will be dropped from the set of allocations to upsert and the upsert will be retried. The response will only contain the allocations in the original request   that have been successfully upserted. | [optional] [default to false] |
 
 ### Return type
 

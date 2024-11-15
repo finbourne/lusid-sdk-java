@@ -9,8 +9,8 @@ LUSID representation of Cap, Floor, or Collar.
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**capFloorType** | **String** | Determine if it&#39;s CAP, FLOOR, or COLLAR.    Supported string (enumeration) values are: [Cap, Floor, Collar]. |  |
-|**capStrike** | **java.math.BigDecimal** | Strike rate of the Cap. |  |
-|**floorStrike** | **java.math.BigDecimal** | Strike rate of the Floor. |  |
+|**capStrike** | **java.math.BigDecimal** | Strike rate of the Cap. |  [optional] |
+|**floorStrike** | **java.math.BigDecimal** | Strike rate of the Floor. |  [optional] |
 |**includeFirstCaplet** | **Boolean** | Include first caplet flag. |  |
 |**underlyingFloatingLeg** | [**FloatingLeg**](FloatingLeg.md) |  |  |
 

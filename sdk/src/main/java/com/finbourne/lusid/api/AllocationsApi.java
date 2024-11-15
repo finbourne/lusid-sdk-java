@@ -902,11 +902,11 @@ public class AllocationsApi {
     public APIlistAllocationsRequest listAllocations() {
         return new APIlistAllocationsRequest();
     }
-    private okhttp3.Call upsertAllocationsCall(AllocationSetRequest allocationSetRequest, final ApiCallback _callback) throws ApiException {
-        return upsertAllocationsCall(allocationSetRequest,  _callback, new ConfigurationOptions());
+    private okhttp3.Call upsertAllocationsCall(AllocationSetRequest allocationSetRequest, OffsetDateTime verificationAsAt, Boolean retryWithoutChangedEntities, final ApiCallback _callback) throws ApiException {
+        return upsertAllocationsCall(allocationSetRequest, verificationAsAt, retryWithoutChangedEntities,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call upsertAllocationsCall(AllocationSetRequest allocationSetRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call upsertAllocationsCall(AllocationSetRequest allocationSetRequest, OffsetDateTime verificationAsAt, Boolean retryWithoutChangedEntities, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -930,6 +930,14 @@ public class AllocationsApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (verificationAsAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("verificationAsAt", verificationAsAt));
+        }
+
+        if (retryWithoutChangedEntities != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("retryWithoutChangedEntities", retryWithoutChangedEntities));
+        }
 
         final String[] localVarAccepts = {
             "text/plain",
@@ -957,53 +965,71 @@ public class AllocationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertAllocationsValidateBeforeCall(AllocationSetRequest allocationSetRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        return upsertAllocationsCall(allocationSetRequest, _callback, opts);
+    private okhttp3.Call upsertAllocationsValidateBeforeCall(AllocationSetRequest allocationSetRequest, OffsetDateTime verificationAsAt, Boolean retryWithoutChangedEntities, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'allocationSetRequest' is set
+        if (allocationSetRequest == null) {
+            throw new ApiException("Missing the required parameter 'allocationSetRequest' when calling upsertAllocations(Async)");
+        }
+
+        return upsertAllocationsCall(allocationSetRequest, verificationAsAt, retryWithoutChangedEntities, _callback, opts);
 
     }
 
 
-    private ApiResponse<ResourceListOfAllocation> upsertAllocationsWithHttpInfo(AllocationSetRequest allocationSetRequest) throws ApiException {
-        okhttp3.Call localVarCall = upsertAllocationsValidateBeforeCall(allocationSetRequest, null, new ConfigurationOptions());
+    private ApiResponse<ResourceListOfAllocation> upsertAllocationsWithHttpInfo(AllocationSetRequest allocationSetRequest, OffsetDateTime verificationAsAt, Boolean retryWithoutChangedEntities) throws ApiException {
+        okhttp3.Call localVarCall = upsertAllocationsValidateBeforeCall(allocationSetRequest, verificationAsAt, retryWithoutChangedEntities, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ResourceListOfAllocation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ResourceListOfAllocation> upsertAllocationsWithHttpInfo(AllocationSetRequest allocationSetRequest, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = upsertAllocationsValidateBeforeCall(allocationSetRequest, null, opts);
+    private ApiResponse<ResourceListOfAllocation> upsertAllocationsWithHttpInfo(AllocationSetRequest allocationSetRequest, OffsetDateTime verificationAsAt, Boolean retryWithoutChangedEntities, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertAllocationsValidateBeforeCall(allocationSetRequest, verificationAsAt, retryWithoutChangedEntities, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfAllocation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call upsertAllocationsAsync(AllocationSetRequest allocationSetRequest, final ApiCallback<ResourceListOfAllocation> _callback) throws ApiException {
+    private okhttp3.Call upsertAllocationsAsync(AllocationSetRequest allocationSetRequest, OffsetDateTime verificationAsAt, Boolean retryWithoutChangedEntities, final ApiCallback<ResourceListOfAllocation> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertAllocationsValidateBeforeCall(allocationSetRequest, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = upsertAllocationsValidateBeforeCall(allocationSetRequest, verificationAsAt, retryWithoutChangedEntities, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ResourceListOfAllocation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call upsertAllocationsAsync(AllocationSetRequest allocationSetRequest, final ApiCallback<ResourceListOfAllocation> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call upsertAllocationsAsync(AllocationSetRequest allocationSetRequest, OffsetDateTime verificationAsAt, Boolean retryWithoutChangedEntities, final ApiCallback<ResourceListOfAllocation> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertAllocationsValidateBeforeCall(allocationSetRequest, _callback, opts);
+        okhttp3.Call localVarCall = upsertAllocationsValidateBeforeCall(allocationSetRequest, verificationAsAt, retryWithoutChangedEntities, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfAllocation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
     public class APIupsertAllocationsRequest {
-        private AllocationSetRequest allocationSetRequest;
+        private final AllocationSetRequest allocationSetRequest;
+        private OffsetDateTime verificationAsAt;
+        private Boolean retryWithoutChangedEntities;
 
-        private APIupsertAllocationsRequest() {
+        private APIupsertAllocationsRequest(AllocationSetRequest allocationSetRequest) {
+            this.allocationSetRequest = allocationSetRequest;
         }
 
         /**
-         * Set allocationSetRequest
-         * @param allocationSetRequest The collection of allocation requests. (optional)
+         * Set verificationAsAt
+         * @param verificationAsAt An optional verification asAt; individual upserts will fail if an existing entity has been updated between the verification asAt and time of upsert. (optional)
          * @return APIupsertAllocationsRequest
          */
-        public APIupsertAllocationsRequest allocationSetRequest(AllocationSetRequest allocationSetRequest) {
-            this.allocationSetRequest = allocationSetRequest;
+        public APIupsertAllocationsRequest verificationAsAt(OffsetDateTime verificationAsAt) {
+            this.verificationAsAt = verificationAsAt;
+            return this;
+        }
+
+        /**
+         * Set retryWithoutChangedEntities
+         * @param retryWithoutChangedEntities Optionally choose to keep retrying upsert for remaining entities if some are being updated concurrently. If set to true, any entities that have   changed since the verificationAsAt will be dropped from the set of allocations to upsert and the upsert will be retried. The response will only contain the allocations in the original request   that have been successfully upserted. (optional, default to false)
+         * @return APIupsertAllocationsRequest
+         */
+        public APIupsertAllocationsRequest retryWithoutChangedEntities(Boolean retryWithoutChangedEntities) {
+            this.retryWithoutChangedEntities = retryWithoutChangedEntities;
             return this;
         }
 
@@ -1021,7 +1047,7 @@ public class AllocationsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return upsertAllocationsCall(allocationSetRequest, _callback);
+            return upsertAllocationsCall(allocationSetRequest, verificationAsAt, retryWithoutChangedEntities, _callback);
         }
 
         /**
@@ -1037,7 +1063,7 @@ public class AllocationsApi {
          </table>
          */
         public ResourceListOfAllocation execute() throws ApiException {
-            ApiResponse<ResourceListOfAllocation> localVarResp = upsertAllocationsWithHttpInfo(allocationSetRequest);
+            ApiResponse<ResourceListOfAllocation> localVarResp = upsertAllocationsWithHttpInfo(allocationSetRequest, verificationAsAt, retryWithoutChangedEntities);
             return localVarResp.getData();
         }
 
@@ -1054,7 +1080,7 @@ public class AllocationsApi {
          </table>
          */
         public ResourceListOfAllocation execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ResourceListOfAllocation> localVarResp = upsertAllocationsWithHttpInfo(allocationSetRequest, opts);
+            ApiResponse<ResourceListOfAllocation> localVarResp = upsertAllocationsWithHttpInfo(allocationSetRequest, verificationAsAt, retryWithoutChangedEntities, opts);
             return localVarResp.getData();
         }
 
@@ -1071,7 +1097,7 @@ public class AllocationsApi {
          </table>
          */
         public ApiResponse<ResourceListOfAllocation> executeWithHttpInfo() throws ApiException {
-            return upsertAllocationsWithHttpInfo(allocationSetRequest);
+            return upsertAllocationsWithHttpInfo(allocationSetRequest, verificationAsAt, retryWithoutChangedEntities);
         }
 
         /**
@@ -1087,7 +1113,7 @@ public class AllocationsApi {
          </table>
          */
         public ApiResponse<ResourceListOfAllocation> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return upsertAllocationsWithHttpInfo(allocationSetRequest, opts);
+            return upsertAllocationsWithHttpInfo(allocationSetRequest, verificationAsAt, retryWithoutChangedEntities, opts);
         }
 
         /**
@@ -1104,7 +1130,7 @@ public class AllocationsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfAllocation> _callback) throws ApiException {
-            return upsertAllocationsAsync(allocationSetRequest, _callback);
+            return upsertAllocationsAsync(allocationSetRequest, verificationAsAt, retryWithoutChangedEntities, _callback);
         }
 
         /**
@@ -1121,13 +1147,14 @@ public class AllocationsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfAllocation> _callback, ConfigurationOptions opts) throws ApiException {
-            return upsertAllocationsAsync(allocationSetRequest, _callback, opts);
+            return upsertAllocationsAsync(allocationSetRequest, verificationAsAt, retryWithoutChangedEntities, _callback, opts);
         }
     }
 
     /**
      * UpsertAllocations: Upsert Allocations
      * Upsert; update existing allocations with given ids, or create new allocations otherwise.
+     * @param allocationSetRequest The collection of allocation requests. (required)
      * @return APIupsertAllocationsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1137,7 +1164,7 @@ public class AllocationsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIupsertAllocationsRequest upsertAllocations() {
-        return new APIupsertAllocationsRequest();
+    public APIupsertAllocationsRequest upsertAllocations(AllocationSetRequest allocationSetRequest) {
+        return new APIupsertAllocationsRequest(allocationSetRequest);
     }
 }

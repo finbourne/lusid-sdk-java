@@ -47,6 +47,7 @@ import com.finbourne.lusid.model.UpsertValuationPointRequest;
 import com.finbourne.lusid.model.ValuationPointDataQueryParameters;
 import com.finbourne.lusid.model.ValuationPointDataRequest;
 import com.finbourne.lusid.model.ValuationPointDataResponse;
+import com.finbourne.lusid.model.ValuationPointResourceListOfJournalEntryLine;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -2683,6 +2684,349 @@ public class FundsApi {
      */
     public APIgetValuationPointDataRequest getValuationPointData(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
         return new APIgetValuationPointDataRequest(scope, code, valuationPointDataQueryParameters);
+    }
+    private okhttp3.Call getValuationPointJournalEntryLinesCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return getValuationPointJournalEntryLinesCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getValuationPointJournalEntryLinesCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = valuationPointDataQueryParameters;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/valuationpoints/journalentrylines/$query"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (generalLedgerProfileCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("generalLedgerProfileCode", generalLedgerProfileCode));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (propertyKeys != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getValuationPointJournalEntryLinesValidateBeforeCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getValuationPointJournalEntryLines(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling getValuationPointJournalEntryLines(Async)");
+        }
+
+        // verify the required parameter 'valuationPointDataQueryParameters' is set
+        if (valuationPointDataQueryParameters == null) {
+            throw new ApiException("Missing the required parameter 'valuationPointDataQueryParameters' when calling getValuationPointJournalEntryLines(Async)");
+        }
+
+        return getValuationPointJournalEntryLinesCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, _callback, opts);
+
+    }
+
+
+    private ApiResponse<ValuationPointResourceListOfJournalEntryLine> getValuationPointJournalEntryLinesWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys) throws ApiException {
+        okhttp3.Call localVarCall = getValuationPointJournalEntryLinesValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ValuationPointResourceListOfJournalEntryLine>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ValuationPointResourceListOfJournalEntryLine> getValuationPointJournalEntryLinesWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getValuationPointJournalEntryLinesValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, null, opts);
+        Type localVarReturnType = new TypeToken<ValuationPointResourceListOfJournalEntryLine>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getValuationPointJournalEntryLinesAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, final ApiCallback<ValuationPointResourceListOfJournalEntryLine> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getValuationPointJournalEntryLinesValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ValuationPointResourceListOfJournalEntryLine>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getValuationPointJournalEntryLinesAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, final ApiCallback<ValuationPointResourceListOfJournalEntryLine> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getValuationPointJournalEntryLinesValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, _callback, opts);
+        Type localVarReturnType = new TypeToken<ValuationPointResourceListOfJournalEntryLine>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetValuationPointJournalEntryLinesRequest {
+        private final String scope;
+        private final String code;
+        private final ValuationPointDataQueryParameters valuationPointDataQueryParameters;
+        private String generalLedgerProfileCode;
+        private OffsetDateTime asAt;
+        private String filter;
+        private Integer limit;
+        private String page;
+        private List<String> propertyKeys;
+
+        private APIgetValuationPointJournalEntryLinesRequest(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
+            this.scope = scope;
+            this.code = code;
+            this.valuationPointDataQueryParameters = valuationPointDataQueryParameters;
+        }
+
+        /**
+         * Set generalLedgerProfileCode
+         * @param generalLedgerProfileCode The optional code of a general ledger profile used to decorate journal entry lines with levels. (optional)
+         * @return APIgetValuationPointJournalEntryLinesRequest
+         */
+        public APIgetValuationPointJournalEntryLinesRequest generalLedgerProfileCode(String generalLedgerProfileCode) {
+            this.generalLedgerProfileCode = generalLedgerProfileCode;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve Journal Entry lines. Defaults to returning the latest version   of each transaction if not specified. (optional)
+         * @return APIgetValuationPointJournalEntryLinesRequest
+         */
+        public APIgetValuationPointJournalEntryLinesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set. (optional)
+         * @return APIgetValuationPointJournalEntryLinesRequest
+         */
+        public APIgetValuationPointJournalEntryLinesRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
+         * @return APIgetValuationPointJournalEntryLinesRequest
+         */
+        public APIgetValuationPointJournalEntryLinesRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing Journal Entry lines from a previous call to GetValuationPointJournalEntryLines. (optional)
+         * @return APIgetValuationPointJournalEntryLinesRequest
+         */
+        public APIgetValuationPointJournalEntryLinesRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;   domain to decorate onto the journal entry lines. (optional)
+         * @return APIgetValuationPointJournalEntryLinesRequest
+         */
+        public APIgetValuationPointJournalEntryLinesRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Build call for getValuationPointJournalEntryLines
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Journal Entry lines for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getValuationPointJournalEntryLinesCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getValuationPointJournalEntryLines request
+         * @return ValuationPointResourceListOfJournalEntryLine
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Journal Entry lines for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ValuationPointResourceListOfJournalEntryLine execute() throws ApiException {
+            ApiResponse<ValuationPointResourceListOfJournalEntryLine> localVarResp = getValuationPointJournalEntryLinesWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getValuationPointJournalEntryLines request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ValuationPointResourceListOfJournalEntryLine
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Journal Entry lines for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ValuationPointResourceListOfJournalEntryLine execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ValuationPointResourceListOfJournalEntryLine> localVarResp = getValuationPointJournalEntryLinesWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getValuationPointJournalEntryLines request with HTTP info returned
+         * @return ApiResponse&lt;ValuationPointResourceListOfJournalEntryLine&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Journal Entry lines for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ValuationPointResourceListOfJournalEntryLine> executeWithHttpInfo() throws ApiException {
+            return getValuationPointJournalEntryLinesWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys);
+        }
+
+        /**
+         * Execute getValuationPointJournalEntryLines request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ValuationPointResourceListOfJournalEntryLine&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Journal Entry lines for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ValuationPointResourceListOfJournalEntryLine> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getValuationPointJournalEntryLinesWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, opts);
+        }
+
+        /**
+         * Execute getValuationPointJournalEntryLines request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Journal Entry lines for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ValuationPointResourceListOfJournalEntryLine> _callback) throws ApiException {
+            return getValuationPointJournalEntryLinesAsync(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getValuationPointJournalEntryLines request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Journal Entry lines for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ValuationPointResourceListOfJournalEntryLine> _callback, ConfigurationOptions opts) throws ApiException {
+            return getValuationPointJournalEntryLinesAsync(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] GetValuationPointJournalEntryLines: Get the Journal Entry lines for the given Fund.
+     * Gets the Journal Entry lines for the given Valuation Point for a Fund     The Journal Entry lines have been generated from transactions, translated via posting rules and used in the valuation point
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope is creating the unique identifier for the given Fund. (required)
+     * @param valuationPointDataQueryParameters The arguments to use for querying the Journal Entry lines. (required)
+     * @return APIgetValuationPointJournalEntryLinesRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested Journal Entry lines for the specified Valuation Point for a Fund. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetValuationPointJournalEntryLinesRequest getValuationPointJournalEntryLines(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
+        return new APIgetValuationPointJournalEntryLinesRequest(scope, code, valuationPointDataQueryParameters);
     }
     private okhttp3.Call listFeesCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         return listFeesCall(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys,  _callback, new ConfigurationOptions());

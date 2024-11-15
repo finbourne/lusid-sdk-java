@@ -18,7 +18,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -75,7 +74,7 @@ public class TransactionTypeDetails {
    * The scope in which the TransactionType was resolved. If the portfolio has a TransactionTypeScope, this will have been used. Otherwise the default scope will have been used.
    * @return scope
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public String getScope() {
     return scope;
   }
@@ -96,7 +95,7 @@ public class TransactionTypeDetails {
    * The source in which the TransactionType was resolved.
    * @return source
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public String getSource() {
     return source;
   }
@@ -117,7 +116,7 @@ public class TransactionTypeDetails {
    * The resolved TransactionType. More information on TransactionType resolution can be found at https://support.lusid.com/docs/how-does-lusid-resolve-transactions-to-transaction-types
    * @return type
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public String getType() {
     return type;
   }
@@ -143,20 +142,9 @@ public class TransactionTypeDetails {
         Objects.equals(this.type, transactionTypeDetails.type);
   }
 
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
-  }
-
   @Override
   public int hashCode() {
     return Objects.hash(scope, source, type);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -194,6 +182,9 @@ public class TransactionTypeDetails {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("scope");
+    openapiRequiredFields.add("source");
+    openapiRequiredFields.add("type");
   }
 
  /**
@@ -208,14 +199,21 @@ public class TransactionTypeDetails {
           throw new IllegalArgumentException(String.format("The required field(s) %s in TransactionTypeDetails is not found in the empty JSON string", TransactionTypeDetails.openapiRequiredFields.toString()));
         }
       }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : TransactionTypeDetails.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
+      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("scope") != null && !jsonObj.get("scope").isJsonNull()) && !jsonObj.get("scope").isJsonPrimitive()) {
+      if (!jsonObj.get("scope").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
       }
-      if ((jsonObj.get("source") != null && !jsonObj.get("source").isJsonNull()) && !jsonObj.get("source").isJsonPrimitive()) {
+      if (!jsonObj.get("source").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `source` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source").toString()));
       }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+      if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
   }
