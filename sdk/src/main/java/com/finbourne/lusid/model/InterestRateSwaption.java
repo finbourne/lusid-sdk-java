@@ -105,7 +105,7 @@ public class InterestRateSwaption extends LusidInstrument {
   }
 
    /**
-   * True if on exercise the holder of the option enters the swap paying fixed, false if floating.    Supported string (enumeration) values are: [Pay, Receive].
+   * Pay or Receive the fixed leg of the underlying swap.    Supported string (enumeration) values are: [Pay, Receive].
    * @return payOrReceiveFixed
   **/
   @jakarta.annotation.Nonnull

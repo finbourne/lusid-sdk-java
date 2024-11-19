@@ -165,7 +165,7 @@ public class EquityOption extends LusidInstrument {
    * The settlement date of the option.
    * @return optionSettlementDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getOptionSettlementDate() {
     return optionSettlementDate;
   }
@@ -511,7 +511,6 @@ public class EquityOption extends LusidInstrument {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("startDate");
     openapiRequiredFields.add("optionMaturityDate");
-    openapiRequiredFields.add("optionSettlementDate");
     openapiRequiredFields.add("deliveryType");
     openapiRequiredFields.add("optionType");
     openapiRequiredFields.add("strike");
