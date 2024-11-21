@@ -593,6 +593,10 @@ public class PropertyDefinitionSearchResult {
   @SerializedName(SERIALIZED_NAME_DERIVATION_FORMULA)
   private String derivationFormula;
 
+  public static final String SERIALIZED_NAME_IS_FILTERABLE = "isFilterable";
+  @SerializedName(SERIALIZED_NAME_IS_FILTERABLE)
+  private Boolean isFilterable;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -928,6 +932,27 @@ public class PropertyDefinitionSearchResult {
   }
 
 
+  public PropertyDefinitionSearchResult isFilterable(Boolean isFilterable) {
+    
+    this.isFilterable = isFilterable;
+    return this;
+  }
+
+   /**
+   * Bool indicating whether the values of this property are fitlerable, this is true for all non-derived property defintions. For a derived definition this must be set true to enable filtering.
+   * @return isFilterable
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getIsFilterable() {
+    return isFilterable;
+  }
+
+
+  public void setIsFilterable(Boolean isFilterable) {
+    this.isFilterable = isFilterable;
+  }
+
+
   public PropertyDefinitionSearchResult links(List<Link> links) {
     
     this.links = links;
@@ -983,6 +1008,7 @@ public class PropertyDefinitionSearchResult {
         Objects.equals(this.propertyDefinitionType, propertyDefinitionSearchResult.propertyDefinitionType) &&
         Objects.equals(this.propertyDescription, propertyDefinitionSearchResult.propertyDescription) &&
         Objects.equals(this.derivationFormula, propertyDefinitionSearchResult.derivationFormula) &&
+        Objects.equals(this.isFilterable, propertyDefinitionSearchResult.isFilterable) &&
         Objects.equals(this.links, propertyDefinitionSearchResult.links);
   }
 
@@ -992,7 +1018,7 @@ public class PropertyDefinitionSearchResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, key, valueType, displayName, dataTypeId, type, unitSchema, domain, scope, code, valueRequired, lifeTime, constraintStyle, propertyDefinitionType, propertyDescription, derivationFormula, links);
+    return Objects.hash(href, key, valueType, displayName, dataTypeId, type, unitSchema, domain, scope, code, valueRequired, lifeTime, constraintStyle, propertyDefinitionType, propertyDescription, derivationFormula, isFilterable, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1022,6 +1048,7 @@ public class PropertyDefinitionSearchResult {
     sb.append("    propertyDefinitionType: ").append(toIndentedString(propertyDefinitionType)).append("\n");
     sb.append("    propertyDescription: ").append(toIndentedString(propertyDescription)).append("\n");
     sb.append("    derivationFormula: ").append(toIndentedString(derivationFormula)).append("\n");
+    sb.append("    isFilterable: ").append(toIndentedString(isFilterable)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -1061,6 +1088,7 @@ public class PropertyDefinitionSearchResult {
     openapiFields.add("propertyDefinitionType");
     openapiFields.add("propertyDescription");
     openapiFields.add("derivationFormula");
+    openapiFields.add("isFilterable");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)

@@ -522,6 +522,10 @@ Class | Method | HTTP request | Description
 *TaxRuleSetsApi* | [**getTaxRuleSet**](docs/TaxRuleSetsApi.md#gettaxruleset) | **GET** /api/tax/rulesets/{scope}/{code} | [EXPERIMENTAL] GetTaxRuleSet: Retrieve the definition of single tax rule set.
 *TaxRuleSetsApi* | [**listTaxRuleSets**](docs/TaxRuleSetsApi.md#listtaxrulesets) | **GET** /api/tax/rulesets | [EXPERIMENTAL] ListTaxRuleSets: List tax rule sets.
 *TaxRuleSetsApi* | [**updateTaxRuleSet**](docs/TaxRuleSetsApi.md#updatetaxruleset) | **PUT** /api/tax/rulesets/{scope}/{code} | [EXPERIMENTAL] UpdateTaxRuleSet: Update a tax rule set.
+*TimelinesApi* | [**createTimeline**](docs/TimelinesApi.md#createtimeline) | **POST** /api/timelines | [EXPERIMENTAL] CreateTimeline: Create a Timeline
+*TimelinesApi* | [**deleteTimeline**](docs/TimelinesApi.md#deletetimeline) | **DELETE** /api/timelines/{scope}/{code} | [EXPERIMENTAL] DeleteTimeline: Deletes a particular Timeline
+*TimelinesApi* | [**getTimeline**](docs/TimelinesApi.md#gettimeline) | **GET** /api/timelines/{scope}/{code} | [EXPERIMENTAL] GetTimeline: Get a single Timeline by scope and code.
+*TimelinesApi* | [**updateTimeline**](docs/TimelinesApi.md#updatetimeline) | **PUT** /api/timelines/{scope}/{code} | [EXPERIMENTAL] UpdateTimeline: Update Timeline defined by scope and code
 *TransactionConfigurationApi* | [**deleteSideDefinition**](docs/TransactionConfigurationApi.md#deletesidedefinition) | **DELETE** /api/transactionconfiguration/sides/{side}/$delete | DeleteSideDefinition: Delete the given side definition
 *TransactionConfigurationApi* | [**deleteTransactionType**](docs/TransactionConfigurationApi.md#deletetransactiontype) | **DELETE** /api/transactionconfiguration/types/{source}/{type} | DeleteTransactionType: Delete a transaction type
 *TransactionConfigurationApi* | [**deleteTransactionTypeSource**](docs/TransactionConfigurationApi.md#deletetransactiontypesource) | **DELETE** /api/transactionconfiguration/types/{source}/$delete | DeleteTransactionTypeSource: Delete all transaction types for the given source and scope
@@ -836,6 +840,7 @@ Class | Method | HTTP request | Description
  - [CreateSequenceRequest](docs/CreateSequenceRequest.md)
  - [CreateStagingRuleSetRequest](docs/CreateStagingRuleSetRequest.md)
  - [CreateTaxRuleSetRequest](docs/CreateTaxRuleSetRequest.md)
+ - [CreateTimelineRequest](docs/CreateTimelineRequest.md)
  - [CreateTradeTicketsResponse](docs/CreateTradeTicketsResponse.md)
  - [CreateTransactionPortfolioRequest](docs/CreateTransactionPortfolioRequest.md)
  - [CreateUnitDefinition](docs/CreateUnitDefinition.md)
@@ -1579,6 +1584,7 @@ Class | Method | HTTP request | Description
  - [TermDeposit](docs/TermDeposit.md)
  - [TermDepositInterestEvent](docs/TermDepositInterestEvent.md)
  - [TermDepositPrincipalEvent](docs/TermDepositPrincipalEvent.md)
+ - [Timeline](docs/Timeline.md)
  - [TotalReturnSwap](docs/TotalReturnSwap.md)
  - [Touch](docs/Touch.md)
  - [TradeTicket](docs/TradeTicket.md)
@@ -1662,6 +1668,7 @@ Class | Method | HTTP request | Description
  - [UpdateRelationshipDefinitionRequest](docs/UpdateRelationshipDefinitionRequest.md)
  - [UpdateStagingRuleSetRequest](docs/UpdateStagingRuleSetRequest.md)
  - [UpdateTaxRuleSetRequest](docs/UpdateTaxRuleSetRequest.md)
+ - [UpdateTimelineRequest](docs/UpdateTimelineRequest.md)
  - [UpdateUnitRequest](docs/UpdateUnitRequest.md)
  - [UpsertCdsFlowConventionsRequest](docs/UpsertCdsFlowConventionsRequest.md)
  - [UpsertComplexMarketDataRequest](docs/UpsertComplexMarketDataRequest.md)

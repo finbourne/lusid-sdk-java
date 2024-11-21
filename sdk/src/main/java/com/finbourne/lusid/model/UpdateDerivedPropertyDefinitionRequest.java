@@ -67,6 +67,10 @@ public class UpdateDerivedPropertyDefinitionRequest {
   @SerializedName(SERIALIZED_NAME_DERIVATION_FORMULA)
   private String derivationFormula;
 
+  public static final String SERIALIZED_NAME_IS_FILTERABLE = "isFilterable";
+  @SerializedName(SERIALIZED_NAME_IS_FILTERABLE)
+  private Boolean isFilterable;
+
   public UpdateDerivedPropertyDefinitionRequest() {
   }
 
@@ -154,6 +158,27 @@ public class UpdateDerivedPropertyDefinitionRequest {
   }
 
 
+  public UpdateDerivedPropertyDefinitionRequest isFilterable(Boolean isFilterable) {
+    
+    this.isFilterable = isFilterable;
+    return this;
+  }
+
+   /**
+   * Bool indicating whether the values of this property are fitlerable, this is true for all non-derived property defintions. For a derived definition this must be set true to enable filtering.
+   * @return isFilterable
+  **/
+  @jakarta.annotation.Nonnull
+  public Boolean getIsFilterable() {
+    return isFilterable;
+  }
+
+
+  public void setIsFilterable(Boolean isFilterable) {
+    this.isFilterable = isFilterable;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -167,7 +192,8 @@ public class UpdateDerivedPropertyDefinitionRequest {
     return Objects.equals(this.displayName, updateDerivedPropertyDefinitionRequest.displayName) &&
         Objects.equals(this.dataTypeId, updateDerivedPropertyDefinitionRequest.dataTypeId) &&
         Objects.equals(this.propertyDescription, updateDerivedPropertyDefinitionRequest.propertyDescription) &&
-        Objects.equals(this.derivationFormula, updateDerivedPropertyDefinitionRequest.derivationFormula);
+        Objects.equals(this.derivationFormula, updateDerivedPropertyDefinitionRequest.derivationFormula) &&
+        Objects.equals(this.isFilterable, updateDerivedPropertyDefinitionRequest.isFilterable);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -176,7 +202,7 @@ public class UpdateDerivedPropertyDefinitionRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, dataTypeId, propertyDescription, derivationFormula);
+    return Objects.hash(displayName, dataTypeId, propertyDescription, derivationFormula, isFilterable);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -194,6 +220,7 @@ public class UpdateDerivedPropertyDefinitionRequest {
     sb.append("    dataTypeId: ").append(toIndentedString(dataTypeId)).append("\n");
     sb.append("    propertyDescription: ").append(toIndentedString(propertyDescription)).append("\n");
     sb.append("    derivationFormula: ").append(toIndentedString(derivationFormula)).append("\n");
+    sb.append("    isFilterable: ").append(toIndentedString(isFilterable)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -220,12 +247,14 @@ public class UpdateDerivedPropertyDefinitionRequest {
     openapiFields.add("dataTypeId");
     openapiFields.add("propertyDescription");
     openapiFields.add("derivationFormula");
+    openapiFields.add("isFilterable");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("displayName");
     openapiRequiredFields.add("dataTypeId");
     openapiRequiredFields.add("derivationFormula");
+    openapiRequiredFields.add("isFilterable");
   }
 
  /**

@@ -28,6 +28,7 @@ A list of property definitions.
 |**properties** | [**Map&lt;String, Property&gt;**](Property.md) | Set of unique property definition properties and associated values to store with the property definition. Each property must be from the &#39;PropertyDefinition&#39; domain. |  [optional] |
 |**version** | [**Version**](Version.md) |  |  [optional] |
 |**stagedModifications** | [**StagedModificationsInfo**](StagedModificationsInfo.md) |  |  [optional] |
+|**isFilterable** | **Boolean** | Bool indicating whether the values of this property are fitlerable, this is true for all non-derived property defintions. For a derived definition this must be set true to enable filtering. |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 

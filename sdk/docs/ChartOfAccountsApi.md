@@ -944,7 +944,7 @@ public class ChartOfAccountsApiExample {
         String accountCode = "accountCode_example"; // String | The code of the Account.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the Account properties. Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Account definition. Defaults to returning the latest version of the Account definition if not specified.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Account' domain to decorate onto the Account.   These must take the format {domain}/{scope}/{code}, for example 'Account/Manager/Id'. If not provided will return all the entitled properties for that Account.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Account' domain to decorate onto the Account.   These must take the format {domain}/{scope}/{code}, for example 'Account/Manager/Id'. If no properties are specified, then no properties will be returned.
         try {
             // uncomment the below to set overrides at the request level
             // Account result = apiInstance.getAccount(scope, code, accountCode, effectiveAt, asAt, propertyKeys).execute(opts);
@@ -971,7 +971,7 @@ public class ChartOfAccountsApiExample {
 | **accountCode** | **String**| The code of the Account. | |
 | **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the Account properties. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Account definition. Defaults to returning the latest version of the Account definition if not specified. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Account&#39; domain to decorate onto the Account.   These must take the format {domain}/{scope}/{code}, for example &#39;Account/Manager/Id&#39;. If not provided will return all the entitled properties for that Account. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Account&#39; domain to decorate onto the Account.   These must take the format {domain}/{scope}/{code}, for example &#39;Account/Manager/Id&#39;. If no properties are specified, then no properties will be returned. | [optional] |
 
 ### Return type
 

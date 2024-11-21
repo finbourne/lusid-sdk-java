@@ -24,6 +24,7 @@ A property definition search result
 |**propertyDefinitionType** | [**PropertyDefinitionTypeEnum**](#PropertyDefinitionTypeEnum) | The definition type (DerivedDefinition or Definition). The available values are: ValueProperty, DerivedDefinition |  [optional] |
 |**propertyDescription** | **String** | A brief description of what a property of this property definition contains. |  [optional] |
 |**derivationFormula** | **String** | The rule that defines how data is composed for a derived property. |  [optional] |
+|**isFilterable** | **Boolean** | Bool indicating whether the values of this property are fitlerable, this is true for all non-derived property defintions. For a derived definition this must be set true to enable filtering. |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 

@@ -1576,7 +1576,7 @@ public class TransactionPortfoliosApiExample {
         String custodianAccountCode = "custodianAccountCode_example"; // String | The code of the Custodian Account.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the Custodian Account properties. Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Custodian Account definition. Defaults to returning the latest version of the Custodian Account definition if not specified.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'CustodianAccount' domain to decorate onto the Custodian Account.   These must take the format {domain}/{scope}/{code}, for example 'CustodianAccount/Manager/Id'. If not provided will return all the entitled properties for that Custodian Account.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'CustodianAccount' domain to decorate onto the Custodian Account.   These must take the format {domain}/{scope}/{code}, for example 'CustodianAccount/Manager/Id'. If no properties are specified, then no properties will be returned.
         try {
             // uncomment the below to set overrides at the request level
             // CustodianAccount result = apiInstance.getCustodianAccount(scope, code, custodianAccountScope, custodianAccountCode, effectiveAt, asAt, propertyKeys).execute(opts);
@@ -1604,7 +1604,7 @@ public class TransactionPortfoliosApiExample {
 | **custodianAccountCode** | **String**| The code of the Custodian Account. | |
 | **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the Custodian Account properties. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Custodian Account definition. Defaults to returning the latest version of the Custodian Account definition if not specified. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;CustodianAccount&#39; domain to decorate onto the Custodian Account.   These must take the format {domain}/{scope}/{code}, for example &#39;CustodianAccount/Manager/Id&#39;. If not provided will return all the entitled properties for that Custodian Account. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;CustodianAccount&#39; domain to decorate onto the Custodian Account.   These must take the format {domain}/{scope}/{code}, for example &#39;CustodianAccount/Manager/Id&#39;. If no properties are specified, then no properties will be returned. | [optional] |
 
 ### Return type
 

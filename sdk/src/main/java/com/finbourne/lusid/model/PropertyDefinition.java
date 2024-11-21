@@ -614,6 +614,10 @@ public class PropertyDefinition {
   @SerializedName(SERIALIZED_NAME_STAGED_MODIFICATIONS)
   private StagedModificationsInfo stagedModifications;
 
+  public static final String SERIALIZED_NAME_IS_FILTERABLE = "isFilterable";
+  @SerializedName(SERIALIZED_NAME_IS_FILTERABLE)
+  private Boolean isFilterable;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -1041,6 +1045,27 @@ public class PropertyDefinition {
   }
 
 
+  public PropertyDefinition isFilterable(Boolean isFilterable) {
+    
+    this.isFilterable = isFilterable;
+    return this;
+  }
+
+   /**
+   * Bool indicating whether the values of this property are fitlerable, this is true for all non-derived property defintions. For a derived definition this must be set true to enable filtering.
+   * @return isFilterable
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getIsFilterable() {
+    return isFilterable;
+  }
+
+
+  public void setIsFilterable(Boolean isFilterable) {
+    this.isFilterable = isFilterable;
+  }
+
+
   public PropertyDefinition links(List<Link> links) {
     
     this.links = links;
@@ -1100,6 +1125,7 @@ public class PropertyDefinition {
         Objects.equals(this.properties, propertyDefinition.properties) &&
         Objects.equals(this.version, propertyDefinition.version) &&
         Objects.equals(this.stagedModifications, propertyDefinition.stagedModifications) &&
+        Objects.equals(this.isFilterable, propertyDefinition.isFilterable) &&
         Objects.equals(this.links, propertyDefinition.links);
   }
 
@@ -1109,7 +1135,7 @@ public class PropertyDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, key, valueType, displayName, dataTypeId, type, unitSchema, domain, scope, code, valueRequired, lifeTime, constraintStyle, propertyDefinitionType, propertyDescription, derivationFormula, collectionType, properties, version, stagedModifications, links);
+    return Objects.hash(href, key, valueType, displayName, dataTypeId, type, unitSchema, domain, scope, code, valueRequired, lifeTime, constraintStyle, propertyDefinitionType, propertyDescription, derivationFormula, collectionType, properties, version, stagedModifications, isFilterable, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1143,6 +1169,7 @@ public class PropertyDefinition {
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    stagedModifications: ").append(toIndentedString(stagedModifications)).append("\n");
+    sb.append("    isFilterable: ").append(toIndentedString(isFilterable)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -1186,6 +1213,7 @@ public class PropertyDefinition {
     openapiFields.add("properties");
     openapiFields.add("version");
     openapiFields.add("stagedModifications");
+    openapiFields.add("isFilterable");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)

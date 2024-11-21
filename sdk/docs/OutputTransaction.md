@@ -33,6 +33,7 @@ A list of output transactions.
 |**holdingIds** | **List&lt;Long&gt;** | The collection of single identifiers for the holding within the portfolio. The holdingId is constructed from the LusidInstrumentId, sub-holding keys and currrency and is unique within the portfolio. |  [optional] |
 |**sourceType** | **String** | The type of source that the transaction originated from, eg: InputTransaction, InstrumentEvent, HoldingAdjustment |  [optional] |
 |**sourceInstrumentEventId** | **String** | The unique ID of the instrument event that the transaction is related to. |  [optional] |
+|**custodianAccount** | [**CustodianAccount**](CustodianAccount.md) |  |  [optional] |
 |**transactionGroupId** | **String** | The identifier for grouping economic events across multiple transactions |  [optional] |
 |**resolvedTransactionTypeDetails** | [**TransactionTypeDetails**](TransactionTypeDetails.md) |  |  [optional] |
 

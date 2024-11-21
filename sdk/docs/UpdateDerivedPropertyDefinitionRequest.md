@@ -11,6 +11,7 @@
 |**dataTypeId** | [**ResourceId**](ResourceId.md) |  |  |
 |**propertyDescription** | **String** | Describes the property |  [optional] |
 |**derivationFormula** | **String** | The rule that defines how data is composed for a derived property. |  |
+|**isFilterable** | **Boolean** | Bool indicating whether the values of this property are fitlerable, this is true for all non-derived property defintions. For a derived definition this must be set true to enable filtering. |  |
 
 
 

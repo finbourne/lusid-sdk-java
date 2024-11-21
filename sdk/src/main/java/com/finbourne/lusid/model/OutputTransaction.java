@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.CurrencyAndAmount;
+import com.finbourne.lusid.model.CustodianAccount;
 import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.RealisedGainLoss;
 import com.finbourne.lusid.model.TransactionPrice;
@@ -208,6 +209,10 @@ public class OutputTransaction {
   public static final String SERIALIZED_NAME_SOURCE_INSTRUMENT_EVENT_ID = "sourceInstrumentEventId";
   @SerializedName(SERIALIZED_NAME_SOURCE_INSTRUMENT_EVENT_ID)
   private String sourceInstrumentEventId;
+
+  public static final String SERIALIZED_NAME_CUSTODIAN_ACCOUNT = "custodianAccount";
+  @SerializedName(SERIALIZED_NAME_CUSTODIAN_ACCOUNT)
+  private CustodianAccount custodianAccount;
 
   public static final String SERIALIZED_NAME_TRANSACTION_GROUP_ID = "transactionGroupId";
   @SerializedName(SERIALIZED_NAME_TRANSACTION_GROUP_ID)
@@ -777,6 +782,27 @@ public class OutputTransaction {
   }
 
 
+  public OutputTransaction custodianAccount(CustodianAccount custodianAccount) {
+    
+    this.custodianAccount = custodianAccount;
+    return this;
+  }
+
+   /**
+   * Get custodianAccount
+   * @return custodianAccount
+  **/
+  @jakarta.annotation.Nullable
+  public CustodianAccount getCustodianAccount() {
+    return custodianAccount;
+  }
+
+
+  public void setCustodianAccount(CustodianAccount custodianAccount) {
+    this.custodianAccount = custodianAccount;
+  }
+
+
   public OutputTransaction transactionGroupId(String transactionGroupId) {
     
     this.transactionGroupId = transactionGroupId;
@@ -854,6 +880,7 @@ public class OutputTransaction {
         Objects.equals(this.holdingIds, outputTransaction.holdingIds) &&
         Objects.equals(this.sourceType, outputTransaction.sourceType) &&
         Objects.equals(this.sourceInstrumentEventId, outputTransaction.sourceInstrumentEventId) &&
+        Objects.equals(this.custodianAccount, outputTransaction.custodianAccount) &&
         Objects.equals(this.transactionGroupId, outputTransaction.transactionGroupId) &&
         Objects.equals(this.resolvedTransactionTypeDetails, outputTransaction.resolvedTransactionTypeDetails);
   }
@@ -864,7 +891,7 @@ public class OutputTransaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transactionId, type, description, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionAmount, transactionPrice, totalConsideration, exchangeRate, transactionToPortfolioRate, transactionCurrency, properties, counterpartyId, source, transactionStatus, entryDateTime, cancelDateTime, realisedGainLoss, holdingIds, sourceType, sourceInstrumentEventId, transactionGroupId, resolvedTransactionTypeDetails);
+    return Objects.hash(transactionId, type, description, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionAmount, transactionPrice, totalConsideration, exchangeRate, transactionToPortfolioRate, transactionCurrency, properties, counterpartyId, source, transactionStatus, entryDateTime, cancelDateTime, realisedGainLoss, holdingIds, sourceType, sourceInstrumentEventId, custodianAccount, transactionGroupId, resolvedTransactionTypeDetails);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -903,6 +930,7 @@ public class OutputTransaction {
     sb.append("    holdingIds: ").append(toIndentedString(holdingIds)).append("\n");
     sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("    sourceInstrumentEventId: ").append(toIndentedString(sourceInstrumentEventId)).append("\n");
+    sb.append("    custodianAccount: ").append(toIndentedString(custodianAccount)).append("\n");
     sb.append("    transactionGroupId: ").append(toIndentedString(transactionGroupId)).append("\n");
     sb.append("    resolvedTransactionTypeDetails: ").append(toIndentedString(resolvedTransactionTypeDetails)).append("\n");
     sb.append("}");
@@ -952,6 +980,7 @@ public class OutputTransaction {
     openapiFields.add("holdingIds");
     openapiFields.add("sourceType");
     openapiFields.add("sourceInstrumentEventId");
+    openapiFields.add("custodianAccount");
     openapiFields.add("transactionGroupId");
     openapiFields.add("resolvedTransactionTypeDetails");
 
@@ -1043,6 +1072,10 @@ public class OutputTransaction {
       }
       if ((jsonObj.get("sourceInstrumentEventId") != null && !jsonObj.get("sourceInstrumentEventId").isJsonNull()) && !jsonObj.get("sourceInstrumentEventId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `sourceInstrumentEventId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sourceInstrumentEventId").toString()));
+      }
+      // validate the optional field `custodianAccount`
+      if (jsonObj.get("custodianAccount") != null && !jsonObj.get("custodianAccount").isJsonNull()) {
+        CustodianAccount.validateJsonElement(jsonObj.get("custodianAccount"));
       }
       if ((jsonObj.get("transactionGroupId") != null && !jsonObj.get("transactionGroupId").isJsonNull()) && !jsonObj.get("transactionGroupId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `transactionGroupId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transactionGroupId").toString()));
