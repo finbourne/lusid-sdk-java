@@ -777,6 +777,15 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "scheduleType"));
                     }
           })
+                .registerTypeSelector(com.finbourne.lusid.model.FlexibleDeposit.class, new TypeSelector<com.finbourne.lusid.model.FlexibleDeposit>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.FlexibleDeposit> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("FlexibleDeposit", com.finbourne.lusid.model.FlexibleDeposit.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
                 .registerTypeSelector(com.finbourne.lusid.model.FlexibleLoan.class, new TypeSelector<com.finbourne.lusid.model.FlexibleLoan>() {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.FlexibleLoan> getClassForElement(JsonElement readElement) {
@@ -1334,6 +1343,7 @@ public class JSON {
                         classByDiscriminatorValue.put("ExchangeTradedOption", com.finbourne.lusid.model.ExchangeTradedOption.class);
                         classByDiscriminatorValue.put("ExoticInstrument", com.finbourne.lusid.model.ExoticInstrument.class);
                         classByDiscriminatorValue.put("FixedLeg", com.finbourne.lusid.model.FixedLeg.class);
+                        classByDiscriminatorValue.put("FlexibleDeposit", com.finbourne.lusid.model.FlexibleDeposit.class);
                         classByDiscriminatorValue.put("FlexibleLoan", com.finbourne.lusid.model.FlexibleLoan.class);
                         classByDiscriminatorValue.put("FloatingLeg", com.finbourne.lusid.model.FloatingLeg.class);
                         classByDiscriminatorValue.put("ForwardRateAgreement", com.finbourne.lusid.model.ForwardRateAgreement.class);
@@ -2491,6 +2501,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FixedLeg.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FixedLegAllOfOverrides.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FixedSchedule.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FlexibleDeposit.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FlexibleLoan.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FloatSchedule.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FloatingLeg.CustomTypeAdapterFactory());
