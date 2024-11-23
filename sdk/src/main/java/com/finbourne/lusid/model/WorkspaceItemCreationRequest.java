@@ -57,6 +57,10 @@ public class WorkspaceItemCreationRequest {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public static final String SERIALIZED_NAME_GROUP = "group";
+  @SerializedName(SERIALIZED_NAME_GROUP)
+  private String group;
+
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
@@ -100,7 +104,7 @@ public class WorkspaceItemCreationRequest {
   }
 
    /**
-   * A workspace item&#39;s name; a unique identifier.
+   * A workspace item&#39;s name.
    * @return name
   **/
   @jakarta.annotation.Nonnull
@@ -111,6 +115,27 @@ public class WorkspaceItemCreationRequest {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+
+  public WorkspaceItemCreationRequest group(String group) {
+    
+    this.group = group;
+    return this;
+  }
+
+   /**
+   * The group containing a workspace item.
+   * @return group
+  **/
+  @jakarta.annotation.Nonnull
+  public String getGroup() {
+    return group;
+  }
+
+
+  public void setGroup(String group) {
+    this.group = group;
   }
 
 
@@ -189,6 +214,7 @@ public class WorkspaceItemCreationRequest {
     WorkspaceItemCreationRequest workspaceItemCreationRequest = (WorkspaceItemCreationRequest) o;
     return Objects.equals(this.format, workspaceItemCreationRequest.format) &&
         Objects.equals(this.name, workspaceItemCreationRequest.name) &&
+        Objects.equals(this.group, workspaceItemCreationRequest.group) &&
         Objects.equals(this.description, workspaceItemCreationRequest.description) &&
         Objects.equals(this.content, workspaceItemCreationRequest.content) &&
         Objects.equals(this.type, workspaceItemCreationRequest.type);
@@ -196,7 +222,7 @@ public class WorkspaceItemCreationRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(format, name, description, content, type);
+    return Objects.hash(format, name, group, description, content, type);
   }
 
   @Override
@@ -205,6 +231,7 @@ public class WorkspaceItemCreationRequest {
     sb.append("class WorkspaceItemCreationRequest {\n");
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    group: ").append(toIndentedString(group)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    content: ").append(toIndentedString(content)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
@@ -232,6 +259,7 @@ public class WorkspaceItemCreationRequest {
     openapiFields = new HashSet<String>();
     openapiFields.add("format");
     openapiFields.add("name");
+    openapiFields.add("group");
     openapiFields.add("description");
     openapiFields.add("content");
     openapiFields.add("type");
@@ -240,6 +268,7 @@ public class WorkspaceItemCreationRequest {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("format");
     openapiRequiredFields.add("name");
+    openapiRequiredFields.add("group");
     openapiRequiredFields.add("description");
     openapiRequiredFields.add("content");
     openapiRequiredFields.add("type");
@@ -267,6 +296,9 @@ public class WorkspaceItemCreationRequest {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if (!jsonObj.get("group").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `group` to be a primitive type in the JSON string but got `%s`", jsonObj.get("group").toString()));
       }
       if (!jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));

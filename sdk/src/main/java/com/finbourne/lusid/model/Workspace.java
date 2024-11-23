@@ -80,7 +80,7 @@ public class Workspace {
   }
 
    /**
-   * A workspace&#39;s name; a unique identifier.
+   * A workspace&#39;s name.
    * @return name
   **/
   @jakarta.annotation.Nonnull

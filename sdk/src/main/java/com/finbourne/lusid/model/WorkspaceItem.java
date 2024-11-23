@@ -66,6 +66,10 @@ public class WorkspaceItem {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public static final String SERIALIZED_NAME_GROUP = "group";
+  @SerializedName(SERIALIZED_NAME_GROUP)
+  private String group;
+
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
@@ -134,7 +138,7 @@ public class WorkspaceItem {
   }
 
    /**
-   * A workspace item&#39;s name; a unique identifier.
+   * A workspace item&#39;s name.
    * @return name
   **/
   @jakarta.annotation.Nonnull
@@ -145,6 +149,27 @@ public class WorkspaceItem {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+
+  public WorkspaceItem group(String group) {
+    
+    this.group = group;
+    return this;
+  }
+
+   /**
+   * The group containing a workspace item.
+   * @return group
+  **/
+  @jakarta.annotation.Nonnull
+  public String getGroup() {
+    return group;
+  }
+
+
+  public void setGroup(String group) {
+    this.group = group;
   }
 
 
@@ -253,6 +278,7 @@ public class WorkspaceItem {
     return Objects.equals(this.type, workspaceItem.type) &&
         Objects.equals(this.format, workspaceItem.format) &&
         Objects.equals(this.name, workspaceItem.name) &&
+        Objects.equals(this.group, workspaceItem.group) &&
         Objects.equals(this.description, workspaceItem.description) &&
         Objects.equals(this.content, workspaceItem.content) &&
         Objects.equals(this.version, workspaceItem.version) &&
@@ -265,7 +291,7 @@ public class WorkspaceItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, format, name, description, content, version, links);
+    return Objects.hash(type, format, name, group, description, content, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -282,6 +308,7 @@ public class WorkspaceItem {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    group: ").append(toIndentedString(group)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    content: ").append(toIndentedString(content)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
@@ -311,6 +338,7 @@ public class WorkspaceItem {
     openapiFields.add("type");
     openapiFields.add("format");
     openapiFields.add("name");
+    openapiFields.add("group");
     openapiFields.add("description");
     openapiFields.add("content");
     openapiFields.add("version");
@@ -321,6 +349,7 @@ public class WorkspaceItem {
     openapiRequiredFields.add("type");
     openapiRequiredFields.add("format");
     openapiRequiredFields.add("name");
+    openapiRequiredFields.add("group");
     openapiRequiredFields.add("description");
     openapiRequiredFields.add("content");
   }
@@ -350,6 +379,9 @@ public class WorkspaceItem {
       }
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if (!jsonObj.get("group").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `group` to be a primitive type in the JSON string but got `%s`", jsonObj.get("group").toString()));
       }
       if (!jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));

@@ -8,7 +8,7 @@ A request to create an empty workspace.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**name** | **String** | A workspace&#39;s name; a unique identifier. |  |
+|**name** | **String** | A workspace&#39;s name. |  |
 |**description** | **String** | A friendly description for the workspace. |  |
 
 

@@ -103,6 +103,14 @@
 
 * `EARLYREDEMPTIONEVENT` (value: `"EarlyRedemptionEvent"`)
 
+* `FUTUREMARKTOMARKETEVENT` (value: `"FutureMarkToMarketEvent"`)
+
+* `ADJUSTGLOBALCOMMITMENTEVENT` (value: `"AdjustGlobalCommitmentEvent"`)
+
+* `CONTRACTINITIALISATIONEVENT` (value: `"ContractInitialisationEvent"`)
+
+* `DRAWDOWNEVENT` (value: `"DrawdownEvent"`)
+
 
 
 [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)

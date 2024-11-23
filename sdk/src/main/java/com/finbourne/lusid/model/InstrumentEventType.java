@@ -121,7 +121,15 @@ public enum InstrumentEventType {
   
   TERMDEPOSITPRINCIPALEVENT("TermDepositPrincipalEvent"),
   
-  EARLYREDEMPTIONEVENT("EarlyRedemptionEvent");
+  EARLYREDEMPTIONEVENT("EarlyRedemptionEvent"),
+  
+  FUTUREMARKTOMARKETEVENT("FutureMarkToMarketEvent"),
+  
+  ADJUSTGLOBALCOMMITMENTEVENT("AdjustGlobalCommitmentEvent"),
+  
+  CONTRACTINITIALISATIONEVENT("ContractInitialisationEvent"),
+  
+  DRAWDOWNEVENT("DrawdownEvent");
 
   private String value;
 

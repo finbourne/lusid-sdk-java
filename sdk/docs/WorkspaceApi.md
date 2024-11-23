@@ -8,21 +8,21 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**createPersonalWorkspace**](WorkspaceApi.md#createPersonalWorkspace) | **POST** /api/workspaces/personal | [EXPERIMENTAL] CreatePersonalWorkspace: Create a new personal workspace. |
 | [**createSharedItem**](WorkspaceApi.md#createSharedItem) | **POST** /api/workspaces/shared/{workspaceName}/items | [EXPERIMENTAL] CreateSharedItem: Create a new item in a shared workspace. |
 | [**createSharedWorkspace**](WorkspaceApi.md#createSharedWorkspace) | **POST** /api/workspaces/shared | [EXPERIMENTAL] CreateSharedWorkspace: Create a new shared workspace. |
-| [**deletePersonalItem**](WorkspaceApi.md#deletePersonalItem) | **DELETE** /api/workspaces/personal/{workspaceName}/items/{itemName} | [EXPERIMENTAL] DeletePersonalItem: Delete an item from a personal workspace. |
+| [**deletePersonalItem**](WorkspaceApi.md#deletePersonalItem) | **DELETE** /api/workspaces/personal/{workspaceName}/items/{groupName}/{itemName} | [EXPERIMENTAL] DeletePersonalItem: Delete an item from a personal workspace. |
 | [**deletePersonalWorkspace**](WorkspaceApi.md#deletePersonalWorkspace) | **DELETE** /api/workspaces/personal/{workspaceName} | [EXPERIMENTAL] DeletePersonalWorkspace: Delete a personal workspace. |
-| [**deleteSharedItem**](WorkspaceApi.md#deleteSharedItem) | **DELETE** /api/workspaces/shared/{workspaceName}/items/{itemName} | [EXPERIMENTAL] DeleteSharedItem: Delete an item from a shared workspace. |
+| [**deleteSharedItem**](WorkspaceApi.md#deleteSharedItem) | **DELETE** /api/workspaces/shared/{workspaceName}/items/{groupName}/{itemName} | [EXPERIMENTAL] DeleteSharedItem: Delete an item from a shared workspace. |
 | [**deleteSharedWorkspace**](WorkspaceApi.md#deleteSharedWorkspace) | **DELETE** /api/workspaces/shared/{workspaceName} | [EXPERIMENTAL] DeleteSharedWorkspace: Delete a shared workspace. |
-| [**getPersonalItem**](WorkspaceApi.md#getPersonalItem) | **GET** /api/workspaces/personal/{workspaceName}/items/{itemName} | [EXPERIMENTAL] GetPersonalItem: Get a single personal workspace item. |
+| [**getPersonalItem**](WorkspaceApi.md#getPersonalItem) | **GET** /api/workspaces/personal/{workspaceName}/items/{groupName}/{itemName} | [EXPERIMENTAL] GetPersonalItem: Get a single personal workspace item. |
 | [**getPersonalWorkspace**](WorkspaceApi.md#getPersonalWorkspace) | **GET** /api/workspaces/personal/{workspaceName} | [EXPERIMENTAL] GetPersonalWorkspace: Get a personal workspace. |
-| [**getSharedItem**](WorkspaceApi.md#getSharedItem) | **GET** /api/workspaces/shared/{workspaceName}/items/{itemName} | [EXPERIMENTAL] GetSharedItem: Get a single shared workspace item. |
+| [**getSharedItem**](WorkspaceApi.md#getSharedItem) | **GET** /api/workspaces/shared/{workspaceName}/items/{groupName}/{itemName} | [EXPERIMENTAL] GetSharedItem: Get a single shared workspace item. |
 | [**getSharedWorkspace**](WorkspaceApi.md#getSharedWorkspace) | **GET** /api/workspaces/shared/{workspaceName} | [EXPERIMENTAL] GetSharedWorkspace: Get a shared workspace. |
 | [**listPersonalItems**](WorkspaceApi.md#listPersonalItems) | **GET** /api/workspaces/personal/{workspaceName}/items | [EXPERIMENTAL] ListPersonalItems: List the items in a personal workspace. |
 | [**listPersonalWorkspaces**](WorkspaceApi.md#listPersonalWorkspaces) | **GET** /api/workspaces/personal | [EXPERIMENTAL] ListPersonalWorkspaces: List personal workspaces. |
 | [**listSharedItems**](WorkspaceApi.md#listSharedItems) | **GET** /api/workspaces/shared/{workspaceName}/items | [EXPERIMENTAL] ListSharedItems: List the items in a shared workspace. |
 | [**listSharedWorkspaces**](WorkspaceApi.md#listSharedWorkspaces) | **GET** /api/workspaces/shared | [EXPERIMENTAL] ListSharedWorkspaces: List shared workspaces. |
-| [**updatePersonalItem**](WorkspaceApi.md#updatePersonalItem) | **PUT** /api/workspaces/personal/{workspaceName}/items/{itemName} | [EXPERIMENTAL] UpdatePersonalItem: Update an item in a personal workspace. |
+| [**updatePersonalItem**](WorkspaceApi.md#updatePersonalItem) | **PUT** /api/workspaces/personal/{workspaceName}/items/{groupName}/{itemName} | [EXPERIMENTAL] UpdatePersonalItem: Update an item in a personal workspace. |
 | [**updatePersonalWorkspace**](WorkspaceApi.md#updatePersonalWorkspace) | **PUT** /api/workspaces/personal/{workspaceName} | [EXPERIMENTAL] UpdatePersonalWorkspace: Update a personal workspace. |
-| [**updateSharedItem**](WorkspaceApi.md#updateSharedItem) | **PUT** /api/workspaces/shared/{workspaceName}/items/{itemName} | [EXPERIMENTAL] UpdateSharedItem: Update an item in a shared workspace. |
+| [**updateSharedItem**](WorkspaceApi.md#updateSharedItem) | **PUT** /api/workspaces/shared/{workspaceName}/items/{groupName}/{itemName} | [EXPERIMENTAL] UpdateSharedItem: Update an item in a shared workspace. |
 | [**updateSharedWorkspace**](WorkspaceApi.md#updateSharedWorkspace) | **PUT** /api/workspaces/shared/{workspaceName} | [EXPERIMENTAL] UpdateSharedWorkspace: Update a shared workspace. |
 
 
@@ -397,7 +397,7 @@ public class WorkspaceApiExample {
 
 ## deletePersonalItem
 
-> DeletedEntityResponse deletePersonalItem(workspaceName, itemName)
+> DeletedEntityResponse deletePersonalItem(workspaceName, groupName, itemName)
 
 [EXPERIMENTAL] DeletePersonalItem: Delete an item from a personal workspace.
 
@@ -443,12 +443,13 @@ public class WorkspaceApiExample {
 
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
         String workspaceName = "workspaceName_example"; // String | The name of the personal workspace.
+        String groupName = "groupName_example"; // String | The group containing the item.
         String itemName = "itemName_example"; // String | The name of the item.
         try {
             // uncomment the below to set overrides at the request level
-            // DeletedEntityResponse result = apiInstance.deletePersonalItem(workspaceName, itemName).execute(opts);
+            // DeletedEntityResponse result = apiInstance.deletePersonalItem(workspaceName, groupName, itemName).execute(opts);
 
-            DeletedEntityResponse result = apiInstance.deletePersonalItem(workspaceName, itemName).execute();
+            DeletedEntityResponse result = apiInstance.deletePersonalItem(workspaceName, groupName, itemName).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling WorkspaceApi#deletePersonalItem");
@@ -466,6 +467,7 @@ public class WorkspaceApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **workspaceName** | **String**| The name of the personal workspace. | |
+| **groupName** | **String**| The group containing the item. | |
 | **itemName** | **String**| The name of the item. | |
 
 ### Return type
@@ -581,7 +583,7 @@ public class WorkspaceApiExample {
 
 ## deleteSharedItem
 
-> DeletedEntityResponse deleteSharedItem(workspaceName, itemName)
+> DeletedEntityResponse deleteSharedItem(workspaceName, groupName, itemName)
 
 [EXPERIMENTAL] DeleteSharedItem: Delete an item from a shared workspace.
 
@@ -627,12 +629,13 @@ public class WorkspaceApiExample {
 
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
         String workspaceName = "workspaceName_example"; // String | The name of the shared workspace.
+        String groupName = "groupName_example"; // String | The group containing the item.
         String itemName = "itemName_example"; // String | The name of the item.
         try {
             // uncomment the below to set overrides at the request level
-            // DeletedEntityResponse result = apiInstance.deleteSharedItem(workspaceName, itemName).execute(opts);
+            // DeletedEntityResponse result = apiInstance.deleteSharedItem(workspaceName, groupName, itemName).execute(opts);
 
-            DeletedEntityResponse result = apiInstance.deleteSharedItem(workspaceName, itemName).execute();
+            DeletedEntityResponse result = apiInstance.deleteSharedItem(workspaceName, groupName, itemName).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling WorkspaceApi#deleteSharedItem");
@@ -650,6 +653,7 @@ public class WorkspaceApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **workspaceName** | **String**| The name of the shared workspace. | |
+| **groupName** | **String**| The group containing the item. | |
 | **itemName** | **String**| The name of the item. | |
 
 ### Return type
@@ -765,7 +769,7 @@ public class WorkspaceApiExample {
 
 ## getPersonalItem
 
-> WorkspaceItem getPersonalItem(workspaceName, itemName, asAt)
+> WorkspaceItem getPersonalItem(workspaceName, groupName, itemName, asAt)
 
 [EXPERIMENTAL] GetPersonalItem: Get a single personal workspace item.
 
@@ -811,13 +815,14 @@ public class WorkspaceApiExample {
 
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
         String workspaceName = "workspaceName_example"; // String | The name of the personal workspace.
+        String groupName = "groupName_example"; // String | The group containing the item.
         String itemName = "itemName_example"; // String | The name of the item.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The datetime at which to request the workspace item. If not provided, defaults to 'latest'.
         try {
             // uncomment the below to set overrides at the request level
-            // WorkspaceItem result = apiInstance.getPersonalItem(workspaceName, itemName, asAt).execute(opts);
+            // WorkspaceItem result = apiInstance.getPersonalItem(workspaceName, groupName, itemName, asAt).execute(opts);
 
-            WorkspaceItem result = apiInstance.getPersonalItem(workspaceName, itemName, asAt).execute();
+            WorkspaceItem result = apiInstance.getPersonalItem(workspaceName, groupName, itemName, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling WorkspaceApi#getPersonalItem");
@@ -835,6 +840,7 @@ public class WorkspaceApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **workspaceName** | **String**| The name of the personal workspace. | |
+| **groupName** | **String**| The group containing the item. | |
 | **itemName** | **String**| The name of the item. | |
 | **asAt** | **OffsetDateTime**| The datetime at which to request the workspace item. If not provided, defaults to &#39;latest&#39;. | [optional] |
 
@@ -953,7 +959,7 @@ public class WorkspaceApiExample {
 
 ## getSharedItem
 
-> WorkspaceItem getSharedItem(workspaceName, itemName, asAt)
+> WorkspaceItem getSharedItem(workspaceName, groupName, itemName, asAt)
 
 [EXPERIMENTAL] GetSharedItem: Get a single shared workspace item.
 
@@ -999,13 +1005,14 @@ public class WorkspaceApiExample {
 
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
         String workspaceName = "workspaceName_example"; // String | The name of the shared workspace.
+        String groupName = "groupName_example"; // String | The group containing the item.
         String itemName = "itemName_example"; // String | The name of the item.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The datetime at which to request the workspace item. If not provided, defaults to 'latest'.
         try {
             // uncomment the below to set overrides at the request level
-            // WorkspaceItem result = apiInstance.getSharedItem(workspaceName, itemName, asAt).execute(opts);
+            // WorkspaceItem result = apiInstance.getSharedItem(workspaceName, groupName, itemName, asAt).execute(opts);
 
-            WorkspaceItem result = apiInstance.getSharedItem(workspaceName, itemName, asAt).execute();
+            WorkspaceItem result = apiInstance.getSharedItem(workspaceName, groupName, itemName, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling WorkspaceApi#getSharedItem");
@@ -1023,6 +1030,7 @@ public class WorkspaceApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **workspaceName** | **String**| The name of the shared workspace. | |
+| **groupName** | **String**| The group containing the item. | |
 | **itemName** | **String**| The name of the item. | |
 | **asAt** | **OffsetDateTime**| The datetime at which to request the workspace item. If not provided, defaults to &#39;latest&#39;. | [optional] |
 
@@ -1541,7 +1549,7 @@ public class WorkspaceApiExample {
 
 ## updatePersonalItem
 
-> WorkspaceItem updatePersonalItem(workspaceName, itemName, workspaceItemUpdateRequest)
+> WorkspaceItem updatePersonalItem(workspaceName, groupName, itemName, workspaceItemUpdateRequest)
 
 [EXPERIMENTAL] UpdatePersonalItem: Update an item in a personal workspace.
 
@@ -1587,13 +1595,14 @@ public class WorkspaceApiExample {
 
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
         String workspaceName = "workspaceName_example"; // String | The personal workspace name.
+        String groupName = "groupName_example"; // String | The group containing the item.
         String itemName = "itemName_example"; // String | The item name.
         WorkspaceItemUpdateRequest workspaceItemUpdateRequest = new WorkspaceItemUpdateRequest(); // WorkspaceItemUpdateRequest | The new item details.
         try {
             // uncomment the below to set overrides at the request level
-            // WorkspaceItem result = apiInstance.updatePersonalItem(workspaceName, itemName, workspaceItemUpdateRequest).execute(opts);
+            // WorkspaceItem result = apiInstance.updatePersonalItem(workspaceName, groupName, itemName, workspaceItemUpdateRequest).execute(opts);
 
-            WorkspaceItem result = apiInstance.updatePersonalItem(workspaceName, itemName, workspaceItemUpdateRequest).execute();
+            WorkspaceItem result = apiInstance.updatePersonalItem(workspaceName, groupName, itemName, workspaceItemUpdateRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling WorkspaceApi#updatePersonalItem");
@@ -1611,6 +1620,7 @@ public class WorkspaceApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **workspaceName** | **String**| The personal workspace name. | |
+| **groupName** | **String**| The group containing the item. | |
 | **itemName** | **String**| The item name. | |
 | **workspaceItemUpdateRequest** | [**WorkspaceItemUpdateRequest**](WorkspaceItemUpdateRequest.md)| The new item details. | [optional] |
 
@@ -1729,7 +1739,7 @@ public class WorkspaceApiExample {
 
 ## updateSharedItem
 
-> WorkspaceItem updateSharedItem(workspaceName, itemName, workspaceItemUpdateRequest)
+> WorkspaceItem updateSharedItem(workspaceName, groupName, itemName, workspaceItemUpdateRequest)
 
 [EXPERIMENTAL] UpdateSharedItem: Update an item in a shared workspace.
 
@@ -1775,13 +1785,14 @@ public class WorkspaceApiExample {
 
         WorkspaceApi apiInstance = ApiFactoryBuilder.build(fileName).build(WorkspaceApi.class);
         String workspaceName = "workspaceName_example"; // String | The shared workspace name.
+        String groupName = "groupName_example"; // String | The group containing the item.
         String itemName = "itemName_example"; // String | The item name.
         WorkspaceItemUpdateRequest workspaceItemUpdateRequest = new WorkspaceItemUpdateRequest(); // WorkspaceItemUpdateRequest | The new item details.
         try {
             // uncomment the below to set overrides at the request level
-            // WorkspaceItem result = apiInstance.updateSharedItem(workspaceName, itemName, workspaceItemUpdateRequest).execute(opts);
+            // WorkspaceItem result = apiInstance.updateSharedItem(workspaceName, groupName, itemName, workspaceItemUpdateRequest).execute(opts);
 
-            WorkspaceItem result = apiInstance.updateSharedItem(workspaceName, itemName, workspaceItemUpdateRequest).execute();
+            WorkspaceItem result = apiInstance.updateSharedItem(workspaceName, groupName, itemName, workspaceItemUpdateRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling WorkspaceApi#updateSharedItem");
@@ -1799,6 +1810,7 @@ public class WorkspaceApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **workspaceName** | **String**| The shared workspace name. | |
+| **groupName** | **String**| The group containing the item. | |
 | **itemName** | **String**| The item name. | |
 | **workspaceItemUpdateRequest** | [**WorkspaceItemUpdateRequest**](WorkspaceItemUpdateRequest.md)| The new item details. | [optional] |
 

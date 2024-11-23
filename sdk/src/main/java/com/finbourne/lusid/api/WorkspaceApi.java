@@ -1051,11 +1051,11 @@ public class WorkspaceApi {
     public APIcreateSharedWorkspaceRequest createSharedWorkspace() {
         return new APIcreateSharedWorkspaceRequest();
     }
-    private okhttp3.Call deletePersonalItemCall(String workspaceName, String itemName, final ApiCallback _callback) throws ApiException {
-        return deletePersonalItemCall(workspaceName, itemName,  _callback, new ConfigurationOptions());
+    private okhttp3.Call deletePersonalItemCall(String workspaceName, String groupName, String itemName, final ApiCallback _callback) throws ApiException {
+        return deletePersonalItemCall(workspaceName, groupName, itemName,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call deletePersonalItemCall(String workspaceName, String itemName, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call deletePersonalItemCall(String workspaceName, String groupName, String itemName, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1072,8 +1072,9 @@ public class WorkspaceApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/workspaces/personal/{workspaceName}/items/{itemName}"
+        String localVarPath = "/api/workspaces/personal/{workspaceName}/items/{groupName}/{itemName}"
             .replace("{" + "workspaceName" + "}", localVarApiClient.escapeString(workspaceName.toString()))
+            .replace("{" + "groupName" + "}", localVarApiClient.escapeString(groupName.toString()))
             .replace("{" + "itemName" + "}", localVarApiClient.escapeString(itemName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1104,10 +1105,15 @@ public class WorkspaceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deletePersonalItemValidateBeforeCall(String workspaceName, String itemName, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call deletePersonalItemValidateBeforeCall(String workspaceName, String groupName, String itemName, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'workspaceName' is set
         if (workspaceName == null) {
             throw new ApiException("Missing the required parameter 'workspaceName' when calling deletePersonalItem(Async)");
+        }
+
+        // verify the required parameter 'groupName' is set
+        if (groupName == null) {
+            throw new ApiException("Missing the required parameter 'groupName' when calling deletePersonalItem(Async)");
         }
 
         // verify the required parameter 'itemName' is set
@@ -1115,34 +1121,34 @@ public class WorkspaceApi {
             throw new ApiException("Missing the required parameter 'itemName' when calling deletePersonalItem(Async)");
         }
 
-        return deletePersonalItemCall(workspaceName, itemName, _callback, opts);
+        return deletePersonalItemCall(workspaceName, groupName, itemName, _callback, opts);
 
     }
 
 
-    private ApiResponse<DeletedEntityResponse> deletePersonalItemWithHttpInfo(String workspaceName, String itemName) throws ApiException {
-        okhttp3.Call localVarCall = deletePersonalItemValidateBeforeCall(workspaceName, itemName, null, new ConfigurationOptions());
+    private ApiResponse<DeletedEntityResponse> deletePersonalItemWithHttpInfo(String workspaceName, String groupName, String itemName) throws ApiException {
+        okhttp3.Call localVarCall = deletePersonalItemValidateBeforeCall(workspaceName, groupName, itemName, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<DeletedEntityResponse> deletePersonalItemWithHttpInfo(String workspaceName, String itemName, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = deletePersonalItemValidateBeforeCall(workspaceName, itemName, null, opts);
+    private ApiResponse<DeletedEntityResponse> deletePersonalItemWithHttpInfo(String workspaceName, String groupName, String itemName, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deletePersonalItemValidateBeforeCall(workspaceName, groupName, itemName, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call deletePersonalItemAsync(String workspaceName, String itemName, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deletePersonalItemAsync(String workspaceName, String groupName, String itemName, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deletePersonalItemValidateBeforeCall(workspaceName, itemName, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = deletePersonalItemValidateBeforeCall(workspaceName, groupName, itemName, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call deletePersonalItemAsync(String workspaceName, String itemName, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call deletePersonalItemAsync(String workspaceName, String groupName, String itemName, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = deletePersonalItemValidateBeforeCall(workspaceName, itemName, _callback, opts);
+        okhttp3.Call localVarCall = deletePersonalItemValidateBeforeCall(workspaceName, groupName, itemName, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1150,10 +1156,12 @@ public class WorkspaceApi {
 
     public class APIdeletePersonalItemRequest {
         private final String workspaceName;
+        private final String groupName;
         private final String itemName;
 
-        private APIdeletePersonalItemRequest(String workspaceName, String itemName) {
+        private APIdeletePersonalItemRequest(String workspaceName, String groupName, String itemName) {
             this.workspaceName = workspaceName;
+            this.groupName = groupName;
             this.itemName = itemName;
         }
 
@@ -1171,7 +1179,7 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return deletePersonalItemCall(workspaceName, itemName, _callback);
+            return deletePersonalItemCall(workspaceName, groupName, itemName, _callback);
         }
 
         /**
@@ -1187,7 +1195,7 @@ public class WorkspaceApi {
          </table>
          */
         public DeletedEntityResponse execute() throws ApiException {
-            ApiResponse<DeletedEntityResponse> localVarResp = deletePersonalItemWithHttpInfo(workspaceName, itemName);
+            ApiResponse<DeletedEntityResponse> localVarResp = deletePersonalItemWithHttpInfo(workspaceName, groupName, itemName);
             return localVarResp.getData();
         }
 
@@ -1204,7 +1212,7 @@ public class WorkspaceApi {
          </table>
          */
         public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<DeletedEntityResponse> localVarResp = deletePersonalItemWithHttpInfo(workspaceName, itemName, opts);
+            ApiResponse<DeletedEntityResponse> localVarResp = deletePersonalItemWithHttpInfo(workspaceName, groupName, itemName, opts);
             return localVarResp.getData();
         }
 
@@ -1221,7 +1229,7 @@ public class WorkspaceApi {
          </table>
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
-            return deletePersonalItemWithHttpInfo(workspaceName, itemName);
+            return deletePersonalItemWithHttpInfo(workspaceName, groupName, itemName);
         }
 
         /**
@@ -1237,7 +1245,7 @@ public class WorkspaceApi {
          </table>
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return deletePersonalItemWithHttpInfo(workspaceName, itemName, opts);
+            return deletePersonalItemWithHttpInfo(workspaceName, groupName, itemName, opts);
         }
 
         /**
@@ -1254,7 +1262,7 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
-            return deletePersonalItemAsync(workspaceName, itemName, _callback);
+            return deletePersonalItemAsync(workspaceName, groupName, itemName, _callback);
         }
 
         /**
@@ -1271,7 +1279,7 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return deletePersonalItemAsync(workspaceName, itemName, _callback, opts);
+            return deletePersonalItemAsync(workspaceName, groupName, itemName, _callback, opts);
         }
     }
 
@@ -1279,6 +1287,7 @@ public class WorkspaceApi {
      * [EXPERIMENTAL] DeletePersonalItem: Delete an item from a personal workspace.
      * Delete an item from a personal workspace.
      * @param workspaceName The name of the personal workspace. (required)
+     * @param groupName The group containing the item. (required)
      * @param itemName The name of the item. (required)
      * @return APIdeletePersonalItemRequest
      * @http.response.details
@@ -1289,8 +1298,8 @@ public class WorkspaceApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIdeletePersonalItemRequest deletePersonalItem(String workspaceName, String itemName) {
-        return new APIdeletePersonalItemRequest(workspaceName, itemName);
+    public APIdeletePersonalItemRequest deletePersonalItem(String workspaceName, String groupName, String itemName) {
+        return new APIdeletePersonalItemRequest(workspaceName, groupName, itemName);
     }
     private okhttp3.Call deletePersonalWorkspaceCall(String workspaceName, final ApiCallback _callback) throws ApiException {
         return deletePersonalWorkspaceCall(workspaceName,  _callback, new ConfigurationOptions());
@@ -1524,11 +1533,11 @@ public class WorkspaceApi {
     public APIdeletePersonalWorkspaceRequest deletePersonalWorkspace(String workspaceName) {
         return new APIdeletePersonalWorkspaceRequest(workspaceName);
     }
-    private okhttp3.Call deleteSharedItemCall(String workspaceName, String itemName, final ApiCallback _callback) throws ApiException {
-        return deleteSharedItemCall(workspaceName, itemName,  _callback, new ConfigurationOptions());
+    private okhttp3.Call deleteSharedItemCall(String workspaceName, String groupName, String itemName, final ApiCallback _callback) throws ApiException {
+        return deleteSharedItemCall(workspaceName, groupName, itemName,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call deleteSharedItemCall(String workspaceName, String itemName, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call deleteSharedItemCall(String workspaceName, String groupName, String itemName, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1545,8 +1554,9 @@ public class WorkspaceApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/workspaces/shared/{workspaceName}/items/{itemName}"
+        String localVarPath = "/api/workspaces/shared/{workspaceName}/items/{groupName}/{itemName}"
             .replace("{" + "workspaceName" + "}", localVarApiClient.escapeString(workspaceName.toString()))
+            .replace("{" + "groupName" + "}", localVarApiClient.escapeString(groupName.toString()))
             .replace("{" + "itemName" + "}", localVarApiClient.escapeString(itemName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1577,10 +1587,15 @@ public class WorkspaceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteSharedItemValidateBeforeCall(String workspaceName, String itemName, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call deleteSharedItemValidateBeforeCall(String workspaceName, String groupName, String itemName, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'workspaceName' is set
         if (workspaceName == null) {
             throw new ApiException("Missing the required parameter 'workspaceName' when calling deleteSharedItem(Async)");
+        }
+
+        // verify the required parameter 'groupName' is set
+        if (groupName == null) {
+            throw new ApiException("Missing the required parameter 'groupName' when calling deleteSharedItem(Async)");
         }
 
         // verify the required parameter 'itemName' is set
@@ -1588,34 +1603,34 @@ public class WorkspaceApi {
             throw new ApiException("Missing the required parameter 'itemName' when calling deleteSharedItem(Async)");
         }
 
-        return deleteSharedItemCall(workspaceName, itemName, _callback, opts);
+        return deleteSharedItemCall(workspaceName, groupName, itemName, _callback, opts);
 
     }
 
 
-    private ApiResponse<DeletedEntityResponse> deleteSharedItemWithHttpInfo(String workspaceName, String itemName) throws ApiException {
-        okhttp3.Call localVarCall = deleteSharedItemValidateBeforeCall(workspaceName, itemName, null, new ConfigurationOptions());
+    private ApiResponse<DeletedEntityResponse> deleteSharedItemWithHttpInfo(String workspaceName, String groupName, String itemName) throws ApiException {
+        okhttp3.Call localVarCall = deleteSharedItemValidateBeforeCall(workspaceName, groupName, itemName, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<DeletedEntityResponse> deleteSharedItemWithHttpInfo(String workspaceName, String itemName, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = deleteSharedItemValidateBeforeCall(workspaceName, itemName, null, opts);
+    private ApiResponse<DeletedEntityResponse> deleteSharedItemWithHttpInfo(String workspaceName, String groupName, String itemName, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteSharedItemValidateBeforeCall(workspaceName, groupName, itemName, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call deleteSharedItemAsync(String workspaceName, String itemName, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteSharedItemAsync(String workspaceName, String groupName, String itemName, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteSharedItemValidateBeforeCall(workspaceName, itemName, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = deleteSharedItemValidateBeforeCall(workspaceName, groupName, itemName, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call deleteSharedItemAsync(String workspaceName, String itemName, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call deleteSharedItemAsync(String workspaceName, String groupName, String itemName, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteSharedItemValidateBeforeCall(workspaceName, itemName, _callback, opts);
+        okhttp3.Call localVarCall = deleteSharedItemValidateBeforeCall(workspaceName, groupName, itemName, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1623,10 +1638,12 @@ public class WorkspaceApi {
 
     public class APIdeleteSharedItemRequest {
         private final String workspaceName;
+        private final String groupName;
         private final String itemName;
 
-        private APIdeleteSharedItemRequest(String workspaceName, String itemName) {
+        private APIdeleteSharedItemRequest(String workspaceName, String groupName, String itemName) {
             this.workspaceName = workspaceName;
+            this.groupName = groupName;
             this.itemName = itemName;
         }
 
@@ -1644,7 +1661,7 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return deleteSharedItemCall(workspaceName, itemName, _callback);
+            return deleteSharedItemCall(workspaceName, groupName, itemName, _callback);
         }
 
         /**
@@ -1660,7 +1677,7 @@ public class WorkspaceApi {
          </table>
          */
         public DeletedEntityResponse execute() throws ApiException {
-            ApiResponse<DeletedEntityResponse> localVarResp = deleteSharedItemWithHttpInfo(workspaceName, itemName);
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteSharedItemWithHttpInfo(workspaceName, groupName, itemName);
             return localVarResp.getData();
         }
 
@@ -1677,7 +1694,7 @@ public class WorkspaceApi {
          </table>
          */
         public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<DeletedEntityResponse> localVarResp = deleteSharedItemWithHttpInfo(workspaceName, itemName, opts);
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteSharedItemWithHttpInfo(workspaceName, groupName, itemName, opts);
             return localVarResp.getData();
         }
 
@@ -1694,7 +1711,7 @@ public class WorkspaceApi {
          </table>
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
-            return deleteSharedItemWithHttpInfo(workspaceName, itemName);
+            return deleteSharedItemWithHttpInfo(workspaceName, groupName, itemName);
         }
 
         /**
@@ -1710,7 +1727,7 @@ public class WorkspaceApi {
          </table>
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return deleteSharedItemWithHttpInfo(workspaceName, itemName, opts);
+            return deleteSharedItemWithHttpInfo(workspaceName, groupName, itemName, opts);
         }
 
         /**
@@ -1727,7 +1744,7 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
-            return deleteSharedItemAsync(workspaceName, itemName, _callback);
+            return deleteSharedItemAsync(workspaceName, groupName, itemName, _callback);
         }
 
         /**
@@ -1744,7 +1761,7 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return deleteSharedItemAsync(workspaceName, itemName, _callback, opts);
+            return deleteSharedItemAsync(workspaceName, groupName, itemName, _callback, opts);
         }
     }
 
@@ -1752,6 +1769,7 @@ public class WorkspaceApi {
      * [EXPERIMENTAL] DeleteSharedItem: Delete an item from a shared workspace.
      * Delete an item from a shared workspace.
      * @param workspaceName The name of the shared workspace. (required)
+     * @param groupName The group containing the item. (required)
      * @param itemName The name of the item. (required)
      * @return APIdeleteSharedItemRequest
      * @http.response.details
@@ -1762,8 +1780,8 @@ public class WorkspaceApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIdeleteSharedItemRequest deleteSharedItem(String workspaceName, String itemName) {
-        return new APIdeleteSharedItemRequest(workspaceName, itemName);
+    public APIdeleteSharedItemRequest deleteSharedItem(String workspaceName, String groupName, String itemName) {
+        return new APIdeleteSharedItemRequest(workspaceName, groupName, itemName);
     }
     private okhttp3.Call deleteSharedWorkspaceCall(String workspaceName, final ApiCallback _callback) throws ApiException {
         return deleteSharedWorkspaceCall(workspaceName,  _callback, new ConfigurationOptions());
@@ -1997,11 +2015,11 @@ public class WorkspaceApi {
     public APIdeleteSharedWorkspaceRequest deleteSharedWorkspace(String workspaceName) {
         return new APIdeleteSharedWorkspaceRequest(workspaceName);
     }
-    private okhttp3.Call getPersonalItemCall(String workspaceName, String itemName, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
-        return getPersonalItemCall(workspaceName, itemName, asAt,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getPersonalItemCall(String workspaceName, String groupName, String itemName, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getPersonalItemCall(workspaceName, groupName, itemName, asAt,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getPersonalItemCall(String workspaceName, String itemName, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getPersonalItemCall(String workspaceName, String groupName, String itemName, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2018,8 +2036,9 @@ public class WorkspaceApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/workspaces/personal/{workspaceName}/items/{itemName}"
+        String localVarPath = "/api/workspaces/personal/{workspaceName}/items/{groupName}/{itemName}"
             .replace("{" + "workspaceName" + "}", localVarApiClient.escapeString(workspaceName.toString()))
+            .replace("{" + "groupName" + "}", localVarApiClient.escapeString(groupName.toString()))
             .replace("{" + "itemName" + "}", localVarApiClient.escapeString(itemName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -2054,10 +2073,15 @@ public class WorkspaceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPersonalItemValidateBeforeCall(String workspaceName, String itemName, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getPersonalItemValidateBeforeCall(String workspaceName, String groupName, String itemName, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'workspaceName' is set
         if (workspaceName == null) {
             throw new ApiException("Missing the required parameter 'workspaceName' when calling getPersonalItem(Async)");
+        }
+
+        // verify the required parameter 'groupName' is set
+        if (groupName == null) {
+            throw new ApiException("Missing the required parameter 'groupName' when calling getPersonalItem(Async)");
         }
 
         // verify the required parameter 'itemName' is set
@@ -2065,34 +2089,34 @@ public class WorkspaceApi {
             throw new ApiException("Missing the required parameter 'itemName' when calling getPersonalItem(Async)");
         }
 
-        return getPersonalItemCall(workspaceName, itemName, asAt, _callback, opts);
+        return getPersonalItemCall(workspaceName, groupName, itemName, asAt, _callback, opts);
 
     }
 
 
-    private ApiResponse<WorkspaceItem> getPersonalItemWithHttpInfo(String workspaceName, String itemName, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getPersonalItemValidateBeforeCall(workspaceName, itemName, asAt, null, new ConfigurationOptions());
+    private ApiResponse<WorkspaceItem> getPersonalItemWithHttpInfo(String workspaceName, String groupName, String itemName, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = getPersonalItemValidateBeforeCall(workspaceName, groupName, itemName, asAt, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<WorkspaceItem> getPersonalItemWithHttpInfo(String workspaceName, String itemName, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getPersonalItemValidateBeforeCall(workspaceName, itemName, asAt, null, opts);
+    private ApiResponse<WorkspaceItem> getPersonalItemWithHttpInfo(String workspaceName, String groupName, String itemName, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPersonalItemValidateBeforeCall(workspaceName, groupName, itemName, asAt, null, opts);
         Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getPersonalItemAsync(String workspaceName, String itemName, OffsetDateTime asAt, final ApiCallback<WorkspaceItem> _callback) throws ApiException {
+    private okhttp3.Call getPersonalItemAsync(String workspaceName, String groupName, String itemName, OffsetDateTime asAt, final ApiCallback<WorkspaceItem> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPersonalItemValidateBeforeCall(workspaceName, itemName, asAt, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getPersonalItemValidateBeforeCall(workspaceName, groupName, itemName, asAt, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getPersonalItemAsync(String workspaceName, String itemName, OffsetDateTime asAt, final ApiCallback<WorkspaceItem> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getPersonalItemAsync(String workspaceName, String groupName, String itemName, OffsetDateTime asAt, final ApiCallback<WorkspaceItem> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getPersonalItemValidateBeforeCall(workspaceName, itemName, asAt, _callback, opts);
+        okhttp3.Call localVarCall = getPersonalItemValidateBeforeCall(workspaceName, groupName, itemName, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2100,11 +2124,13 @@ public class WorkspaceApi {
 
     public class APIgetPersonalItemRequest {
         private final String workspaceName;
+        private final String groupName;
         private final String itemName;
         private OffsetDateTime asAt;
 
-        private APIgetPersonalItemRequest(String workspaceName, String itemName) {
+        private APIgetPersonalItemRequest(String workspaceName, String groupName, String itemName) {
             this.workspaceName = workspaceName;
+            this.groupName = groupName;
             this.itemName = itemName;
         }
 
@@ -2132,7 +2158,7 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getPersonalItemCall(workspaceName, itemName, asAt, _callback);
+            return getPersonalItemCall(workspaceName, groupName, itemName, asAt, _callback);
         }
 
         /**
@@ -2148,7 +2174,7 @@ public class WorkspaceApi {
          </table>
          */
         public WorkspaceItem execute() throws ApiException {
-            ApiResponse<WorkspaceItem> localVarResp = getPersonalItemWithHttpInfo(workspaceName, itemName, asAt);
+            ApiResponse<WorkspaceItem> localVarResp = getPersonalItemWithHttpInfo(workspaceName, groupName, itemName, asAt);
             return localVarResp.getData();
         }
 
@@ -2165,7 +2191,7 @@ public class WorkspaceApi {
          </table>
          */
         public WorkspaceItem execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<WorkspaceItem> localVarResp = getPersonalItemWithHttpInfo(workspaceName, itemName, asAt, opts);
+            ApiResponse<WorkspaceItem> localVarResp = getPersonalItemWithHttpInfo(workspaceName, groupName, itemName, asAt, opts);
             return localVarResp.getData();
         }
 
@@ -2182,7 +2208,7 @@ public class WorkspaceApi {
          </table>
          */
         public ApiResponse<WorkspaceItem> executeWithHttpInfo() throws ApiException {
-            return getPersonalItemWithHttpInfo(workspaceName, itemName, asAt);
+            return getPersonalItemWithHttpInfo(workspaceName, groupName, itemName, asAt);
         }
 
         /**
@@ -2198,7 +2224,7 @@ public class WorkspaceApi {
          </table>
          */
         public ApiResponse<WorkspaceItem> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getPersonalItemWithHttpInfo(workspaceName, itemName, asAt, opts);
+            return getPersonalItemWithHttpInfo(workspaceName, groupName, itemName, asAt, opts);
         }
 
         /**
@@ -2215,7 +2241,7 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<WorkspaceItem> _callback) throws ApiException {
-            return getPersonalItemAsync(workspaceName, itemName, asAt, _callback);
+            return getPersonalItemAsync(workspaceName, groupName, itemName, asAt, _callback);
         }
 
         /**
@@ -2232,7 +2258,7 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<WorkspaceItem> _callback, ConfigurationOptions opts) throws ApiException {
-            return getPersonalItemAsync(workspaceName, itemName, asAt, _callback, opts);
+            return getPersonalItemAsync(workspaceName, groupName, itemName, asAt, _callback, opts);
         }
     }
 
@@ -2240,6 +2266,7 @@ public class WorkspaceApi {
      * [EXPERIMENTAL] GetPersonalItem: Get a single personal workspace item.
      * Get a single personal workspace item.
      * @param workspaceName The name of the personal workspace. (required)
+     * @param groupName The group containing the item. (required)
      * @param itemName The name of the item. (required)
      * @return APIgetPersonalItemRequest
      * @http.response.details
@@ -2250,8 +2277,8 @@ public class WorkspaceApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIgetPersonalItemRequest getPersonalItem(String workspaceName, String itemName) {
-        return new APIgetPersonalItemRequest(workspaceName, itemName);
+    public APIgetPersonalItemRequest getPersonalItem(String workspaceName, String groupName, String itemName) {
+        return new APIgetPersonalItemRequest(workspaceName, groupName, itemName);
     }
     private okhttp3.Call getPersonalWorkspaceCall(String workspaceName, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         return getPersonalWorkspaceCall(workspaceName, asAt,  _callback, new ConfigurationOptions());
@@ -2500,11 +2527,11 @@ public class WorkspaceApi {
     public APIgetPersonalWorkspaceRequest getPersonalWorkspace(String workspaceName) {
         return new APIgetPersonalWorkspaceRequest(workspaceName);
     }
-    private okhttp3.Call getSharedItemCall(String workspaceName, String itemName, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
-        return getSharedItemCall(workspaceName, itemName, asAt,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getSharedItemCall(String workspaceName, String groupName, String itemName, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getSharedItemCall(workspaceName, groupName, itemName, asAt,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getSharedItemCall(String workspaceName, String itemName, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getSharedItemCall(String workspaceName, String groupName, String itemName, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2521,8 +2548,9 @@ public class WorkspaceApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/workspaces/shared/{workspaceName}/items/{itemName}"
+        String localVarPath = "/api/workspaces/shared/{workspaceName}/items/{groupName}/{itemName}"
             .replace("{" + "workspaceName" + "}", localVarApiClient.escapeString(workspaceName.toString()))
+            .replace("{" + "groupName" + "}", localVarApiClient.escapeString(groupName.toString()))
             .replace("{" + "itemName" + "}", localVarApiClient.escapeString(itemName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -2557,10 +2585,15 @@ public class WorkspaceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getSharedItemValidateBeforeCall(String workspaceName, String itemName, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getSharedItemValidateBeforeCall(String workspaceName, String groupName, String itemName, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'workspaceName' is set
         if (workspaceName == null) {
             throw new ApiException("Missing the required parameter 'workspaceName' when calling getSharedItem(Async)");
+        }
+
+        // verify the required parameter 'groupName' is set
+        if (groupName == null) {
+            throw new ApiException("Missing the required parameter 'groupName' when calling getSharedItem(Async)");
         }
 
         // verify the required parameter 'itemName' is set
@@ -2568,34 +2601,34 @@ public class WorkspaceApi {
             throw new ApiException("Missing the required parameter 'itemName' when calling getSharedItem(Async)");
         }
 
-        return getSharedItemCall(workspaceName, itemName, asAt, _callback, opts);
+        return getSharedItemCall(workspaceName, groupName, itemName, asAt, _callback, opts);
 
     }
 
 
-    private ApiResponse<WorkspaceItem> getSharedItemWithHttpInfo(String workspaceName, String itemName, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getSharedItemValidateBeforeCall(workspaceName, itemName, asAt, null, new ConfigurationOptions());
+    private ApiResponse<WorkspaceItem> getSharedItemWithHttpInfo(String workspaceName, String groupName, String itemName, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = getSharedItemValidateBeforeCall(workspaceName, groupName, itemName, asAt, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<WorkspaceItem> getSharedItemWithHttpInfo(String workspaceName, String itemName, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getSharedItemValidateBeforeCall(workspaceName, itemName, asAt, null, opts);
+    private ApiResponse<WorkspaceItem> getSharedItemWithHttpInfo(String workspaceName, String groupName, String itemName, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getSharedItemValidateBeforeCall(workspaceName, groupName, itemName, asAt, null, opts);
         Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getSharedItemAsync(String workspaceName, String itemName, OffsetDateTime asAt, final ApiCallback<WorkspaceItem> _callback) throws ApiException {
+    private okhttp3.Call getSharedItemAsync(String workspaceName, String groupName, String itemName, OffsetDateTime asAt, final ApiCallback<WorkspaceItem> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getSharedItemValidateBeforeCall(workspaceName, itemName, asAt, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getSharedItemValidateBeforeCall(workspaceName, groupName, itemName, asAt, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getSharedItemAsync(String workspaceName, String itemName, OffsetDateTime asAt, final ApiCallback<WorkspaceItem> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getSharedItemAsync(String workspaceName, String groupName, String itemName, OffsetDateTime asAt, final ApiCallback<WorkspaceItem> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getSharedItemValidateBeforeCall(workspaceName, itemName, asAt, _callback, opts);
+        okhttp3.Call localVarCall = getSharedItemValidateBeforeCall(workspaceName, groupName, itemName, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2603,11 +2636,13 @@ public class WorkspaceApi {
 
     public class APIgetSharedItemRequest {
         private final String workspaceName;
+        private final String groupName;
         private final String itemName;
         private OffsetDateTime asAt;
 
-        private APIgetSharedItemRequest(String workspaceName, String itemName) {
+        private APIgetSharedItemRequest(String workspaceName, String groupName, String itemName) {
             this.workspaceName = workspaceName;
+            this.groupName = groupName;
             this.itemName = itemName;
         }
 
@@ -2635,7 +2670,7 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getSharedItemCall(workspaceName, itemName, asAt, _callback);
+            return getSharedItemCall(workspaceName, groupName, itemName, asAt, _callback);
         }
 
         /**
@@ -2651,7 +2686,7 @@ public class WorkspaceApi {
          </table>
          */
         public WorkspaceItem execute() throws ApiException {
-            ApiResponse<WorkspaceItem> localVarResp = getSharedItemWithHttpInfo(workspaceName, itemName, asAt);
+            ApiResponse<WorkspaceItem> localVarResp = getSharedItemWithHttpInfo(workspaceName, groupName, itemName, asAt);
             return localVarResp.getData();
         }
 
@@ -2668,7 +2703,7 @@ public class WorkspaceApi {
          </table>
          */
         public WorkspaceItem execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<WorkspaceItem> localVarResp = getSharedItemWithHttpInfo(workspaceName, itemName, asAt, opts);
+            ApiResponse<WorkspaceItem> localVarResp = getSharedItemWithHttpInfo(workspaceName, groupName, itemName, asAt, opts);
             return localVarResp.getData();
         }
 
@@ -2685,7 +2720,7 @@ public class WorkspaceApi {
          </table>
          */
         public ApiResponse<WorkspaceItem> executeWithHttpInfo() throws ApiException {
-            return getSharedItemWithHttpInfo(workspaceName, itemName, asAt);
+            return getSharedItemWithHttpInfo(workspaceName, groupName, itemName, asAt);
         }
 
         /**
@@ -2701,7 +2736,7 @@ public class WorkspaceApi {
          </table>
          */
         public ApiResponse<WorkspaceItem> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getSharedItemWithHttpInfo(workspaceName, itemName, asAt, opts);
+            return getSharedItemWithHttpInfo(workspaceName, groupName, itemName, asAt, opts);
         }
 
         /**
@@ -2718,7 +2753,7 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<WorkspaceItem> _callback) throws ApiException {
-            return getSharedItemAsync(workspaceName, itemName, asAt, _callback);
+            return getSharedItemAsync(workspaceName, groupName, itemName, asAt, _callback);
         }
 
         /**
@@ -2735,7 +2770,7 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<WorkspaceItem> _callback, ConfigurationOptions opts) throws ApiException {
-            return getSharedItemAsync(workspaceName, itemName, asAt, _callback, opts);
+            return getSharedItemAsync(workspaceName, groupName, itemName, asAt, _callback, opts);
         }
     }
 
@@ -2743,6 +2778,7 @@ public class WorkspaceApi {
      * [EXPERIMENTAL] GetSharedItem: Get a single shared workspace item.
      * Get a single shared workspace item.
      * @param workspaceName The name of the shared workspace. (required)
+     * @param groupName The group containing the item. (required)
      * @param itemName The name of the item. (required)
      * @return APIgetSharedItemRequest
      * @http.response.details
@@ -2753,8 +2789,8 @@ public class WorkspaceApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIgetSharedItemRequest getSharedItem(String workspaceName, String itemName) {
-        return new APIgetSharedItemRequest(workspaceName, itemName);
+    public APIgetSharedItemRequest getSharedItem(String workspaceName, String groupName, String itemName) {
+        return new APIgetSharedItemRequest(workspaceName, groupName, itemName);
     }
     private okhttp3.Call getSharedWorkspaceCall(String workspaceName, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         return getSharedWorkspaceCall(workspaceName, asAt,  _callback, new ConfigurationOptions());
@@ -4213,11 +4249,11 @@ public class WorkspaceApi {
     public APIlistSharedWorkspacesRequest listSharedWorkspaces() {
         return new APIlistSharedWorkspacesRequest();
     }
-    private okhttp3.Call updatePersonalItemCall(String workspaceName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback _callback) throws ApiException {
-        return updatePersonalItemCall(workspaceName, itemName, workspaceItemUpdateRequest,  _callback, new ConfigurationOptions());
+    private okhttp3.Call updatePersonalItemCall(String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback _callback) throws ApiException {
+        return updatePersonalItemCall(workspaceName, groupName, itemName, workspaceItemUpdateRequest,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call updatePersonalItemCall(String workspaceName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call updatePersonalItemCall(String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4234,8 +4270,9 @@ public class WorkspaceApi {
         Object localVarPostBody = workspaceItemUpdateRequest;
 
         // create path and map variables
-        String localVarPath = "/api/workspaces/personal/{workspaceName}/items/{itemName}"
+        String localVarPath = "/api/workspaces/personal/{workspaceName}/items/{groupName}/{itemName}"
             .replace("{" + "workspaceName" + "}", localVarApiClient.escapeString(workspaceName.toString()))
+            .replace("{" + "groupName" + "}", localVarApiClient.escapeString(groupName.toString()))
             .replace("{" + "itemName" + "}", localVarApiClient.escapeString(itemName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -4270,10 +4307,15 @@ public class WorkspaceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updatePersonalItemValidateBeforeCall(String workspaceName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call updatePersonalItemValidateBeforeCall(String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'workspaceName' is set
         if (workspaceName == null) {
             throw new ApiException("Missing the required parameter 'workspaceName' when calling updatePersonalItem(Async)");
+        }
+
+        // verify the required parameter 'groupName' is set
+        if (groupName == null) {
+            throw new ApiException("Missing the required parameter 'groupName' when calling updatePersonalItem(Async)");
         }
 
         // verify the required parameter 'itemName' is set
@@ -4281,34 +4323,34 @@ public class WorkspaceApi {
             throw new ApiException("Missing the required parameter 'itemName' when calling updatePersonalItem(Async)");
         }
 
-        return updatePersonalItemCall(workspaceName, itemName, workspaceItemUpdateRequest, _callback, opts);
+        return updatePersonalItemCall(workspaceName, groupName, itemName, workspaceItemUpdateRequest, _callback, opts);
 
     }
 
 
-    private ApiResponse<WorkspaceItem> updatePersonalItemWithHttpInfo(String workspaceName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest) throws ApiException {
-        okhttp3.Call localVarCall = updatePersonalItemValidateBeforeCall(workspaceName, itemName, workspaceItemUpdateRequest, null, new ConfigurationOptions());
+    private ApiResponse<WorkspaceItem> updatePersonalItemWithHttpInfo(String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest) throws ApiException {
+        okhttp3.Call localVarCall = updatePersonalItemValidateBeforeCall(workspaceName, groupName, itemName, workspaceItemUpdateRequest, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<WorkspaceItem> updatePersonalItemWithHttpInfo(String workspaceName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = updatePersonalItemValidateBeforeCall(workspaceName, itemName, workspaceItemUpdateRequest, null, opts);
+    private ApiResponse<WorkspaceItem> updatePersonalItemWithHttpInfo(String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = updatePersonalItemValidateBeforeCall(workspaceName, groupName, itemName, workspaceItemUpdateRequest, null, opts);
         Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call updatePersonalItemAsync(String workspaceName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback<WorkspaceItem> _callback) throws ApiException {
+    private okhttp3.Call updatePersonalItemAsync(String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback<WorkspaceItem> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updatePersonalItemValidateBeforeCall(workspaceName, itemName, workspaceItemUpdateRequest, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = updatePersonalItemValidateBeforeCall(workspaceName, groupName, itemName, workspaceItemUpdateRequest, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call updatePersonalItemAsync(String workspaceName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback<WorkspaceItem> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call updatePersonalItemAsync(String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback<WorkspaceItem> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = updatePersonalItemValidateBeforeCall(workspaceName, itemName, workspaceItemUpdateRequest, _callback, opts);
+        okhttp3.Call localVarCall = updatePersonalItemValidateBeforeCall(workspaceName, groupName, itemName, workspaceItemUpdateRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4316,11 +4358,13 @@ public class WorkspaceApi {
 
     public class APIupdatePersonalItemRequest {
         private final String workspaceName;
+        private final String groupName;
         private final String itemName;
         private WorkspaceItemUpdateRequest workspaceItemUpdateRequest;
 
-        private APIupdatePersonalItemRequest(String workspaceName, String itemName) {
+        private APIupdatePersonalItemRequest(String workspaceName, String groupName, String itemName) {
             this.workspaceName = workspaceName;
+            this.groupName = groupName;
             this.itemName = itemName;
         }
 
@@ -4348,7 +4392,7 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return updatePersonalItemCall(workspaceName, itemName, workspaceItemUpdateRequest, _callback);
+            return updatePersonalItemCall(workspaceName, groupName, itemName, workspaceItemUpdateRequest, _callback);
         }
 
         /**
@@ -4364,7 +4408,7 @@ public class WorkspaceApi {
          </table>
          */
         public WorkspaceItem execute() throws ApiException {
-            ApiResponse<WorkspaceItem> localVarResp = updatePersonalItemWithHttpInfo(workspaceName, itemName, workspaceItemUpdateRequest);
+            ApiResponse<WorkspaceItem> localVarResp = updatePersonalItemWithHttpInfo(workspaceName, groupName, itemName, workspaceItemUpdateRequest);
             return localVarResp.getData();
         }
 
@@ -4381,7 +4425,7 @@ public class WorkspaceApi {
          </table>
          */
         public WorkspaceItem execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<WorkspaceItem> localVarResp = updatePersonalItemWithHttpInfo(workspaceName, itemName, workspaceItemUpdateRequest, opts);
+            ApiResponse<WorkspaceItem> localVarResp = updatePersonalItemWithHttpInfo(workspaceName, groupName, itemName, workspaceItemUpdateRequest, opts);
             return localVarResp.getData();
         }
 
@@ -4398,7 +4442,7 @@ public class WorkspaceApi {
          </table>
          */
         public ApiResponse<WorkspaceItem> executeWithHttpInfo() throws ApiException {
-            return updatePersonalItemWithHttpInfo(workspaceName, itemName, workspaceItemUpdateRequest);
+            return updatePersonalItemWithHttpInfo(workspaceName, groupName, itemName, workspaceItemUpdateRequest);
         }
 
         /**
@@ -4414,7 +4458,7 @@ public class WorkspaceApi {
          </table>
          */
         public ApiResponse<WorkspaceItem> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return updatePersonalItemWithHttpInfo(workspaceName, itemName, workspaceItemUpdateRequest, opts);
+            return updatePersonalItemWithHttpInfo(workspaceName, groupName, itemName, workspaceItemUpdateRequest, opts);
         }
 
         /**
@@ -4431,7 +4475,7 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<WorkspaceItem> _callback) throws ApiException {
-            return updatePersonalItemAsync(workspaceName, itemName, workspaceItemUpdateRequest, _callback);
+            return updatePersonalItemAsync(workspaceName, groupName, itemName, workspaceItemUpdateRequest, _callback);
         }
 
         /**
@@ -4448,7 +4492,7 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<WorkspaceItem> _callback, ConfigurationOptions opts) throws ApiException {
-            return updatePersonalItemAsync(workspaceName, itemName, workspaceItemUpdateRequest, _callback, opts);
+            return updatePersonalItemAsync(workspaceName, groupName, itemName, workspaceItemUpdateRequest, _callback, opts);
         }
     }
 
@@ -4456,6 +4500,7 @@ public class WorkspaceApi {
      * [EXPERIMENTAL] UpdatePersonalItem: Update an item in a personal workspace.
      * Update an item in a personal workspace.
      * @param workspaceName The personal workspace name. (required)
+     * @param groupName The group containing the item. (required)
      * @param itemName The item name. (required)
      * @return APIupdatePersonalItemRequest
      * @http.response.details
@@ -4466,8 +4511,8 @@ public class WorkspaceApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIupdatePersonalItemRequest updatePersonalItem(String workspaceName, String itemName) {
-        return new APIupdatePersonalItemRequest(workspaceName, itemName);
+    public APIupdatePersonalItemRequest updatePersonalItem(String workspaceName, String groupName, String itemName) {
+        return new APIupdatePersonalItemRequest(workspaceName, groupName, itemName);
     }
     private okhttp3.Call updatePersonalWorkspaceCall(String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, final ApiCallback _callback) throws ApiException {
         return updatePersonalWorkspaceCall(workspaceName, workspaceUpdateRequest,  _callback, new ConfigurationOptions());
@@ -4716,11 +4761,11 @@ public class WorkspaceApi {
     public APIupdatePersonalWorkspaceRequest updatePersonalWorkspace(String workspaceName) {
         return new APIupdatePersonalWorkspaceRequest(workspaceName);
     }
-    private okhttp3.Call updateSharedItemCall(String workspaceName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback _callback) throws ApiException {
-        return updateSharedItemCall(workspaceName, itemName, workspaceItemUpdateRequest,  _callback, new ConfigurationOptions());
+    private okhttp3.Call updateSharedItemCall(String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback _callback) throws ApiException {
+        return updateSharedItemCall(workspaceName, groupName, itemName, workspaceItemUpdateRequest,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call updateSharedItemCall(String workspaceName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call updateSharedItemCall(String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4737,8 +4782,9 @@ public class WorkspaceApi {
         Object localVarPostBody = workspaceItemUpdateRequest;
 
         // create path and map variables
-        String localVarPath = "/api/workspaces/shared/{workspaceName}/items/{itemName}"
+        String localVarPath = "/api/workspaces/shared/{workspaceName}/items/{groupName}/{itemName}"
             .replace("{" + "workspaceName" + "}", localVarApiClient.escapeString(workspaceName.toString()))
+            .replace("{" + "groupName" + "}", localVarApiClient.escapeString(groupName.toString()))
             .replace("{" + "itemName" + "}", localVarApiClient.escapeString(itemName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -4773,10 +4819,15 @@ public class WorkspaceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateSharedItemValidateBeforeCall(String workspaceName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call updateSharedItemValidateBeforeCall(String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'workspaceName' is set
         if (workspaceName == null) {
             throw new ApiException("Missing the required parameter 'workspaceName' when calling updateSharedItem(Async)");
+        }
+
+        // verify the required parameter 'groupName' is set
+        if (groupName == null) {
+            throw new ApiException("Missing the required parameter 'groupName' when calling updateSharedItem(Async)");
         }
 
         // verify the required parameter 'itemName' is set
@@ -4784,34 +4835,34 @@ public class WorkspaceApi {
             throw new ApiException("Missing the required parameter 'itemName' when calling updateSharedItem(Async)");
         }
 
-        return updateSharedItemCall(workspaceName, itemName, workspaceItemUpdateRequest, _callback, opts);
+        return updateSharedItemCall(workspaceName, groupName, itemName, workspaceItemUpdateRequest, _callback, opts);
 
     }
 
 
-    private ApiResponse<WorkspaceItem> updateSharedItemWithHttpInfo(String workspaceName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest) throws ApiException {
-        okhttp3.Call localVarCall = updateSharedItemValidateBeforeCall(workspaceName, itemName, workspaceItemUpdateRequest, null, new ConfigurationOptions());
+    private ApiResponse<WorkspaceItem> updateSharedItemWithHttpInfo(String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest) throws ApiException {
+        okhttp3.Call localVarCall = updateSharedItemValidateBeforeCall(workspaceName, groupName, itemName, workspaceItemUpdateRequest, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<WorkspaceItem> updateSharedItemWithHttpInfo(String workspaceName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = updateSharedItemValidateBeforeCall(workspaceName, itemName, workspaceItemUpdateRequest, null, opts);
+    private ApiResponse<WorkspaceItem> updateSharedItemWithHttpInfo(String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = updateSharedItemValidateBeforeCall(workspaceName, groupName, itemName, workspaceItemUpdateRequest, null, opts);
         Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call updateSharedItemAsync(String workspaceName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback<WorkspaceItem> _callback) throws ApiException {
+    private okhttp3.Call updateSharedItemAsync(String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback<WorkspaceItem> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateSharedItemValidateBeforeCall(workspaceName, itemName, workspaceItemUpdateRequest, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = updateSharedItemValidateBeforeCall(workspaceName, groupName, itemName, workspaceItemUpdateRequest, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call updateSharedItemAsync(String workspaceName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback<WorkspaceItem> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call updateSharedItemAsync(String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback<WorkspaceItem> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = updateSharedItemValidateBeforeCall(workspaceName, itemName, workspaceItemUpdateRequest, _callback, opts);
+        okhttp3.Call localVarCall = updateSharedItemValidateBeforeCall(workspaceName, groupName, itemName, workspaceItemUpdateRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4819,11 +4870,13 @@ public class WorkspaceApi {
 
     public class APIupdateSharedItemRequest {
         private final String workspaceName;
+        private final String groupName;
         private final String itemName;
         private WorkspaceItemUpdateRequest workspaceItemUpdateRequest;
 
-        private APIupdateSharedItemRequest(String workspaceName, String itemName) {
+        private APIupdateSharedItemRequest(String workspaceName, String groupName, String itemName) {
             this.workspaceName = workspaceName;
+            this.groupName = groupName;
             this.itemName = itemName;
         }
 
@@ -4851,7 +4904,7 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return updateSharedItemCall(workspaceName, itemName, workspaceItemUpdateRequest, _callback);
+            return updateSharedItemCall(workspaceName, groupName, itemName, workspaceItemUpdateRequest, _callback);
         }
 
         /**
@@ -4867,7 +4920,7 @@ public class WorkspaceApi {
          </table>
          */
         public WorkspaceItem execute() throws ApiException {
-            ApiResponse<WorkspaceItem> localVarResp = updateSharedItemWithHttpInfo(workspaceName, itemName, workspaceItemUpdateRequest);
+            ApiResponse<WorkspaceItem> localVarResp = updateSharedItemWithHttpInfo(workspaceName, groupName, itemName, workspaceItemUpdateRequest);
             return localVarResp.getData();
         }
 
@@ -4884,7 +4937,7 @@ public class WorkspaceApi {
          </table>
          */
         public WorkspaceItem execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<WorkspaceItem> localVarResp = updateSharedItemWithHttpInfo(workspaceName, itemName, workspaceItemUpdateRequest, opts);
+            ApiResponse<WorkspaceItem> localVarResp = updateSharedItemWithHttpInfo(workspaceName, groupName, itemName, workspaceItemUpdateRequest, opts);
             return localVarResp.getData();
         }
 
@@ -4901,7 +4954,7 @@ public class WorkspaceApi {
          </table>
          */
         public ApiResponse<WorkspaceItem> executeWithHttpInfo() throws ApiException {
-            return updateSharedItemWithHttpInfo(workspaceName, itemName, workspaceItemUpdateRequest);
+            return updateSharedItemWithHttpInfo(workspaceName, groupName, itemName, workspaceItemUpdateRequest);
         }
 
         /**
@@ -4917,7 +4970,7 @@ public class WorkspaceApi {
          </table>
          */
         public ApiResponse<WorkspaceItem> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return updateSharedItemWithHttpInfo(workspaceName, itemName, workspaceItemUpdateRequest, opts);
+            return updateSharedItemWithHttpInfo(workspaceName, groupName, itemName, workspaceItemUpdateRequest, opts);
         }
 
         /**
@@ -4934,7 +4987,7 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<WorkspaceItem> _callback) throws ApiException {
-            return updateSharedItemAsync(workspaceName, itemName, workspaceItemUpdateRequest, _callback);
+            return updateSharedItemAsync(workspaceName, groupName, itemName, workspaceItemUpdateRequest, _callback);
         }
 
         /**
@@ -4951,7 +5004,7 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<WorkspaceItem> _callback, ConfigurationOptions opts) throws ApiException {
-            return updateSharedItemAsync(workspaceName, itemName, workspaceItemUpdateRequest, _callback, opts);
+            return updateSharedItemAsync(workspaceName, groupName, itemName, workspaceItemUpdateRequest, _callback, opts);
         }
     }
 
@@ -4959,6 +5012,7 @@ public class WorkspaceApi {
      * [EXPERIMENTAL] UpdateSharedItem: Update an item in a shared workspace.
      * Update an item in a shared workspace.
      * @param workspaceName The shared workspace name. (required)
+     * @param groupName The group containing the item. (required)
      * @param itemName The item name. (required)
      * @return APIupdateSharedItemRequest
      * @http.response.details
@@ -4969,8 +5023,8 @@ public class WorkspaceApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIupdateSharedItemRequest updateSharedItem(String workspaceName, String itemName) {
-        return new APIupdateSharedItemRequest(workspaceName, itemName);
+    public APIupdateSharedItemRequest updateSharedItem(String workspaceName, String groupName, String itemName) {
+        return new APIupdateSharedItemRequest(workspaceName, groupName, itemName);
     }
     private okhttp3.Call updateSharedWorkspaceCall(String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, final ApiCallback _callback) throws ApiException {
         return updateSharedWorkspaceCall(workspaceName, workspaceUpdateRequest,  _callback, new ConfigurationOptions());
