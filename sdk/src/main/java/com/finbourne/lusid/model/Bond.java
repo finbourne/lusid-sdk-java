@@ -15,6 +15,7 @@ import com.finbourne.lusid.model.ExDividendConfiguration;
 import com.finbourne.lusid.model.FlowConventions;
 import com.finbourne.lusid.model.LusidInstrument;
 import com.finbourne.lusid.model.RoundingConvention;
+import com.finbourne.lusid.model.TradingConventions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -114,6 +115,10 @@ public class Bond extends LusidInstrument {
   public static final String SERIALIZED_NAME_ORIGINAL_ISSUE_PRICE = "originalIssuePrice";
   @SerializedName(SERIALIZED_NAME_ORIGINAL_ISSUE_PRICE)
   private java.math.BigDecimal originalIssuePrice;
+
+  public static final String SERIALIZED_NAME_TRADING_CONVENTIONS = "tradingConventions";
+  @SerializedName(SERIALIZED_NAME_TRADING_CONVENTIONS)
+  private TradingConventions tradingConventions;
 
   public Bond() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -429,6 +434,27 @@ public class Bond extends LusidInstrument {
   }
 
 
+  public Bond tradingConventions(TradingConventions tradingConventions) {
+    
+    this.tradingConventions = tradingConventions;
+    return this;
+  }
+
+   /**
+   * Get tradingConventions
+   * @return tradingConventions
+  **/
+  @jakarta.annotation.Nullable
+  public TradingConventions getTradingConventions() {
+    return tradingConventions;
+  }
+
+
+  public void setTradingConventions(TradingConventions tradingConventions) {
+    this.tradingConventions = tradingConventions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -453,6 +479,7 @@ public class Bond extends LusidInstrument {
         Objects.equals(this.roundingConventions, bond.roundingConventions) &&
         Objects.equals(this.exDividendConfiguration, bond.exDividendConfiguration) &&
         (this.originalIssuePrice.compareTo(bond.getOriginalIssuePrice()) == 0) &&
+        Objects.equals(this.tradingConventions, bond.tradingConventions) &&
         super.equals(o);
   }
 
@@ -462,7 +489,7 @@ public class Bond extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, domCcy, flowConventions, principal, couponRate, identifiers, exDividendDays, initialCouponDate, firstCouponPayDate, calculationType, roundingConventions, exDividendConfiguration, originalIssuePrice, super.hashCode());
+    return Objects.hash(startDate, maturityDate, domCcy, flowConventions, principal, couponRate, identifiers, exDividendDays, initialCouponDate, firstCouponPayDate, calculationType, roundingConventions, exDividendConfiguration, originalIssuePrice, tradingConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -491,6 +518,7 @@ public class Bond extends LusidInstrument {
     sb.append("    roundingConventions: ").append(toIndentedString(roundingConventions)).append("\n");
     sb.append("    exDividendConfiguration: ").append(toIndentedString(exDividendConfiguration)).append("\n");
     sb.append("    originalIssuePrice: ").append(toIndentedString(originalIssuePrice)).append("\n");
+    sb.append("    tradingConventions: ").append(toIndentedString(tradingConventions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -528,6 +556,7 @@ public class Bond extends LusidInstrument {
     openapiFields.add("roundingConventions");
     openapiFields.add("exDividendConfiguration");
     openapiFields.add("originalIssuePrice");
+    openapiFields.add("tradingConventions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

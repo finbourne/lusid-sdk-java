@@ -308,7 +308,7 @@ public class MarketDataKeyRule {
   }
 
    /**
-   * The AsAt predicate specification.
+   * Deprecated field which no longer has any effect on market data resolution.
    * @return asAt
   **/
   @jakarta.annotation.Nullable

@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.LusidInstrument;
 import com.finbourne.lusid.model.RoundingConvention;
 import com.finbourne.lusid.model.Schedule;
+import com.finbourne.lusid.model.TradingConventions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -80,6 +81,10 @@ public class ComplexBond extends LusidInstrument {
   public static final String SERIALIZED_NAME_ASSET_POOL_IDENTIFIER = "assetPoolIdentifier";
   @SerializedName(SERIALIZED_NAME_ASSET_POOL_IDENTIFIER)
   private String assetPoolIdentifier;
+
+  public static final String SERIALIZED_NAME_TRADING_CONVENTIONS = "tradingConventions";
+  @SerializedName(SERIALIZED_NAME_TRADING_CONVENTIONS)
+  private TradingConventions tradingConventions;
 
   public ComplexBond() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -235,6 +240,27 @@ public class ComplexBond extends LusidInstrument {
   }
 
 
+  public ComplexBond tradingConventions(TradingConventions tradingConventions) {
+    
+    this.tradingConventions = tradingConventions;
+    return this;
+  }
+
+   /**
+   * Get tradingConventions
+   * @return tradingConventions
+  **/
+  @jakarta.annotation.Nullable
+  public TradingConventions getTradingConventions() {
+    return tradingConventions;
+  }
+
+
+  public void setTradingConventions(TradingConventions tradingConventions) {
+    this.tradingConventions = tradingConventions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -251,6 +277,7 @@ public class ComplexBond extends LusidInstrument {
         Objects.equals(this.roundingConventions, complexBond.roundingConventions) &&
         Objects.equals(this.assetBacked, complexBond.assetBacked) &&
         Objects.equals(this.assetPoolIdentifier, complexBond.assetPoolIdentifier) &&
+        Objects.equals(this.tradingConventions, complexBond.tradingConventions) &&
         super.equals(o);
   }
 
@@ -260,7 +287,7 @@ public class ComplexBond extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(identifiers, calculationType, schedules, roundingConventions, assetBacked, assetPoolIdentifier, super.hashCode());
+    return Objects.hash(identifiers, calculationType, schedules, roundingConventions, assetBacked, assetPoolIdentifier, tradingConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -281,6 +308,7 @@ public class ComplexBond extends LusidInstrument {
     sb.append("    roundingConventions: ").append(toIndentedString(roundingConventions)).append("\n");
     sb.append("    assetBacked: ").append(toIndentedString(assetBacked)).append("\n");
     sb.append("    assetPoolIdentifier: ").append(toIndentedString(assetPoolIdentifier)).append("\n");
+    sb.append("    tradingConventions: ").append(toIndentedString(tradingConventions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -310,6 +338,7 @@ public class ComplexBond extends LusidInstrument {
     openapiFields.add("roundingConventions");
     openapiFields.add("assetBacked");
     openapiFields.add("assetPoolIdentifier");
+    openapiFields.add("tradingConventions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

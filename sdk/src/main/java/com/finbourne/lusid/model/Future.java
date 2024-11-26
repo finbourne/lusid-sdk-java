@@ -13,6 +13,8 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.FuturesContractDetails;
 import com.finbourne.lusid.model.LusidInstrument;
+import com.finbourne.lusid.model.MarkToMarketConventions;
+import com.finbourne.lusid.model.TradingConventions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -75,6 +77,10 @@ public class Future extends LusidInstrument {
   @SerializedName(SERIALIZED_NAME_CONTRACTS)
   private java.math.BigDecimal contracts;
 
+  public static final String SERIALIZED_NAME_MARK_TO_MARKET_CONVENTIONS = "markToMarketConventions";
+  @SerializedName(SERIALIZED_NAME_MARK_TO_MARKET_CONVENTIONS)
+  private MarkToMarketConventions markToMarketConventions;
+
   public static final String SERIALIZED_NAME_REF_SPOT_PRICE = "refSpotPrice";
   @SerializedName(SERIALIZED_NAME_REF_SPOT_PRICE)
   private java.math.BigDecimal refSpotPrice;
@@ -86,6 +92,10 @@ public class Future extends LusidInstrument {
   public static final String SERIALIZED_NAME_CALCULATION_TYPE = "calculationType";
   @SerializedName(SERIALIZED_NAME_CALCULATION_TYPE)
   private String calculationType;
+
+  public static final String SERIALIZED_NAME_TRADING_CONVENTIONS = "tradingConventions";
+  @SerializedName(SERIALIZED_NAME_TRADING_CONVENTIONS)
+  private TradingConventions tradingConventions;
 
   public Future() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -204,6 +214,27 @@ public class Future extends LusidInstrument {
   }
 
 
+  public Future markToMarketConventions(MarkToMarketConventions markToMarketConventions) {
+    
+    this.markToMarketConventions = markToMarketConventions;
+    return this;
+  }
+
+   /**
+   * Get markToMarketConventions
+   * @return markToMarketConventions
+  **/
+  @jakarta.annotation.Nullable
+  public MarkToMarketConventions getMarkToMarketConventions() {
+    return markToMarketConventions;
+  }
+
+
+  public void setMarkToMarketConventions(MarkToMarketConventions markToMarketConventions) {
+    this.markToMarketConventions = markToMarketConventions;
+  }
+
+
   public Future refSpotPrice(java.math.BigDecimal refSpotPrice) {
     
     this.refSpotPrice = refSpotPrice;
@@ -253,7 +284,7 @@ public class Future extends LusidInstrument {
   }
 
    /**
-   * Calculation type for some Future instruments which have non-standard methodology.  Optional, if not set defaults as follows:  - If ExchangeCode is \&quot;ASX\&quot; and ContractCode is \&quot;IR\&quot; or \&quot;BB\&quot; set to ASX_BankBills  - If ExchangeCode is \&quot;ASX\&quot; and ContractCode is \&quot;YT\&quot; set to ASX_3Year  - If ExchangeCode is \&quot;ASX\&quot; and ContractCode is \&quot;VT\&quot; set to ASX_5Year  - If ExchangeCode is \&quot;ASX\&quot; and ContractCode is \&quot;XT\&quot; set to ASX_10Year  - If ExchangeCode is \&quot;ASX\&quot; and ContractCode is \&quot;LT\&quot; set to ASX_20Year  - otherwise set to Standard    Specific calculation types for bond and interest rate futures are:  - [Standard] The default calculation type, which does not fit into any of the categories below.  - [ASX_BankBills] Used for AUD and NZD futures “IR” and “BB” on ASX. 90D Bank Bills.  - [ASX_3Year] Used for “YT” on ASX. 3YR semi-annual bond (6 coupons) @ 6%.  - [ASX_5Year] Used for “VT” on ASX. 5yr semi-annual bond (10 coupons) @ 2%.  - [ASX_10Year] Used for “XT” on ASX. 10yr semi-annual bond (20 coupons) @ 6%.  - [ASX_20Year] Used for “LT” on ASX. 20yr semi-annual bond (40 coupons) @ 4%.  - [B3_DI1] Used for “DI1” on B3. Average of 1D interbank deposit rates.   - For futures with this calculation type, quote values are expected to be specified as a percentage.   For example, a quoted rate of 13.205% should be specified as a quote of 13.205 with a face value of 100.    Supported string (enumeration) values are: [Standard, ASX_BankBills, ASX_3Year, ASX_5Year, ASX_10Year, ASX_20Year, B3_DI1].
+   * Calculation type for some Future instruments which have non-standard methodology.  Optional, if not set defaults as follows:  - If ExchangeCode is \&quot;ASX\&quot; and ContractCode is \&quot;IR\&quot; or \&quot;BB\&quot; set to ASX_BankBills  - If ExchangeCode is \&quot;ASX\&quot; and ContractCode is \&quot;YT\&quot; set to ASX_3Year  - If ExchangeCode is \&quot;ASX\&quot; and ContractCode is \&quot;VT\&quot; set to ASX_5Year  - If ExchangeCode is \&quot;ASX\&quot; and ContractCode is \&quot;XT\&quot; set to ASX_10Year  - If ExchangeCode is \&quot;ASX\&quot; and ContractCode is \&quot;LT\&quot; set to ASX_20Year  - otherwise set to Standard     Specific calculation types for bond and interest rate futures are:  - [Standard] The default calculation type, which does not fit into any of the categories below.  - [ASX_BankBills] Used for AUD and NZD futures “IR” and “BB” on ASX. 90D Bank Bills.  - [ASX_3Year] Used for “YT” on ASX. 3YR semi-annual bond (6 coupons) @ 6%.  - [ASX_5Year] Used for “VT” on ASX. 5yr semi-annual bond (10 coupons) @ 2%.  - [ASX_10Year] Used for “XT” on ASX. 10yr semi-annual bond (20 coupons) @ 6%.  - [ASX_20Year] Used for “LT” on ASX. 20yr semi-annual bond (40 coupons) @ 4%.  - [B3_DI1] Used for “DI1” on B3. Average of 1D interbank deposit rates.   - For futures with this calculation type, quote values are expected to be specified as a percentage.   For example, a quoted rate of 13.205% should be specified as a quote of 13.205 with a face value of 100.     Supported string (enumeration) values are: [Standard, ASX_BankBills, ASX_3Year, ASX_5Year, ASX_10Year, ASX_20Year, B3_DI1].
    * @return calculationType
   **/
   @jakarta.annotation.Nullable
@@ -264,6 +295,27 @@ public class Future extends LusidInstrument {
 
   public void setCalculationType(String calculationType) {
     this.calculationType = calculationType;
+  }
+
+
+  public Future tradingConventions(TradingConventions tradingConventions) {
+    
+    this.tradingConventions = tradingConventions;
+    return this;
+  }
+
+   /**
+   * Get tradingConventions
+   * @return tradingConventions
+  **/
+  @jakarta.annotation.Nullable
+  public TradingConventions getTradingConventions() {
+    return tradingConventions;
+  }
+
+
+  public void setTradingConventions(TradingConventions tradingConventions) {
+    this.tradingConventions = tradingConventions;
   }
 
 
@@ -282,9 +334,11 @@ public class Future extends LusidInstrument {
         Objects.equals(this.identifiers, future.identifiers) &&
         Objects.equals(this.contractDetails, future.contractDetails) &&
         (this.contracts.compareTo(future.getContracts()) == 0) &&
+        Objects.equals(this.markToMarketConventions, future.markToMarketConventions) &&
         (this.refSpotPrice.compareTo(future.getRefSpotPrice()) == 0) &&
         Objects.equals(this.underlying, future.underlying) &&
         Objects.equals(this.calculationType, future.calculationType) &&
+        Objects.equals(this.tradingConventions, future.tradingConventions) &&
         super.equals(o);
   }
 
@@ -294,7 +348,7 @@ public class Future extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, identifiers, contractDetails, contracts, refSpotPrice, underlying, calculationType, super.hashCode());
+    return Objects.hash(startDate, maturityDate, identifiers, contractDetails, contracts, markToMarketConventions, refSpotPrice, underlying, calculationType, tradingConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -314,9 +368,11 @@ public class Future extends LusidInstrument {
     sb.append("    identifiers: ").append(toIndentedString(identifiers)).append("\n");
     sb.append("    contractDetails: ").append(toIndentedString(contractDetails)).append("\n");
     sb.append("    contracts: ").append(toIndentedString(contracts)).append("\n");
+    sb.append("    markToMarketConventions: ").append(toIndentedString(markToMarketConventions)).append("\n");
     sb.append("    refSpotPrice: ").append(toIndentedString(refSpotPrice)).append("\n");
     sb.append("    underlying: ").append(toIndentedString(underlying)).append("\n");
     sb.append("    calculationType: ").append(toIndentedString(calculationType)).append("\n");
+    sb.append("    tradingConventions: ").append(toIndentedString(tradingConventions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -345,9 +401,11 @@ public class Future extends LusidInstrument {
     openapiFields.add("identifiers");
     openapiFields.add("contractDetails");
     openapiFields.add("contracts");
+    openapiFields.add("markToMarketConventions");
     openapiFields.add("refSpotPrice");
     openapiFields.add("underlying");
     openapiFields.add("calculationType");
+    openapiFields.add("tradingConventions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

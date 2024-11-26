@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.ExchangeTradedOptionContractDetails;
 import com.finbourne.lusid.model.LusidInstrument;
+import com.finbourne.lusid.model.TradingConventions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -67,6 +68,10 @@ public class ExchangeTradedOption extends LusidInstrument {
   public static final String SERIALIZED_NAME_REF_SPOT_PRICE = "refSpotPrice";
   @SerializedName(SERIALIZED_NAME_REF_SPOT_PRICE)
   private java.math.BigDecimal refSpotPrice;
+
+  public static final String SERIALIZED_NAME_TRADING_CONVENTIONS = "tradingConventions";
+  @SerializedName(SERIALIZED_NAME_TRADING_CONVENTIONS)
+  private TradingConventions tradingConventions;
 
   public ExchangeTradedOption() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -156,6 +161,27 @@ public class ExchangeTradedOption extends LusidInstrument {
   }
 
 
+  public ExchangeTradedOption tradingConventions(TradingConventions tradingConventions) {
+    
+    this.tradingConventions = tradingConventions;
+    return this;
+  }
+
+   /**
+   * Get tradingConventions
+   * @return tradingConventions
+  **/
+  @jakarta.annotation.Nullable
+  public TradingConventions getTradingConventions() {
+    return tradingConventions;
+  }
+
+
+  public void setTradingConventions(TradingConventions tradingConventions) {
+    this.tradingConventions = tradingConventions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -170,12 +196,13 @@ public class ExchangeTradedOption extends LusidInstrument {
         Objects.equals(this.contractDetails, exchangeTradedOption.contractDetails) &&
         (this.contracts.compareTo(exchangeTradedOption.getContracts()) == 0) &&
         (this.refSpotPrice.compareTo(exchangeTradedOption.getRefSpotPrice()) == 0) &&
+        Objects.equals(this.tradingConventions, exchangeTradedOption.tradingConventions) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, contractDetails, contracts, refSpotPrice, super.hashCode());
+    return Objects.hash(startDate, contractDetails, contracts, refSpotPrice, tradingConventions, super.hashCode());
   }
 
   @Override
@@ -187,6 +214,7 @@ public class ExchangeTradedOption extends LusidInstrument {
     sb.append("    contractDetails: ").append(toIndentedString(contractDetails)).append("\n");
     sb.append("    contracts: ").append(toIndentedString(contracts)).append("\n");
     sb.append("    refSpotPrice: ").append(toIndentedString(refSpotPrice)).append("\n");
+    sb.append("    tradingConventions: ").append(toIndentedString(tradingConventions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -214,6 +242,7 @@ public class ExchangeTradedOption extends LusidInstrument {
     openapiFields.add("contractDetails");
     openapiFields.add("contracts");
     openapiFields.add("refSpotPrice");
+    openapiFields.add("tradingConventions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

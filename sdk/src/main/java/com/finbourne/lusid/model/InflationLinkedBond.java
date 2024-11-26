@@ -15,6 +15,7 @@ import com.finbourne.lusid.model.FlowConventions;
 import com.finbourne.lusid.model.InflationIndexConventions;
 import com.finbourne.lusid.model.LusidInstrument;
 import com.finbourne.lusid.model.RoundingConvention;
+import com.finbourne.lusid.model.TradingConventions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -118,6 +119,10 @@ public class InflationLinkedBond extends LusidInstrument {
   public static final String SERIALIZED_NAME_ROUNDING_CONVENTIONS = "roundingConventions";
   @SerializedName(SERIALIZED_NAME_ROUNDING_CONVENTIONS)
   private List<RoundingConvention> roundingConventions;
+
+  public static final String SERIALIZED_NAME_TRADING_CONVENTIONS = "tradingConventions";
+  @SerializedName(SERIALIZED_NAME_TRADING_CONVENTIONS)
+  private TradingConventions tradingConventions;
 
   public InflationLinkedBond() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -454,6 +459,27 @@ public class InflationLinkedBond extends LusidInstrument {
   }
 
 
+  public InflationLinkedBond tradingConventions(TradingConventions tradingConventions) {
+    
+    this.tradingConventions = tradingConventions;
+    return this;
+  }
+
+   /**
+   * Get tradingConventions
+   * @return tradingConventions
+  **/
+  @jakarta.annotation.Nullable
+  public TradingConventions getTradingConventions() {
+    return tradingConventions;
+  }
+
+
+  public void setTradingConventions(TradingConventions tradingConventions) {
+    this.tradingConventions = tradingConventions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -479,6 +505,7 @@ public class InflationLinkedBond extends LusidInstrument {
         Objects.equals(this.principalProtection, inflationLinkedBond.principalProtection) &&
         Objects.equals(this.stubType, inflationLinkedBond.stubType) &&
         Objects.equals(this.roundingConventions, inflationLinkedBond.roundingConventions) &&
+        Objects.equals(this.tradingConventions, inflationLinkedBond.tradingConventions) &&
         super.equals(o);
   }
 
@@ -488,7 +515,7 @@ public class InflationLinkedBond extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, flowConventions, inflationIndexConventions, couponRate, identifiers, baseCPI, baseCPIDate, calculationType, exDividendDays, indexPrecision, principal, principalProtection, stubType, roundingConventions, super.hashCode());
+    return Objects.hash(startDate, maturityDate, flowConventions, inflationIndexConventions, couponRate, identifiers, baseCPI, baseCPIDate, calculationType, exDividendDays, indexPrecision, principal, principalProtection, stubType, roundingConventions, tradingConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -518,6 +545,7 @@ public class InflationLinkedBond extends LusidInstrument {
     sb.append("    principalProtection: ").append(toIndentedString(principalProtection)).append("\n");
     sb.append("    stubType: ").append(toIndentedString(stubType)).append("\n");
     sb.append("    roundingConventions: ").append(toIndentedString(roundingConventions)).append("\n");
+    sb.append("    tradingConventions: ").append(toIndentedString(tradingConventions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -556,6 +584,7 @@ public class InflationLinkedBond extends LusidInstrument {
     openapiFields.add("principalProtection");
     openapiFields.add("stubType");
     openapiFields.add("roundingConventions");
+    openapiFields.add("tradingConventions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
