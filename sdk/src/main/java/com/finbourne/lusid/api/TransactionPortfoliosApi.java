@@ -32,6 +32,7 @@ import com.finbourne.lusid.model.BatchAdjustHoldingsResponse;
 import com.finbourne.lusid.model.BatchUpsertPortfolioTransactionsResponse;
 import com.finbourne.lusid.model.BucketedCashFlowRequest;
 import com.finbourne.lusid.model.BucketedCashFlowResponse;
+import com.finbourne.lusid.model.CancelSingleHoldingAdjustmentRequest;
 import com.finbourne.lusid.model.CreatePortfolioDetails;
 import com.finbourne.lusid.model.CreateTradeTicketsResponse;
 import com.finbourne.lusid.model.CreateTransactionPortfolioRequest;
@@ -2069,6 +2070,271 @@ public class TransactionPortfoliosApi {
      */
     public APIcancelAdjustHoldingsRequest cancelAdjustHoldings(String scope, String code, String effectiveAt) {
         return new APIcancelAdjustHoldingsRequest(scope, code, effectiveAt);
+    }
+    private okhttp3.Call cancelSingleAdjustHoldingCall(String scope, String code, String effectiveAt, CancelSingleHoldingAdjustmentRequest cancelSingleHoldingAdjustmentRequest, final ApiCallback _callback) throws ApiException {
+        return cancelSingleAdjustHoldingCall(scope, code, effectiveAt, cancelSingleHoldingAdjustmentRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call cancelSingleAdjustHoldingCall(String scope, String code, String effectiveAt, CancelSingleHoldingAdjustmentRequest cancelSingleHoldingAdjustmentRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = cancelSingleHoldingAdjustmentRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/transactionportfolios/{scope}/{code}/holdings/$cancelAdjustment"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call cancelSingleAdjustHoldingValidateBeforeCall(String scope, String code, String effectiveAt, CancelSingleHoldingAdjustmentRequest cancelSingleHoldingAdjustmentRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling cancelSingleAdjustHolding(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling cancelSingleAdjustHolding(Async)");
+        }
+
+        // verify the required parameter 'effectiveAt' is set
+        if (effectiveAt == null) {
+            throw new ApiException("Missing the required parameter 'effectiveAt' when calling cancelSingleAdjustHolding(Async)");
+        }
+
+        // verify the required parameter 'cancelSingleHoldingAdjustmentRequest' is set
+        if (cancelSingleHoldingAdjustmentRequest == null) {
+            throw new ApiException("Missing the required parameter 'cancelSingleHoldingAdjustmentRequest' when calling cancelSingleAdjustHolding(Async)");
+        }
+
+        return cancelSingleAdjustHoldingCall(scope, code, effectiveAt, cancelSingleHoldingAdjustmentRequest, _callback, opts);
+
+    }
+
+
+    private ApiResponse<DeletedEntityResponse> cancelSingleAdjustHoldingWithHttpInfo(String scope, String code, String effectiveAt, CancelSingleHoldingAdjustmentRequest cancelSingleHoldingAdjustmentRequest) throws ApiException {
+        okhttp3.Call localVarCall = cancelSingleAdjustHoldingValidateBeforeCall(scope, code, effectiveAt, cancelSingleHoldingAdjustmentRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> cancelSingleAdjustHoldingWithHttpInfo(String scope, String code, String effectiveAt, CancelSingleHoldingAdjustmentRequest cancelSingleHoldingAdjustmentRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = cancelSingleAdjustHoldingValidateBeforeCall(scope, code, effectiveAt, cancelSingleHoldingAdjustmentRequest, null, opts);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call cancelSingleAdjustHoldingAsync(String scope, String code, String effectiveAt, CancelSingleHoldingAdjustmentRequest cancelSingleHoldingAdjustmentRequest, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = cancelSingleAdjustHoldingValidateBeforeCall(scope, code, effectiveAt, cancelSingleHoldingAdjustmentRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call cancelSingleAdjustHoldingAsync(String scope, String code, String effectiveAt, CancelSingleHoldingAdjustmentRequest cancelSingleHoldingAdjustmentRequest, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = cancelSingleAdjustHoldingValidateBeforeCall(scope, code, effectiveAt, cancelSingleHoldingAdjustmentRequest, _callback, opts);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIcancelSingleAdjustHoldingRequest {
+        private final String scope;
+        private final String code;
+        private final String effectiveAt;
+        private final CancelSingleHoldingAdjustmentRequest cancelSingleHoldingAdjustmentRequest;
+
+        private APIcancelSingleAdjustHoldingRequest(String scope, String code, String effectiveAt, CancelSingleHoldingAdjustmentRequest cancelSingleHoldingAdjustmentRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.effectiveAt = effectiveAt;
+            this.cancelSingleHoldingAdjustmentRequest = cancelSingleHoldingAdjustmentRequest;
+        }
+
+        /**
+         * Build call for cancelSingleAdjustHolding
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the holding adjustment was cancelled </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return cancelSingleAdjustHoldingCall(scope, code, effectiveAt, cancelSingleHoldingAdjustmentRequest, _callback);
+        }
+
+        /**
+         * Execute cancelSingleAdjustHolding request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the holding adjustment was cancelled </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = cancelSingleAdjustHoldingWithHttpInfo(scope, code, effectiveAt, cancelSingleHoldingAdjustmentRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute cancelSingleAdjustHolding request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the holding adjustment was cancelled </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = cancelSingleAdjustHoldingWithHttpInfo(scope, code, effectiveAt, cancelSingleHoldingAdjustmentRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute cancelSingleAdjustHolding request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the holding adjustment was cancelled </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return cancelSingleAdjustHoldingWithHttpInfo(scope, code, effectiveAt, cancelSingleHoldingAdjustmentRequest);
+        }
+
+        /**
+         * Execute cancelSingleAdjustHolding request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the holding adjustment was cancelled </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return cancelSingleAdjustHoldingWithHttpInfo(scope, code, effectiveAt, cancelSingleHoldingAdjustmentRequest, opts);
+        }
+
+        /**
+         * Execute cancelSingleAdjustHolding request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the holding adjustment was cancelled </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return cancelSingleAdjustHoldingAsync(scope, code, effectiveAt, cancelSingleHoldingAdjustmentRequest, _callback);
+        }
+
+        /**
+         * Execute cancelSingleAdjustHolding request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the holding adjustment was cancelled </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return cancelSingleAdjustHoldingAsync(scope, code, effectiveAt, cancelSingleHoldingAdjustmentRequest, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] CancelSingleAdjustHolding: Cancel single holding adjustment.
+     * Cancel one previously sent holding adjustment without affecting the rest of the adjustment in the previous request on the specified effective datetime.
+     * @param scope The scope of the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param effectiveAt The effective datetime or cut label at which the previous adjustment was made. (required)
+     * @param cancelSingleHoldingAdjustmentRequest The selected holding adjustment to be canceled. (required)
+     * @return APIcancelSingleAdjustHoldingRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The datetime that the holding adjustment was cancelled </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIcancelSingleAdjustHoldingRequest cancelSingleAdjustHolding(String scope, String code, String effectiveAt, CancelSingleHoldingAdjustmentRequest cancelSingleHoldingAdjustmentRequest) {
+        return new APIcancelSingleAdjustHoldingRequest(scope, code, effectiveAt, cancelSingleHoldingAdjustmentRequest);
     }
     private okhttp3.Call cancelTransactionsCall(String scope, String code, List<String> transactionIds, final ApiCallback _callback) throws ApiException {
         return cancelTransactionsCall(scope, code, transactionIds,  _callback, new ConfigurationOptions());
