@@ -20,7 +20,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -108,6 +110,18 @@ public class EquityOption extends LusidInstrument {
   public static final String SERIALIZED_NAME_UNDERLYING = "underlying";
   @SerializedName(SERIALIZED_NAME_UNDERLYING)
   private LusidInstrument underlying;
+
+  public static final String SERIALIZED_NAME_DELIVERY_DAYS = "deliveryDays";
+  @SerializedName(SERIALIZED_NAME_DELIVERY_DAYS)
+  private Integer deliveryDays;
+
+  public static final String SERIALIZED_NAME_BUSINESS_DAY_CONVENTION = "businessDayConvention";
+  @SerializedName(SERIALIZED_NAME_BUSINESS_DAY_CONVENTION)
+  private String businessDayConvention;
+
+  public static final String SERIALIZED_NAME_SETTLEMENT_CALENDARS = "settlementCalendars";
+  @SerializedName(SERIALIZED_NAME_SETTLEMENT_CALENDARS)
+  private List<String> settlementCalendars;
 
   public EquityOption() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -407,6 +421,77 @@ public class EquityOption extends LusidInstrument {
   }
 
 
+  public EquityOption deliveryDays(Integer deliveryDays) {
+    
+    this.deliveryDays = deliveryDays;
+    return this;
+  }
+
+   /**
+   * Number of business days between exercise date and settlement of the option payoff or underlying.
+   * @return deliveryDays
+  **/
+  @jakarta.annotation.Nullable
+  public Integer getDeliveryDays() {
+    return deliveryDays;
+  }
+
+
+  public void setDeliveryDays(Integer deliveryDays) {
+    this.deliveryDays = deliveryDays;
+  }
+
+
+  public EquityOption businessDayConvention(String businessDayConvention) {
+    
+    this.businessDayConvention = businessDayConvention;
+    return this;
+  }
+
+   /**
+   * Business day convention for option exercise date to settlement date calculation.  Supported string (enumeration) values are: [NoAdjustment, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest].
+   * @return businessDayConvention
+  **/
+  @jakarta.annotation.Nullable
+  public String getBusinessDayConvention() {
+    return businessDayConvention;
+  }
+
+
+  public void setBusinessDayConvention(String businessDayConvention) {
+    this.businessDayConvention = businessDayConvention;
+  }
+
+
+  public EquityOption settlementCalendars(List<String> settlementCalendars) {
+    
+    this.settlementCalendars = settlementCalendars;
+    return this;
+  }
+
+  public EquityOption addSettlementCalendarsItem(String settlementCalendarsItem) {
+    if (this.settlementCalendars == null) {
+      this.settlementCalendars = new ArrayList<>();
+    }
+    this.settlementCalendars.add(settlementCalendarsItem);
+    return this;
+  }
+
+   /**
+   * Holiday calendars for option exercise date to settlement date calculation.
+   * @return settlementCalendars
+  **/
+  @jakarta.annotation.Nullable
+  public List<String> getSettlementCalendars() {
+    return settlementCalendars;
+  }
+
+
+  public void setSettlementCalendars(List<String> settlementCalendars) {
+    this.settlementCalendars = settlementCalendars;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -431,6 +516,9 @@ public class EquityOption extends LusidInstrument {
         Objects.equals(this.premium, equityOption.premium) &&
         Objects.equals(this.exerciseType, equityOption.exerciseType) &&
         Objects.equals(this.underlying, equityOption.underlying) &&
+        Objects.equals(this.deliveryDays, equityOption.deliveryDays) &&
+        Objects.equals(this.businessDayConvention, equityOption.businessDayConvention) &&
+        Objects.equals(this.settlementCalendars, equityOption.settlementCalendars) &&
         super.equals(o);
   }
 
@@ -440,7 +528,7 @@ public class EquityOption extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, optionMaturityDate, optionSettlementDate, deliveryType, optionType, strike, domCcy, underlyingIdentifier, code, equityOptionType, numberOfShares, premium, exerciseType, underlying, super.hashCode());
+    return Objects.hash(startDate, optionMaturityDate, optionSettlementDate, deliveryType, optionType, strike, domCcy, underlyingIdentifier, code, equityOptionType, numberOfShares, premium, exerciseType, underlying, deliveryDays, businessDayConvention, settlementCalendars, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -469,6 +557,9 @@ public class EquityOption extends LusidInstrument {
     sb.append("    premium: ").append(toIndentedString(premium)).append("\n");
     sb.append("    exerciseType: ").append(toIndentedString(exerciseType)).append("\n");
     sb.append("    underlying: ").append(toIndentedString(underlying)).append("\n");
+    sb.append("    deliveryDays: ").append(toIndentedString(deliveryDays)).append("\n");
+    sb.append("    businessDayConvention: ").append(toIndentedString(businessDayConvention)).append("\n");
+    sb.append("    settlementCalendars: ").append(toIndentedString(settlementCalendars)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -506,6 +597,9 @@ public class EquityOption extends LusidInstrument {
     openapiFields.add("premium");
     openapiFields.add("exerciseType");
     openapiFields.add("underlying");
+    openapiFields.add("deliveryDays");
+    openapiFields.add("businessDayConvention");
+    openapiFields.add("settlementCalendars");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
