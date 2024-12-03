@@ -12,7 +12,7 @@
 |**reconciliationType** | **String** | The type of reconciliation to perform. \&quot;Holding\&quot; | \&quot;Transaction\&quot; | \&quot;Valuation\&quot; |  |
 |**instanceId** | [**GroupReconciliationInstanceId**](GroupReconciliationInstanceId.md) |  |  |
 |**datesReconciled** | [**GroupReconciliationDates**](GroupReconciliationDates.md) |  |  |
-|**reconciliationRunAsAt** | **String** | The date and time the reconciliation was run |  |
+|**reconciliationRunAsAt** | **OffsetDateTime** | The date and time the reconciliation was run |  |
 |**countComparisonResults** | **Integer** | The total number of comparison results with this InstanceId and ReconciliationType |  |
 |**linkComparisonResults** | [**Link**](Link.md) |  |  [optional] |
 |**resultTypes** | [**GroupReconciliationResultTypes**](GroupReconciliationResultTypes.md) |  |  [optional] |

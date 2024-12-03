@@ -48,6 +48,7 @@ import com.finbourne.lusid.model.ValuationPointDataQueryParameters;
 import com.finbourne.lusid.model.ValuationPointDataRequest;
 import com.finbourne.lusid.model.ValuationPointDataResponse;
 import com.finbourne.lusid.model.ValuationPointResourceListOfJournalEntryLine;
+import com.finbourne.lusid.model.ValuationPointResourceListOfPnlJournalEntryLine;
 import com.finbourne.lusid.model.ValuationPointResourceListOfTrialBalance;
 
 import java.lang.reflect.Type;
@@ -3028,6 +3029,334 @@ public class FundsApi {
      */
     public APIgetValuationPointJournalEntryLinesRequest getValuationPointJournalEntryLines(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
         return new APIgetValuationPointJournalEntryLinesRequest(scope, code, valuationPointDataQueryParameters);
+    }
+    private okhttp3.Call getValuationPointPnlSummaryCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, final ApiCallback _callback) throws ApiException {
+        return getValuationPointPnlSummaryCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getValuationPointPnlSummaryCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = valuationPointDataQueryParameters;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/valuationpoints/pnlsummary/$query"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (generalLedgerProfileCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("generalLedgerProfileCode", generalLedgerProfileCode));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getValuationPointPnlSummaryValidateBeforeCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getValuationPointPnlSummary(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling getValuationPointPnlSummary(Async)");
+        }
+
+        // verify the required parameter 'valuationPointDataQueryParameters' is set
+        if (valuationPointDataQueryParameters == null) {
+            throw new ApiException("Missing the required parameter 'valuationPointDataQueryParameters' when calling getValuationPointPnlSummary(Async)");
+        }
+
+        return getValuationPointPnlSummaryCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, _callback, opts);
+
+    }
+
+
+    private ApiResponse<ValuationPointResourceListOfPnlJournalEntryLine> getValuationPointPnlSummaryWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page) throws ApiException {
+        okhttp3.Call localVarCall = getValuationPointPnlSummaryValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ValuationPointResourceListOfPnlJournalEntryLine>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ValuationPointResourceListOfPnlJournalEntryLine> getValuationPointPnlSummaryWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getValuationPointPnlSummaryValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, null, opts);
+        Type localVarReturnType = new TypeToken<ValuationPointResourceListOfPnlJournalEntryLine>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getValuationPointPnlSummaryAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, final ApiCallback<ValuationPointResourceListOfPnlJournalEntryLine> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getValuationPointPnlSummaryValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ValuationPointResourceListOfPnlJournalEntryLine>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getValuationPointPnlSummaryAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, final ApiCallback<ValuationPointResourceListOfPnlJournalEntryLine> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getValuationPointPnlSummaryValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, _callback, opts);
+        Type localVarReturnType = new TypeToken<ValuationPointResourceListOfPnlJournalEntryLine>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetValuationPointPnlSummaryRequest {
+        private final String scope;
+        private final String code;
+        private final ValuationPointDataQueryParameters valuationPointDataQueryParameters;
+        private String generalLedgerProfileCode;
+        private OffsetDateTime asAt;
+        private String filter;
+        private Integer limit;
+        private String page;
+
+        private APIgetValuationPointPnlSummaryRequest(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
+            this.scope = scope;
+            this.code = code;
+            this.valuationPointDataQueryParameters = valuationPointDataQueryParameters;
+        }
+
+        /**
+         * Set generalLedgerProfileCode
+         * @param generalLedgerProfileCode The optional code of a general ledger profile used to decorate journal entry lines with levels. (optional)
+         * @return APIgetValuationPointPnlSummaryRequest
+         */
+        public APIgetValuationPointPnlSummaryRequest generalLedgerProfileCode(String generalLedgerProfileCode) {
+            this.generalLedgerProfileCode = generalLedgerProfileCode;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve PnL summary. Defaults to returning the latest version   of each transaction if not specified. (optional)
+         * @return APIgetValuationPointPnlSummaryRequest
+         */
+        public APIgetValuationPointPnlSummaryRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter \&quot;Expression to filter the result set.\&quot; (optional)
+         * @return APIgetValuationPointPnlSummaryRequest
+         */
+        public APIgetValuationPointPnlSummaryRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
+         * @return APIgetValuationPointPnlSummaryRequest
+         */
+        public APIgetValuationPointPnlSummaryRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing Trial balance from a previous call to Trial balance. (optional)
+         * @return APIgetValuationPointPnlSummaryRequest
+         */
+        public APIgetValuationPointPnlSummaryRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Build call for getValuationPointPnlSummary
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested PnL summary for the specified Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getValuationPointPnlSummaryCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, _callback);
+        }
+
+        /**
+         * Execute getValuationPointPnlSummary request
+         * @return ValuationPointResourceListOfPnlJournalEntryLine
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested PnL summary for the specified Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ValuationPointResourceListOfPnlJournalEntryLine execute() throws ApiException {
+            ApiResponse<ValuationPointResourceListOfPnlJournalEntryLine> localVarResp = getValuationPointPnlSummaryWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getValuationPointPnlSummary request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ValuationPointResourceListOfPnlJournalEntryLine
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested PnL summary for the specified Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ValuationPointResourceListOfPnlJournalEntryLine execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ValuationPointResourceListOfPnlJournalEntryLine> localVarResp = getValuationPointPnlSummaryWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getValuationPointPnlSummary request with HTTP info returned
+         * @return ApiResponse&lt;ValuationPointResourceListOfPnlJournalEntryLine&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested PnL summary for the specified Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ValuationPointResourceListOfPnlJournalEntryLine> executeWithHttpInfo() throws ApiException {
+            return getValuationPointPnlSummaryWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page);
+        }
+
+        /**
+         * Execute getValuationPointPnlSummary request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ValuationPointResourceListOfPnlJournalEntryLine&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested PnL summary for the specified Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ValuationPointResourceListOfPnlJournalEntryLine> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getValuationPointPnlSummaryWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, opts);
+        }
+
+        /**
+         * Execute getValuationPointPnlSummary request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested PnL summary for the specified Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ValuationPointResourceListOfPnlJournalEntryLine> _callback) throws ApiException {
+            return getValuationPointPnlSummaryAsync(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, _callback);
+        }
+
+        /**
+         * Execute getValuationPointPnlSummary request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested PnL summary for the specified Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ValuationPointResourceListOfPnlJournalEntryLine> _callback, ConfigurationOptions opts) throws ApiException {
+            return getValuationPointPnlSummaryAsync(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] GetValuationPointPnlSummary: Get a PnL summary for the given Valuation Point in the Fund.
+     * Gets the PnL Summary lines from the journal entry lines produced when calculating the valuation point.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope is the unique identifier for the given Fund. (required)
+     * @param valuationPointDataQueryParameters The query parameters used in running the generation of the PnL summary (required)
+     * @return APIgetValuationPointPnlSummaryRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested PnL summary for the specified Fund. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetValuationPointPnlSummaryRequest getValuationPointPnlSummary(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
+        return new APIgetValuationPointPnlSummaryRequest(scope, code, valuationPointDataQueryParameters);
     }
     private okhttp3.Call getValuationPointTrialBalanceCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
         return getValuationPointTrialBalanceCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys,  _callback, new ConfigurationOptions());

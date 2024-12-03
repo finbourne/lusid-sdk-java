@@ -81,6 +81,10 @@ public class SideDefinition {
   @SerializedName(SERIALIZED_NAME_NOTIONAL_AMOUNT)
   private String notionalAmount;
 
+  public static final String SERIALIZED_NAME_CURRENT_FACE = "currentFace";
+  @SerializedName(SERIALIZED_NAME_CURRENT_FACE)
+  private String currentFace;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -235,6 +239,27 @@ public class SideDefinition {
   }
 
 
+  public SideDefinition currentFace(String currentFace) {
+    
+    this.currentFace = currentFace;
+    return this;
+  }
+
+   /**
+   * The value, field or property key defining the side&#39;s current face / outstanding notional.
+   * @return currentFace
+  **/
+  @jakarta.annotation.Nullable
+  public String getCurrentFace() {
+    return currentFace;
+  }
+
+
+  public void setCurrentFace(String currentFace) {
+    this.currentFace = currentFace;
+  }
+
+
   public SideDefinition links(List<Link> links) {
     
     this.links = links;
@@ -281,6 +306,7 @@ public class SideDefinition {
         Objects.equals(this.units, sideDefinition.units) &&
         Objects.equals(this.amount, sideDefinition.amount) &&
         Objects.equals(this.notionalAmount, sideDefinition.notionalAmount) &&
+        Objects.equals(this.currentFace, sideDefinition.currentFace) &&
         Objects.equals(this.links, sideDefinition.links);
   }
 
@@ -290,7 +316,7 @@ public class SideDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(side, security, currency, rate, units, amount, notionalAmount, links);
+    return Objects.hash(side, security, currency, rate, units, amount, notionalAmount, currentFace, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -311,6 +337,7 @@ public class SideDefinition {
     sb.append("    units: ").append(toIndentedString(units)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    notionalAmount: ").append(toIndentedString(notionalAmount)).append("\n");
+    sb.append("    currentFace: ").append(toIndentedString(currentFace)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -341,6 +368,7 @@ public class SideDefinition {
     openapiFields.add("units");
     openapiFields.add("amount");
     openapiFields.add("notionalAmount");
+    openapiFields.add("currentFace");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -393,6 +421,9 @@ public class SideDefinition {
       }
       if ((jsonObj.get("notionalAmount") != null && !jsonObj.get("notionalAmount").isJsonNull()) && !jsonObj.get("notionalAmount").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `notionalAmount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("notionalAmount").toString()));
+      }
+      if ((jsonObj.get("currentFace") != null && !jsonObj.get("currentFace").isJsonNull()) && !jsonObj.get("currentFace").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `currentFace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currentFace").toString()));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

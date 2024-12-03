@@ -14,6 +14,7 @@
 |**units** | **String** | The value, field or property key defining the side&#39;s units. |  |
 |**amount** | **String** | The value, field or property key defining the side&#39;s amount |  |
 |**notionalAmount** | **String** | The value, field or property key defining the side&#39;s notional amount |  [optional] |
+|**currentFace** | **String** | The value, field or property key defining the side&#39;s current face / outstanding notional. |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 

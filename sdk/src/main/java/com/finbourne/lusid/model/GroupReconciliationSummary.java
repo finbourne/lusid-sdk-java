@@ -25,6 +25,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -79,7 +80,7 @@ public class GroupReconciliationSummary {
 
   public static final String SERIALIZED_NAME_RECONCILIATION_RUN_AS_AT = "reconciliationRunAsAt";
   @SerializedName(SERIALIZED_NAME_RECONCILIATION_RUN_AS_AT)
-  private String reconciliationRunAsAt;
+  private OffsetDateTime reconciliationRunAsAt;
 
   public static final String SERIALIZED_NAME_COUNT_COMPARISON_RESULTS = "countComparisonResults";
   @SerializedName(SERIALIZED_NAME_COUNT_COMPARISON_RESULTS)
@@ -209,7 +210,7 @@ public class GroupReconciliationSummary {
   }
 
 
-  public GroupReconciliationSummary reconciliationRunAsAt(String reconciliationRunAsAt) {
+  public GroupReconciliationSummary reconciliationRunAsAt(OffsetDateTime reconciliationRunAsAt) {
     
     this.reconciliationRunAsAt = reconciliationRunAsAt;
     return this;
@@ -220,12 +221,12 @@ public class GroupReconciliationSummary {
    * @return reconciliationRunAsAt
   **/
   @jakarta.annotation.Nonnull
-  public String getReconciliationRunAsAt() {
+  public OffsetDateTime getReconciliationRunAsAt() {
     return reconciliationRunAsAt;
   }
 
 
-  public void setReconciliationRunAsAt(String reconciliationRunAsAt) {
+  public void setReconciliationRunAsAt(OffsetDateTime reconciliationRunAsAt) {
     this.reconciliationRunAsAt = reconciliationRunAsAt;
   }
 
@@ -456,9 +457,6 @@ public class GroupReconciliationSummary {
       GroupReconciliationInstanceId.validateJsonElement(jsonObj.get("instanceId"));
       // validate the required field `datesReconciled`
       GroupReconciliationDates.validateJsonElement(jsonObj.get("datesReconciled"));
-      if (!jsonObj.get("reconciliationRunAsAt").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `reconciliationRunAsAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reconciliationRunAsAt").toString()));
-      }
       // validate the optional field `linkComparisonResults`
       if (jsonObj.get("linkComparisonResults") != null && !jsonObj.get("linkComparisonResults").isJsonNull()) {
         Link.validateJsonElement(jsonObj.get("linkComparisonResults"));
