@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.AdditionalPayment;
 import com.finbourne.lusid.model.FloatingLeg;
 import com.finbourne.lusid.model.LusidInstrument;
 import com.google.gson.TypeAdapter;
@@ -19,7 +20,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -71,6 +74,10 @@ public class CapFloor extends LusidInstrument {
   public static final String SERIALIZED_NAME_UNDERLYING_FLOATING_LEG = "underlyingFloatingLeg";
   @SerializedName(SERIALIZED_NAME_UNDERLYING_FLOATING_LEG)
   private FloatingLeg underlyingFloatingLeg;
+
+  public static final String SERIALIZED_NAME_ADDITIONAL_PAYMENTS = "additionalPayments";
+  @SerializedName(SERIALIZED_NAME_ADDITIONAL_PAYMENTS)
+  private List<AdditionalPayment> additionalPayments;
 
   public CapFloor() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -181,6 +188,35 @@ public class CapFloor extends LusidInstrument {
   }
 
 
+  public CapFloor additionalPayments(List<AdditionalPayment> additionalPayments) {
+    
+    this.additionalPayments = additionalPayments;
+    return this;
+  }
+
+  public CapFloor addAdditionalPaymentsItem(AdditionalPayment additionalPaymentsItem) {
+    if (this.additionalPayments == null) {
+      this.additionalPayments = new ArrayList<>();
+    }
+    this.additionalPayments.add(additionalPaymentsItem);
+    return this;
+  }
+
+   /**
+   * Optional additional payments at a given date e.g. to level off an uneven equity swap.  The dates must be distinct and either all payments are Pay or all payments are Receive.
+   * @return additionalPayments
+  **/
+  @jakarta.annotation.Nullable
+  public List<AdditionalPayment> getAdditionalPayments() {
+    return additionalPayments;
+  }
+
+
+  public void setAdditionalPayments(List<AdditionalPayment> additionalPayments) {
+    this.additionalPayments = additionalPayments;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -196,6 +232,7 @@ public class CapFloor extends LusidInstrument {
         (this.floorStrike.compareTo(capFloor.getFloorStrike()) == 0) &&
         Objects.equals(this.includeFirstCaplet, capFloor.includeFirstCaplet) &&
         Objects.equals(this.underlyingFloatingLeg, capFloor.underlyingFloatingLeg) &&
+        Objects.equals(this.additionalPayments, capFloor.additionalPayments) &&
         super.equals(o);
   }
 
@@ -205,7 +242,7 @@ public class CapFloor extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(capFloorType, capStrike, floorStrike, includeFirstCaplet, underlyingFloatingLeg, super.hashCode());
+    return Objects.hash(capFloorType, capStrike, floorStrike, includeFirstCaplet, underlyingFloatingLeg, additionalPayments, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -225,6 +262,7 @@ public class CapFloor extends LusidInstrument {
     sb.append("    floorStrike: ").append(toIndentedString(floorStrike)).append("\n");
     sb.append("    includeFirstCaplet: ").append(toIndentedString(includeFirstCaplet)).append("\n");
     sb.append("    underlyingFloatingLeg: ").append(toIndentedString(underlyingFloatingLeg)).append("\n");
+    sb.append("    additionalPayments: ").append(toIndentedString(additionalPayments)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -253,6 +291,7 @@ public class CapFloor extends LusidInstrument {
     openapiFields.add("floorStrike");
     openapiFields.add("includeFirstCaplet");
     openapiFields.add("underlyingFloatingLeg");
+    openapiFields.add("additionalPayments");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

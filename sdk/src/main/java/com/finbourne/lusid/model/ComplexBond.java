@@ -70,6 +70,10 @@ public class ComplexBond extends LusidInstrument {
   @SerializedName(SERIALIZED_NAME_SCHEDULES)
   private List<Schedule> schedules;
 
+  public static final String SERIALIZED_NAME_ORIGINAL_ISSUE_PRICE = "originalIssuePrice";
+  @SerializedName(SERIALIZED_NAME_ORIGINAL_ISSUE_PRICE)
+  private java.math.BigDecimal originalIssuePrice;
+
   public static final String SERIALIZED_NAME_ROUNDING_CONVENTIONS = "roundingConventions";
   @SerializedName(SERIALIZED_NAME_ROUNDING_CONVENTIONS)
   private List<RoundingConvention> roundingConventions;
@@ -166,6 +170,27 @@ public class ComplexBond extends LusidInstrument {
 
   public void setSchedules(List<Schedule> schedules) {
     this.schedules = schedules;
+  }
+
+
+  public ComplexBond originalIssuePrice(java.math.BigDecimal originalIssuePrice) {
+    
+    this.originalIssuePrice = originalIssuePrice;
+    return this;
+  }
+
+   /**
+   * The price the complex bond was issued at. This is to be entered as a percentage of par, for example a value of 98.5 would represent 98.5%.
+   * @return originalIssuePrice
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getOriginalIssuePrice() {
+    return originalIssuePrice;
+  }
+
+
+  public void setOriginalIssuePrice(java.math.BigDecimal originalIssuePrice) {
+    this.originalIssuePrice = originalIssuePrice;
   }
 
 
@@ -274,6 +299,7 @@ public class ComplexBond extends LusidInstrument {
     return Objects.equals(this.identifiers, complexBond.identifiers) &&
         Objects.equals(this.calculationType, complexBond.calculationType) &&
         Objects.equals(this.schedules, complexBond.schedules) &&
+        (this.originalIssuePrice.compareTo(complexBond.getOriginalIssuePrice()) == 0) &&
         Objects.equals(this.roundingConventions, complexBond.roundingConventions) &&
         Objects.equals(this.assetBacked, complexBond.assetBacked) &&
         Objects.equals(this.assetPoolIdentifier, complexBond.assetPoolIdentifier) &&
@@ -287,7 +313,7 @@ public class ComplexBond extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(identifiers, calculationType, schedules, roundingConventions, assetBacked, assetPoolIdentifier, tradingConventions, super.hashCode());
+    return Objects.hash(identifiers, calculationType, schedules, originalIssuePrice, roundingConventions, assetBacked, assetPoolIdentifier, tradingConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -305,6 +331,7 @@ public class ComplexBond extends LusidInstrument {
     sb.append("    identifiers: ").append(toIndentedString(identifiers)).append("\n");
     sb.append("    calculationType: ").append(toIndentedString(calculationType)).append("\n");
     sb.append("    schedules: ").append(toIndentedString(schedules)).append("\n");
+    sb.append("    originalIssuePrice: ").append(toIndentedString(originalIssuePrice)).append("\n");
     sb.append("    roundingConventions: ").append(toIndentedString(roundingConventions)).append("\n");
     sb.append("    assetBacked: ").append(toIndentedString(assetBacked)).append("\n");
     sb.append("    assetPoolIdentifier: ").append(toIndentedString(assetPoolIdentifier)).append("\n");
@@ -335,6 +362,7 @@ public class ComplexBond extends LusidInstrument {
     openapiFields.add("identifiers");
     openapiFields.add("calculationType");
     openapiFields.add("schedules");
+    openapiFields.add("originalIssuePrice");
     openapiFields.add("roundingConventions");
     openapiFields.add("assetBacked");
     openapiFields.add("assetPoolIdentifier");

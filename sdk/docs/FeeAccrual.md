@@ -13,6 +13,7 @@
 |**calculationBase** | **java.math.BigDecimal** | The result of the evaluating the fee&#39;s calculation base expression. |  [optional] |
 |**amount** | **java.math.BigDecimal** | The result of applying the fee to the calculation base, and scaled down to a day. |  [optional] |
 |**previousAccrual** | **java.math.BigDecimal** | The previous valuation point&#39;s total accrual. |  [optional] |
+|**previousTotalAccrual** | **java.math.BigDecimal** | The previous valuation point&#39;s total accrual. |  [optional] |
 |**totalAccrual** | **java.math.BigDecimal** | The sum of the PreviousAccrual and Amount. |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 

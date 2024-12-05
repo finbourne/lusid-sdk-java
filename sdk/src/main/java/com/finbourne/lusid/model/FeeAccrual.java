@@ -78,6 +78,10 @@ public class FeeAccrual {
   @SerializedName(SERIALIZED_NAME_PREVIOUS_ACCRUAL)
   private java.math.BigDecimal previousAccrual;
 
+  public static final String SERIALIZED_NAME_PREVIOUS_TOTAL_ACCRUAL = "previousTotalAccrual";
+  @SerializedName(SERIALIZED_NAME_PREVIOUS_TOTAL_ACCRUAL)
+  private java.math.BigDecimal previousTotalAccrual;
+
   public static final String SERIALIZED_NAME_TOTAL_ACCRUAL = "totalAccrual";
   @SerializedName(SERIALIZED_NAME_TOTAL_ACCRUAL)
   private java.math.BigDecimal totalAccrual;
@@ -215,6 +219,27 @@ public class FeeAccrual {
   }
 
 
+  public FeeAccrual previousTotalAccrual(java.math.BigDecimal previousTotalAccrual) {
+    
+    this.previousTotalAccrual = previousTotalAccrual;
+    return this;
+  }
+
+   /**
+   * The previous valuation point&#39;s total accrual.
+   * @return previousTotalAccrual
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getPreviousTotalAccrual() {
+    return previousTotalAccrual;
+  }
+
+
+  public void setPreviousTotalAccrual(java.math.BigDecimal previousTotalAccrual) {
+    this.previousTotalAccrual = previousTotalAccrual;
+  }
+
+
   public FeeAccrual totalAccrual(java.math.BigDecimal totalAccrual) {
     
     this.totalAccrual = totalAccrual;
@@ -281,6 +306,7 @@ public class FeeAccrual {
         (this.calculationBase.compareTo(feeAccrual.getCalculationBase()) == 0) &&
         (this.amount.compareTo(feeAccrual.getAmount()) == 0) &&
         (this.previousAccrual.compareTo(feeAccrual.getPreviousAccrual()) == 0) &&
+        (this.previousTotalAccrual.compareTo(feeAccrual.getPreviousTotalAccrual()) == 0) &&
         (this.totalAccrual.compareTo(feeAccrual.getTotalAccrual()) == 0) &&
         Objects.equals(this.links, feeAccrual.links);
   }
@@ -291,7 +317,7 @@ public class FeeAccrual {
 
   @Override
   public int hashCode() {
-    return Objects.hash(effectiveAt, code, name, calculationBase, amount, previousAccrual, totalAccrual, links);
+    return Objects.hash(effectiveAt, code, name, calculationBase, amount, previousAccrual, previousTotalAccrual, totalAccrual, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -311,6 +337,7 @@ public class FeeAccrual {
     sb.append("    calculationBase: ").append(toIndentedString(calculationBase)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    previousAccrual: ").append(toIndentedString(previousAccrual)).append("\n");
+    sb.append("    previousTotalAccrual: ").append(toIndentedString(previousTotalAccrual)).append("\n");
     sb.append("    totalAccrual: ").append(toIndentedString(totalAccrual)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
@@ -341,6 +368,7 @@ public class FeeAccrual {
     openapiFields.add("calculationBase");
     openapiFields.add("amount");
     openapiFields.add("previousAccrual");
+    openapiFields.add("previousTotalAccrual");
     openapiFields.add("totalAccrual");
     openapiFields.add("links");
 
