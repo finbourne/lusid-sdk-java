@@ -16,6 +16,7 @@ An instruction for an instrument event
 |**holdingId** | **Long** | For holding instructions, the id of the holding for which the instruction will apply |  [optional] |
 |**version** | [**Version**](Version.md) |  |  [optional] |
 |**href** | **URI** | The uri for this version of this instruction |  [optional] |
+|**entitlementDateInstructed** | **OffsetDateTime** | The instructed entitlement date for the event (where none is set on the event itself) |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 

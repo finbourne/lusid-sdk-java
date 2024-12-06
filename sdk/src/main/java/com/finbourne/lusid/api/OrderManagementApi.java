@@ -91,11 +91,11 @@ public class OrderManagementApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    private okhttp3.Call bookTransactionsCall(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, final ApiCallback _callback) throws ApiException {
-        return bookTransactionsCall(bookTransactionsRequest, applyFeesAndCommission,  _callback, new ConfigurationOptions());
+    private okhttp3.Call bookTransactionsCall(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, Boolean markOrdersAndAllocationsAsBooked, final ApiCallback _callback) throws ApiException {
+        return bookTransactionsCall(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call bookTransactionsCall(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call bookTransactionsCall(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, Boolean markOrdersAndAllocationsAsBooked, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -124,6 +124,10 @@ public class OrderManagementApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("applyFeesAndCommission", applyFeesAndCommission));
         }
 
+        if (markOrdersAndAllocationsAsBooked != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("markOrdersAndAllocationsAsBooked", markOrdersAndAllocationsAsBooked));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -150,40 +154,40 @@ public class OrderManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call bookTransactionsValidateBeforeCall(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call bookTransactionsValidateBeforeCall(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, Boolean markOrdersAndAllocationsAsBooked, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'bookTransactionsRequest' is set
         if (bookTransactionsRequest == null) {
             throw new ApiException("Missing the required parameter 'bookTransactionsRequest' when calling bookTransactions(Async)");
         }
 
-        return bookTransactionsCall(bookTransactionsRequest, applyFeesAndCommission, _callback, opts);
+        return bookTransactionsCall(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, _callback, opts);
 
     }
 
 
-    private ApiResponse<BookTransactionsResponse> bookTransactionsWithHttpInfo(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission) throws ApiException {
-        okhttp3.Call localVarCall = bookTransactionsValidateBeforeCall(bookTransactionsRequest, applyFeesAndCommission, null, new ConfigurationOptions());
+    private ApiResponse<BookTransactionsResponse> bookTransactionsWithHttpInfo(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, Boolean markOrdersAndAllocationsAsBooked) throws ApiException {
+        okhttp3.Call localVarCall = bookTransactionsValidateBeforeCall(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<BookTransactionsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<BookTransactionsResponse> bookTransactionsWithHttpInfo(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = bookTransactionsValidateBeforeCall(bookTransactionsRequest, applyFeesAndCommission, null, opts);
+    private ApiResponse<BookTransactionsResponse> bookTransactionsWithHttpInfo(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, Boolean markOrdersAndAllocationsAsBooked, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = bookTransactionsValidateBeforeCall(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, null, opts);
         Type localVarReturnType = new TypeToken<BookTransactionsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call bookTransactionsAsync(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, final ApiCallback<BookTransactionsResponse> _callback) throws ApiException {
+    private okhttp3.Call bookTransactionsAsync(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, Boolean markOrdersAndAllocationsAsBooked, final ApiCallback<BookTransactionsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = bookTransactionsValidateBeforeCall(bookTransactionsRequest, applyFeesAndCommission, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = bookTransactionsValidateBeforeCall(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<BookTransactionsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call bookTransactionsAsync(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, final ApiCallback<BookTransactionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call bookTransactionsAsync(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, Boolean markOrdersAndAllocationsAsBooked, final ApiCallback<BookTransactionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = bookTransactionsValidateBeforeCall(bookTransactionsRequest, applyFeesAndCommission, _callback, opts);
+        okhttp3.Call localVarCall = bookTransactionsValidateBeforeCall(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, _callback, opts);
         Type localVarReturnType = new TypeToken<BookTransactionsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -192,6 +196,7 @@ public class OrderManagementApi {
     public class APIbookTransactionsRequest {
         private final BookTransactionsRequest bookTransactionsRequest;
         private Boolean applyFeesAndCommission;
+        private Boolean markOrdersAndAllocationsAsBooked;
 
         private APIbookTransactionsRequest(BookTransactionsRequest bookTransactionsRequest) {
             this.bookTransactionsRequest = bookTransactionsRequest;
@@ -204,6 +209,16 @@ public class OrderManagementApi {
          */
         public APIbookTransactionsRequest applyFeesAndCommission(Boolean applyFeesAndCommission) {
             this.applyFeesAndCommission = applyFeesAndCommission;
+            return this;
+        }
+
+        /**
+         * Set markOrdersAndAllocationsAsBooked
+         * @param markOrdersAndAllocationsAsBooked Whether to mark allocations and fully-booked orders with state Booked (optional, default to false)
+         * @return APIbookTransactionsRequest
+         */
+        public APIbookTransactionsRequest markOrdersAndAllocationsAsBooked(Boolean markOrdersAndAllocationsAsBooked) {
+            this.markOrdersAndAllocationsAsBooked = markOrdersAndAllocationsAsBooked;
             return this;
         }
 
@@ -221,7 +236,7 @@ public class OrderManagementApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return bookTransactionsCall(bookTransactionsRequest, applyFeesAndCommission, _callback);
+            return bookTransactionsCall(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, _callback);
         }
 
         /**
@@ -237,7 +252,7 @@ public class OrderManagementApi {
          </table>
          */
         public BookTransactionsResponse execute() throws ApiException {
-            ApiResponse<BookTransactionsResponse> localVarResp = bookTransactionsWithHttpInfo(bookTransactionsRequest, applyFeesAndCommission);
+            ApiResponse<BookTransactionsResponse> localVarResp = bookTransactionsWithHttpInfo(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked);
             return localVarResp.getData();
         }
 
@@ -254,7 +269,7 @@ public class OrderManagementApi {
          </table>
          */
         public BookTransactionsResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<BookTransactionsResponse> localVarResp = bookTransactionsWithHttpInfo(bookTransactionsRequest, applyFeesAndCommission, opts);
+            ApiResponse<BookTransactionsResponse> localVarResp = bookTransactionsWithHttpInfo(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, opts);
             return localVarResp.getData();
         }
 
@@ -271,7 +286,7 @@ public class OrderManagementApi {
          </table>
          */
         public ApiResponse<BookTransactionsResponse> executeWithHttpInfo() throws ApiException {
-            return bookTransactionsWithHttpInfo(bookTransactionsRequest, applyFeesAndCommission);
+            return bookTransactionsWithHttpInfo(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked);
         }
 
         /**
@@ -287,7 +302,7 @@ public class OrderManagementApi {
          </table>
          */
         public ApiResponse<BookTransactionsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return bookTransactionsWithHttpInfo(bookTransactionsRequest, applyFeesAndCommission, opts);
+            return bookTransactionsWithHttpInfo(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, opts);
         }
 
         /**
@@ -304,7 +319,7 @@ public class OrderManagementApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<BookTransactionsResponse> _callback) throws ApiException {
-            return bookTransactionsAsync(bookTransactionsRequest, applyFeesAndCommission, _callback);
+            return bookTransactionsAsync(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, _callback);
         }
 
         /**
@@ -321,7 +336,7 @@ public class OrderManagementApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<BookTransactionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return bookTransactionsAsync(bookTransactionsRequest, applyFeesAndCommission, _callback, opts);
+            return bookTransactionsAsync(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, _callback, opts);
         }
     }
 

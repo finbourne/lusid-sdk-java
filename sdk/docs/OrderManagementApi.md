@@ -20,7 +20,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 ## bookTransactions
 
-> BookTransactionsResponse bookTransactions(bookTransactionsRequest, applyFeesAndCommission)
+> BookTransactionsResponse bookTransactions(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked)
 
 [EXPERIMENTAL] BookTransactions: Books transactions using specific allocations as a source.
 
@@ -67,11 +67,12 @@ public class OrderManagementApiExample {
         OrderManagementApi apiInstance = ApiFactoryBuilder.build(fileName).build(OrderManagementApi.class);
         BookTransactionsRequest bookTransactionsRequest = new BookTransactionsRequest(); // BookTransactionsRequest | The allocations to create transactions for
         Boolean applyFeesAndCommission = true; // Boolean | Whether to apply fees and commissions to transactions (default: true)
+        Boolean markOrdersAndAllocationsAsBooked = false; // Boolean | Whether to mark allocations and fully-booked orders with state Booked
         try {
             // uncomment the below to set overrides at the request level
-            // BookTransactionsResponse result = apiInstance.bookTransactions(bookTransactionsRequest, applyFeesAndCommission).execute(opts);
+            // BookTransactionsResponse result = apiInstance.bookTransactions(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked).execute(opts);
 
-            BookTransactionsResponse result = apiInstance.bookTransactions(bookTransactionsRequest, applyFeesAndCommission).execute();
+            BookTransactionsResponse result = apiInstance.bookTransactions(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling OrderManagementApi#bookTransactions");
@@ -90,6 +91,7 @@ public class OrderManagementApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **bookTransactionsRequest** | [**BookTransactionsRequest**](BookTransactionsRequest.md)| The allocations to create transactions for | |
 | **applyFeesAndCommission** | **Boolean**| Whether to apply fees and commissions to transactions (default: true) | [optional] [default to true] |
+| **markOrdersAndAllocationsAsBooked** | **Boolean**| Whether to mark allocations and fully-booked orders with state Booked | [optional] [default to false] |
 
 ### Return type
 

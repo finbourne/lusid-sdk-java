@@ -13,6 +13,7 @@ The request to create an instruction for an instrument event
 |**instructionType** | **String** | The type of instruction (Ignore, ElectForPortfolio, ElectForHolding) |  |
 |**electionKey** | **String** | For elected instructions, the key to be chosen |  [optional] |
 |**holdingId** | **Long** | For holding instructions, the id of the holding for which the instruction will apply |  [optional] |
+|**entitlementDateInstructed** | **OffsetDateTime** | The instructed entitlement date for the event (where none is set on the event itself) |  [optional] |
 
 
 

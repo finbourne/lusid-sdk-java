@@ -17,6 +17,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -69,6 +70,10 @@ public class InstrumentEventInstructionRequest {
   public static final String SERIALIZED_NAME_HOLDING_ID = "holdingId";
   @SerializedName(SERIALIZED_NAME_HOLDING_ID)
   private Long holdingId;
+
+  public static final String SERIALIZED_NAME_ENTITLEMENT_DATE_INSTRUCTED = "entitlementDateInstructed";
+  @SerializedName(SERIALIZED_NAME_ENTITLEMENT_DATE_INSTRUCTED)
+  private OffsetDateTime entitlementDateInstructed;
 
   public InstrumentEventInstructionRequest() {
   }
@@ -178,6 +183,27 @@ public class InstrumentEventInstructionRequest {
   }
 
 
+  public InstrumentEventInstructionRequest entitlementDateInstructed(OffsetDateTime entitlementDateInstructed) {
+    
+    this.entitlementDateInstructed = entitlementDateInstructed;
+    return this;
+  }
+
+   /**
+   * The instructed entitlement date for the event (where none is set on the event itself)
+   * @return entitlementDateInstructed
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getEntitlementDateInstructed() {
+    return entitlementDateInstructed;
+  }
+
+
+  public void setEntitlementDateInstructed(OffsetDateTime entitlementDateInstructed) {
+    this.entitlementDateInstructed = entitlementDateInstructed;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -192,7 +218,8 @@ public class InstrumentEventInstructionRequest {
         Objects.equals(this.instrumentEventId, instrumentEventInstructionRequest.instrumentEventId) &&
         Objects.equals(this.instructionType, instrumentEventInstructionRequest.instructionType) &&
         Objects.equals(this.electionKey, instrumentEventInstructionRequest.electionKey) &&
-        Objects.equals(this.holdingId, instrumentEventInstructionRequest.holdingId);
+        Objects.equals(this.holdingId, instrumentEventInstructionRequest.holdingId) &&
+        Objects.equals(this.entitlementDateInstructed, instrumentEventInstructionRequest.entitlementDateInstructed);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -201,7 +228,7 @@ public class InstrumentEventInstructionRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentEventInstructionId, instrumentEventId, instructionType, electionKey, holdingId);
+    return Objects.hash(instrumentEventInstructionId, instrumentEventId, instructionType, electionKey, holdingId, entitlementDateInstructed);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -220,6 +247,7 @@ public class InstrumentEventInstructionRequest {
     sb.append("    instructionType: ").append(toIndentedString(instructionType)).append("\n");
     sb.append("    electionKey: ").append(toIndentedString(electionKey)).append("\n");
     sb.append("    holdingId: ").append(toIndentedString(holdingId)).append("\n");
+    sb.append("    entitlementDateInstructed: ").append(toIndentedString(entitlementDateInstructed)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -247,6 +275,7 @@ public class InstrumentEventInstructionRequest {
     openapiFields.add("instructionType");
     openapiFields.add("electionKey");
     openapiFields.add("holdingId");
+    openapiFields.add("entitlementDateInstructed");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

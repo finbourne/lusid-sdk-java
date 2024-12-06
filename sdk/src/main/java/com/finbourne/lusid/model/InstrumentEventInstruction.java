@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.net.URI;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -87,6 +88,10 @@ public class InstrumentEventInstruction {
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
   private URI href;
+
+  public static final String SERIALIZED_NAME_ENTITLEMENT_DATE_INSTRUCTED = "entitlementDateInstructed";
+  @SerializedName(SERIALIZED_NAME_ENTITLEMENT_DATE_INSTRUCTED)
+  private OffsetDateTime entitlementDateInstructed;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -263,6 +268,27 @@ public class InstrumentEventInstruction {
   }
 
 
+  public InstrumentEventInstruction entitlementDateInstructed(OffsetDateTime entitlementDateInstructed) {
+    
+    this.entitlementDateInstructed = entitlementDateInstructed;
+    return this;
+  }
+
+   /**
+   * The instructed entitlement date for the event (where none is set on the event itself)
+   * @return entitlementDateInstructed
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getEntitlementDateInstructed() {
+    return entitlementDateInstructed;
+  }
+
+
+  public void setEntitlementDateInstructed(OffsetDateTime entitlementDateInstructed) {
+    this.entitlementDateInstructed = entitlementDateInstructed;
+  }
+
+
   public InstrumentEventInstruction links(List<Link> links) {
     
     this.links = links;
@@ -310,6 +336,7 @@ public class InstrumentEventInstruction {
         Objects.equals(this.holdingId, instrumentEventInstruction.holdingId) &&
         Objects.equals(this.version, instrumentEventInstruction.version) &&
         Objects.equals(this.href, instrumentEventInstruction.href) &&
+        Objects.equals(this.entitlementDateInstructed, instrumentEventInstruction.entitlementDateInstructed) &&
         Objects.equals(this.links, instrumentEventInstruction.links);
   }
 
@@ -319,7 +346,7 @@ public class InstrumentEventInstruction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentEventInstructionId, portfolioId, instrumentEventId, instructionType, electionKey, holdingId, version, href, links);
+    return Objects.hash(instrumentEventInstructionId, portfolioId, instrumentEventId, instructionType, electionKey, holdingId, version, href, entitlementDateInstructed, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -341,6 +368,7 @@ public class InstrumentEventInstruction {
     sb.append("    holdingId: ").append(toIndentedString(holdingId)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
+    sb.append("    entitlementDateInstructed: ").append(toIndentedString(entitlementDateInstructed)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -372,6 +400,7 @@ public class InstrumentEventInstruction {
     openapiFields.add("holdingId");
     openapiFields.add("version");
     openapiFields.add("href");
+    openapiFields.add("entitlementDateInstructed");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)

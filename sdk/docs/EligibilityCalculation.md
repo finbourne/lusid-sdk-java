@@ -9,6 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**entitlementDate** | **String** |  |  |
 |**eligibleUnits** | **String** |  |  |
+|**dateModifiableByInstruction** | **Boolean** |  |  [optional] |
 
 
 

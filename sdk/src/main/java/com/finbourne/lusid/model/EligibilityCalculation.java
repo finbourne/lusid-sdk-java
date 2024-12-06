@@ -57,6 +57,10 @@ public class EligibilityCalculation {
   @SerializedName(SERIALIZED_NAME_ELIGIBLE_UNITS)
   private String eligibleUnits;
 
+  public static final String SERIALIZED_NAME_DATE_MODIFIABLE_BY_INSTRUCTION = "dateModifiableByInstruction";
+  @SerializedName(SERIALIZED_NAME_DATE_MODIFIABLE_BY_INSTRUCTION)
+  private Boolean dateModifiableByInstruction;
+
   public EligibilityCalculation() {
   }
 
@@ -102,6 +106,27 @@ public class EligibilityCalculation {
   }
 
 
+  public EligibilityCalculation dateModifiableByInstruction(Boolean dateModifiableByInstruction) {
+    
+    this.dateModifiableByInstruction = dateModifiableByInstruction;
+    return this;
+  }
+
+   /**
+   * Get dateModifiableByInstruction
+   * @return dateModifiableByInstruction
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getDateModifiableByInstruction() {
+    return dateModifiableByInstruction;
+  }
+
+
+  public void setDateModifiableByInstruction(Boolean dateModifiableByInstruction) {
+    this.dateModifiableByInstruction = dateModifiableByInstruction;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -113,12 +138,13 @@ public class EligibilityCalculation {
     }
     EligibilityCalculation eligibilityCalculation = (EligibilityCalculation) o;
     return Objects.equals(this.entitlementDate, eligibilityCalculation.entitlementDate) &&
-        Objects.equals(this.eligibleUnits, eligibilityCalculation.eligibleUnits);
+        Objects.equals(this.eligibleUnits, eligibilityCalculation.eligibleUnits) &&
+        Objects.equals(this.dateModifiableByInstruction, eligibilityCalculation.dateModifiableByInstruction);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(entitlementDate, eligibleUnits);
+    return Objects.hash(entitlementDate, eligibleUnits, dateModifiableByInstruction);
   }
 
   @Override
@@ -127,6 +153,7 @@ public class EligibilityCalculation {
     sb.append("class EligibilityCalculation {\n");
     sb.append("    entitlementDate: ").append(toIndentedString(entitlementDate)).append("\n");
     sb.append("    eligibleUnits: ").append(toIndentedString(eligibleUnits)).append("\n");
+    sb.append("    dateModifiableByInstruction: ").append(toIndentedString(dateModifiableByInstruction)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -151,6 +178,7 @@ public class EligibilityCalculation {
     openapiFields = new HashSet<String>();
     openapiFields.add("entitlementDate");
     openapiFields.add("eligibleUnits");
+    openapiFields.add("dateModifiableByInstruction");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
