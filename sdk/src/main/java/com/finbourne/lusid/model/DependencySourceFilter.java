@@ -11,13 +11,16 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.AddressKeyFilter;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -65,6 +68,10 @@ public class DependencySourceFilter {
   public static final String SERIALIZED_NAME_LONG_OR_SHORT_INDICATOR = "longOrShortIndicator";
   @SerializedName(SERIALIZED_NAME_LONG_OR_SHORT_INDICATOR)
   private String longOrShortIndicator;
+
+  public static final String SERIALIZED_NAME_ADDRESS_KEY_FILTERS = "addressKeyFilters";
+  @SerializedName(SERIALIZED_NAME_ADDRESS_KEY_FILTERS)
+  private List<AddressKeyFilter> addressKeyFilters;
 
   public DependencySourceFilter() {
   }
@@ -153,6 +160,35 @@ public class DependencySourceFilter {
   }
 
 
+  public DependencySourceFilter addressKeyFilters(List<AddressKeyFilter> addressKeyFilters) {
+    
+    this.addressKeyFilters = addressKeyFilters;
+    return this;
+  }
+
+  public DependencySourceFilter addAddressKeyFiltersItem(AddressKeyFilter addressKeyFiltersItem) {
+    if (this.addressKeyFilters == null) {
+      this.addressKeyFilters = new ArrayList<>();
+    }
+    this.addressKeyFilters.add(addressKeyFiltersItem);
+    return this;
+  }
+
+   /**
+   * Get addressKeyFilters
+   * @return addressKeyFilters
+  **/
+  @jakarta.annotation.Nullable
+  public List<AddressKeyFilter> getAddressKeyFilters() {
+    return addressKeyFilters;
+  }
+
+
+  public void setAddressKeyFilters(List<AddressKeyFilter> addressKeyFilters) {
+    this.addressKeyFilters = addressKeyFilters;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -166,7 +202,8 @@ public class DependencySourceFilter {
     return Objects.equals(this.instrumentType, dependencySourceFilter.instrumentType) &&
         Objects.equals(this.assetClass, dependencySourceFilter.assetClass) &&
         Objects.equals(this.domCcy, dependencySourceFilter.domCcy) &&
-        Objects.equals(this.longOrShortIndicator, dependencySourceFilter.longOrShortIndicator);
+        Objects.equals(this.longOrShortIndicator, dependencySourceFilter.longOrShortIndicator) &&
+        Objects.equals(this.addressKeyFilters, dependencySourceFilter.addressKeyFilters);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -175,7 +212,7 @@ public class DependencySourceFilter {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentType, assetClass, domCcy, longOrShortIndicator);
+    return Objects.hash(instrumentType, assetClass, domCcy, longOrShortIndicator, addressKeyFilters);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -193,6 +230,7 @@ public class DependencySourceFilter {
     sb.append("    assetClass: ").append(toIndentedString(assetClass)).append("\n");
     sb.append("    domCcy: ").append(toIndentedString(domCcy)).append("\n");
     sb.append("    longOrShortIndicator: ").append(toIndentedString(longOrShortIndicator)).append("\n");
+    sb.append("    addressKeyFilters: ").append(toIndentedString(addressKeyFilters)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -219,6 +257,7 @@ public class DependencySourceFilter {
     openapiFields.add("assetClass");
     openapiFields.add("domCcy");
     openapiFields.add("longOrShortIndicator");
+    openapiFields.add("addressKeyFilters");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -248,6 +287,20 @@ public class DependencySourceFilter {
       }
       if ((jsonObj.get("longOrShortIndicator") != null && !jsonObj.get("longOrShortIndicator").isJsonNull()) && !jsonObj.get("longOrShortIndicator").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `longOrShortIndicator` to be a primitive type in the JSON string but got `%s`", jsonObj.get("longOrShortIndicator").toString()));
+      }
+      if (jsonObj.get("addressKeyFilters") != null && !jsonObj.get("addressKeyFilters").isJsonNull()) {
+        JsonArray jsonArrayaddressKeyFilters = jsonObj.getAsJsonArray("addressKeyFilters");
+        if (jsonArrayaddressKeyFilters != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("addressKeyFilters").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `addressKeyFilters` to be an array in the JSON string but got `%s`", jsonObj.get("addressKeyFilters").toString()));
+          }
+
+          // validate the optional field `addressKeyFilters` (array)
+          for (int i = 0; i < jsonArrayaddressKeyFilters.size(); i++) {
+            AddressKeyFilter.validateJsonElement(jsonArrayaddressKeyFilters.get(i));
+          };
+        }
       }
   }
 
