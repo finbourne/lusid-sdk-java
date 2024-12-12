@@ -6,9 +6,9 @@ All URIs are relative to *https://www.lusid.com/api*
 |------------- | ------------- | -------------|
 | [**batchUpsertCorporateActions**](CorporateActionSourcesApi.md#batchUpsertCorporateActions) | **POST** /api/corporateactionsources/{scope}/{code}/corporateactions | [EARLY ACCESS] BatchUpsertCorporateActions: Batch upsert corporate actions (instrument transition events) to corporate action source. |
 | [**createCorporateActionSource**](CorporateActionSourcesApi.md#createCorporateActionSource) | **POST** /api/corporateactionsources | [EARLY ACCESS] CreateCorporateActionSource: Create corporate action source |
-| [**deleteCorporateActionSource**](CorporateActionSourcesApi.md#deleteCorporateActionSource) | **DELETE** /api/corporateactionsources/{scope}/{code} | [BETA] DeleteCorporateActionSource: Delete corporate actions (instrument transition events) from the corporate action source. |
-| [**deleteCorporateActions**](CorporateActionSourcesApi.md#deleteCorporateActions) | **DELETE** /api/corporateactionsources/{scope}/{code}/corporateactions | [EARLY ACCESS] DeleteCorporateActions: Delete corporate actions |
-| [**deleteInstrumentEvents**](CorporateActionSourcesApi.md#deleteInstrumentEvents) | **DELETE** /api/corporateactionsources/{scope}/{code}/instrumentevents | [EARLY ACCESS] DeleteInstrumentEvents: Delete corporate actions (instrument transition events) from the corporate action source. |
+| [**deleteCorporateActionSource**](CorporateActionSourcesApi.md#deleteCorporateActionSource) | **DELETE** /api/corporateactionsources/{scope}/{code} | [BETA] DeleteCorporateActionSource: Delete a corporate action source |
+| [**deleteCorporateActions**](CorporateActionSourcesApi.md#deleteCorporateActions) | **DELETE** /api/corporateactionsources/{scope}/{code}/corporateactions | [EARLY ACCESS] DeleteCorporateActions: Delete corporate actions (instrument transition events) from a corporate action source |
+| [**deleteInstrumentEvents**](CorporateActionSourcesApi.md#deleteInstrumentEvents) | **DELETE** /api/corporateactionsources/{scope}/{code}/instrumentevents | [EARLY ACCESS] DeleteInstrumentEvents: Delete instrument events from a corporate action source |
 | [**getCorporateActions**](CorporateActionSourcesApi.md#getCorporateActions) | **GET** /api/corporateactionsources/{scope}/{code}/corporateactions | [EARLY ACCESS] GetCorporateActions: List corporate actions (instrument transition events) from the corporate action source. |
 | [**getInstrumentEvents**](CorporateActionSourcesApi.md#getInstrumentEvents) | **GET** /api/corporateactionsources/{scope}/{code}/instrumentevents | [EARLY ACCESS] GetInstrumentEvents: Get extrinsic instrument events out of a given corporate actions source. |
 | [**listCorporateActionSources**](CorporateActionSourcesApi.md#listCorporateActionSources) | **GET** /api/corporateactionsources | [EARLY ACCESS] ListCorporateActionSources: List corporate action sources |
@@ -206,7 +206,7 @@ public class CorporateActionSourcesApiExample {
 
 > DeletedEntityResponse deleteCorporateActionSource(scope, code)
 
-[BETA] DeleteCorporateActionSource: Delete corporate actions (instrument transition events) from the corporate action source.
+[BETA] DeleteCorporateActionSource: Delete a corporate action source
 
 Deletes a single corporate action source
 
@@ -299,7 +299,7 @@ public class CorporateActionSourcesApiExample {
 
 > DeletedEntityResponse deleteCorporateActions(scope, code, corporateActionIds)
 
-[EARLY ACCESS] DeleteCorporateActions: Delete corporate actions
+[EARLY ACCESS] DeleteCorporateActions: Delete corporate actions (instrument transition events) from a corporate action source
 
 Delete one or more corporate actions from a particular corporate action source.     The maximum number of corporate actions that this method can delete per request is 1,000.
 
@@ -394,7 +394,7 @@ public class CorporateActionSourcesApiExample {
 
 > DeletedEntityResponse deleteInstrumentEvents(scope, code, instrumentEventIds)
 
-[EARLY ACCESS] DeleteInstrumentEvents: Delete corporate actions (instrument transition events) from the corporate action source.
+[EARLY ACCESS] DeleteInstrumentEvents: Delete instrument events from a corporate action source
 
 Delete one or more corporate actions from a particular corporate action source.     The maximum number of instrument events that this method can delete per request is 1,000.
 

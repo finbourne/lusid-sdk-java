@@ -798,7 +798,7 @@ public class CorporateActionSourcesApi {
     }
 
     /**
-     * [BETA] DeleteCorporateActionSource: Delete corporate actions (instrument transition events) from the corporate action source.
+     * [BETA] DeleteCorporateActionSource: Delete a corporate action source
      * Deletes a single corporate action source
      * @param scope The scope of the corporate action source to be deleted (required)
      * @param code The code of the corporate action source to be deleted (required)
@@ -1050,7 +1050,7 @@ public class CorporateActionSourcesApi {
     }
 
     /**
-     * [EARLY ACCESS] DeleteCorporateActions: Delete corporate actions
+     * [EARLY ACCESS] DeleteCorporateActions: Delete corporate actions (instrument transition events) from a corporate action source
      * Delete one or more corporate actions from a particular corporate action source.     The maximum number of corporate actions that this method can delete per request is 1,000.
      * @param scope The scope of the corporate action source (required)
      * @param code The code of the corporate action source (required)
@@ -1303,7 +1303,7 @@ public class CorporateActionSourcesApi {
     }
 
     /**
-     * [EARLY ACCESS] DeleteInstrumentEvents: Delete corporate actions (instrument transition events) from the corporate action source.
+     * [EARLY ACCESS] DeleteInstrumentEvents: Delete instrument events from a corporate action source
      * Delete one or more corporate actions from a particular corporate action source.     The maximum number of instrument events that this method can delete per request is 1,000.
      * @param scope The scope of the corporate action source (required)
      * @param code The code of the corporate action source (required)
