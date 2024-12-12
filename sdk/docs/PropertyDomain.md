@@ -91,6 +91,8 @@
 
 * `TIMELINE` (value: `"Timeline"`)
 
+* `CLOSEDPERIOD` (value: `"ClosedPeriod"`)
+
 * `ADDRESSKEYDEFINITION` (value: `"AddressKeyDefinition"`)
 
 * `AMORTISATIONRULESET` (value: `"AmortisationRuleSet"`)

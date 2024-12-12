@@ -200,7 +200,7 @@ public class Future extends LusidInstrument {
   }
 
    /**
-   * The number of contracts held.
+   * The number of contracts held. This is optional and will default to 1 if not set.  Instrument events will only work when this field is 1.  We recommend not using this field and instead relying on the number of holdings to   represent the number of futures contracts.
    * @return contracts
   **/
   @jakarta.annotation.Nullable

@@ -472,11 +472,6 @@ Class | Method | HTTP request | Description
 *RelationshipDefinitionsApi* | [**updateRelationshipDefinition**](docs/RelationshipDefinitionsApi.md#updaterelationshipdefinition) | **PUT** /api/relationshipdefinitions/{scope}/{code} | [EARLY ACCESS] UpdateRelationshipDefinition: Update Relationship Definition
 *RelationshipsApi* | [**createRelationship**](docs/RelationshipsApi.md#createrelationship) | **POST** /api/relationshipdefinitions/{scope}/{code}/relationships | CreateRelationship: Create Relationship
 *RelationshipsApi* | [**deleteRelationship**](docs/RelationshipsApi.md#deleterelationship) | **POST** /api/relationshipdefinitions/{scope}/{code}/relationships/$delete | [EARLY ACCESS] DeleteRelationship: Delete Relationship
-*RiskModelFactorSetsApi* | [**createRiskModelFactorSet**](docs/RiskModelFactorSetsApi.md#createriskmodelfactorset) | **POST** /api/riskmodels/factorsets | [EXPERIMENTAL] CreateRiskModelFactorSet: Create a Factor Set
-*RiskModelFactorSetsApi* | [**deleteRiskModelFactorSet**](docs/RiskModelFactorSetsApi.md#deleteriskmodelfactorset) | **DELETE** /api/riskmodels/factorsets/{scope}/{code} | [EXPERIMENTAL] DeleteRiskModelFactorSet: Deletes a particular Factor Set
-*RiskModelFactorSetsApi* | [**getRiskModelFactorSet**](docs/RiskModelFactorSetsApi.md#getriskmodelfactorset) | **GET** /api/riskmodels/factorsets/{scope}/{code} | [EXPERIMENTAL] GetRiskModelFactorSet: Get a single Factor Set by scope and code.
-*RiskModelFactorSetsApi* | [**listRiskModelFactorSets**](docs/RiskModelFactorSetsApi.md#listriskmodelfactorsets) | **GET** /api/riskmodels/factorsets | [EXPERIMENTAL] ListRiskModelFactorSets: Get a set of Factor Sets
-*RiskModelFactorSetsApi* | [**updateRiskModelFactorSetName**](docs/RiskModelFactorSetsApi.md#updateriskmodelfactorsetname) | **PUT** /api/riskmodels/factorsets/{scope}/{code} | [EXPERIMENTAL] UpdateRiskModelFactorSetName: Update Factor Set Display Name
 *SchemasApi* | [**getEntitySchema**](docs/SchemasApi.md#getentityschema) | **GET** /api/schemas/entities/{entity} | [EARLY ACCESS] GetEntitySchema: Get schema
 *SchemasApi* | [**getPropertySchema**](docs/SchemasApi.md#getpropertyschema) | **GET** /api/schemas/properties | [EARLY ACCESS] GetPropertySchema: Get property schema
 *SchemasApi* | [**getValueTypes**](docs/SchemasApi.md#getvaluetypes) | **GET** /api/schemas/types | [EARLY ACCESS] GetValueTypes: Get value types
@@ -529,8 +524,10 @@ Class | Method | HTTP request | Description
 *TaxRuleSetsApi* | [**getTaxRuleSet**](docs/TaxRuleSetsApi.md#gettaxruleset) | **GET** /api/tax/rulesets/{scope}/{code} | [EXPERIMENTAL] GetTaxRuleSet: Retrieve the definition of single tax rule set.
 *TaxRuleSetsApi* | [**listTaxRuleSets**](docs/TaxRuleSetsApi.md#listtaxrulesets) | **GET** /api/tax/rulesets | [EXPERIMENTAL] ListTaxRuleSets: List tax rule sets.
 *TaxRuleSetsApi* | [**updateTaxRuleSet**](docs/TaxRuleSetsApi.md#updatetaxruleset) | **PUT** /api/tax/rulesets/{scope}/{code} | [EXPERIMENTAL] UpdateTaxRuleSet: Update a tax rule set.
+*TimelinesApi* | [**createClosedPeriod**](docs/TimelinesApi.md#createclosedperiod) | **POST** /api/timelines/{scope}/{code}/closedperiods | [EXPERIMENTAL] CreateClosedPeriod: Create a new closed period against a timeline entity
 *TimelinesApi* | [**createTimeline**](docs/TimelinesApi.md#createtimeline) | **POST** /api/timelines | [EXPERIMENTAL] CreateTimeline: Create a Timeline
 *TimelinesApi* | [**deleteTimeline**](docs/TimelinesApi.md#deletetimeline) | **DELETE** /api/timelines/{scope}/{code} | [EXPERIMENTAL] DeleteTimeline: Deletes a particular Timeline
+*TimelinesApi* | [**getClosedPeriod**](docs/TimelinesApi.md#getclosedperiod) | **GET** /api/timelines/{scope}/{code}/closedperiods/{closedPeriodId} | [EXPERIMENTAL] GetClosedPeriod: Gets a Closed Period entity.
 *TimelinesApi* | [**getTimeline**](docs/TimelinesApi.md#gettimeline) | **GET** /api/timelines/{scope}/{code} | [EXPERIMENTAL] GetTimeline: Get a single Timeline by scope and code.
 *TimelinesApi* | [**updateTimeline**](docs/TimelinesApi.md#updatetimeline) | **PUT** /api/timelines/{scope}/{code} | [EXPERIMENTAL] UpdateTimeline: Update Timeline defined by scope and code
 *TransactionConfigurationApi* | [**deleteSideDefinition**](docs/TransactionConfigurationApi.md#deletesidedefinition) | **DELETE** /api/transactionconfiguration/sides/{side}/$delete | DeleteSideDefinition: Delete the given side definition
@@ -767,6 +764,7 @@ Class | Method | HTTP request | Description
  - [Client](docs/Client.md)
  - [CloseEvent](docs/CloseEvent.md)
  - [ClosePeriodDiaryEntryRequest](docs/ClosePeriodDiaryEntryRequest.md)
+ - [ClosedPeriod](docs/ClosedPeriod.md)
  - [ComparisonAttributeValuePair](docs/ComparisonAttributeValuePair.md)
  - [CompletePortfolio](docs/CompletePortfolio.md)
  - [CompleteRelation](docs/CompleteRelation.md)
@@ -829,6 +827,7 @@ Class | Method | HTTP request | Description
  - [CreateAddressKeyDefinitionRequest](docs/CreateAddressKeyDefinitionRequest.md)
  - [CreateAmortisationRuleSetRequest](docs/CreateAmortisationRuleSetRequest.md)
  - [CreateCalendarRequest](docs/CreateCalendarRequest.md)
+ - [CreateClosedPeriodRequest](docs/CreateClosedPeriodRequest.md)
  - [CreateComplianceTemplateRequest](docs/CreateComplianceTemplateRequest.md)
  - [CreateCorporateActionSourceRequest](docs/CreateCorporateActionSourceRequest.md)
  - [CreateCustomEntityTypeRequest](docs/CreateCustomEntityTypeRequest.md)
@@ -850,7 +849,6 @@ Class | Method | HTTP request | Description
  - [CreateRelationRequest](docs/CreateRelationRequest.md)
  - [CreateRelationshipDefinitionRequest](docs/CreateRelationshipDefinitionRequest.md)
  - [CreateRelationshipRequest](docs/CreateRelationshipRequest.md)
- - [CreateRiskModelFactorSetRequest](docs/CreateRiskModelFactorSetRequest.md)
  - [CreateSequenceRequest](docs/CreateSequenceRequest.md)
  - [CreateStagingRuleSetRequest](docs/CreateStagingRuleSetRequest.md)
  - [CreateTaxRuleSetRequest](docs/CreateTaxRuleSetRequest.md)
@@ -1300,7 +1298,6 @@ Class | Method | HTTP request | Description
  - [PagedResourceListOfReconciliation](docs/PagedResourceListOfReconciliation.md)
  - [PagedResourceListOfReferenceListResponse](docs/PagedResourceListOfReferenceListResponse.md)
  - [PagedResourceListOfRelationshipDefinition](docs/PagedResourceListOfRelationshipDefinition.md)
- - [PagedResourceListOfRiskModelFactorSet](docs/PagedResourceListOfRiskModelFactorSet.md)
  - [PagedResourceListOfSequenceDefinition](docs/PagedResourceListOfSequenceDefinition.md)
  - [PagedResourceListOfStagedModification](docs/PagedResourceListOfStagedModification.md)
  - [PagedResourceListOfStagedModificationsRequestedChangeInterval](docs/PagedResourceListOfStagedModificationsRequestedChangeInterval.md)
@@ -1530,7 +1527,6 @@ Class | Method | HTTP request | Description
  - [ResultValueType](docs/ResultValueType.md)
  - [ReturnZeroPvOptions](docs/ReturnZeroPvOptions.md)
  - [ReverseStockSplitEvent](docs/ReverseStockSplitEvent.md)
- - [RiskModelFactorSet](docs/RiskModelFactorSet.md)
  - [RoundingConfiguration](docs/RoundingConfiguration.md)
  - [RoundingConfigurationComponent](docs/RoundingConfigurationComponent.md)
  - [RoundingConvention](docs/RoundingConvention.md)
@@ -1690,7 +1686,6 @@ Class | Method | HTTP request | Description
  - [UpdateReconciliationRequest](docs/UpdateReconciliationRequest.md)
  - [UpdateReferenceDataRequest](docs/UpdateReferenceDataRequest.md)
  - [UpdateRelationshipDefinitionRequest](docs/UpdateRelationshipDefinitionRequest.md)
- - [UpdateRiskModelFactorSetRequest](docs/UpdateRiskModelFactorSetRequest.md)
  - [UpdateStagingRuleSetRequest](docs/UpdateStagingRuleSetRequest.md)
  - [UpdateTaxRuleSetRequest](docs/UpdateTaxRuleSetRequest.md)
  - [UpdateTimelineRequest](docs/UpdateTimelineRequest.md)

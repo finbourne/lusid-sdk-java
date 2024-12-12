@@ -111,6 +111,8 @@ public enum PropertyDomain {
   
   TIMELINE("Timeline"),
   
+  CLOSEDPERIOD("ClosedPeriod"),
+  
   ADDRESSKEYDEFINITION("AddressKeyDefinition"),
   
   AMORTISATIONRULESET("AmortisationRuleSet"),
