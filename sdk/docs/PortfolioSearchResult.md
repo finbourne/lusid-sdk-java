@@ -9,7 +9,7 @@ A list of portfolios.
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**id** | [**ResourceId**](ResourceId.md) |  |  |
-|**type** | [**TypeEnum**](#TypeEnum) | The type of the portfolio. The available values are: Transaction, Reference, DerivedTransaction |  |
+|**type** | [**TypeEnum**](#TypeEnum) | The type of the portfolio. The available values are: Transaction, Reference, DerivedTransaction, SimplePosition |  |
 |**href** | **URI** | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |  [optional] |
 |**description** | **String** | The long form description of the portfolio. |  [optional] |
 |**displayName** | **String** | The name of the portfolio. |  |
@@ -29,6 +29,7 @@ A list of portfolios.
 | TRANSACTION | &quot;Transaction&quot; |
 | REFERENCE | &quot;Reference&quot; |
 | DERIVEDTRANSACTION | &quot;DerivedTransaction&quot; |
+| SIMPLEPOSITION | &quot;SimplePosition&quot; |
 
 
 

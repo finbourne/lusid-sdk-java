@@ -72,7 +72,7 @@ public class Portfolio {
   private ResourceId id;
 
   /**
-   * The type of the portfolio. The available values are: Transaction, Reference, DerivedTransaction
+   * The type of the portfolio. The available values are: Transaction, Reference, DerivedTransaction, SimplePosition
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
@@ -80,7 +80,9 @@ public class Portfolio {
     
     REFERENCE("Reference"),
     
-    DERIVEDTRANSACTION("DerivedTransaction");
+    DERIVEDTRANSACTION("DerivedTransaction"),
+    
+    SIMPLEPOSITION("SimplePosition");
 
     private String value;
 
@@ -323,7 +325,7 @@ public class Portfolio {
   }
 
    /**
-   * The type of the portfolio. The available values are: Transaction, Reference, DerivedTransaction
+   * The type of the portfolio. The available values are: Transaction, Reference, DerivedTransaction, SimplePosition
    * @return type
   **/
   @jakarta.annotation.Nonnull

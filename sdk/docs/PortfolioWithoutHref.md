@@ -9,7 +9,7 @@ A list of portfolios.
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**id** | [**ResourceId**](ResourceId.md) |  |  |
-|**type** | [**TypeEnum**](#TypeEnum) | The type of the portfolio. The available values are: Transaction, Reference, DerivedTransaction |  |
+|**type** | [**TypeEnum**](#TypeEnum) | The type of the portfolio. The available values are: Transaction, Reference, DerivedTransaction, SimplePosition |  |
 |**displayName** | **String** | The name of the portfolio. |  |
 |**description** | **String** | The long form description of the portfolio. |  [optional] |
 |**created** | **OffsetDateTime** | The effective datetime at which the portfolio was created. No transactions or constituents can be added to the portfolio before this date. |  |
@@ -38,6 +38,7 @@ A list of portfolios.
 | TRANSACTION | &quot;Transaction&quot; |
 | REFERENCE | &quot;Reference&quot; |
 | DERIVEDTRANSACTION | &quot;DerivedTransaction&quot; |
+| SIMPLEPOSITION | &quot;SimplePosition&quot; |
 
 
 

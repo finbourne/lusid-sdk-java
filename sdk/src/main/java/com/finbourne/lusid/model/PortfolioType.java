@@ -29,7 +29,9 @@ public enum PortfolioType {
   
   REFERENCE("Reference"),
   
-  DERIVEDTRANSACTION("DerivedTransaction");
+  DERIVEDTRANSACTION("DerivedTransaction"),
+  
+  SIMPLEPOSITION("SimplePosition");
 
   private String value;
 

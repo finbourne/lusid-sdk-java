@@ -87,7 +87,7 @@ public class CompletePortfolio {
   private Boolean isDerived;
 
   /**
-   * The type of the portfolio. The available values are: Transaction, Reference, DerivedTransaction
+   * The type of the portfolio. The available values are: Transaction, Reference, DerivedTransaction, SimplePosition
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
@@ -95,7 +95,9 @@ public class CompletePortfolio {
     
     REFERENCE("Reference"),
     
-    DERIVEDTRANSACTION("DerivedTransaction");
+    DERIVEDTRANSACTION("DerivedTransaction"),
+    
+    SIMPLEPOSITION("SimplePosition");
 
     private String value;
 
@@ -315,7 +317,7 @@ public class CompletePortfolio {
   }
 
    /**
-   * The type of the portfolio. The available values are: Transaction, Reference, DerivedTransaction
+   * The type of the portfolio. The available values are: Transaction, Reference, DerivedTransaction, SimplePosition
    * @return type
   **/
   @jakarta.annotation.Nullable
