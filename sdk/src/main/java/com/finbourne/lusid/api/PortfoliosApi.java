@@ -7541,7 +7541,7 @@ public class PortfoliosApi {
 
     /**
      * PatchPortfolio: Patch portfolio.
-     * Create or update certain fields for a particular portfolio.  The behaviour is defined by the JSON Patch specification.     Currently supported are: Created, InstrumentScopes.
+     * Create or update certain fields for a particular portfolio.  The behaviour is defined by the JSON Patch specification.     Currently supported are: Created, InstrumentScopes, Type.
      * @param scope The scope of the portfolio. (required)
      * @param code The code of the portfolio. Together with the   scope this uniquely identifies the portfolio. (required)
      * @param operation The json patch document. For more check: https://datatracker.ietf.org/doc/html/rfc6902. (required)
