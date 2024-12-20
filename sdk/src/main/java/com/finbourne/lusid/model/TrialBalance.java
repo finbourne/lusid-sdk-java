@@ -111,7 +111,7 @@ public class TrialBalance {
   }
 
    /**
-   * The Account code that the trial balance results have been grouped against
+   * The Account code that the trial balance results have been grouped against.
    * @return generalLedgerAccountCode
   **/
   @jakarta.annotation.Nonnull
@@ -132,7 +132,7 @@ public class TrialBalance {
   }
 
    /**
-   * The description of the record
+   * The description of the record.
    * @return description
   **/
   @jakarta.annotation.Nullable
@@ -161,7 +161,7 @@ public class TrialBalance {
   }
 
    /**
-   * The levels that have been derived from the specified General Ledger Profile
+   * The levels that have been derived from the specified General Ledger Profile.
    * @return levels
   **/
   @jakarta.annotation.Nonnull
@@ -182,7 +182,7 @@ public class TrialBalance {
   }
 
    /**
-   * The account type attributed to the record
+   * The account type attributed to the record.
    * @return accountType
   **/
   @jakarta.annotation.Nonnull
@@ -203,7 +203,7 @@ public class TrialBalance {
   }
 
    /**
-   * The account type attributed to the record
+   * The local currency for the amounts specified. Defaults to base currency if multiple different currencies present in the grouped line.
    * @return localCurrency
   **/
   @jakarta.annotation.Nonnull
@@ -316,7 +316,7 @@ public class TrialBalance {
   }
 
    /**
-   * Properties found on the mapped &#39;Account&#39;, as specified in request
+   * Properties found on the mapped &#39;Account&#39;, as specified in request.
    * @return properties
   **/
   @jakarta.annotation.Nullable
