@@ -36,6 +36,7 @@ A list of output transactions.
 |**custodianAccount** | [**CustodianAccount**](CustodianAccount.md) |  |  [optional] |
 |**transactionGroupId** | **String** | The identifier for grouping economic events across multiple transactions |  [optional] |
 |**resolvedTransactionTypeDetails** | [**TransactionTypeDetails**](TransactionTypeDetails.md) |  |  [optional] |
+|**grossTransactionAmount** | **java.math.BigDecimal** | The total gross value of the transaction in the transaction currency. |  [optional] |
 
 
 

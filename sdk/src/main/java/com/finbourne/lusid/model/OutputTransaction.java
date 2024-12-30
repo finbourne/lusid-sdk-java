@@ -222,6 +222,10 @@ public class OutputTransaction {
   @SerializedName(SERIALIZED_NAME_RESOLVED_TRANSACTION_TYPE_DETAILS)
   private TransactionTypeDetails resolvedTransactionTypeDetails;
 
+  public static final String SERIALIZED_NAME_GROSS_TRANSACTION_AMOUNT = "grossTransactionAmount";
+  @SerializedName(SERIALIZED_NAME_GROSS_TRANSACTION_AMOUNT)
+  private java.math.BigDecimal grossTransactionAmount;
+
   public OutputTransaction() {
   }
 
@@ -845,6 +849,27 @@ public class OutputTransaction {
   }
 
 
+  public OutputTransaction grossTransactionAmount(java.math.BigDecimal grossTransactionAmount) {
+    
+    this.grossTransactionAmount = grossTransactionAmount;
+    return this;
+  }
+
+   /**
+   * The total gross value of the transaction in the transaction currency.
+   * @return grossTransactionAmount
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getGrossTransactionAmount() {
+    return grossTransactionAmount;
+  }
+
+
+  public void setGrossTransactionAmount(java.math.BigDecimal grossTransactionAmount) {
+    this.grossTransactionAmount = grossTransactionAmount;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -882,7 +907,8 @@ public class OutputTransaction {
         Objects.equals(this.sourceInstrumentEventId, outputTransaction.sourceInstrumentEventId) &&
         Objects.equals(this.custodianAccount, outputTransaction.custodianAccount) &&
         Objects.equals(this.transactionGroupId, outputTransaction.transactionGroupId) &&
-        Objects.equals(this.resolvedTransactionTypeDetails, outputTransaction.resolvedTransactionTypeDetails);
+        Objects.equals(this.resolvedTransactionTypeDetails, outputTransaction.resolvedTransactionTypeDetails) &&
+        (this.grossTransactionAmount.compareTo(outputTransaction.getGrossTransactionAmount()) == 0);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -891,7 +917,7 @@ public class OutputTransaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transactionId, type, description, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionAmount, transactionPrice, totalConsideration, exchangeRate, transactionToPortfolioRate, transactionCurrency, properties, counterpartyId, source, transactionStatus, entryDateTime, cancelDateTime, realisedGainLoss, holdingIds, sourceType, sourceInstrumentEventId, custodianAccount, transactionGroupId, resolvedTransactionTypeDetails);
+    return Objects.hash(transactionId, type, description, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionAmount, transactionPrice, totalConsideration, exchangeRate, transactionToPortfolioRate, transactionCurrency, properties, counterpartyId, source, transactionStatus, entryDateTime, cancelDateTime, realisedGainLoss, holdingIds, sourceType, sourceInstrumentEventId, custodianAccount, transactionGroupId, resolvedTransactionTypeDetails, grossTransactionAmount);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -933,6 +959,7 @@ public class OutputTransaction {
     sb.append("    custodianAccount: ").append(toIndentedString(custodianAccount)).append("\n");
     sb.append("    transactionGroupId: ").append(toIndentedString(transactionGroupId)).append("\n");
     sb.append("    resolvedTransactionTypeDetails: ").append(toIndentedString(resolvedTransactionTypeDetails)).append("\n");
+    sb.append("    grossTransactionAmount: ").append(toIndentedString(grossTransactionAmount)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -983,6 +1010,7 @@ public class OutputTransaction {
     openapiFields.add("custodianAccount");
     openapiFields.add("transactionGroupId");
     openapiFields.add("resolvedTransactionTypeDetails");
+    openapiFields.add("grossTransactionAmount");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
