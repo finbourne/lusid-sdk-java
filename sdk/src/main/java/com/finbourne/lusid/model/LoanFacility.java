@@ -47,7 +47,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Loan Facility. This is a very lightweight instrument which acts as a placeholder for the events occurring within  the related facility Portfolio. This Portfolio is identified by its Scope and Code, which is recorded on the  instrument definition. The instrument acts as an agreement between a single borrower and many lenders (investors).  Several contracts may be drawn up to enable the lending of funds to the borrower. These contracts are modelled via  FlexibleLoan instruments in LUSID. The events occurring within the linked Portfolio may be related  to the facility as a whole (for example to define a global commitment amount), or they may relate to a single  contract (such as a paydown transaction on a particular contract).
+ * Loan Facility. This is a very lightweight instrument which acts as a placeholder for the state that is built  from the instrument events. The facility acts as an agreement between a single borrower and many lenders (investors).  Several contracts may be drawn up to enable the lending of funds to the borrower. These contracts are modelled via  FlexibleLoan instruments in LUSID. The instrument events on the facility may relate to the facility as a whole  (for example to define a global commitment amount), or they may relate to a single contract (such as a paydown  transaction on a particular contract).
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class LoanFacility extends LusidInstrument {
@@ -55,17 +55,13 @@ public class LoanFacility extends LusidInstrument {
   @SerializedName(SERIALIZED_NAME_START_DATE)
   private OffsetDateTime startDate;
 
+  public static final String SERIALIZED_NAME_MATURITY_DATE = "maturityDate";
+  @SerializedName(SERIALIZED_NAME_MATURITY_DATE)
+  private OffsetDateTime maturityDate;
+
   public static final String SERIALIZED_NAME_DOM_CCY = "domCcy";
   @SerializedName(SERIALIZED_NAME_DOM_CCY)
   private String domCcy;
-
-  public static final String SERIALIZED_NAME_FACILITY_PORTFOLIO_SCOPE = "facilityPortfolioScope";
-  @SerializedName(SERIALIZED_NAME_FACILITY_PORTFOLIO_SCOPE)
-  private String facilityPortfolioScope;
-
-  public static final String SERIALIZED_NAME_FACILITY_PORTFOLIO_CODE = "facilityPortfolioCode";
-  @SerializedName(SERIALIZED_NAME_FACILITY_PORTFOLIO_CODE)
-  private String facilityPortfolioCode;
 
   public LoanFacility() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -92,6 +88,27 @@ public class LoanFacility extends LusidInstrument {
   }
 
 
+  public LoanFacility maturityDate(OffsetDateTime maturityDate) {
+    
+    this.maturityDate = maturityDate;
+    return this;
+  }
+
+   /**
+   * The final maturity date of the instrument. This means the last date on which the instruments makes a payment of any amount.  For the avoidance of doubt, that is not necessarily prior to its last sensitivity date for the purposes of risk; e.g. instruments such as  Constant Maturity Swaps (CMS) often have sensitivities to rates that may well be observed or set prior to the maturity date, but refer to a termination date beyond it.
+   * @return maturityDate
+  **/
+  @jakarta.annotation.Nonnull
+  public OffsetDateTime getMaturityDate() {
+    return maturityDate;
+  }
+
+
+  public void setMaturityDate(OffsetDateTime maturityDate) {
+    this.maturityDate = maturityDate;
+  }
+
+
   public LoanFacility domCcy(String domCcy) {
     
     this.domCcy = domCcy;
@@ -113,48 +130,6 @@ public class LoanFacility extends LusidInstrument {
   }
 
 
-  public LoanFacility facilityPortfolioScope(String facilityPortfolioScope) {
-    
-    this.facilityPortfolioScope = facilityPortfolioScope;
-    return this;
-  }
-
-   /**
-   * The Scope of the Transaction Portfolio to which the Loan Facility instrument is linked.
-   * @return facilityPortfolioScope
-  **/
-  @jakarta.annotation.Nonnull
-  public String getFacilityPortfolioScope() {
-    return facilityPortfolioScope;
-  }
-
-
-  public void setFacilityPortfolioScope(String facilityPortfolioScope) {
-    this.facilityPortfolioScope = facilityPortfolioScope;
-  }
-
-
-  public LoanFacility facilityPortfolioCode(String facilityPortfolioCode) {
-    
-    this.facilityPortfolioCode = facilityPortfolioCode;
-    return this;
-  }
-
-   /**
-   * The Code of the Transaction Portfolio to which the Loan Facility instrument is linked.
-   * @return facilityPortfolioCode
-  **/
-  @jakarta.annotation.Nonnull
-  public String getFacilityPortfolioCode() {
-    return facilityPortfolioCode;
-  }
-
-
-  public void setFacilityPortfolioCode(String facilityPortfolioCode) {
-    this.facilityPortfolioCode = facilityPortfolioCode;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -166,15 +141,14 @@ public class LoanFacility extends LusidInstrument {
     }
     LoanFacility loanFacility = (LoanFacility) o;
     return Objects.equals(this.startDate, loanFacility.startDate) &&
+        Objects.equals(this.maturityDate, loanFacility.maturityDate) &&
         Objects.equals(this.domCcy, loanFacility.domCcy) &&
-        Objects.equals(this.facilityPortfolioScope, loanFacility.facilityPortfolioScope) &&
-        Objects.equals(this.facilityPortfolioCode, loanFacility.facilityPortfolioCode) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, domCcy, facilityPortfolioScope, facilityPortfolioCode, super.hashCode());
+    return Objects.hash(startDate, maturityDate, domCcy, super.hashCode());
   }
 
   @Override
@@ -183,9 +157,8 @@ public class LoanFacility extends LusidInstrument {
     sb.append("class LoanFacility {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+    sb.append("    maturityDate: ").append(toIndentedString(maturityDate)).append("\n");
     sb.append("    domCcy: ").append(toIndentedString(domCcy)).append("\n");
-    sb.append("    facilityPortfolioScope: ").append(toIndentedString(facilityPortfolioScope)).append("\n");
-    sb.append("    facilityPortfolioCode: ").append(toIndentedString(facilityPortfolioCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -210,16 +183,14 @@ public class LoanFacility extends LusidInstrument {
     openapiFields = new HashSet<String>();
     openapiFields.add("instrumentType");
     openapiFields.add("startDate");
+    openapiFields.add("maturityDate");
     openapiFields.add("domCcy");
-    openapiFields.add("facilityPortfolioScope");
-    openapiFields.add("facilityPortfolioCode");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("startDate");
+    openapiRequiredFields.add("maturityDate");
     openapiRequiredFields.add("domCcy");
-    openapiRequiredFields.add("facilityPortfolioScope");
-    openapiRequiredFields.add("facilityPortfolioCode");
     openapiRequiredFields.add("instrumentType");
   }
 
