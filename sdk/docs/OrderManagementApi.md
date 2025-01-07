@@ -68,7 +68,7 @@ public class OrderManagementApiExample {
         BookTransactionsRequest bookTransactionsRequest = new BookTransactionsRequest(); // BookTransactionsRequest | The allocations to create transactions for
         Boolean applyFeesAndCommission = true; // Boolean | Whether to apply fees and commissions to transactions (default: true)
         Boolean markOrdersAndAllocationsAsBooked = false; // Boolean | Whether to mark allocations and fully-booked orders with state Booked
-        Boolean usePreviewTransactionsForPricing = false; // Boolean | Whether to use calculators for the transaction type to work out pricing fields on the booked transactions
+        Boolean usePreviewTransactionsForPricing = true; // Boolean | Whether to use calculators for the transaction type to work out pricing fields on the booked transactions
         try {
             // uncomment the below to set overrides at the request level
             // BookTransactionsResponse result = apiInstance.bookTransactions(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, usePreviewTransactionsForPricing).execute(opts);
@@ -93,7 +93,7 @@ public class OrderManagementApiExample {
 | **bookTransactionsRequest** | [**BookTransactionsRequest**](BookTransactionsRequest.md)| The allocations to create transactions for | |
 | **applyFeesAndCommission** | **Boolean**| Whether to apply fees and commissions to transactions (default: true) | [optional] [default to true] |
 | **markOrdersAndAllocationsAsBooked** | **Boolean**| Whether to mark allocations and fully-booked orders with state Booked | [optional] [default to false] |
-| **usePreviewTransactionsForPricing** | **Boolean**| Whether to use calculators for the transaction type to work out pricing fields on the booked transactions | [optional] [default to false] |
+| **usePreviewTransactionsForPricing** | **Boolean**| Whether to use calculators for the transaction type to work out pricing fields on the booked transactions | [optional] [default to true] |
 
 ### Return type
 

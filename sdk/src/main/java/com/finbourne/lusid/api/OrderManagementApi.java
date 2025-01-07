@@ -229,7 +229,7 @@ public class OrderManagementApi {
 
         /**
          * Set usePreviewTransactionsForPricing
-         * @param usePreviewTransactionsForPricing Whether to use calculators for the transaction type to work out pricing fields on the booked transactions (optional, default to false)
+         * @param usePreviewTransactionsForPricing Whether to use calculators for the transaction type to work out pricing fields on the booked transactions (optional, default to true)
          * @return APIbookTransactionsRequest
          */
         public APIbookTransactionsRequest usePreviewTransactionsForPricing(Boolean usePreviewTransactionsForPricing) {
