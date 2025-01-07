@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.LusidInstrument;
+import com.finbourne.lusid.model.Schedule;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -19,7 +20,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -62,6 +65,14 @@ public class LoanFacility extends LusidInstrument {
   public static final String SERIALIZED_NAME_DOM_CCY = "domCcy";
   @SerializedName(SERIALIZED_NAME_DOM_CCY)
   private String domCcy;
+
+  public static final String SERIALIZED_NAME_LOAN_TYPE = "loanType";
+  @SerializedName(SERIALIZED_NAME_LOAN_TYPE)
+  private String loanType;
+
+  public static final String SERIALIZED_NAME_SCHEDULES = "schedules";
+  @SerializedName(SERIALIZED_NAME_SCHEDULES)
+  private List<Schedule> schedules = new ArrayList<>();
 
   public LoanFacility() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -130,6 +141,56 @@ public class LoanFacility extends LusidInstrument {
   }
 
 
+  public LoanFacility loanType(String loanType) {
+    
+    this.loanType = loanType;
+    return this;
+  }
+
+   /**
+   * LoanType for this facility. The facility can either be a revolving or a  term loan.    Supported string (enumeration) values are: [Revolver, TermLoan].
+   * @return loanType
+  **/
+  @jakarta.annotation.Nonnull
+  public String getLoanType() {
+    return loanType;
+  }
+
+
+  public void setLoanType(String loanType) {
+    this.loanType = loanType;
+  }
+
+
+  public LoanFacility schedules(List<Schedule> schedules) {
+    
+    this.schedules = schedules;
+    return this;
+  }
+
+  public LoanFacility addSchedulesItem(Schedule schedulesItem) {
+    if (this.schedules == null) {
+      this.schedules = new ArrayList<>();
+    }
+    this.schedules.add(schedulesItem);
+    return this;
+  }
+
+   /**
+   * Repayment schedules for the loan.
+   * @return schedules
+  **/
+  @jakarta.annotation.Nonnull
+  public List<Schedule> getSchedules() {
+    return schedules;
+  }
+
+
+  public void setSchedules(List<Schedule> schedules) {
+    this.schedules = schedules;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -143,12 +204,14 @@ public class LoanFacility extends LusidInstrument {
     return Objects.equals(this.startDate, loanFacility.startDate) &&
         Objects.equals(this.maturityDate, loanFacility.maturityDate) &&
         Objects.equals(this.domCcy, loanFacility.domCcy) &&
+        Objects.equals(this.loanType, loanFacility.loanType) &&
+        Objects.equals(this.schedules, loanFacility.schedules) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, domCcy, super.hashCode());
+    return Objects.hash(startDate, maturityDate, domCcy, loanType, schedules, super.hashCode());
   }
 
   @Override
@@ -159,6 +222,8 @@ public class LoanFacility extends LusidInstrument {
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    maturityDate: ").append(toIndentedString(maturityDate)).append("\n");
     sb.append("    domCcy: ").append(toIndentedString(domCcy)).append("\n");
+    sb.append("    loanType: ").append(toIndentedString(loanType)).append("\n");
+    sb.append("    schedules: ").append(toIndentedString(schedules)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -185,12 +250,16 @@ public class LoanFacility extends LusidInstrument {
     openapiFields.add("startDate");
     openapiFields.add("maturityDate");
     openapiFields.add("domCcy");
+    openapiFields.add("loanType");
+    openapiFields.add("schedules");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("startDate");
     openapiRequiredFields.add("maturityDate");
     openapiRequiredFields.add("domCcy");
+    openapiRequiredFields.add("loanType");
+    openapiRequiredFields.add("schedules");
     openapiRequiredFields.add("instrumentType");
   }
 
