@@ -62,6 +62,10 @@ public class TransactionTypePropertyMapping {
   @SerializedName(SERIALIZED_NAME_SET_TO)
   private String setTo;
 
+  public static final String SERIALIZED_NAME_TEMPLATE_FROM = "templateFrom";
+  @SerializedName(SERIALIZED_NAME_TEMPLATE_FROM)
+  private String templateFrom;
+
   public TransactionTypePropertyMapping() {
   }
 
@@ -128,6 +132,27 @@ public class TransactionTypePropertyMapping {
   }
 
 
+  public TransactionTypePropertyMapping templateFrom(String templateFrom) {
+    
+    this.templateFrom = templateFrom;
+    return this;
+  }
+
+   /**
+   * The template that defines how the property value is constructed from transaction, instrument and portfolio details.
+   * @return templateFrom
+  **/
+  @jakarta.annotation.Nullable
+  public String getTemplateFrom() {
+    return templateFrom;
+  }
+
+
+  public void setTemplateFrom(String templateFrom) {
+    this.templateFrom = templateFrom;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -140,7 +165,8 @@ public class TransactionTypePropertyMapping {
     TransactionTypePropertyMapping transactionTypePropertyMapping = (TransactionTypePropertyMapping) o;
     return Objects.equals(this.propertyKey, transactionTypePropertyMapping.propertyKey) &&
         Objects.equals(this.mapFrom, transactionTypePropertyMapping.mapFrom) &&
-        Objects.equals(this.setTo, transactionTypePropertyMapping.setTo);
+        Objects.equals(this.setTo, transactionTypePropertyMapping.setTo) &&
+        Objects.equals(this.templateFrom, transactionTypePropertyMapping.templateFrom);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -149,7 +175,7 @@ public class TransactionTypePropertyMapping {
 
   @Override
   public int hashCode() {
-    return Objects.hash(propertyKey, mapFrom, setTo);
+    return Objects.hash(propertyKey, mapFrom, setTo, templateFrom);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -166,6 +192,7 @@ public class TransactionTypePropertyMapping {
     sb.append("    propertyKey: ").append(toIndentedString(propertyKey)).append("\n");
     sb.append("    mapFrom: ").append(toIndentedString(mapFrom)).append("\n");
     sb.append("    setTo: ").append(toIndentedString(setTo)).append("\n");
+    sb.append("    templateFrom: ").append(toIndentedString(templateFrom)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -191,6 +218,7 @@ public class TransactionTypePropertyMapping {
     openapiFields.add("propertyKey");
     openapiFields.add("mapFrom");
     openapiFields.add("setTo");
+    openapiFields.add("templateFrom");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -225,6 +253,9 @@ public class TransactionTypePropertyMapping {
       }
       if ((jsonObj.get("setTo") != null && !jsonObj.get("setTo").isJsonNull()) && !jsonObj.get("setTo").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `setTo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("setTo").toString()));
+      }
+      if ((jsonObj.get("templateFrom") != null && !jsonObj.get("templateFrom").isJsonNull()) && !jsonObj.get("templateFrom").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `templateFrom` to be a primitive type in the JSON string but got `%s`", jsonObj.get("templateFrom").toString()));
       }
   }
 
