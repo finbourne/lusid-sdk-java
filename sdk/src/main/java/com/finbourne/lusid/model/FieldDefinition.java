@@ -18,6 +18,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -60,6 +61,10 @@ public class FieldDefinition {
   public static final String SERIALIZED_NAME_IS_UNIQUE = "isUnique";
   @SerializedName(SERIALIZED_NAME_IS_UNIQUE)
   private Boolean isUnique;
+
+  public static final String SERIALIZED_NAME_VALUE_TYPE = "valueType";
+  @SerializedName(SERIALIZED_NAME_VALUE_TYPE)
+  private String valueType;
 
   public FieldDefinition() {
   }
@@ -127,6 +132,27 @@ public class FieldDefinition {
   }
 
 
+  public FieldDefinition valueType(String valueType) {
+    
+    this.valueType = valueType;
+    return this;
+  }
+
+   /**
+   * Get valueType
+   * @return valueType
+  **/
+  @jakarta.annotation.Nullable
+  public String getValueType() {
+    return valueType;
+  }
+
+
+  public void setValueType(String valueType) {
+    this.valueType = valueType;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -139,12 +165,24 @@ public class FieldDefinition {
     FieldDefinition fieldDefinition = (FieldDefinition) o;
     return Objects.equals(this.key, fieldDefinition.key) &&
         Objects.equals(this.isRequired, fieldDefinition.isRequired) &&
-        Objects.equals(this.isUnique, fieldDefinition.isUnique);
+        Objects.equals(this.isUnique, fieldDefinition.isUnique) &&
+        Objects.equals(this.valueType, fieldDefinition.valueType);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(key, isRequired, isUnique);
+    return Objects.hash(key, isRequired, isUnique, valueType);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -154,6 +192,7 @@ public class FieldDefinition {
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    isRequired: ").append(toIndentedString(isRequired)).append("\n");
     sb.append("    isUnique: ").append(toIndentedString(isUnique)).append("\n");
+    sb.append("    valueType: ").append(toIndentedString(valueType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -179,6 +218,7 @@ public class FieldDefinition {
     openapiFields.add("key");
     openapiFields.add("isRequired");
     openapiFields.add("isUnique");
+    openapiFields.add("valueType");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -209,6 +249,9 @@ public class FieldDefinition {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("key").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `key` to be a primitive type in the JSON string but got `%s`", jsonObj.get("key").toString()));
+      }
+      if ((jsonObj.get("valueType") != null && !jsonObj.get("valueType").isJsonNull()) && !jsonObj.get("valueType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `valueType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("valueType").toString()));
       }
   }
 

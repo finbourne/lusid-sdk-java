@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -57,7 +58,11 @@ public class FieldValue {
 
   public static final String SERIALIZED_NAME_FIELDS = "fields";
   @SerializedName(SERIALIZED_NAME_FIELDS)
-  private Map<String, String> fields = new HashMap<>();
+  private Map<String, String> fields;
+
+  public static final String SERIALIZED_NAME_NUMERIC_FIELDS = "numericFields";
+  @SerializedName(SERIALIZED_NAME_NUMERIC_FIELDS)
+  private Map<String, java.math.BigDecimal> numericFields;
 
   public FieldValue() {
   }
@@ -101,7 +106,7 @@ public class FieldValue {
    * Get fields
    * @return fields
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public Map<String, String> getFields() {
     return fields;
   }
@@ -109,6 +114,35 @@ public class FieldValue {
 
   public void setFields(Map<String, String> fields) {
     this.fields = fields;
+  }
+
+
+  public FieldValue numericFields(Map<String, java.math.BigDecimal> numericFields) {
+    
+    this.numericFields = numericFields;
+    return this;
+  }
+
+  public FieldValue putNumericFieldsItem(String key, java.math.BigDecimal numericFieldsItem) {
+    if (this.numericFields == null) {
+      this.numericFields = new HashMap<>();
+    }
+    this.numericFields.put(key, numericFieldsItem);
+    return this;
+  }
+
+   /**
+   * Get numericFields
+   * @return numericFields
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, java.math.BigDecimal> getNumericFields() {
+    return numericFields;
+  }
+
+
+  public void setNumericFields(Map<String, java.math.BigDecimal> numericFields) {
+    this.numericFields = numericFields;
   }
 
 
@@ -123,12 +157,24 @@ public class FieldValue {
     }
     FieldValue fieldValue = (FieldValue) o;
     return Objects.equals(this.value, fieldValue.value) &&
-        Objects.equals(this.fields, fieldValue.fields);
+        Objects.equals(this.fields, fieldValue.fields) &&
+        Objects.equals(this.numericFields, fieldValue.numericFields);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(value, fields);
+    return Objects.hash(value, fields, numericFields);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -137,6 +183,7 @@ public class FieldValue {
     sb.append("class FieldValue {\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    fields: ").append(toIndentedString(fields)).append("\n");
+    sb.append("    numericFields: ").append(toIndentedString(numericFields)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -161,11 +208,11 @@ public class FieldValue {
     openapiFields = new HashSet<String>();
     openapiFields.add("value");
     openapiFields.add("fields");
+    openapiFields.add("numericFields");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("value");
-    openapiRequiredFields.add("fields");
   }
 
  /**

@@ -10,6 +10,7 @@
 |**key** | **String** |  |  |
 |**isRequired** | **Boolean** |  |  |
 |**isUnique** | **Boolean** |  |  |
+|**valueType** | **String** |  |  [optional] |
 
 
 

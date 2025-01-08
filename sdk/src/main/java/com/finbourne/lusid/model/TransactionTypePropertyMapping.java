@@ -66,6 +66,10 @@ public class TransactionTypePropertyMapping {
   @SerializedName(SERIALIZED_NAME_TEMPLATE_FROM)
   private String templateFrom;
 
+  public static final String SERIALIZED_NAME_NULLIFY = "nullify";
+  @SerializedName(SERIALIZED_NAME_NULLIFY)
+  private Boolean nullify;
+
   public TransactionTypePropertyMapping() {
   }
 
@@ -153,6 +157,27 @@ public class TransactionTypePropertyMapping {
   }
 
 
+  public TransactionTypePropertyMapping nullify(Boolean nullify) {
+    
+    this.nullify = nullify;
+    return this;
+  }
+
+   /**
+   * Flag to unset the Property Key for the mapping
+   * @return nullify
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getNullify() {
+    return nullify;
+  }
+
+
+  public void setNullify(Boolean nullify) {
+    this.nullify = nullify;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -166,7 +191,8 @@ public class TransactionTypePropertyMapping {
     return Objects.equals(this.propertyKey, transactionTypePropertyMapping.propertyKey) &&
         Objects.equals(this.mapFrom, transactionTypePropertyMapping.mapFrom) &&
         Objects.equals(this.setTo, transactionTypePropertyMapping.setTo) &&
-        Objects.equals(this.templateFrom, transactionTypePropertyMapping.templateFrom);
+        Objects.equals(this.templateFrom, transactionTypePropertyMapping.templateFrom) &&
+        Objects.equals(this.nullify, transactionTypePropertyMapping.nullify);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -175,7 +201,7 @@ public class TransactionTypePropertyMapping {
 
   @Override
   public int hashCode() {
-    return Objects.hash(propertyKey, mapFrom, setTo, templateFrom);
+    return Objects.hash(propertyKey, mapFrom, setTo, templateFrom, nullify);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -193,6 +219,7 @@ public class TransactionTypePropertyMapping {
     sb.append("    mapFrom: ").append(toIndentedString(mapFrom)).append("\n");
     sb.append("    setTo: ").append(toIndentedString(setTo)).append("\n");
     sb.append("    templateFrom: ").append(toIndentedString(templateFrom)).append("\n");
+    sb.append("    nullify: ").append(toIndentedString(nullify)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -219,6 +246,7 @@ public class TransactionTypePropertyMapping {
     openapiFields.add("mapFrom");
     openapiFields.add("setTo");
     openapiFields.add("templateFrom");
+    openapiFields.add("nullify");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

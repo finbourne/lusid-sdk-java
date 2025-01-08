@@ -8,7 +8,8 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**value** | **String** |  |  |
-|**fields** | **Map&lt;String, String&gt;** |  |  |
+|**fields** | **Map&lt;String, String&gt;** |  |  [optional] |
+|**numericFields** | **Map&lt;String, java.math.BigDecimal&gt;** |  |  [optional] |
 
 
 
