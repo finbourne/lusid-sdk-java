@@ -2,7 +2,7 @@
 
 # CashOfferElection
 
-CashOfferElection for events for merger events resulting in cash
+Election for events that result in cash via a merger or acquisition
 
 ## Properties
 

@@ -183,7 +183,7 @@ public class FundRequest {
    * Get fundConfigurationId
    * @return fundConfigurationId
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public ResourceId getFundConfigurationId() {
     return fundConfigurationId;
   }
@@ -482,6 +482,7 @@ public class FundRequest {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("code");
+    openapiRequiredFields.add("fundConfigurationId");
     openapiRequiredFields.add("aborId");
     openapiRequiredFields.add("type");
     openapiRequiredFields.add("inceptionDate");
@@ -517,10 +518,8 @@ public class FundRequest {
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      // validate the optional field `fundConfigurationId`
-      if (jsonObj.get("fundConfigurationId") != null && !jsonObj.get("fundConfigurationId").isJsonNull()) {
-        ResourceId.validateJsonElement(jsonObj.get("fundConfigurationId"));
-      }
+      // validate the required field `fundConfigurationId`
+      ResourceId.validateJsonElement(jsonObj.get("fundConfigurationId"));
       // validate the required field `aborId`
       ResourceId.validateJsonElement(jsonObj.get("aborId"));
       // ensure the optional json data is an array if present

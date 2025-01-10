@@ -45,7 +45,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * CashOfferElection for events for merger events resulting in cash
+ * Election for events that result in cash via a merger or acquisition
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CashOfferElection {

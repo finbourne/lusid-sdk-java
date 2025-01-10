@@ -46,7 +46,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Security election for Events that result in equity via a merger
+ * Election for events that result in cash via a merger or acquisition
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SecurityOfferElection {
