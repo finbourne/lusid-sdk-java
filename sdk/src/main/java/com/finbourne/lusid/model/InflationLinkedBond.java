@@ -124,6 +124,10 @@ public class InflationLinkedBond extends LusidInstrument {
   @SerializedName(SERIALIZED_NAME_TRADING_CONVENTIONS)
   private TradingConventions tradingConventions;
 
+  public static final String SERIALIZED_NAME_ORIGINAL_ISSUE_PRICE = "originalIssuePrice";
+  @SerializedName(SERIALIZED_NAME_ORIGINAL_ISSUE_PRICE)
+  private java.math.BigDecimal originalIssuePrice;
+
   public InflationLinkedBond() {
     // this.instrumentType = this.getClass().getSimpleName();
   }
@@ -480,6 +484,27 @@ public class InflationLinkedBond extends LusidInstrument {
   }
 
 
+  public InflationLinkedBond originalIssuePrice(java.math.BigDecimal originalIssuePrice) {
+    
+    this.originalIssuePrice = originalIssuePrice;
+    return this;
+  }
+
+   /**
+   * The price the bond was issued at. This is to be entered as a percentage of par, for example a value of 98.5 would represent 98.5%.
+   * @return originalIssuePrice
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getOriginalIssuePrice() {
+    return originalIssuePrice;
+  }
+
+
+  public void setOriginalIssuePrice(java.math.BigDecimal originalIssuePrice) {
+    this.originalIssuePrice = originalIssuePrice;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -506,6 +531,7 @@ public class InflationLinkedBond extends LusidInstrument {
         Objects.equals(this.stubType, inflationLinkedBond.stubType) &&
         Objects.equals(this.roundingConventions, inflationLinkedBond.roundingConventions) &&
         Objects.equals(this.tradingConventions, inflationLinkedBond.tradingConventions) &&
+        (this.originalIssuePrice.compareTo(inflationLinkedBond.getOriginalIssuePrice()) == 0) &&
         super.equals(o);
   }
 
@@ -515,7 +541,7 @@ public class InflationLinkedBond extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, flowConventions, inflationIndexConventions, couponRate, identifiers, baseCPI, baseCPIDate, calculationType, exDividendDays, indexPrecision, principal, principalProtection, stubType, roundingConventions, tradingConventions, super.hashCode());
+    return Objects.hash(startDate, maturityDate, flowConventions, inflationIndexConventions, couponRate, identifiers, baseCPI, baseCPIDate, calculationType, exDividendDays, indexPrecision, principal, principalProtection, stubType, roundingConventions, tradingConventions, originalIssuePrice, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -546,6 +572,7 @@ public class InflationLinkedBond extends LusidInstrument {
     sb.append("    stubType: ").append(toIndentedString(stubType)).append("\n");
     sb.append("    roundingConventions: ").append(toIndentedString(roundingConventions)).append("\n");
     sb.append("    tradingConventions: ").append(toIndentedString(tradingConventions)).append("\n");
+    sb.append("    originalIssuePrice: ").append(toIndentedString(originalIssuePrice)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -585,6 +612,7 @@ public class InflationLinkedBond extends LusidInstrument {
     openapiFields.add("stubType");
     openapiFields.add("roundingConventions");
     openapiFields.add("tradingConventions");
+    openapiFields.add("originalIssuePrice");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
