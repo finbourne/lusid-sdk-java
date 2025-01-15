@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.AggregationMeasureFailureDetail;
 import com.finbourne.lusid.model.Link;
+import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.ResultDataSchema;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -85,6 +86,10 @@ public class ListAggregationResponse {
   public static final String SERIALIZED_NAME_AGGREGATION_FAILURES = "aggregationFailures";
   @SerializedName(SERIALIZED_NAME_AGGREGATION_FAILURES)
   private List<AggregationMeasureFailureDetail> aggregationFailures;
+
+  public static final String SERIALIZED_NAME_RECIPE_ID = "recipeId";
+  @SerializedName(SERIALIZED_NAME_RECIPE_ID)
+  private ResourceId recipeId;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -256,6 +261,27 @@ public class ListAggregationResponse {
   }
 
 
+  public ListAggregationResponse recipeId(ResourceId recipeId) {
+    
+    this.recipeId = recipeId;
+    return this;
+  }
+
+   /**
+   * Get recipeId
+   * @return recipeId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getRecipeId() {
+    return recipeId;
+  }
+
+
+  public void setRecipeId(ResourceId recipeId) {
+    this.recipeId = recipeId;
+  }
+
+
   public ListAggregationResponse links(List<Link> links) {
     
     this.links = links;
@@ -302,6 +328,7 @@ public class ListAggregationResponse {
         Objects.equals(this.aggregationCurrency, listAggregationResponse.aggregationCurrency) &&
         Objects.equals(this.dataSchema, listAggregationResponse.dataSchema) &&
         Objects.equals(this.aggregationFailures, listAggregationResponse.aggregationFailures) &&
+        Objects.equals(this.recipeId, listAggregationResponse.recipeId) &&
         Objects.equals(this.links, listAggregationResponse.links);
   }
 
@@ -311,7 +338,7 @@ public class ListAggregationResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aggregationEffectiveAt, aggregationAsAt, href, data, aggregationCurrency, dataSchema, aggregationFailures, links);
+    return Objects.hash(aggregationEffectiveAt, aggregationAsAt, href, data, aggregationCurrency, dataSchema, aggregationFailures, recipeId, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -332,6 +359,7 @@ public class ListAggregationResponse {
     sb.append("    aggregationCurrency: ").append(toIndentedString(aggregationCurrency)).append("\n");
     sb.append("    dataSchema: ").append(toIndentedString(dataSchema)).append("\n");
     sb.append("    aggregationFailures: ").append(toIndentedString(aggregationFailures)).append("\n");
+    sb.append("    recipeId: ").append(toIndentedString(recipeId)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -362,6 +390,7 @@ public class ListAggregationResponse {
     openapiFields.add("aggregationCurrency");
     openapiFields.add("dataSchema");
     openapiFields.add("aggregationFailures");
+    openapiFields.add("recipeId");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -408,6 +437,10 @@ public class ListAggregationResponse {
             AggregationMeasureFailureDetail.validateJsonElement(jsonArrayaggregationFailures.get(i));
           };
         }
+      }
+      // validate the optional field `recipeId`
+      if (jsonObj.get("recipeId") != null && !jsonObj.get("recipeId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("recipeId"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

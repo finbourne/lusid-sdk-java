@@ -14,6 +14,7 @@
 |**aggregationCurrency** | **String** |  |  [optional] |
 |**dataSchema** | [**ResultDataSchema**](ResultDataSchema.md) |  |  [optional] |
 |**aggregationFailures** | [**List&lt;AggregationMeasureFailureDetail&gt;**](AggregationMeasureFailureDetail.md) |  |  [optional] |
+|**recipeId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 
