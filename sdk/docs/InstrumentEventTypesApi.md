@@ -4,13 +4,13 @@ All URIs are relative to *https://www.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createTransactionTemplate**](InstrumentEventTypesApi.md#createTransactionTemplate) | **POST** /api/instrumenteventtypes/{instrumentEventType}/transactiontemplates/{instrumentType}/{scope} | [EXPERIMENTAL] CreateTransactionTemplate: Create Transaction Template |
-| [**deleteTransactionTemplate**](InstrumentEventTypesApi.md#deleteTransactionTemplate) | **DELETE** /api/instrumenteventtypes/{instrumentEventType}/transactiontemplates/{instrumentType}/{scope} | [EXPERIMENTAL] DeleteTransactionTemplate: Delete Transaction Template |
-| [**getTransactionTemplate**](InstrumentEventTypesApi.md#getTransactionTemplate) | **GET** /api/instrumenteventtypes/{instrumentEventType}/transactiontemplates/{instrumentType}/{scope} | [EXPERIMENTAL] GetTransactionTemplate: Get Transaction Template |
-| [**getTransactionTemplateSpecification**](InstrumentEventTypesApi.md#getTransactionTemplateSpecification) | **GET** /api/instrumenteventtypes/{instrumentEventType}/transactiontemplatespecification | [EXPERIMENTAL] GetTransactionTemplateSpecification: Get Transaction Template Specification. |
-| [**listTransactionTemplateSpecifications**](InstrumentEventTypesApi.md#listTransactionTemplateSpecifications) | **GET** /api/instrumenteventtypes/transactiontemplatespecifications | [EXPERIMENTAL] ListTransactionTemplateSpecifications: List Transaction Template Specifications. |
-| [**listTransactionTemplates**](InstrumentEventTypesApi.md#listTransactionTemplates) | **GET** /api/instrumenteventtypes/transactiontemplates | [EXPERIMENTAL] ListTransactionTemplates: List Transaction Templates |
-| [**updateTransactionTemplate**](InstrumentEventTypesApi.md#updateTransactionTemplate) | **PUT** /api/instrumenteventtypes/{instrumentEventType}/transactiontemplates/{instrumentType}/{scope} | [EXPERIMENTAL] UpdateTransactionTemplate: Update Transaction Template |
+| [**createTransactionTemplate**](InstrumentEventTypesApi.md#createTransactionTemplate) | **POST** /api/instrumenteventtypes/{instrumentEventType}/transactiontemplates/{instrumentType}/{scope} | [EARLY ACCESS] CreateTransactionTemplate: Create Transaction Template |
+| [**deleteTransactionTemplate**](InstrumentEventTypesApi.md#deleteTransactionTemplate) | **DELETE** /api/instrumenteventtypes/{instrumentEventType}/transactiontemplates/{instrumentType}/{scope} | [EARLY ACCESS] DeleteTransactionTemplate: Delete Transaction Template |
+| [**getTransactionTemplate**](InstrumentEventTypesApi.md#getTransactionTemplate) | **GET** /api/instrumenteventtypes/{instrumentEventType}/transactiontemplates/{instrumentType}/{scope} | [EARLY ACCESS] GetTransactionTemplate: Get Transaction Template |
+| [**getTransactionTemplateSpecification**](InstrumentEventTypesApi.md#getTransactionTemplateSpecification) | **GET** /api/instrumenteventtypes/{instrumentEventType}/transactiontemplatespecification | [EARLY ACCESS] GetTransactionTemplateSpecification: Get Transaction Template Specification. |
+| [**listTransactionTemplateSpecifications**](InstrumentEventTypesApi.md#listTransactionTemplateSpecifications) | **GET** /api/instrumenteventtypes/transactiontemplatespecifications | [EARLY ACCESS] ListTransactionTemplateSpecifications: List Transaction Template Specifications. |
+| [**listTransactionTemplates**](InstrumentEventTypesApi.md#listTransactionTemplates) | **GET** /api/instrumenteventtypes/transactiontemplates | [EARLY ACCESS] ListTransactionTemplates: List Transaction Templates |
+| [**updateTransactionTemplate**](InstrumentEventTypesApi.md#updateTransactionTemplate) | **PUT** /api/instrumenteventtypes/{instrumentEventType}/transactiontemplates/{instrumentType}/{scope} | [EARLY ACCESS] UpdateTransactionTemplate: Update Transaction Template |
 
 
 
@@ -18,7 +18,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 > TransactionTemplate createTransactionTemplate(instrumentEventType, instrumentType, scope, transactionTemplateRequest)
 
-[EXPERIMENTAL] CreateTransactionTemplate: Create Transaction Template
+[EARLY ACCESS] CreateTransactionTemplate: Create Transaction Template
 
 Create a transaction template for a particular instrument event type in a scope.
 
@@ -115,7 +115,7 @@ public class InstrumentEventTypesApiExample {
 
 > OffsetDateTime deleteTransactionTemplate(instrumentEventType, instrumentType, scope)
 
-[EXPERIMENTAL] DeleteTransactionTemplate: Delete Transaction Template
+[EARLY ACCESS] DeleteTransactionTemplate: Delete Transaction Template
 
 Delete a transaction template for a particular instrument event type in a scope.
 
@@ -210,7 +210,7 @@ public class InstrumentEventTypesApiExample {
 
 > TransactionTemplate getTransactionTemplate(instrumentEventType, instrumentType, scope, asAt)
 
-[EXPERIMENTAL] GetTransactionTemplate: Get Transaction Template
+[EARLY ACCESS] GetTransactionTemplate: Get Transaction Template
 
 Gets the Transaction Template that for the instrument event type within the scope specified.
 
@@ -307,7 +307,7 @@ public class InstrumentEventTypesApiExample {
 
 > TransactionTemplateSpecification getTransactionTemplateSpecification(instrumentEventType)
 
-[EXPERIMENTAL] GetTransactionTemplateSpecification: Get Transaction Template Specification.
+[EARLY ACCESS] GetTransactionTemplateSpecification: Get Transaction Template Specification.
 
 Retrieve the transaction template specification for a particular event type.
 
@@ -398,7 +398,7 @@ public class InstrumentEventTypesApiExample {
 
 > PagedResourceListOfTransactionTemplateSpecification listTransactionTemplateSpecifications(asAt, page, limit, filter, sortBy)
 
-[EXPERIMENTAL] ListTransactionTemplateSpecifications: List Transaction Template Specifications.
+[EARLY ACCESS] ListTransactionTemplateSpecifications: List Transaction Template Specifications.
 
 Retrieves all transaction template specifications.
 
@@ -497,7 +497,7 @@ public class InstrumentEventTypesApiExample {
 
 > PagedResourceListOfTransactionTemplate listTransactionTemplates(asAt, page, limit, filter, sortBy)
 
-[EXPERIMENTAL] ListTransactionTemplates: List Transaction Templates
+[EARLY ACCESS] ListTransactionTemplates: List Transaction Templates
 
 Lists all Transaction Templates.
 
@@ -596,7 +596,7 @@ public class InstrumentEventTypesApiExample {
 
 > TransactionTemplate updateTransactionTemplate(instrumentEventType, instrumentType, scope, transactionTemplateRequest)
 
-[EXPERIMENTAL] UpdateTransactionTemplate: Update Transaction Template
+[EARLY ACCESS] UpdateTransactionTemplate: Update Transaction Template
 
 Update a transaction template for a particular instrument event type in a scope.
 

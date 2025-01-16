@@ -321,7 +321,7 @@ public class InstrumentEventTypesApi {
     }
 
     /**
-     * [EXPERIMENTAL] CreateTransactionTemplate: Create Transaction Template
+     * [EARLY ACCESS] CreateTransactionTemplate: Create Transaction Template
      * Create a transaction template for a particular instrument event type in a scope.
      * @param instrumentEventType The type of instrument events that the template is applied to. (required)
      * @param instrumentType The instrument type of the transaction template. The combination of the instrument   event type, instrument type and scope uniquely identifies a transaction template (required)
@@ -572,7 +572,7 @@ public class InstrumentEventTypesApi {
     }
 
     /**
-     * [EXPERIMENTAL] DeleteTransactionTemplate: Delete Transaction Template
+     * [EARLY ACCESS] DeleteTransactionTemplate: Delete Transaction Template
      * Delete a transaction template for a particular instrument event type in a scope.
      * @param instrumentEventType The type of instrument events that the template is applied to. (required)
      * @param instrumentType The instrument type of the transaction template. The combination of the instrument   event type, instrument type and scope uniquely identifies a transaction template (required)
@@ -837,7 +837,7 @@ public class InstrumentEventTypesApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetTransactionTemplate: Get Transaction Template
+     * [EARLY ACCESS] GetTransactionTemplate: Get Transaction Template
      * Gets the Transaction Template that for the instrument event type within the scope specified.
      * @param instrumentEventType The instrument event type of the transaction template (required)
      * @param instrumentType The instrument type of the transaction template. The combination of the instrument   event type, instrument type and scope uniquely identifies a transaction template (required)
@@ -1071,7 +1071,7 @@ public class InstrumentEventTypesApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetTransactionTemplateSpecification: Get Transaction Template Specification.
+     * [EARLY ACCESS] GetTransactionTemplateSpecification: Get Transaction Template Specification.
      * Retrieve the transaction template specification for a particular event type.
      * @param instrumentEventType The requested instrument event type. (required)
      * @return APIgetTransactionTemplateSpecificationRequest
@@ -1370,7 +1370,7 @@ public class InstrumentEventTypesApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListTransactionTemplateSpecifications: List Transaction Template Specifications.
+     * [EARLY ACCESS] ListTransactionTemplateSpecifications: List Transaction Template Specifications.
      * Retrieves all transaction template specifications.
      * @return APIlistTransactionTemplateSpecificationsRequest
      * @http.response.details
@@ -1668,7 +1668,7 @@ public class InstrumentEventTypesApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListTransactionTemplates: List Transaction Templates
+     * [EARLY ACCESS] ListTransactionTemplates: List Transaction Templates
      * Lists all Transaction Templates.
      * @return APIlistTransactionTemplatesRequest
      * @http.response.details
@@ -1926,7 +1926,7 @@ public class InstrumentEventTypesApi {
     }
 
     /**
-     * [EXPERIMENTAL] UpdateTransactionTemplate: Update Transaction Template
+     * [EARLY ACCESS] UpdateTransactionTemplate: Update Transaction Template
      * Update a transaction template for a particular instrument event type in a scope.
      * @param instrumentEventType The type of instrument events that the template is applied to. (required)
      * @param instrumentType The instrument type of the transaction template. The combination of the instrument   event type, instrument type and scope uniquely identifies a transaction template (required)
