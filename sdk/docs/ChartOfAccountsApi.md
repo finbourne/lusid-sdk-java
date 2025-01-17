@@ -14,7 +14,9 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**deleteGeneralLedgerProfile**](ChartOfAccountsApi.md#deleteGeneralLedgerProfile) | **DELETE** /api/chartofaccounts/{scope}/{code}/generalledgerprofile/{generalLedgerProfileCode} | [EXPERIMENTAL] DeleteGeneralLedgerProfile: Delete a General Ledger Profile. |
 | [**deletePostingModule**](ChartOfAccountsApi.md#deletePostingModule) | **DELETE** /api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode} | [EXPERIMENTAL] DeletePostingModule: Delete a Posting Module. |
 | [**getAccount**](ChartOfAccountsApi.md#getAccount) | **GET** /api/chartofaccounts/{scope}/{code}/accounts/{accountCode} | [EXPERIMENTAL] GetAccount: Get Account |
+| [**getAccountProperties**](ChartOfAccountsApi.md#getAccountProperties) | **GET** /api/chartofaccounts/{scope}/{code}/accounts/{accountCode}/properties | [EXPERIMENTAL] GetAccountProperties: Get Account properties |
 | [**getChartOfAccounts**](ChartOfAccountsApi.md#getChartOfAccounts) | **GET** /api/chartofaccounts/{scope}/{code} | [EXPERIMENTAL] GetChartOfAccounts: Get ChartOfAccounts |
+| [**getChartOfAccountsProperties**](ChartOfAccountsApi.md#getChartOfAccountsProperties) | **GET** /api/chartofaccounts/{scope}/{code}/properties | [EXPERIMENTAL] GetChartOfAccountsProperties: Get chart of accounts properties |
 | [**getCleardownModule**](ChartOfAccountsApi.md#getCleardownModule) | **GET** /api/chartofaccounts/{scope}/{code}/cleardownmodules/{cleardownModuleCode} | [EXPERIMENTAL] GetCleardownModule: Get a Cleardown Module |
 | [**getGeneralLedgerProfile**](ChartOfAccountsApi.md#getGeneralLedgerProfile) | **GET** /api/chartofaccounts/{scope}/{code}/generalledgerprofile/{generalLedgerProfileCode} | [EXPERIMENTAL] GetGeneralLedgerProfile: Get a General Ledger Profile. |
 | [**getPostingModule**](ChartOfAccountsApi.md#getPostingModule) | **GET** /api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode} | [EXPERIMENTAL] GetPostingModule: Get a Posting Module |
@@ -993,6 +995,105 @@ public class ChartOfAccountsApiExample {
 [Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 
+## getAccountProperties
+
+> AccountProperties getAccountProperties(scope, code, accountCode, effectiveAt, asAt)
+
+[EXPERIMENTAL] GetAccountProperties: Get Account properties
+
+Get all the properties of a single account.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.ChartOfAccountsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class ChartOfAccountsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
+        ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
+        String scope = "scope_example"; // String | The scope of the Chart of Accounts to update or insert the properties onto.
+        String code = "code_example"; // String | The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the Chart of Accounts.
+        String accountCode = "accountCode_example"; // String | The unique ID of the account to get properties for.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the Account's properties. Defaults to the current LUSID system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the Account's properties. Defaults to return the latest version of each property if not specified.
+        try {
+            // uncomment the below to set overrides at the request level
+            // AccountProperties result = apiInstance.getAccountProperties(scope, code, accountCode, effectiveAt, asAt).execute(opts);
+
+            AccountProperties result = apiInstance.getAccountProperties(scope, code, accountCode, effectiveAt, asAt).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ChartOfAccountsApi#getAccountProperties");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Chart of Accounts to update or insert the properties onto. | |
+| **code** | **String**| The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the Chart of Accounts. | |
+| **accountCode** | **String**| The unique ID of the account to get properties for. | |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list the Account&#39;s properties. Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the Account&#39;s properties. Defaults to return the latest version of each property if not specified. | [optional] |
+
+### Return type
+
+[**AccountProperties**](AccountProperties.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The properties of the specified account |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
 ## getChartOfAccounts
 
 > ChartOfAccounts getChartOfAccounts(scope, code, effectiveAt, asAt, propertyKeys)
@@ -1086,6 +1187,103 @@ public class ChartOfAccountsApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The requested Chart Of Accounts definition. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## getChartOfAccountsProperties
+
+> ChartOfAccountsProperties getChartOfAccountsProperties(scope, code, effectiveAt, asAt)
+
+[EXPERIMENTAL] GetChartOfAccountsProperties: Get chart of accounts properties
+
+Get all the properties of a single chart of accounts.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.ChartOfAccountsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class ChartOfAccountsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
+        ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
+        String scope = "scope_example"; // String | The scope of the chart of accounts to list the properties for.
+        String code = "code_example"; // String | The code of the chart of accounts to list the properties for. Together with the scope this uniquely identifies the chart of accounts.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the chart of accounts' properties. Defaults to the current LUSID system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the chart of accounts' properties. Defaults to return the latest version of each property if not specified.
+        try {
+            // uncomment the below to set overrides at the request level
+            // ChartOfAccountsProperties result = apiInstance.getChartOfAccountsProperties(scope, code, effectiveAt, asAt).execute(opts);
+
+            ChartOfAccountsProperties result = apiInstance.getChartOfAccountsProperties(scope, code, effectiveAt, asAt).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ChartOfAccountsApi#getChartOfAccountsProperties");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the chart of accounts to list the properties for. | |
+| **code** | **String**| The code of the chart of accounts to list the properties for. Together with the scope this uniquely identifies the chart of accounts. | |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list the chart of accounts&#39; properties. Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the chart of accounts&#39; properties. Defaults to return the latest version of each property if not specified. | [optional] |
+
+### Return type
+
+[**ChartOfAccountsProperties**](ChartOfAccountsProperties.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The properties of the specified chartOfAccounts |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

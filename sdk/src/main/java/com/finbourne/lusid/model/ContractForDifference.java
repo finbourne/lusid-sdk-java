@@ -20,6 +20,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -91,6 +92,10 @@ public class ContractForDifference extends LusidInstrument {
   @SerializedName(SERIALIZED_NAME_LOT_SIZE)
   private Integer lotSize;
 
+  public static final String SERIALIZED_NAME_UNDERLYING = "underlying";
+  @SerializedName(SERIALIZED_NAME_UNDERLYING)
+  private LusidInstrument underlying;
+
   public ContractForDifference() {
     // this.instrumentType = this.getClass().getSimpleName();
   }
@@ -147,7 +152,7 @@ public class ContractForDifference extends LusidInstrument {
    * The code of the underlying.
    * @return code
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getCode() {
     return code;
   }
@@ -252,7 +257,7 @@ public class ContractForDifference extends LusidInstrument {
    * The currency of the underlying
    * @return underlyingCcy
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getUnderlyingCcy() {
     return underlyingCcy;
   }
@@ -273,7 +278,7 @@ public class ContractForDifference extends LusidInstrument {
    * External market codes and identifiers for the CFD, e.g. RIC.    Supported string (enumeration) values are: [LusidInstrumentId, Isin, Sedol, Cusip, ClientInternal, Figi, RIC, QuotePermId, REDCode, BBGId, ICECode].
    * @return underlyingIdentifier
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getUnderlyingIdentifier() {
     return underlyingIdentifier;
   }
@@ -305,6 +310,27 @@ public class ContractForDifference extends LusidInstrument {
   }
 
 
+  public ContractForDifference underlying(LusidInstrument underlying) {
+    
+    this.underlying = underlying;
+    return this;
+  }
+
+   /**
+   * Get underlying
+   * @return underlying
+  **/
+  @jakarta.annotation.Nullable
+  public LusidInstrument getUnderlying() {
+    return underlying;
+  }
+
+
+  public void setUnderlying(LusidInstrument underlying) {
+    this.underlying = underlying;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -325,12 +351,24 @@ public class ContractForDifference extends LusidInstrument {
         Objects.equals(this.underlyingCcy, contractForDifference.underlyingCcy) &&
         Objects.equals(this.underlyingIdentifier, contractForDifference.underlyingIdentifier) &&
         Objects.equals(this.lotSize, contractForDifference.lotSize) &&
+        Objects.equals(this.underlying, contractForDifference.underlying) &&
         super.equals(o);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, code, contractSize, payCcy, referenceRate, type, underlyingCcy, underlyingIdentifier, lotSize, super.hashCode());
+    return Objects.hash(startDate, maturityDate, code, contractSize, payCcy, referenceRate, type, underlyingCcy, underlyingIdentifier, lotSize, underlying, super.hashCode());
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -348,6 +386,7 @@ public class ContractForDifference extends LusidInstrument {
     sb.append("    underlyingCcy: ").append(toIndentedString(underlyingCcy)).append("\n");
     sb.append("    underlyingIdentifier: ").append(toIndentedString(underlyingIdentifier)).append("\n");
     sb.append("    lotSize: ").append(toIndentedString(lotSize)).append("\n");
+    sb.append("    underlying: ").append(toIndentedString(underlying)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -381,16 +420,14 @@ public class ContractForDifference extends LusidInstrument {
     openapiFields.add("underlyingCcy");
     openapiFields.add("underlyingIdentifier");
     openapiFields.add("lotSize");
+    openapiFields.add("underlying");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("startDate");
-    openapiRequiredFields.add("code");
     openapiRequiredFields.add("contractSize");
     openapiRequiredFields.add("payCcy");
     openapiRequiredFields.add("type");
-    openapiRequiredFields.add("underlyingCcy");
-    openapiRequiredFields.add("underlyingIdentifier");
     openapiRequiredFields.add("instrumentType");
   }
 

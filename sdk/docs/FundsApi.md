@@ -12,7 +12,9 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**deleteValuationPoint**](FundsApi.md#deleteValuationPoint) | **DELETE** /api/funds/{scope}/{code}/valuationpoints/{diaryEntryCode} | [EXPERIMENTAL] DeleteValuationPoint: Delete a Valuation Point. |
 | [**finaliseCandidateValuationPoint**](FundsApi.md#finaliseCandidateValuationPoint) | **POST** /api/funds/{scope}/{code}/valuationpoints/$finalisecandidate | [EXPERIMENTAL] FinaliseCandidateValuationPoint: Finalise Candidate. |
 | [**getFee**](FundsApi.md#getFee) | **GET** /api/funds/{scope}/{code}/fees/{feeCode} | [EXPERIMENTAL] GetFee: Get a Fee for a specified Fund. |
+| [**getFeeProperties**](FundsApi.md#getFeeProperties) | **GET** /api/funds/{scope}/{code}/fees/{feeCode}/properties | [EXPERIMENTAL] GetFeeProperties: Get Fee properties |
 | [**getFund**](FundsApi.md#getFund) | **GET** /api/funds/{scope}/{code} | [EXPERIMENTAL] GetFund: Get a Fund. |
+| [**getFundProperties**](FundsApi.md#getFundProperties) | **GET** /api/funds/{scope}/{code}/properties | [EXPERIMENTAL] GetFundProperties: Get Fund properties |
 | [**getValuationPointData**](FundsApi.md#getValuationPointData) | **POST** /api/funds/{scope}/{code}/valuationpoints/$query | [EXPERIMENTAL] GetValuationPointData: Get Valuation Point Data for a Fund. |
 | [**getValuationPointJournalEntryLines**](FundsApi.md#getValuationPointJournalEntryLines) | **POST** /api/funds/{scope}/{code}/valuationpoints/journalentrylines/$query | [EXPERIMENTAL] GetValuationPointJournalEntryLines: Get the Journal Entry lines for the given Fund. |
 | [**getValuationPointPnlSummary**](FundsApi.md#getValuationPointPnlSummary) | **POST** /api/funds/{scope}/{code}/valuationpoints/pnlsummary/$query | [EXPERIMENTAL] GetValuationPointPnlSummary: Get a PnL summary for the given Valuation Point in the Fund. |
@@ -792,6 +794,105 @@ public class FundsApiExample {
 [Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 
+## getFeeProperties
+
+> FeeProperties getFeeProperties(scope, code, feeCode, effectiveAt, asAt)
+
+[EXPERIMENTAL] GetFeeProperties: Get Fee properties
+
+Get all the properties of a single fee.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.FundsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class FundsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // FundsApi apiInstance = apiFactory.build(FundsApi.class);
+
+        FundsApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundsApi.class);
+        String scope = "scope_example"; // String | The scope of the Fund.
+        String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
+        String feeCode = "feeCode_example"; // String | The code of the Fee to get the properties for.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the Fee's properties. Defaults to the current LUSID system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the Fee's properties. Defaults to return the latest version of each property if not specified.
+        try {
+            // uncomment the below to set overrides at the request level
+            // FeeProperties result = apiInstance.getFeeProperties(scope, code, feeCode, effectiveAt, asAt).execute(opts);
+
+            FeeProperties result = apiInstance.getFeeProperties(scope, code, feeCode, effectiveAt, asAt).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling FundsApi#getFeeProperties");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Fund. | |
+| **code** | **String**| The code of the Fund. Together with the scope this uniquely identifies the Fund. | |
+| **feeCode** | **String**| The code of the Fee to get the properties for. | |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list the Fee&#39;s properties. Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the Fee&#39;s properties. Defaults to return the latest version of each property if not specified. | [optional] |
+
+### Return type
+
+[**FeeProperties**](FeeProperties.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The properties of the specified fee |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
 ## getFund
 
 > Fund getFund(scope, code, effectiveAt, asAt, propertyKeys)
@@ -885,6 +986,103 @@ public class FundsApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The requested Fund definition. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## getFundProperties
+
+> FundProperties getFundProperties(scope, code, effectiveAt, asAt)
+
+[EXPERIMENTAL] GetFundProperties: Get Fund properties
+
+Get all the properties of a single fund.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.FundsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class FundsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // FundsApi apiInstance = apiFactory.build(FundsApi.class);
+
+        FundsApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundsApi.class);
+        String scope = "scope_example"; // String | The scope of the Fund to list the properties for.
+        String code = "code_example"; // String | The code of the Fund to list the properties for. Together with the scope this uniquely identifies the Fund.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the Fund's properties. Defaults to the current LUSID system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the Fund's properties. Defaults to return the latest version of each property if not specified.
+        try {
+            // uncomment the below to set overrides at the request level
+            // FundProperties result = apiInstance.getFundProperties(scope, code, effectiveAt, asAt).execute(opts);
+
+            FundProperties result = apiInstance.getFundProperties(scope, code, effectiveAt, asAt).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling FundsApi#getFundProperties");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Fund to list the properties for. | |
+| **code** | **String**| The code of the Fund to list the properties for. Together with the scope this uniquely identifies the Fund. | |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list the Fund&#39;s properties. Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the Fund&#39;s properties. Defaults to return the latest version of each property if not specified. | [optional] |
+
+### Return type
+
+[**FundProperties**](FundProperties.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The properties of the specified fund |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
