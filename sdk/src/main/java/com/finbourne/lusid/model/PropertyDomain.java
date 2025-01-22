@@ -179,7 +179,9 @@ public enum PropertyDomain {
   
   WORKER("Worker"),
   
-  STAGINGRULESET("StagingRuleSet");
+  STAGINGRULESET("StagingRuleSet"),
+  
+  IDENTIFIERDEFINITION("IdentifierDefinition");
 
   private String value;
 

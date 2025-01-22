@@ -300,7 +300,7 @@ public class CustomDataModelsApiExample {
 
 ## listDataModelHierarchies
 
-> ResourceListOfDataModelSummary listDataModelHierarchies(asAt)
+> ResourceListOfDataModelSummary listDataModelHierarchies(asAt, filter)
 
 [EXPERIMENTAL] ListDataModelHierarchies: List Custom Data Model hierarchies.
 
@@ -346,11 +346,12 @@ public class CustomDataModelsApiExample {
 
         CustomDataModelsApi apiInstance = ApiFactoryBuilder.build(fileName).build(CustomDataModelsApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Data Model. Defaults to return   the latest version of the Data Model if not specified.
+        String filter = "filter_example"; // String | Expression to filter the results. Only EntityType is supported
         try {
             // uncomment the below to set overrides at the request level
-            // ResourceListOfDataModelSummary result = apiInstance.listDataModelHierarchies(asAt).execute(opts);
+            // ResourceListOfDataModelSummary result = apiInstance.listDataModelHierarchies(asAt, filter).execute(opts);
 
-            ResourceListOfDataModelSummary result = apiInstance.listDataModelHierarchies(asAt).execute();
+            ResourceListOfDataModelSummary result = apiInstance.listDataModelHierarchies(asAt, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling CustomDataModelsApi#listDataModelHierarchies");
@@ -368,6 +369,7 @@ public class CustomDataModelsApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Data Model. Defaults to return   the latest version of the Data Model if not specified. | [optional] |
+| **filter** | **String**| Expression to filter the results. Only EntityType is supported | [optional] |
 
 ### Return type
 

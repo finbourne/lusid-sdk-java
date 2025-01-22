@@ -839,11 +839,11 @@ public class CustomDataModelsApi {
     public APIgetCustomDataModelRequest getCustomDataModel(String scope, String code) {
         return new APIgetCustomDataModelRequest(scope, code);
     }
-    private okhttp3.Call listDataModelHierarchiesCall(OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
-        return listDataModelHierarchiesCall(asAt,  _callback, new ConfigurationOptions());
+    private okhttp3.Call listDataModelHierarchiesCall(OffsetDateTime asAt, String filter, final ApiCallback _callback) throws ApiException {
+        return listDataModelHierarchiesCall(asAt, filter,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call listDataModelHierarchiesCall(OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listDataModelHierarchiesCall(OffsetDateTime asAt, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -872,6 +872,10 @@ public class CustomDataModelsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
         }
 
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -894,35 +898,35 @@ public class CustomDataModelsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listDataModelHierarchiesValidateBeforeCall(OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        return listDataModelHierarchiesCall(asAt, _callback, opts);
+    private okhttp3.Call listDataModelHierarchiesValidateBeforeCall(OffsetDateTime asAt, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listDataModelHierarchiesCall(asAt, filter, _callback, opts);
 
     }
 
 
-    private ApiResponse<ResourceListOfDataModelSummary> listDataModelHierarchiesWithHttpInfo(OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = listDataModelHierarchiesValidateBeforeCall(asAt, null, new ConfigurationOptions());
+    private ApiResponse<ResourceListOfDataModelSummary> listDataModelHierarchiesWithHttpInfo(OffsetDateTime asAt, String filter) throws ApiException {
+        okhttp3.Call localVarCall = listDataModelHierarchiesValidateBeforeCall(asAt, filter, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ResourceListOfDataModelSummary>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ResourceListOfDataModelSummary> listDataModelHierarchiesWithHttpInfo(OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = listDataModelHierarchiesValidateBeforeCall(asAt, null, opts);
+    private ApiResponse<ResourceListOfDataModelSummary> listDataModelHierarchiesWithHttpInfo(OffsetDateTime asAt, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listDataModelHierarchiesValidateBeforeCall(asAt, filter, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfDataModelSummary>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listDataModelHierarchiesAsync(OffsetDateTime asAt, final ApiCallback<ResourceListOfDataModelSummary> _callback) throws ApiException {
+    private okhttp3.Call listDataModelHierarchiesAsync(OffsetDateTime asAt, String filter, final ApiCallback<ResourceListOfDataModelSummary> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listDataModelHierarchiesValidateBeforeCall(asAt, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = listDataModelHierarchiesValidateBeforeCall(asAt, filter, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ResourceListOfDataModelSummary>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call listDataModelHierarchiesAsync(OffsetDateTime asAt, final ApiCallback<ResourceListOfDataModelSummary> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listDataModelHierarchiesAsync(OffsetDateTime asAt, String filter, final ApiCallback<ResourceListOfDataModelSummary> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = listDataModelHierarchiesValidateBeforeCall(asAt, _callback, opts);
+        okhttp3.Call localVarCall = listDataModelHierarchiesValidateBeforeCall(asAt, filter, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfDataModelSummary>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -930,6 +934,7 @@ public class CustomDataModelsApi {
 
     public class APIlistDataModelHierarchiesRequest {
         private OffsetDateTime asAt;
+        private String filter;
 
         private APIlistDataModelHierarchiesRequest() {
         }
@@ -941,6 +946,16 @@ public class CustomDataModelsApi {
          */
         public APIlistDataModelHierarchiesRequest asAt(OffsetDateTime asAt) {
             this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the results. Only EntityType is supported (optional)
+         * @return APIlistDataModelHierarchiesRequest
+         */
+        public APIlistDataModelHierarchiesRequest filter(String filter) {
+            this.filter = filter;
             return this;
         }
 
@@ -958,7 +973,7 @@ public class CustomDataModelsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listDataModelHierarchiesCall(asAt, _callback);
+            return listDataModelHierarchiesCall(asAt, filter, _callback);
         }
 
         /**
@@ -974,7 +989,7 @@ public class CustomDataModelsApi {
          </table>
          */
         public ResourceListOfDataModelSummary execute() throws ApiException {
-            ApiResponse<ResourceListOfDataModelSummary> localVarResp = listDataModelHierarchiesWithHttpInfo(asAt);
+            ApiResponse<ResourceListOfDataModelSummary> localVarResp = listDataModelHierarchiesWithHttpInfo(asAt, filter);
             return localVarResp.getData();
         }
 
@@ -991,7 +1006,7 @@ public class CustomDataModelsApi {
          </table>
          */
         public ResourceListOfDataModelSummary execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ResourceListOfDataModelSummary> localVarResp = listDataModelHierarchiesWithHttpInfo(asAt, opts);
+            ApiResponse<ResourceListOfDataModelSummary> localVarResp = listDataModelHierarchiesWithHttpInfo(asAt, filter, opts);
             return localVarResp.getData();
         }
 
@@ -1008,7 +1023,7 @@ public class CustomDataModelsApi {
          </table>
          */
         public ApiResponse<ResourceListOfDataModelSummary> executeWithHttpInfo() throws ApiException {
-            return listDataModelHierarchiesWithHttpInfo(asAt);
+            return listDataModelHierarchiesWithHttpInfo(asAt, filter);
         }
 
         /**
@@ -1024,7 +1039,7 @@ public class CustomDataModelsApi {
          </table>
          */
         public ApiResponse<ResourceListOfDataModelSummary> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return listDataModelHierarchiesWithHttpInfo(asAt, opts);
+            return listDataModelHierarchiesWithHttpInfo(asAt, filter, opts);
         }
 
         /**
@@ -1041,7 +1056,7 @@ public class CustomDataModelsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfDataModelSummary> _callback) throws ApiException {
-            return listDataModelHierarchiesAsync(asAt, _callback);
+            return listDataModelHierarchiesAsync(asAt, filter, _callback);
         }
 
         /**
@@ -1058,7 +1073,7 @@ public class CustomDataModelsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfDataModelSummary> _callback, ConfigurationOptions opts) throws ApiException {
-            return listDataModelHierarchiesAsync(asAt, _callback, opts);
+            return listDataModelHierarchiesAsync(asAt, filter, _callback, opts);
         }
     }
 
