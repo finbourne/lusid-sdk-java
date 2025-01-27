@@ -170,10 +170,10 @@ public class ContractForDifference extends LusidInstrument {
   }
 
    /**
-   * The size of the CFD contract, this should represent the total number of stocks that the CFD represents.
+   * The size of the CFD contract, this should represent the total number of stocks that the CFD represents.   This field is optional, if not set it will default to 1.
    * @return contractSize
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public java.math.BigDecimal getContractSize() {
     return contractSize;
   }
@@ -425,7 +425,6 @@ public class ContractForDifference extends LusidInstrument {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("startDate");
-    openapiRequiredFields.add("contractSize");
     openapiRequiredFields.add("payCcy");
     openapiRequiredFields.add("type");
     openapiRequiredFields.add("instrumentType");

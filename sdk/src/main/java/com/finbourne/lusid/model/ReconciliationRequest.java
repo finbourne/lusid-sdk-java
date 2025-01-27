@@ -164,7 +164,7 @@ public class ReconciliationRequest {
   }
 
    /**
-   * The set of rules to be used in comparing values. These are the rules that determine what constitues a match.  The simplest is obviously an exact one-for-one comparison, but tolerances on numerical or date time values and  case-insensitive string comparison are supported amongst other types.
+   * The set of rules to be used in comparing values. These are the rules that determine what constitutes a match.  The simplest is obviously an exact one-for-one comparison, but tolerances on numerical or date time values and  case-insensitive string comparison are supported amongst other types.
    * @return comparisonRules
   **/
   @jakarta.annotation.Nullable

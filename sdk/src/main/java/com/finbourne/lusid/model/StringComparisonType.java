@@ -33,7 +33,9 @@ public enum StringComparisonType {
   
   CONTAINSANYCASE("ContainsAnyCase"),
   
-  ISONEOF("IsOneOf");
+  ISONEOF("IsOneOf"),
+  
+  ISONEOFCASEINSENSITIVE("IsOneOfCaseInsensitive");
 
   private String value;
 

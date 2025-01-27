@@ -17,6 +17,7 @@ An instruction for an instrument event
 |**version** | [**Version**](Version.md) |  |  [optional] |
 |**href** | **URI** | The uri for this version of this instruction |  [optional] |
 |**entitlementDateInstructed** | **OffsetDateTime** | The instructed entitlement date for the event (where none is set on the event itself) |  [optional] |
+|**quantityInstructed** | [**QuantityInstructed**](QuantityInstructed.md) |  |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 

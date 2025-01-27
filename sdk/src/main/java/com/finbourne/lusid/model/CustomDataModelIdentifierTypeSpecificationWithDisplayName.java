@@ -114,7 +114,7 @@ public class CustomDataModelIdentifierTypeSpecificationWithDisplayName {
   }
 
    /**
-   * Whether dentifier type is required or allowed.
+   * Whether identifier type is required or allowed.
    * @return required
   **/
   @jakarta.annotation.Nullable

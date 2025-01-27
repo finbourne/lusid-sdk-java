@@ -11,7 +11,7 @@ LUSID representation of a Contract for Difference.
 |**startDate** | **OffsetDateTime** | The start date of the CFD. |  |
 |**maturityDate** | **OffsetDateTime** | The maturity date for the CFD. If CFDType is Futures, this should be set to be the maturity date of the underlying  future. If CFDType is Cash, this should not be set. |  [optional] |
 |**code** | **String** | The code of the underlying. |  [optional] |
-|**contractSize** | **java.math.BigDecimal** | The size of the CFD contract, this should represent the total number of stocks that the CFD represents. |  |
+|**contractSize** | **java.math.BigDecimal** | The size of the CFD contract, this should represent the total number of stocks that the CFD represents.   This field is optional, if not set it will default to 1. |  [optional] |
 |**payCcy** | **String** | The currency that this CFD pays out, this can be different to the UnderlyingCcy. |  |
 |**referenceRate** | **java.math.BigDecimal** | The reference rate of the CFD, this can be set to 0 but not negative values.  This field is optional, if not set it will default to 0. |  [optional] |
 |**type** | **String** | The type of CFD.    Supported string (enumeration) values are: [Cash, Futures]. |  |

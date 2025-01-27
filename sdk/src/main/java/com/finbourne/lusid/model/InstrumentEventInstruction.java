@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.Link;
+import com.finbourne.lusid.model.QuantityInstructed;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
@@ -92,6 +93,10 @@ public class InstrumentEventInstruction {
   public static final String SERIALIZED_NAME_ENTITLEMENT_DATE_INSTRUCTED = "entitlementDateInstructed";
   @SerializedName(SERIALIZED_NAME_ENTITLEMENT_DATE_INSTRUCTED)
   private OffsetDateTime entitlementDateInstructed;
+
+  public static final String SERIALIZED_NAME_QUANTITY_INSTRUCTED = "quantityInstructed";
+  @SerializedName(SERIALIZED_NAME_QUANTITY_INSTRUCTED)
+  private QuantityInstructed quantityInstructed;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -289,6 +294,27 @@ public class InstrumentEventInstruction {
   }
 
 
+  public InstrumentEventInstruction quantityInstructed(QuantityInstructed quantityInstructed) {
+    
+    this.quantityInstructed = quantityInstructed;
+    return this;
+  }
+
+   /**
+   * Get quantityInstructed
+   * @return quantityInstructed
+  **/
+  @jakarta.annotation.Nullable
+  public QuantityInstructed getQuantityInstructed() {
+    return quantityInstructed;
+  }
+
+
+  public void setQuantityInstructed(QuantityInstructed quantityInstructed) {
+    this.quantityInstructed = quantityInstructed;
+  }
+
+
   public InstrumentEventInstruction links(List<Link> links) {
     
     this.links = links;
@@ -337,6 +363,7 @@ public class InstrumentEventInstruction {
         Objects.equals(this.version, instrumentEventInstruction.version) &&
         Objects.equals(this.href, instrumentEventInstruction.href) &&
         Objects.equals(this.entitlementDateInstructed, instrumentEventInstruction.entitlementDateInstructed) &&
+        Objects.equals(this.quantityInstructed, instrumentEventInstruction.quantityInstructed) &&
         Objects.equals(this.links, instrumentEventInstruction.links);
   }
 
@@ -346,7 +373,7 @@ public class InstrumentEventInstruction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentEventInstructionId, portfolioId, instrumentEventId, instructionType, electionKey, holdingId, version, href, entitlementDateInstructed, links);
+    return Objects.hash(instrumentEventInstructionId, portfolioId, instrumentEventId, instructionType, electionKey, holdingId, version, href, entitlementDateInstructed, quantityInstructed, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -369,6 +396,7 @@ public class InstrumentEventInstruction {
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    entitlementDateInstructed: ").append(toIndentedString(entitlementDateInstructed)).append("\n");
+    sb.append("    quantityInstructed: ").append(toIndentedString(quantityInstructed)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -401,6 +429,7 @@ public class InstrumentEventInstruction {
     openapiFields.add("version");
     openapiFields.add("href");
     openapiFields.add("entitlementDateInstructed");
+    openapiFields.add("quantityInstructed");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -442,6 +471,10 @@ public class InstrumentEventInstruction {
       }
       if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
+      }
+      // validate the optional field `quantityInstructed`
+      if (jsonObj.get("quantityInstructed") != null && !jsonObj.get("quantityInstructed").isJsonNull()) {
+        QuantityInstructed.validateJsonElement(jsonObj.get("quantityInstructed"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

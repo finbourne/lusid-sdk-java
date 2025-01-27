@@ -249,7 +249,7 @@ public class UpsertCustomDataModelRequest {
   }
 
    /**
-   * The aliaes for property keys, identifier types, and fields on the bound entity.
+   * The aliases for property keys, identifier types, and fields on the bound entity.
    * @return attributeAliases
   **/
   @jakarta.annotation.Nullable

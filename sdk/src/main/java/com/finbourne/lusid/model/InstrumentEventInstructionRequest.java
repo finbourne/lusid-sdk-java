@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.QuantityInstructed;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -74,6 +75,10 @@ public class InstrumentEventInstructionRequest {
   public static final String SERIALIZED_NAME_ENTITLEMENT_DATE_INSTRUCTED = "entitlementDateInstructed";
   @SerializedName(SERIALIZED_NAME_ENTITLEMENT_DATE_INSTRUCTED)
   private OffsetDateTime entitlementDateInstructed;
+
+  public static final String SERIALIZED_NAME_QUANTITY_INSTRUCTED = "quantityInstructed";
+  @SerializedName(SERIALIZED_NAME_QUANTITY_INSTRUCTED)
+  private QuantityInstructed quantityInstructed;
 
   public InstrumentEventInstructionRequest() {
   }
@@ -204,6 +209,27 @@ public class InstrumentEventInstructionRequest {
   }
 
 
+  public InstrumentEventInstructionRequest quantityInstructed(QuantityInstructed quantityInstructed) {
+    
+    this.quantityInstructed = quantityInstructed;
+    return this;
+  }
+
+   /**
+   * Get quantityInstructed
+   * @return quantityInstructed
+  **/
+  @jakarta.annotation.Nullable
+  public QuantityInstructed getQuantityInstructed() {
+    return quantityInstructed;
+  }
+
+
+  public void setQuantityInstructed(QuantityInstructed quantityInstructed) {
+    this.quantityInstructed = quantityInstructed;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -219,7 +245,8 @@ public class InstrumentEventInstructionRequest {
         Objects.equals(this.instructionType, instrumentEventInstructionRequest.instructionType) &&
         Objects.equals(this.electionKey, instrumentEventInstructionRequest.electionKey) &&
         Objects.equals(this.holdingId, instrumentEventInstructionRequest.holdingId) &&
-        Objects.equals(this.entitlementDateInstructed, instrumentEventInstructionRequest.entitlementDateInstructed);
+        Objects.equals(this.entitlementDateInstructed, instrumentEventInstructionRequest.entitlementDateInstructed) &&
+        Objects.equals(this.quantityInstructed, instrumentEventInstructionRequest.quantityInstructed);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -228,7 +255,7 @@ public class InstrumentEventInstructionRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentEventInstructionId, instrumentEventId, instructionType, electionKey, holdingId, entitlementDateInstructed);
+    return Objects.hash(instrumentEventInstructionId, instrumentEventId, instructionType, electionKey, holdingId, entitlementDateInstructed, quantityInstructed);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -248,6 +275,7 @@ public class InstrumentEventInstructionRequest {
     sb.append("    electionKey: ").append(toIndentedString(electionKey)).append("\n");
     sb.append("    holdingId: ").append(toIndentedString(holdingId)).append("\n");
     sb.append("    entitlementDateInstructed: ").append(toIndentedString(entitlementDateInstructed)).append("\n");
+    sb.append("    quantityInstructed: ").append(toIndentedString(quantityInstructed)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -276,6 +304,7 @@ public class InstrumentEventInstructionRequest {
     openapiFields.add("electionKey");
     openapiFields.add("holdingId");
     openapiFields.add("entitlementDateInstructed");
+    openapiFields.add("quantityInstructed");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -315,6 +344,10 @@ public class InstrumentEventInstructionRequest {
       }
       if ((jsonObj.get("electionKey") != null && !jsonObj.get("electionKey").isJsonNull()) && !jsonObj.get("electionKey").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `electionKey` to be a primitive type in the JSON string but got `%s`", jsonObj.get("electionKey").toString()));
+      }
+      // validate the optional field `quantityInstructed`
+      if (jsonObj.get("quantityInstructed") != null && !jsonObj.get("quantityInstructed").isJsonNull()) {
+        QuantityInstructed.validateJsonElement(jsonObj.get("quantityInstructed"));
       }
   }
 

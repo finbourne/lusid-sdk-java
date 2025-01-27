@@ -8,7 +8,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**attributeName** | **String** | The property key, identifier type, or field to be replaced by an alias. |  |
-|**attributeAlias** | **String** | The alias to replace tPrecedencehe property key, identifier type, or field on the bound entity. |  |
+|**attributeAlias** | **String** | The alias to replace the property key, identifier type, or field on the bound entity. |  |
 
 
 

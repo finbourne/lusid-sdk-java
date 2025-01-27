@@ -9,7 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**displayName** | **String** | The display name of the property definition. |  [optional] |
 |**identifierKey** | **String** | The identifier type that is required/allowed on the bound entity. |  |
-|**required** | **Boolean** | Whether dentifier type is required or allowed. |  [optional] |
+|**required** | **Boolean** | Whether identifier type is required or allowed. |  [optional] |
 
 
 

@@ -1914,7 +1914,7 @@ public class InstrumentsApiExample {
 
 ## upsertInstruments
 
-> UpsertInstrumentsResponse upsertInstruments(requestBody, scope)
+> UpsertInstrumentsResponse upsertInstruments(requestBody, scope, dataModelScope, dataModelCode)
 
 UpsertInstruments: Upsert instruments
 
@@ -1961,11 +1961,13 @@ public class InstrumentsApiExample {
         InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
         Map<String, InstrumentDefinition> requestBody = new HashMap(); // Map<String, InstrumentDefinition> | The definitions of the instruments to create or update.
         String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
+        String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Hierarchical Data Model to use
+        String dataModelCode = "dataModelCode_example"; // String | The optional code of a Hierarchical Data Model to use
         try {
             // uncomment the below to set overrides at the request level
-            // UpsertInstrumentsResponse result = apiInstance.upsertInstruments(requestBody, scope).execute(opts);
+            // UpsertInstrumentsResponse result = apiInstance.upsertInstruments(requestBody, scope, dataModelScope, dataModelCode).execute(opts);
 
-            UpsertInstrumentsResponse result = apiInstance.upsertInstruments(requestBody, scope).execute();
+            UpsertInstrumentsResponse result = apiInstance.upsertInstruments(requestBody, scope, dataModelScope, dataModelCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling InstrumentsApi#upsertInstruments");
@@ -1984,6 +1986,8 @@ public class InstrumentsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **requestBody** | [**Map&lt;String, InstrumentDefinition&gt;**](InstrumentDefinition.md)| The definitions of the instruments to create or update. | |
 | **scope** | **String**| The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
+| **dataModelScope** | **String**| The optional scope of a Hierarchical Data Model to use | [optional] |
+| **dataModelCode** | **String**| The optional code of a Hierarchical Data Model to use | [optional] |
 
 ### Return type
 

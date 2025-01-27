@@ -79,6 +79,10 @@ public class PricingContext {
   @SerializedName(SERIALIZED_NAME_HOLDING_PRICING_INFO)
   private HoldingPricingInfo holdingPricingInfo;
 
+  public static final String SERIALIZED_NAME_ACCRUAL_DEFINITION = "accrualDefinition";
+  @SerializedName(SERIALIZED_NAME_ACCRUAL_DEFINITION)
+  private String accrualDefinition;
+
   public PricingContext() {
   }
 
@@ -211,6 +215,27 @@ public class PricingContext {
   }
 
 
+  public PricingContext accrualDefinition(String accrualDefinition) {
+    
+    this.accrualDefinition = accrualDefinition;
+    return this;
+  }
+
+   /**
+   * Determines which method to use for the calculation of accrued interest. Defaults to SOD.
+   * @return accrualDefinition
+  **/
+  @jakarta.annotation.Nullable
+  public String getAccrualDefinition() {
+    return accrualDefinition;
+  }
+
+
+  public void setAccrualDefinition(String accrualDefinition) {
+    this.accrualDefinition = accrualDefinition;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -225,7 +250,8 @@ public class PricingContext {
         Objects.equals(this.modelChoice, pricingContext.modelChoice) &&
         Objects.equals(this.options, pricingContext.options) &&
         Objects.equals(this.resultDataRules, pricingContext.resultDataRules) &&
-        Objects.equals(this.holdingPricingInfo, pricingContext.holdingPricingInfo);
+        Objects.equals(this.holdingPricingInfo, pricingContext.holdingPricingInfo) &&
+        Objects.equals(this.accrualDefinition, pricingContext.accrualDefinition);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -234,7 +260,7 @@ public class PricingContext {
 
   @Override
   public int hashCode() {
-    return Objects.hash(modelRules, modelChoice, options, resultDataRules, holdingPricingInfo);
+    return Objects.hash(modelRules, modelChoice, options, resultDataRules, holdingPricingInfo, accrualDefinition);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -253,6 +279,7 @@ public class PricingContext {
     sb.append("    options: ").append(toIndentedString(options)).append("\n");
     sb.append("    resultDataRules: ").append(toIndentedString(resultDataRules)).append("\n");
     sb.append("    holdingPricingInfo: ").append(toIndentedString(holdingPricingInfo)).append("\n");
+    sb.append("    accrualDefinition: ").append(toIndentedString(accrualDefinition)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -280,6 +307,7 @@ public class PricingContext {
     openapiFields.add("options");
     openapiFields.add("resultDataRules");
     openapiFields.add("holdingPricingInfo");
+    openapiFields.add("accrualDefinition");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -333,6 +361,9 @@ public class PricingContext {
       // validate the optional field `holdingPricingInfo`
       if (jsonObj.get("holdingPricingInfo") != null && !jsonObj.get("holdingPricingInfo").isJsonNull()) {
         HoldingPricingInfo.validateJsonElement(jsonObj.get("holdingPricingInfo"));
+      }
+      if ((jsonObj.get("accrualDefinition") != null && !jsonObj.get("accrualDefinition").isJsonNull()) && !jsonObj.get("accrualDefinition").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `accrualDefinition` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accrualDefinition").toString()));
       }
   }
 

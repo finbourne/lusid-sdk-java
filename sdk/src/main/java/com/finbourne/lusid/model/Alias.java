@@ -88,7 +88,7 @@ public class Alias {
   }
 
    /**
-   * The alias to replace tPrecedencehe property key, identifier type, or field on the bound entity.
+   * The alias to replace the property key, identifier type, or field on the bound entity.
    * @return attributeAlias
   **/
   @jakarta.annotation.Nonnull
