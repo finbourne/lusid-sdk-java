@@ -183,7 +183,7 @@ public class TransactionFeesApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -199,7 +199,7 @@ public class TransactionFeesApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -216,7 +216,7 @@ public class TransactionFeesApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -233,7 +233,7 @@ public class TransactionFeesApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -249,7 +249,7 @@ public class TransactionFeesApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -266,7 +266,7 @@ public class TransactionFeesApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -283,7 +283,7 @@ public class TransactionFeesApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -295,13 +295,13 @@ public class TransactionFeesApi {
 
     /**
      * [EXPERIMENTAL] DeleteTransactionFeeRule: Deletes a fee rule.
-     * &lt;br&gt;   Deletes the rule for all effective time.     &lt;br&gt;   The rule will remain viewable at previous as at times, but it will no longer be considered by   GetApplicableFees.     &lt;br&gt;   This cannot be undone.   
+     *     Deletes the rule for all effective time.         The rule will remain viewable at previous as at times, but it will no longer be considered by   GetApplicableFees.         This cannot be undone.   
      * @param code The fee rule code. (required)
      * @return APIdeleteTransactionFeeRuleRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -1433,7 +1433,7 @@ public class TransactionFeesApi {
 
     /**
      * [EXPERIMENTAL] UpsertTransactionFeeRules: Upsert fee rules.
-     * &lt;br&gt;   To upsert a new rule, the code field must be left empty, a code will then be assigned and returned as part   of the response. To update an existing rule, include the fee code. It is possible to both create and update   fee rules in the same request.     &lt;br&gt;   The upsert is transactional - either all create/update operations will succeed or none of them will.   
+     *     To upsert a new rule, the code field must be left empty, a code will then be assigned and returned as part   of the response. To update an existing rule, include the fee code. It is possible to both create and update   fee rules in the same request.         The upsert is transactional - either all create/update operations will succeed or none of them will.   
      * @param requestBody A dictionary of upsert request identifiers to rule upsert requests. The request   identifiers are valid for the request only and can be used to link the upserted fee rule to the code of a   created fee rule. (required)
      * @return APIupsertTransactionFeeRulesRequest
      * @http.response.details

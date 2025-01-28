@@ -112,7 +112,7 @@ public class AmortisationRuleSetsApiExample {
 
 [EXPERIMENTAL] DeleteAmortisationRuleset: Delete an amortisation rule set.
 
-&lt;br&gt;   Deletes the rule set perpetually, including its rules.     &lt;br&gt;   The rule set will remain viewable at previous as at times, but it will no longer be considered applicable.     &lt;br&gt;   This cannot be undone.   
+    Deletes the rule set perpetually, including its rules.         The rule set will remain viewable at previous as at times, but it will no longer be considered applicable.         This cannot be undone.   
 
 ### Example
 
@@ -192,7 +192,7 @@ public class AmortisationRuleSetsApiExample {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **200** | OK |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

@@ -11,12 +11,12 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.Stream;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -53,7 +53,7 @@ import com.finbourne.lusid.JSON;
 public class FileResponse {
   public static final String SERIALIZED_NAME_FILE_STREAM = "fileStream";
   @SerializedName(SERIALIZED_NAME_FILE_STREAM)
-  private Stream fileStream;
+  private File fileStream;
 
   public static final String SERIALIZED_NAME_CONTENT_TYPE = "contentType";
   @SerializedName(SERIALIZED_NAME_CONTENT_TYPE)
@@ -66,7 +66,7 @@ public class FileResponse {
   public FileResponse() {
   }
 
-  public FileResponse fileStream(Stream fileStream) {
+  public FileResponse fileStream(File fileStream) {
     
     this.fileStream = fileStream;
     return this;
@@ -77,12 +77,12 @@ public class FileResponse {
    * @return fileStream
   **/
   @jakarta.annotation.Nullable
-  public Stream getFileStream() {
+  public File getFileStream() {
     return fileStream;
   }
 
 
-  public void setFileStream(Stream fileStream) {
+  public void setFileStream(File fileStream) {
     this.fileStream = fileStream;
   }
 
@@ -210,10 +210,6 @@ public class FileResponse {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `fileStream`
-      if (jsonObj.get("fileStream") != null && !jsonObj.get("fileStream").isJsonNull()) {
-        Stream.validateJsonElement(jsonObj.get("fileStream"));
-      }
       if ((jsonObj.get("contentType") != null && !jsonObj.get("contentType").isJsonNull()) && !jsonObj.get("contentType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `contentType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("contentType").toString()));
       }

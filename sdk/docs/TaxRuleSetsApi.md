@@ -111,7 +111,7 @@ public class TaxRuleSetsApiExample {
 
 [EXPERIMENTAL] DeleteTaxRuleSet: Delete a tax rule set.
 
-&lt;br&gt;   Deletes the rule set for all effective time.     &lt;br&gt;   The rule set will remain viewable at previous as at times, but it will no longer be considered applicable.     &lt;br&gt;   This cannot be undone.   
+    Deletes the rule set for all effective time.         The rule set will remain viewable at previous as at times, but it will no longer be considered applicable.         This cannot be undone.   
 
 ### Example
 
@@ -191,7 +191,7 @@ public class TaxRuleSetsApiExample {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **200** | OK |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

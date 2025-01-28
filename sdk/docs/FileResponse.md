@@ -8,7 +8,7 @@ Allows a file (represented as a stream) to be returned from an Api call
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**fileStream** | [**Stream**](Stream.md) |  |  [optional] |
+|**fileStream** | **File** |  |  [optional] |
 |**contentType** | **String** |  |  [optional] |
 |**downloadedFilename** | **String** |  |  [optional] |
 

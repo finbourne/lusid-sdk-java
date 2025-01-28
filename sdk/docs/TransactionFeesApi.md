@@ -18,7 +18,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 [EXPERIMENTAL] DeleteTransactionFeeRule: Deletes a fee rule.
 
-&lt;br&gt;   Deletes the rule for all effective time.     &lt;br&gt;   The rule will remain viewable at previous as at times, but it will no longer be considered by   GetApplicableFees.     &lt;br&gt;   This cannot be undone.   
+    Deletes the rule for all effective time.         The rule will remain viewable at previous as at times, but it will no longer be considered by   GetApplicableFees.         This cannot be undone.   
 
 ### Example
 
@@ -96,7 +96,7 @@ public class TransactionFeesApiExample {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **200** | OK |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -406,7 +406,7 @@ public class TransactionFeesApiExample {
 
 [EXPERIMENTAL] UpsertTransactionFeeRules: Upsert fee rules.
 
-&lt;br&gt;   To upsert a new rule, the code field must be left empty, a code will then be assigned and returned as part   of the response. To update an existing rule, include the fee code. It is possible to both create and update   fee rules in the same request.     &lt;br&gt;   The upsert is transactional - either all create/update operations will succeed or none of them will.   
+    To upsert a new rule, the code field must be left empty, a code will then be assigned and returned as part   of the response. To update an existing rule, include the fee code. It is possible to both create and update   fee rules in the same request.         The upsert is transactional - either all create/update operations will succeed or none of them will.   
 
 ### Example
 
