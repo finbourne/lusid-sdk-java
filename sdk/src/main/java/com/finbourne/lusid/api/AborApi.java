@@ -3560,7 +3560,7 @@ public class AborApi {
 
         /**
          * Set reOpenPeriodDiaryEntryRequest
-         * @param reOpenPeriodDiaryEntryRequest The request body, detailing re open details (optional)
+         * @param reOpenPeriodDiaryEntryRequest The request body, containing details about the period to be re-opened. (optional)
          * @return APIreOpenPeriodsRequest
          */
         public APIreOpenPeriodsRequest reOpenPeriodDiaryEntryRequest(ReOpenPeriodDiaryEntryRequest reOpenPeriodDiaryEntryRequest) {
@@ -3689,8 +3689,8 @@ public class AborApi {
     /**
      * [EXPERIMENTAL] ReOpenPeriods: Reopen periods from a seed Diary Entry Code or when not specified, the last Closed Period for the given Abor.
      * Reopens one or more periods.
-     * @param scope The scope of the Abor to be deleted. (required)
-     * @param code The code of the Abor to be deleted. Together with the scope this uniquely identifies the Abor. (required)
+     * @param scope The scope of the Abor. (required)
+     * @param code The code of the Abor. Together with the scope this uniquely identifies the Abor. (required)
      * @return APIreOpenPeriodsRequest
      * @http.response.details
      <table summary="Response Details" border="1">

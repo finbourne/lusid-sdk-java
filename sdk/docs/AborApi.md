@@ -1246,9 +1246,9 @@ public class AborApiExample {
         // AborApi apiInstance = apiFactory.build(AborApi.class);
 
         AborApi apiInstance = ApiFactoryBuilder.build(fileName).build(AborApi.class);
-        String scope = "scope_example"; // String | The scope of the Abor to be deleted.
-        String code = "code_example"; // String | The code of the Abor to be deleted. Together with the scope this uniquely identifies the Abor.
-        ReOpenPeriodDiaryEntryRequest reOpenPeriodDiaryEntryRequest = new ReOpenPeriodDiaryEntryRequest(); // ReOpenPeriodDiaryEntryRequest | The request body, detailing re open details
+        String scope = "scope_example"; // String | The scope of the Abor.
+        String code = "code_example"; // String | The code of the Abor. Together with the scope this uniquely identifies the Abor.
+        ReOpenPeriodDiaryEntryRequest reOpenPeriodDiaryEntryRequest = new ReOpenPeriodDiaryEntryRequest(); // ReOpenPeriodDiaryEntryRequest | The request body, containing details about the period to be re-opened.
         try {
             // uncomment the below to set overrides at the request level
             // PeriodDiaryEntriesReopenedResponse result = apiInstance.reOpenPeriods(scope, code, reOpenPeriodDiaryEntryRequest).execute(opts);
@@ -1270,9 +1270,9 @@ public class AborApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **scope** | **String**| The scope of the Abor to be deleted. | |
-| **code** | **String**| The code of the Abor to be deleted. Together with the scope this uniquely identifies the Abor. | |
-| **reOpenPeriodDiaryEntryRequest** | [**ReOpenPeriodDiaryEntryRequest**](ReOpenPeriodDiaryEntryRequest.md)| The request body, detailing re open details | [optional] |
+| **scope** | **String**| The scope of the Abor. | |
+| **code** | **String**| The code of the Abor. Together with the scope this uniquely identifies the Abor. | |
+| **reOpenPeriodDiaryEntryRequest** | [**ReOpenPeriodDiaryEntryRequest**](ReOpenPeriodDiaryEntryRequest.md)| The request body, containing details about the period to be re-opened. | [optional] |
 
 ### Return type
 
