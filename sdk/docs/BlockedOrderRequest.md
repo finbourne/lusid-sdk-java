@@ -17,6 +17,7 @@
 |**price** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional] |
 |**orderInstruction** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 |**_package** | [**ResourceId**](ResourceId.md) |  |  [optional] |
+|**side** | **String** | The client&#39;s representation of the order&#39;s side (buy, sell, short, etc) |  [optional] |
 
 
 

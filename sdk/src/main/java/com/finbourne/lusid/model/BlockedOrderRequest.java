@@ -96,6 +96,10 @@ public class BlockedOrderRequest {
   @SerializedName(SERIALIZED_NAME_PACKAGE)
   private ResourceId _package;
 
+  public static final String SERIALIZED_NAME_SIDE = "side";
+  @SerializedName(SERIALIZED_NAME_SIDE)
+  private String side;
+
   public BlockedOrderRequest() {
   }
 
@@ -317,6 +321,27 @@ public class BlockedOrderRequest {
   }
 
 
+  public BlockedOrderRequest side(String side) {
+    
+    this.side = side;
+    return this;
+  }
+
+   /**
+   * The client&#39;s representation of the order&#39;s side (buy, sell, short, etc)
+   * @return side
+  **/
+  @jakarta.annotation.Nullable
+  public String getSide() {
+    return side;
+  }
+
+
+  public void setSide(String side) {
+    this.side = side;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -336,7 +361,8 @@ public class BlockedOrderRequest {
         Objects.equals(this.date, blockedOrderRequest.date) &&
         Objects.equals(this.price, blockedOrderRequest.price) &&
         Objects.equals(this.orderInstruction, blockedOrderRequest.orderInstruction) &&
-        Objects.equals(this._package, blockedOrderRequest._package);
+        Objects.equals(this._package, blockedOrderRequest._package) &&
+        Objects.equals(this.side, blockedOrderRequest.side);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -345,7 +371,7 @@ public class BlockedOrderRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(properties, quantity, orderBookId, portfolioId, id, state, date, price, orderInstruction, _package);
+    return Objects.hash(properties, quantity, orderBookId, portfolioId, id, state, date, price, orderInstruction, _package, side);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -369,6 +395,7 @@ public class BlockedOrderRequest {
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
     sb.append("    orderInstruction: ").append(toIndentedString(orderInstruction)).append("\n");
     sb.append("    _package: ").append(toIndentedString(_package)).append("\n");
+    sb.append("    side: ").append(toIndentedString(side)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -401,6 +428,7 @@ public class BlockedOrderRequest {
     openapiFields.add("price");
     openapiFields.add("orderInstruction");
     openapiFields.add("package");
+    openapiFields.add("side");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -452,6 +480,9 @@ public class BlockedOrderRequest {
       // validate the optional field `package`
       if (jsonObj.get("package") != null && !jsonObj.get("package").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("package"));
+      }
+      if ((jsonObj.get("side") != null && !jsonObj.get("side").isJsonNull()) && !jsonObj.get("side").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `side` to be a primitive type in the JSON string but got `%s`", jsonObj.get("side").toString()));
       }
   }
 

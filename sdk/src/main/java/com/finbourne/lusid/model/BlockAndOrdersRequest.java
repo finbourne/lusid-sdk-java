@@ -217,10 +217,10 @@ public class BlockAndOrdersRequest {
   }
 
    /**
-   * The client&#39;s representation of the block&#39;s side (buy, sell, short, etc)
+   * The client&#39;s representation of the block&#39;s side (buy, sell, short, etc). BlockedOrders in the request which do not specify a side will have their side populated with this value.
    * @return side
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getSide() {
     return side;
   }
@@ -426,7 +426,6 @@ public class BlockAndOrdersRequest {
     openapiRequiredFields.add("blockId");
     openapiRequiredFields.add("orders");
     openapiRequiredFields.add("instrumentIdentifiers");
-    openapiRequiredFields.add("side");
   }
 
  /**
@@ -461,7 +460,7 @@ public class BlockAndOrdersRequest {
       for (int i = 0; i < jsonArrayorders.size(); i++) {
         BlockedOrderRequest.validateJsonElement(jsonArrayorders.get(i));
       };
-      if (!jsonObj.get("side").isJsonPrimitive()) {
+      if ((jsonObj.get("side") != null && !jsonObj.get("side").isJsonNull()) && !jsonObj.get("side").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `side` to be a primitive type in the JSON string but got `%s`", jsonObj.get("side").toString()));
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
