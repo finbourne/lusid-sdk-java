@@ -761,7 +761,7 @@ public class ExecutionsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;Execution\&quot; domain to decorate onto each execution.   These take the format {domain}/{scope}/{code} e.g. \&quot;Execution/system/Name\&quot;. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;Execution\&quot; domain to decorate onto each execution.   These take the format {domain}/{scope}/{code} e.g. \&quot;Execution/system/Name\&quot;.   All properties, except derived properties, are returned by default, without specifying here. (optional)
          * @return APIlistExecutionsRequest
          */
         public APIlistExecutionsRequest propertyKeys(List<String> propertyKeys) {

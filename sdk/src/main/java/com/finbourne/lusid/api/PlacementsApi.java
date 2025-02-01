@@ -761,7 +761,7 @@ public class PlacementsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;Placement\&quot; domain to decorate onto each placement.   These take the format {domain}/{scope}/{code} e.g. \&quot;Placement/system/Name\&quot;. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;Placement\&quot; domain to decorate onto each placement.   These take the format {domain}/{scope}/{code} e.g. \&quot;Placement/system/Name\&quot;.   All properties, except derived properties, are returned by default, without specifying here. (optional)
          * @return APIlistPlacementsRequest
          */
         public APIlistPlacementsRequest propertyKeys(List<String> propertyKeys) {

@@ -761,7 +761,7 @@ public class OrderInstructionsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;OrderInstruction\&quot; domain to decorate onto each orderInstruction.   These take the format {domain}/{scope}/{code} e.g. \&quot;OrderInstruction/system/Name\&quot;. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;OrderInstruction\&quot; domain to decorate onto each orderInstruction.   These take the format {domain}/{scope}/{code} e.g. \&quot;OrderInstruction/system/Name\&quot;.   All properties, except derived properties, are returned by default, without specifying here. (optional)
          * @return APIlistOrderInstructionsRequest
          */
         public APIlistOrderInstructionsRequest propertyKeys(List<String> propertyKeys) {

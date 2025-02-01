@@ -761,7 +761,7 @@ public class BlocksApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;Block\&quot; domain to decorate onto each block.   These take the format {domain}/{scope}/{code} e.g. \&quot;Block/system/Name\&quot;. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;Block\&quot; domain to decorate onto each block.   These take the format {domain}/{scope}/{code} e.g. \&quot;Block/system/Name\&quot;.   All properties, except derived properties, are returned by default, without specifying here. (optional)
          * @return APIlistBlocksRequest
          */
         public APIlistBlocksRequest propertyKeys(List<String> propertyKeys) {
