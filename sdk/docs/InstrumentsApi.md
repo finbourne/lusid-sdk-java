@@ -1617,7 +1617,7 @@ public class InstrumentsApiExample {
 
 ## listInstruments
 
-> PagedResourceListOfInstrument listInstruments(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds)
+> PagedResourceListOfInstrument listInstruments(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode)
 
 ListInstruments: List instruments
 
@@ -1671,11 +1671,13 @@ public class InstrumentsApiExample {
         List<String> instrumentPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument' domain to decorate onto   instruments, or from any domain that supports relationships to decorate onto related entities.   These must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'.
         String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
         List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
+        String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Hierarchical Data Model to use.
+        String dataModelCode = "dataModelCode_example"; // String | The optional code of a Hierarchical Data Model to use.
         try {
             // uncomment the below to set overrides at the request level
-            // PagedResourceListOfInstrument result = apiInstance.listInstruments(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds).execute(opts);
+            // PagedResourceListOfInstrument result = apiInstance.listInstruments(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode).execute(opts);
 
-            PagedResourceListOfInstrument result = apiInstance.listInstruments(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds).execute();
+            PagedResourceListOfInstrument result = apiInstance.listInstruments(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling InstrumentsApi#listInstruments");
@@ -1701,6 +1703,8 @@ public class InstrumentsApiExample {
 | **instrumentPropertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Instrument&#39; domain to decorate onto   instruments, or from any domain that supports relationships to decorate onto related entities.   These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. | [optional] |
 | **scope** | **String**| The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
 | **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities   onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
+| **dataModelScope** | **String**| The optional scope of a Hierarchical Data Model to use. | [optional] |
+| **dataModelCode** | **String**| The optional code of a Hierarchical Data Model to use. | [optional] |
 
 ### Return type
 

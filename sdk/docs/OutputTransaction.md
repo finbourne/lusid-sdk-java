@@ -37,6 +37,9 @@ A list of output transactions.
 |**transactionGroupId** | **String** | The identifier for grouping economic events across multiple transactions |  [optional] |
 |**resolvedTransactionTypeDetails** | [**TransactionTypeDetails**](TransactionTypeDetails.md) |  |  [optional] |
 |**grossTransactionAmount** | **java.math.BigDecimal** | The total gross value of the transaction in the transaction currency. |  [optional] |
+|**otcConfirmation** | [**OtcConfirmation**](OtcConfirmation.md) |  |  [optional] |
+|**orderId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
+|**allocationId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 
 
 

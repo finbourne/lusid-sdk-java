@@ -13,8 +13,10 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.CurrencyAndAmount;
 import com.finbourne.lusid.model.CustodianAccount;
+import com.finbourne.lusid.model.OtcConfirmation;
 import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.RealisedGainLoss;
+import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.TransactionPrice;
 import com.finbourne.lusid.model.TransactionTypeDetails;
 import com.google.gson.TypeAdapter;
@@ -225,6 +227,18 @@ public class OutputTransaction {
   public static final String SERIALIZED_NAME_GROSS_TRANSACTION_AMOUNT = "grossTransactionAmount";
   @SerializedName(SERIALIZED_NAME_GROSS_TRANSACTION_AMOUNT)
   private java.math.BigDecimal grossTransactionAmount;
+
+  public static final String SERIALIZED_NAME_OTC_CONFIRMATION = "otcConfirmation";
+  @SerializedName(SERIALIZED_NAME_OTC_CONFIRMATION)
+  private OtcConfirmation otcConfirmation;
+
+  public static final String SERIALIZED_NAME_ORDER_ID = "orderId";
+  @SerializedName(SERIALIZED_NAME_ORDER_ID)
+  private ResourceId orderId;
+
+  public static final String SERIALIZED_NAME_ALLOCATION_ID = "allocationId";
+  @SerializedName(SERIALIZED_NAME_ALLOCATION_ID)
+  private ResourceId allocationId;
 
   public OutputTransaction() {
   }
@@ -870,6 +884,69 @@ public class OutputTransaction {
   }
 
 
+  public OutputTransaction otcConfirmation(OtcConfirmation otcConfirmation) {
+    
+    this.otcConfirmation = otcConfirmation;
+    return this;
+  }
+
+   /**
+   * Get otcConfirmation
+   * @return otcConfirmation
+  **/
+  @jakarta.annotation.Nullable
+  public OtcConfirmation getOtcConfirmation() {
+    return otcConfirmation;
+  }
+
+
+  public void setOtcConfirmation(OtcConfirmation otcConfirmation) {
+    this.otcConfirmation = otcConfirmation;
+  }
+
+
+  public OutputTransaction orderId(ResourceId orderId) {
+    
+    this.orderId = orderId;
+    return this;
+  }
+
+   /**
+   * Get orderId
+   * @return orderId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getOrderId() {
+    return orderId;
+  }
+
+
+  public void setOrderId(ResourceId orderId) {
+    this.orderId = orderId;
+  }
+
+
+  public OutputTransaction allocationId(ResourceId allocationId) {
+    
+    this.allocationId = allocationId;
+    return this;
+  }
+
+   /**
+   * Get allocationId
+   * @return allocationId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getAllocationId() {
+    return allocationId;
+  }
+
+
+  public void setAllocationId(ResourceId allocationId) {
+    this.allocationId = allocationId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -908,7 +985,10 @@ public class OutputTransaction {
         Objects.equals(this.custodianAccount, outputTransaction.custodianAccount) &&
         Objects.equals(this.transactionGroupId, outputTransaction.transactionGroupId) &&
         Objects.equals(this.resolvedTransactionTypeDetails, outputTransaction.resolvedTransactionTypeDetails) &&
-        (this.grossTransactionAmount.compareTo(outputTransaction.getGrossTransactionAmount()) == 0);
+        (this.grossTransactionAmount.compareTo(outputTransaction.getGrossTransactionAmount()) == 0) &&
+        Objects.equals(this.otcConfirmation, outputTransaction.otcConfirmation) &&
+        Objects.equals(this.orderId, outputTransaction.orderId) &&
+        Objects.equals(this.allocationId, outputTransaction.allocationId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -917,7 +997,7 @@ public class OutputTransaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transactionId, type, description, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionAmount, transactionPrice, totalConsideration, exchangeRate, transactionToPortfolioRate, transactionCurrency, properties, counterpartyId, source, transactionStatus, entryDateTime, cancelDateTime, realisedGainLoss, holdingIds, sourceType, sourceInstrumentEventId, custodianAccount, transactionGroupId, resolvedTransactionTypeDetails, grossTransactionAmount);
+    return Objects.hash(transactionId, type, description, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionAmount, transactionPrice, totalConsideration, exchangeRate, transactionToPortfolioRate, transactionCurrency, properties, counterpartyId, source, transactionStatus, entryDateTime, cancelDateTime, realisedGainLoss, holdingIds, sourceType, sourceInstrumentEventId, custodianAccount, transactionGroupId, resolvedTransactionTypeDetails, grossTransactionAmount, otcConfirmation, orderId, allocationId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -960,6 +1040,9 @@ public class OutputTransaction {
     sb.append("    transactionGroupId: ").append(toIndentedString(transactionGroupId)).append("\n");
     sb.append("    resolvedTransactionTypeDetails: ").append(toIndentedString(resolvedTransactionTypeDetails)).append("\n");
     sb.append("    grossTransactionAmount: ").append(toIndentedString(grossTransactionAmount)).append("\n");
+    sb.append("    otcConfirmation: ").append(toIndentedString(otcConfirmation)).append("\n");
+    sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
+    sb.append("    allocationId: ").append(toIndentedString(allocationId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -1011,6 +1094,9 @@ public class OutputTransaction {
     openapiFields.add("transactionGroupId");
     openapiFields.add("resolvedTransactionTypeDetails");
     openapiFields.add("grossTransactionAmount");
+    openapiFields.add("otcConfirmation");
+    openapiFields.add("orderId");
+    openapiFields.add("allocationId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -1111,6 +1197,18 @@ public class OutputTransaction {
       // validate the optional field `resolvedTransactionTypeDetails`
       if (jsonObj.get("resolvedTransactionTypeDetails") != null && !jsonObj.get("resolvedTransactionTypeDetails").isJsonNull()) {
         TransactionTypeDetails.validateJsonElement(jsonObj.get("resolvedTransactionTypeDetails"));
+      }
+      // validate the optional field `otcConfirmation`
+      if (jsonObj.get("otcConfirmation") != null && !jsonObj.get("otcConfirmation").isJsonNull()) {
+        OtcConfirmation.validateJsonElement(jsonObj.get("otcConfirmation"));
+      }
+      // validate the optional field `orderId`
+      if (jsonObj.get("orderId") != null && !jsonObj.get("orderId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("orderId"));
+      }
+      // validate the optional field `allocationId`
+      if (jsonObj.get("allocationId") != null && !jsonObj.get("allocationId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("allocationId"));
       }
   }
 

@@ -4749,11 +4749,11 @@ public class InstrumentsApi {
     public APIlistInstrumentPropertiesRequest listInstrumentProperties(String identifierType, String identifier) {
         return new APIlistInstrumentPropertiesRequest(identifierType, identifier);
     }
-    private okhttp3.Call listInstrumentsCall(OffsetDateTime asAt, String effectiveAt, String page, List<String> sortBy, Integer limit, String filter, List<String> instrumentPropertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
-        return listInstrumentsCall(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds,  _callback, new ConfigurationOptions());
+    private okhttp3.Call listInstrumentsCall(OffsetDateTime asAt, String effectiveAt, String page, List<String> sortBy, Integer limit, String filter, List<String> instrumentPropertyKeys, String scope, List<String> relationshipDefinitionIds, String dataModelScope, String dataModelCode, final ApiCallback _callback) throws ApiException {
+        return listInstrumentsCall(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call listInstrumentsCall(OffsetDateTime asAt, String effectiveAt, String page, List<String> sortBy, Integer limit, String filter, List<String> instrumentPropertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listInstrumentsCall(OffsetDateTime asAt, String effectiveAt, String page, List<String> sortBy, Integer limit, String filter, List<String> instrumentPropertyKeys, String scope, List<String> relationshipDefinitionIds, String dataModelScope, String dataModelCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4814,6 +4814,14 @@ public class InstrumentsApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "relationshipDefinitionIds", relationshipDefinitionIds));
         }
 
+        if (dataModelScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dataModelScope", dataModelScope));
+        }
+
+        if (dataModelCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dataModelCode", dataModelCode));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -4836,35 +4844,35 @@ public class InstrumentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listInstrumentsValidateBeforeCall(OffsetDateTime asAt, String effectiveAt, String page, List<String> sortBy, Integer limit, String filter, List<String> instrumentPropertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        return listInstrumentsCall(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, _callback, opts);
+    private okhttp3.Call listInstrumentsValidateBeforeCall(OffsetDateTime asAt, String effectiveAt, String page, List<String> sortBy, Integer limit, String filter, List<String> instrumentPropertyKeys, String scope, List<String> relationshipDefinitionIds, String dataModelScope, String dataModelCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listInstrumentsCall(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, _callback, opts);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfInstrument> listInstrumentsWithHttpInfo(OffsetDateTime asAt, String effectiveAt, String page, List<String> sortBy, Integer limit, String filter, List<String> instrumentPropertyKeys, String scope, List<String> relationshipDefinitionIds) throws ApiException {
-        okhttp3.Call localVarCall = listInstrumentsValidateBeforeCall(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, null, new ConfigurationOptions());
+    private ApiResponse<PagedResourceListOfInstrument> listInstrumentsWithHttpInfo(OffsetDateTime asAt, String effectiveAt, String page, List<String> sortBy, Integer limit, String filter, List<String> instrumentPropertyKeys, String scope, List<String> relationshipDefinitionIds, String dataModelScope, String dataModelCode) throws ApiException {
+        okhttp3.Call localVarCall = listInstrumentsValidateBeforeCall(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfInstrument>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<PagedResourceListOfInstrument> listInstrumentsWithHttpInfo(OffsetDateTime asAt, String effectiveAt, String page, List<String> sortBy, Integer limit, String filter, List<String> instrumentPropertyKeys, String scope, List<String> relationshipDefinitionIds, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = listInstrumentsValidateBeforeCall(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, null, opts);
+    private ApiResponse<PagedResourceListOfInstrument> listInstrumentsWithHttpInfo(OffsetDateTime asAt, String effectiveAt, String page, List<String> sortBy, Integer limit, String filter, List<String> instrumentPropertyKeys, String scope, List<String> relationshipDefinitionIds, String dataModelScope, String dataModelCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listInstrumentsValidateBeforeCall(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfInstrument>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listInstrumentsAsync(OffsetDateTime asAt, String effectiveAt, String page, List<String> sortBy, Integer limit, String filter, List<String> instrumentPropertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback<PagedResourceListOfInstrument> _callback) throws ApiException {
+    private okhttp3.Call listInstrumentsAsync(OffsetDateTime asAt, String effectiveAt, String page, List<String> sortBy, Integer limit, String filter, List<String> instrumentPropertyKeys, String scope, List<String> relationshipDefinitionIds, String dataModelScope, String dataModelCode, final ApiCallback<PagedResourceListOfInstrument> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listInstrumentsValidateBeforeCall(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = listInstrumentsValidateBeforeCall(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfInstrument>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call listInstrumentsAsync(OffsetDateTime asAt, String effectiveAt, String page, List<String> sortBy, Integer limit, String filter, List<String> instrumentPropertyKeys, String scope, List<String> relationshipDefinitionIds, final ApiCallback<PagedResourceListOfInstrument> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listInstrumentsAsync(OffsetDateTime asAt, String effectiveAt, String page, List<String> sortBy, Integer limit, String filter, List<String> instrumentPropertyKeys, String scope, List<String> relationshipDefinitionIds, String dataModelScope, String dataModelCode, final ApiCallback<PagedResourceListOfInstrument> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = listInstrumentsValidateBeforeCall(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, _callback, opts);
+        okhttp3.Call localVarCall = listInstrumentsValidateBeforeCall(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfInstrument>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4880,6 +4888,8 @@ public class InstrumentsApi {
         private List<String> instrumentPropertyKeys;
         private String scope;
         private List<String> relationshipDefinitionIds;
+        private String dataModelScope;
+        private String dataModelCode;
 
         private APIlistInstrumentsRequest() {
         }
@@ -4975,6 +4985,26 @@ public class InstrumentsApi {
         }
 
         /**
+         * Set dataModelScope
+         * @param dataModelScope The optional scope of a Hierarchical Data Model to use. (optional)
+         * @return APIlistInstrumentsRequest
+         */
+        public APIlistInstrumentsRequest dataModelScope(String dataModelScope) {
+            this.dataModelScope = dataModelScope;
+            return this;
+        }
+
+        /**
+         * Set dataModelCode
+         * @param dataModelCode The optional code of a Hierarchical Data Model to use. (optional)
+         * @return APIlistInstrumentsRequest
+         */
+        public APIlistInstrumentsRequest dataModelCode(String dataModelCode) {
+            this.dataModelCode = dataModelCode;
+            return this;
+        }
+
+        /**
          * Build call for listInstruments
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -4988,7 +5018,7 @@ public class InstrumentsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listInstrumentsCall(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, _callback);
+            return listInstrumentsCall(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, _callback);
         }
 
         /**
@@ -5004,7 +5034,7 @@ public class InstrumentsApi {
          </table>
          */
         public PagedResourceListOfInstrument execute() throws ApiException {
-            ApiResponse<PagedResourceListOfInstrument> localVarResp = listInstrumentsWithHttpInfo(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds);
+            ApiResponse<PagedResourceListOfInstrument> localVarResp = listInstrumentsWithHttpInfo(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode);
             return localVarResp.getData();
         }
 
@@ -5021,7 +5051,7 @@ public class InstrumentsApi {
          </table>
          */
         public PagedResourceListOfInstrument execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<PagedResourceListOfInstrument> localVarResp = listInstrumentsWithHttpInfo(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, opts);
+            ApiResponse<PagedResourceListOfInstrument> localVarResp = listInstrumentsWithHttpInfo(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, opts);
             return localVarResp.getData();
         }
 
@@ -5038,7 +5068,7 @@ public class InstrumentsApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfInstrument> executeWithHttpInfo() throws ApiException {
-            return listInstrumentsWithHttpInfo(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds);
+            return listInstrumentsWithHttpInfo(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode);
         }
 
         /**
@@ -5054,7 +5084,7 @@ public class InstrumentsApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfInstrument> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return listInstrumentsWithHttpInfo(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, opts);
+            return listInstrumentsWithHttpInfo(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, opts);
         }
 
         /**
@@ -5071,7 +5101,7 @@ public class InstrumentsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfInstrument> _callback) throws ApiException {
-            return listInstrumentsAsync(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, _callback);
+            return listInstrumentsAsync(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, _callback);
         }
 
         /**
@@ -5088,7 +5118,7 @@ public class InstrumentsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfInstrument> _callback, ConfigurationOptions opts) throws ApiException {
-            return listInstrumentsAsync(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, _callback, opts);
+            return listInstrumentsAsync(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, _callback, opts);
         }
     }
 

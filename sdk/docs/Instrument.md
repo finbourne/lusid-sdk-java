@@ -23,6 +23,7 @@ A list of instruments.
 |**domCcy** | **String** | The domestic currency, meaning the currency in which the instrument would typically be expected to pay cashflows, e.g. a share in AAPL being USD. |  [optional] |
 |**relationships** | [**List&lt;Relationship&gt;**](Relationship.md) | A set of relationships associated to the instrument. |  [optional] |
 |**settlementCycle** | [**SettlementCycle**](SettlementCycle.md) |  |  [optional] |
+|**dataModelMembership** | [**DataModelMembership**](DataModelMembership.md) |  |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 
