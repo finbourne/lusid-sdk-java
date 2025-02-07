@@ -72,6 +72,10 @@ public class CdxCreditEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_CONSTITUENT_REFERENCE)
   private String constituentReference;
 
+  public static final String SERIALIZED_NAME_PAYMENT_DATE = "paymentDate";
+  @SerializedName(SERIALIZED_NAME_PAYMENT_DATE)
+  private OffsetDateTime paymentDate;
+
   public CdxCreditEvent() {
     // this.instrumentEventType = this.getClass().getSimpleName();
   }
@@ -181,6 +185,27 @@ public class CdxCreditEvent extends InstrumentEvent {
   }
 
 
+  public CdxCreditEvent paymentDate(OffsetDateTime paymentDate) {
+    
+    this.paymentDate = paymentDate;
+    return this;
+  }
+
+   /**
+   * The date of the credit event auction settlement.
+   * @return paymentDate
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getPaymentDate() {
+    return paymentDate;
+  }
+
+
+  public void setPaymentDate(OffsetDateTime paymentDate) {
+    this.paymentDate = paymentDate;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -196,6 +221,7 @@ public class CdxCreditEvent extends InstrumentEvent {
         (this.recoveryRate.compareTo(cdxCreditEvent.getRecoveryRate()) == 0) &&
         (this.constituentWeight.compareTo(cdxCreditEvent.getConstituentWeight()) == 0) &&
         Objects.equals(this.constituentReference, cdxCreditEvent.constituentReference) &&
+        Objects.equals(this.paymentDate, cdxCreditEvent.paymentDate) &&
         super.equals(o);
   }
 
@@ -205,7 +231,7 @@ public class CdxCreditEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(effectiveDate, auctionDate, recoveryRate, constituentWeight, constituentReference, super.hashCode());
+    return Objects.hash(effectiveDate, auctionDate, recoveryRate, constituentWeight, constituentReference, paymentDate, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -225,6 +251,7 @@ public class CdxCreditEvent extends InstrumentEvent {
     sb.append("    recoveryRate: ").append(toIndentedString(recoveryRate)).append("\n");
     sb.append("    constituentWeight: ").append(toIndentedString(constituentWeight)).append("\n");
     sb.append("    constituentReference: ").append(toIndentedString(constituentReference)).append("\n");
+    sb.append("    paymentDate: ").append(toIndentedString(paymentDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -253,6 +280,7 @@ public class CdxCreditEvent extends InstrumentEvent {
     openapiFields.add("recoveryRate");
     openapiFields.add("constituentWeight");
     openapiFields.add("constituentReference");
+    openapiFields.add("paymentDate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

@@ -13,6 +13,7 @@ Definition of a credit event for credit default swap index (CDX) instruments.
 |**recoveryRate** | **java.math.BigDecimal** | The fraction of the defaulted debt that can be recovered. |  [optional] |
 |**constituentWeight** | **java.math.BigDecimal** | The relative weight of the CDX constituent. |  |
 |**constituentReference** | **String** | Reference value used to identify the CDX constituent. |  [optional] |
+|**paymentDate** | **OffsetDateTime** | The date of the credit event auction settlement. |  [optional] |
 
 
 

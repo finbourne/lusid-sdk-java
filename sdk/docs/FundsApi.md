@@ -1188,7 +1188,7 @@ public class FundsApiExample {
 
 ## getValuationPointJournalEntryLines
 
-> ValuationPointResourceListOfJournalEntryLine getValuationPointJournalEntryLines(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys)
+> ValuationPointResourceListOfFundJournalEntryLine getValuationPointJournalEntryLines(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys)
 
 [EXPERIMENTAL] GetValuationPointJournalEntryLines: Get the Journal Entry lines for the given Fund.
 
@@ -1244,9 +1244,9 @@ public class FundsApiExample {
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument', 'Transaction', 'Portfolio', 'Account', 'LegalEntity' or 'CustodianAccount'   domain to decorate onto the journal entry lines.
         try {
             // uncomment the below to set overrides at the request level
-            // ValuationPointResourceListOfJournalEntryLine result = apiInstance.getValuationPointJournalEntryLines(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys).execute(opts);
+            // ValuationPointResourceListOfFundJournalEntryLine result = apiInstance.getValuationPointJournalEntryLines(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys).execute(opts);
 
-            ValuationPointResourceListOfJournalEntryLine result = apiInstance.getValuationPointJournalEntryLines(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys).execute();
+            ValuationPointResourceListOfFundJournalEntryLine result = apiInstance.getValuationPointJournalEntryLines(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling FundsApi#getValuationPointJournalEntryLines");
@@ -1275,7 +1275,7 @@ public class FundsApiExample {
 
 ### Return type
 
-[**ValuationPointResourceListOfJournalEntryLine**](ValuationPointResourceListOfJournalEntryLine.md)
+[**ValuationPointResourceListOfFundJournalEntryLine**](ValuationPointResourceListOfFundJournalEntryLine.md)
 
 ### HTTP request headers
 

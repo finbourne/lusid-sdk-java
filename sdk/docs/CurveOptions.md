@@ -10,7 +10,7 @@ Options for configuring how ComplexMarketData representing a 'curve' is interpre
 |------------ | ------------- | ------------- | -------------|
 |**dayCountConvention** | **String** | Day count convention of the curve. Defaults to \&quot;Act360\&quot;. |  [optional] |
 |**frontExtrapolationType** | **String** | What type of extrapolation is used to build the curve  Imagine that the curve is facing the observer(you), then the \&quot;front\&quot; direction is the closest point on the curve onward.    example: 0D tenor to past  Defaults to \&quot;Flat\&quot;. Supported string (enumeration) values are: [None, Flat, Linear]. |  [optional] |
-|**backExtrapolationType** | **String** | What type of extrapolation is used to build the curve.    Imagine that the curve is facing the observer(you), then the \&quot;back\&quot; direction is the furthest point on the curve onward.    example: 30Y tenor to infinity  Defaults to \&quot;Flat\&quot;. Supported string (enumeration) values are: [None, Flat, Linear]. |  [optional] |
+|**backExtrapolationType** | **String** | What type of extrapolation is used to build the curve.    Imagine that the curve is facing the observer(you), then the \&quot;back\&quot; direction is the furthest point on the curve onward.  example: 30Y tenor to infinity    Defaults to \&quot;Flat\&quot;. Supported string (enumeration) values are: [None, Flat, Linear]. |  [optional] |
 
 
 

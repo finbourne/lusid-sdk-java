@@ -295,7 +295,7 @@ public class TransactionFeesApi {
 
     /**
      * [EXPERIMENTAL] DeleteTransactionFeeRule: Deletes a fee rule.
-     *     Deletes the rule for all effective time.         The rule will remain viewable at previous as at times, but it will no longer be considered by   GetApplicableFees.         This cannot be undone.   
+     * Deletes the rule for all effective time.    The rule will remain viewable at previous as at times, but it will no longer be considered by  GetApplicableFees.    This cannot be undone.
      * @param code The fee rule code. (required)
      * @return APIdeleteTransactionFeeRuleRequest
      * @http.response.details
@@ -1433,7 +1433,7 @@ public class TransactionFeesApi {
 
     /**
      * [EXPERIMENTAL] UpsertTransactionFeeRules: Upsert fee rules.
-     *     To upsert a new rule, the code field must be left empty, a code will then be assigned and returned as part   of the response. To update an existing rule, include the fee code. It is possible to both create and update   fee rules in the same request.         The upsert is transactional - either all create/update operations will succeed or none of them will.   
+     * To upsert a new rule, the code field must be left empty, a code will then be assigned and returned as part  of the response. To update an existing rule, include the fee code. It is possible to both create and update  fee rules in the same request.    The upsert is transactional - either all create/update operations will succeed or none of them will.
      * @param requestBody A dictionary of upsert request identifiers to rule upsert requests. The request   identifiers are valid for the request only and can be used to link the upserted fee rule to the code of a   created fee rule. (required)
      * @return APIupsertTransactionFeeRulesRequest
      * @http.response.details
