@@ -103,7 +103,7 @@ public class DataModelMembership {
    * Get currentModel
    * @return currentModel
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public MembershipAndStatus getCurrentModel() {
     return currentModel;
   }
@@ -167,7 +167,6 @@ public class DataModelMembership {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("membership");
-    openapiRequiredFields.add("currentModel");
   }
 
  /**
@@ -200,8 +199,10 @@ public class DataModelMembership {
       for (int i = 0; i < jsonArraymembership.size(); i++) {
         Membership.validateJsonElement(jsonArraymembership.get(i));
       };
-      // validate the required field `currentModel`
-      MembershipAndStatus.validateJsonElement(jsonObj.get("currentModel"));
+      // validate the optional field `currentModel`
+      if (jsonObj.get("currentModel") != null && !jsonObj.get("currentModel").isJsonNull()) {
+        MembershipAndStatus.validateJsonElement(jsonObj.get("currentModel"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -8,7 +8,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**membership** | [**List&lt;Membership&gt;**](Membership.md) | The collection of data models this entity is a member of. |  |
-|**currentModel** | [**MembershipAndStatus**](MembershipAndStatus.md) |  |  |
+|**currentModel** | [**MembershipAndStatus**](MembershipAndStatus.md) |  |  [optional] |
 
 
 
