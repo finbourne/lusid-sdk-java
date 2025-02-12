@@ -25,6 +25,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.finbourne.lusid.model.CreateCustomDataModelRequest;
 import com.finbourne.lusid.model.CustomDataModel;
 import com.finbourne.lusid.model.DeletedEntityResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
@@ -32,7 +33,7 @@ import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import java.time.OffsetDateTime;
 import com.finbourne.lusid.model.ResourceListOfDataModelSummary;
 import com.finbourne.lusid.model.ResourceListOfString;
-import com.finbourne.lusid.model.UpsertCustomDataModelRequest;
+import com.finbourne.lusid.model.UpdateCustomDataModelRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -77,11 +78,11 @@ public class CustomDataModelsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    private okhttp3.Call createCustomDataModelCall(String scope, String code, String entityType, UpsertCustomDataModelRequest upsertCustomDataModelRequest, final ApiCallback _callback) throws ApiException {
-        return createCustomDataModelCall(scope, code, entityType, upsertCustomDataModelRequest,  _callback, new ConfigurationOptions());
+    private okhttp3.Call createCustomDataModelCall(String entityType, CreateCustomDataModelRequest createCustomDataModelRequest, final ApiCallback _callback) throws ApiException {
+        return createCustomDataModelCall(entityType, createCustomDataModelRequest,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call createCustomDataModelCall(String scope, String code, String entityType, UpsertCustomDataModelRequest upsertCustomDataModelRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call createCustomDataModelCall(String entityType, CreateCustomDataModelRequest createCustomDataModelRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -95,12 +96,10 @@ public class CustomDataModelsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = upsertCustomDataModelRequest;
+        Object localVarPostBody = createCustomDataModelRequest;
 
         // create path and map variables
-        String localVarPath = "/api/datamodel/{entityType}/{scope}/{code}"
-            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
-            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
+        String localVarPath = "/api/datamodel/{entityType}"
             .replace("{" + "entityType" + "}", localVarApiClient.escapeString(entityType.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -135,74 +134,60 @@ public class CustomDataModelsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createCustomDataModelValidateBeforeCall(String scope, String code, String entityType, UpsertCustomDataModelRequest upsertCustomDataModelRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        // verify the required parameter 'scope' is set
-        if (scope == null) {
-            throw new ApiException("Missing the required parameter 'scope' when calling createCustomDataModel(Async)");
-        }
-
-        // verify the required parameter 'code' is set
-        if (code == null) {
-            throw new ApiException("Missing the required parameter 'code' when calling createCustomDataModel(Async)");
-        }
-
+    private okhttp3.Call createCustomDataModelValidateBeforeCall(String entityType, CreateCustomDataModelRequest createCustomDataModelRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'entityType' is set
         if (entityType == null) {
             throw new ApiException("Missing the required parameter 'entityType' when calling createCustomDataModel(Async)");
         }
 
-        return createCustomDataModelCall(scope, code, entityType, upsertCustomDataModelRequest, _callback, opts);
+        return createCustomDataModelCall(entityType, createCustomDataModelRequest, _callback, opts);
 
     }
 
 
-    private ApiResponse<CustomDataModel> createCustomDataModelWithHttpInfo(String scope, String code, String entityType, UpsertCustomDataModelRequest upsertCustomDataModelRequest) throws ApiException {
-        okhttp3.Call localVarCall = createCustomDataModelValidateBeforeCall(scope, code, entityType, upsertCustomDataModelRequest, null, new ConfigurationOptions());
+    private ApiResponse<CustomDataModel> createCustomDataModelWithHttpInfo(String entityType, CreateCustomDataModelRequest createCustomDataModelRequest) throws ApiException {
+        okhttp3.Call localVarCall = createCustomDataModelValidateBeforeCall(entityType, createCustomDataModelRequest, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<CustomDataModel>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<CustomDataModel> createCustomDataModelWithHttpInfo(String scope, String code, String entityType, UpsertCustomDataModelRequest upsertCustomDataModelRequest, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = createCustomDataModelValidateBeforeCall(scope, code, entityType, upsertCustomDataModelRequest, null, opts);
+    private ApiResponse<CustomDataModel> createCustomDataModelWithHttpInfo(String entityType, CreateCustomDataModelRequest createCustomDataModelRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createCustomDataModelValidateBeforeCall(entityType, createCustomDataModelRequest, null, opts);
         Type localVarReturnType = new TypeToken<CustomDataModel>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call createCustomDataModelAsync(String scope, String code, String entityType, UpsertCustomDataModelRequest upsertCustomDataModelRequest, final ApiCallback<CustomDataModel> _callback) throws ApiException {
+    private okhttp3.Call createCustomDataModelAsync(String entityType, CreateCustomDataModelRequest createCustomDataModelRequest, final ApiCallback<CustomDataModel> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createCustomDataModelValidateBeforeCall(scope, code, entityType, upsertCustomDataModelRequest, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = createCustomDataModelValidateBeforeCall(entityType, createCustomDataModelRequest, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<CustomDataModel>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call createCustomDataModelAsync(String scope, String code, String entityType, UpsertCustomDataModelRequest upsertCustomDataModelRequest, final ApiCallback<CustomDataModel> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call createCustomDataModelAsync(String entityType, CreateCustomDataModelRequest createCustomDataModelRequest, final ApiCallback<CustomDataModel> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = createCustomDataModelValidateBeforeCall(scope, code, entityType, upsertCustomDataModelRequest, _callback, opts);
+        okhttp3.Call localVarCall = createCustomDataModelValidateBeforeCall(entityType, createCustomDataModelRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<CustomDataModel>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
     public class APIcreateCustomDataModelRequest {
-        private final String scope;
-        private final String code;
         private final String entityType;
-        private UpsertCustomDataModelRequest upsertCustomDataModelRequest;
+        private CreateCustomDataModelRequest createCustomDataModelRequest;
 
-        private APIcreateCustomDataModelRequest(String scope, String code, String entityType) {
-            this.scope = scope;
-            this.code = code;
+        private APIcreateCustomDataModelRequest(String entityType) {
             this.entityType = entityType;
         }
 
         /**
-         * Set upsertCustomDataModelRequest
-         * @param upsertCustomDataModelRequest The request containing the details of the Data Model. (optional)
+         * Set createCustomDataModelRequest
+         * @param createCustomDataModelRequest The request containing the details of the Data Model. (optional)
          * @return APIcreateCustomDataModelRequest
          */
-        public APIcreateCustomDataModelRequest upsertCustomDataModelRequest(UpsertCustomDataModelRequest upsertCustomDataModelRequest) {
-            this.upsertCustomDataModelRequest = upsertCustomDataModelRequest;
+        public APIcreateCustomDataModelRequest createCustomDataModelRequest(CreateCustomDataModelRequest createCustomDataModelRequest) {
+            this.createCustomDataModelRequest = createCustomDataModelRequest;
             return this;
         }
 
@@ -220,7 +205,7 @@ public class CustomDataModelsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return createCustomDataModelCall(scope, code, entityType, upsertCustomDataModelRequest, _callback);
+            return createCustomDataModelCall(entityType, createCustomDataModelRequest, _callback);
         }
 
         /**
@@ -236,7 +221,7 @@ public class CustomDataModelsApi {
          </table>
          */
         public CustomDataModel execute() throws ApiException {
-            ApiResponse<CustomDataModel> localVarResp = createCustomDataModelWithHttpInfo(scope, code, entityType, upsertCustomDataModelRequest);
+            ApiResponse<CustomDataModel> localVarResp = createCustomDataModelWithHttpInfo(entityType, createCustomDataModelRequest);
             return localVarResp.getData();
         }
 
@@ -253,7 +238,7 @@ public class CustomDataModelsApi {
          </table>
          */
         public CustomDataModel execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<CustomDataModel> localVarResp = createCustomDataModelWithHttpInfo(scope, code, entityType, upsertCustomDataModelRequest, opts);
+            ApiResponse<CustomDataModel> localVarResp = createCustomDataModelWithHttpInfo(entityType, createCustomDataModelRequest, opts);
             return localVarResp.getData();
         }
 
@@ -270,7 +255,7 @@ public class CustomDataModelsApi {
          </table>
          */
         public ApiResponse<CustomDataModel> executeWithHttpInfo() throws ApiException {
-            return createCustomDataModelWithHttpInfo(scope, code, entityType, upsertCustomDataModelRequest);
+            return createCustomDataModelWithHttpInfo(entityType, createCustomDataModelRequest);
         }
 
         /**
@@ -286,7 +271,7 @@ public class CustomDataModelsApi {
          </table>
          */
         public ApiResponse<CustomDataModel> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return createCustomDataModelWithHttpInfo(scope, code, entityType, upsertCustomDataModelRequest, opts);
+            return createCustomDataModelWithHttpInfo(entityType, createCustomDataModelRequest, opts);
         }
 
         /**
@@ -303,7 +288,7 @@ public class CustomDataModelsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<CustomDataModel> _callback) throws ApiException {
-            return createCustomDataModelAsync(scope, code, entityType, upsertCustomDataModelRequest, _callback);
+            return createCustomDataModelAsync(entityType, createCustomDataModelRequest, _callback);
         }
 
         /**
@@ -320,15 +305,13 @@ public class CustomDataModelsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<CustomDataModel> _callback, ConfigurationOptions opts) throws ApiException {
-            return createCustomDataModelAsync(scope, code, entityType, upsertCustomDataModelRequest, _callback, opts);
+            return createCustomDataModelAsync(entityType, createCustomDataModelRequest, _callback, opts);
         }
     }
 
     /**
      * [EXPERIMENTAL] CreateCustomDataModel: Create a Custom Data Model
      * Creates a Custom Data Model.
-     * @param scope The scope of the specified Data Model. (required)
-     * @param code The code of the specified Data Model. (required)
      * @param entityType The entity type of the Data Model. (required)
      * @return APIcreateCustomDataModelRequest
      * @http.response.details
@@ -339,14 +322,14 @@ public class CustomDataModelsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIcreateCustomDataModelRequest createCustomDataModel(String scope, String code, String entityType) {
-        return new APIcreateCustomDataModelRequest(scope, code, entityType);
+    public APIcreateCustomDataModelRequest createCustomDataModel(String entityType) {
+        return new APIcreateCustomDataModelRequest(entityType);
     }
-    private okhttp3.Call deleteCustomDataModelCall(String scope, String code, final ApiCallback _callback) throws ApiException {
-        return deleteCustomDataModelCall(scope, code,  _callback, new ConfigurationOptions());
+    private okhttp3.Call deleteCustomDataModelCall(String entityType, String scope, String code, final ApiCallback _callback) throws ApiException {
+        return deleteCustomDataModelCall(entityType, scope, code,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call deleteCustomDataModelCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call deleteCustomDataModelCall(String entityType, String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -363,7 +346,8 @@ public class CustomDataModelsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/datamodel/{scope}/{code}"
+        String localVarPath = "/api/datamodel/{entityType}/{scope}/{code}"
+            .replace("{" + "entityType" + "}", localVarApiClient.escapeString(entityType.toString()))
             .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
             .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
 
@@ -395,7 +379,12 @@ public class CustomDataModelsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteCustomDataModelValidateBeforeCall(String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call deleteCustomDataModelValidateBeforeCall(String entityType, String scope, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'entityType' is set
+        if (entityType == null) {
+            throw new ApiException("Missing the required parameter 'entityType' when calling deleteCustomDataModel(Async)");
+        }
+
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteCustomDataModel(Async)");
@@ -406,44 +395,46 @@ public class CustomDataModelsApi {
             throw new ApiException("Missing the required parameter 'code' when calling deleteCustomDataModel(Async)");
         }
 
-        return deleteCustomDataModelCall(scope, code, _callback, opts);
+        return deleteCustomDataModelCall(entityType, scope, code, _callback, opts);
 
     }
 
 
-    private ApiResponse<DeletedEntityResponse> deleteCustomDataModelWithHttpInfo(String scope, String code) throws ApiException {
-        okhttp3.Call localVarCall = deleteCustomDataModelValidateBeforeCall(scope, code, null, new ConfigurationOptions());
+    private ApiResponse<DeletedEntityResponse> deleteCustomDataModelWithHttpInfo(String entityType, String scope, String code) throws ApiException {
+        okhttp3.Call localVarCall = deleteCustomDataModelValidateBeforeCall(entityType, scope, code, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<DeletedEntityResponse> deleteCustomDataModelWithHttpInfo(String scope, String code, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = deleteCustomDataModelValidateBeforeCall(scope, code, null, opts);
+    private ApiResponse<DeletedEntityResponse> deleteCustomDataModelWithHttpInfo(String entityType, String scope, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteCustomDataModelValidateBeforeCall(entityType, scope, code, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call deleteCustomDataModelAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteCustomDataModelAsync(String entityType, String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteCustomDataModelValidateBeforeCall(scope, code, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = deleteCustomDataModelValidateBeforeCall(entityType, scope, code, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call deleteCustomDataModelAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call deleteCustomDataModelAsync(String entityType, String scope, String code, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteCustomDataModelValidateBeforeCall(scope, code, _callback, opts);
+        okhttp3.Call localVarCall = deleteCustomDataModelValidateBeforeCall(entityType, scope, code, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
     public class APIdeleteCustomDataModelRequest {
+        private final String entityType;
         private final String scope;
         private final String code;
 
-        private APIdeleteCustomDataModelRequest(String scope, String code) {
+        private APIdeleteCustomDataModelRequest(String entityType, String scope, String code) {
+            this.entityType = entityType;
             this.scope = scope;
             this.code = code;
         }
@@ -462,7 +453,7 @@ public class CustomDataModelsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return deleteCustomDataModelCall(scope, code, _callback);
+            return deleteCustomDataModelCall(entityType, scope, code, _callback);
         }
 
         /**
@@ -478,7 +469,7 @@ public class CustomDataModelsApi {
          </table>
          */
         public DeletedEntityResponse execute() throws ApiException {
-            ApiResponse<DeletedEntityResponse> localVarResp = deleteCustomDataModelWithHttpInfo(scope, code);
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteCustomDataModelWithHttpInfo(entityType, scope, code);
             return localVarResp.getData();
         }
 
@@ -495,7 +486,7 @@ public class CustomDataModelsApi {
          </table>
          */
         public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<DeletedEntityResponse> localVarResp = deleteCustomDataModelWithHttpInfo(scope, code, opts);
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteCustomDataModelWithHttpInfo(entityType, scope, code, opts);
             return localVarResp.getData();
         }
 
@@ -512,7 +503,7 @@ public class CustomDataModelsApi {
          </table>
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
-            return deleteCustomDataModelWithHttpInfo(scope, code);
+            return deleteCustomDataModelWithHttpInfo(entityType, scope, code);
         }
 
         /**
@@ -528,7 +519,7 @@ public class CustomDataModelsApi {
          </table>
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return deleteCustomDataModelWithHttpInfo(scope, code, opts);
+            return deleteCustomDataModelWithHttpInfo(entityType, scope, code, opts);
         }
 
         /**
@@ -545,7 +536,7 @@ public class CustomDataModelsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
-            return deleteCustomDataModelAsync(scope, code, _callback);
+            return deleteCustomDataModelAsync(entityType, scope, code, _callback);
         }
 
         /**
@@ -562,13 +553,14 @@ public class CustomDataModelsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return deleteCustomDataModelAsync(scope, code, _callback, opts);
+            return deleteCustomDataModelAsync(entityType, scope, code, _callback, opts);
         }
     }
 
     /**
      * [EXPERIMENTAL] DeleteCustomDataModel: Delete a Custom Data Model
      * Delete a Custom Data Model. The data model will remain viewable at previous as at times, but will no longer  be part of any hierarchies.
+     * @param entityType The entity type of the Data Model. (required)
      * @param scope The scope of the specified Data Model. (required)
      * @param code The code of the specified Data Model. (required)
      * @return APIdeleteCustomDataModelRequest
@@ -580,14 +572,14 @@ public class CustomDataModelsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIdeleteCustomDataModelRequest deleteCustomDataModel(String scope, String code) {
-        return new APIdeleteCustomDataModelRequest(scope, code);
+    public APIdeleteCustomDataModelRequest deleteCustomDataModel(String entityType, String scope, String code) {
+        return new APIdeleteCustomDataModelRequest(entityType, scope, code);
     }
-    private okhttp3.Call getCustomDataModelCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
-        return getCustomDataModelCall(scope, code, asAt,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getCustomDataModelCall(String entityType, String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getCustomDataModelCall(entityType, scope, code, asAt,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getCustomDataModelCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getCustomDataModelCall(String entityType, String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -604,7 +596,8 @@ public class CustomDataModelsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/datamodel/{scope}/{code}"
+        String localVarPath = "/api/datamodel/{entityType}/{scope}/{code}"
+            .replace("{" + "entityType" + "}", localVarApiClient.escapeString(entityType.toString()))
             .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
             .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
 
@@ -640,7 +633,12 @@ public class CustomDataModelsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCustomDataModelValidateBeforeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getCustomDataModelValidateBeforeCall(String entityType, String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'entityType' is set
+        if (entityType == null) {
+            throw new ApiException("Missing the required parameter 'entityType' when calling getCustomDataModel(Async)");
+        }
+
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getCustomDataModel(Async)");
@@ -651,45 +649,47 @@ public class CustomDataModelsApi {
             throw new ApiException("Missing the required parameter 'code' when calling getCustomDataModel(Async)");
         }
 
-        return getCustomDataModelCall(scope, code, asAt, _callback, opts);
+        return getCustomDataModelCall(entityType, scope, code, asAt, _callback, opts);
 
     }
 
 
-    private ApiResponse<CustomDataModel> getCustomDataModelWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getCustomDataModelValidateBeforeCall(scope, code, asAt, null, new ConfigurationOptions());
+    private ApiResponse<CustomDataModel> getCustomDataModelWithHttpInfo(String entityType, String scope, String code, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = getCustomDataModelValidateBeforeCall(entityType, scope, code, asAt, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<CustomDataModel>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<CustomDataModel> getCustomDataModelWithHttpInfo(String scope, String code, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getCustomDataModelValidateBeforeCall(scope, code, asAt, null, opts);
+    private ApiResponse<CustomDataModel> getCustomDataModelWithHttpInfo(String entityType, String scope, String code, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getCustomDataModelValidateBeforeCall(entityType, scope, code, asAt, null, opts);
         Type localVarReturnType = new TypeToken<CustomDataModel>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getCustomDataModelAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<CustomDataModel> _callback) throws ApiException {
+    private okhttp3.Call getCustomDataModelAsync(String entityType, String scope, String code, OffsetDateTime asAt, final ApiCallback<CustomDataModel> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getCustomDataModelValidateBeforeCall(scope, code, asAt, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getCustomDataModelValidateBeforeCall(entityType, scope, code, asAt, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<CustomDataModel>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getCustomDataModelAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<CustomDataModel> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getCustomDataModelAsync(String entityType, String scope, String code, OffsetDateTime asAt, final ApiCallback<CustomDataModel> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getCustomDataModelValidateBeforeCall(scope, code, asAt, _callback, opts);
+        okhttp3.Call localVarCall = getCustomDataModelValidateBeforeCall(entityType, scope, code, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<CustomDataModel>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
     public class APIgetCustomDataModelRequest {
+        private final String entityType;
         private final String scope;
         private final String code;
         private OffsetDateTime asAt;
 
-        private APIgetCustomDataModelRequest(String scope, String code) {
+        private APIgetCustomDataModelRequest(String entityType, String scope, String code) {
+            this.entityType = entityType;
             this.scope = scope;
             this.code = code;
         }
@@ -718,7 +718,7 @@ public class CustomDataModelsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getCustomDataModelCall(scope, code, asAt, _callback);
+            return getCustomDataModelCall(entityType, scope, code, asAt, _callback);
         }
 
         /**
@@ -734,7 +734,7 @@ public class CustomDataModelsApi {
          </table>
          */
         public CustomDataModel execute() throws ApiException {
-            ApiResponse<CustomDataModel> localVarResp = getCustomDataModelWithHttpInfo(scope, code, asAt);
+            ApiResponse<CustomDataModel> localVarResp = getCustomDataModelWithHttpInfo(entityType, scope, code, asAt);
             return localVarResp.getData();
         }
 
@@ -751,7 +751,7 @@ public class CustomDataModelsApi {
          </table>
          */
         public CustomDataModel execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<CustomDataModel> localVarResp = getCustomDataModelWithHttpInfo(scope, code, asAt, opts);
+            ApiResponse<CustomDataModel> localVarResp = getCustomDataModelWithHttpInfo(entityType, scope, code, asAt, opts);
             return localVarResp.getData();
         }
 
@@ -768,7 +768,7 @@ public class CustomDataModelsApi {
          </table>
          */
         public ApiResponse<CustomDataModel> executeWithHttpInfo() throws ApiException {
-            return getCustomDataModelWithHttpInfo(scope, code, asAt);
+            return getCustomDataModelWithHttpInfo(entityType, scope, code, asAt);
         }
 
         /**
@@ -784,7 +784,7 @@ public class CustomDataModelsApi {
          </table>
          */
         public ApiResponse<CustomDataModel> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getCustomDataModelWithHttpInfo(scope, code, asAt, opts);
+            return getCustomDataModelWithHttpInfo(entityType, scope, code, asAt, opts);
         }
 
         /**
@@ -801,7 +801,7 @@ public class CustomDataModelsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<CustomDataModel> _callback) throws ApiException {
-            return getCustomDataModelAsync(scope, code, asAt, _callback);
+            return getCustomDataModelAsync(entityType, scope, code, asAt, _callback);
         }
 
         /**
@@ -818,13 +818,14 @@ public class CustomDataModelsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<CustomDataModel> _callback, ConfigurationOptions opts) throws ApiException {
-            return getCustomDataModelAsync(scope, code, asAt, _callback, opts);
+            return getCustomDataModelAsync(entityType, scope, code, asAt, _callback, opts);
         }
     }
 
     /**
      * [EXPERIMENTAL] GetCustomDataModel: Get a Custom Data Model
      * Retrieves a Custom Data Model at a given as at time.
+     * @param entityType The entity type of the Data Model. (required)
      * @param scope The scope of the specified Data Model. (required)
      * @param code The code of the specified Data Model. (required)
      * @return APIgetCustomDataModelRequest
@@ -836,8 +837,8 @@ public class CustomDataModelsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIgetCustomDataModelRequest getCustomDataModel(String scope, String code) {
-        return new APIgetCustomDataModelRequest(scope, code);
+    public APIgetCustomDataModelRequest getCustomDataModel(String entityType, String scope, String code) {
+        return new APIgetCustomDataModelRequest(entityType, scope, code);
     }
     private okhttp3.Call listDataModelHierarchiesCall(OffsetDateTime asAt, String filter, final ApiCallback _callback) throws ApiException {
         return listDataModelHierarchiesCall(asAt, filter,  _callback, new ConfigurationOptions());
@@ -1307,11 +1308,11 @@ public class CustomDataModelsApi {
     public APIlistSupportedEntityTypesRequest listSupportedEntityTypes() {
         return new APIlistSupportedEntityTypesRequest();
     }
-    private okhttp3.Call updateCustomDataModelCall(String scope, String code, String entityType, UpsertCustomDataModelRequest upsertCustomDataModelRequest, final ApiCallback _callback) throws ApiException {
-        return updateCustomDataModelCall(scope, code, entityType, upsertCustomDataModelRequest,  _callback, new ConfigurationOptions());
+    private okhttp3.Call updateCustomDataModelCall(String entityType, String scope, String code, UpdateCustomDataModelRequest updateCustomDataModelRequest, final ApiCallback _callback) throws ApiException {
+        return updateCustomDataModelCall(entityType, scope, code, updateCustomDataModelRequest,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call updateCustomDataModelCall(String scope, String code, String entityType, UpsertCustomDataModelRequest upsertCustomDataModelRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call updateCustomDataModelCall(String entityType, String scope, String code, UpdateCustomDataModelRequest updateCustomDataModelRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1325,13 +1326,13 @@ public class CustomDataModelsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = upsertCustomDataModelRequest;
+        Object localVarPostBody = updateCustomDataModelRequest;
 
         // create path and map variables
         String localVarPath = "/api/datamodel/{entityType}/{scope}/{code}"
+            .replace("{" + "entityType" + "}", localVarApiClient.escapeString(entityType.toString()))
             .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
-            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
-            .replace("{" + "entityType" + "}", localVarApiClient.escapeString(entityType.toString()));
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1365,7 +1366,12 @@ public class CustomDataModelsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateCustomDataModelValidateBeforeCall(String scope, String code, String entityType, UpsertCustomDataModelRequest upsertCustomDataModelRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call updateCustomDataModelValidateBeforeCall(String entityType, String scope, String code, UpdateCustomDataModelRequest updateCustomDataModelRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'entityType' is set
+        if (entityType == null) {
+            throw new ApiException("Missing the required parameter 'entityType' when calling updateCustomDataModel(Async)");
+        }
+
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling updateCustomDataModel(Async)");
@@ -1376,63 +1382,58 @@ public class CustomDataModelsApi {
             throw new ApiException("Missing the required parameter 'code' when calling updateCustomDataModel(Async)");
         }
 
-        // verify the required parameter 'entityType' is set
-        if (entityType == null) {
-            throw new ApiException("Missing the required parameter 'entityType' when calling updateCustomDataModel(Async)");
-        }
-
-        return updateCustomDataModelCall(scope, code, entityType, upsertCustomDataModelRequest, _callback, opts);
+        return updateCustomDataModelCall(entityType, scope, code, updateCustomDataModelRequest, _callback, opts);
 
     }
 
 
-    private ApiResponse<CustomDataModel> updateCustomDataModelWithHttpInfo(String scope, String code, String entityType, UpsertCustomDataModelRequest upsertCustomDataModelRequest) throws ApiException {
-        okhttp3.Call localVarCall = updateCustomDataModelValidateBeforeCall(scope, code, entityType, upsertCustomDataModelRequest, null, new ConfigurationOptions());
+    private ApiResponse<CustomDataModel> updateCustomDataModelWithHttpInfo(String entityType, String scope, String code, UpdateCustomDataModelRequest updateCustomDataModelRequest) throws ApiException {
+        okhttp3.Call localVarCall = updateCustomDataModelValidateBeforeCall(entityType, scope, code, updateCustomDataModelRequest, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<CustomDataModel>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<CustomDataModel> updateCustomDataModelWithHttpInfo(String scope, String code, String entityType, UpsertCustomDataModelRequest upsertCustomDataModelRequest, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = updateCustomDataModelValidateBeforeCall(scope, code, entityType, upsertCustomDataModelRequest, null, opts);
+    private ApiResponse<CustomDataModel> updateCustomDataModelWithHttpInfo(String entityType, String scope, String code, UpdateCustomDataModelRequest updateCustomDataModelRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = updateCustomDataModelValidateBeforeCall(entityType, scope, code, updateCustomDataModelRequest, null, opts);
         Type localVarReturnType = new TypeToken<CustomDataModel>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call updateCustomDataModelAsync(String scope, String code, String entityType, UpsertCustomDataModelRequest upsertCustomDataModelRequest, final ApiCallback<CustomDataModel> _callback) throws ApiException {
+    private okhttp3.Call updateCustomDataModelAsync(String entityType, String scope, String code, UpdateCustomDataModelRequest updateCustomDataModelRequest, final ApiCallback<CustomDataModel> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateCustomDataModelValidateBeforeCall(scope, code, entityType, upsertCustomDataModelRequest, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = updateCustomDataModelValidateBeforeCall(entityType, scope, code, updateCustomDataModelRequest, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<CustomDataModel>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call updateCustomDataModelAsync(String scope, String code, String entityType, UpsertCustomDataModelRequest upsertCustomDataModelRequest, final ApiCallback<CustomDataModel> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call updateCustomDataModelAsync(String entityType, String scope, String code, UpdateCustomDataModelRequest updateCustomDataModelRequest, final ApiCallback<CustomDataModel> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = updateCustomDataModelValidateBeforeCall(scope, code, entityType, upsertCustomDataModelRequest, _callback, opts);
+        okhttp3.Call localVarCall = updateCustomDataModelValidateBeforeCall(entityType, scope, code, updateCustomDataModelRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<CustomDataModel>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
     public class APIupdateCustomDataModelRequest {
+        private final String entityType;
         private final String scope;
         private final String code;
-        private final String entityType;
-        private UpsertCustomDataModelRequest upsertCustomDataModelRequest;
+        private UpdateCustomDataModelRequest updateCustomDataModelRequest;
 
-        private APIupdateCustomDataModelRequest(String scope, String code, String entityType) {
+        private APIupdateCustomDataModelRequest(String entityType, String scope, String code) {
+            this.entityType = entityType;
             this.scope = scope;
             this.code = code;
-            this.entityType = entityType;
         }
 
         /**
-         * Set upsertCustomDataModelRequest
-         * @param upsertCustomDataModelRequest The request containing the details of the Data Model. (optional)
+         * Set updateCustomDataModelRequest
+         * @param updateCustomDataModelRequest The request containing the details of the Data Model. (optional)
          * @return APIupdateCustomDataModelRequest
          */
-        public APIupdateCustomDataModelRequest upsertCustomDataModelRequest(UpsertCustomDataModelRequest upsertCustomDataModelRequest) {
-            this.upsertCustomDataModelRequest = upsertCustomDataModelRequest;
+        public APIupdateCustomDataModelRequest updateCustomDataModelRequest(UpdateCustomDataModelRequest updateCustomDataModelRequest) {
+            this.updateCustomDataModelRequest = updateCustomDataModelRequest;
             return this;
         }
 
@@ -1450,7 +1451,7 @@ public class CustomDataModelsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return updateCustomDataModelCall(scope, code, entityType, upsertCustomDataModelRequest, _callback);
+            return updateCustomDataModelCall(entityType, scope, code, updateCustomDataModelRequest, _callback);
         }
 
         /**
@@ -1466,7 +1467,7 @@ public class CustomDataModelsApi {
          </table>
          */
         public CustomDataModel execute() throws ApiException {
-            ApiResponse<CustomDataModel> localVarResp = updateCustomDataModelWithHttpInfo(scope, code, entityType, upsertCustomDataModelRequest);
+            ApiResponse<CustomDataModel> localVarResp = updateCustomDataModelWithHttpInfo(entityType, scope, code, updateCustomDataModelRequest);
             return localVarResp.getData();
         }
 
@@ -1483,7 +1484,7 @@ public class CustomDataModelsApi {
          </table>
          */
         public CustomDataModel execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<CustomDataModel> localVarResp = updateCustomDataModelWithHttpInfo(scope, code, entityType, upsertCustomDataModelRequest, opts);
+            ApiResponse<CustomDataModel> localVarResp = updateCustomDataModelWithHttpInfo(entityType, scope, code, updateCustomDataModelRequest, opts);
             return localVarResp.getData();
         }
 
@@ -1500,7 +1501,7 @@ public class CustomDataModelsApi {
          </table>
          */
         public ApiResponse<CustomDataModel> executeWithHttpInfo() throws ApiException {
-            return updateCustomDataModelWithHttpInfo(scope, code, entityType, upsertCustomDataModelRequest);
+            return updateCustomDataModelWithHttpInfo(entityType, scope, code, updateCustomDataModelRequest);
         }
 
         /**
@@ -1516,7 +1517,7 @@ public class CustomDataModelsApi {
          </table>
          */
         public ApiResponse<CustomDataModel> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return updateCustomDataModelWithHttpInfo(scope, code, entityType, upsertCustomDataModelRequest, opts);
+            return updateCustomDataModelWithHttpInfo(entityType, scope, code, updateCustomDataModelRequest, opts);
         }
 
         /**
@@ -1533,7 +1534,7 @@ public class CustomDataModelsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<CustomDataModel> _callback) throws ApiException {
-            return updateCustomDataModelAsync(scope, code, entityType, upsertCustomDataModelRequest, _callback);
+            return updateCustomDataModelAsync(entityType, scope, code, updateCustomDataModelRequest, _callback);
         }
 
         /**
@@ -1550,16 +1551,16 @@ public class CustomDataModelsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<CustomDataModel> _callback, ConfigurationOptions opts) throws ApiException {
-            return updateCustomDataModelAsync(scope, code, entityType, upsertCustomDataModelRequest, _callback, opts);
+            return updateCustomDataModelAsync(entityType, scope, code, updateCustomDataModelRequest, _callback, opts);
         }
     }
 
     /**
      * [EXPERIMENTAL] UpdateCustomDataModel: Update a Custom Data Model
      * Updates a Custom Data Model.
+     * @param entityType The entity type of the Data Model. (required)
      * @param scope The scope of the specified Data Model. (required)
      * @param code The code of the specified Data Model. (required)
-     * @param entityType The entity type of the Data Model. (required)
      * @return APIupdateCustomDataModelRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1569,7 +1570,7 @@ public class CustomDataModelsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIupdateCustomDataModelRequest updateCustomDataModel(String scope, String code, String entityType) {
-        return new APIupdateCustomDataModelRequest(scope, code, entityType);
+    public APIupdateCustomDataModelRequest updateCustomDataModel(String entityType, String scope, String code) {
+        return new APIupdateCustomDataModelRequest(entityType, scope, code);
     }
 }

@@ -4,9 +4,9 @@ All URIs are relative to *https://www.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createCustomDataModel**](CustomDataModelsApi.md#createCustomDataModel) | **POST** /api/datamodel/{entityType}/{scope}/{code} | [EXPERIMENTAL] CreateCustomDataModel: Create a Custom Data Model |
-| [**deleteCustomDataModel**](CustomDataModelsApi.md#deleteCustomDataModel) | **DELETE** /api/datamodel/{scope}/{code} | [EXPERIMENTAL] DeleteCustomDataModel: Delete a Custom Data Model |
-| [**getCustomDataModel**](CustomDataModelsApi.md#getCustomDataModel) | **GET** /api/datamodel/{scope}/{code} | [EXPERIMENTAL] GetCustomDataModel: Get a Custom Data Model |
+| [**createCustomDataModel**](CustomDataModelsApi.md#createCustomDataModel) | **POST** /api/datamodel/{entityType} | [EXPERIMENTAL] CreateCustomDataModel: Create a Custom Data Model |
+| [**deleteCustomDataModel**](CustomDataModelsApi.md#deleteCustomDataModel) | **DELETE** /api/datamodel/{entityType}/{scope}/{code} | [EXPERIMENTAL] DeleteCustomDataModel: Delete a Custom Data Model |
+| [**getCustomDataModel**](CustomDataModelsApi.md#getCustomDataModel) | **GET** /api/datamodel/{entityType}/{scope}/{code} | [EXPERIMENTAL] GetCustomDataModel: Get a Custom Data Model |
 | [**listDataModelHierarchies**](CustomDataModelsApi.md#listDataModelHierarchies) | **GET** /api/datamodel/hierarchies | [EXPERIMENTAL] ListDataModelHierarchies: List Custom Data Model hierarchies. |
 | [**listSupportedEntityTypes**](CustomDataModelsApi.md#listSupportedEntityTypes) | **GET** /api/datamodel/entitytype | [EXPERIMENTAL] ListSupportedEntityTypes: List the currently supported entity types for use in Custom Data Models. |
 | [**updateCustomDataModel**](CustomDataModelsApi.md#updateCustomDataModel) | **PUT** /api/datamodel/{entityType}/{scope}/{code} | [EXPERIMENTAL] UpdateCustomDataModel: Update a Custom Data Model |
@@ -15,7 +15,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 ## createCustomDataModel
 
-> CustomDataModel createCustomDataModel(scope, code, entityType, upsertCustomDataModelRequest)
+> CustomDataModel createCustomDataModel(entityType, createCustomDataModelRequest)
 
 [EXPERIMENTAL] CreateCustomDataModel: Create a Custom Data Model
 
@@ -60,15 +60,13 @@ public class CustomDataModelsApiExample {
         // CustomDataModelsApi apiInstance = apiFactory.build(CustomDataModelsApi.class);
 
         CustomDataModelsApi apiInstance = ApiFactoryBuilder.build(fileName).build(CustomDataModelsApi.class);
-        String scope = "scope_example"; // String | The scope of the specified Data Model.
-        String code = "code_example"; // String | The code of the specified Data Model.
         String entityType = "entityType_example"; // String | The entity type of the Data Model.
-        UpsertCustomDataModelRequest upsertCustomDataModelRequest = new UpsertCustomDataModelRequest(); // UpsertCustomDataModelRequest | The request containing the details of the Data Model.
+        CreateCustomDataModelRequest createCustomDataModelRequest = new CreateCustomDataModelRequest(); // CreateCustomDataModelRequest | The request containing the details of the Data Model.
         try {
             // uncomment the below to set overrides at the request level
-            // CustomDataModel result = apiInstance.createCustomDataModel(scope, code, entityType, upsertCustomDataModelRequest).execute(opts);
+            // CustomDataModel result = apiInstance.createCustomDataModel(entityType, createCustomDataModelRequest).execute(opts);
 
-            CustomDataModel result = apiInstance.createCustomDataModel(scope, code, entityType, upsertCustomDataModelRequest).execute();
+            CustomDataModel result = apiInstance.createCustomDataModel(entityType, createCustomDataModelRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling CustomDataModelsApi#createCustomDataModel");
@@ -85,10 +83,8 @@ public class CustomDataModelsApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **scope** | **String**| The scope of the specified Data Model. | |
-| **code** | **String**| The code of the specified Data Model. | |
 | **entityType** | **String**| The entity type of the Data Model. | |
-| **upsertCustomDataModelRequest** | [**UpsertCustomDataModelRequest**](UpsertCustomDataModelRequest.md)| The request containing the details of the Data Model. | [optional] |
+| **createCustomDataModelRequest** | [**CreateCustomDataModelRequest**](CreateCustomDataModelRequest.md)| The request containing the details of the Data Model. | [optional] |
 
 ### Return type
 
@@ -112,7 +108,7 @@ public class CustomDataModelsApiExample {
 
 ## deleteCustomDataModel
 
-> DeletedEntityResponse deleteCustomDataModel(scope, code)
+> DeletedEntityResponse deleteCustomDataModel(entityType, scope, code)
 
 [EXPERIMENTAL] DeleteCustomDataModel: Delete a Custom Data Model
 
@@ -157,13 +153,14 @@ public class CustomDataModelsApiExample {
         // CustomDataModelsApi apiInstance = apiFactory.build(CustomDataModelsApi.class);
 
         CustomDataModelsApi apiInstance = ApiFactoryBuilder.build(fileName).build(CustomDataModelsApi.class);
+        String entityType = "entityType_example"; // String | The entity type of the Data Model.
         String scope = "scope_example"; // String | The scope of the specified Data Model.
         String code = "code_example"; // String | The code of the specified Data Model.
         try {
             // uncomment the below to set overrides at the request level
-            // DeletedEntityResponse result = apiInstance.deleteCustomDataModel(scope, code).execute(opts);
+            // DeletedEntityResponse result = apiInstance.deleteCustomDataModel(entityType, scope, code).execute(opts);
 
-            DeletedEntityResponse result = apiInstance.deleteCustomDataModel(scope, code).execute();
+            DeletedEntityResponse result = apiInstance.deleteCustomDataModel(entityType, scope, code).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling CustomDataModelsApi#deleteCustomDataModel");
@@ -180,6 +177,7 @@ public class CustomDataModelsApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **entityType** | **String**| The entity type of the Data Model. | |
 | **scope** | **String**| The scope of the specified Data Model. | |
 | **code** | **String**| The code of the specified Data Model. | |
 
@@ -205,7 +203,7 @@ public class CustomDataModelsApiExample {
 
 ## getCustomDataModel
 
-> CustomDataModel getCustomDataModel(scope, code, asAt)
+> CustomDataModel getCustomDataModel(entityType, scope, code, asAt)
 
 [EXPERIMENTAL] GetCustomDataModel: Get a Custom Data Model
 
@@ -250,14 +248,15 @@ public class CustomDataModelsApiExample {
         // CustomDataModelsApi apiInstance = apiFactory.build(CustomDataModelsApi.class);
 
         CustomDataModelsApi apiInstance = ApiFactoryBuilder.build(fileName).build(CustomDataModelsApi.class);
+        String entityType = "entityType_example"; // String | The entity type of the Data Model.
         String scope = "scope_example"; // String | The scope of the specified Data Model.
         String code = "code_example"; // String | The code of the specified Data Model.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Data Model. Defaults to return   the latest version of the Data Model if not specified.
         try {
             // uncomment the below to set overrides at the request level
-            // CustomDataModel result = apiInstance.getCustomDataModel(scope, code, asAt).execute(opts);
+            // CustomDataModel result = apiInstance.getCustomDataModel(entityType, scope, code, asAt).execute(opts);
 
-            CustomDataModel result = apiInstance.getCustomDataModel(scope, code, asAt).execute();
+            CustomDataModel result = apiInstance.getCustomDataModel(entityType, scope, code, asAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling CustomDataModelsApi#getCustomDataModel");
@@ -274,6 +273,7 @@ public class CustomDataModelsApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **entityType** | **String**| The entity type of the Data Model. | |
 | **scope** | **String**| The scope of the specified Data Model. | |
 | **code** | **String**| The code of the specified Data Model. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Data Model. Defaults to return   the latest version of the Data Model if not specified. | [optional] |
@@ -479,7 +479,7 @@ This endpoint does not need any parameter.
 
 ## updateCustomDataModel
 
-> CustomDataModel updateCustomDataModel(scope, code, entityType, upsertCustomDataModelRequest)
+> CustomDataModel updateCustomDataModel(entityType, scope, code, updateCustomDataModelRequest)
 
 [EXPERIMENTAL] UpdateCustomDataModel: Update a Custom Data Model
 
@@ -524,15 +524,15 @@ public class CustomDataModelsApiExample {
         // CustomDataModelsApi apiInstance = apiFactory.build(CustomDataModelsApi.class);
 
         CustomDataModelsApi apiInstance = ApiFactoryBuilder.build(fileName).build(CustomDataModelsApi.class);
+        String entityType = "entityType_example"; // String | The entity type of the Data Model.
         String scope = "scope_example"; // String | The scope of the specified Data Model.
         String code = "code_example"; // String | The code of the specified Data Model.
-        String entityType = "entityType_example"; // String | The entity type of the Data Model.
-        UpsertCustomDataModelRequest upsertCustomDataModelRequest = new UpsertCustomDataModelRequest(); // UpsertCustomDataModelRequest | The request containing the details of the Data Model.
+        UpdateCustomDataModelRequest updateCustomDataModelRequest = new UpdateCustomDataModelRequest(); // UpdateCustomDataModelRequest | The request containing the details of the Data Model.
         try {
             // uncomment the below to set overrides at the request level
-            // CustomDataModel result = apiInstance.updateCustomDataModel(scope, code, entityType, upsertCustomDataModelRequest).execute(opts);
+            // CustomDataModel result = apiInstance.updateCustomDataModel(entityType, scope, code, updateCustomDataModelRequest).execute(opts);
 
-            CustomDataModel result = apiInstance.updateCustomDataModel(scope, code, entityType, upsertCustomDataModelRequest).execute();
+            CustomDataModel result = apiInstance.updateCustomDataModel(entityType, scope, code, updateCustomDataModelRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling CustomDataModelsApi#updateCustomDataModel");
@@ -549,10 +549,10 @@ public class CustomDataModelsApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **entityType** | **String**| The entity type of the Data Model. | |
 | **scope** | **String**| The scope of the specified Data Model. | |
 | **code** | **String**| The code of the specified Data Model. | |
-| **entityType** | **String**| The entity type of the Data Model. | |
-| **upsertCustomDataModelRequest** | [**UpsertCustomDataModelRequest**](UpsertCustomDataModelRequest.md)| The request containing the details of the Data Model. | [optional] |
+| **updateCustomDataModelRequest** | [**UpdateCustomDataModelRequest**](UpdateCustomDataModelRequest.md)| The request containing the details of the Data Model. | [optional] |
 
 ### Return type
 

@@ -156,9 +156,9 @@ Class | Method | HTTP request | Description
 *CounterpartiesApi* | [**listCreditSupportAnnexes**](docs/CounterpartiesApi.md#listcreditsupportannexes) | **GET** /api/counterparties/creditsupportannexes | [EARLY ACCESS] ListCreditSupportAnnexes: List the set of Credit Support Annexes
 *CounterpartiesApi* | [**upsertCounterpartyAgreement**](docs/CounterpartiesApi.md#upsertcounterpartyagreement) | **POST** /api/counterparties/counterpartyagreements | [EARLY ACCESS] UpsertCounterpartyAgreement: Upsert Counterparty Agreement
 *CounterpartiesApi* | [**upsertCreditSupportAnnex**](docs/CounterpartiesApi.md#upsertcreditsupportannex) | **POST** /api/counterparties/creditsupportannexes | [EARLY ACCESS] UpsertCreditSupportAnnex: Upsert Credit Support Annex
-*CustomDataModelsApi* | [**createCustomDataModel**](docs/CustomDataModelsApi.md#createcustomdatamodel) | **POST** /api/datamodel/{entityType}/{scope}/{code} | [EXPERIMENTAL] CreateCustomDataModel: Create a Custom Data Model
-*CustomDataModelsApi* | [**deleteCustomDataModel**](docs/CustomDataModelsApi.md#deletecustomdatamodel) | **DELETE** /api/datamodel/{scope}/{code} | [EXPERIMENTAL] DeleteCustomDataModel: Delete a Custom Data Model
-*CustomDataModelsApi* | [**getCustomDataModel**](docs/CustomDataModelsApi.md#getcustomdatamodel) | **GET** /api/datamodel/{scope}/{code} | [EXPERIMENTAL] GetCustomDataModel: Get a Custom Data Model
+*CustomDataModelsApi* | [**createCustomDataModel**](docs/CustomDataModelsApi.md#createcustomdatamodel) | **POST** /api/datamodel/{entityType} | [EXPERIMENTAL] CreateCustomDataModel: Create a Custom Data Model
+*CustomDataModelsApi* | [**deleteCustomDataModel**](docs/CustomDataModelsApi.md#deletecustomdatamodel) | **DELETE** /api/datamodel/{entityType}/{scope}/{code} | [EXPERIMENTAL] DeleteCustomDataModel: Delete a Custom Data Model
+*CustomDataModelsApi* | [**getCustomDataModel**](docs/CustomDataModelsApi.md#getcustomdatamodel) | **GET** /api/datamodel/{entityType}/{scope}/{code} | [EXPERIMENTAL] GetCustomDataModel: Get a Custom Data Model
 *CustomDataModelsApi* | [**listDataModelHierarchies**](docs/CustomDataModelsApi.md#listdatamodelhierarchies) | **GET** /api/datamodel/hierarchies | [EXPERIMENTAL] ListDataModelHierarchies: List Custom Data Model hierarchies.
 *CustomDataModelsApi* | [**listSupportedEntityTypes**](docs/CustomDataModelsApi.md#listsupportedentitytypes) | **GET** /api/datamodel/entitytype | [EXPERIMENTAL] ListSupportedEntityTypes: List the currently supported entity types for use in Custom Data Models.
 *CustomDataModelsApi* | [**updateCustomDataModel**](docs/CustomDataModelsApi.md#updatecustomdatamodel) | **PUT** /api/datamodel/{entityType}/{scope}/{code} | [EXPERIMENTAL] UpdateCustomDataModel: Update a Custom Data Model
@@ -850,6 +850,7 @@ Class | Method | HTTP request | Description
  - [CreateClosedPeriodRequest](docs/CreateClosedPeriodRequest.md)
  - [CreateComplianceTemplateRequest](docs/CreateComplianceTemplateRequest.md)
  - [CreateCorporateActionSourceRequest](docs/CreateCorporateActionSourceRequest.md)
+ - [CreateCustomDataModelRequest](docs/CreateCustomDataModelRequest.md)
  - [CreateCustomEntityTypeRequest](docs/CreateCustomEntityTypeRequest.md)
  - [CreateCutLabelDefinitionRequest](docs/CreateCutLabelDefinitionRequest.md)
  - [CreateDataMapRequest](docs/CreateDataMapRequest.md)
@@ -1710,6 +1711,7 @@ Class | Method | HTTP request | Description
  - [UpdateAmortisationRuleSetDetailsRequest](docs/UpdateAmortisationRuleSetDetailsRequest.md)
  - [UpdateCalendarRequest](docs/UpdateCalendarRequest.md)
  - [UpdateComplianceTemplateRequest](docs/UpdateComplianceTemplateRequest.md)
+ - [UpdateCustomDataModelRequest](docs/UpdateCustomDataModelRequest.md)
  - [UpdateCustomEntityDefinitionRequest](docs/UpdateCustomEntityDefinitionRequest.md)
  - [UpdateCustomEntityTypeRequest](docs/UpdateCustomEntityTypeRequest.md)
  - [UpdateCutLabelDefinitionRequest](docs/UpdateCutLabelDefinitionRequest.md)
@@ -1742,7 +1744,6 @@ Class | Method | HTTP request | Description
  - [UpsertCorporateActionsResponse](docs/UpsertCorporateActionsResponse.md)
  - [UpsertCounterpartyAgreementRequest](docs/UpsertCounterpartyAgreementRequest.md)
  - [UpsertCreditSupportAnnexRequest](docs/UpsertCreditSupportAnnexRequest.md)
- - [UpsertCustomDataModelRequest](docs/UpsertCustomDataModelRequest.md)
  - [UpsertCustomEntitiesResponse](docs/UpsertCustomEntitiesResponse.md)
  - [UpsertCustomEntityAccessMetadataRequest](docs/UpsertCustomEntityAccessMetadataRequest.md)
  - [UpsertDialectRequest](docs/UpsertDialectRequest.md)
