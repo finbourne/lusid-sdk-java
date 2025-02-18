@@ -21,7 +21,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -79,7 +78,7 @@ public class DataModelSummary {
 
   public static final String SERIALIZED_NAME_CHILDREN = "children";
   @SerializedName(SERIALIZED_NAME_CHILDREN)
-  private List<DataModelSummary> children;
+  private List<DataModelSummary> children = new ArrayList<>();
 
   public DataModelSummary() {
   }
@@ -94,7 +93,7 @@ public class DataModelSummary {
    * Get id
    * @return id
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public ResourceId getId() {
     return id;
   }
@@ -115,7 +114,7 @@ public class DataModelSummary {
    * The name of the Custom Data Model.
    * @return displayName
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public String getDisplayName() {
     return displayName;
   }
@@ -136,7 +135,7 @@ public class DataModelSummary {
    * A description for the Custom Data Model.
    * @return description
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public String getDescription() {
     return description;
   }
@@ -178,7 +177,7 @@ public class DataModelSummary {
    * Either Root or Leaf or Intermediate.
    * @return type
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public String getType() {
     return type;
   }
@@ -199,7 +198,7 @@ public class DataModelSummary {
    * Where in the hierarchy this model sits.
    * @return precedence
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public Integer getPrecedence() {
     return precedence;
   }
@@ -228,7 +227,7 @@ public class DataModelSummary {
    * Child Custom Data Models that will inherit from this data model.
    * @return children
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public List<DataModelSummary> getChildren() {
     return children;
   }
@@ -258,20 +257,9 @@ public class DataModelSummary {
         Objects.equals(this.children, dataModelSummary.children);
   }
 
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
-  }
-
   @Override
   public int hashCode() {
     return Objects.hash(id, displayName, description, entityType, type, precedence, children);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -317,7 +305,13 @@ public class DataModelSummary {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("id");
+    openapiRequiredFields.add("displayName");
+    openapiRequiredFields.add("description");
     openapiRequiredFields.add("entityType");
+    openapiRequiredFields.add("type");
+    openapiRequiredFields.add("precedence");
+    openapiRequiredFields.add("children");
   }
 
  /**
@@ -340,36 +334,30 @@ public class DataModelSummary {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `id`
-      if (jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) {
-        ResourceId.validateJsonElement(jsonObj.get("id"));
-      }
-      if ((jsonObj.get("displayName") != null && !jsonObj.get("displayName").isJsonNull()) && !jsonObj.get("displayName").isJsonPrimitive()) {
+      // validate the required field `id`
+      ResourceId.validateJsonElement(jsonObj.get("id"));
+      if (!jsonObj.get("displayName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
       }
-      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+      if (!jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       if (!jsonObj.get("entityType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `entityType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("entityType").toString()));
       }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+      if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
-      if (jsonObj.get("children") != null && !jsonObj.get("children").isJsonNull()) {
-        JsonArray jsonArraychildren = jsonObj.getAsJsonArray("children");
-        if (jsonArraychildren != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("children").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `children` to be an array in the JSON string but got `%s`", jsonObj.get("children").toString()));
-          }
-
-          // validate the optional field `children` (array)
-          for (int i = 0; i < jsonArraychildren.size(); i++) {
-            DataModelSummary.validateJsonElement(jsonArraychildren.get(i));
-          };
-        }
+      // ensure the json data is an array
+      if (!jsonObj.get("children").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `children` to be an array in the JSON string but got `%s`", jsonObj.get("children").toString()));
       }
+
+      JsonArray jsonArraychildren = jsonObj.getAsJsonArray("children");
+      // validate the required field `children` (array)
+      for (int i = 0; i < jsonArraychildren.size(); i++) {
+        DataModelSummary.validateJsonElement(jsonArraychildren.get(i));
+      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
