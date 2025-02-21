@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.CurrencyAndAmount;
 import com.finbourne.lusid.model.CustodianAccount;
+import com.finbourne.lusid.model.DataModelMembership;
 import com.finbourne.lusid.model.OtcConfirmation;
 import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.ResourceId;
@@ -211,6 +212,10 @@ public class Transaction {
   public static final String SERIALIZED_NAME_RESOLVED_TRANSACTION_TYPE_DETAILS = "resolvedTransactionTypeDetails";
   @SerializedName(SERIALIZED_NAME_RESOLVED_TRANSACTION_TYPE_DETAILS)
   private TransactionTypeDetails resolvedTransactionTypeDetails;
+
+  public static final String SERIALIZED_NAME_DATA_MODEL_MEMBERSHIP = "dataModelMembership";
+  @SerializedName(SERIALIZED_NAME_DATA_MODEL_MEMBERSHIP)
+  private DataModelMembership dataModelMembership;
 
   public Transaction() {
   }
@@ -764,6 +769,27 @@ public class Transaction {
   }
 
 
+  public Transaction dataModelMembership(DataModelMembership dataModelMembership) {
+    
+    this.dataModelMembership = dataModelMembership;
+    return this;
+  }
+
+   /**
+   * Get dataModelMembership
+   * @return dataModelMembership
+  **/
+  @jakarta.annotation.Nullable
+  public DataModelMembership getDataModelMembership() {
+    return dataModelMembership;
+  }
+
+
+  public void setDataModelMembership(DataModelMembership dataModelMembership) {
+    this.dataModelMembership = dataModelMembership;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -798,7 +824,8 @@ public class Transaction {
         Objects.equals(this.custodianAccount, transaction.custodianAccount) &&
         Objects.equals(this.transactionGroupId, transaction.transactionGroupId) &&
         Objects.equals(this.strategyTag, transaction.strategyTag) &&
-        Objects.equals(this.resolvedTransactionTypeDetails, transaction.resolvedTransactionTypeDetails);
+        Objects.equals(this.resolvedTransactionTypeDetails, transaction.resolvedTransactionTypeDetails) &&
+        Objects.equals(this.dataModelMembership, transaction.dataModelMembership);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -807,7 +834,7 @@ public class Transaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transactionId, type, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionPrice, totalConsideration, exchangeRate, transactionCurrency, properties, counterpartyId, source, entryDateTime, otcConfirmation, transactionStatus, cancelDateTime, orderId, allocationId, custodianAccount, transactionGroupId, strategyTag, resolvedTransactionTypeDetails);
+    return Objects.hash(transactionId, type, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionPrice, totalConsideration, exchangeRate, transactionCurrency, properties, counterpartyId, source, entryDateTime, otcConfirmation, transactionStatus, cancelDateTime, orderId, allocationId, custodianAccount, transactionGroupId, strategyTag, resolvedTransactionTypeDetails, dataModelMembership);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -846,6 +873,7 @@ public class Transaction {
     sb.append("    transactionGroupId: ").append(toIndentedString(transactionGroupId)).append("\n");
     sb.append("    strategyTag: ").append(toIndentedString(strategyTag)).append("\n");
     sb.append("    resolvedTransactionTypeDetails: ").append(toIndentedString(resolvedTransactionTypeDetails)).append("\n");
+    sb.append("    dataModelMembership: ").append(toIndentedString(dataModelMembership)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -893,6 +921,7 @@ public class Transaction {
     openapiFields.add("transactionGroupId");
     openapiFields.add("strategyTag");
     openapiFields.add("resolvedTransactionTypeDetails");
+    openapiFields.add("dataModelMembership");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -991,6 +1020,10 @@ public class Transaction {
       // validate the optional field `resolvedTransactionTypeDetails`
       if (jsonObj.get("resolvedTransactionTypeDetails") != null && !jsonObj.get("resolvedTransactionTypeDetails").isJsonNull()) {
         TransactionTypeDetails.validateJsonElement(jsonObj.get("resolvedTransactionTypeDetails"));
+      }
+      // validate the optional field `dataModelMembership`
+      if (jsonObj.get("dataModelMembership") != null && !jsonObj.get("dataModelMembership").isJsonNull()) {
+        DataModelMembership.validateJsonElement(jsonObj.get("dataModelMembership"));
       }
   }
 

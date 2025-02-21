@@ -33,6 +33,7 @@ A list of transactions.
 |**transactionGroupId** | **String** | The identifier for grouping economic events across multiple transactions |  [optional] |
 |**strategyTag** | [**List&lt;Strategy&gt;**](Strategy.md) | A list of strategies representing the allocation of units across multiple sub-holding keys |  [optional] |
 |**resolvedTransactionTypeDetails** | [**TransactionTypeDetails**](TransactionTypeDetails.md) |  |  [optional] |
+|**dataModelMembership** | [**DataModelMembership**](DataModelMembership.md) |  |  [optional] |
 
 
 

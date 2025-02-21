@@ -30,7 +30,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 ## batchUpsertInstrumentProperties
 
-> BatchUpsertInstrumentPropertiesResponse batchUpsertInstrumentProperties(requestBody, scope, identifierEffectiveAt, successMode)
+> BatchUpsertInstrumentPropertiesResponse batchUpsertInstrumentProperties(requestBody, scope, identifierEffectiveAt, successMode, dataModelScope, dataModelCode)
 
 BatchUpsertInstrumentProperties: Batch upsert instruments properties
 
@@ -79,11 +79,13 @@ public class InstrumentsApiExample {
         String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
         String identifierEffectiveAt = "identifierEffectiveAt_example"; // String | The effective datetime used to resolve each instrument from the provided identifiers. Defaults to the current LUSID system datetime if not specified.
         String successMode = "Partial"; // String | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial.
+        String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Hierarchical Data Model to use
+        String dataModelCode = "dataModelCode_example"; // String | The optional code of a Hierarchical Data Model to use
         try {
             // uncomment the below to set overrides at the request level
-            // BatchUpsertInstrumentPropertiesResponse result = apiInstance.batchUpsertInstrumentProperties(requestBody, scope, identifierEffectiveAt, successMode).execute(opts);
+            // BatchUpsertInstrumentPropertiesResponse result = apiInstance.batchUpsertInstrumentProperties(requestBody, scope, identifierEffectiveAt, successMode, dataModelScope, dataModelCode).execute(opts);
 
-            BatchUpsertInstrumentPropertiesResponse result = apiInstance.batchUpsertInstrumentProperties(requestBody, scope, identifierEffectiveAt, successMode).execute();
+            BatchUpsertInstrumentPropertiesResponse result = apiInstance.batchUpsertInstrumentProperties(requestBody, scope, identifierEffectiveAt, successMode, dataModelScope, dataModelCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling InstrumentsApi#batchUpsertInstrumentProperties");
@@ -104,6 +106,8 @@ public class InstrumentsApiExample {
 | **scope** | **String**| The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
 | **identifierEffectiveAt** | **String**| The effective datetime used to resolve each instrument from the provided identifiers. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **successMode** | **String**| Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial. | [optional] [default to Partial] |
+| **dataModelScope** | **String**| The optional scope of a Hierarchical Data Model to use | [optional] |
+| **dataModelCode** | **String**| The optional code of a Hierarchical Data Model to use | [optional] |
 
 ### Return type
 
@@ -321,7 +325,7 @@ public class InstrumentsApiExample {
 
 ## deleteInstrumentProperties
 
-> DeleteInstrumentPropertiesResponse deleteInstrumentProperties(identifierType, identifier, requestBody, effectiveAt, scope)
+> DeleteInstrumentPropertiesResponse deleteInstrumentProperties(identifierType, identifier, requestBody, effectiveAt, scope, dataModelScope, dataModelCode)
 
 [EARLY ACCESS] DeleteInstrumentProperties: Delete instrument properties
 
@@ -371,11 +375,13 @@ public class InstrumentsApiExample {
         List<String> requestBody = ["Instrument/scope/market-sector","Instrument/scope/tenor"]; // List<String> | A list of property keys from the 'Instruments' domain whose properties to delete.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified 'effectiveAt' datetime. If the 'effectiveAt' is not provided or is   before the time-variant property exists then a failure is returned. Do not specify this parameter if any of   the properties to delete are perpetual.
         String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
+        String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Hierarchical Data Model to use
+        String dataModelCode = "dataModelCode_example"; // String | The optional code of a Hierarchical Data Model to use
         try {
             // uncomment the below to set overrides at the request level
-            // DeleteInstrumentPropertiesResponse result = apiInstance.deleteInstrumentProperties(identifierType, identifier, requestBody, effectiveAt, scope).execute(opts);
+            // DeleteInstrumentPropertiesResponse result = apiInstance.deleteInstrumentProperties(identifierType, identifier, requestBody, effectiveAt, scope, dataModelScope, dataModelCode).execute(opts);
 
-            DeleteInstrumentPropertiesResponse result = apiInstance.deleteInstrumentProperties(identifierType, identifier, requestBody, effectiveAt, scope).execute();
+            DeleteInstrumentPropertiesResponse result = apiInstance.deleteInstrumentProperties(identifierType, identifier, requestBody, effectiveAt, scope, dataModelScope, dataModelCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling InstrumentsApi#deleteInstrumentProperties");
@@ -397,6 +403,8 @@ public class InstrumentsApiExample {
 | **requestBody** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Instruments&#39; domain whose properties to delete. | |
 | **effectiveAt** | **String**| The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is   before the time-variant property exists then a failure is returned. Do not specify this parameter if any of   the properties to delete are perpetual. | [optional] |
 | **scope** | **String**| The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
+| **dataModelScope** | **String**| The optional scope of a Hierarchical Data Model to use | [optional] |
+| **dataModelCode** | **String**| The optional code of a Hierarchical Data Model to use | [optional] |
 
 ### Return type
 
@@ -1821,7 +1829,7 @@ public class InstrumentsApiExample {
 
 ## updateInstrumentIdentifier
 
-> Instrument updateInstrumentIdentifier(identifierType, identifier, updateInstrumentIdentifierRequest, scope)
+> Instrument updateInstrumentIdentifier(identifierType, identifier, updateInstrumentIdentifierRequest, scope, dataModelScope, dataModelCode)
 
 UpdateInstrumentIdentifier: Update instrument identifier
 
@@ -1870,11 +1878,13 @@ public class InstrumentsApiExample {
         String identifier = "identifier_example"; // String | An <i>identifierType</i> value to use to identify the instrument, for example 'BBG000BLNNV0'.
         UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest = new UpdateInstrumentIdentifierRequest(); // UpdateInstrumentIdentifierRequest | The identifier to update or delete. This need not be the same value as the   'identifier' parameter used to retrieve the instrument.
         String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
+        String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Hierarchical Data Model to use
+        String dataModelCode = "dataModelCode_example"; // String | The optional code of a Hierarchical Data Model to use
         try {
             // uncomment the below to set overrides at the request level
-            // Instrument result = apiInstance.updateInstrumentIdentifier(identifierType, identifier, updateInstrumentIdentifierRequest, scope).execute(opts);
+            // Instrument result = apiInstance.updateInstrumentIdentifier(identifierType, identifier, updateInstrumentIdentifierRequest, scope, dataModelScope, dataModelCode).execute(opts);
 
-            Instrument result = apiInstance.updateInstrumentIdentifier(identifierType, identifier, updateInstrumentIdentifierRequest, scope).execute();
+            Instrument result = apiInstance.updateInstrumentIdentifier(identifierType, identifier, updateInstrumentIdentifierRequest, scope, dataModelScope, dataModelCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling InstrumentsApi#updateInstrumentIdentifier");
@@ -1895,6 +1905,8 @@ public class InstrumentsApiExample {
 | **identifier** | **String**| An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. | |
 | **updateInstrumentIdentifierRequest** | [**UpdateInstrumentIdentifierRequest**](UpdateInstrumentIdentifierRequest.md)| The identifier to update or delete. This need not be the same value as the   &#39;identifier&#39; parameter used to retrieve the instrument. | |
 | **scope** | **String**| The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
+| **dataModelScope** | **String**| The optional scope of a Hierarchical Data Model to use | [optional] |
+| **dataModelCode** | **String**| The optional code of a Hierarchical Data Model to use | [optional] |
 
 ### Return type
 
@@ -2015,7 +2027,7 @@ public class InstrumentsApiExample {
 
 ## upsertInstrumentsProperties
 
-> UpsertInstrumentPropertiesResponse upsertInstrumentsProperties(upsertInstrumentPropertyRequest, scope)
+> UpsertInstrumentPropertiesResponse upsertInstrumentsProperties(upsertInstrumentPropertyRequest, scope, dataModelScope, dataModelCode)
 
 UpsertInstrumentsProperties: Upsert instruments properties
 
@@ -2062,11 +2074,13 @@ public class InstrumentsApiExample {
         InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
         List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest = Arrays.asList(); // List<UpsertInstrumentPropertyRequest> | A list of instruments and associated instrument properties to create or update.
         String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
+        String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Hierarchical Data Model to use
+        String dataModelCode = "dataModelCode_example"; // String | The optional code of a Hierarchical Data Model to use
         try {
             // uncomment the below to set overrides at the request level
-            // UpsertInstrumentPropertiesResponse result = apiInstance.upsertInstrumentsProperties(upsertInstrumentPropertyRequest, scope).execute(opts);
+            // UpsertInstrumentPropertiesResponse result = apiInstance.upsertInstrumentsProperties(upsertInstrumentPropertyRequest, scope, dataModelScope, dataModelCode).execute(opts);
 
-            UpsertInstrumentPropertiesResponse result = apiInstance.upsertInstrumentsProperties(upsertInstrumentPropertyRequest, scope).execute();
+            UpsertInstrumentPropertiesResponse result = apiInstance.upsertInstrumentsProperties(upsertInstrumentPropertyRequest, scope, dataModelScope, dataModelCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling InstrumentsApi#upsertInstrumentsProperties");
@@ -2085,6 +2099,8 @@ public class InstrumentsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **upsertInstrumentPropertyRequest** | [**List&lt;UpsertInstrumentPropertyRequest&gt;**](UpsertInstrumentPropertyRequest.md)| A list of instruments and associated instrument properties to create or update. | |
 | **scope** | **String**| The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
+| **dataModelScope** | **String**| The optional scope of a Hierarchical Data Model to use | [optional] |
+| **dataModelCode** | **String**| The optional code of a Hierarchical Data Model to use | [optional] |
 
 ### Return type
 

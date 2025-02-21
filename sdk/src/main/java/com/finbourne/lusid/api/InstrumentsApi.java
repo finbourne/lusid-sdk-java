@@ -94,11 +94,11 @@ public class InstrumentsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    private okhttp3.Call batchUpsertInstrumentPropertiesCall(Map<String, UpsertInstrumentPropertyRequest> requestBody, String scope, String identifierEffectiveAt, String successMode, final ApiCallback _callback) throws ApiException {
-        return batchUpsertInstrumentPropertiesCall(requestBody, scope, identifierEffectiveAt, successMode,  _callback, new ConfigurationOptions());
+    private okhttp3.Call batchUpsertInstrumentPropertiesCall(Map<String, UpsertInstrumentPropertyRequest> requestBody, String scope, String identifierEffectiveAt, String successMode, String dataModelScope, String dataModelCode, final ApiCallback _callback) throws ApiException {
+        return batchUpsertInstrumentPropertiesCall(requestBody, scope, identifierEffectiveAt, successMode, dataModelScope, dataModelCode,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call batchUpsertInstrumentPropertiesCall(Map<String, UpsertInstrumentPropertyRequest> requestBody, String scope, String identifierEffectiveAt, String successMode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call batchUpsertInstrumentPropertiesCall(Map<String, UpsertInstrumentPropertyRequest> requestBody, String scope, String identifierEffectiveAt, String successMode, String dataModelScope, String dataModelCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -135,6 +135,14 @@ public class InstrumentsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("successMode", successMode));
         }
 
+        if (dataModelScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dataModelScope", dataModelScope));
+        }
+
+        if (dataModelCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dataModelCode", dataModelCode));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -161,40 +169,40 @@ public class InstrumentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call batchUpsertInstrumentPropertiesValidateBeforeCall(Map<String, UpsertInstrumentPropertyRequest> requestBody, String scope, String identifierEffectiveAt, String successMode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call batchUpsertInstrumentPropertiesValidateBeforeCall(Map<String, UpsertInstrumentPropertyRequest> requestBody, String scope, String identifierEffectiveAt, String successMode, String dataModelScope, String dataModelCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'requestBody' is set
         if (requestBody == null) {
             throw new ApiException("Missing the required parameter 'requestBody' when calling batchUpsertInstrumentProperties(Async)");
         }
 
-        return batchUpsertInstrumentPropertiesCall(requestBody, scope, identifierEffectiveAt, successMode, _callback, opts);
+        return batchUpsertInstrumentPropertiesCall(requestBody, scope, identifierEffectiveAt, successMode, dataModelScope, dataModelCode, _callback, opts);
 
     }
 
 
-    private ApiResponse<BatchUpsertInstrumentPropertiesResponse> batchUpsertInstrumentPropertiesWithHttpInfo(Map<String, UpsertInstrumentPropertyRequest> requestBody, String scope, String identifierEffectiveAt, String successMode) throws ApiException {
-        okhttp3.Call localVarCall = batchUpsertInstrumentPropertiesValidateBeforeCall(requestBody, scope, identifierEffectiveAt, successMode, null, new ConfigurationOptions());
+    private ApiResponse<BatchUpsertInstrumentPropertiesResponse> batchUpsertInstrumentPropertiesWithHttpInfo(Map<String, UpsertInstrumentPropertyRequest> requestBody, String scope, String identifierEffectiveAt, String successMode, String dataModelScope, String dataModelCode) throws ApiException {
+        okhttp3.Call localVarCall = batchUpsertInstrumentPropertiesValidateBeforeCall(requestBody, scope, identifierEffectiveAt, successMode, dataModelScope, dataModelCode, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<BatchUpsertInstrumentPropertiesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<BatchUpsertInstrumentPropertiesResponse> batchUpsertInstrumentPropertiesWithHttpInfo(Map<String, UpsertInstrumentPropertyRequest> requestBody, String scope, String identifierEffectiveAt, String successMode, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = batchUpsertInstrumentPropertiesValidateBeforeCall(requestBody, scope, identifierEffectiveAt, successMode, null, opts);
+    private ApiResponse<BatchUpsertInstrumentPropertiesResponse> batchUpsertInstrumentPropertiesWithHttpInfo(Map<String, UpsertInstrumentPropertyRequest> requestBody, String scope, String identifierEffectiveAt, String successMode, String dataModelScope, String dataModelCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = batchUpsertInstrumentPropertiesValidateBeforeCall(requestBody, scope, identifierEffectiveAt, successMode, dataModelScope, dataModelCode, null, opts);
         Type localVarReturnType = new TypeToken<BatchUpsertInstrumentPropertiesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call batchUpsertInstrumentPropertiesAsync(Map<String, UpsertInstrumentPropertyRequest> requestBody, String scope, String identifierEffectiveAt, String successMode, final ApiCallback<BatchUpsertInstrumentPropertiesResponse> _callback) throws ApiException {
+    private okhttp3.Call batchUpsertInstrumentPropertiesAsync(Map<String, UpsertInstrumentPropertyRequest> requestBody, String scope, String identifierEffectiveAt, String successMode, String dataModelScope, String dataModelCode, final ApiCallback<BatchUpsertInstrumentPropertiesResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = batchUpsertInstrumentPropertiesValidateBeforeCall(requestBody, scope, identifierEffectiveAt, successMode, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = batchUpsertInstrumentPropertiesValidateBeforeCall(requestBody, scope, identifierEffectiveAt, successMode, dataModelScope, dataModelCode, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<BatchUpsertInstrumentPropertiesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call batchUpsertInstrumentPropertiesAsync(Map<String, UpsertInstrumentPropertyRequest> requestBody, String scope, String identifierEffectiveAt, String successMode, final ApiCallback<BatchUpsertInstrumentPropertiesResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call batchUpsertInstrumentPropertiesAsync(Map<String, UpsertInstrumentPropertyRequest> requestBody, String scope, String identifierEffectiveAt, String successMode, String dataModelScope, String dataModelCode, final ApiCallback<BatchUpsertInstrumentPropertiesResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = batchUpsertInstrumentPropertiesValidateBeforeCall(requestBody, scope, identifierEffectiveAt, successMode, _callback, opts);
+        okhttp3.Call localVarCall = batchUpsertInstrumentPropertiesValidateBeforeCall(requestBody, scope, identifierEffectiveAt, successMode, dataModelScope, dataModelCode, _callback, opts);
         Type localVarReturnType = new TypeToken<BatchUpsertInstrumentPropertiesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -205,6 +213,8 @@ public class InstrumentsApi {
         private String scope;
         private String identifierEffectiveAt;
         private String successMode;
+        private String dataModelScope;
+        private String dataModelCode;
 
         private APIbatchUpsertInstrumentPropertiesRequest(Map<String, UpsertInstrumentPropertyRequest> requestBody) {
             this.requestBody = requestBody;
@@ -241,6 +251,26 @@ public class InstrumentsApi {
         }
 
         /**
+         * Set dataModelScope
+         * @param dataModelScope The optional scope of a Hierarchical Data Model to use (optional)
+         * @return APIbatchUpsertInstrumentPropertiesRequest
+         */
+        public APIbatchUpsertInstrumentPropertiesRequest dataModelScope(String dataModelScope) {
+            this.dataModelScope = dataModelScope;
+            return this;
+        }
+
+        /**
+         * Set dataModelCode
+         * @param dataModelCode The optional code of a Hierarchical Data Model to use (optional)
+         * @return APIbatchUpsertInstrumentPropertiesRequest
+         */
+        public APIbatchUpsertInstrumentPropertiesRequest dataModelCode(String dataModelCode) {
+            this.dataModelCode = dataModelCode;
+            return this;
+        }
+
+        /**
          * Build call for batchUpsertInstrumentProperties
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -254,7 +284,7 @@ public class InstrumentsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return batchUpsertInstrumentPropertiesCall(requestBody, scope, identifierEffectiveAt, successMode, _callback);
+            return batchUpsertInstrumentPropertiesCall(requestBody, scope, identifierEffectiveAt, successMode, dataModelScope, dataModelCode, _callback);
         }
 
         /**
@@ -270,7 +300,7 @@ public class InstrumentsApi {
          </table>
          */
         public BatchUpsertInstrumentPropertiesResponse execute() throws ApiException {
-            ApiResponse<BatchUpsertInstrumentPropertiesResponse> localVarResp = batchUpsertInstrumentPropertiesWithHttpInfo(requestBody, scope, identifierEffectiveAt, successMode);
+            ApiResponse<BatchUpsertInstrumentPropertiesResponse> localVarResp = batchUpsertInstrumentPropertiesWithHttpInfo(requestBody, scope, identifierEffectiveAt, successMode, dataModelScope, dataModelCode);
             return localVarResp.getData();
         }
 
@@ -287,7 +317,7 @@ public class InstrumentsApi {
          </table>
          */
         public BatchUpsertInstrumentPropertiesResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<BatchUpsertInstrumentPropertiesResponse> localVarResp = batchUpsertInstrumentPropertiesWithHttpInfo(requestBody, scope, identifierEffectiveAt, successMode, opts);
+            ApiResponse<BatchUpsertInstrumentPropertiesResponse> localVarResp = batchUpsertInstrumentPropertiesWithHttpInfo(requestBody, scope, identifierEffectiveAt, successMode, dataModelScope, dataModelCode, opts);
             return localVarResp.getData();
         }
 
@@ -304,7 +334,7 @@ public class InstrumentsApi {
          </table>
          */
         public ApiResponse<BatchUpsertInstrumentPropertiesResponse> executeWithHttpInfo() throws ApiException {
-            return batchUpsertInstrumentPropertiesWithHttpInfo(requestBody, scope, identifierEffectiveAt, successMode);
+            return batchUpsertInstrumentPropertiesWithHttpInfo(requestBody, scope, identifierEffectiveAt, successMode, dataModelScope, dataModelCode);
         }
 
         /**
@@ -320,7 +350,7 @@ public class InstrumentsApi {
          </table>
          */
         public ApiResponse<BatchUpsertInstrumentPropertiesResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return batchUpsertInstrumentPropertiesWithHttpInfo(requestBody, scope, identifierEffectiveAt, successMode, opts);
+            return batchUpsertInstrumentPropertiesWithHttpInfo(requestBody, scope, identifierEffectiveAt, successMode, dataModelScope, dataModelCode, opts);
         }
 
         /**
@@ -337,7 +367,7 @@ public class InstrumentsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<BatchUpsertInstrumentPropertiesResponse> _callback) throws ApiException {
-            return batchUpsertInstrumentPropertiesAsync(requestBody, scope, identifierEffectiveAt, successMode, _callback);
+            return batchUpsertInstrumentPropertiesAsync(requestBody, scope, identifierEffectiveAt, successMode, dataModelScope, dataModelCode, _callback);
         }
 
         /**
@@ -354,7 +384,7 @@ public class InstrumentsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<BatchUpsertInstrumentPropertiesResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return batchUpsertInstrumentPropertiesAsync(requestBody, scope, identifierEffectiveAt, successMode, _callback, opts);
+            return batchUpsertInstrumentPropertiesAsync(requestBody, scope, identifierEffectiveAt, successMode, dataModelScope, dataModelCode, _callback, opts);
         }
     }
 
@@ -916,11 +946,11 @@ public class InstrumentsApi {
     public APIdeleteInstrumentRequest deleteInstrument(String identifierType, String identifier) {
         return new APIdeleteInstrumentRequest(identifierType, identifier);
     }
-    private okhttp3.Call deleteInstrumentPropertiesCall(String identifierType, String identifier, List<String> requestBody, String effectiveAt, String scope, final ApiCallback _callback) throws ApiException {
-        return deleteInstrumentPropertiesCall(identifierType, identifier, requestBody, effectiveAt, scope,  _callback, new ConfigurationOptions());
+    private okhttp3.Call deleteInstrumentPropertiesCall(String identifierType, String identifier, List<String> requestBody, String effectiveAt, String scope, String dataModelScope, String dataModelCode, final ApiCallback _callback) throws ApiException {
+        return deleteInstrumentPropertiesCall(identifierType, identifier, requestBody, effectiveAt, scope, dataModelScope, dataModelCode,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call deleteInstrumentPropertiesCall(String identifierType, String identifier, List<String> requestBody, String effectiveAt, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call deleteInstrumentPropertiesCall(String identifierType, String identifier, List<String> requestBody, String effectiveAt, String scope, String dataModelScope, String dataModelCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -955,6 +985,14 @@ public class InstrumentsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("scope", scope));
         }
 
+        if (dataModelScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dataModelScope", dataModelScope));
+        }
+
+        if (dataModelCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dataModelCode", dataModelCode));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -981,7 +1019,7 @@ public class InstrumentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteInstrumentPropertiesValidateBeforeCall(String identifierType, String identifier, List<String> requestBody, String effectiveAt, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call deleteInstrumentPropertiesValidateBeforeCall(String identifierType, String identifier, List<String> requestBody, String effectiveAt, String scope, String dataModelScope, String dataModelCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'identifierType' is set
         if (identifierType == null) {
             throw new ApiException("Missing the required parameter 'identifierType' when calling deleteInstrumentProperties(Async)");
@@ -997,34 +1035,34 @@ public class InstrumentsApi {
             throw new ApiException("Missing the required parameter 'requestBody' when calling deleteInstrumentProperties(Async)");
         }
 
-        return deleteInstrumentPropertiesCall(identifierType, identifier, requestBody, effectiveAt, scope, _callback, opts);
+        return deleteInstrumentPropertiesCall(identifierType, identifier, requestBody, effectiveAt, scope, dataModelScope, dataModelCode, _callback, opts);
 
     }
 
 
-    private ApiResponse<DeleteInstrumentPropertiesResponse> deleteInstrumentPropertiesWithHttpInfo(String identifierType, String identifier, List<String> requestBody, String effectiveAt, String scope) throws ApiException {
-        okhttp3.Call localVarCall = deleteInstrumentPropertiesValidateBeforeCall(identifierType, identifier, requestBody, effectiveAt, scope, null, new ConfigurationOptions());
+    private ApiResponse<DeleteInstrumentPropertiesResponse> deleteInstrumentPropertiesWithHttpInfo(String identifierType, String identifier, List<String> requestBody, String effectiveAt, String scope, String dataModelScope, String dataModelCode) throws ApiException {
+        okhttp3.Call localVarCall = deleteInstrumentPropertiesValidateBeforeCall(identifierType, identifier, requestBody, effectiveAt, scope, dataModelScope, dataModelCode, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<DeleteInstrumentPropertiesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<DeleteInstrumentPropertiesResponse> deleteInstrumentPropertiesWithHttpInfo(String identifierType, String identifier, List<String> requestBody, String effectiveAt, String scope, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = deleteInstrumentPropertiesValidateBeforeCall(identifierType, identifier, requestBody, effectiveAt, scope, null, opts);
+    private ApiResponse<DeleteInstrumentPropertiesResponse> deleteInstrumentPropertiesWithHttpInfo(String identifierType, String identifier, List<String> requestBody, String effectiveAt, String scope, String dataModelScope, String dataModelCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteInstrumentPropertiesValidateBeforeCall(identifierType, identifier, requestBody, effectiveAt, scope, dataModelScope, dataModelCode, null, opts);
         Type localVarReturnType = new TypeToken<DeleteInstrumentPropertiesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call deleteInstrumentPropertiesAsync(String identifierType, String identifier, List<String> requestBody, String effectiveAt, String scope, final ApiCallback<DeleteInstrumentPropertiesResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteInstrumentPropertiesAsync(String identifierType, String identifier, List<String> requestBody, String effectiveAt, String scope, String dataModelScope, String dataModelCode, final ApiCallback<DeleteInstrumentPropertiesResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteInstrumentPropertiesValidateBeforeCall(identifierType, identifier, requestBody, effectiveAt, scope, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = deleteInstrumentPropertiesValidateBeforeCall(identifierType, identifier, requestBody, effectiveAt, scope, dataModelScope, dataModelCode, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<DeleteInstrumentPropertiesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call deleteInstrumentPropertiesAsync(String identifierType, String identifier, List<String> requestBody, String effectiveAt, String scope, final ApiCallback<DeleteInstrumentPropertiesResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call deleteInstrumentPropertiesAsync(String identifierType, String identifier, List<String> requestBody, String effectiveAt, String scope, String dataModelScope, String dataModelCode, final ApiCallback<DeleteInstrumentPropertiesResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteInstrumentPropertiesValidateBeforeCall(identifierType, identifier, requestBody, effectiveAt, scope, _callback, opts);
+        okhttp3.Call localVarCall = deleteInstrumentPropertiesValidateBeforeCall(identifierType, identifier, requestBody, effectiveAt, scope, dataModelScope, dataModelCode, _callback, opts);
         Type localVarReturnType = new TypeToken<DeleteInstrumentPropertiesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1036,6 +1074,8 @@ public class InstrumentsApi {
         private final List<String> requestBody;
         private String effectiveAt;
         private String scope;
+        private String dataModelScope;
+        private String dataModelCode;
 
         private APIdeleteInstrumentPropertiesRequest(String identifierType, String identifier, List<String> requestBody) {
             this.identifierType = identifierType;
@@ -1064,6 +1104,26 @@ public class InstrumentsApi {
         }
 
         /**
+         * Set dataModelScope
+         * @param dataModelScope The optional scope of a Hierarchical Data Model to use (optional)
+         * @return APIdeleteInstrumentPropertiesRequest
+         */
+        public APIdeleteInstrumentPropertiesRequest dataModelScope(String dataModelScope) {
+            this.dataModelScope = dataModelScope;
+            return this;
+        }
+
+        /**
+         * Set dataModelCode
+         * @param dataModelCode The optional code of a Hierarchical Data Model to use (optional)
+         * @return APIdeleteInstrumentPropertiesRequest
+         */
+        public APIdeleteInstrumentPropertiesRequest dataModelCode(String dataModelCode) {
+            this.dataModelCode = dataModelCode;
+            return this;
+        }
+
+        /**
          * Build call for deleteInstrumentProperties
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -1077,7 +1137,7 @@ public class InstrumentsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return deleteInstrumentPropertiesCall(identifierType, identifier, requestBody, effectiveAt, scope, _callback);
+            return deleteInstrumentPropertiesCall(identifierType, identifier, requestBody, effectiveAt, scope, dataModelScope, dataModelCode, _callback);
         }
 
         /**
@@ -1093,7 +1153,7 @@ public class InstrumentsApi {
          </table>
          */
         public DeleteInstrumentPropertiesResponse execute() throws ApiException {
-            ApiResponse<DeleteInstrumentPropertiesResponse> localVarResp = deleteInstrumentPropertiesWithHttpInfo(identifierType, identifier, requestBody, effectiveAt, scope);
+            ApiResponse<DeleteInstrumentPropertiesResponse> localVarResp = deleteInstrumentPropertiesWithHttpInfo(identifierType, identifier, requestBody, effectiveAt, scope, dataModelScope, dataModelCode);
             return localVarResp.getData();
         }
 
@@ -1110,7 +1170,7 @@ public class InstrumentsApi {
          </table>
          */
         public DeleteInstrumentPropertiesResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<DeleteInstrumentPropertiesResponse> localVarResp = deleteInstrumentPropertiesWithHttpInfo(identifierType, identifier, requestBody, effectiveAt, scope, opts);
+            ApiResponse<DeleteInstrumentPropertiesResponse> localVarResp = deleteInstrumentPropertiesWithHttpInfo(identifierType, identifier, requestBody, effectiveAt, scope, dataModelScope, dataModelCode, opts);
             return localVarResp.getData();
         }
 
@@ -1127,7 +1187,7 @@ public class InstrumentsApi {
          </table>
          */
         public ApiResponse<DeleteInstrumentPropertiesResponse> executeWithHttpInfo() throws ApiException {
-            return deleteInstrumentPropertiesWithHttpInfo(identifierType, identifier, requestBody, effectiveAt, scope);
+            return deleteInstrumentPropertiesWithHttpInfo(identifierType, identifier, requestBody, effectiveAt, scope, dataModelScope, dataModelCode);
         }
 
         /**
@@ -1143,7 +1203,7 @@ public class InstrumentsApi {
          </table>
          */
         public ApiResponse<DeleteInstrumentPropertiesResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return deleteInstrumentPropertiesWithHttpInfo(identifierType, identifier, requestBody, effectiveAt, scope, opts);
+            return deleteInstrumentPropertiesWithHttpInfo(identifierType, identifier, requestBody, effectiveAt, scope, dataModelScope, dataModelCode, opts);
         }
 
         /**
@@ -1160,7 +1220,7 @@ public class InstrumentsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeleteInstrumentPropertiesResponse> _callback) throws ApiException {
-            return deleteInstrumentPropertiesAsync(identifierType, identifier, requestBody, effectiveAt, scope, _callback);
+            return deleteInstrumentPropertiesAsync(identifierType, identifier, requestBody, effectiveAt, scope, dataModelScope, dataModelCode, _callback);
         }
 
         /**
@@ -1177,7 +1237,7 @@ public class InstrumentsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeleteInstrumentPropertiesResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return deleteInstrumentPropertiesAsync(identifierType, identifier, requestBody, effectiveAt, scope, _callback, opts);
+            return deleteInstrumentPropertiesAsync(identifierType, identifier, requestBody, effectiveAt, scope, dataModelScope, dataModelCode, _callback, opts);
         }
     }
 
@@ -5387,11 +5447,11 @@ public class InstrumentsApi {
     public APIqueryInstrumentCapabilitiesRequest queryInstrumentCapabilities(LusidInstrument lusidInstrument) {
         return new APIqueryInstrumentCapabilitiesRequest(lusidInstrument);
     }
-    private okhttp3.Call updateInstrumentIdentifierCall(String identifierType, String identifier, UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest, String scope, final ApiCallback _callback) throws ApiException {
-        return updateInstrumentIdentifierCall(identifierType, identifier, updateInstrumentIdentifierRequest, scope,  _callback, new ConfigurationOptions());
+    private okhttp3.Call updateInstrumentIdentifierCall(String identifierType, String identifier, UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest, String scope, String dataModelScope, String dataModelCode, final ApiCallback _callback) throws ApiException {
+        return updateInstrumentIdentifierCall(identifierType, identifier, updateInstrumentIdentifierRequest, scope, dataModelScope, dataModelCode,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call updateInstrumentIdentifierCall(String identifierType, String identifier, UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call updateInstrumentIdentifierCall(String identifierType, String identifier, UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest, String scope, String dataModelScope, String dataModelCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5422,6 +5482,14 @@ public class InstrumentsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("scope", scope));
         }
 
+        if (dataModelScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dataModelScope", dataModelScope));
+        }
+
+        if (dataModelCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dataModelCode", dataModelCode));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -5448,7 +5516,7 @@ public class InstrumentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateInstrumentIdentifierValidateBeforeCall(String identifierType, String identifier, UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call updateInstrumentIdentifierValidateBeforeCall(String identifierType, String identifier, UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest, String scope, String dataModelScope, String dataModelCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'identifierType' is set
         if (identifierType == null) {
             throw new ApiException("Missing the required parameter 'identifierType' when calling updateInstrumentIdentifier(Async)");
@@ -5464,34 +5532,34 @@ public class InstrumentsApi {
             throw new ApiException("Missing the required parameter 'updateInstrumentIdentifierRequest' when calling updateInstrumentIdentifier(Async)");
         }
 
-        return updateInstrumentIdentifierCall(identifierType, identifier, updateInstrumentIdentifierRequest, scope, _callback, opts);
+        return updateInstrumentIdentifierCall(identifierType, identifier, updateInstrumentIdentifierRequest, scope, dataModelScope, dataModelCode, _callback, opts);
 
     }
 
 
-    private ApiResponse<Instrument> updateInstrumentIdentifierWithHttpInfo(String identifierType, String identifier, UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest, String scope) throws ApiException {
-        okhttp3.Call localVarCall = updateInstrumentIdentifierValidateBeforeCall(identifierType, identifier, updateInstrumentIdentifierRequest, scope, null, new ConfigurationOptions());
+    private ApiResponse<Instrument> updateInstrumentIdentifierWithHttpInfo(String identifierType, String identifier, UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest, String scope, String dataModelScope, String dataModelCode) throws ApiException {
+        okhttp3.Call localVarCall = updateInstrumentIdentifierValidateBeforeCall(identifierType, identifier, updateInstrumentIdentifierRequest, scope, dataModelScope, dataModelCode, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<Instrument>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<Instrument> updateInstrumentIdentifierWithHttpInfo(String identifierType, String identifier, UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest, String scope, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = updateInstrumentIdentifierValidateBeforeCall(identifierType, identifier, updateInstrumentIdentifierRequest, scope, null, opts);
+    private ApiResponse<Instrument> updateInstrumentIdentifierWithHttpInfo(String identifierType, String identifier, UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest, String scope, String dataModelScope, String dataModelCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = updateInstrumentIdentifierValidateBeforeCall(identifierType, identifier, updateInstrumentIdentifierRequest, scope, dataModelScope, dataModelCode, null, opts);
         Type localVarReturnType = new TypeToken<Instrument>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call updateInstrumentIdentifierAsync(String identifierType, String identifier, UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest, String scope, final ApiCallback<Instrument> _callback) throws ApiException {
+    private okhttp3.Call updateInstrumentIdentifierAsync(String identifierType, String identifier, UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest, String scope, String dataModelScope, String dataModelCode, final ApiCallback<Instrument> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateInstrumentIdentifierValidateBeforeCall(identifierType, identifier, updateInstrumentIdentifierRequest, scope, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = updateInstrumentIdentifierValidateBeforeCall(identifierType, identifier, updateInstrumentIdentifierRequest, scope, dataModelScope, dataModelCode, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<Instrument>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call updateInstrumentIdentifierAsync(String identifierType, String identifier, UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest, String scope, final ApiCallback<Instrument> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call updateInstrumentIdentifierAsync(String identifierType, String identifier, UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest, String scope, String dataModelScope, String dataModelCode, final ApiCallback<Instrument> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = updateInstrumentIdentifierValidateBeforeCall(identifierType, identifier, updateInstrumentIdentifierRequest, scope, _callback, opts);
+        okhttp3.Call localVarCall = updateInstrumentIdentifierValidateBeforeCall(identifierType, identifier, updateInstrumentIdentifierRequest, scope, dataModelScope, dataModelCode, _callback, opts);
         Type localVarReturnType = new TypeToken<Instrument>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -5502,6 +5570,8 @@ public class InstrumentsApi {
         private final String identifier;
         private final UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest;
         private String scope;
+        private String dataModelScope;
+        private String dataModelCode;
 
         private APIupdateInstrumentIdentifierRequest(String identifierType, String identifier, UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest) {
             this.identifierType = identifierType;
@@ -5520,6 +5590,26 @@ public class InstrumentsApi {
         }
 
         /**
+         * Set dataModelScope
+         * @param dataModelScope The optional scope of a Hierarchical Data Model to use (optional)
+         * @return APIupdateInstrumentIdentifierRequest
+         */
+        public APIupdateInstrumentIdentifierRequest dataModelScope(String dataModelScope) {
+            this.dataModelScope = dataModelScope;
+            return this;
+        }
+
+        /**
+         * Set dataModelCode
+         * @param dataModelCode The optional code of a Hierarchical Data Model to use (optional)
+         * @return APIupdateInstrumentIdentifierRequest
+         */
+        public APIupdateInstrumentIdentifierRequest dataModelCode(String dataModelCode) {
+            this.dataModelCode = dataModelCode;
+            return this;
+        }
+
+        /**
          * Build call for updateInstrumentIdentifier
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -5533,7 +5623,7 @@ public class InstrumentsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return updateInstrumentIdentifierCall(identifierType, identifier, updateInstrumentIdentifierRequest, scope, _callback);
+            return updateInstrumentIdentifierCall(identifierType, identifier, updateInstrumentIdentifierRequest, scope, dataModelScope, dataModelCode, _callback);
         }
 
         /**
@@ -5549,7 +5639,7 @@ public class InstrumentsApi {
          </table>
          */
         public Instrument execute() throws ApiException {
-            ApiResponse<Instrument> localVarResp = updateInstrumentIdentifierWithHttpInfo(identifierType, identifier, updateInstrumentIdentifierRequest, scope);
+            ApiResponse<Instrument> localVarResp = updateInstrumentIdentifierWithHttpInfo(identifierType, identifier, updateInstrumentIdentifierRequest, scope, dataModelScope, dataModelCode);
             return localVarResp.getData();
         }
 
@@ -5566,7 +5656,7 @@ public class InstrumentsApi {
          </table>
          */
         public Instrument execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<Instrument> localVarResp = updateInstrumentIdentifierWithHttpInfo(identifierType, identifier, updateInstrumentIdentifierRequest, scope, opts);
+            ApiResponse<Instrument> localVarResp = updateInstrumentIdentifierWithHttpInfo(identifierType, identifier, updateInstrumentIdentifierRequest, scope, dataModelScope, dataModelCode, opts);
             return localVarResp.getData();
         }
 
@@ -5583,7 +5673,7 @@ public class InstrumentsApi {
          </table>
          */
         public ApiResponse<Instrument> executeWithHttpInfo() throws ApiException {
-            return updateInstrumentIdentifierWithHttpInfo(identifierType, identifier, updateInstrumentIdentifierRequest, scope);
+            return updateInstrumentIdentifierWithHttpInfo(identifierType, identifier, updateInstrumentIdentifierRequest, scope, dataModelScope, dataModelCode);
         }
 
         /**
@@ -5599,7 +5689,7 @@ public class InstrumentsApi {
          </table>
          */
         public ApiResponse<Instrument> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return updateInstrumentIdentifierWithHttpInfo(identifierType, identifier, updateInstrumentIdentifierRequest, scope, opts);
+            return updateInstrumentIdentifierWithHttpInfo(identifierType, identifier, updateInstrumentIdentifierRequest, scope, dataModelScope, dataModelCode, opts);
         }
 
         /**
@@ -5616,7 +5706,7 @@ public class InstrumentsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<Instrument> _callback) throws ApiException {
-            return updateInstrumentIdentifierAsync(identifierType, identifier, updateInstrumentIdentifierRequest, scope, _callback);
+            return updateInstrumentIdentifierAsync(identifierType, identifier, updateInstrumentIdentifierRequest, scope, dataModelScope, dataModelCode, _callback);
         }
 
         /**
@@ -5633,7 +5723,7 @@ public class InstrumentsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<Instrument> _callback, ConfigurationOptions opts) throws ApiException {
-            return updateInstrumentIdentifierAsync(identifierType, identifier, updateInstrumentIdentifierRequest, scope, _callback, opts);
+            return updateInstrumentIdentifierAsync(identifierType, identifier, updateInstrumentIdentifierRequest, scope, dataModelScope, dataModelCode, _callback, opts);
         }
     }
 
@@ -5935,11 +6025,11 @@ public class InstrumentsApi {
     public APIupsertInstrumentsRequest upsertInstruments(Map<String, InstrumentDefinition> requestBody) {
         return new APIupsertInstrumentsRequest(requestBody);
     }
-    private okhttp3.Call upsertInstrumentsPropertiesCall(List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest, String scope, final ApiCallback _callback) throws ApiException {
-        return upsertInstrumentsPropertiesCall(upsertInstrumentPropertyRequest, scope,  _callback, new ConfigurationOptions());
+    private okhttp3.Call upsertInstrumentsPropertiesCall(List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest, String scope, String dataModelScope, String dataModelCode, final ApiCallback _callback) throws ApiException {
+        return upsertInstrumentsPropertiesCall(upsertInstrumentPropertyRequest, scope, dataModelScope, dataModelCode,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call upsertInstrumentsPropertiesCall(List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call upsertInstrumentsPropertiesCall(List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest, String scope, String dataModelScope, String dataModelCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5968,6 +6058,14 @@ public class InstrumentsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("scope", scope));
         }
 
+        if (dataModelScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dataModelScope", dataModelScope));
+        }
+
+        if (dataModelCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dataModelCode", dataModelCode));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -5994,40 +6092,40 @@ public class InstrumentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertInstrumentsPropertiesValidateBeforeCall(List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest, String scope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call upsertInstrumentsPropertiesValidateBeforeCall(List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest, String scope, String dataModelScope, String dataModelCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'upsertInstrumentPropertyRequest' is set
         if (upsertInstrumentPropertyRequest == null) {
             throw new ApiException("Missing the required parameter 'upsertInstrumentPropertyRequest' when calling upsertInstrumentsProperties(Async)");
         }
 
-        return upsertInstrumentsPropertiesCall(upsertInstrumentPropertyRequest, scope, _callback, opts);
+        return upsertInstrumentsPropertiesCall(upsertInstrumentPropertyRequest, scope, dataModelScope, dataModelCode, _callback, opts);
 
     }
 
 
-    private ApiResponse<UpsertInstrumentPropertiesResponse> upsertInstrumentsPropertiesWithHttpInfo(List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest, String scope) throws ApiException {
-        okhttp3.Call localVarCall = upsertInstrumentsPropertiesValidateBeforeCall(upsertInstrumentPropertyRequest, scope, null, new ConfigurationOptions());
+    private ApiResponse<UpsertInstrumentPropertiesResponse> upsertInstrumentsPropertiesWithHttpInfo(List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest, String scope, String dataModelScope, String dataModelCode) throws ApiException {
+        okhttp3.Call localVarCall = upsertInstrumentsPropertiesValidateBeforeCall(upsertInstrumentPropertyRequest, scope, dataModelScope, dataModelCode, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<UpsertInstrumentPropertiesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<UpsertInstrumentPropertiesResponse> upsertInstrumentsPropertiesWithHttpInfo(List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest, String scope, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = upsertInstrumentsPropertiesValidateBeforeCall(upsertInstrumentPropertyRequest, scope, null, opts);
+    private ApiResponse<UpsertInstrumentPropertiesResponse> upsertInstrumentsPropertiesWithHttpInfo(List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest, String scope, String dataModelScope, String dataModelCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertInstrumentsPropertiesValidateBeforeCall(upsertInstrumentPropertyRequest, scope, dataModelScope, dataModelCode, null, opts);
         Type localVarReturnType = new TypeToken<UpsertInstrumentPropertiesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call upsertInstrumentsPropertiesAsync(List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest, String scope, final ApiCallback<UpsertInstrumentPropertiesResponse> _callback) throws ApiException {
+    private okhttp3.Call upsertInstrumentsPropertiesAsync(List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest, String scope, String dataModelScope, String dataModelCode, final ApiCallback<UpsertInstrumentPropertiesResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertInstrumentsPropertiesValidateBeforeCall(upsertInstrumentPropertyRequest, scope, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = upsertInstrumentsPropertiesValidateBeforeCall(upsertInstrumentPropertyRequest, scope, dataModelScope, dataModelCode, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<UpsertInstrumentPropertiesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call upsertInstrumentsPropertiesAsync(List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest, String scope, final ApiCallback<UpsertInstrumentPropertiesResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call upsertInstrumentsPropertiesAsync(List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest, String scope, String dataModelScope, String dataModelCode, final ApiCallback<UpsertInstrumentPropertiesResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertInstrumentsPropertiesValidateBeforeCall(upsertInstrumentPropertyRequest, scope, _callback, opts);
+        okhttp3.Call localVarCall = upsertInstrumentsPropertiesValidateBeforeCall(upsertInstrumentPropertyRequest, scope, dataModelScope, dataModelCode, _callback, opts);
         Type localVarReturnType = new TypeToken<UpsertInstrumentPropertiesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -6036,6 +6134,8 @@ public class InstrumentsApi {
     public class APIupsertInstrumentsPropertiesRequest {
         private final List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest;
         private String scope;
+        private String dataModelScope;
+        private String dataModelCode;
 
         private APIupsertInstrumentsPropertiesRequest(List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest) {
             this.upsertInstrumentPropertyRequest = upsertInstrumentPropertyRequest;
@@ -6048,6 +6148,26 @@ public class InstrumentsApi {
          */
         public APIupsertInstrumentsPropertiesRequest scope(String scope) {
             this.scope = scope;
+            return this;
+        }
+
+        /**
+         * Set dataModelScope
+         * @param dataModelScope The optional scope of a Hierarchical Data Model to use (optional)
+         * @return APIupsertInstrumentsPropertiesRequest
+         */
+        public APIupsertInstrumentsPropertiesRequest dataModelScope(String dataModelScope) {
+            this.dataModelScope = dataModelScope;
+            return this;
+        }
+
+        /**
+         * Set dataModelCode
+         * @param dataModelCode The optional code of a Hierarchical Data Model to use (optional)
+         * @return APIupsertInstrumentsPropertiesRequest
+         */
+        public APIupsertInstrumentsPropertiesRequest dataModelCode(String dataModelCode) {
+            this.dataModelCode = dataModelCode;
             return this;
         }
 
@@ -6065,7 +6185,7 @@ public class InstrumentsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return upsertInstrumentsPropertiesCall(upsertInstrumentPropertyRequest, scope, _callback);
+            return upsertInstrumentsPropertiesCall(upsertInstrumentPropertyRequest, scope, dataModelScope, dataModelCode, _callback);
         }
 
         /**
@@ -6081,7 +6201,7 @@ public class InstrumentsApi {
          </table>
          */
         public UpsertInstrumentPropertiesResponse execute() throws ApiException {
-            ApiResponse<UpsertInstrumentPropertiesResponse> localVarResp = upsertInstrumentsPropertiesWithHttpInfo(upsertInstrumentPropertyRequest, scope);
+            ApiResponse<UpsertInstrumentPropertiesResponse> localVarResp = upsertInstrumentsPropertiesWithHttpInfo(upsertInstrumentPropertyRequest, scope, dataModelScope, dataModelCode);
             return localVarResp.getData();
         }
 
@@ -6098,7 +6218,7 @@ public class InstrumentsApi {
          </table>
          */
         public UpsertInstrumentPropertiesResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<UpsertInstrumentPropertiesResponse> localVarResp = upsertInstrumentsPropertiesWithHttpInfo(upsertInstrumentPropertyRequest, scope, opts);
+            ApiResponse<UpsertInstrumentPropertiesResponse> localVarResp = upsertInstrumentsPropertiesWithHttpInfo(upsertInstrumentPropertyRequest, scope, dataModelScope, dataModelCode, opts);
             return localVarResp.getData();
         }
 
@@ -6115,7 +6235,7 @@ public class InstrumentsApi {
          </table>
          */
         public ApiResponse<UpsertInstrumentPropertiesResponse> executeWithHttpInfo() throws ApiException {
-            return upsertInstrumentsPropertiesWithHttpInfo(upsertInstrumentPropertyRequest, scope);
+            return upsertInstrumentsPropertiesWithHttpInfo(upsertInstrumentPropertyRequest, scope, dataModelScope, dataModelCode);
         }
 
         /**
@@ -6131,7 +6251,7 @@ public class InstrumentsApi {
          </table>
          */
         public ApiResponse<UpsertInstrumentPropertiesResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return upsertInstrumentsPropertiesWithHttpInfo(upsertInstrumentPropertyRequest, scope, opts);
+            return upsertInstrumentsPropertiesWithHttpInfo(upsertInstrumentPropertyRequest, scope, dataModelScope, dataModelCode, opts);
         }
 
         /**
@@ -6148,7 +6268,7 @@ public class InstrumentsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<UpsertInstrumentPropertiesResponse> _callback) throws ApiException {
-            return upsertInstrumentsPropertiesAsync(upsertInstrumentPropertyRequest, scope, _callback);
+            return upsertInstrumentsPropertiesAsync(upsertInstrumentPropertyRequest, scope, dataModelScope, dataModelCode, _callback);
         }
 
         /**
@@ -6165,7 +6285,7 @@ public class InstrumentsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<UpsertInstrumentPropertiesResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return upsertInstrumentsPropertiesAsync(upsertInstrumentPropertyRequest, scope, _callback, opts);
+            return upsertInstrumentsPropertiesAsync(upsertInstrumentPropertyRequest, scope, dataModelScope, dataModelCode, _callback, opts);
         }
     }
 
