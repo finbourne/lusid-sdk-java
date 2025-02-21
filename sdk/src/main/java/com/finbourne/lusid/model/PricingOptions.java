@@ -92,6 +92,10 @@ public class PricingOptions {
   @SerializedName(SERIALIZED_NAME_VALIDATE_DOMESTIC_AND_QUOTE_CURRENCIES_ARE_CONSISTENT)
   private Boolean validateDomesticAndQuoteCurrenciesAreConsistent;
 
+  public static final String SERIALIZED_NAME_MBS_VALUATION_USING_HOLDING_CURRENT_FACE = "mbsValuationUsingHoldingCurrentFace";
+  @SerializedName(SERIALIZED_NAME_MBS_VALUATION_USING_HOLDING_CURRENT_FACE)
+  private Boolean mbsValuationUsingHoldingCurrentFace;
+
   public static final String SERIALIZED_NAME_CONSERVED_QUANTITY_FOR_LOOKTHROUGH_EXPANSION = "conservedQuantityForLookthroughExpansion";
   @SerializedName(SERIALIZED_NAME_CONSERVED_QUANTITY_FOR_LOOKTHROUGH_EXPANSION)
   private String conservedQuantityForLookthroughExpansion;
@@ -313,6 +317,27 @@ public class PricingOptions {
   }
 
 
+  public PricingOptions mbsValuationUsingHoldingCurrentFace(Boolean mbsValuationUsingHoldingCurrentFace) {
+    
+    this.mbsValuationUsingHoldingCurrentFace = mbsValuationUsingHoldingCurrentFace;
+    return this;
+  }
+
+   /**
+   * Get mbsValuationUsingHoldingCurrentFace
+   * @return mbsValuationUsingHoldingCurrentFace
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getMbsValuationUsingHoldingCurrentFace() {
+    return mbsValuationUsingHoldingCurrentFace;
+  }
+
+
+  public void setMbsValuationUsingHoldingCurrentFace(Boolean mbsValuationUsingHoldingCurrentFace) {
+    this.mbsValuationUsingHoldingCurrentFace = mbsValuationUsingHoldingCurrentFace;
+  }
+
+
   public PricingOptions conservedQuantityForLookthroughExpansion(String conservedQuantityForLookthroughExpansion) {
     
     this.conservedQuantityForLookthroughExpansion = conservedQuantityForLookthroughExpansion;
@@ -375,6 +400,7 @@ public class PricingOptions {
         Objects.equals(this.removeContingentCashflowsInPaymentDiary, pricingOptions.removeContingentCashflowsInPaymentDiary) &&
         Objects.equals(this.useChildSubHoldingKeysForPortfolioExpansion, pricingOptions.useChildSubHoldingKeysForPortfolioExpansion) &&
         Objects.equals(this.validateDomesticAndQuoteCurrenciesAreConsistent, pricingOptions.validateDomesticAndQuoteCurrenciesAreConsistent) &&
+        Objects.equals(this.mbsValuationUsingHoldingCurrentFace, pricingOptions.mbsValuationUsingHoldingCurrentFace) &&
         Objects.equals(this.conservedQuantityForLookthroughExpansion, pricingOptions.conservedQuantityForLookthroughExpansion) &&
         Objects.equals(this.returnZeroPv, pricingOptions.returnZeroPv);
   }
@@ -385,7 +411,7 @@ public class PricingOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(modelSelection, useInstrumentTypeToDeterminePricer, allowAnyInstrumentsWithSecUidToPriceOffLookup, allowPartiallySuccessfulEvaluation, produceSeparateResultForLinearOtcLegs, enableUseOfCachedUnitResults, windowValuationOnInstrumentStartEnd, removeContingentCashflowsInPaymentDiary, useChildSubHoldingKeysForPortfolioExpansion, validateDomesticAndQuoteCurrenciesAreConsistent, conservedQuantityForLookthroughExpansion, returnZeroPv);
+    return Objects.hash(modelSelection, useInstrumentTypeToDeterminePricer, allowAnyInstrumentsWithSecUidToPriceOffLookup, allowPartiallySuccessfulEvaluation, produceSeparateResultForLinearOtcLegs, enableUseOfCachedUnitResults, windowValuationOnInstrumentStartEnd, removeContingentCashflowsInPaymentDiary, useChildSubHoldingKeysForPortfolioExpansion, validateDomesticAndQuoteCurrenciesAreConsistent, mbsValuationUsingHoldingCurrentFace, conservedQuantityForLookthroughExpansion, returnZeroPv);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -409,6 +435,7 @@ public class PricingOptions {
     sb.append("    removeContingentCashflowsInPaymentDiary: ").append(toIndentedString(removeContingentCashflowsInPaymentDiary)).append("\n");
     sb.append("    useChildSubHoldingKeysForPortfolioExpansion: ").append(toIndentedString(useChildSubHoldingKeysForPortfolioExpansion)).append("\n");
     sb.append("    validateDomesticAndQuoteCurrenciesAreConsistent: ").append(toIndentedString(validateDomesticAndQuoteCurrenciesAreConsistent)).append("\n");
+    sb.append("    mbsValuationUsingHoldingCurrentFace: ").append(toIndentedString(mbsValuationUsingHoldingCurrentFace)).append("\n");
     sb.append("    conservedQuantityForLookthroughExpansion: ").append(toIndentedString(conservedQuantityForLookthroughExpansion)).append("\n");
     sb.append("    returnZeroPv: ").append(toIndentedString(returnZeroPv)).append("\n");
     sb.append("}");
@@ -443,6 +470,7 @@ public class PricingOptions {
     openapiFields.add("removeContingentCashflowsInPaymentDiary");
     openapiFields.add("useChildSubHoldingKeysForPortfolioExpansion");
     openapiFields.add("validateDomesticAndQuoteCurrenciesAreConsistent");
+    openapiFields.add("mbsValuationUsingHoldingCurrentFace");
     openapiFields.add("conservedQuantityForLookthroughExpansion");
     openapiFields.add("returnZeroPv");
 
