@@ -66,6 +66,10 @@ public class LoanFacility extends LusidInstrument {
   @SerializedName(SERIALIZED_NAME_DOM_CCY)
   private String domCcy;
 
+  public static final String SERIALIZED_NAME_INITIAL_COMMITMENT = "initialCommitment";
+  @SerializedName(SERIALIZED_NAME_INITIAL_COMMITMENT)
+  private java.math.BigDecimal initialCommitment;
+
   public static final String SERIALIZED_NAME_LOAN_TYPE = "loanType";
   @SerializedName(SERIALIZED_NAME_LOAN_TYPE)
   private String loanType;
@@ -141,6 +145,27 @@ public class LoanFacility extends LusidInstrument {
   }
 
 
+  public LoanFacility initialCommitment(java.math.BigDecimal initialCommitment) {
+    
+    this.initialCommitment = initialCommitment;
+    return this;
+  }
+
+   /**
+   * The initial commitment for the loan facility.
+   * @return initialCommitment
+  **/
+  @jakarta.annotation.Nonnull
+  public java.math.BigDecimal getInitialCommitment() {
+    return initialCommitment;
+  }
+
+
+  public void setInitialCommitment(java.math.BigDecimal initialCommitment) {
+    this.initialCommitment = initialCommitment;
+  }
+
+
   public LoanFacility loanType(String loanType) {
     
     this.loanType = loanType;
@@ -204,6 +229,7 @@ public class LoanFacility extends LusidInstrument {
     return Objects.equals(this.startDate, loanFacility.startDate) &&
         Objects.equals(this.maturityDate, loanFacility.maturityDate) &&
         Objects.equals(this.domCcy, loanFacility.domCcy) &&
+        (this.initialCommitment.compareTo(loanFacility.getInitialCommitment()) == 0) &&
         Objects.equals(this.loanType, loanFacility.loanType) &&
         Objects.equals(this.schedules, loanFacility.schedules) &&
         super.equals(o);
@@ -211,7 +237,7 @@ public class LoanFacility extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, domCcy, loanType, schedules, super.hashCode());
+    return Objects.hash(startDate, maturityDate, domCcy, initialCommitment, loanType, schedules, super.hashCode());
   }
 
   @Override
@@ -222,6 +248,7 @@ public class LoanFacility extends LusidInstrument {
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    maturityDate: ").append(toIndentedString(maturityDate)).append("\n");
     sb.append("    domCcy: ").append(toIndentedString(domCcy)).append("\n");
+    sb.append("    initialCommitment: ").append(toIndentedString(initialCommitment)).append("\n");
     sb.append("    loanType: ").append(toIndentedString(loanType)).append("\n");
     sb.append("    schedules: ").append(toIndentedString(schedules)).append("\n");
     sb.append("}");
@@ -250,6 +277,7 @@ public class LoanFacility extends LusidInstrument {
     openapiFields.add("startDate");
     openapiFields.add("maturityDate");
     openapiFields.add("domCcy");
+    openapiFields.add("initialCommitment");
     openapiFields.add("loanType");
     openapiFields.add("schedules");
 
@@ -258,6 +286,7 @@ public class LoanFacility extends LusidInstrument {
     openapiRequiredFields.add("startDate");
     openapiRequiredFields.add("maturityDate");
     openapiRequiredFields.add("domCcy");
+    openapiRequiredFields.add("initialCommitment");
     openapiRequiredFields.add("loanType");
     openapiRequiredFields.add("schedules");
     openapiRequiredFields.add("instrumentType");
