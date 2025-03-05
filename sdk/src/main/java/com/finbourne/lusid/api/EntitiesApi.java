@@ -918,7 +918,7 @@ public class EntitiesApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetEntityHistory: List an entity&#39;s history information
+     * [EARLY ACCESS] GetEntityHistory: List an entity&#39;s history information
      * Retrieve a page of an entity&#39;s change history up to a particular point in AsAt time.
      * @param entityType The type of the entity to list the change history for. (required)
      * @param entityUniqueId The universally unique identifier of the entity. (required)
