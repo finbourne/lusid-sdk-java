@@ -5,23 +5,23 @@ All URIs are relative to *https://www.lusid.com/api*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**batchUpsertInstrumentProperties**](InstrumentsApi.md#batchUpsertInstrumentProperties) | **POST** /api/instruments/$batchupsertproperties | BatchUpsertInstrumentProperties: Batch upsert instruments properties |
-| [**calculateSettlementDate**](InstrumentsApi.md#calculateSettlementDate) | **GET** /api/instruments/{identifierType}/{identifier}/settlementdate | [EARLY ACCESS] CalculateSettlementDate: Get the settlement date for an instrument. |
+| [**calculateSettlementDate**](InstrumentsApi.md#calculateSettlementDate) | **GET** /api/instruments/{identifierType}/{identifier}/settlementdate | CalculateSettlementDate: Get the settlement date for an instrument. |
 | [**deleteInstrument**](InstrumentsApi.md#deleteInstrument) | **DELETE** /api/instruments/{identifierType}/{identifier} | DeleteInstrument: Soft delete a single instrument |
-| [**deleteInstrumentProperties**](InstrumentsApi.md#deleteInstrumentProperties) | **POST** /api/instruments/{identifierType}/{identifier}/properties/$delete | [EARLY ACCESS] DeleteInstrumentProperties: Delete instrument properties |
+| [**deleteInstrumentProperties**](InstrumentsApi.md#deleteInstrumentProperties) | **POST** /api/instruments/{identifierType}/{identifier}/properties/$delete | DeleteInstrumentProperties: Delete instrument properties |
 | [**deleteInstruments**](InstrumentsApi.md#deleteInstruments) | **POST** /api/instruments/$delete | DeleteInstruments: Soft or hard delete multiple instruments |
-| [**getAllPossibleFeatures**](InstrumentsApi.md#getAllPossibleFeatures) | **GET** /api/instruments/{instrumentType}/allfeatures | [EXPERIMENTAL] GetAllPossibleFeatures: Provides list of all possible features for instrument type. |
-| [**getExistingInstrumentCapabilities**](InstrumentsApi.md#getExistingInstrumentCapabilities) | **GET** /api/instruments/{identifier}/capabilities | [EXPERIMENTAL] GetExistingInstrumentCapabilities: Retrieve capabilities of an existing instrument identified by LUID. These include instrument features, and if model is provided it also includes supported address keys and economic dependencies.  Given an lusid instrument id provides instrument capabilities, outlining features, and, given the model, the capabilities also include supported addresses as well as economic dependencies. |
+| [**getAllPossibleFeatures**](InstrumentsApi.md#getAllPossibleFeatures) | **GET** /api/instruments/{instrumentType}/allfeatures | GetAllPossibleFeatures: Provides list of all possible features for instrument type. |
+| [**getExistingInstrumentCapabilities**](InstrumentsApi.md#getExistingInstrumentCapabilities) | **GET** /api/instruments/{identifier}/capabilities | GetExistingInstrumentCapabilities: Retrieve capabilities of an existing instrument identified by LUID. These include instrument features, and if model is provided it also includes supported address keys and economic dependencies.  Given an lusid instrument id provides instrument capabilities, outlining features, and, given the model, the capabilities also include supported addresses as well as economic dependencies. |
 | [**getExistingInstrumentModels**](InstrumentsApi.md#getExistingInstrumentModels) | **GET** /api/instruments/{identifier}/models | GetExistingInstrumentModels: Retrieve supported pricing models for an existing instrument identified by LUID. |
 | [**getInstrument**](InstrumentsApi.md#getInstrument) | **GET** /api/instruments/{identifierType}/{identifier} | GetInstrument: Get instrument |
 | [**getInstrumentIdentifierTypes**](InstrumentsApi.md#getInstrumentIdentifierTypes) | **GET** /api/instruments/identifierTypes | GetInstrumentIdentifierTypes: Get instrument identifier types |
-| [**getInstrumentPaymentDiary**](InstrumentsApi.md#getInstrumentPaymentDiary) | **GET** /api/instruments/{identifierType}/{identifier}/paymentdiary | [EXPERIMENTAL] GetInstrumentPaymentDiary: Get instrument payment diary |
+| [**getInstrumentPaymentDiary**](InstrumentsApi.md#getInstrumentPaymentDiary) | **GET** /api/instruments/{identifierType}/{identifier}/paymentdiary | GetInstrumentPaymentDiary: Get instrument payment diary |
 | [**getInstrumentProperties**](InstrumentsApi.md#getInstrumentProperties) | **GET** /api/instruments/{identifierType}/{identifier}/properties | GetInstrumentProperties: Get instrument properties |
 | [**getInstrumentPropertyTimeSeries**](InstrumentsApi.md#getInstrumentPropertyTimeSeries) | **GET** /api/instruments/{identifierType}/{identifier}/properties/time-series | GetInstrumentPropertyTimeSeries: Get instrument property time series |
-| [**getInstrumentRelationships**](InstrumentsApi.md#getInstrumentRelationships) | **GET** /api/instruments/{identifierType}/{identifier}/relationships | [EARLY ACCESS] GetInstrumentRelationships: Get Instrument relationships |
+| [**getInstrumentRelationships**](InstrumentsApi.md#getInstrumentRelationships) | **GET** /api/instruments/{identifierType}/{identifier}/relationships | GetInstrumentRelationships: Get Instrument relationships |
 | [**getInstruments**](InstrumentsApi.md#getInstruments) | **POST** /api/instruments/$get | GetInstruments: Get instruments |
-| [**listInstrumentProperties**](InstrumentsApi.md#listInstrumentProperties) | **GET** /api/instruments/{identifierType}/{identifier}/properties/list | [EARLY ACCESS] ListInstrumentProperties: Get instrument properties (with Pagination) |
+| [**listInstrumentProperties**](InstrumentsApi.md#listInstrumentProperties) | **GET** /api/instruments/{identifierType}/{identifier}/properties/list | ListInstrumentProperties: Get instrument properties (with Pagination) |
 | [**listInstruments**](InstrumentsApi.md#listInstruments) | **GET** /api/instruments | ListInstruments: List instruments |
-| [**queryInstrumentCapabilities**](InstrumentsApi.md#queryInstrumentCapabilities) | **POST** /api/instruments/capabilities | [EXPERIMENTAL] QueryInstrumentCapabilities: Query capabilities of a particular instrument in advance of creating it. These include instrument features, and if model is provided it also includes supported address keys and economic dependencies. |
+| [**queryInstrumentCapabilities**](InstrumentsApi.md#queryInstrumentCapabilities) | **POST** /api/instruments/capabilities | QueryInstrumentCapabilities: Query capabilities of a particular instrument in advance of creating it. These include instrument features, and if model is provided it also includes supported address keys and economic dependencies. |
 | [**updateInstrumentIdentifier**](InstrumentsApi.md#updateInstrumentIdentifier) | **POST** /api/instruments/{identifierType}/{identifier} | UpdateInstrumentIdentifier: Update instrument identifier |
 | [**upsertInstruments**](InstrumentsApi.md#upsertInstruments) | **POST** /api/instruments | UpsertInstruments: Upsert instruments |
 | [**upsertInstrumentsProperties**](InstrumentsApi.md#upsertInstrumentsProperties) | **POST** /api/instruments/$upsertproperties | UpsertInstrumentsProperties: Upsert instruments properties |
@@ -133,7 +133,7 @@ public class InstrumentsApiExample {
 
 > AddBusinessDaysToDateResponse calculateSettlementDate(identifierType, identifier, transactionDate, scope, asAt)
 
-[EARLY ACCESS] CalculateSettlementDate: Get the settlement date for an instrument.
+CalculateSettlementDate: Get the settlement date for an instrument.
 
 Get the settlement date for a given trade date and instrument. The calculated settlement date will be in UTC.  If a cut label transaction date is provided, the settlement date will be calculated relative to the absolute UTC datetime.
 
@@ -327,7 +327,7 @@ public class InstrumentsApiExample {
 
 > DeleteInstrumentPropertiesResponse deleteInstrumentProperties(identifierType, identifier, requestBody, effectiveAt, scope, dataModelScope, dataModelCode)
 
-[EARLY ACCESS] DeleteInstrumentProperties: Delete instrument properties
+DeleteInstrumentProperties: Delete instrument properties
 
 Delete one or more properties from a particular instrument. If the properties are time-variant then an effective datetime from which  to delete properties must be specified. If the properties are perpetual then it is invalid to specify an effective datetime for deletion.
 
@@ -525,7 +525,7 @@ public class InstrumentsApiExample {
 
 > Map&lt;String, List&lt;String&gt;&gt; getAllPossibleFeatures(instrumentType)
 
-[EXPERIMENTAL] GetAllPossibleFeatures: Provides list of all possible features for instrument type.
+GetAllPossibleFeatures: Provides list of all possible features for instrument type.
 
 Provides all possible instrument features an instrument of a given type can provide.
 
@@ -616,7 +616,7 @@ public class InstrumentsApiExample {
 
 > InstrumentCapabilities getExistingInstrumentCapabilities(identifier, model, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode)
 
-[EXPERIMENTAL] GetExistingInstrumentCapabilities: Retrieve capabilities of an existing instrument identified by LUID. These include instrument features, and if model is provided it also includes supported address keys and economic dependencies.  Given an lusid instrument id provides instrument capabilities, outlining features, and, given the model, the capabilities also include supported addresses as well as economic dependencies.
+GetExistingInstrumentCapabilities: Retrieve capabilities of an existing instrument identified by LUID. These include instrument features, and if model is provided it also includes supported address keys and economic dependencies.  Given an lusid instrument id provides instrument capabilities, outlining features, and, given the model, the capabilities also include supported addresses as well as economic dependencies.
 
 Returns instrument capabilities containing useful information about the instrument and the model. This includes  - features corresponding to the instrument e.g. Optionality:American, Other:InflationLinked  - supported addresses (if model provided) e.g. Valuation/Pv, Valuation/DirtyPriceKey, Valuation/Accrued  - economic dependencies (if model provided) e.g. Cash:USD, Fx:GBP.USD, Rates:GBP.GBPOIS
 
@@ -1009,7 +1009,7 @@ This endpoint does not need any parameter.
 
 > InstrumentPaymentDiary getInstrumentPaymentDiary(identifierType, identifier, recipeScope, recipeCode, effectiveAt, asAt, scope)
 
-[EXPERIMENTAL] GetInstrumentPaymentDiary: Get instrument payment diary
+GetInstrumentPaymentDiary: Get instrument payment diary
 
 Get the payment diary of a single instrument.
 
@@ -1318,7 +1318,7 @@ public class InstrumentsApiExample {
 
 > ResourceListOfRelationship getInstrumentRelationships(identifierType, identifier, effectiveAt, asAt, filter, identifierTypes, scope)
 
-[EARLY ACCESS] GetInstrumentRelationships: Get Instrument relationships
+GetInstrumentRelationships: Get Instrument relationships
 
 Get relationships for a particular Instrument.
 
@@ -1524,7 +1524,7 @@ public class InstrumentsApiExample {
 
 > ResourceListOfProperty listInstrumentProperties(identifierType, identifier, effectiveAt, asAt, page, limit, scope)
 
-[EARLY ACCESS] ListInstrumentProperties: Get instrument properties (with Pagination)
+ListInstrumentProperties: Get instrument properties (with Pagination)
 
 List all the properties of a particular instrument, as identified by a particular unique identifier.
 
@@ -1738,7 +1738,7 @@ public class InstrumentsApiExample {
 
 > InstrumentCapabilities queryInstrumentCapabilities(lusidInstrument, model)
 
-[EXPERIMENTAL] QueryInstrumentCapabilities: Query capabilities of a particular instrument in advance of creating it. These include instrument features, and if model is provided it also includes supported address keys and economic dependencies.
+QueryInstrumentCapabilities: Query capabilities of a particular instrument in advance of creating it. These include instrument features, and if model is provided it also includes supported address keys and economic dependencies.
 
 Returns instrument capabilities containing useful information about the instrument and the model. This includes  - features corresponding to the instrument e.g. Optionality:American, Other:InflationLinked  - supported addresses (if model provided) e.g. Valuation/Pv, Valuation/DirtyPriceKey, Valuation/Accrued  - economic dependencies (if model provided) e.g. Cash:USD, Fx:GBP.USD, Rates:GBP.GBPOIS
 

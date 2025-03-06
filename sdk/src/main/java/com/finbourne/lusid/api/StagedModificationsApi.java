@@ -304,7 +304,7 @@ public class StagedModificationsApi {
     }
 
     /**
-     * [EXPERIMENTAL] AddDecision: AddDecision
+     * AddDecision: AddDecision
      * Add decision to staged modification, Approve or Reject.
      * @param id Unique Id for a staged modification.. (required)
      * @param stagedModificationDecisionRequest The decision on the requested staged modification, \&quot;Approve\&quot; or \&quot;Reject\&quot;. (required)
@@ -552,7 +552,7 @@ public class StagedModificationsApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetStagedModification: GetStagedModification
+     * GetStagedModification: GetStagedModification
      * Retrieve the details of a staged modification.
      * @param id The unique identifier for a staged modification. (required)
      * @return APIgetStagedModificationRequest
@@ -859,7 +859,7 @@ public class StagedModificationsApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListRequestedChanges: ListRequestedChanges
+     * ListRequestedChanges: ListRequestedChanges
      * List the requested changes for a staged modification.
      * @param id Unique Id for a staged modification.. (required)
      * @return APIlistRequestedChangesRequest
@@ -1158,7 +1158,7 @@ public class StagedModificationsApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListStagedModifications: ListStagedModifications
+     * ListStagedModifications: ListStagedModifications
      * List summaries of the staged modifications.
      * @return APIlistStagedModificationsRequest
      * @http.response.details

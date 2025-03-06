@@ -4,9 +4,9 @@ All URIs are relative to *https://www.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteComplexMarketData**](ComplexMarketDataApi.md#deleteComplexMarketData) | **POST** /api/complexmarketdata/{scope}/$delete | [EARLY ACCESS] DeleteComplexMarketData: Delete one or more items of complex market data, assuming they are present. |
-| [**getComplexMarketData**](ComplexMarketDataApi.md#getComplexMarketData) | **POST** /api/complexmarketdata/{scope}/$get | [EARLY ACCESS] GetComplexMarketData: Get complex market data |
-| [**listComplexMarketData**](ComplexMarketDataApi.md#listComplexMarketData) | **GET** /api/complexmarketdata | [EXPERIMENTAL] ListComplexMarketData: List the set of ComplexMarketData |
+| [**deleteComplexMarketData**](ComplexMarketDataApi.md#deleteComplexMarketData) | **POST** /api/complexmarketdata/{scope}/$delete | DeleteComplexMarketData: Delete one or more items of complex market data, assuming they are present. |
+| [**getComplexMarketData**](ComplexMarketDataApi.md#getComplexMarketData) | **POST** /api/complexmarketdata/{scope}/$get | GetComplexMarketData: Get complex market data |
+| [**listComplexMarketData**](ComplexMarketDataApi.md#listComplexMarketData) | **GET** /api/complexmarketdata | ListComplexMarketData: List the set of ComplexMarketData |
 | [**upsertComplexMarketData**](ComplexMarketDataApi.md#upsertComplexMarketData) | **POST** /api/complexmarketdata/{scope} | UpsertComplexMarketData: Upsert a set of complex market data items. This creates or updates the data in Lusid. |
 
 
@@ -15,7 +15,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 > AnnulStructuredDataResponse deleteComplexMarketData(scope, requestBody)
 
-[EARLY ACCESS] DeleteComplexMarketData: Delete one or more items of complex market data, assuming they are present.
+DeleteComplexMarketData: Delete one or more items of complex market data, assuming they are present.
 
 Delete one or more specified complex market data items from a single scope. Each item is identified by a unique id which includes  information about its type as well as the exact effective datetime (to the microsecond) at which it entered the system (became valid).     In the request each complex market data item must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each quote in the response.     The response will return both the collection of successfully deleted complex market data items, as well as those that failed.  For the failures a reason will be provided explaining why the it could not be deleted.     It is important to always check the failed set for any unsuccessful results.
 
@@ -108,7 +108,7 @@ public class ComplexMarketDataApiExample {
 
 > GetComplexMarketDataResponse getComplexMarketData(scope, requestBody, effectiveAt, asAt, maxAge)
 
-[EARLY ACCESS] GetComplexMarketData: Get complex market data
+GetComplexMarketData: Get complex market data
 
 Get one or more items of complex market data from a single scope.     Each item can be identified by its time invariant complex market data identifier.     For each id LUSID will return the most recent matched item with respect to the provided (or default) effective datetime.     An optional maximum age range window can be specified which defines how far back to look back for data from the specified effective datetime.  LUSID will return the most recent item within this window.     In the request each complex market data id must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each item in the response.     The response will return three collections. One, the successfully retrieved complex market data. Two, those that had a  valid identifier but could not be found. Three, those that failed because LUSID could not construct a valid identifier from the request.     For the ids that failed to resolve or could not be found a reason will be provided explaining why that is the case.     It is important to always check the failed and not found sets for any unsuccessful results.
 
@@ -207,7 +207,7 @@ public class ComplexMarketDataApiExample {
 
 > ResourceListOfListComplexMarketDataWithMetaDataResponse listComplexMarketData(asAt)
 
-[EXPERIMENTAL] ListComplexMarketData: List the set of ComplexMarketData
+ListComplexMarketData: List the set of ComplexMarketData
 
 List the set of ComplexMarketData at the specified date/time,  along with the scope the data was stored in and its identifier in that scope.
 

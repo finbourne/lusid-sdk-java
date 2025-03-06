@@ -305,7 +305,7 @@ public class StagingRuleSetApi {
     }
 
     /**
-     * [EXPERIMENTAL] CreateStagingRuleSet: Create a StagingRuleSet
+     * CreateStagingRuleSet: Create a StagingRuleSet
      * Create a new staging rule set.
      * @param entityType The entity type for which to create the staging rule set. (required)
      * @param createStagingRuleSetRequest Request to create a staging rule set. (required)
@@ -538,7 +538,7 @@ public class StagingRuleSetApi {
     }
 
     /**
-     * [EXPERIMENTAL] DeleteStagingRuleSet: Delete a StagingRuleSet
+     * DeleteStagingRuleSet: Delete a StagingRuleSet
      * Delete a staging rule set of a specific entity type. Deletion will be valid from the staging rule set&#39;s creation datetime.  This means that the staging rule set will no longer exist at any effective datetime from the asAt datetime of deletion.
      * @param entityType The entity type for which to delete the staging rule set. (required)
      * @return APIdeleteStagingRuleSetRequest
@@ -785,7 +785,7 @@ public class StagingRuleSetApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetStagingRuleSet: Get a StagingRuleSet
+     * GetStagingRuleSet: Get a StagingRuleSet
      * Get the staging rule set for the given entity type at the specific asAt time.
      * @param entityType The entity type for which to retrieve the staging rule set. (required)
      * @return APIgetStagingRuleSetRequest
@@ -1084,7 +1084,7 @@ public class StagingRuleSetApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListStagingRuleSets: List StagingRuleSets
+     * ListStagingRuleSets: List StagingRuleSets
      * List all the staging rule sets matching particular criteria.
      * @return APIlistStagingRuleSetsRequest
      * @http.response.details
@@ -1326,7 +1326,7 @@ public class StagingRuleSetApi {
     }
 
     /**
-     * [EXPERIMENTAL] UpdateStagingRuleSet: Update a StagingRuleSet
+     * UpdateStagingRuleSet: Update a StagingRuleSet
      * Update an existing staging rule set.
      * @param entityType The entity type for which to update the staging rule set. (required)
      * @param updateStagingRuleSetRequest Request to update a staging rule set. (required)

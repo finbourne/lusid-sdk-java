@@ -4,11 +4,11 @@ All URIs are relative to *https://www.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**queryApplicableInstrumentEvents**](InstrumentEventsApi.md#queryApplicableInstrumentEvents) | **POST** /api/instrumentevents/$queryApplicableInstrumentEvents | [EARLY ACCESS] QueryApplicableInstrumentEvents: Returns a list of applicable instrument events based on the holdings of the portfolios and date range specified in the query. |
+| [**queryApplicableInstrumentEvents**](InstrumentEventsApi.md#queryApplicableInstrumentEvents) | **POST** /api/instrumentevents/$queryApplicableInstrumentEvents | QueryApplicableInstrumentEvents: Returns a list of applicable instrument events based on the holdings of the portfolios and date range specified in the query. |
 | [**queryBucketedCashFlows**](InstrumentEventsApi.md#queryBucketedCashFlows) | **POST** /api/instrumentevents/$queryBucketedCashFlows | QueryBucketedCashFlows: Returns bucketed cashflows based on the holdings of the portfolios and date range specified in the query. |
-| [**queryCashFlows**](InstrumentEventsApi.md#queryCashFlows) | **POST** /api/instrumentevents/$queryCashFlows | [EXPERIMENTAL] QueryCashFlows: Returns a list of cashflows based on the holdings of the portfolios and date range specified in the query. |
-| [**queryInstrumentEvents**](InstrumentEventsApi.md#queryInstrumentEvents) | **POST** /api/instrumentevents/$query | [EARLY ACCESS] QueryInstrumentEvents: Returns a list of instrument events based on the holdings of the portfolios and date range specified in the query. |
-| [**queryTradeTickets**](InstrumentEventsApi.md#queryTradeTickets) | **POST** /api/instrumentevents/$queryTradeTickets | [EXPERIMENTAL] QueryTradeTickets: Returns a list of trade tickets based on the holdings of the portfolios and date range specified in the query. |
+| [**queryCashFlows**](InstrumentEventsApi.md#queryCashFlows) | **POST** /api/instrumentevents/$queryCashFlows | QueryCashFlows: Returns a list of cashflows based on the holdings of the portfolios and date range specified in the query. |
+| [**queryInstrumentEvents**](InstrumentEventsApi.md#queryInstrumentEvents) | **POST** /api/instrumentevents/$query | QueryInstrumentEvents: Returns a list of instrument events based on the holdings of the portfolios and date range specified in the query. |
+| [**queryTradeTickets**](InstrumentEventsApi.md#queryTradeTickets) | **POST** /api/instrumentevents/$queryTradeTickets | QueryTradeTickets: Returns a list of trade tickets based on the holdings of the portfolios and date range specified in the query. |
 
 
 
@@ -16,7 +16,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 > ResourceListOfApplicableInstrumentEvent queryApplicableInstrumentEvents(asAt, limit, page, queryApplicableInstrumentEventsRequest)
 
-[EARLY ACCESS] QueryApplicableInstrumentEvents: Returns a list of applicable instrument events based on the holdings of the portfolios and date range specified in the query.
+QueryApplicableInstrumentEvents: Returns a list of applicable instrument events based on the holdings of the portfolios and date range specified in the query.
 
 Returns a list of applicable instrument events based on the holdings of the portfolios and date range specified in the query.
 
@@ -204,7 +204,7 @@ public class InstrumentEventsApiExample {
 
 > ResourceListOfInstrumentCashFlow queryCashFlows(limit, page, queryCashFlowsRequest)
 
-[EXPERIMENTAL] QueryCashFlows: Returns a list of cashflows based on the holdings of the portfolios and date range specified in the query.
+QueryCashFlows: Returns a list of cashflows based on the holdings of the portfolios and date range specified in the query.
 
 Returns a list of cashflows based on the holdings of the portfolios and date range specified in the query.
 
@@ -299,7 +299,7 @@ public class InstrumentEventsApiExample {
 
 > ResourceListOfInstrumentEventHolder queryInstrumentEvents(limit, page, queryInstrumentEventsRequest)
 
-[EARLY ACCESS] QueryInstrumentEvents: Returns a list of instrument events based on the holdings of the portfolios and date range specified in the query.
+QueryInstrumentEvents: Returns a list of instrument events based on the holdings of the portfolios and date range specified in the query.
 
 Returns a list of instrument events based on the holdings of the portfolios and date range specified in the query.
 
@@ -394,7 +394,7 @@ public class InstrumentEventsApiExample {
 
 > ResourceListOfPortfolioTradeTicket queryTradeTickets(limit, page, queryTradeTicketsRequest)
 
-[EXPERIMENTAL] QueryTradeTickets: Returns a list of trade tickets based on the holdings of the portfolios and date range specified in the query.
+QueryTradeTickets: Returns a list of trade tickets based on the holdings of the portfolios and date range specified in the query.
 
 Returns a list of trade tickets based on the holdings of the portfolios and date range specified in the query.    These trade tickets are derived from events that involve transition of instrument states, such as transitions  on exercise or default of an instrument. The trade tickets are to allow the new position to be created given the  existing portfolio configuration.
 

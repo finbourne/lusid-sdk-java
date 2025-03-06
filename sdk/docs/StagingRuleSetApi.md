@@ -4,11 +4,11 @@ All URIs are relative to *https://www.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createStagingRuleSet**](StagingRuleSetApi.md#createStagingRuleSet) | **POST** /api/stagingrulesets/{entityType} | [EXPERIMENTAL] CreateStagingRuleSet: Create a StagingRuleSet |
-| [**deleteStagingRuleSet**](StagingRuleSetApi.md#deleteStagingRuleSet) | **DELETE** /api/stagingrulesets/{entityType} | [EXPERIMENTAL] DeleteStagingRuleSet: Delete a StagingRuleSet |
-| [**getStagingRuleSet**](StagingRuleSetApi.md#getStagingRuleSet) | **GET** /api/stagingrulesets/{entityType} | [EXPERIMENTAL] GetStagingRuleSet: Get a StagingRuleSet |
-| [**listStagingRuleSets**](StagingRuleSetApi.md#listStagingRuleSets) | **GET** /api/stagingrulesets | [EXPERIMENTAL] ListStagingRuleSets: List StagingRuleSets |
-| [**updateStagingRuleSet**](StagingRuleSetApi.md#updateStagingRuleSet) | **PUT** /api/stagingrulesets/{entityType} | [EXPERIMENTAL] UpdateStagingRuleSet: Update a StagingRuleSet |
+| [**createStagingRuleSet**](StagingRuleSetApi.md#createStagingRuleSet) | **POST** /api/stagingrulesets/{entityType} | CreateStagingRuleSet: Create a StagingRuleSet |
+| [**deleteStagingRuleSet**](StagingRuleSetApi.md#deleteStagingRuleSet) | **DELETE** /api/stagingrulesets/{entityType} | DeleteStagingRuleSet: Delete a StagingRuleSet |
+| [**getStagingRuleSet**](StagingRuleSetApi.md#getStagingRuleSet) | **GET** /api/stagingrulesets/{entityType} | GetStagingRuleSet: Get a StagingRuleSet |
+| [**listStagingRuleSets**](StagingRuleSetApi.md#listStagingRuleSets) | **GET** /api/stagingrulesets | ListStagingRuleSets: List StagingRuleSets |
+| [**updateStagingRuleSet**](StagingRuleSetApi.md#updateStagingRuleSet) | **PUT** /api/stagingrulesets/{entityType} | UpdateStagingRuleSet: Update a StagingRuleSet |
 
 
 
@@ -16,7 +16,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 > StagingRuleSet createStagingRuleSet(entityType, createStagingRuleSetRequest)
 
-[EXPERIMENTAL] CreateStagingRuleSet: Create a StagingRuleSet
+CreateStagingRuleSet: Create a StagingRuleSet
 
 Create a new staging rule set.
 
@@ -109,7 +109,7 @@ public class StagingRuleSetApiExample {
 
 > DeletedEntityResponse deleteStagingRuleSet(entityType)
 
-[EXPERIMENTAL] DeleteStagingRuleSet: Delete a StagingRuleSet
+DeleteStagingRuleSet: Delete a StagingRuleSet
 
 Delete a staging rule set of a specific entity type. Deletion will be valid from the staging rule set&#39;s creation datetime.  This means that the staging rule set will no longer exist at any effective datetime from the asAt datetime of deletion.
 
@@ -200,7 +200,7 @@ public class StagingRuleSetApiExample {
 
 > StagingRuleSet getStagingRuleSet(entityType, asAt)
 
-[EXPERIMENTAL] GetStagingRuleSet: Get a StagingRuleSet
+GetStagingRuleSet: Get a StagingRuleSet
 
 Get the staging rule set for the given entity type at the specific asAt time.
 
@@ -293,7 +293,7 @@ public class StagingRuleSetApiExample {
 
 > PagedResourceListOfStagingRuleSet listStagingRuleSets(asAt, page, sortBy, limit, filter)
 
-[EXPERIMENTAL] ListStagingRuleSets: List StagingRuleSets
+ListStagingRuleSets: List StagingRuleSets
 
 List all the staging rule sets matching particular criteria.
 
@@ -392,7 +392,7 @@ public class StagingRuleSetApiExample {
 
 > StagingRuleSet updateStagingRuleSet(entityType, updateStagingRuleSetRequest)
 
-[EXPERIMENTAL] UpdateStagingRuleSet: Update a StagingRuleSet
+UpdateStagingRuleSet: Update a StagingRuleSet
 
 Update an existing staging rule set.
 

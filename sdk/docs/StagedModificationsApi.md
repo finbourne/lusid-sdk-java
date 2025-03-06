@@ -4,10 +4,10 @@ All URIs are relative to *https://www.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**addDecision**](StagedModificationsApi.md#addDecision) | **POST** /api/stagedmodifications/{id}/decision | [EXPERIMENTAL] AddDecision: AddDecision |
-| [**getStagedModification**](StagedModificationsApi.md#getStagedModification) | **GET** /api/stagedmodifications/{id} | [EXPERIMENTAL] GetStagedModification: GetStagedModification |
-| [**listRequestedChanges**](StagedModificationsApi.md#listRequestedChanges) | **GET** /api/stagedmodifications/{id}/requestedChanges | [EXPERIMENTAL] ListRequestedChanges: ListRequestedChanges |
-| [**listStagedModifications**](StagedModificationsApi.md#listStagedModifications) | **GET** /api/stagedmodifications | [EXPERIMENTAL] ListStagedModifications: ListStagedModifications |
+| [**addDecision**](StagedModificationsApi.md#addDecision) | **POST** /api/stagedmodifications/{id}/decision | AddDecision: AddDecision |
+| [**getStagedModification**](StagedModificationsApi.md#getStagedModification) | **GET** /api/stagedmodifications/{id} | GetStagedModification: GetStagedModification |
+| [**listRequestedChanges**](StagedModificationsApi.md#listRequestedChanges) | **GET** /api/stagedmodifications/{id}/requestedChanges | ListRequestedChanges: ListRequestedChanges |
+| [**listStagedModifications**](StagedModificationsApi.md#listStagedModifications) | **GET** /api/stagedmodifications | ListStagedModifications: ListStagedModifications |
 
 
 
@@ -15,7 +15,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 > StagedModification addDecision(id, stagedModificationDecisionRequest)
 
-[EXPERIMENTAL] AddDecision: AddDecision
+AddDecision: AddDecision
 
 Add decision to staged modification, Approve or Reject.
 
@@ -108,7 +108,7 @@ public class StagedModificationsApiExample {
 
 > StagedModification getStagedModification(id, asAt)
 
-[EXPERIMENTAL] GetStagedModification: GetStagedModification
+GetStagedModification: GetStagedModification
 
 Retrieve the details of a staged modification.
 
@@ -201,7 +201,7 @@ public class StagedModificationsApiExample {
 
 > PagedResourceListOfStagedModificationsRequestedChangeInterval listRequestedChanges(id, asAt, page, limit, filter, sortBy)
 
-[EXPERIMENTAL] ListRequestedChanges: ListRequestedChanges
+ListRequestedChanges: ListRequestedChanges
 
 List the requested changes for a staged modification.
 
@@ -302,7 +302,7 @@ public class StagedModificationsApiExample {
 
 > PagedResourceListOfStagedModification listStagedModifications(asAt, page, limit, filter, sortBy)
 
-[EXPERIMENTAL] ListStagedModifications: ListStagedModifications
+ListStagedModifications: ListStagedModifications
 
 List summaries of the staged modifications.
 

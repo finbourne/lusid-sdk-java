@@ -659,7 +659,7 @@ public class TransactionPortfoliosApi {
     }
 
     /**
-     * [EARLY ACCESS] BatchAdjustHoldings: Batch adjust holdings
+     * BatchAdjustHoldings: Batch adjust holdings
      * Adjust one or more holdings of the specified transaction portfolio to the provided targets. LUSID will  automatically construct adjustment transactions to ensure that the holdings which have been adjusted are  always set to the provided targets for the specified effective datetime in each request.     Each request must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each adjustment in the response.    Note: If using partial failure modes, then it is important to check the response body for failures as any failures will still return a 200 status code
      * @param scope The scope of the transaction portfolio. (required)
      * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
@@ -913,7 +913,7 @@ public class TransactionPortfoliosApi {
     }
 
     /**
-     * [EARLY ACCESS] BatchCreateTradeTickets: Batch Create Trade Tickets
+     * BatchCreateTradeTickets: Batch Create Trade Tickets
      * Batch create trade tickets. Each ticket is broadly equivalent to a singular call to upsert an instrument, then a counterparty and finally  a transaction that makes use of the two.
      * @param scope The scope of the transaction portfolio. (required)
      * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
@@ -1192,7 +1192,7 @@ public class TransactionPortfoliosApi {
     }
 
     /**
-     * [EARLY ACCESS] BatchSetHoldings: Batch set holdings
+     * BatchSetHoldings: Batch set holdings
      * Set the holdings of the specified transaction portfolio to the provided targets. LUSID will automatically  construct adjustment transactions to ensure that the entire set of holdings for the transaction portfolio  are always set to the provided targets for the specified effective datetime. Read more about the difference between  adjusting and setting holdings here https://support.lusid.com/docs/how-do-i-manually-adjust-or-set-holdings.     Each request must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each adjustment in the response.    Note: If using partial failure modes, then it is important to check the response body for failures as any failures will still return a 200 status code
      * @param scope The scope of the transaction portfolio. (required)
      * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
@@ -1472,7 +1472,7 @@ public class TransactionPortfoliosApi {
     }
 
     /**
-     * [EARLY ACCESS] BatchUpsertTransactions: Batch upsert transactions
+     * BatchUpsertTransactions: Batch upsert transactions
      * Create or update transactions in the transaction portfolio. A transaction will be updated  if it already exists and created if it does not.    Each request must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each transaction in the response.    Note: If using partial failure modes, then it is important to check the response body for failures as any failures will still return a 200 status code
      * @param scope The scope of the transaction portfolio. (required)
      * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
@@ -2318,7 +2318,7 @@ public class TransactionPortfoliosApi {
     }
 
     /**
-     * [EARLY ACCESS] CancelSingleAdjustHolding: Cancel single holding adjustment.
+     * CancelSingleAdjustHolding: Cancel single holding adjustment.
      * Cancel one previously sent holding adjustment without affecting the rest of the adjustment in the previous request on the specified effective datetime.
      * @param scope The scope of the transaction portfolio. (required)
      * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
@@ -3073,7 +3073,7 @@ public class TransactionPortfoliosApi {
     }
 
     /**
-     * [EARLY ACCESS] CreateTradeTicket: Create Trade Ticket
+     * CreateTradeTicket: Create Trade Ticket
      * Upsert a trade ticket. Broadly equivalent to a singular call to upsert an instrument, then a counterparty and finally  a transaction that makes use of the two. It can be viewed as a utility function or part of a workflow more familiar to users  with OTC systems than flow and equity trading ones.
      * @param scope The scope of the transaction portfolio. (required)
      * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
@@ -3340,7 +3340,7 @@ public class TransactionPortfoliosApi {
     }
 
     /**
-     * [EXPERIMENTAL] DeleteCustodianAccounts: Soft or hard delete multiple custodian accounts
+     * DeleteCustodianAccounts: Soft or hard delete multiple custodian accounts
      * Delete one or more custodian accounts from the Transaction Portfolios. Soft deletion marks the custodian account as inactive  While the Hard deletion is deleting the custodian account.  The batch limit per request is 2,000.
      * @param scope The scope of the Transaction Portfolios. (required)
      * @param code The code of the Transaction Portfolios. Together with the scope this uniquely identifies   the Transaction Portfolios. (required)
@@ -4539,7 +4539,7 @@ public class TransactionPortfoliosApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetBucketedCashFlows: Get bucketed cash flows from a list of portfolios
+     * GetBucketedCashFlows: Get bucketed cash flows from a list of portfolios
      * We bucket/aggregate a transaction portfolio&#39;s instruments by date or tenor specified in the request.  The cashflows are grouped by both instrumentId and currency.     If you want transactional level cashflow, please use the &#39;GetUpsertableCashFlows&#39; endpoint.  If you want instrument cashflow, please use the &#39;GetPortfolioCashFlows&#39; endpoint.  Note that these endpoints do not apply bucketing.
      * @param scope The scope of the transaction portfolio. (required)
      * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies the portfolio. (required)
@@ -4841,7 +4841,7 @@ public class TransactionPortfoliosApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetCustodianAccount: Get Custodian Account
+     * GetCustodianAccount: Get Custodian Account
      * Retrieve the definition of a particular Custodian Account which is part of a Transaction Portfolios.
      * @param scope The scope of the Transaction Portfolio. (required)
      * @param code The code of the Transaction Portfolio. Together with the scope this uniquely identifies the Transaction Portfolio. (required)
@@ -5483,7 +5483,7 @@ public class TransactionPortfoliosApi {
     }
 
     /**
-     * [EARLY ACCESS] GetHoldingContributors: Get Holdings Contributors
+     * GetHoldingContributors: Get Holdings Contributors
      * Lists all transactions that affect the holdings of a portfolio over a given effective interval. This includes  transactions automatically generated by LUSID such as holding adjustments.
      * @param scope The scope of the transaction portfolio. (required)
      * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
@@ -6456,7 +6456,7 @@ public class TransactionPortfoliosApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetHoldingsWithOrders: Get holdings with orders
+     * GetHoldingsWithOrders: Get holdings with orders
      * Get the holdings of a transaction portfolio. Create virtual holdings for any outstanding orders,  and account for order state/fulfillment; that is, treat outstanding orders (and related records) as  if they had been realised at moment of query.
      * @param scope The scope of the transaction portfolio. (required)
      * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
@@ -6828,7 +6828,7 @@ public class TransactionPortfoliosApi {
     }
 
     /**
-     * [EARLY ACCESS] GetMultipleHoldingContributors: Get Multiple Holding Contributors
+     * GetMultipleHoldingContributors: Get Multiple Holding Contributors
      * Lists all transactions that affect multiple specified holdings of a portfolio over a given effective interval. This includes  transactions automatically generated by LUSID such as holding adjustments.
      * @param scope The scope of the transaction portfolio. (required)
      * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
@@ -9200,7 +9200,7 @@ public class TransactionPortfoliosApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListCustodianAccounts: List Custodian Accounts
+     * ListCustodianAccounts: List Custodian Accounts
      * List the custodian accounts in a Transaction Portfolios
      * @param scope The scope of the Transaction Portfolio. (required)
      * @param code The code of the Transaction Portfolio. Together with the scope this uniquely identifies   the Transaction Portfolios. (required)
@@ -10051,7 +10051,7 @@ public class TransactionPortfoliosApi {
     }
 
     /**
-     * [EARLY ACCESS] PreviewTransaction: Preview a transaction
+     * PreviewTransaction: Preview a transaction
      * Returns the output-transaction(s) - e.g. as returned by BuildTransactions  that would come out of LUSID if the provided TransactionRequest was booked.
      * @param scope The scope of the transaction portfolio. (required)
      * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
@@ -10894,7 +10894,7 @@ public class TransactionPortfoliosApi {
     }
 
     /**
-     * [EXPERIMENTAL] UpsertCustodianAccounts: Upsert Custodian Accounts
+     * UpsertCustodianAccounts: Upsert Custodian Accounts
      * Create or update Custodian Accounts in the Transaction Portfolios. A Custodian Account will be updated  if it already exists and created if it does not.  The batch limit per request is 2,000.
      * @param scope The scope of the Transaction Portfolio. (required)
      * @param code The code of the Transaction Portfolio. Together with the scope this uniquely identifies   the Transaction Portfolios. (required)
@@ -11167,7 +11167,7 @@ public class TransactionPortfoliosApi {
     }
 
     /**
-     * [EXPERIMENTAL] UpsertCustodianAccountsProperties: Upsert custodian accounts properties
+     * UpsertCustodianAccountsProperties: Upsert custodian accounts properties
      * Update or insert one or more properties onto a single custodian account. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;CustodianAccount&#39;.     Upserting a property that exists for a Transaction Portfolios, with a null value, will delete the instance of the property for that group.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
      * @param scope The scope of the Transaction Portfolios to update or insert the properties onto. (required)
      * @param code The code of the Transaction Portfolios to update or insert the properties onto. Together with the scope this uniquely identifies the Transaction Portfolios. (required)

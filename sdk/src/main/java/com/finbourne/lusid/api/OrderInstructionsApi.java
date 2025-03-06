@@ -302,7 +302,7 @@ public class OrderInstructionsApi {
     }
 
     /**
-     * [EXPERIMENTAL] DeleteOrderInstruction: Delete orderInstruction
+     * DeleteOrderInstruction: Delete orderInstruction
      * Delete an orderInstruction. Deletion will be valid from the orderInstruction&#39;s creation datetime.  This means that the orderInstruction will no longer exist at any effective datetime from the asAt datetime of deletion.
      * @param scope The orderInstruction scope. (required)
      * @param code The orderInstruction&#39;s code. This, together with the scope uniquely identifies the orderInstruction to delete. (required)
@@ -573,7 +573,7 @@ public class OrderInstructionsApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetOrderInstruction: Get OrderInstruction
+     * GetOrderInstruction: Get OrderInstruction
      * Fetch a OrderInstruction that matches the specified identifier
      * @param scope The scope to which the orderInstruction belongs. (required)
      * @param code The orderInstruction&#39;s unique identifier. (required)
@@ -888,7 +888,7 @@ public class OrderInstructionsApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListOrderInstructions: List OrderInstructions
+     * ListOrderInstructions: List OrderInstructions
      * Fetch the last pre-AsAt date version of each orderInstruction in scope (does not fetch the entire history).
      * @return APIlistOrderInstructionsRequest
      * @http.response.details
@@ -1126,7 +1126,7 @@ public class OrderInstructionsApi {
     }
 
     /**
-     * [EXPERIMENTAL] UpsertOrderInstructions: Upsert OrderInstruction
+     * UpsertOrderInstructions: Upsert OrderInstruction
      * Upsert; update existing orderInstructions with given ids, or create new orderInstructions otherwise.
      * @return APIupsertOrderInstructionsRequest
      * @http.response.details

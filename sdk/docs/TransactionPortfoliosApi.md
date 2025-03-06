@@ -5,42 +5,42 @@ All URIs are relative to *https://www.lusid.com/api*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**adjustHoldings**](TransactionPortfoliosApi.md#adjustHoldings) | **POST** /api/transactionportfolios/{scope}/{code}/holdings | AdjustHoldings: Adjust holdings |
-| [**batchAdjustHoldings**](TransactionPortfoliosApi.md#batchAdjustHoldings) | **POST** /api/transactionportfolios/{scope}/{code}/holdings/$batchAdjust | [EARLY ACCESS] BatchAdjustHoldings: Batch adjust holdings |
-| [**batchCreateTradeTickets**](TransactionPortfoliosApi.md#batchCreateTradeTickets) | **POST** /api/transactionportfolios/{scope}/{code}/$batchtradetickets | [EARLY ACCESS] BatchCreateTradeTickets: Batch Create Trade Tickets |
-| [**batchSetHoldings**](TransactionPortfoliosApi.md#batchSetHoldings) | **POST** /api/transactionportfolios/{scope}/{code}/holdings/$batchSet | [EARLY ACCESS] BatchSetHoldings: Batch set holdings |
-| [**batchUpsertTransactions**](TransactionPortfoliosApi.md#batchUpsertTransactions) | **POST** /api/transactionportfolios/{scope}/{code}/transactions/$batchUpsert | [EARLY ACCESS] BatchUpsertTransactions: Batch upsert transactions |
+| [**batchAdjustHoldings**](TransactionPortfoliosApi.md#batchAdjustHoldings) | **POST** /api/transactionportfolios/{scope}/{code}/holdings/$batchAdjust | BatchAdjustHoldings: Batch adjust holdings |
+| [**batchCreateTradeTickets**](TransactionPortfoliosApi.md#batchCreateTradeTickets) | **POST** /api/transactionportfolios/{scope}/{code}/$batchtradetickets | BatchCreateTradeTickets: Batch Create Trade Tickets |
+| [**batchSetHoldings**](TransactionPortfoliosApi.md#batchSetHoldings) | **POST** /api/transactionportfolios/{scope}/{code}/holdings/$batchSet | BatchSetHoldings: Batch set holdings |
+| [**batchUpsertTransactions**](TransactionPortfoliosApi.md#batchUpsertTransactions) | **POST** /api/transactionportfolios/{scope}/{code}/transactions/$batchUpsert | BatchUpsertTransactions: Batch upsert transactions |
 | [**buildTransactions**](TransactionPortfoliosApi.md#buildTransactions) | **POST** /api/transactionportfolios/{scope}/{code}/transactions/$build | BuildTransactions: Build transactions |
 | [**cancelAdjustHoldings**](TransactionPortfoliosApi.md#cancelAdjustHoldings) | **DELETE** /api/transactionportfolios/{scope}/{code}/holdings | CancelAdjustHoldings: Cancel adjust holdings |
-| [**cancelSingleAdjustHolding**](TransactionPortfoliosApi.md#cancelSingleAdjustHolding) | **POST** /api/transactionportfolios/{scope}/{code}/holdings/$cancelAdjustment | [EARLY ACCESS] CancelSingleAdjustHolding: Cancel single holding adjustment. |
+| [**cancelSingleAdjustHolding**](TransactionPortfoliosApi.md#cancelSingleAdjustHolding) | **POST** /api/transactionportfolios/{scope}/{code}/holdings/$cancelAdjustment | CancelSingleAdjustHolding: Cancel single holding adjustment. |
 | [**cancelTransactions**](TransactionPortfoliosApi.md#cancelTransactions) | **DELETE** /api/transactionportfolios/{scope}/{code}/transactions | CancelTransactions: Cancel transactions |
 | [**createPortfolio**](TransactionPortfoliosApi.md#createPortfolio) | **POST** /api/transactionportfolios/{scope} | CreatePortfolio: Create portfolio |
-| [**createTradeTicket**](TransactionPortfoliosApi.md#createTradeTicket) | **POST** /api/transactionportfolios/{scope}/{code}/$tradeticket | [EARLY ACCESS] CreateTradeTicket: Create Trade Ticket |
-| [**deleteCustodianAccounts**](TransactionPortfoliosApi.md#deleteCustodianAccounts) | **POST** /api/transactionportfolios/{scope}/{code}/custodianaccounts/$delete | [EXPERIMENTAL] DeleteCustodianAccounts: Soft or hard delete multiple custodian accounts |
+| [**createTradeTicket**](TransactionPortfoliosApi.md#createTradeTicket) | **POST** /api/transactionportfolios/{scope}/{code}/$tradeticket | CreateTradeTicket: Create Trade Ticket |
+| [**deleteCustodianAccounts**](TransactionPortfoliosApi.md#deleteCustodianAccounts) | **POST** /api/transactionportfolios/{scope}/{code}/custodianaccounts/$delete | DeleteCustodianAccounts: Soft or hard delete multiple custodian accounts |
 | [**deletePropertiesFromTransaction**](TransactionPortfoliosApi.md#deletePropertiesFromTransaction) | **DELETE** /api/transactionportfolios/{scope}/{code}/transactions/{transactionId}/properties | DeletePropertiesFromTransaction: Delete properties from transaction |
 | [**getA2BData**](TransactionPortfoliosApi.md#getA2BData) | **GET** /api/transactionportfolios/{scope}/{code}/a2b | GetA2BData: Get A2B data |
 | [**getA2BMovements**](TransactionPortfoliosApi.md#getA2BMovements) | **GET** /api/transactionportfolios/{scope}/{code}/a2bmovements | GetA2BMovements: Get an A2B report at the movement level for the given portfolio. |
-| [**getBucketedCashFlows**](TransactionPortfoliosApi.md#getBucketedCashFlows) | **POST** /api/transactionportfolios/{scope}/{code}/bucketedCashFlows | [EXPERIMENTAL] GetBucketedCashFlows: Get bucketed cash flows from a list of portfolios |
-| [**getCustodianAccount**](TransactionPortfoliosApi.md#getCustodianAccount) | **GET** /api/transactionportfolios/{scope}/{code}/custodianaccounts/{custodianAccountScope}/{custodianAccountCode} | [EXPERIMENTAL] GetCustodianAccount: Get Custodian Account |
+| [**getBucketedCashFlows**](TransactionPortfoliosApi.md#getBucketedCashFlows) | **POST** /api/transactionportfolios/{scope}/{code}/bucketedCashFlows | GetBucketedCashFlows: Get bucketed cash flows from a list of portfolios |
+| [**getCustodianAccount**](TransactionPortfoliosApi.md#getCustodianAccount) | **GET** /api/transactionportfolios/{scope}/{code}/custodianaccounts/{custodianAccountScope}/{custodianAccountCode} | GetCustodianAccount: Get Custodian Account |
 | [**getDetails**](TransactionPortfoliosApi.md#getDetails) | **GET** /api/transactionportfolios/{scope}/{code}/details | GetDetails: Get details |
-| [**getHoldingContributors**](TransactionPortfoliosApi.md#getHoldingContributors) | **GET** /api/transactionportfolios/{scope}/{code}/holdings/{holdingId}/contributors | [EARLY ACCESS] GetHoldingContributors: Get Holdings Contributors |
+| [**getHoldingContributors**](TransactionPortfoliosApi.md#getHoldingContributors) | **GET** /api/transactionportfolios/{scope}/{code}/holdings/{holdingId}/contributors | GetHoldingContributors: Get Holdings Contributors |
 | [**getHoldings**](TransactionPortfoliosApi.md#getHoldings) | **GET** /api/transactionportfolios/{scope}/{code}/holdings | GetHoldings: Get holdings |
 | [**getHoldingsAdjustment**](TransactionPortfoliosApi.md#getHoldingsAdjustment) | **GET** /api/transactionportfolios/{scope}/{code}/holdingsadjustments/{effectiveAt} | GetHoldingsAdjustment: Get holdings adjustment |
-| [**getHoldingsWithOrders**](TransactionPortfoliosApi.md#getHoldingsWithOrders) | **GET** /api/transactionportfolios/{scope}/{code}/holdingsWithOrders | [EXPERIMENTAL] GetHoldingsWithOrders: Get holdings with orders |
-| [**getMultipleHoldingContributors**](TransactionPortfoliosApi.md#getMultipleHoldingContributors) | **POST** /api/transactionportfolios/{scope}/{code}/holdings/contributors/$get | [EARLY ACCESS] GetMultipleHoldingContributors: Get Multiple Holding Contributors |
+| [**getHoldingsWithOrders**](TransactionPortfoliosApi.md#getHoldingsWithOrders) | **GET** /api/transactionportfolios/{scope}/{code}/holdingsWithOrders | GetHoldingsWithOrders: Get holdings with orders |
+| [**getMultipleHoldingContributors**](TransactionPortfoliosApi.md#getMultipleHoldingContributors) | **POST** /api/transactionportfolios/{scope}/{code}/holdings/contributors/$get | GetMultipleHoldingContributors: Get Multiple Holding Contributors |
 | [**getPortfolioCashFlows**](TransactionPortfoliosApi.md#getPortfolioCashFlows) | **GET** /api/transactionportfolios/{scope}/{code}/cashflows | GetPortfolioCashFlows: Get portfolio cash flows |
 | [**getPortfolioCashLadder**](TransactionPortfoliosApi.md#getPortfolioCashLadder) | **GET** /api/transactionportfolios/{scope}/{code}/cashladder | GetPortfolioCashLadder: Get portfolio cash ladder |
 | [**getPortfolioCashStatement**](TransactionPortfoliosApi.md#getPortfolioCashStatement) | **GET** /api/transactionportfolios/{scope}/{code}/cashstatement | GetPortfolioCashStatement: Get portfolio cash statement |
 | [**getTransactionHistory**](TransactionPortfoliosApi.md#getTransactionHistory) | **GET** /api/transactionportfolios/{scope}/{code}/transactions/{transactionId}/history | GetTransactionHistory: Get the history of a transaction |
 | [**getTransactions**](TransactionPortfoliosApi.md#getTransactions) | **GET** /api/transactionportfolios/{scope}/{code}/transactions | GetTransactions: Get transactions |
 | [**getUpsertablePortfolioCashFlows**](TransactionPortfoliosApi.md#getUpsertablePortfolioCashFlows) | **GET** /api/transactionportfolios/{scope}/{code}/upsertablecashflows | GetUpsertablePortfolioCashFlows: Get upsertable portfolio cash flows. |
-| [**listCustodianAccounts**](TransactionPortfoliosApi.md#listCustodianAccounts) | **GET** /api/transactionportfolios/{scope}/{code}/custodianaccounts | [EXPERIMENTAL] ListCustodianAccounts: List Custodian Accounts |
+| [**listCustodianAccounts**](TransactionPortfoliosApi.md#listCustodianAccounts) | **GET** /api/transactionportfolios/{scope}/{code}/custodianaccounts | ListCustodianAccounts: List Custodian Accounts |
 | [**listHoldingsAdjustments**](TransactionPortfoliosApi.md#listHoldingsAdjustments) | **GET** /api/transactionportfolios/{scope}/{code}/holdingsadjustments | ListHoldingsAdjustments: List holdings adjustments |
 | [**patchPortfolioDetails**](TransactionPortfoliosApi.md#patchPortfolioDetails) | **PATCH** /api/transactionportfolios/{scope}/{code}/details | PatchPortfolioDetails: Patch portfolio details |
-| [**previewTransaction**](TransactionPortfoliosApi.md#previewTransaction) | **POST** /api/transactionportfolios/{scope}/{code}/previewTransaction | [EARLY ACCESS] PreviewTransaction: Preview a transaction |
+| [**previewTransaction**](TransactionPortfoliosApi.md#previewTransaction) | **POST** /api/transactionportfolios/{scope}/{code}/previewTransaction | PreviewTransaction: Preview a transaction |
 | [**resolveInstrument**](TransactionPortfoliosApi.md#resolveInstrument) | **POST** /api/transactionportfolios/{scope}/{code}/$resolve | ResolveInstrument: Resolve instrument |
 | [**setHoldings**](TransactionPortfoliosApi.md#setHoldings) | **PUT** /api/transactionportfolios/{scope}/{code}/holdings | SetHoldings: Set holdings |
-| [**upsertCustodianAccounts**](TransactionPortfoliosApi.md#upsertCustodianAccounts) | **POST** /api/transactionportfolios/{scope}/{code}/custodianaccounts | [EXPERIMENTAL] UpsertCustodianAccounts: Upsert Custodian Accounts |
-| [**upsertCustodianAccountsProperties**](TransactionPortfoliosApi.md#upsertCustodianAccountsProperties) | **POST** /api/transactionportfolios/{scope}/{code}/custodianaccounts/{custodianAccountScope}/{custodianAccountCode}/properties/$upsert | [EXPERIMENTAL] UpsertCustodianAccountsProperties: Upsert custodian accounts properties |
+| [**upsertCustodianAccounts**](TransactionPortfoliosApi.md#upsertCustodianAccounts) | **POST** /api/transactionportfolios/{scope}/{code}/custodianaccounts | UpsertCustodianAccounts: Upsert Custodian Accounts |
+| [**upsertCustodianAccountsProperties**](TransactionPortfoliosApi.md#upsertCustodianAccountsProperties) | **POST** /api/transactionportfolios/{scope}/{code}/custodianaccounts/{custodianAccountScope}/{custodianAccountCode}/properties/$upsert | UpsertCustodianAccountsProperties: Upsert custodian accounts properties |
 | [**upsertPortfolioDetails**](TransactionPortfoliosApi.md#upsertPortfolioDetails) | **POST** /api/transactionportfolios/{scope}/{code}/details | UpsertPortfolioDetails: Upsert portfolio details |
 | [**upsertTransactionProperties**](TransactionPortfoliosApi.md#upsertTransactionProperties) | **POST** /api/transactionportfolios/{scope}/{code}/transactions/{transactionId}/properties | UpsertTransactionProperties: Upsert transaction properties |
 | [**upsertTransactions**](TransactionPortfoliosApi.md#upsertTransactions) | **POST** /api/transactionportfolios/{scope}/{code}/transactions | UpsertTransactions: Upsert transactions |
@@ -150,7 +150,7 @@ public class TransactionPortfoliosApiExample {
 
 > BatchAdjustHoldingsResponse batchAdjustHoldings(scope, code, successMode, requestBody, reconciliationMethods)
 
-[EARLY ACCESS] BatchAdjustHoldings: Batch adjust holdings
+BatchAdjustHoldings: Batch adjust holdings
 
 Adjust one or more holdings of the specified transaction portfolio to the provided targets. LUSID will  automatically construct adjustment transactions to ensure that the holdings which have been adjusted are  always set to the provided targets for the specified effective datetime in each request.     Each request must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each adjustment in the response.    Note: If using partial failure modes, then it is important to check the response body for failures as any failures will still return a 200 status code
 
@@ -249,7 +249,7 @@ public class TransactionPortfoliosApiExample {
 
 > CreateTradeTicketsResponse batchCreateTradeTickets(scope, code, lusidTradeTicket)
 
-[EARLY ACCESS] BatchCreateTradeTickets: Batch Create Trade Tickets
+BatchCreateTradeTickets: Batch Create Trade Tickets
 
 Batch create trade tickets. Each ticket is broadly equivalent to a singular call to upsert an instrument, then a counterparty and finally  a transaction that makes use of the two.
 
@@ -344,7 +344,7 @@ public class TransactionPortfoliosApiExample {
 
 > BatchAdjustHoldingsResponse batchSetHoldings(scope, code, successMode, requestBody, reconciliationMethods)
 
-[EARLY ACCESS] BatchSetHoldings: Batch set holdings
+BatchSetHoldings: Batch set holdings
 
 Set the holdings of the specified transaction portfolio to the provided targets. LUSID will automatically  construct adjustment transactions to ensure that the entire set of holdings for the transaction portfolio  are always set to the provided targets for the specified effective datetime. Read more about the difference between  adjusting and setting holdings here https://support.lusid.com/docs/how-do-i-manually-adjust-or-set-holdings.     Each request must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each adjustment in the response.    Note: If using partial failure modes, then it is important to check the response body for failures as any failures will still return a 200 status code
 
@@ -443,7 +443,7 @@ public class TransactionPortfoliosApiExample {
 
 > BatchUpsertPortfolioTransactionsResponse batchUpsertTransactions(scope, code, successMode, requestBody, preserveProperties)
 
-[EARLY ACCESS] BatchUpsertTransactions: Batch upsert transactions
+BatchUpsertTransactions: Batch upsert transactions
 
 Create or update transactions in the transaction portfolio. A transaction will be updated  if it already exists and created if it does not.    Each request must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each transaction in the response.    Note: If using partial failure modes, then it is important to check the response body for failures as any failures will still return a 200 status code
 
@@ -742,7 +742,7 @@ public class TransactionPortfoliosApiExample {
 
 > DeletedEntityResponse cancelSingleAdjustHolding(scope, code, effectiveAt, cancelSingleHoldingAdjustmentRequest)
 
-[EARLY ACCESS] CancelSingleAdjustHolding: Cancel single holding adjustment.
+CancelSingleAdjustHolding: Cancel single holding adjustment.
 
 Cancel one previously sent holding adjustment without affecting the rest of the adjustment in the previous request on the specified effective datetime.
 
@@ -1027,7 +1027,7 @@ public class TransactionPortfoliosApiExample {
 
 > LusidTradeTicket createTradeTicket(scope, code, lusidTradeTicket)
 
-[EARLY ACCESS] CreateTradeTicket: Create Trade Ticket
+CreateTradeTicket: Create Trade Ticket
 
 Upsert a trade ticket. Broadly equivalent to a singular call to upsert an instrument, then a counterparty and finally  a transaction that makes use of the two. It can be viewed as a utility function or part of a workflow more familiar to users  with OTC systems than flow and equity trading ones.
 
@@ -1122,7 +1122,7 @@ public class TransactionPortfoliosApiExample {
 
 > DeleteCustodianAccountsResponse deleteCustodianAccounts(scope, code, resourceId, deleteMode)
 
-[EXPERIMENTAL] DeleteCustodianAccounts: Soft or hard delete multiple custodian accounts
+DeleteCustodianAccounts: Soft or hard delete multiple custodian accounts
 
 Delete one or more custodian accounts from the Transaction Portfolios. Soft deletion marks the custodian account as inactive  While the Hard deletion is deleting the custodian account.  The batch limit per request is 2,000.
 
@@ -1530,7 +1530,7 @@ public class TransactionPortfoliosApiExample {
 
 > BucketedCashFlowResponse getBucketedCashFlows(scope, code, bucketedCashFlowRequest)
 
-[EXPERIMENTAL] GetBucketedCashFlows: Get bucketed cash flows from a list of portfolios
+GetBucketedCashFlows: Get bucketed cash flows from a list of portfolios
 
 We bucket/aggregate a transaction portfolio&#39;s instruments by date or tenor specified in the request.  The cashflows are grouped by both instrumentId and currency.     If you want transactional level cashflow, please use the &#39;GetUpsertableCashFlows&#39; endpoint.  If you want instrument cashflow, please use the &#39;GetPortfolioCashFlows&#39; endpoint.  Note that these endpoints do not apply bucketing.
 
@@ -1625,7 +1625,7 @@ public class TransactionPortfoliosApiExample {
 
 > CustodianAccount getCustodianAccount(scope, code, custodianAccountScope, custodianAccountCode, effectiveAt, asAt, propertyKeys)
 
-[EXPERIMENTAL] GetCustodianAccount: Get Custodian Account
+GetCustodianAccount: Get Custodian Account
 
 Retrieve the definition of a particular Custodian Account which is part of a Transaction Portfolios.
 
@@ -1825,7 +1825,7 @@ public class TransactionPortfoliosApiExample {
 
 > VersionedResourceListOfHoldingContributor getHoldingContributors(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, limit, asAt, page)
 
-[EARLY ACCESS] GetHoldingContributors: Get Holdings Contributors
+GetHoldingContributors: Get Holdings Contributors
 
 Lists all transactions that affect the holdings of a portfolio over a given effective interval. This includes  transactions automatically generated by LUSID such as holding adjustments.
 
@@ -2140,7 +2140,7 @@ public class TransactionPortfoliosApiExample {
 
 > VersionedResourceListWithWarningsOfPortfolioHolding getHoldingsWithOrders(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots, recipeIdScope, recipeIdCode, includeSettlementEventsAfterDays)
 
-[EXPERIMENTAL] GetHoldingsWithOrders: Get holdings with orders
+GetHoldingsWithOrders: Get holdings with orders
 
 Get the holdings of a transaction portfolio. Create virtual holdings for any outstanding orders,  and account for order state/fulfillment; that is, treat outstanding orders (and related records) as  if they had been realised at moment of query.
 
@@ -2249,7 +2249,7 @@ public class TransactionPortfoliosApiExample {
 
 > VersionedResourceListOfHoldingContributor getMultipleHoldingContributors(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, limit, asAt, page)
 
-[EARLY ACCESS] GetMultipleHoldingContributors: Get Multiple Holding Contributors
+GetMultipleHoldingContributors: Get Multiple Holding Contributors
 
 Lists all transactions that affect multiple specified holdings of a portfolio over a given effective interval. This includes  transactions automatically generated by LUSID such as holding adjustments.
 
@@ -3000,7 +3000,7 @@ public class TransactionPortfoliosApiExample {
 
 > PagedResourceListOfCustodianAccount listCustodianAccounts(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys)
 
-[EXPERIMENTAL] ListCustodianAccounts: List Custodian Accounts
+ListCustodianAccounts: List Custodian Accounts
 
 List the custodian accounts in a Transaction Portfolios
 
@@ -3301,7 +3301,7 @@ public class TransactionPortfoliosApiExample {
 
 > ResourceListOfOutputTransaction previewTransaction(scope, code, transactionRequest, propertyKeys, showCancelledTransactions, preserveProperties)
 
-[EARLY ACCESS] PreviewTransaction: Preview a transaction
+PreviewTransaction: Preview a transaction
 
 Returns the output-transaction(s) - e.g. as returned by BuildTransactions  that would come out of LUSID if the provided TransactionRequest was booked.
 
@@ -3604,7 +3604,7 @@ public class TransactionPortfoliosApiExample {
 
 > CustodianAccountsUpsertResponse upsertCustodianAccounts(scope, code, custodianAccountRequest)
 
-[EXPERIMENTAL] UpsertCustodianAccounts: Upsert Custodian Accounts
+UpsertCustodianAccounts: Upsert Custodian Accounts
 
 Create or update Custodian Accounts in the Transaction Portfolios. A Custodian Account will be updated  if it already exists and created if it does not.  The batch limit per request is 2,000.
 
@@ -3699,7 +3699,7 @@ public class TransactionPortfoliosApiExample {
 
 > CustodianAccountProperties upsertCustodianAccountsProperties(scope, code, custodianAccountScope, custodianAccountCode, requestBody)
 
-[EXPERIMENTAL] UpsertCustodianAccountsProperties: Upsert custodian accounts properties
+UpsertCustodianAccountsProperties: Upsert custodian accounts properties
 
 Update or insert one or more properties onto a single custodian account. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;CustodianAccount&#39;.     Upserting a property that exists for a Transaction Portfolios, with a null value, will delete the instance of the property for that group.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
 

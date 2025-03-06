@@ -556,7 +556,7 @@ public class StructuredResultDataApi {
     }
 
     /**
-     * [EXPERIMENTAL] DeleteStructuredResultData: Delete structured result data
+     * DeleteStructuredResultData: Delete structured result data
      * Delete one or more structured result data items from a particular scope. Each item is identified by a unique ID which includes  information about its type as well as the exact effective datetime (to the microsecond) at which it entered the system (became valid).     In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data item in the response.     The response returns both the collection of successfully deleted data items, as well as those that failed.  For each failure, a reason is provided.     It is important to check the failed set for any unsuccessful results.
      * @param scope The scope from which to delete data items. (required)
      * @param requestBody The data IDs to delete, each keyed by a unique, ephemeral correlation ID. (required)
@@ -843,7 +843,7 @@ public class StructuredResultDataApi {
     }
 
     /**
-     * [EARLY ACCESS] GetAddressKeyDefinitionsForDocument: Get AddressKeyDefinitions for a virtual document.
+     * GetAddressKeyDefinitionsForDocument: Get AddressKeyDefinitions for a virtual document.
      * For a given virtual document retrieve all the address key definitions that are in use.
      * @param scope The scope of the document for which address key definitions are retrieved. (required)
      * @param code The code of the document for which address key definitions are retrieved. (required)
@@ -1089,7 +1089,7 @@ public class StructuredResultDataApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetDataMap: Get data map
+     * GetDataMap: Get data map
      * Retrieve one or more structured result store address definition data maps from a particular scope.     Each data map can be identified by its invariant key, which can be thought of as a permanent URL.  For each ID, LUSID returns the most recently matched item.     In the request, each data map must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data map in the response.     The response returns three collections. The first contains successfully retrieved data maps. The second contains those with a  valid identifier but that could not be found. The third contains those that failed because LUSID could not construct a valid identifier from the request.     For the IDs that failed to resolve or could not be found, a reason is provided.     It is important to check the failed sets for any unsuccessful results.
      * @param scope The scope from which to retrieve data maps. (required)
      * @param requestBody The data map keys to look up, each keyed by a unique, ephemeral correlation ID. (required)
@@ -1622,7 +1622,7 @@ public class StructuredResultDataApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetVirtualDocument: Get Virtual Documents
+     * GetVirtualDocument: Get Virtual Documents
      * Retrieve one or more virtual documents from a particular scope.     Each item can be identified by its time invariant structured result data identifier. For each ID, LUSID  returns the most recently matched item with respect to the provided effective datetime.     In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data item in the response.     The response returns two collections. The first contains successfully retrieved data items. The second contains those with a  valid identifier but that could not be found, or those that failed because LUSID could not construct a valid identifier from the request.     For the IDs that failed to resolve or could not be found, a reason is provided.     It is important to check the failed sets for any unsuccessful results.
      * @param scope The scope in which to construct the virtual documents. (required)
      * @param requestBody The time invariant set of structured data identifiers to retrieve, keyed by a unique, ephemeral correlation ID. (required)
@@ -1950,7 +1950,7 @@ public class StructuredResultDataApi {
     }
 
     /**
-     * [EARLY ACCESS] GetVirtualDocumentRows: Get Virtual Document Rows
+     * GetVirtualDocumentRows: Get Virtual Document Rows
      * Retrieve the rows of the virtual document with the specified identifiers and the given effectiveAt date time.    Get virtual document rows merges multiple StructuredResultData items upserted with UpsertStructuredResultData  for a single StructuredResultDataId.     Since an item of StructuredResultData is always upserted with a StructuredResultDataId, of which  effectiveAt is a part, then merging across the asAt dimension is supported but not merging across the  effectiveAt dimension.
      * @param scope The scope in which to retrieve the virtual document. (required)
      * @param code The code of the virtual document to retrieve. (required)
@@ -2197,7 +2197,7 @@ public class StructuredResultDataApi {
     }
 
     /**
-     * [EXPERIMENTAL] UpsertResultValue: Upsert result value
+     * UpsertResultValue: Upsert result value
      * Create or update one or more Upsert one or more result values in a particular scope. An item is updated if it already exists  and created if it does not.     In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data item in the response.     The response returns both the collection of successfully created or updated data items, as well as those that failed.  For each failure, a reason is provided.     It is important to check the failed set for any unsuccessful results.
      * @param scope The scope in which to construct the virtual documents. (required)
      * @param requestBody The time invariant set of structured data identifiers to retrieve, keyed by a unique, ephemeral correlation ID. (required)

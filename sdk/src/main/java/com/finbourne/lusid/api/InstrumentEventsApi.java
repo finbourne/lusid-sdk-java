@@ -351,7 +351,7 @@ public class InstrumentEventsApi {
     }
 
     /**
-     * [EARLY ACCESS] QueryApplicableInstrumentEvents: Returns a list of applicable instrument events based on the holdings of the portfolios and date range specified in the query.
+     * QueryApplicableInstrumentEvents: Returns a list of applicable instrument events based on the holdings of the portfolios and date range specified in the query.
      * Returns a list of applicable instrument events based on the holdings of the portfolios and date range specified in the query.
      * @return APIqueryApplicableInstrumentEventsRequest
      * @http.response.details
@@ -857,7 +857,7 @@ public class InstrumentEventsApi {
     }
 
     /**
-     * [EXPERIMENTAL] QueryCashFlows: Returns a list of cashflows based on the holdings of the portfolios and date range specified in the query.
+     * QueryCashFlows: Returns a list of cashflows based on the holdings of the portfolios and date range specified in the query.
      * Returns a list of cashflows based on the holdings of the portfolios and date range specified in the query.
      * @return APIqueryCashFlowsRequest
      * @http.response.details
@@ -1125,7 +1125,7 @@ public class InstrumentEventsApi {
     }
 
     /**
-     * [EARLY ACCESS] QueryInstrumentEvents: Returns a list of instrument events based on the holdings of the portfolios and date range specified in the query.
+     * QueryInstrumentEvents: Returns a list of instrument events based on the holdings of the portfolios and date range specified in the query.
      * Returns a list of instrument events based on the holdings of the portfolios and date range specified in the query.
      * @return APIqueryInstrumentEventsRequest
      * @http.response.details
@@ -1393,7 +1393,7 @@ public class InstrumentEventsApi {
     }
 
     /**
-     * [EXPERIMENTAL] QueryTradeTickets: Returns a list of trade tickets based on the holdings of the portfolios and date range specified in the query.
+     * QueryTradeTickets: Returns a list of trade tickets based on the holdings of the portfolios and date range specified in the query.
      * Returns a list of trade tickets based on the holdings of the portfolios and date range specified in the query.    These trade tickets are derived from events that involve transition of instrument states, such as transitions  on exercise or default of an instrument. The trade tickets are to allow the new position to be created given the  existing portfolio configuration.
      * @return APIqueryTradeTicketsRequest
      * @http.response.details

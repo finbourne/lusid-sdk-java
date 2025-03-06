@@ -674,7 +674,7 @@ public class InstrumentsApi {
     }
 
     /**
-     * [EARLY ACCESS] CalculateSettlementDate: Get the settlement date for an instrument.
+     * CalculateSettlementDate: Get the settlement date for an instrument.
      * Get the settlement date for a given trade date and instrument. The calculated settlement date will be in UTC.  If a cut label transaction date is provided, the settlement date will be calculated relative to the absolute UTC datetime.
      * @param identifierType An identifier type attached to the Instrument. (required)
      * @param identifier The identifier value. (required)
@@ -1242,7 +1242,7 @@ public class InstrumentsApi {
     }
 
     /**
-     * [EARLY ACCESS] DeleteInstrumentProperties: Delete instrument properties
+     * DeleteInstrumentProperties: Delete instrument properties
      * Delete one or more properties from a particular instrument. If the properties are time-variant then an effective datetime from which  to delete properties must be specified. If the properties are perpetual then it is invalid to specify an effective datetime for deletion.
      * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
      * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
@@ -1741,7 +1741,7 @@ public class InstrumentsApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetAllPossibleFeatures: Provides list of all possible features for instrument type.
+     * GetAllPossibleFeatures: Provides list of all possible features for instrument type.
      * Provides all possible instrument features an instrument of a given type can provide.
      * @param instrumentType A lusid instrument type e.g. Bond, FxOption. (required)
      * @return APIgetAllPossibleFeaturesRequest
@@ -2063,7 +2063,7 @@ public class InstrumentsApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetExistingInstrumentCapabilities: Retrieve capabilities of an existing instrument identified by LUID. These include instrument features, and if model is provided it also includes supported address keys and economic dependencies.  Given an lusid instrument id provides instrument capabilities, outlining features, and, given the model, the capabilities also include supported addresses as well as economic dependencies.
+     * GetExistingInstrumentCapabilities: Retrieve capabilities of an existing instrument identified by LUID. These include instrument features, and if model is provided it also includes supported address keys and economic dependencies.  Given an lusid instrument id provides instrument capabilities, outlining features, and, given the model, the capabilities also include supported addresses as well as economic dependencies.
      * Returns instrument capabilities containing useful information about the instrument and the model. This includes  - features corresponding to the instrument e.g. Optionality:American, Other:InflationLinked  - supported addresses (if model provided) e.g. Valuation/Pv, Valuation/DirtyPriceKey, Valuation/Accrued  - economic dependencies (if model provided) e.g. Cash:USD, Fx:GBP.USD, Rates:GBP.GBPOIS
      * @param identifier A lusid instrument id identifying the instrument. (required)
      * @return APIgetExistingInstrumentCapabilitiesRequest
@@ -3208,7 +3208,7 @@ public class InstrumentsApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetInstrumentPaymentDiary: Get instrument payment diary
+     * GetInstrumentPaymentDiary: Get instrument payment diary
      * Get the payment diary of a single instrument.
      * @param identifierType The identifier being supplied e.g. \&quot;Figi\&quot;. (required)
      * @param identifier The value of the identifier for the requested instrument. (required)
@@ -4155,7 +4155,7 @@ public class InstrumentsApi {
     }
 
     /**
-     * [EARLY ACCESS] GetInstrumentRelationships: Get Instrument relationships
+     * GetInstrumentRelationships: Get Instrument relationships
      * Get relationships for a particular Instrument.
      * @param identifierType An identifier type attached to the Instrument. (required)
      * @param identifier The identifier value. (required)
@@ -4793,7 +4793,7 @@ public class InstrumentsApi {
     }
 
     /**
-     * [EARLY ACCESS] ListInstrumentProperties: Get instrument properties (with Pagination)
+     * ListInstrumentProperties: Get instrument properties (with Pagination)
      * List all the properties of a particular instrument, as identified by a particular unique identifier.
      * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
      * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
@@ -5432,7 +5432,7 @@ public class InstrumentsApi {
     }
 
     /**
-     * [EXPERIMENTAL] QueryInstrumentCapabilities: Query capabilities of a particular instrument in advance of creating it. These include instrument features, and if model is provided it also includes supported address keys and economic dependencies.
+     * QueryInstrumentCapabilities: Query capabilities of a particular instrument in advance of creating it. These include instrument features, and if model is provided it also includes supported address keys and economic dependencies.
      * Returns instrument capabilities containing useful information about the instrument and the model. This includes  - features corresponding to the instrument e.g. Optionality:American, Other:InflationLinked  - supported addresses (if model provided) e.g. Valuation/Pv, Valuation/DirtyPriceKey, Valuation/Accrued  - economic dependencies (if model provided) e.g. Cash:USD, Fx:GBP.USD, Rates:GBP.GBPOIS
      * @param lusidInstrument The definition of the instrument. (required)
      * @return APIqueryInstrumentCapabilitiesRequest

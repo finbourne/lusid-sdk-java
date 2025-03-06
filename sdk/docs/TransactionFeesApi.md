@@ -4,11 +4,11 @@ All URIs are relative to *https://www.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteTransactionFeeRule**](TransactionFeesApi.md#deleteTransactionFeeRule) | **DELETE** /api/transactions/fees/rules/{code} | [EXPERIMENTAL] DeleteTransactionFeeRule: Deletes a fee rule. |
-| [**getApplicableTransactionFees**](TransactionFeesApi.md#getApplicableTransactionFees) | **POST** /api/transactions/fees/$GetApplicableFees | [EXPERIMENTAL] GetApplicableTransactionFees: Get the Fees and Commissions that may be applicable to a transaction. |
-| [**getTransactionFeeRule**](TransactionFeesApi.md#getTransactionFeeRule) | **GET** /api/transactions/fees/rules/{code} | [EXPERIMENTAL] GetTransactionFeeRule: Retrieve the definition of single fee rule. |
-| [**listTransactionFeeRules**](TransactionFeesApi.md#listTransactionFeeRules) | **GET** /api/transactions/fees/rules | [EXPERIMENTAL] ListTransactionFeeRules: List fee rules, with optional filtering. |
-| [**upsertTransactionFeeRules**](TransactionFeesApi.md#upsertTransactionFeeRules) | **POST** /api/transactions/fees/rules | [EXPERIMENTAL] UpsertTransactionFeeRules: Upsert fee rules. |
+| [**deleteTransactionFeeRule**](TransactionFeesApi.md#deleteTransactionFeeRule) | **DELETE** /api/transactions/fees/rules/{code} | DeleteTransactionFeeRule: Deletes a fee rule. |
+| [**getApplicableTransactionFees**](TransactionFeesApi.md#getApplicableTransactionFees) | **POST** /api/transactions/fees/$GetApplicableFees | GetApplicableTransactionFees: Get the Fees and Commissions that may be applicable to a transaction. |
+| [**getTransactionFeeRule**](TransactionFeesApi.md#getTransactionFeeRule) | **GET** /api/transactions/fees/rules/{code} | GetTransactionFeeRule: Retrieve the definition of single fee rule. |
+| [**listTransactionFeeRules**](TransactionFeesApi.md#listTransactionFeeRules) | **GET** /api/transactions/fees/rules | ListTransactionFeeRules: List fee rules, with optional filtering. |
+| [**upsertTransactionFeeRules**](TransactionFeesApi.md#upsertTransactionFeeRules) | **POST** /api/transactions/fees/rules | UpsertTransactionFeeRules: Upsert fee rules. |
 
 
 
@@ -16,7 +16,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 > DeletedEntityResponse deleteTransactionFeeRule(code)
 
-[EXPERIMENTAL] DeleteTransactionFeeRule: Deletes a fee rule.
+DeleteTransactionFeeRule: Deletes a fee rule.
 
 Deletes the rule for all effective time.    The rule will remain viewable at previous as at times, but it will no longer be considered by  GetApplicableFees.    This cannot be undone.
 
@@ -107,7 +107,7 @@ public class TransactionFeesApiExample {
 
 > ResourceListOfFeeRule getApplicableTransactionFees(effectiveAt, asAt, instrumentIdentifierType, instrumentIdentifier, portfolioScope, portfolioCode, requestBody)
 
-[EXPERIMENTAL] GetApplicableTransactionFees: Get the Fees and Commissions that may be applicable to a transaction.
+GetApplicableTransactionFees: Get the Fees and Commissions that may be applicable to a transaction.
 
 Additionally, matching can be based on the instrument&#39;s properties, its portfolio properties, and any additional property keys present in the data file.
 
@@ -210,7 +210,7 @@ public class TransactionFeesApiExample {
 
 > FeeRule getTransactionFeeRule(code, effectiveAt, asAt)
 
-[EXPERIMENTAL] GetTransactionFeeRule: Retrieve the definition of single fee rule.
+GetTransactionFeeRule: Retrieve the definition of single fee rule.
 
 Retrieves the fee rule definition at the given effective and as at times.
 
@@ -305,7 +305,7 @@ public class TransactionFeesApiExample {
 
 > ResourceListOfFeeRule listTransactionFeeRules(effectiveAt, asAt, limit, filter, page)
 
-[EXPERIMENTAL] ListTransactionFeeRules: List fee rules, with optional filtering.
+ListTransactionFeeRules: List fee rules, with optional filtering.
 
 For more information about filtering results,  see https://support.lusid.com/knowledgebase/article/KA-01914.
 
@@ -404,7 +404,7 @@ public class TransactionFeesApiExample {
 
 > FeeRuleUpsertResponse upsertTransactionFeeRules(requestBody, effectiveAt)
 
-[EXPERIMENTAL] UpsertTransactionFeeRules: Upsert fee rules.
+UpsertTransactionFeeRules: Upsert fee rules.
 
 To upsert a new rule, the code field must be left empty, a code will then be assigned and returned as part  of the response. To update an existing rule, include the fee code. It is possible to both create and update  fee rules in the same request.    The upsert is transactional - either all create/update operations will succeed or none of them will.
 
