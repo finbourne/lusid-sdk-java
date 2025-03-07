@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.EquityAllOfIdentifiers;
 import com.finbourne.lusid.model.LusidInstrument;
+import com.finbourne.lusid.model.TimeZoneConventions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -63,6 +64,10 @@ public class Equity extends LusidInstrument {
   public static final String SERIALIZED_NAME_LOT_SIZE = "lotSize";
   @SerializedName(SERIALIZED_NAME_LOT_SIZE)
   private Integer lotSize;
+
+  public static final String SERIALIZED_NAME_TIME_ZONE_CONVENTIONS = "timeZoneConventions";
+  @SerializedName(SERIALIZED_NAME_TIME_ZONE_CONVENTIONS)
+  private TimeZoneConventions timeZoneConventions;
 
   public Equity() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -131,6 +136,27 @@ public class Equity extends LusidInstrument {
   }
 
 
+  public Equity timeZoneConventions(TimeZoneConventions timeZoneConventions) {
+    
+    this.timeZoneConventions = timeZoneConventions;
+    return this;
+  }
+
+   /**
+   * Get timeZoneConventions
+   * @return timeZoneConventions
+  **/
+  @jakarta.annotation.Nullable
+  public TimeZoneConventions getTimeZoneConventions() {
+    return timeZoneConventions;
+  }
+
+
+  public void setTimeZoneConventions(TimeZoneConventions timeZoneConventions) {
+    this.timeZoneConventions = timeZoneConventions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -144,6 +170,7 @@ public class Equity extends LusidInstrument {
     return Objects.equals(this.identifiers, equity.identifiers) &&
         Objects.equals(this.domCcy, equity.domCcy) &&
         Objects.equals(this.lotSize, equity.lotSize) &&
+        Objects.equals(this.timeZoneConventions, equity.timeZoneConventions) &&
         super.equals(o);
   }
 
@@ -153,7 +180,7 @@ public class Equity extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(identifiers, domCcy, lotSize, super.hashCode());
+    return Objects.hash(identifiers, domCcy, lotSize, timeZoneConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -171,6 +198,7 @@ public class Equity extends LusidInstrument {
     sb.append("    identifiers: ").append(toIndentedString(identifiers)).append("\n");
     sb.append("    domCcy: ").append(toIndentedString(domCcy)).append("\n");
     sb.append("    lotSize: ").append(toIndentedString(lotSize)).append("\n");
+    sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -197,6 +225,7 @@ public class Equity extends LusidInstrument {
     openapiFields.add("identifiers");
     openapiFields.add("domCcy");
     openapiFields.add("lotSize");
+    openapiFields.add("timeZoneConventions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

@@ -13,6 +13,7 @@ LUSID representation of a Simple Instrument, used as a basic definition of a gen
 |**assetClass** | [**AssetClassEnum**](#AssetClassEnum) | The available values are: InterestRates, FX, Inflation, Equities, Credit, Commodities, Money, Unknown |  |
 |**fgnCcys** | **List&lt;String&gt;** | The set of foreign currencies, if any (optional). |  [optional] |
 |**simpleInstrumentType** | **String** | The Instrument type of the simple instrument. |  |
+|**timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  |  [optional] |
 
 
 
