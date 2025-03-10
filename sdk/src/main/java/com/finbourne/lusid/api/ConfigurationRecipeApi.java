@@ -546,7 +546,7 @@ public class ConfigurationRecipeApi {
     }
 
     /**
-     * [EXPERIMENTAL] DeleteRecipeComposer: Delete a Recipe Composer, assuming that it is present.
+     * DeleteRecipeComposer: Delete a Recipe Composer, assuming that it is present.
      * Delete the specified Recipe Composer from a single scope.     The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed.     It is important to always check for any unsuccessful response.
      * @param scope The scope of the Recipe Composer to delete. (required)
      * @param code The Recipe Composer to delete. (required)
@@ -1058,7 +1058,7 @@ public class ConfigurationRecipeApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetDerivedRecipe: Get Configuration Recipe either from the store or expanded from a Recipe Composer.
+     * GetDerivedRecipe: Get Configuration Recipe either from the store or expanded from a Recipe Composer.
      * If scope-code is referring to a Configuration Recipe it is returned, if it refers to Recipe Composer, it is expanded into a Configuration Recipe and returned.
      * @param scope The scope of the Configuration Recipe or Recipe Composer to return. (required)
      * @param code The code of the Configuration Recipe or Recipe Composer to return. (required)
@@ -1314,7 +1314,7 @@ public class ConfigurationRecipeApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetRecipeComposer: Get Recipe Composer
+     * GetRecipeComposer: Get Recipe Composer
      * Get a Recipe Composer from a single scope.     The response will return either the recipe composer that has been stored, or a failure explaining why the request was unsuccessful.     It is important to always check for any unsuccessful requests (failures).
      * @param scope The scope of the Recipe Composer to retrieve. (required)
      * @param code The name of the Recipe Composer to retrieve the data for. (required)
@@ -1550,7 +1550,7 @@ public class ConfigurationRecipeApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetRecipeComposerResolvedInline: Given a Recipe Composer, this endpoint expands into a Configuration Recipe without persistence. Primarily used for testing purposes.
+     * GetRecipeComposerResolvedInline: Given a Recipe Composer, this endpoint expands into a Configuration Recipe without persistence. Primarily used for testing purposes.
      * Resolves an inline recipe composer into a ConfigurationRecipe.
      * @param upsertRecipeComposerRequest Recipe composer used to expand into the Configuration Recipe. (required)
      * @return APIgetRecipeComposerResolvedInlineRequest
@@ -2057,7 +2057,7 @@ public class ConfigurationRecipeApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListDerivedRecipes: List the complete set of all Configuration Recipes, both from the configuration recipe store and also from expanded recipe composers.
+     * ListDerivedRecipes: List the complete set of all Configuration Recipes, both from the configuration recipe store and also from expanded recipe composers.
      * This endpoints returns a union of the output of ListConfigurationRecipes and the resolved Recipe Composers from the ListRecipeComposers endpoints.
      * @return APIlistDerivedRecipesRequest
      * @http.response.details
@@ -2310,7 +2310,7 @@ public class ConfigurationRecipeApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListRecipeComposers: List the set of Recipe Composers
+     * ListRecipeComposers: List the set of Recipe Composers
      * List the set of Recipe Composers at the specified date/time and scope
      * @return APIlistRecipeComposersRequest
      * @http.response.details
@@ -2779,7 +2779,7 @@ public class ConfigurationRecipeApi {
     }
 
     /**
-     * [EXPERIMENTAL] UpsertRecipeComposer: Upsert a Recipe Composer. This creates or updates the data in Lusid.
+     * UpsertRecipeComposer: Upsert a Recipe Composer. This creates or updates the data in Lusid.
      * Update or insert one Recipe Composer in a single scope. An item will be updated if it already exists  and inserted if it does not.     The response will return the successfully updated or inserted Recipe Composer or failure message if unsuccessful     It is important to always check to verify success (or failure).
      * @param upsertRecipeComposerRequest The Recipe Composer to update or insert (required)
      * @return APIupsertRecipeComposerRequest
