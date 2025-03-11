@@ -109,6 +109,65 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "instrumentEventType"));
                     }
           })
+                .registerTypeSelector(com.finbourne.lusid.model.AppendFxForwardCurveByQuoteReference.class, new TypeSelector<com.finbourne.lusid.model.AppendFxForwardCurveByQuoteReference>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.AppendFxForwardCurveByQuoteReference> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("AppendFxForwardCurveByQuoteReference", com.finbourne.lusid.model.AppendFxForwardCurveByQuoteReference.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "marketDataType"));
+                    }
+          })
+                .registerTypeSelector(com.finbourne.lusid.model.AppendFxForwardCurveData.class, new TypeSelector<com.finbourne.lusid.model.AppendFxForwardCurveData>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.AppendFxForwardCurveData> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("AppendFxForwardCurveData", com.finbourne.lusid.model.AppendFxForwardCurveData.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "marketDataType"));
+                    }
+          })
+                .registerTypeSelector(com.finbourne.lusid.model.AppendFxForwardPipsCurveData.class, new TypeSelector<com.finbourne.lusid.model.AppendFxForwardPipsCurveData>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.AppendFxForwardPipsCurveData> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("AppendFxForwardPipsCurveData", com.finbourne.lusid.model.AppendFxForwardPipsCurveData.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "marketDataType"));
+                    }
+          })
+                .registerTypeSelector(com.finbourne.lusid.model.AppendFxForwardTenorCurveData.class, new TypeSelector<com.finbourne.lusid.model.AppendFxForwardTenorCurveData>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.AppendFxForwardTenorCurveData> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("AppendFxForwardTenorCurveData", com.finbourne.lusid.model.AppendFxForwardTenorCurveData.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "marketDataType"));
+                    }
+          })
+                .registerTypeSelector(com.finbourne.lusid.model.AppendFxForwardTenorPipsCurveData.class, new TypeSelector<com.finbourne.lusid.model.AppendFxForwardTenorPipsCurveData>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.AppendFxForwardTenorPipsCurveData> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("AppendFxForwardTenorPipsCurveData", com.finbourne.lusid.model.AppendFxForwardTenorPipsCurveData.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "marketDataType"));
+                    }
+          })
+                .registerTypeSelector(com.finbourne.lusid.model.AppendMarketData.class, new TypeSelector<com.finbourne.lusid.model.AppendMarketData>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.AppendMarketData> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("AppendFxForwardCurveByQuoteReference", com.finbourne.lusid.model.AppendFxForwardCurveByQuoteReference.class);
+                        classByDiscriminatorValue.put("AppendFxForwardCurveData", com.finbourne.lusid.model.AppendFxForwardCurveData.class);
+                        classByDiscriminatorValue.put("AppendFxForwardPipsCurveData", com.finbourne.lusid.model.AppendFxForwardPipsCurveData.class);
+                        classByDiscriminatorValue.put("AppendFxForwardTenorCurveData", com.finbourne.lusid.model.AppendFxForwardTenorCurveData.class);
+                        classByDiscriminatorValue.put("AppendFxForwardTenorPipsCurveData", com.finbourne.lusid.model.AppendFxForwardTenorPipsCurveData.class);
+                        classByDiscriminatorValue.put("AppendMarketData", com.finbourne.lusid.model.AppendMarketData.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "marketDataType"));
+                    }
+          })
                 .registerTypeSelector(com.finbourne.lusid.model.Basket.class, new TypeSelector<com.finbourne.lusid.model.Basket>() {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.Basket> getClassForElement(JsonElement readElement) {
@@ -2315,6 +2374,12 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.AnnulQuotesResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.AnnulSingleStructuredDataResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.AnnulStructuredDataResponse.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.AppendComplexMarketDataRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.AppendFxForwardCurveByQuoteReference.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.AppendFxForwardCurveData.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.AppendFxForwardPipsCurveData.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.AppendFxForwardTenorCurveData.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.AppendFxForwardTenorPipsCurveData.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ApplicableInstrumentEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.AssetLeg.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.Barrier.CustomTypeAdapterFactory());

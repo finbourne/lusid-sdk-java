@@ -7,6 +7,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**deleteComplexMarketData**](ComplexMarketDataApi.md#deleteComplexMarketData) | **POST** /api/complexmarketdata/{scope}/$delete | DeleteComplexMarketData: Delete one or more items of complex market data, assuming they are present. |
 | [**getComplexMarketData**](ComplexMarketDataApi.md#getComplexMarketData) | **POST** /api/complexmarketdata/{scope}/$get | GetComplexMarketData: Get complex market data |
 | [**listComplexMarketData**](ComplexMarketDataApi.md#listComplexMarketData) | **GET** /api/complexmarketdata | ListComplexMarketData: List the set of ComplexMarketData |
+| [**upsertAppendComplexMarketData**](ComplexMarketDataApi.md#upsertAppendComplexMarketData) | **POST** /api/complexmarketdata/{scope}/$append | [EARLY ACCESS] UpsertAppendComplexMarketData: Appends a new point to the end of a ComplexMarketData definition. |
 | [**upsertComplexMarketData**](ComplexMarketDataApi.md#upsertComplexMarketData) | **POST** /api/complexmarketdata/{scope} | UpsertComplexMarketData: Upsert a set of complex market data items. This creates or updates the data in Lusid. |
 
 
@@ -288,6 +289,103 @@ public class ComplexMarketDataApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The requested ComplexMarketData |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## upsertAppendComplexMarketData
+
+> UpsertSingleStructuredDataResponse upsertAppendComplexMarketData(scope, appendComplexMarketDataRequest, effectiveAt, asAt)
+
+[EARLY ACCESS] UpsertAppendComplexMarketData: Appends a new point to the end of a ComplexMarketData definition.
+
+Update a complex market data item in a single scope by appending a new point onto the end.     NOTE: This operation is only supported for FX curves with one of the following data types:  FxForwardCurveByQuoteReference, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.ComplexMarketDataApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class ComplexMarketDataApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ComplexMarketDataApi apiInstance = apiFactory.build(ComplexMarketDataApi.class);
+
+        ComplexMarketDataApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplexMarketDataApi.class);
+        String scope = "scope_example"; // String | The scope of the complex market data to append.
+        AppendComplexMarketDataRequest appendComplexMarketDataRequest = new AppendComplexMarketDataRequest(); // AppendComplexMarketDataRequest | Request definition of the point to append.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime at which to retrieve the complex market data.   Defaults to the current LUSID system datetime if not specified.   Must match the effectiveAt of the ComplexMarketDataId given in the request body.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the complex market data. Defaults to return the latest version if not specified.
+        try {
+            // uncomment the below to set overrides at the request level
+            // UpsertSingleStructuredDataResponse result = apiInstance.upsertAppendComplexMarketData(scope, appendComplexMarketDataRequest, effectiveAt, asAt).execute(opts);
+
+            UpsertSingleStructuredDataResponse result = apiInstance.upsertAppendComplexMarketData(scope, appendComplexMarketDataRequest, effectiveAt, asAt).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ComplexMarketDataApi#upsertAppendComplexMarketData");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the complex market data to append. | |
+| **appendComplexMarketDataRequest** | [**AppendComplexMarketDataRequest**](AppendComplexMarketDataRequest.md)| Request definition of the point to append. | |
+| **effectiveAt** | **String**| The effective datetime at which to retrieve the complex market data.   Defaults to the current LUSID system datetime if not specified.   Must match the effectiveAt of the ComplexMarketDataId given in the request body. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the complex market data. Defaults to return the latest version if not specified. | [optional] |
+
+### Return type
+
+[**UpsertSingleStructuredDataResponse**](UpsertSingleStructuredDataResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The successfully appended ComplexMarketData along with any failures |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
