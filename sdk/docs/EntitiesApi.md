@@ -4,13 +4,13 @@ All URIs are relative to *https://www.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getCustomEntityByEntityUniqueId**](EntitiesApi.md#getCustomEntityByEntityUniqueId) | **GET** /api/entities/customentities/{entityUniqueId} | [EXPERIMENTAL] GetCustomEntityByEntityUniqueId: Get a Custom Entity instance by its EntityUniqueId |
-| [**getDataTypeByEntityUniqueId**](EntitiesApi.md#getDataTypeByEntityUniqueId) | **GET** /api/entities/datatypes/{entityUniqueId} | [EXPERIMENTAL] GetDataTypeByEntityUniqueId: Get DataType by EntityUniqueId |
-| [**getEntityHistory**](EntitiesApi.md#getEntityHistory) | **GET** /api/entities/{entityType}/{entityUniqueId}/history | [EARLY ACCESS] GetEntityHistory: List an entity&#39;s history information |
-| [**getInstrumentByEntityUniqueId**](EntitiesApi.md#getInstrumentByEntityUniqueId) | **GET** /api/entities/instruments/{entityUniqueId} | [EXPERIMENTAL] GetInstrumentByEntityUniqueId: Get instrument by EntityUniqueId |
-| [**getPortfolioByEntityUniqueId**](EntitiesApi.md#getPortfolioByEntityUniqueId) | **GET** /api/entities/portfolios/{entityUniqueId} | [EXPERIMENTAL] GetPortfolioByEntityUniqueId: Get portfolio by EntityUniqueId |
+| [**getCustomEntityByEntityUniqueId**](EntitiesApi.md#getCustomEntityByEntityUniqueId) | **GET** /api/entities/customentities/{entityUniqueId} | GetCustomEntityByEntityUniqueId: Get a Custom Entity instance by its EntityUniqueId |
+| [**getDataTypeByEntityUniqueId**](EntitiesApi.md#getDataTypeByEntityUniqueId) | **GET** /api/entities/datatypes/{entityUniqueId} | GetDataTypeByEntityUniqueId: Get DataType by EntityUniqueId |
+| [**getEntityHistory**](EntitiesApi.md#getEntityHistory) | **GET** /api/entities/{entityType}/{entityUniqueId}/history | GetEntityHistory: List an entity&#39;s history information |
+| [**getInstrumentByEntityUniqueId**](EntitiesApi.md#getInstrumentByEntityUniqueId) | **GET** /api/entities/instruments/{entityUniqueId} | GetInstrumentByEntityUniqueId: Get instrument by EntityUniqueId |
+| [**getPortfolioByEntityUniqueId**](EntitiesApi.md#getPortfolioByEntityUniqueId) | **GET** /api/entities/portfolios/{entityUniqueId} | GetPortfolioByEntityUniqueId: Get portfolio by EntityUniqueId |
 | [**getPortfolioChanges**](EntitiesApi.md#getPortfolioChanges) | **GET** /api/entities/changes/portfolios | GetPortfolioChanges: Get the next change to each portfolio in a scope. |
-| [**getPropertyDefinitionByEntityUniqueId**](EntitiesApi.md#getPropertyDefinitionByEntityUniqueId) | **GET** /api/entities/propertydefinitions/{entityUniqueId} | [EXPERIMENTAL] GetPropertyDefinitionByEntityUniqueId: Get property definition by EntityUniqueId |
+| [**getPropertyDefinitionByEntityUniqueId**](EntitiesApi.md#getPropertyDefinitionByEntityUniqueId) | **GET** /api/entities/propertydefinitions/{entityUniqueId} | GetPropertyDefinitionByEntityUniqueId: Get property definition by EntityUniqueId |
 
 
 
@@ -18,7 +18,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 > CustomEntityEntity getCustomEntityByEntityUniqueId(entityUniqueId, effectiveAt, asAt, previews)
 
-[EXPERIMENTAL] GetCustomEntityByEntityUniqueId: Get a Custom Entity instance by its EntityUniqueId
+GetCustomEntityByEntityUniqueId: Get a Custom Entity instance by its EntityUniqueId
 
 Retrieve a particular Custom Entity instance.  If the Custom Entity is deleted, this will return the state of the Custom Entity immediately prior to deletion.
 
@@ -115,7 +115,7 @@ public class EntitiesApiExample {
 
 > DataTypeEntity getDataTypeByEntityUniqueId(entityUniqueId, asAt, previews)
 
-[EXPERIMENTAL] GetDataTypeByEntityUniqueId: Get DataType by EntityUniqueId
+GetDataTypeByEntityUniqueId: Get DataType by EntityUniqueId
 
 Retrieve the definition of a particular DataType.  If the DataType is deleted, this will return the state of the DataType immediately prior to deletion.
 
@@ -210,7 +210,7 @@ public class EntitiesApiExample {
 
 > ResourceListOfChangeInterval getEntityHistory(entityType, entityUniqueId, asAt, page, limit, filter, sortBy)
 
-[EARLY ACCESS] GetEntityHistory: List an entity&#39;s history information
+GetEntityHistory: List an entity&#39;s history information
 
 Retrieve a page of an entity&#39;s change history up to a particular point in AsAt time.
 
@@ -313,7 +313,7 @@ public class EntitiesApiExample {
 
 > InstrumentEntity getInstrumentByEntityUniqueId(entityUniqueId, effectiveAt, asAt, previews)
 
-[EXPERIMENTAL] GetInstrumentByEntityUniqueId: Get instrument by EntityUniqueId
+GetInstrumentByEntityUniqueId: Get instrument by EntityUniqueId
 
 Retrieve the definition of a particular instrument.  If the instrument is deleted, this will return the state of the instrument immediately prior to deletion.
 
@@ -410,7 +410,7 @@ public class EntitiesApiExample {
 
 > PortfolioEntity getPortfolioByEntityUniqueId(entityUniqueId, effectiveAt, asAt, previews)
 
-[EXPERIMENTAL] GetPortfolioByEntityUniqueId: Get portfolio by EntityUniqueId
+GetPortfolioByEntityUniqueId: Get portfolio by EntityUniqueId
 
 Retrieve the definition of a particular portfolio.  If the portfolio is deleted, this will return the state of the portfolio immediately prior to deletion.
 
@@ -602,7 +602,7 @@ public class EntitiesApiExample {
 
 > PropertyDefinitionEntity getPropertyDefinitionByEntityUniqueId(entityUniqueId, effectiveAt, asAt, previews)
 
-[EXPERIMENTAL] GetPropertyDefinitionByEntityUniqueId: Get property definition by EntityUniqueId
+GetPropertyDefinitionByEntityUniqueId: Get property definition by EntityUniqueId
 
 Retrieve a particular property definition.  If the property definition is deleted, this will return the state of the property definition immediately prior to deletion.
 

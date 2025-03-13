@@ -2576,7 +2576,7 @@ public class TransactionPortfoliosApiExample {
 
 ## getPortfolioCashStatement
 
-> ResourceListOfPortfolioCashFlow getPortfolioCashStatement(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode)
+> ResourceListOfPortfolioCashFlow getPortfolioCashStatement(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, propertyKeys)
 
 GetPortfolioCashStatement: Get portfolio cash statement
 
@@ -2629,11 +2629,12 @@ public class TransactionPortfoliosApiExample {
         String filter = "filter_example"; // String | Expression to filter the result set.   For example, to return only transactions with a transaction type of 'Buy', specify \"type eq 'Buy'\".   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914.
         String recipeIdScope = "recipeIdScope_example"; // String | The scope of the given recipeId
         String recipeIdCode = "recipeIdCode_example"; // String | The code of the given recipeID
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\" or \"Transaction\" domain to decorate onto   the cash flows' transactions. These take the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\" or   \"Transaction/strategy/quantsignal\".
         try {
             // uncomment the below to set overrides at the request level
-            // ResourceListOfPortfolioCashFlow result = apiInstance.getPortfolioCashStatement(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode).execute(opts);
+            // ResourceListOfPortfolioCashFlow result = apiInstance.getPortfolioCashStatement(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, propertyKeys).execute(opts);
 
-            ResourceListOfPortfolioCashFlow result = apiInstance.getPortfolioCashStatement(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode).execute();
+            ResourceListOfPortfolioCashFlow result = apiInstance.getPortfolioCashStatement(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TransactionPortfoliosApi#getPortfolioCashStatement");
@@ -2658,6 +2659,7 @@ public class TransactionPortfoliosApiExample {
 | **filter** | **String**| Expression to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
 | **recipeIdScope** | **String**| The scope of the given recipeId | [optional] |
 | **recipeIdCode** | **String**| The code of the given recipeID | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Instrument\&quot; or \&quot;Transaction\&quot; domain to decorate onto   the cash flows&#39; transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or   \&quot;Transaction/strategy/quantsignal\&quot;. | [optional] |
 
 ### Return type
 

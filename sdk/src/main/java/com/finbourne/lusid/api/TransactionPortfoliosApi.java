@@ -7558,11 +7558,11 @@ public class TransactionPortfoliosApi {
     public APIgetPortfolioCashLadderRequest getPortfolioCashLadder(String scope, String code, String fromEffectiveAt, String toEffectiveAt, String effectiveAt) {
         return new APIgetPortfolioCashLadderRequest(scope, code, fromEffectiveAt, toEffectiveAt, effectiveAt);
     }
-    private okhttp3.Call getPortfolioCashStatementCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, final ApiCallback _callback) throws ApiException {
-        return getPortfolioCashStatementCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getPortfolioCashStatementCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return getPortfolioCashStatementCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, propertyKeys,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getPortfolioCashStatementCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getPortfolioCashStatementCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -7613,6 +7613,10 @@ public class TransactionPortfoliosApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("recipeIdCode", recipeIdCode));
         }
 
+        if (propertyKeys != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -7635,7 +7639,7 @@ public class TransactionPortfoliosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPortfolioCashStatementValidateBeforeCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getPortfolioCashStatementValidateBeforeCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getPortfolioCashStatement(Async)");
@@ -7656,34 +7660,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'toEffectiveAt' when calling getPortfolioCashStatement(Async)");
         }
 
-        return getPortfolioCashStatementCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, _callback, opts);
+        return getPortfolioCashStatementCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, propertyKeys, _callback, opts);
 
     }
 
 
-    private ApiResponse<ResourceListOfPortfolioCashFlow> getPortfolioCashStatementWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode) throws ApiException {
-        okhttp3.Call localVarCall = getPortfolioCashStatementValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, null, new ConfigurationOptions());
+    private ApiResponse<ResourceListOfPortfolioCashFlow> getPortfolioCashStatementWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, List<String> propertyKeys) throws ApiException {
+        okhttp3.Call localVarCall = getPortfolioCashStatementValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, propertyKeys, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ResourceListOfPortfolioCashFlow>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ResourceListOfPortfolioCashFlow> getPortfolioCashStatementWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getPortfolioCashStatementValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, null, opts);
+    private ApiResponse<ResourceListOfPortfolioCashFlow> getPortfolioCashStatementWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getPortfolioCashStatementValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPortfolioCashFlow>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getPortfolioCashStatementAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, final ApiCallback<ResourceListOfPortfolioCashFlow> _callback) throws ApiException {
+    private okhttp3.Call getPortfolioCashStatementAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, final ApiCallback<ResourceListOfPortfolioCashFlow> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPortfolioCashStatementValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getPortfolioCashStatementValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, propertyKeys, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ResourceListOfPortfolioCashFlow>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getPortfolioCashStatementAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, final ApiCallback<ResourceListOfPortfolioCashFlow> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getPortfolioCashStatementAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String filter, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, final ApiCallback<ResourceListOfPortfolioCashFlow> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getPortfolioCashStatementValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, _callback, opts);
+        okhttp3.Call localVarCall = getPortfolioCashStatementValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfPortfolioCashFlow>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -7698,6 +7702,7 @@ public class TransactionPortfoliosApi {
         private String filter;
         private String recipeIdScope;
         private String recipeIdCode;
+        private List<String> propertyKeys;
 
         private APIgetPortfolioCashStatementRequest(String scope, String code, String fromEffectiveAt, String toEffectiveAt) {
             this.scope = scope;
@@ -7747,6 +7752,16 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; or \&quot;Transaction\&quot; domain to decorate onto   the cash flows&#39; transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or   \&quot;Transaction/strategy/quantsignal\&quot;. (optional)
+         * @return APIgetPortfolioCashStatementRequest
+         */
+        public APIgetPortfolioCashStatementRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
          * Build call for getPortfolioCashStatement
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -7760,7 +7775,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getPortfolioCashStatementCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, _callback);
+            return getPortfolioCashStatementCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, propertyKeys, _callback);
         }
 
         /**
@@ -7776,7 +7791,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ResourceListOfPortfolioCashFlow execute() throws ApiException {
-            ApiResponse<ResourceListOfPortfolioCashFlow> localVarResp = getPortfolioCashStatementWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode);
+            ApiResponse<ResourceListOfPortfolioCashFlow> localVarResp = getPortfolioCashStatementWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, propertyKeys);
             return localVarResp.getData();
         }
 
@@ -7793,7 +7808,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ResourceListOfPortfolioCashFlow execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ResourceListOfPortfolioCashFlow> localVarResp = getPortfolioCashStatementWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, opts);
+            ApiResponse<ResourceListOfPortfolioCashFlow> localVarResp = getPortfolioCashStatementWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, propertyKeys, opts);
             return localVarResp.getData();
         }
 
@@ -7810,7 +7825,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<ResourceListOfPortfolioCashFlow> executeWithHttpInfo() throws ApiException {
-            return getPortfolioCashStatementWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode);
+            return getPortfolioCashStatementWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, propertyKeys);
         }
 
         /**
@@ -7826,7 +7841,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<ResourceListOfPortfolioCashFlow> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getPortfolioCashStatementWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, opts);
+            return getPortfolioCashStatementWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, propertyKeys, opts);
         }
 
         /**
@@ -7843,7 +7858,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPortfolioCashFlow> _callback) throws ApiException {
-            return getPortfolioCashStatementAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, _callback);
+            return getPortfolioCashStatementAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, propertyKeys, _callback);
         }
 
         /**
@@ -7860,7 +7875,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPortfolioCashFlow> _callback, ConfigurationOptions opts) throws ApiException {
-            return getPortfolioCashStatementAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, _callback, opts);
+            return getPortfolioCashStatementAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, filter, recipeIdScope, recipeIdCode, propertyKeys, _callback, opts);
         }
     }
 

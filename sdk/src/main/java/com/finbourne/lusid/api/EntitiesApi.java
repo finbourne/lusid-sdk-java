@@ -341,7 +341,7 @@ public class EntitiesApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetCustomEntityByEntityUniqueId: Get a Custom Entity instance by its EntityUniqueId
+     * GetCustomEntityByEntityUniqueId: Get a Custom Entity instance by its EntityUniqueId
      * Retrieve a particular Custom Entity instance.  If the Custom Entity is deleted, this will return the state of the Custom Entity immediately prior to deletion.
      * @param entityUniqueId The universally unique identifier of the Custom Entity. (required)
      * @return APIgetCustomEntityByEntityUniqueIdRequest
@@ -603,7 +603,7 @@ public class EntitiesApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetDataTypeByEntityUniqueId: Get DataType by EntityUniqueId
+     * GetDataTypeByEntityUniqueId: Get DataType by EntityUniqueId
      * Retrieve the definition of a particular DataType.  If the DataType is deleted, this will return the state of the DataType immediately prior to deletion.
      * @param entityUniqueId The universally unique identifier of the DataType definition. (required)
      * @return APIgetDataTypeByEntityUniqueIdRequest
@@ -918,7 +918,7 @@ public class EntitiesApi {
     }
 
     /**
-     * [EARLY ACCESS] GetEntityHistory: List an entity&#39;s history information
+     * GetEntityHistory: List an entity&#39;s history information
      * Retrieve a page of an entity&#39;s change history up to a particular point in AsAt time.
      * @param entityType The type of the entity to list the change history for. (required)
      * @param entityUniqueId The universally unique identifier of the entity. (required)
@@ -1196,7 +1196,7 @@ public class EntitiesApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetInstrumentByEntityUniqueId: Get instrument by EntityUniqueId
+     * GetInstrumentByEntityUniqueId: Get instrument by EntityUniqueId
      * Retrieve the definition of a particular instrument.  If the instrument is deleted, this will return the state of the instrument immediately prior to deletion.
      * @param entityUniqueId The universally unique identifier of the instrument definition. (required)
      * @return APIgetInstrumentByEntityUniqueIdRequest
@@ -1473,7 +1473,7 @@ public class EntitiesApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetPortfolioByEntityUniqueId: Get portfolio by EntityUniqueId
+     * GetPortfolioByEntityUniqueId: Get portfolio by EntityUniqueId
      * Retrieve the definition of a particular portfolio.  If the portfolio is deleted, this will return the state of the portfolio immediately prior to deletion.
      * @param entityUniqueId The universally unique identifier of the portfolio definition. (required)
      * @return APIgetPortfolioByEntityUniqueIdRequest
@@ -2012,7 +2012,7 @@ public class EntitiesApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetPropertyDefinitionByEntityUniqueId: Get property definition by EntityUniqueId
+     * GetPropertyDefinitionByEntityUniqueId: Get property definition by EntityUniqueId
      * Retrieve a particular property definition.  If the property definition is deleted, this will return the state of the property definition immediately prior to deletion.
      * @param entityUniqueId The universally unique identifier of the property definition. (required)
      * @return APIgetPropertyDefinitionByEntityUniqueIdRequest
