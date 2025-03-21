@@ -74,6 +74,10 @@ public class Compounding {
   @SerializedName(SERIALIZED_NAME_SPREAD_COMPOUNDING_METHOD)
   private String spreadCompoundingMethod;
 
+  public static final String SERIALIZED_NAME_ROUNDING_PRECISION = "roundingPrecision";
+  @SerializedName(SERIALIZED_NAME_ROUNDING_PRECISION)
+  private Integer roundingPrecision;
+
   public Compounding() {
   }
 
@@ -126,7 +130,7 @@ public class Compounding {
   }
 
    /**
-   * If the interest rate is simple, compounded or using a pre-computed compounded index.    Supported string (enumeration) values are: [Averaging, Compounding, CompoundedIndex].
+   * If the interest rate is simple, compounded or using a pre-computed compounded index.    Supported string (enumeration) values are: [Averaging, Compounding, CompoundedIndex, NonCumulativeCompounding].
    * @return compoundingMethod
   **/
   @jakarta.annotation.Nonnull
@@ -203,6 +207,27 @@ public class Compounding {
   }
 
 
+  public Compounding roundingPrecision(Integer roundingPrecision) {
+    
+    this.roundingPrecision = roundingPrecision;
+    return this;
+  }
+
+   /**
+   * Defines the number of decimal places the compounded rate (expressed as a decimal) should be rounded to.  This is an optional field, leaving it blank will mean no rounding takes place in Compounding.
+   * @return roundingPrecision
+  **/
+  @jakarta.annotation.Nullable
+  public Integer getRoundingPrecision() {
+    return roundingPrecision;
+  }
+
+
+  public void setRoundingPrecision(Integer roundingPrecision) {
+    this.roundingPrecision = roundingPrecision;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -218,7 +243,8 @@ public class Compounding {
         Objects.equals(this.compoundingMethod, compounding.compoundingMethod) &&
         Objects.equals(this.resetFrequency, compounding.resetFrequency) &&
         Objects.equals(this.shift, compounding.shift) &&
-        Objects.equals(this.spreadCompoundingMethod, compounding.spreadCompoundingMethod);
+        Objects.equals(this.spreadCompoundingMethod, compounding.spreadCompoundingMethod) &&
+        Objects.equals(this.roundingPrecision, compounding.roundingPrecision);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -227,7 +253,7 @@ public class Compounding {
 
   @Override
   public int hashCode() {
-    return Objects.hash(averagingMethod, calculationShiftMethod, compoundingMethod, resetFrequency, shift, spreadCompoundingMethod);
+    return Objects.hash(averagingMethod, calculationShiftMethod, compoundingMethod, resetFrequency, shift, spreadCompoundingMethod, roundingPrecision);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -247,6 +273,7 @@ public class Compounding {
     sb.append("    resetFrequency: ").append(toIndentedString(resetFrequency)).append("\n");
     sb.append("    shift: ").append(toIndentedString(shift)).append("\n");
     sb.append("    spreadCompoundingMethod: ").append(toIndentedString(spreadCompoundingMethod)).append("\n");
+    sb.append("    roundingPrecision: ").append(toIndentedString(roundingPrecision)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -275,6 +302,7 @@ public class Compounding {
     openapiFields.add("resetFrequency");
     openapiFields.add("shift");
     openapiFields.add("spreadCompoundingMethod");
+    openapiFields.add("roundingPrecision");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
