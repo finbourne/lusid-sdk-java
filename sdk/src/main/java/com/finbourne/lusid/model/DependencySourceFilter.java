@@ -175,7 +175,7 @@ public class DependencySourceFilter {
   }
 
    /**
-   * Get addressKeyFilters
+   * Specify that a rule should apply if the market data is requested by an instrument with features or properties  satisfying all the given address key filters. If an empty list is given, no additional filtering is done.
    * @return addressKeyFilters
   **/
   @jakarta.annotation.Nullable

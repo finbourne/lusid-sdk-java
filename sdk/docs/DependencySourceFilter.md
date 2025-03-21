@@ -12,7 +12,7 @@ Encapsulates parts of a market data rule relating not to the nature of the marke
 |**assetClass** | **String** | Specify that a rule should only apply if the market data is requested by an instrument of a given asset class.  If null, then no filtering on asset class is applied. |  [optional] |
 |**domCcy** | **String** | Specify that a rule should only apply if the market data is requested by an instrument with a given domestic currency.  If null, then no filtering on currency is applied. |  [optional] |
 |**longOrShortIndicator** | **String** | Specify that a rule should apply if the market data is requested by a model with a given long or short indicator.  If none, then no filtering on LongOrShortIndicator is applied. |  [optional] |
-|**addressKeyFilters** | [**List&lt;AddressKeyFilter&gt;**](AddressKeyFilter.md) |  |  [optional] |
+|**addressKeyFilters** | [**List&lt;AddressKeyFilter&gt;**](AddressKeyFilter.md) | Specify that a rule should apply if the market data is requested by an instrument with features or properties  satisfying all the given address key filters. If an empty list is given, no additional filtering is done. |  [optional] |
 
 
 
