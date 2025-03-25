@@ -11,7 +11,6 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.FeeAccrual;
 import com.finbourne.lusid.model.FundDetails;
 import com.finbourne.lusid.model.FundValuationPointData;
 import com.finbourne.lusid.model.Link;
@@ -25,9 +24,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -71,34 +68,6 @@ public class ValuationPointDataResponse {
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
   private String status;
-
-  public static final String SERIALIZED_NAME_BACKOUT = "backout";
-  @SerializedName(SERIALIZED_NAME_BACKOUT)
-  private Map<String, java.math.BigDecimal> backout = new HashMap<>();
-
-  public static final String SERIALIZED_NAME_DEALING = "dealing";
-  @SerializedName(SERIALIZED_NAME_DEALING)
-  private Map<String, java.math.BigDecimal> dealing = new HashMap<>();
-
-  public static final String SERIALIZED_NAME_PN_L = "pnL";
-  @SerializedName(SERIALIZED_NAME_PN_L)
-  private Map<String, java.math.BigDecimal> pnL = new HashMap<>();
-
-  public static final String SERIALIZED_NAME_GAV = "gav";
-  @SerializedName(SERIALIZED_NAME_GAV)
-  private java.math.BigDecimal gav;
-
-  public static final String SERIALIZED_NAME_FEES = "fees";
-  @SerializedName(SERIALIZED_NAME_FEES)
-  private Map<String, FeeAccrual> fees = new HashMap<>();
-
-  public static final String SERIALIZED_NAME_NAV = "nav";
-  @SerializedName(SERIALIZED_NAME_NAV)
-  private java.math.BigDecimal nav;
-
-  public static final String SERIALIZED_NAME_PREVIOUS_NAV = "previousNav";
-  @SerializedName(SERIALIZED_NAME_PREVIOUS_NAV)
-  private java.math.BigDecimal previousNav;
 
   public static final String SERIALIZED_NAME_FUND_DETAILS = "fundDetails";
   @SerializedName(SERIALIZED_NAME_FUND_DETAILS)
@@ -187,185 +156,6 @@ public class ValuationPointDataResponse {
 
   public void setStatus(String status) {
     this.status = status;
-  }
-
-
-  public ValuationPointDataResponse backout(Map<String, java.math.BigDecimal> backout) {
-    
-    this.backout = backout;
-    return this;
-  }
-
-  public ValuationPointDataResponse putBackoutItem(String key, java.math.BigDecimal backoutItem) {
-    if (this.backout == null) {
-      this.backout = new HashMap<>();
-    }
-    this.backout.put(key, backoutItem);
-    return this;
-  }
-
-   /**
-   * DEPRECATED. Bucket of detail for the Valuation Point, where data points have been &#39;backed out&#39;.
-   * @return backout
-  **/
-  @jakarta.annotation.Nonnull
-  public Map<String, java.math.BigDecimal> getBackout() {
-    return backout;
-  }
-
-
-  public void setBackout(Map<String, java.math.BigDecimal> backout) {
-    this.backout = backout;
-  }
-
-
-  public ValuationPointDataResponse dealing(Map<String, java.math.BigDecimal> dealing) {
-    
-    this.dealing = dealing;
-    return this;
-  }
-
-  public ValuationPointDataResponse putDealingItem(String key, java.math.BigDecimal dealingItem) {
-    if (this.dealing == null) {
-      this.dealing = new HashMap<>();
-    }
-    this.dealing.put(key, dealingItem);
-    return this;
-  }
-
-   /**
-   * DEPRECATED. Bucket of detail for any &#39;Dealing&#39; that has occured inside the queried period.
-   * @return dealing
-  **/
-  @jakarta.annotation.Nonnull
-  public Map<String, java.math.BigDecimal> getDealing() {
-    return dealing;
-  }
-
-
-  public void setDealing(Map<String, java.math.BigDecimal> dealing) {
-    this.dealing = dealing;
-  }
-
-
-  public ValuationPointDataResponse pnL(Map<String, java.math.BigDecimal> pnL) {
-    
-    this.pnL = pnL;
-    return this;
-  }
-
-  public ValuationPointDataResponse putPnLItem(String key, java.math.BigDecimal pnLItem) {
-    if (this.pnL == null) {
-      this.pnL = new HashMap<>();
-    }
-    this.pnL.put(key, pnLItem);
-    return this;
-  }
-
-   /**
-   * DEPRECATED. Bucket of detail for &#39;PnL&#39; that has occured inside the queried period.
-   * @return pnL
-  **/
-  @jakarta.annotation.Nonnull
-  public Map<String, java.math.BigDecimal> getPnL() {
-    return pnL;
-  }
-
-
-  public void setPnL(Map<String, java.math.BigDecimal> pnL) {
-    this.pnL = pnL;
-  }
-
-
-  public ValuationPointDataResponse gav(java.math.BigDecimal gav) {
-    
-    this.gav = gav;
-    return this;
-  }
-
-   /**
-   * DEPRECATED. The Gross Asset Value of the Fund at the Period end. This is effectively a summation of all Trial balance entries linked to accounts of types &#39;Asset&#39; and &#39;Liabilities&#39;.
-   * @return gav
-  **/
-  @jakarta.annotation.Nonnull
-  public java.math.BigDecimal getGav() {
-    return gav;
-  }
-
-
-  public void setGav(java.math.BigDecimal gav) {
-    this.gav = gav;
-  }
-
-
-  public ValuationPointDataResponse fees(Map<String, FeeAccrual> fees) {
-    
-    this.fees = fees;
-    return this;
-  }
-
-  public ValuationPointDataResponse putFeesItem(String key, FeeAccrual feesItem) {
-    if (this.fees == null) {
-      this.fees = new HashMap<>();
-    }
-    this.fees.put(key, feesItem);
-    return this;
-  }
-
-   /**
-   * DEPRECATED. Bucket of detail for any &#39;Fees&#39; that have been charged in the selected period.
-   * @return fees
-  **/
-  @jakarta.annotation.Nonnull
-  public Map<String, FeeAccrual> getFees() {
-    return fees;
-  }
-
-
-  public void setFees(Map<String, FeeAccrual> fees) {
-    this.fees = fees;
-  }
-
-
-  public ValuationPointDataResponse nav(java.math.BigDecimal nav) {
-    
-    this.nav = nav;
-    return this;
-  }
-
-   /**
-   * DEPRECATED. The Net Asset Value of the Fund at the Period end. This represents the GAV with any fees applied in the period.
-   * @return nav
-  **/
-  @jakarta.annotation.Nonnull
-  public java.math.BigDecimal getNav() {
-    return nav;
-  }
-
-
-  public void setNav(java.math.BigDecimal nav) {
-    this.nav = nav;
-  }
-
-
-  public ValuationPointDataResponse previousNav(java.math.BigDecimal previousNav) {
-    
-    this.previousNav = previousNav;
-    return this;
-  }
-
-   /**
-   * DEPRECATED. The Net Asset Value of the Fund at the End of the last Period.
-   * @return previousNav
-  **/
-  @jakarta.annotation.Nonnull
-  public java.math.BigDecimal getPreviousNav() {
-    return previousNav;
-  }
-
-
-  public void setPreviousNav(java.math.BigDecimal previousNav) {
-    this.previousNav = previousNav;
   }
 
 
@@ -524,13 +314,6 @@ public class ValuationPointDataResponse {
     return Objects.equals(this.href, valuationPointDataResponse.href) &&
         Objects.equals(this.type, valuationPointDataResponse.type) &&
         Objects.equals(this.status, valuationPointDataResponse.status) &&
-        Objects.equals(this.backout, valuationPointDataResponse.backout) &&
-        Objects.equals(this.dealing, valuationPointDataResponse.dealing) &&
-        Objects.equals(this.pnL, valuationPointDataResponse.pnL) &&
-        (this.gav.compareTo(valuationPointDataResponse.getGav()) == 0) &&
-        Objects.equals(this.fees, valuationPointDataResponse.fees) &&
-        (this.nav.compareTo(valuationPointDataResponse.getNav()) == 0) &&
-        (this.previousNav.compareTo(valuationPointDataResponse.getPreviousNav()) == 0) &&
         Objects.equals(this.fundDetails, valuationPointDataResponse.fundDetails) &&
         Objects.equals(this.fundValuationPointData, valuationPointDataResponse.fundValuationPointData) &&
         Objects.equals(this.shareClassData, valuationPointDataResponse.shareClassData) &&
@@ -545,7 +328,7 @@ public class ValuationPointDataResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, type, status, backout, dealing, pnL, gav, fees, nav, previousNav, fundDetails, fundValuationPointData, shareClassData, valuationPointCode, previousValuationPointCode, links);
+    return Objects.hash(href, type, status, fundDetails, fundValuationPointData, shareClassData, valuationPointCode, previousValuationPointCode, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -562,13 +345,6 @@ public class ValuationPointDataResponse {
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    backout: ").append(toIndentedString(backout)).append("\n");
-    sb.append("    dealing: ").append(toIndentedString(dealing)).append("\n");
-    sb.append("    pnL: ").append(toIndentedString(pnL)).append("\n");
-    sb.append("    gav: ").append(toIndentedString(gav)).append("\n");
-    sb.append("    fees: ").append(toIndentedString(fees)).append("\n");
-    sb.append("    nav: ").append(toIndentedString(nav)).append("\n");
-    sb.append("    previousNav: ").append(toIndentedString(previousNav)).append("\n");
     sb.append("    fundDetails: ").append(toIndentedString(fundDetails)).append("\n");
     sb.append("    fundValuationPointData: ").append(toIndentedString(fundValuationPointData)).append("\n");
     sb.append("    shareClassData: ").append(toIndentedString(shareClassData)).append("\n");
@@ -600,13 +376,6 @@ public class ValuationPointDataResponse {
     openapiFields.add("href");
     openapiFields.add("type");
     openapiFields.add("status");
-    openapiFields.add("backout");
-    openapiFields.add("dealing");
-    openapiFields.add("pnL");
-    openapiFields.add("gav");
-    openapiFields.add("fees");
-    openapiFields.add("nav");
-    openapiFields.add("previousNav");
     openapiFields.add("fundDetails");
     openapiFields.add("fundValuationPointData");
     openapiFields.add("shareClassData");
@@ -618,13 +387,6 @@ public class ValuationPointDataResponse {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("type");
     openapiRequiredFields.add("status");
-    openapiRequiredFields.add("backout");
-    openapiRequiredFields.add("dealing");
-    openapiRequiredFields.add("pnL");
-    openapiRequiredFields.add("gav");
-    openapiRequiredFields.add("fees");
-    openapiRequiredFields.add("nav");
-    openapiRequiredFields.add("previousNav");
     openapiRequiredFields.add("fundDetails");
     openapiRequiredFields.add("fundValuationPointData");
     openapiRequiredFields.add("shareClassData");

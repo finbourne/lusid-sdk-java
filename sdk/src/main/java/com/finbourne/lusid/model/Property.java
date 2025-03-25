@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.PropertyReferenceDataValue;
 import com.finbourne.lusid.model.PropertyValue;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -20,6 +21,8 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -68,7 +71,19 @@ public class Property {
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_UNTIL)
   private OffsetDateTime effectiveUntil;
 
+  public static final String SERIALIZED_NAME_REFERENCE_DATA = "referenceData";
+  @SerializedName(SERIALIZED_NAME_REFERENCE_DATA)
+  private Map<String, PropertyReferenceDataValue> referenceData;
+
   public Property() {
+  }
+
+  
+  public Property(
+     Map<String, PropertyReferenceDataValue> referenceData
+  ) {
+    this();
+    this.referenceData = referenceData;
   }
 
   public Property key(String key) {
@@ -155,6 +170,18 @@ public class Property {
   }
 
 
+   /**
+   * The ReferenceData linked to the value of the property. The ReferenceData is taken from the DataType on the PropertyDefinition that defines the property.
+   * @return referenceData
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, PropertyReferenceDataValue> getReferenceData() {
+    return referenceData;
+  }
+
+
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -168,7 +195,8 @@ public class Property {
     return Objects.equals(this.key, property.key) &&
         Objects.equals(this.value, property.value) &&
         Objects.equals(this.effectiveFrom, property.effectiveFrom) &&
-        Objects.equals(this.effectiveUntil, property.effectiveUntil);
+        Objects.equals(this.effectiveUntil, property.effectiveUntil) &&
+        Objects.equals(this.referenceData, property.referenceData);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -177,7 +205,7 @@ public class Property {
 
   @Override
   public int hashCode() {
-    return Objects.hash(key, value, effectiveFrom, effectiveUntil);
+    return Objects.hash(key, value, effectiveFrom, effectiveUntil, referenceData);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -195,6 +223,7 @@ public class Property {
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    effectiveFrom: ").append(toIndentedString(effectiveFrom)).append("\n");
     sb.append("    effectiveUntil: ").append(toIndentedString(effectiveUntil)).append("\n");
+    sb.append("    referenceData: ").append(toIndentedString(referenceData)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -221,6 +250,7 @@ public class Property {
     openapiFields.add("value");
     openapiFields.add("effectiveFrom");
     openapiFields.add("effectiveUntil");
+    openapiFields.add("referenceData");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

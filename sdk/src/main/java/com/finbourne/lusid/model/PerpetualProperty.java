@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.PropertyReferenceDataValue;
 import com.finbourne.lusid.model.PropertyValue;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -19,6 +20,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -58,7 +62,19 @@ public class PerpetualProperty {
   @SerializedName(SERIALIZED_NAME_VALUE)
   private PropertyValue value;
 
+  public static final String SERIALIZED_NAME_REFERENCE_DATA = "referenceData";
+  @SerializedName(SERIALIZED_NAME_REFERENCE_DATA)
+  private Map<String, PropertyReferenceDataValue> referenceData;
+
   public PerpetualProperty() {
+  }
+
+  
+  public PerpetualProperty(
+     Map<String, PropertyReferenceDataValue> referenceData
+  ) {
+    this();
+    this.referenceData = referenceData;
   }
 
   public PerpetualProperty key(String key) {
@@ -103,6 +119,18 @@ public class PerpetualProperty {
   }
 
 
+   /**
+   * The ReferenceData linked to the value of the property. The ReferenceData is taken from the DataType on the PropertyDefinition that defines the property.
+   * @return referenceData
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, PropertyReferenceDataValue> getReferenceData() {
+    return referenceData;
+  }
+
+
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -114,12 +142,24 @@ public class PerpetualProperty {
     }
     PerpetualProperty perpetualProperty = (PerpetualProperty) o;
     return Objects.equals(this.key, perpetualProperty.key) &&
-        Objects.equals(this.value, perpetualProperty.value);
+        Objects.equals(this.value, perpetualProperty.value) &&
+        Objects.equals(this.referenceData, perpetualProperty.referenceData);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(key, value);
+    return Objects.hash(key, value, referenceData);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -128,6 +168,7 @@ public class PerpetualProperty {
     sb.append("class PerpetualProperty {\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    referenceData: ").append(toIndentedString(referenceData)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -152,6 +193,7 @@ public class PerpetualProperty {
     openapiFields = new HashSet<String>();
     openapiFields.add("key");
     openapiFields.add("value");
+    openapiFields.add("referenceData");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
