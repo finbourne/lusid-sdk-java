@@ -139,7 +139,9 @@ public enum InstrumentEventType {
   
   DEPOSITINTERESTPAYMENTEVENT("DepositInterestPaymentEvent"),
   
-  DEPOSITCLOSEEVENT("DepositCloseEvent");
+  DEPOSITCLOSEEVENT("DepositCloseEvent"),
+  
+  LOANFACILITYCONTRACTROLLOVEREVENT("LoanFacilityContractRolloverEvent");
 
   private String value;
 

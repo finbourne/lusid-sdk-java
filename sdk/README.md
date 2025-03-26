@@ -609,26 +609,16 @@ Class | Method | HTTP request | Description
 *TransactionPortfoliosApi* | [**upsertTransactions**](docs/TransactionPortfoliosApi.md#upserttransactions) | **POST** /api/transactionportfolios/{scope}/{code}/transactions | UpsertTransactions: Upsert transactions
 *TranslationApi* | [**translateInstrumentDefinitions**](docs/TranslationApi.md#translateinstrumentdefinitions) | **POST** /api/translation/instrumentdefinitions | [EXPERIMENTAL] TranslateInstrumentDefinitions: Translate instruments
 *TranslationApi* | [**translateTradeTickets**](docs/TranslationApi.md#translatetradetickets) | **POST** /api/translation/tradetickets | [EXPERIMENTAL] TranslateTradeTickets: Translate trade ticket
-*WorkspaceApi* | [**createPersonalItem**](docs/WorkspaceApi.md#createpersonalitem) | **POST** /api/workspaces/personal/{workspaceName}/items | [EXPERIMENTAL] CreatePersonalItem: Create a new item in a personal workspace.
-*WorkspaceApi* | [**createPersonalWorkspace**](docs/WorkspaceApi.md#createpersonalworkspace) | **POST** /api/workspaces/personal | [EXPERIMENTAL] CreatePersonalWorkspace: Create a new personal workspace.
-*WorkspaceApi* | [**createSharedItem**](docs/WorkspaceApi.md#createshareditem) | **POST** /api/workspaces/shared/{workspaceName}/items | [EXPERIMENTAL] CreateSharedItem: Create a new item in a shared workspace.
-*WorkspaceApi* | [**createSharedWorkspace**](docs/WorkspaceApi.md#createsharedworkspace) | **POST** /api/workspaces/shared | [EXPERIMENTAL] CreateSharedWorkspace: Create a new shared workspace.
-*WorkspaceApi* | [**deletePersonalItem**](docs/WorkspaceApi.md#deletepersonalitem) | **DELETE** /api/workspaces/personal/{workspaceName}/items/{groupName}/{itemName} | [EXPERIMENTAL] DeletePersonalItem: Delete an item from a personal workspace.
-*WorkspaceApi* | [**deletePersonalWorkspace**](docs/WorkspaceApi.md#deletepersonalworkspace) | **DELETE** /api/workspaces/personal/{workspaceName} | [EXPERIMENTAL] DeletePersonalWorkspace: Delete a personal workspace.
-*WorkspaceApi* | [**deleteSharedItem**](docs/WorkspaceApi.md#deleteshareditem) | **DELETE** /api/workspaces/shared/{workspaceName}/items/{groupName}/{itemName} | [EXPERIMENTAL] DeleteSharedItem: Delete an item from a shared workspace.
-*WorkspaceApi* | [**deleteSharedWorkspace**](docs/WorkspaceApi.md#deletesharedworkspace) | **DELETE** /api/workspaces/shared/{workspaceName} | [EXPERIMENTAL] DeleteSharedWorkspace: Delete a shared workspace.
-*WorkspaceApi* | [**getPersonalItem**](docs/WorkspaceApi.md#getpersonalitem) | **GET** /api/workspaces/personal/{workspaceName}/items/{groupName}/{itemName} | [EXPERIMENTAL] GetPersonalItem: Get a single personal workspace item.
-*WorkspaceApi* | [**getPersonalWorkspace**](docs/WorkspaceApi.md#getpersonalworkspace) | **GET** /api/workspaces/personal/{workspaceName} | [EXPERIMENTAL] GetPersonalWorkspace: Get a personal workspace.
-*WorkspaceApi* | [**getSharedItem**](docs/WorkspaceApi.md#getshareditem) | **GET** /api/workspaces/shared/{workspaceName}/items/{groupName}/{itemName} | [EXPERIMENTAL] GetSharedItem: Get a single shared workspace item.
-*WorkspaceApi* | [**getSharedWorkspace**](docs/WorkspaceApi.md#getsharedworkspace) | **GET** /api/workspaces/shared/{workspaceName} | [EXPERIMENTAL] GetSharedWorkspace: Get a shared workspace.
-*WorkspaceApi* | [**listPersonalItems**](docs/WorkspaceApi.md#listpersonalitems) | **GET** /api/workspaces/personal/{workspaceName}/items | [EXPERIMENTAL] ListPersonalItems: List the items in a personal workspace.
-*WorkspaceApi* | [**listPersonalWorkspaces**](docs/WorkspaceApi.md#listpersonalworkspaces) | **GET** /api/workspaces/personal | [EXPERIMENTAL] ListPersonalWorkspaces: List personal workspaces.
-*WorkspaceApi* | [**listSharedItems**](docs/WorkspaceApi.md#listshareditems) | **GET** /api/workspaces/shared/{workspaceName}/items | [EXPERIMENTAL] ListSharedItems: List the items in a shared workspace.
-*WorkspaceApi* | [**listSharedWorkspaces**](docs/WorkspaceApi.md#listsharedworkspaces) | **GET** /api/workspaces/shared | [EXPERIMENTAL] ListSharedWorkspaces: List shared workspaces.
-*WorkspaceApi* | [**updatePersonalItem**](docs/WorkspaceApi.md#updatepersonalitem) | **PUT** /api/workspaces/personal/{workspaceName}/items/{groupName}/{itemName} | [EXPERIMENTAL] UpdatePersonalItem: Update an item in a personal workspace.
-*WorkspaceApi* | [**updatePersonalWorkspace**](docs/WorkspaceApi.md#updatepersonalworkspace) | **PUT** /api/workspaces/personal/{workspaceName} | [EXPERIMENTAL] UpdatePersonalWorkspace: Update a personal workspace.
-*WorkspaceApi* | [**updateSharedItem**](docs/WorkspaceApi.md#updateshareditem) | **PUT** /api/workspaces/shared/{workspaceName}/items/{groupName}/{itemName} | [EXPERIMENTAL] UpdateSharedItem: Update an item in a shared workspace.
-*WorkspaceApi* | [**updateSharedWorkspace**](docs/WorkspaceApi.md#updatesharedworkspace) | **PUT** /api/workspaces/shared/{workspaceName} | [EXPERIMENTAL] UpdateSharedWorkspace: Update a shared workspace.
+*WorkspaceApi* | [**createItem**](docs/WorkspaceApi.md#createitem) | **POST** /api/workspaces/{visibility}/{workspaceName}/items | [EXPERIMENTAL] CreateItem: Create a new item in a workspace.
+*WorkspaceApi* | [**createWorkspace**](docs/WorkspaceApi.md#createworkspace) | **POST** /api/workspaces/{visibility} | [EXPERIMENTAL] CreateWorkspace: Create a new workspace.
+*WorkspaceApi* | [**deleteItem**](docs/WorkspaceApi.md#deleteitem) | **DELETE** /api/workspaces/{visibility}/{workspaceName}/items/{groupName}/{itemName} | [EXPERIMENTAL] DeleteItem: Delete an item from a workspace.
+*WorkspaceApi* | [**deleteWorkspace**](docs/WorkspaceApi.md#deleteworkspace) | **DELETE** /api/workspaces/{visibility}/{workspaceName} | [EXPERIMENTAL] DeleteWorkspace: Delete a workspace.
+*WorkspaceApi* | [**getItem**](docs/WorkspaceApi.md#getitem) | **GET** /api/workspaces/{visibility}/{workspaceName}/items/{groupName}/{itemName} | [EXPERIMENTAL] GetItem: Get a single workspace item.
+*WorkspaceApi* | [**getWorkspace**](docs/WorkspaceApi.md#getworkspace) | **GET** /api/workspaces/{visibility}/{workspaceName} | [EXPERIMENTAL] GetWorkspace: Get a workspace.
+*WorkspaceApi* | [**listItems**](docs/WorkspaceApi.md#listitems) | **GET** /api/workspaces/{visibility}/{workspaceName}/items | [EXPERIMENTAL] ListItems: List the items in a workspace.
+*WorkspaceApi* | [**listWorkspaces**](docs/WorkspaceApi.md#listworkspaces) | **GET** /api/workspaces/{visibility} | [EXPERIMENTAL] ListWorkspaces: List workspaces.
+*WorkspaceApi* | [**updateItem**](docs/WorkspaceApi.md#updateitem) | **PUT** /api/workspaces/{visibility}/{workspaceName}/items/{groupName}/{itemName} | [EXPERIMENTAL] UpdateItem: Update an item in a workspace.
+*WorkspaceApi* | [**updateWorkspace**](docs/WorkspaceApi.md#updateworkspace) | **PUT** /api/workspaces/{visibility}/{workspaceName} | [EXPERIMENTAL] UpdateWorkspace: Update a workspace.
 
 
 <a id="documentation-for-models"></a>
@@ -1199,6 +1189,7 @@ Class | Method | HTTP request | Description
  - [ListAggregationResponse](docs/ListAggregationResponse.md)
  - [ListComplexMarketDataWithMetaDataResponse](docs/ListComplexMarketDataWithMetaDataResponse.md)
  - [LoanFacility](docs/LoanFacility.md)
+ - [LoanFacilityContractRolloverEvent](docs/LoanFacilityContractRolloverEvent.md)
  - [LoanInterestRepaymentEvent](docs/LoanInterestRepaymentEvent.md)
  - [LoanPeriod](docs/LoanPeriod.md)
  - [LoanPrincipalRepaymentEvent](docs/LoanPrincipalRepaymentEvent.md)
@@ -1583,6 +1574,7 @@ Class | Method | HTTP request | Description
  - [ResultValueType](docs/ResultValueType.md)
  - [ReturnZeroPvOptions](docs/ReturnZeroPvOptions.md)
  - [ReverseStockSplitEvent](docs/ReverseStockSplitEvent.md)
+ - [RolloverConstituent](docs/RolloverConstituent.md)
  - [RoundingConfiguration](docs/RoundingConfiguration.md)
  - [RoundingConfigurationComponent](docs/RoundingConfigurationComponent.md)
  - [RoundingConvention](docs/RoundingConvention.md)
@@ -1835,5 +1827,6 @@ Class | Method | HTTP request | Description
  - [WorkspaceItemCreationRequest](docs/WorkspaceItemCreationRequest.md)
  - [WorkspaceItemUpdateRequest](docs/WorkspaceItemUpdateRequest.md)
  - [WorkspaceUpdateRequest](docs/WorkspaceUpdateRequest.md)
+ - [WorkspaceVisibility](docs/WorkspaceVisibility.md)
  - [YieldCurveData](docs/YieldCurveData.md)
 

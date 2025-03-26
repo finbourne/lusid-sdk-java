@@ -81,11 +81,11 @@ public class WorkspaceApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    private okhttp3.Call createPersonalItemCall(String workspaceName, WorkspaceItemCreationRequest workspaceItemCreationRequest, final ApiCallback _callback) throws ApiException {
-        return createPersonalItemCall(workspaceName, workspaceItemCreationRequest,  _callback, new ConfigurationOptions());
+    private okhttp3.Call createItemCall(String visibility, String workspaceName, WorkspaceItemCreationRequest workspaceItemCreationRequest, final ApiCallback _callback) throws ApiException {
+        return createItemCall(visibility, workspaceName, workspaceItemCreationRequest,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call createPersonalItemCall(String workspaceName, WorkspaceItemCreationRequest workspaceItemCreationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call createItemCall(String visibility, String workspaceName, WorkspaceItemCreationRequest workspaceItemCreationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -102,7 +102,8 @@ public class WorkspaceApi {
         Object localVarPostBody = workspaceItemCreationRequest;
 
         // create path and map variables
-        String localVarPath = "/api/workspaces/personal/{workspaceName}/items"
+        String localVarPath = "/api/workspaces/{visibility}/{workspaceName}/items"
+            .replace("{" + "visibility" + "}", localVarApiClient.escapeString(visibility.toString()))
             .replace("{" + "workspaceName" + "}", localVarApiClient.escapeString(workspaceName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -137,65 +138,72 @@ public class WorkspaceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createPersonalItemValidateBeforeCall(String workspaceName, WorkspaceItemCreationRequest workspaceItemCreationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        // verify the required parameter 'workspaceName' is set
-        if (workspaceName == null) {
-            throw new ApiException("Missing the required parameter 'workspaceName' when calling createPersonalItem(Async)");
+    private okhttp3.Call createItemValidateBeforeCall(String visibility, String workspaceName, WorkspaceItemCreationRequest workspaceItemCreationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'visibility' is set
+        if (visibility == null) {
+            throw new ApiException("Missing the required parameter 'visibility' when calling createItem(Async)");
         }
 
-        return createPersonalItemCall(workspaceName, workspaceItemCreationRequest, _callback, opts);
+        // verify the required parameter 'workspaceName' is set
+        if (workspaceName == null) {
+            throw new ApiException("Missing the required parameter 'workspaceName' when calling createItem(Async)");
+        }
+
+        return createItemCall(visibility, workspaceName, workspaceItemCreationRequest, _callback, opts);
 
     }
 
 
-    private ApiResponse<WorkspaceItem> createPersonalItemWithHttpInfo(String workspaceName, WorkspaceItemCreationRequest workspaceItemCreationRequest) throws ApiException {
-        okhttp3.Call localVarCall = createPersonalItemValidateBeforeCall(workspaceName, workspaceItemCreationRequest, null, new ConfigurationOptions());
+    private ApiResponse<WorkspaceItem> createItemWithHttpInfo(String visibility, String workspaceName, WorkspaceItemCreationRequest workspaceItemCreationRequest) throws ApiException {
+        okhttp3.Call localVarCall = createItemValidateBeforeCall(visibility, workspaceName, workspaceItemCreationRequest, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<WorkspaceItem> createPersonalItemWithHttpInfo(String workspaceName, WorkspaceItemCreationRequest workspaceItemCreationRequest, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = createPersonalItemValidateBeforeCall(workspaceName, workspaceItemCreationRequest, null, opts);
+    private ApiResponse<WorkspaceItem> createItemWithHttpInfo(String visibility, String workspaceName, WorkspaceItemCreationRequest workspaceItemCreationRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createItemValidateBeforeCall(visibility, workspaceName, workspaceItemCreationRequest, null, opts);
         Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call createPersonalItemAsync(String workspaceName, WorkspaceItemCreationRequest workspaceItemCreationRequest, final ApiCallback<WorkspaceItem> _callback) throws ApiException {
+    private okhttp3.Call createItemAsync(String visibility, String workspaceName, WorkspaceItemCreationRequest workspaceItemCreationRequest, final ApiCallback<WorkspaceItem> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createPersonalItemValidateBeforeCall(workspaceName, workspaceItemCreationRequest, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = createItemValidateBeforeCall(visibility, workspaceName, workspaceItemCreationRequest, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call createPersonalItemAsync(String workspaceName, WorkspaceItemCreationRequest workspaceItemCreationRequest, final ApiCallback<WorkspaceItem> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call createItemAsync(String visibility, String workspaceName, WorkspaceItemCreationRequest workspaceItemCreationRequest, final ApiCallback<WorkspaceItem> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = createPersonalItemValidateBeforeCall(workspaceName, workspaceItemCreationRequest, _callback, opts);
+        okhttp3.Call localVarCall = createItemValidateBeforeCall(visibility, workspaceName, workspaceItemCreationRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    public class APIcreatePersonalItemRequest {
+    public class APIcreateItemRequest {
+        private final String visibility;
         private final String workspaceName;
         private WorkspaceItemCreationRequest workspaceItemCreationRequest;
 
-        private APIcreatePersonalItemRequest(String workspaceName) {
+        private APIcreateItemRequest(String visibility, String workspaceName) {
+            this.visibility = visibility;
             this.workspaceName = workspaceName;
         }
 
         /**
          * Set workspaceItemCreationRequest
          * @param workspaceItemCreationRequest The item to be created. (optional)
-         * @return APIcreatePersonalItemRequest
+         * @return APIcreateItemRequest
          */
-        public APIcreatePersonalItemRequest workspaceItemCreationRequest(WorkspaceItemCreationRequest workspaceItemCreationRequest) {
+        public APIcreateItemRequest workspaceItemCreationRequest(WorkspaceItemCreationRequest workspaceItemCreationRequest) {
             this.workspaceItemCreationRequest = workspaceItemCreationRequest;
             return this;
         }
 
         /**
-         * Build call for createPersonalItem
+         * Build call for createItem
          * @param _callback ApiCallback API callback
          * @return Call to execute
          * @throws ApiException If fail to serialize the request body object
@@ -208,11 +216,11 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return createPersonalItemCall(workspaceName, workspaceItemCreationRequest, _callback);
+            return createItemCall(visibility, workspaceName, workspaceItemCreationRequest, _callback);
         }
 
         /**
-         * Execute createPersonalItem request
+         * Execute createItem request
          * @return WorkspaceItem
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
@@ -224,12 +232,12 @@ public class WorkspaceApi {
          </table>
          */
         public WorkspaceItem execute() throws ApiException {
-            ApiResponse<WorkspaceItem> localVarResp = createPersonalItemWithHttpInfo(workspaceName, workspaceItemCreationRequest);
+            ApiResponse<WorkspaceItem> localVarResp = createItemWithHttpInfo(visibility, workspaceName, workspaceItemCreationRequest);
             return localVarResp.getData();
         }
 
         /**
-         * Execute createPersonalItem request. Use any specified configuration options to override any other configuration for this request only.
+         * Execute createItem request. Use any specified configuration options to override any other configuration for this request only.
          * @return WorkspaceItem
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
@@ -241,12 +249,12 @@ public class WorkspaceApi {
          </table>
          */
         public WorkspaceItem execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<WorkspaceItem> localVarResp = createPersonalItemWithHttpInfo(workspaceName, workspaceItemCreationRequest, opts);
+            ApiResponse<WorkspaceItem> localVarResp = createItemWithHttpInfo(visibility, workspaceName, workspaceItemCreationRequest, opts);
             return localVarResp.getData();
         }
 
         /**
-         * Execute createPersonalItem request with HTTP info returned
+         * Execute createItem request with HTTP info returned
          * @return ApiResponse&lt;WorkspaceItem&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
@@ -258,11 +266,11 @@ public class WorkspaceApi {
          </table>
          */
         public ApiResponse<WorkspaceItem> executeWithHttpInfo() throws ApiException {
-            return createPersonalItemWithHttpInfo(workspaceName, workspaceItemCreationRequest);
+            return createItemWithHttpInfo(visibility, workspaceName, workspaceItemCreationRequest);
         }
 
         /**
-         * Execute createPersonalItem request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * Execute createItem request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
          * @return ApiResponse&lt;WorkspaceItem&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
@@ -274,11 +282,11 @@ public class WorkspaceApi {
          </table>
          */
         public ApiResponse<WorkspaceItem> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return createPersonalItemWithHttpInfo(workspaceName, workspaceItemCreationRequest, opts);
+            return createItemWithHttpInfo(visibility, workspaceName, workspaceItemCreationRequest, opts);
         }
 
         /**
-         * Execute createPersonalItem request (asynchronously)
+         * Execute createItem request (asynchronously)
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -291,11 +299,11 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<WorkspaceItem> _callback) throws ApiException {
-            return createPersonalItemAsync(workspaceName, workspaceItemCreationRequest, _callback);
+            return createItemAsync(visibility, workspaceName, workspaceItemCreationRequest, _callback);
         }
 
         /**
-         * Execute createPersonalItem request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * Execute createItem request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -308,15 +316,16 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<WorkspaceItem> _callback, ConfigurationOptions opts) throws ApiException {
-            return createPersonalItemAsync(workspaceName, workspaceItemCreationRequest, _callback, opts);
+            return createItemAsync(visibility, workspaceName, workspaceItemCreationRequest, _callback, opts);
         }
     }
 
     /**
-     * [EXPERIMENTAL] CreatePersonalItem: Create a new item in a personal workspace.
-     * Create a new item in a personal workspace.
+     * [EXPERIMENTAL] CreateItem: Create a new item in a workspace.
+     * Create a new item in a workspace.
+     * @param visibility The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. (required)
      * @param workspaceName The item&#39;s workspace name. (required)
-     * @return APIcreatePersonalItemRequest
+     * @return APIcreateItemRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -325,14 +334,14 @@ public class WorkspaceApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIcreatePersonalItemRequest createPersonalItem(String workspaceName) {
-        return new APIcreatePersonalItemRequest(workspaceName);
+    public APIcreateItemRequest createItem(String visibility, String workspaceName) {
+        return new APIcreateItemRequest(visibility, workspaceName);
     }
-    private okhttp3.Call createPersonalWorkspaceCall(WorkspaceCreationRequest workspaceCreationRequest, final ApiCallback _callback) throws ApiException {
-        return createPersonalWorkspaceCall(workspaceCreationRequest,  _callback, new ConfigurationOptions());
+    private okhttp3.Call createWorkspaceCall(String visibility, WorkspaceCreationRequest workspaceCreationRequest, final ApiCallback _callback) throws ApiException {
+        return createWorkspaceCall(visibility, workspaceCreationRequest,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call createPersonalWorkspaceCall(WorkspaceCreationRequest workspaceCreationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call createWorkspaceCall(String visibility, WorkspaceCreationRequest workspaceCreationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -349,7 +358,8 @@ public class WorkspaceApi {
         Object localVarPostBody = workspaceCreationRequest;
 
         // create path and map variables
-        String localVarPath = "/api/workspaces/personal";
+        String localVarPath = "/api/workspaces/{visibility}"
+            .replace("{" + "visibility" + "}", localVarApiClient.escapeString(visibility.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -383,58 +393,65 @@ public class WorkspaceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createPersonalWorkspaceValidateBeforeCall(WorkspaceCreationRequest workspaceCreationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        return createPersonalWorkspaceCall(workspaceCreationRequest, _callback, opts);
+    private okhttp3.Call createWorkspaceValidateBeforeCall(String visibility, WorkspaceCreationRequest workspaceCreationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'visibility' is set
+        if (visibility == null) {
+            throw new ApiException("Missing the required parameter 'visibility' when calling createWorkspace(Async)");
+        }
+
+        return createWorkspaceCall(visibility, workspaceCreationRequest, _callback, opts);
 
     }
 
 
-    private ApiResponse<Workspace> createPersonalWorkspaceWithHttpInfo(WorkspaceCreationRequest workspaceCreationRequest) throws ApiException {
-        okhttp3.Call localVarCall = createPersonalWorkspaceValidateBeforeCall(workspaceCreationRequest, null, new ConfigurationOptions());
+    private ApiResponse<Workspace> createWorkspaceWithHttpInfo(String visibility, WorkspaceCreationRequest workspaceCreationRequest) throws ApiException {
+        okhttp3.Call localVarCall = createWorkspaceValidateBeforeCall(visibility, workspaceCreationRequest, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<Workspace> createPersonalWorkspaceWithHttpInfo(WorkspaceCreationRequest workspaceCreationRequest, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = createPersonalWorkspaceValidateBeforeCall(workspaceCreationRequest, null, opts);
+    private ApiResponse<Workspace> createWorkspaceWithHttpInfo(String visibility, WorkspaceCreationRequest workspaceCreationRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createWorkspaceValidateBeforeCall(visibility, workspaceCreationRequest, null, opts);
         Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call createPersonalWorkspaceAsync(WorkspaceCreationRequest workspaceCreationRequest, final ApiCallback<Workspace> _callback) throws ApiException {
+    private okhttp3.Call createWorkspaceAsync(String visibility, WorkspaceCreationRequest workspaceCreationRequest, final ApiCallback<Workspace> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createPersonalWorkspaceValidateBeforeCall(workspaceCreationRequest, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = createWorkspaceValidateBeforeCall(visibility, workspaceCreationRequest, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call createPersonalWorkspaceAsync(WorkspaceCreationRequest workspaceCreationRequest, final ApiCallback<Workspace> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call createWorkspaceAsync(String visibility, WorkspaceCreationRequest workspaceCreationRequest, final ApiCallback<Workspace> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = createPersonalWorkspaceValidateBeforeCall(workspaceCreationRequest, _callback, opts);
+        okhttp3.Call localVarCall = createWorkspaceValidateBeforeCall(visibility, workspaceCreationRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    public class APIcreatePersonalWorkspaceRequest {
+    public class APIcreateWorkspaceRequest {
+        private final String visibility;
         private WorkspaceCreationRequest workspaceCreationRequest;
 
-        private APIcreatePersonalWorkspaceRequest() {
+        private APIcreateWorkspaceRequest(String visibility) {
+            this.visibility = visibility;
         }
 
         /**
          * Set workspaceCreationRequest
          * @param workspaceCreationRequest The workspace to be created. (optional)
-         * @return APIcreatePersonalWorkspaceRequest
+         * @return APIcreateWorkspaceRequest
          */
-        public APIcreatePersonalWorkspaceRequest workspaceCreationRequest(WorkspaceCreationRequest workspaceCreationRequest) {
+        public APIcreateWorkspaceRequest workspaceCreationRequest(WorkspaceCreationRequest workspaceCreationRequest) {
             this.workspaceCreationRequest = workspaceCreationRequest;
             return this;
         }
 
         /**
-         * Build call for createPersonalWorkspace
+         * Build call for createWorkspace
          * @param _callback ApiCallback API callback
          * @return Call to execute
          * @throws ApiException If fail to serialize the request body object
@@ -447,11 +464,11 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return createPersonalWorkspaceCall(workspaceCreationRequest, _callback);
+            return createWorkspaceCall(visibility, workspaceCreationRequest, _callback);
         }
 
         /**
-         * Execute createPersonalWorkspace request
+         * Execute createWorkspace request
          * @return Workspace
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
@@ -463,12 +480,12 @@ public class WorkspaceApi {
          </table>
          */
         public Workspace execute() throws ApiException {
-            ApiResponse<Workspace> localVarResp = createPersonalWorkspaceWithHttpInfo(workspaceCreationRequest);
+            ApiResponse<Workspace> localVarResp = createWorkspaceWithHttpInfo(visibility, workspaceCreationRequest);
             return localVarResp.getData();
         }
 
         /**
-         * Execute createPersonalWorkspace request. Use any specified configuration options to override any other configuration for this request only.
+         * Execute createWorkspace request. Use any specified configuration options to override any other configuration for this request only.
          * @return Workspace
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
@@ -480,12 +497,12 @@ public class WorkspaceApi {
          </table>
          */
         public Workspace execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<Workspace> localVarResp = createPersonalWorkspaceWithHttpInfo(workspaceCreationRequest, opts);
+            ApiResponse<Workspace> localVarResp = createWorkspaceWithHttpInfo(visibility, workspaceCreationRequest, opts);
             return localVarResp.getData();
         }
 
         /**
-         * Execute createPersonalWorkspace request with HTTP info returned
+         * Execute createWorkspace request with HTTP info returned
          * @return ApiResponse&lt;Workspace&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
@@ -497,11 +514,11 @@ public class WorkspaceApi {
          </table>
          */
         public ApiResponse<Workspace> executeWithHttpInfo() throws ApiException {
-            return createPersonalWorkspaceWithHttpInfo(workspaceCreationRequest);
+            return createWorkspaceWithHttpInfo(visibility, workspaceCreationRequest);
         }
 
         /**
-         * Execute createPersonalWorkspace request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * Execute createWorkspace request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
          * @return ApiResponse&lt;Workspace&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
@@ -513,11 +530,11 @@ public class WorkspaceApi {
          </table>
          */
         public ApiResponse<Workspace> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return createPersonalWorkspaceWithHttpInfo(workspaceCreationRequest, opts);
+            return createWorkspaceWithHttpInfo(visibility, workspaceCreationRequest, opts);
         }
 
         /**
-         * Execute createPersonalWorkspace request (asynchronously)
+         * Execute createWorkspace request (asynchronously)
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -530,11 +547,11 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<Workspace> _callback) throws ApiException {
-            return createPersonalWorkspaceAsync(workspaceCreationRequest, _callback);
+            return createWorkspaceAsync(visibility, workspaceCreationRequest, _callback);
         }
 
         /**
-         * Execute createPersonalWorkspace request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * Execute createWorkspace request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -547,14 +564,15 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<Workspace> _callback, ConfigurationOptions opts) throws ApiException {
-            return createPersonalWorkspaceAsync(workspaceCreationRequest, _callback, opts);
+            return createWorkspaceAsync(visibility, workspaceCreationRequest, _callback, opts);
         }
     }
 
     /**
-     * [EXPERIMENTAL] CreatePersonalWorkspace: Create a new personal workspace.
-     * Create a new personal workspace.
-     * @return APIcreatePersonalWorkspaceRequest
+     * [EXPERIMENTAL] CreateWorkspace: Create a new workspace.
+     * Create a new workspace.
+     * @param visibility The visibility for the workspace being created. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. (required)
+     * @return APIcreateWorkspaceRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -563,499 +581,14 @@ public class WorkspaceApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIcreatePersonalWorkspaceRequest createPersonalWorkspace() {
-        return new APIcreatePersonalWorkspaceRequest();
+    public APIcreateWorkspaceRequest createWorkspace(String visibility) {
+        return new APIcreateWorkspaceRequest(visibility);
     }
-    private okhttp3.Call createSharedItemCall(String workspaceName, WorkspaceItemCreationRequest workspaceItemCreationRequest, final ApiCallback _callback) throws ApiException {
-        return createSharedItemCall(workspaceName, workspaceItemCreationRequest,  _callback, new ConfigurationOptions());
-    }
-
-    private okhttp3.Call createSharedItemCall(String workspaceName, WorkspaceItemCreationRequest workspaceItemCreationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = workspaceItemCreationRequest;
-
-        // create path and map variables
-        String localVarPath = "/api/workspaces/shared/{workspaceName}/items"
-            .replace("{" + "workspaceName" + "}", localVarApiClient.escapeString(workspaceName.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    private okhttp3.Call deleteItemCall(String visibility, String workspaceName, String groupName, String itemName, final ApiCallback _callback) throws ApiException {
+        return deleteItemCall(visibility, workspaceName, groupName, itemName,  _callback, new ConfigurationOptions());
     }
 
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call createSharedItemValidateBeforeCall(String workspaceName, WorkspaceItemCreationRequest workspaceItemCreationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        // verify the required parameter 'workspaceName' is set
-        if (workspaceName == null) {
-            throw new ApiException("Missing the required parameter 'workspaceName' when calling createSharedItem(Async)");
-        }
-
-        return createSharedItemCall(workspaceName, workspaceItemCreationRequest, _callback, opts);
-
-    }
-
-
-    private ApiResponse<WorkspaceItem> createSharedItemWithHttpInfo(String workspaceName, WorkspaceItemCreationRequest workspaceItemCreationRequest) throws ApiException {
-        okhttp3.Call localVarCall = createSharedItemValidateBeforeCall(workspaceName, workspaceItemCreationRequest, null, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    private ApiResponse<WorkspaceItem> createSharedItemWithHttpInfo(String workspaceName, WorkspaceItemCreationRequest workspaceItemCreationRequest, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = createSharedItemValidateBeforeCall(workspaceName, workspaceItemCreationRequest, null, opts);
-        Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    private okhttp3.Call createSharedItemAsync(String workspaceName, WorkspaceItemCreationRequest workspaceItemCreationRequest, final ApiCallback<WorkspaceItem> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = createSharedItemValidateBeforeCall(workspaceName, workspaceItemCreationRequest, _callback, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    private okhttp3.Call createSharedItemAsync(String workspaceName, WorkspaceItemCreationRequest workspaceItemCreationRequest, final ApiCallback<WorkspaceItem> _callback, ConfigurationOptions opts) throws ApiException {
-
-        okhttp3.Call localVarCall = createSharedItemValidateBeforeCall(workspaceName, workspaceItemCreationRequest, _callback, opts);
-        Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    public class APIcreateSharedItemRequest {
-        private final String workspaceName;
-        private WorkspaceItemCreationRequest workspaceItemCreationRequest;
-
-        private APIcreateSharedItemRequest(String workspaceName) {
-            this.workspaceName = workspaceName;
-        }
-
-        /**
-         * Set workspaceItemCreationRequest
-         * @param workspaceItemCreationRequest The item to be created. (optional)
-         * @return APIcreateSharedItemRequest
-         */
-        public APIcreateSharedItemRequest workspaceItemCreationRequest(WorkspaceItemCreationRequest workspaceItemCreationRequest) {
-            this.workspaceItemCreationRequest = workspaceItemCreationRequest;
-            return this;
-        }
-
-        /**
-         * Build call for createSharedItem
-         * @param _callback ApiCallback API callback
-         * @return Call to execute
-         * @throws ApiException If fail to serialize the request body object
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> The workspace item created. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return createSharedItemCall(workspaceName, workspaceItemCreationRequest, _callback);
-        }
-
-        /**
-         * Execute createSharedItem request
-         * @return WorkspaceItem
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> The workspace item created. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public WorkspaceItem execute() throws ApiException {
-            ApiResponse<WorkspaceItem> localVarResp = createSharedItemWithHttpInfo(workspaceName, workspaceItemCreationRequest);
-            return localVarResp.getData();
-        }
-
-        /**
-         * Execute createSharedItem request. Use any specified configuration options to override any other configuration for this request only.
-         * @return WorkspaceItem
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> The workspace item created. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public WorkspaceItem execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<WorkspaceItem> localVarResp = createSharedItemWithHttpInfo(workspaceName, workspaceItemCreationRequest, opts);
-            return localVarResp.getData();
-        }
-
-        /**
-         * Execute createSharedItem request with HTTP info returned
-         * @return ApiResponse&lt;WorkspaceItem&gt;
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> The workspace item created. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public ApiResponse<WorkspaceItem> executeWithHttpInfo() throws ApiException {
-            return createSharedItemWithHttpInfo(workspaceName, workspaceItemCreationRequest);
-        }
-
-        /**
-         * Execute createSharedItem request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
-         * @return ApiResponse&lt;WorkspaceItem&gt;
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> The workspace item created. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public ApiResponse<WorkspaceItem> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return createSharedItemWithHttpInfo(workspaceName, workspaceItemCreationRequest, opts);
-        }
-
-        /**
-         * Execute createSharedItem request (asynchronously)
-         * @param _callback The callback to be executed when the API call finishes
-         * @return The request call
-         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> The workspace item created. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call executeAsync(final ApiCallback<WorkspaceItem> _callback) throws ApiException {
-            return createSharedItemAsync(workspaceName, workspaceItemCreationRequest, _callback);
-        }
-
-        /**
-         * Execute createSharedItem request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
-         * @param _callback The callback to be executed when the API call finishes
-         * @return The request call
-         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> The workspace item created. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call executeAsync(final ApiCallback<WorkspaceItem> _callback, ConfigurationOptions opts) throws ApiException {
-            return createSharedItemAsync(workspaceName, workspaceItemCreationRequest, _callback, opts);
-        }
-    }
-
-    /**
-     * [EXPERIMENTAL] CreateSharedItem: Create a new item in a shared workspace.
-     * Create a new item in a shared workspace.
-     * @param workspaceName The item&#39;s workspace name. (required)
-     * @return APIcreateSharedItemRequest
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The workspace item created. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public APIcreateSharedItemRequest createSharedItem(String workspaceName) {
-        return new APIcreateSharedItemRequest(workspaceName);
-    }
-    private okhttp3.Call createSharedWorkspaceCall(WorkspaceCreationRequest workspaceCreationRequest, final ApiCallback _callback) throws ApiException {
-        return createSharedWorkspaceCall(workspaceCreationRequest,  _callback, new ConfigurationOptions());
-    }
-
-    private okhttp3.Call createSharedWorkspaceCall(WorkspaceCreationRequest workspaceCreationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = workspaceCreationRequest;
-
-        // create path and map variables
-        String localVarPath = "/api/workspaces/shared";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call createSharedWorkspaceValidateBeforeCall(WorkspaceCreationRequest workspaceCreationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        return createSharedWorkspaceCall(workspaceCreationRequest, _callback, opts);
-
-    }
-
-
-    private ApiResponse<Workspace> createSharedWorkspaceWithHttpInfo(WorkspaceCreationRequest workspaceCreationRequest) throws ApiException {
-        okhttp3.Call localVarCall = createSharedWorkspaceValidateBeforeCall(workspaceCreationRequest, null, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    private ApiResponse<Workspace> createSharedWorkspaceWithHttpInfo(WorkspaceCreationRequest workspaceCreationRequest, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = createSharedWorkspaceValidateBeforeCall(workspaceCreationRequest, null, opts);
-        Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    private okhttp3.Call createSharedWorkspaceAsync(WorkspaceCreationRequest workspaceCreationRequest, final ApiCallback<Workspace> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = createSharedWorkspaceValidateBeforeCall(workspaceCreationRequest, _callback, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    private okhttp3.Call createSharedWorkspaceAsync(WorkspaceCreationRequest workspaceCreationRequest, final ApiCallback<Workspace> _callback, ConfigurationOptions opts) throws ApiException {
-
-        okhttp3.Call localVarCall = createSharedWorkspaceValidateBeforeCall(workspaceCreationRequest, _callback, opts);
-        Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    public class APIcreateSharedWorkspaceRequest {
-        private WorkspaceCreationRequest workspaceCreationRequest;
-
-        private APIcreateSharedWorkspaceRequest() {
-        }
-
-        /**
-         * Set workspaceCreationRequest
-         * @param workspaceCreationRequest The workspace to be created. (optional)
-         * @return APIcreateSharedWorkspaceRequest
-         */
-        public APIcreateSharedWorkspaceRequest workspaceCreationRequest(WorkspaceCreationRequest workspaceCreationRequest) {
-            this.workspaceCreationRequest = workspaceCreationRequest;
-            return this;
-        }
-
-        /**
-         * Build call for createSharedWorkspace
-         * @param _callback ApiCallback API callback
-         * @return Call to execute
-         * @throws ApiException If fail to serialize the request body object
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> The workspace created. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return createSharedWorkspaceCall(workspaceCreationRequest, _callback);
-        }
-
-        /**
-         * Execute createSharedWorkspace request
-         * @return Workspace
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> The workspace created. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public Workspace execute() throws ApiException {
-            ApiResponse<Workspace> localVarResp = createSharedWorkspaceWithHttpInfo(workspaceCreationRequest);
-            return localVarResp.getData();
-        }
-
-        /**
-         * Execute createSharedWorkspace request. Use any specified configuration options to override any other configuration for this request only.
-         * @return Workspace
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> The workspace created. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public Workspace execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<Workspace> localVarResp = createSharedWorkspaceWithHttpInfo(workspaceCreationRequest, opts);
-            return localVarResp.getData();
-        }
-
-        /**
-         * Execute createSharedWorkspace request with HTTP info returned
-         * @return ApiResponse&lt;Workspace&gt;
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> The workspace created. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public ApiResponse<Workspace> executeWithHttpInfo() throws ApiException {
-            return createSharedWorkspaceWithHttpInfo(workspaceCreationRequest);
-        }
-
-        /**
-         * Execute createSharedWorkspace request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
-         * @return ApiResponse&lt;Workspace&gt;
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> The workspace created. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public ApiResponse<Workspace> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return createSharedWorkspaceWithHttpInfo(workspaceCreationRequest, opts);
-        }
-
-        /**
-         * Execute createSharedWorkspace request (asynchronously)
-         * @param _callback The callback to be executed when the API call finishes
-         * @return The request call
-         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> The workspace created. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call executeAsync(final ApiCallback<Workspace> _callback) throws ApiException {
-            return createSharedWorkspaceAsync(workspaceCreationRequest, _callback);
-        }
-
-        /**
-         * Execute createSharedWorkspace request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
-         * @param _callback The callback to be executed when the API call finishes
-         * @return The request call
-         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 201 </td><td> The workspace created. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call executeAsync(final ApiCallback<Workspace> _callback, ConfigurationOptions opts) throws ApiException {
-            return createSharedWorkspaceAsync(workspaceCreationRequest, _callback, opts);
-        }
-    }
-
-    /**
-     * [EXPERIMENTAL] CreateSharedWorkspace: Create a new shared workspace.
-     * Create a new shared workspace.
-     * @return APIcreateSharedWorkspaceRequest
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The workspace created. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public APIcreateSharedWorkspaceRequest createSharedWorkspace() {
-        return new APIcreateSharedWorkspaceRequest();
-    }
-    private okhttp3.Call deletePersonalItemCall(String workspaceName, String groupName, String itemName, final ApiCallback _callback) throws ApiException {
-        return deletePersonalItemCall(workspaceName, groupName, itemName,  _callback, new ConfigurationOptions());
-    }
-
-    private okhttp3.Call deletePersonalItemCall(String workspaceName, String groupName, String itemName, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call deleteItemCall(String visibility, String workspaceName, String groupName, String itemName, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1072,7 +605,8 @@ public class WorkspaceApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/workspaces/personal/{workspaceName}/items/{groupName}/{itemName}"
+        String localVarPath = "/api/workspaces/{visibility}/{workspaceName}/items/{groupName}/{itemName}"
+            .replace("{" + "visibility" + "}", localVarApiClient.escapeString(visibility.toString()))
             .replace("{" + "workspaceName" + "}", localVarApiClient.escapeString(workspaceName.toString()))
             .replace("{" + "groupName" + "}", localVarApiClient.escapeString(groupName.toString()))
             .replace("{" + "itemName" + "}", localVarApiClient.escapeString(itemName.toString()));
@@ -1105,207 +639,215 @@ public class WorkspaceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deletePersonalItemValidateBeforeCall(String workspaceName, String groupName, String itemName, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call deleteItemValidateBeforeCall(String visibility, String workspaceName, String groupName, String itemName, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'visibility' is set
+        if (visibility == null) {
+            throw new ApiException("Missing the required parameter 'visibility' when calling deleteItem(Async)");
+        }
+
         // verify the required parameter 'workspaceName' is set
         if (workspaceName == null) {
-            throw new ApiException("Missing the required parameter 'workspaceName' when calling deletePersonalItem(Async)");
+            throw new ApiException("Missing the required parameter 'workspaceName' when calling deleteItem(Async)");
         }
 
         // verify the required parameter 'groupName' is set
         if (groupName == null) {
-            throw new ApiException("Missing the required parameter 'groupName' when calling deletePersonalItem(Async)");
+            throw new ApiException("Missing the required parameter 'groupName' when calling deleteItem(Async)");
         }
 
         // verify the required parameter 'itemName' is set
         if (itemName == null) {
-            throw new ApiException("Missing the required parameter 'itemName' when calling deletePersonalItem(Async)");
+            throw new ApiException("Missing the required parameter 'itemName' when calling deleteItem(Async)");
         }
 
-        return deletePersonalItemCall(workspaceName, groupName, itemName, _callback, opts);
+        return deleteItemCall(visibility, workspaceName, groupName, itemName, _callback, opts);
 
     }
 
 
-    private ApiResponse<DeletedEntityResponse> deletePersonalItemWithHttpInfo(String workspaceName, String groupName, String itemName) throws ApiException {
-        okhttp3.Call localVarCall = deletePersonalItemValidateBeforeCall(workspaceName, groupName, itemName, null, new ConfigurationOptions());
+    private ApiResponse<DeletedEntityResponse> deleteItemWithHttpInfo(String visibility, String workspaceName, String groupName, String itemName) throws ApiException {
+        okhttp3.Call localVarCall = deleteItemValidateBeforeCall(visibility, workspaceName, groupName, itemName, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<DeletedEntityResponse> deletePersonalItemWithHttpInfo(String workspaceName, String groupName, String itemName, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = deletePersonalItemValidateBeforeCall(workspaceName, groupName, itemName, null, opts);
+    private ApiResponse<DeletedEntityResponse> deleteItemWithHttpInfo(String visibility, String workspaceName, String groupName, String itemName, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteItemValidateBeforeCall(visibility, workspaceName, groupName, itemName, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call deletePersonalItemAsync(String workspaceName, String groupName, String itemName, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteItemAsync(String visibility, String workspaceName, String groupName, String itemName, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deletePersonalItemValidateBeforeCall(workspaceName, groupName, itemName, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = deleteItemValidateBeforeCall(visibility, workspaceName, groupName, itemName, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call deletePersonalItemAsync(String workspaceName, String groupName, String itemName, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call deleteItemAsync(String visibility, String workspaceName, String groupName, String itemName, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = deletePersonalItemValidateBeforeCall(workspaceName, groupName, itemName, _callback, opts);
+        okhttp3.Call localVarCall = deleteItemValidateBeforeCall(visibility, workspaceName, groupName, itemName, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    public class APIdeletePersonalItemRequest {
+    public class APIdeleteItemRequest {
+        private final String visibility;
         private final String workspaceName;
         private final String groupName;
         private final String itemName;
 
-        private APIdeletePersonalItemRequest(String workspaceName, String groupName, String itemName) {
+        private APIdeleteItemRequest(String visibility, String workspaceName, String groupName, String itemName) {
+            this.visibility = visibility;
             this.workspaceName = workspaceName;
             this.groupName = groupName;
             this.itemName = itemName;
         }
 
         /**
-         * Build call for deletePersonalItem
+         * Build call for deleteItem
          * @param _callback ApiCallback API callback
          * @return Call to execute
          * @throws ApiException If fail to serialize the request body object
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The result of deleting a personal workspace item. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The result of deleting a workspace item. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return deletePersonalItemCall(workspaceName, groupName, itemName, _callback);
+            return deleteItemCall(visibility, workspaceName, groupName, itemName, _callback);
         }
 
         /**
-         * Execute deletePersonalItem request
+         * Execute deleteItem request
          * @return DeletedEntityResponse
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The result of deleting a personal workspace item. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The result of deleting a workspace item. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public DeletedEntityResponse execute() throws ApiException {
-            ApiResponse<DeletedEntityResponse> localVarResp = deletePersonalItemWithHttpInfo(workspaceName, groupName, itemName);
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteItemWithHttpInfo(visibility, workspaceName, groupName, itemName);
             return localVarResp.getData();
         }
 
         /**
-         * Execute deletePersonalItem request. Use any specified configuration options to override any other configuration for this request only.
+         * Execute deleteItem request. Use any specified configuration options to override any other configuration for this request only.
          * @return DeletedEntityResponse
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The result of deleting a personal workspace item. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The result of deleting a workspace item. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<DeletedEntityResponse> localVarResp = deletePersonalItemWithHttpInfo(workspaceName, groupName, itemName, opts);
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteItemWithHttpInfo(visibility, workspaceName, groupName, itemName, opts);
             return localVarResp.getData();
         }
 
         /**
-         * Execute deletePersonalItem request with HTTP info returned
+         * Execute deleteItem request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The result of deleting a personal workspace item. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The result of deleting a workspace item. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
-            return deletePersonalItemWithHttpInfo(workspaceName, groupName, itemName);
+            return deleteItemWithHttpInfo(visibility, workspaceName, groupName, itemName);
         }
 
         /**
-         * Execute deletePersonalItem request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * Execute deleteItem request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The result of deleting a personal workspace item. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The result of deleting a workspace item. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return deletePersonalItemWithHttpInfo(workspaceName, groupName, itemName, opts);
+            return deleteItemWithHttpInfo(visibility, workspaceName, groupName, itemName, opts);
         }
 
         /**
-         * Execute deletePersonalItem request (asynchronously)
+         * Execute deleteItem request (asynchronously)
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The result of deleting a personal workspace item. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The result of deleting a workspace item. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
-            return deletePersonalItemAsync(workspaceName, groupName, itemName, _callback);
+            return deleteItemAsync(visibility, workspaceName, groupName, itemName, _callback);
         }
 
         /**
-         * Execute deletePersonalItem request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * Execute deleteItem request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The result of deleting a personal workspace item. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The result of deleting a workspace item. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return deletePersonalItemAsync(workspaceName, groupName, itemName, _callback, opts);
+            return deleteItemAsync(visibility, workspaceName, groupName, itemName, _callback, opts);
         }
     }
 
     /**
-     * [EXPERIMENTAL] DeletePersonalItem: Delete an item from a personal workspace.
-     * Delete an item from a personal workspace.
-     * @param workspaceName The name of the personal workspace. (required)
+     * [EXPERIMENTAL] DeleteItem: Delete an item from a workspace.
+     * Delete an item from a workspace.
+     * @param visibility The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. (required)
+     * @param workspaceName The name of the workspace. (required)
      * @param groupName The group containing the item. (required)
      * @param itemName The name of the item. (required)
-     * @return APIdeletePersonalItemRequest
+     * @return APIdeleteItemRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The result of deleting a personal workspace item. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The result of deleting a workspace item. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIdeletePersonalItemRequest deletePersonalItem(String workspaceName, String groupName, String itemName) {
-        return new APIdeletePersonalItemRequest(workspaceName, groupName, itemName);
+    public APIdeleteItemRequest deleteItem(String visibility, String workspaceName, String groupName, String itemName) {
+        return new APIdeleteItemRequest(visibility, workspaceName, groupName, itemName);
     }
-    private okhttp3.Call deletePersonalWorkspaceCall(String workspaceName, final ApiCallback _callback) throws ApiException {
-        return deletePersonalWorkspaceCall(workspaceName,  _callback, new ConfigurationOptions());
+    private okhttp3.Call deleteWorkspaceCall(String visibility, String workspaceName, final ApiCallback _callback) throws ApiException {
+        return deleteWorkspaceCall(visibility, workspaceName,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call deletePersonalWorkspaceCall(String workspaceName, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call deleteWorkspaceCall(String visibility, String workspaceName, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1322,7 +864,8 @@ public class WorkspaceApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/workspaces/personal/{workspaceName}"
+        String localVarPath = "/api/workspaces/{visibility}/{workspaceName}"
+            .replace("{" + "visibility" + "}", localVarApiClient.escapeString(visibility.toString()))
             .replace("{" + "workspaceName" + "}", localVarApiClient.escapeString(workspaceName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1353,191 +896,199 @@ public class WorkspaceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deletePersonalWorkspaceValidateBeforeCall(String workspaceName, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        // verify the required parameter 'workspaceName' is set
-        if (workspaceName == null) {
-            throw new ApiException("Missing the required parameter 'workspaceName' when calling deletePersonalWorkspace(Async)");
+    private okhttp3.Call deleteWorkspaceValidateBeforeCall(String visibility, String workspaceName, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'visibility' is set
+        if (visibility == null) {
+            throw new ApiException("Missing the required parameter 'visibility' when calling deleteWorkspace(Async)");
         }
 
-        return deletePersonalWorkspaceCall(workspaceName, _callback, opts);
+        // verify the required parameter 'workspaceName' is set
+        if (workspaceName == null) {
+            throw new ApiException("Missing the required parameter 'workspaceName' when calling deleteWorkspace(Async)");
+        }
+
+        return deleteWorkspaceCall(visibility, workspaceName, _callback, opts);
 
     }
 
 
-    private ApiResponse<DeletedEntityResponse> deletePersonalWorkspaceWithHttpInfo(String workspaceName) throws ApiException {
-        okhttp3.Call localVarCall = deletePersonalWorkspaceValidateBeforeCall(workspaceName, null, new ConfigurationOptions());
+    private ApiResponse<DeletedEntityResponse> deleteWorkspaceWithHttpInfo(String visibility, String workspaceName) throws ApiException {
+        okhttp3.Call localVarCall = deleteWorkspaceValidateBeforeCall(visibility, workspaceName, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<DeletedEntityResponse> deletePersonalWorkspaceWithHttpInfo(String workspaceName, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = deletePersonalWorkspaceValidateBeforeCall(workspaceName, null, opts);
+    private ApiResponse<DeletedEntityResponse> deleteWorkspaceWithHttpInfo(String visibility, String workspaceName, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteWorkspaceValidateBeforeCall(visibility, workspaceName, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call deletePersonalWorkspaceAsync(String workspaceName, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteWorkspaceAsync(String visibility, String workspaceName, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deletePersonalWorkspaceValidateBeforeCall(workspaceName, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = deleteWorkspaceValidateBeforeCall(visibility, workspaceName, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call deletePersonalWorkspaceAsync(String workspaceName, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call deleteWorkspaceAsync(String visibility, String workspaceName, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = deletePersonalWorkspaceValidateBeforeCall(workspaceName, _callback, opts);
+        okhttp3.Call localVarCall = deleteWorkspaceValidateBeforeCall(visibility, workspaceName, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    public class APIdeletePersonalWorkspaceRequest {
+    public class APIdeleteWorkspaceRequest {
+        private final String visibility;
         private final String workspaceName;
 
-        private APIdeletePersonalWorkspaceRequest(String workspaceName) {
+        private APIdeleteWorkspaceRequest(String visibility, String workspaceName) {
+            this.visibility = visibility;
             this.workspaceName = workspaceName;
         }
 
         /**
-         * Build call for deletePersonalWorkspace
+         * Build call for deleteWorkspace
          * @param _callback ApiCallback API callback
          * @return Call to execute
          * @throws ApiException If fail to serialize the request body object
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The result of deleting a personal workspace. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The result of deleting a workspace. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return deletePersonalWorkspaceCall(workspaceName, _callback);
+            return deleteWorkspaceCall(visibility, workspaceName, _callback);
         }
 
         /**
-         * Execute deletePersonalWorkspace request
+         * Execute deleteWorkspace request
          * @return DeletedEntityResponse
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The result of deleting a personal workspace. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The result of deleting a workspace. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public DeletedEntityResponse execute() throws ApiException {
-            ApiResponse<DeletedEntityResponse> localVarResp = deletePersonalWorkspaceWithHttpInfo(workspaceName);
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteWorkspaceWithHttpInfo(visibility, workspaceName);
             return localVarResp.getData();
         }
 
         /**
-         * Execute deletePersonalWorkspace request. Use any specified configuration options to override any other configuration for this request only.
+         * Execute deleteWorkspace request. Use any specified configuration options to override any other configuration for this request only.
          * @return DeletedEntityResponse
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The result of deleting a personal workspace. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The result of deleting a workspace. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<DeletedEntityResponse> localVarResp = deletePersonalWorkspaceWithHttpInfo(workspaceName, opts);
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteWorkspaceWithHttpInfo(visibility, workspaceName, opts);
             return localVarResp.getData();
         }
 
         /**
-         * Execute deletePersonalWorkspace request with HTTP info returned
+         * Execute deleteWorkspace request with HTTP info returned
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The result of deleting a personal workspace. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The result of deleting a workspace. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
-            return deletePersonalWorkspaceWithHttpInfo(workspaceName);
+            return deleteWorkspaceWithHttpInfo(visibility, workspaceName);
         }
 
         /**
-         * Execute deletePersonalWorkspace request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * Execute deleteWorkspace request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
          * @return ApiResponse&lt;DeletedEntityResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The result of deleting a personal workspace. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The result of deleting a workspace. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return deletePersonalWorkspaceWithHttpInfo(workspaceName, opts);
+            return deleteWorkspaceWithHttpInfo(visibility, workspaceName, opts);
         }
 
         /**
-         * Execute deletePersonalWorkspace request (asynchronously)
+         * Execute deleteWorkspace request (asynchronously)
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The result of deleting a personal workspace. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The result of deleting a workspace. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
-            return deletePersonalWorkspaceAsync(workspaceName, _callback);
+            return deleteWorkspaceAsync(visibility, workspaceName, _callback);
         }
 
         /**
-         * Execute deletePersonalWorkspace request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * Execute deleteWorkspace request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The result of deleting a personal workspace. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The result of deleting a workspace. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return deletePersonalWorkspaceAsync(workspaceName, _callback, opts);
+            return deleteWorkspaceAsync(visibility, workspaceName, _callback, opts);
         }
     }
 
     /**
-     * [EXPERIMENTAL] DeletePersonalWorkspace: Delete a personal workspace.
-     * Delete a personal workspace.
-     * @param workspaceName The name of the personal workspace. (required)
-     * @return APIdeletePersonalWorkspaceRequest
+     * [EXPERIMENTAL] DeleteWorkspace: Delete a workspace.
+     * Delete a workspace.
+     * @param visibility The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. (required)
+     * @param workspaceName The name of the workspace. (required)
+     * @return APIdeleteWorkspaceRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The result of deleting a personal workspace. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The result of deleting a workspace. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIdeletePersonalWorkspaceRequest deletePersonalWorkspace(String workspaceName) {
-        return new APIdeletePersonalWorkspaceRequest(workspaceName);
+    public APIdeleteWorkspaceRequest deleteWorkspace(String visibility, String workspaceName) {
+        return new APIdeleteWorkspaceRequest(visibility, workspaceName);
     }
-    private okhttp3.Call deleteSharedItemCall(String workspaceName, String groupName, String itemName, final ApiCallback _callback) throws ApiException {
-        return deleteSharedItemCall(workspaceName, groupName, itemName,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getItemCall(String visibility, String workspaceName, String groupName, String itemName, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getItemCall(visibility, workspaceName, groupName, itemName, asAt,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call deleteSharedItemCall(String workspaceName, String groupName, String itemName, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getItemCall(String visibility, String workspaceName, String groupName, String itemName, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1554,489 +1105,8 @@ public class WorkspaceApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/workspaces/shared/{workspaceName}/items/{groupName}/{itemName}"
-            .replace("{" + "workspaceName" + "}", localVarApiClient.escapeString(workspaceName.toString()))
-            .replace("{" + "groupName" + "}", localVarApiClient.escapeString(groupName.toString()))
-            .replace("{" + "itemName" + "}", localVarApiClient.escapeString(itemName.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteSharedItemValidateBeforeCall(String workspaceName, String groupName, String itemName, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        // verify the required parameter 'workspaceName' is set
-        if (workspaceName == null) {
-            throw new ApiException("Missing the required parameter 'workspaceName' when calling deleteSharedItem(Async)");
-        }
-
-        // verify the required parameter 'groupName' is set
-        if (groupName == null) {
-            throw new ApiException("Missing the required parameter 'groupName' when calling deleteSharedItem(Async)");
-        }
-
-        // verify the required parameter 'itemName' is set
-        if (itemName == null) {
-            throw new ApiException("Missing the required parameter 'itemName' when calling deleteSharedItem(Async)");
-        }
-
-        return deleteSharedItemCall(workspaceName, groupName, itemName, _callback, opts);
-
-    }
-
-
-    private ApiResponse<DeletedEntityResponse> deleteSharedItemWithHttpInfo(String workspaceName, String groupName, String itemName) throws ApiException {
-        okhttp3.Call localVarCall = deleteSharedItemValidateBeforeCall(workspaceName, groupName, itemName, null, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    private ApiResponse<DeletedEntityResponse> deleteSharedItemWithHttpInfo(String workspaceName, String groupName, String itemName, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = deleteSharedItemValidateBeforeCall(workspaceName, groupName, itemName, null, opts);
-        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    private okhttp3.Call deleteSharedItemAsync(String workspaceName, String groupName, String itemName, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = deleteSharedItemValidateBeforeCall(workspaceName, groupName, itemName, _callback, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    private okhttp3.Call deleteSharedItemAsync(String workspaceName, String groupName, String itemName, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
-
-        okhttp3.Call localVarCall = deleteSharedItemValidateBeforeCall(workspaceName, groupName, itemName, _callback, opts);
-        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    public class APIdeleteSharedItemRequest {
-        private final String workspaceName;
-        private final String groupName;
-        private final String itemName;
-
-        private APIdeleteSharedItemRequest(String workspaceName, String groupName, String itemName) {
-            this.workspaceName = workspaceName;
-            this.groupName = groupName;
-            this.itemName = itemName;
-        }
-
-        /**
-         * Build call for deleteSharedItem
-         * @param _callback ApiCallback API callback
-         * @return Call to execute
-         * @throws ApiException If fail to serialize the request body object
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The result of deleting a shared workspace item. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return deleteSharedItemCall(workspaceName, groupName, itemName, _callback);
-        }
-
-        /**
-         * Execute deleteSharedItem request
-         * @return DeletedEntityResponse
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The result of deleting a shared workspace item. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public DeletedEntityResponse execute() throws ApiException {
-            ApiResponse<DeletedEntityResponse> localVarResp = deleteSharedItemWithHttpInfo(workspaceName, groupName, itemName);
-            return localVarResp.getData();
-        }
-
-        /**
-         * Execute deleteSharedItem request. Use any specified configuration options to override any other configuration for this request only.
-         * @return DeletedEntityResponse
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The result of deleting a shared workspace item. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<DeletedEntityResponse> localVarResp = deleteSharedItemWithHttpInfo(workspaceName, groupName, itemName, opts);
-            return localVarResp.getData();
-        }
-
-        /**
-         * Execute deleteSharedItem request with HTTP info returned
-         * @return ApiResponse&lt;DeletedEntityResponse&gt;
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The result of deleting a shared workspace item. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
-            return deleteSharedItemWithHttpInfo(workspaceName, groupName, itemName);
-        }
-
-        /**
-         * Execute deleteSharedItem request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
-         * @return ApiResponse&lt;DeletedEntityResponse&gt;
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The result of deleting a shared workspace item. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return deleteSharedItemWithHttpInfo(workspaceName, groupName, itemName, opts);
-        }
-
-        /**
-         * Execute deleteSharedItem request (asynchronously)
-         * @param _callback The callback to be executed when the API call finishes
-         * @return The request call
-         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The result of deleting a shared workspace item. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
-            return deleteSharedItemAsync(workspaceName, groupName, itemName, _callback);
-        }
-
-        /**
-         * Execute deleteSharedItem request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
-         * @param _callback The callback to be executed when the API call finishes
-         * @return The request call
-         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The result of deleting a shared workspace item. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return deleteSharedItemAsync(workspaceName, groupName, itemName, _callback, opts);
-        }
-    }
-
-    /**
-     * [EXPERIMENTAL] DeleteSharedItem: Delete an item from a shared workspace.
-     * Delete an item from a shared workspace.
-     * @param workspaceName The name of the shared workspace. (required)
-     * @param groupName The group containing the item. (required)
-     * @param itemName The name of the item. (required)
-     * @return APIdeleteSharedItemRequest
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The result of deleting a shared workspace item. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public APIdeleteSharedItemRequest deleteSharedItem(String workspaceName, String groupName, String itemName) {
-        return new APIdeleteSharedItemRequest(workspaceName, groupName, itemName);
-    }
-    private okhttp3.Call deleteSharedWorkspaceCall(String workspaceName, final ApiCallback _callback) throws ApiException {
-        return deleteSharedWorkspaceCall(workspaceName,  _callback, new ConfigurationOptions());
-    }
-
-    private okhttp3.Call deleteSharedWorkspaceCall(String workspaceName, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/api/workspaces/shared/{workspaceName}"
-            .replace("{" + "workspaceName" + "}", localVarApiClient.escapeString(workspaceName.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteSharedWorkspaceValidateBeforeCall(String workspaceName, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        // verify the required parameter 'workspaceName' is set
-        if (workspaceName == null) {
-            throw new ApiException("Missing the required parameter 'workspaceName' when calling deleteSharedWorkspace(Async)");
-        }
-
-        return deleteSharedWorkspaceCall(workspaceName, _callback, opts);
-
-    }
-
-
-    private ApiResponse<DeletedEntityResponse> deleteSharedWorkspaceWithHttpInfo(String workspaceName) throws ApiException {
-        okhttp3.Call localVarCall = deleteSharedWorkspaceValidateBeforeCall(workspaceName, null, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    private ApiResponse<DeletedEntityResponse> deleteSharedWorkspaceWithHttpInfo(String workspaceName, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = deleteSharedWorkspaceValidateBeforeCall(workspaceName, null, opts);
-        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    private okhttp3.Call deleteSharedWorkspaceAsync(String workspaceName, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = deleteSharedWorkspaceValidateBeforeCall(workspaceName, _callback, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    private okhttp3.Call deleteSharedWorkspaceAsync(String workspaceName, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
-
-        okhttp3.Call localVarCall = deleteSharedWorkspaceValidateBeforeCall(workspaceName, _callback, opts);
-        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    public class APIdeleteSharedWorkspaceRequest {
-        private final String workspaceName;
-
-        private APIdeleteSharedWorkspaceRequest(String workspaceName) {
-            this.workspaceName = workspaceName;
-        }
-
-        /**
-         * Build call for deleteSharedWorkspace
-         * @param _callback ApiCallback API callback
-         * @return Call to execute
-         * @throws ApiException If fail to serialize the request body object
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The result of deleting a shared workspace. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return deleteSharedWorkspaceCall(workspaceName, _callback);
-        }
-
-        /**
-         * Execute deleteSharedWorkspace request
-         * @return DeletedEntityResponse
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The result of deleting a shared workspace. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public DeletedEntityResponse execute() throws ApiException {
-            ApiResponse<DeletedEntityResponse> localVarResp = deleteSharedWorkspaceWithHttpInfo(workspaceName);
-            return localVarResp.getData();
-        }
-
-        /**
-         * Execute deleteSharedWorkspace request. Use any specified configuration options to override any other configuration for this request only.
-         * @return DeletedEntityResponse
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The result of deleting a shared workspace. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<DeletedEntityResponse> localVarResp = deleteSharedWorkspaceWithHttpInfo(workspaceName, opts);
-            return localVarResp.getData();
-        }
-
-        /**
-         * Execute deleteSharedWorkspace request with HTTP info returned
-         * @return ApiResponse&lt;DeletedEntityResponse&gt;
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The result of deleting a shared workspace. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
-            return deleteSharedWorkspaceWithHttpInfo(workspaceName);
-        }
-
-        /**
-         * Execute deleteSharedWorkspace request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
-         * @return ApiResponse&lt;DeletedEntityResponse&gt;
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The result of deleting a shared workspace. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return deleteSharedWorkspaceWithHttpInfo(workspaceName, opts);
-        }
-
-        /**
-         * Execute deleteSharedWorkspace request (asynchronously)
-         * @param _callback The callback to be executed when the API call finishes
-         * @return The request call
-         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The result of deleting a shared workspace. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
-            return deleteSharedWorkspaceAsync(workspaceName, _callback);
-        }
-
-        /**
-         * Execute deleteSharedWorkspace request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
-         * @param _callback The callback to be executed when the API call finishes
-         * @return The request call
-         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The result of deleting a shared workspace. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return deleteSharedWorkspaceAsync(workspaceName, _callback, opts);
-        }
-    }
-
-    /**
-     * [EXPERIMENTAL] DeleteSharedWorkspace: Delete a shared workspace.
-     * Delete a shared workspace.
-     * @param workspaceName The name of the shared workspace. (required)
-     * @return APIdeleteSharedWorkspaceRequest
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The result of deleting a shared workspace. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public APIdeleteSharedWorkspaceRequest deleteSharedWorkspace(String workspaceName) {
-        return new APIdeleteSharedWorkspaceRequest(workspaceName);
-    }
-    private okhttp3.Call getPersonalItemCall(String workspaceName, String groupName, String itemName, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
-        return getPersonalItemCall(workspaceName, groupName, itemName, asAt,  _callback, new ConfigurationOptions());
-    }
-
-    private okhttp3.Call getPersonalItemCall(String workspaceName, String groupName, String itemName, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/api/workspaces/personal/{workspaceName}/items/{groupName}/{itemName}"
+        String localVarPath = "/api/workspaces/{visibility}/{workspaceName}/items/{groupName}/{itemName}"
+            .replace("{" + "visibility" + "}", localVarApiClient.escapeString(visibility.toString()))
             .replace("{" + "workspaceName" + "}", localVarApiClient.escapeString(workspaceName.toString()))
             .replace("{" + "groupName" + "}", localVarApiClient.escapeString(groupName.toString()))
             .replace("{" + "itemName" + "}", localVarApiClient.escapeString(itemName.toString()));
@@ -2073,62 +1143,69 @@ public class WorkspaceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPersonalItemValidateBeforeCall(String workspaceName, String groupName, String itemName, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getItemValidateBeforeCall(String visibility, String workspaceName, String groupName, String itemName, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'visibility' is set
+        if (visibility == null) {
+            throw new ApiException("Missing the required parameter 'visibility' when calling getItem(Async)");
+        }
+
         // verify the required parameter 'workspaceName' is set
         if (workspaceName == null) {
-            throw new ApiException("Missing the required parameter 'workspaceName' when calling getPersonalItem(Async)");
+            throw new ApiException("Missing the required parameter 'workspaceName' when calling getItem(Async)");
         }
 
         // verify the required parameter 'groupName' is set
         if (groupName == null) {
-            throw new ApiException("Missing the required parameter 'groupName' when calling getPersonalItem(Async)");
+            throw new ApiException("Missing the required parameter 'groupName' when calling getItem(Async)");
         }
 
         // verify the required parameter 'itemName' is set
         if (itemName == null) {
-            throw new ApiException("Missing the required parameter 'itemName' when calling getPersonalItem(Async)");
+            throw new ApiException("Missing the required parameter 'itemName' when calling getItem(Async)");
         }
 
-        return getPersonalItemCall(workspaceName, groupName, itemName, asAt, _callback, opts);
+        return getItemCall(visibility, workspaceName, groupName, itemName, asAt, _callback, opts);
 
     }
 
 
-    private ApiResponse<WorkspaceItem> getPersonalItemWithHttpInfo(String workspaceName, String groupName, String itemName, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getPersonalItemValidateBeforeCall(workspaceName, groupName, itemName, asAt, null, new ConfigurationOptions());
+    private ApiResponse<WorkspaceItem> getItemWithHttpInfo(String visibility, String workspaceName, String groupName, String itemName, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = getItemValidateBeforeCall(visibility, workspaceName, groupName, itemName, asAt, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<WorkspaceItem> getPersonalItemWithHttpInfo(String workspaceName, String groupName, String itemName, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getPersonalItemValidateBeforeCall(workspaceName, groupName, itemName, asAt, null, opts);
+    private ApiResponse<WorkspaceItem> getItemWithHttpInfo(String visibility, String workspaceName, String groupName, String itemName, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getItemValidateBeforeCall(visibility, workspaceName, groupName, itemName, asAt, null, opts);
         Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getPersonalItemAsync(String workspaceName, String groupName, String itemName, OffsetDateTime asAt, final ApiCallback<WorkspaceItem> _callback) throws ApiException {
+    private okhttp3.Call getItemAsync(String visibility, String workspaceName, String groupName, String itemName, OffsetDateTime asAt, final ApiCallback<WorkspaceItem> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPersonalItemValidateBeforeCall(workspaceName, groupName, itemName, asAt, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getItemValidateBeforeCall(visibility, workspaceName, groupName, itemName, asAt, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getPersonalItemAsync(String workspaceName, String groupName, String itemName, OffsetDateTime asAt, final ApiCallback<WorkspaceItem> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getItemAsync(String visibility, String workspaceName, String groupName, String itemName, OffsetDateTime asAt, final ApiCallback<WorkspaceItem> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getPersonalItemValidateBeforeCall(workspaceName, groupName, itemName, asAt, _callback, opts);
+        okhttp3.Call localVarCall = getItemValidateBeforeCall(visibility, workspaceName, groupName, itemName, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    public class APIgetPersonalItemRequest {
+    public class APIgetItemRequest {
+        private final String visibility;
         private final String workspaceName;
         private final String groupName;
         private final String itemName;
         private OffsetDateTime asAt;
 
-        private APIgetPersonalItemRequest(String workspaceName, String groupName, String itemName) {
+        private APIgetItemRequest(String visibility, String workspaceName, String groupName, String itemName) {
+            this.visibility = visibility;
             this.workspaceName = workspaceName;
             this.groupName = groupName;
             this.itemName = itemName;
@@ -2137,15 +1214,15 @@ public class WorkspaceApi {
         /**
          * Set asAt
          * @param asAt The datetime at which to request the workspace item. If not provided, defaults to &#39;latest&#39;. (optional)
-         * @return APIgetPersonalItemRequest
+         * @return APIgetItemRequest
          */
-        public APIgetPersonalItemRequest asAt(OffsetDateTime asAt) {
+        public APIgetItemRequest asAt(OffsetDateTime asAt) {
             this.asAt = asAt;
             return this;
         }
 
         /**
-         * Build call for getPersonalItem
+         * Build call for getItem
          * @param _callback ApiCallback API callback
          * @return Call to execute
          * @throws ApiException If fail to serialize the request body object
@@ -2158,11 +1235,11 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getPersonalItemCall(workspaceName, groupName, itemName, asAt, _callback);
+            return getItemCall(visibility, workspaceName, groupName, itemName, asAt, _callback);
         }
 
         /**
-         * Execute getPersonalItem request
+         * Execute getItem request
          * @return WorkspaceItem
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
@@ -2174,12 +1251,12 @@ public class WorkspaceApi {
          </table>
          */
         public WorkspaceItem execute() throws ApiException {
-            ApiResponse<WorkspaceItem> localVarResp = getPersonalItemWithHttpInfo(workspaceName, groupName, itemName, asAt);
+            ApiResponse<WorkspaceItem> localVarResp = getItemWithHttpInfo(visibility, workspaceName, groupName, itemName, asAt);
             return localVarResp.getData();
         }
 
         /**
-         * Execute getPersonalItem request. Use any specified configuration options to override any other configuration for this request only.
+         * Execute getItem request. Use any specified configuration options to override any other configuration for this request only.
          * @return WorkspaceItem
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
@@ -2191,12 +1268,12 @@ public class WorkspaceApi {
          </table>
          */
         public WorkspaceItem execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<WorkspaceItem> localVarResp = getPersonalItemWithHttpInfo(workspaceName, groupName, itemName, asAt, opts);
+            ApiResponse<WorkspaceItem> localVarResp = getItemWithHttpInfo(visibility, workspaceName, groupName, itemName, asAt, opts);
             return localVarResp.getData();
         }
 
         /**
-         * Execute getPersonalItem request with HTTP info returned
+         * Execute getItem request with HTTP info returned
          * @return ApiResponse&lt;WorkspaceItem&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
@@ -2208,11 +1285,11 @@ public class WorkspaceApi {
          </table>
          */
         public ApiResponse<WorkspaceItem> executeWithHttpInfo() throws ApiException {
-            return getPersonalItemWithHttpInfo(workspaceName, groupName, itemName, asAt);
+            return getItemWithHttpInfo(visibility, workspaceName, groupName, itemName, asAt);
         }
 
         /**
-         * Execute getPersonalItem request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * Execute getItem request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
          * @return ApiResponse&lt;WorkspaceItem&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
@@ -2224,11 +1301,11 @@ public class WorkspaceApi {
          </table>
          */
         public ApiResponse<WorkspaceItem> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getPersonalItemWithHttpInfo(workspaceName, groupName, itemName, asAt, opts);
+            return getItemWithHttpInfo(visibility, workspaceName, groupName, itemName, asAt, opts);
         }
 
         /**
-         * Execute getPersonalItem request (asynchronously)
+         * Execute getItem request (asynchronously)
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2241,11 +1318,11 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<WorkspaceItem> _callback) throws ApiException {
-            return getPersonalItemAsync(workspaceName, groupName, itemName, asAt, _callback);
+            return getItemAsync(visibility, workspaceName, groupName, itemName, asAt, _callback);
         }
 
         /**
-         * Execute getPersonalItem request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * Execute getItem request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2258,17 +1335,18 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<WorkspaceItem> _callback, ConfigurationOptions opts) throws ApiException {
-            return getPersonalItemAsync(workspaceName, groupName, itemName, asAt, _callback, opts);
+            return getItemAsync(visibility, workspaceName, groupName, itemName, asAt, _callback, opts);
         }
     }
 
     /**
-     * [EXPERIMENTAL] GetPersonalItem: Get a single personal workspace item.
-     * Get a single personal workspace item.
-     * @param workspaceName The name of the personal workspace. (required)
+     * [EXPERIMENTAL] GetItem: Get a single workspace item.
+     * Get a single workspace item.
+     * @param visibility The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. (required)
+     * @param workspaceName The name of the workspace. (required)
      * @param groupName The group containing the item. (required)
      * @param itemName The name of the item. (required)
-     * @return APIgetPersonalItemRequest
+     * @return APIgetItemRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -2277,14 +1355,14 @@ public class WorkspaceApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIgetPersonalItemRequest getPersonalItem(String workspaceName, String groupName, String itemName) {
-        return new APIgetPersonalItemRequest(workspaceName, groupName, itemName);
+    public APIgetItemRequest getItem(String visibility, String workspaceName, String groupName, String itemName) {
+        return new APIgetItemRequest(visibility, workspaceName, groupName, itemName);
     }
-    private okhttp3.Call getPersonalWorkspaceCall(String workspaceName, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
-        return getPersonalWorkspaceCall(workspaceName, asAt,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getWorkspaceCall(String visibility, String workspaceName, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getWorkspaceCall(visibility, workspaceName, asAt,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getPersonalWorkspaceCall(String workspaceName, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getWorkspaceCall(String visibility, String workspaceName, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2301,7 +1379,8 @@ public class WorkspaceApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/workspaces/personal/{workspaceName}"
+        String localVarPath = "/api/workspaces/{visibility}/{workspaceName}"
+            .replace("{" + "visibility" + "}", localVarApiClient.escapeString(visibility.toString()))
             .replace("{" + "workspaceName" + "}", localVarApiClient.escapeString(workspaceName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -2336,202 +1415,210 @@ public class WorkspaceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPersonalWorkspaceValidateBeforeCall(String workspaceName, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        // verify the required parameter 'workspaceName' is set
-        if (workspaceName == null) {
-            throw new ApiException("Missing the required parameter 'workspaceName' when calling getPersonalWorkspace(Async)");
+    private okhttp3.Call getWorkspaceValidateBeforeCall(String visibility, String workspaceName, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'visibility' is set
+        if (visibility == null) {
+            throw new ApiException("Missing the required parameter 'visibility' when calling getWorkspace(Async)");
         }
 
-        return getPersonalWorkspaceCall(workspaceName, asAt, _callback, opts);
+        // verify the required parameter 'workspaceName' is set
+        if (workspaceName == null) {
+            throw new ApiException("Missing the required parameter 'workspaceName' when calling getWorkspace(Async)");
+        }
+
+        return getWorkspaceCall(visibility, workspaceName, asAt, _callback, opts);
 
     }
 
 
-    private ApiResponse<Workspace> getPersonalWorkspaceWithHttpInfo(String workspaceName, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getPersonalWorkspaceValidateBeforeCall(workspaceName, asAt, null, new ConfigurationOptions());
+    private ApiResponse<Workspace> getWorkspaceWithHttpInfo(String visibility, String workspaceName, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = getWorkspaceValidateBeforeCall(visibility, workspaceName, asAt, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<Workspace> getPersonalWorkspaceWithHttpInfo(String workspaceName, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getPersonalWorkspaceValidateBeforeCall(workspaceName, asAt, null, opts);
+    private ApiResponse<Workspace> getWorkspaceWithHttpInfo(String visibility, String workspaceName, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getWorkspaceValidateBeforeCall(visibility, workspaceName, asAt, null, opts);
         Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getPersonalWorkspaceAsync(String workspaceName, OffsetDateTime asAt, final ApiCallback<Workspace> _callback) throws ApiException {
+    private okhttp3.Call getWorkspaceAsync(String visibility, String workspaceName, OffsetDateTime asAt, final ApiCallback<Workspace> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPersonalWorkspaceValidateBeforeCall(workspaceName, asAt, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getWorkspaceValidateBeforeCall(visibility, workspaceName, asAt, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getPersonalWorkspaceAsync(String workspaceName, OffsetDateTime asAt, final ApiCallback<Workspace> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getWorkspaceAsync(String visibility, String workspaceName, OffsetDateTime asAt, final ApiCallback<Workspace> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getPersonalWorkspaceValidateBeforeCall(workspaceName, asAt, _callback, opts);
+        okhttp3.Call localVarCall = getWorkspaceValidateBeforeCall(visibility, workspaceName, asAt, _callback, opts);
         Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    public class APIgetPersonalWorkspaceRequest {
+    public class APIgetWorkspaceRequest {
+        private final String visibility;
         private final String workspaceName;
         private OffsetDateTime asAt;
 
-        private APIgetPersonalWorkspaceRequest(String workspaceName) {
+        private APIgetWorkspaceRequest(String visibility, String workspaceName) {
+            this.visibility = visibility;
             this.workspaceName = workspaceName;
         }
 
         /**
          * Set asAt
          * @param asAt The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. (optional)
-         * @return APIgetPersonalWorkspaceRequest
+         * @return APIgetWorkspaceRequest
          */
-        public APIgetPersonalWorkspaceRequest asAt(OffsetDateTime asAt) {
+        public APIgetWorkspaceRequest asAt(OffsetDateTime asAt) {
             this.asAt = asAt;
             return this;
         }
 
         /**
-         * Build call for getPersonalWorkspace
+         * Build call for getWorkspace
          * @param _callback ApiCallback API callback
          * @return Call to execute
          * @throws ApiException If fail to serialize the request body object
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The personal workspace. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The workspace. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getPersonalWorkspaceCall(workspaceName, asAt, _callback);
+            return getWorkspaceCall(visibility, workspaceName, asAt, _callback);
         }
 
         /**
-         * Execute getPersonalWorkspace request
+         * Execute getWorkspace request
          * @return Workspace
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The personal workspace. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The workspace. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public Workspace execute() throws ApiException {
-            ApiResponse<Workspace> localVarResp = getPersonalWorkspaceWithHttpInfo(workspaceName, asAt);
+            ApiResponse<Workspace> localVarResp = getWorkspaceWithHttpInfo(visibility, workspaceName, asAt);
             return localVarResp.getData();
         }
 
         /**
-         * Execute getPersonalWorkspace request. Use any specified configuration options to override any other configuration for this request only.
+         * Execute getWorkspace request. Use any specified configuration options to override any other configuration for this request only.
          * @return Workspace
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The personal workspace. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The workspace. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public Workspace execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<Workspace> localVarResp = getPersonalWorkspaceWithHttpInfo(workspaceName, asAt, opts);
+            ApiResponse<Workspace> localVarResp = getWorkspaceWithHttpInfo(visibility, workspaceName, asAt, opts);
             return localVarResp.getData();
         }
 
         /**
-         * Execute getPersonalWorkspace request with HTTP info returned
+         * Execute getWorkspace request with HTTP info returned
          * @return ApiResponse&lt;Workspace&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The personal workspace. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The workspace. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public ApiResponse<Workspace> executeWithHttpInfo() throws ApiException {
-            return getPersonalWorkspaceWithHttpInfo(workspaceName, asAt);
+            return getWorkspaceWithHttpInfo(visibility, workspaceName, asAt);
         }
 
         /**
-         * Execute getPersonalWorkspace request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * Execute getWorkspace request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
          * @return ApiResponse&lt;Workspace&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The personal workspace. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The workspace. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public ApiResponse<Workspace> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getPersonalWorkspaceWithHttpInfo(workspaceName, asAt, opts);
+            return getWorkspaceWithHttpInfo(visibility, workspaceName, asAt, opts);
         }
 
         /**
-         * Execute getPersonalWorkspace request (asynchronously)
+         * Execute getWorkspace request (asynchronously)
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The personal workspace. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The workspace. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<Workspace> _callback) throws ApiException {
-            return getPersonalWorkspaceAsync(workspaceName, asAt, _callback);
+            return getWorkspaceAsync(visibility, workspaceName, asAt, _callback);
         }
 
         /**
-         * Execute getPersonalWorkspace request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * Execute getWorkspace request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The personal workspace. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The workspace. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<Workspace> _callback, ConfigurationOptions opts) throws ApiException {
-            return getPersonalWorkspaceAsync(workspaceName, asAt, _callback, opts);
+            return getWorkspaceAsync(visibility, workspaceName, asAt, _callback, opts);
         }
     }
 
     /**
-     * [EXPERIMENTAL] GetPersonalWorkspace: Get a personal workspace.
-     * Get a personal workspace.
-     * @param workspaceName The personal workspace name. (required)
-     * @return APIgetPersonalWorkspaceRequest
+     * [EXPERIMENTAL] GetWorkspace: Get a workspace.
+     * Get a workspace.
+     * @param visibility The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. (required)
+     * @param workspaceName The workspace name. (required)
+     * @return APIgetWorkspaceRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The personal workspace. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The workspace. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIgetPersonalWorkspaceRequest getPersonalWorkspace(String workspaceName) {
-        return new APIgetPersonalWorkspaceRequest(workspaceName);
+    public APIgetWorkspaceRequest getWorkspace(String visibility, String workspaceName) {
+        return new APIgetWorkspaceRequest(visibility, workspaceName);
     }
-    private okhttp3.Call getSharedItemCall(String workspaceName, String groupName, String itemName, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
-        return getSharedItemCall(workspaceName, groupName, itemName, asAt,  _callback, new ConfigurationOptions());
+    private okhttp3.Call listItemsCall(String visibility, String workspaceName, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+        return listItemsCall(visibility, workspaceName, asAt, page, sortBy, limit, filter,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getSharedItemCall(String workspaceName, String groupName, String itemName, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listItemsCall(String visibility, String workspaceName, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2548,519 +1635,8 @@ public class WorkspaceApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/workspaces/shared/{workspaceName}/items/{groupName}/{itemName}"
-            .replace("{" + "workspaceName" + "}", localVarApiClient.escapeString(workspaceName.toString()))
-            .replace("{" + "groupName" + "}", localVarApiClient.escapeString(groupName.toString()))
-            .replace("{" + "itemName" + "}", localVarApiClient.escapeString(itemName.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (asAt != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
-        }
-
-        final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getSharedItemValidateBeforeCall(String workspaceName, String groupName, String itemName, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        // verify the required parameter 'workspaceName' is set
-        if (workspaceName == null) {
-            throw new ApiException("Missing the required parameter 'workspaceName' when calling getSharedItem(Async)");
-        }
-
-        // verify the required parameter 'groupName' is set
-        if (groupName == null) {
-            throw new ApiException("Missing the required parameter 'groupName' when calling getSharedItem(Async)");
-        }
-
-        // verify the required parameter 'itemName' is set
-        if (itemName == null) {
-            throw new ApiException("Missing the required parameter 'itemName' when calling getSharedItem(Async)");
-        }
-
-        return getSharedItemCall(workspaceName, groupName, itemName, asAt, _callback, opts);
-
-    }
-
-
-    private ApiResponse<WorkspaceItem> getSharedItemWithHttpInfo(String workspaceName, String groupName, String itemName, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getSharedItemValidateBeforeCall(workspaceName, groupName, itemName, asAt, null, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    private ApiResponse<WorkspaceItem> getSharedItemWithHttpInfo(String workspaceName, String groupName, String itemName, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getSharedItemValidateBeforeCall(workspaceName, groupName, itemName, asAt, null, opts);
-        Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    private okhttp3.Call getSharedItemAsync(String workspaceName, String groupName, String itemName, OffsetDateTime asAt, final ApiCallback<WorkspaceItem> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getSharedItemValidateBeforeCall(workspaceName, groupName, itemName, asAt, _callback, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    private okhttp3.Call getSharedItemAsync(String workspaceName, String groupName, String itemName, OffsetDateTime asAt, final ApiCallback<WorkspaceItem> _callback, ConfigurationOptions opts) throws ApiException {
-
-        okhttp3.Call localVarCall = getSharedItemValidateBeforeCall(workspaceName, groupName, itemName, asAt, _callback, opts);
-        Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    public class APIgetSharedItemRequest {
-        private final String workspaceName;
-        private final String groupName;
-        private final String itemName;
-        private OffsetDateTime asAt;
-
-        private APIgetSharedItemRequest(String workspaceName, String groupName, String itemName) {
-            this.workspaceName = workspaceName;
-            this.groupName = groupName;
-            this.itemName = itemName;
-        }
-
-        /**
-         * Set asAt
-         * @param asAt The datetime at which to request the workspace item. If not provided, defaults to &#39;latest&#39;. (optional)
-         * @return APIgetSharedItemRequest
-         */
-        public APIgetSharedItemRequest asAt(OffsetDateTime asAt) {
-            this.asAt = asAt;
-            return this;
-        }
-
-        /**
-         * Build call for getSharedItem
-         * @param _callback ApiCallback API callback
-         * @return Call to execute
-         * @throws ApiException If fail to serialize the request body object
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The workspace item requested. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getSharedItemCall(workspaceName, groupName, itemName, asAt, _callback);
-        }
-
-        /**
-         * Execute getSharedItem request
-         * @return WorkspaceItem
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The workspace item requested. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public WorkspaceItem execute() throws ApiException {
-            ApiResponse<WorkspaceItem> localVarResp = getSharedItemWithHttpInfo(workspaceName, groupName, itemName, asAt);
-            return localVarResp.getData();
-        }
-
-        /**
-         * Execute getSharedItem request. Use any specified configuration options to override any other configuration for this request only.
-         * @return WorkspaceItem
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The workspace item requested. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public WorkspaceItem execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<WorkspaceItem> localVarResp = getSharedItemWithHttpInfo(workspaceName, groupName, itemName, asAt, opts);
-            return localVarResp.getData();
-        }
-
-        /**
-         * Execute getSharedItem request with HTTP info returned
-         * @return ApiResponse&lt;WorkspaceItem&gt;
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The workspace item requested. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public ApiResponse<WorkspaceItem> executeWithHttpInfo() throws ApiException {
-            return getSharedItemWithHttpInfo(workspaceName, groupName, itemName, asAt);
-        }
-
-        /**
-         * Execute getSharedItem request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
-         * @return ApiResponse&lt;WorkspaceItem&gt;
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The workspace item requested. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public ApiResponse<WorkspaceItem> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getSharedItemWithHttpInfo(workspaceName, groupName, itemName, asAt, opts);
-        }
-
-        /**
-         * Execute getSharedItem request (asynchronously)
-         * @param _callback The callback to be executed when the API call finishes
-         * @return The request call
-         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The workspace item requested. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call executeAsync(final ApiCallback<WorkspaceItem> _callback) throws ApiException {
-            return getSharedItemAsync(workspaceName, groupName, itemName, asAt, _callback);
-        }
-
-        /**
-         * Execute getSharedItem request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
-         * @param _callback The callback to be executed when the API call finishes
-         * @return The request call
-         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The workspace item requested. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call executeAsync(final ApiCallback<WorkspaceItem> _callback, ConfigurationOptions opts) throws ApiException {
-            return getSharedItemAsync(workspaceName, groupName, itemName, asAt, _callback, opts);
-        }
-    }
-
-    /**
-     * [EXPERIMENTAL] GetSharedItem: Get a single shared workspace item.
-     * Get a single shared workspace item.
-     * @param workspaceName The name of the shared workspace. (required)
-     * @param groupName The group containing the item. (required)
-     * @param itemName The name of the item. (required)
-     * @return APIgetSharedItemRequest
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The workspace item requested. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public APIgetSharedItemRequest getSharedItem(String workspaceName, String groupName, String itemName) {
-        return new APIgetSharedItemRequest(workspaceName, groupName, itemName);
-    }
-    private okhttp3.Call getSharedWorkspaceCall(String workspaceName, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
-        return getSharedWorkspaceCall(workspaceName, asAt,  _callback, new ConfigurationOptions());
-    }
-
-    private okhttp3.Call getSharedWorkspaceCall(String workspaceName, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/api/workspaces/shared/{workspaceName}"
-            .replace("{" + "workspaceName" + "}", localVarApiClient.escapeString(workspaceName.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (asAt != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
-        }
-
-        final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getSharedWorkspaceValidateBeforeCall(String workspaceName, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        // verify the required parameter 'workspaceName' is set
-        if (workspaceName == null) {
-            throw new ApiException("Missing the required parameter 'workspaceName' when calling getSharedWorkspace(Async)");
-        }
-
-        return getSharedWorkspaceCall(workspaceName, asAt, _callback, opts);
-
-    }
-
-
-    private ApiResponse<Workspace> getSharedWorkspaceWithHttpInfo(String workspaceName, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getSharedWorkspaceValidateBeforeCall(workspaceName, asAt, null, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    private ApiResponse<Workspace> getSharedWorkspaceWithHttpInfo(String workspaceName, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getSharedWorkspaceValidateBeforeCall(workspaceName, asAt, null, opts);
-        Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    private okhttp3.Call getSharedWorkspaceAsync(String workspaceName, OffsetDateTime asAt, final ApiCallback<Workspace> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getSharedWorkspaceValidateBeforeCall(workspaceName, asAt, _callback, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    private okhttp3.Call getSharedWorkspaceAsync(String workspaceName, OffsetDateTime asAt, final ApiCallback<Workspace> _callback, ConfigurationOptions opts) throws ApiException {
-
-        okhttp3.Call localVarCall = getSharedWorkspaceValidateBeforeCall(workspaceName, asAt, _callback, opts);
-        Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    public class APIgetSharedWorkspaceRequest {
-        private final String workspaceName;
-        private OffsetDateTime asAt;
-
-        private APIgetSharedWorkspaceRequest(String workspaceName) {
-            this.workspaceName = workspaceName;
-        }
-
-        /**
-         * Set asAt
-         * @param asAt The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. (optional)
-         * @return APIgetSharedWorkspaceRequest
-         */
-        public APIgetSharedWorkspaceRequest asAt(OffsetDateTime asAt) {
-            this.asAt = asAt;
-            return this;
-        }
-
-        /**
-         * Build call for getSharedWorkspace
-         * @param _callback ApiCallback API callback
-         * @return Call to execute
-         * @throws ApiException If fail to serialize the request body object
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The shared workspace. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getSharedWorkspaceCall(workspaceName, asAt, _callback);
-        }
-
-        /**
-         * Execute getSharedWorkspace request
-         * @return Workspace
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The shared workspace. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public Workspace execute() throws ApiException {
-            ApiResponse<Workspace> localVarResp = getSharedWorkspaceWithHttpInfo(workspaceName, asAt);
-            return localVarResp.getData();
-        }
-
-        /**
-         * Execute getSharedWorkspace request. Use any specified configuration options to override any other configuration for this request only.
-         * @return Workspace
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The shared workspace. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public Workspace execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<Workspace> localVarResp = getSharedWorkspaceWithHttpInfo(workspaceName, asAt, opts);
-            return localVarResp.getData();
-        }
-
-        /**
-         * Execute getSharedWorkspace request with HTTP info returned
-         * @return ApiResponse&lt;Workspace&gt;
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The shared workspace. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public ApiResponse<Workspace> executeWithHttpInfo() throws ApiException {
-            return getSharedWorkspaceWithHttpInfo(workspaceName, asAt);
-        }
-
-        /**
-         * Execute getSharedWorkspace request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
-         * @return ApiResponse&lt;Workspace&gt;
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The shared workspace. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public ApiResponse<Workspace> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getSharedWorkspaceWithHttpInfo(workspaceName, asAt, opts);
-        }
-
-        /**
-         * Execute getSharedWorkspace request (asynchronously)
-         * @param _callback The callback to be executed when the API call finishes
-         * @return The request call
-         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The shared workspace. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call executeAsync(final ApiCallback<Workspace> _callback) throws ApiException {
-            return getSharedWorkspaceAsync(workspaceName, asAt, _callback);
-        }
-
-        /**
-         * Execute getSharedWorkspace request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
-         * @param _callback The callback to be executed when the API call finishes
-         * @return The request call
-         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The shared workspace. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call executeAsync(final ApiCallback<Workspace> _callback, ConfigurationOptions opts) throws ApiException {
-            return getSharedWorkspaceAsync(workspaceName, asAt, _callback, opts);
-        }
-    }
-
-    /**
-     * [EXPERIMENTAL] GetSharedWorkspace: Get a shared workspace.
-     * Get a shared workspace.
-     * @param workspaceName The shared workspace name. (required)
-     * @return APIgetSharedWorkspaceRequest
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The shared workspace. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public APIgetSharedWorkspaceRequest getSharedWorkspace(String workspaceName) {
-        return new APIgetSharedWorkspaceRequest(workspaceName);
-    }
-    private okhttp3.Call listPersonalItemsCall(String workspaceName, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
-        return listPersonalItemsCall(workspaceName, asAt, page, sortBy, limit, filter,  _callback, new ConfigurationOptions());
-    }
-
-    private okhttp3.Call listPersonalItemsCall(String workspaceName, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/api/workspaces/personal/{workspaceName}/items"
+        String localVarPath = "/api/workspaces/{visibility}/{workspaceName}/items"
+            .replace("{" + "visibility" + "}", localVarApiClient.escapeString(visibility.toString()))
             .replace("{" + "workspaceName" + "}", localVarApiClient.escapeString(workspaceName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -3111,46 +1687,52 @@ public class WorkspaceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listPersonalItemsValidateBeforeCall(String workspaceName, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        // verify the required parameter 'workspaceName' is set
-        if (workspaceName == null) {
-            throw new ApiException("Missing the required parameter 'workspaceName' when calling listPersonalItems(Async)");
+    private okhttp3.Call listItemsValidateBeforeCall(String visibility, String workspaceName, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'visibility' is set
+        if (visibility == null) {
+            throw new ApiException("Missing the required parameter 'visibility' when calling listItems(Async)");
         }
 
-        return listPersonalItemsCall(workspaceName, asAt, page, sortBy, limit, filter, _callback, opts);
+        // verify the required parameter 'workspaceName' is set
+        if (workspaceName == null) {
+            throw new ApiException("Missing the required parameter 'workspaceName' when calling listItems(Async)");
+        }
+
+        return listItemsCall(visibility, workspaceName, asAt, page, sortBy, limit, filter, _callback, opts);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfWorkspaceItem> listPersonalItemsWithHttpInfo(String workspaceName, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listPersonalItemsValidateBeforeCall(workspaceName, asAt, page, sortBy, limit, filter, null, new ConfigurationOptions());
+    private ApiResponse<PagedResourceListOfWorkspaceItem> listItemsWithHttpInfo(String visibility, String workspaceName, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter) throws ApiException {
+        okhttp3.Call localVarCall = listItemsValidateBeforeCall(visibility, workspaceName, asAt, page, sortBy, limit, filter, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfWorkspaceItem>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<PagedResourceListOfWorkspaceItem> listPersonalItemsWithHttpInfo(String workspaceName, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = listPersonalItemsValidateBeforeCall(workspaceName, asAt, page, sortBy, limit, filter, null, opts);
+    private ApiResponse<PagedResourceListOfWorkspaceItem> listItemsWithHttpInfo(String visibility, String workspaceName, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listItemsValidateBeforeCall(visibility, workspaceName, asAt, page, sortBy, limit, filter, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfWorkspaceItem>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listPersonalItemsAsync(String workspaceName, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback<PagedResourceListOfWorkspaceItem> _callback) throws ApiException {
+    private okhttp3.Call listItemsAsync(String visibility, String workspaceName, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback<PagedResourceListOfWorkspaceItem> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listPersonalItemsValidateBeforeCall(workspaceName, asAt, page, sortBy, limit, filter, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = listItemsValidateBeforeCall(visibility, workspaceName, asAt, page, sortBy, limit, filter, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfWorkspaceItem>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call listPersonalItemsAsync(String workspaceName, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback<PagedResourceListOfWorkspaceItem> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listItemsAsync(String visibility, String workspaceName, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback<PagedResourceListOfWorkspaceItem> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = listPersonalItemsValidateBeforeCall(workspaceName, asAt, page, sortBy, limit, filter, _callback, opts);
+        okhttp3.Call localVarCall = listItemsValidateBeforeCall(visibility, workspaceName, asAt, page, sortBy, limit, filter, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfWorkspaceItem>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    public class APIlistPersonalItemsRequest {
+    public class APIlistItemsRequest {
+        private final String visibility;
         private final String workspaceName;
         private OffsetDateTime asAt;
         private String page;
@@ -3158,16 +1740,17 @@ public class WorkspaceApi {
         private Integer limit;
         private String filter;
 
-        private APIlistPersonalItemsRequest(String workspaceName) {
+        private APIlistItemsRequest(String visibility, String workspaceName) {
+            this.visibility = visibility;
             this.workspaceName = workspaceName;
         }
 
         /**
          * Set asAt
          * @param asAt The asAt datetime at which to retrieve workspace items. Defaults to &#39;latest&#39; if not specified. (optional)
-         * @return APIlistPersonalItemsRequest
+         * @return APIlistItemsRequest
          */
-        public APIlistPersonalItemsRequest asAt(OffsetDateTime asAt) {
+        public APIlistItemsRequest asAt(OffsetDateTime asAt) {
             this.asAt = asAt;
             return this;
         }
@@ -3175,9 +1758,9 @@ public class WorkspaceApi {
         /**
          * Set page
          * @param page The pagination token to use to continue listing workspaces items from a previous call to list workspaces items.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. (optional)
-         * @return APIlistPersonalItemsRequest
+         * @return APIlistItemsRequest
          */
-        public APIlistPersonalItemsRequest page(String page) {
+        public APIlistItemsRequest page(String page) {
             this.page = page;
             return this;
         }
@@ -3185,9 +1768,9 @@ public class WorkspaceApi {
         /**
          * Set sortBy
          * @param sortBy A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)
-         * @return APIlistPersonalItemsRequest
+         * @return APIlistItemsRequest
          */
-        public APIlistPersonalItemsRequest sortBy(List<String> sortBy) {
+        public APIlistItemsRequest sortBy(List<String> sortBy) {
             this.sortBy = sortBy;
             return this;
         }
@@ -3195,9 +1778,9 @@ public class WorkspaceApi {
         /**
          * Set limit
          * @param limit When paginating, limit the number of returned results to this many. (optional)
-         * @return APIlistPersonalItemsRequest
+         * @return APIlistItemsRequest
          */
-        public APIlistPersonalItemsRequest limit(Integer limit) {
+        public APIlistItemsRequest limit(Integer limit) {
             this.limit = limit;
             return this;
         }
@@ -3205,152 +1788,153 @@ public class WorkspaceApi {
         /**
          * Set filter
          * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
-         * @return APIlistPersonalItemsRequest
+         * @return APIlistItemsRequest
          */
-        public APIlistPersonalItemsRequest filter(String filter) {
+        public APIlistItemsRequest filter(String filter) {
             this.filter = filter;
             return this;
         }
 
         /**
-         * Build call for listPersonalItems
+         * Build call for listItems
          * @param _callback ApiCallback API callback
          * @return Call to execute
          * @throws ApiException If fail to serialize the request body object
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The items in a personal workspace. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The items in a workspace. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listPersonalItemsCall(workspaceName, asAt, page, sortBy, limit, filter, _callback);
+            return listItemsCall(visibility, workspaceName, asAt, page, sortBy, limit, filter, _callback);
         }
 
         /**
-         * Execute listPersonalItems request
+         * Execute listItems request
          * @return PagedResourceListOfWorkspaceItem
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The items in a personal workspace. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The items in a workspace. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public PagedResourceListOfWorkspaceItem execute() throws ApiException {
-            ApiResponse<PagedResourceListOfWorkspaceItem> localVarResp = listPersonalItemsWithHttpInfo(workspaceName, asAt, page, sortBy, limit, filter);
+            ApiResponse<PagedResourceListOfWorkspaceItem> localVarResp = listItemsWithHttpInfo(visibility, workspaceName, asAt, page, sortBy, limit, filter);
             return localVarResp.getData();
         }
 
         /**
-         * Execute listPersonalItems request. Use any specified configuration options to override any other configuration for this request only.
+         * Execute listItems request. Use any specified configuration options to override any other configuration for this request only.
          * @return PagedResourceListOfWorkspaceItem
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The items in a personal workspace. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The items in a workspace. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public PagedResourceListOfWorkspaceItem execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<PagedResourceListOfWorkspaceItem> localVarResp = listPersonalItemsWithHttpInfo(workspaceName, asAt, page, sortBy, limit, filter, opts);
+            ApiResponse<PagedResourceListOfWorkspaceItem> localVarResp = listItemsWithHttpInfo(visibility, workspaceName, asAt, page, sortBy, limit, filter, opts);
             return localVarResp.getData();
         }
 
         /**
-         * Execute listPersonalItems request with HTTP info returned
+         * Execute listItems request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfWorkspaceItem&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The items in a personal workspace. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The items in a workspace. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public ApiResponse<PagedResourceListOfWorkspaceItem> executeWithHttpInfo() throws ApiException {
-            return listPersonalItemsWithHttpInfo(workspaceName, asAt, page, sortBy, limit, filter);
+            return listItemsWithHttpInfo(visibility, workspaceName, asAt, page, sortBy, limit, filter);
         }
 
         /**
-         * Execute listPersonalItems request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * Execute listItems request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
          * @return ApiResponse&lt;PagedResourceListOfWorkspaceItem&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The items in a personal workspace. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The items in a workspace. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public ApiResponse<PagedResourceListOfWorkspaceItem> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return listPersonalItemsWithHttpInfo(workspaceName, asAt, page, sortBy, limit, filter, opts);
+            return listItemsWithHttpInfo(visibility, workspaceName, asAt, page, sortBy, limit, filter, opts);
         }
 
         /**
-         * Execute listPersonalItems request (asynchronously)
+         * Execute listItems request (asynchronously)
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The items in a personal workspace. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The items in a workspace. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfWorkspaceItem> _callback) throws ApiException {
-            return listPersonalItemsAsync(workspaceName, asAt, page, sortBy, limit, filter, _callback);
+            return listItemsAsync(visibility, workspaceName, asAt, page, sortBy, limit, filter, _callback);
         }
 
         /**
-         * Execute listPersonalItems request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * Execute listItems request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The items in a personal workspace. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The items in a workspace. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfWorkspaceItem> _callback, ConfigurationOptions opts) throws ApiException {
-            return listPersonalItemsAsync(workspaceName, asAt, page, sortBy, limit, filter, _callback, opts);
+            return listItemsAsync(visibility, workspaceName, asAt, page, sortBy, limit, filter, _callback, opts);
         }
     }
 
     /**
-     * [EXPERIMENTAL] ListPersonalItems: List the items in a personal workspace.
-     * List the items in a personal workspace.
+     * [EXPERIMENTAL] ListItems: List the items in a workspace.
+     * List the items in a workspace.
+     * @param visibility The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. (required)
      * @param workspaceName The item&#39;s workspace name. (required)
-     * @return APIlistPersonalItemsRequest
+     * @return APIlistItemsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The items in a personal workspace. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The items in a workspace. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIlistPersonalItemsRequest listPersonalItems(String workspaceName) {
-        return new APIlistPersonalItemsRequest(workspaceName);
+    public APIlistItemsRequest listItems(String visibility, String workspaceName) {
+        return new APIlistItemsRequest(visibility, workspaceName);
     }
-    private okhttp3.Call listPersonalWorkspacesCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
-        return listPersonalWorkspacesCall(asAt, page, sortBy, limit, filter,  _callback, new ConfigurationOptions());
+    private okhttp3.Call listWorkspacesCall(String visibility, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+        return listWorkspacesCall(visibility, asAt, page, sortBy, limit, filter,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call listPersonalWorkspacesCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listWorkspacesCall(String visibility, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3367,7 +1951,8 @@ public class WorkspaceApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/workspaces/personal";
+        String localVarPath = "/api/workspaces/{visibility}"
+            .replace("{" + "visibility" + "}", localVarApiClient.escapeString(visibility.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3417,56 +2002,63 @@ public class WorkspaceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listPersonalWorkspacesValidateBeforeCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        return listPersonalWorkspacesCall(asAt, page, sortBy, limit, filter, _callback, opts);
+    private okhttp3.Call listWorkspacesValidateBeforeCall(String visibility, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'visibility' is set
+        if (visibility == null) {
+            throw new ApiException("Missing the required parameter 'visibility' when calling listWorkspaces(Async)");
+        }
+
+        return listWorkspacesCall(visibility, asAt, page, sortBy, limit, filter, _callback, opts);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfWorkspace> listPersonalWorkspacesWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listPersonalWorkspacesValidateBeforeCall(asAt, page, sortBy, limit, filter, null, new ConfigurationOptions());
+    private ApiResponse<PagedResourceListOfWorkspace> listWorkspacesWithHttpInfo(String visibility, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter) throws ApiException {
+        okhttp3.Call localVarCall = listWorkspacesValidateBeforeCall(visibility, asAt, page, sortBy, limit, filter, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfWorkspace>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<PagedResourceListOfWorkspace> listPersonalWorkspacesWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = listPersonalWorkspacesValidateBeforeCall(asAt, page, sortBy, limit, filter, null, opts);
+    private ApiResponse<PagedResourceListOfWorkspace> listWorkspacesWithHttpInfo(String visibility, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listWorkspacesValidateBeforeCall(visibility, asAt, page, sortBy, limit, filter, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfWorkspace>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listPersonalWorkspacesAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback<PagedResourceListOfWorkspace> _callback) throws ApiException {
+    private okhttp3.Call listWorkspacesAsync(String visibility, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback<PagedResourceListOfWorkspace> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listPersonalWorkspacesValidateBeforeCall(asAt, page, sortBy, limit, filter, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = listWorkspacesValidateBeforeCall(visibility, asAt, page, sortBy, limit, filter, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfWorkspace>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call listPersonalWorkspacesAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback<PagedResourceListOfWorkspace> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listWorkspacesAsync(String visibility, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback<PagedResourceListOfWorkspace> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = listPersonalWorkspacesValidateBeforeCall(asAt, page, sortBy, limit, filter, _callback, opts);
+        okhttp3.Call localVarCall = listWorkspacesValidateBeforeCall(visibility, asAt, page, sortBy, limit, filter, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfWorkspace>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    public class APIlistPersonalWorkspacesRequest {
+    public class APIlistWorkspacesRequest {
+        private final String visibility;
         private OffsetDateTime asAt;
         private String page;
         private List<String> sortBy;
         private Integer limit;
         private String filter;
 
-        private APIlistPersonalWorkspacesRequest() {
+        private APIlistWorkspacesRequest(String visibility) {
+            this.visibility = visibility;
         }
 
         /**
          * Set asAt
          * @param asAt The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. (optional)
-         * @return APIlistPersonalWorkspacesRequest
+         * @return APIlistWorkspacesRequest
          */
-        public APIlistPersonalWorkspacesRequest asAt(OffsetDateTime asAt) {
+        public APIlistWorkspacesRequest asAt(OffsetDateTime asAt) {
             this.asAt = asAt;
             return this;
         }
@@ -3474,9 +2066,9 @@ public class WorkspaceApi {
         /**
          * Set page
          * @param page The pagination token to use to continue listing workspaces from a previous call to list workspaces.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. (optional)
-         * @return APIlistPersonalWorkspacesRequest
+         * @return APIlistWorkspacesRequest
          */
-        public APIlistPersonalWorkspacesRequest page(String page) {
+        public APIlistWorkspacesRequest page(String page) {
             this.page = page;
             return this;
         }
@@ -3484,9 +2076,9 @@ public class WorkspaceApi {
         /**
          * Set sortBy
          * @param sortBy A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)
-         * @return APIlistPersonalWorkspacesRequest
+         * @return APIlistWorkspacesRequest
          */
-        public APIlistPersonalWorkspacesRequest sortBy(List<String> sortBy) {
+        public APIlistWorkspacesRequest sortBy(List<String> sortBy) {
             this.sortBy = sortBy;
             return this;
         }
@@ -3494,9 +2086,9 @@ public class WorkspaceApi {
         /**
          * Set limit
          * @param limit When paginating, limit the number of returned results to this many. (optional)
-         * @return APIlistPersonalWorkspacesRequest
+         * @return APIlistWorkspacesRequest
          */
-        public APIlistPersonalWorkspacesRequest limit(Integer limit) {
+        public APIlistWorkspacesRequest limit(Integer limit) {
             this.limit = limit;
             return this;
         }
@@ -3504,756 +2096,152 @@ public class WorkspaceApi {
         /**
          * Set filter
          * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
-         * @return APIlistPersonalWorkspacesRequest
+         * @return APIlistWorkspacesRequest
          */
-        public APIlistPersonalWorkspacesRequest filter(String filter) {
+        public APIlistWorkspacesRequest filter(String filter) {
             this.filter = filter;
             return this;
         }
 
         /**
-         * Build call for listPersonalWorkspaces
+         * Build call for listWorkspaces
          * @param _callback ApiCallback API callback
          * @return Call to execute
          * @throws ApiException If fail to serialize the request body object
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The personal workspaces. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The workspaces. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listPersonalWorkspacesCall(asAt, page, sortBy, limit, filter, _callback);
+            return listWorkspacesCall(visibility, asAt, page, sortBy, limit, filter, _callback);
         }
 
         /**
-         * Execute listPersonalWorkspaces request
+         * Execute listWorkspaces request
          * @return PagedResourceListOfWorkspace
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The personal workspaces. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The workspaces. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public PagedResourceListOfWorkspace execute() throws ApiException {
-            ApiResponse<PagedResourceListOfWorkspace> localVarResp = listPersonalWorkspacesWithHttpInfo(asAt, page, sortBy, limit, filter);
+            ApiResponse<PagedResourceListOfWorkspace> localVarResp = listWorkspacesWithHttpInfo(visibility, asAt, page, sortBy, limit, filter);
             return localVarResp.getData();
         }
 
         /**
-         * Execute listPersonalWorkspaces request. Use any specified configuration options to override any other configuration for this request only.
+         * Execute listWorkspaces request. Use any specified configuration options to override any other configuration for this request only.
          * @return PagedResourceListOfWorkspace
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The personal workspaces. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The workspaces. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public PagedResourceListOfWorkspace execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<PagedResourceListOfWorkspace> localVarResp = listPersonalWorkspacesWithHttpInfo(asAt, page, sortBy, limit, filter, opts);
+            ApiResponse<PagedResourceListOfWorkspace> localVarResp = listWorkspacesWithHttpInfo(visibility, asAt, page, sortBy, limit, filter, opts);
             return localVarResp.getData();
         }
 
         /**
-         * Execute listPersonalWorkspaces request with HTTP info returned
+         * Execute listWorkspaces request with HTTP info returned
          * @return ApiResponse&lt;PagedResourceListOfWorkspace&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The personal workspaces. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The workspaces. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public ApiResponse<PagedResourceListOfWorkspace> executeWithHttpInfo() throws ApiException {
-            return listPersonalWorkspacesWithHttpInfo(asAt, page, sortBy, limit, filter);
+            return listWorkspacesWithHttpInfo(visibility, asAt, page, sortBy, limit, filter);
         }
 
         /**
-         * Execute listPersonalWorkspaces request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * Execute listWorkspaces request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
          * @return ApiResponse&lt;PagedResourceListOfWorkspace&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The personal workspaces. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The workspaces. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public ApiResponse<PagedResourceListOfWorkspace> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return listPersonalWorkspacesWithHttpInfo(asAt, page, sortBy, limit, filter, opts);
+            return listWorkspacesWithHttpInfo(visibility, asAt, page, sortBy, limit, filter, opts);
         }
 
         /**
-         * Execute listPersonalWorkspaces request (asynchronously)
+         * Execute listWorkspaces request (asynchronously)
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The personal workspaces. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The workspaces. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfWorkspace> _callback) throws ApiException {
-            return listPersonalWorkspacesAsync(asAt, page, sortBy, limit, filter, _callback);
+            return listWorkspacesAsync(visibility, asAt, page, sortBy, limit, filter, _callback);
         }
 
         /**
-         * Execute listPersonalWorkspaces request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * Execute listWorkspaces request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The personal workspaces. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The workspaces. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfWorkspace> _callback, ConfigurationOptions opts) throws ApiException {
-            return listPersonalWorkspacesAsync(asAt, page, sortBy, limit, filter, _callback, opts);
+            return listWorkspacesAsync(visibility, asAt, page, sortBy, limit, filter, _callback, opts);
         }
     }
 
     /**
-     * [EXPERIMENTAL] ListPersonalWorkspaces: List personal workspaces.
-     * List personal workspaces.
-     * @return APIlistPersonalWorkspacesRequest
+     * [EXPERIMENTAL] ListWorkspaces: List workspaces.
+     * List workspaces.
+     * @param visibility The visibility for the workspaces. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. (required)
+     * @return APIlistWorkspacesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The personal workspaces. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The workspaces. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIlistPersonalWorkspacesRequest listPersonalWorkspaces() {
-        return new APIlistPersonalWorkspacesRequest();
+    public APIlistWorkspacesRequest listWorkspaces(String visibility) {
+        return new APIlistWorkspacesRequest(visibility);
     }
-    private okhttp3.Call listSharedItemsCall(String workspaceName, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
-        return listSharedItemsCall(workspaceName, asAt, page, sortBy, limit, filter,  _callback, new ConfigurationOptions());
-    }
-
-    private okhttp3.Call listSharedItemsCall(String workspaceName, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/api/workspaces/shared/{workspaceName}/items"
-            .replace("{" + "workspaceName" + "}", localVarApiClient.escapeString(workspaceName.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (asAt != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
-        }
-
-        if (page != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
-        }
-
-        if (sortBy != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "sortBy", sortBy));
-        }
-
-        if (limit != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
-        }
-
-        if (filter != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
-        }
-
-        final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    private okhttp3.Call updateItemCall(String visibility, String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback _callback) throws ApiException {
+        return updateItemCall(visibility, workspaceName, groupName, itemName, workspaceItemUpdateRequest,  _callback, new ConfigurationOptions());
     }
 
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call listSharedItemsValidateBeforeCall(String workspaceName, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        // verify the required parameter 'workspaceName' is set
-        if (workspaceName == null) {
-            throw new ApiException("Missing the required parameter 'workspaceName' when calling listSharedItems(Async)");
-        }
-
-        return listSharedItemsCall(workspaceName, asAt, page, sortBy, limit, filter, _callback, opts);
-
-    }
-
-
-    private ApiResponse<PagedResourceListOfWorkspaceItem> listSharedItemsWithHttpInfo(String workspaceName, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listSharedItemsValidateBeforeCall(workspaceName, asAt, page, sortBy, limit, filter, null, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<PagedResourceListOfWorkspaceItem>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    private ApiResponse<PagedResourceListOfWorkspaceItem> listSharedItemsWithHttpInfo(String workspaceName, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = listSharedItemsValidateBeforeCall(workspaceName, asAt, page, sortBy, limit, filter, null, opts);
-        Type localVarReturnType = new TypeToken<PagedResourceListOfWorkspaceItem>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    private okhttp3.Call listSharedItemsAsync(String workspaceName, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback<PagedResourceListOfWorkspaceItem> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = listSharedItemsValidateBeforeCall(workspaceName, asAt, page, sortBy, limit, filter, _callback, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<PagedResourceListOfWorkspaceItem>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    private okhttp3.Call listSharedItemsAsync(String workspaceName, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback<PagedResourceListOfWorkspaceItem> _callback, ConfigurationOptions opts) throws ApiException {
-
-        okhttp3.Call localVarCall = listSharedItemsValidateBeforeCall(workspaceName, asAt, page, sortBy, limit, filter, _callback, opts);
-        Type localVarReturnType = new TypeToken<PagedResourceListOfWorkspaceItem>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    public class APIlistSharedItemsRequest {
-        private final String workspaceName;
-        private OffsetDateTime asAt;
-        private String page;
-        private List<String> sortBy;
-        private Integer limit;
-        private String filter;
-
-        private APIlistSharedItemsRequest(String workspaceName) {
-            this.workspaceName = workspaceName;
-        }
-
-        /**
-         * Set asAt
-         * @param asAt The asAt datetime at which to retrieve workspace items. Defaults to &#39;latest&#39; if not specified. (optional)
-         * @return APIlistSharedItemsRequest
-         */
-        public APIlistSharedItemsRequest asAt(OffsetDateTime asAt) {
-            this.asAt = asAt;
-            return this;
-        }
-
-        /**
-         * Set page
-         * @param page The pagination token to use to continue listing workspaces items from a previous call to list workspaces items.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. (optional)
-         * @return APIlistSharedItemsRequest
-         */
-        public APIlistSharedItemsRequest page(String page) {
-            this.page = page;
-            return this;
-        }
-
-        /**
-         * Set sortBy
-         * @param sortBy A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)
-         * @return APIlistSharedItemsRequest
-         */
-        public APIlistSharedItemsRequest sortBy(List<String> sortBy) {
-            this.sortBy = sortBy;
-            return this;
-        }
-
-        /**
-         * Set limit
-         * @param limit When paginating, limit the number of returned results to this many. (optional)
-         * @return APIlistSharedItemsRequest
-         */
-        public APIlistSharedItemsRequest limit(Integer limit) {
-            this.limit = limit;
-            return this;
-        }
-
-        /**
-         * Set filter
-         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
-         * @return APIlistSharedItemsRequest
-         */
-        public APIlistSharedItemsRequest filter(String filter) {
-            this.filter = filter;
-            return this;
-        }
-
-        /**
-         * Build call for listSharedItems
-         * @param _callback ApiCallback API callback
-         * @return Call to execute
-         * @throws ApiException If fail to serialize the request body object
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The items in a shared workspace. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listSharedItemsCall(workspaceName, asAt, page, sortBy, limit, filter, _callback);
-        }
-
-        /**
-         * Execute listSharedItems request
-         * @return PagedResourceListOfWorkspaceItem
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The items in a shared workspace. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public PagedResourceListOfWorkspaceItem execute() throws ApiException {
-            ApiResponse<PagedResourceListOfWorkspaceItem> localVarResp = listSharedItemsWithHttpInfo(workspaceName, asAt, page, sortBy, limit, filter);
-            return localVarResp.getData();
-        }
-
-        /**
-         * Execute listSharedItems request. Use any specified configuration options to override any other configuration for this request only.
-         * @return PagedResourceListOfWorkspaceItem
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The items in a shared workspace. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public PagedResourceListOfWorkspaceItem execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<PagedResourceListOfWorkspaceItem> localVarResp = listSharedItemsWithHttpInfo(workspaceName, asAt, page, sortBy, limit, filter, opts);
-            return localVarResp.getData();
-        }
-
-        /**
-         * Execute listSharedItems request with HTTP info returned
-         * @return ApiResponse&lt;PagedResourceListOfWorkspaceItem&gt;
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The items in a shared workspace. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public ApiResponse<PagedResourceListOfWorkspaceItem> executeWithHttpInfo() throws ApiException {
-            return listSharedItemsWithHttpInfo(workspaceName, asAt, page, sortBy, limit, filter);
-        }
-
-        /**
-         * Execute listSharedItems request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
-         * @return ApiResponse&lt;PagedResourceListOfWorkspaceItem&gt;
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The items in a shared workspace. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public ApiResponse<PagedResourceListOfWorkspaceItem> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return listSharedItemsWithHttpInfo(workspaceName, asAt, page, sortBy, limit, filter, opts);
-        }
-
-        /**
-         * Execute listSharedItems request (asynchronously)
-         * @param _callback The callback to be executed when the API call finishes
-         * @return The request call
-         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The items in a shared workspace. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfWorkspaceItem> _callback) throws ApiException {
-            return listSharedItemsAsync(workspaceName, asAt, page, sortBy, limit, filter, _callback);
-        }
-
-        /**
-         * Execute listSharedItems request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
-         * @param _callback The callback to be executed when the API call finishes
-         * @return The request call
-         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The items in a shared workspace. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfWorkspaceItem> _callback, ConfigurationOptions opts) throws ApiException {
-            return listSharedItemsAsync(workspaceName, asAt, page, sortBy, limit, filter, _callback, opts);
-        }
-    }
-
-    /**
-     * [EXPERIMENTAL] ListSharedItems: List the items in a shared workspace.
-     * List the items in a shared workspace.
-     * @param workspaceName The item&#39;s workspace name. (required)
-     * @return APIlistSharedItemsRequest
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The items in a shared workspace. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public APIlistSharedItemsRequest listSharedItems(String workspaceName) {
-        return new APIlistSharedItemsRequest(workspaceName);
-    }
-    private okhttp3.Call listSharedWorkspacesCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
-        return listSharedWorkspacesCall(asAt, page, sortBy, limit, filter,  _callback, new ConfigurationOptions());
-    }
-
-    private okhttp3.Call listSharedWorkspacesCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/api/workspaces/shared";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (asAt != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
-        }
-
-        if (page != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
-        }
-
-        if (sortBy != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "sortBy", sortBy));
-        }
-
-        if (limit != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
-        }
-
-        if (filter != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
-        }
-
-        final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call listSharedWorkspacesValidateBeforeCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        return listSharedWorkspacesCall(asAt, page, sortBy, limit, filter, _callback, opts);
-
-    }
-
-
-    private ApiResponse<PagedResourceListOfWorkspace> listSharedWorkspacesWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listSharedWorkspacesValidateBeforeCall(asAt, page, sortBy, limit, filter, null, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<PagedResourceListOfWorkspace>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    private ApiResponse<PagedResourceListOfWorkspace> listSharedWorkspacesWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = listSharedWorkspacesValidateBeforeCall(asAt, page, sortBy, limit, filter, null, opts);
-        Type localVarReturnType = new TypeToken<PagedResourceListOfWorkspace>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    private okhttp3.Call listSharedWorkspacesAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback<PagedResourceListOfWorkspace> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = listSharedWorkspacesValidateBeforeCall(asAt, page, sortBy, limit, filter, _callback, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<PagedResourceListOfWorkspace>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    private okhttp3.Call listSharedWorkspacesAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback<PagedResourceListOfWorkspace> _callback, ConfigurationOptions opts) throws ApiException {
-
-        okhttp3.Call localVarCall = listSharedWorkspacesValidateBeforeCall(asAt, page, sortBy, limit, filter, _callback, opts);
-        Type localVarReturnType = new TypeToken<PagedResourceListOfWorkspace>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    public class APIlistSharedWorkspacesRequest {
-        private OffsetDateTime asAt;
-        private String page;
-        private List<String> sortBy;
-        private Integer limit;
-        private String filter;
-
-        private APIlistSharedWorkspacesRequest() {
-        }
-
-        /**
-         * Set asAt
-         * @param asAt The asAt datetime at which to retrieve workspaces. Defaults to &#39;latest&#39; if not specified. (optional)
-         * @return APIlistSharedWorkspacesRequest
-         */
-        public APIlistSharedWorkspacesRequest asAt(OffsetDateTime asAt) {
-            this.asAt = asAt;
-            return this;
-        }
-
-        /**
-         * Set page
-         * @param page The pagination token to use to continue listing workspaces from a previous call to list workspaces.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. (optional)
-         * @return APIlistSharedWorkspacesRequest
-         */
-        public APIlistSharedWorkspacesRequest page(String page) {
-            this.page = page;
-            return this;
-        }
-
-        /**
-         * Set sortBy
-         * @param sortBy A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)
-         * @return APIlistSharedWorkspacesRequest
-         */
-        public APIlistSharedWorkspacesRequest sortBy(List<String> sortBy) {
-            this.sortBy = sortBy;
-            return this;
-        }
-
-        /**
-         * Set limit
-         * @param limit When paginating, limit the number of returned results to this many. (optional)
-         * @return APIlistSharedWorkspacesRequest
-         */
-        public APIlistSharedWorkspacesRequest limit(Integer limit) {
-            this.limit = limit;
-            return this;
-        }
-
-        /**
-         * Set filter
-         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
-         * @return APIlistSharedWorkspacesRequest
-         */
-        public APIlistSharedWorkspacesRequest filter(String filter) {
-            this.filter = filter;
-            return this;
-        }
-
-        /**
-         * Build call for listSharedWorkspaces
-         * @param _callback ApiCallback API callback
-         * @return Call to execute
-         * @throws ApiException If fail to serialize the request body object
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The shared workspaces. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listSharedWorkspacesCall(asAt, page, sortBy, limit, filter, _callback);
-        }
-
-        /**
-         * Execute listSharedWorkspaces request
-         * @return PagedResourceListOfWorkspace
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The shared workspaces. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public PagedResourceListOfWorkspace execute() throws ApiException {
-            ApiResponse<PagedResourceListOfWorkspace> localVarResp = listSharedWorkspacesWithHttpInfo(asAt, page, sortBy, limit, filter);
-            return localVarResp.getData();
-        }
-
-        /**
-         * Execute listSharedWorkspaces request. Use any specified configuration options to override any other configuration for this request only.
-         * @return PagedResourceListOfWorkspace
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The shared workspaces. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public PagedResourceListOfWorkspace execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<PagedResourceListOfWorkspace> localVarResp = listSharedWorkspacesWithHttpInfo(asAt, page, sortBy, limit, filter, opts);
-            return localVarResp.getData();
-        }
-
-        /**
-         * Execute listSharedWorkspaces request with HTTP info returned
-         * @return ApiResponse&lt;PagedResourceListOfWorkspace&gt;
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The shared workspaces. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public ApiResponse<PagedResourceListOfWorkspace> executeWithHttpInfo() throws ApiException {
-            return listSharedWorkspacesWithHttpInfo(asAt, page, sortBy, limit, filter);
-        }
-
-        /**
-         * Execute listSharedWorkspaces request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
-         * @return ApiResponse&lt;PagedResourceListOfWorkspace&gt;
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The shared workspaces. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public ApiResponse<PagedResourceListOfWorkspace> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return listSharedWorkspacesWithHttpInfo(asAt, page, sortBy, limit, filter, opts);
-        }
-
-        /**
-         * Execute listSharedWorkspaces request (asynchronously)
-         * @param _callback The callback to be executed when the API call finishes
-         * @return The request call
-         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The shared workspaces. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfWorkspace> _callback) throws ApiException {
-            return listSharedWorkspacesAsync(asAt, page, sortBy, limit, filter, _callback);
-        }
-
-        /**
-         * Execute listSharedWorkspaces request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
-         * @param _callback The callback to be executed when the API call finishes
-         * @return The request call
-         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The shared workspaces. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfWorkspace> _callback, ConfigurationOptions opts) throws ApiException {
-            return listSharedWorkspacesAsync(asAt, page, sortBy, limit, filter, _callback, opts);
-        }
-    }
-
-    /**
-     * [EXPERIMENTAL] ListSharedWorkspaces: List shared workspaces.
-     * List shared workspaces.
-     * @return APIlistSharedWorkspacesRequest
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The shared workspaces. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public APIlistSharedWorkspacesRequest listSharedWorkspaces() {
-        return new APIlistSharedWorkspacesRequest();
-    }
-    private okhttp3.Call updatePersonalItemCall(String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback _callback) throws ApiException {
-        return updatePersonalItemCall(workspaceName, groupName, itemName, workspaceItemUpdateRequest,  _callback, new ConfigurationOptions());
-    }
-
-    private okhttp3.Call updatePersonalItemCall(String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call updateItemCall(String visibility, String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4270,7 +2258,8 @@ public class WorkspaceApi {
         Object localVarPostBody = workspaceItemUpdateRequest;
 
         // create path and map variables
-        String localVarPath = "/api/workspaces/personal/{workspaceName}/items/{groupName}/{itemName}"
+        String localVarPath = "/api/workspaces/{visibility}/{workspaceName}/items/{groupName}/{itemName}"
+            .replace("{" + "visibility" + "}", localVarApiClient.escapeString(visibility.toString()))
             .replace("{" + "workspaceName" + "}", localVarApiClient.escapeString(workspaceName.toString()))
             .replace("{" + "groupName" + "}", localVarApiClient.escapeString(groupName.toString()))
             .replace("{" + "itemName" + "}", localVarApiClient.escapeString(itemName.toString()));
@@ -4307,62 +2296,69 @@ public class WorkspaceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updatePersonalItemValidateBeforeCall(String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call updateItemValidateBeforeCall(String visibility, String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'visibility' is set
+        if (visibility == null) {
+            throw new ApiException("Missing the required parameter 'visibility' when calling updateItem(Async)");
+        }
+
         // verify the required parameter 'workspaceName' is set
         if (workspaceName == null) {
-            throw new ApiException("Missing the required parameter 'workspaceName' when calling updatePersonalItem(Async)");
+            throw new ApiException("Missing the required parameter 'workspaceName' when calling updateItem(Async)");
         }
 
         // verify the required parameter 'groupName' is set
         if (groupName == null) {
-            throw new ApiException("Missing the required parameter 'groupName' when calling updatePersonalItem(Async)");
+            throw new ApiException("Missing the required parameter 'groupName' when calling updateItem(Async)");
         }
 
         // verify the required parameter 'itemName' is set
         if (itemName == null) {
-            throw new ApiException("Missing the required parameter 'itemName' when calling updatePersonalItem(Async)");
+            throw new ApiException("Missing the required parameter 'itemName' when calling updateItem(Async)");
         }
 
-        return updatePersonalItemCall(workspaceName, groupName, itemName, workspaceItemUpdateRequest, _callback, opts);
+        return updateItemCall(visibility, workspaceName, groupName, itemName, workspaceItemUpdateRequest, _callback, opts);
 
     }
 
 
-    private ApiResponse<WorkspaceItem> updatePersonalItemWithHttpInfo(String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest) throws ApiException {
-        okhttp3.Call localVarCall = updatePersonalItemValidateBeforeCall(workspaceName, groupName, itemName, workspaceItemUpdateRequest, null, new ConfigurationOptions());
+    private ApiResponse<WorkspaceItem> updateItemWithHttpInfo(String visibility, String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest) throws ApiException {
+        okhttp3.Call localVarCall = updateItemValidateBeforeCall(visibility, workspaceName, groupName, itemName, workspaceItemUpdateRequest, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<WorkspaceItem> updatePersonalItemWithHttpInfo(String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = updatePersonalItemValidateBeforeCall(workspaceName, groupName, itemName, workspaceItemUpdateRequest, null, opts);
+    private ApiResponse<WorkspaceItem> updateItemWithHttpInfo(String visibility, String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = updateItemValidateBeforeCall(visibility, workspaceName, groupName, itemName, workspaceItemUpdateRequest, null, opts);
         Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call updatePersonalItemAsync(String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback<WorkspaceItem> _callback) throws ApiException {
+    private okhttp3.Call updateItemAsync(String visibility, String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback<WorkspaceItem> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updatePersonalItemValidateBeforeCall(workspaceName, groupName, itemName, workspaceItemUpdateRequest, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = updateItemValidateBeforeCall(visibility, workspaceName, groupName, itemName, workspaceItemUpdateRequest, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call updatePersonalItemAsync(String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback<WorkspaceItem> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call updateItemAsync(String visibility, String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback<WorkspaceItem> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = updatePersonalItemValidateBeforeCall(workspaceName, groupName, itemName, workspaceItemUpdateRequest, _callback, opts);
+        okhttp3.Call localVarCall = updateItemValidateBeforeCall(visibility, workspaceName, groupName, itemName, workspaceItemUpdateRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    public class APIupdatePersonalItemRequest {
+    public class APIupdateItemRequest {
+        private final String visibility;
         private final String workspaceName;
         private final String groupName;
         private final String itemName;
         private WorkspaceItemUpdateRequest workspaceItemUpdateRequest;
 
-        private APIupdatePersonalItemRequest(String workspaceName, String groupName, String itemName) {
+        private APIupdateItemRequest(String visibility, String workspaceName, String groupName, String itemName) {
+            this.visibility = visibility;
             this.workspaceName = workspaceName;
             this.groupName = groupName;
             this.itemName = itemName;
@@ -4371,15 +2367,15 @@ public class WorkspaceApi {
         /**
          * Set workspaceItemUpdateRequest
          * @param workspaceItemUpdateRequest The new item details. (optional)
-         * @return APIupdatePersonalItemRequest
+         * @return APIupdateItemRequest
          */
-        public APIupdatePersonalItemRequest workspaceItemUpdateRequest(WorkspaceItemUpdateRequest workspaceItemUpdateRequest) {
+        public APIupdateItemRequest workspaceItemUpdateRequest(WorkspaceItemUpdateRequest workspaceItemUpdateRequest) {
             this.workspaceItemUpdateRequest = workspaceItemUpdateRequest;
             return this;
         }
 
         /**
-         * Build call for updatePersonalItem
+         * Build call for updateItem
          * @param _callback ApiCallback API callback
          * @return Call to execute
          * @throws ApiException If fail to serialize the request body object
@@ -4392,11 +2388,11 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return updatePersonalItemCall(workspaceName, groupName, itemName, workspaceItemUpdateRequest, _callback);
+            return updateItemCall(visibility, workspaceName, groupName, itemName, workspaceItemUpdateRequest, _callback);
         }
 
         /**
-         * Execute updatePersonalItem request
+         * Execute updateItem request
          * @return WorkspaceItem
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
@@ -4408,12 +2404,12 @@ public class WorkspaceApi {
          </table>
          */
         public WorkspaceItem execute() throws ApiException {
-            ApiResponse<WorkspaceItem> localVarResp = updatePersonalItemWithHttpInfo(workspaceName, groupName, itemName, workspaceItemUpdateRequest);
+            ApiResponse<WorkspaceItem> localVarResp = updateItemWithHttpInfo(visibility, workspaceName, groupName, itemName, workspaceItemUpdateRequest);
             return localVarResp.getData();
         }
 
         /**
-         * Execute updatePersonalItem request. Use any specified configuration options to override any other configuration for this request only.
+         * Execute updateItem request. Use any specified configuration options to override any other configuration for this request only.
          * @return WorkspaceItem
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
@@ -4425,12 +2421,12 @@ public class WorkspaceApi {
          </table>
          */
         public WorkspaceItem execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<WorkspaceItem> localVarResp = updatePersonalItemWithHttpInfo(workspaceName, groupName, itemName, workspaceItemUpdateRequest, opts);
+            ApiResponse<WorkspaceItem> localVarResp = updateItemWithHttpInfo(visibility, workspaceName, groupName, itemName, workspaceItemUpdateRequest, opts);
             return localVarResp.getData();
         }
 
         /**
-         * Execute updatePersonalItem request with HTTP info returned
+         * Execute updateItem request with HTTP info returned
          * @return ApiResponse&lt;WorkspaceItem&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
@@ -4442,11 +2438,11 @@ public class WorkspaceApi {
          </table>
          */
         public ApiResponse<WorkspaceItem> executeWithHttpInfo() throws ApiException {
-            return updatePersonalItemWithHttpInfo(workspaceName, groupName, itemName, workspaceItemUpdateRequest);
+            return updateItemWithHttpInfo(visibility, workspaceName, groupName, itemName, workspaceItemUpdateRequest);
         }
 
         /**
-         * Execute updatePersonalItem request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * Execute updateItem request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
          * @return ApiResponse&lt;WorkspaceItem&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
@@ -4458,11 +2454,11 @@ public class WorkspaceApi {
          </table>
          */
         public ApiResponse<WorkspaceItem> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return updatePersonalItemWithHttpInfo(workspaceName, groupName, itemName, workspaceItemUpdateRequest, opts);
+            return updateItemWithHttpInfo(visibility, workspaceName, groupName, itemName, workspaceItemUpdateRequest, opts);
         }
 
         /**
-         * Execute updatePersonalItem request (asynchronously)
+         * Execute updateItem request (asynchronously)
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4475,11 +2471,11 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<WorkspaceItem> _callback) throws ApiException {
-            return updatePersonalItemAsync(workspaceName, groupName, itemName, workspaceItemUpdateRequest, _callback);
+            return updateItemAsync(visibility, workspaceName, groupName, itemName, workspaceItemUpdateRequest, _callback);
         }
 
         /**
-         * Execute updatePersonalItem request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * Execute updateItem request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4492,17 +2488,18 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<WorkspaceItem> _callback, ConfigurationOptions opts) throws ApiException {
-            return updatePersonalItemAsync(workspaceName, groupName, itemName, workspaceItemUpdateRequest, _callback, opts);
+            return updateItemAsync(visibility, workspaceName, groupName, itemName, workspaceItemUpdateRequest, _callback, opts);
         }
     }
 
     /**
-     * [EXPERIMENTAL] UpdatePersonalItem: Update an item in a personal workspace.
-     * Update an item in a personal workspace.
-     * @param workspaceName The personal workspace name. (required)
+     * [EXPERIMENTAL] UpdateItem: Update an item in a workspace.
+     * Update an item in a workspace.
+     * @param visibility The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. (required)
+     * @param workspaceName The workspace name. (required)
      * @param groupName The group containing the item. (required)
      * @param itemName The item name. (required)
-     * @return APIupdatePersonalItemRequest
+     * @return APIupdateItemRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -4511,14 +2508,14 @@ public class WorkspaceApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIupdatePersonalItemRequest updatePersonalItem(String workspaceName, String groupName, String itemName) {
-        return new APIupdatePersonalItemRequest(workspaceName, groupName, itemName);
+    public APIupdateItemRequest updateItem(String visibility, String workspaceName, String groupName, String itemName) {
+        return new APIupdateItemRequest(visibility, workspaceName, groupName, itemName);
     }
-    private okhttp3.Call updatePersonalWorkspaceCall(String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, final ApiCallback _callback) throws ApiException {
-        return updatePersonalWorkspaceCall(workspaceName, workspaceUpdateRequest,  _callback, new ConfigurationOptions());
+    private okhttp3.Call updateWorkspaceCall(String visibility, String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, final ApiCallback _callback) throws ApiException {
+        return updateWorkspaceCall(visibility, workspaceName, workspaceUpdateRequest,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call updatePersonalWorkspaceCall(String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call updateWorkspaceCall(String visibility, String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4535,7 +2532,8 @@ public class WorkspaceApi {
         Object localVarPostBody = workspaceUpdateRequest;
 
         // create path and map variables
-        String localVarPath = "/api/workspaces/personal/{workspaceName}"
+        String localVarPath = "/api/workspaces/{visibility}/{workspaceName}"
+            .replace("{" + "visibility" + "}", localVarApiClient.escapeString(visibility.toString()))
             .replace("{" + "workspaceName" + "}", localVarApiClient.escapeString(workspaceName.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -4570,65 +2568,72 @@ public class WorkspaceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updatePersonalWorkspaceValidateBeforeCall(String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        // verify the required parameter 'workspaceName' is set
-        if (workspaceName == null) {
-            throw new ApiException("Missing the required parameter 'workspaceName' when calling updatePersonalWorkspace(Async)");
+    private okhttp3.Call updateWorkspaceValidateBeforeCall(String visibility, String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'visibility' is set
+        if (visibility == null) {
+            throw new ApiException("Missing the required parameter 'visibility' when calling updateWorkspace(Async)");
         }
 
-        return updatePersonalWorkspaceCall(workspaceName, workspaceUpdateRequest, _callback, opts);
+        // verify the required parameter 'workspaceName' is set
+        if (workspaceName == null) {
+            throw new ApiException("Missing the required parameter 'workspaceName' when calling updateWorkspace(Async)");
+        }
+
+        return updateWorkspaceCall(visibility, workspaceName, workspaceUpdateRequest, _callback, opts);
 
     }
 
 
-    private ApiResponse<Workspace> updatePersonalWorkspaceWithHttpInfo(String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest) throws ApiException {
-        okhttp3.Call localVarCall = updatePersonalWorkspaceValidateBeforeCall(workspaceName, workspaceUpdateRequest, null, new ConfigurationOptions());
+    private ApiResponse<Workspace> updateWorkspaceWithHttpInfo(String visibility, String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest) throws ApiException {
+        okhttp3.Call localVarCall = updateWorkspaceValidateBeforeCall(visibility, workspaceName, workspaceUpdateRequest, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<Workspace> updatePersonalWorkspaceWithHttpInfo(String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = updatePersonalWorkspaceValidateBeforeCall(workspaceName, workspaceUpdateRequest, null, opts);
+    private ApiResponse<Workspace> updateWorkspaceWithHttpInfo(String visibility, String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = updateWorkspaceValidateBeforeCall(visibility, workspaceName, workspaceUpdateRequest, null, opts);
         Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call updatePersonalWorkspaceAsync(String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, final ApiCallback<Workspace> _callback) throws ApiException {
+    private okhttp3.Call updateWorkspaceAsync(String visibility, String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, final ApiCallback<Workspace> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updatePersonalWorkspaceValidateBeforeCall(workspaceName, workspaceUpdateRequest, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = updateWorkspaceValidateBeforeCall(visibility, workspaceName, workspaceUpdateRequest, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call updatePersonalWorkspaceAsync(String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, final ApiCallback<Workspace> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call updateWorkspaceAsync(String visibility, String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, final ApiCallback<Workspace> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = updatePersonalWorkspaceValidateBeforeCall(workspaceName, workspaceUpdateRequest, _callback, opts);
+        okhttp3.Call localVarCall = updateWorkspaceValidateBeforeCall(visibility, workspaceName, workspaceUpdateRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    public class APIupdatePersonalWorkspaceRequest {
+    public class APIupdateWorkspaceRequest {
+        private final String visibility;
         private final String workspaceName;
         private WorkspaceUpdateRequest workspaceUpdateRequest;
 
-        private APIupdatePersonalWorkspaceRequest(String workspaceName) {
+        private APIupdateWorkspaceRequest(String visibility, String workspaceName) {
+            this.visibility = visibility;
             this.workspaceName = workspaceName;
         }
 
         /**
          * Set workspaceUpdateRequest
          * @param workspaceUpdateRequest The new workspace details. (optional)
-         * @return APIupdatePersonalWorkspaceRequest
+         * @return APIupdateWorkspaceRequest
          */
-        public APIupdatePersonalWorkspaceRequest workspaceUpdateRequest(WorkspaceUpdateRequest workspaceUpdateRequest) {
+        public APIupdateWorkspaceRequest workspaceUpdateRequest(WorkspaceUpdateRequest workspaceUpdateRequest) {
             this.workspaceUpdateRequest = workspaceUpdateRequest;
             return this;
         }
 
         /**
-         * Build call for updatePersonalWorkspace
+         * Build call for updateWorkspace
          * @param _callback ApiCallback API callback
          * @return Call to execute
          * @throws ApiException If fail to serialize the request body object
@@ -4641,11 +2646,11 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return updatePersonalWorkspaceCall(workspaceName, workspaceUpdateRequest, _callback);
+            return updateWorkspaceCall(visibility, workspaceName, workspaceUpdateRequest, _callback);
         }
 
         /**
-         * Execute updatePersonalWorkspace request
+         * Execute updateWorkspace request
          * @return Workspace
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
@@ -4657,12 +2662,12 @@ public class WorkspaceApi {
          </table>
          */
         public Workspace execute() throws ApiException {
-            ApiResponse<Workspace> localVarResp = updatePersonalWorkspaceWithHttpInfo(workspaceName, workspaceUpdateRequest);
+            ApiResponse<Workspace> localVarResp = updateWorkspaceWithHttpInfo(visibility, workspaceName, workspaceUpdateRequest);
             return localVarResp.getData();
         }
 
         /**
-         * Execute updatePersonalWorkspace request. Use any specified configuration options to override any other configuration for this request only.
+         * Execute updateWorkspace request. Use any specified configuration options to override any other configuration for this request only.
          * @return Workspace
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
@@ -4674,12 +2679,12 @@ public class WorkspaceApi {
          </table>
          */
         public Workspace execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<Workspace> localVarResp = updatePersonalWorkspaceWithHttpInfo(workspaceName, workspaceUpdateRequest, opts);
+            ApiResponse<Workspace> localVarResp = updateWorkspaceWithHttpInfo(visibility, workspaceName, workspaceUpdateRequest, opts);
             return localVarResp.getData();
         }
 
         /**
-         * Execute updatePersonalWorkspace request with HTTP info returned
+         * Execute updateWorkspace request with HTTP info returned
          * @return ApiResponse&lt;Workspace&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
@@ -4691,11 +2696,11 @@ public class WorkspaceApi {
          </table>
          */
         public ApiResponse<Workspace> executeWithHttpInfo() throws ApiException {
-            return updatePersonalWorkspaceWithHttpInfo(workspaceName, workspaceUpdateRequest);
+            return updateWorkspaceWithHttpInfo(visibility, workspaceName, workspaceUpdateRequest);
         }
 
         /**
-         * Execute updatePersonalWorkspace request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * Execute updateWorkspace request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
          * @return ApiResponse&lt;Workspace&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
@@ -4707,11 +2712,11 @@ public class WorkspaceApi {
          </table>
          */
         public ApiResponse<Workspace> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return updatePersonalWorkspaceWithHttpInfo(workspaceName, workspaceUpdateRequest, opts);
+            return updateWorkspaceWithHttpInfo(visibility, workspaceName, workspaceUpdateRequest, opts);
         }
 
         /**
-         * Execute updatePersonalWorkspace request (asynchronously)
+         * Execute updateWorkspace request (asynchronously)
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4724,11 +2729,11 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<Workspace> _callback) throws ApiException {
-            return updatePersonalWorkspaceAsync(workspaceName, workspaceUpdateRequest, _callback);
+            return updateWorkspaceAsync(visibility, workspaceName, workspaceUpdateRequest, _callback);
         }
 
         /**
-         * Execute updatePersonalWorkspace request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * Execute updateWorkspace request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
          * @param _callback The callback to be executed when the API call finishes
          * @return The request call
          * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4741,15 +2746,16 @@ public class WorkspaceApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<Workspace> _callback, ConfigurationOptions opts) throws ApiException {
-            return updatePersonalWorkspaceAsync(workspaceName, workspaceUpdateRequest, _callback, opts);
+            return updateWorkspaceAsync(visibility, workspaceName, workspaceUpdateRequest, _callback, opts);
         }
     }
 
     /**
-     * [EXPERIMENTAL] UpdatePersonalWorkspace: Update a personal workspace.
-     * Update a personal workspace.
-     * @param workspaceName The personal workspace name. (required)
-     * @return APIupdatePersonalWorkspaceRequest
+     * [EXPERIMENTAL] UpdateWorkspace: Update a workspace.
+     * Update a workspace.
+     * @param visibility The visibility for the workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. (required)
+     * @param workspaceName The workspace name. (required)
+     * @return APIupdateWorkspaceRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -4758,519 +2764,7 @@ public class WorkspaceApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIupdatePersonalWorkspaceRequest updatePersonalWorkspace(String workspaceName) {
-        return new APIupdatePersonalWorkspaceRequest(workspaceName);
-    }
-    private okhttp3.Call updateSharedItemCall(String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback _callback) throws ApiException {
-        return updateSharedItemCall(workspaceName, groupName, itemName, workspaceItemUpdateRequest,  _callback, new ConfigurationOptions());
-    }
-
-    private okhttp3.Call updateSharedItemCall(String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = workspaceItemUpdateRequest;
-
-        // create path and map variables
-        String localVarPath = "/api/workspaces/shared/{workspaceName}/items/{groupName}/{itemName}"
-            .replace("{" + "workspaceName" + "}", localVarApiClient.escapeString(workspaceName.toString()))
-            .replace("{" + "groupName" + "}", localVarApiClient.escapeString(groupName.toString()))
-            .replace("{" + "itemName" + "}", localVarApiClient.escapeString(itemName.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateSharedItemValidateBeforeCall(String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        // verify the required parameter 'workspaceName' is set
-        if (workspaceName == null) {
-            throw new ApiException("Missing the required parameter 'workspaceName' when calling updateSharedItem(Async)");
-        }
-
-        // verify the required parameter 'groupName' is set
-        if (groupName == null) {
-            throw new ApiException("Missing the required parameter 'groupName' when calling updateSharedItem(Async)");
-        }
-
-        // verify the required parameter 'itemName' is set
-        if (itemName == null) {
-            throw new ApiException("Missing the required parameter 'itemName' when calling updateSharedItem(Async)");
-        }
-
-        return updateSharedItemCall(workspaceName, groupName, itemName, workspaceItemUpdateRequest, _callback, opts);
-
-    }
-
-
-    private ApiResponse<WorkspaceItem> updateSharedItemWithHttpInfo(String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest) throws ApiException {
-        okhttp3.Call localVarCall = updateSharedItemValidateBeforeCall(workspaceName, groupName, itemName, workspaceItemUpdateRequest, null, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    private ApiResponse<WorkspaceItem> updateSharedItemWithHttpInfo(String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = updateSharedItemValidateBeforeCall(workspaceName, groupName, itemName, workspaceItemUpdateRequest, null, opts);
-        Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    private okhttp3.Call updateSharedItemAsync(String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback<WorkspaceItem> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = updateSharedItemValidateBeforeCall(workspaceName, groupName, itemName, workspaceItemUpdateRequest, _callback, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    private okhttp3.Call updateSharedItemAsync(String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback<WorkspaceItem> _callback, ConfigurationOptions opts) throws ApiException {
-
-        okhttp3.Call localVarCall = updateSharedItemValidateBeforeCall(workspaceName, groupName, itemName, workspaceItemUpdateRequest, _callback, opts);
-        Type localVarReturnType = new TypeToken<WorkspaceItem>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    public class APIupdateSharedItemRequest {
-        private final String workspaceName;
-        private final String groupName;
-        private final String itemName;
-        private WorkspaceItemUpdateRequest workspaceItemUpdateRequest;
-
-        private APIupdateSharedItemRequest(String workspaceName, String groupName, String itemName) {
-            this.workspaceName = workspaceName;
-            this.groupName = groupName;
-            this.itemName = itemName;
-        }
-
-        /**
-         * Set workspaceItemUpdateRequest
-         * @param workspaceItemUpdateRequest The new item details. (optional)
-         * @return APIupdateSharedItemRequest
-         */
-        public APIupdateSharedItemRequest workspaceItemUpdateRequest(WorkspaceItemUpdateRequest workspaceItemUpdateRequest) {
-            this.workspaceItemUpdateRequest = workspaceItemUpdateRequest;
-            return this;
-        }
-
-        /**
-         * Build call for updateSharedItem
-         * @param _callback ApiCallback API callback
-         * @return Call to execute
-         * @throws ApiException If fail to serialize the request body object
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The workspace item updated. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return updateSharedItemCall(workspaceName, groupName, itemName, workspaceItemUpdateRequest, _callback);
-        }
-
-        /**
-         * Execute updateSharedItem request
-         * @return WorkspaceItem
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The workspace item updated. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public WorkspaceItem execute() throws ApiException {
-            ApiResponse<WorkspaceItem> localVarResp = updateSharedItemWithHttpInfo(workspaceName, groupName, itemName, workspaceItemUpdateRequest);
-            return localVarResp.getData();
-        }
-
-        /**
-         * Execute updateSharedItem request. Use any specified configuration options to override any other configuration for this request only.
-         * @return WorkspaceItem
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The workspace item updated. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public WorkspaceItem execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<WorkspaceItem> localVarResp = updateSharedItemWithHttpInfo(workspaceName, groupName, itemName, workspaceItemUpdateRequest, opts);
-            return localVarResp.getData();
-        }
-
-        /**
-         * Execute updateSharedItem request with HTTP info returned
-         * @return ApiResponse&lt;WorkspaceItem&gt;
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The workspace item updated. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public ApiResponse<WorkspaceItem> executeWithHttpInfo() throws ApiException {
-            return updateSharedItemWithHttpInfo(workspaceName, groupName, itemName, workspaceItemUpdateRequest);
-        }
-
-        /**
-         * Execute updateSharedItem request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
-         * @return ApiResponse&lt;WorkspaceItem&gt;
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The workspace item updated. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public ApiResponse<WorkspaceItem> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return updateSharedItemWithHttpInfo(workspaceName, groupName, itemName, workspaceItemUpdateRequest, opts);
-        }
-
-        /**
-         * Execute updateSharedItem request (asynchronously)
-         * @param _callback The callback to be executed when the API call finishes
-         * @return The request call
-         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The workspace item updated. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call executeAsync(final ApiCallback<WorkspaceItem> _callback) throws ApiException {
-            return updateSharedItemAsync(workspaceName, groupName, itemName, workspaceItemUpdateRequest, _callback);
-        }
-
-        /**
-         * Execute updateSharedItem request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
-         * @param _callback The callback to be executed when the API call finishes
-         * @return The request call
-         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The workspace item updated. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call executeAsync(final ApiCallback<WorkspaceItem> _callback, ConfigurationOptions opts) throws ApiException {
-            return updateSharedItemAsync(workspaceName, groupName, itemName, workspaceItemUpdateRequest, _callback, opts);
-        }
-    }
-
-    /**
-     * [EXPERIMENTAL] UpdateSharedItem: Update an item in a shared workspace.
-     * Update an item in a shared workspace.
-     * @param workspaceName The shared workspace name. (required)
-     * @param groupName The group containing the item. (required)
-     * @param itemName The item name. (required)
-     * @return APIupdateSharedItemRequest
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The workspace item updated. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public APIupdateSharedItemRequest updateSharedItem(String workspaceName, String groupName, String itemName) {
-        return new APIupdateSharedItemRequest(workspaceName, groupName, itemName);
-    }
-    private okhttp3.Call updateSharedWorkspaceCall(String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, final ApiCallback _callback) throws ApiException {
-        return updateSharedWorkspaceCall(workspaceName, workspaceUpdateRequest,  _callback, new ConfigurationOptions());
-    }
-
-    private okhttp3.Call updateSharedWorkspaceCall(String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = workspaceUpdateRequest;
-
-        // create path and map variables
-        String localVarPath = "/api/workspaces/shared/{workspaceName}"
-            .replace("{" + "workspaceName" + "}", localVarApiClient.escapeString(workspaceName.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "text/plain",
-            "application/json",
-            "text/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json-patch+json",
-            "application/json",
-            "text/json",
-            "application/*+json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateSharedWorkspaceValidateBeforeCall(String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        // verify the required parameter 'workspaceName' is set
-        if (workspaceName == null) {
-            throw new ApiException("Missing the required parameter 'workspaceName' when calling updateSharedWorkspace(Async)");
-        }
-
-        return updateSharedWorkspaceCall(workspaceName, workspaceUpdateRequest, _callback, opts);
-
-    }
-
-
-    private ApiResponse<Workspace> updateSharedWorkspaceWithHttpInfo(String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest) throws ApiException {
-        okhttp3.Call localVarCall = updateSharedWorkspaceValidateBeforeCall(workspaceName, workspaceUpdateRequest, null, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    private ApiResponse<Workspace> updateSharedWorkspaceWithHttpInfo(String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = updateSharedWorkspaceValidateBeforeCall(workspaceName, workspaceUpdateRequest, null, opts);
-        Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    private okhttp3.Call updateSharedWorkspaceAsync(String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, final ApiCallback<Workspace> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = updateSharedWorkspaceValidateBeforeCall(workspaceName, workspaceUpdateRequest, _callback, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    private okhttp3.Call updateSharedWorkspaceAsync(String workspaceName, WorkspaceUpdateRequest workspaceUpdateRequest, final ApiCallback<Workspace> _callback, ConfigurationOptions opts) throws ApiException {
-
-        okhttp3.Call localVarCall = updateSharedWorkspaceValidateBeforeCall(workspaceName, workspaceUpdateRequest, _callback, opts);
-        Type localVarReturnType = new TypeToken<Workspace>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-
-    public class APIupdateSharedWorkspaceRequest {
-        private final String workspaceName;
-        private WorkspaceUpdateRequest workspaceUpdateRequest;
-
-        private APIupdateSharedWorkspaceRequest(String workspaceName) {
-            this.workspaceName = workspaceName;
-        }
-
-        /**
-         * Set workspaceUpdateRequest
-         * @param workspaceUpdateRequest The new workspace details. (optional)
-         * @return APIupdateSharedWorkspaceRequest
-         */
-        public APIupdateSharedWorkspaceRequest workspaceUpdateRequest(WorkspaceUpdateRequest workspaceUpdateRequest) {
-            this.workspaceUpdateRequest = workspaceUpdateRequest;
-            return this;
-        }
-
-        /**
-         * Build call for updateSharedWorkspace
-         * @param _callback ApiCallback API callback
-         * @return Call to execute
-         * @throws ApiException If fail to serialize the request body object
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The workspace updated. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return updateSharedWorkspaceCall(workspaceName, workspaceUpdateRequest, _callback);
-        }
-
-        /**
-         * Execute updateSharedWorkspace request
-         * @return Workspace
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The workspace updated. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public Workspace execute() throws ApiException {
-            ApiResponse<Workspace> localVarResp = updateSharedWorkspaceWithHttpInfo(workspaceName, workspaceUpdateRequest);
-            return localVarResp.getData();
-        }
-
-        /**
-         * Execute updateSharedWorkspace request. Use any specified configuration options to override any other configuration for this request only.
-         * @return Workspace
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The workspace updated. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public Workspace execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<Workspace> localVarResp = updateSharedWorkspaceWithHttpInfo(workspaceName, workspaceUpdateRequest, opts);
-            return localVarResp.getData();
-        }
-
-        /**
-         * Execute updateSharedWorkspace request with HTTP info returned
-         * @return ApiResponse&lt;Workspace&gt;
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The workspace updated. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public ApiResponse<Workspace> executeWithHttpInfo() throws ApiException {
-            return updateSharedWorkspaceWithHttpInfo(workspaceName, workspaceUpdateRequest);
-        }
-
-        /**
-         * Execute updateSharedWorkspace request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
-         * @return ApiResponse&lt;Workspace&gt;
-         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The workspace updated. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public ApiResponse<Workspace> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return updateSharedWorkspaceWithHttpInfo(workspaceName, workspaceUpdateRequest, opts);
-        }
-
-        /**
-         * Execute updateSharedWorkspace request (asynchronously)
-         * @param _callback The callback to be executed when the API call finishes
-         * @return The request call
-         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The workspace updated. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call executeAsync(final ApiCallback<Workspace> _callback) throws ApiException {
-            return updateSharedWorkspaceAsync(workspaceName, workspaceUpdateRequest, _callback);
-        }
-
-        /**
-         * Execute updateSharedWorkspace request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
-         * @param _callback The callback to be executed when the API call finishes
-         * @return The request call
-         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-         * @http.response.details
-         <table summary="Response Details" border="1">
-            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The workspace updated. </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-         </table>
-         */
-        public okhttp3.Call executeAsync(final ApiCallback<Workspace> _callback, ConfigurationOptions opts) throws ApiException {
-            return updateSharedWorkspaceAsync(workspaceName, workspaceUpdateRequest, _callback, opts);
-        }
-    }
-
-    /**
-     * [EXPERIMENTAL] UpdateSharedWorkspace: Update a shared workspace.
-     * Update a shared workspace.
-     * @param workspaceName The shared workspace name. (required)
-     * @return APIupdateSharedWorkspaceRequest
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The workspace updated. </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
-     </table>
-     */
-    public APIupdateSharedWorkspaceRequest updateSharedWorkspace(String workspaceName) {
-        return new APIupdateSharedWorkspaceRequest(workspaceName);
+    public APIupdateWorkspaceRequest updateWorkspace(String visibility, String workspaceName) {
+        return new APIupdateWorkspaceRequest(visibility, workspaceName);
     }
 }
