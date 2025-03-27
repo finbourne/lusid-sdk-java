@@ -75,7 +75,7 @@ public class ExDividendConfiguration {
   }
 
    /**
-   * Is the ex-dividend period counted in business days or calendar days.  Defaults to true if not set.
+   * Is the ex-dividend period counted in business days or calendar days.  Defaults to false if not set.
    * @return useBusinessDays
   **/
   @jakarta.annotation.Nullable
@@ -117,7 +117,7 @@ public class ExDividendConfiguration {
   }
 
    /**
-   * Does the accrued interest go negative in the ex-dividend period, or does it go to zero.  Defaults to true if not set.
+   * Does the accrued interest go negative in the ex-dividend period, or does it go to zero.
    * @return returnNegativeAccrued
   **/
   @jakarta.annotation.Nullable
