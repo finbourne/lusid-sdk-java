@@ -75,7 +75,7 @@ public class Future extends LusidInstrument {
 
   public static final String SERIALIZED_NAME_CONTRACTS = "contracts";
   @SerializedName(SERIALIZED_NAME_CONTRACTS)
-  private java.math.BigDecimal contracts;
+  private java.math.BigDecimal contracts = java.math.BigDecimal.valueOf(1d);
 
   public static final String SERIALIZED_NAME_MARK_TO_MARKET_CONVENTIONS = "markToMarketConventions";
   @SerializedName(SERIALIZED_NAME_MARK_TO_MARKET_CONVENTIONS)
