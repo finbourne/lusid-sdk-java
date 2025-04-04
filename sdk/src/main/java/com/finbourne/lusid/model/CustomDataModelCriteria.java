@@ -58,7 +58,7 @@ import com.finbourne.lusid.JSON;
 public class CustomDataModelCriteria {
   public static final String SERIALIZED_NAME_CONDITIONS = "conditions";
   @SerializedName(SERIALIZED_NAME_CONDITIONS)
-  private String conditions;
+  private List<String> conditions;
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
@@ -79,9 +79,17 @@ public class CustomDataModelCriteria {
   public CustomDataModelCriteria() {
   }
 
-  public CustomDataModelCriteria conditions(String conditions) {
+  public CustomDataModelCriteria conditions(List<String> conditions) {
     
     this.conditions = conditions;
+    return this;
+  }
+
+  public CustomDataModelCriteria addConditionsItem(String conditionsItem) {
+    if (this.conditions == null) {
+      this.conditions = new ArrayList<>();
+    }
+    this.conditions.add(conditionsItem);
     return this;
   }
 
@@ -90,12 +98,12 @@ public class CustomDataModelCriteria {
    * @return conditions
   **/
   @jakarta.annotation.Nullable
-  public String getConditions() {
+  public List<String> getConditions() {
     return conditions;
   }
 
 
-  public void setConditions(String conditions) {
+  public void setConditions(List<String> conditions) {
     this.conditions = conditions;
   }
 
@@ -303,8 +311,9 @@ public class CustomDataModelCriteria {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("conditions") != null && !jsonObj.get("conditions").isJsonNull()) && !jsonObj.get("conditions").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `conditions` to be a primitive type in the JSON string but got `%s`", jsonObj.get("conditions").toString()));
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("conditions") != null && !jsonObj.get("conditions").isJsonNull() && !jsonObj.get("conditions").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `conditions` to be an array in the JSON string but got `%s`", jsonObj.get("conditions").toString()));
       }
       if (jsonObj.get("properties") != null && !jsonObj.get("properties").isJsonNull()) {
         JsonArray jsonArrayproperties = jsonObj.getAsJsonArray("properties");

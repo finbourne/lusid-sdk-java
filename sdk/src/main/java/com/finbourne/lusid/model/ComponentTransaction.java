@@ -74,6 +74,10 @@ public class ComponentTransaction {
   @SerializedName(SERIALIZED_NAME_PRESERVE_TAX_LOT_STRUCTURE)
   private Boolean preserveTaxLotStructure;
 
+  public static final String SERIALIZED_NAME_MARKET_OPEN_TIME_ADJUSTMENTS = "marketOpenTimeAdjustments";
+  @SerializedName(SERIALIZED_NAME_MARKET_OPEN_TIME_ADJUSTMENTS)
+  private List<String> marketOpenTimeAdjustments;
+
   public ComponentTransaction() {
   }
 
@@ -190,6 +194,35 @@ public class ComponentTransaction {
   }
 
 
+  public ComponentTransaction marketOpenTimeAdjustments(List<String> marketOpenTimeAdjustments) {
+    
+    this.marketOpenTimeAdjustments = marketOpenTimeAdjustments;
+    return this;
+  }
+
+  public ComponentTransaction addMarketOpenTimeAdjustmentsItem(String marketOpenTimeAdjustmentsItem) {
+    if (this.marketOpenTimeAdjustments == null) {
+      this.marketOpenTimeAdjustments = new ArrayList<>();
+    }
+    this.marketOpenTimeAdjustments.add(marketOpenTimeAdjustmentsItem);
+    return this;
+  }
+
+   /**
+   * Get marketOpenTimeAdjustments
+   * @return marketOpenTimeAdjustments
+  **/
+  @jakarta.annotation.Nullable
+  public List<String> getMarketOpenTimeAdjustments() {
+    return marketOpenTimeAdjustments;
+  }
+
+
+  public void setMarketOpenTimeAdjustments(List<String> marketOpenTimeAdjustments) {
+    this.marketOpenTimeAdjustments = marketOpenTimeAdjustments;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -204,7 +237,8 @@ public class ComponentTransaction {
         Objects.equals(this.condition, componentTransaction.condition) &&
         Objects.equals(this.transactionFieldMap, componentTransaction.transactionFieldMap) &&
         Objects.equals(this.transactionPropertyMap, componentTransaction.transactionPropertyMap) &&
-        Objects.equals(this.preserveTaxLotStructure, componentTransaction.preserveTaxLotStructure);
+        Objects.equals(this.preserveTaxLotStructure, componentTransaction.preserveTaxLotStructure) &&
+        Objects.equals(this.marketOpenTimeAdjustments, componentTransaction.marketOpenTimeAdjustments);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -213,7 +247,7 @@ public class ComponentTransaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, condition, transactionFieldMap, transactionPropertyMap, preserveTaxLotStructure);
+    return Objects.hash(displayName, condition, transactionFieldMap, transactionPropertyMap, preserveTaxLotStructure, marketOpenTimeAdjustments);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -232,6 +266,7 @@ public class ComponentTransaction {
     sb.append("    transactionFieldMap: ").append(toIndentedString(transactionFieldMap)).append("\n");
     sb.append("    transactionPropertyMap: ").append(toIndentedString(transactionPropertyMap)).append("\n");
     sb.append("    preserveTaxLotStructure: ").append(toIndentedString(preserveTaxLotStructure)).append("\n");
+    sb.append("    marketOpenTimeAdjustments: ").append(toIndentedString(marketOpenTimeAdjustments)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -259,6 +294,7 @@ public class ComponentTransaction {
     openapiFields.add("transactionFieldMap");
     openapiFields.add("transactionPropertyMap");
     openapiFields.add("preserveTaxLotStructure");
+    openapiFields.add("marketOpenTimeAdjustments");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -305,6 +341,10 @@ public class ComponentTransaction {
       for (int i = 0; i < jsonArraytransactionPropertyMap.size(); i++) {
         TransactionPropertyMap.validateJsonElement(jsonArraytransactionPropertyMap.get(i));
       };
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("marketOpenTimeAdjustments") != null && !jsonObj.get("marketOpenTimeAdjustments").isJsonNull() && !jsonObj.get("marketOpenTimeAdjustments").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `marketOpenTimeAdjustments` to be an array in the JSON string but got `%s`", jsonObj.get("marketOpenTimeAdjustments").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
