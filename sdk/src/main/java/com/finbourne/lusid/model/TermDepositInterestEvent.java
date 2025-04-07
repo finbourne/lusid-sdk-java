@@ -120,7 +120,7 @@ public class TermDepositInterestEvent extends InstrumentEvent {
    * Payment date of the interest payment.
    * @return paymentDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getPaymentDate() {
     return paymentDate;
   }
@@ -201,7 +201,6 @@ public class TermDepositInterestEvent extends InstrumentEvent {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("currency");
-    openapiRequiredFields.add("paymentDate");
     openapiRequiredFields.add("instrumentEventType");
   }
 

@@ -148,7 +148,7 @@ public class DividendReinvestmentEvent extends InstrumentEvent {
    * The first business day on which the dividend is not owed to the buying party.  Typically this is T-1 from the RecordDate.
    * @return exDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getExDate() {
     return exDate;
   }
@@ -169,7 +169,7 @@ public class DividendReinvestmentEvent extends InstrumentEvent {
    * The date the company pays out dividends to shareholders.
    * @return paymentDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getPaymentDate() {
     return paymentDate;
   }
@@ -333,8 +333,6 @@ public class DividendReinvestmentEvent extends InstrumentEvent {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("cashElections");
-    openapiRequiredFields.add("exDate");
-    openapiRequiredFields.add("paymentDate");
     openapiRequiredFields.add("securityElections");
     openapiRequiredFields.add("instrumentEventType");
   }

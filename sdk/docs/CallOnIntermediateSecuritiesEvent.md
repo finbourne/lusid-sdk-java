@@ -8,8 +8,8 @@ CallOnIntermediateSecuritiesEvent event (EXRI), representing an exercise on inte
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**expiryDate** | **OffsetDateTime** | The date on which the issue ends. |  |
-|**paymentDate** | **OffsetDateTime** | The payment date of the event. |  |
+|**expiryDate** | **OffsetDateTime** | The date on which the issue ends. |  [optional] |
+|**paymentDate** | **OffsetDateTime** | The payment date of the event. |  [optional] |
 |**newInstrument** | [**NewInstrument**](NewInstrument.md) |  |  |
 |**unitsRatio** | [**UnitsRatio**](UnitsRatio.md) |  |  |
 |**price** | **java.math.BigDecimal** | The price at which new units are purchased. |  |

@@ -8,8 +8,8 @@ Definition of an MBS Principal Write Off Event  This is an event that describes 
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**exDate** | **OffsetDateTime** | The ex date (entitlement date) of the principal payment, usually several weeks prior to the payment date |  |
-|**paymentDate** | **OffsetDateTime** | The payment date of the principal that is written off |  |
+|**exDate** | **OffsetDateTime** | The ex date (entitlement date) of the principal payment, usually several weeks prior to the payment date |  [optional] |
+|**paymentDate** | **OffsetDateTime** | The payment date of the principal that is written off |  [optional] |
 |**currency** | **String** | The currency in which the principal write off is notated |  |
 |**principalPerUnit** | **java.math.BigDecimal** | The principal amount to be written off for each unit of the instrument held on the ex date |  [optional] |
 

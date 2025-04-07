@@ -78,7 +78,7 @@ public class FutureExpiryEvent extends InstrumentEvent {
    * Expiry date of the Future instrument.
    * @return expiryDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getExpiryDate() {
     return expiryDate;
   }
@@ -200,7 +200,6 @@ public class FutureExpiryEvent extends InstrumentEvent {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("expiryDate");
     openapiRequiredFields.add("settlementCurrency");
     openapiRequiredFields.add("instrumentEventType");
   }

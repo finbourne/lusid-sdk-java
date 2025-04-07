@@ -14,6 +14,7 @@
 |**properties** | [**List&lt;PerpetualProperty&gt;**](PerpetualProperty.md) | The properties attached to this instrument event. |  [optional] |
 |**sequenceNumber** | **Integer** | The order of the instrument event relative others on the same date (0 being processed first). Must be non negative. |  [optional] |
 |**participationType** | **String** | Is participation in this event Mandatory, MandatoryWithChoices, or Voluntary. |  [optional] |
+|**eventDateStamps** | [**Map&lt;String, YearMonthDay&gt;**](YearMonthDay.md) | The date stamps corresponding to the relevant date-time fields for the instrument event. The key for each provided date stamp must match the field name of a valid datetime field from the InstrumentEvent DTO. |  [optional] |
 
 
 

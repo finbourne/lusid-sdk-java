@@ -1,14 +1,16 @@
 
 
-# MaturityEvent
+# YearMonthDay
 
-Definition of a Maturity Event  This is an event that describes the maturity of the instrument.
+A date in component form.
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**maturityDate** | **OffsetDateTime** | Maturity date of the instrument |  [optional] |
+|**year** | **Integer** | The year of the date. |  |
+|**month** | **Integer** | The month of the date. |  |
+|**day** | **Integer** | The day in month of the date. |  |
 
 
 

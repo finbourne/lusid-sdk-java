@@ -85,7 +85,7 @@ public class LoanPrincipalRepaymentEvent extends InstrumentEvent {
    * Date that the Principal is due to be paid.
    * @return paymentDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getPaymentDate() {
     return paymentDate;
   }
@@ -239,7 +239,6 @@ public class LoanPrincipalRepaymentEvent extends InstrumentEvent {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("paymentDate");
     openapiRequiredFields.add("currency");
     openapiRequiredFields.add("instrumentEventType");
   }

@@ -89,7 +89,7 @@ public class CashDividendEvent extends InstrumentEvent {
    * The date the company begins distributing the dividend.
    * @return paymentDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getPaymentDate() {
     return paymentDate;
   }
@@ -110,7 +110,7 @@ public class CashDividendEvent extends InstrumentEvent {
    * The first business day on which the dividend is not owed to the buying party.
    * @return exDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getExDate() {
     return exDate;
   }
@@ -267,8 +267,6 @@ public class CashDividendEvent extends InstrumentEvent {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("paymentDate");
-    openapiRequiredFields.add("exDate");
     openapiRequiredFields.add("cashElections");
     openapiRequiredFields.add("instrumentEventType");
   }

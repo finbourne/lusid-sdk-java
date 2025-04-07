@@ -8,7 +8,7 @@ Definition of an Expiry Event  This is an event that describes the expiry of the
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**expiryDate** | **OffsetDateTime** | Expiry date of the instrument |  |
+|**expiryDate** | **OffsetDateTime** | Expiry date of the instrument |  [optional] |
 
 
 

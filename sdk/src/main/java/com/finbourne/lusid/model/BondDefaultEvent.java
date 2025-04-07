@@ -69,7 +69,7 @@ public class BondDefaultEvent extends InstrumentEvent {
    * The date the bond default occurred.
    * @return effectiveDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getEffectiveDate() {
     return effectiveDate;
   }
@@ -132,7 +132,6 @@ public class BondDefaultEvent extends InstrumentEvent {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("effectiveDate");
     openapiRequiredFields.add("instrumentEventType");
   }
 

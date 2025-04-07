@@ -9,9 +9,9 @@ Tender Event (TEND).
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**announcementDate** | **OffsetDateTime** | The date the tender is announced. |  [optional] |
-|**exDate** | **OffsetDateTime** | The ex date (entitlement date) of the event. |  |
+|**exDate** | **OffsetDateTime** | The ex date (entitlement date) of the event. |  [optional] |
 |**recordDate** | **OffsetDateTime** | Date you have to be the holder of record in order to participate in the tender. |  [optional] |
-|**paymentDate** | **OffsetDateTime** | The payment date of the event. |  |
+|**paymentDate** | **OffsetDateTime** | The payment date of the event. |  [optional] |
 |**newInstrument** | [**NewInstrument**](NewInstrument.md) |  |  |
 |**fractionalUnitsCashPrice** | **java.math.BigDecimal** | The cash price paid in lieu of fractionalUnits. |  [optional] |
 |**fractionalUnitsCashCurrency** | **String** | The currency of the cash paid in lieu of fractionalUnits. |  [optional] |

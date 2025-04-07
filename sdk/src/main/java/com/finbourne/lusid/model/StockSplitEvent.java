@@ -95,7 +95,7 @@ public class StockSplitEvent extends InstrumentEvent {
    * Date on which the stock split takes effect.
    * @return paymentDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getPaymentDate() {
     return paymentDate;
   }
@@ -116,7 +116,7 @@ public class StockSplitEvent extends InstrumentEvent {
    * The first date on which the shares will trade at the post-split price.
    * @return exDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getExDate() {
     return exDate;
   }
@@ -313,8 +313,6 @@ public class StockSplitEvent extends InstrumentEvent {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("paymentDate");
-    openapiRequiredFields.add("exDate");
     openapiRequiredFields.add("unitsRatio");
     openapiRequiredFields.add("instrumentEventType");
   }

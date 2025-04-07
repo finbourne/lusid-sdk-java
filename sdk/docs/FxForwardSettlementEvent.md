@@ -8,7 +8,7 @@ Settlement for FX Forward, including NDF and deliverable.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**maturityDate** | **OffsetDateTime** | Maturity date of the forward |  |
+|**maturityDate** | **OffsetDateTime** | Maturity date of the forward |  [optional] |
 |**domAmountPerUnit** | **java.math.BigDecimal** | Amount per unit in the DomCcy (domestic currency) |  |
 |**domCcy** | **String** | The domestic currency of the forward |  |
 |**fgnAmountPerUnit** | **java.math.BigDecimal** | Amount per unit in the FgnCcy (foreign currency) |  |

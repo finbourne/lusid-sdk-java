@@ -11,14 +11,12 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.InstrumentEvent;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.time.OffsetDateTime;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -47,61 +45,85 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Event to update the deposit be a given amount.
+ * A date in component form.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class UpdateDepositAmountEvent extends InstrumentEvent {
-  public static final String SERIALIZED_NAME_DATE = "date";
-  @SerializedName(SERIALIZED_NAME_DATE)
-  private OffsetDateTime date;
+public class YearMonthDay {
+  public static final String SERIALIZED_NAME_YEAR = "year";
+  @SerializedName(SERIALIZED_NAME_YEAR)
+  private Integer year;
 
-  public static final String SERIALIZED_NAME_AMOUNT = "amount";
-  @SerializedName(SERIALIZED_NAME_AMOUNT)
-  private java.math.BigDecimal amount;
+  public static final String SERIALIZED_NAME_MONTH = "month";
+  @SerializedName(SERIALIZED_NAME_MONTH)
+  private Integer month;
 
-  public UpdateDepositAmountEvent() {
-    // this.instrumentEventType = this.getClass().getSimpleName();
+  public static final String SERIALIZED_NAME_DAY = "day";
+  @SerializedName(SERIALIZED_NAME_DAY)
+  private Integer day;
+
+  public YearMonthDay() {
   }
 
-  public UpdateDepositAmountEvent date(OffsetDateTime date) {
+  public YearMonthDay year(Integer year) {
     
-    this.date = date;
+    this.year = year;
     return this;
   }
 
    /**
-   * The date of the adjustment to the deposit.
-   * @return date
-  **/
-  @jakarta.annotation.Nullable
-  public OffsetDateTime getDate() {
-    return date;
-  }
-
-
-  public void setDate(OffsetDateTime date) {
-    this.date = date;
-  }
-
-
-  public UpdateDepositAmountEvent amount(java.math.BigDecimal amount) {
-    
-    this.amount = amount;
-    return this;
-  }
-
-   /**
-   * The signed amount of the adjustment to make to the deposit. Positive implies an increase, and negative implies a decrease.
-   * @return amount
+   * The year of the date.
+   * @return year
   **/
   @jakarta.annotation.Nonnull
-  public java.math.BigDecimal getAmount() {
-    return amount;
+  public Integer getYear() {
+    return year;
   }
 
 
-  public void setAmount(java.math.BigDecimal amount) {
-    this.amount = amount;
+  public void setYear(Integer year) {
+    this.year = year;
+  }
+
+
+  public YearMonthDay month(Integer month) {
+    
+    this.month = month;
+    return this;
+  }
+
+   /**
+   * The month of the date.
+   * @return month
+  **/
+  @jakarta.annotation.Nonnull
+  public Integer getMonth() {
+    return month;
+  }
+
+
+  public void setMonth(Integer month) {
+    this.month = month;
+  }
+
+
+  public YearMonthDay day(Integer day) {
+    
+    this.day = day;
+    return this;
+  }
+
+   /**
+   * The day in month of the date.
+   * @return day
+  **/
+  @jakarta.annotation.Nonnull
+  public Integer getDay() {
+    return day;
+  }
+
+
+  public void setDay(Integer day) {
+    this.day = day;
   }
 
 
@@ -114,24 +136,24 @@ public class UpdateDepositAmountEvent extends InstrumentEvent {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UpdateDepositAmountEvent updateDepositAmountEvent = (UpdateDepositAmountEvent) o;
-    return Objects.equals(this.date, updateDepositAmountEvent.date) &&
-        (this.amount.compareTo(updateDepositAmountEvent.getAmount()) == 0) &&
-        super.equals(o);
+    YearMonthDay yearMonthDay = (YearMonthDay) o;
+    return Objects.equals(this.year, yearMonthDay.year) &&
+        Objects.equals(this.month, yearMonthDay.month) &&
+        Objects.equals(this.day, yearMonthDay.day);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, amount, super.hashCode());
+    return Objects.hash(year, month, day);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UpdateDepositAmountEvent {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    date: ").append(toIndentedString(date)).append("\n");
-    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("class YearMonthDay {\n");
+    sb.append("    year: ").append(toIndentedString(year)).append("\n");
+    sb.append("    month: ").append(toIndentedString(month)).append("\n");
+    sb.append("    day: ").append(toIndentedString(day)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -154,57 +176,59 @@ public class UpdateDepositAmountEvent extends InstrumentEvent {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("instrumentEventType");
-    openapiFields.add("date");
-    openapiFields.add("amount");
+    openapiFields.add("year");
+    openapiFields.add("month");
+    openapiFields.add("day");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("amount");
-    openapiRequiredFields.add("instrumentEventType");
+    openapiRequiredFields.add("year");
+    openapiRequiredFields.add("month");
+    openapiRequiredFields.add("day");
   }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to UpdateDepositAmountEvent
+  * @throws IOException if the JSON Element is invalid with respect to YearMonthDay
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!UpdateDepositAmountEvent.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in UpdateDepositAmountEvent is not found in the empty JSON string", UpdateDepositAmountEvent.openapiRequiredFields.toString()));
+        if (!YearMonthDay.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in YearMonthDay is not found in the empty JSON string", YearMonthDay.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : UpdateDepositAmountEvent.openapiRequiredFields) {
+      for (String requiredField : YearMonthDay.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!UpdateDepositAmountEvent.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'UpdateDepositAmountEvent' and its subtypes
+       if (!YearMonthDay.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'YearMonthDay' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<UpdateDepositAmountEvent> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(UpdateDepositAmountEvent.class));
+       final TypeAdapter<YearMonthDay> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(YearMonthDay.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<UpdateDepositAmountEvent>() {
+       return (TypeAdapter<T>) new TypeAdapter<YearMonthDay>() {
            @Override
-           public void write(JsonWriter out, UpdateDepositAmountEvent value) throws IOException {
+           public void write(JsonWriter out, YearMonthDay value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public UpdateDepositAmountEvent read(JsonReader in) throws IOException {
+           public YearMonthDay read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -215,18 +239,18 @@ public class UpdateDepositAmountEvent extends InstrumentEvent {
   }
 
  /**
-  * Create an instance of UpdateDepositAmountEvent given an JSON string
+  * Create an instance of YearMonthDay given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of UpdateDepositAmountEvent
-  * @throws IOException if the JSON string is invalid with respect to UpdateDepositAmountEvent
+  * @return An instance of YearMonthDay
+  * @throws IOException if the JSON string is invalid with respect to YearMonthDay
   */
-  public static UpdateDepositAmountEvent fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, UpdateDepositAmountEvent.class);
+  public static YearMonthDay fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, YearMonthDay.class);
   }
 
  /**
-  * Convert an instance of UpdateDepositAmountEvent to an JSON string
+  * Convert an instance of YearMonthDay to an JSON string
   *
   * @return JSON string
   */

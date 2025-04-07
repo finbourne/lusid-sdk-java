@@ -8,8 +8,8 @@ Event to signify the repayment of interest accrued against a deposit holding.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**paymentDate** | **OffsetDateTime** | Date that the interest is due to be paid. |  |
-|**exDate** | **OffsetDateTime** | Date that the accrued interest is calculated up until. |  |
+|**paymentDate** | **OffsetDateTime** | Date that the interest is due to be paid. |  [optional] |
+|**exDate** | **OffsetDateTime** | Date that the accrued interest is calculated up until. |  [optional] |
 |**currency** | **String** | Currency of the repayment. |  |
 
 

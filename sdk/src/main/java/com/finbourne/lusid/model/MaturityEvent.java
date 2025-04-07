@@ -69,7 +69,7 @@ public class MaturityEvent extends InstrumentEvent {
    * Maturity date of the instrument
    * @return maturityDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getMaturityDate() {
     return maturityDate;
   }
@@ -132,7 +132,6 @@ public class MaturityEvent extends InstrumentEvent {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("maturityDate");
     openapiRequiredFields.add("instrumentEventType");
   }
 

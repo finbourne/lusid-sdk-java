@@ -11,11 +11,11 @@ Merger Event (MRGR).
 |**announcementDate** | **OffsetDateTime** | The date the merger is announced. |  [optional] |
 |**cashAndSecurityOfferElections** | [**List&lt;CashAndSecurityOfferElection&gt;**](CashAndSecurityOfferElection.md) | List of possible CashAndSecurityOfferElections for this merger event |  [optional] |
 |**cashOfferElections** | [**List&lt;CashOfferElection&gt;**](CashOfferElection.md) | List of possible CashOfferElections for this merger event |  [optional] |
-|**exDate** | **OffsetDateTime** | The first date on which the holder of record of the original shares has entitled ownership of the new shares. |  |
+|**exDate** | **OffsetDateTime** | The first date on which the holder of record of the original shares has entitled ownership of the new shares. |  [optional] |
 |**fractionalUnitsCashCurrency** | **String** | Optional. Used in calculating cash-in-lieu of fractional shares. |  [optional] |
 |**fractionalUnitsCashPrice** | **java.math.BigDecimal** | Optional. Used in calculating cash-in-lieu of fractional shares. |  [optional] |
 |**newInstrument** | [**NewInstrument**](NewInstrument.md) |  |  |
-|**paymentDate** | **OffsetDateTime** | Date on which the merger takes place. |  |
+|**paymentDate** | **OffsetDateTime** | Date on which the merger takes place. |  [optional] |
 |**recordDate** | **OffsetDateTime** | Optional. Date you have to be the holder of record of the original shares in order to receive the new shares. |  [optional] |
 |**securityOfferElections** | [**List&lt;SecurityOfferElection&gt;**](SecurityOfferElection.md) | List of possible SecurityOfferElections for this merger event |  [optional] |
 

@@ -122,7 +122,7 @@ public class FxForwardSettlementEvent extends InstrumentEvent {
    * Maturity date of the forward
    * @return maturityDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getMaturityDate() {
     return maturityDate;
   }
@@ -451,7 +451,6 @@ public class FxForwardSettlementEvent extends InstrumentEvent {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("maturityDate");
     openapiRequiredFields.add("domAmountPerUnit");
     openapiRequiredFields.add("domCcy");
     openapiRequiredFields.add("fgnAmountPerUnit");

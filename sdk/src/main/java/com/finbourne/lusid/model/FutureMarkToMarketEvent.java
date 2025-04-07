@@ -78,7 +78,7 @@ public class FutureMarkToMarketEvent extends InstrumentEvent {
    * The date of the mark to market event.
    * @return effectiveDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getEffectiveDate() {
     return effectiveDate;
   }
@@ -200,7 +200,6 @@ public class FutureMarkToMarketEvent extends InstrumentEvent {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("effectiveDate");
     openapiRequiredFields.add("settlementCurrency");
     openapiRequiredFields.add("instrumentEventType");
   }

@@ -8,7 +8,7 @@ Definition of a Future Mark to Market Event.  Represents 'Mark to Market' daily 
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**effectiveDate** | **OffsetDateTime** | The date of the mark to market event. |  |
+|**effectiveDate** | **OffsetDateTime** | The date of the mark to market event. |  [optional] |
 |**settlementCurrency** | **String** | The currency in which the Future contract is paid. |  |
 |**notionalAmountPerUnit** | **java.math.BigDecimal** | The notional value of the contract on the effective date. |  [optional] |
 

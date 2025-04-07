@@ -10,8 +10,8 @@ A capital distribution paid out to shareholders.
 |------------ | ------------- | ------------- | -------------|
 |**announcementDate** | **OffsetDateTime** | Date on which the dividend was announced / declared. |  [optional] |
 |**cashElections** | [**List&lt;CashElection&gt;**](CashElection.md) | Possible elections for this event, each keyed with a unique identifier. |  |
-|**exDate** | **OffsetDateTime** | The first business day on which the dividend is not owed to the buying party. |  |
-|**paymentDate** | **OffsetDateTime** | The date the company begins distributing the dividend. |  |
+|**exDate** | **OffsetDateTime** | The first business day on which the dividend is not owed to the buying party. |  [optional] |
+|**paymentDate** | **OffsetDateTime** | The date the company begins distributing the dividend. |  [optional] |
 |**recordDate** | **OffsetDateTime** | Date you have to be the holder of record in order to participate in the tender. |  [optional] |
 
 

@@ -94,7 +94,7 @@ public class AdjustGlobalCommitmentEvent extends InstrumentEvent {
    * Date of the adjustment. Signifies when the facility begins to accrue interest.
    * @return date
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getDate() {
     return date;
   }
@@ -161,7 +161,6 @@ public class AdjustGlobalCommitmentEvent extends InstrumentEvent {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("amount");
-    openapiRequiredFields.add("date");
     openapiRequiredFields.add("instrumentEventType");
   }
 

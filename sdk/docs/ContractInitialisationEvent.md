@@ -9,7 +9,7 @@ Event to initialise a contract with a given limit against a LoanFacility.
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**limit** | **java.math.BigDecimal** | Limit of this contract. Must be positive. |  |
-|**date** | **OffsetDateTime** | Initialisation date of the contract. |  |
+|**date** | **OffsetDateTime** | Initialisation date of the contract. |  [optional] |
 |**contractDetails** | [**ContractDetails**](ContractDetails.md) |  |  |
 
 

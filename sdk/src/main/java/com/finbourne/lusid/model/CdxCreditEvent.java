@@ -90,7 +90,7 @@ public class CdxCreditEvent extends InstrumentEvent {
    * The date of the credit default - i.e. date on which the debt issuer defaulted on its repayment obligation.
    * @return effectiveDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getEffectiveDate() {
     return effectiveDate;
   }
@@ -284,7 +284,6 @@ public class CdxCreditEvent extends InstrumentEvent {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("effectiveDate");
     openapiRequiredFields.add("constituentWeight");
     openapiRequiredFields.add("instrumentEventType");
   }

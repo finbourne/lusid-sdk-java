@@ -9,9 +9,9 @@ IntermediateSecuritiesDistribution event (RHDI), representing the distribution o
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**announcementDate** | **OffsetDateTime** | Optional. The date the spin-off is announced. |  [optional] |
-|**exDate** | **OffsetDateTime** | The first date on which the holder of record has entitled ownership of the new shares. |  |
+|**exDate** | **OffsetDateTime** | The first date on which the holder of record has entitled ownership of the new shares. |  [optional] |
 |**recordDate** | **OffsetDateTime** | Optional. Date you have to be the holder of record in order to receive the additional shares. |  [optional] |
-|**paymentDate** | **OffsetDateTime** | Date on which the distribution of shares takes place. |  |
+|**paymentDate** | **OffsetDateTime** | Date on which the distribution of shares takes place. |  [optional] |
 |**newInstrument** | [**NewInstrument**](NewInstrument.md) |  |  |
 |**unitsRatio** | [**UnitsRatio**](UnitsRatio.md) |  |  |
 |**costFactor** | **java.math.BigDecimal** | Optional. The fraction of cost that is transferred from the existing shares to the new shares. |  [optional] |

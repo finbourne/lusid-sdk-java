@@ -81,7 +81,7 @@ public class SwapCashFlowEvent extends InstrumentEvent {
    * The ex-dividend date of the cashflow.
    * @return exDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getExDate() {
     return exDate;
   }
@@ -102,7 +102,7 @@ public class SwapCashFlowEvent extends InstrumentEvent {
    * The payment date of the cashflow.
    * @return paymentDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getPaymentDate() {
     return paymentDate;
   }
@@ -216,8 +216,6 @@ public class SwapCashFlowEvent extends InstrumentEvent {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("exDate");
-    openapiRequiredFields.add("paymentDate");
     openapiRequiredFields.add("currency");
     openapiRequiredFields.add("instrumentEventType");
   }

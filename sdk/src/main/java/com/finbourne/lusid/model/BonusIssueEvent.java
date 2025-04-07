@@ -128,7 +128,7 @@ public class BonusIssueEvent extends InstrumentEvent {
    * The ex-date of the Bonus Issue.
    * @return exDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getExDate() {
     return exDate;
   }
@@ -170,7 +170,7 @@ public class BonusIssueEvent extends InstrumentEvent {
    * The date the Bonus Issue is executed.
    * @return paymentDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getPaymentDate() {
     return paymentDate;
   }
@@ -397,8 +397,6 @@ public class BonusIssueEvent extends InstrumentEvent {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("exDate");
-    openapiRequiredFields.add("paymentDate");
     openapiRequiredFields.add("instrumentEventType");
   }
 

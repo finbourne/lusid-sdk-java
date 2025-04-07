@@ -8,7 +8,7 @@ Event to update the deposit be a given amount.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**date** | **OffsetDateTime** | The date of the adjustment to the deposit. |  |
+|**date** | **OffsetDateTime** | The date of the adjustment to the deposit. |  [optional] |
 |**amount** | **java.math.BigDecimal** | The signed amount of the adjustment to make to the deposit. Positive implies an increase, and negative implies a decrease. |  |
 
 

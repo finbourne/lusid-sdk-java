@@ -103,7 +103,7 @@ public class BondPrincipalEvent extends InstrumentEvent {
    * Ex-Dividend date of the principal payment
    * @return exDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getExDate() {
     return exDate;
   }
@@ -124,7 +124,7 @@ public class BondPrincipalEvent extends InstrumentEvent {
    * Payment date of the principal payment
    * @return paymentDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getPaymentDate() {
     return paymentDate;
   }
@@ -229,8 +229,6 @@ public class BondPrincipalEvent extends InstrumentEvent {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("currency");
-    openapiRequiredFields.add("exDate");
-    openapiRequiredFields.add("paymentDate");
     openapiRequiredFields.add("instrumentEventType");
   }
 

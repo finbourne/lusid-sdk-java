@@ -9,9 +9,9 @@ Representation of a Bonus Issue corporate action.
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**announcementDate** | **OffsetDateTime** | The date the Bonus Issue is announced. |  [optional] |
-|**exDate** | **OffsetDateTime** | The ex-date of the Bonus Issue. |  |
+|**exDate** | **OffsetDateTime** | The ex-date of the Bonus Issue. |  [optional] |
 |**recordDate** | **OffsetDateTime** | The record date of the Bonus Issue. |  [optional] |
-|**paymentDate** | **OffsetDateTime** | The date the Bonus Issue is executed. |  |
+|**paymentDate** | **OffsetDateTime** | The date the Bonus Issue is executed. |  [optional] |
 |**fractionalUnitsCashPrice** | **java.math.BigDecimal** | Optional. Used in calculating cash-in-lieu of fractional shares. |  [optional] |
 |**fractionalUnitsCashCurrency** | **String** | Optional. Used in calculating cash-in-lieu of fractional shares. |  [optional] |
 |**securityOfferElections** | [**List&lt;SecurityOfferElection&gt;**](SecurityOfferElection.md) | Possible SecurityElections for this Bonus Issue event, if any. |  [optional] |

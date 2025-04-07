@@ -191,7 +191,7 @@ public class MergerEvent extends InstrumentEvent {
    * The first date on which the holder of record of the original shares has entitled ownership of the new shares.
    * @return exDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getExDate() {
     return exDate;
   }
@@ -275,7 +275,7 @@ public class MergerEvent extends InstrumentEvent {
    * Date on which the merger takes place.
    * @return paymentDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getPaymentDate() {
     return paymentDate;
   }
@@ -426,9 +426,7 @@ public class MergerEvent extends InstrumentEvent {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("exDate");
     openapiRequiredFields.add("newInstrument");
-    openapiRequiredFields.add("paymentDate");
     openapiRequiredFields.add("instrumentEventType");
   }
 

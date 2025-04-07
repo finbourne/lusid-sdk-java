@@ -116,7 +116,7 @@ public class StockDividendEvent extends InstrumentEvent {
    * The first business day on which the dividend is not owed to the buying party.  Typically this is T-1 from the RecordDate.
    * @return exDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getExDate() {
     return exDate;
   }
@@ -137,7 +137,7 @@ public class StockDividendEvent extends InstrumentEvent {
    * The date the company pays out dividends to shareholders.
    * @return paymentDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getPaymentDate() {
     return paymentDate;
   }
@@ -313,8 +313,6 @@ public class StockDividendEvent extends InstrumentEvent {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("exDate");
-    openapiRequiredFields.add("paymentDate");
     openapiRequiredFields.add("unitsRatio");
     openapiRequiredFields.add("instrumentEventType");
   }

@@ -99,7 +99,7 @@ public class ContractInitialisationEvent extends InstrumentEvent {
    * Initialisation date of the contract.
    * @return date
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getDate() {
     return date;
   }
@@ -190,7 +190,6 @@ public class ContractInitialisationEvent extends InstrumentEvent {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("limit");
-    openapiRequiredFields.add("date");
     openapiRequiredFields.add("contractDetails");
     openapiRequiredFields.add("instrumentEventType");
   }

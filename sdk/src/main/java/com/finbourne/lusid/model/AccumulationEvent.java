@@ -149,7 +149,7 @@ public class AccumulationEvent extends InstrumentEvent {
    * The first business day on which the dividend is not owed to the buying party.  Typically this is T-1 from the RecordDate.
    * @return exDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getExDate() {
     return exDate;
   }
@@ -170,7 +170,7 @@ public class AccumulationEvent extends InstrumentEvent {
    * The date the company pays out dividends to shareholders.
    * @return paymentDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getPaymentDate() {
     return paymentDate;
   }
@@ -258,8 +258,6 @@ public class AccumulationEvent extends InstrumentEvent {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("dividendCurrency");
     openapiRequiredFields.add("dividendRate");
-    openapiRequiredFields.add("exDate");
-    openapiRequiredFields.add("paymentDate");
     openapiRequiredFields.add("instrumentEventType");
   }
 

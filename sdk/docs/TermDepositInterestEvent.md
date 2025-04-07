@@ -10,7 +10,7 @@ Definition of a Term Deposit Interest Event.  This is an event that describes th
 |------------ | ------------- | ------------- | -------------|
 |**currency** | **String** | Currency of the interest payment. |  |
 |**interestPerUnit** | **java.math.BigDecimal** | The interest payment made per unit of the held . |  [optional] |
-|**paymentDate** | **OffsetDateTime** | Payment date of the interest payment. |  |
+|**paymentDate** | **OffsetDateTime** | Payment date of the interest payment. |  [optional] |
 
 
 

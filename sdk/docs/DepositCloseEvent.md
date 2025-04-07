@@ -8,7 +8,7 @@ Event to trigger the termination of a deposit.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**effectiveDate** | **OffsetDateTime** | Date on which the deposit is terminated. |  |
+|**effectiveDate** | **OffsetDateTime** | Date on which the deposit is terminated. |  [optional] |
 
 
 

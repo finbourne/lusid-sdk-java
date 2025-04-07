@@ -104,7 +104,7 @@ public class CallOnIntermediateSecuritiesEvent extends InstrumentEvent {
    * The date on which the issue ends.
    * @return expiryDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getExpiryDate() {
     return expiryDate;
   }
@@ -125,7 +125,7 @@ public class CallOnIntermediateSecuritiesEvent extends InstrumentEvent {
    * The payment date of the event.
    * @return paymentDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getPaymentDate() {
     return paymentDate;
   }
@@ -362,8 +362,6 @@ public class CallOnIntermediateSecuritiesEvent extends InstrumentEvent {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("expiryDate");
-    openapiRequiredFields.add("paymentDate");
     openapiRequiredFields.add("newInstrument");
     openapiRequiredFields.add("unitsRatio");
     openapiRequiredFields.add("price");

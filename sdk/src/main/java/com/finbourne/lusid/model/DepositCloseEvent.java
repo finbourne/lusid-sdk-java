@@ -69,7 +69,7 @@ public class DepositCloseEvent extends InstrumentEvent {
    * Date on which the deposit is terminated.
    * @return effectiveDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getEffectiveDate() {
     return effectiveDate;
   }
@@ -132,7 +132,6 @@ public class DepositCloseEvent extends InstrumentEvent {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("effectiveDate");
     openapiRequiredFields.add("instrumentEventType");
   }
 

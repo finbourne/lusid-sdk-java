@@ -8,8 +8,8 @@ A split in the company's shares. Shareholders are given additional company share
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**paymentDate** | **OffsetDateTime** | Date on which the stock split takes effect. |  |
-|**exDate** | **OffsetDateTime** | The first date on which the shares will trade at the post-split price. |  |
+|**paymentDate** | **OffsetDateTime** | Date on which the stock split takes effect. |  [optional] |
+|**exDate** | **OffsetDateTime** | The first date on which the shares will trade at the post-split price. |  [optional] |
 |**unitsRatio** | [**UnitsRatio**](UnitsRatio.md) |  |  |
 |**recordDate** | **OffsetDateTime** | Date you have to be the holder of record in order to receive the additional shares. |  [optional] |
 |**announcementDate** | **OffsetDateTime** | Date the stock split was announced. |  [optional] |

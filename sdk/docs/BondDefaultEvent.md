@@ -8,7 +8,7 @@ Indicates when an issuer has defaulted on an obligation due to technical default
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**effectiveDate** | **OffsetDateTime** | The date the bond default occurred. |  |
+|**effectiveDate** | **OffsetDateTime** | The date the bond default occurred. |  [optional] |
 
 
 

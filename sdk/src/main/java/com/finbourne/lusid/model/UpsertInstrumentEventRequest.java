@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.InstrumentEvent;
 import com.finbourne.lusid.model.PerpetualProperty;
+import com.finbourne.lusid.model.YearMonthDay;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -83,6 +84,10 @@ public class UpsertInstrumentEventRequest {
   public static final String SERIALIZED_NAME_PARTICIPATION_TYPE = "participationType";
   @SerializedName(SERIALIZED_NAME_PARTICIPATION_TYPE)
   private String participationType = "Mandatory";
+
+  public static final String SERIALIZED_NAME_EVENT_DATE_STAMPS = "eventDateStamps";
+  @SerializedName(SERIALIZED_NAME_EVENT_DATE_STAMPS)
+  private Map<String, YearMonthDay> eventDateStamps;
 
   public UpsertInstrumentEventRequest() {
   }
@@ -250,6 +255,35 @@ public class UpsertInstrumentEventRequest {
   }
 
 
+  public UpsertInstrumentEventRequest eventDateStamps(Map<String, YearMonthDay> eventDateStamps) {
+    
+    this.eventDateStamps = eventDateStamps;
+    return this;
+  }
+
+  public UpsertInstrumentEventRequest putEventDateStampsItem(String key, YearMonthDay eventDateStampsItem) {
+    if (this.eventDateStamps == null) {
+      this.eventDateStamps = new HashMap<>();
+    }
+    this.eventDateStamps.put(key, eventDateStampsItem);
+    return this;
+  }
+
+   /**
+   * The date stamps corresponding to the relevant date-time fields for the instrument event. The key for each provided date stamp must match the field name of a valid datetime field from the InstrumentEvent DTO.
+   * @return eventDateStamps
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, YearMonthDay> getEventDateStamps() {
+    return eventDateStamps;
+  }
+
+
+  public void setEventDateStamps(Map<String, YearMonthDay> eventDateStamps) {
+    this.eventDateStamps = eventDateStamps;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -266,7 +300,8 @@ public class UpsertInstrumentEventRequest {
         Objects.equals(this.instrumentEvent, upsertInstrumentEventRequest.instrumentEvent) &&
         Objects.equals(this.properties, upsertInstrumentEventRequest.properties) &&
         Objects.equals(this.sequenceNumber, upsertInstrumentEventRequest.sequenceNumber) &&
-        Objects.equals(this.participationType, upsertInstrumentEventRequest.participationType);
+        Objects.equals(this.participationType, upsertInstrumentEventRequest.participationType) &&
+        Objects.equals(this.eventDateStamps, upsertInstrumentEventRequest.eventDateStamps);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -275,7 +310,7 @@ public class UpsertInstrumentEventRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentEventId, instrumentIdentifiers, description, instrumentEvent, properties, sequenceNumber, participationType);
+    return Objects.hash(instrumentEventId, instrumentIdentifiers, description, instrumentEvent, properties, sequenceNumber, participationType, eventDateStamps);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -296,6 +331,7 @@ public class UpsertInstrumentEventRequest {
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    sequenceNumber: ").append(toIndentedString(sequenceNumber)).append("\n");
     sb.append("    participationType: ").append(toIndentedString(participationType)).append("\n");
+    sb.append("    eventDateStamps: ").append(toIndentedString(eventDateStamps)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -325,6 +361,7 @@ public class UpsertInstrumentEventRequest {
     openapiFields.add("properties");
     openapiFields.add("sequenceNumber");
     openapiFields.add("participationType");
+    openapiFields.add("eventDateStamps");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

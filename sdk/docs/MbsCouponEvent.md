@@ -8,8 +8,8 @@ Definition of an MBS Coupon Event  This is an event that describes the occurence
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**exDate** | **OffsetDateTime** | The ex date (entitlement date) of the coupon |  |
-|**paymentDate** | **OffsetDateTime** | The payment date of the coupon |  |
+|**exDate** | **OffsetDateTime** | The ex date (entitlement date) of the coupon |  [optional] |
+|**paymentDate** | **OffsetDateTime** | The payment date of the coupon |  [optional] |
 |**currency** | **String** | The currency in which the coupon is paid |  |
 |**couponPerUnit** | **java.math.BigDecimal** | The coupon amount received for each unit of the instrument held on the ex date |  [optional] |
 

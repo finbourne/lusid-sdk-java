@@ -81,7 +81,7 @@ public class SwapPrincipalEvent extends InstrumentEvent {
    * The entitlement date of the principal payment.
    * @return exDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getExDate() {
     return exDate;
   }
@@ -102,7 +102,7 @@ public class SwapPrincipalEvent extends InstrumentEvent {
    * The payment date of the principal.
    * @return paymentDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getPaymentDate() {
     return paymentDate;
   }
@@ -216,8 +216,6 @@ public class SwapPrincipalEvent extends InstrumentEvent {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("exDate");
-    openapiRequiredFields.add("paymentDate");
     openapiRequiredFields.add("currency");
     openapiRequiredFields.add("instrumentEventType");
   }

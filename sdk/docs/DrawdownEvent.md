@@ -9,7 +9,7 @@ Event to draw down balance from a LoanFacility to a FlexLoan contract holding.
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**amount** | **java.math.BigDecimal** | Amount to be drawn down. Must be positive. |  |
-|**date** | **OffsetDateTime** | Initialisation date of the contract. |  |
+|**date** | **OffsetDateTime** | Initialisation date of the contract. |  [optional] |
 |**contractDetails** | [**ContractDetails**](ContractDetails.md) |  |  |
 
 

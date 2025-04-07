@@ -125,7 +125,7 @@ public class IntermediateSecuritiesDistributionEvent extends InstrumentEvent {
    * The first date on which the holder of record has entitled ownership of the new shares.
    * @return exDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getExDate() {
     return exDate;
   }
@@ -167,7 +167,7 @@ public class IntermediateSecuritiesDistributionEvent extends InstrumentEvent {
    * Date on which the distribution of shares takes place.
    * @return paymentDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getPaymentDate() {
     return paymentDate;
   }
@@ -370,8 +370,6 @@ public class IntermediateSecuritiesDistributionEvent extends InstrumentEvent {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("exDate");
-    openapiRequiredFields.add("paymentDate");
     openapiRequiredFields.add("newInstrument");
     openapiRequiredFields.add("unitsRatio");
     openapiRequiredFields.add("instrumentEventType");

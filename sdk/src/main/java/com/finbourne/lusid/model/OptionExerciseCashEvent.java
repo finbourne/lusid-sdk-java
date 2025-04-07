@@ -201,7 +201,7 @@ public class OptionExerciseCashEvent extends InstrumentEvent {
    * The maturity date of the option.
    * @return maturityDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getMaturityDate() {
     return maturityDate;
   }
@@ -293,7 +293,7 @@ public class OptionExerciseCashEvent extends InstrumentEvent {
    * The start date of the option.
    * @return startDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getStartDate() {
     return startDate;
   }
@@ -464,9 +464,7 @@ public class OptionExerciseCashEvent extends InstrumentEvent {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("exerciseType");
-    openapiRequiredFields.add("maturityDate");
     openapiRequiredFields.add("optionType");
-    openapiRequiredFields.add("startDate");
     openapiRequiredFields.add("strikeCurrency");
     openapiRequiredFields.add("strikePerUnit");
     openapiRequiredFields.add("instrumentEventType");

@@ -80,7 +80,7 @@ public class LoanFacilityContractRolloverEvent extends InstrumentEvent {
    * Effective date of the event.
    * @return date
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getDate() {
     return date;
   }
@@ -199,7 +199,6 @@ public class LoanFacilityContractRolloverEvent extends InstrumentEvent {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("date");
     openapiRequiredFields.add("rolloverConstituents");
     openapiRequiredFields.add("withInterest");
     openapiRequiredFields.add("instrumentEventType");

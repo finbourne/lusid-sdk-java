@@ -82,7 +82,7 @@ public class MbsCouponEvent extends InstrumentEvent {
    * The ex date (entitlement date) of the coupon
    * @return exDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getExDate() {
     return exDate;
   }
@@ -103,7 +103,7 @@ public class MbsCouponEvent extends InstrumentEvent {
    * The payment date of the coupon
    * @return paymentDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getPaymentDate() {
     return paymentDate;
   }
@@ -228,8 +228,6 @@ public class MbsCouponEvent extends InstrumentEvent {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("exDate");
-    openapiRequiredFields.add("paymentDate");
     openapiRequiredFields.add("currency");
     openapiRequiredFields.add("instrumentEventType");
   }

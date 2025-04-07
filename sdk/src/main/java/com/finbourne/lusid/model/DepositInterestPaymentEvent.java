@@ -77,7 +77,7 @@ public class DepositInterestPaymentEvent extends InstrumentEvent {
    * Date that the interest is due to be paid.
    * @return paymentDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getPaymentDate() {
     return paymentDate;
   }
@@ -98,7 +98,7 @@ public class DepositInterestPaymentEvent extends InstrumentEvent {
    * Date that the accrued interest is calculated up until.
    * @return exDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getExDate() {
     return exDate;
   }
@@ -188,8 +188,6 @@ public class DepositInterestPaymentEvent extends InstrumentEvent {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("paymentDate");
-    openapiRequiredFields.add("exDate");
     openapiRequiredFields.add("currency");
     openapiRequiredFields.add("instrumentEventType");
   }
