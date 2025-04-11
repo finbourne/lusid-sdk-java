@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.AggregateSpec;
 import com.finbourne.lusid.model.OrderBySpec;
+import com.finbourne.lusid.model.PortfolioEntityId;
 import com.finbourne.lusid.model.PropertyFilter;
 import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
@@ -68,6 +69,10 @@ public class AggregatedTransactionsRequest {
   public static final String SERIALIZED_NAME_PORTFOLIO_ID = "portfolioId";
   @SerializedName(SERIALIZED_NAME_PORTFOLIO_ID)
   private ResourceId portfolioId;
+
+  public static final String SERIALIZED_NAME_PORTFOLIO_ENTITY_IDS = "portfolioEntityIds";
+  @SerializedName(SERIALIZED_NAME_PORTFOLIO_ENTITY_IDS)
+  private List<PortfolioEntityId> portfolioEntityIds;
 
   public static final String SERIALIZED_NAME_AS_AT = "asAt";
   @SerializedName(SERIALIZED_NAME_AS_AT)
@@ -144,7 +149,7 @@ public class AggregatedTransactionsRequest {
    * Get portfolioId
    * @return portfolioId
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public ResourceId getPortfolioId() {
     return portfolioId;
   }
@@ -152,6 +157,35 @@ public class AggregatedTransactionsRequest {
 
   public void setPortfolioId(ResourceId portfolioId) {
     this.portfolioId = portfolioId;
+  }
+
+
+  public AggregatedTransactionsRequest portfolioEntityIds(List<PortfolioEntityId> portfolioEntityIds) {
+    
+    this.portfolioEntityIds = portfolioEntityIds;
+    return this;
+  }
+
+  public AggregatedTransactionsRequest addPortfolioEntityIdsItem(PortfolioEntityId portfolioEntityIdsItem) {
+    if (this.portfolioEntityIds == null) {
+      this.portfolioEntityIds = new ArrayList<>();
+    }
+    this.portfolioEntityIds.add(portfolioEntityIdsItem);
+    return this;
+  }
+
+   /**
+   * The set of portfolio or portfolio group identifiers containing the relevant transactions.
+   * @return portfolioEntityIds
+  **/
+  @jakarta.annotation.Nullable
+  public List<PortfolioEntityId> getPortfolioEntityIds() {
+    return portfolioEntityIds;
+  }
+
+
+  public void setPortfolioEntityIds(List<PortfolioEntityId> portfolioEntityIds) {
+    this.portfolioEntityIds = portfolioEntityIds;
   }
 
 
@@ -305,6 +339,7 @@ public class AggregatedTransactionsRequest {
     return Objects.equals(this.fromTransactionDate, aggregatedTransactionsRequest.fromTransactionDate) &&
         Objects.equals(this.toTransactionDate, aggregatedTransactionsRequest.toTransactionDate) &&
         Objects.equals(this.portfolioId, aggregatedTransactionsRequest.portfolioId) &&
+        Objects.equals(this.portfolioEntityIds, aggregatedTransactionsRequest.portfolioEntityIds) &&
         Objects.equals(this.asAt, aggregatedTransactionsRequest.asAt) &&
         Objects.equals(this.metrics, aggregatedTransactionsRequest.metrics) &&
         Objects.equals(this.groupBy, aggregatedTransactionsRequest.groupBy) &&
@@ -318,7 +353,7 @@ public class AggregatedTransactionsRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(fromTransactionDate, toTransactionDate, portfolioId, asAt, metrics, groupBy, filters, sort);
+    return Objects.hash(fromTransactionDate, toTransactionDate, portfolioId, portfolioEntityIds, asAt, metrics, groupBy, filters, sort);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -335,6 +370,7 @@ public class AggregatedTransactionsRequest {
     sb.append("    fromTransactionDate: ").append(toIndentedString(fromTransactionDate)).append("\n");
     sb.append("    toTransactionDate: ").append(toIndentedString(toTransactionDate)).append("\n");
     sb.append("    portfolioId: ").append(toIndentedString(portfolioId)).append("\n");
+    sb.append("    portfolioEntityIds: ").append(toIndentedString(portfolioEntityIds)).append("\n");
     sb.append("    asAt: ").append(toIndentedString(asAt)).append("\n");
     sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
     sb.append("    groupBy: ").append(toIndentedString(groupBy)).append("\n");
@@ -365,6 +401,7 @@ public class AggregatedTransactionsRequest {
     openapiFields.add("fromTransactionDate");
     openapiFields.add("toTransactionDate");
     openapiFields.add("portfolioId");
+    openapiFields.add("portfolioEntityIds");
     openapiFields.add("asAt");
     openapiFields.add("metrics");
     openapiFields.add("groupBy");
@@ -375,7 +412,6 @@ public class AggregatedTransactionsRequest {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("fromTransactionDate");
     openapiRequiredFields.add("toTransactionDate");
-    openapiRequiredFields.add("portfolioId");
     openapiRequiredFields.add("metrics");
   }
 
@@ -399,8 +435,24 @@ public class AggregatedTransactionsRequest {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the required field `portfolioId`
-      ResourceId.validateJsonElement(jsonObj.get("portfolioId"));
+      // validate the optional field `portfolioId`
+      if (jsonObj.get("portfolioId") != null && !jsonObj.get("portfolioId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("portfolioId"));
+      }
+      if (jsonObj.get("portfolioEntityIds") != null && !jsonObj.get("portfolioEntityIds").isJsonNull()) {
+        JsonArray jsonArrayportfolioEntityIds = jsonObj.getAsJsonArray("portfolioEntityIds");
+        if (jsonArrayportfolioEntityIds != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("portfolioEntityIds").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `portfolioEntityIds` to be an array in the JSON string but got `%s`", jsonObj.get("portfolioEntityIds").toString()));
+          }
+
+          // validate the optional field `portfolioEntityIds` (array)
+          for (int i = 0; i < jsonArrayportfolioEntityIds.size(); i++) {
+            PortfolioEntityId.validateJsonElement(jsonArrayportfolioEntityIds.get(i));
+          };
+        }
+      }
       // ensure the json data is an array
       if (!jsonObj.get("metrics").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `metrics` to be an array in the JSON string but got `%s`", jsonObj.get("metrics").toString()));

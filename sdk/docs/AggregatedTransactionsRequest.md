@@ -9,7 +9,8 @@
 |------------ | ------------- | ------------- | -------------|
 |**fromTransactionDate** | **OffsetDateTime** |  |  |
 |**toTransactionDate** | **OffsetDateTime** |  |  |
-|**portfolioId** | [**ResourceId**](ResourceId.md) |  |  |
+|**portfolioId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
+|**portfolioEntityIds** | [**List&lt;PortfolioEntityId&gt;**](PortfolioEntityId.md) | The set of portfolio or portfolio group identifiers containing the relevant transactions. |  [optional] |
 |**asAt** | **OffsetDateTime** |  |  [optional] |
 |**metrics** | [**List&lt;AggregateSpec&gt;**](AggregateSpec.md) |  |  |
 |**groupBy** | **List&lt;String&gt;** |  |  [optional] |
