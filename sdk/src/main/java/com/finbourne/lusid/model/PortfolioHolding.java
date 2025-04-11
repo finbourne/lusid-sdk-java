@@ -135,6 +135,10 @@ public class PortfolioHolding {
   @SerializedName(SERIALIZED_NAME_SETTLEMENT_SCHEDULE)
   private List<SettlementSchedule> settlementSchedule;
 
+  public static final String SERIALIZED_NAME_CURRENT_FACE = "currentFace";
+  @SerializedName(SERIALIZED_NAME_CURRENT_FACE)
+  private java.math.BigDecimal currentFace;
+
   public PortfolioHolding() {
   }
 
@@ -561,6 +565,27 @@ public class PortfolioHolding {
   }
 
 
+  public PortfolioHolding currentFace(java.math.BigDecimal currentFace) {
+    
+    this.currentFace = currentFace;
+    return this;
+  }
+
+   /**
+   * Current face value of the holding.
+   * @return currentFace
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getCurrentFace() {
+    return currentFace;
+  }
+
+
+  public void setCurrentFace(java.math.BigDecimal currentFace) {
+    this.currentFace = currentFace;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -589,7 +614,8 @@ public class PortfolioHolding {
         Objects.equals(this.amortisedCostPortfolioCcy, portfolioHolding.amortisedCostPortfolioCcy) &&
         Objects.equals(this.variationMargin, portfolioHolding.variationMargin) &&
         Objects.equals(this.variationMarginPortfolioCcy, portfolioHolding.variationMarginPortfolioCcy) &&
-        Objects.equals(this.settlementSchedule, portfolioHolding.settlementSchedule);
+        Objects.equals(this.settlementSchedule, portfolioHolding.settlementSchedule) &&
+        (this.currentFace.compareTo(portfolioHolding.getCurrentFace()) == 0);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -598,7 +624,7 @@ public class PortfolioHolding {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentScope, instrumentUid, subHoldingKeys, properties, holdingType, units, settledUnits, cost, costPortfolioCcy, transaction, currency, holdingTypeName, holdingId, notionalCost, amortisedCost, amortisedCostPortfolioCcy, variationMargin, variationMarginPortfolioCcy, settlementSchedule);
+    return Objects.hash(instrumentScope, instrumentUid, subHoldingKeys, properties, holdingType, units, settledUnits, cost, costPortfolioCcy, transaction, currency, holdingTypeName, holdingId, notionalCost, amortisedCost, amortisedCostPortfolioCcy, variationMargin, variationMarginPortfolioCcy, settlementSchedule, currentFace);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -631,6 +657,7 @@ public class PortfolioHolding {
     sb.append("    variationMargin: ").append(toIndentedString(variationMargin)).append("\n");
     sb.append("    variationMarginPortfolioCcy: ").append(toIndentedString(variationMarginPortfolioCcy)).append("\n");
     sb.append("    settlementSchedule: ").append(toIndentedString(settlementSchedule)).append("\n");
+    sb.append("    currentFace: ").append(toIndentedString(currentFace)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -672,6 +699,7 @@ public class PortfolioHolding {
     openapiFields.add("variationMargin");
     openapiFields.add("variationMarginPortfolioCcy");
     openapiFields.add("settlementSchedule");
+    openapiFields.add("currentFace");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
