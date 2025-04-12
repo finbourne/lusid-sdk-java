@@ -8,7 +8,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**displayName** | **String** | The name of the Group Reconciliation Definition |  |
-|**description** | **String** | The description of the Group Reconciliation Definition |  |
+|**description** | **String** | The description of the Group Reconciliation Definition |  [optional] |
 |**portfolioEntityIds** | [**GroupReconciliationDefinitionPortfolioEntityIds**](GroupReconciliationDefinitionPortfolioEntityIds.md) |  |  |
 |**recipeIds** | [**GroupReconciliationDefinitionRecipeIds**](GroupReconciliationDefinitionRecipeIds.md) |  |  [optional] |
 |**currencies** | [**GroupReconciliationDefinitionCurrencies**](GroupReconciliationDefinitionCurrencies.md) |  |  [optional] |

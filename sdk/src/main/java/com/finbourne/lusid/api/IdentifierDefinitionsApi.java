@@ -1309,7 +1309,7 @@ public class IdentifierDefinitionsApi {
 
         /**
          * Set updateIdentifierDefinitionRequest
-         * @param updateIdentifierDefinitionRequest The request containing the updated details of the ruleset (optional)
+         * @param updateIdentifierDefinitionRequest The request containing the updated details of the Identifier Definition. (optional)
          * @return APIupdateIdentifierDefinitionRequest
          */
         public APIupdateIdentifierDefinitionRequest updateIdentifierDefinitionRequest(UpdateIdentifierDefinitionRequest updateIdentifierDefinitionRequest) {

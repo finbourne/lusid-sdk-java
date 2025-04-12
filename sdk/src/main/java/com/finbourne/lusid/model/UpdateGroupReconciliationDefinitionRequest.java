@@ -24,6 +24,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -121,7 +122,7 @@ public class UpdateGroupReconciliationDefinitionRequest {
    * The description of the Group Reconciliation Definition
    * @return description
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getDescription() {
     return description;
   }
@@ -278,9 +279,20 @@ public class UpdateGroupReconciliationDefinitionRequest {
         Objects.equals(this.breakCodeSource, updateGroupReconciliationDefinitionRequest.breakCodeSource);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(displayName, description, portfolioEntityIds, recipeIds, currencies, transactionDateWindows, comparisonRulesetIds, breakCodeSource);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -329,7 +341,6 @@ public class UpdateGroupReconciliationDefinitionRequest {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("displayName");
-    openapiRequiredFields.add("description");
     openapiRequiredFields.add("portfolioEntityIds");
     openapiRequiredFields.add("breakCodeSource");
   }
@@ -357,7 +368,7 @@ public class UpdateGroupReconciliationDefinitionRequest {
       if (!jsonObj.get("displayName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
       }
-      if (!jsonObj.get("description").isJsonPrimitive()) {
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       // validate the required field `portfolioEntityIds`

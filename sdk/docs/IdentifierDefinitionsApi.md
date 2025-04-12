@@ -452,7 +452,7 @@ public class IdentifierDefinitionsApiExample {
         String domain = "NotDefined"; // String | The type of entity to which the identifier relates
         String identifierScope = "identifierScope_example"; // String | The scope that the identifier exists in
         String identifierType = "identifierType_example"; // String | What the identifier represents. Together with \"domain\" and \"identifierScope\" this uniquely identifies the Identifier Definition
-        UpdateIdentifierDefinitionRequest updateIdentifierDefinitionRequest = new UpdateIdentifierDefinitionRequest(); // UpdateIdentifierDefinitionRequest | The request containing the updated details of the ruleset
+        UpdateIdentifierDefinitionRequest updateIdentifierDefinitionRequest = new UpdateIdentifierDefinitionRequest(); // UpdateIdentifierDefinitionRequest | The request containing the updated details of the Identifier Definition.
         try {
             // uncomment the below to set overrides at the request level
             // IdentifierDefinition result = apiInstance.updateIdentifierDefinition(domain, identifierScope, identifierType, updateIdentifierDefinitionRequest).execute(opts);
@@ -477,7 +477,7 @@ public class IdentifierDefinitionsApiExample {
 | **domain** | **String**| The type of entity to which the identifier relates | [enum: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, AddressKeyDefinition, AmortisationRuleSet, AnalyticsSetInventory, AtomUnitResult, CleardownModule, ComplexMarketData, ComplianceRunSummary, ComplianceRule, ComplianceRunInfo, CorporateActionSource, CounterpartyAgreement, CustomEntityDefinition, DataType, Dialect, EventHandler, GeneralLedgerProfile, PostingModule, Quote, RecipeComposer, ReconciliationRunBreak, ReferenceList, RelationDefinition, ReturnBlockIndex, SRSDocument, SRSIndex, TransactionTemplate, TransactionTemplateScope, TransactionType, TransactionTypeConfig, TranslationScript, TaskDefinition, TaskInstance, Worker, StagingRuleSet, IdentifierDefinition] |
 | **identifierScope** | **String**| The scope that the identifier exists in | |
 | **identifierType** | **String**| What the identifier represents. Together with \&quot;domain\&quot; and \&quot;identifierScope\&quot; this uniquely identifies the Identifier Definition | |
-| **updateIdentifierDefinitionRequest** | [**UpdateIdentifierDefinitionRequest**](UpdateIdentifierDefinitionRequest.md)| The request containing the updated details of the ruleset | [optional] |
+| **updateIdentifierDefinitionRequest** | [**UpdateIdentifierDefinitionRequest**](UpdateIdentifierDefinitionRequest.md)| The request containing the updated details of the Identifier Definition. | [optional] |
 
 ### Return type
 
