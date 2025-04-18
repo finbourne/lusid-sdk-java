@@ -102,6 +102,10 @@ public class BlockRequest {
   @SerializedName(SERIALIZED_NAME_STOP_PRICE)
   private CurrencyAndAmount stopPrice;
 
+  public static final String SERIALIZED_NAME_IS_SWEPT = "isSwept";
+  @SerializedName(SERIALIZED_NAME_IS_SWEPT)
+  private Boolean isSwept;
+
   public BlockRequest() {
   }
 
@@ -360,6 +364,27 @@ public class BlockRequest {
   }
 
 
+  public BlockRequest isSwept(Boolean isSwept) {
+    
+    this.isSwept = isSwept;
+    return this;
+  }
+
+   /**
+   * Swept blocks are considered no longer of active interest, and no longer take part in various order management processes
+   * @return isSwept
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getIsSwept() {
+    return isSwept;
+  }
+
+
+  public void setIsSwept(Boolean isSwept) {
+    this.isSwept = isSwept;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -380,7 +405,8 @@ public class BlockRequest {
         Objects.equals(this.timeInForce, blockRequest.timeInForce) &&
         Objects.equals(this.createdDate, blockRequest.createdDate) &&
         Objects.equals(this.limitPrice, blockRequest.limitPrice) &&
-        Objects.equals(this.stopPrice, blockRequest.stopPrice);
+        Objects.equals(this.stopPrice, blockRequest.stopPrice) &&
+        Objects.equals(this.isSwept, blockRequest.isSwept);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -389,7 +415,7 @@ public class BlockRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, orderIds, properties, instrumentIdentifiers, quantity, side, type, timeInForce, createdDate, limitPrice, stopPrice);
+    return Objects.hash(id, orderIds, properties, instrumentIdentifiers, quantity, side, type, timeInForce, createdDate, limitPrice, stopPrice, isSwept);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -414,6 +440,7 @@ public class BlockRequest {
     sb.append("    createdDate: ").append(toIndentedString(createdDate)).append("\n");
     sb.append("    limitPrice: ").append(toIndentedString(limitPrice)).append("\n");
     sb.append("    stopPrice: ").append(toIndentedString(stopPrice)).append("\n");
+    sb.append("    isSwept: ").append(toIndentedString(isSwept)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -447,6 +474,7 @@ public class BlockRequest {
     openapiFields.add("createdDate");
     openapiFields.add("limitPrice");
     openapiFields.add("stopPrice");
+    openapiFields.add("isSwept");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

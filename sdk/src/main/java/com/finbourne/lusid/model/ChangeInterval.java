@@ -208,7 +208,7 @@ public class ChangeInterval {
   }
 
    /**
-   * The action performed on the entity.
+   * The action performed on the field.
    * @return action
   **/
   @jakarta.annotation.Nullable

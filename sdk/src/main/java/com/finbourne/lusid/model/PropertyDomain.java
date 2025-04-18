@@ -63,6 +63,8 @@ public enum PropertyDomain {
   
   LEGALENTITY("LegalEntity"),
   
+  INVESTORRECORD("InvestorRecord"),
+  
   PLACEMENT("Placement"),
   
   EXECUTION("Execution"),

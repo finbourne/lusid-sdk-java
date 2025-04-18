@@ -19,6 +19,7 @@ A request to create or update an Order.
 |**createdDate** | **OffsetDateTime** | The date on which the block was made |  |
 |**limitPrice** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional] |
 |**stopPrice** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional] |
+|**isSwept** | **Boolean** | Swept blocks are considered no longer of active interest, and no longer take part in various order management processes |  [optional] |
 
 
 

@@ -108,6 +108,10 @@ public class Block {
   @SerializedName(SERIALIZED_NAME_STOP_PRICE)
   private CurrencyAndAmount stopPrice;
 
+  public static final String SERIALIZED_NAME_IS_SWEPT = "isSwept";
+  @SerializedName(SERIALIZED_NAME_IS_SWEPT)
+  private Boolean isSwept;
+
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
   private Version version;
@@ -395,6 +399,27 @@ public class Block {
   }
 
 
+  public Block isSwept(Boolean isSwept) {
+    
+    this.isSwept = isSwept;
+    return this;
+  }
+
+   /**
+   * Swept blocks are considered no longer of active interest, and no longer take part in various order management processes
+   * @return isSwept
+  **/
+  @jakarta.annotation.Nonnull
+  public Boolean getIsSwept() {
+    return isSwept;
+  }
+
+
+  public void setIsSwept(Boolean isSwept) {
+    this.isSwept = isSwept;
+  }
+
+
   public Block version(Version version) {
     
     this.version = version;
@@ -467,6 +492,7 @@ public class Block {
         Objects.equals(this.createdDate, block.createdDate) &&
         Objects.equals(this.limitPrice, block.limitPrice) &&
         Objects.equals(this.stopPrice, block.stopPrice) &&
+        Objects.equals(this.isSwept, block.isSwept) &&
         Objects.equals(this.version, block.version) &&
         Objects.equals(this.links, block.links);
   }
@@ -477,7 +503,7 @@ public class Block {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, orderIds, properties, instrumentIdentifiers, lusidInstrumentId, quantity, side, type, timeInForce, createdDate, limitPrice, stopPrice, version, links);
+    return Objects.hash(id, orderIds, properties, instrumentIdentifiers, lusidInstrumentId, quantity, side, type, timeInForce, createdDate, limitPrice, stopPrice, isSwept, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -503,6 +529,7 @@ public class Block {
     sb.append("    createdDate: ").append(toIndentedString(createdDate)).append("\n");
     sb.append("    limitPrice: ").append(toIndentedString(limitPrice)).append("\n");
     sb.append("    stopPrice: ").append(toIndentedString(stopPrice)).append("\n");
+    sb.append("    isSwept: ").append(toIndentedString(isSwept)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
@@ -539,6 +566,7 @@ public class Block {
     openapiFields.add("createdDate");
     openapiFields.add("limitPrice");
     openapiFields.add("stopPrice");
+    openapiFields.add("isSwept");
     openapiFields.add("version");
     openapiFields.add("links");
 
@@ -553,6 +581,7 @@ public class Block {
     openapiRequiredFields.add("type");
     openapiRequiredFields.add("timeInForce");
     openapiRequiredFields.add("createdDate");
+    openapiRequiredFields.add("isSwept");
   }
 
  /**

@@ -43,6 +43,8 @@
 
 * `LEGALENTITY` (value: `"LegalEntity"`)
 
+* `INVESTORRECORD` (value: `"InvestorRecord"`)
+
 * `PLACEMENT` (value: `"Placement"`)
 
 * `EXECUTION` (value: `"Execution"`)
