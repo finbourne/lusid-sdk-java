@@ -88,7 +88,7 @@ public class Compounding {
   }
 
    /**
-   * Defines whether a weighted or unweighted average is used when calculating the average rate.  It applies only when CompoundingMethod &#x3D; ‘Averaging‘.    Supported string (enumeration) values are: [Unweighted, Weighted].
+   * Defines whether a weighted or unweighted average is used when calculating the average rate.  It applies only when CompoundingMethod &#x3D; ‘Averaging‘.    Supported string (enumeration) values are: [Unweighted, UnweightedIncludingWeekends, Weighted].
    * @return averagingMethod
   **/
   @jakarta.annotation.Nullable
