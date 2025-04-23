@@ -60,7 +60,7 @@ import com.finbourne.lusid.JSON;
 public class CreditDefaultSwap extends LusidInstrument {
   public static final String SERIALIZED_NAME_TICKER = "ticker";
   @SerializedName(SERIALIZED_NAME_TICKER)
-  private String ticker;
+  private String ticker = "DefaultCDSTicker";
 
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -105,10 +105,10 @@ public class CreditDefaultSwap extends LusidInstrument {
   }
 
    /**
-   * A ticker to uniquely specify the entity against which the CDS is written.
+   * A ticker to uniquely specify the entity against which the CDS is written. Defaults to \&quot;DefaultCDSTicker\&quot;.
    * @return ticker
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getTicker() {
     return ticker;
   }
@@ -255,7 +255,7 @@ public class CreditDefaultSwap extends LusidInstrument {
    * Get protectionDetailSpecification
    * @return protectionDetailSpecification
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public CdsProtectionDetailSpecification getProtectionDetailSpecification() {
     return protectionDetailSpecification;
   }
@@ -382,11 +382,9 @@ public class CreditDefaultSwap extends LusidInstrument {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("ticker");
     openapiRequiredFields.add("startDate");
     openapiRequiredFields.add("maturityDate");
     openapiRequiredFields.add("couponRate");
-    openapiRequiredFields.add("protectionDetailSpecification");
     openapiRequiredFields.add("instrumentType");
   }
 

@@ -141,7 +141,9 @@ public enum InstrumentEventType {
   
   DEPOSITCLOSEEVENT("DepositCloseEvent"),
   
-  LOANFACILITYCONTRACTROLLOVEREVENT("LoanFacilityContractRolloverEvent");
+  LOANFACILITYCONTRACTROLLOVEREVENT("LoanFacilityContractRolloverEvent"),
+  
+  REPURCHASEOFFEREVENT("RepurchaseOfferEvent");
 
   private String value;
 

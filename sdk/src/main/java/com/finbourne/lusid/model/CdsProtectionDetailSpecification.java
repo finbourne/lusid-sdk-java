@@ -18,6 +18,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,19 +52,19 @@ import com.finbourne.lusid.JSON;
 public class CdsProtectionDetailSpecification {
   public static final String SERIALIZED_NAME_SENIORITY = "seniority";
   @SerializedName(SERIALIZED_NAME_SENIORITY)
-  private String seniority;
+  private String seniority = "SUB";
 
   public static final String SERIALIZED_NAME_RESTRUCTURING_TYPE = "restructuringType";
   @SerializedName(SERIALIZED_NAME_RESTRUCTURING_TYPE)
-  private String restructuringType;
+  private String restructuringType = "MM";
 
   public static final String SERIALIZED_NAME_PROTECT_START_DAY = "protectStartDay";
   @SerializedName(SERIALIZED_NAME_PROTECT_START_DAY)
-  private Boolean protectStartDay;
+  private Boolean protectStartDay = true;
 
   public static final String SERIALIZED_NAME_PAY_ACCRUED_INTEREST_ON_DEFAULT = "payAccruedInterestOnDefault";
   @SerializedName(SERIALIZED_NAME_PAY_ACCRUED_INTEREST_ON_DEFAULT)
-  private Boolean payAccruedInterestOnDefault;
+  private Boolean payAccruedInterestOnDefault = true;
 
   public CdsProtectionDetailSpecification() {
   }
@@ -75,10 +76,10 @@ public class CdsProtectionDetailSpecification {
   }
 
    /**
-   * The seniority level of the CDS.    Supported string (enumeration) values are: [SNR, SUB, JRSUBUT2, PREFT1, SECDOM, SNRFOR, SUBLT2].
+   * The seniority level of the CDS.  Supported string (enumeration) values are: [SNR, SUB, JRSUBUT2, PREFT1, SECDOM, SNRFOR, SUBLT2].  Defaults to \&quot;SUB\&quot; if not set.
    * @return seniority
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getSeniority() {
     return seniority;
   }
@@ -96,10 +97,10 @@ public class CdsProtectionDetailSpecification {
   }
 
    /**
-   * The restructuring clause.  Supported string (enumeration) values are: [CR, MR, MM, XR].
+   * The restructuring clause.  Supported string (enumeration) values are: [CR, MR, MM, XR]. Defaults to \&quot;MM\&quot; if not set.
    * @return restructuringType
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getRestructuringType() {
     return restructuringType;
   }
@@ -117,10 +118,10 @@ public class CdsProtectionDetailSpecification {
   }
 
    /**
-   * Does the protection leg pay out in the case of default on the start date.
+   * Does the protection leg pay out in the case of default on the start date. Defaults to true if not set.
    * @return protectStartDay
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public Boolean getProtectStartDay() {
     return protectStartDay;
   }
@@ -138,10 +139,10 @@ public class CdsProtectionDetailSpecification {
   }
 
    /**
-   * Should accrued interest on the premium leg be paid if a credit event occurs.
+   * Should accrued interest on the premium leg be paid if a credit event occurs. Defaults to true if not set.
    * @return payAccruedInterestOnDefault
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public Boolean getPayAccruedInterestOnDefault() {
     return payAccruedInterestOnDefault;
   }
@@ -168,9 +169,20 @@ public class CdsProtectionDetailSpecification {
         Objects.equals(this.payAccruedInterestOnDefault, cdsProtectionDetailSpecification.payAccruedInterestOnDefault);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(seniority, restructuringType, protectStartDay, payAccruedInterestOnDefault);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -210,10 +222,6 @@ public class CdsProtectionDetailSpecification {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("seniority");
-    openapiRequiredFields.add("restructuringType");
-    openapiRequiredFields.add("protectStartDay");
-    openapiRequiredFields.add("payAccruedInterestOnDefault");
   }
 
  /**
@@ -228,18 +236,11 @@ public class CdsProtectionDetailSpecification {
           throw new IllegalArgumentException(String.format("The required field(s) %s in CdsProtectionDetailSpecification is not found in the empty JSON string", CdsProtectionDetailSpecification.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CdsProtectionDetailSpecification.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("seniority").isJsonPrimitive()) {
+      if ((jsonObj.get("seniority") != null && !jsonObj.get("seniority").isJsonNull()) && !jsonObj.get("seniority").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `seniority` to be a primitive type in the JSON string but got `%s`", jsonObj.get("seniority").toString()));
       }
-      if (!jsonObj.get("restructuringType").isJsonPrimitive()) {
+      if ((jsonObj.get("restructuringType") != null && !jsonObj.get("restructuringType").isJsonNull()) && !jsonObj.get("restructuringType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `restructuringType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("restructuringType").toString()));
       }
   }

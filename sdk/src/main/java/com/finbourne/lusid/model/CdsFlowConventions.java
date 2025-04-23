@@ -273,10 +273,10 @@ public class CdsFlowConventions {
   }
 
    /**
-   * Number of Good Business Days between the trade date and the effective or settlement date of the instrument.
+   * Number of Good Business Days between the trade date and the effective or settlement date of the instrument. Defaults to 0 if not set.
    * @return settleDays
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public Integer getSettleDays() {
     return settleDays;
   }
@@ -294,10 +294,10 @@ public class CdsFlowConventions {
   }
 
    /**
-   * The number of Good Business Days between determination and payment of reset.
+   * The number of Good Business Days between determination and payment of reset. Defaults to 0 if not set.
    * @return resetDays
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public Integer getResetDays() {
     return resetDays;
   }
@@ -470,8 +470,6 @@ public class CdsFlowConventions {
     openapiRequiredFields.add("rollConvention");
     openapiRequiredFields.add("paymentCalendars");
     openapiRequiredFields.add("resetCalendars");
-    openapiRequiredFields.add("settleDays");
-    openapiRequiredFields.add("resetDays");
   }
 
  /**
