@@ -30,6 +30,7 @@ A Journal Entry line entity.
 |**holdingType** | **String** | Defines the broad category holding within the portfolio. |  |
 |**economicBucket** | **String** | Raw Journal Entry Line details of the economic bucket for the Journal Entry Line. |  |
 |**economicBucketComponent** | **String** | Sub bucket of the economic bucket. |  [optional] |
+|**economicBucketVariant** | **String** | Categorisation of a Mark-to-market journal entry line into LongTerm or ShortTerm based on whether the ActivityDate is more than a year after the purchase trade date or not. |  [optional] |
 |**levels** | **List&lt;String&gt;** | Resolved data from the general ledger profile where the GeneralLedgerProfileCode is specified in the GetJournalEntryLines request body. |  [optional] |
 |**sourceLevels** | **List&lt;String&gt;** | Source data from the general ledger profile where the GeneralLedgerProfileCode is specified in the GetJournalEntryLines request body. |  [optional] |
 |**movementSign** | **String** | Indicates if the Journal Entry Line corresponds to a Long or Short movement. |  [optional] |

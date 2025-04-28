@@ -613,11 +613,11 @@ public class ComplexMarketDataApi {
     public APIgetComplexMarketDataRequest getComplexMarketData(String scope, Map<String, ComplexMarketDataId> requestBody) {
         return new APIgetComplexMarketDataRequest(scope, requestBody);
     }
-    private okhttp3.Call listComplexMarketDataCall(OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
-        return listComplexMarketDataCall(asAt,  _callback, new ConfigurationOptions());
+    private okhttp3.Call listComplexMarketDataCall(OffsetDateTime asAt, String effectiveAt, String page, Integer limit, final ApiCallback _callback) throws ApiException {
+        return listComplexMarketDataCall(asAt, effectiveAt, page, limit,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call listComplexMarketDataCall(OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listComplexMarketDataCall(OffsetDateTime asAt, String effectiveAt, String page, Integer limit, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -646,6 +646,18 @@ public class ComplexMarketDataApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
         }
 
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -668,35 +680,35 @@ public class ComplexMarketDataApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listComplexMarketDataValidateBeforeCall(OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        return listComplexMarketDataCall(asAt, _callback, opts);
+    private okhttp3.Call listComplexMarketDataValidateBeforeCall(OffsetDateTime asAt, String effectiveAt, String page, Integer limit, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listComplexMarketDataCall(asAt, effectiveAt, page, limit, _callback, opts);
 
     }
 
 
-    private ApiResponse<ResourceListOfListComplexMarketDataWithMetaDataResponse> listComplexMarketDataWithHttpInfo(OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = listComplexMarketDataValidateBeforeCall(asAt, null, new ConfigurationOptions());
+    private ApiResponse<ResourceListOfListComplexMarketDataWithMetaDataResponse> listComplexMarketDataWithHttpInfo(OffsetDateTime asAt, String effectiveAt, String page, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = listComplexMarketDataValidateBeforeCall(asAt, effectiveAt, page, limit, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ResourceListOfListComplexMarketDataWithMetaDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ResourceListOfListComplexMarketDataWithMetaDataResponse> listComplexMarketDataWithHttpInfo(OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = listComplexMarketDataValidateBeforeCall(asAt, null, opts);
+    private ApiResponse<ResourceListOfListComplexMarketDataWithMetaDataResponse> listComplexMarketDataWithHttpInfo(OffsetDateTime asAt, String effectiveAt, String page, Integer limit, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listComplexMarketDataValidateBeforeCall(asAt, effectiveAt, page, limit, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfListComplexMarketDataWithMetaDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listComplexMarketDataAsync(OffsetDateTime asAt, final ApiCallback<ResourceListOfListComplexMarketDataWithMetaDataResponse> _callback) throws ApiException {
+    private okhttp3.Call listComplexMarketDataAsync(OffsetDateTime asAt, String effectiveAt, String page, Integer limit, final ApiCallback<ResourceListOfListComplexMarketDataWithMetaDataResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listComplexMarketDataValidateBeforeCall(asAt, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = listComplexMarketDataValidateBeforeCall(asAt, effectiveAt, page, limit, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ResourceListOfListComplexMarketDataWithMetaDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call listComplexMarketDataAsync(OffsetDateTime asAt, final ApiCallback<ResourceListOfListComplexMarketDataWithMetaDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listComplexMarketDataAsync(OffsetDateTime asAt, String effectiveAt, String page, Integer limit, final ApiCallback<ResourceListOfListComplexMarketDataWithMetaDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = listComplexMarketDataValidateBeforeCall(asAt, _callback, opts);
+        okhttp3.Call localVarCall = listComplexMarketDataValidateBeforeCall(asAt, effectiveAt, page, limit, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfListComplexMarketDataWithMetaDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -704,6 +716,9 @@ public class ComplexMarketDataApi {
 
     public class APIlistComplexMarketDataRequest {
         private OffsetDateTime asAt;
+        private String effectiveAt;
+        private String page;
+        private Integer limit;
 
         private APIlistComplexMarketDataRequest() {
         }
@@ -715,6 +730,36 @@ public class ComplexMarketDataApi {
          */
         public APIlistComplexMarketDataRequest asAt(OffsetDateTime asAt) {
             this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effectiveAt datetime at which to list the ComplexMarketData. Defaults to latest if not specified. Note  that this parameter is not implemented at this time and the latest version of the ComplexMarketData will  always be returned. (optional)
+         * @return APIlistComplexMarketDataRequest
+         */
+        public APIlistComplexMarketDataRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing ComplexMarketData; this   value is returned from the previous call. If a pagination token is provided, the effectiveAt   and asAt fields must not have changed since the original request. (optional)
+         * @return APIlistComplexMarketDataRequest
+         */
+        public APIlistComplexMarketDataRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. If not specified, no pagination will be applied. It is  highly recommended to supply a value for this parameter as the default behaviour will change in the future. (optional)
+         * @return APIlistComplexMarketDataRequest
+         */
+        public APIlistComplexMarketDataRequest limit(Integer limit) {
+            this.limit = limit;
             return this;
         }
 
@@ -732,7 +777,7 @@ public class ComplexMarketDataApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listComplexMarketDataCall(asAt, _callback);
+            return listComplexMarketDataCall(asAt, effectiveAt, page, limit, _callback);
         }
 
         /**
@@ -748,7 +793,7 @@ public class ComplexMarketDataApi {
          </table>
          */
         public ResourceListOfListComplexMarketDataWithMetaDataResponse execute() throws ApiException {
-            ApiResponse<ResourceListOfListComplexMarketDataWithMetaDataResponse> localVarResp = listComplexMarketDataWithHttpInfo(asAt);
+            ApiResponse<ResourceListOfListComplexMarketDataWithMetaDataResponse> localVarResp = listComplexMarketDataWithHttpInfo(asAt, effectiveAt, page, limit);
             return localVarResp.getData();
         }
 
@@ -765,7 +810,7 @@ public class ComplexMarketDataApi {
          </table>
          */
         public ResourceListOfListComplexMarketDataWithMetaDataResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ResourceListOfListComplexMarketDataWithMetaDataResponse> localVarResp = listComplexMarketDataWithHttpInfo(asAt, opts);
+            ApiResponse<ResourceListOfListComplexMarketDataWithMetaDataResponse> localVarResp = listComplexMarketDataWithHttpInfo(asAt, effectiveAt, page, limit, opts);
             return localVarResp.getData();
         }
 
@@ -782,7 +827,7 @@ public class ComplexMarketDataApi {
          </table>
          */
         public ApiResponse<ResourceListOfListComplexMarketDataWithMetaDataResponse> executeWithHttpInfo() throws ApiException {
-            return listComplexMarketDataWithHttpInfo(asAt);
+            return listComplexMarketDataWithHttpInfo(asAt, effectiveAt, page, limit);
         }
 
         /**
@@ -798,7 +843,7 @@ public class ComplexMarketDataApi {
          </table>
          */
         public ApiResponse<ResourceListOfListComplexMarketDataWithMetaDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return listComplexMarketDataWithHttpInfo(asAt, opts);
+            return listComplexMarketDataWithHttpInfo(asAt, effectiveAt, page, limit, opts);
         }
 
         /**
@@ -815,7 +860,7 @@ public class ComplexMarketDataApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfListComplexMarketDataWithMetaDataResponse> _callback) throws ApiException {
-            return listComplexMarketDataAsync(asAt, _callback);
+            return listComplexMarketDataAsync(asAt, effectiveAt, page, limit, _callback);
         }
 
         /**
@@ -832,7 +877,7 @@ public class ComplexMarketDataApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfListComplexMarketDataWithMetaDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return listComplexMarketDataAsync(asAt, _callback, opts);
+            return listComplexMarketDataAsync(asAt, effectiveAt, page, limit, _callback, opts);
         }
     }
 

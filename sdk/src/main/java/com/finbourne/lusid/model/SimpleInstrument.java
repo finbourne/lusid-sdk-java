@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.LusidInstrument;
 import com.finbourne.lusid.model.TimeZoneConventions;
+import com.finbourne.lusid.model.TradingConventions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -137,6 +138,10 @@ public class SimpleInstrument extends LusidInstrument {
   public static final String SERIALIZED_NAME_TIME_ZONE_CONVENTIONS = "timeZoneConventions";
   @SerializedName(SERIALIZED_NAME_TIME_ZONE_CONVENTIONS)
   private TimeZoneConventions timeZoneConventions;
+
+  public static final String SERIALIZED_NAME_TRADING_CONVENTIONS = "tradingConventions";
+  @SerializedName(SERIALIZED_NAME_TRADING_CONVENTIONS)
+  private TradingConventions tradingConventions;
 
   public SimpleInstrument() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -276,6 +281,27 @@ public class SimpleInstrument extends LusidInstrument {
   }
 
 
+  public SimpleInstrument tradingConventions(TradingConventions tradingConventions) {
+    
+    this.tradingConventions = tradingConventions;
+    return this;
+  }
+
+   /**
+   * Get tradingConventions
+   * @return tradingConventions
+  **/
+  @jakarta.annotation.Nullable
+  public TradingConventions getTradingConventions() {
+    return tradingConventions;
+  }
+
+
+  public void setTradingConventions(TradingConventions tradingConventions) {
+    this.tradingConventions = tradingConventions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -292,6 +318,7 @@ public class SimpleInstrument extends LusidInstrument {
         Objects.equals(this.fgnCcys, simpleInstrument.fgnCcys) &&
         Objects.equals(this.simpleInstrumentType, simpleInstrument.simpleInstrumentType) &&
         Objects.equals(this.timeZoneConventions, simpleInstrument.timeZoneConventions) &&
+        Objects.equals(this.tradingConventions, simpleInstrument.tradingConventions) &&
         super.equals(o);
   }
 
@@ -301,7 +328,7 @@ public class SimpleInstrument extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(maturityDate, domCcy, assetClass, fgnCcys, simpleInstrumentType, timeZoneConventions, super.hashCode());
+    return Objects.hash(maturityDate, domCcy, assetClass, fgnCcys, simpleInstrumentType, timeZoneConventions, tradingConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -322,6 +349,7 @@ public class SimpleInstrument extends LusidInstrument {
     sb.append("    fgnCcys: ").append(toIndentedString(fgnCcys)).append("\n");
     sb.append("    simpleInstrumentType: ").append(toIndentedString(simpleInstrumentType)).append("\n");
     sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
+    sb.append("    tradingConventions: ").append(toIndentedString(tradingConventions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -351,6 +379,7 @@ public class SimpleInstrument extends LusidInstrument {
     openapiFields.add("fgnCcys");
     openapiFields.add("simpleInstrumentType");
     openapiFields.add("timeZoneConventions");
+    openapiFields.add("tradingConventions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

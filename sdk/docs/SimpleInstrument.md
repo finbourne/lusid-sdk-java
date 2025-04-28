@@ -14,6 +14,7 @@ LUSID representation of a Simple Instrument, used as a basic definition of a gen
 |**fgnCcys** | **List&lt;String&gt;** | The set of foreign currencies, if any (optional). |  [optional] |
 |**simpleInstrumentType** | **String** | The Instrument type of the simple instrument. |  |
 |**timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  |  [optional] |
+|**tradingConventions** | [**TradingConventions**](TradingConventions.md) |  |  [optional] |
 
 
 

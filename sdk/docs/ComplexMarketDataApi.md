@@ -206,7 +206,7 @@ public class ComplexMarketDataApiExample {
 
 ## listComplexMarketData
 
-> ResourceListOfListComplexMarketDataWithMetaDataResponse listComplexMarketData(asAt)
+> ResourceListOfListComplexMarketDataWithMetaDataResponse listComplexMarketData(asAt, effectiveAt, page, limit)
 
 ListComplexMarketData: List the set of ComplexMarketData
 
@@ -252,11 +252,14 @@ public class ComplexMarketDataApiExample {
 
         ComplexMarketDataApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplexMarketDataApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the ComplexMarketData. Defaults to latest if not specified.
+        String effectiveAt = "effectiveAt_example"; // String | The effectiveAt datetime at which to list the ComplexMarketData. Defaults to latest if not specified. Note  that this parameter is not implemented at this time and the latest version of the ComplexMarketData will  always be returned.
+        String page = "page_example"; // String | The pagination token to use to continue listing ComplexMarketData; this   value is returned from the previous call. If a pagination token is provided, the effectiveAt   and asAt fields must not have changed since the original request.
+        Integer limit = 56; // Integer | When paginating, limit the results to this number. If not specified, no pagination will be applied. It is  highly recommended to supply a value for this parameter as the default behaviour will change in the future.
         try {
             // uncomment the below to set overrides at the request level
-            // ResourceListOfListComplexMarketDataWithMetaDataResponse result = apiInstance.listComplexMarketData(asAt).execute(opts);
+            // ResourceListOfListComplexMarketDataWithMetaDataResponse result = apiInstance.listComplexMarketData(asAt, effectiveAt, page, limit).execute(opts);
 
-            ResourceListOfListComplexMarketDataWithMetaDataResponse result = apiInstance.listComplexMarketData(asAt).execute();
+            ResourceListOfListComplexMarketDataWithMetaDataResponse result = apiInstance.listComplexMarketData(asAt, effectiveAt, page, limit).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling ComplexMarketDataApi#listComplexMarketData");
@@ -274,6 +277,9 @@ public class ComplexMarketDataApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the ComplexMarketData. Defaults to latest if not specified. | [optional] |
+| **effectiveAt** | **String**| The effectiveAt datetime at which to list the ComplexMarketData. Defaults to latest if not specified. Note  that this parameter is not implemented at this time and the latest version of the ComplexMarketData will  always be returned. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing ComplexMarketData; this   value is returned from the previous call. If a pagination token is provided, the effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
+| **limit** | **Integer**| When paginating, limit the results to this number. If not specified, no pagination will be applied. It is  highly recommended to supply a value for this parameter as the default behaviour will change in the future. | [optional] |
 
 ### Return type
 

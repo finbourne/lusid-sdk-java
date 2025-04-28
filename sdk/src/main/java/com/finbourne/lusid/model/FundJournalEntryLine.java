@@ -149,6 +149,10 @@ public class FundJournalEntryLine {
   @SerializedName(SERIALIZED_NAME_ECONOMIC_BUCKET_COMPONENT)
   private String economicBucketComponent;
 
+  public static final String SERIALIZED_NAME_ECONOMIC_BUCKET_VARIANT = "economicBucketVariant";
+  @SerializedName(SERIALIZED_NAME_ECONOMIC_BUCKET_VARIANT)
+  private String economicBucketVariant;
+
   public static final String SERIALIZED_NAME_LEVELS = "levels";
   @SerializedName(SERIALIZED_NAME_LEVELS)
   private List<String> levels;
@@ -662,6 +666,27 @@ public class FundJournalEntryLine {
   }
 
 
+  public FundJournalEntryLine economicBucketVariant(String economicBucketVariant) {
+    
+    this.economicBucketVariant = economicBucketVariant;
+    return this;
+  }
+
+   /**
+   * Categorisation of a Mark-to-market journal entry line into LongTerm or ShortTerm based on whether the ActivityDate is more than a year after the purchase trade date or not.
+   * @return economicBucketVariant
+  **/
+  @jakarta.annotation.Nullable
+  public String getEconomicBucketVariant() {
+    return economicBucketVariant;
+  }
+
+
+  public void setEconomicBucketVariant(String economicBucketVariant) {
+    this.economicBucketVariant = economicBucketVariant;
+  }
+
+
   public FundJournalEntryLine levels(List<String> levels) {
     
     this.levels = levels;
@@ -894,6 +919,7 @@ public class FundJournalEntryLine {
         Objects.equals(this.holdingType, fundJournalEntryLine.holdingType) &&
         Objects.equals(this.economicBucket, fundJournalEntryLine.economicBucket) &&
         Objects.equals(this.economicBucketComponent, fundJournalEntryLine.economicBucketComponent) &&
+        Objects.equals(this.economicBucketVariant, fundJournalEntryLine.economicBucketVariant) &&
         Objects.equals(this.levels, fundJournalEntryLine.levels) &&
         Objects.equals(this.sourceLevels, fundJournalEntryLine.sourceLevels) &&
         Objects.equals(this.movementSign, fundJournalEntryLine.movementSign) &&
@@ -910,7 +936,7 @@ public class FundJournalEntryLine {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountingDate, activityDate, portfolioId, instrumentId, instrumentScope, subHoldingKeys, taxLotId, generalLedgerAccountCode, local, base, units, postingModuleCode, postingRule, asAtDate, activitiesDescription, sourceType, sourceId, properties, movementName, holdingType, economicBucket, economicBucketComponent, levels, sourceLevels, movementSign, holdingSign, ledgerColumn, journalEntryLineType, shareClassBreakdowns, links);
+    return Objects.hash(accountingDate, activityDate, portfolioId, instrumentId, instrumentScope, subHoldingKeys, taxLotId, generalLedgerAccountCode, local, base, units, postingModuleCode, postingRule, asAtDate, activitiesDescription, sourceType, sourceId, properties, movementName, holdingType, economicBucket, economicBucketComponent, economicBucketVariant, levels, sourceLevels, movementSign, holdingSign, ledgerColumn, journalEntryLineType, shareClassBreakdowns, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -946,6 +972,7 @@ public class FundJournalEntryLine {
     sb.append("    holdingType: ").append(toIndentedString(holdingType)).append("\n");
     sb.append("    economicBucket: ").append(toIndentedString(economicBucket)).append("\n");
     sb.append("    economicBucketComponent: ").append(toIndentedString(economicBucketComponent)).append("\n");
+    sb.append("    economicBucketVariant: ").append(toIndentedString(economicBucketVariant)).append("\n");
     sb.append("    levels: ").append(toIndentedString(levels)).append("\n");
     sb.append("    sourceLevels: ").append(toIndentedString(sourceLevels)).append("\n");
     sb.append("    movementSign: ").append(toIndentedString(movementSign)).append("\n");
@@ -998,6 +1025,7 @@ public class FundJournalEntryLine {
     openapiFields.add("holdingType");
     openapiFields.add("economicBucket");
     openapiFields.add("economicBucketComponent");
+    openapiFields.add("economicBucketVariant");
     openapiFields.add("levels");
     openapiFields.add("sourceLevels");
     openapiFields.add("movementSign");
@@ -1090,6 +1118,9 @@ public class FundJournalEntryLine {
       }
       if ((jsonObj.get("economicBucketComponent") != null && !jsonObj.get("economicBucketComponent").isJsonNull()) && !jsonObj.get("economicBucketComponent").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `economicBucketComponent` to be a primitive type in the JSON string but got `%s`", jsonObj.get("economicBucketComponent").toString()));
+      }
+      if ((jsonObj.get("economicBucketVariant") != null && !jsonObj.get("economicBucketVariant").isJsonNull()) && !jsonObj.get("economicBucketVariant").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `economicBucketVariant` to be a primitive type in the JSON string but got `%s`", jsonObj.get("economicBucketVariant").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("levels") != null && !jsonObj.get("levels").isJsonNull() && !jsonObj.get("levels").isJsonArray()) {
