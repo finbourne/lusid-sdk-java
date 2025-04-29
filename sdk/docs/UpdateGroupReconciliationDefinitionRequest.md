@@ -14,7 +14,7 @@
 |**currencies** | [**GroupReconciliationDefinitionCurrencies**](GroupReconciliationDefinitionCurrencies.md) |  |  [optional] |
 |**transactionDateWindows** | [**TransactionDateWindows**](TransactionDateWindows.md) |  |  [optional] |
 |**comparisonRulesetIds** | [**GroupReconciliationDefinitionComparisonRulesetIds**](GroupReconciliationDefinitionComparisonRulesetIds.md) |  |  [optional] |
-|**breakCodeSource** | [**BreakCodeSource**](BreakCodeSource.md) |  |  |
+|**breakCodeSource** | [**BreakCodeSource**](BreakCodeSource.md) |  |  [optional] |
 
 
 

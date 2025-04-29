@@ -274,7 +274,7 @@ public class CreateGroupReconciliationDefinitionRequest {
    * Get breakCodeSource
    * @return breakCodeSource
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public BreakCodeSource getBreakCodeSource() {
     return breakCodeSource;
   }
@@ -371,7 +371,6 @@ public class CreateGroupReconciliationDefinitionRequest {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("displayName");
     openapiRequiredFields.add("portfolioEntityIds");
-    openapiRequiredFields.add("breakCodeSource");
   }
 
  /**
@@ -422,8 +421,10 @@ public class CreateGroupReconciliationDefinitionRequest {
       if (jsonObj.get("comparisonRulesetIds") != null && !jsonObj.get("comparisonRulesetIds").isJsonNull()) {
         GroupReconciliationDefinitionComparisonRulesetIds.validateJsonElement(jsonObj.get("comparisonRulesetIds"));
       }
-      // validate the required field `breakCodeSource`
-      BreakCodeSource.validateJsonElement(jsonObj.get("breakCodeSource"));
+      // validate the optional field `breakCodeSource`
+      if (jsonObj.get("breakCodeSource") != null && !jsonObj.get("breakCodeSource").isJsonNull()) {
+        BreakCodeSource.validateJsonElement(jsonObj.get("breakCodeSource"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
