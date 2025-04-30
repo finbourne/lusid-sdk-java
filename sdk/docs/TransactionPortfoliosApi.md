@@ -2780,7 +2780,7 @@ public class TransactionPortfoliosApiExample {
 
 ## getTransactions
 
-> VersionedResourceListOfTransaction getTransactions(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, showCancelledTransactions, sortBy)
+> VersionedResourceListOfTransaction getTransactions(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, showCancelledTransactions, sortBy, dataModelScope, dataModelCode)
 
 GetTransactions: Get transactions
 
@@ -2836,11 +2836,13 @@ public class TransactionPortfoliosApiExample {
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. The current behaviour is   to return all transactions if possible, but this will change to defaulting to 1000 if not specified in the future. It is recommended   to populate this field to enable pagination.
         Boolean showCancelledTransactions = true; // Boolean | Option to specify whether or not to include cancelled transactions,   including previous versions of transactions which have since been amended.   Defaults to False if not specified.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\".
+        String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Custom Data Model to use
+        String dataModelCode = "dataModelCode_example"; // String | The optional code of a Custom Data Model to use
         try {
             // uncomment the below to set overrides at the request level
-            // VersionedResourceListOfTransaction result = apiInstance.getTransactions(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, showCancelledTransactions, sortBy).execute(opts);
+            // VersionedResourceListOfTransaction result = apiInstance.getTransactions(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, showCancelledTransactions, sortBy, dataModelScope, dataModelCode).execute(opts);
 
-            VersionedResourceListOfTransaction result = apiInstance.getTransactions(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, showCancelledTransactions, sortBy).execute();
+            VersionedResourceListOfTransaction result = apiInstance.getTransactions(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, showCancelledTransactions, sortBy, dataModelScope, dataModelCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TransactionPortfoliosApi#getTransactions");
@@ -2868,6 +2870,8 @@ public class TransactionPortfoliosApiExample {
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. The current behaviour is   to return all transactions if possible, but this will change to defaulting to 1000 if not specified in the future. It is recommended   to populate this field to enable pagination. | [optional] |
 | **showCancelledTransactions** | **Boolean**| Option to specify whether or not to include cancelled transactions,   including previous versions of transactions which have since been amended.   Defaults to False if not specified. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. | [optional] |
+| **dataModelScope** | **String**| The optional scope of a Custom Data Model to use | [optional] |
+| **dataModelCode** | **String**| The optional code of a Custom Data Model to use | [optional] |
 
 ### Return type
 
@@ -3992,7 +3996,7 @@ public class TransactionPortfoliosApiExample {
 
 ## upsertTransactions
 
-> UpsertPortfolioTransactionsResponse upsertTransactions(scope, code, transactionRequest, preserveProperties)
+> UpsertPortfolioTransactionsResponse upsertTransactions(scope, code, transactionRequest, preserveProperties, dataModelScope, dataModelCode)
 
 UpsertTransactions: Upsert transactions
 
@@ -4041,11 +4045,13 @@ public class TransactionPortfoliosApiExample {
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio.
         List<TransactionRequest> transactionRequest = Arrays.asList(); // List<TransactionRequest> | A list of transactions to be created or updated.
         Boolean preserveProperties = true; // Boolean | If set to false, the entire property set will be overwritten by the provided properties. If not specified or set to true, only the properties provided will be updated.
+        String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Custom Data Model to use
+        String dataModelCode = "dataModelCode_example"; // String | The optional code of a Custom Data Model to use
         try {
             // uncomment the below to set overrides at the request level
-            // UpsertPortfolioTransactionsResponse result = apiInstance.upsertTransactions(scope, code, transactionRequest, preserveProperties).execute(opts);
+            // UpsertPortfolioTransactionsResponse result = apiInstance.upsertTransactions(scope, code, transactionRequest, preserveProperties, dataModelScope, dataModelCode).execute(opts);
 
-            UpsertPortfolioTransactionsResponse result = apiInstance.upsertTransactions(scope, code, transactionRequest, preserveProperties).execute();
+            UpsertPortfolioTransactionsResponse result = apiInstance.upsertTransactions(scope, code, transactionRequest, preserveProperties, dataModelScope, dataModelCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TransactionPortfoliosApi#upsertTransactions");
@@ -4066,6 +4072,8 @@ public class TransactionPortfoliosApiExample {
 | **code** | **String**| The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. | |
 | **transactionRequest** | [**List&lt;TransactionRequest&gt;**](TransactionRequest.md)| A list of transactions to be created or updated. | |
 | **preserveProperties** | **Boolean**| If set to false, the entire property set will be overwritten by the provided properties. If not specified or set to true, only the properties provided will be updated. | [optional] [default to true] |
+| **dataModelScope** | **String**| The optional scope of a Custom Data Model to use | [optional] |
+| **dataModelCode** | **String**| The optional code of a Custom Data Model to use | [optional] |
 
 ### Return type
 
