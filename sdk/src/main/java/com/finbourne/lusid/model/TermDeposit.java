@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.FlowConventions;
 import com.finbourne.lusid.model.LusidInstrument;
+import com.finbourne.lusid.model.TradingConventions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -76,6 +77,10 @@ public class TermDeposit extends LusidInstrument {
   public static final String SERIALIZED_NAME_DOM_CCY = "domCcy";
   @SerializedName(SERIALIZED_NAME_DOM_CCY)
   private String domCcy;
+
+  public static final String SERIALIZED_NAME_TRADING_CONVENTIONS = "tradingConventions";
+  @SerializedName(SERIALIZED_NAME_TRADING_CONVENTIONS)
+  private TradingConventions tradingConventions;
 
   public TermDeposit() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -207,6 +212,27 @@ public class TermDeposit extends LusidInstrument {
   }
 
 
+  public TermDeposit tradingConventions(TradingConventions tradingConventions) {
+    
+    this.tradingConventions = tradingConventions;
+    return this;
+  }
+
+   /**
+   * Get tradingConventions
+   * @return tradingConventions
+  **/
+  @jakarta.annotation.Nullable
+  public TradingConventions getTradingConventions() {
+    return tradingConventions;
+  }
+
+
+  public void setTradingConventions(TradingConventions tradingConventions) {
+    this.tradingConventions = tradingConventions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -223,6 +249,7 @@ public class TermDeposit extends LusidInstrument {
         Objects.equals(this.flowConvention, termDeposit.flowConvention) &&
         (this.rate.compareTo(termDeposit.getRate()) == 0) &&
         Objects.equals(this.domCcy, termDeposit.domCcy) &&
+        Objects.equals(this.tradingConventions, termDeposit.tradingConventions) &&
         super.equals(o);
   }
 
@@ -232,7 +259,7 @@ public class TermDeposit extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, contractSize, flowConvention, rate, domCcy, super.hashCode());
+    return Objects.hash(startDate, maturityDate, contractSize, flowConvention, rate, domCcy, tradingConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -253,6 +280,7 @@ public class TermDeposit extends LusidInstrument {
     sb.append("    flowConvention: ").append(toIndentedString(flowConvention)).append("\n");
     sb.append("    rate: ").append(toIndentedString(rate)).append("\n");
     sb.append("    domCcy: ").append(toIndentedString(domCcy)).append("\n");
+    sb.append("    tradingConventions: ").append(toIndentedString(tradingConventions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -282,6 +310,7 @@ public class TermDeposit extends LusidInstrument {
     openapiFields.add("flowConvention");
     openapiFields.add("rate");
     openapiFields.add("domCcy");
+    openapiFields.add("tradingConventions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

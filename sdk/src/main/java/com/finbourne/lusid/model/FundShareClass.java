@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.LusidInstrument;
 import com.finbourne.lusid.model.SimpleRoundingConvention;
+import com.finbourne.lusid.model.TradingConventions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -77,6 +78,10 @@ public class FundShareClass extends LusidInstrument {
   public static final String SERIALIZED_NAME_ROUNDING_CONVENTIONS = "roundingConventions";
   @SerializedName(SERIALIZED_NAME_ROUNDING_CONVENTIONS)
   private List<SimpleRoundingConvention> roundingConventions;
+
+  public static final String SERIALIZED_NAME_TRADING_CONVENTIONS = "tradingConventions";
+  @SerializedName(SERIALIZED_NAME_TRADING_CONVENTIONS)
+  private TradingConventions tradingConventions;
 
   public FundShareClass() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -216,6 +221,27 @@ public class FundShareClass extends LusidInstrument {
   }
 
 
+  public FundShareClass tradingConventions(TradingConventions tradingConventions) {
+    
+    this.tradingConventions = tradingConventions;
+    return this;
+  }
+
+   /**
+   * Get tradingConventions
+   * @return tradingConventions
+  **/
+  @jakarta.annotation.Nullable
+  public TradingConventions getTradingConventions() {
+    return tradingConventions;
+  }
+
+
+  public void setTradingConventions(TradingConventions tradingConventions) {
+    this.tradingConventions = tradingConventions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -232,6 +258,7 @@ public class FundShareClass extends LusidInstrument {
         Objects.equals(this.hedging, fundShareClass.hedging) &&
         Objects.equals(this.domCcy, fundShareClass.domCcy) &&
         Objects.equals(this.roundingConventions, fundShareClass.roundingConventions) &&
+        Objects.equals(this.tradingConventions, fundShareClass.tradingConventions) &&
         super.equals(o);
   }
 
@@ -241,7 +268,7 @@ public class FundShareClass extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(shortCode, fundShareClassType, distributionPaymentType, hedging, domCcy, roundingConventions, super.hashCode());
+    return Objects.hash(shortCode, fundShareClassType, distributionPaymentType, hedging, domCcy, roundingConventions, tradingConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -262,6 +289,7 @@ public class FundShareClass extends LusidInstrument {
     sb.append("    hedging: ").append(toIndentedString(hedging)).append("\n");
     sb.append("    domCcy: ").append(toIndentedString(domCcy)).append("\n");
     sb.append("    roundingConventions: ").append(toIndentedString(roundingConventions)).append("\n");
+    sb.append("    tradingConventions: ").append(toIndentedString(tradingConventions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -291,6 +319,7 @@ public class FundShareClass extends LusidInstrument {
     openapiFields.add("hedging");
     openapiFields.add("domCcy");
     openapiFields.add("roundingConventions");
+    openapiFields.add("tradingConventions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

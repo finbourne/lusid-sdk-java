@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.EquityAllOfIdentifiers;
 import com.finbourne.lusid.model.LusidInstrument;
 import com.finbourne.lusid.model.TimeZoneConventions;
+import com.finbourne.lusid.model.TradingConventions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -69,6 +70,10 @@ public class Equity extends LusidInstrument {
   @SerializedName(SERIALIZED_NAME_TIME_ZONE_CONVENTIONS)
   private TimeZoneConventions timeZoneConventions;
 
+  public static final String SERIALIZED_NAME_TRADING_CONVENTIONS = "tradingConventions";
+  @SerializedName(SERIALIZED_NAME_TRADING_CONVENTIONS)
+  private TradingConventions tradingConventions;
+
   public Equity() {
     // this.instrumentType = this.getClass().getSimpleName();
   }
@@ -122,7 +127,7 @@ public class Equity extends LusidInstrument {
   }
 
    /**
-   * Equity LotSize, the minimum number of shares that can be bought at once.  Optional, if set must be non-negative, if not set defaults to 1.    Note this property does not impact valuation. From a LUSID analytics perspective, it is purely informational.
+   * Deprecated: Use TradingConventions field instead  Equity LotSize, the minimum number of shares that can be bought at once.  Optional, if set must be non-negative, if not set defaults to 1.    Note this property does not impact valuation. From a LUSID analytics perspective, it is purely informational.
    * @return lotSize
   **/
   @jakarta.annotation.Nullable
@@ -157,6 +162,27 @@ public class Equity extends LusidInstrument {
   }
 
 
+  public Equity tradingConventions(TradingConventions tradingConventions) {
+    
+    this.tradingConventions = tradingConventions;
+    return this;
+  }
+
+   /**
+   * Get tradingConventions
+   * @return tradingConventions
+  **/
+  @jakarta.annotation.Nullable
+  public TradingConventions getTradingConventions() {
+    return tradingConventions;
+  }
+
+
+  public void setTradingConventions(TradingConventions tradingConventions) {
+    this.tradingConventions = tradingConventions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -171,6 +197,7 @@ public class Equity extends LusidInstrument {
         Objects.equals(this.domCcy, equity.domCcy) &&
         Objects.equals(this.lotSize, equity.lotSize) &&
         Objects.equals(this.timeZoneConventions, equity.timeZoneConventions) &&
+        Objects.equals(this.tradingConventions, equity.tradingConventions) &&
         super.equals(o);
   }
 
@@ -180,7 +207,7 @@ public class Equity extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(identifiers, domCcy, lotSize, timeZoneConventions, super.hashCode());
+    return Objects.hash(identifiers, domCcy, lotSize, timeZoneConventions, tradingConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -199,6 +226,7 @@ public class Equity extends LusidInstrument {
     sb.append("    domCcy: ").append(toIndentedString(domCcy)).append("\n");
     sb.append("    lotSize: ").append(toIndentedString(lotSize)).append("\n");
     sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
+    sb.append("    tradingConventions: ").append(toIndentedString(tradingConventions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -226,6 +254,7 @@ public class Equity extends LusidInstrument {
     openapiFields.add("domCcy");
     openapiFields.add("lotSize");
     openapiFields.add("timeZoneConventions");
+    openapiFields.add("tradingConventions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
