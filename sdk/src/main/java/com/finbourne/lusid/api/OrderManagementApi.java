@@ -45,6 +45,8 @@ import com.finbourne.lusid.model.ResourceListOfBlockAndOrders;
 import com.finbourne.lusid.model.ResourceListOfChangeIntervalWithOrderManagementDetail;
 import com.finbourne.lusid.model.ResourceListOfMovedOrderToDifferentBlockResponse;
 import com.finbourne.lusid.model.ResourceListOfPlacement;
+import com.finbourne.lusid.model.SweepBlocksRequest;
+import com.finbourne.lusid.model.SweepBlocksResponse;
 import com.finbourne.lusid.model.UpdateOrdersResponse;
 import com.finbourne.lusid.model.UpdatePlacementsResponse;
 
@@ -2297,6 +2299,241 @@ public class OrderManagementApi {
      */
     public APIrunAllocationServiceRequest runAllocationService(List<ResourceId> resourceId) {
         return new APIrunAllocationServiceRequest(resourceId);
+    }
+    private okhttp3.Call sweepBlocksCall(SweepBlocksRequest sweepBlocksRequest, final ApiCallback _callback) throws ApiException {
+        return sweepBlocksCall(sweepBlocksRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call sweepBlocksCall(SweepBlocksRequest sweepBlocksRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = sweepBlocksRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/ordermanagement/SweepBlocks";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call sweepBlocksValidateBeforeCall(SweepBlocksRequest sweepBlocksRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'sweepBlocksRequest' is set
+        if (sweepBlocksRequest == null) {
+            throw new ApiException("Missing the required parameter 'sweepBlocksRequest' when calling sweepBlocks(Async)");
+        }
+
+        return sweepBlocksCall(sweepBlocksRequest, _callback, opts);
+
+    }
+
+
+    private ApiResponse<SweepBlocksResponse> sweepBlocksWithHttpInfo(SweepBlocksRequest sweepBlocksRequest) throws ApiException {
+        okhttp3.Call localVarCall = sweepBlocksValidateBeforeCall(sweepBlocksRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<SweepBlocksResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<SweepBlocksResponse> sweepBlocksWithHttpInfo(SweepBlocksRequest sweepBlocksRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = sweepBlocksValidateBeforeCall(sweepBlocksRequest, null, opts);
+        Type localVarReturnType = new TypeToken<SweepBlocksResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call sweepBlocksAsync(SweepBlocksRequest sweepBlocksRequest, final ApiCallback<SweepBlocksResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = sweepBlocksValidateBeforeCall(sweepBlocksRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<SweepBlocksResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call sweepBlocksAsync(SweepBlocksRequest sweepBlocksRequest, final ApiCallback<SweepBlocksResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = sweepBlocksValidateBeforeCall(sweepBlocksRequest, _callback, opts);
+        Type localVarReturnType = new TypeToken<SweepBlocksResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIsweepBlocksRequest {
+        private final SweepBlocksRequest sweepBlocksRequest;
+
+        private APIsweepBlocksRequest(SweepBlocksRequest sweepBlocksRequest) {
+            this.sweepBlocksRequest = sweepBlocksRequest;
+        }
+
+        /**
+         * Build call for sweepBlocks
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The results from sweeping blocks. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return sweepBlocksCall(sweepBlocksRequest, _callback);
+        }
+
+        /**
+         * Execute sweepBlocks request
+         * @return SweepBlocksResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The results from sweeping blocks. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public SweepBlocksResponse execute() throws ApiException {
+            ApiResponse<SweepBlocksResponse> localVarResp = sweepBlocksWithHttpInfo(sweepBlocksRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute sweepBlocks request. Use any specified configuration options to override any other configuration for this request only.
+         * @return SweepBlocksResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The results from sweeping blocks. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public SweepBlocksResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<SweepBlocksResponse> localVarResp = sweepBlocksWithHttpInfo(sweepBlocksRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute sweepBlocks request with HTTP info returned
+         * @return ApiResponse&lt;SweepBlocksResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The results from sweeping blocks. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<SweepBlocksResponse> executeWithHttpInfo() throws ApiException {
+            return sweepBlocksWithHttpInfo(sweepBlocksRequest);
+        }
+
+        /**
+         * Execute sweepBlocks request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;SweepBlocksResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The results from sweeping blocks. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<SweepBlocksResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return sweepBlocksWithHttpInfo(sweepBlocksRequest, opts);
+        }
+
+        /**
+         * Execute sweepBlocks request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The results from sweeping blocks. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<SweepBlocksResponse> _callback) throws ApiException {
+            return sweepBlocksAsync(sweepBlocksRequest, _callback);
+        }
+
+        /**
+         * Execute sweepBlocks request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The results from sweeping blocks. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<SweepBlocksResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return sweepBlocksAsync(sweepBlocksRequest, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] SweepBlocks: Sweeps specified blocks, for each block that meets the requirements. The request may be partially successful.
+     * The requirements are:  &lt;list type&#x3D;\&quot;bullet\&quot;&gt;&lt;term&gt;The block exists.&lt;/term&gt;&lt;term&gt;All orders have state \&quot;Closed\&quot;, \&quot;Cancelled\&quot;, \&quot;Canceled\&quot; or \&quot;Booked\&quot;.&lt;/term&gt;&lt;term&gt;All placements have state \&quot;Allocated\&quot; or \&quot;Over-allocated\&quot;.&lt;/term&gt;&lt;term&gt;All allocations have state \&quot;Closed\&quot;, \&quot;Cancelled\&quot;, \&quot;Canceled\&quot; or \&quot;Booked\&quot;.&lt;/term&gt;&lt;term&gt;No execution or allocation has been modified since the passed LatestAllowableModificationTime.&lt;/term&gt;&lt;/list&gt;
+     * @param sweepBlocksRequest  (required)
+     * @return APIsweepBlocksRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The results from sweeping blocks. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIsweepBlocksRequest sweepBlocks(SweepBlocksRequest sweepBlocksRequest) {
+        return new APIsweepBlocksRequest(sweepBlocksRequest);
     }
     private okhttp3.Call updateOrdersCall(Map<String, OrderUpdateRequest> requestBody, final ApiCallback _callback) throws ApiException {
         return updateOrdersCall(requestBody,  _callback, new ConfigurationOptions());

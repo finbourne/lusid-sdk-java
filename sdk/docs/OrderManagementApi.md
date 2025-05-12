@@ -13,6 +13,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**moveOrders**](OrderManagementApi.md#moveOrders) | **POST** /api/ordermanagement/moveorders | [EARLY ACCESS] MoveOrders: Move orders to new or existing block |
 | [**placeBlocks**](OrderManagementApi.md#placeBlocks) | **POST** /api/ordermanagement/placeblocks | [EARLY ACCESS] PlaceBlocks: Places blocks for a given list of placement requests. |
 | [**runAllocationService**](OrderManagementApi.md#runAllocationService) | **POST** /api/ordermanagement/allocate | [EXPERIMENTAL] RunAllocationService: Runs the Allocation Service |
+| [**sweepBlocks**](OrderManagementApi.md#sweepBlocks) | **POST** /api/ordermanagement/SweepBlocks | [EXPERIMENTAL] SweepBlocks: Sweeps specified blocks, for each block that meets the requirements. The request may be partially successful. |
 | [**updateOrders**](OrderManagementApi.md#updateOrders) | **POST** /api/ordermanagement/updateorders | [EARLY ACCESS] UpdateOrders: Update existing orders |
 | [**updatePlacements**](OrderManagementApi.md#updatePlacements) | **POST** /api/ordermanagement/$updateplacements | [EARLY ACCESS] UpdatePlacements: Update existing placements |
 
@@ -844,6 +845,97 @@ public class OrderManagementApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The results from a run of the Allocation Service |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## sweepBlocks
+
+> SweepBlocksResponse sweepBlocks(sweepBlocksRequest)
+
+[EXPERIMENTAL] SweepBlocks: Sweeps specified blocks, for each block that meets the requirements. The request may be partially successful.
+
+The requirements are:  &lt;list type&#x3D;\&quot;bullet\&quot;&gt;&lt;term&gt;The block exists.&lt;/term&gt;&lt;term&gt;All orders have state \&quot;Closed\&quot;, \&quot;Cancelled\&quot;, \&quot;Canceled\&quot; or \&quot;Booked\&quot;.&lt;/term&gt;&lt;term&gt;All placements have state \&quot;Allocated\&quot; or \&quot;Over-allocated\&quot;.&lt;/term&gt;&lt;term&gt;All allocations have state \&quot;Closed\&quot;, \&quot;Cancelled\&quot;, \&quot;Canceled\&quot; or \&quot;Booked\&quot;.&lt;/term&gt;&lt;term&gt;No execution or allocation has been modified since the passed LatestAllowableModificationTime.&lt;/term&gt;&lt;/list&gt;
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.OrderManagementApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class OrderManagementApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // OrderManagementApi apiInstance = apiFactory.build(OrderManagementApi.class);
+
+        OrderManagementApi apiInstance = ApiFactoryBuilder.build(fileName).build(OrderManagementApi.class);
+        SweepBlocksRequest sweepBlocksRequest = new SweepBlocksRequest(); // SweepBlocksRequest | 
+        try {
+            // uncomment the below to set overrides at the request level
+            // SweepBlocksResponse result = apiInstance.sweepBlocks(sweepBlocksRequest).execute(opts);
+
+            SweepBlocksResponse result = apiInstance.sweepBlocks(sweepBlocksRequest).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OrderManagementApi#sweepBlocks");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **sweepBlocksRequest** | [**SweepBlocksRequest**](SweepBlocksRequest.md)|  | |
+
+### Return type
+
+[**SweepBlocksResponse**](SweepBlocksResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The results from sweeping blocks. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
