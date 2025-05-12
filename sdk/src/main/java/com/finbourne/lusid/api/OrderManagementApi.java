@@ -93,11 +93,11 @@ public class OrderManagementApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    private okhttp3.Call bookTransactionsCall(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, Boolean markOrdersAndAllocationsAsBooked, Boolean usePreviewTransactionsForPricing, final ApiCallback _callback) throws ApiException {
-        return bookTransactionsCall(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, usePreviewTransactionsForPricing,  _callback, new ConfigurationOptions());
+    private okhttp3.Call bookTransactionsCall(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, Boolean markOrdersAndAllocationsAsBooked, final ApiCallback _callback) throws ApiException {
+        return bookTransactionsCall(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call bookTransactionsCall(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, Boolean markOrdersAndAllocationsAsBooked, Boolean usePreviewTransactionsForPricing, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call bookTransactionsCall(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, Boolean markOrdersAndAllocationsAsBooked, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -130,10 +130,6 @@ public class OrderManagementApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("markOrdersAndAllocationsAsBooked", markOrdersAndAllocationsAsBooked));
         }
 
-        if (usePreviewTransactionsForPricing != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("usePreviewTransactionsForPricing", usePreviewTransactionsForPricing));
-        }
-
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -160,40 +156,40 @@ public class OrderManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call bookTransactionsValidateBeforeCall(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, Boolean markOrdersAndAllocationsAsBooked, Boolean usePreviewTransactionsForPricing, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call bookTransactionsValidateBeforeCall(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, Boolean markOrdersAndAllocationsAsBooked, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'bookTransactionsRequest' is set
         if (bookTransactionsRequest == null) {
             throw new ApiException("Missing the required parameter 'bookTransactionsRequest' when calling bookTransactions(Async)");
         }
 
-        return bookTransactionsCall(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, usePreviewTransactionsForPricing, _callback, opts);
+        return bookTransactionsCall(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, _callback, opts);
 
     }
 
 
-    private ApiResponse<BookTransactionsResponse> bookTransactionsWithHttpInfo(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, Boolean markOrdersAndAllocationsAsBooked, Boolean usePreviewTransactionsForPricing) throws ApiException {
-        okhttp3.Call localVarCall = bookTransactionsValidateBeforeCall(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, usePreviewTransactionsForPricing, null, new ConfigurationOptions());
+    private ApiResponse<BookTransactionsResponse> bookTransactionsWithHttpInfo(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, Boolean markOrdersAndAllocationsAsBooked) throws ApiException {
+        okhttp3.Call localVarCall = bookTransactionsValidateBeforeCall(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<BookTransactionsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<BookTransactionsResponse> bookTransactionsWithHttpInfo(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, Boolean markOrdersAndAllocationsAsBooked, Boolean usePreviewTransactionsForPricing, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = bookTransactionsValidateBeforeCall(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, usePreviewTransactionsForPricing, null, opts);
+    private ApiResponse<BookTransactionsResponse> bookTransactionsWithHttpInfo(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, Boolean markOrdersAndAllocationsAsBooked, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = bookTransactionsValidateBeforeCall(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, null, opts);
         Type localVarReturnType = new TypeToken<BookTransactionsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call bookTransactionsAsync(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, Boolean markOrdersAndAllocationsAsBooked, Boolean usePreviewTransactionsForPricing, final ApiCallback<BookTransactionsResponse> _callback) throws ApiException {
+    private okhttp3.Call bookTransactionsAsync(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, Boolean markOrdersAndAllocationsAsBooked, final ApiCallback<BookTransactionsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = bookTransactionsValidateBeforeCall(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, usePreviewTransactionsForPricing, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = bookTransactionsValidateBeforeCall(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<BookTransactionsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call bookTransactionsAsync(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, Boolean markOrdersAndAllocationsAsBooked, Boolean usePreviewTransactionsForPricing, final ApiCallback<BookTransactionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call bookTransactionsAsync(BookTransactionsRequest bookTransactionsRequest, Boolean applyFeesAndCommission, Boolean markOrdersAndAllocationsAsBooked, final ApiCallback<BookTransactionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = bookTransactionsValidateBeforeCall(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, usePreviewTransactionsForPricing, _callback, opts);
+        okhttp3.Call localVarCall = bookTransactionsValidateBeforeCall(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, _callback, opts);
         Type localVarReturnType = new TypeToken<BookTransactionsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -203,7 +199,6 @@ public class OrderManagementApi {
         private final BookTransactionsRequest bookTransactionsRequest;
         private Boolean applyFeesAndCommission;
         private Boolean markOrdersAndAllocationsAsBooked;
-        private Boolean usePreviewTransactionsForPricing;
 
         private APIbookTransactionsRequest(BookTransactionsRequest bookTransactionsRequest) {
             this.bookTransactionsRequest = bookTransactionsRequest;
@@ -230,16 +225,6 @@ public class OrderManagementApi {
         }
 
         /**
-         * Set usePreviewTransactionsForPricing
-         * @param usePreviewTransactionsForPricing Whether to use calculators for the transaction type to work out pricing fields on the booked transactions (optional, default to true)
-         * @return APIbookTransactionsRequest
-         */
-        public APIbookTransactionsRequest usePreviewTransactionsForPricing(Boolean usePreviewTransactionsForPricing) {
-            this.usePreviewTransactionsForPricing = usePreviewTransactionsForPricing;
-            return this;
-        }
-
-        /**
          * Build call for bookTransactions
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -253,7 +238,7 @@ public class OrderManagementApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return bookTransactionsCall(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, usePreviewTransactionsForPricing, _callback);
+            return bookTransactionsCall(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, _callback);
         }
 
         /**
@@ -269,7 +254,7 @@ public class OrderManagementApi {
          </table>
          */
         public BookTransactionsResponse execute() throws ApiException {
-            ApiResponse<BookTransactionsResponse> localVarResp = bookTransactionsWithHttpInfo(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, usePreviewTransactionsForPricing);
+            ApiResponse<BookTransactionsResponse> localVarResp = bookTransactionsWithHttpInfo(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked);
             return localVarResp.getData();
         }
 
@@ -286,7 +271,7 @@ public class OrderManagementApi {
          </table>
          */
         public BookTransactionsResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<BookTransactionsResponse> localVarResp = bookTransactionsWithHttpInfo(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, usePreviewTransactionsForPricing, opts);
+            ApiResponse<BookTransactionsResponse> localVarResp = bookTransactionsWithHttpInfo(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, opts);
             return localVarResp.getData();
         }
 
@@ -303,7 +288,7 @@ public class OrderManagementApi {
          </table>
          */
         public ApiResponse<BookTransactionsResponse> executeWithHttpInfo() throws ApiException {
-            return bookTransactionsWithHttpInfo(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, usePreviewTransactionsForPricing);
+            return bookTransactionsWithHttpInfo(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked);
         }
 
         /**
@@ -319,7 +304,7 @@ public class OrderManagementApi {
          </table>
          */
         public ApiResponse<BookTransactionsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return bookTransactionsWithHttpInfo(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, usePreviewTransactionsForPricing, opts);
+            return bookTransactionsWithHttpInfo(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, opts);
         }
 
         /**
@@ -336,7 +321,7 @@ public class OrderManagementApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<BookTransactionsResponse> _callback) throws ApiException {
-            return bookTransactionsAsync(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, usePreviewTransactionsForPricing, _callback);
+            return bookTransactionsAsync(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, _callback);
         }
 
         /**
@@ -353,12 +338,12 @@ public class OrderManagementApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<BookTransactionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return bookTransactionsAsync(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, usePreviewTransactionsForPricing, _callback, opts);
+            return bookTransactionsAsync(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, _callback, opts);
         }
     }
 
     /**
-     * [EXPERIMENTAL] BookTransactions: Books transactions using specific allocations as a source.
+     * BookTransactions: Books transactions using specific allocations as a source.
      * Takes a collection of allocation IDs, and maps fields from those allocations and related orders onto new transactions.
      * @param bookTransactionsRequest The allocations to create transactions for (required)
      * @return APIbookTransactionsRequest
@@ -1298,8 +1283,8 @@ public class OrderManagementApi {
     }
 
     /**
-     * [EARLY ACCESS] CreateOrders: Upsert a Block and associated orders
-     * Upsert a Block and create associated orders.  This will fail if the block exists and already references orders with differing fields to the upsert request.
+     * CreateOrders: Upsert a Block and associated orders
+     * Create orders, and blocks if they don&#39;t already exist.  This will fail if the block exists and already references orders with differing blocking fields.
      * @param blockAndOrdersCreateRequest The collection of block and orders requests. (required)
      * @return APIcreateOrdersRequest
      * @http.response.details
@@ -1560,7 +1545,7 @@ public class OrderManagementApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetOrderHistory: Get the history of an order and related entity changes
+     * GetOrderHistory: Get the history of an order and related entity changes
      * Get the changes that have happened to an order and related entities.
      * @param scope The scope of the order. (required)
      * @param code The code of the order. (required)
@@ -2174,7 +2159,7 @@ public class OrderManagementApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The results from a run of the Allocation Service </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> A list of Allocations </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -2190,7 +2175,7 @@ public class OrderManagementApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The results from a run of the Allocation Service </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> A list of Allocations </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -2207,7 +2192,7 @@ public class OrderManagementApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The results from a run of the Allocation Service </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> A list of Allocations </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -2224,7 +2209,7 @@ public class OrderManagementApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The results from a run of the Allocation Service </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> A list of Allocations </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -2240,7 +2225,7 @@ public class OrderManagementApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The results from a run of the Allocation Service </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> A list of Allocations </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -2257,7 +2242,7 @@ public class OrderManagementApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The results from a run of the Allocation Service </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> A list of Allocations </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -2274,7 +2259,7 @@ public class OrderManagementApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The results from a run of the Allocation Service </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> A list of Allocations </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -2285,14 +2270,14 @@ public class OrderManagementApi {
     }
 
     /**
-     * [EXPERIMENTAL] RunAllocationService: Runs the Allocation Service
-     * This will allocate executions for a given list of placements back to their originating orders.
-     * @param resourceId The List of Placement IDs for which you wish to allocate executions. (required)
+     * RunAllocationService: Runs the Allocation Service
+     * Allocates Executions for a given list of placements back to their originating orders using one of the LUSID algorithms, creating Allocations to record the results.
+     * @param resourceId The List of Placement IDs for which you wish to allocate Executions. (required)
      * @return APIrunAllocationServiceRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The results from a run of the Allocation Service </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> A list of Allocations </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>

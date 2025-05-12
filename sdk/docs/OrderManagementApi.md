@@ -4,15 +4,15 @@ All URIs are relative to *https://www.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**bookTransactions**](OrderManagementApi.md#bookTransactions) | **POST** /api/ordermanagement/booktransactions | [EXPERIMENTAL] BookTransactions: Books transactions using specific allocations as a source. |
+| [**bookTransactions**](OrderManagementApi.md#bookTransactions) | **POST** /api/ordermanagement/booktransactions | BookTransactions: Books transactions using specific allocations as a source. |
 | [**cancelOrders**](OrderManagementApi.md#cancelOrders) | **POST** /api/ordermanagement/cancelorders | [EARLY ACCESS] CancelOrders: Cancel existing orders |
 | [**cancelOrdersAndMoveRemaining**](OrderManagementApi.md#cancelOrdersAndMoveRemaining) | **POST** /api/ordermanagement/cancelordersandmoveremaining | [EARLY ACCESS] CancelOrdersAndMoveRemaining: Cancel existing orders and move any unplaced quantities to new orders in new blocks |
 | [**cancelPlacements**](OrderManagementApi.md#cancelPlacements) | **POST** /api/ordermanagement/$cancelplacements | [EARLY ACCESS] CancelPlacements: Cancel existing placements |
-| [**createOrders**](OrderManagementApi.md#createOrders) | **POST** /api/ordermanagement/createorders | [EARLY ACCESS] CreateOrders: Upsert a Block and associated orders |
-| [**getOrderHistory**](OrderManagementApi.md#getOrderHistory) | **GET** /api/ordermanagement/order/{scope}/{code}/$history | [EXPERIMENTAL] GetOrderHistory: Get the history of an order and related entity changes |
+| [**createOrders**](OrderManagementApi.md#createOrders) | **POST** /api/ordermanagement/createorders | CreateOrders: Upsert a Block and associated orders |
+| [**getOrderHistory**](OrderManagementApi.md#getOrderHistory) | **GET** /api/ordermanagement/order/{scope}/{code}/$history | GetOrderHistory: Get the history of an order and related entity changes |
 | [**moveOrders**](OrderManagementApi.md#moveOrders) | **POST** /api/ordermanagement/moveorders | [EARLY ACCESS] MoveOrders: Move orders to new or existing block |
 | [**placeBlocks**](OrderManagementApi.md#placeBlocks) | **POST** /api/ordermanagement/placeblocks | [EARLY ACCESS] PlaceBlocks: Places blocks for a given list of placement requests. |
-| [**runAllocationService**](OrderManagementApi.md#runAllocationService) | **POST** /api/ordermanagement/allocate | [EXPERIMENTAL] RunAllocationService: Runs the Allocation Service |
+| [**runAllocationService**](OrderManagementApi.md#runAllocationService) | **POST** /api/ordermanagement/allocate | RunAllocationService: Runs the Allocation Service |
 | [**sweepBlocks**](OrderManagementApi.md#sweepBlocks) | **POST** /api/ordermanagement/SweepBlocks | [EXPERIMENTAL] SweepBlocks: Sweeps specified blocks, for each block that meets the requirements. The request may be partially successful. |
 | [**updateOrders**](OrderManagementApi.md#updateOrders) | **POST** /api/ordermanagement/updateorders | [EARLY ACCESS] UpdateOrders: Update existing orders |
 | [**updatePlacements**](OrderManagementApi.md#updatePlacements) | **POST** /api/ordermanagement/$updateplacements | [EARLY ACCESS] UpdatePlacements: Update existing placements |
@@ -21,9 +21,9 @@ All URIs are relative to *https://www.lusid.com/api*
 
 ## bookTransactions
 
-> BookTransactionsResponse bookTransactions(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, usePreviewTransactionsForPricing)
+> BookTransactionsResponse bookTransactions(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked)
 
-[EXPERIMENTAL] BookTransactions: Books transactions using specific allocations as a source.
+BookTransactions: Books transactions using specific allocations as a source.
 
 Takes a collection of allocation IDs, and maps fields from those allocations and related orders onto new transactions.
 
@@ -69,12 +69,11 @@ public class OrderManagementApiExample {
         BookTransactionsRequest bookTransactionsRequest = new BookTransactionsRequest(); // BookTransactionsRequest | The allocations to create transactions for
         Boolean applyFeesAndCommission = true; // Boolean | Whether to apply fees and commissions to transactions (default: true)
         Boolean markOrdersAndAllocationsAsBooked = false; // Boolean | Whether to mark allocations and fully-booked orders with state Booked
-        Boolean usePreviewTransactionsForPricing = true; // Boolean | Whether to use calculators for the transaction type to work out pricing fields on the booked transactions
         try {
             // uncomment the below to set overrides at the request level
-            // BookTransactionsResponse result = apiInstance.bookTransactions(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, usePreviewTransactionsForPricing).execute(opts);
+            // BookTransactionsResponse result = apiInstance.bookTransactions(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked).execute(opts);
 
-            BookTransactionsResponse result = apiInstance.bookTransactions(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked, usePreviewTransactionsForPricing).execute();
+            BookTransactionsResponse result = apiInstance.bookTransactions(bookTransactionsRequest, applyFeesAndCommission, markOrdersAndAllocationsAsBooked).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling OrderManagementApi#bookTransactions");
@@ -94,7 +93,6 @@ public class OrderManagementApiExample {
 | **bookTransactionsRequest** | [**BookTransactionsRequest**](BookTransactionsRequest.md)| The allocations to create transactions for | |
 | **applyFeesAndCommission** | **Boolean**| Whether to apply fees and commissions to transactions (default: true) | [optional] [default to true] |
 | **markOrdersAndAllocationsAsBooked** | **Boolean**| Whether to mark allocations and fully-booked orders with state Booked | [optional] [default to false] |
-| **usePreviewTransactionsForPricing** | **Boolean**| Whether to use calculators for the transaction type to work out pricing fields on the booked transactions | [optional] [default to true] |
 
 ### Return type
 
@@ -393,9 +391,9 @@ public class OrderManagementApiExample {
 
 > ResourceListOfBlockAndOrders createOrders(blockAndOrdersCreateRequest)
 
-[EARLY ACCESS] CreateOrders: Upsert a Block and associated orders
+CreateOrders: Upsert a Block and associated orders
 
-Upsert a Block and create associated orders.  This will fail if the block exists and already references orders with differing fields to the upsert request.
+Create orders, and blocks if they don&#39;t already exist.  This will fail if the block exists and already references orders with differing blocking fields.
 
 ### Example
 
@@ -484,7 +482,7 @@ public class OrderManagementApiExample {
 
 > ResourceListOfChangeIntervalWithOrderManagementDetail getOrderHistory(scope, code, asAt)
 
-[EXPERIMENTAL] GetOrderHistory: Get the history of an order and related entity changes
+GetOrderHistory: Get the history of an order and related entity changes
 
 Get the changes that have happened to an order and related entities.
 
@@ -762,9 +760,9 @@ public class OrderManagementApiExample {
 
 > AllocationServiceRunResponse runAllocationService(resourceId, allocationAlgorithm)
 
-[EXPERIMENTAL] RunAllocationService: Runs the Allocation Service
+RunAllocationService: Runs the Allocation Service
 
-This will allocate executions for a given list of placements back to their originating orders.
+Allocates Executions for a given list of placements back to their originating orders using one of the LUSID algorithms, creating Allocations to record the results.
 
 ### Example
 
@@ -805,7 +803,7 @@ public class OrderManagementApiExample {
         // OrderManagementApi apiInstance = apiFactory.build(OrderManagementApi.class);
 
         OrderManagementApi apiInstance = ApiFactoryBuilder.build(fileName).build(OrderManagementApi.class);
-        List<ResourceId> resourceId = Arrays.asList(); // List<ResourceId> | The List of Placement IDs for which you wish to allocate executions.
+        List<ResourceId> resourceId = Arrays.asList(); // List<ResourceId> | The List of Placement IDs for which you wish to allocate Executions.
         String allocationAlgorithm = "allocationAlgorithm_example"; // String | A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \"PR-FIFO\".  This defaults to \"PR-FIFO\".
         try {
             // uncomment the below to set overrides at the request level
@@ -828,7 +826,7 @@ public class OrderManagementApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **resourceId** | [**List&lt;ResourceId&gt;**](ResourceId.md)| The List of Placement IDs for which you wish to allocate executions. | |
+| **resourceId** | [**List&lt;ResourceId&gt;**](ResourceId.md)| The List of Placement IDs for which you wish to allocate Executions. | |
 | **allocationAlgorithm** | **String**| A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-FIFO\&quot;.  This defaults to \&quot;PR-FIFO\&quot;. | [optional] |
 
 ### Return type
@@ -844,7 +842,7 @@ public class OrderManagementApiExample {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The results from a run of the Allocation Service |  -  |
+| **200** | A list of Allocations |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

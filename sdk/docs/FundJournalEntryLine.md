@@ -14,7 +14,7 @@ A Journal Entry line entity specifically for fund valuation point lines.
 |**instrumentId** | **String** | To indicate the instrument of the transaction that the Journal Entry Line posted for, if applicable. |  |
 |**instrumentScope** | **String** | The scope in which the Journal Entry Line instrument is in. |  |
 |**subHoldingKeys** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | The sub-holding properties which are part of the AccountingKey. |  [optional] |
-|**taxLotId** | **String** | The tax lot Id that the Journal Entry Line is impacting. |  [optional] |
+|**taxLotId** | **String** | If the holding type is &#39;B&#39; (settled cash balance), this is 1. Otherwise, this is the ID of a tax lot if applicable, or the source ID of the original transaction if not. |  [optional] |
 |**generalLedgerAccountCode** | **String** | The code of the account in the general ledger the Journal Entry was posted to. |  |
 |**local** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  |
 |**base** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  |
@@ -26,9 +26,9 @@ A Journal Entry line entity specifically for fund valuation point lines.
 |**sourceType** | **String** | So far are 4 types: LusidTxn, LusidValuation, Manual and External. |  |
 |**sourceId** | **String** | For the Lusid Source Type this will be the txn Id. For the rest will be what the user populates. |  |
 |**properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the Abor. |  [optional] |
-|**movementName** | **String** | The name of the movement. |  [optional] |
-|**holdingType** | **String** | Defines the broad category holding within the portfolio. |  |
-|**economicBucket** | **String** | Raw Journal Entry Line details of the economic bucket for the Journal Entry Line. |  |
+|**movementName** | **String** | If the JE Line is generated from a transaction, the name of the side in the transaction type&#39;s movement. If from a valuation, this is &#39;MarkToMarket&#39;. |  [optional] |
+|**holdingType** | **String** | One of the LUSID holding types such as &#39;P&#39; for position or &#39;B&#39; for settled cash balance. |  |
+|**economicBucket** | **String** | LUSID automatically categorises a JE Line into a broad economic bucket such as &#39;NA_Cost&#39; or &#39;PL_RealPriceGL&#39;. |  |
 |**economicBucketComponent** | **String** | Sub bucket of the economic bucket. |  [optional] |
 |**economicBucketVariant** | **String** | Categorisation of a Mark-to-market journal entry line into LongTerm or ShortTerm based on whether the ActivityDate is more than a year after the purchase trade date or not. |  [optional] |
 |**levels** | **List&lt;String&gt;** | Resolved data from the general ledger profile where the GeneralLedgerProfileCode is specified in the GetJournalEntryLines request body. |  [optional] |

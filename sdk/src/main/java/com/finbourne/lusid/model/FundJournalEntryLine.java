@@ -329,7 +329,7 @@ public class FundJournalEntryLine {
   }
 
    /**
-   * The tax lot Id that the Journal Entry Line is impacting.
+   * If the holding type is &#39;B&#39; (settled cash balance), this is 1. Otherwise, this is the ID of a tax lot if applicable, or the source ID of the original transaction if not.
    * @return taxLotId
   **/
   @jakarta.annotation.Nullable
@@ -589,7 +589,7 @@ public class FundJournalEntryLine {
   }
 
    /**
-   * The name of the movement.
+   * If the JE Line is generated from a transaction, the name of the side in the transaction type&#39;s movement. If from a valuation, this is &#39;MarkToMarket&#39;.
    * @return movementName
   **/
   @jakarta.annotation.Nullable
@@ -610,7 +610,7 @@ public class FundJournalEntryLine {
   }
 
    /**
-   * Defines the broad category holding within the portfolio.
+   * One of the LUSID holding types such as &#39;P&#39; for position or &#39;B&#39; for settled cash balance.
    * @return holdingType
   **/
   @jakarta.annotation.Nonnull
@@ -631,7 +631,7 @@ public class FundJournalEntryLine {
   }
 
    /**
-   * Raw Journal Entry Line details of the economic bucket for the Journal Entry Line.
+   * LUSID automatically categorises a JE Line into a broad economic bucket such as &#39;NA_Cost&#39; or &#39;PL_RealPriceGL&#39;.
    * @return economicBucket
   **/
   @jakarta.annotation.Nonnull

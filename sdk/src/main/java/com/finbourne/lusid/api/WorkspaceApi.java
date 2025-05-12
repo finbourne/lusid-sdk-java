@@ -29,6 +29,7 @@ import com.finbourne.lusid.model.DeletedEntityResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import java.time.OffsetDateTime;
+import com.finbourne.lusid.model.PagedResourceListOfItemAndWorkspace;
 import com.finbourne.lusid.model.PagedResourceListOfWorkspace;
 import com.finbourne.lusid.model.PagedResourceListOfWorkspaceItem;
 import com.finbourne.lusid.model.Workspace;
@@ -2236,6 +2237,313 @@ public class WorkspaceApi {
      */
     public APIlistWorkspacesRequest listWorkspaces(String visibility) {
         return new APIlistWorkspacesRequest(visibility);
+    }
+    private okhttp3.Call searchItemsCall(String visibility, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+        return searchItemsCall(visibility, asAt, page, sortBy, limit, filter,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call searchItemsCall(String visibility, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/workspaces/{visibility}/items"
+            .replace("{" + "visibility" + "}", localVarApiClient.escapeString(visibility.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (sortBy != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "sortBy", sortBy));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call searchItemsValidateBeforeCall(String visibility, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'visibility' is set
+        if (visibility == null) {
+            throw new ApiException("Missing the required parameter 'visibility' when calling searchItems(Async)");
+        }
+
+        return searchItemsCall(visibility, asAt, page, sortBy, limit, filter, _callback, opts);
+
+    }
+
+
+    private ApiResponse<PagedResourceListOfItemAndWorkspace> searchItemsWithHttpInfo(String visibility, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter) throws ApiException {
+        okhttp3.Call localVarCall = searchItemsValidateBeforeCall(visibility, asAt, page, sortBy, limit, filter, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfItemAndWorkspace>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfItemAndWorkspace> searchItemsWithHttpInfo(String visibility, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = searchItemsValidateBeforeCall(visibility, asAt, page, sortBy, limit, filter, null, opts);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfItemAndWorkspace>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call searchItemsAsync(String visibility, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback<PagedResourceListOfItemAndWorkspace> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = searchItemsValidateBeforeCall(visibility, asAt, page, sortBy, limit, filter, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfItemAndWorkspace>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call searchItemsAsync(String visibility, OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, final ApiCallback<PagedResourceListOfItemAndWorkspace> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = searchItemsValidateBeforeCall(visibility, asAt, page, sortBy, limit, filter, _callback, opts);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfItemAndWorkspace>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIsearchItemsRequest {
+        private final String visibility;
+        private OffsetDateTime asAt;
+        private String page;
+        private List<String> sortBy;
+        private Integer limit;
+        private String filter;
+
+        private APIsearchItemsRequest(String visibility) {
+            this.visibility = visibility;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve workspace items. Defaults to &#39;latest&#39; if not specified. (optional)
+         * @return APIsearchItemsRequest
+         */
+        public APIsearchItemsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing workspaces items from a previous call to list workspaces items.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. (optional)
+         * @return APIsearchItemsRequest
+         */
+        public APIsearchItemsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)
+         * @return APIsearchItemsRequest
+         */
+        public APIsearchItemsRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. (optional)
+         * @return APIsearchItemsRequest
+         */
+        public APIsearchItemsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIsearchItemsRequest
+         */
+        public APIsearchItemsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Build call for searchItems
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Items across all workspaces. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return searchItemsCall(visibility, asAt, page, sortBy, limit, filter, _callback);
+        }
+
+        /**
+         * Execute searchItems request
+         * @return PagedResourceListOfItemAndWorkspace
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Items across all workspaces. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfItemAndWorkspace execute() throws ApiException {
+            ApiResponse<PagedResourceListOfItemAndWorkspace> localVarResp = searchItemsWithHttpInfo(visibility, asAt, page, sortBy, limit, filter);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute searchItems request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfItemAndWorkspace
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Items across all workspaces. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfItemAndWorkspace execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfItemAndWorkspace> localVarResp = searchItemsWithHttpInfo(visibility, asAt, page, sortBy, limit, filter, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute searchItems request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfItemAndWorkspace&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Items across all workspaces. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfItemAndWorkspace> executeWithHttpInfo() throws ApiException {
+            return searchItemsWithHttpInfo(visibility, asAt, page, sortBy, limit, filter);
+        }
+
+        /**
+         * Execute searchItems request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfItemAndWorkspace&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Items across all workspaces. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfItemAndWorkspace> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return searchItemsWithHttpInfo(visibility, asAt, page, sortBy, limit, filter, opts);
+        }
+
+        /**
+         * Execute searchItems request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Items across all workspaces. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfItemAndWorkspace> _callback) throws ApiException {
+            return searchItemsAsync(visibility, asAt, page, sortBy, limit, filter, _callback);
+        }
+
+        /**
+         * Execute searchItems request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Items across all workspaces. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfItemAndWorkspace> _callback, ConfigurationOptions opts) throws ApiException {
+            return searchItemsAsync(visibility, asAt, page, sortBy, limit, filter, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] SearchItems: List items across all workspaces.
+     * List items across all workspaces.
+     * @param visibility The visibility for the containing workspace. Must be &#x60;shared&#x60; or &#x60;personal&#x60;; case is important. (required)
+     * @return APIsearchItemsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Items across all workspaces. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIsearchItemsRequest searchItems(String visibility) {
+        return new APIsearchItemsRequest(visibility);
     }
     private okhttp3.Call updateItemCall(String visibility, String workspaceName, String groupName, String itemName, WorkspaceItemUpdateRequest workspaceItemUpdateRequest, final ApiCallback _callback) throws ApiException {
         return updateItemCall(visibility, workspaceName, groupName, itemName, workspaceItemUpdateRequest,  _callback, new ConfigurationOptions());
