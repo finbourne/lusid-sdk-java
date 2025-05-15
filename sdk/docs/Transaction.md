@@ -25,7 +25,7 @@ A list of transactions.
 |**source** | **String** | The source of the transaction. This is used to look up the appropriate transaction group set in the transaction type configuration. |  [optional] |
 |**entryDateTime** | **OffsetDateTime** | The asAt datetime that the transaction was added to LUSID. |  [optional] |
 |**otcConfirmation** | [**OtcConfirmation**](OtcConfirmation.md) |  |  [optional] |
-|**transactionStatus** | [**TransactionStatusEnum**](#TransactionStatusEnum) | The status of the transaction. The available values are: Active, Amended, Cancelled |  [optional] |
+|**transactionStatus** | [**TransactionStatusEnum**](#TransactionStatusEnum) | The status of the transaction. The available values are: Active, Amended, Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp |  [optional] |
 |**cancelDateTime** | **OffsetDateTime** | If the transaction has been cancelled, the asAt datetime that the transaction was cancelled. |  [optional] |
 |**orderId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 |**allocationId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
@@ -44,6 +44,9 @@ A list of transactions.
 | ACTIVE | &quot;Active&quot; |
 | AMENDED | &quot;Amended&quot; |
 | CANCELLED | &quot;Cancelled&quot; |
+| ACTIVEREVERSAL | &quot;ActiveReversal&quot; |
+| ACTIVETRUEUP | &quot;ActiveTrueUp&quot; |
+| CANCELLEDTRUEUP | &quot;CancelledTrueUp&quot; |
 
 
 

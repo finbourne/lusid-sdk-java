@@ -25,6 +25,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.finbourne.lusid.model.DeletedEntityResponse;
 import com.finbourne.lusid.model.InvestorRecord;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
@@ -75,6 +76,256 @@ public class InvestorRecordsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    private okhttp3.Call deleteInvestorRecordCall(String idTypeScope, String idTypeCode, String code, final ApiCallback _callback) throws ApiException {
+        return deleteInvestorRecordCall(idTypeScope, idTypeCode, code,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteInvestorRecordCall(String idTypeScope, String idTypeCode, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/investorrecords/{idTypeScope}/{idTypeCode}/{code}"
+            .replace("{" + "idTypeScope" + "}", localVarApiClient.escapeString(idTypeScope.toString()))
+            .replace("{" + "idTypeCode" + "}", localVarApiClient.escapeString(idTypeCode.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteInvestorRecordValidateBeforeCall(String idTypeScope, String idTypeCode, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'idTypeScope' is set
+        if (idTypeScope == null) {
+            throw new ApiException("Missing the required parameter 'idTypeScope' when calling deleteInvestorRecord(Async)");
+        }
+
+        // verify the required parameter 'idTypeCode' is set
+        if (idTypeCode == null) {
+            throw new ApiException("Missing the required parameter 'idTypeCode' when calling deleteInvestorRecord(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling deleteInvestorRecord(Async)");
+        }
+
+        return deleteInvestorRecordCall(idTypeScope, idTypeCode, code, _callback, opts);
+
+    }
+
+
+    private ApiResponse<DeletedEntityResponse> deleteInvestorRecordWithHttpInfo(String idTypeScope, String idTypeCode, String code) throws ApiException {
+        okhttp3.Call localVarCall = deleteInvestorRecordValidateBeforeCall(idTypeScope, idTypeCode, code, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteInvestorRecordWithHttpInfo(String idTypeScope, String idTypeCode, String code, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteInvestorRecordValidateBeforeCall(idTypeScope, idTypeCode, code, null, opts);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call deleteInvestorRecordAsync(String idTypeScope, String idTypeCode, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteInvestorRecordValidateBeforeCall(idTypeScope, idTypeCode, code, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteInvestorRecordAsync(String idTypeScope, String idTypeCode, String code, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteInvestorRecordValidateBeforeCall(idTypeScope, idTypeCode, code, _callback, opts);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIdeleteInvestorRecordRequest {
+        private final String idTypeScope;
+        private final String idTypeCode;
+        private final String code;
+
+        private APIdeleteInvestorRecordRequest(String idTypeScope, String idTypeCode, String code) {
+            this.idTypeScope = idTypeScope;
+            this.idTypeCode = idTypeCode;
+            this.code = code;
+        }
+
+        /**
+         * Build call for deleteInvestorRecord
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting investor record. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteInvestorRecordCall(idTypeScope, idTypeCode, code, _callback);
+        }
+
+        /**
+         * Execute deleteInvestorRecord request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting investor record. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteInvestorRecordWithHttpInfo(idTypeScope, idTypeCode, code);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteInvestorRecord request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting investor record. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteInvestorRecordWithHttpInfo(idTypeScope, idTypeCode, code, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteInvestorRecord request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting investor record. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteInvestorRecordWithHttpInfo(idTypeScope, idTypeCode, code);
+        }
+
+        /**
+         * Execute deleteInvestorRecord request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting investor record. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteInvestorRecordWithHttpInfo(idTypeScope, idTypeCode, code, opts);
+        }
+
+        /**
+         * Execute deleteInvestorRecord request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting investor record. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteInvestorRecordAsync(idTypeScope, idTypeCode, code, _callback);
+        }
+
+        /**
+         * Execute deleteInvestorRecord request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The response from deleting investor record. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteInvestorRecordAsync(idTypeScope, idTypeCode, code, _callback, opts);
+        }
+    }
+
+    /**
+     * DeleteInvestorRecord: Delete Investor Record
+     * Delete an investor record. Deletion will be valid from the investor record&#39;s creation datetime.  This means that the investor record will no longer exist at any effective datetime from the asAt datetime of deletion.
+     * @param idTypeScope The scope of the investor record identifier type. (required)
+     * @param idTypeCode The code of the investor record identifier type. (required)
+     * @param code Code of the investor record under specified identifier type&#39;s scope and code. This together with defined   identifier type uniquely identifies the investor record to delete. (required)
+     * @return APIdeleteInvestorRecordRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The response from deleting investor record. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIdeleteInvestorRecordRequest deleteInvestorRecord(String idTypeScope, String idTypeCode, String code) {
+        return new APIdeleteInvestorRecordRequest(idTypeScope, idTypeCode, code);
+    }
     private okhttp3.Call getInvestorRecordCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
         return getInvestorRecordCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds,  _callback, new ConfigurationOptions());
     }

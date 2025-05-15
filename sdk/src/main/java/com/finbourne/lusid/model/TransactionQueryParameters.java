@@ -18,6 +18,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -112,6 +113,14 @@ public class TransactionQueryParameters {
   @SerializedName(SERIALIZED_NAME_SHOW_CANCELLED_TRANSACTIONS)
   private Boolean showCancelledTransactions;
 
+  public static final String SERIALIZED_NAME_TIMELINE_SCOPE = "timelineScope";
+  @SerializedName(SERIALIZED_NAME_TIMELINE_SCOPE)
+  private String timelineScope;
+
+  public static final String SERIALIZED_NAME_TIMELINE_CODE = "timelineCode";
+  @SerializedName(SERIALIZED_NAME_TIMELINE_CODE)
+  private String timelineCode;
+
   public TransactionQueryParameters() {
   }
 
@@ -199,6 +208,48 @@ public class TransactionQueryParameters {
   }
 
 
+  public TransactionQueryParameters timelineScope(String timelineScope) {
+    
+    this.timelineScope = timelineScope;
+    return this;
+  }
+
+   /**
+   * Scope of the Timeline for the Portfolio. The Timeline to be used while building transactions
+   * @return timelineScope
+  **/
+  @jakarta.annotation.Nullable
+  public String getTimelineScope() {
+    return timelineScope;
+  }
+
+
+  public void setTimelineScope(String timelineScope) {
+    this.timelineScope = timelineScope;
+  }
+
+
+  public TransactionQueryParameters timelineCode(String timelineCode) {
+    
+    this.timelineCode = timelineCode;
+    return this;
+  }
+
+   /**
+   * Code of the Timeline for the Portfolio. The Timeline to be used while building transactions
+   * @return timelineCode
+  **/
+  @jakarta.annotation.Nullable
+  public String getTimelineCode() {
+    return timelineCode;
+  }
+
+
+  public void setTimelineCode(String timelineCode) {
+    this.timelineCode = timelineCode;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -212,12 +263,25 @@ public class TransactionQueryParameters {
     return Objects.equals(this.startDate, transactionQueryParameters.startDate) &&
         Objects.equals(this.endDate, transactionQueryParameters.endDate) &&
         Objects.equals(this.queryMode, transactionQueryParameters.queryMode) &&
-        Objects.equals(this.showCancelledTransactions, transactionQueryParameters.showCancelledTransactions);
+        Objects.equals(this.showCancelledTransactions, transactionQueryParameters.showCancelledTransactions) &&
+        Objects.equals(this.timelineScope, transactionQueryParameters.timelineScope) &&
+        Objects.equals(this.timelineCode, transactionQueryParameters.timelineCode);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, endDate, queryMode, showCancelledTransactions);
+    return Objects.hash(startDate, endDate, queryMode, showCancelledTransactions, timelineScope, timelineCode);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -228,6 +292,8 @@ public class TransactionQueryParameters {
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    queryMode: ").append(toIndentedString(queryMode)).append("\n");
     sb.append("    showCancelledTransactions: ").append(toIndentedString(showCancelledTransactions)).append("\n");
+    sb.append("    timelineScope: ").append(toIndentedString(timelineScope)).append("\n");
+    sb.append("    timelineCode: ").append(toIndentedString(timelineCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -254,6 +320,8 @@ public class TransactionQueryParameters {
     openapiFields.add("endDate");
     openapiFields.add("queryMode");
     openapiFields.add("showCancelledTransactions");
+    openapiFields.add("timelineScope");
+    openapiFields.add("timelineCode");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -289,6 +357,12 @@ public class TransactionQueryParameters {
       }
       if ((jsonObj.get("queryMode") != null && !jsonObj.get("queryMode").isJsonNull()) && !jsonObj.get("queryMode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `queryMode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("queryMode").toString()));
+      }
+      if ((jsonObj.get("timelineScope") != null && !jsonObj.get("timelineScope").isJsonNull()) && !jsonObj.get("timelineScope").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `timelineScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timelineScope").toString()));
+      }
+      if ((jsonObj.get("timelineCode") != null && !jsonObj.get("timelineCode").isJsonNull()) && !jsonObj.get("timelineCode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `timelineCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timelineCode").toString()));
       }
   }
 

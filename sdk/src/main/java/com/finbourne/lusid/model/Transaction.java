@@ -133,7 +133,7 @@ public class Transaction {
   private OtcConfirmation otcConfirmation;
 
   /**
-   * The status of the transaction. The available values are: Active, Amended, Cancelled
+   * The status of the transaction. The available values are: Active, Amended, Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp
    */
   @JsonAdapter(TransactionStatusEnum.Adapter.class)
   public enum TransactionStatusEnum {
@@ -141,7 +141,13 @@ public class Transaction {
     
     AMENDED("Amended"),
     
-    CANCELLED("Cancelled");
+    CANCELLED("Cancelled"),
+    
+    ACTIVEREVERSAL("ActiveReversal"),
+    
+    ACTIVETRUEUP("ActiveTrueUp"),
+    
+    CANCELLEDTRUEUP("CancelledTrueUp");
 
     private String value;
 
@@ -600,7 +606,7 @@ public class Transaction {
   }
 
    /**
-   * The status of the transaction. The available values are: Active, Amended, Cancelled
+   * The status of the transaction. The available values are: Active, Amended, Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp
    * @return transactionStatus
   **/
   @jakarta.annotation.Nullable

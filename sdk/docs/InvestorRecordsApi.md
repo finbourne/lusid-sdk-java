@@ -4,9 +4,105 @@ All URIs are relative to *https://www.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**deleteInvestorRecord**](InvestorRecordsApi.md#deleteInvestorRecord) | **DELETE** /api/investorrecords/{idTypeScope}/{idTypeCode}/{code} | DeleteInvestorRecord: Delete Investor Record |
 | [**getInvestorRecord**](InvestorRecordsApi.md#getInvestorRecord) | **GET** /api/investorrecords/{idTypeScope}/{idTypeCode}/{code} | [EARLY ACCESS] GetInvestorRecord: Get Investor Record |
 | [**upsertInvestorRecords**](InvestorRecordsApi.md#upsertInvestorRecords) | **POST** /api/investorrecords/$batchUpsert | [EARLY ACCESS] UpsertInvestorRecords: Pluralised upsert of Investor Records |
 
+
+
+## deleteInvestorRecord
+
+> DeletedEntityResponse deleteInvestorRecord(idTypeScope, idTypeCode, code)
+
+DeleteInvestorRecord: Delete Investor Record
+
+Delete an investor record. Deletion will be valid from the investor record&#39;s creation datetime.  This means that the investor record will no longer exist at any effective datetime from the asAt datetime of deletion.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.InvestorRecordsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class InvestorRecordsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InvestorRecordsApi apiInstance = apiFactory.build(InvestorRecordsApi.class);
+
+        InvestorRecordsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InvestorRecordsApi.class);
+        String idTypeScope = "idTypeScope_example"; // String | The scope of the investor record identifier type.
+        String idTypeCode = "idTypeCode_example"; // String | The code of the investor record identifier type.
+        String code = "code_example"; // String | Code of the investor record under specified identifier type's scope and code. This together with defined   identifier type uniquely identifies the investor record to delete.
+        try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteInvestorRecord(idTypeScope, idTypeCode, code).execute(opts);
+
+            DeletedEntityResponse result = apiInstance.deleteInvestorRecord(idTypeScope, idTypeCode, code).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InvestorRecordsApi#deleteInvestorRecord");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **idTypeScope** | **String**| The scope of the investor record identifier type. | |
+| **idTypeCode** | **String**| The code of the investor record identifier type. | |
+| **code** | **String**| Code of the investor record under specified identifier type&#39;s scope and code. This together with defined   identifier type uniquely identifies the investor record to delete. | |
+
+### Return type
+
+[**DeletedEntityResponse**](DeletedEntityResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The response from deleting investor record. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 
 ## getInvestorRecord

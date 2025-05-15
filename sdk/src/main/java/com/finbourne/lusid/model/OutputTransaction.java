@@ -136,7 +136,7 @@ public class OutputTransaction {
   private String source;
 
   /**
-   * The status of the transaction. The available values are: Active, Amended, Cancelled
+   * The status of the transaction. The available values are: Active, Amended, Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp
    */
   @JsonAdapter(TransactionStatusEnum.Adapter.class)
   public enum TransactionStatusEnum {
@@ -144,7 +144,13 @@ public class OutputTransaction {
     
     AMENDED("Amended"),
     
-    CANCELLED("Cancelled");
+    CANCELLED("Cancelled"),
+    
+    ACTIVEREVERSAL("ActiveReversal"),
+    
+    ACTIVETRUEUP("ActiveTrueUp"),
+    
+    CANCELLEDTRUEUP("CancelledTrueUp");
 
     private String value;
 
@@ -239,6 +245,10 @@ public class OutputTransaction {
   public static final String SERIALIZED_NAME_ALLOCATION_ID = "allocationId";
   @SerializedName(SERIALIZED_NAME_ALLOCATION_ID)
   private ResourceId allocationId;
+
+  public static final String SERIALIZED_NAME_ACCOUNTING_DATE = "accountingDate";
+  @SerializedName(SERIALIZED_NAME_ACCOUNTING_DATE)
+  private OffsetDateTime accountingDate;
 
   public OutputTransaction() {
   }
@@ -644,7 +654,7 @@ public class OutputTransaction {
   }
 
    /**
-   * The status of the transaction. The available values are: Active, Amended, Cancelled
+   * The status of the transaction. The available values are: Active, Amended, Cancelled, ActiveReversal, ActiveTrueUp, CancelledTrueUp
    * @return transactionStatus
   **/
   @jakarta.annotation.Nullable
@@ -947,6 +957,27 @@ public class OutputTransaction {
   }
 
 
+  public OutputTransaction accountingDate(OffsetDateTime accountingDate) {
+    
+    this.accountingDate = accountingDate;
+    return this;
+  }
+
+   /**
+   * The accounting date of the transaction.
+   * @return accountingDate
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getAccountingDate() {
+    return accountingDate;
+  }
+
+
+  public void setAccountingDate(OffsetDateTime accountingDate) {
+    this.accountingDate = accountingDate;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -988,7 +1019,8 @@ public class OutputTransaction {
         (this.grossTransactionAmount.compareTo(outputTransaction.getGrossTransactionAmount()) == 0) &&
         Objects.equals(this.otcConfirmation, outputTransaction.otcConfirmation) &&
         Objects.equals(this.orderId, outputTransaction.orderId) &&
-        Objects.equals(this.allocationId, outputTransaction.allocationId);
+        Objects.equals(this.allocationId, outputTransaction.allocationId) &&
+        Objects.equals(this.accountingDate, outputTransaction.accountingDate);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -997,7 +1029,7 @@ public class OutputTransaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transactionId, type, description, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionAmount, transactionPrice, totalConsideration, exchangeRate, transactionToPortfolioRate, transactionCurrency, properties, counterpartyId, source, transactionStatus, entryDateTime, cancelDateTime, realisedGainLoss, holdingIds, sourceType, sourceInstrumentEventId, custodianAccount, transactionGroupId, resolvedTransactionTypeDetails, grossTransactionAmount, otcConfirmation, orderId, allocationId);
+    return Objects.hash(transactionId, type, description, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionAmount, transactionPrice, totalConsideration, exchangeRate, transactionToPortfolioRate, transactionCurrency, properties, counterpartyId, source, transactionStatus, entryDateTime, cancelDateTime, realisedGainLoss, holdingIds, sourceType, sourceInstrumentEventId, custodianAccount, transactionGroupId, resolvedTransactionTypeDetails, grossTransactionAmount, otcConfirmation, orderId, allocationId, accountingDate);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1043,6 +1075,7 @@ public class OutputTransaction {
     sb.append("    otcConfirmation: ").append(toIndentedString(otcConfirmation)).append("\n");
     sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
     sb.append("    allocationId: ").append(toIndentedString(allocationId)).append("\n");
+    sb.append("    accountingDate: ").append(toIndentedString(accountingDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -1097,6 +1130,7 @@ public class OutputTransaction {
     openapiFields.add("otcConfirmation");
     openapiFields.add("orderId");
     openapiFields.add("allocationId");
+    openapiFields.add("accountingDate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
