@@ -96,6 +96,10 @@ public class PricingOptions {
   @SerializedName(SERIALIZED_NAME_MBS_VALUATION_USING_HOLDING_CURRENT_FACE)
   private Boolean mbsValuationUsingHoldingCurrentFace;
 
+  public static final String SERIALIZED_NAME_CONVERT_SRS_CASH_FLOWS_TO_PORTFOLIO_CURRENCY = "convertSrsCashFlowsToPortfolioCurrency";
+  @SerializedName(SERIALIZED_NAME_CONVERT_SRS_CASH_FLOWS_TO_PORTFOLIO_CURRENCY)
+  private Boolean convertSrsCashFlowsToPortfolioCurrency;
+
   public static final String SERIALIZED_NAME_CONSERVED_QUANTITY_FOR_LOOKTHROUGH_EXPANSION = "conservedQuantityForLookthroughExpansion";
   @SerializedName(SERIALIZED_NAME_CONSERVED_QUANTITY_FOR_LOOKTHROUGH_EXPANSION)
   private String conservedQuantityForLookthroughExpansion;
@@ -338,6 +342,27 @@ public class PricingOptions {
   }
 
 
+  public PricingOptions convertSrsCashFlowsToPortfolioCurrency(Boolean convertSrsCashFlowsToPortfolioCurrency) {
+    
+    this.convertSrsCashFlowsToPortfolioCurrency = convertSrsCashFlowsToPortfolioCurrency;
+    return this;
+  }
+
+   /**
+   * In the case upserted structured result store (SRS) cashflows are not   in the portfolio currency, set this parameter to True to convert said  cashflows into the portfolio currency. By default, this flag is set   to False and Lusid will not do any FX conversion.    Please note that FX conversion is dependent on the data available in  the quote store - ensure that all relevant FX quotes have been loaded  for cashflow currency conversion.
+   * @return convertSrsCashFlowsToPortfolioCurrency
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getConvertSrsCashFlowsToPortfolioCurrency() {
+    return convertSrsCashFlowsToPortfolioCurrency;
+  }
+
+
+  public void setConvertSrsCashFlowsToPortfolioCurrency(Boolean convertSrsCashFlowsToPortfolioCurrency) {
+    this.convertSrsCashFlowsToPortfolioCurrency = convertSrsCashFlowsToPortfolioCurrency;
+  }
+
+
   public PricingOptions conservedQuantityForLookthroughExpansion(String conservedQuantityForLookthroughExpansion) {
     
     this.conservedQuantityForLookthroughExpansion = conservedQuantityForLookthroughExpansion;
@@ -401,6 +426,7 @@ public class PricingOptions {
         Objects.equals(this.useChildSubHoldingKeysForPortfolioExpansion, pricingOptions.useChildSubHoldingKeysForPortfolioExpansion) &&
         Objects.equals(this.validateDomesticAndQuoteCurrenciesAreConsistent, pricingOptions.validateDomesticAndQuoteCurrenciesAreConsistent) &&
         Objects.equals(this.mbsValuationUsingHoldingCurrentFace, pricingOptions.mbsValuationUsingHoldingCurrentFace) &&
+        Objects.equals(this.convertSrsCashFlowsToPortfolioCurrency, pricingOptions.convertSrsCashFlowsToPortfolioCurrency) &&
         Objects.equals(this.conservedQuantityForLookthroughExpansion, pricingOptions.conservedQuantityForLookthroughExpansion) &&
         Objects.equals(this.returnZeroPv, pricingOptions.returnZeroPv);
   }
@@ -411,7 +437,7 @@ public class PricingOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(modelSelection, useInstrumentTypeToDeterminePricer, allowAnyInstrumentsWithSecUidToPriceOffLookup, allowPartiallySuccessfulEvaluation, produceSeparateResultForLinearOtcLegs, enableUseOfCachedUnitResults, windowValuationOnInstrumentStartEnd, removeContingentCashflowsInPaymentDiary, useChildSubHoldingKeysForPortfolioExpansion, validateDomesticAndQuoteCurrenciesAreConsistent, mbsValuationUsingHoldingCurrentFace, conservedQuantityForLookthroughExpansion, returnZeroPv);
+    return Objects.hash(modelSelection, useInstrumentTypeToDeterminePricer, allowAnyInstrumentsWithSecUidToPriceOffLookup, allowPartiallySuccessfulEvaluation, produceSeparateResultForLinearOtcLegs, enableUseOfCachedUnitResults, windowValuationOnInstrumentStartEnd, removeContingentCashflowsInPaymentDiary, useChildSubHoldingKeysForPortfolioExpansion, validateDomesticAndQuoteCurrenciesAreConsistent, mbsValuationUsingHoldingCurrentFace, convertSrsCashFlowsToPortfolioCurrency, conservedQuantityForLookthroughExpansion, returnZeroPv);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -436,6 +462,7 @@ public class PricingOptions {
     sb.append("    useChildSubHoldingKeysForPortfolioExpansion: ").append(toIndentedString(useChildSubHoldingKeysForPortfolioExpansion)).append("\n");
     sb.append("    validateDomesticAndQuoteCurrenciesAreConsistent: ").append(toIndentedString(validateDomesticAndQuoteCurrenciesAreConsistent)).append("\n");
     sb.append("    mbsValuationUsingHoldingCurrentFace: ").append(toIndentedString(mbsValuationUsingHoldingCurrentFace)).append("\n");
+    sb.append("    convertSrsCashFlowsToPortfolioCurrency: ").append(toIndentedString(convertSrsCashFlowsToPortfolioCurrency)).append("\n");
     sb.append("    conservedQuantityForLookthroughExpansion: ").append(toIndentedString(conservedQuantityForLookthroughExpansion)).append("\n");
     sb.append("    returnZeroPv: ").append(toIndentedString(returnZeroPv)).append("\n");
     sb.append("}");
@@ -471,6 +498,7 @@ public class PricingOptions {
     openapiFields.add("useChildSubHoldingKeysForPortfolioExpansion");
     openapiFields.add("validateDomesticAndQuoteCurrenciesAreConsistent");
     openapiFields.add("mbsValuationUsingHoldingCurrentFace");
+    openapiFields.add("convertSrsCashFlowsToPortfolioCurrency");
     openapiFields.add("conservedQuantityForLookthroughExpansion");
     openapiFields.add("returnZeroPv");
 
