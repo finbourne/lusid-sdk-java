@@ -74,6 +74,10 @@ public class StagedModification {
   @SerializedName(SERIALIZED_NAME_REQUESTED_ID_STAGED)
   private String requestedIdStaged;
 
+  public static final String SERIALIZED_NAME_REQUEST_REASON = "requestReason";
+  @SerializedName(SERIALIZED_NAME_REQUEST_REASON)
+  private String requestReason;
+
   public static final String SERIALIZED_NAME_ACTION = "action";
   @SerializedName(SERIALIZED_NAME_ACTION)
   private String action;
@@ -210,6 +214,27 @@ public class StagedModification {
 
   public void setRequestedIdStaged(String requestedIdStaged) {
     this.requestedIdStaged = requestedIdStaged;
+  }
+
+
+  public StagedModification requestReason(String requestReason) {
+    
+    this.requestReason = requestReason;
+    return this;
+  }
+
+   /**
+   * Reason staged change request made.
+   * @return requestReason
+  **/
+  @jakarta.annotation.Nullable
+  public String getRequestReason() {
+    return requestReason;
+  }
+
+
+  public void setRequestReason(String requestReason) {
+    this.requestReason = requestReason;
   }
 
 
@@ -516,6 +541,7 @@ public class StagedModification {
         Objects.equals(this.asAtStaged, stagedModification.asAtStaged) &&
         Objects.equals(this.userIdStaged, stagedModification.userIdStaged) &&
         Objects.equals(this.requestedIdStaged, stagedModification.requestedIdStaged) &&
+        Objects.equals(this.requestReason, stagedModification.requestReason) &&
         Objects.equals(this.action, stagedModification.action) &&
         Objects.equals(this.stagingRule, stagedModification.stagingRule) &&
         Objects.equals(this.decisions, stagedModification.decisions) &&
@@ -537,7 +563,7 @@ public class StagedModification {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, asAtStaged, userIdStaged, requestedIdStaged, action, stagingRule, decisions, decisionsCount, status, asAtClosed, entityType, scope, entityUniqueId, requestedChanges, entityHrefs, displayName, links);
+    return Objects.hash(id, asAtStaged, userIdStaged, requestedIdStaged, requestReason, action, stagingRule, decisions, decisionsCount, status, asAtClosed, entityType, scope, entityUniqueId, requestedChanges, entityHrefs, displayName, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -555,6 +581,7 @@ public class StagedModification {
     sb.append("    asAtStaged: ").append(toIndentedString(asAtStaged)).append("\n");
     sb.append("    userIdStaged: ").append(toIndentedString(userIdStaged)).append("\n");
     sb.append("    requestedIdStaged: ").append(toIndentedString(requestedIdStaged)).append("\n");
+    sb.append("    requestReason: ").append(toIndentedString(requestReason)).append("\n");
     sb.append("    action: ").append(toIndentedString(action)).append("\n");
     sb.append("    stagingRule: ").append(toIndentedString(stagingRule)).append("\n");
     sb.append("    decisions: ").append(toIndentedString(decisions)).append("\n");
@@ -594,6 +621,7 @@ public class StagedModification {
     openapiFields.add("asAtStaged");
     openapiFields.add("userIdStaged");
     openapiFields.add("requestedIdStaged");
+    openapiFields.add("requestReason");
     openapiFields.add("action");
     openapiFields.add("stagingRule");
     openapiFields.add("decisions");
@@ -633,6 +661,9 @@ public class StagedModification {
       }
       if ((jsonObj.get("requestedIdStaged") != null && !jsonObj.get("requestedIdStaged").isJsonNull()) && !jsonObj.get("requestedIdStaged").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `requestedIdStaged` to be a primitive type in the JSON string but got `%s`", jsonObj.get("requestedIdStaged").toString()));
+      }
+      if ((jsonObj.get("requestReason") != null && !jsonObj.get("requestReason").isJsonNull()) && !jsonObj.get("requestReason").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `requestReason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("requestReason").toString()));
       }
       if ((jsonObj.get("action") != null && !jsonObj.get("action").isJsonNull()) && !jsonObj.get("action").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `action` to be a primitive type in the JSON string but got `%s`", jsonObj.get("action").toString()));

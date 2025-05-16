@@ -71,6 +71,10 @@ public class Version {
   @SerializedName(SERIALIZED_NAME_REQUEST_ID_CREATED)
   private String requestIdCreated;
 
+  public static final String SERIALIZED_NAME_REASON_CREATED = "reasonCreated";
+  @SerializedName(SERIALIZED_NAME_REASON_CREATED)
+  private String reasonCreated;
+
   public static final String SERIALIZED_NAME_AS_AT_MODIFIED = "asAtModified";
   @SerializedName(SERIALIZED_NAME_AS_AT_MODIFIED)
   private OffsetDateTime asAtModified;
@@ -82,6 +86,10 @@ public class Version {
   public static final String SERIALIZED_NAME_REQUEST_ID_MODIFIED = "requestIdModified";
   @SerializedName(SERIALIZED_NAME_REQUEST_ID_MODIFIED)
   private String requestIdModified;
+
+  public static final String SERIALIZED_NAME_REASON_MODIFIED = "reasonModified";
+  @SerializedName(SERIALIZED_NAME_REASON_MODIFIED)
+  private String reasonModified;
 
   public static final String SERIALIZED_NAME_AS_AT_VERSION_NUMBER = "asAtVersionNumber";
   @SerializedName(SERIALIZED_NAME_AS_AT_VERSION_NUMBER)
@@ -203,6 +211,27 @@ public class Version {
   }
 
 
+  public Version reasonCreated(String reasonCreated) {
+    
+    this.reasonCreated = reasonCreated;
+    return this;
+  }
+
+   /**
+   * The reason for an entity creation.
+   * @return reasonCreated
+  **/
+  @jakarta.annotation.Nullable
+  public String getReasonCreated() {
+    return reasonCreated;
+  }
+
+
+  public void setReasonCreated(String reasonCreated) {
+    this.reasonCreated = reasonCreated;
+  }
+
+
   public Version asAtModified(OffsetDateTime asAtModified) {
     
     this.asAtModified = asAtModified;
@@ -263,6 +292,27 @@ public class Version {
 
   public void setRequestIdModified(String requestIdModified) {
     this.requestIdModified = requestIdModified;
+  }
+
+
+  public Version reasonModified(String reasonModified) {
+    
+    this.reasonModified = reasonModified;
+    return this;
+  }
+
+   /**
+   * The reason for an entity modification.
+   * @return reasonModified
+  **/
+  @jakarta.annotation.Nullable
+  public String getReasonModified() {
+    return reasonModified;
+  }
+
+
+  public void setReasonModified(String reasonModified) {
+    this.reasonModified = reasonModified;
   }
 
 
@@ -344,9 +394,11 @@ public class Version {
         Objects.equals(this.asAtCreated, version.asAtCreated) &&
         Objects.equals(this.userIdCreated, version.userIdCreated) &&
         Objects.equals(this.requestIdCreated, version.requestIdCreated) &&
+        Objects.equals(this.reasonCreated, version.reasonCreated) &&
         Objects.equals(this.asAtModified, version.asAtModified) &&
         Objects.equals(this.userIdModified, version.userIdModified) &&
         Objects.equals(this.requestIdModified, version.requestIdModified) &&
+        Objects.equals(this.reasonModified, version.reasonModified) &&
         Objects.equals(this.asAtVersionNumber, version.asAtVersionNumber) &&
         Objects.equals(this.entityUniqueId, version.entityUniqueId) &&
         Objects.equals(this.stagedModificationIdModified, version.stagedModificationIdModified);
@@ -358,7 +410,7 @@ public class Version {
 
   @Override
   public int hashCode() {
-    return Objects.hash(effectiveFrom, asAtDate, asAtCreated, userIdCreated, requestIdCreated, asAtModified, userIdModified, requestIdModified, asAtVersionNumber, entityUniqueId, stagedModificationIdModified);
+    return Objects.hash(effectiveFrom, asAtDate, asAtCreated, userIdCreated, requestIdCreated, reasonCreated, asAtModified, userIdModified, requestIdModified, reasonModified, asAtVersionNumber, entityUniqueId, stagedModificationIdModified);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -377,9 +429,11 @@ public class Version {
     sb.append("    asAtCreated: ").append(toIndentedString(asAtCreated)).append("\n");
     sb.append("    userIdCreated: ").append(toIndentedString(userIdCreated)).append("\n");
     sb.append("    requestIdCreated: ").append(toIndentedString(requestIdCreated)).append("\n");
+    sb.append("    reasonCreated: ").append(toIndentedString(reasonCreated)).append("\n");
     sb.append("    asAtModified: ").append(toIndentedString(asAtModified)).append("\n");
     sb.append("    userIdModified: ").append(toIndentedString(userIdModified)).append("\n");
     sb.append("    requestIdModified: ").append(toIndentedString(requestIdModified)).append("\n");
+    sb.append("    reasonModified: ").append(toIndentedString(reasonModified)).append("\n");
     sb.append("    asAtVersionNumber: ").append(toIndentedString(asAtVersionNumber)).append("\n");
     sb.append("    entityUniqueId: ").append(toIndentedString(entityUniqueId)).append("\n");
     sb.append("    stagedModificationIdModified: ").append(toIndentedString(stagedModificationIdModified)).append("\n");
@@ -410,9 +464,11 @@ public class Version {
     openapiFields.add("asAtCreated");
     openapiFields.add("userIdCreated");
     openapiFields.add("requestIdCreated");
+    openapiFields.add("reasonCreated");
     openapiFields.add("asAtModified");
     openapiFields.add("userIdModified");
     openapiFields.add("requestIdModified");
+    openapiFields.add("reasonModified");
     openapiFields.add("asAtVersionNumber");
     openapiFields.add("entityUniqueId");
     openapiFields.add("stagedModificationIdModified");
@@ -449,11 +505,17 @@ public class Version {
       if ((jsonObj.get("requestIdCreated") != null && !jsonObj.get("requestIdCreated").isJsonNull()) && !jsonObj.get("requestIdCreated").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `requestIdCreated` to be a primitive type in the JSON string but got `%s`", jsonObj.get("requestIdCreated").toString()));
       }
+      if ((jsonObj.get("reasonCreated") != null && !jsonObj.get("reasonCreated").isJsonNull()) && !jsonObj.get("reasonCreated").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `reasonCreated` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reasonCreated").toString()));
+      }
       if ((jsonObj.get("userIdModified") != null && !jsonObj.get("userIdModified").isJsonNull()) && !jsonObj.get("userIdModified").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `userIdModified` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userIdModified").toString()));
       }
       if ((jsonObj.get("requestIdModified") != null && !jsonObj.get("requestIdModified").isJsonNull()) && !jsonObj.get("requestIdModified").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `requestIdModified` to be a primitive type in the JSON string but got `%s`", jsonObj.get("requestIdModified").toString()));
+      }
+      if ((jsonObj.get("reasonModified") != null && !jsonObj.get("reasonModified").isJsonNull()) && !jsonObj.get("reasonModified").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `reasonModified` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reasonModified").toString()));
       }
       if ((jsonObj.get("entityUniqueId") != null && !jsonObj.get("entityUniqueId").isJsonNull()) && !jsonObj.get("entityUniqueId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `entityUniqueId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("entityUniqueId").toString()));
