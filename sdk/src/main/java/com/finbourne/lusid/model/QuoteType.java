@@ -57,7 +57,9 @@ public enum QuoteType {
   
   INTERESTDEFERRED("InterestDeferred"),
   
-  INTERESTSHORTFALL("InterestShortfall");
+  INTERESTSHORTFALL("InterestShortfall"),
+  
+  CONSTITUENTWEIGHTFACTOR("ConstituentWeightFactor");
 
   private String value;
 

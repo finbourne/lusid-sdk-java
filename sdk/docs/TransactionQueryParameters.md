@@ -13,6 +13,7 @@
 |**showCancelledTransactions** | **Boolean** | Option to specify whether or not to include cancelled transactions in the output. Defaults to False if not specified. |  [optional] |
 |**timelineScope** | **String** | Scope of the Timeline for the Portfolio. The Timeline to be used while building transactions |  [optional] |
 |**timelineCode** | **String** | Code of the Timeline for the Portfolio. The Timeline to be used while building transactions |  [optional] |
+|**includeEconomics** | **Boolean** | By default is false. When set to true the Economics data would be populated in the response. |  [optional] |
 
 
 

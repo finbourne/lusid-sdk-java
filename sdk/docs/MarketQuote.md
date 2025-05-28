@@ -8,7 +8,7 @@ The market quote for an observable which will be used to calibrate the market da
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**quoteType** | [**QuoteTypeEnum**](#QuoteTypeEnum) | The available values are: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall |  |
+|**quoteType** | [**QuoteTypeEnum**](#QuoteTypeEnum) | The available values are: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor |  |
 |**value** | **java.math.BigDecimal** | Numeric value of the quote |  |
 
 
@@ -34,6 +34,7 @@ The market quote for an observable which will be used to calibrate the market da
 | PRINCIPALWRITEOFF | &quot;PrincipalWriteOff&quot; |
 | INTERESTDEFERRED | &quot;InterestDeferred&quot; |
 | INTERESTSHORTFALL | &quot;InterestShortfall&quot; |
+| CONSTITUENTWEIGHTFACTOR | &quot;ConstituentWeightFactor&quot; |
 
 
 

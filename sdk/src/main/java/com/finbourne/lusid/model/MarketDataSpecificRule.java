@@ -65,7 +65,7 @@ public class MarketDataSpecificRule {
   private String dataScope;
 
   /**
-   * The available values are: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall
+   * The available values are: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor
    */
   @JsonAdapter(QuoteTypeEnum.Adapter.class)
   public enum QuoteTypeEnum {
@@ -101,7 +101,9 @@ public class MarketDataSpecificRule {
     
     INTERESTDEFERRED("InterestDeferred"),
     
-    INTERESTSHORTFALL("InterestShortfall");
+    INTERESTSHORTFALL("InterestShortfall"),
+    
+    CONSTITUENTWEIGHTFACTOR("ConstituentWeightFactor");
 
     private String value;
 
@@ -250,7 +252,7 @@ public class MarketDataSpecificRule {
   }
 
    /**
-   * The available values are: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall
+   * The available values are: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor
    * @return quoteType
   **/
   @jakarta.annotation.Nonnull

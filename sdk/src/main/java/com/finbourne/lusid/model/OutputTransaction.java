@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.CurrencyAndAmount;
 import com.finbourne.lusid.model.CustodianAccount;
+import com.finbourne.lusid.model.Economics;
 import com.finbourne.lusid.model.OtcConfirmation;
 import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.RealisedGainLoss;
@@ -249,6 +250,10 @@ public class OutputTransaction {
   public static final String SERIALIZED_NAME_ACCOUNTING_DATE = "accountingDate";
   @SerializedName(SERIALIZED_NAME_ACCOUNTING_DATE)
   private OffsetDateTime accountingDate;
+
+  public static final String SERIALIZED_NAME_ECONOMICS = "economics";
+  @SerializedName(SERIALIZED_NAME_ECONOMICS)
+  private List<Economics> economics;
 
   public OutputTransaction() {
   }
@@ -978,6 +983,35 @@ public class OutputTransaction {
   }
 
 
+  public OutputTransaction economics(List<Economics> economics) {
+    
+    this.economics = economics;
+    return this;
+  }
+
+  public OutputTransaction addEconomicsItem(Economics economicsItem) {
+    if (this.economics == null) {
+      this.economics = new ArrayList<>();
+    }
+    this.economics.add(economicsItem);
+    return this;
+  }
+
+   /**
+   * Set of economic data related with the transaction impacts.
+   * @return economics
+  **/
+  @jakarta.annotation.Nullable
+  public List<Economics> getEconomics() {
+    return economics;
+  }
+
+
+  public void setEconomics(List<Economics> economics) {
+    this.economics = economics;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -1020,7 +1054,8 @@ public class OutputTransaction {
         Objects.equals(this.otcConfirmation, outputTransaction.otcConfirmation) &&
         Objects.equals(this.orderId, outputTransaction.orderId) &&
         Objects.equals(this.allocationId, outputTransaction.allocationId) &&
-        Objects.equals(this.accountingDate, outputTransaction.accountingDate);
+        Objects.equals(this.accountingDate, outputTransaction.accountingDate) &&
+        Objects.equals(this.economics, outputTransaction.economics);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -1029,7 +1064,7 @@ public class OutputTransaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transactionId, type, description, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionAmount, transactionPrice, totalConsideration, exchangeRate, transactionToPortfolioRate, transactionCurrency, properties, counterpartyId, source, transactionStatus, entryDateTime, cancelDateTime, realisedGainLoss, holdingIds, sourceType, sourceInstrumentEventId, custodianAccount, transactionGroupId, resolvedTransactionTypeDetails, grossTransactionAmount, otcConfirmation, orderId, allocationId, accountingDate);
+    return Objects.hash(transactionId, type, description, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionAmount, transactionPrice, totalConsideration, exchangeRate, transactionToPortfolioRate, transactionCurrency, properties, counterpartyId, source, transactionStatus, entryDateTime, cancelDateTime, realisedGainLoss, holdingIds, sourceType, sourceInstrumentEventId, custodianAccount, transactionGroupId, resolvedTransactionTypeDetails, grossTransactionAmount, otcConfirmation, orderId, allocationId, accountingDate, economics);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1076,6 +1111,7 @@ public class OutputTransaction {
     sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
     sb.append("    allocationId: ").append(toIndentedString(allocationId)).append("\n");
     sb.append("    accountingDate: ").append(toIndentedString(accountingDate)).append("\n");
+    sb.append("    economics: ").append(toIndentedString(economics)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -1131,6 +1167,7 @@ public class OutputTransaction {
     openapiFields.add("orderId");
     openapiFields.add("allocationId");
     openapiFields.add("accountingDate");
+    openapiFields.add("economics");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -1243,6 +1280,20 @@ public class OutputTransaction {
       // validate the optional field `allocationId`
       if (jsonObj.get("allocationId") != null && !jsonObj.get("allocationId").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("allocationId"));
+      }
+      if (jsonObj.get("economics") != null && !jsonObj.get("economics").isJsonNull()) {
+        JsonArray jsonArrayeconomics = jsonObj.getAsJsonArray("economics");
+        if (jsonArrayeconomics != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("economics").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `economics` to be an array in the JSON string but got `%s`", jsonObj.get("economics").toString()));
+          }
+
+          // validate the optional field `economics` (array)
+          for (int i = 0; i < jsonArrayeconomics.size(); i++) {
+            Economics.validateJsonElement(jsonArrayeconomics.get(i));
+          };
+        }
       }
   }
 

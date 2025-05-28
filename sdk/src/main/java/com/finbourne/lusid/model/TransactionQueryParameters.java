@@ -121,6 +121,10 @@ public class TransactionQueryParameters {
   @SerializedName(SERIALIZED_NAME_TIMELINE_CODE)
   private String timelineCode;
 
+  public static final String SERIALIZED_NAME_INCLUDE_ECONOMICS = "includeEconomics";
+  @SerializedName(SERIALIZED_NAME_INCLUDE_ECONOMICS)
+  private Boolean includeEconomics;
+
   public TransactionQueryParameters() {
   }
 
@@ -250,6 +254,27 @@ public class TransactionQueryParameters {
   }
 
 
+  public TransactionQueryParameters includeEconomics(Boolean includeEconomics) {
+    
+    this.includeEconomics = includeEconomics;
+    return this;
+  }
+
+   /**
+   * By default is false. When set to true the Economics data would be populated in the response.
+   * @return includeEconomics
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getIncludeEconomics() {
+    return includeEconomics;
+  }
+
+
+  public void setIncludeEconomics(Boolean includeEconomics) {
+    this.includeEconomics = includeEconomics;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -265,7 +290,8 @@ public class TransactionQueryParameters {
         Objects.equals(this.queryMode, transactionQueryParameters.queryMode) &&
         Objects.equals(this.showCancelledTransactions, transactionQueryParameters.showCancelledTransactions) &&
         Objects.equals(this.timelineScope, transactionQueryParameters.timelineScope) &&
-        Objects.equals(this.timelineCode, transactionQueryParameters.timelineCode);
+        Objects.equals(this.timelineCode, transactionQueryParameters.timelineCode) &&
+        Objects.equals(this.includeEconomics, transactionQueryParameters.includeEconomics);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -274,7 +300,7 @@ public class TransactionQueryParameters {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, endDate, queryMode, showCancelledTransactions, timelineScope, timelineCode);
+    return Objects.hash(startDate, endDate, queryMode, showCancelledTransactions, timelineScope, timelineCode, includeEconomics);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -294,6 +320,7 @@ public class TransactionQueryParameters {
     sb.append("    showCancelledTransactions: ").append(toIndentedString(showCancelledTransactions)).append("\n");
     sb.append("    timelineScope: ").append(toIndentedString(timelineScope)).append("\n");
     sb.append("    timelineCode: ").append(toIndentedString(timelineCode)).append("\n");
+    sb.append("    includeEconomics: ").append(toIndentedString(includeEconomics)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -322,6 +349,7 @@ public class TransactionQueryParameters {
     openapiFields.add("showCancelledTransactions");
     openapiFields.add("timelineScope");
     openapiFields.add("timelineCode");
+    openapiFields.add("includeEconomics");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

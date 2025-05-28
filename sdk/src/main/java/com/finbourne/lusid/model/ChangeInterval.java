@@ -65,6 +65,10 @@ public class ChangeInterval {
   @SerializedName(SERIALIZED_NAME_REQUEST_ID_MODIFIED)
   private String requestIdModified;
 
+  public static final String SERIALIZED_NAME_REASON_MODIFIED = "reasonModified";
+  @SerializedName(SERIALIZED_NAME_REASON_MODIFIED)
+  private String reasonModified;
+
   public static final String SERIALIZED_NAME_AS_AT_VERSION_NUMBER = "asAtVersionNumber";
   @SerializedName(SERIALIZED_NAME_AS_AT_VERSION_NUMBER)
   private Integer asAtVersionNumber;
@@ -156,6 +160,27 @@ public class ChangeInterval {
 
   public void setRequestIdModified(String requestIdModified) {
     this.requestIdModified = requestIdModified;
+  }
+
+
+  public ChangeInterval reasonModified(String reasonModified) {
+    
+    this.reasonModified = reasonModified;
+    return this;
+  }
+
+   /**
+   * The reason for an entity modification.
+   * @return reasonModified
+  **/
+  @jakarta.annotation.Nullable
+  public String getReasonModified() {
+    return reasonModified;
+  }
+
+
+  public void setReasonModified(String reasonModified) {
+    this.reasonModified = reasonModified;
   }
 
 
@@ -319,6 +344,7 @@ public class ChangeInterval {
     return Objects.equals(this.asAtModified, changeInterval.asAtModified) &&
         Objects.equals(this.userIdModified, changeInterval.userIdModified) &&
         Objects.equals(this.requestIdModified, changeInterval.requestIdModified) &&
+        Objects.equals(this.reasonModified, changeInterval.reasonModified) &&
         Objects.equals(this.asAtVersionNumber, changeInterval.asAtVersionNumber) &&
         Objects.equals(this.stagedModificationIdModified, changeInterval.stagedModificationIdModified) &&
         Objects.equals(this.action, changeInterval.action) &&
@@ -334,7 +360,7 @@ public class ChangeInterval {
 
   @Override
   public int hashCode() {
-    return Objects.hash(asAtModified, userIdModified, requestIdModified, asAtVersionNumber, stagedModificationIdModified, action, attributeName, previousValue, newValue, effectiveRange);
+    return Objects.hash(asAtModified, userIdModified, requestIdModified, reasonModified, asAtVersionNumber, stagedModificationIdModified, action, attributeName, previousValue, newValue, effectiveRange);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -351,6 +377,7 @@ public class ChangeInterval {
     sb.append("    asAtModified: ").append(toIndentedString(asAtModified)).append("\n");
     sb.append("    userIdModified: ").append(toIndentedString(userIdModified)).append("\n");
     sb.append("    requestIdModified: ").append(toIndentedString(requestIdModified)).append("\n");
+    sb.append("    reasonModified: ").append(toIndentedString(reasonModified)).append("\n");
     sb.append("    asAtVersionNumber: ").append(toIndentedString(asAtVersionNumber)).append("\n");
     sb.append("    stagedModificationIdModified: ").append(toIndentedString(stagedModificationIdModified)).append("\n");
     sb.append("    action: ").append(toIndentedString(action)).append("\n");
@@ -383,6 +410,7 @@ public class ChangeInterval {
     openapiFields.add("asAtModified");
     openapiFields.add("userIdModified");
     openapiFields.add("requestIdModified");
+    openapiFields.add("reasonModified");
     openapiFields.add("asAtVersionNumber");
     openapiFields.add("stagedModificationIdModified");
     openapiFields.add("action");
@@ -413,6 +441,9 @@ public class ChangeInterval {
       }
       if ((jsonObj.get("requestIdModified") != null && !jsonObj.get("requestIdModified").isJsonNull()) && !jsonObj.get("requestIdModified").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `requestIdModified` to be a primitive type in the JSON string but got `%s`", jsonObj.get("requestIdModified").toString()));
+      }
+      if ((jsonObj.get("reasonModified") != null && !jsonObj.get("reasonModified").isJsonNull()) && !jsonObj.get("reasonModified").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `reasonModified` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reasonModified").toString()));
       }
       if ((jsonObj.get("stagedModificationIdModified") != null && !jsonObj.get("stagedModificationIdModified").isJsonNull()) && !jsonObj.get("stagedModificationIdModified").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `stagedModificationIdModified` to be a primitive type in the JSON string but got `%s`", jsonObj.get("stagedModificationIdModified").toString()));
