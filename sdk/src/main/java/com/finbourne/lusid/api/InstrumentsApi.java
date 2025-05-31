@@ -252,7 +252,7 @@ public class InstrumentsApi {
 
         /**
          * Set dataModelScope
-         * @param dataModelScope The optional scope of a Hierarchical Data Model to use (optional)
+         * @param dataModelScope The optional scope of a Custom Data Model to use (optional)
          * @return APIbatchUpsertInstrumentPropertiesRequest
          */
         public APIbatchUpsertInstrumentPropertiesRequest dataModelScope(String dataModelScope) {
@@ -262,7 +262,7 @@ public class InstrumentsApi {
 
         /**
          * Set dataModelCode
-         * @param dataModelCode The optional code of a Hierarchical Data Model to use (optional)
+         * @param dataModelCode The optional code of a Custom Data Model to use (optional)
          * @return APIbatchUpsertInstrumentPropertiesRequest
          */
         public APIbatchUpsertInstrumentPropertiesRequest dataModelCode(String dataModelCode) {
@@ -1105,7 +1105,7 @@ public class InstrumentsApi {
 
         /**
          * Set dataModelScope
-         * @param dataModelScope The optional scope of a Hierarchical Data Model to use (optional)
+         * @param dataModelScope The optional scope of a Custom Data Model to use (optional)
          * @return APIdeleteInstrumentPropertiesRequest
          */
         public APIdeleteInstrumentPropertiesRequest dataModelScope(String dataModelScope) {
@@ -1115,7 +1115,7 @@ public class InstrumentsApi {
 
         /**
          * Set dataModelCode
-         * @param dataModelCode The optional code of a Hierarchical Data Model to use (optional)
+         * @param dataModelCode The optional code of a Custom Data Model to use (optional)
          * @return APIdeleteInstrumentPropertiesRequest
          */
         public APIdeleteInstrumentPropertiesRequest dataModelCode(String dataModelCode) {
@@ -5046,7 +5046,7 @@ public class InstrumentsApi {
 
         /**
          * Set dataModelScope
-         * @param dataModelScope The optional scope of a Hierarchical Data Model to use. (optional)
+         * @param dataModelScope The optional scope of a Custom Data Model to use. (optional)
          * @return APIlistInstrumentsRequest
          */
         public APIlistInstrumentsRequest dataModelScope(String dataModelScope) {
@@ -5056,7 +5056,7 @@ public class InstrumentsApi {
 
         /**
          * Set dataModelCode
-         * @param dataModelCode The optional code of a Hierarchical Data Model to use. (optional)
+         * @param dataModelCode The optional code of a Custom Data Model to use. (optional)
          * @return APIlistInstrumentsRequest
          */
         public APIlistInstrumentsRequest dataModelCode(String dataModelCode) {
@@ -5591,7 +5591,7 @@ public class InstrumentsApi {
 
         /**
          * Set dataModelScope
-         * @param dataModelScope The optional scope of a Hierarchical Data Model to use (optional)
+         * @param dataModelScope The optional scope of a Custom Data Model to use (optional)
          * @return APIupdateInstrumentIdentifierRequest
          */
         public APIupdateInstrumentIdentifierRequest dataModelScope(String dataModelScope) {
@@ -5601,7 +5601,7 @@ public class InstrumentsApi {
 
         /**
          * Set dataModelCode
-         * @param dataModelCode The optional code of a Hierarchical Data Model to use (optional)
+         * @param dataModelCode The optional code of a Custom Data Model to use (optional)
          * @return APIupdateInstrumentIdentifierRequest
          */
         public APIupdateInstrumentIdentifierRequest dataModelCode(String dataModelCode) {
@@ -5873,7 +5873,7 @@ public class InstrumentsApi {
 
         /**
          * Set dataModelScope
-         * @param dataModelScope The optional scope of a Hierarchical Data Model to use (optional)
+         * @param dataModelScope The optional scope of a Custom Data Model to use (optional)
          * @return APIupsertInstrumentsRequest
          */
         public APIupsertInstrumentsRequest dataModelScope(String dataModelScope) {
@@ -5883,7 +5883,7 @@ public class InstrumentsApi {
 
         /**
          * Set dataModelCode
-         * @param dataModelCode The optional code of a Hierarchical Data Model to use (optional)
+         * @param dataModelCode The optional code of a Custom Data Model to use (optional)
          * @return APIupsertInstrumentsRequest
          */
         public APIupsertInstrumentsRequest dataModelCode(String dataModelCode) {
@@ -6153,7 +6153,7 @@ public class InstrumentsApi {
 
         /**
          * Set dataModelScope
-         * @param dataModelScope The optional scope of a Hierarchical Data Model to use (optional)
+         * @param dataModelScope The optional scope of a Custom Data Model to use (optional)
          * @return APIupsertInstrumentsPropertiesRequest
          */
         public APIupsertInstrumentsPropertiesRequest dataModelScope(String dataModelScope) {
@@ -6163,7 +6163,7 @@ public class InstrumentsApi {
 
         /**
          * Set dataModelCode
-         * @param dataModelCode The optional code of a Hierarchical Data Model to use (optional)
+         * @param dataModelCode The optional code of a Custom Data Model to use (optional)
          * @return APIupsertInstrumentsPropertiesRequest
          */
         public APIupsertInstrumentsPropertiesRequest dataModelCode(String dataModelCode) {

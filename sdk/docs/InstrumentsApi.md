@@ -79,8 +79,8 @@ public class InstrumentsApiExample {
         String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
         String identifierEffectiveAt = "identifierEffectiveAt_example"; // String | The effective datetime used to resolve each instrument from the provided identifiers. Defaults to the current LUSID system datetime if not specified.
         String successMode = "Partial"; // String | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial.
-        String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Hierarchical Data Model to use
-        String dataModelCode = "dataModelCode_example"; // String | The optional code of a Hierarchical Data Model to use
+        String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Custom Data Model to use
+        String dataModelCode = "dataModelCode_example"; // String | The optional code of a Custom Data Model to use
         try {
             // uncomment the below to set overrides at the request level
             // BatchUpsertInstrumentPropertiesResponse result = apiInstance.batchUpsertInstrumentProperties(requestBody, scope, identifierEffectiveAt, successMode, dataModelScope, dataModelCode).execute(opts);
@@ -106,8 +106,8 @@ public class InstrumentsApiExample {
 | **scope** | **String**| The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
 | **identifierEffectiveAt** | **String**| The effective datetime used to resolve each instrument from the provided identifiers. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **successMode** | **String**| Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial. | [optional] [default to Partial] |
-| **dataModelScope** | **String**| The optional scope of a Hierarchical Data Model to use | [optional] |
-| **dataModelCode** | **String**| The optional code of a Hierarchical Data Model to use | [optional] |
+| **dataModelScope** | **String**| The optional scope of a Custom Data Model to use | [optional] |
+| **dataModelCode** | **String**| The optional code of a Custom Data Model to use | [optional] |
 
 ### Return type
 
@@ -375,8 +375,8 @@ public class InstrumentsApiExample {
         List<String> requestBody = ["Instrument/scope/market-sector","Instrument/scope/tenor"]; // List<String> | A list of property keys from the 'Instruments' domain whose properties to delete.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified 'effectiveAt' datetime. If the 'effectiveAt' is not provided or is   before the time-variant property exists then a failure is returned. Do not specify this parameter if any of   the properties to delete are perpetual.
         String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
-        String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Hierarchical Data Model to use
-        String dataModelCode = "dataModelCode_example"; // String | The optional code of a Hierarchical Data Model to use
+        String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Custom Data Model to use
+        String dataModelCode = "dataModelCode_example"; // String | The optional code of a Custom Data Model to use
         try {
             // uncomment the below to set overrides at the request level
             // DeleteInstrumentPropertiesResponse result = apiInstance.deleteInstrumentProperties(identifierType, identifier, requestBody, effectiveAt, scope, dataModelScope, dataModelCode).execute(opts);
@@ -403,8 +403,8 @@ public class InstrumentsApiExample {
 | **requestBody** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Instruments&#39; domain whose properties to delete. | |
 | **effectiveAt** | **String**| The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is   before the time-variant property exists then a failure is returned. Do not specify this parameter if any of   the properties to delete are perpetual. | [optional] |
 | **scope** | **String**| The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
-| **dataModelScope** | **String**| The optional scope of a Hierarchical Data Model to use | [optional] |
-| **dataModelCode** | **String**| The optional code of a Hierarchical Data Model to use | [optional] |
+| **dataModelScope** | **String**| The optional scope of a Custom Data Model to use | [optional] |
+| **dataModelCode** | **String**| The optional code of a Custom Data Model to use | [optional] |
 
 ### Return type
 
@@ -1679,8 +1679,8 @@ public class InstrumentsApiExample {
         List<String> instrumentPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument' domain to decorate onto   instruments, or from any domain that supports relationships to decorate onto related entities.   These must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'.
         String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
         List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
-        String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Hierarchical Data Model to use.
-        String dataModelCode = "dataModelCode_example"; // String | The optional code of a Hierarchical Data Model to use.
+        String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Custom Data Model to use.
+        String dataModelCode = "dataModelCode_example"; // String | The optional code of a Custom Data Model to use.
         try {
             // uncomment the below to set overrides at the request level
             // PagedResourceListOfInstrument result = apiInstance.listInstruments(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode).execute(opts);
@@ -1711,8 +1711,8 @@ public class InstrumentsApiExample {
 | **instrumentPropertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Instrument&#39; domain to decorate onto   instruments, or from any domain that supports relationships to decorate onto related entities.   These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. | [optional] |
 | **scope** | **String**| The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
 | **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities   onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
-| **dataModelScope** | **String**| The optional scope of a Hierarchical Data Model to use. | [optional] |
-| **dataModelCode** | **String**| The optional code of a Hierarchical Data Model to use. | [optional] |
+| **dataModelScope** | **String**| The optional scope of a Custom Data Model to use. | [optional] |
+| **dataModelCode** | **String**| The optional code of a Custom Data Model to use. | [optional] |
 
 ### Return type
 
@@ -1878,8 +1878,8 @@ public class InstrumentsApiExample {
         String identifier = "identifier_example"; // String | An <i>identifierType</i> value to use to identify the instrument, for example 'BBG000BLNNV0'.
         UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest = new UpdateInstrumentIdentifierRequest(); // UpdateInstrumentIdentifierRequest | The identifier to update or delete. This need not be the same value as the   'identifier' parameter used to retrieve the instrument.
         String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
-        String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Hierarchical Data Model to use
-        String dataModelCode = "dataModelCode_example"; // String | The optional code of a Hierarchical Data Model to use
+        String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Custom Data Model to use
+        String dataModelCode = "dataModelCode_example"; // String | The optional code of a Custom Data Model to use
         try {
             // uncomment the below to set overrides at the request level
             // Instrument result = apiInstance.updateInstrumentIdentifier(identifierType, identifier, updateInstrumentIdentifierRequest, scope, dataModelScope, dataModelCode).execute(opts);
@@ -1905,8 +1905,8 @@ public class InstrumentsApiExample {
 | **identifier** | **String**| An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. | |
 | **updateInstrumentIdentifierRequest** | [**UpdateInstrumentIdentifierRequest**](UpdateInstrumentIdentifierRequest.md)| The identifier to update or delete. This need not be the same value as the   &#39;identifier&#39; parameter used to retrieve the instrument. | |
 | **scope** | **String**| The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
-| **dataModelScope** | **String**| The optional scope of a Hierarchical Data Model to use | [optional] |
-| **dataModelCode** | **String**| The optional code of a Hierarchical Data Model to use | [optional] |
+| **dataModelScope** | **String**| The optional scope of a Custom Data Model to use | [optional] |
+| **dataModelCode** | **String**| The optional code of a Custom Data Model to use | [optional] |
 
 ### Return type
 
@@ -1977,8 +1977,8 @@ public class InstrumentsApiExample {
         InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
         Map<String, InstrumentDefinition> requestBody = new HashMap(); // Map<String, InstrumentDefinition> | The definitions of the instruments to create or update.
         String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
-        String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Hierarchical Data Model to use
-        String dataModelCode = "dataModelCode_example"; // String | The optional code of a Hierarchical Data Model to use
+        String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Custom Data Model to use
+        String dataModelCode = "dataModelCode_example"; // String | The optional code of a Custom Data Model to use
         try {
             // uncomment the below to set overrides at the request level
             // UpsertInstrumentsResponse result = apiInstance.upsertInstruments(requestBody, scope, dataModelScope, dataModelCode).execute(opts);
@@ -2002,8 +2002,8 @@ public class InstrumentsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **requestBody** | [**Map&lt;String, InstrumentDefinition&gt;**](InstrumentDefinition.md)| The definitions of the instruments to create or update. | |
 | **scope** | **String**| The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
-| **dataModelScope** | **String**| The optional scope of a Hierarchical Data Model to use | [optional] |
-| **dataModelCode** | **String**| The optional code of a Hierarchical Data Model to use | [optional] |
+| **dataModelScope** | **String**| The optional scope of a Custom Data Model to use | [optional] |
+| **dataModelCode** | **String**| The optional code of a Custom Data Model to use | [optional] |
 
 ### Return type
 
@@ -2074,8 +2074,8 @@ public class InstrumentsApiExample {
         InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
         List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest = Arrays.asList(); // List<UpsertInstrumentPropertyRequest> | A list of instruments and associated instrument properties to create or update.
         String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
-        String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Hierarchical Data Model to use
-        String dataModelCode = "dataModelCode_example"; // String | The optional code of a Hierarchical Data Model to use
+        String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Custom Data Model to use
+        String dataModelCode = "dataModelCode_example"; // String | The optional code of a Custom Data Model to use
         try {
             // uncomment the below to set overrides at the request level
             // UpsertInstrumentPropertiesResponse result = apiInstance.upsertInstrumentsProperties(upsertInstrumentPropertyRequest, scope, dataModelScope, dataModelCode).execute(opts);
@@ -2099,8 +2099,8 @@ public class InstrumentsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **upsertInstrumentPropertyRequest** | [**List&lt;UpsertInstrumentPropertyRequest&gt;**](UpsertInstrumentPropertyRequest.md)| A list of instruments and associated instrument properties to create or update. | |
 | **scope** | **String**| The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
-| **dataModelScope** | **String**| The optional scope of a Hierarchical Data Model to use | [optional] |
-| **dataModelCode** | **String**| The optional code of a Hierarchical Data Model to use | [optional] |
+| **dataModelScope** | **String**| The optional scope of a Custom Data Model to use | [optional] |
+| **dataModelCode** | **String**| The optional code of a Custom Data Model to use | [optional] |
 
 ### Return type
 
