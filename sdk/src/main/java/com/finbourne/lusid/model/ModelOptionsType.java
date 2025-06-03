@@ -37,7 +37,9 @@ public enum ModelOptionsType {
   
   FUNDINGLEGMODELOPTIONS("FundingLegModelOptions"),
   
-  EQUITYMODELOPTIONS("EquityModelOptions");
+  EQUITYMODELOPTIONS("EquityModelOptions"),
+  
+  CDSMODELOPTIONS("CdsModelOptions");
 
   private String value;
 

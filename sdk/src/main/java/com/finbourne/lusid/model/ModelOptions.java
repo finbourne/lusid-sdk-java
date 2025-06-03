@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ModelOptions {
   /**
-   * The available values are: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions
+   * The available values are: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions
    */
   @JsonAdapter(ModelOptionsTypeEnum.Adapter.class)
   public enum ModelOptionsTypeEnum {
@@ -66,7 +66,9 @@ public class ModelOptions {
     
     FUNDINGLEGMODELOPTIONS("FundingLegModelOptions"),
     
-    EQUITYMODELOPTIONS("EquityModelOptions");
+    EQUITYMODELOPTIONS("EquityModelOptions"),
+    
+    CDSMODELOPTIONS("CdsModelOptions");
 
     private String value;
 
@@ -120,7 +122,7 @@ public class ModelOptions {
   }
 
    /**
-   * The available values are: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions
+   * The available values are: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, CdsModelOptions
    * @return modelOptionsType
   **/
   @jakarta.annotation.Nonnull
@@ -201,6 +203,9 @@ public class ModelOptions {
 
       String discriminatorValue = jsonElement.getAsJsonObject().get("modelOptionsType").getAsString();
       switch (discriminatorValue) {
+        case "CdsModelOptions":
+          CdsModelOptions.validateJsonElement(jsonElement);
+          break;
         case "EmptyModelOptions":
           EmptyModelOptions.validateJsonElement(jsonElement);
           break;

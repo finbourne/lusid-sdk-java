@@ -384,6 +384,15 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "instrumentType"));
                     }
           })
+                .registerTypeSelector(com.finbourne.lusid.model.CdsModelOptions.class, new TypeSelector<com.finbourne.lusid.model.CdsModelOptions>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.CdsModelOptions> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("CdsModelOptions", com.finbourne.lusid.model.CdsModelOptions.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "modelOptionsType"));
+                    }
+          })
                 .registerTypeSelector(com.finbourne.lusid.model.CdxCreditEvent.class, new TypeSelector<com.finbourne.lusid.model.CdxCreditEvent>() {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.CdxCreditEvent> getClassForElement(JsonElement readElement) {
@@ -1621,6 +1630,7 @@ public class JSON {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.ModelOptions> getClassForElement(JsonElement readElement) {
                         Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("CdsModelOptions", com.finbourne.lusid.model.CdsModelOptions.class);
                         classByDiscriminatorValue.put("EmptyModelOptions", com.finbourne.lusid.model.EmptyModelOptions.class);
                         classByDiscriminatorValue.put("EquityModelOptions", com.finbourne.lusid.model.EquityModelOptions.class);
                         classByDiscriminatorValue.put("FundingLegOptions", com.finbourne.lusid.model.FundingLegOptions.class);
@@ -2473,6 +2483,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CdsCreditEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CdsFlowConventions.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CdsIndex.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CdsModelOptions.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CdsProtectionDetailSpecification.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CdxCreditEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.Change.CustomTypeAdapterFactory());
