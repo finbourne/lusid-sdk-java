@@ -9,6 +9,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**getAborConfiguration**](AborConfigurationApi.md#getAborConfiguration) | **GET** /api/aborconfiguration/{scope}/{code} | [EXPERIMENTAL] GetAborConfiguration: Get AborConfiguration. |
 | [**getAborConfigurationProperties**](AborConfigurationApi.md#getAborConfigurationProperties) | **GET** /api/aborconfiguration/{scope}/{code}/properties | [EXPERIMENTAL] GetAborConfigurationProperties: Get Abor Configuration properties |
 | [**listAborConfigurations**](AborConfigurationApi.md#listAborConfigurations) | **GET** /api/aborconfiguration | [EXPERIMENTAL] ListAborConfigurations: List AborConfiguration. |
+| [**patchAborConfiguration**](AborConfigurationApi.md#patchAborConfiguration) | **PATCH** /api/aborconfiguration/{scope}/{code} | [EXPERIMENTAL] PatchAborConfiguration: Patch Abor Configuration. |
 | [**upsertAborConfigurationProperties**](AborConfigurationApi.md#upsertAborConfigurationProperties) | **POST** /api/aborconfiguration/{scope}/{code}/properties/$upsert | [EXPERIMENTAL] UpsertAborConfigurationProperties: Upsert AborConfiguration properties |
 
 
@@ -492,6 +493,101 @@ public class AborConfigurationApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The requested abor configurations. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## patchAborConfiguration
+
+> AborConfiguration patchAborConfiguration(scope, code, operation)
+
+[EXPERIMENTAL] PatchAborConfiguration: Patch Abor Configuration.
+
+Create or update certain fields for a particular AborConfiguration.  The behaviour is defined by the JSON Patch specification.     Currently supported fields are: DisplayName, Description, PostingModuleCodes, CleardownModuleCodes.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.AborConfigurationApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class AborConfigurationApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AborConfigurationApi apiInstance = apiFactory.build(AborConfigurationApi.class);
+
+        AborConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(AborConfigurationApi.class);
+        String scope = "scope_example"; // String | The scope of the AborConfiguration.
+        String code = "code_example"; // String | The code of the AborConfiguration.   Together with the scope this uniquely identifies the AborConfiguration.
+        List<Operation> operation = Arrays.asList(); // List<Operation> | The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902.
+        try {
+            // uncomment the below to set overrides at the request level
+            // AborConfiguration result = apiInstance.patchAborConfiguration(scope, code, operation).execute(opts);
+
+            AborConfiguration result = apiInstance.patchAborConfiguration(scope, code, operation).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AborConfigurationApi#patchAborConfiguration");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the AborConfiguration. | |
+| **code** | **String**| The code of the AborConfiguration.   Together with the scope this uniquely identifies the AborConfiguration. | |
+| **operation** | [**List&lt;Operation&gt;**](Operation.md)| The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902. | |
+
+### Return type
+
+[**AborConfiguration**](AborConfiguration.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The newly patched AborConfiguration |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
