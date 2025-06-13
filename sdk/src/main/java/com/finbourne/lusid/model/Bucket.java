@@ -18,6 +18,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -90,6 +91,10 @@ public class Bucket {
   public static final String SERIALIZED_NAME_UNITS = "units";
   @SerializedName(SERIALIZED_NAME_UNITS)
   private java.math.BigDecimal units;
+
+  public static final String SERIALIZED_NAME_ACTIVITY_DATE = "activityDate";
+  @SerializedName(SERIALIZED_NAME_ACTIVITY_DATE)
+  private OffsetDateTime activityDate;
 
   public Bucket() {
   }
@@ -304,6 +309,27 @@ public class Bucket {
   }
 
 
+  public Bucket activityDate(OffsetDateTime activityDate) {
+    
+    this.activityDate = activityDate;
+    return this;
+  }
+
+   /**
+   * The activity date of the bucket.
+   * @return activityDate
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getActivityDate() {
+    return activityDate;
+  }
+
+
+  public void setActivityDate(OffsetDateTime activityDate) {
+    this.activityDate = activityDate;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -323,7 +349,8 @@ public class Bucket {
         Objects.equals(this.holdingSign, bucket.holdingSign) &&
         Objects.equals(this.local, bucket.local) &&
         Objects.equals(this.base, bucket.base) &&
-        (this.units.compareTo(bucket.getUnits()) == 0);
+        (this.units.compareTo(bucket.getUnits()) == 0) &&
+        Objects.equals(this.activityDate, bucket.activityDate);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -332,7 +359,7 @@ public class Bucket {
 
   @Override
   public int hashCode() {
-    return Objects.hash(taxLotId, movementName, holdingType, economicBucket, economicBucketComponent, economicBucketVariant, holdingSign, local, base, units);
+    return Objects.hash(taxLotId, movementName, holdingType, economicBucket, economicBucketComponent, economicBucketVariant, holdingSign, local, base, units, activityDate);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -356,6 +383,7 @@ public class Bucket {
     sb.append("    local: ").append(toIndentedString(local)).append("\n");
     sb.append("    base: ").append(toIndentedString(base)).append("\n");
     sb.append("    units: ").append(toIndentedString(units)).append("\n");
+    sb.append("    activityDate: ").append(toIndentedString(activityDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -388,6 +416,7 @@ public class Bucket {
     openapiFields.add("local");
     openapiFields.add("base");
     openapiFields.add("units");
+    openapiFields.add("activityDate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

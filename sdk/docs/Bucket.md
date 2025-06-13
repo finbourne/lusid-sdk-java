@@ -17,6 +17,7 @@
 |**local** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional] |
 |**base** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional] |
 |**units** | **java.math.BigDecimal** | The units. |  [optional] |
+|**activityDate** | **OffsetDateTime** | The activity date of the bucket. |  [optional] |
 
 
 
