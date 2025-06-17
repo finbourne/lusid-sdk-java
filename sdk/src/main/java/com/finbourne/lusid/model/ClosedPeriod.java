@@ -164,7 +164,7 @@ public class ClosedPeriod {
   }
 
    /**
-   * The asAt datetime the Closed Period was created
+   * The asAt closed datetime for the Closed Period
    * @return asAtClosed
   **/
   @jakarta.annotation.Nullable

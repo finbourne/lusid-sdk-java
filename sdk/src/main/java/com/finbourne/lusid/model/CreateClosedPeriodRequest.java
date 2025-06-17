@@ -66,6 +66,10 @@ public class CreateClosedPeriodRequest {
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   private Map<String, Property> properties;
 
+  public static final String SERIALIZED_NAME_AS_AT_CLOSED = "asAtClosed";
+  @SerializedName(SERIALIZED_NAME_AS_AT_CLOSED)
+  private OffsetDateTime asAtClosed;
+
   public CreateClosedPeriodRequest() {
   }
 
@@ -140,6 +144,27 @@ public class CreateClosedPeriodRequest {
   }
 
 
+  public CreateClosedPeriodRequest asAtClosed(OffsetDateTime asAtClosed) {
+    
+    this.asAtClosed = asAtClosed;
+    return this;
+  }
+
+   /**
+   * The asAt closed datetime for the Closed Period
+   * @return asAtClosed
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getAsAtClosed() {
+    return asAtClosed;
+  }
+
+
+  public void setAsAtClosed(OffsetDateTime asAtClosed) {
+    this.asAtClosed = asAtClosed;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -152,7 +177,8 @@ public class CreateClosedPeriodRequest {
     CreateClosedPeriodRequest createClosedPeriodRequest = (CreateClosedPeriodRequest) o;
     return Objects.equals(this.closedPeriodId, createClosedPeriodRequest.closedPeriodId) &&
         Objects.equals(this.effectiveEnd, createClosedPeriodRequest.effectiveEnd) &&
-        Objects.equals(this.properties, createClosedPeriodRequest.properties);
+        Objects.equals(this.properties, createClosedPeriodRequest.properties) &&
+        Objects.equals(this.asAtClosed, createClosedPeriodRequest.asAtClosed);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -161,7 +187,7 @@ public class CreateClosedPeriodRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(closedPeriodId, effectiveEnd, properties);
+    return Objects.hash(closedPeriodId, effectiveEnd, properties, asAtClosed);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -178,6 +204,7 @@ public class CreateClosedPeriodRequest {
     sb.append("    closedPeriodId: ").append(toIndentedString(closedPeriodId)).append("\n");
     sb.append("    effectiveEnd: ").append(toIndentedString(effectiveEnd)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
+    sb.append("    asAtClosed: ").append(toIndentedString(asAtClosed)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -203,6 +230,7 @@ public class CreateClosedPeriodRequest {
     openapiFields.add("closedPeriodId");
     openapiFields.add("effectiveEnd");
     openapiFields.add("properties");
+    openapiFields.add("asAtClosed");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
