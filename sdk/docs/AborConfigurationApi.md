@@ -505,7 +505,7 @@ public class AborConfigurationApiExample {
 
 [EXPERIMENTAL] PatchAborConfiguration: Patch Abor Configuration.
 
-Create or update certain fields for a particular AborConfiguration.  The behaviour is defined by the JSON Patch specification.     Currently supported fields are: DisplayName, Description, PostingModuleCodes, CleardownModuleCodes.
+Create or update certain fields for a particular AborConfiguration.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, PostingModuleCodes, CleardownModuleCodes.
 
 ### Example
 

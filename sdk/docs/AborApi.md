@@ -1110,7 +1110,7 @@ public class AborApiExample {
 
 [EXPERIMENTAL] PatchAbor: Patch Abor.
 
-Create or update certain fields for a particular Abor.  The behaviour is defined by the JSON Patch specification.     Currently supported fields are: PortfolioIds.
+Create or update certain fields for a particular Abor.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: PortfolioIds.
 
 ### Example
 

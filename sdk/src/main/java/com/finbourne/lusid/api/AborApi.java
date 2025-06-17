@@ -3431,7 +3431,7 @@ public class AborApi {
 
     /**
      * [EXPERIMENTAL] PatchAbor: Patch Abor.
-     * Create or update certain fields for a particular Abor.  The behaviour is defined by the JSON Patch specification.     Currently supported fields are: PortfolioIds.
+     * Create or update certain fields for a particular Abor.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: PortfolioIds.
      * @param scope The scope of the Abor. (required)
      * @param code The code of the Abor. Together with the   scope this uniquely identifies the Abor. (required)
      * @param operation The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902. (required)

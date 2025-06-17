@@ -2310,7 +2310,7 @@ public class ChartOfAccountsApiExample {
 
 [EXPERIMENTAL] PatchChartOfAccounts: Patch a Chart of Accounts.
 
-Update fields on a Chart of Accounts. The behaviour is defined by the JSON Patch specification.  Currently supported fields are: DisplayName, Description.
+Update fields on a Chart of Accounts.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description.
 
 ### Example
 
@@ -2405,7 +2405,7 @@ public class ChartOfAccountsApiExample {
 
 [EXPERIMENTAL] PatchCleardownModule: Patch a Cleardown Module
 
-Update fields on a Cleardown Module. The behaviour is defined by the JSON Patch specification.     Currently supported fields are: DisplayName, Description, Rules.
+Update fields on a Cleardown Module.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, Rules.
 
 ### Example
 
@@ -2502,7 +2502,7 @@ public class ChartOfAccountsApiExample {
 
 [EXPERIMENTAL] PatchPostingModule: Patch a Posting Module
 
-Update fields on a Posting Module. The behaviour is defined by the JSON Patch specification.     Currently supported fields are: DisplayName, Description, Rules.
+Update fields on a Posting Module.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, Rules.
 
 ### Example
 

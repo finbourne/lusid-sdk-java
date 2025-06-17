@@ -6755,7 +6755,7 @@ public class ChartOfAccountsApi {
 
     /**
      * [EXPERIMENTAL] PatchChartOfAccounts: Patch a Chart of Accounts.
-     * Update fields on a Chart of Accounts. The behaviour is defined by the JSON Patch specification.  Currently supported fields are: DisplayName, Description.
+     * Update fields on a Chart of Accounts.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description.
      * @param scope The scope of the Chart of Accounts. (required)
      * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
      * @param operation The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902. (required)
@@ -7016,7 +7016,7 @@ public class ChartOfAccountsApi {
 
     /**
      * [EXPERIMENTAL] PatchCleardownModule: Patch a Cleardown Module
-     * Update fields on a Cleardown Module. The behaviour is defined by the JSON Patch specification.     Currently supported fields are: DisplayName, Description, Rules.
+     * Update fields on a Cleardown Module.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, Rules.
      * @param scope The scope of the Chart of Accounts. (required)
      * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
      * @param cleardownModuleCode The code of the Cleardown Module to be updated. (required)
@@ -7278,7 +7278,7 @@ public class ChartOfAccountsApi {
 
     /**
      * [EXPERIMENTAL] PatchPostingModule: Patch a Posting Module
-     * Update fields on a Posting Module. The behaviour is defined by the JSON Patch specification.     Currently supported fields are: DisplayName, Description, Rules.
+     * Update fields on a Posting Module.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, Rules.
      * @param scope The scope of the Chart of Accounts. (required)
      * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
      * @param postingModuleCode The code of the Posting Module to be updated. (required)

@@ -1415,7 +1415,7 @@ public class FundConfigurationApi {
 
     /**
      * [EXPERIMENTAL] PatchFundConfiguration: Patch Fund Configuration.
-     * Create or update certain fields for a particular FundConfiguration.  The behaviour is defined by the JSON Patch specification.     Currently supported fields are: displayName, description, dealingFilters, pnlFilters, backOutFilters.
+     * Create or update certain fields for a particular FundConfiguration.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, DealingFilters, PnlFilters, BackOutFilters, ExternalFeeFilters.
      * @param scope The scope of the FundConfiguration. (required)
      * @param code The code of the FundConfiguration. Together with the   scope this uniquely identifies the FundConfiguration. (required)
      * @param operation The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902. (required)

@@ -80,7 +80,7 @@ public class TransferAgencyDates {
   }
 
    /**
-   * The date at which the fund is priced, for the order received on ReceivedDate. Can be passed into the request instead of the ReceivedDate to calculate the TransactionDate and ExpectedPaymentDate.
+   * The date at which the fund is priced, for the order received on ReceivedDate. Can be passed into the request instead of the ReceivedDate to calculate the TransactionDate and ExpectedPaymentDate. If both the received date and price date are given, the price date is used.
    * @return priceDate
   **/
   @jakarta.annotation.Nullable

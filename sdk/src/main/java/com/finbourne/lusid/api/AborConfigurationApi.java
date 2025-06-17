@@ -1686,7 +1686,7 @@ public class AborConfigurationApi {
 
     /**
      * [EXPERIMENTAL] PatchAborConfiguration: Patch Abor Configuration.
-     * Create or update certain fields for a particular AborConfiguration.  The behaviour is defined by the JSON Patch specification.     Currently supported fields are: DisplayName, Description, PostingModuleCodes, CleardownModuleCodes.
+     * Create or update certain fields for a particular AborConfiguration.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, PostingModuleCodes, CleardownModuleCodes.
      * @param scope The scope of the AborConfiguration. (required)
      * @param code The code of the AborConfiguration.   Together with the scope this uniquely identifies the AborConfiguration. (required)
      * @param operation The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902. (required)
