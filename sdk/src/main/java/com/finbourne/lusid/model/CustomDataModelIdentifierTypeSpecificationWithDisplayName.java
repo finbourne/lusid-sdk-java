@@ -62,6 +62,10 @@ public class CustomDataModelIdentifierTypeSpecificationWithDisplayName {
   @SerializedName(SERIALIZED_NAME_REQUIRED)
   private Boolean required;
 
+  public static final String SERIALIZED_NAME_IDENTIFIER_TYPE = "identifierType";
+  @SerializedName(SERIALIZED_NAME_IDENTIFIER_TYPE)
+  private String identifierType;
+
   public CustomDataModelIdentifierTypeSpecificationWithDisplayName() {
   }
 
@@ -128,6 +132,27 @@ public class CustomDataModelIdentifierTypeSpecificationWithDisplayName {
   }
 
 
+  public CustomDataModelIdentifierTypeSpecificationWithDisplayName identifierType(String identifierType) {
+    
+    this.identifierType = identifierType;
+    return this;
+  }
+
+   /**
+   * The name of the identifier type.
+   * @return identifierType
+  **/
+  @jakarta.annotation.Nullable
+  public String getIdentifierType() {
+    return identifierType;
+  }
+
+
+  public void setIdentifierType(String identifierType) {
+    this.identifierType = identifierType;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -140,7 +165,8 @@ public class CustomDataModelIdentifierTypeSpecificationWithDisplayName {
     CustomDataModelIdentifierTypeSpecificationWithDisplayName customDataModelIdentifierTypeSpecificationWithDisplayName = (CustomDataModelIdentifierTypeSpecificationWithDisplayName) o;
     return Objects.equals(this.displayName, customDataModelIdentifierTypeSpecificationWithDisplayName.displayName) &&
         Objects.equals(this.identifierKey, customDataModelIdentifierTypeSpecificationWithDisplayName.identifierKey) &&
-        Objects.equals(this.required, customDataModelIdentifierTypeSpecificationWithDisplayName.required);
+        Objects.equals(this.required, customDataModelIdentifierTypeSpecificationWithDisplayName.required) &&
+        Objects.equals(this.identifierType, customDataModelIdentifierTypeSpecificationWithDisplayName.identifierType);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -149,7 +175,7 @@ public class CustomDataModelIdentifierTypeSpecificationWithDisplayName {
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, identifierKey, required);
+    return Objects.hash(displayName, identifierKey, required, identifierType);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -166,6 +192,7 @@ public class CustomDataModelIdentifierTypeSpecificationWithDisplayName {
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    identifierKey: ").append(toIndentedString(identifierKey)).append("\n");
     sb.append("    required: ").append(toIndentedString(required)).append("\n");
+    sb.append("    identifierType: ").append(toIndentedString(identifierType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -191,6 +218,7 @@ public class CustomDataModelIdentifierTypeSpecificationWithDisplayName {
     openapiFields.add("displayName");
     openapiFields.add("identifierKey");
     openapiFields.add("required");
+    openapiFields.add("identifierType");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -222,6 +250,9 @@ public class CustomDataModelIdentifierTypeSpecificationWithDisplayName {
       }
       if (!jsonObj.get("identifierKey").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `identifierKey` to be a primitive type in the JSON string but got `%s`", jsonObj.get("identifierKey").toString()));
+      }
+      if ((jsonObj.get("identifierType") != null && !jsonObj.get("identifierType").isJsonNull()) && !jsonObj.get("identifierType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `identifierType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("identifierType").toString()));
       }
   }
 
