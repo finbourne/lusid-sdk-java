@@ -117,6 +117,7 @@ Class | Method | HTTP request | Description
 *ComplianceApi* | [**listComplianceRules**](docs/ComplianceApi.md#listcompliancerules) | **GET** /api/compliance/rules | [EARLY ACCESS] ListComplianceRules: List compliance rules.
 *ComplianceApi* | [**listComplianceRuns**](docs/ComplianceApi.md#listcomplianceruns) | **GET** /api/compliance/runs | [EARLY ACCESS] ListComplianceRuns: List historical compliance run identifiers.
 *ComplianceApi* | [**listComplianceTemplates**](docs/ComplianceApi.md#listcompliancetemplates) | **GET** /api/compliance/templates | [EARLY ACCESS] ListComplianceTemplates: List compliance templates.
+*ComplianceApi* | [**listOrderBreachHistory**](docs/ComplianceApi.md#listorderbreachhistory) | **GET** /api/compliance/runs/breaches | [EXPERIMENTAL] ListOrderBreachHistory: List Historical Order Breaches.
 *ComplianceApi* | [**runCompliance**](docs/ComplianceApi.md#runcompliance) | **POST** /api/compliance/runs | [EARLY ACCESS] RunCompliance: Run a compliance check.
 *ComplianceApi* | [**runCompliancePreview**](docs/ComplianceApi.md#runcompliancepreview) | **POST** /api/compliance/preview/runs | [EARLY ACCESS] RunCompliancePreview: Run a compliance check.
 *ComplianceApi* | [**updateComplianceTemplate**](docs/ComplianceApi.md#updatecompliancetemplate) | **PUT** /api/compliance/templates/{scope}/{code} | [EARLY ACCESS] UpdateComplianceTemplate: Update a ComplianceRuleTemplate
@@ -1271,6 +1272,7 @@ Class | Method | HTTP request | Description
  - [OptionExercisePhysicalEvent](docs/OptionExercisePhysicalEvent.md)
  - [OptionalitySchedule](docs/OptionalitySchedule.md)
  - [Order](docs/Order.md)
+ - [OrderBreachHistory](docs/OrderBreachHistory.md)
  - [OrderBySpec](docs/OrderBySpec.md)
  - [OrderFlowConfiguration](docs/OrderFlowConfiguration.md)
  - [OrderGraphBlock](docs/OrderGraphBlock.md)
@@ -1297,6 +1299,7 @@ Class | Method | HTTP request | Description
  - [OrderInstructionRequest](docs/OrderInstructionRequest.md)
  - [OrderInstructionSetRequest](docs/OrderInstructionSetRequest.md)
  - [OrderRequest](docs/OrderRequest.md)
+ - [OrderRuleBreach](docs/OrderRuleBreach.md)
  - [OrderSetRequest](docs/OrderSetRequest.md)
  - [OrderUpdateRequest](docs/OrderUpdateRequest.md)
  - [OtcConfirmation](docs/OtcConfirmation.md)
@@ -1344,6 +1347,7 @@ Class | Method | HTTP request | Description
  - [PagedResourceListOfItemAndWorkspace](docs/PagedResourceListOfItemAndWorkspace.md)
  - [PagedResourceListOfLegalEntity](docs/PagedResourceListOfLegalEntity.md)
  - [PagedResourceListOfOrder](docs/PagedResourceListOfOrder.md)
+ - [PagedResourceListOfOrderBreachHistory](docs/PagedResourceListOfOrderBreachHistory.md)
  - [PagedResourceListOfOrderGraphBlock](docs/PagedResourceListOfOrderGraphBlock.md)
  - [PagedResourceListOfOrderGraphPlacement](docs/PagedResourceListOfOrderGraphPlacement.md)
  - [PagedResourceListOfOrderInstruction](docs/PagedResourceListOfOrderInstruction.md)

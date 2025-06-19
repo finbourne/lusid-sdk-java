@@ -40,6 +40,7 @@ import java.time.OffsetDateTime;
 import com.finbourne.lusid.model.PagedResourceListOfComplianceRuleResponse;
 import com.finbourne.lusid.model.PagedResourceListOfComplianceRunInfoV2;
 import com.finbourne.lusid.model.PagedResourceListOfComplianceTemplate;
+import com.finbourne.lusid.model.PagedResourceListOfOrderBreachHistory;
 import com.finbourne.lusid.model.UpdateComplianceTemplateRequest;
 import com.finbourne.lusid.model.UpsertComplianceRuleRequest;
 import com.finbourne.lusid.model.UpsertComplianceRunSummaryRequest;
@@ -2719,6 +2720,304 @@ public class ComplianceApi {
      */
     public APIlistComplianceTemplatesRequest listComplianceTemplates() {
         return new APIlistComplianceTemplatesRequest();
+    }
+    private okhttp3.Call listOrderBreachHistoryCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
+        return listOrderBreachHistoryCall(asAt, page, limit, filter, sortBy,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listOrderBreachHistoryCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/compliance/runs/breaches";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
+        if (sortBy != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "sortBy", sortBy));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listOrderBreachHistoryValidateBeforeCall(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listOrderBreachHistoryCall(asAt, page, limit, filter, sortBy, _callback, opts);
+
+    }
+
+
+    private ApiResponse<PagedResourceListOfOrderBreachHistory> listOrderBreachHistoryWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy) throws ApiException {
+        okhttp3.Call localVarCall = listOrderBreachHistoryValidateBeforeCall(asAt, page, limit, filter, sortBy, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfOrderBreachHistory>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfOrderBreachHistory> listOrderBreachHistoryWithHttpInfo(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listOrderBreachHistoryValidateBeforeCall(asAt, page, limit, filter, sortBy, null, opts);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfOrderBreachHistory>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listOrderBreachHistoryAsync(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfOrderBreachHistory> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listOrderBreachHistoryValidateBeforeCall(asAt, page, limit, filter, sortBy, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfOrderBreachHistory>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listOrderBreachHistoryAsync(OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfOrderBreachHistory> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listOrderBreachHistoryValidateBeforeCall(asAt, page, limit, filter, sortBy, _callback, opts);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfOrderBreachHistory>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIlistOrderBreachHistoryRequest {
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer limit;
+        private String filter;
+        private List<String> sortBy;
+
+        private APIlistOrderBreachHistoryRequest() {
+        }
+
+        /**
+         * Set asAt
+         * @param asAt Optional. The time at which to get results from. Default : latest (optional)
+         * @return APIlistOrderBreachHistoryRequest
+         */
+        public APIlistOrderBreachHistoryRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page Optional. The pagination token to use to continue listing historical order breaches from a previous call to list historical order breaches.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. (optional)
+         * @return APIlistOrderBreachHistoryRequest
+         */
+        public APIlistOrderBreachHistoryRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
+         * @return APIlistOrderBreachHistoryRequest
+         */
+        public APIlistOrderBreachHistoryRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIlistOrderBreachHistoryRequest
+         */
+        public APIlistOrderBreachHistoryRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy Optional. A list of field names to sort by, each suffixed by \&quot;ASC\&quot; or \&quot;DESC\&quot; (optional)
+         * @return APIlistOrderBreachHistoryRequest
+         */
+        public APIlistOrderBreachHistoryRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Build call for listOrderBreachHistory
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List of previous order breaches </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listOrderBreachHistoryCall(asAt, page, limit, filter, sortBy, _callback);
+        }
+
+        /**
+         * Execute listOrderBreachHistory request
+         * @return PagedResourceListOfOrderBreachHistory
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List of previous order breaches </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfOrderBreachHistory execute() throws ApiException {
+            ApiResponse<PagedResourceListOfOrderBreachHistory> localVarResp = listOrderBreachHistoryWithHttpInfo(asAt, page, limit, filter, sortBy);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listOrderBreachHistory request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfOrderBreachHistory
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List of previous order breaches </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfOrderBreachHistory execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfOrderBreachHistory> localVarResp = listOrderBreachHistoryWithHttpInfo(asAt, page, limit, filter, sortBy, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listOrderBreachHistory request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfOrderBreachHistory&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List of previous order breaches </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfOrderBreachHistory> executeWithHttpInfo() throws ApiException {
+            return listOrderBreachHistoryWithHttpInfo(asAt, page, limit, filter, sortBy);
+        }
+
+        /**
+         * Execute listOrderBreachHistory request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfOrderBreachHistory&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List of previous order breaches </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfOrderBreachHistory> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listOrderBreachHistoryWithHttpInfo(asAt, page, limit, filter, sortBy, opts);
+        }
+
+        /**
+         * Execute listOrderBreachHistory request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List of previous order breaches </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfOrderBreachHistory> _callback) throws ApiException {
+            return listOrderBreachHistoryAsync(asAt, page, limit, filter, sortBy, _callback);
+        }
+
+        /**
+         * Execute listOrderBreachHistory request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> List of previous order breaches </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfOrderBreachHistory> _callback, ConfigurationOptions opts) throws ApiException {
+            return listOrderBreachHistoryAsync(asAt, page, limit, filter, sortBy, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] ListOrderBreachHistory: List Historical Order Breaches.
+     * Lists Order Ids and Run Ids of prior compliance runs, with the breached Rules Ids specified, or a subset with a filter.
+     * @return APIlistOrderBreachHistoryRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of previous order breaches </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIlistOrderBreachHistoryRequest listOrderBreachHistory() {
+        return new APIlistOrderBreachHistoryRequest();
     }
     private okhttp3.Call runComplianceCall(String runScope, String ruleScope, Boolean isPreTrade, String recipeIdScope, String recipeIdCode, final ApiCallback _callback) throws ApiException {
         return runComplianceCall(runScope, ruleScope, isPreTrade, recipeIdScope, recipeIdCode,  _callback, new ConfigurationOptions());

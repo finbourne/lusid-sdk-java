@@ -14,6 +14,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**listComplianceRules**](ComplianceApi.md#listComplianceRules) | **GET** /api/compliance/rules | [EARLY ACCESS] ListComplianceRules: List compliance rules. |
 | [**listComplianceRuns**](ComplianceApi.md#listComplianceRuns) | **GET** /api/compliance/runs | [EARLY ACCESS] ListComplianceRuns: List historical compliance run identifiers. |
 | [**listComplianceTemplates**](ComplianceApi.md#listComplianceTemplates) | **GET** /api/compliance/templates | [EARLY ACCESS] ListComplianceTemplates: List compliance templates. |
+| [**listOrderBreachHistory**](ComplianceApi.md#listOrderBreachHistory) | **GET** /api/compliance/runs/breaches | [EXPERIMENTAL] ListOrderBreachHistory: List Historical Order Breaches. |
 | [**runCompliance**](ComplianceApi.md#runCompliance) | **POST** /api/compliance/runs | [EARLY ACCESS] RunCompliance: Run a compliance check. |
 | [**runCompliancePreview**](ComplianceApi.md#runCompliancePreview) | **POST** /api/compliance/preview/runs | [EARLY ACCESS] RunCompliancePreview: Run a compliance check. |
 | [**updateComplianceTemplate**](ComplianceApi.md#updateComplianceTemplate) | **PUT** /api/compliance/templates/{scope}/{code} | [EARLY ACCESS] UpdateComplianceTemplate: Update a ComplianceRuleTemplate |
@@ -972,6 +973,105 @@ public class ComplianceApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The list of compliance templates available. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## listOrderBreachHistory
+
+> PagedResourceListOfOrderBreachHistory listOrderBreachHistory(asAt, page, limit, filter, sortBy)
+
+[EXPERIMENTAL] ListOrderBreachHistory: List Historical Order Breaches.
+
+Lists Order Ids and Run Ids of prior compliance runs, with the breached Rules Ids specified, or a subset with a filter.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.ComplianceApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class ComplianceApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ComplianceApi apiInstance = apiFactory.build(ComplianceApi.class);
+
+        ComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplianceApi.class);
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. The time at which to get results from. Default : latest
+        String page = "page_example"; // String | Optional. The pagination token to use to continue listing historical order breaches from a previous call to list historical order breaches.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request.
+        Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
+        String filter = "filter_example"; // String | Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        List<String> sortBy = Arrays.asList(); // List<String> | Optional. A list of field names to sort by, each suffixed by \"ASC\" or \"DESC\"
+        try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfOrderBreachHistory result = apiInstance.listOrderBreachHistory(asAt, page, limit, filter, sortBy).execute(opts);
+
+            PagedResourceListOfOrderBreachHistory result = apiInstance.listOrderBreachHistory(asAt, page, limit, filter, sortBy).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ComplianceApi#listOrderBreachHistory");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **asAt** | **OffsetDateTime**| Optional. The time at which to get results from. Default : latest | [optional] |
+| **page** | **String**| Optional. The pagination token to use to continue listing historical order breaches from a previous call to list historical order breaches.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. | [optional] |
+| **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional] |
+| **filter** | **String**| Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. A list of field names to sort by, each suffixed by \&quot;ASC\&quot; or \&quot;DESC\&quot; | [optional] |
+
+### Return type
+
+[**PagedResourceListOfOrderBreachHistory**](PagedResourceListOfOrderBreachHistory.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | List of previous order breaches |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

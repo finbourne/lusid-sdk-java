@@ -11,6 +11,7 @@
 |**inherited** | [**CustomDataModelCriteria**](CustomDataModelCriteria.md) |  |  [optional] |
 |**incremental** | [**CustomDataModelCriteria**](CustomDataModelCriteria.md) |  |  [optional] |
 |**applied** | [**CustomDataModelCriteria**](CustomDataModelCriteria.md) |  |  [optional] |
+|**version** | [**Version**](Version.md) |  |  [optional] |
 
 
 

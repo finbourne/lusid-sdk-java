@@ -71,6 +71,10 @@ public class LoanPrincipalRepaymentEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_FRACTION)
   private java.math.BigDecimal fraction;
 
+  public static final String SERIALIZED_NAME_AMOUNT = "amount";
+  @SerializedName(SERIALIZED_NAME_AMOUNT)
+  private java.math.BigDecimal amount;
+
   public LoanPrincipalRepaymentEvent() {
     // this.instrumentEventType = this.getClass().getSimpleName();
   }
@@ -153,7 +157,7 @@ public class LoanPrincipalRepaymentEvent extends InstrumentEvent {
   }
 
    /**
-   * Fraction of the principal balance to be repaid. Must be between 0 and 1, inclusive.  Defaults to 1 if not set.
+   * Fraction of the outstanding settled principal balance to be repaid. Must be between 0 and 1, inclusive.  Defaults to 1 if not set. Ignored if the field Amount is set to a value different than zero.  Note that if there is a repayment on an unsettled trade and the repayment is specified as a fraction,  this repayment will not be applied to the unsettled position, as the fraction is always applied to  the settled balance only.
    * @return fraction
   **/
   @jakarta.annotation.Nullable
@@ -164,6 +168,27 @@ public class LoanPrincipalRepaymentEvent extends InstrumentEvent {
 
   public void setFraction(java.math.BigDecimal fraction) {
     this.fraction = fraction;
+  }
+
+
+  public LoanPrincipalRepaymentEvent amount(java.math.BigDecimal amount) {
+    
+    this.amount = amount;
+    return this;
+  }
+
+   /**
+   * Amount to be repaid (independent of the fraction).  This field is not used at all if not set or set to 0, in this case the fraction field will be used instead.  Otherwise, the fraction field is ignored.
+   * @return amount
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getAmount() {
+    return amount;
+  }
+
+
+  public void setAmount(java.math.BigDecimal amount) {
+    this.amount = amount;
   }
 
 
@@ -181,6 +206,7 @@ public class LoanPrincipalRepaymentEvent extends InstrumentEvent {
         Objects.equals(this.currency, loanPrincipalRepaymentEvent.currency) &&
         Objects.equals(this.lapseElections, loanPrincipalRepaymentEvent.lapseElections) &&
         (this.fraction.compareTo(loanPrincipalRepaymentEvent.getFraction()) == 0) &&
+        (this.amount.compareTo(loanPrincipalRepaymentEvent.getAmount()) == 0) &&
         super.equals(o);
   }
 
@@ -190,7 +216,7 @@ public class LoanPrincipalRepaymentEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(paymentDate, currency, lapseElections, fraction, super.hashCode());
+    return Objects.hash(paymentDate, currency, lapseElections, fraction, amount, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -209,6 +235,7 @@ public class LoanPrincipalRepaymentEvent extends InstrumentEvent {
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    lapseElections: ").append(toIndentedString(lapseElections)).append("\n");
     sb.append("    fraction: ").append(toIndentedString(fraction)).append("\n");
+    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -236,6 +263,7 @@ public class LoanPrincipalRepaymentEvent extends InstrumentEvent {
     openapiFields.add("currency");
     openapiFields.add("lapseElections");
     openapiFields.add("fraction");
+    openapiFields.add("amount");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

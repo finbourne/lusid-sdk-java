@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.CustomDataModelCriteria;
 import com.finbourne.lusid.model.DataModelSummary;
+import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -66,6 +67,10 @@ public class CustomDataModel {
   public static final String SERIALIZED_NAME_APPLIED = "applied";
   @SerializedName(SERIALIZED_NAME_APPLIED)
   private CustomDataModelCriteria applied;
+
+  public static final String SERIALIZED_NAME_VERSION = "version";
+  @SerializedName(SERIALIZED_NAME_VERSION)
+  private Version version;
 
   public CustomDataModel() {
   }
@@ -154,6 +159,27 @@ public class CustomDataModel {
   }
 
 
+  public CustomDataModel version(Version version) {
+    
+    this.version = version;
+    return this;
+  }
+
+   /**
+   * Get version
+   * @return version
+  **/
+  @jakarta.annotation.Nullable
+  public Version getVersion() {
+    return version;
+  }
+
+
+  public void setVersion(Version version) {
+    this.version = version;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -167,12 +193,13 @@ public class CustomDataModel {
     return Objects.equals(this.dataModelSummary, customDataModel.dataModelSummary) &&
         Objects.equals(this.inherited, customDataModel.inherited) &&
         Objects.equals(this.incremental, customDataModel.incremental) &&
-        Objects.equals(this.applied, customDataModel.applied);
+        Objects.equals(this.applied, customDataModel.applied) &&
+        Objects.equals(this.version, customDataModel.version);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(dataModelSummary, inherited, incremental, applied);
+    return Objects.hash(dataModelSummary, inherited, incremental, applied, version);
   }
 
   @Override
@@ -183,6 +210,7 @@ public class CustomDataModel {
     sb.append("    inherited: ").append(toIndentedString(inherited)).append("\n");
     sb.append("    incremental: ").append(toIndentedString(incremental)).append("\n");
     sb.append("    applied: ").append(toIndentedString(applied)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -209,6 +237,7 @@ public class CustomDataModel {
     openapiFields.add("inherited");
     openapiFields.add("incremental");
     openapiFields.add("applied");
+    openapiFields.add("version");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -242,6 +271,10 @@ public class CustomDataModel {
       // validate the optional field `applied`
       if (jsonObj.get("applied") != null && !jsonObj.get("applied").isJsonNull()) {
         CustomDataModelCriteria.validateJsonElement(jsonObj.get("applied"));
+      }
+      // validate the optional field `version`
+      if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
+        Version.validateJsonElement(jsonObj.get("version"));
       }
   }
 
