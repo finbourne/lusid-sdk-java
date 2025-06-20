@@ -11,6 +11,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**getTimeline**](TimelinesApi.md#getTimeline) | **GET** /api/timelines/{scope}/{code} | [EXPERIMENTAL] GetTimeline: Get a single Timeline by scope and code. |
 | [**listClosedPeriods**](TimelinesApi.md#listClosedPeriods) | **GET** /api/timelines/{scope}/{code}/closedperiods | [EXPERIMENTAL] ListClosedPeriods: List ClosedPeriods for a specified Timeline. |
 | [**listTimelines**](TimelinesApi.md#listTimelines) | **GET** /api/timelines | [EXPERIMENTAL] ListTimelines: List Timelines |
+| [**setPostCloseActivity**](TimelinesApi.md#setPostCloseActivity) | **POST** /api/timelines/{scope}/{code}/closedperiods/{closedPeriodId}/postcloseactivity | [EXPERIMENTAL] SetPostCloseActivity: Sets post close activities to a closed period. |
 | [**updateTimeline**](TimelinesApi.md#updateTimeline) | **PUT** /api/timelines/{scope}/{code} | [EXPERIMENTAL] UpdateTimeline: Update Timeline defined by scope and code |
 
 
@@ -694,6 +695,103 @@ public class TimelinesApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The requested Timelines. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## setPostCloseActivity
+
+> ClosedPeriod setPostCloseActivity(scope, code, closedPeriodId, postCloseActivitiesRequest)
+
+[EXPERIMENTAL] SetPostCloseActivity: Sets post close activities to a closed period.
+
+Sets empty or more post close activities to the specific closed period.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.TimelinesApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class TimelinesApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TimelinesApi apiInstance = apiFactory.build(TimelinesApi.class);
+
+        TimelinesApi apiInstance = ApiFactoryBuilder.build(fileName).build(TimelinesApi.class);
+        String scope = "scope_example"; // String | The scope of the Timeline.
+        String code = "code_example"; // String | The code of the Timeline.
+        String closedPeriodId = "closedPeriodId_example"; // String | The id of the Closed Period. Together with the scope and code of the Timeline,   this uniquely identifies the ClosedPeriod
+        PostCloseActivitiesRequest postCloseActivitiesRequest = new PostCloseActivitiesRequest(); // PostCloseActivitiesRequest | Specifies collection of post close activities
+        try {
+            // uncomment the below to set overrides at the request level
+            // ClosedPeriod result = apiInstance.setPostCloseActivity(scope, code, closedPeriodId, postCloseActivitiesRequest).execute(opts);
+
+            ClosedPeriod result = apiInstance.setPostCloseActivity(scope, code, closedPeriodId, postCloseActivitiesRequest).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TimelinesApi#setPostCloseActivity");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Timeline. | |
+| **code** | **String**| The code of the Timeline. | |
+| **closedPeriodId** | **String**| The id of the Closed Period. Together with the scope and code of the Timeline,   this uniquely identifies the ClosedPeriod | |
+| **postCloseActivitiesRequest** | [**PostCloseActivitiesRequest**](PostCloseActivitiesRequest.md)| Specifies collection of post close activities | [optional] |
+
+### Return type
+
+[**ClosedPeriod**](ClosedPeriod.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The updated closed period |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

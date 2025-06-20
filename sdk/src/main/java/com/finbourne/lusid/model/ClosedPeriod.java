@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.Link;
+import com.finbourne.lusid.model.PostCloseActivity;
 import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
@@ -82,6 +83,10 @@ public class ClosedPeriod {
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
   private Version version;
+
+  public static final String SERIALIZED_NAME_POST_CLOSE_ACTIVITIES = "postCloseActivities";
+  @SerializedName(SERIALIZED_NAME_POST_CLOSE_ACTIVITIES)
+  private List<PostCloseActivity> postCloseActivities;
 
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
@@ -228,6 +233,35 @@ public class ClosedPeriod {
   }
 
 
+  public ClosedPeriod postCloseActivities(List<PostCloseActivity> postCloseActivities) {
+    
+    this.postCloseActivities = postCloseActivities;
+    return this;
+  }
+
+  public ClosedPeriod addPostCloseActivitiesItem(PostCloseActivity postCloseActivitiesItem) {
+    if (this.postCloseActivities == null) {
+      this.postCloseActivities = new ArrayList<>();
+    }
+    this.postCloseActivities.add(postCloseActivitiesItem);
+    return this;
+  }
+
+   /**
+   * All the post close activities for the closed period.
+   * @return postCloseActivities
+  **/
+  @jakarta.annotation.Nullable
+  public List<PostCloseActivity> getPostCloseActivities() {
+    return postCloseActivities;
+  }
+
+
+  public void setPostCloseActivities(List<PostCloseActivity> postCloseActivities) {
+    this.postCloseActivities = postCloseActivities;
+  }
+
+
   public ClosedPeriod href(URI href) {
     
     this.href = href;
@@ -294,6 +328,7 @@ public class ClosedPeriod {
         Objects.equals(this.asAtClosed, closedPeriod.asAtClosed) &&
         Objects.equals(this.properties, closedPeriod.properties) &&
         Objects.equals(this.version, closedPeriod.version) &&
+        Objects.equals(this.postCloseActivities, closedPeriod.postCloseActivities) &&
         Objects.equals(this.href, closedPeriod.href) &&
         Objects.equals(this.links, closedPeriod.links);
   }
@@ -304,7 +339,7 @@ public class ClosedPeriod {
 
   @Override
   public int hashCode() {
-    return Objects.hash(closedPeriodId, effectiveStart, effectiveEnd, asAtClosed, properties, version, href, links);
+    return Objects.hash(closedPeriodId, effectiveStart, effectiveEnd, asAtClosed, properties, version, postCloseActivities, href, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -324,6 +359,7 @@ public class ClosedPeriod {
     sb.append("    asAtClosed: ").append(toIndentedString(asAtClosed)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
+    sb.append("    postCloseActivities: ").append(toIndentedString(postCloseActivities)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
@@ -354,6 +390,7 @@ public class ClosedPeriod {
     openapiFields.add("asAtClosed");
     openapiFields.add("properties");
     openapiFields.add("version");
+    openapiFields.add("postCloseActivities");
     openapiFields.add("href");
     openapiFields.add("links");
 
@@ -380,6 +417,20 @@ public class ClosedPeriod {
       // validate the optional field `version`
       if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
         Version.validateJsonElement(jsonObj.get("version"));
+      }
+      if (jsonObj.get("postCloseActivities") != null && !jsonObj.get("postCloseActivities").isJsonNull()) {
+        JsonArray jsonArraypostCloseActivities = jsonObj.getAsJsonArray("postCloseActivities");
+        if (jsonArraypostCloseActivities != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("postCloseActivities").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `postCloseActivities` to be an array in the JSON string but got `%s`", jsonObj.get("postCloseActivities").toString()));
+          }
+
+          // validate the optional field `postCloseActivities` (array)
+          for (int i = 0; i < jsonArraypostCloseActivities.size(); i++) {
+            PostCloseActivity.validateJsonElement(jsonArraypostCloseActivities.get(i));
+          };
+        }
       }
       if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
