@@ -49,56 +49,56 @@ import com.finbourne.lusid.JSON;
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class GroupReconciliationInstanceId {
-  public static final String SERIALIZED_NAME_RUN_ID_TYPE = "runIdType";
-  @SerializedName(SERIALIZED_NAME_RUN_ID_TYPE)
-  private String runIdType;
+  public static final String SERIALIZED_NAME_INSTANCE_ID_TYPE = "instanceIdType";
+  @SerializedName(SERIALIZED_NAME_INSTANCE_ID_TYPE)
+  private String instanceIdType;
 
-  public static final String SERIALIZED_NAME_RUN_ID_VALUE = "runIdValue";
-  @SerializedName(SERIALIZED_NAME_RUN_ID_VALUE)
-  private String runIdValue;
+  public static final String SERIALIZED_NAME_INSTANCE_ID_VALUE = "instanceIdValue";
+  @SerializedName(SERIALIZED_NAME_INSTANCE_ID_VALUE)
+  private String instanceIdValue;
 
   public GroupReconciliationInstanceId() {
   }
 
-  public GroupReconciliationInstanceId runIdType(String runIdType) {
+  public GroupReconciliationInstanceId instanceIdType(String instanceIdType) {
     
-    this.runIdType = runIdType;
+    this.instanceIdType = instanceIdType;
     return this;
   }
 
    /**
    * Type of the reconciliation run, manual or automatic (via the workflow). \&quot;Manual\&quot; | \&quot;WorkflowServiceTaskId\&quot;
-   * @return runIdType
+   * @return instanceIdType
   **/
   @jakarta.annotation.Nonnull
-  public String getRunIdType() {
-    return runIdType;
+  public String getInstanceIdType() {
+    return instanceIdType;
   }
 
 
-  public void setRunIdType(String runIdType) {
-    this.runIdType = runIdType;
+  public void setInstanceIdType(String instanceIdType) {
+    this.instanceIdType = instanceIdType;
   }
 
 
-  public GroupReconciliationInstanceId runIdValue(String runIdValue) {
+  public GroupReconciliationInstanceId instanceIdValue(String instanceIdValue) {
     
-    this.runIdValue = runIdValue;
+    this.instanceIdValue = instanceIdValue;
     return this;
   }
 
    /**
    * Reconciliation run identifier: a manually-provided key or taskId.
-   * @return runIdValue
+   * @return instanceIdValue
   **/
   @jakarta.annotation.Nonnull
-  public String getRunIdValue() {
-    return runIdValue;
+  public String getInstanceIdValue() {
+    return instanceIdValue;
   }
 
 
-  public void setRunIdValue(String runIdValue) {
-    this.runIdValue = runIdValue;
+  public void setInstanceIdValue(String instanceIdValue) {
+    this.instanceIdValue = instanceIdValue;
   }
 
 
@@ -112,21 +112,21 @@ public class GroupReconciliationInstanceId {
       return false;
     }
     GroupReconciliationInstanceId groupReconciliationInstanceId = (GroupReconciliationInstanceId) o;
-    return Objects.equals(this.runIdType, groupReconciliationInstanceId.runIdType) &&
-        Objects.equals(this.runIdValue, groupReconciliationInstanceId.runIdValue);
+    return Objects.equals(this.instanceIdType, groupReconciliationInstanceId.instanceIdType) &&
+        Objects.equals(this.instanceIdValue, groupReconciliationInstanceId.instanceIdValue);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(runIdType, runIdValue);
+    return Objects.hash(instanceIdType, instanceIdValue);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GroupReconciliationInstanceId {\n");
-    sb.append("    runIdType: ").append(toIndentedString(runIdType)).append("\n");
-    sb.append("    runIdValue: ").append(toIndentedString(runIdValue)).append("\n");
+    sb.append("    instanceIdType: ").append(toIndentedString(instanceIdType)).append("\n");
+    sb.append("    instanceIdValue: ").append(toIndentedString(instanceIdValue)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -149,13 +149,13 @@ public class GroupReconciliationInstanceId {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("runIdType");
-    openapiFields.add("runIdValue");
+    openapiFields.add("instanceIdType");
+    openapiFields.add("instanceIdValue");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("runIdType");
-    openapiRequiredFields.add("runIdValue");
+    openapiRequiredFields.add("instanceIdType");
+    openapiRequiredFields.add("instanceIdValue");
   }
 
  /**
@@ -178,11 +178,11 @@ public class GroupReconciliationInstanceId {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("runIdType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `runIdType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("runIdType").toString()));
+      if (!jsonObj.get("instanceIdType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `instanceIdType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instanceIdType").toString()));
       }
-      if (!jsonObj.get("runIdValue").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `runIdValue` to be a primitive type in the JSON string but got `%s`", jsonObj.get("runIdValue").toString()));
+      if (!jsonObj.get("instanceIdValue").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `instanceIdValue` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instanceIdValue").toString()));
       }
   }
 

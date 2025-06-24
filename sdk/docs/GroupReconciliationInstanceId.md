@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**runIdType** | **String** | Type of the reconciliation run, manual or automatic (via the workflow). \&quot;Manual\&quot; | \&quot;WorkflowServiceTaskId\&quot; |  |
-|**runIdValue** | **String** | Reconciliation run identifier: a manually-provided key or taskId. |  |
+|**instanceIdType** | **String** | Type of the reconciliation run, manual or automatic (via the workflow). \&quot;Manual\&quot; | \&quot;WorkflowServiceTaskId\&quot; |  |
+|**instanceIdValue** | **String** | Reconciliation run identifier: a manually-provided key or taskId. |  |
 
 
 
