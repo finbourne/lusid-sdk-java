@@ -82,7 +82,23 @@ public class GroupReconciliationResultTypes {
   @SerializedName(SERIALIZED_NAME_LINK_NOT_FOUND)
   private Link linkNotFound;
 
+  public static final String SERIALIZED_NAME_COUNT_RESOLVED = "countResolved";
+  @SerializedName(SERIALIZED_NAME_COUNT_RESOLVED)
+  private Integer countResolved;
+
+  public static final String SERIALIZED_NAME_LINK_RESOLVED = "linkResolved";
+  @SerializedName(SERIALIZED_NAME_LINK_RESOLVED)
+  private Link linkResolved;
+
   public GroupReconciliationResultTypes() {
+  }
+
+  
+  public GroupReconciliationResultTypes(
+     Integer countNotFound
+  ) {
+    this();
+    this.countNotFound = countNotFound;
   }
 
   public GroupReconciliationResultTypes countMatch(Integer countMatch) {
@@ -211,25 +227,16 @@ public class GroupReconciliationResultTypes {
   }
 
 
-  public GroupReconciliationResultTypes countNotFound(Integer countNotFound) {
-    
-    this.countNotFound = countNotFound;
-    return this;
-  }
-
    /**
-   * The number of comparison results of resultType \&quot;NotFound\&quot; with this instanceId and reconciliationType
+   * The number of comparison results of resultType \&quot;Resolved\&quot; with this instanceId and reconciliationType
    * @return countNotFound
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public Integer getCountNotFound() {
     return countNotFound;
   }
 
 
-  public void setCountNotFound(Integer countNotFound) {
-    this.countNotFound = countNotFound;
-  }
 
 
   public GroupReconciliationResultTypes linkNotFound(Link linkNotFound) {
@@ -242,7 +249,7 @@ public class GroupReconciliationResultTypes {
    * Get linkNotFound
    * @return linkNotFound
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public Link getLinkNotFound() {
     return linkNotFound;
   }
@@ -250,6 +257,48 @@ public class GroupReconciliationResultTypes {
 
   public void setLinkNotFound(Link linkNotFound) {
     this.linkNotFound = linkNotFound;
+  }
+
+
+  public GroupReconciliationResultTypes countResolved(Integer countResolved) {
+    
+    this.countResolved = countResolved;
+    return this;
+  }
+
+   /**
+   * The number of comparison results of resultType \&quot;Resolved\&quot; with this instanceId and reconciliationType
+   * @return countResolved
+  **/
+  @jakarta.annotation.Nullable
+  public Integer getCountResolved() {
+    return countResolved;
+  }
+
+
+  public void setCountResolved(Integer countResolved) {
+    this.countResolved = countResolved;
+  }
+
+
+  public GroupReconciliationResultTypes linkResolved(Link linkResolved) {
+    
+    this.linkResolved = linkResolved;
+    return this;
+  }
+
+   /**
+   * Get linkResolved
+   * @return linkResolved
+  **/
+  @jakarta.annotation.Nullable
+  public Link getLinkResolved() {
+    return linkResolved;
+  }
+
+
+  public void setLinkResolved(Link linkResolved) {
+    this.linkResolved = linkResolved;
   }
 
 
@@ -270,12 +319,14 @@ public class GroupReconciliationResultTypes {
         Objects.equals(this.countBreak, groupReconciliationResultTypes.countBreak) &&
         Objects.equals(this.linkBreaks, groupReconciliationResultTypes.linkBreaks) &&
         Objects.equals(this.countNotFound, groupReconciliationResultTypes.countNotFound) &&
-        Objects.equals(this.linkNotFound, groupReconciliationResultTypes.linkNotFound);
+        Objects.equals(this.linkNotFound, groupReconciliationResultTypes.linkNotFound) &&
+        Objects.equals(this.countResolved, groupReconciliationResultTypes.countResolved) &&
+        Objects.equals(this.linkResolved, groupReconciliationResultTypes.linkResolved);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(countMatch, linkMatches, countPartialMatch, linkPartialMatches, countBreak, linkBreaks, countNotFound, linkNotFound);
+    return Objects.hash(countMatch, linkMatches, countPartialMatch, linkPartialMatches, countBreak, linkBreaks, countNotFound, linkNotFound, countResolved, linkResolved);
   }
 
   @Override
@@ -290,6 +341,8 @@ public class GroupReconciliationResultTypes {
     sb.append("    linkBreaks: ").append(toIndentedString(linkBreaks)).append("\n");
     sb.append("    countNotFound: ").append(toIndentedString(countNotFound)).append("\n");
     sb.append("    linkNotFound: ").append(toIndentedString(linkNotFound)).append("\n");
+    sb.append("    countResolved: ").append(toIndentedString(countResolved)).append("\n");
+    sb.append("    linkResolved: ").append(toIndentedString(linkResolved)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -320,6 +373,8 @@ public class GroupReconciliationResultTypes {
     openapiFields.add("linkBreaks");
     openapiFields.add("countNotFound");
     openapiFields.add("linkNotFound");
+    openapiFields.add("countResolved");
+    openapiFields.add("linkResolved");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -329,8 +384,6 @@ public class GroupReconciliationResultTypes {
     openapiRequiredFields.add("linkPartialMatches");
     openapiRequiredFields.add("countBreak");
     openapiRequiredFields.add("linkBreaks");
-    openapiRequiredFields.add("countNotFound");
-    openapiRequiredFields.add("linkNotFound");
   }
 
  /**
@@ -359,8 +412,14 @@ public class GroupReconciliationResultTypes {
       Link.validateJsonElement(jsonObj.get("linkPartialMatches"));
       // validate the required field `linkBreaks`
       Link.validateJsonElement(jsonObj.get("linkBreaks"));
-      // validate the required field `linkNotFound`
-      Link.validateJsonElement(jsonObj.get("linkNotFound"));
+      // validate the optional field `linkNotFound`
+      if (jsonObj.get("linkNotFound") != null && !jsonObj.get("linkNotFound").isJsonNull()) {
+        Link.validateJsonElement(jsonObj.get("linkNotFound"));
+      }
+      // validate the optional field `linkResolved`
+      if (jsonObj.get("linkResolved") != null && !jsonObj.get("linkResolved").isJsonNull()) {
+        Link.validateJsonElement(jsonObj.get("linkResolved"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
