@@ -33,8 +33,6 @@
 
 * `CASHFXFORWARD` (value: `"CashFxForward"`)
 
-* `UNSETTLEDCASHTYPES` (value: `"UnsettledCashTypes"`)
-
 * `CARRY` (value: `"Carry"`)
 
 * `CARRYASPNL` (value: `"CarryAsPnl"`)
@@ -48,6 +46,12 @@
 * `LIMITADJUSTMENT` (value: `"LimitAdjustment"`)
 
 * `BALANCEADJUSTMENT` (value: `"BalanceAdjustment"`)
+
+* `DEFERRED` (value: `"Deferred"`)
+
+* `CASHDEFERRED` (value: `"CashDeferred"`)
+
+* `UNSETTLEDCASHTYPES` (value: `"UnsettledCashTypes"`)
 
 
 

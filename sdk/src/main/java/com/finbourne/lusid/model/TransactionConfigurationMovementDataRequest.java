@@ -57,7 +57,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class TransactionConfigurationMovementDataRequest {
   /**
-   * . The available values are: Settlement, Traded, StockMovement, FutureCash, Commitment, Receivable, CashSettlement, CashForward, CashCommitment, CashReceivable, Accrual, CashAccrual, ForwardFx, CashFxForward, UnsettledCashTypes, Carry, CarryAsPnl, VariationMargin, Capital, Fee, LimitAdjustment, BalanceAdjustment
+   * . The available values are: Settlement, Traded, StockMovement, FutureCash, Commitment, Receivable, CashSettlement, CashForward, CashCommitment, CashReceivable, Accrual, CashAccrual, ForwardFx, CashFxForward, Carry, CarryAsPnl, VariationMargin, Capital, Fee, LimitAdjustment, BalanceAdjustment, Deferred, CashDeferred, UnsettledCashTypes
    */
   @JsonAdapter(MovementTypesEnum.Adapter.class)
   public enum MovementTypesEnum {
@@ -89,8 +89,6 @@ public class TransactionConfigurationMovementDataRequest {
     
     CASHFXFORWARD("CashFxForward"),
     
-    UNSETTLEDCASHTYPES("UnsettledCashTypes"),
-    
     CARRY("Carry"),
     
     CARRYASPNL("CarryAsPnl"),
@@ -103,7 +101,13 @@ public class TransactionConfigurationMovementDataRequest {
     
     LIMITADJUSTMENT("LimitAdjustment"),
     
-    BALANCEADJUSTMENT("BalanceAdjustment");
+    BALANCEADJUSTMENT("BalanceAdjustment"),
+    
+    DEFERRED("Deferred"),
+    
+    CASHDEFERRED("CashDeferred"),
+    
+    UNSETTLEDCASHTYPES("UnsettledCashTypes");
 
     private String value;
 
@@ -181,7 +185,7 @@ public class TransactionConfigurationMovementDataRequest {
   }
 
    /**
-   * . The available values are: Settlement, Traded, StockMovement, FutureCash, Commitment, Receivable, CashSettlement, CashForward, CashCommitment, CashReceivable, Accrual, CashAccrual, ForwardFx, CashFxForward, UnsettledCashTypes, Carry, CarryAsPnl, VariationMargin, Capital, Fee, LimitAdjustment, BalanceAdjustment
+   * . The available values are: Settlement, Traded, StockMovement, FutureCash, Commitment, Receivable, CashSettlement, CashForward, CashCommitment, CashReceivable, Accrual, CashAccrual, ForwardFx, CashFxForward, Carry, CarryAsPnl, VariationMargin, Capital, Fee, LimitAdjustment, BalanceAdjustment, Deferred, CashDeferred, UnsettledCashTypes
    * @return movementTypes
   **/
   @jakarta.annotation.Nonnull

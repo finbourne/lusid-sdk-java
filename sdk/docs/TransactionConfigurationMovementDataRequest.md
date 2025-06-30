@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**movementTypes** | [**MovementTypesEnum**](#MovementTypesEnum) | . The available values are: Settlement, Traded, StockMovement, FutureCash, Commitment, Receivable, CashSettlement, CashForward, CashCommitment, CashReceivable, Accrual, CashAccrual, ForwardFx, CashFxForward, UnsettledCashTypes, Carry, CarryAsPnl, VariationMargin, Capital, Fee, LimitAdjustment, BalanceAdjustment |  |
+|**movementTypes** | [**MovementTypesEnum**](#MovementTypesEnum) | . The available values are: Settlement, Traded, StockMovement, FutureCash, Commitment, Receivable, CashSettlement, CashForward, CashCommitment, CashReceivable, Accrual, CashAccrual, ForwardFx, CashFxForward, Carry, CarryAsPnl, VariationMargin, Capital, Fee, LimitAdjustment, BalanceAdjustment, Deferred, CashDeferred, UnsettledCashTypes |  |
 |**side** | **String** | The movement side |  |
 |**direction** | **Integer** | The movement direction |  |
 |**properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | The properties associated with the underlying Movement. |  [optional] |
@@ -35,7 +35,6 @@
 | CASHACCRUAL | &quot;CashAccrual&quot; |
 | FORWARDFX | &quot;ForwardFx&quot; |
 | CASHFXFORWARD | &quot;CashFxForward&quot; |
-| UNSETTLEDCASHTYPES | &quot;UnsettledCashTypes&quot; |
 | CARRY | &quot;Carry&quot; |
 | CARRYASPNL | &quot;CarryAsPnl&quot; |
 | VARIATIONMARGIN | &quot;VariationMargin&quot; |
@@ -43,6 +42,9 @@
 | FEE | &quot;Fee&quot; |
 | LIMITADJUSTMENT | &quot;LimitAdjustment&quot; |
 | BALANCEADJUSTMENT | &quot;BalanceAdjustment&quot; |
+| DEFERRED | &quot;Deferred&quot; |
+| CASHDEFERRED | &quot;CashDeferred&quot; |
+| UNSETTLEDCASHTYPES | &quot;UnsettledCashTypes&quot; |
 
 
 

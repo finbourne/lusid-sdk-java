@@ -53,8 +53,6 @@ public enum MovementType {
   
   CASHFXFORWARD("CashFxForward"),
   
-  UNSETTLEDCASHTYPES("UnsettledCashTypes"),
-  
   CARRY("Carry"),
   
   CARRYASPNL("CarryAsPnl"),
@@ -67,7 +65,13 @@ public enum MovementType {
   
   LIMITADJUSTMENT("LimitAdjustment"),
   
-  BALANCEADJUSTMENT("BalanceAdjustment");
+  BALANCEADJUSTMENT("BalanceAdjustment"),
+  
+  DEFERRED("Deferred"),
+  
+  CASHDEFERRED("CashDeferred"),
+  
+  UNSETTLEDCASHTYPES("UnsettledCashTypes");
 
   private String value;
 
