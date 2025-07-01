@@ -7,7 +7,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**deleteInvestorRecord**](InvestorRecordsApi.md#deleteInvestorRecord) | **DELETE** /api/investorrecords/{idTypeScope}/{idTypeCode}/{code} | [EARLY ACCESS] DeleteInvestorRecord: Delete Investor Record |
 | [**getInvestorRecord**](InvestorRecordsApi.md#getInvestorRecord) | **GET** /api/investorrecords/{idTypeScope}/{idTypeCode}/{code} | [EARLY ACCESS] GetInvestorRecord: Get Investor Record |
 | [**listAllInvestorRecords**](InvestorRecordsApi.md#listAllInvestorRecords) | **GET** /api/investorrecords | [EARLY ACCESS] ListAllInvestorRecords: List Investor Records |
-| [**upsertInvestorRecords**](InvestorRecordsApi.md#upsertInvestorRecords) | **POST** /api/investorrecords/$batchUpsert | [EARLY ACCESS] UpsertInvestorRecords: Pluralised upsert of Investor Records |
+| [**upsertInvestorRecords**](InvestorRecordsApi.md#upsertInvestorRecords) | **POST** /api/investorrecords/$batchUpsert | [EARLY ACCESS] UpsertInvestorRecords: Upsert investor records |
 
 
 
@@ -318,7 +318,7 @@ public class InvestorRecordsApiExample {
 
 > UpsertInvestorRecordsResponse upsertInvestorRecords(successMode, requestBody)
 
-[EARLY ACCESS] UpsertInvestorRecords: Pluralised upsert of Investor Records
+[EARLY ACCESS] UpsertInvestorRecords: Upsert investor records
 
 Creates or updates a collection of Investor Records
 

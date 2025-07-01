@@ -19,7 +19,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**patchLegalEntityAccessMetadata**](LegalEntitiesApi.md#patchLegalEntityAccessMetadata) | **PATCH** /api/legalentities/{idTypeScope}/{idTypeCode}/{code}/metadata | [EARLY ACCESS] PatchLegalEntityAccessMetadata: Patch Access Metadata rules for a Legal Entity. |
 | [**setLegalEntityIdentifiers**](LegalEntitiesApi.md#setLegalEntityIdentifiers) | **POST** /api/legalentities/{idTypeScope}/{idTypeCode}/{code}/identifiers | [EARLY ACCESS] SetLegalEntityIdentifiers: Set Legal Entity Identifiers |
 | [**setLegalEntityProperties**](LegalEntitiesApi.md#setLegalEntityProperties) | **POST** /api/legalentities/{idTypeScope}/{idTypeCode}/{code}/properties | SetLegalEntityProperties: Set Legal Entity Properties |
-| [**upsertLegalEntities**](LegalEntitiesApi.md#upsertLegalEntities) | **POST** /api/legalentities/$batchUpsert | [EARLY ACCESS] UpsertLegalEntities: Pluralised upsert of Legal Entities |
+| [**upsertLegalEntities**](LegalEntitiesApi.md#upsertLegalEntities) | **POST** /api/legalentities/$batchUpsert | [EARLY ACCESS] UpsertLegalEntities: Batch upsert Legal Entities |
 | [**upsertLegalEntity**](LegalEntitiesApi.md#upsertLegalEntity) | **POST** /api/legalentities | UpsertLegalEntity: Upsert Legal Entity |
 | [**upsertLegalEntityAccessMetadata**](LegalEntitiesApi.md#upsertLegalEntityAccessMetadata) | **PUT** /api/legalentities/{idTypeScope}/{idTypeCode}/{code}/metadata/{metadataKey} | UpsertLegalEntityAccessMetadata: Upsert a Legal Entity Access Metadata entry associated with a specific metadataKey. This creates or updates the data in LUSID. |
 
@@ -1546,7 +1546,7 @@ public class LegalEntitiesApiExample {
 
 > UpsertLegalEntitiesResponse upsertLegalEntities(successMode, requestBody)
 
-[EARLY ACCESS] UpsertLegalEntities: Pluralised upsert of Legal Entities
+[EARLY ACCESS] UpsertLegalEntities: Batch upsert Legal Entities
 
 Creates or updates a collection of Legal Entities
 

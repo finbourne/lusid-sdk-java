@@ -307,7 +307,7 @@ Class | Method | HTTP request | Description
 *InvestorRecordsApi* | [**deleteInvestorRecord**](docs/InvestorRecordsApi.md#deleteinvestorrecord) | **DELETE** /api/investorrecords/{idTypeScope}/{idTypeCode}/{code} | [EARLY ACCESS] DeleteInvestorRecord: Delete Investor Record
 *InvestorRecordsApi* | [**getInvestorRecord**](docs/InvestorRecordsApi.md#getinvestorrecord) | **GET** /api/investorrecords/{idTypeScope}/{idTypeCode}/{code} | [EARLY ACCESS] GetInvestorRecord: Get Investor Record
 *InvestorRecordsApi* | [**listAllInvestorRecords**](docs/InvestorRecordsApi.md#listallinvestorrecords) | **GET** /api/investorrecords | [EARLY ACCESS] ListAllInvestorRecords: List Investor Records
-*InvestorRecordsApi* | [**upsertInvestorRecords**](docs/InvestorRecordsApi.md#upsertinvestorrecords) | **POST** /api/investorrecords/$batchUpsert | [EARLY ACCESS] UpsertInvestorRecords: Pluralised upsert of Investor Records
+*InvestorRecordsApi* | [**upsertInvestorRecords**](docs/InvestorRecordsApi.md#upsertinvestorrecords) | **POST** /api/investorrecords/$batchUpsert | [EARLY ACCESS] UpsertInvestorRecords: Upsert investor records
 *LegacyComplianceApi* | [**deleteLegacyComplianceRule**](docs/LegacyComplianceApi.md#deletelegacycompliancerule) | **DELETE** /api/legacy/compliance/rules/{scope}/{code} | [EXPERIMENTAL] DeleteLegacyComplianceRule: Deletes a compliance rule.
 *LegacyComplianceApi* | [**getLegacyBreachedOrdersInfo**](docs/LegacyComplianceApi.md#getlegacybreachedordersinfo) | **GET** /api/legacy/compliance/runs/breached/{runId} | [EXPERIMENTAL] GetLegacyBreachedOrdersInfo: Get the Ids of Breached orders in a given compliance run and the corresponding list of rules that could have caused it.
 *LegacyComplianceApi* | [**getLegacyComplianceRule**](docs/LegacyComplianceApi.md#getlegacycompliancerule) | **GET** /api/legacy/compliance/rules/{scope}/{code} | [EXPERIMENTAL] GetLegacyComplianceRule: Retrieve the definition of single compliance rule.
@@ -331,7 +331,7 @@ Class | Method | HTTP request | Description
 *LegalEntitiesApi* | [**patchLegalEntityAccessMetadata**](docs/LegalEntitiesApi.md#patchlegalentityaccessmetadata) | **PATCH** /api/legalentities/{idTypeScope}/{idTypeCode}/{code}/metadata | [EARLY ACCESS] PatchLegalEntityAccessMetadata: Patch Access Metadata rules for a Legal Entity.
 *LegalEntitiesApi* | [**setLegalEntityIdentifiers**](docs/LegalEntitiesApi.md#setlegalentityidentifiers) | **POST** /api/legalentities/{idTypeScope}/{idTypeCode}/{code}/identifiers | [EARLY ACCESS] SetLegalEntityIdentifiers: Set Legal Entity Identifiers
 *LegalEntitiesApi* | [**setLegalEntityProperties**](docs/LegalEntitiesApi.md#setlegalentityproperties) | **POST** /api/legalentities/{idTypeScope}/{idTypeCode}/{code}/properties | SetLegalEntityProperties: Set Legal Entity Properties
-*LegalEntitiesApi* | [**upsertLegalEntities**](docs/LegalEntitiesApi.md#upsertlegalentities) | **POST** /api/legalentities/$batchUpsert | [EARLY ACCESS] UpsertLegalEntities: Pluralised upsert of Legal Entities
+*LegalEntitiesApi* | [**upsertLegalEntities**](docs/LegalEntitiesApi.md#upsertlegalentities) | **POST** /api/legalentities/$batchUpsert | [EARLY ACCESS] UpsertLegalEntities: Batch upsert Legal Entities
 *LegalEntitiesApi* | [**upsertLegalEntity**](docs/LegalEntitiesApi.md#upsertlegalentity) | **POST** /api/legalentities | UpsertLegalEntity: Upsert Legal Entity
 *LegalEntitiesApi* | [**upsertLegalEntityAccessMetadata**](docs/LegalEntitiesApi.md#upsertlegalentityaccessmetadata) | **PUT** /api/legalentities/{idTypeScope}/{idTypeCode}/{code}/metadata/{metadataKey} | UpsertLegalEntityAccessMetadata: Upsert a Legal Entity Access Metadata entry associated with a specific metadataKey. This creates or updates the data in LUSID.
 *OrderGraphApi* | [**listOrderGraphBlocks**](docs/OrderGraphApi.md#listordergraphblocks) | **GET** /api/ordergraph/blocks | ListOrderGraphBlocks: Lists blocks that pass the filter provided, and builds a summary picture of the state of their associated order entities.
@@ -382,7 +382,7 @@ Class | Method | HTTP request | Description
 *PersonsApi* | [**setPersonProperties**](docs/PersonsApi.md#setpersonproperties) | **POST** /api/persons/{idTypeScope}/{idTypeCode}/{code}/properties | [EARLY ACCESS] SetPersonProperties: Set Person Properties
 *PersonsApi* | [**upsertPerson**](docs/PersonsApi.md#upsertperson) | **POST** /api/persons | UpsertPerson: Upsert Person
 *PersonsApi* | [**upsertPersonAccessMetadata**](docs/PersonsApi.md#upsertpersonaccessmetadata) | **PUT** /api/persons/{idTypeScope}/{idTypeCode}/{code}/metadata/{metadataKey} | [EARLY ACCESS] UpsertPersonAccessMetadata: Upsert a Person Access Metadata entry associated with a specific metadataKey. This creates or updates the data in LUSID.
-*PersonsApi* | [**upsertPersons**](docs/PersonsApi.md#upsertpersons) | **POST** /api/persons/$batchUpsert | [EARLY ACCESS] UpsertPersons: Pluralised Upsert of Persons
+*PersonsApi* | [**upsertPersons**](docs/PersonsApi.md#upsertpersons) | **POST** /api/persons/$batchUpsert | [EARLY ACCESS] UpsertPersons: Batch upsert Persons
 *PlacementsApi* | [**deletePlacement**](docs/PlacementsApi.md#deleteplacement) | **DELETE** /api/placements/{scope}/{code} | [EARLY ACCESS] DeletePlacement: Delete placement
 *PlacementsApi* | [**getPlacement**](docs/PlacementsApi.md#getplacement) | **GET** /api/placements/{scope}/{code} | [EARLY ACCESS] GetPlacement: Get Placement
 *PlacementsApi* | [**listPlacements**](docs/PlacementsApi.md#listplacements) | **GET** /api/placements | [EARLY ACCESS] ListPlacements: List Placements
@@ -1190,6 +1190,7 @@ Class | Method | HTTP request | Description
  - [IntermediateComplianceStepRequest](docs/IntermediateComplianceStepRequest.md)
  - [IntermediateSecuritiesDistributionEvent](docs/IntermediateSecuritiesDistributionEvent.md)
  - [Investor](docs/Investor.md)
+ - [InvestorIdentifier](docs/InvestorIdentifier.md)
  - [InvestorRecord](docs/InvestorRecord.md)
  - [IrVolCubeData](docs/IrVolCubeData.md)
  - [IrVolDependency](docs/IrVolDependency.md)
@@ -1798,7 +1799,6 @@ Class | Method | HTTP request | Description
  - [UpsertInstrumentPropertiesResponse](docs/UpsertInstrumentPropertiesResponse.md)
  - [UpsertInstrumentPropertyRequest](docs/UpsertInstrumentPropertyRequest.md)
  - [UpsertInstrumentsResponse](docs/UpsertInstrumentsResponse.md)
- - [UpsertInvestor](docs/UpsertInvestor.md)
  - [UpsertInvestorRecordRequest](docs/UpsertInvestorRecordRequest.md)
  - [UpsertInvestorRecordsResponse](docs/UpsertInvestorRecordsResponse.md)
  - [UpsertLegalEntitiesResponse](docs/UpsertLegalEntitiesResponse.md)

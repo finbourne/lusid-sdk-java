@@ -45,6 +45,8 @@
 
 * `INVESTORRECORD` (value: `"InvestorRecord"`)
 
+* `INVESTMENTACCOUNT` (value: `"InvestmentAccount"`)
+
 * `PLACEMENT` (value: `"Placement"`)
 
 * `EXECUTION` (value: `"Execution"`)

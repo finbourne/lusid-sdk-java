@@ -21,7 +21,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**setPersonProperties**](PersonsApi.md#setPersonProperties) | **POST** /api/persons/{idTypeScope}/{idTypeCode}/{code}/properties | [EARLY ACCESS] SetPersonProperties: Set Person Properties |
 | [**upsertPerson**](PersonsApi.md#upsertPerson) | **POST** /api/persons | UpsertPerson: Upsert Person |
 | [**upsertPersonAccessMetadata**](PersonsApi.md#upsertPersonAccessMetadata) | **PUT** /api/persons/{idTypeScope}/{idTypeCode}/{code}/metadata/{metadataKey} | [EARLY ACCESS] UpsertPersonAccessMetadata: Upsert a Person Access Metadata entry associated with a specific metadataKey. This creates or updates the data in LUSID. |
-| [**upsertPersons**](PersonsApi.md#upsertPersons) | **POST** /api/persons/$batchUpsert | [EARLY ACCESS] UpsertPersons: Pluralised Upsert of Persons |
+| [**upsertPersons**](PersonsApi.md#upsertPersons) | **POST** /api/persons/$batchUpsert | [EARLY ACCESS] UpsertPersons: Batch upsert Persons |
 
 
 
@@ -1736,7 +1736,7 @@ public class PersonsApiExample {
 
 > UpsertPersonsResponse upsertPersons(successMode, requestBody)
 
-[EARLY ACCESS] UpsertPersons: Pluralised Upsert of Persons
+[EARLY ACCESS] UpsertPersons: Batch upsert Persons
 
 Create or updates a collection of person(s).
 

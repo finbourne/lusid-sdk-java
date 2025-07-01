@@ -12,7 +12,7 @@ Request to create or update an investor record
 |**properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties associated to the Investor Record. |  [optional] |
 |**displayName** | **String** | The display name of the Investor Record |  |
 |**description** | **String** | The description of the Investor Record |  [optional] |
-|**investor** | [**UpsertInvestor**](UpsertInvestor.md) |  |  [optional] |
+|**investorIdentifier** | [**InvestorIdentifier**](InvestorIdentifier.md) |  |  [optional] |
 
 
 

@@ -1211,7 +1211,7 @@ public class InvestorRecordsApi {
     }
 
     /**
-     * [EARLY ACCESS] UpsertInvestorRecords: Pluralised upsert of Investor Records
+     * [EARLY ACCESS] UpsertInvestorRecords: Upsert investor records
      * Creates or updates a collection of Investor Records
      * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial (required)
      * @param requestBody A collection of requests to create or update Investor Records. (required)

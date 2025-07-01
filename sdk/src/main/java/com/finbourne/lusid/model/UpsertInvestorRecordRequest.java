@@ -11,8 +11,8 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.InvestorIdentifier;
 import com.finbourne.lusid.model.Property;
-import com.finbourne.lusid.model.UpsertInvestor;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -70,9 +70,9 @@ public class UpsertInvestorRecordRequest {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
-  public static final String SERIALIZED_NAME_INVESTOR = "investor";
-  @SerializedName(SERIALIZED_NAME_INVESTOR)
-  private UpsertInvestor investor;
+  public static final String SERIALIZED_NAME_INVESTOR_IDENTIFIER = "investorIdentifier";
+  @SerializedName(SERIALIZED_NAME_INVESTOR_IDENTIFIER)
+  private InvestorIdentifier investorIdentifier;
 
   public UpsertInvestorRecordRequest() {
   }
@@ -177,24 +177,24 @@ public class UpsertInvestorRecordRequest {
   }
 
 
-  public UpsertInvestorRecordRequest investor(UpsertInvestor investor) {
+  public UpsertInvestorRecordRequest investorIdentifier(InvestorIdentifier investorIdentifier) {
     
-    this.investor = investor;
+    this.investorIdentifier = investorIdentifier;
     return this;
   }
 
    /**
-   * Get investor
-   * @return investor
+   * Get investorIdentifier
+   * @return investorIdentifier
   **/
   @jakarta.annotation.Nullable
-  public UpsertInvestor getInvestor() {
-    return investor;
+  public InvestorIdentifier getInvestorIdentifier() {
+    return investorIdentifier;
   }
 
 
-  public void setInvestor(UpsertInvestor investor) {
-    this.investor = investor;
+  public void setInvestorIdentifier(InvestorIdentifier investorIdentifier) {
+    this.investorIdentifier = investorIdentifier;
   }
 
 
@@ -212,7 +212,7 @@ public class UpsertInvestorRecordRequest {
         Objects.equals(this.properties, upsertInvestorRecordRequest.properties) &&
         Objects.equals(this.displayName, upsertInvestorRecordRequest.displayName) &&
         Objects.equals(this.description, upsertInvestorRecordRequest.description) &&
-        Objects.equals(this.investor, upsertInvestorRecordRequest.investor);
+        Objects.equals(this.investorIdentifier, upsertInvestorRecordRequest.investorIdentifier);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -221,7 +221,7 @@ public class UpsertInvestorRecordRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(identifiers, properties, displayName, description, investor);
+    return Objects.hash(identifiers, properties, displayName, description, investorIdentifier);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -239,7 +239,7 @@ public class UpsertInvestorRecordRequest {
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    investor: ").append(toIndentedString(investor)).append("\n");
+    sb.append("    investorIdentifier: ").append(toIndentedString(investorIdentifier)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -266,7 +266,7 @@ public class UpsertInvestorRecordRequest {
     openapiFields.add("properties");
     openapiFields.add("displayName");
     openapiFields.add("description");
-    openapiFields.add("investor");
+    openapiFields.add("investorIdentifier");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -300,9 +300,9 @@ public class UpsertInvestorRecordRequest {
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      // validate the optional field `investor`
-      if (jsonObj.get("investor") != null && !jsonObj.get("investor").isJsonNull()) {
-        UpsertInvestor.validateJsonElement(jsonObj.get("investor"));
+      // validate the optional field `investorIdentifier`
+      if (jsonObj.get("investorIdentifier") != null && !jsonObj.get("investorIdentifier").isJsonNull()) {
+        InvestorIdentifier.validateJsonElement(jsonObj.get("investorIdentifier"));
       }
   }
 

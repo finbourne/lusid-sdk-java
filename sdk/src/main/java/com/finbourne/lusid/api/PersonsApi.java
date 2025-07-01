@@ -5258,7 +5258,7 @@ public class PersonsApi {
     }
 
     /**
-     * [EARLY ACCESS] UpsertPersons: Pluralised Upsert of Persons
+     * [EARLY ACCESS] UpsertPersons: Batch upsert Persons
      * Create or updates a collection of person(s).
      * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial (required)
      * @param requestBody A collection of requests to create or update Person(s). (required)

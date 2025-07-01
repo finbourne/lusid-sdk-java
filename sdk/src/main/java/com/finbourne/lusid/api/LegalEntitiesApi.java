@@ -4752,7 +4752,7 @@ public class LegalEntitiesApi {
     }
 
     /**
-     * [EARLY ACCESS] UpsertLegalEntities: Pluralised upsert of Legal Entities
+     * [EARLY ACCESS] UpsertLegalEntities: Batch upsert Legal Entities
      * Creates or updates a collection of Legal Entities
      * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial (required)
      * @param requestBody A collection of requests to create or update Legal Entities. (required)

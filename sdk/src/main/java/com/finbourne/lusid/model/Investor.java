@@ -51,7 +51,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Inner dto of an Investor Record on the LUSID API
+ * Representation of an Investor on the LUSID API
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Investor {
