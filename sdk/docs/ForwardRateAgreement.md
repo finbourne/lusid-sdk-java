@@ -15,6 +15,7 @@ LUSID representation of a Forward Rate Agreement.
 |**fraRate** | **java.math.BigDecimal** | The rate at which the FRA is traded. |  |
 |**notional** | **java.math.BigDecimal** | The amount for which the FRA is traded. |  |
 |**indexConvention** | [**IndexConvention**](IndexConvention.md) |  |  [optional] |
+|**timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  |  [optional] |
 
 
 

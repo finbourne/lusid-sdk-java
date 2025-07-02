@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.FxForward;
 import com.finbourne.lusid.model.LusidInstrument;
+import com.finbourne.lusid.model.TimeZoneConventions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -63,6 +64,10 @@ public class FxSwap extends LusidInstrument {
   public static final String SERIALIZED_NAME_NOTIONAL_SYMMETRY = "notionalSymmetry";
   @SerializedName(SERIALIZED_NAME_NOTIONAL_SYMMETRY)
   private String notionalSymmetry;
+
+  public static final String SERIALIZED_NAME_TIME_ZONE_CONVENTIONS = "timeZoneConventions";
+  @SerializedName(SERIALIZED_NAME_TIME_ZONE_CONVENTIONS)
+  private TimeZoneConventions timeZoneConventions;
 
   public FxSwap() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -131,6 +136,27 @@ public class FxSwap extends LusidInstrument {
   }
 
 
+  public FxSwap timeZoneConventions(TimeZoneConventions timeZoneConventions) {
+    
+    this.timeZoneConventions = timeZoneConventions;
+    return this;
+  }
+
+   /**
+   * Get timeZoneConventions
+   * @return timeZoneConventions
+  **/
+  @jakarta.annotation.Nullable
+  public TimeZoneConventions getTimeZoneConventions() {
+    return timeZoneConventions;
+  }
+
+
+  public void setTimeZoneConventions(TimeZoneConventions timeZoneConventions) {
+    this.timeZoneConventions = timeZoneConventions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -144,6 +170,7 @@ public class FxSwap extends LusidInstrument {
     return Objects.equals(this.nearFxForward, fxSwap.nearFxForward) &&
         Objects.equals(this.farFxForward, fxSwap.farFxForward) &&
         Objects.equals(this.notionalSymmetry, fxSwap.notionalSymmetry) &&
+        Objects.equals(this.timeZoneConventions, fxSwap.timeZoneConventions) &&
         super.equals(o);
   }
 
@@ -153,7 +180,7 @@ public class FxSwap extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(nearFxForward, farFxForward, notionalSymmetry, super.hashCode());
+    return Objects.hash(nearFxForward, farFxForward, notionalSymmetry, timeZoneConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -171,6 +198,7 @@ public class FxSwap extends LusidInstrument {
     sb.append("    nearFxForward: ").append(toIndentedString(nearFxForward)).append("\n");
     sb.append("    farFxForward: ").append(toIndentedString(farFxForward)).append("\n");
     sb.append("    notionalSymmetry: ").append(toIndentedString(notionalSymmetry)).append("\n");
+    sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -197,6 +225,7 @@ public class FxSwap extends LusidInstrument {
     openapiFields.add("nearFxForward");
     openapiFields.add("farFxForward");
     openapiFields.add("notionalSymmetry");
+    openapiFields.add("timeZoneConventions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

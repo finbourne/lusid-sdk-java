@@ -13,6 +13,7 @@ LUSID representation of an Interest Rate Swaption.
 |**premium** | [**Premium**](Premium.md) |  |  [optional] |
 |**deliveryMethod** | **String** | How does the option settle    Supported string (enumeration) values are: [Cash, Physical]. |  |
 |**swap** | [**InterestRateSwap**](InterestRateSwap.md) |  |  |
+|**timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  |  [optional] |
 
 
 

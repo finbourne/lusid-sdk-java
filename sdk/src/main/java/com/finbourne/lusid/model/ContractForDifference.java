@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.LusidInstrument;
+import com.finbourne.lusid.model.TimeZoneConventions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -95,6 +96,10 @@ public class ContractForDifference extends LusidInstrument {
   public static final String SERIALIZED_NAME_UNDERLYING = "underlying";
   @SerializedName(SERIALIZED_NAME_UNDERLYING)
   private LusidInstrument underlying;
+
+  public static final String SERIALIZED_NAME_TIME_ZONE_CONVENTIONS = "timeZoneConventions";
+  @SerializedName(SERIALIZED_NAME_TIME_ZONE_CONVENTIONS)
+  private TimeZoneConventions timeZoneConventions;
 
   public ContractForDifference() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -331,6 +336,27 @@ public class ContractForDifference extends LusidInstrument {
   }
 
 
+  public ContractForDifference timeZoneConventions(TimeZoneConventions timeZoneConventions) {
+    
+    this.timeZoneConventions = timeZoneConventions;
+    return this;
+  }
+
+   /**
+   * Get timeZoneConventions
+   * @return timeZoneConventions
+  **/
+  @jakarta.annotation.Nullable
+  public TimeZoneConventions getTimeZoneConventions() {
+    return timeZoneConventions;
+  }
+
+
+  public void setTimeZoneConventions(TimeZoneConventions timeZoneConventions) {
+    this.timeZoneConventions = timeZoneConventions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -352,6 +378,7 @@ public class ContractForDifference extends LusidInstrument {
         Objects.equals(this.underlyingIdentifier, contractForDifference.underlyingIdentifier) &&
         Objects.equals(this.lotSize, contractForDifference.lotSize) &&
         Objects.equals(this.underlying, contractForDifference.underlying) &&
+        Objects.equals(this.timeZoneConventions, contractForDifference.timeZoneConventions) &&
         super.equals(o);
   }
 
@@ -361,7 +388,7 @@ public class ContractForDifference extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, code, contractSize, payCcy, referenceRate, type, underlyingCcy, underlyingIdentifier, lotSize, underlying, super.hashCode());
+    return Objects.hash(startDate, maturityDate, code, contractSize, payCcy, referenceRate, type, underlyingCcy, underlyingIdentifier, lotSize, underlying, timeZoneConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -387,6 +414,7 @@ public class ContractForDifference extends LusidInstrument {
     sb.append("    underlyingIdentifier: ").append(toIndentedString(underlyingIdentifier)).append("\n");
     sb.append("    lotSize: ").append(toIndentedString(lotSize)).append("\n");
     sb.append("    underlying: ").append(toIndentedString(underlying)).append("\n");
+    sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -421,6 +449,7 @@ public class ContractForDifference extends LusidInstrument {
     openapiFields.add("underlyingIdentifier");
     openapiFields.add("lotSize");
     openapiFields.add("underlying");
+    openapiFields.add("timeZoneConventions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

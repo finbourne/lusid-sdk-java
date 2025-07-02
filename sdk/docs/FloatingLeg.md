@@ -15,6 +15,7 @@ LUSID representation of a Floating Rate Leg.
 |**overrides** | [**FixedLegAllOfOverrides**](FixedLegAllOfOverrides.md) |  |  [optional] |
 |**capRate** | **java.math.BigDecimal** | The maximum floating rate which a cashflow can accrue. |  [optional] |
 |**floorRate** | **java.math.BigDecimal** | The minimum floating rate which a cashflow can accrue. |  [optional] |
+|**timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  |  [optional] |
 
 
 

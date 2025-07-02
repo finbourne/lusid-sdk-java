@@ -17,6 +17,7 @@ LUSID representation of a Credit Default Swap (CDS).     This instrument has mul
 |**notional** | **java.math.BigDecimal** | The notional protected by the Credit Default Swap |  [optional] |
 |**protectionDetailSpecification** | [**CdsProtectionDetailSpecification**](CdsProtectionDetailSpecification.md) |  |  [optional] |
 |**additionalPayments** | [**List&lt;AdditionalPayment&gt;**](AdditionalPayment.md) | Optional additional payments at a given date e.g. to level off an uneven swap.  The dates must be distinct and either all payments are Pay or all payments are Receive. |  [optional] |
+|**timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  |  [optional] |
 
 
 

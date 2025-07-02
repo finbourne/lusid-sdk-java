@@ -23,6 +23,7 @@ LUSID representation of a Vanilla Fixed Rate Bond.
 |**exDividendConfiguration** | [**ExDividendConfiguration**](ExDividendConfiguration.md) |  |  [optional] |
 |**originalIssuePrice** | **java.math.BigDecimal** | The price the bond was issued at. This is to be entered as a percentage of par, for example a value of 98.5 would represent 98.5%. |  [optional] |
 |**tradingConventions** | [**TradingConventions**](TradingConventions.md) |  |  [optional] |
+|**timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  |  [optional] |
 
 
 

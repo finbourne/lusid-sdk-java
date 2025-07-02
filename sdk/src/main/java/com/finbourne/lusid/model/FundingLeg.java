@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.InstrumentLeg;
 import com.finbourne.lusid.model.LegDefinition;
+import com.finbourne.lusid.model.TimeZoneConventions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -68,6 +69,10 @@ public class FundingLeg extends InstrumentLeg {
   public static final String SERIALIZED_NAME_NOTIONAL = "notional";
   @SerializedName(SERIALIZED_NAME_NOTIONAL)
   private java.math.BigDecimal notional;
+
+  public static final String SERIALIZED_NAME_TIME_ZONE_CONVENTIONS = "timeZoneConventions";
+  @SerializedName(SERIALIZED_NAME_TIME_ZONE_CONVENTIONS)
+  private TimeZoneConventions timeZoneConventions;
 
   public FundingLeg() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -157,6 +162,27 @@ public class FundingLeg extends InstrumentLeg {
   }
 
 
+  public FundingLeg timeZoneConventions(TimeZoneConventions timeZoneConventions) {
+    
+    this.timeZoneConventions = timeZoneConventions;
+    return this;
+  }
+
+   /**
+   * Get timeZoneConventions
+   * @return timeZoneConventions
+  **/
+  @jakarta.annotation.Nullable
+  public TimeZoneConventions getTimeZoneConventions() {
+    return timeZoneConventions;
+  }
+
+
+  public void setTimeZoneConventions(TimeZoneConventions timeZoneConventions) {
+    this.timeZoneConventions = timeZoneConventions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -171,6 +197,7 @@ public class FundingLeg extends InstrumentLeg {
         Objects.equals(this.maturityDate, fundingLeg.maturityDate) &&
         Objects.equals(this.legDefinition, fundingLeg.legDefinition) &&
         (this.notional.compareTo(fundingLeg.getNotional()) == 0) &&
+        Objects.equals(this.timeZoneConventions, fundingLeg.timeZoneConventions) &&
         super.equals(o);
   }
 
@@ -180,7 +207,7 @@ public class FundingLeg extends InstrumentLeg {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, legDefinition, notional, super.hashCode());
+    return Objects.hash(startDate, maturityDate, legDefinition, notional, timeZoneConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -199,6 +226,7 @@ public class FundingLeg extends InstrumentLeg {
     sb.append("    maturityDate: ").append(toIndentedString(maturityDate)).append("\n");
     sb.append("    legDefinition: ").append(toIndentedString(legDefinition)).append("\n");
     sb.append("    notional: ").append(toIndentedString(notional)).append("\n");
+    sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -226,6 +254,7 @@ public class FundingLeg extends InstrumentLeg {
     openapiFields.add("maturityDate");
     openapiFields.add("legDefinition");
     openapiFields.add("notional");
+    openapiFields.add("timeZoneConventions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

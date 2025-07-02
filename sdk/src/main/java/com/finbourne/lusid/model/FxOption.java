@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.Barrier;
 import com.finbourne.lusid.model.LusidInstrument;
 import com.finbourne.lusid.model.Premium;
+import com.finbourne.lusid.model.TimeZoneConventions;
 import com.finbourne.lusid.model.Touch;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -120,6 +121,10 @@ public class FxOption extends LusidInstrument {
   public static final String SERIALIZED_NAME_TOUCHES = "touches";
   @SerializedName(SERIALIZED_NAME_TOUCHES)
   private List<Touch> touches;
+
+  public static final String SERIALIZED_NAME_TIME_ZONE_CONVENTIONS = "timeZoneConventions";
+  @SerializedName(SERIALIZED_NAME_TIME_ZONE_CONVENTIONS)
+  private TimeZoneConventions timeZoneConventions;
 
   public FxOption() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -477,6 +482,27 @@ public class FxOption extends LusidInstrument {
   }
 
 
+  public FxOption timeZoneConventions(TimeZoneConventions timeZoneConventions) {
+    
+    this.timeZoneConventions = timeZoneConventions;
+    return this;
+  }
+
+   /**
+   * Get timeZoneConventions
+   * @return timeZoneConventions
+  **/
+  @jakarta.annotation.Nullable
+  public TimeZoneConventions getTimeZoneConventions() {
+    return timeZoneConventions;
+  }
+
+
+  public void setTimeZoneConventions(TimeZoneConventions timeZoneConventions) {
+    this.timeZoneConventions = timeZoneConventions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -503,6 +529,7 @@ public class FxOption extends LusidInstrument {
         Objects.equals(this.payoutStyle, fxOption.payoutStyle) &&
         Objects.equals(this.premium, fxOption.premium) &&
         Objects.equals(this.touches, fxOption.touches) &&
+        Objects.equals(this.timeZoneConventions, fxOption.timeZoneConventions) &&
         super.equals(o);
   }
 
@@ -512,7 +539,7 @@ public class FxOption extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, domCcy, domAmount, fgnCcy, fgnAmount, strike, barriers, exerciseType, isCallNotPut, isDeliveryNotCash, isPayoffDigital, optionMaturityDate, optionSettlementDate, payoutStyle, premium, touches, super.hashCode());
+    return Objects.hash(startDate, domCcy, domAmount, fgnCcy, fgnAmount, strike, barriers, exerciseType, isCallNotPut, isDeliveryNotCash, isPayoffDigital, optionMaturityDate, optionSettlementDate, payoutStyle, premium, touches, timeZoneConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -543,6 +570,7 @@ public class FxOption extends LusidInstrument {
     sb.append("    payoutStyle: ").append(toIndentedString(payoutStyle)).append("\n");
     sb.append("    premium: ").append(toIndentedString(premium)).append("\n");
     sb.append("    touches: ").append(toIndentedString(touches)).append("\n");
+    sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -582,6 +610,7 @@ public class FxOption extends LusidInstrument {
     openapiFields.add("payoutStyle");
     openapiFields.add("premium");
     openapiFields.add("touches");
+    openapiFields.add("timeZoneConventions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

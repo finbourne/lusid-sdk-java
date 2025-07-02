@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.IndexConvention;
 import com.finbourne.lusid.model.LusidInstrument;
+import com.finbourne.lusid.model.TimeZoneConventions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -79,6 +80,10 @@ public class ForwardRateAgreement extends LusidInstrument {
   public static final String SERIALIZED_NAME_INDEX_CONVENTION = "indexConvention";
   @SerializedName(SERIALIZED_NAME_INDEX_CONVENTION)
   private IndexConvention indexConvention;
+
+  public static final String SERIALIZED_NAME_TIME_ZONE_CONVENTIONS = "timeZoneConventions";
+  @SerializedName(SERIALIZED_NAME_TIME_ZONE_CONVENTIONS)
+  private TimeZoneConventions timeZoneConventions;
 
   public ForwardRateAgreement() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -231,6 +236,27 @@ public class ForwardRateAgreement extends LusidInstrument {
   }
 
 
+  public ForwardRateAgreement timeZoneConventions(TimeZoneConventions timeZoneConventions) {
+    
+    this.timeZoneConventions = timeZoneConventions;
+    return this;
+  }
+
+   /**
+   * Get timeZoneConventions
+   * @return timeZoneConventions
+  **/
+  @jakarta.annotation.Nullable
+  public TimeZoneConventions getTimeZoneConventions() {
+    return timeZoneConventions;
+  }
+
+
+  public void setTimeZoneConventions(TimeZoneConventions timeZoneConventions) {
+    this.timeZoneConventions = timeZoneConventions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -248,12 +274,13 @@ public class ForwardRateAgreement extends LusidInstrument {
         (this.fraRate.compareTo(forwardRateAgreement.getFraRate()) == 0) &&
         (this.notional.compareTo(forwardRateAgreement.getNotional()) == 0) &&
         Objects.equals(this.indexConvention, forwardRateAgreement.indexConvention) &&
+        Objects.equals(this.timeZoneConventions, forwardRateAgreement.timeZoneConventions) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, domCcy, fixingDate, fraRate, notional, indexConvention, super.hashCode());
+    return Objects.hash(startDate, maturityDate, domCcy, fixingDate, fraRate, notional, indexConvention, timeZoneConventions, super.hashCode());
   }
 
   @Override
@@ -268,6 +295,7 @@ public class ForwardRateAgreement extends LusidInstrument {
     sb.append("    fraRate: ").append(toIndentedString(fraRate)).append("\n");
     sb.append("    notional: ").append(toIndentedString(notional)).append("\n");
     sb.append("    indexConvention: ").append(toIndentedString(indexConvention)).append("\n");
+    sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -298,6 +326,7 @@ public class ForwardRateAgreement extends LusidInstrument {
     openapiFields.add("fraRate");
     openapiFields.add("notional");
     openapiFields.add("indexConvention");
+    openapiFields.add("timeZoneConventions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

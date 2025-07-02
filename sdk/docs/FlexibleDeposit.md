@@ -13,6 +13,7 @@ LUSID flexible deposit instrument. Represents the basic building block of a bank
 |**domCcy** | **String** | The domestic currency of the instrument. |  |
 |**schedules** | [**List&lt;Schedule&gt;**](Schedule.md) | Repayment schedules for the deposit instrument. |  |
 |**tradingConventions** | [**TradingConventions**](TradingConventions.md) |  |  [optional] |
+|**timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  |  [optional] |
 
 
 

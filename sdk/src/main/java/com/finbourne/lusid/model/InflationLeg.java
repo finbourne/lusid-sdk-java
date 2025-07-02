@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.FlowConventions;
 import com.finbourne.lusid.model.InflationIndexConventions;
 import com.finbourne.lusid.model.LusidInstrument;
+import com.finbourne.lusid.model.TimeZoneConventions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -93,6 +94,10 @@ public class InflationLeg extends LusidInstrument {
   public static final String SERIALIZED_NAME_PAY_RECEIVE = "payReceive";
   @SerializedName(SERIALIZED_NAME_PAY_RECEIVE)
   private String payReceive;
+
+  public static final String SERIALIZED_NAME_TIME_ZONE_CONVENTIONS = "timeZoneConventions";
+  @SerializedName(SERIALIZED_NAME_TIME_ZONE_CONVENTIONS)
+  private TimeZoneConventions timeZoneConventions;
 
   public InflationLeg() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -308,6 +313,27 @@ public class InflationLeg extends LusidInstrument {
   }
 
 
+  public InflationLeg timeZoneConventions(TimeZoneConventions timeZoneConventions) {
+    
+    this.timeZoneConventions = timeZoneConventions;
+    return this;
+  }
+
+   /**
+   * Get timeZoneConventions
+   * @return timeZoneConventions
+  **/
+  @jakarta.annotation.Nullable
+  public TimeZoneConventions getTimeZoneConventions() {
+    return timeZoneConventions;
+  }
+
+
+  public void setTimeZoneConventions(TimeZoneConventions timeZoneConventions) {
+    this.timeZoneConventions = timeZoneConventions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -328,6 +354,7 @@ public class InflationLeg extends LusidInstrument {
         Objects.equals(this.inflationIndexConventions, inflationLeg.inflationIndexConventions) &&
         (this.notional.compareTo(inflationLeg.getNotional()) == 0) &&
         Objects.equals(this.payReceive, inflationLeg.payReceive) &&
+        Objects.equals(this.timeZoneConventions, inflationLeg.timeZoneConventions) &&
         super.equals(o);
   }
 
@@ -337,7 +364,7 @@ public class InflationLeg extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, flowConventions, baseCPI, calculationType, capRate, floorRate, inflationIndexConventions, notional, payReceive, super.hashCode());
+    return Objects.hash(startDate, maturityDate, flowConventions, baseCPI, calculationType, capRate, floorRate, inflationIndexConventions, notional, payReceive, timeZoneConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -362,6 +389,7 @@ public class InflationLeg extends LusidInstrument {
     sb.append("    inflationIndexConventions: ").append(toIndentedString(inflationIndexConventions)).append("\n");
     sb.append("    notional: ").append(toIndentedString(notional)).append("\n");
     sb.append("    payReceive: ").append(toIndentedString(payReceive)).append("\n");
+    sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -395,6 +423,7 @@ public class InflationLeg extends LusidInstrument {
     openapiFields.add("inflationIndexConventions");
     openapiFields.add("notional");
     openapiFields.add("payReceive");
+    openapiFields.add("timeZoneConventions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

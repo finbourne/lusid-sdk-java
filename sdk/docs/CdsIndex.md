@@ -17,6 +17,7 @@ LUSID representation of a Credit Default Swap Index (CDX).     This instrument h
 |**conventionName** | [**FlowConventionName**](FlowConventionName.md) |  |  [optional] |
 |**notional** | **java.math.BigDecimal** | The notional quantity that applies to both the premium and protection legs. |  |
 |**additionalPayments** | [**List&lt;AdditionalPayment&gt;**](AdditionalPayment.md) | Optional additional payments at a given date e.g. to level off an uneven swap.  The dates must be distinct and either all payments are Pay or all payments are Receive. |  [optional] |
+|**timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  |  [optional] |
 
 
 

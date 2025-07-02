@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.FuturesContractDetails;
 import com.finbourne.lusid.model.LusidInstrument;
 import com.finbourne.lusid.model.MarkToMarketConventions;
+import com.finbourne.lusid.model.TimeZoneConventions;
 import com.finbourne.lusid.model.TradingConventions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -96,6 +97,10 @@ public class Future extends LusidInstrument {
   public static final String SERIALIZED_NAME_TRADING_CONVENTIONS = "tradingConventions";
   @SerializedName(SERIALIZED_NAME_TRADING_CONVENTIONS)
   private TradingConventions tradingConventions;
+
+  public static final String SERIALIZED_NAME_TIME_ZONE_CONVENTIONS = "timeZoneConventions";
+  @SerializedName(SERIALIZED_NAME_TIME_ZONE_CONVENTIONS)
+  private TimeZoneConventions timeZoneConventions;
 
   public Future() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -319,6 +324,27 @@ public class Future extends LusidInstrument {
   }
 
 
+  public Future timeZoneConventions(TimeZoneConventions timeZoneConventions) {
+    
+    this.timeZoneConventions = timeZoneConventions;
+    return this;
+  }
+
+   /**
+   * Get timeZoneConventions
+   * @return timeZoneConventions
+  **/
+  @jakarta.annotation.Nullable
+  public TimeZoneConventions getTimeZoneConventions() {
+    return timeZoneConventions;
+  }
+
+
+  public void setTimeZoneConventions(TimeZoneConventions timeZoneConventions) {
+    this.timeZoneConventions = timeZoneConventions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -339,6 +365,7 @@ public class Future extends LusidInstrument {
         Objects.equals(this.underlying, future.underlying) &&
         Objects.equals(this.calculationType, future.calculationType) &&
         Objects.equals(this.tradingConventions, future.tradingConventions) &&
+        Objects.equals(this.timeZoneConventions, future.timeZoneConventions) &&
         super.equals(o);
   }
 
@@ -348,7 +375,7 @@ public class Future extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, identifiers, contractDetails, contracts, markToMarketConventions, refSpotPrice, underlying, calculationType, tradingConventions, super.hashCode());
+    return Objects.hash(startDate, maturityDate, identifiers, contractDetails, contracts, markToMarketConventions, refSpotPrice, underlying, calculationType, tradingConventions, timeZoneConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -373,6 +400,7 @@ public class Future extends LusidInstrument {
     sb.append("    underlying: ").append(toIndentedString(underlying)).append("\n");
     sb.append("    calculationType: ").append(toIndentedString(calculationType)).append("\n");
     sb.append("    tradingConventions: ").append(toIndentedString(tradingConventions)).append("\n");
+    sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -406,6 +434,7 @@ public class Future extends LusidInstrument {
     openapiFields.add("underlying");
     openapiFields.add("calculationType");
     openapiFields.add("tradingConventions");
+    openapiFields.add("timeZoneConventions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

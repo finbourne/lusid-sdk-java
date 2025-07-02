@@ -15,6 +15,7 @@ import com.finbourne.lusid.model.AdditionalPayment;
 import com.finbourne.lusid.model.FlowConventions;
 import com.finbourne.lusid.model.InstrumentLeg;
 import com.finbourne.lusid.model.LusidInstrument;
+import com.finbourne.lusid.model.TimeZoneConventions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -104,6 +105,10 @@ public class EquitySwap extends LusidInstrument {
   public static final String SERIALIZED_NAME_ADDITIONAL_PAYMENTS = "additionalPayments";
   @SerializedName(SERIALIZED_NAME_ADDITIONAL_PAYMENTS)
   private List<AdditionalPayment> additionalPayments;
+
+  public static final String SERIALIZED_NAME_TIME_ZONE_CONVENTIONS = "timeZoneConventions";
+  @SerializedName(SERIALIZED_NAME_TIME_ZONE_CONVENTIONS)
+  private TimeZoneConventions timeZoneConventions;
 
   public EquitySwap() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -369,6 +374,27 @@ public class EquitySwap extends LusidInstrument {
   }
 
 
+  public EquitySwap timeZoneConventions(TimeZoneConventions timeZoneConventions) {
+    
+    this.timeZoneConventions = timeZoneConventions;
+    return this;
+  }
+
+   /**
+   * Get timeZoneConventions
+   * @return timeZoneConventions
+  **/
+  @jakarta.annotation.Nullable
+  public TimeZoneConventions getTimeZoneConventions() {
+    return timeZoneConventions;
+  }
+
+
+  public void setTimeZoneConventions(TimeZoneConventions timeZoneConventions) {
+    this.timeZoneConventions = timeZoneConventions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -391,6 +417,7 @@ public class EquitySwap extends LusidInstrument {
         Objects.equals(this.underlyingIdentifier, equitySwap.underlyingIdentifier) &&
         Objects.equals(this.equitySwapDividendPaymentTiming, equitySwap.equitySwapDividendPaymentTiming) &&
         Objects.equals(this.additionalPayments, equitySwap.additionalPayments) &&
+        Objects.equals(this.timeZoneConventions, equitySwap.timeZoneConventions) &&
         super.equals(o);
   }
 
@@ -400,7 +427,7 @@ public class EquitySwap extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, code, equityFlowConventions, fundingLeg, includeDividends, initialPrice, notionalReset, quantity, underlyingIdentifier, equitySwapDividendPaymentTiming, additionalPayments, super.hashCode());
+    return Objects.hash(startDate, maturityDate, code, equityFlowConventions, fundingLeg, includeDividends, initialPrice, notionalReset, quantity, underlyingIdentifier, equitySwapDividendPaymentTiming, additionalPayments, timeZoneConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -427,6 +454,7 @@ public class EquitySwap extends LusidInstrument {
     sb.append("    underlyingIdentifier: ").append(toIndentedString(underlyingIdentifier)).append("\n");
     sb.append("    equitySwapDividendPaymentTiming: ").append(toIndentedString(equitySwapDividendPaymentTiming)).append("\n");
     sb.append("    additionalPayments: ").append(toIndentedString(additionalPayments)).append("\n");
+    sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -462,6 +490,7 @@ public class EquitySwap extends LusidInstrument {
     openapiFields.add("underlyingIdentifier");
     openapiFields.add("equitySwapDividendPaymentTiming");
     openapiFields.add("additionalPayments");
+    openapiFields.add("timeZoneConventions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

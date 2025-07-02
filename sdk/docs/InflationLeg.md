@@ -18,6 +18,7 @@ LUSID representation of an Inflation Leg.  This leg instrument is part of the In
 |**inflationIndexConventions** | [**InflationIndexConventions**](InflationIndexConventions.md) |  |  |
 |**notional** | **java.math.BigDecimal** | The notional |  |
 |**payReceive** | **String** | PayReceive flag for the inflation leg.  This field is optional and defaults to Pay.    Supported string (enumeration) values are: [Pay, Receive]. |  [optional] |
+|**timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  |  [optional] |
 
 
 

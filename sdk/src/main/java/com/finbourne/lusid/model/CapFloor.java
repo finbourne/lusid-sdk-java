@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.AdditionalPayment;
 import com.finbourne.lusid.model.FloatingLeg;
 import com.finbourne.lusid.model.LusidInstrument;
+import com.finbourne.lusid.model.TimeZoneConventions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -78,6 +79,10 @@ public class CapFloor extends LusidInstrument {
   public static final String SERIALIZED_NAME_ADDITIONAL_PAYMENTS = "additionalPayments";
   @SerializedName(SERIALIZED_NAME_ADDITIONAL_PAYMENTS)
   private List<AdditionalPayment> additionalPayments;
+
+  public static final String SERIALIZED_NAME_TIME_ZONE_CONVENTIONS = "timeZoneConventions";
+  @SerializedName(SERIALIZED_NAME_TIME_ZONE_CONVENTIONS)
+  private TimeZoneConventions timeZoneConventions;
 
   public CapFloor() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -217,6 +222,27 @@ public class CapFloor extends LusidInstrument {
   }
 
 
+  public CapFloor timeZoneConventions(TimeZoneConventions timeZoneConventions) {
+    
+    this.timeZoneConventions = timeZoneConventions;
+    return this;
+  }
+
+   /**
+   * Get timeZoneConventions
+   * @return timeZoneConventions
+  **/
+  @jakarta.annotation.Nullable
+  public TimeZoneConventions getTimeZoneConventions() {
+    return timeZoneConventions;
+  }
+
+
+  public void setTimeZoneConventions(TimeZoneConventions timeZoneConventions) {
+    this.timeZoneConventions = timeZoneConventions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -233,6 +259,7 @@ public class CapFloor extends LusidInstrument {
         Objects.equals(this.includeFirstCaplet, capFloor.includeFirstCaplet) &&
         Objects.equals(this.underlyingFloatingLeg, capFloor.underlyingFloatingLeg) &&
         Objects.equals(this.additionalPayments, capFloor.additionalPayments) &&
+        Objects.equals(this.timeZoneConventions, capFloor.timeZoneConventions) &&
         super.equals(o);
   }
 
@@ -242,7 +269,7 @@ public class CapFloor extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(capFloorType, capStrike, floorStrike, includeFirstCaplet, underlyingFloatingLeg, additionalPayments, super.hashCode());
+    return Objects.hash(capFloorType, capStrike, floorStrike, includeFirstCaplet, underlyingFloatingLeg, additionalPayments, timeZoneConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -263,6 +290,7 @@ public class CapFloor extends LusidInstrument {
     sb.append("    includeFirstCaplet: ").append(toIndentedString(includeFirstCaplet)).append("\n");
     sb.append("    underlyingFloatingLeg: ").append(toIndentedString(underlyingFloatingLeg)).append("\n");
     sb.append("    additionalPayments: ").append(toIndentedString(additionalPayments)).append("\n");
+    sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -292,6 +320,7 @@ public class CapFloor extends LusidInstrument {
     openapiFields.add("includeFirstCaplet");
     openapiFields.add("underlyingFloatingLeg");
     openapiFields.add("additionalPayments");
+    openapiFields.add("timeZoneConventions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

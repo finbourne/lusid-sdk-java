@@ -13,6 +13,7 @@ LUSID representation of a Fixed Rate Leg.
 |**legDefinition** | [**LegDefinition**](LegDefinition.md) |  |  |
 |**notional** | **java.math.BigDecimal** |  |  |
 |**overrides** | [**FixedLegAllOfOverrides**](FixedLegAllOfOverrides.md) |  |  [optional] |
+|**timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  |  [optional] |
 
 
 

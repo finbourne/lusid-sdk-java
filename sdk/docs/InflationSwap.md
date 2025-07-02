@@ -13,6 +13,7 @@ LUSID representation of an Inflation Swap.  The implementation supports the foll
 |**inflationLeg** | [**InflationLeg**](InflationLeg.md) |  |  |
 |**fixedLeg** | [**FixedLeg**](FixedLeg.md) |  |  |
 |**additionalPayments** | [**List&lt;AdditionalPayment&gt;**](AdditionalPayment.md) | Optional additional payments at a given date e.g. to level off an uneven inflation swap.  The dates must be distinct and either all payments are Pay or all payments are Receive. |  [optional] |
+|**timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  |  [optional] |
 
 
 

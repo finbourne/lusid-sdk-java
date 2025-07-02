@@ -16,6 +16,7 @@ import com.finbourne.lusid.model.Basket;
 import com.finbourne.lusid.model.CdsFlowConventions;
 import com.finbourne.lusid.model.FlowConventionName;
 import com.finbourne.lusid.model.LusidInstrument;
+import com.finbourne.lusid.model.TimeZoneConventions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -95,6 +96,10 @@ public class CdsIndex extends LusidInstrument {
   public static final String SERIALIZED_NAME_ADDITIONAL_PAYMENTS = "additionalPayments";
   @SerializedName(SERIALIZED_NAME_ADDITIONAL_PAYMENTS)
   private List<AdditionalPayment> additionalPayments;
+
+  public static final String SERIALIZED_NAME_TIME_ZONE_CONVENTIONS = "timeZoneConventions";
+  @SerializedName(SERIALIZED_NAME_TIME_ZONE_CONVENTIONS)
+  private TimeZoneConventions timeZoneConventions;
 
   public CdsIndex() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -305,6 +310,27 @@ public class CdsIndex extends LusidInstrument {
   }
 
 
+  public CdsIndex timeZoneConventions(TimeZoneConventions timeZoneConventions) {
+    
+    this.timeZoneConventions = timeZoneConventions;
+    return this;
+  }
+
+   /**
+   * Get timeZoneConventions
+   * @return timeZoneConventions
+  **/
+  @jakarta.annotation.Nullable
+  public TimeZoneConventions getTimeZoneConventions() {
+    return timeZoneConventions;
+  }
+
+
+  public void setTimeZoneConventions(TimeZoneConventions timeZoneConventions) {
+    this.timeZoneConventions = timeZoneConventions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -324,6 +350,7 @@ public class CdsIndex extends LusidInstrument {
         Objects.equals(this.conventionName, cdsIndex.conventionName) &&
         (this.notional.compareTo(cdsIndex.getNotional()) == 0) &&
         Objects.equals(this.additionalPayments, cdsIndex.additionalPayments) &&
+        Objects.equals(this.timeZoneConventions, cdsIndex.timeZoneConventions) &&
         super.equals(o);
   }
 
@@ -333,7 +360,7 @@ public class CdsIndex extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, flowConventions, couponRate, identifiers, basket, conventionName, notional, additionalPayments, super.hashCode());
+    return Objects.hash(startDate, maturityDate, flowConventions, couponRate, identifiers, basket, conventionName, notional, additionalPayments, timeZoneConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -357,6 +384,7 @@ public class CdsIndex extends LusidInstrument {
     sb.append("    conventionName: ").append(toIndentedString(conventionName)).append("\n");
     sb.append("    notional: ").append(toIndentedString(notional)).append("\n");
     sb.append("    additionalPayments: ").append(toIndentedString(additionalPayments)).append("\n");
+    sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -389,6 +417,7 @@ public class CdsIndex extends LusidInstrument {
     openapiFields.add("conventionName");
     openapiFields.add("notional");
     openapiFields.add("additionalPayments");
+    openapiFields.add("timeZoneConventions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

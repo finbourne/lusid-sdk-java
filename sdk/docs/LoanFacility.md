@@ -14,6 +14,7 @@ Loan Facility. This is a very lightweight instrument which acts as a placeholder
 |**initialCommitment** | **java.math.BigDecimal** | The initial commitment for the loan facility. |  |
 |**loanType** | **String** | LoanType for this facility. The facility can either be a revolving or a  term loan.    Supported string (enumeration) values are: [Revolver, TermLoan]. |  |
 |**schedules** | [**List&lt;Schedule&gt;**](Schedule.md) | Repayment schedules for the loan. |  |
+|**timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  |  [optional] |
 
 
 

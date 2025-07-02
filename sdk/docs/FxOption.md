@@ -24,6 +24,7 @@ LUSID representation of an FX Option.  Including Vanilla, American, European, an
 |**payoutStyle** | **String** | PayoutStyle for touch options.     For options without touch optionality, payoutStyle should not be set.  For options with touch optionality (where the touches data has been set), payoutStyle must be defined and cannot be None.    Supported string (enumeration) values are: [Deferred, Immediate]. |  [optional] |
 |**premium** | [**Premium**](Premium.md) |  |  [optional] |
 |**touches** | [**List&lt;Touch&gt;**](Touch.md) | For a touch option the list should not be empty. Up to two touches are supported.  An option cannot be at the same time barrier- and touch-option.  One (or both) of the lists must be empty. |  [optional] |
+|**timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  |  [optional] |
 
 
 

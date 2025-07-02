@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.LoanPeriod;
 import com.finbourne.lusid.model.LusidInstrument;
+import com.finbourne.lusid.model.TimeZoneConventions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -69,6 +70,10 @@ public class SimpleCashFlowLoan extends LusidInstrument {
   public static final String SERIALIZED_NAME_PERIODS = "periods";
   @SerializedName(SERIALIZED_NAME_PERIODS)
   private List<LoanPeriod> periods = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_TIME_ZONE_CONVENTIONS = "timeZoneConventions";
+  @SerializedName(SERIALIZED_NAME_TIME_ZONE_CONVENTIONS)
+  private TimeZoneConventions timeZoneConventions;
 
   public SimpleCashFlowLoan() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -166,6 +171,27 @@ public class SimpleCashFlowLoan extends LusidInstrument {
   }
 
 
+  public SimpleCashFlowLoan timeZoneConventions(TimeZoneConventions timeZoneConventions) {
+    
+    this.timeZoneConventions = timeZoneConventions;
+    return this;
+  }
+
+   /**
+   * Get timeZoneConventions
+   * @return timeZoneConventions
+  **/
+  @jakarta.annotation.Nullable
+  public TimeZoneConventions getTimeZoneConventions() {
+    return timeZoneConventions;
+  }
+
+
+  public void setTimeZoneConventions(TimeZoneConventions timeZoneConventions) {
+    this.timeZoneConventions = timeZoneConventions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -180,12 +206,13 @@ public class SimpleCashFlowLoan extends LusidInstrument {
         Objects.equals(this.maturityDate, simpleCashFlowLoan.maturityDate) &&
         Objects.equals(this.domCcy, simpleCashFlowLoan.domCcy) &&
         Objects.equals(this.periods, simpleCashFlowLoan.periods) &&
+        Objects.equals(this.timeZoneConventions, simpleCashFlowLoan.timeZoneConventions) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, domCcy, periods, super.hashCode());
+    return Objects.hash(startDate, maturityDate, domCcy, periods, timeZoneConventions, super.hashCode());
   }
 
   @Override
@@ -197,6 +224,7 @@ public class SimpleCashFlowLoan extends LusidInstrument {
     sb.append("    maturityDate: ").append(toIndentedString(maturityDate)).append("\n");
     sb.append("    domCcy: ").append(toIndentedString(domCcy)).append("\n");
     sb.append("    periods: ").append(toIndentedString(periods)).append("\n");
+    sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -224,6 +252,7 @@ public class SimpleCashFlowLoan extends LusidInstrument {
     openapiFields.add("maturityDate");
     openapiFields.add("domCcy");
     openapiFields.add("periods");
+    openapiFields.add("timeZoneConventions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

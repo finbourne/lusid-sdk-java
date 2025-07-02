@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.FixedLegAllOfOverrides;
 import com.finbourne.lusid.model.InstrumentLeg;
 import com.finbourne.lusid.model.LegDefinition;
+import com.finbourne.lusid.model.TimeZoneConventions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -73,6 +74,10 @@ public class FixedLeg extends InstrumentLeg {
   public static final String SERIALIZED_NAME_OVERRIDES = "overrides";
   @SerializedName(SERIALIZED_NAME_OVERRIDES)
   private FixedLegAllOfOverrides overrides;
+
+  public static final String SERIALIZED_NAME_TIME_ZONE_CONVENTIONS = "timeZoneConventions";
+  @SerializedName(SERIALIZED_NAME_TIME_ZONE_CONVENTIONS)
+  private TimeZoneConventions timeZoneConventions;
 
   public FixedLeg() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -183,6 +188,27 @@ public class FixedLeg extends InstrumentLeg {
   }
 
 
+  public FixedLeg timeZoneConventions(TimeZoneConventions timeZoneConventions) {
+    
+    this.timeZoneConventions = timeZoneConventions;
+    return this;
+  }
+
+   /**
+   * Get timeZoneConventions
+   * @return timeZoneConventions
+  **/
+  @jakarta.annotation.Nullable
+  public TimeZoneConventions getTimeZoneConventions() {
+    return timeZoneConventions;
+  }
+
+
+  public void setTimeZoneConventions(TimeZoneConventions timeZoneConventions) {
+    this.timeZoneConventions = timeZoneConventions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -198,6 +224,7 @@ public class FixedLeg extends InstrumentLeg {
         Objects.equals(this.legDefinition, fixedLeg.legDefinition) &&
         (this.notional.compareTo(fixedLeg.getNotional()) == 0) &&
         Objects.equals(this.overrides, fixedLeg.overrides) &&
+        Objects.equals(this.timeZoneConventions, fixedLeg.timeZoneConventions) &&
         super.equals(o);
   }
 
@@ -207,7 +234,7 @@ public class FixedLeg extends InstrumentLeg {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, legDefinition, notional, overrides, super.hashCode());
+    return Objects.hash(startDate, maturityDate, legDefinition, notional, overrides, timeZoneConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -227,6 +254,7 @@ public class FixedLeg extends InstrumentLeg {
     sb.append("    legDefinition: ").append(toIndentedString(legDefinition)).append("\n");
     sb.append("    notional: ").append(toIndentedString(notional)).append("\n");
     sb.append("    overrides: ").append(toIndentedString(overrides)).append("\n");
+    sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -255,6 +283,7 @@ public class FixedLeg extends InstrumentLeg {
     openapiFields.add("legDefinition");
     openapiFields.add("notional");
     openapiFields.add("overrides");
+    openapiFields.add("timeZoneConventions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

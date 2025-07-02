@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.LusidInstrument;
+import com.finbourne.lusid.model.TimeZoneConventions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -97,6 +98,10 @@ public class Repo extends LusidInstrument {
   public static final String SERIALIZED_NAME_REPURCHASE_PRICE = "repurchasePrice";
   @SerializedName(SERIALIZED_NAME_REPURCHASE_PRICE)
   private java.math.BigDecimal repurchasePrice;
+
+  public static final String SERIALIZED_NAME_TIME_ZONE_CONVENTIONS = "timeZoneConventions";
+  @SerializedName(SERIALIZED_NAME_TIME_ZONE_CONVENTIONS)
+  private TimeZoneConventions timeZoneConventions;
 
   public Repo() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -341,6 +346,27 @@ public class Repo extends LusidInstrument {
   }
 
 
+  public Repo timeZoneConventions(TimeZoneConventions timeZoneConventions) {
+    
+    this.timeZoneConventions = timeZoneConventions;
+    return this;
+  }
+
+   /**
+   * Get timeZoneConventions
+   * @return timeZoneConventions
+  **/
+  @jakarta.annotation.Nullable
+  public TimeZoneConventions getTimeZoneConventions() {
+    return timeZoneConventions;
+  }
+
+
+  public void setTimeZoneConventions(TimeZoneConventions timeZoneConventions) {
+    this.timeZoneConventions = timeZoneConventions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -362,6 +388,7 @@ public class Repo extends LusidInstrument {
         (this.purchasePrice.compareTo(repo.getPurchasePrice()) == 0) &&
         (this.repoRate.compareTo(repo.getRepoRate()) == 0) &&
         (this.repurchasePrice.compareTo(repo.getRepurchasePrice()) == 0) &&
+        Objects.equals(this.timeZoneConventions, repo.timeZoneConventions) &&
         super.equals(o);
   }
 
@@ -371,7 +398,7 @@ public class Repo extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, domCcy, accrualBasis, collateral, collateralValue, haircut, margin, purchasePrice, repoRate, repurchasePrice, super.hashCode());
+    return Objects.hash(startDate, maturityDate, domCcy, accrualBasis, collateral, collateralValue, haircut, margin, purchasePrice, repoRate, repurchasePrice, timeZoneConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -397,6 +424,7 @@ public class Repo extends LusidInstrument {
     sb.append("    purchasePrice: ").append(toIndentedString(purchasePrice)).append("\n");
     sb.append("    repoRate: ").append(toIndentedString(repoRate)).append("\n");
     sb.append("    repurchasePrice: ").append(toIndentedString(repurchasePrice)).append("\n");
+    sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -431,6 +459,7 @@ public class Repo extends LusidInstrument {
     openapiFields.add("purchasePrice");
     openapiFields.add("repoRate");
     openapiFields.add("repurchasePrice");
+    openapiFields.add("timeZoneConventions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

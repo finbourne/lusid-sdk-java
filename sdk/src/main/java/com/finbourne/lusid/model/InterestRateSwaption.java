@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.InterestRateSwap;
 import com.finbourne.lusid.model.LusidInstrument;
 import com.finbourne.lusid.model.Premium;
+import com.finbourne.lusid.model.TimeZoneConventions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -72,6 +73,10 @@ public class InterestRateSwaption extends LusidInstrument {
   public static final String SERIALIZED_NAME_SWAP = "swap";
   @SerializedName(SERIALIZED_NAME_SWAP)
   private InterestRateSwap swap;
+
+  public static final String SERIALIZED_NAME_TIME_ZONE_CONVENTIONS = "timeZoneConventions";
+  @SerializedName(SERIALIZED_NAME_TIME_ZONE_CONVENTIONS)
+  private TimeZoneConventions timeZoneConventions;
 
   public InterestRateSwaption() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -182,6 +187,27 @@ public class InterestRateSwaption extends LusidInstrument {
   }
 
 
+  public InterestRateSwaption timeZoneConventions(TimeZoneConventions timeZoneConventions) {
+    
+    this.timeZoneConventions = timeZoneConventions;
+    return this;
+  }
+
+   /**
+   * Get timeZoneConventions
+   * @return timeZoneConventions
+  **/
+  @jakarta.annotation.Nullable
+  public TimeZoneConventions getTimeZoneConventions() {
+    return timeZoneConventions;
+  }
+
+
+  public void setTimeZoneConventions(TimeZoneConventions timeZoneConventions) {
+    this.timeZoneConventions = timeZoneConventions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -197,12 +223,13 @@ public class InterestRateSwaption extends LusidInstrument {
         Objects.equals(this.premium, interestRateSwaption.premium) &&
         Objects.equals(this.deliveryMethod, interestRateSwaption.deliveryMethod) &&
         Objects.equals(this.swap, interestRateSwaption.swap) &&
+        Objects.equals(this.timeZoneConventions, interestRateSwaption.timeZoneConventions) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, payOrReceiveFixed, premium, deliveryMethod, swap, super.hashCode());
+    return Objects.hash(startDate, payOrReceiveFixed, premium, deliveryMethod, swap, timeZoneConventions, super.hashCode());
   }
 
   @Override
@@ -215,6 +242,7 @@ public class InterestRateSwaption extends LusidInstrument {
     sb.append("    premium: ").append(toIndentedString(premium)).append("\n");
     sb.append("    deliveryMethod: ").append(toIndentedString(deliveryMethod)).append("\n");
     sb.append("    swap: ").append(toIndentedString(swap)).append("\n");
+    sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -243,6 +271,7 @@ public class InterestRateSwaption extends LusidInstrument {
     openapiFields.add("premium");
     openapiFields.add("deliveryMethod");
     openapiFields.add("swap");
+    openapiFields.add("timeZoneConventions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

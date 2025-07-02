@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.LusidInstrument;
 import com.finbourne.lusid.model.Schedule;
+import com.finbourne.lusid.model.TimeZoneConventions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -77,6 +78,10 @@ public class LoanFacility extends LusidInstrument {
   public static final String SERIALIZED_NAME_SCHEDULES = "schedules";
   @SerializedName(SERIALIZED_NAME_SCHEDULES)
   private List<Schedule> schedules = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_TIME_ZONE_CONVENTIONS = "timeZoneConventions";
+  @SerializedName(SERIALIZED_NAME_TIME_ZONE_CONVENTIONS)
+  private TimeZoneConventions timeZoneConventions;
 
   public LoanFacility() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -216,6 +221,27 @@ public class LoanFacility extends LusidInstrument {
   }
 
 
+  public LoanFacility timeZoneConventions(TimeZoneConventions timeZoneConventions) {
+    
+    this.timeZoneConventions = timeZoneConventions;
+    return this;
+  }
+
+   /**
+   * Get timeZoneConventions
+   * @return timeZoneConventions
+  **/
+  @jakarta.annotation.Nullable
+  public TimeZoneConventions getTimeZoneConventions() {
+    return timeZoneConventions;
+  }
+
+
+  public void setTimeZoneConventions(TimeZoneConventions timeZoneConventions) {
+    this.timeZoneConventions = timeZoneConventions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -232,12 +258,13 @@ public class LoanFacility extends LusidInstrument {
         (this.initialCommitment.compareTo(loanFacility.getInitialCommitment()) == 0) &&
         Objects.equals(this.loanType, loanFacility.loanType) &&
         Objects.equals(this.schedules, loanFacility.schedules) &&
+        Objects.equals(this.timeZoneConventions, loanFacility.timeZoneConventions) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, domCcy, initialCommitment, loanType, schedules, super.hashCode());
+    return Objects.hash(startDate, maturityDate, domCcy, initialCommitment, loanType, schedules, timeZoneConventions, super.hashCode());
   }
 
   @Override
@@ -251,6 +278,7 @@ public class LoanFacility extends LusidInstrument {
     sb.append("    initialCommitment: ").append(toIndentedString(initialCommitment)).append("\n");
     sb.append("    loanType: ").append(toIndentedString(loanType)).append("\n");
     sb.append("    schedules: ").append(toIndentedString(schedules)).append("\n");
+    sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -280,6 +308,7 @@ public class LoanFacility extends LusidInstrument {
     openapiFields.add("initialCommitment");
     openapiFields.add("loanType");
     openapiFields.add("schedules");
+    openapiFields.add("timeZoneConventions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

@@ -15,6 +15,7 @@ LUSID representation of a FundShareClass.  A ShareClass represents a pool of sha
 |**domCcy** | **String** | The domestic currency of the instrument. |  |
 |**roundingConventions** | [**List&lt;SimpleRoundingConvention&gt;**](SimpleRoundingConvention.md) | Rounding Convention used for the FundShareClass quotes |  [optional] |
 |**tradingConventions** | [**TradingConventions**](TradingConventions.md) |  |  [optional] |
+|**timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  |  [optional] |
 
 
 

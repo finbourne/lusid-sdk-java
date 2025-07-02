@@ -19,6 +19,7 @@ LUSID representation of an FX Forward.  Including FX Spot and Non-Deliverable Fo
 |**fixingDate** | **OffsetDateTime** | The fixing date. |  [optional] |
 |**settlementCcy** | **String** | The settlement currency.  If provided, present value will be calculated in settlement currency, otherwise the domestic currency. Applies only to non-deliverable FX Forwards. |  [optional] |
 |**bookedAsSpot** | **Boolean** | Boolean flag for FX Forward transactions booked with Spot settlement. This will default to False if not provided.  For information purposes only, this does not impact LUSID valuation, analytics, cashflows or events, but may be used by third party vendors. |  [optional] |
+|**timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  |  [optional] |
 
 
 

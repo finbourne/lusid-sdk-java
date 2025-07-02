@@ -14,6 +14,7 @@ LUSID representation of Cap, Floor, or Collar.
 |**includeFirstCaplet** | **Boolean** | Include first caplet flag. |  |
 |**underlyingFloatingLeg** | [**FloatingLeg**](FloatingLeg.md) |  |  |
 |**additionalPayments** | [**List&lt;AdditionalPayment&gt;**](AdditionalPayment.md) | Optional additional payments at a given date e.g. to level off an uneven equity swap.  The dates must be distinct and either all payments are Pay or all payments are Receive. |  [optional] |
+|**timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  |  [optional] |
 
 
 

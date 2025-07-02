@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.LusidInstrument;
+import com.finbourne.lusid.model.TimeZoneConventions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -95,6 +96,10 @@ public class FxForward extends LusidInstrument {
   public static final String SERIALIZED_NAME_BOOKED_AS_SPOT = "bookedAsSpot";
   @SerializedName(SERIALIZED_NAME_BOOKED_AS_SPOT)
   private Boolean bookedAsSpot;
+
+  public static final String SERIALIZED_NAME_TIME_ZONE_CONVENTIONS = "timeZoneConventions";
+  @SerializedName(SERIALIZED_NAME_TIME_ZONE_CONVENTIONS)
+  private TimeZoneConventions timeZoneConventions;
 
   public FxForward() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -331,6 +336,27 @@ public class FxForward extends LusidInstrument {
   }
 
 
+  public FxForward timeZoneConventions(TimeZoneConventions timeZoneConventions) {
+    
+    this.timeZoneConventions = timeZoneConventions;
+    return this;
+  }
+
+   /**
+   * Get timeZoneConventions
+   * @return timeZoneConventions
+  **/
+  @jakarta.annotation.Nullable
+  public TimeZoneConventions getTimeZoneConventions() {
+    return timeZoneConventions;
+  }
+
+
+  public void setTimeZoneConventions(TimeZoneConventions timeZoneConventions) {
+    this.timeZoneConventions = timeZoneConventions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -352,6 +378,7 @@ public class FxForward extends LusidInstrument {
         Objects.equals(this.fixingDate, fxForward.fixingDate) &&
         Objects.equals(this.settlementCcy, fxForward.settlementCcy) &&
         Objects.equals(this.bookedAsSpot, fxForward.bookedAsSpot) &&
+        Objects.equals(this.timeZoneConventions, fxForward.timeZoneConventions) &&
         super.equals(o);
   }
 
@@ -361,7 +388,7 @@ public class FxForward extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, domAmount, domCcy, fgnAmount, fgnCcy, refSpotRate, isNdf, fixingDate, settlementCcy, bookedAsSpot, super.hashCode());
+    return Objects.hash(startDate, maturityDate, domAmount, domCcy, fgnAmount, fgnCcy, refSpotRate, isNdf, fixingDate, settlementCcy, bookedAsSpot, timeZoneConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -387,6 +414,7 @@ public class FxForward extends LusidInstrument {
     sb.append("    fixingDate: ").append(toIndentedString(fixingDate)).append("\n");
     sb.append("    settlementCcy: ").append(toIndentedString(settlementCcy)).append("\n");
     sb.append("    bookedAsSpot: ").append(toIndentedString(bookedAsSpot)).append("\n");
+    sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -421,6 +449,7 @@ public class FxForward extends LusidInstrument {
     openapiFields.add("fixingDate");
     openapiFields.add("settlementCcy");
     openapiFields.add("bookedAsSpot");
+    openapiFields.add("timeZoneConventions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
