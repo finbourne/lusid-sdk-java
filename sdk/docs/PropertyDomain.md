@@ -71,6 +71,8 @@
 
 * `CUSTODIANACCOUNT` (value: `"CustodianAccount"`)
 
+* `CHECKDEFINITION` (value: `"CheckDefinition"`)
+
 * `ABOR` (value: `"Abor"`)
 
 * `ABORCONFIGURATION` (value: `"AborConfiguration"`)

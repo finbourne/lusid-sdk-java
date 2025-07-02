@@ -91,6 +91,8 @@ public enum PropertyDomain {
   
   CUSTODIANACCOUNT("CustodianAccount"),
   
+  CHECKDEFINITION("CheckDefinition"),
+  
   ABOR("Abor"),
   
   ABORCONFIGURATION("AborConfiguration"),

@@ -224,7 +224,7 @@ public class StagedModification {
   }
 
    /**
-   * Reason staged change request made.
+   * The Request Reason from the context that initiated this staged modification.
    * @return requestReason
   **/
   @jakarta.annotation.Nullable
