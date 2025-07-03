@@ -7,6 +7,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**acceptEstimateValuationPoint**](FundsApi.md#acceptEstimateValuationPoint) | **POST** /api/funds/{scope}/{code}/valuationpoints/$acceptestimate | [EXPERIMENTAL] AcceptEstimateValuationPoint: Accepts an Estimate Valuation Point. |
 | [**createFee**](FundsApi.md#createFee) | **POST** /api/funds/{scope}/{code}/fees | [EXPERIMENTAL] CreateFee: Create a Fee. |
 | [**createFund**](FundsApi.md#createFund) | **POST** /api/funds/{scope} | [EXPERIMENTAL] CreateFund: Create a Fund. |
+| [**createFundV2**](FundsApi.md#createFundV2) | **POST** /api/funds/v2/{scope} | [EXPERIMENTAL] CreateFundV2: Create a Fund V2 (Preview). |
 | [**deleteFee**](FundsApi.md#deleteFee) | **DELETE** /api/funds/{scope}/{code}/fees/{feeCode} | [EXPERIMENTAL] DeleteFee: Delete a Fee. |
 | [**deleteFund**](FundsApi.md#deleteFund) | **DELETE** /api/funds/{scope}/{code} | [EXPERIMENTAL] DeleteFund: Delete a Fund. |
 | [**deleteValuationPoint**](FundsApi.md#deleteValuationPoint) | **DELETE** /api/funds/{scope}/{code}/valuationpoints/{diaryEntryCode} | [EXPERIMENTAL] DeleteValuationPoint: Delete a Valuation Point. |
@@ -34,7 +35,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 ## acceptEstimateValuationPoint
 
-> AcceptEstimateValuationPointResponse acceptEstimateValuationPoint(scope, code, valuationPointDataRequest)
+> AcceptEstimateValuationPointResponse acceptEstimateValuationPoint(scope, code, valuationPointDataRequest, navTypeCode)
 
 [EXPERIMENTAL] AcceptEstimateValuationPoint: Accepts an Estimate Valuation Point.
 
@@ -82,11 +83,12 @@ public class FundsApiExample {
         String scope = "scope_example"; // String | The scope of the Fund.
         String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
         ValuationPointDataRequest valuationPointDataRequest = new ValuationPointDataRequest(); // ValuationPointDataRequest | The valuationPointDataRequest which contains the Diary Entry code for the Estimate Valuation Point to move to Candidate or Final state.
+        String navTypeCode = "navTypeCode_example"; // String | When provided Accepts the Valuation Point of the specified NAV Type. When not provided the Primary NAV Type will be Accepted.
         try {
             // uncomment the below to set overrides at the request level
-            // AcceptEstimateValuationPointResponse result = apiInstance.acceptEstimateValuationPoint(scope, code, valuationPointDataRequest).execute(opts);
+            // AcceptEstimateValuationPointResponse result = apiInstance.acceptEstimateValuationPoint(scope, code, valuationPointDataRequest, navTypeCode).execute(opts);
 
-            AcceptEstimateValuationPointResponse result = apiInstance.acceptEstimateValuationPoint(scope, code, valuationPointDataRequest).execute();
+            AcceptEstimateValuationPointResponse result = apiInstance.acceptEstimateValuationPoint(scope, code, valuationPointDataRequest, navTypeCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling FundsApi#acceptEstimateValuationPoint");
@@ -106,6 +108,7 @@ public class FundsApiExample {
 | **scope** | **String**| The scope of the Fund. | |
 | **code** | **String**| The code of the Fund. Together with the scope this uniquely identifies the Fund. | |
 | **valuationPointDataRequest** | [**ValuationPointDataRequest**](ValuationPointDataRequest.md)| The valuationPointDataRequest which contains the Diary Entry code for the Estimate Valuation Point to move to Candidate or Final state. | |
+| **navTypeCode** | **String**| When provided Accepts the Valuation Point of the specified NAV Type. When not provided the Primary NAV Type will be Accepted. | [optional] |
 
 ### Return type
 
@@ -294,6 +297,99 @@ public class FundsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the Fund. | |
 | **fundRequest** | [**FundRequest**](FundRequest.md)| The definition of the Fund. | |
+
+### Return type
+
+[**Fund**](Fund.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | The newly created Fund. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## createFundV2
+
+> Fund createFundV2(scope, fundDefinitionRequest)
+
+[EXPERIMENTAL] CreateFundV2: Create a Fund V2 (Preview).
+
+Create the given V2 Fund.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.FundsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class FundsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // FundsApi apiInstance = apiFactory.build(FundsApi.class);
+
+        FundsApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundsApi.class);
+        String scope = "scope_example"; // String | The scope of the Fund.
+        FundDefinitionRequest fundDefinitionRequest = new FundDefinitionRequest(); // FundDefinitionRequest | The definition of the Fund.
+        try {
+            // uncomment the below to set overrides at the request level
+            // Fund result = apiInstance.createFundV2(scope, fundDefinitionRequest).execute(opts);
+
+            Fund result = apiInstance.createFundV2(scope, fundDefinitionRequest).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling FundsApi#createFundV2");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Fund. | |
+| **fundDefinitionRequest** | [**FundDefinitionRequest**](FundDefinitionRequest.md)| The definition of the Fund. | |
 
 ### Return type
 
@@ -505,7 +601,7 @@ public class FundsApiExample {
 
 ## deleteValuationPoint
 
-> DeletedEntityResponse deleteValuationPoint(scope, code, diaryEntryCode)
+> DeletedEntityResponse deleteValuationPoint(scope, code, diaryEntryCode, navTypeCode)
 
 [EXPERIMENTAL] DeleteValuationPoint: Delete a Valuation Point.
 
@@ -553,11 +649,12 @@ public class FundsApiExample {
         String scope = "scope_example"; // String | The scope of the Fund for the valuation point to be deleted.
         String code = "code_example"; // String | The code of the Fund containing the Valuation Point to be deleted. Together with the scope this uniquely identifies the Fund.
         String diaryEntryCode = "diaryEntryCode_example"; // String | The diary entry code for the valuation Point to be deleted.
+        String navTypeCode = "navTypeCode_example"; // String | When provided, Deletes the Valuation Point against the specified NAV Type. When not provided the Primary NAV Type will be Deleted.
         try {
             // uncomment the below to set overrides at the request level
-            // DeletedEntityResponse result = apiInstance.deleteValuationPoint(scope, code, diaryEntryCode).execute(opts);
+            // DeletedEntityResponse result = apiInstance.deleteValuationPoint(scope, code, diaryEntryCode, navTypeCode).execute(opts);
 
-            DeletedEntityResponse result = apiInstance.deleteValuationPoint(scope, code, diaryEntryCode).execute();
+            DeletedEntityResponse result = apiInstance.deleteValuationPoint(scope, code, diaryEntryCode, navTypeCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling FundsApi#deleteValuationPoint");
@@ -577,6 +674,7 @@ public class FundsApiExample {
 | **scope** | **String**| The scope of the Fund for the valuation point to be deleted. | |
 | **code** | **String**| The code of the Fund containing the Valuation Point to be deleted. Together with the scope this uniquely identifies the Fund. | |
 | **diaryEntryCode** | **String**| The diary entry code for the valuation Point to be deleted. | |
+| **navTypeCode** | **String**| When provided, Deletes the Valuation Point against the specified NAV Type. When not provided the Primary NAV Type will be Deleted. | [optional] |
 
 ### Return type
 
@@ -600,7 +698,7 @@ public class FundsApiExample {
 
 ## finaliseCandidateValuationPoint
 
-> ValuationPointDataResponse finaliseCandidateValuationPoint(scope, code, valuationPointDataRequest)
+> ValuationPointDataResponse finaliseCandidateValuationPoint(scope, code, valuationPointDataRequest, navTypeCode)
 
 [EXPERIMENTAL] FinaliseCandidateValuationPoint: Finalise Candidate.
 
@@ -648,11 +746,12 @@ public class FundsApiExample {
         String scope = "scope_example"; // String | The scope of the Fund.
         String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
         ValuationPointDataRequest valuationPointDataRequest = new ValuationPointDataRequest(); // ValuationPointDataRequest | The valuationPointDataRequest which contains the diary entry code to mark as final.
+        String navTypeCode = "navTypeCode_example"; // String | When provided Finalises the Valuation Point of the specified NAV Type. When not provided the Primary NAV Type will be Finalised.
         try {
             // uncomment the below to set overrides at the request level
-            // ValuationPointDataResponse result = apiInstance.finaliseCandidateValuationPoint(scope, code, valuationPointDataRequest).execute(opts);
+            // ValuationPointDataResponse result = apiInstance.finaliseCandidateValuationPoint(scope, code, valuationPointDataRequest, navTypeCode).execute(opts);
 
-            ValuationPointDataResponse result = apiInstance.finaliseCandidateValuationPoint(scope, code, valuationPointDataRequest).execute();
+            ValuationPointDataResponse result = apiInstance.finaliseCandidateValuationPoint(scope, code, valuationPointDataRequest, navTypeCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling FundsApi#finaliseCandidateValuationPoint");
@@ -672,6 +771,7 @@ public class FundsApiExample {
 | **scope** | **String**| The scope of the Fund. | |
 | **code** | **String**| The code of the Fund. Together with the scope this uniquely identifies the Fund. | |
 | **valuationPointDataRequest** | [**ValuationPointDataRequest**](ValuationPointDataRequest.md)| The valuationPointDataRequest which contains the diary entry code to mark as final. | |
+| **navTypeCode** | **String**| When provided Finalises the Valuation Point of the specified NAV Type. When not provided the Primary NAV Type will be Finalised. | [optional] |
 
 ### Return type
 
@@ -1091,7 +1191,7 @@ public class FundsApiExample {
 
 ## getValuationPointData
 
-> ValuationPointDataResponse getValuationPointData(scope, code, valuationPointDataQueryParameters, asAt)
+> ValuationPointDataResponse getValuationPointData(scope, code, valuationPointDataQueryParameters, asAt, navTypeCode)
 
 [EXPERIMENTAL] GetValuationPointData: Get Valuation Point Data for a Fund.
 
@@ -1140,11 +1240,12 @@ public class FundsApiExample {
         String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
         ValuationPointDataQueryParameters valuationPointDataQueryParameters = new ValuationPointDataQueryParameters(); // ValuationPointDataQueryParameters | The arguments to use for querying the Valuation Point data
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Fund definition. Defaults to returning the latest version of the Fund definition if not specified.
+        String navTypeCode = "navTypeCode_example"; // String | When provided runs against the specified NAV Type, otherwise the Primary NAV Type will be used.
         try {
             // uncomment the below to set overrides at the request level
-            // ValuationPointDataResponse result = apiInstance.getValuationPointData(scope, code, valuationPointDataQueryParameters, asAt).execute(opts);
+            // ValuationPointDataResponse result = apiInstance.getValuationPointData(scope, code, valuationPointDataQueryParameters, asAt, navTypeCode).execute(opts);
 
-            ValuationPointDataResponse result = apiInstance.getValuationPointData(scope, code, valuationPointDataQueryParameters, asAt).execute();
+            ValuationPointDataResponse result = apiInstance.getValuationPointData(scope, code, valuationPointDataQueryParameters, asAt, navTypeCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling FundsApi#getValuationPointData");
@@ -1165,6 +1266,7 @@ public class FundsApiExample {
 | **code** | **String**| The code of the Fund. Together with the scope this uniquely identifies the Fund. | |
 | **valuationPointDataQueryParameters** | [**ValuationPointDataQueryParameters**](ValuationPointDataQueryParameters.md)| The arguments to use for querying the Valuation Point data | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Fund definition. Defaults to returning the latest version of the Fund definition if not specified. | [optional] |
+| **navTypeCode** | **String**| When provided runs against the specified NAV Type, otherwise the Primary NAV Type will be used. | [optional] |
 
 ### Return type
 
@@ -1188,7 +1290,7 @@ public class FundsApiExample {
 
 ## getValuationPointJournalEntryLines
 
-> ValuationPointResourceListOfFundJournalEntryLine getValuationPointJournalEntryLines(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys)
+> ValuationPointResourceListOfFundJournalEntryLine getValuationPointJournalEntryLines(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode)
 
 [EXPERIMENTAL] GetValuationPointJournalEntryLines: Get the Journal Entry lines for the given Fund.
 
@@ -1242,11 +1344,12 @@ public class FundsApiExample {
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing Journal Entry lines from a previous call to GetValuationPointJournalEntryLines.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument', 'Transaction', 'Portfolio', 'Account', 'LegalEntity' or 'CustodianAccount'   domain to decorate onto the journal entry lines.
+        String navTypeCode = "navTypeCode_example"; // String | May be provided to view a specific NAV type. When not provided, Primary NAV will be used.
         try {
             // uncomment the below to set overrides at the request level
-            // ValuationPointResourceListOfFundJournalEntryLine result = apiInstance.getValuationPointJournalEntryLines(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys).execute(opts);
+            // ValuationPointResourceListOfFundJournalEntryLine result = apiInstance.getValuationPointJournalEntryLines(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode).execute(opts);
 
-            ValuationPointResourceListOfFundJournalEntryLine result = apiInstance.getValuationPointJournalEntryLines(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys).execute();
+            ValuationPointResourceListOfFundJournalEntryLine result = apiInstance.getValuationPointJournalEntryLines(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling FundsApi#getValuationPointJournalEntryLines");
@@ -1272,6 +1375,7 @@ public class FundsApiExample {
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing Journal Entry lines from a previous call to GetValuationPointJournalEntryLines. | [optional] |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;   domain to decorate onto the journal entry lines. | [optional] |
+| **navTypeCode** | **String**| May be provided to view a specific NAV type. When not provided, Primary NAV will be used. | [optional] |
 
 ### Return type
 
@@ -1295,7 +1399,7 @@ public class FundsApiExample {
 
 ## getValuationPointPnlSummary
 
-> ValuationPointResourceListOfPnlJournalEntryLine getValuationPointPnlSummary(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page)
+> ValuationPointResourceListOfPnlJournalEntryLine getValuationPointPnlSummary(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, navTypeCode)
 
 [EXPERIMENTAL] GetValuationPointPnlSummary: Get a PnL summary for the given Valuation Point in the Fund.
 
@@ -1348,11 +1452,12 @@ public class FundsApiExample {
         String filter = "filter_example"; // String | \"Expression to filter the result set.\"
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing Trial balance from a previous call to Trial balance.
+        String navTypeCode = "navTypeCode_example"; // String | May be provided to view a specific NAV type. When not provided, Primary NAV will be used.
         try {
             // uncomment the below to set overrides at the request level
-            // ValuationPointResourceListOfPnlJournalEntryLine result = apiInstance.getValuationPointPnlSummary(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page).execute(opts);
+            // ValuationPointResourceListOfPnlJournalEntryLine result = apiInstance.getValuationPointPnlSummary(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, navTypeCode).execute(opts);
 
-            ValuationPointResourceListOfPnlJournalEntryLine result = apiInstance.getValuationPointPnlSummary(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page).execute();
+            ValuationPointResourceListOfPnlJournalEntryLine result = apiInstance.getValuationPointPnlSummary(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, navTypeCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling FundsApi#getValuationPointPnlSummary");
@@ -1377,6 +1482,7 @@ public class FundsApiExample {
 | **filter** | **String**| \&quot;Expression to filter the result set.\&quot; | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing Trial balance from a previous call to Trial balance. | [optional] |
+| **navTypeCode** | **String**| May be provided to view a specific NAV type. When not provided, Primary NAV will be used. | [optional] |
 
 ### Return type
 
@@ -1400,7 +1506,7 @@ public class FundsApiExample {
 
 ## getValuationPointTransactions
 
-> ValuationPointResourceListOfAccountedTransaction getValuationPointTransactions(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys)
+> ValuationPointResourceListOfAccountedTransaction getValuationPointTransactions(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode)
 
 [EXPERIMENTAL] GetValuationPointTransactions: Get the Transactions for the given Fund.
 
@@ -1453,11 +1559,12 @@ public class FundsApiExample {
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing transactions from a previous call to GetValuationPointTransactions.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument', 'Transaction', 'Portfolio', 'Account', 'LegalEntity' or 'CustodianAccount'   domain to decorate onto the journal entry lines.
+        String navTypeCode = "navTypeCode_example"; // String | May be provided to view a specific NAV type. When not provided, Primary NAV will be used.
         try {
             // uncomment the below to set overrides at the request level
-            // ValuationPointResourceListOfAccountedTransaction result = apiInstance.getValuationPointTransactions(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys).execute(opts);
+            // ValuationPointResourceListOfAccountedTransaction result = apiInstance.getValuationPointTransactions(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode).execute(opts);
 
-            ValuationPointResourceListOfAccountedTransaction result = apiInstance.getValuationPointTransactions(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys).execute();
+            ValuationPointResourceListOfAccountedTransaction result = apiInstance.getValuationPointTransactions(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling FundsApi#getValuationPointTransactions");
@@ -1482,6 +1589,7 @@ public class FundsApiExample {
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing transactions from a previous call to GetValuationPointTransactions. | [optional] |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;   domain to decorate onto the journal entry lines. | [optional] |
+| **navTypeCode** | **String**| May be provided to view a specific NAV type. When not provided, Primary NAV will be used. | [optional] |
 
 ### Return type
 
@@ -1505,7 +1613,7 @@ public class FundsApiExample {
 
 ## getValuationPointTrialBalance
 
-> ValuationPointResourceListOfTrialBalance getValuationPointTrialBalance(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys)
+> ValuationPointResourceListOfTrialBalance getValuationPointTrialBalance(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode)
 
 [EXPERIMENTAL] GetValuationPointTrialBalance: Get Trial Balance for the given Fund.
 
@@ -1559,11 +1667,12 @@ public class FundsApiExample {
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this number.   Defaults to 100 if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing Trial Balances.   This token is returned from the previous call.   If a pagination token is provided, the filter, effectiveAt and asAt fields   must not have changed since the original request.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument', 'Transaction', 'Portfolio', 'Account', 'LegalEntity' or 'CustodianAccount'   domain to decorate onto the journal entry lines.
+        String navTypeCode = "navTypeCode_example"; // String | May be provided to view a specific NAV type. When not provided, Primary NAV will be used.
         try {
             // uncomment the below to set overrides at the request level
-            // ValuationPointResourceListOfTrialBalance result = apiInstance.getValuationPointTrialBalance(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys).execute(opts);
+            // ValuationPointResourceListOfTrialBalance result = apiInstance.getValuationPointTrialBalance(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode).execute(opts);
 
-            ValuationPointResourceListOfTrialBalance result = apiInstance.getValuationPointTrialBalance(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys).execute();
+            ValuationPointResourceListOfTrialBalance result = apiInstance.getValuationPointTrialBalance(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling FundsApi#getValuationPointTrialBalance");
@@ -1589,6 +1698,7 @@ public class FundsApiExample {
 | **limit** | **Integer**| When paginating, limit the number of returned results to this number.   Defaults to 100 if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing Trial Balances.   This token is returned from the previous call.   If a pagination token is provided, the filter, effectiveAt and asAt fields   must not have changed since the original request. | [optional] |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;   domain to decorate onto the journal entry lines. | [optional] |
+| **navTypeCode** | **String**| May be provided to view a specific NAV type. When not provided, Primary NAV will be used. | [optional] |
 
 ### Return type
 
@@ -1822,7 +1932,7 @@ public class FundsApiExample {
 
 ## listValuationPointOverview
 
-> PagedResourceListOfValuationPointOverview listValuationPointOverview(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys)
+> PagedResourceListOfValuationPointOverview listValuationPointOverview(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, navTypeCode)
 
 [EXPERIMENTAL] ListValuationPointOverview: List Valuation Points Overview for a given Fund.
 
@@ -1875,11 +1985,12 @@ public class FundsApiExample {
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
         String filter = "filter_example"; // String | Expression to filter the results by.   For example, to filter on the NAV, specify \"NAV gt 300\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'DiaryEntry' domain to decorate onto each ValuationPoint.   These must take the format {domain}/{scope}/{code}, for example 'DiaryEntry/ValuationPoint/Id'.
+        String navTypeCode = "navTypeCode_example"; // String | May be provided to view a specific NAV type. When not provided, Primary NAV will be used.
         try {
             // uncomment the below to set overrides at the request level
-            // PagedResourceListOfValuationPointOverview result = apiInstance.listValuationPointOverview(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys).execute(opts);
+            // PagedResourceListOfValuationPointOverview result = apiInstance.listValuationPointOverview(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, navTypeCode).execute(opts);
 
-            PagedResourceListOfValuationPointOverview result = apiInstance.listValuationPointOverview(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys).execute();
+            PagedResourceListOfValuationPointOverview result = apiInstance.listValuationPointOverview(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, navTypeCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling FundsApi#listValuationPointOverview");
@@ -1904,6 +2015,7 @@ public class FundsApiExample {
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the results by.   For example, to filter on the NAV, specify \&quot;NAV gt 300\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;DiaryEntry&#39; domain to decorate onto each ValuationPoint.   These must take the format {domain}/{scope}/{code}, for example &#39;DiaryEntry/ValuationPoint/Id&#39;. | [optional] |
+| **navTypeCode** | **String**| May be provided to view a specific NAV type. When not provided, Primary NAV will be used. | [optional] |
 
 ### Return type
 
@@ -2214,7 +2326,7 @@ public class FundsApiExample {
 
 ## upsertDiaryEntryTypeValuationPoint
 
-> DiaryEntry upsertDiaryEntryTypeValuationPoint(scope, code, upsertValuationPointRequest)
+> DiaryEntry upsertDiaryEntryTypeValuationPoint(scope, code, upsertValuationPointRequest, navTypeCode)
 
 [EXPERIMENTAL] UpsertDiaryEntryTypeValuationPoint: Upsert Valuation Point.
 
@@ -2262,11 +2374,12 @@ public class FundsApiExample {
         String scope = "scope_example"; // String | The scope of the Fund.
         String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
         UpsertValuationPointRequest upsertValuationPointRequest = new UpsertValuationPointRequest(); // UpsertValuationPointRequest | The Valuation Point Estimate definition to Upsert
+        String navTypeCode = "navTypeCode_example"; // String | When provided, Upserts the Valuation Point against the specified NAV Type. When not provided the Primary NAV Type will be used.
         try {
             // uncomment the below to set overrides at the request level
-            // DiaryEntry result = apiInstance.upsertDiaryEntryTypeValuationPoint(scope, code, upsertValuationPointRequest).execute(opts);
+            // DiaryEntry result = apiInstance.upsertDiaryEntryTypeValuationPoint(scope, code, upsertValuationPointRequest, navTypeCode).execute(opts);
 
-            DiaryEntry result = apiInstance.upsertDiaryEntryTypeValuationPoint(scope, code, upsertValuationPointRequest).execute();
+            DiaryEntry result = apiInstance.upsertDiaryEntryTypeValuationPoint(scope, code, upsertValuationPointRequest, navTypeCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling FundsApi#upsertDiaryEntryTypeValuationPoint");
@@ -2286,6 +2399,7 @@ public class FundsApiExample {
 | **scope** | **String**| The scope of the Fund. | |
 | **code** | **String**| The code of the Fund. Together with the scope this uniquely identifies the Fund. | |
 | **upsertValuationPointRequest** | [**UpsertValuationPointRequest**](UpsertValuationPointRequest.md)| The Valuation Point Estimate definition to Upsert | |
+| **navTypeCode** | **String**| When provided, Upserts the Valuation Point against the specified NAV Type. When not provided the Primary NAV Type will be used. | [optional] |
 
 ### Return type
 

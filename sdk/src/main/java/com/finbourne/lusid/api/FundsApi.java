@@ -32,6 +32,7 @@ import com.finbourne.lusid.model.Fee;
 import com.finbourne.lusid.model.FeeProperties;
 import com.finbourne.lusid.model.FeeRequest;
 import com.finbourne.lusid.model.Fund;
+import com.finbourne.lusid.model.FundDefinitionRequest;
 import com.finbourne.lusid.model.FundProperties;
 import com.finbourne.lusid.model.FundRequest;
 import com.finbourne.lusid.model.LusidProblemDetails;
@@ -95,11 +96,11 @@ public class FundsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    private okhttp3.Call acceptEstimateValuationPointCall(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, final ApiCallback _callback) throws ApiException {
-        return acceptEstimateValuationPointCall(scope, code, valuationPointDataRequest,  _callback, new ConfigurationOptions());
+    private okhttp3.Call acceptEstimateValuationPointCall(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, String navTypeCode, final ApiCallback _callback) throws ApiException {
+        return acceptEstimateValuationPointCall(scope, code, valuationPointDataRequest, navTypeCode,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call acceptEstimateValuationPointCall(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call acceptEstimateValuationPointCall(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -125,6 +126,10 @@ public class FundsApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (navTypeCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
+        }
 
         final String[] localVarAccepts = {
             "text/plain",
@@ -152,7 +157,7 @@ public class FundsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call acceptEstimateValuationPointValidateBeforeCall(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call acceptEstimateValuationPointValidateBeforeCall(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling acceptEstimateValuationPoint(Async)");
@@ -168,34 +173,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'valuationPointDataRequest' when calling acceptEstimateValuationPoint(Async)");
         }
 
-        return acceptEstimateValuationPointCall(scope, code, valuationPointDataRequest, _callback, opts);
+        return acceptEstimateValuationPointCall(scope, code, valuationPointDataRequest, navTypeCode, _callback, opts);
 
     }
 
 
-    private ApiResponse<AcceptEstimateValuationPointResponse> acceptEstimateValuationPointWithHttpInfo(String scope, String code, ValuationPointDataRequest valuationPointDataRequest) throws ApiException {
-        okhttp3.Call localVarCall = acceptEstimateValuationPointValidateBeforeCall(scope, code, valuationPointDataRequest, null, new ConfigurationOptions());
+    private ApiResponse<AcceptEstimateValuationPointResponse> acceptEstimateValuationPointWithHttpInfo(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, String navTypeCode) throws ApiException {
+        okhttp3.Call localVarCall = acceptEstimateValuationPointValidateBeforeCall(scope, code, valuationPointDataRequest, navTypeCode, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<AcceptEstimateValuationPointResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<AcceptEstimateValuationPointResponse> acceptEstimateValuationPointWithHttpInfo(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = acceptEstimateValuationPointValidateBeforeCall(scope, code, valuationPointDataRequest, null, opts);
+    private ApiResponse<AcceptEstimateValuationPointResponse> acceptEstimateValuationPointWithHttpInfo(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, String navTypeCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = acceptEstimateValuationPointValidateBeforeCall(scope, code, valuationPointDataRequest, navTypeCode, null, opts);
         Type localVarReturnType = new TypeToken<AcceptEstimateValuationPointResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call acceptEstimateValuationPointAsync(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, final ApiCallback<AcceptEstimateValuationPointResponse> _callback) throws ApiException {
+    private okhttp3.Call acceptEstimateValuationPointAsync(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, String navTypeCode, final ApiCallback<AcceptEstimateValuationPointResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = acceptEstimateValuationPointValidateBeforeCall(scope, code, valuationPointDataRequest, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = acceptEstimateValuationPointValidateBeforeCall(scope, code, valuationPointDataRequest, navTypeCode, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<AcceptEstimateValuationPointResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call acceptEstimateValuationPointAsync(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, final ApiCallback<AcceptEstimateValuationPointResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call acceptEstimateValuationPointAsync(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, String navTypeCode, final ApiCallback<AcceptEstimateValuationPointResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = acceptEstimateValuationPointValidateBeforeCall(scope, code, valuationPointDataRequest, _callback, opts);
+        okhttp3.Call localVarCall = acceptEstimateValuationPointValidateBeforeCall(scope, code, valuationPointDataRequest, navTypeCode, _callback, opts);
         Type localVarReturnType = new TypeToken<AcceptEstimateValuationPointResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -205,11 +210,22 @@ public class FundsApi {
         private final String scope;
         private final String code;
         private final ValuationPointDataRequest valuationPointDataRequest;
+        private String navTypeCode;
 
         private APIacceptEstimateValuationPointRequest(String scope, String code, ValuationPointDataRequest valuationPointDataRequest) {
             this.scope = scope;
             this.code = code;
             this.valuationPointDataRequest = valuationPointDataRequest;
+        }
+
+        /**
+         * Set navTypeCode
+         * @param navTypeCode When provided Accepts the Valuation Point of the specified NAV Type. When not provided the Primary NAV Type will be Accepted. (optional)
+         * @return APIacceptEstimateValuationPointRequest
+         */
+        public APIacceptEstimateValuationPointRequest navTypeCode(String navTypeCode) {
+            this.navTypeCode = navTypeCode;
+            return this;
         }
 
         /**
@@ -226,7 +242,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return acceptEstimateValuationPointCall(scope, code, valuationPointDataRequest, _callback);
+            return acceptEstimateValuationPointCall(scope, code, valuationPointDataRequest, navTypeCode, _callback);
         }
 
         /**
@@ -242,7 +258,7 @@ public class FundsApi {
          </table>
          */
         public AcceptEstimateValuationPointResponse execute() throws ApiException {
-            ApiResponse<AcceptEstimateValuationPointResponse> localVarResp = acceptEstimateValuationPointWithHttpInfo(scope, code, valuationPointDataRequest);
+            ApiResponse<AcceptEstimateValuationPointResponse> localVarResp = acceptEstimateValuationPointWithHttpInfo(scope, code, valuationPointDataRequest, navTypeCode);
             return localVarResp.getData();
         }
 
@@ -259,7 +275,7 @@ public class FundsApi {
          </table>
          */
         public AcceptEstimateValuationPointResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<AcceptEstimateValuationPointResponse> localVarResp = acceptEstimateValuationPointWithHttpInfo(scope, code, valuationPointDataRequest, opts);
+            ApiResponse<AcceptEstimateValuationPointResponse> localVarResp = acceptEstimateValuationPointWithHttpInfo(scope, code, valuationPointDataRequest, navTypeCode, opts);
             return localVarResp.getData();
         }
 
@@ -276,7 +292,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<AcceptEstimateValuationPointResponse> executeWithHttpInfo() throws ApiException {
-            return acceptEstimateValuationPointWithHttpInfo(scope, code, valuationPointDataRequest);
+            return acceptEstimateValuationPointWithHttpInfo(scope, code, valuationPointDataRequest, navTypeCode);
         }
 
         /**
@@ -292,7 +308,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<AcceptEstimateValuationPointResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return acceptEstimateValuationPointWithHttpInfo(scope, code, valuationPointDataRequest, opts);
+            return acceptEstimateValuationPointWithHttpInfo(scope, code, valuationPointDataRequest, navTypeCode, opts);
         }
 
         /**
@@ -309,7 +325,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<AcceptEstimateValuationPointResponse> _callback) throws ApiException {
-            return acceptEstimateValuationPointAsync(scope, code, valuationPointDataRequest, _callback);
+            return acceptEstimateValuationPointAsync(scope, code, valuationPointDataRequest, navTypeCode, _callback);
         }
 
         /**
@@ -326,7 +342,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<AcceptEstimateValuationPointResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return acceptEstimateValuationPointAsync(scope, code, valuationPointDataRequest, _callback, opts);
+            return acceptEstimateValuationPointAsync(scope, code, valuationPointDataRequest, navTypeCode, _callback, opts);
         }
     }
 
@@ -845,6 +861,250 @@ public class FundsApi {
     public APIcreateFundRequest createFund(String scope, FundRequest fundRequest) {
         return new APIcreateFundRequest(scope, fundRequest);
     }
+    private okhttp3.Call createFundV2Call(String scope, FundDefinitionRequest fundDefinitionRequest, final ApiCallback _callback) throws ApiException {
+        return createFundV2Call(scope, fundDefinitionRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call createFundV2Call(String scope, FundDefinitionRequest fundDefinitionRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = fundDefinitionRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/v2/{scope}"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createFundV2ValidateBeforeCall(String scope, FundDefinitionRequest fundDefinitionRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling createFundV2(Async)");
+        }
+
+        // verify the required parameter 'fundDefinitionRequest' is set
+        if (fundDefinitionRequest == null) {
+            throw new ApiException("Missing the required parameter 'fundDefinitionRequest' when calling createFundV2(Async)");
+        }
+
+        return createFundV2Call(scope, fundDefinitionRequest, _callback, opts);
+
+    }
+
+
+    private ApiResponse<Fund> createFundV2WithHttpInfo(String scope, FundDefinitionRequest fundDefinitionRequest) throws ApiException {
+        okhttp3.Call localVarCall = createFundV2ValidateBeforeCall(scope, fundDefinitionRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Fund>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Fund> createFundV2WithHttpInfo(String scope, FundDefinitionRequest fundDefinitionRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createFundV2ValidateBeforeCall(scope, fundDefinitionRequest, null, opts);
+        Type localVarReturnType = new TypeToken<Fund>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call createFundV2Async(String scope, FundDefinitionRequest fundDefinitionRequest, final ApiCallback<Fund> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createFundV2ValidateBeforeCall(scope, fundDefinitionRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Fund>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call createFundV2Async(String scope, FundDefinitionRequest fundDefinitionRequest, final ApiCallback<Fund> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = createFundV2ValidateBeforeCall(scope, fundDefinitionRequest, _callback, opts);
+        Type localVarReturnType = new TypeToken<Fund>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIcreateFundV2Request {
+        private final String scope;
+        private final FundDefinitionRequest fundDefinitionRequest;
+
+        private APIcreateFundV2Request(String scope, FundDefinitionRequest fundDefinitionRequest) {
+            this.scope = scope;
+            this.fundDefinitionRequest = fundDefinitionRequest;
+        }
+
+        /**
+         * Build call for createFundV2
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return createFundV2Call(scope, fundDefinitionRequest, _callback);
+        }
+
+        /**
+         * Execute createFundV2 request
+         * @return Fund
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Fund execute() throws ApiException {
+            ApiResponse<Fund> localVarResp = createFundV2WithHttpInfo(scope, fundDefinitionRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute createFundV2 request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Fund
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Fund execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Fund> localVarResp = createFundV2WithHttpInfo(scope, fundDefinitionRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute createFundV2 request with HTTP info returned
+         * @return ApiResponse&lt;Fund&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Fund> executeWithHttpInfo() throws ApiException {
+            return createFundV2WithHttpInfo(scope, fundDefinitionRequest);
+        }
+
+        /**
+         * Execute createFundV2 request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Fund&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Fund> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return createFundV2WithHttpInfo(scope, fundDefinitionRequest, opts);
+        }
+
+        /**
+         * Execute createFundV2 request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Fund> _callback) throws ApiException {
+            return createFundV2Async(scope, fundDefinitionRequest, _callback);
+        }
+
+        /**
+         * Execute createFundV2 request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Fund> _callback, ConfigurationOptions opts) throws ApiException {
+            return createFundV2Async(scope, fundDefinitionRequest, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] CreateFundV2: Create a Fund V2 (Preview).
+     * Create the given V2 Fund.
+     * @param scope The scope of the Fund. (required)
+     * @param fundDefinitionRequest The definition of the Fund. (required)
+     * @return APIcreateFundV2Request
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The newly created Fund. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIcreateFundV2Request createFundV2(String scope, FundDefinitionRequest fundDefinitionRequest) {
+        return new APIcreateFundV2Request(scope, fundDefinitionRequest);
+    }
     private okhttp3.Call deleteFeeCall(String scope, String code, String feeCode, final ApiCallback _callback) throws ApiException {
         return deleteFeeCall(scope, code, feeCode,  _callback, new ConfigurationOptions());
     }
@@ -1336,11 +1596,11 @@ public class FundsApi {
     public APIdeleteFundRequest deleteFund(String scope, String code) {
         return new APIdeleteFundRequest(scope, code);
     }
-    private okhttp3.Call deleteValuationPointCall(String scope, String code, String diaryEntryCode, final ApiCallback _callback) throws ApiException {
-        return deleteValuationPointCall(scope, code, diaryEntryCode,  _callback, new ConfigurationOptions());
+    private okhttp3.Call deleteValuationPointCall(String scope, String code, String diaryEntryCode, String navTypeCode, final ApiCallback _callback) throws ApiException {
+        return deleteValuationPointCall(scope, code, diaryEntryCode, navTypeCode,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call deleteValuationPointCall(String scope, String code, String diaryEntryCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call deleteValuationPointCall(String scope, String code, String diaryEntryCode, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1368,6 +1628,10 @@ public class FundsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (navTypeCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -1390,7 +1654,7 @@ public class FundsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteValuationPointValidateBeforeCall(String scope, String code, String diaryEntryCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call deleteValuationPointValidateBeforeCall(String scope, String code, String diaryEntryCode, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling deleteValuationPoint(Async)");
@@ -1406,34 +1670,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'diaryEntryCode' when calling deleteValuationPoint(Async)");
         }
 
-        return deleteValuationPointCall(scope, code, diaryEntryCode, _callback, opts);
+        return deleteValuationPointCall(scope, code, diaryEntryCode, navTypeCode, _callback, opts);
 
     }
 
 
-    private ApiResponse<DeletedEntityResponse> deleteValuationPointWithHttpInfo(String scope, String code, String diaryEntryCode) throws ApiException {
-        okhttp3.Call localVarCall = deleteValuationPointValidateBeforeCall(scope, code, diaryEntryCode, null, new ConfigurationOptions());
+    private ApiResponse<DeletedEntityResponse> deleteValuationPointWithHttpInfo(String scope, String code, String diaryEntryCode, String navTypeCode) throws ApiException {
+        okhttp3.Call localVarCall = deleteValuationPointValidateBeforeCall(scope, code, diaryEntryCode, navTypeCode, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<DeletedEntityResponse> deleteValuationPointWithHttpInfo(String scope, String code, String diaryEntryCode, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = deleteValuationPointValidateBeforeCall(scope, code, diaryEntryCode, null, opts);
+    private ApiResponse<DeletedEntityResponse> deleteValuationPointWithHttpInfo(String scope, String code, String diaryEntryCode, String navTypeCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteValuationPointValidateBeforeCall(scope, code, diaryEntryCode, navTypeCode, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call deleteValuationPointAsync(String scope, String code, String diaryEntryCode, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteValuationPointAsync(String scope, String code, String diaryEntryCode, String navTypeCode, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteValuationPointValidateBeforeCall(scope, code, diaryEntryCode, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = deleteValuationPointValidateBeforeCall(scope, code, diaryEntryCode, navTypeCode, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call deleteValuationPointAsync(String scope, String code, String diaryEntryCode, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call deleteValuationPointAsync(String scope, String code, String diaryEntryCode, String navTypeCode, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteValuationPointValidateBeforeCall(scope, code, diaryEntryCode, _callback, opts);
+        okhttp3.Call localVarCall = deleteValuationPointValidateBeforeCall(scope, code, diaryEntryCode, navTypeCode, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1443,11 +1707,22 @@ public class FundsApi {
         private final String scope;
         private final String code;
         private final String diaryEntryCode;
+        private String navTypeCode;
 
         private APIdeleteValuationPointRequest(String scope, String code, String diaryEntryCode) {
             this.scope = scope;
             this.code = code;
             this.diaryEntryCode = diaryEntryCode;
+        }
+
+        /**
+         * Set navTypeCode
+         * @param navTypeCode When provided, Deletes the Valuation Point against the specified NAV Type. When not provided the Primary NAV Type will be Deleted. (optional)
+         * @return APIdeleteValuationPointRequest
+         */
+        public APIdeleteValuationPointRequest navTypeCode(String navTypeCode) {
+            this.navTypeCode = navTypeCode;
+            return this;
         }
 
         /**
@@ -1464,7 +1739,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return deleteValuationPointCall(scope, code, diaryEntryCode, _callback);
+            return deleteValuationPointCall(scope, code, diaryEntryCode, navTypeCode, _callback);
         }
 
         /**
@@ -1480,7 +1755,7 @@ public class FundsApi {
          </table>
          */
         public DeletedEntityResponse execute() throws ApiException {
-            ApiResponse<DeletedEntityResponse> localVarResp = deleteValuationPointWithHttpInfo(scope, code, diaryEntryCode);
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteValuationPointWithHttpInfo(scope, code, diaryEntryCode, navTypeCode);
             return localVarResp.getData();
         }
 
@@ -1497,7 +1772,7 @@ public class FundsApi {
          </table>
          */
         public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<DeletedEntityResponse> localVarResp = deleteValuationPointWithHttpInfo(scope, code, diaryEntryCode, opts);
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteValuationPointWithHttpInfo(scope, code, diaryEntryCode, navTypeCode, opts);
             return localVarResp.getData();
         }
 
@@ -1514,7 +1789,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
-            return deleteValuationPointWithHttpInfo(scope, code, diaryEntryCode);
+            return deleteValuationPointWithHttpInfo(scope, code, diaryEntryCode, navTypeCode);
         }
 
         /**
@@ -1530,7 +1805,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return deleteValuationPointWithHttpInfo(scope, code, diaryEntryCode, opts);
+            return deleteValuationPointWithHttpInfo(scope, code, diaryEntryCode, navTypeCode, opts);
         }
 
         /**
@@ -1547,7 +1822,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
-            return deleteValuationPointAsync(scope, code, diaryEntryCode, _callback);
+            return deleteValuationPointAsync(scope, code, diaryEntryCode, navTypeCode, _callback);
         }
 
         /**
@@ -1564,7 +1839,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return deleteValuationPointAsync(scope, code, diaryEntryCode, _callback, opts);
+            return deleteValuationPointAsync(scope, code, diaryEntryCode, navTypeCode, _callback, opts);
         }
     }
 
@@ -1586,11 +1861,11 @@ public class FundsApi {
     public APIdeleteValuationPointRequest deleteValuationPoint(String scope, String code, String diaryEntryCode) {
         return new APIdeleteValuationPointRequest(scope, code, diaryEntryCode);
     }
-    private okhttp3.Call finaliseCandidateValuationPointCall(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, final ApiCallback _callback) throws ApiException {
-        return finaliseCandidateValuationPointCall(scope, code, valuationPointDataRequest,  _callback, new ConfigurationOptions());
+    private okhttp3.Call finaliseCandidateValuationPointCall(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, String navTypeCode, final ApiCallback _callback) throws ApiException {
+        return finaliseCandidateValuationPointCall(scope, code, valuationPointDataRequest, navTypeCode,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call finaliseCandidateValuationPointCall(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call finaliseCandidateValuationPointCall(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1616,6 +1891,10 @@ public class FundsApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (navTypeCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
+        }
 
         final String[] localVarAccepts = {
             "text/plain",
@@ -1643,7 +1922,7 @@ public class FundsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call finaliseCandidateValuationPointValidateBeforeCall(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call finaliseCandidateValuationPointValidateBeforeCall(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling finaliseCandidateValuationPoint(Async)");
@@ -1659,34 +1938,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'valuationPointDataRequest' when calling finaliseCandidateValuationPoint(Async)");
         }
 
-        return finaliseCandidateValuationPointCall(scope, code, valuationPointDataRequest, _callback, opts);
+        return finaliseCandidateValuationPointCall(scope, code, valuationPointDataRequest, navTypeCode, _callback, opts);
 
     }
 
 
-    private ApiResponse<ValuationPointDataResponse> finaliseCandidateValuationPointWithHttpInfo(String scope, String code, ValuationPointDataRequest valuationPointDataRequest) throws ApiException {
-        okhttp3.Call localVarCall = finaliseCandidateValuationPointValidateBeforeCall(scope, code, valuationPointDataRequest, null, new ConfigurationOptions());
+    private ApiResponse<ValuationPointDataResponse> finaliseCandidateValuationPointWithHttpInfo(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, String navTypeCode) throws ApiException {
+        okhttp3.Call localVarCall = finaliseCandidateValuationPointValidateBeforeCall(scope, code, valuationPointDataRequest, navTypeCode, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ValuationPointDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ValuationPointDataResponse> finaliseCandidateValuationPointWithHttpInfo(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = finaliseCandidateValuationPointValidateBeforeCall(scope, code, valuationPointDataRequest, null, opts);
+    private ApiResponse<ValuationPointDataResponse> finaliseCandidateValuationPointWithHttpInfo(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, String navTypeCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = finaliseCandidateValuationPointValidateBeforeCall(scope, code, valuationPointDataRequest, navTypeCode, null, opts);
         Type localVarReturnType = new TypeToken<ValuationPointDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call finaliseCandidateValuationPointAsync(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, final ApiCallback<ValuationPointDataResponse> _callback) throws ApiException {
+    private okhttp3.Call finaliseCandidateValuationPointAsync(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, String navTypeCode, final ApiCallback<ValuationPointDataResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = finaliseCandidateValuationPointValidateBeforeCall(scope, code, valuationPointDataRequest, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = finaliseCandidateValuationPointValidateBeforeCall(scope, code, valuationPointDataRequest, navTypeCode, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ValuationPointDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call finaliseCandidateValuationPointAsync(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, final ApiCallback<ValuationPointDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call finaliseCandidateValuationPointAsync(String scope, String code, ValuationPointDataRequest valuationPointDataRequest, String navTypeCode, final ApiCallback<ValuationPointDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = finaliseCandidateValuationPointValidateBeforeCall(scope, code, valuationPointDataRequest, _callback, opts);
+        okhttp3.Call localVarCall = finaliseCandidateValuationPointValidateBeforeCall(scope, code, valuationPointDataRequest, navTypeCode, _callback, opts);
         Type localVarReturnType = new TypeToken<ValuationPointDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1696,11 +1975,22 @@ public class FundsApi {
         private final String scope;
         private final String code;
         private final ValuationPointDataRequest valuationPointDataRequest;
+        private String navTypeCode;
 
         private APIfinaliseCandidateValuationPointRequest(String scope, String code, ValuationPointDataRequest valuationPointDataRequest) {
             this.scope = scope;
             this.code = code;
             this.valuationPointDataRequest = valuationPointDataRequest;
+        }
+
+        /**
+         * Set navTypeCode
+         * @param navTypeCode When provided Finalises the Valuation Point of the specified NAV Type. When not provided the Primary NAV Type will be Finalised. (optional)
+         * @return APIfinaliseCandidateValuationPointRequest
+         */
+        public APIfinaliseCandidateValuationPointRequest navTypeCode(String navTypeCode) {
+            this.navTypeCode = navTypeCode;
+            return this;
         }
 
         /**
@@ -1717,7 +2007,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return finaliseCandidateValuationPointCall(scope, code, valuationPointDataRequest, _callback);
+            return finaliseCandidateValuationPointCall(scope, code, valuationPointDataRequest, navTypeCode, _callback);
         }
 
         /**
@@ -1733,7 +2023,7 @@ public class FundsApi {
          </table>
          */
         public ValuationPointDataResponse execute() throws ApiException {
-            ApiResponse<ValuationPointDataResponse> localVarResp = finaliseCandidateValuationPointWithHttpInfo(scope, code, valuationPointDataRequest);
+            ApiResponse<ValuationPointDataResponse> localVarResp = finaliseCandidateValuationPointWithHttpInfo(scope, code, valuationPointDataRequest, navTypeCode);
             return localVarResp.getData();
         }
 
@@ -1750,7 +2040,7 @@ public class FundsApi {
          </table>
          */
         public ValuationPointDataResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ValuationPointDataResponse> localVarResp = finaliseCandidateValuationPointWithHttpInfo(scope, code, valuationPointDataRequest, opts);
+            ApiResponse<ValuationPointDataResponse> localVarResp = finaliseCandidateValuationPointWithHttpInfo(scope, code, valuationPointDataRequest, navTypeCode, opts);
             return localVarResp.getData();
         }
 
@@ -1767,7 +2057,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<ValuationPointDataResponse> executeWithHttpInfo() throws ApiException {
-            return finaliseCandidateValuationPointWithHttpInfo(scope, code, valuationPointDataRequest);
+            return finaliseCandidateValuationPointWithHttpInfo(scope, code, valuationPointDataRequest, navTypeCode);
         }
 
         /**
@@ -1783,7 +2073,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<ValuationPointDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return finaliseCandidateValuationPointWithHttpInfo(scope, code, valuationPointDataRequest, opts);
+            return finaliseCandidateValuationPointWithHttpInfo(scope, code, valuationPointDataRequest, navTypeCode, opts);
         }
 
         /**
@@ -1800,7 +2090,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ValuationPointDataResponse> _callback) throws ApiException {
-            return finaliseCandidateValuationPointAsync(scope, code, valuationPointDataRequest, _callback);
+            return finaliseCandidateValuationPointAsync(scope, code, valuationPointDataRequest, navTypeCode, _callback);
         }
 
         /**
@@ -1817,7 +2107,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ValuationPointDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return finaliseCandidateValuationPointAsync(scope, code, valuationPointDataRequest, _callback, opts);
+            return finaliseCandidateValuationPointAsync(scope, code, valuationPointDataRequest, navTypeCode, _callback, opts);
         }
     }
 
@@ -2971,11 +3261,11 @@ public class FundsApi {
     public APIgetFundPropertiesRequest getFundProperties(String scope, String code) {
         return new APIgetFundPropertiesRequest(scope, code);
     }
-    private okhttp3.Call getValuationPointDataCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
-        return getValuationPointDataCall(scope, code, valuationPointDataQueryParameters, asAt,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getValuationPointDataCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String navTypeCode, final ApiCallback _callback) throws ApiException {
+        return getValuationPointDataCall(scope, code, valuationPointDataQueryParameters, asAt, navTypeCode,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getValuationPointDataCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getValuationPointDataCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3006,6 +3296,10 @@ public class FundsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
         }
 
+        if (navTypeCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -3032,7 +3326,7 @@ public class FundsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getValuationPointDataValidateBeforeCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getValuationPointDataValidateBeforeCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getValuationPointData(Async)");
@@ -3048,34 +3342,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'valuationPointDataQueryParameters' when calling getValuationPointData(Async)");
         }
 
-        return getValuationPointDataCall(scope, code, valuationPointDataQueryParameters, asAt, _callback, opts);
+        return getValuationPointDataCall(scope, code, valuationPointDataQueryParameters, asAt, navTypeCode, _callback, opts);
 
     }
 
 
-    private ApiResponse<ValuationPointDataResponse> getValuationPointDataWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getValuationPointDataValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, null, new ConfigurationOptions());
+    private ApiResponse<ValuationPointDataResponse> getValuationPointDataWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String navTypeCode) throws ApiException {
+        okhttp3.Call localVarCall = getValuationPointDataValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, navTypeCode, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ValuationPointDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ValuationPointDataResponse> getValuationPointDataWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getValuationPointDataValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, null, opts);
+    private ApiResponse<ValuationPointDataResponse> getValuationPointDataWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String navTypeCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getValuationPointDataValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, navTypeCode, null, opts);
         Type localVarReturnType = new TypeToken<ValuationPointDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getValuationPointDataAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, final ApiCallback<ValuationPointDataResponse> _callback) throws ApiException {
+    private okhttp3.Call getValuationPointDataAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String navTypeCode, final ApiCallback<ValuationPointDataResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getValuationPointDataValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getValuationPointDataValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, navTypeCode, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ValuationPointDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getValuationPointDataAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, final ApiCallback<ValuationPointDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getValuationPointDataAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String navTypeCode, final ApiCallback<ValuationPointDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getValuationPointDataValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, _callback, opts);
+        okhttp3.Call localVarCall = getValuationPointDataValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, navTypeCode, _callback, opts);
         Type localVarReturnType = new TypeToken<ValuationPointDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3086,6 +3380,7 @@ public class FundsApi {
         private final String code;
         private final ValuationPointDataQueryParameters valuationPointDataQueryParameters;
         private OffsetDateTime asAt;
+        private String navTypeCode;
 
         private APIgetValuationPointDataRequest(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
             this.scope = scope;
@@ -3104,6 +3399,16 @@ public class FundsApi {
         }
 
         /**
+         * Set navTypeCode
+         * @param navTypeCode When provided runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
+         * @return APIgetValuationPointDataRequest
+         */
+        public APIgetValuationPointDataRequest navTypeCode(String navTypeCode) {
+            this.navTypeCode = navTypeCode;
+            return this;
+        }
+
+        /**
          * Build call for getValuationPointData
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -3117,7 +3422,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getValuationPointDataCall(scope, code, valuationPointDataQueryParameters, asAt, _callback);
+            return getValuationPointDataCall(scope, code, valuationPointDataQueryParameters, asAt, navTypeCode, _callback);
         }
 
         /**
@@ -3133,7 +3438,7 @@ public class FundsApi {
          </table>
          */
         public ValuationPointDataResponse execute() throws ApiException {
-            ApiResponse<ValuationPointDataResponse> localVarResp = getValuationPointDataWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt);
+            ApiResponse<ValuationPointDataResponse> localVarResp = getValuationPointDataWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, navTypeCode);
             return localVarResp.getData();
         }
 
@@ -3150,7 +3455,7 @@ public class FundsApi {
          </table>
          */
         public ValuationPointDataResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ValuationPointDataResponse> localVarResp = getValuationPointDataWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, opts);
+            ApiResponse<ValuationPointDataResponse> localVarResp = getValuationPointDataWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, navTypeCode, opts);
             return localVarResp.getData();
         }
 
@@ -3167,7 +3472,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<ValuationPointDataResponse> executeWithHttpInfo() throws ApiException {
-            return getValuationPointDataWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt);
+            return getValuationPointDataWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, navTypeCode);
         }
 
         /**
@@ -3183,7 +3488,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<ValuationPointDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getValuationPointDataWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, opts);
+            return getValuationPointDataWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, navTypeCode, opts);
         }
 
         /**
@@ -3200,7 +3505,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ValuationPointDataResponse> _callback) throws ApiException {
-            return getValuationPointDataAsync(scope, code, valuationPointDataQueryParameters, asAt, _callback);
+            return getValuationPointDataAsync(scope, code, valuationPointDataQueryParameters, asAt, navTypeCode, _callback);
         }
 
         /**
@@ -3217,7 +3522,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ValuationPointDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return getValuationPointDataAsync(scope, code, valuationPointDataQueryParameters, asAt, _callback, opts);
+            return getValuationPointDataAsync(scope, code, valuationPointDataQueryParameters, asAt, navTypeCode, _callback, opts);
         }
     }
 
@@ -3239,11 +3544,11 @@ public class FundsApi {
     public APIgetValuationPointDataRequest getValuationPointData(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
         return new APIgetValuationPointDataRequest(scope, code, valuationPointDataQueryParameters);
     }
-    private okhttp3.Call getValuationPointJournalEntryLinesCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
-        return getValuationPointJournalEntryLinesCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getValuationPointJournalEntryLinesCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback) throws ApiException {
+        return getValuationPointJournalEntryLinesCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getValuationPointJournalEntryLinesCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getValuationPointJournalEntryLinesCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3294,6 +3599,10 @@ public class FundsApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
         }
 
+        if (navTypeCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -3320,7 +3629,7 @@ public class FundsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getValuationPointJournalEntryLinesValidateBeforeCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getValuationPointJournalEntryLinesValidateBeforeCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getValuationPointJournalEntryLines(Async)");
@@ -3336,34 +3645,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'valuationPointDataQueryParameters' when calling getValuationPointJournalEntryLines(Async)");
         }
 
-        return getValuationPointJournalEntryLinesCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, _callback, opts);
+        return getValuationPointJournalEntryLinesCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback, opts);
 
     }
 
 
-    private ApiResponse<ValuationPointResourceListOfFundJournalEntryLine> getValuationPointJournalEntryLinesWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = getValuationPointJournalEntryLinesValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, null, new ConfigurationOptions());
+    private ApiResponse<ValuationPointResourceListOfFundJournalEntryLine> getValuationPointJournalEntryLinesWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode) throws ApiException {
+        okhttp3.Call localVarCall = getValuationPointJournalEntryLinesValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfFundJournalEntryLine>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ValuationPointResourceListOfFundJournalEntryLine> getValuationPointJournalEntryLinesWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getValuationPointJournalEntryLinesValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, null, opts);
+    private ApiResponse<ValuationPointResourceListOfFundJournalEntryLine> getValuationPointJournalEntryLinesWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getValuationPointJournalEntryLinesValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, null, opts);
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfFundJournalEntryLine>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getValuationPointJournalEntryLinesAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, final ApiCallback<ValuationPointResourceListOfFundJournalEntryLine> _callback) throws ApiException {
+    private okhttp3.Call getValuationPointJournalEntryLinesAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback<ValuationPointResourceListOfFundJournalEntryLine> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getValuationPointJournalEntryLinesValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getValuationPointJournalEntryLinesValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfFundJournalEntryLine>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getValuationPointJournalEntryLinesAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, final ApiCallback<ValuationPointResourceListOfFundJournalEntryLine> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getValuationPointJournalEntryLinesAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback<ValuationPointResourceListOfFundJournalEntryLine> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getValuationPointJournalEntryLinesValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, _callback, opts);
+        okhttp3.Call localVarCall = getValuationPointJournalEntryLinesValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback, opts);
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfFundJournalEntryLine>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3379,6 +3688,7 @@ public class FundsApi {
         private Integer limit;
         private String page;
         private List<String> propertyKeys;
+        private String navTypeCode;
 
         private APIgetValuationPointJournalEntryLinesRequest(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
             this.scope = scope;
@@ -3447,6 +3757,16 @@ public class FundsApi {
         }
 
         /**
+         * Set navTypeCode
+         * @param navTypeCode May be provided to view a specific NAV type. When not provided, Primary NAV will be used. (optional)
+         * @return APIgetValuationPointJournalEntryLinesRequest
+         */
+        public APIgetValuationPointJournalEntryLinesRequest navTypeCode(String navTypeCode) {
+            this.navTypeCode = navTypeCode;
+            return this;
+        }
+
+        /**
          * Build call for getValuationPointJournalEntryLines
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -3460,7 +3780,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getValuationPointJournalEntryLinesCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, _callback);
+            return getValuationPointJournalEntryLinesCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback);
         }
 
         /**
@@ -3476,7 +3796,7 @@ public class FundsApi {
          </table>
          */
         public ValuationPointResourceListOfFundJournalEntryLine execute() throws ApiException {
-            ApiResponse<ValuationPointResourceListOfFundJournalEntryLine> localVarResp = getValuationPointJournalEntryLinesWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys);
+            ApiResponse<ValuationPointResourceListOfFundJournalEntryLine> localVarResp = getValuationPointJournalEntryLinesWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode);
             return localVarResp.getData();
         }
 
@@ -3493,7 +3813,7 @@ public class FundsApi {
          </table>
          */
         public ValuationPointResourceListOfFundJournalEntryLine execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ValuationPointResourceListOfFundJournalEntryLine> localVarResp = getValuationPointJournalEntryLinesWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, opts);
+            ApiResponse<ValuationPointResourceListOfFundJournalEntryLine> localVarResp = getValuationPointJournalEntryLinesWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, opts);
             return localVarResp.getData();
         }
 
@@ -3510,7 +3830,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<ValuationPointResourceListOfFundJournalEntryLine> executeWithHttpInfo() throws ApiException {
-            return getValuationPointJournalEntryLinesWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys);
+            return getValuationPointJournalEntryLinesWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode);
         }
 
         /**
@@ -3526,7 +3846,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<ValuationPointResourceListOfFundJournalEntryLine> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getValuationPointJournalEntryLinesWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, opts);
+            return getValuationPointJournalEntryLinesWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, opts);
         }
 
         /**
@@ -3543,7 +3863,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ValuationPointResourceListOfFundJournalEntryLine> _callback) throws ApiException {
-            return getValuationPointJournalEntryLinesAsync(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, _callback);
+            return getValuationPointJournalEntryLinesAsync(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback);
         }
 
         /**
@@ -3560,7 +3880,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ValuationPointResourceListOfFundJournalEntryLine> _callback, ConfigurationOptions opts) throws ApiException {
-            return getValuationPointJournalEntryLinesAsync(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, _callback, opts);
+            return getValuationPointJournalEntryLinesAsync(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback, opts);
         }
     }
 
@@ -3582,11 +3902,11 @@ public class FundsApi {
     public APIgetValuationPointJournalEntryLinesRequest getValuationPointJournalEntryLines(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
         return new APIgetValuationPointJournalEntryLinesRequest(scope, code, valuationPointDataQueryParameters);
     }
-    private okhttp3.Call getValuationPointPnlSummaryCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, final ApiCallback _callback) throws ApiException {
-        return getValuationPointPnlSummaryCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getValuationPointPnlSummaryCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, String navTypeCode, final ApiCallback _callback) throws ApiException {
+        return getValuationPointPnlSummaryCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, navTypeCode,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getValuationPointPnlSummaryCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getValuationPointPnlSummaryCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3633,6 +3953,10 @@ public class FundsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
+        if (navTypeCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -3659,7 +3983,7 @@ public class FundsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getValuationPointPnlSummaryValidateBeforeCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getValuationPointPnlSummaryValidateBeforeCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getValuationPointPnlSummary(Async)");
@@ -3675,34 +3999,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'valuationPointDataQueryParameters' when calling getValuationPointPnlSummary(Async)");
         }
 
-        return getValuationPointPnlSummaryCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, _callback, opts);
+        return getValuationPointPnlSummaryCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, navTypeCode, _callback, opts);
 
     }
 
 
-    private ApiResponse<ValuationPointResourceListOfPnlJournalEntryLine> getValuationPointPnlSummaryWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page) throws ApiException {
-        okhttp3.Call localVarCall = getValuationPointPnlSummaryValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, null, new ConfigurationOptions());
+    private ApiResponse<ValuationPointResourceListOfPnlJournalEntryLine> getValuationPointPnlSummaryWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, String navTypeCode) throws ApiException {
+        okhttp3.Call localVarCall = getValuationPointPnlSummaryValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, navTypeCode, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfPnlJournalEntryLine>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ValuationPointResourceListOfPnlJournalEntryLine> getValuationPointPnlSummaryWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getValuationPointPnlSummaryValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, null, opts);
+    private ApiResponse<ValuationPointResourceListOfPnlJournalEntryLine> getValuationPointPnlSummaryWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, String navTypeCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getValuationPointPnlSummaryValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, navTypeCode, null, opts);
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfPnlJournalEntryLine>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getValuationPointPnlSummaryAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, final ApiCallback<ValuationPointResourceListOfPnlJournalEntryLine> _callback) throws ApiException {
+    private okhttp3.Call getValuationPointPnlSummaryAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, String navTypeCode, final ApiCallback<ValuationPointResourceListOfPnlJournalEntryLine> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getValuationPointPnlSummaryValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getValuationPointPnlSummaryValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, navTypeCode, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfPnlJournalEntryLine>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getValuationPointPnlSummaryAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, final ApiCallback<ValuationPointResourceListOfPnlJournalEntryLine> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getValuationPointPnlSummaryAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, String navTypeCode, final ApiCallback<ValuationPointResourceListOfPnlJournalEntryLine> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getValuationPointPnlSummaryValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, _callback, opts);
+        okhttp3.Call localVarCall = getValuationPointPnlSummaryValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, navTypeCode, _callback, opts);
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfPnlJournalEntryLine>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -3717,6 +4041,7 @@ public class FundsApi {
         private String filter;
         private Integer limit;
         private String page;
+        private String navTypeCode;
 
         private APIgetValuationPointPnlSummaryRequest(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
             this.scope = scope;
@@ -3775,6 +4100,16 @@ public class FundsApi {
         }
 
         /**
+         * Set navTypeCode
+         * @param navTypeCode May be provided to view a specific NAV type. When not provided, Primary NAV will be used. (optional)
+         * @return APIgetValuationPointPnlSummaryRequest
+         */
+        public APIgetValuationPointPnlSummaryRequest navTypeCode(String navTypeCode) {
+            this.navTypeCode = navTypeCode;
+            return this;
+        }
+
+        /**
          * Build call for getValuationPointPnlSummary
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -3788,7 +4123,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getValuationPointPnlSummaryCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, _callback);
+            return getValuationPointPnlSummaryCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, navTypeCode, _callback);
         }
 
         /**
@@ -3804,7 +4139,7 @@ public class FundsApi {
          </table>
          */
         public ValuationPointResourceListOfPnlJournalEntryLine execute() throws ApiException {
-            ApiResponse<ValuationPointResourceListOfPnlJournalEntryLine> localVarResp = getValuationPointPnlSummaryWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page);
+            ApiResponse<ValuationPointResourceListOfPnlJournalEntryLine> localVarResp = getValuationPointPnlSummaryWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, navTypeCode);
             return localVarResp.getData();
         }
 
@@ -3821,7 +4156,7 @@ public class FundsApi {
          </table>
          */
         public ValuationPointResourceListOfPnlJournalEntryLine execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ValuationPointResourceListOfPnlJournalEntryLine> localVarResp = getValuationPointPnlSummaryWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, opts);
+            ApiResponse<ValuationPointResourceListOfPnlJournalEntryLine> localVarResp = getValuationPointPnlSummaryWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, navTypeCode, opts);
             return localVarResp.getData();
         }
 
@@ -3838,7 +4173,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<ValuationPointResourceListOfPnlJournalEntryLine> executeWithHttpInfo() throws ApiException {
-            return getValuationPointPnlSummaryWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page);
+            return getValuationPointPnlSummaryWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, navTypeCode);
         }
 
         /**
@@ -3854,7 +4189,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<ValuationPointResourceListOfPnlJournalEntryLine> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getValuationPointPnlSummaryWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, opts);
+            return getValuationPointPnlSummaryWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, navTypeCode, opts);
         }
 
         /**
@@ -3871,7 +4206,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ValuationPointResourceListOfPnlJournalEntryLine> _callback) throws ApiException {
-            return getValuationPointPnlSummaryAsync(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, _callback);
+            return getValuationPointPnlSummaryAsync(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, navTypeCode, _callback);
         }
 
         /**
@@ -3888,7 +4223,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ValuationPointResourceListOfPnlJournalEntryLine> _callback, ConfigurationOptions opts) throws ApiException {
-            return getValuationPointPnlSummaryAsync(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, _callback, opts);
+            return getValuationPointPnlSummaryAsync(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, navTypeCode, _callback, opts);
         }
     }
 
@@ -3910,11 +4245,11 @@ public class FundsApi {
     public APIgetValuationPointPnlSummaryRequest getValuationPointPnlSummary(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
         return new APIgetValuationPointPnlSummaryRequest(scope, code, valuationPointDataQueryParameters);
     }
-    private okhttp3.Call getValuationPointTransactionsCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
-        return getValuationPointTransactionsCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getValuationPointTransactionsCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback) throws ApiException {
+        return getValuationPointTransactionsCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getValuationPointTransactionsCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getValuationPointTransactionsCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3961,6 +4296,10 @@ public class FundsApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
         }
 
+        if (navTypeCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -3987,7 +4326,7 @@ public class FundsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getValuationPointTransactionsValidateBeforeCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getValuationPointTransactionsValidateBeforeCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getValuationPointTransactions(Async)");
@@ -4003,34 +4342,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'valuationPointDataQueryParameters' when calling getValuationPointTransactions(Async)");
         }
 
-        return getValuationPointTransactionsCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, _callback, opts);
+        return getValuationPointTransactionsCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback, opts);
 
     }
 
 
-    private ApiResponse<ValuationPointResourceListOfAccountedTransaction> getValuationPointTransactionsWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = getValuationPointTransactionsValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, null, new ConfigurationOptions());
+    private ApiResponse<ValuationPointResourceListOfAccountedTransaction> getValuationPointTransactionsWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode) throws ApiException {
+        okhttp3.Call localVarCall = getValuationPointTransactionsValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfAccountedTransaction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ValuationPointResourceListOfAccountedTransaction> getValuationPointTransactionsWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getValuationPointTransactionsValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, null, opts);
+    private ApiResponse<ValuationPointResourceListOfAccountedTransaction> getValuationPointTransactionsWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getValuationPointTransactionsValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, null, opts);
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfAccountedTransaction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getValuationPointTransactionsAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, final ApiCallback<ValuationPointResourceListOfAccountedTransaction> _callback) throws ApiException {
+    private okhttp3.Call getValuationPointTransactionsAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback<ValuationPointResourceListOfAccountedTransaction> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getValuationPointTransactionsValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getValuationPointTransactionsValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfAccountedTransaction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getValuationPointTransactionsAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, final ApiCallback<ValuationPointResourceListOfAccountedTransaction> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getValuationPointTransactionsAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback<ValuationPointResourceListOfAccountedTransaction> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getValuationPointTransactionsValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, _callback, opts);
+        okhttp3.Call localVarCall = getValuationPointTransactionsValidateBeforeCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback, opts);
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfAccountedTransaction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4045,6 +4384,7 @@ public class FundsApi {
         private Integer limit;
         private String page;
         private List<String> propertyKeys;
+        private String navTypeCode;
 
         private APIgetValuationPointTransactionsRequest(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
             this.scope = scope;
@@ -4103,6 +4443,16 @@ public class FundsApi {
         }
 
         /**
+         * Set navTypeCode
+         * @param navTypeCode May be provided to view a specific NAV type. When not provided, Primary NAV will be used. (optional)
+         * @return APIgetValuationPointTransactionsRequest
+         */
+        public APIgetValuationPointTransactionsRequest navTypeCode(String navTypeCode) {
+            this.navTypeCode = navTypeCode;
+            return this;
+        }
+
+        /**
          * Build call for getValuationPointTransactions
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -4116,7 +4466,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getValuationPointTransactionsCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, _callback);
+            return getValuationPointTransactionsCall(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback);
         }
 
         /**
@@ -4132,7 +4482,7 @@ public class FundsApi {
          </table>
          */
         public ValuationPointResourceListOfAccountedTransaction execute() throws ApiException {
-            ApiResponse<ValuationPointResourceListOfAccountedTransaction> localVarResp = getValuationPointTransactionsWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys);
+            ApiResponse<ValuationPointResourceListOfAccountedTransaction> localVarResp = getValuationPointTransactionsWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode);
             return localVarResp.getData();
         }
 
@@ -4149,7 +4499,7 @@ public class FundsApi {
          </table>
          */
         public ValuationPointResourceListOfAccountedTransaction execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ValuationPointResourceListOfAccountedTransaction> localVarResp = getValuationPointTransactionsWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, opts);
+            ApiResponse<ValuationPointResourceListOfAccountedTransaction> localVarResp = getValuationPointTransactionsWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, opts);
             return localVarResp.getData();
         }
 
@@ -4166,7 +4516,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<ValuationPointResourceListOfAccountedTransaction> executeWithHttpInfo() throws ApiException {
-            return getValuationPointTransactionsWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys);
+            return getValuationPointTransactionsWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode);
         }
 
         /**
@@ -4182,7 +4532,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<ValuationPointResourceListOfAccountedTransaction> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getValuationPointTransactionsWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, opts);
+            return getValuationPointTransactionsWithHttpInfo(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, opts);
         }
 
         /**
@@ -4199,7 +4549,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ValuationPointResourceListOfAccountedTransaction> _callback) throws ApiException {
-            return getValuationPointTransactionsAsync(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, _callback);
+            return getValuationPointTransactionsAsync(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback);
         }
 
         /**
@@ -4216,7 +4566,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ValuationPointResourceListOfAccountedTransaction> _callback, ConfigurationOptions opts) throws ApiException {
-            return getValuationPointTransactionsAsync(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, _callback, opts);
+            return getValuationPointTransactionsAsync(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback, opts);
         }
     }
 
@@ -4238,11 +4588,11 @@ public class FundsApi {
     public APIgetValuationPointTransactionsRequest getValuationPointTransactions(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
         return new APIgetValuationPointTransactionsRequest(scope, code, valuationPointDataQueryParameters);
     }
-    private okhttp3.Call getValuationPointTrialBalanceCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
-        return getValuationPointTrialBalanceCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getValuationPointTrialBalanceCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback) throws ApiException {
+        return getValuationPointTrialBalanceCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getValuationPointTrialBalanceCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getValuationPointTrialBalanceCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4293,6 +4643,10 @@ public class FundsApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
         }
 
+        if (navTypeCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -4319,7 +4673,7 @@ public class FundsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getValuationPointTrialBalanceValidateBeforeCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getValuationPointTrialBalanceValidateBeforeCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getValuationPointTrialBalance(Async)");
@@ -4335,34 +4689,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'valuationPointDataQueryParameters' when calling getValuationPointTrialBalance(Async)");
         }
 
-        return getValuationPointTrialBalanceCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, _callback, opts);
+        return getValuationPointTrialBalanceCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback, opts);
 
     }
 
 
-    private ApiResponse<ValuationPointResourceListOfTrialBalance> getValuationPointTrialBalanceWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = getValuationPointTrialBalanceValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, null, new ConfigurationOptions());
+    private ApiResponse<ValuationPointResourceListOfTrialBalance> getValuationPointTrialBalanceWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode) throws ApiException {
+        okhttp3.Call localVarCall = getValuationPointTrialBalanceValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfTrialBalance>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ValuationPointResourceListOfTrialBalance> getValuationPointTrialBalanceWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getValuationPointTrialBalanceValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, null, opts);
+    private ApiResponse<ValuationPointResourceListOfTrialBalance> getValuationPointTrialBalanceWithHttpInfo(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getValuationPointTrialBalanceValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, null, opts);
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfTrialBalance>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getValuationPointTrialBalanceAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, final ApiCallback<ValuationPointResourceListOfTrialBalance> _callback) throws ApiException {
+    private okhttp3.Call getValuationPointTrialBalanceAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback<ValuationPointResourceListOfTrialBalance> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getValuationPointTrialBalanceValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getValuationPointTrialBalanceValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfTrialBalance>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getValuationPointTrialBalanceAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, final ApiCallback<ValuationPointResourceListOfTrialBalance> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getValuationPointTrialBalanceAsync(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String generalLedgerProfileCode, OffsetDateTime asAt, String filter, Integer limit, String page, List<String> propertyKeys, String navTypeCode, final ApiCallback<ValuationPointResourceListOfTrialBalance> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getValuationPointTrialBalanceValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, _callback, opts);
+        okhttp3.Call localVarCall = getValuationPointTrialBalanceValidateBeforeCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback, opts);
         Type localVarReturnType = new TypeToken<ValuationPointResourceListOfTrialBalance>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -4378,6 +4732,7 @@ public class FundsApi {
         private Integer limit;
         private String page;
         private List<String> propertyKeys;
+        private String navTypeCode;
 
         private APIgetValuationPointTrialBalanceRequest(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters) {
             this.scope = scope;
@@ -4446,6 +4801,16 @@ public class FundsApi {
         }
 
         /**
+         * Set navTypeCode
+         * @param navTypeCode May be provided to view a specific NAV type. When not provided, Primary NAV will be used. (optional)
+         * @return APIgetValuationPointTrialBalanceRequest
+         */
+        public APIgetValuationPointTrialBalanceRequest navTypeCode(String navTypeCode) {
+            this.navTypeCode = navTypeCode;
+            return this;
+        }
+
+        /**
          * Build call for getValuationPointTrialBalance
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -4459,7 +4824,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getValuationPointTrialBalanceCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, _callback);
+            return getValuationPointTrialBalanceCall(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback);
         }
 
         /**
@@ -4475,7 +4840,7 @@ public class FundsApi {
          </table>
          */
         public ValuationPointResourceListOfTrialBalance execute() throws ApiException {
-            ApiResponse<ValuationPointResourceListOfTrialBalance> localVarResp = getValuationPointTrialBalanceWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys);
+            ApiResponse<ValuationPointResourceListOfTrialBalance> localVarResp = getValuationPointTrialBalanceWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode);
             return localVarResp.getData();
         }
 
@@ -4492,7 +4857,7 @@ public class FundsApi {
          </table>
          */
         public ValuationPointResourceListOfTrialBalance execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ValuationPointResourceListOfTrialBalance> localVarResp = getValuationPointTrialBalanceWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, opts);
+            ApiResponse<ValuationPointResourceListOfTrialBalance> localVarResp = getValuationPointTrialBalanceWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, opts);
             return localVarResp.getData();
         }
 
@@ -4509,7 +4874,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<ValuationPointResourceListOfTrialBalance> executeWithHttpInfo() throws ApiException {
-            return getValuationPointTrialBalanceWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys);
+            return getValuationPointTrialBalanceWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode);
         }
 
         /**
@@ -4525,7 +4890,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<ValuationPointResourceListOfTrialBalance> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getValuationPointTrialBalanceWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, opts);
+            return getValuationPointTrialBalanceWithHttpInfo(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, opts);
         }
 
         /**
@@ -4542,7 +4907,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ValuationPointResourceListOfTrialBalance> _callback) throws ApiException {
-            return getValuationPointTrialBalanceAsync(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, _callback);
+            return getValuationPointTrialBalanceAsync(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback);
         }
 
         /**
@@ -4559,7 +4924,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ValuationPointResourceListOfTrialBalance> _callback, ConfigurationOptions opts) throws ApiException {
-            return getValuationPointTrialBalanceAsync(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, _callback, opts);
+            return getValuationPointTrialBalanceAsync(scope, code, valuationPointDataQueryParameters, generalLedgerProfileCode, asAt, filter, limit, page, propertyKeys, navTypeCode, _callback, opts);
         }
     }
 
@@ -5255,11 +5620,11 @@ public class FundsApi {
     public APIlistFundsRequest listFunds() {
         return new APIlistFundsRequest();
     }
-    private okhttp3.Call listValuationPointOverviewCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
-        return listValuationPointOverviewCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys,  _callback, new ConfigurationOptions());
+    private okhttp3.Call listValuationPointOverviewCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback) throws ApiException {
+        return listValuationPointOverviewCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, navTypeCode,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call listValuationPointOverviewCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listValuationPointOverviewCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5310,6 +5675,10 @@ public class FundsApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
         }
 
+        if (navTypeCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -5332,7 +5701,7 @@ public class FundsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listValuationPointOverviewValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listValuationPointOverviewValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listValuationPointOverview(Async)");
@@ -5343,34 +5712,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'code' when calling listValuationPointOverview(Async)");
         }
 
-        return listValuationPointOverviewCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback, opts);
+        return listValuationPointOverviewCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, navTypeCode, _callback, opts);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfValuationPointOverview> listValuationPointOverviewWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = listValuationPointOverviewValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, null, new ConfigurationOptions());
+    private ApiResponse<PagedResourceListOfValuationPointOverview> listValuationPointOverviewWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, String navTypeCode) throws ApiException {
+        okhttp3.Call localVarCall = listValuationPointOverviewValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, navTypeCode, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfValuationPointOverview>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<PagedResourceListOfValuationPointOverview> listValuationPointOverviewWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = listValuationPointOverviewValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, null, opts);
+    private ApiResponse<PagedResourceListOfValuationPointOverview> listValuationPointOverviewWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, String navTypeCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listValuationPointOverviewValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, navTypeCode, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfValuationPointOverview>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listValuationPointOverviewAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfValuationPointOverview> _callback) throws ApiException {
+    private okhttp3.Call listValuationPointOverviewAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, String navTypeCode, final ApiCallback<PagedResourceListOfValuationPointOverview> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listValuationPointOverviewValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = listValuationPointOverviewValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, navTypeCode, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfValuationPointOverview>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call listValuationPointOverviewAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfValuationPointOverview> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listValuationPointOverviewAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> propertyKeys, String navTypeCode, final ApiCallback<PagedResourceListOfValuationPointOverview> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = listValuationPointOverviewValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback, opts);
+        okhttp3.Call localVarCall = listValuationPointOverviewValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, navTypeCode, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfValuationPointOverview>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -5385,6 +5754,7 @@ public class FundsApi {
         private Integer limit;
         private String filter;
         private List<String> propertyKeys;
+        private String navTypeCode;
 
         private APIlistValuationPointOverviewRequest(String scope, String code) {
             this.scope = scope;
@@ -5452,6 +5822,16 @@ public class FundsApi {
         }
 
         /**
+         * Set navTypeCode
+         * @param navTypeCode May be provided to view a specific NAV type. When not provided, Primary NAV will be used. (optional)
+         * @return APIlistValuationPointOverviewRequest
+         */
+        public APIlistValuationPointOverviewRequest navTypeCode(String navTypeCode) {
+            this.navTypeCode = navTypeCode;
+            return this;
+        }
+
+        /**
          * Build call for listValuationPointOverview
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -5465,7 +5845,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listValuationPointOverviewCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
+            return listValuationPointOverviewCall(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, navTypeCode, _callback);
         }
 
         /**
@@ -5481,7 +5861,7 @@ public class FundsApi {
          </table>
          */
         public PagedResourceListOfValuationPointOverview execute() throws ApiException {
-            ApiResponse<PagedResourceListOfValuationPointOverview> localVarResp = listValuationPointOverviewWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys);
+            ApiResponse<PagedResourceListOfValuationPointOverview> localVarResp = listValuationPointOverviewWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, navTypeCode);
             return localVarResp.getData();
         }
 
@@ -5498,7 +5878,7 @@ public class FundsApi {
          </table>
          */
         public PagedResourceListOfValuationPointOverview execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<PagedResourceListOfValuationPointOverview> localVarResp = listValuationPointOverviewWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, opts);
+            ApiResponse<PagedResourceListOfValuationPointOverview> localVarResp = listValuationPointOverviewWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, navTypeCode, opts);
             return localVarResp.getData();
         }
 
@@ -5515,7 +5895,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfValuationPointOverview> executeWithHttpInfo() throws ApiException {
-            return listValuationPointOverviewWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys);
+            return listValuationPointOverviewWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, navTypeCode);
         }
 
         /**
@@ -5531,7 +5911,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfValuationPointOverview> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return listValuationPointOverviewWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, opts);
+            return listValuationPointOverviewWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, navTypeCode, opts);
         }
 
         /**
@@ -5548,7 +5928,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfValuationPointOverview> _callback) throws ApiException {
-            return listValuationPointOverviewAsync(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback);
+            return listValuationPointOverviewAsync(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, navTypeCode, _callback);
         }
 
         /**
@@ -5565,7 +5945,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfValuationPointOverview> _callback, ConfigurationOptions opts) throws ApiException {
-            return listValuationPointOverviewAsync(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, _callback, opts);
+            return listValuationPointOverviewAsync(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys, navTypeCode, _callback, opts);
         }
     }
 
@@ -6354,11 +6734,11 @@ public class FundsApi {
     public APIsetShareClassInstrumentsRequest setShareClassInstruments(String scope, String code, SetShareClassInstrumentsRequest setShareClassInstrumentsRequest) {
         return new APIsetShareClassInstrumentsRequest(scope, code, setShareClassInstrumentsRequest);
     }
-    private okhttp3.Call upsertDiaryEntryTypeValuationPointCall(String scope, String code, UpsertValuationPointRequest upsertValuationPointRequest, final ApiCallback _callback) throws ApiException {
-        return upsertDiaryEntryTypeValuationPointCall(scope, code, upsertValuationPointRequest,  _callback, new ConfigurationOptions());
+    private okhttp3.Call upsertDiaryEntryTypeValuationPointCall(String scope, String code, UpsertValuationPointRequest upsertValuationPointRequest, String navTypeCode, final ApiCallback _callback) throws ApiException {
+        return upsertDiaryEntryTypeValuationPointCall(scope, code, upsertValuationPointRequest, navTypeCode,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call upsertDiaryEntryTypeValuationPointCall(String scope, String code, UpsertValuationPointRequest upsertValuationPointRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call upsertDiaryEntryTypeValuationPointCall(String scope, String code, UpsertValuationPointRequest upsertValuationPointRequest, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -6384,6 +6764,10 @@ public class FundsApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (navTypeCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
+        }
 
         final String[] localVarAccepts = {
             "text/plain",
@@ -6411,7 +6795,7 @@ public class FundsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertDiaryEntryTypeValuationPointValidateBeforeCall(String scope, String code, UpsertValuationPointRequest upsertValuationPointRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call upsertDiaryEntryTypeValuationPointValidateBeforeCall(String scope, String code, UpsertValuationPointRequest upsertValuationPointRequest, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling upsertDiaryEntryTypeValuationPoint(Async)");
@@ -6427,34 +6811,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'upsertValuationPointRequest' when calling upsertDiaryEntryTypeValuationPoint(Async)");
         }
 
-        return upsertDiaryEntryTypeValuationPointCall(scope, code, upsertValuationPointRequest, _callback, opts);
+        return upsertDiaryEntryTypeValuationPointCall(scope, code, upsertValuationPointRequest, navTypeCode, _callback, opts);
 
     }
 
 
-    private ApiResponse<DiaryEntry> upsertDiaryEntryTypeValuationPointWithHttpInfo(String scope, String code, UpsertValuationPointRequest upsertValuationPointRequest) throws ApiException {
-        okhttp3.Call localVarCall = upsertDiaryEntryTypeValuationPointValidateBeforeCall(scope, code, upsertValuationPointRequest, null, new ConfigurationOptions());
+    private ApiResponse<DiaryEntry> upsertDiaryEntryTypeValuationPointWithHttpInfo(String scope, String code, UpsertValuationPointRequest upsertValuationPointRequest, String navTypeCode) throws ApiException {
+        okhttp3.Call localVarCall = upsertDiaryEntryTypeValuationPointValidateBeforeCall(scope, code, upsertValuationPointRequest, navTypeCode, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<DiaryEntry>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<DiaryEntry> upsertDiaryEntryTypeValuationPointWithHttpInfo(String scope, String code, UpsertValuationPointRequest upsertValuationPointRequest, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = upsertDiaryEntryTypeValuationPointValidateBeforeCall(scope, code, upsertValuationPointRequest, null, opts);
+    private ApiResponse<DiaryEntry> upsertDiaryEntryTypeValuationPointWithHttpInfo(String scope, String code, UpsertValuationPointRequest upsertValuationPointRequest, String navTypeCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertDiaryEntryTypeValuationPointValidateBeforeCall(scope, code, upsertValuationPointRequest, navTypeCode, null, opts);
         Type localVarReturnType = new TypeToken<DiaryEntry>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call upsertDiaryEntryTypeValuationPointAsync(String scope, String code, UpsertValuationPointRequest upsertValuationPointRequest, final ApiCallback<DiaryEntry> _callback) throws ApiException {
+    private okhttp3.Call upsertDiaryEntryTypeValuationPointAsync(String scope, String code, UpsertValuationPointRequest upsertValuationPointRequest, String navTypeCode, final ApiCallback<DiaryEntry> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertDiaryEntryTypeValuationPointValidateBeforeCall(scope, code, upsertValuationPointRequest, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = upsertDiaryEntryTypeValuationPointValidateBeforeCall(scope, code, upsertValuationPointRequest, navTypeCode, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<DiaryEntry>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call upsertDiaryEntryTypeValuationPointAsync(String scope, String code, UpsertValuationPointRequest upsertValuationPointRequest, final ApiCallback<DiaryEntry> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call upsertDiaryEntryTypeValuationPointAsync(String scope, String code, UpsertValuationPointRequest upsertValuationPointRequest, String navTypeCode, final ApiCallback<DiaryEntry> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertDiaryEntryTypeValuationPointValidateBeforeCall(scope, code, upsertValuationPointRequest, _callback, opts);
+        okhttp3.Call localVarCall = upsertDiaryEntryTypeValuationPointValidateBeforeCall(scope, code, upsertValuationPointRequest, navTypeCode, _callback, opts);
         Type localVarReturnType = new TypeToken<DiaryEntry>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -6464,11 +6848,22 @@ public class FundsApi {
         private final String scope;
         private final String code;
         private final UpsertValuationPointRequest upsertValuationPointRequest;
+        private String navTypeCode;
 
         private APIupsertDiaryEntryTypeValuationPointRequest(String scope, String code, UpsertValuationPointRequest upsertValuationPointRequest) {
             this.scope = scope;
             this.code = code;
             this.upsertValuationPointRequest = upsertValuationPointRequest;
+        }
+
+        /**
+         * Set navTypeCode
+         * @param navTypeCode When provided, Upserts the Valuation Point against the specified NAV Type. When not provided the Primary NAV Type will be used. (optional)
+         * @return APIupsertDiaryEntryTypeValuationPointRequest
+         */
+        public APIupsertDiaryEntryTypeValuationPointRequest navTypeCode(String navTypeCode) {
+            this.navTypeCode = navTypeCode;
+            return this;
         }
 
         /**
@@ -6485,7 +6880,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return upsertDiaryEntryTypeValuationPointCall(scope, code, upsertValuationPointRequest, _callback);
+            return upsertDiaryEntryTypeValuationPointCall(scope, code, upsertValuationPointRequest, navTypeCode, _callback);
         }
 
         /**
@@ -6501,7 +6896,7 @@ public class FundsApi {
          </table>
          */
         public DiaryEntry execute() throws ApiException {
-            ApiResponse<DiaryEntry> localVarResp = upsertDiaryEntryTypeValuationPointWithHttpInfo(scope, code, upsertValuationPointRequest);
+            ApiResponse<DiaryEntry> localVarResp = upsertDiaryEntryTypeValuationPointWithHttpInfo(scope, code, upsertValuationPointRequest, navTypeCode);
             return localVarResp.getData();
         }
 
@@ -6518,7 +6913,7 @@ public class FundsApi {
          </table>
          */
         public DiaryEntry execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<DiaryEntry> localVarResp = upsertDiaryEntryTypeValuationPointWithHttpInfo(scope, code, upsertValuationPointRequest, opts);
+            ApiResponse<DiaryEntry> localVarResp = upsertDiaryEntryTypeValuationPointWithHttpInfo(scope, code, upsertValuationPointRequest, navTypeCode, opts);
             return localVarResp.getData();
         }
 
@@ -6535,7 +6930,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<DiaryEntry> executeWithHttpInfo() throws ApiException {
-            return upsertDiaryEntryTypeValuationPointWithHttpInfo(scope, code, upsertValuationPointRequest);
+            return upsertDiaryEntryTypeValuationPointWithHttpInfo(scope, code, upsertValuationPointRequest, navTypeCode);
         }
 
         /**
@@ -6551,7 +6946,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<DiaryEntry> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return upsertDiaryEntryTypeValuationPointWithHttpInfo(scope, code, upsertValuationPointRequest, opts);
+            return upsertDiaryEntryTypeValuationPointWithHttpInfo(scope, code, upsertValuationPointRequest, navTypeCode, opts);
         }
 
         /**
@@ -6568,7 +6963,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<DiaryEntry> _callback) throws ApiException {
-            return upsertDiaryEntryTypeValuationPointAsync(scope, code, upsertValuationPointRequest, _callback);
+            return upsertDiaryEntryTypeValuationPointAsync(scope, code, upsertValuationPointRequest, navTypeCode, _callback);
         }
 
         /**
@@ -6585,7 +6980,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<DiaryEntry> _callback, ConfigurationOptions opts) throws ApiException {
-            return upsertDiaryEntryTypeValuationPointAsync(scope, code, upsertValuationPointRequest, _callback, opts);
+            return upsertDiaryEntryTypeValuationPointAsync(scope, code, upsertValuationPointRequest, navTypeCode, _callback, opts);
         }
     }
 

@@ -8,6 +8,7 @@ The parameters used in getting the ValuationPointData.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**start** | [**DateOrDiaryEntry**](DateOrDiaryEntry.md) |  |  [optional] |
 |**end** | [**DateOrDiaryEntry**](DateOrDiaryEntry.md) |  |  |
 
 

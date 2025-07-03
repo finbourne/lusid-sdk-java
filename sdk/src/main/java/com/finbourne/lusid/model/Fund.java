@@ -14,6 +14,8 @@ import java.util.Objects;
 import com.finbourne.lusid.model.DayMonth;
 import com.finbourne.lusid.model.InstrumentResolutionDetail;
 import com.finbourne.lusid.model.Link;
+import com.finbourne.lusid.model.NavTypeDefinition;
+import com.finbourne.lusid.model.PortfolioEntityIdWithDetails;
 import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.Version;
@@ -78,6 +80,14 @@ public class Fund {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
+  public static final String SERIALIZED_NAME_BASE_CURRENCY = "baseCurrency";
+  @SerializedName(SERIALIZED_NAME_BASE_CURRENCY)
+  private String baseCurrency;
+
+  public static final String SERIALIZED_NAME_PORTFOLIO_IDS = "portfolioIds";
+  @SerializedName(SERIALIZED_NAME_PORTFOLIO_IDS)
+  private List<PortfolioEntityIdWithDetails> portfolioIds;
+
   public static final String SERIALIZED_NAME_FUND_CONFIGURATION_ID = "fundConfigurationId";
   @SerializedName(SERIALIZED_NAME_FUND_CONFIGURATION_ID)
   private ResourceId fundConfigurationId;
@@ -105,6 +115,14 @@ public class Fund {
   public static final String SERIALIZED_NAME_YEAR_END_DATE = "yearEndDate";
   @SerializedName(SERIALIZED_NAME_YEAR_END_DATE)
   private DayMonth yearEndDate;
+
+  public static final String SERIALIZED_NAME_PRIMARY_NAV_TYPE = "primaryNavType";
+  @SerializedName(SERIALIZED_NAME_PRIMARY_NAV_TYPE)
+  private NavTypeDefinition primaryNavType;
+
+  public static final String SERIALIZED_NAME_ADDITIONAL_NAV_TYPES = "additionalNavTypes";
+  @SerializedName(SERIALIZED_NAME_ADDITIONAL_NAV_TYPES)
+  private List<NavTypeDefinition> additionalNavTypes;
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
@@ -205,6 +223,56 @@ public class Fund {
   }
 
 
+  public Fund baseCurrency(String baseCurrency) {
+    
+    this.baseCurrency = baseCurrency;
+    return this;
+  }
+
+   /**
+   * The base currency of the Fund in ISO 4217 currency code format. All portfolios must be of a matching base currency.
+   * @return baseCurrency
+  **/
+  @jakarta.annotation.Nullable
+  public String getBaseCurrency() {
+    return baseCurrency;
+  }
+
+
+  public void setBaseCurrency(String baseCurrency) {
+    this.baseCurrency = baseCurrency;
+  }
+
+
+  public Fund portfolioIds(List<PortfolioEntityIdWithDetails> portfolioIds) {
+    
+    this.portfolioIds = portfolioIds;
+    return this;
+  }
+
+  public Fund addPortfolioIdsItem(PortfolioEntityIdWithDetails portfolioIdsItem) {
+    if (this.portfolioIds == null) {
+      this.portfolioIds = new ArrayList<>();
+    }
+    this.portfolioIds.add(portfolioIdsItem);
+    return this;
+  }
+
+   /**
+   * A list of the portfolios on the fund, which are part of the Fund. Note: These must all have the same base currency, which must also much the Fund Base Currency.
+   * @return portfolioIds
+  **/
+  @jakarta.annotation.Nullable
+  public List<PortfolioEntityIdWithDetails> getPortfolioIds() {
+    return portfolioIds;
+  }
+
+
+  public void setPortfolioIds(List<PortfolioEntityIdWithDetails> portfolioIds) {
+    this.portfolioIds = portfolioIds;
+  }
+
+
   public Fund fundConfigurationId(ResourceId fundConfigurationId) {
     
     this.fundConfigurationId = fundConfigurationId;
@@ -236,7 +304,7 @@ public class Fund {
    * Get aborId
    * @return aborId
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public ResourceId getAborId() {
     return aborId;
   }
@@ -351,7 +419,7 @@ public class Fund {
    * Get yearEndDate
    * @return yearEndDate
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public DayMonth getYearEndDate() {
     return yearEndDate;
   }
@@ -359,6 +427,56 @@ public class Fund {
 
   public void setYearEndDate(DayMonth yearEndDate) {
     this.yearEndDate = yearEndDate;
+  }
+
+
+  public Fund primaryNavType(NavTypeDefinition primaryNavType) {
+    
+    this.primaryNavType = primaryNavType;
+    return this;
+  }
+
+   /**
+   * Get primaryNavType
+   * @return primaryNavType
+  **/
+  @jakarta.annotation.Nullable
+  public NavTypeDefinition getPrimaryNavType() {
+    return primaryNavType;
+  }
+
+
+  public void setPrimaryNavType(NavTypeDefinition primaryNavType) {
+    this.primaryNavType = primaryNavType;
+  }
+
+
+  public Fund additionalNavTypes(List<NavTypeDefinition> additionalNavTypes) {
+    
+    this.additionalNavTypes = additionalNavTypes;
+    return this;
+  }
+
+  public Fund addAdditionalNavTypesItem(NavTypeDefinition additionalNavTypesItem) {
+    if (this.additionalNavTypes == null) {
+      this.additionalNavTypes = new ArrayList<>();
+    }
+    this.additionalNavTypes.add(additionalNavTypesItem);
+    return this;
+  }
+
+   /**
+   * The definitions for any additional NAVs on the Fund.
+   * @return additionalNavTypes
+  **/
+  @jakarta.annotation.Nullable
+  public List<NavTypeDefinition> getAdditionalNavTypes() {
+    return additionalNavTypes;
+  }
+
+
+  public void setAdditionalNavTypes(List<NavTypeDefinition> additionalNavTypes) {
+    this.additionalNavTypes = additionalNavTypes;
   }
 
 
@@ -455,6 +573,8 @@ public class Fund {
         Objects.equals(this.id, fund.id) &&
         Objects.equals(this.displayName, fund.displayName) &&
         Objects.equals(this.description, fund.description) &&
+        Objects.equals(this.baseCurrency, fund.baseCurrency) &&
+        Objects.equals(this.portfolioIds, fund.portfolioIds) &&
         Objects.equals(this.fundConfigurationId, fund.fundConfigurationId) &&
         Objects.equals(this.aborId, fund.aborId) &&
         Objects.equals(this.shareClassInstruments, fund.shareClassInstruments) &&
@@ -462,6 +582,8 @@ public class Fund {
         Objects.equals(this.inceptionDate, fund.inceptionDate) &&
         Objects.equals(this.decimalPlaces, fund.decimalPlaces) &&
         Objects.equals(this.yearEndDate, fund.yearEndDate) &&
+        Objects.equals(this.primaryNavType, fund.primaryNavType) &&
+        Objects.equals(this.additionalNavTypes, fund.additionalNavTypes) &&
         Objects.equals(this.properties, fund.properties) &&
         Objects.equals(this.version, fund.version) &&
         Objects.equals(this.links, fund.links);
@@ -473,7 +595,7 @@ public class Fund {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, displayName, description, fundConfigurationId, aborId, shareClassInstruments, type, inceptionDate, decimalPlaces, yearEndDate, properties, version, links);
+    return Objects.hash(href, id, displayName, description, baseCurrency, portfolioIds, fundConfigurationId, aborId, shareClassInstruments, type, inceptionDate, decimalPlaces, yearEndDate, primaryNavType, additionalNavTypes, properties, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -491,6 +613,8 @@ public class Fund {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    baseCurrency: ").append(toIndentedString(baseCurrency)).append("\n");
+    sb.append("    portfolioIds: ").append(toIndentedString(portfolioIds)).append("\n");
     sb.append("    fundConfigurationId: ").append(toIndentedString(fundConfigurationId)).append("\n");
     sb.append("    aborId: ").append(toIndentedString(aborId)).append("\n");
     sb.append("    shareClassInstruments: ").append(toIndentedString(shareClassInstruments)).append("\n");
@@ -498,6 +622,8 @@ public class Fund {
     sb.append("    inceptionDate: ").append(toIndentedString(inceptionDate)).append("\n");
     sb.append("    decimalPlaces: ").append(toIndentedString(decimalPlaces)).append("\n");
     sb.append("    yearEndDate: ").append(toIndentedString(yearEndDate)).append("\n");
+    sb.append("    primaryNavType: ").append(toIndentedString(primaryNavType)).append("\n");
+    sb.append("    additionalNavTypes: ").append(toIndentedString(additionalNavTypes)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
@@ -527,6 +653,8 @@ public class Fund {
     openapiFields.add("id");
     openapiFields.add("displayName");
     openapiFields.add("description");
+    openapiFields.add("baseCurrency");
+    openapiFields.add("portfolioIds");
     openapiFields.add("fundConfigurationId");
     openapiFields.add("aborId");
     openapiFields.add("shareClassInstruments");
@@ -534,6 +662,8 @@ public class Fund {
     openapiFields.add("inceptionDate");
     openapiFields.add("decimalPlaces");
     openapiFields.add("yearEndDate");
+    openapiFields.add("primaryNavType");
+    openapiFields.add("additionalNavTypes");
     openapiFields.add("properties");
     openapiFields.add("version");
     openapiFields.add("links");
@@ -541,10 +671,8 @@ public class Fund {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("id");
-    openapiRequiredFields.add("aborId");
     openapiRequiredFields.add("type");
     openapiRequiredFields.add("inceptionDate");
-    openapiRequiredFields.add("yearEndDate");
   }
 
  /**
@@ -578,12 +706,31 @@ public class Fund {
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
+      if ((jsonObj.get("baseCurrency") != null && !jsonObj.get("baseCurrency").isJsonNull()) && !jsonObj.get("baseCurrency").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `baseCurrency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("baseCurrency").toString()));
+      }
+      if (jsonObj.get("portfolioIds") != null && !jsonObj.get("portfolioIds").isJsonNull()) {
+        JsonArray jsonArrayportfolioIds = jsonObj.getAsJsonArray("portfolioIds");
+        if (jsonArrayportfolioIds != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("portfolioIds").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `portfolioIds` to be an array in the JSON string but got `%s`", jsonObj.get("portfolioIds").toString()));
+          }
+
+          // validate the optional field `portfolioIds` (array)
+          for (int i = 0; i < jsonArrayportfolioIds.size(); i++) {
+            PortfolioEntityIdWithDetails.validateJsonElement(jsonArrayportfolioIds.get(i));
+          };
+        }
+      }
       // validate the optional field `fundConfigurationId`
       if (jsonObj.get("fundConfigurationId") != null && !jsonObj.get("fundConfigurationId").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("fundConfigurationId"));
       }
-      // validate the required field `aborId`
-      ResourceId.validateJsonElement(jsonObj.get("aborId"));
+      // validate the optional field `aborId`
+      if (jsonObj.get("aborId") != null && !jsonObj.get("aborId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("aborId"));
+      }
       if (jsonObj.get("shareClassInstruments") != null && !jsonObj.get("shareClassInstruments").isJsonNull()) {
         JsonArray jsonArrayshareClassInstruments = jsonObj.getAsJsonArray("shareClassInstruments");
         if (jsonArrayshareClassInstruments != null) {
@@ -601,8 +748,28 @@ public class Fund {
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
-      // validate the required field `yearEndDate`
-      DayMonth.validateJsonElement(jsonObj.get("yearEndDate"));
+      // validate the optional field `yearEndDate`
+      if (jsonObj.get("yearEndDate") != null && !jsonObj.get("yearEndDate").isJsonNull()) {
+        DayMonth.validateJsonElement(jsonObj.get("yearEndDate"));
+      }
+      // validate the optional field `primaryNavType`
+      if (jsonObj.get("primaryNavType") != null && !jsonObj.get("primaryNavType").isJsonNull()) {
+        NavTypeDefinition.validateJsonElement(jsonObj.get("primaryNavType"));
+      }
+      if (jsonObj.get("additionalNavTypes") != null && !jsonObj.get("additionalNavTypes").isJsonNull()) {
+        JsonArray jsonArrayadditionalNavTypes = jsonObj.getAsJsonArray("additionalNavTypes");
+        if (jsonArrayadditionalNavTypes != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("additionalNavTypes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `additionalNavTypes` to be an array in the JSON string but got `%s`", jsonObj.get("additionalNavTypes").toString()));
+          }
+
+          // validate the optional field `additionalNavTypes` (array)
+          for (int i = 0; i < jsonArrayadditionalNavTypes.size(); i++) {
+            NavTypeDefinition.validateJsonElement(jsonArrayadditionalNavTypes.get(i));
+          };
+        }
+      }
       // validate the optional field `version`
       if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
         Version.validateJsonElement(jsonObj.get("version"));

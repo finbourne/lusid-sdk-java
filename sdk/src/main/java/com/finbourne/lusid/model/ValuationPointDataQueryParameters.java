@@ -50,12 +50,37 @@ import com.finbourne.lusid.JSON;
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ValuationPointDataQueryParameters {
+  public static final String SERIALIZED_NAME_START = "start";
+  @SerializedName(SERIALIZED_NAME_START)
+  private DateOrDiaryEntry start;
+
   public static final String SERIALIZED_NAME_END = "end";
   @SerializedName(SERIALIZED_NAME_END)
   private DateOrDiaryEntry end;
 
   public ValuationPointDataQueryParameters() {
   }
+
+  public ValuationPointDataQueryParameters start(DateOrDiaryEntry start) {
+    
+    this.start = start;
+    return this;
+  }
+
+   /**
+   * Get start
+   * @return start
+  **/
+  @jakarta.annotation.Nullable
+  public DateOrDiaryEntry getStart() {
+    return start;
+  }
+
+
+  public void setStart(DateOrDiaryEntry start) {
+    this.start = start;
+  }
+
 
   public ValuationPointDataQueryParameters end(DateOrDiaryEntry end) {
     
@@ -88,18 +113,20 @@ public class ValuationPointDataQueryParameters {
       return false;
     }
     ValuationPointDataQueryParameters valuationPointDataQueryParameters = (ValuationPointDataQueryParameters) o;
-    return Objects.equals(this.end, valuationPointDataQueryParameters.end);
+    return Objects.equals(this.start, valuationPointDataQueryParameters.start) &&
+        Objects.equals(this.end, valuationPointDataQueryParameters.end);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(end);
+    return Objects.hash(start, end);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ValuationPointDataQueryParameters {\n");
+    sb.append("    start: ").append(toIndentedString(start)).append("\n");
     sb.append("    end: ").append(toIndentedString(end)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -123,6 +150,7 @@ public class ValuationPointDataQueryParameters {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("start");
     openapiFields.add("end");
 
     // a set of required properties/fields (JSON key names)
@@ -150,6 +178,10 @@ public class ValuationPointDataQueryParameters {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // validate the optional field `start`
+      if (jsonObj.get("start") != null && !jsonObj.get("start").isJsonNull()) {
+        DateOrDiaryEntry.validateJsonElement(jsonObj.get("start"));
+      }
       // validate the required field `end`
       DateOrDiaryEntry.validateJsonElement(jsonObj.get("end"));
   }
