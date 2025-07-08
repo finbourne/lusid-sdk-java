@@ -74,14 +74,6 @@ public class GroupReconciliationResultTypes {
   @SerializedName(SERIALIZED_NAME_LINK_BREAKS)
   private Link linkBreaks;
 
-  public static final String SERIALIZED_NAME_COUNT_NOT_FOUND = "countNotFound";
-  @SerializedName(SERIALIZED_NAME_COUNT_NOT_FOUND)
-  private Integer countNotFound;
-
-  public static final String SERIALIZED_NAME_LINK_NOT_FOUND = "linkNotFound";
-  @SerializedName(SERIALIZED_NAME_LINK_NOT_FOUND)
-  private Link linkNotFound;
-
   public static final String SERIALIZED_NAME_COUNT_RESOLVED = "countResolved";
   @SerializedName(SERIALIZED_NAME_COUNT_RESOLVED)
   private Integer countResolved;
@@ -91,14 +83,6 @@ public class GroupReconciliationResultTypes {
   private Link linkResolved;
 
   public GroupReconciliationResultTypes() {
-  }
-
-  
-  public GroupReconciliationResultTypes(
-     Integer countNotFound
-  ) {
-    this();
-    this.countNotFound = countNotFound;
   }
 
   public GroupReconciliationResultTypes countMatch(Integer countMatch) {
@@ -227,39 +211,6 @@ public class GroupReconciliationResultTypes {
   }
 
 
-   /**
-   * The number of comparison results of resultType \&quot;Resolved\&quot; with this instanceId and reconciliationType
-   * @return countNotFound
-  **/
-  @jakarta.annotation.Nullable
-  public Integer getCountNotFound() {
-    return countNotFound;
-  }
-
-
-
-
-  public GroupReconciliationResultTypes linkNotFound(Link linkNotFound) {
-    
-    this.linkNotFound = linkNotFound;
-    return this;
-  }
-
-   /**
-   * Get linkNotFound
-   * @return linkNotFound
-  **/
-  @jakarta.annotation.Nullable
-  public Link getLinkNotFound() {
-    return linkNotFound;
-  }
-
-
-  public void setLinkNotFound(Link linkNotFound) {
-    this.linkNotFound = linkNotFound;
-  }
-
-
   public GroupReconciliationResultTypes countResolved(Integer countResolved) {
     
     this.countResolved = countResolved;
@@ -270,7 +221,7 @@ public class GroupReconciliationResultTypes {
    * The number of comparison results of resultType \&quot;Resolved\&quot; with this instanceId and reconciliationType
    * @return countResolved
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public Integer getCountResolved() {
     return countResolved;
   }
@@ -291,7 +242,7 @@ public class GroupReconciliationResultTypes {
    * Get linkResolved
    * @return linkResolved
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public Link getLinkResolved() {
     return linkResolved;
   }
@@ -318,15 +269,13 @@ public class GroupReconciliationResultTypes {
         Objects.equals(this.linkPartialMatches, groupReconciliationResultTypes.linkPartialMatches) &&
         Objects.equals(this.countBreak, groupReconciliationResultTypes.countBreak) &&
         Objects.equals(this.linkBreaks, groupReconciliationResultTypes.linkBreaks) &&
-        Objects.equals(this.countNotFound, groupReconciliationResultTypes.countNotFound) &&
-        Objects.equals(this.linkNotFound, groupReconciliationResultTypes.linkNotFound) &&
         Objects.equals(this.countResolved, groupReconciliationResultTypes.countResolved) &&
         Objects.equals(this.linkResolved, groupReconciliationResultTypes.linkResolved);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(countMatch, linkMatches, countPartialMatch, linkPartialMatches, countBreak, linkBreaks, countNotFound, linkNotFound, countResolved, linkResolved);
+    return Objects.hash(countMatch, linkMatches, countPartialMatch, linkPartialMatches, countBreak, linkBreaks, countResolved, linkResolved);
   }
 
   @Override
@@ -339,8 +288,6 @@ public class GroupReconciliationResultTypes {
     sb.append("    linkPartialMatches: ").append(toIndentedString(linkPartialMatches)).append("\n");
     sb.append("    countBreak: ").append(toIndentedString(countBreak)).append("\n");
     sb.append("    linkBreaks: ").append(toIndentedString(linkBreaks)).append("\n");
-    sb.append("    countNotFound: ").append(toIndentedString(countNotFound)).append("\n");
-    sb.append("    linkNotFound: ").append(toIndentedString(linkNotFound)).append("\n");
     sb.append("    countResolved: ").append(toIndentedString(countResolved)).append("\n");
     sb.append("    linkResolved: ").append(toIndentedString(linkResolved)).append("\n");
     sb.append("}");
@@ -371,8 +318,6 @@ public class GroupReconciliationResultTypes {
     openapiFields.add("linkPartialMatches");
     openapiFields.add("countBreak");
     openapiFields.add("linkBreaks");
-    openapiFields.add("countNotFound");
-    openapiFields.add("linkNotFound");
     openapiFields.add("countResolved");
     openapiFields.add("linkResolved");
 
@@ -384,6 +329,8 @@ public class GroupReconciliationResultTypes {
     openapiRequiredFields.add("linkPartialMatches");
     openapiRequiredFields.add("countBreak");
     openapiRequiredFields.add("linkBreaks");
+    openapiRequiredFields.add("countResolved");
+    openapiRequiredFields.add("linkResolved");
   }
 
  /**
@@ -412,14 +359,8 @@ public class GroupReconciliationResultTypes {
       Link.validateJsonElement(jsonObj.get("linkPartialMatches"));
       // validate the required field `linkBreaks`
       Link.validateJsonElement(jsonObj.get("linkBreaks"));
-      // validate the optional field `linkNotFound`
-      if (jsonObj.get("linkNotFound") != null && !jsonObj.get("linkNotFound").isJsonNull()) {
-        Link.validateJsonElement(jsonObj.get("linkNotFound"));
-      }
-      // validate the optional field `linkResolved`
-      if (jsonObj.get("linkResolved") != null && !jsonObj.get("linkResolved").isJsonNull()) {
-        Link.validateJsonElement(jsonObj.get("linkResolved"));
-      }
+      // validate the required field `linkResolved`
+      Link.validateJsonElement(jsonObj.get("linkResolved"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

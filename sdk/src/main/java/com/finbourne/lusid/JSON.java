@@ -908,6 +908,24 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "instrumentType"));
                     }
           })
+                .registerTypeSelector(com.finbourne.lusid.model.FlexibleRepoCashFlowEvent.class, new TypeSelector<com.finbourne.lusid.model.FlexibleRepoCashFlowEvent>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.FlexibleRepoCashFlowEvent> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("FlexibleRepoCashFlowEvent", com.finbourne.lusid.model.FlexibleRepoCashFlowEvent.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentEventType"));
+                    }
+          })
+                .registerTypeSelector(com.finbourne.lusid.model.FlexibleRepoInterestPaymentEvent.class, new TypeSelector<com.finbourne.lusid.model.FlexibleRepoInterestPaymentEvent>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.FlexibleRepoInterestPaymentEvent> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("FlexibleRepoInterestPaymentEvent", com.finbourne.lusid.model.FlexibleRepoInterestPaymentEvent.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentEventType"));
+                    }
+          })
                 .registerTypeSelector(com.finbourne.lusid.model.FloatSchedule.class, new TypeSelector<com.finbourne.lusid.model.FloatSchedule>() {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.FloatSchedule> getClassForElement(JsonElement readElement) {
@@ -1305,6 +1323,8 @@ public class JSON {
                         classByDiscriminatorValue.put("EarlyRedemptionEvent", com.finbourne.lusid.model.EarlyRedemptionEvent.class);
                         classByDiscriminatorValue.put("ExerciseEvent", com.finbourne.lusid.model.ExerciseEvent.class);
                         classByDiscriminatorValue.put("ExpiryEvent", com.finbourne.lusid.model.ExpiryEvent.class);
+                        classByDiscriminatorValue.put("FlexibleRepoCashFlowEvent", com.finbourne.lusid.model.FlexibleRepoCashFlowEvent.class);
+                        classByDiscriminatorValue.put("FlexibleRepoInterestPaymentEvent", com.finbourne.lusid.model.FlexibleRepoInterestPaymentEvent.class);
                         classByDiscriminatorValue.put("FutureExpiryEvent", com.finbourne.lusid.model.FutureExpiryEvent.class);
                         classByDiscriminatorValue.put("FutureMarkToMarketEvent", com.finbourne.lusid.model.FutureMarkToMarketEvent.class);
                         classByDiscriminatorValue.put("FxForwardSettlementEvent", com.finbourne.lusid.model.FxForwardSettlementEvent.class);
@@ -2735,6 +2755,8 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FixedSchedule.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FlexibleDeposit.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FlexibleLoan.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FlexibleRepoCashFlowEvent.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FlexibleRepoInterestPaymentEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FloatSchedule.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FloatingLeg.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FlowConventionName.CustomTypeAdapterFactory());

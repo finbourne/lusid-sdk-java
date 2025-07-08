@@ -260,7 +260,7 @@ public class OrderInstruction {
   }
 
    /**
-   * The weight of given instrument ordered.
+   * The proportion of the total portfolio value ordered for the given instrument ordered.
    * @return weight
   **/
   @jakarta.annotation.Nullable

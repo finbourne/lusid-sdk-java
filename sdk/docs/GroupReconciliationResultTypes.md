@@ -13,10 +13,8 @@
 |**linkPartialMatches** | [**Link**](Link.md) |  |  |
 |**countBreak** | **Integer** | The number of comparison results of resultType \&quot;Break\&quot; with this instanceId and reconciliationType |  |
 |**linkBreaks** | [**Link**](Link.md) |  |  |
-|**countNotFound** | **Integer** | The number of comparison results of resultType \&quot;Resolved\&quot; with this instanceId and reconciliationType |  [optional] [readonly] |
-|**linkNotFound** | [**Link**](Link.md) |  |  [optional] |
-|**countResolved** | **Integer** | The number of comparison results of resultType \&quot;Resolved\&quot; with this instanceId and reconciliationType |  [optional] |
-|**linkResolved** | [**Link**](Link.md) |  |  [optional] |
+|**countResolved** | **Integer** | The number of comparison results of resultType \&quot;Resolved\&quot; with this instanceId and reconciliationType |  |
+|**linkResolved** | [**Link**](Link.md) |  |  |
 
 
 

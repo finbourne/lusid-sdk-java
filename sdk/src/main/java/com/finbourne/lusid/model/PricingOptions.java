@@ -108,6 +108,10 @@ public class PricingOptions {
   @SerializedName(SERIALIZED_NAME_RETURN_ZERO_PV)
   private ReturnZeroPvOptions returnZeroPv;
 
+  public static final String SERIALIZED_NAME_ENABLE_LEG_LEVEL_INFERENCE_FOR_CUSTOM_SRS_COLUMNS = "enableLegLevelInferenceForCustomSrsColumns";
+  @SerializedName(SERIALIZED_NAME_ENABLE_LEG_LEVEL_INFERENCE_FOR_CUSTOM_SRS_COLUMNS)
+  private Boolean enableLegLevelInferenceForCustomSrsColumns;
+
   public PricingOptions() {
   }
 
@@ -405,6 +409,27 @@ public class PricingOptions {
   }
 
 
+  public PricingOptions enableLegLevelInferenceForCustomSrsColumns(Boolean enableLegLevelInferenceForCustomSrsColumns) {
+    
+    this.enableLegLevelInferenceForCustomSrsColumns = enableLegLevelInferenceForCustomSrsColumns;
+    return this;
+  }
+
+   /**
+   * When enabled, allows inference between leg-level and  instrument-level data during portfolio valuation. If  data is missing at one level, it may be inferred from  the other level. For example, missing leg-level data   may be inferred from existing leg-level and instrument-  level data when ProduceSeparateResultForLinearOtcLegs  is enabled, and vice versa. Explicitly provided data  always takes precedence.
+   * @return enableLegLevelInferenceForCustomSrsColumns
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getEnableLegLevelInferenceForCustomSrsColumns() {
+    return enableLegLevelInferenceForCustomSrsColumns;
+  }
+
+
+  public void setEnableLegLevelInferenceForCustomSrsColumns(Boolean enableLegLevelInferenceForCustomSrsColumns) {
+    this.enableLegLevelInferenceForCustomSrsColumns = enableLegLevelInferenceForCustomSrsColumns;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -428,7 +453,8 @@ public class PricingOptions {
         Objects.equals(this.mbsValuationUsingHoldingCurrentFace, pricingOptions.mbsValuationUsingHoldingCurrentFace) &&
         Objects.equals(this.convertSrsCashFlowsToPortfolioCurrency, pricingOptions.convertSrsCashFlowsToPortfolioCurrency) &&
         Objects.equals(this.conservedQuantityForLookthroughExpansion, pricingOptions.conservedQuantityForLookthroughExpansion) &&
-        Objects.equals(this.returnZeroPv, pricingOptions.returnZeroPv);
+        Objects.equals(this.returnZeroPv, pricingOptions.returnZeroPv) &&
+        Objects.equals(this.enableLegLevelInferenceForCustomSrsColumns, pricingOptions.enableLegLevelInferenceForCustomSrsColumns);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -437,7 +463,7 @@ public class PricingOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(modelSelection, useInstrumentTypeToDeterminePricer, allowAnyInstrumentsWithSecUidToPriceOffLookup, allowPartiallySuccessfulEvaluation, produceSeparateResultForLinearOtcLegs, enableUseOfCachedUnitResults, windowValuationOnInstrumentStartEnd, removeContingentCashflowsInPaymentDiary, useChildSubHoldingKeysForPortfolioExpansion, validateDomesticAndQuoteCurrenciesAreConsistent, mbsValuationUsingHoldingCurrentFace, convertSrsCashFlowsToPortfolioCurrency, conservedQuantityForLookthroughExpansion, returnZeroPv);
+    return Objects.hash(modelSelection, useInstrumentTypeToDeterminePricer, allowAnyInstrumentsWithSecUidToPriceOffLookup, allowPartiallySuccessfulEvaluation, produceSeparateResultForLinearOtcLegs, enableUseOfCachedUnitResults, windowValuationOnInstrumentStartEnd, removeContingentCashflowsInPaymentDiary, useChildSubHoldingKeysForPortfolioExpansion, validateDomesticAndQuoteCurrenciesAreConsistent, mbsValuationUsingHoldingCurrentFace, convertSrsCashFlowsToPortfolioCurrency, conservedQuantityForLookthroughExpansion, returnZeroPv, enableLegLevelInferenceForCustomSrsColumns);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -465,6 +491,7 @@ public class PricingOptions {
     sb.append("    convertSrsCashFlowsToPortfolioCurrency: ").append(toIndentedString(convertSrsCashFlowsToPortfolioCurrency)).append("\n");
     sb.append("    conservedQuantityForLookthroughExpansion: ").append(toIndentedString(conservedQuantityForLookthroughExpansion)).append("\n");
     sb.append("    returnZeroPv: ").append(toIndentedString(returnZeroPv)).append("\n");
+    sb.append("    enableLegLevelInferenceForCustomSrsColumns: ").append(toIndentedString(enableLegLevelInferenceForCustomSrsColumns)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -501,6 +528,7 @@ public class PricingOptions {
     openapiFields.add("convertSrsCashFlowsToPortfolioCurrency");
     openapiFields.add("conservedQuantityForLookthroughExpansion");
     openapiFields.add("returnZeroPv");
+    openapiFields.add("enableLegLevelInferenceForCustomSrsColumns");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

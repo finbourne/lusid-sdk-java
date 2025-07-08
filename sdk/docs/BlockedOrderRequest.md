@@ -8,7 +8,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Client-defined properties associated with this order. |  [optional] |
-|**quantity** | **java.math.BigDecimal** | The quantity of given instrument ordered. |  |
+|**quantity** | **java.math.BigDecimal** | The quantity of the given instrument ordered. |  |
 |**orderBookId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 |**portfolioId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 |**id** | [**ResourceId**](ResourceId.md) |  |  |

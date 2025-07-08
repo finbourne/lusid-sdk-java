@@ -139,7 +139,7 @@ public class BlockedOrderRequest {
   }
 
    /**
-   * The quantity of given instrument ordered.
+   * The quantity of the given instrument ordered.
    * @return quantity
   **/
   @jakarta.annotation.Nonnull

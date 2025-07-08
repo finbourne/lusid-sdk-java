@@ -136,6 +136,14 @@ public class Order {
   @SerializedName(SERIALIZED_NAME_PACKAGE_ID)
   private ResourceId packageId;
 
+  public static final String SERIALIZED_NAME_WEIGHT = "weight";
+  @SerializedName(SERIALIZED_NAME_WEIGHT)
+  private java.math.BigDecimal weight;
+
+  public static final String SERIALIZED_NAME_AMOUNT = "amount";
+  @SerializedName(SERIALIZED_NAME_AMOUNT)
+  private CurrencyAndAmount amount;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -229,10 +237,10 @@ public class Order {
   }
 
    /**
-   * The quantity of given instrument ordered.
+   * The quantity of the given instrument ordered.
    * @return quantity
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public java.math.BigDecimal getQuantity() {
     return quantity;
   }
@@ -558,6 +566,48 @@ public class Order {
   }
 
 
+  public Order weight(java.math.BigDecimal weight) {
+    
+    this.weight = weight;
+    return this;
+  }
+
+   /**
+   * The proportion of the total portfolio value ordered for the given instrument ordered.
+   * @return weight
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getWeight() {
+    return weight;
+  }
+
+
+  public void setWeight(java.math.BigDecimal weight) {
+    this.weight = weight;
+  }
+
+
+  public Order amount(CurrencyAndAmount amount) {
+    
+    this.amount = amount;
+    return this;
+  }
+
+   /**
+   * Get amount
+   * @return amount
+  **/
+  @jakarta.annotation.Nullable
+  public CurrencyAndAmount getAmount() {
+    return amount;
+  }
+
+
+  public void setAmount(CurrencyAndAmount amount) {
+    this.amount = amount;
+  }
+
+
   public Order links(List<Link> links) {
     
     this.links = links;
@@ -616,6 +666,8 @@ public class Order {
         Objects.equals(this.stopPrice, order.stopPrice) &&
         Objects.equals(this.orderInstructionId, order.orderInstructionId) &&
         Objects.equals(this.packageId, order.packageId) &&
+        (this.weight.compareTo(order.getWeight()) == 0) &&
+        Objects.equals(this.amount, order.amount) &&
         Objects.equals(this.links, order.links);
   }
 
@@ -625,7 +677,7 @@ public class Order {
 
   @Override
   public int hashCode() {
-    return Objects.hash(properties, version, instrumentIdentifiers, quantity, side, orderBookId, portfolioId, id, instrumentScope, lusidInstrumentId, state, type, timeInForce, date, price, limitPrice, stopPrice, orderInstructionId, packageId, links);
+    return Objects.hash(properties, version, instrumentIdentifiers, quantity, side, orderBookId, portfolioId, id, instrumentScope, lusidInstrumentId, state, type, timeInForce, date, price, limitPrice, stopPrice, orderInstructionId, packageId, weight, amount, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -658,6 +710,8 @@ public class Order {
     sb.append("    stopPrice: ").append(toIndentedString(stopPrice)).append("\n");
     sb.append("    orderInstructionId: ").append(toIndentedString(orderInstructionId)).append("\n");
     sb.append("    packageId: ").append(toIndentedString(packageId)).append("\n");
+    sb.append("    weight: ").append(toIndentedString(weight)).append("\n");
+    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -700,12 +754,13 @@ public class Order {
     openapiFields.add("stopPrice");
     openapiFields.add("orderInstructionId");
     openapiFields.add("packageId");
+    openapiFields.add("weight");
+    openapiFields.add("amount");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("instrumentIdentifiers");
-    openapiRequiredFields.add("quantity");
     openapiRequiredFields.add("side");
     openapiRequiredFields.add("id");
     openapiRequiredFields.add("lusidInstrumentId");
@@ -782,6 +837,10 @@ public class Order {
       // validate the optional field `packageId`
       if (jsonObj.get("packageId") != null && !jsonObj.get("packageId").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("packageId"));
+      }
+      // validate the optional field `amount`
+      if (jsonObj.get("amount") != null && !jsonObj.get("amount").isJsonNull()) {
+        CurrencyAndAmount.validateJsonElement(jsonObj.get("amount"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

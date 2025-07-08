@@ -120,6 +120,14 @@ public class OrderRequest {
   @SerializedName(SERIALIZED_NAME_PACKAGE)
   private ResourceId _package;
 
+  public static final String SERIALIZED_NAME_WEIGHT = "weight";
+  @SerializedName(SERIALIZED_NAME_WEIGHT)
+  private java.math.BigDecimal weight;
+
+  public static final String SERIALIZED_NAME_AMOUNT = "amount";
+  @SerializedName(SERIALIZED_NAME_AMOUNT)
+  private CurrencyAndAmount amount;
+
   public OrderRequest() {
   }
 
@@ -188,10 +196,10 @@ public class OrderRequest {
   }
 
    /**
-   * The quantity of given instrument ordered.
+   * The quantity of the given instrument ordered.
    * @return quantity
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public java.math.BigDecimal getQuantity() {
     return quantity;
   }
@@ -475,6 +483,48 @@ public class OrderRequest {
   }
 
 
+  public OrderRequest weight(java.math.BigDecimal weight) {
+    
+    this.weight = weight;
+    return this;
+  }
+
+   /**
+   * The proportion of the total portfolio value ordered for the given instrument ordered.
+   * @return weight
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getWeight() {
+    return weight;
+  }
+
+
+  public void setWeight(java.math.BigDecimal weight) {
+    this.weight = weight;
+  }
+
+
+  public OrderRequest amount(CurrencyAndAmount amount) {
+    
+    this.amount = amount;
+    return this;
+  }
+
+   /**
+   * Get amount
+   * @return amount
+  **/
+  @jakarta.annotation.Nullable
+  public CurrencyAndAmount getAmount() {
+    return amount;
+  }
+
+
+  public void setAmount(CurrencyAndAmount amount) {
+    this.amount = amount;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -500,7 +550,9 @@ public class OrderRequest {
         Objects.equals(this.limitPrice, orderRequest.limitPrice) &&
         Objects.equals(this.stopPrice, orderRequest.stopPrice) &&
         Objects.equals(this.orderInstruction, orderRequest.orderInstruction) &&
-        Objects.equals(this._package, orderRequest._package);
+        Objects.equals(this._package, orderRequest._package) &&
+        (this.weight.compareTo(orderRequest.getWeight()) == 0) &&
+        Objects.equals(this.amount, orderRequest.amount);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -509,7 +561,7 @@ public class OrderRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(properties, instrumentIdentifiers, quantity, side, orderBookId, portfolioId, id, state, type, timeInForce, date, price, limitPrice, stopPrice, orderInstruction, _package);
+    return Objects.hash(properties, instrumentIdentifiers, quantity, side, orderBookId, portfolioId, id, state, type, timeInForce, date, price, limitPrice, stopPrice, orderInstruction, _package, weight, amount);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -539,6 +591,8 @@ public class OrderRequest {
     sb.append("    stopPrice: ").append(toIndentedString(stopPrice)).append("\n");
     sb.append("    orderInstruction: ").append(toIndentedString(orderInstruction)).append("\n");
     sb.append("    _package: ").append(toIndentedString(_package)).append("\n");
+    sb.append("    weight: ").append(toIndentedString(weight)).append("\n");
+    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -577,11 +631,12 @@ public class OrderRequest {
     openapiFields.add("stopPrice");
     openapiFields.add("orderInstruction");
     openapiFields.add("package");
+    openapiFields.add("weight");
+    openapiFields.add("amount");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("instrumentIdentifiers");
-    openapiRequiredFields.add("quantity");
     openapiRequiredFields.add("side");
     openapiRequiredFields.add("id");
   }
@@ -647,6 +702,10 @@ public class OrderRequest {
       // validate the optional field `package`
       if (jsonObj.get("package") != null && !jsonObj.get("package").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("package"));
+      }
+      // validate the optional field `amount`
+      if (jsonObj.get("amount") != null && !jsonObj.get("amount").isJsonNull()) {
+        CurrencyAndAmount.validateJsonElement(jsonObj.get("amount"));
       }
   }
 

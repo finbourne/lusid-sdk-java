@@ -11,7 +11,7 @@ An Order for a certain quantity of a specific instrument
 |**properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Client-defined properties associated with this order. |  [optional] |
 |**version** | [**Version**](Version.md) |  |  [optional] |
 |**instrumentIdentifiers** | **Map&lt;String, String&gt;** | The instrument ordered. |  |
-|**quantity** | **java.math.BigDecimal** | The quantity of given instrument ordered. |  |
+|**quantity** | **java.math.BigDecimal** | The quantity of the given instrument ordered. |  [optional] |
 |**side** | **String** | The client&#39;s representation of the order&#39;s side (buy, sell, short, etc) |  |
 |**orderBookId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 |**portfolioId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
@@ -27,6 +27,8 @@ An Order for a certain quantity of a specific instrument
 |**stopPrice** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional] |
 |**orderInstructionId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 |**packageId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
+|**weight** | **java.math.BigDecimal** | The proportion of the total portfolio value ordered for the given instrument ordered. |  [optional] |
+|**amount** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 

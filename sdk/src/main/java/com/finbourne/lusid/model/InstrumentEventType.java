@@ -147,7 +147,11 @@ public enum InstrumentEventType {
   
   REPOPARTIALCLOSUREEVENT("RepoPartialClosureEvent"),
   
-  REPOCASHFLOWEVENT("RepoCashFlowEvent");
+  REPOCASHFLOWEVENT("RepoCashFlowEvent"),
+  
+  FLEXIBLEREPOINTERESTPAYMENTEVENT("FlexibleRepoInterestPaymentEvent"),
+  
+  FLEXIBLEREPOCASHFLOWEVENT("FlexibleRepoCashFlowEvent");
 
   private String value;
 

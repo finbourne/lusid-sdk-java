@@ -9,7 +9,7 @@ A request to create or update a Order.
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**id** | [**ResourceId**](ResourceId.md) |  |  |
-|**quantity** | **java.math.BigDecimal** | The quantity of given instrument ordered. |  [optional] |
+|**quantity** | **java.math.BigDecimal** | The quantity of the given instrument ordered. |  [optional] |
 |**portfolioId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 |**properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Client-defined properties associated with this order. |  [optional] |
 |**price** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional] |

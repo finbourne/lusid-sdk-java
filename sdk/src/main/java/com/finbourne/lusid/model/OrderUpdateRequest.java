@@ -114,7 +114,7 @@ public class OrderUpdateRequest {
   }
 
    /**
-   * The quantity of given instrument ordered.
+   * The quantity of the given instrument ordered.
    * @return quantity
   **/
   @jakarta.annotation.Nullable

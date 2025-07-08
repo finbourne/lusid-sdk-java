@@ -179,7 +179,7 @@ public class TrialBalanceQueryParameters {
   }
 
    /**
-   * A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39; domain to decorate onto the trial balance.
+   * A list of property keys from the &#39;Account&#39; domain to decorate onto the trial balance.
    * @return propertyKeys
   **/
   @jakarta.annotation.Nullable

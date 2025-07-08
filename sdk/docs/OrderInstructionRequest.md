@@ -13,7 +13,7 @@ A request to create or update a Order Instruction.
 |**portfolioId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 |**instrumentIdentifiers** | **Map&lt;String, String&gt;** | The instrument ordered. |  [optional] |
 |**quantity** | **java.math.BigDecimal** | The quantity of given instrument ordered. |  [optional] |
-|**weight** | **java.math.BigDecimal** | The weight of given instrument ordered. |  [optional] |
+|**weight** | **java.math.BigDecimal** | The proportion of the total portfolio value ordered for the given instrument ordered. |  [optional] |
 |**price** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional] |
 |**properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Client-defined properties associated with this execution. |  [optional] |
 
