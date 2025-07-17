@@ -264,6 +264,10 @@ public class PortfolioWithoutHref {
   @SerializedName(SERIALIZED_NAME_AMORTISATION_RULE_SET_ID)
   private ResourceId amortisationRuleSetId;
 
+  public static final String SERIALIZED_NAME_TAX_RULE_SET_SCOPE = "taxRuleSetScope";
+  @SerializedName(SERIALIZED_NAME_TAX_RULE_SET_SCOPE)
+  private String taxRuleSetScope;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -694,6 +698,27 @@ public class PortfolioWithoutHref {
   }
 
 
+  public PortfolioWithoutHref taxRuleSetScope(String taxRuleSetScope) {
+    
+    this.taxRuleSetScope = taxRuleSetScope;
+    return this;
+  }
+
+   /**
+   * The scope of the tax rule sets for this portfolio.
+   * @return taxRuleSetScope
+  **/
+  @jakarta.annotation.Nullable
+  public String getTaxRuleSetScope() {
+    return taxRuleSetScope;
+  }
+
+
+  public void setTaxRuleSetScope(String taxRuleSetScope) {
+    this.taxRuleSetScope = taxRuleSetScope;
+  }
+
+
   public PortfolioWithoutHref links(List<Link> links) {
     
     this.links = links;
@@ -752,6 +777,7 @@ public class PortfolioWithoutHref {
         Objects.equals(this.cashGainLossCalculationDate, portfolioWithoutHref.cashGainLossCalculationDate) &&
         Objects.equals(this.instrumentEventConfiguration, portfolioWithoutHref.instrumentEventConfiguration) &&
         Objects.equals(this.amortisationRuleSetId, portfolioWithoutHref.amortisationRuleSetId) &&
+        Objects.equals(this.taxRuleSetScope, portfolioWithoutHref.taxRuleSetScope) &&
         Objects.equals(this.links, portfolioWithoutHref.links);
   }
 
@@ -761,7 +787,7 @@ public class PortfolioWithoutHref {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, displayName, description, created, parentPortfolioId, version, stagedModifications, isDerived, baseCurrency, properties, relationships, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, links);
+    return Objects.hash(id, type, displayName, description, created, parentPortfolioId, version, stagedModifications, isDerived, baseCurrency, properties, relationships, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, taxRuleSetScope, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -794,6 +820,7 @@ public class PortfolioWithoutHref {
     sb.append("    cashGainLossCalculationDate: ").append(toIndentedString(cashGainLossCalculationDate)).append("\n");
     sb.append("    instrumentEventConfiguration: ").append(toIndentedString(instrumentEventConfiguration)).append("\n");
     sb.append("    amortisationRuleSetId: ").append(toIndentedString(amortisationRuleSetId)).append("\n");
+    sb.append("    taxRuleSetScope: ").append(toIndentedString(taxRuleSetScope)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -836,6 +863,7 @@ public class PortfolioWithoutHref {
     openapiFields.add("cashGainLossCalculationDate");
     openapiFields.add("instrumentEventConfiguration");
     openapiFields.add("amortisationRuleSetId");
+    openapiFields.add("taxRuleSetScope");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -929,6 +957,9 @@ public class PortfolioWithoutHref {
       // validate the optional field `amortisationRuleSetId`
       if (jsonObj.get("amortisationRuleSetId") != null && !jsonObj.get("amortisationRuleSetId").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("amortisationRuleSetId"));
+      }
+      if ((jsonObj.get("taxRuleSetScope") != null && !jsonObj.get("taxRuleSetScope").isJsonNull()) && !jsonObj.get("taxRuleSetScope").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `taxRuleSetScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("taxRuleSetScope").toString()));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

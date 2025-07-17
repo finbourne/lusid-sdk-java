@@ -27,6 +27,7 @@ A list of portfolios.
 |**cashGainLossCalculationDate** | **String** | The scope of the transaction types. |  [optional] |
 |**instrumentEventConfiguration** | [**InstrumentEventConfiguration**](InstrumentEventConfiguration.md) |  |  [optional] |
 |**amortisationRuleSetId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
+|**taxRuleSetScope** | **String** | The scope of the tax rule sets for this portfolio. |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 

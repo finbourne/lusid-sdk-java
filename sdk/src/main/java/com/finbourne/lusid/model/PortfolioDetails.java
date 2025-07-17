@@ -185,6 +185,10 @@ public class PortfolioDetails {
   @SerializedName(SERIALIZED_NAME_AMORTISATION_RULE_SET_ID)
   private ResourceId amortisationRuleSetId;
 
+  public static final String SERIALIZED_NAME_TAX_RULE_SET_SCOPE = "taxRuleSetScope";
+  @SerializedName(SERIALIZED_NAME_TAX_RULE_SET_SCOPE)
+  private String taxRuleSetScope;
+
   public static final String SERIALIZED_NAME_STAGED_MODIFICATIONS = "stagedModifications";
   @SerializedName(SERIALIZED_NAME_STAGED_MODIFICATIONS)
   private StagedModificationsInfo stagedModifications;
@@ -485,6 +489,27 @@ public class PortfolioDetails {
   }
 
 
+  public PortfolioDetails taxRuleSetScope(String taxRuleSetScope) {
+    
+    this.taxRuleSetScope = taxRuleSetScope;
+    return this;
+  }
+
+   /**
+   * The scope of the tax rule sets for this portfolio.
+   * @return taxRuleSetScope
+  **/
+  @jakarta.annotation.Nullable
+  public String getTaxRuleSetScope() {
+    return taxRuleSetScope;
+  }
+
+
+  public void setTaxRuleSetScope(String taxRuleSetScope) {
+    this.taxRuleSetScope = taxRuleSetScope;
+  }
+
+
   public PortfolioDetails stagedModifications(StagedModificationsInfo stagedModifications) {
     
     this.stagedModifications = stagedModifications;
@@ -558,6 +583,7 @@ public class PortfolioDetails {
         Objects.equals(this.cashGainLossCalculationDate, portfolioDetails.cashGainLossCalculationDate) &&
         Objects.equals(this.instrumentEventConfiguration, portfolioDetails.instrumentEventConfiguration) &&
         Objects.equals(this.amortisationRuleSetId, portfolioDetails.amortisationRuleSetId) &&
+        Objects.equals(this.taxRuleSetScope, portfolioDetails.taxRuleSetScope) &&
         Objects.equals(this.stagedModifications, portfolioDetails.stagedModifications) &&
         Objects.equals(this.links, portfolioDetails.links);
   }
@@ -568,7 +594,7 @@ public class PortfolioDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, originPortfolioId, version, baseCurrency, corporateActionSourceId, subHoldingKeys, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, stagedModifications, links);
+    return Objects.hash(href, originPortfolioId, version, baseCurrency, corporateActionSourceId, subHoldingKeys, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, taxRuleSetScope, stagedModifications, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -595,6 +621,7 @@ public class PortfolioDetails {
     sb.append("    cashGainLossCalculationDate: ").append(toIndentedString(cashGainLossCalculationDate)).append("\n");
     sb.append("    instrumentEventConfiguration: ").append(toIndentedString(instrumentEventConfiguration)).append("\n");
     sb.append("    amortisationRuleSetId: ").append(toIndentedString(amortisationRuleSetId)).append("\n");
+    sb.append("    taxRuleSetScope: ").append(toIndentedString(taxRuleSetScope)).append("\n");
     sb.append("    stagedModifications: ").append(toIndentedString(stagedModifications)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
@@ -632,6 +659,7 @@ public class PortfolioDetails {
     openapiFields.add("cashGainLossCalculationDate");
     openapiFields.add("instrumentEventConfiguration");
     openapiFields.add("amortisationRuleSetId");
+    openapiFields.add("taxRuleSetScope");
     openapiFields.add("stagedModifications");
     openapiFields.add("links");
 
@@ -703,6 +731,9 @@ public class PortfolioDetails {
       // validate the optional field `amortisationRuleSetId`
       if (jsonObj.get("amortisationRuleSetId") != null && !jsonObj.get("amortisationRuleSetId").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("amortisationRuleSetId"));
+      }
+      if ((jsonObj.get("taxRuleSetScope") != null && !jsonObj.get("taxRuleSetScope").isJsonNull()) && !jsonObj.get("taxRuleSetScope").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `taxRuleSetScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("taxRuleSetScope").toString()));
       }
       // validate the optional field `stagedModifications`
       if (jsonObj.get("stagedModifications") != null && !jsonObj.get("stagedModifications").isJsonNull()) {

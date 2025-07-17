@@ -151,7 +151,9 @@ public enum InstrumentEventType {
   
   FLEXIBLEREPOINTERESTPAYMENTEVENT("FlexibleRepoInterestPaymentEvent"),
   
-  FLEXIBLEREPOCASHFLOWEVENT("FlexibleRepoCashFlowEvent");
+  FLEXIBLEREPOCASHFLOWEVENT("FlexibleRepoCashFlowEvent"),
+  
+  FLEXIBLEREPOCOLLATERALEVENT("FlexibleRepoCollateralEvent");
 
   private String value;
 

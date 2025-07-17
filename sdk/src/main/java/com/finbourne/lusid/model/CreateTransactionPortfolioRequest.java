@@ -193,6 +193,10 @@ public class CreateTransactionPortfolioRequest {
   @SerializedName(SERIALIZED_NAME_AMORTISATION_RULE_SET_ID)
   private ResourceId amortisationRuleSetId;
 
+  public static final String SERIALIZED_NAME_TAX_RULE_SET_SCOPE = "taxRuleSetScope";
+  @SerializedName(SERIALIZED_NAME_TAX_RULE_SET_SCOPE)
+  private String taxRuleSetScope;
+
   public CreateTransactionPortfolioRequest() {
   }
 
@@ -535,6 +539,27 @@ public class CreateTransactionPortfolioRequest {
   }
 
 
+  public CreateTransactionPortfolioRequest taxRuleSetScope(String taxRuleSetScope) {
+    
+    this.taxRuleSetScope = taxRuleSetScope;
+    return this;
+  }
+
+   /**
+   * The scope of the tax rule sets for this portfolio.
+   * @return taxRuleSetScope
+  **/
+  @jakarta.annotation.Nullable
+  public String getTaxRuleSetScope() {
+    return taxRuleSetScope;
+  }
+
+
+  public void setTaxRuleSetScope(String taxRuleSetScope) {
+    this.taxRuleSetScope = taxRuleSetScope;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -559,7 +584,8 @@ public class CreateTransactionPortfolioRequest {
         Objects.equals(this.transactionTypeScope, createTransactionPortfolioRequest.transactionTypeScope) &&
         Objects.equals(this.cashGainLossCalculationDate, createTransactionPortfolioRequest.cashGainLossCalculationDate) &&
         Objects.equals(this.instrumentEventConfiguration, createTransactionPortfolioRequest.instrumentEventConfiguration) &&
-        Objects.equals(this.amortisationRuleSetId, createTransactionPortfolioRequest.amortisationRuleSetId);
+        Objects.equals(this.amortisationRuleSetId, createTransactionPortfolioRequest.amortisationRuleSetId) &&
+        Objects.equals(this.taxRuleSetScope, createTransactionPortfolioRequest.taxRuleSetScope);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -568,7 +594,7 @@ public class CreateTransactionPortfolioRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, description, code, created, baseCurrency, corporateActionSourceId, accountingMethod, subHoldingKeys, properties, instrumentScopes, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId);
+    return Objects.hash(displayName, description, code, created, baseCurrency, corporateActionSourceId, accountingMethod, subHoldingKeys, properties, instrumentScopes, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, taxRuleSetScope);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -597,6 +623,7 @@ public class CreateTransactionPortfolioRequest {
     sb.append("    cashGainLossCalculationDate: ").append(toIndentedString(cashGainLossCalculationDate)).append("\n");
     sb.append("    instrumentEventConfiguration: ").append(toIndentedString(instrumentEventConfiguration)).append("\n");
     sb.append("    amortisationRuleSetId: ").append(toIndentedString(amortisationRuleSetId)).append("\n");
+    sb.append("    taxRuleSetScope: ").append(toIndentedString(taxRuleSetScope)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -634,6 +661,7 @@ public class CreateTransactionPortfolioRequest {
     openapiFields.add("cashGainLossCalculationDate");
     openapiFields.add("instrumentEventConfiguration");
     openapiFields.add("amortisationRuleSetId");
+    openapiFields.add("taxRuleSetScope");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -705,6 +733,9 @@ public class CreateTransactionPortfolioRequest {
       // validate the optional field `amortisationRuleSetId`
       if (jsonObj.get("amortisationRuleSetId") != null && !jsonObj.get("amortisationRuleSetId").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("amortisationRuleSetId"));
+      }
+      if ((jsonObj.get("taxRuleSetScope") != null && !jsonObj.get("taxRuleSetScope").isJsonNull()) && !jsonObj.get("taxRuleSetScope").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `taxRuleSetScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("taxRuleSetScope").toString()));
       }
   }
 
