@@ -10,6 +10,9 @@
 |**code** | **String** |  |  [optional] |
 |**displayName** | **String** |  |  [optional] |
 |**description** | **String** |  |  [optional] |
+|**chartOfAccountsId** | [**ResourceId**](ResourceId.md) |  |  |
+|**postingModuleCodes** | **List&lt;String&gt;** |  |  [optional] |
+|**cleardownModuleCodes** | **List&lt;String&gt;** |  |  [optional] |
 |**valuationRecipeId** | [**ResourceId**](ResourceId.md) |  |  |
 |**holdingRecipeId** | [**ResourceId**](ResourceId.md) |  |  |
 |**accountingMethod** | **String** |  |  |
@@ -18,9 +21,6 @@
 |**amortisationMethod** | **String** |  |  |
 |**transactionTypeScope** | **String** |  |  [optional] |
 |**cashGainLossCalculationDate** | **String** |  |  [optional] |
-|**chartOfAccountsId** | [**ResourceId**](ResourceId.md) |  |  |
-|**postingModuleCodes** | **List&lt;String&gt;** |  |  [optional] |
-|**cleardownModuleCodes** | **List&lt;String&gt;** |  |  [optional] |
 
 
 

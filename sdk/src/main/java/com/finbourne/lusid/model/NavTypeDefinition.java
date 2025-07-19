@@ -65,6 +65,18 @@ public class NavTypeDefinition {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
+  public static final String SERIALIZED_NAME_CHART_OF_ACCOUNTS_ID = "chartOfAccountsId";
+  @SerializedName(SERIALIZED_NAME_CHART_OF_ACCOUNTS_ID)
+  private ResourceId chartOfAccountsId;
+
+  public static final String SERIALIZED_NAME_POSTING_MODULE_CODES = "postingModuleCodes";
+  @SerializedName(SERIALIZED_NAME_POSTING_MODULE_CODES)
+  private List<String> postingModuleCodes;
+
+  public static final String SERIALIZED_NAME_CLEARDOWN_MODULE_CODES = "cleardownModuleCodes";
+  @SerializedName(SERIALIZED_NAME_CLEARDOWN_MODULE_CODES)
+  private List<String> cleardownModuleCodes;
+
   public static final String SERIALIZED_NAME_VALUATION_RECIPE_ID = "valuationRecipeId";
   @SerializedName(SERIALIZED_NAME_VALUATION_RECIPE_ID)
   private ResourceId valuationRecipeId;
@@ -96,18 +108,6 @@ public class NavTypeDefinition {
   public static final String SERIALIZED_NAME_CASH_GAIN_LOSS_CALCULATION_DATE = "cashGainLossCalculationDate";
   @SerializedName(SERIALIZED_NAME_CASH_GAIN_LOSS_CALCULATION_DATE)
   private String cashGainLossCalculationDate;
-
-  public static final String SERIALIZED_NAME_CHART_OF_ACCOUNTS_ID = "chartOfAccountsId";
-  @SerializedName(SERIALIZED_NAME_CHART_OF_ACCOUNTS_ID)
-  private ResourceId chartOfAccountsId;
-
-  public static final String SERIALIZED_NAME_POSTING_MODULE_CODES = "postingModuleCodes";
-  @SerializedName(SERIALIZED_NAME_POSTING_MODULE_CODES)
-  private List<String> postingModuleCodes;
-
-  public static final String SERIALIZED_NAME_CLEARDOWN_MODULE_CODES = "cleardownModuleCodes";
-  @SerializedName(SERIALIZED_NAME_CLEARDOWN_MODULE_CODES)
-  private List<String> cleardownModuleCodes;
 
   public NavTypeDefinition() {
   }
@@ -172,6 +172,85 @@ public class NavTypeDefinition {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+
+  public NavTypeDefinition chartOfAccountsId(ResourceId chartOfAccountsId) {
+    
+    this.chartOfAccountsId = chartOfAccountsId;
+    return this;
+  }
+
+   /**
+   * Get chartOfAccountsId
+   * @return chartOfAccountsId
+  **/
+  @jakarta.annotation.Nonnull
+  public ResourceId getChartOfAccountsId() {
+    return chartOfAccountsId;
+  }
+
+
+  public void setChartOfAccountsId(ResourceId chartOfAccountsId) {
+    this.chartOfAccountsId = chartOfAccountsId;
+  }
+
+
+  public NavTypeDefinition postingModuleCodes(List<String> postingModuleCodes) {
+    
+    this.postingModuleCodes = postingModuleCodes;
+    return this;
+  }
+
+  public NavTypeDefinition addPostingModuleCodesItem(String postingModuleCodesItem) {
+    if (this.postingModuleCodes == null) {
+      this.postingModuleCodes = new ArrayList<>();
+    }
+    this.postingModuleCodes.add(postingModuleCodesItem);
+    return this;
+  }
+
+   /**
+   * Get postingModuleCodes
+   * @return postingModuleCodes
+  **/
+  @jakarta.annotation.Nullable
+  public List<String> getPostingModuleCodes() {
+    return postingModuleCodes;
+  }
+
+
+  public void setPostingModuleCodes(List<String> postingModuleCodes) {
+    this.postingModuleCodes = postingModuleCodes;
+  }
+
+
+  public NavTypeDefinition cleardownModuleCodes(List<String> cleardownModuleCodes) {
+    
+    this.cleardownModuleCodes = cleardownModuleCodes;
+    return this;
+  }
+
+  public NavTypeDefinition addCleardownModuleCodesItem(String cleardownModuleCodesItem) {
+    if (this.cleardownModuleCodes == null) {
+      this.cleardownModuleCodes = new ArrayList<>();
+    }
+    this.cleardownModuleCodes.add(cleardownModuleCodesItem);
+    return this;
+  }
+
+   /**
+   * Get cleardownModuleCodes
+   * @return cleardownModuleCodes
+  **/
+  @jakarta.annotation.Nullable
+  public List<String> getCleardownModuleCodes() {
+    return cleardownModuleCodes;
+  }
+
+
+  public void setCleardownModuleCodes(List<String> cleardownModuleCodes) {
+    this.cleardownModuleCodes = cleardownModuleCodes;
   }
 
 
@@ -359,85 +438,6 @@ public class NavTypeDefinition {
   }
 
 
-  public NavTypeDefinition chartOfAccountsId(ResourceId chartOfAccountsId) {
-    
-    this.chartOfAccountsId = chartOfAccountsId;
-    return this;
-  }
-
-   /**
-   * Get chartOfAccountsId
-   * @return chartOfAccountsId
-  **/
-  @jakarta.annotation.Nonnull
-  public ResourceId getChartOfAccountsId() {
-    return chartOfAccountsId;
-  }
-
-
-  public void setChartOfAccountsId(ResourceId chartOfAccountsId) {
-    this.chartOfAccountsId = chartOfAccountsId;
-  }
-
-
-  public NavTypeDefinition postingModuleCodes(List<String> postingModuleCodes) {
-    
-    this.postingModuleCodes = postingModuleCodes;
-    return this;
-  }
-
-  public NavTypeDefinition addPostingModuleCodesItem(String postingModuleCodesItem) {
-    if (this.postingModuleCodes == null) {
-      this.postingModuleCodes = new ArrayList<>();
-    }
-    this.postingModuleCodes.add(postingModuleCodesItem);
-    return this;
-  }
-
-   /**
-   * Get postingModuleCodes
-   * @return postingModuleCodes
-  **/
-  @jakarta.annotation.Nullable
-  public List<String> getPostingModuleCodes() {
-    return postingModuleCodes;
-  }
-
-
-  public void setPostingModuleCodes(List<String> postingModuleCodes) {
-    this.postingModuleCodes = postingModuleCodes;
-  }
-
-
-  public NavTypeDefinition cleardownModuleCodes(List<String> cleardownModuleCodes) {
-    
-    this.cleardownModuleCodes = cleardownModuleCodes;
-    return this;
-  }
-
-  public NavTypeDefinition addCleardownModuleCodesItem(String cleardownModuleCodesItem) {
-    if (this.cleardownModuleCodes == null) {
-      this.cleardownModuleCodes = new ArrayList<>();
-    }
-    this.cleardownModuleCodes.add(cleardownModuleCodesItem);
-    return this;
-  }
-
-   /**
-   * Get cleardownModuleCodes
-   * @return cleardownModuleCodes
-  **/
-  @jakarta.annotation.Nullable
-  public List<String> getCleardownModuleCodes() {
-    return cleardownModuleCodes;
-  }
-
-
-  public void setCleardownModuleCodes(List<String> cleardownModuleCodes) {
-    this.cleardownModuleCodes = cleardownModuleCodes;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -451,6 +451,9 @@ public class NavTypeDefinition {
     return Objects.equals(this.code, navTypeDefinition.code) &&
         Objects.equals(this.displayName, navTypeDefinition.displayName) &&
         Objects.equals(this.description, navTypeDefinition.description) &&
+        Objects.equals(this.chartOfAccountsId, navTypeDefinition.chartOfAccountsId) &&
+        Objects.equals(this.postingModuleCodes, navTypeDefinition.postingModuleCodes) &&
+        Objects.equals(this.cleardownModuleCodes, navTypeDefinition.cleardownModuleCodes) &&
         Objects.equals(this.valuationRecipeId, navTypeDefinition.valuationRecipeId) &&
         Objects.equals(this.holdingRecipeId, navTypeDefinition.holdingRecipeId) &&
         Objects.equals(this.accountingMethod, navTypeDefinition.accountingMethod) &&
@@ -458,10 +461,7 @@ public class NavTypeDefinition {
         Objects.equals(this.instrumentScopes, navTypeDefinition.instrumentScopes) &&
         Objects.equals(this.amortisationMethod, navTypeDefinition.amortisationMethod) &&
         Objects.equals(this.transactionTypeScope, navTypeDefinition.transactionTypeScope) &&
-        Objects.equals(this.cashGainLossCalculationDate, navTypeDefinition.cashGainLossCalculationDate) &&
-        Objects.equals(this.chartOfAccountsId, navTypeDefinition.chartOfAccountsId) &&
-        Objects.equals(this.postingModuleCodes, navTypeDefinition.postingModuleCodes) &&
-        Objects.equals(this.cleardownModuleCodes, navTypeDefinition.cleardownModuleCodes);
+        Objects.equals(this.cashGainLossCalculationDate, navTypeDefinition.cashGainLossCalculationDate);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -470,7 +470,7 @@ public class NavTypeDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, displayName, description, valuationRecipeId, holdingRecipeId, accountingMethod, subHoldingKeys, instrumentScopes, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, chartOfAccountsId, postingModuleCodes, cleardownModuleCodes);
+    return Objects.hash(code, displayName, description, chartOfAccountsId, postingModuleCodes, cleardownModuleCodes, valuationRecipeId, holdingRecipeId, accountingMethod, subHoldingKeys, instrumentScopes, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -487,6 +487,9 @@ public class NavTypeDefinition {
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    chartOfAccountsId: ").append(toIndentedString(chartOfAccountsId)).append("\n");
+    sb.append("    postingModuleCodes: ").append(toIndentedString(postingModuleCodes)).append("\n");
+    sb.append("    cleardownModuleCodes: ").append(toIndentedString(cleardownModuleCodes)).append("\n");
     sb.append("    valuationRecipeId: ").append(toIndentedString(valuationRecipeId)).append("\n");
     sb.append("    holdingRecipeId: ").append(toIndentedString(holdingRecipeId)).append("\n");
     sb.append("    accountingMethod: ").append(toIndentedString(accountingMethod)).append("\n");
@@ -495,9 +498,6 @@ public class NavTypeDefinition {
     sb.append("    amortisationMethod: ").append(toIndentedString(amortisationMethod)).append("\n");
     sb.append("    transactionTypeScope: ").append(toIndentedString(transactionTypeScope)).append("\n");
     sb.append("    cashGainLossCalculationDate: ").append(toIndentedString(cashGainLossCalculationDate)).append("\n");
-    sb.append("    chartOfAccountsId: ").append(toIndentedString(chartOfAccountsId)).append("\n");
-    sb.append("    postingModuleCodes: ").append(toIndentedString(postingModuleCodes)).append("\n");
-    sb.append("    cleardownModuleCodes: ").append(toIndentedString(cleardownModuleCodes)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -523,6 +523,9 @@ public class NavTypeDefinition {
     openapiFields.add("code");
     openapiFields.add("displayName");
     openapiFields.add("description");
+    openapiFields.add("chartOfAccountsId");
+    openapiFields.add("postingModuleCodes");
+    openapiFields.add("cleardownModuleCodes");
     openapiFields.add("valuationRecipeId");
     openapiFields.add("holdingRecipeId");
     openapiFields.add("accountingMethod");
@@ -531,17 +534,14 @@ public class NavTypeDefinition {
     openapiFields.add("amortisationMethod");
     openapiFields.add("transactionTypeScope");
     openapiFields.add("cashGainLossCalculationDate");
-    openapiFields.add("chartOfAccountsId");
-    openapiFields.add("postingModuleCodes");
-    openapiFields.add("cleardownModuleCodes");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("chartOfAccountsId");
     openapiRequiredFields.add("valuationRecipeId");
     openapiRequiredFields.add("holdingRecipeId");
     openapiRequiredFields.add("accountingMethod");
     openapiRequiredFields.add("amortisationMethod");
-    openapiRequiredFields.add("chartOfAccountsId");
   }
 
  /**
@@ -573,6 +573,16 @@ public class NavTypeDefinition {
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
+      // validate the required field `chartOfAccountsId`
+      ResourceId.validateJsonElement(jsonObj.get("chartOfAccountsId"));
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("postingModuleCodes") != null && !jsonObj.get("postingModuleCodes").isJsonNull() && !jsonObj.get("postingModuleCodes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `postingModuleCodes` to be an array in the JSON string but got `%s`", jsonObj.get("postingModuleCodes").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("cleardownModuleCodes") != null && !jsonObj.get("cleardownModuleCodes").isJsonNull() && !jsonObj.get("cleardownModuleCodes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `cleardownModuleCodes` to be an array in the JSON string but got `%s`", jsonObj.get("cleardownModuleCodes").toString()));
+      }
       // validate the required field `valuationRecipeId`
       ResourceId.validateJsonElement(jsonObj.get("valuationRecipeId"));
       // validate the required field `holdingRecipeId`
@@ -596,16 +606,6 @@ public class NavTypeDefinition {
       }
       if ((jsonObj.get("cashGainLossCalculationDate") != null && !jsonObj.get("cashGainLossCalculationDate").isJsonNull()) && !jsonObj.get("cashGainLossCalculationDate").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `cashGainLossCalculationDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cashGainLossCalculationDate").toString()));
-      }
-      // validate the required field `chartOfAccountsId`
-      ResourceId.validateJsonElement(jsonObj.get("chartOfAccountsId"));
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("postingModuleCodes") != null && !jsonObj.get("postingModuleCodes").isJsonNull() && !jsonObj.get("postingModuleCodes").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `postingModuleCodes` to be an array in the JSON string but got `%s`", jsonObj.get("postingModuleCodes").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("cleardownModuleCodes") != null && !jsonObj.get("cleardownModuleCodes").isJsonNull() && !jsonObj.get("cleardownModuleCodes").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `cleardownModuleCodes` to be an array in the JSON string but got `%s`", jsonObj.get("cleardownModuleCodes").toString()));
       }
   }
 

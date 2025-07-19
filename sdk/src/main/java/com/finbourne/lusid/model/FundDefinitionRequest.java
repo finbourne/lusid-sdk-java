@@ -150,7 +150,7 @@ public class FundDefinitionRequest {
    * The name of the Fund.
    * @return displayName
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public String getDisplayName() {
     return displayName;
   }
@@ -555,6 +555,7 @@ public class FundDefinitionRequest {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("code");
+    openapiRequiredFields.add("displayName");
     openapiRequiredFields.add("baseCurrency");
     openapiRequiredFields.add("portfolioIds");
     openapiRequiredFields.add("fundConfigurationId");
@@ -586,7 +587,7 @@ public class FundDefinitionRequest {
       if (!jsonObj.get("code").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
       }
-      if ((jsonObj.get("displayName") != null && !jsonObj.get("displayName").isJsonNull()) && !jsonObj.get("displayName").isJsonPrimitive()) {
+      if (!jsonObj.get("displayName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {

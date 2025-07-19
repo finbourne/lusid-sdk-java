@@ -12,7 +12,7 @@ An Investment Portfolio of an Investment Account.
 |**scope** | **String** | The scope of the Investment Portfolio |  [optional] |
 |**code** | **String** | The code of the Investment Portfolio |  [optional] |
 |**entityUniqueId** | **String** | The unique Portfolio entity identifier |  [optional] |
-|**portfolio** | [**PortfolioWithoutHref**](PortfolioWithoutHref.md) |  |  [optional] |
+|**portfolio** | [**Portfolio**](Portfolio.md) |  |  [optional] |
 
 
 

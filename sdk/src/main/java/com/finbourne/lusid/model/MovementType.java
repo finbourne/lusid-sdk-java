@@ -69,9 +69,7 @@ public enum MovementType {
   
   DEFERRED("Deferred"),
   
-  CASHDEFERRED("CashDeferred"),
-  
-  UNSETTLEDCASHTYPES("UnsettledCashTypes");
+  CASHDEFERRED("CashDeferred");
 
   private String value;
 

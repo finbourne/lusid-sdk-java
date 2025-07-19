@@ -109,7 +109,9 @@ public enum InstrumentType {
   
   LOANFACILITY("LoanFacility"),
   
-  FLEXIBLEDEPOSIT("FlexibleDeposit");
+  FLEXIBLEDEPOSIT("FlexibleDeposit"),
+  
+  FLEXIBLEREPO("FlexibleRepo");
 
   private String value;
 

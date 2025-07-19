@@ -11,7 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.PortfolioWithoutHref;
+import com.finbourne.lusid.model.Portfolio;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -69,7 +69,7 @@ public class InvestmentPortfolio {
 
   public static final String SERIALIZED_NAME_PORTFOLIO = "portfolio";
   @SerializedName(SERIALIZED_NAME_PORTFOLIO)
-  private PortfolioWithoutHref portfolio;
+  private Portfolio portfolio;
 
   public InvestmentPortfolio() {
   }
@@ -158,7 +158,7 @@ public class InvestmentPortfolio {
   }
 
 
-  public InvestmentPortfolio portfolio(PortfolioWithoutHref portfolio) {
+  public InvestmentPortfolio portfolio(Portfolio portfolio) {
     
     this.portfolio = portfolio;
     return this;
@@ -169,12 +169,12 @@ public class InvestmentPortfolio {
    * @return portfolio
   **/
   @jakarta.annotation.Nullable
-  public PortfolioWithoutHref getPortfolio() {
+  public Portfolio getPortfolio() {
     return portfolio;
   }
 
 
-  public void setPortfolio(PortfolioWithoutHref portfolio) {
+  public void setPortfolio(Portfolio portfolio) {
     this.portfolio = portfolio;
   }
 
@@ -280,7 +280,7 @@ public class InvestmentPortfolio {
       }
       // validate the optional field `portfolio`
       if (jsonObj.get("portfolio") != null && !jsonObj.get("portfolio").isJsonNull()) {
-        PortfolioWithoutHref.validateJsonElement(jsonObj.get("portfolio"));
+        Portfolio.validateJsonElement(jsonObj.get("portfolio"));
       }
   }
 
