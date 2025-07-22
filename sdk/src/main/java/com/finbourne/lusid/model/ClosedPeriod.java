@@ -64,6 +64,14 @@ public class ClosedPeriod {
   @SerializedName(SERIALIZED_NAME_CLOSED_PERIOD_ID)
   private String closedPeriodId;
 
+  public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
+  @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+  private String displayName;
+
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
+
   public static final String SERIALIZED_NAME_EFFECTIVE_START = "effectiveStart";
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_START)
   private OffsetDateTime effectiveStart;
@@ -117,6 +125,48 @@ public class ClosedPeriod {
 
   public void setClosedPeriodId(String closedPeriodId) {
     this.closedPeriodId = closedPeriodId;
+  }
+
+
+  public ClosedPeriod displayName(String displayName) {
+    
+    this.displayName = displayName;
+    return this;
+  }
+
+   /**
+   * The name of the Closed Period.
+   * @return displayName
+  **/
+  @jakarta.annotation.Nullable
+  public String getDisplayName() {
+    return displayName;
+  }
+
+
+  public void setDisplayName(String displayName) {
+    this.displayName = displayName;
+  }
+
+
+  public ClosedPeriod description(String description) {
+    
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * A description for the Closed Period.
+   * @return description
+  **/
+  @jakarta.annotation.Nullable
+  public String getDescription() {
+    return description;
+  }
+
+
+  public void setDescription(String description) {
+    this.description = description;
   }
 
 
@@ -323,6 +373,8 @@ public class ClosedPeriod {
     }
     ClosedPeriod closedPeriod = (ClosedPeriod) o;
     return Objects.equals(this.closedPeriodId, closedPeriod.closedPeriodId) &&
+        Objects.equals(this.displayName, closedPeriod.displayName) &&
+        Objects.equals(this.description, closedPeriod.description) &&
         Objects.equals(this.effectiveStart, closedPeriod.effectiveStart) &&
         Objects.equals(this.effectiveEnd, closedPeriod.effectiveEnd) &&
         Objects.equals(this.asAtClosed, closedPeriod.asAtClosed) &&
@@ -339,7 +391,7 @@ public class ClosedPeriod {
 
   @Override
   public int hashCode() {
-    return Objects.hash(closedPeriodId, effectiveStart, effectiveEnd, asAtClosed, properties, version, postCloseActivities, href, links);
+    return Objects.hash(closedPeriodId, displayName, description, effectiveStart, effectiveEnd, asAtClosed, properties, version, postCloseActivities, href, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -354,6 +406,8 @@ public class ClosedPeriod {
     StringBuilder sb = new StringBuilder();
     sb.append("class ClosedPeriod {\n");
     sb.append("    closedPeriodId: ").append(toIndentedString(closedPeriodId)).append("\n");
+    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    effectiveStart: ").append(toIndentedString(effectiveStart)).append("\n");
     sb.append("    effectiveEnd: ").append(toIndentedString(effectiveEnd)).append("\n");
     sb.append("    asAtClosed: ").append(toIndentedString(asAtClosed)).append("\n");
@@ -385,6 +439,8 @@ public class ClosedPeriod {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("closedPeriodId");
+    openapiFields.add("displayName");
+    openapiFields.add("description");
     openapiFields.add("effectiveStart");
     openapiFields.add("effectiveEnd");
     openapiFields.add("asAtClosed");
@@ -413,6 +469,12 @@ public class ClosedPeriod {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("closedPeriodId") != null && !jsonObj.get("closedPeriodId").isJsonNull()) && !jsonObj.get("closedPeriodId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `closedPeriodId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("closedPeriodId").toString()));
+      }
+      if ((jsonObj.get("displayName") != null && !jsonObj.get("displayName").isJsonNull()) && !jsonObj.get("displayName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
+      }
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       // validate the optional field `version`
       if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {

@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -79,6 +80,10 @@ public class ValuationSchedule {
   public static final String SERIALIZED_NAME_BUSINESS_DAY_CONVENTION = "businessDayConvention";
   @SerializedName(SERIALIZED_NAME_BUSINESS_DAY_CONVENTION)
   private String businessDayConvention;
+
+  public static final String SERIALIZED_NAME_TIMELINE_ID = "timelineId";
+  @SerializedName(SERIALIZED_NAME_TIMELINE_ID)
+  private ResourceId timelineId;
 
   public ValuationSchedule() {
   }
@@ -246,6 +251,27 @@ public class ValuationSchedule {
   }
 
 
+  public ValuationSchedule timelineId(ResourceId timelineId) {
+    
+    this.timelineId = timelineId;
+    return this;
+  }
+
+   /**
+   * Get timelineId
+   * @return timelineId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getTimelineId() {
+    return timelineId;
+  }
+
+
+  public void setTimelineId(ResourceId timelineId) {
+    this.timelineId = timelineId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -262,7 +288,8 @@ public class ValuationSchedule {
         Objects.equals(this.rollConvention, valuationSchedule.rollConvention) &&
         Objects.equals(this.holidayCalendars, valuationSchedule.holidayCalendars) &&
         Objects.equals(this.valuationDateTimes, valuationSchedule.valuationDateTimes) &&
-        Objects.equals(this.businessDayConvention, valuationSchedule.businessDayConvention);
+        Objects.equals(this.businessDayConvention, valuationSchedule.businessDayConvention) &&
+        Objects.equals(this.timelineId, valuationSchedule.timelineId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -271,7 +298,7 @@ public class ValuationSchedule {
 
   @Override
   public int hashCode() {
-    return Objects.hash(effectiveFrom, effectiveAt, tenor, rollConvention, holidayCalendars, valuationDateTimes, businessDayConvention);
+    return Objects.hash(effectiveFrom, effectiveAt, tenor, rollConvention, holidayCalendars, valuationDateTimes, businessDayConvention, timelineId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -292,6 +319,7 @@ public class ValuationSchedule {
     sb.append("    holidayCalendars: ").append(toIndentedString(holidayCalendars)).append("\n");
     sb.append("    valuationDateTimes: ").append(toIndentedString(valuationDateTimes)).append("\n");
     sb.append("    businessDayConvention: ").append(toIndentedString(businessDayConvention)).append("\n");
+    sb.append("    timelineId: ").append(toIndentedString(timelineId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -321,6 +349,7 @@ public class ValuationSchedule {
     openapiFields.add("holidayCalendars");
     openapiFields.add("valuationDateTimes");
     openapiFields.add("businessDayConvention");
+    openapiFields.add("timelineId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -369,6 +398,10 @@ public class ValuationSchedule {
       }
       if ((jsonObj.get("businessDayConvention") != null && !jsonObj.get("businessDayConvention").isJsonNull()) && !jsonObj.get("businessDayConvention").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `businessDayConvention` to be a primitive type in the JSON string but got `%s`", jsonObj.get("businessDayConvention").toString()));
+      }
+      // validate the optional field `timelineId`
+      if (jsonObj.get("timelineId") != null && !jsonObj.get("timelineId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("timelineId"));
       }
   }
 

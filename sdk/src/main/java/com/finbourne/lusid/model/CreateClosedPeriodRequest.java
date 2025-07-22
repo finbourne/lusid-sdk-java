@@ -70,6 +70,14 @@ public class CreateClosedPeriodRequest {
   @SerializedName(SERIALIZED_NAME_AS_AT_CLOSED)
   private OffsetDateTime asAtClosed;
 
+  public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
+  @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+  private String displayName;
+
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
+
   public CreateClosedPeriodRequest() {
   }
 
@@ -83,7 +91,7 @@ public class CreateClosedPeriodRequest {
    * The unique Id of the Closed Period. The ClosedPeriodId, together with the Timeline Scope and Code, uniquely identifies a Closed Period
    * @return closedPeriodId
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public String getClosedPeriodId() {
     return closedPeriodId;
   }
@@ -165,6 +173,48 @@ public class CreateClosedPeriodRequest {
   }
 
 
+  public CreateClosedPeriodRequest displayName(String displayName) {
+    
+    this.displayName = displayName;
+    return this;
+  }
+
+   /**
+   * The name of the Closed Period.
+   * @return displayName
+  **/
+  @jakarta.annotation.Nullable
+  public String getDisplayName() {
+    return displayName;
+  }
+
+
+  public void setDisplayName(String displayName) {
+    this.displayName = displayName;
+  }
+
+
+  public CreateClosedPeriodRequest description(String description) {
+    
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * A description for the Closed Period.
+   * @return description
+  **/
+  @jakarta.annotation.Nullable
+  public String getDescription() {
+    return description;
+  }
+
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -178,7 +228,9 @@ public class CreateClosedPeriodRequest {
     return Objects.equals(this.closedPeriodId, createClosedPeriodRequest.closedPeriodId) &&
         Objects.equals(this.effectiveEnd, createClosedPeriodRequest.effectiveEnd) &&
         Objects.equals(this.properties, createClosedPeriodRequest.properties) &&
-        Objects.equals(this.asAtClosed, createClosedPeriodRequest.asAtClosed);
+        Objects.equals(this.asAtClosed, createClosedPeriodRequest.asAtClosed) &&
+        Objects.equals(this.displayName, createClosedPeriodRequest.displayName) &&
+        Objects.equals(this.description, createClosedPeriodRequest.description);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -187,7 +239,7 @@ public class CreateClosedPeriodRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(closedPeriodId, effectiveEnd, properties, asAtClosed);
+    return Objects.hash(closedPeriodId, effectiveEnd, properties, asAtClosed, displayName, description);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -205,6 +257,8 @@ public class CreateClosedPeriodRequest {
     sb.append("    effectiveEnd: ").append(toIndentedString(effectiveEnd)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    asAtClosed: ").append(toIndentedString(asAtClosed)).append("\n");
+    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -231,9 +285,12 @@ public class CreateClosedPeriodRequest {
     openapiFields.add("effectiveEnd");
     openapiFields.add("properties");
     openapiFields.add("asAtClosed");
+    openapiFields.add("displayName");
+    openapiFields.add("description");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("closedPeriodId");
   }
 
  /**
@@ -248,9 +305,22 @@ public class CreateClosedPeriodRequest {
           throw new IllegalArgumentException(String.format("The required field(s) %s in CreateClosedPeriodRequest is not found in the empty JSON string", CreateClosedPeriodRequest.openapiRequiredFields.toString()));
         }
       }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : CreateClosedPeriodRequest.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
+      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("closedPeriodId") != null && !jsonObj.get("closedPeriodId").isJsonNull()) && !jsonObj.get("closedPeriodId").isJsonPrimitive()) {
+      if (!jsonObj.get("closedPeriodId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `closedPeriodId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("closedPeriodId").toString()));
+      }
+      if ((jsonObj.get("displayName") != null && !jsonObj.get("displayName").isJsonNull()) && !jsonObj.get("displayName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
+      }
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
   }
 
