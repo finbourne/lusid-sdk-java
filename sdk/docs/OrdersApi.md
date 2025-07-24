@@ -304,7 +304,7 @@ public class OrdersApiExample {
 
 ## upsertOrders
 
-> ResourceListOfOrder upsertOrders(orderSetRequest)
+> ResourceListOfOrder upsertOrders(orderSetRequest, dataModelScope, dataModelCode)
 
 UpsertOrders: Upsert Order
 
@@ -350,11 +350,13 @@ public class OrdersApiExample {
 
         OrdersApi apiInstance = ApiFactoryBuilder.build(fileName).build(OrdersApi.class);
         OrderSetRequest orderSetRequest = new OrderSetRequest(); // OrderSetRequest | The collection of order requests.
+        String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Custom Data Model to use
+        String dataModelCode = "dataModelCode_example"; // String | The optional code of a Custom Data Model to use
         try {
             // uncomment the below to set overrides at the request level
-            // ResourceListOfOrder result = apiInstance.upsertOrders(orderSetRequest).execute(opts);
+            // ResourceListOfOrder result = apiInstance.upsertOrders(orderSetRequest, dataModelScope, dataModelCode).execute(opts);
 
-            ResourceListOfOrder result = apiInstance.upsertOrders(orderSetRequest).execute();
+            ResourceListOfOrder result = apiInstance.upsertOrders(orderSetRequest, dataModelScope, dataModelCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling OrdersApi#upsertOrders");
@@ -371,7 +373,9 @@ public class OrdersApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **orderSetRequest** | [**OrderSetRequest**](OrderSetRequest.md)| The collection of order requests. | [optional] |
+| **orderSetRequest** | [**OrderSetRequest**](OrderSetRequest.md)| The collection of order requests. | |
+| **dataModelScope** | **String**| The optional scope of a Custom Data Model to use | [optional] |
+| **dataModelCode** | **String**| The optional code of a Custom Data Model to use | [optional] |
 
 ### Return type
 

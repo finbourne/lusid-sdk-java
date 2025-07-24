@@ -902,11 +902,11 @@ public class OrdersApi {
     public APIlistOrdersRequest listOrders() {
         return new APIlistOrdersRequest();
     }
-    private okhttp3.Call upsertOrdersCall(OrderSetRequest orderSetRequest, final ApiCallback _callback) throws ApiException {
-        return upsertOrdersCall(orderSetRequest,  _callback, new ConfigurationOptions());
+    private okhttp3.Call upsertOrdersCall(OrderSetRequest orderSetRequest, String dataModelScope, String dataModelCode, final ApiCallback _callback) throws ApiException {
+        return upsertOrdersCall(orderSetRequest, dataModelScope, dataModelCode,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call upsertOrdersCall(OrderSetRequest orderSetRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call upsertOrdersCall(OrderSetRequest orderSetRequest, String dataModelScope, String dataModelCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -930,6 +930,14 @@ public class OrdersApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (dataModelScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dataModelScope", dataModelScope));
+        }
+
+        if (dataModelCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dataModelCode", dataModelCode));
+        }
 
         final String[] localVarAccepts = {
             "text/plain",
@@ -957,53 +965,71 @@ public class OrdersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertOrdersValidateBeforeCall(OrderSetRequest orderSetRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        return upsertOrdersCall(orderSetRequest, _callback, opts);
+    private okhttp3.Call upsertOrdersValidateBeforeCall(OrderSetRequest orderSetRequest, String dataModelScope, String dataModelCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'orderSetRequest' is set
+        if (orderSetRequest == null) {
+            throw new ApiException("Missing the required parameter 'orderSetRequest' when calling upsertOrders(Async)");
+        }
+
+        return upsertOrdersCall(orderSetRequest, dataModelScope, dataModelCode, _callback, opts);
 
     }
 
 
-    private ApiResponse<ResourceListOfOrder> upsertOrdersWithHttpInfo(OrderSetRequest orderSetRequest) throws ApiException {
-        okhttp3.Call localVarCall = upsertOrdersValidateBeforeCall(orderSetRequest, null, new ConfigurationOptions());
+    private ApiResponse<ResourceListOfOrder> upsertOrdersWithHttpInfo(OrderSetRequest orderSetRequest, String dataModelScope, String dataModelCode) throws ApiException {
+        okhttp3.Call localVarCall = upsertOrdersValidateBeforeCall(orderSetRequest, dataModelScope, dataModelCode, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ResourceListOfOrder>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ResourceListOfOrder> upsertOrdersWithHttpInfo(OrderSetRequest orderSetRequest, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = upsertOrdersValidateBeforeCall(orderSetRequest, null, opts);
+    private ApiResponse<ResourceListOfOrder> upsertOrdersWithHttpInfo(OrderSetRequest orderSetRequest, String dataModelScope, String dataModelCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertOrdersValidateBeforeCall(orderSetRequest, dataModelScope, dataModelCode, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfOrder>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call upsertOrdersAsync(OrderSetRequest orderSetRequest, final ApiCallback<ResourceListOfOrder> _callback) throws ApiException {
+    private okhttp3.Call upsertOrdersAsync(OrderSetRequest orderSetRequest, String dataModelScope, String dataModelCode, final ApiCallback<ResourceListOfOrder> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertOrdersValidateBeforeCall(orderSetRequest, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = upsertOrdersValidateBeforeCall(orderSetRequest, dataModelScope, dataModelCode, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ResourceListOfOrder>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call upsertOrdersAsync(OrderSetRequest orderSetRequest, final ApiCallback<ResourceListOfOrder> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call upsertOrdersAsync(OrderSetRequest orderSetRequest, String dataModelScope, String dataModelCode, final ApiCallback<ResourceListOfOrder> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertOrdersValidateBeforeCall(orderSetRequest, _callback, opts);
+        okhttp3.Call localVarCall = upsertOrdersValidateBeforeCall(orderSetRequest, dataModelScope, dataModelCode, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfOrder>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
     public class APIupsertOrdersRequest {
-        private OrderSetRequest orderSetRequest;
+        private final OrderSetRequest orderSetRequest;
+        private String dataModelScope;
+        private String dataModelCode;
 
-        private APIupsertOrdersRequest() {
+        private APIupsertOrdersRequest(OrderSetRequest orderSetRequest) {
+            this.orderSetRequest = orderSetRequest;
         }
 
         /**
-         * Set orderSetRequest
-         * @param orderSetRequest The collection of order requests. (optional)
+         * Set dataModelScope
+         * @param dataModelScope The optional scope of a Custom Data Model to use (optional)
          * @return APIupsertOrdersRequest
          */
-        public APIupsertOrdersRequest orderSetRequest(OrderSetRequest orderSetRequest) {
-            this.orderSetRequest = orderSetRequest;
+        public APIupsertOrdersRequest dataModelScope(String dataModelScope) {
+            this.dataModelScope = dataModelScope;
+            return this;
+        }
+
+        /**
+         * Set dataModelCode
+         * @param dataModelCode The optional code of a Custom Data Model to use (optional)
+         * @return APIupsertOrdersRequest
+         */
+        public APIupsertOrdersRequest dataModelCode(String dataModelCode) {
+            this.dataModelCode = dataModelCode;
             return this;
         }
 
@@ -1021,7 +1047,7 @@ public class OrdersApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return upsertOrdersCall(orderSetRequest, _callback);
+            return upsertOrdersCall(orderSetRequest, dataModelScope, dataModelCode, _callback);
         }
 
         /**
@@ -1037,7 +1063,7 @@ public class OrdersApi {
          </table>
          */
         public ResourceListOfOrder execute() throws ApiException {
-            ApiResponse<ResourceListOfOrder> localVarResp = upsertOrdersWithHttpInfo(orderSetRequest);
+            ApiResponse<ResourceListOfOrder> localVarResp = upsertOrdersWithHttpInfo(orderSetRequest, dataModelScope, dataModelCode);
             return localVarResp.getData();
         }
 
@@ -1054,7 +1080,7 @@ public class OrdersApi {
          </table>
          */
         public ResourceListOfOrder execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ResourceListOfOrder> localVarResp = upsertOrdersWithHttpInfo(orderSetRequest, opts);
+            ApiResponse<ResourceListOfOrder> localVarResp = upsertOrdersWithHttpInfo(orderSetRequest, dataModelScope, dataModelCode, opts);
             return localVarResp.getData();
         }
 
@@ -1071,7 +1097,7 @@ public class OrdersApi {
          </table>
          */
         public ApiResponse<ResourceListOfOrder> executeWithHttpInfo() throws ApiException {
-            return upsertOrdersWithHttpInfo(orderSetRequest);
+            return upsertOrdersWithHttpInfo(orderSetRequest, dataModelScope, dataModelCode);
         }
 
         /**
@@ -1087,7 +1113,7 @@ public class OrdersApi {
          </table>
          */
         public ApiResponse<ResourceListOfOrder> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return upsertOrdersWithHttpInfo(orderSetRequest, opts);
+            return upsertOrdersWithHttpInfo(orderSetRequest, dataModelScope, dataModelCode, opts);
         }
 
         /**
@@ -1104,7 +1130,7 @@ public class OrdersApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfOrder> _callback) throws ApiException {
-            return upsertOrdersAsync(orderSetRequest, _callback);
+            return upsertOrdersAsync(orderSetRequest, dataModelScope, dataModelCode, _callback);
         }
 
         /**
@@ -1121,13 +1147,14 @@ public class OrdersApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfOrder> _callback, ConfigurationOptions opts) throws ApiException {
-            return upsertOrdersAsync(orderSetRequest, _callback, opts);
+            return upsertOrdersAsync(orderSetRequest, dataModelScope, dataModelCode, _callback, opts);
         }
     }
 
     /**
      * UpsertOrders: Upsert Order
      * Upsert; update existing orders with given ids, or create new orders otherwise.
+     * @param orderSetRequest The collection of order requests. (required)
      * @return APIupsertOrdersRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1137,7 +1164,7 @@ public class OrdersApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIupsertOrdersRequest upsertOrders() {
-        return new APIupsertOrdersRequest();
+    public APIupsertOrdersRequest upsertOrders(OrderSetRequest orderSetRequest) {
+        return new APIupsertOrdersRequest(orderSetRequest);
     }
 }
