@@ -153,7 +153,9 @@ public enum InstrumentEventType {
   
   FLEXIBLEREPOCASHFLOWEVENT("FlexibleRepoCashFlowEvent"),
   
-  FLEXIBLEREPOCOLLATERALEVENT("FlexibleRepoCollateralEvent");
+  FLEXIBLEREPOCOLLATERALEVENT("FlexibleRepoCollateralEvent"),
+  
+  CONVERSIONEVENT("ConversionEvent");
 
   private String value;
 
