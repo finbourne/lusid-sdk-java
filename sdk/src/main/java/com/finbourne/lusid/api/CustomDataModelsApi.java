@@ -25,11 +25,13 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.finbourne.lusid.model.BatchAmendCustomDataModelMembershipResponse;
 import com.finbourne.lusid.model.CreateCustomDataModelRequest;
 import com.finbourne.lusid.model.CustomDataModel;
 import com.finbourne.lusid.model.DeletedEntityResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
+import com.finbourne.lusid.model.MembershipAmendmentRequest;
 import java.time.OffsetDateTime;
 import com.finbourne.lusid.model.ResourceListOfDataModelSummary;
 import com.finbourne.lusid.model.ResourceListOfString;
@@ -78,6 +80,253 @@ public class CustomDataModelsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    private okhttp3.Call batchAmendCall(String successMode, Map<String, MembershipAmendmentRequest> requestBody, final ApiCallback _callback) throws ApiException {
+        return batchAmendCall(successMode, requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call batchAmendCall(String successMode, Map<String, MembershipAmendmentRequest> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = requestBody;
+
+        // create path and map variables
+        String localVarPath = "/api/datamodel/$batchamend";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (successMode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("successMode", successMode));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call batchAmendValidateBeforeCall(String successMode, Map<String, MembershipAmendmentRequest> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'successMode' is set
+        if (successMode == null) {
+            throw new ApiException("Missing the required parameter 'successMode' when calling batchAmend(Async)");
+        }
+
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException("Missing the required parameter 'requestBody' when calling batchAmend(Async)");
+        }
+
+        return batchAmendCall(successMode, requestBody, _callback, opts);
+
+    }
+
+
+    private ApiResponse<BatchAmendCustomDataModelMembershipResponse> batchAmendWithHttpInfo(String successMode, Map<String, MembershipAmendmentRequest> requestBody) throws ApiException {
+        okhttp3.Call localVarCall = batchAmendValidateBeforeCall(successMode, requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<BatchAmendCustomDataModelMembershipResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<BatchAmendCustomDataModelMembershipResponse> batchAmendWithHttpInfo(String successMode, Map<String, MembershipAmendmentRequest> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = batchAmendValidateBeforeCall(successMode, requestBody, null, opts);
+        Type localVarReturnType = new TypeToken<BatchAmendCustomDataModelMembershipResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call batchAmendAsync(String successMode, Map<String, MembershipAmendmentRequest> requestBody, final ApiCallback<BatchAmendCustomDataModelMembershipResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = batchAmendValidateBeforeCall(successMode, requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<BatchAmendCustomDataModelMembershipResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call batchAmendAsync(String successMode, Map<String, MembershipAmendmentRequest> requestBody, final ApiCallback<BatchAmendCustomDataModelMembershipResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = batchAmendValidateBeforeCall(successMode, requestBody, _callback, opts);
+        Type localVarReturnType = new TypeToken<BatchAmendCustomDataModelMembershipResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIbatchAmendRequest {
+        private final String successMode;
+        private final Map<String, MembershipAmendmentRequest> requestBody;
+
+        private APIbatchAmendRequest(String successMode, Map<String, MembershipAmendmentRequest> requestBody) {
+            this.successMode = successMode;
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Build call for batchAmend
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The batch amendment operation was successful </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return batchAmendCall(successMode, requestBody, _callback);
+        }
+
+        /**
+         * Execute batchAmend request
+         * @return BatchAmendCustomDataModelMembershipResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The batch amendment operation was successful </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public BatchAmendCustomDataModelMembershipResponse execute() throws ApiException {
+            ApiResponse<BatchAmendCustomDataModelMembershipResponse> localVarResp = batchAmendWithHttpInfo(successMode, requestBody);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute batchAmend request. Use any specified configuration options to override any other configuration for this request only.
+         * @return BatchAmendCustomDataModelMembershipResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The batch amendment operation was successful </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public BatchAmendCustomDataModelMembershipResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<BatchAmendCustomDataModelMembershipResponse> localVarResp = batchAmendWithHttpInfo(successMode, requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute batchAmend request with HTTP info returned
+         * @return ApiResponse&lt;BatchAmendCustomDataModelMembershipResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The batch amendment operation was successful </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<BatchAmendCustomDataModelMembershipResponse> executeWithHttpInfo() throws ApiException {
+            return batchAmendWithHttpInfo(successMode, requestBody);
+        }
+
+        /**
+         * Execute batchAmend request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;BatchAmendCustomDataModelMembershipResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The batch amendment operation was successful </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<BatchAmendCustomDataModelMembershipResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return batchAmendWithHttpInfo(successMode, requestBody, opts);
+        }
+
+        /**
+         * Execute batchAmend request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The batch amendment operation was successful </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<BatchAmendCustomDataModelMembershipResponse> _callback) throws ApiException {
+            return batchAmendAsync(successMode, requestBody, _callback);
+        }
+
+        /**
+         * Execute batchAmend request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The batch amendment operation was successful </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<BatchAmendCustomDataModelMembershipResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return batchAmendAsync(successMode, requestBody, _callback, opts);
+        }
+    }
+
+    /**
+     * [INTERNAL] BatchAmend: Batch amend Custom Data Models
+     * Add/Remove entities to/from a Custom Data Model in a single operation.     Each amendment request must be keyed by a unique correlation ID. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each amendment in the response.     Note: If using partial failure modes, then it is important to check the response body for failures as any  failures will still return a 200 status code.
+     * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial. (required)
+     * @param requestBody The payload describing the amendments to make for the given Custom Data Model. (required)
+     * @return APIbatchAmendRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The batch amendment operation was successful </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIbatchAmendRequest batchAmend(String successMode, Map<String, MembershipAmendmentRequest> requestBody) {
+        return new APIbatchAmendRequest(successMode, requestBody);
+    }
     private okhttp3.Call createCustomDataModelCall(String entityType, CreateCustomDataModelRequest createCustomDataModelRequest, final ApiCallback _callback) throws ApiException {
         return createCustomDataModelCall(entityType, createCustomDataModelRequest,  _callback, new ConfigurationOptions());
     }

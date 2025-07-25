@@ -4,6 +4,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**batchAmend**](CustomDataModelsApi.md#batchAmend) | **POST** /api/datamodel/$batchamend | [INTERNAL] BatchAmend: Batch amend Custom Data Models |
 | [**createCustomDataModel**](CustomDataModelsApi.md#createCustomDataModel) | **POST** /api/datamodel/{entityType} | [EXPERIMENTAL] CreateCustomDataModel: Create a Custom Data Model |
 | [**deleteCustomDataModel**](CustomDataModelsApi.md#deleteCustomDataModel) | **DELETE** /api/datamodel/{entityType}/{scope}/{code} | [EXPERIMENTAL] DeleteCustomDataModel: Delete a Custom Data Model |
 | [**getCustomDataModel**](CustomDataModelsApi.md#getCustomDataModel) | **GET** /api/datamodel/{entityType}/{scope}/{code} | [EXPERIMENTAL] GetCustomDataModel: Get a Custom Data Model |
@@ -11,6 +12,99 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**listSupportedEntityTypes**](CustomDataModelsApi.md#listSupportedEntityTypes) | **GET** /api/datamodel/entitytype | [EXPERIMENTAL] ListSupportedEntityTypes: List the currently supported entity types for use in Custom Data Models. |
 | [**updateCustomDataModel**](CustomDataModelsApi.md#updateCustomDataModel) | **PUT** /api/datamodel/{entityType}/{scope}/{code} | [EXPERIMENTAL] UpdateCustomDataModel: Update a Custom Data Model |
 
+
+
+## batchAmend
+
+> BatchAmendCustomDataModelMembershipResponse batchAmend(successMode, requestBody)
+
+[INTERNAL] BatchAmend: Batch amend Custom Data Models
+
+Add/Remove entities to/from a Custom Data Model in a single operation.     Each amendment request must be keyed by a unique correlation ID. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each amendment in the response.     Note: If using partial failure modes, then it is important to check the response body for failures as any  failures will still return a 200 status code.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.CustomDataModelsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class CustomDataModelsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CustomDataModelsApi apiInstance = apiFactory.build(CustomDataModelsApi.class);
+
+        CustomDataModelsApi apiInstance = ApiFactoryBuilder.build(fileName).build(CustomDataModelsApi.class);
+        String successMode = "Partial"; // String | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial.
+        Map<String, MembershipAmendmentRequest> requestBody = new HashMap(); // Map<String, MembershipAmendmentRequest> | The payload describing the amendments to make for the given Custom Data Model.
+        try {
+            // uncomment the below to set overrides at the request level
+            // BatchAmendCustomDataModelMembershipResponse result = apiInstance.batchAmend(successMode, requestBody).execute(opts);
+
+            BatchAmendCustomDataModelMembershipResponse result = apiInstance.batchAmend(successMode, requestBody).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CustomDataModelsApi#batchAmend");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **successMode** | **String**| Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial. | [default to Partial] |
+| **requestBody** | [**Map&lt;String, MembershipAmendmentRequest&gt;**](MembershipAmendmentRequest.md)| The payload describing the amendments to make for the given Custom Data Model. | |
+
+### Return type
+
+[**BatchAmendCustomDataModelMembershipResponse**](BatchAmendCustomDataModelMembershipResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The batch amendment operation was successful |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 
 ## createCustomDataModel
