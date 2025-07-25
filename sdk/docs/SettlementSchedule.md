@@ -10,6 +10,7 @@
 |**tradeId** | **String** |  |  [optional] |
 |**settlementDate** | **OffsetDateTime** |  |  [optional] |
 |**units** | **java.math.BigDecimal** |  |  [optional] |
+|**bondInterest** | **java.math.BigDecimal** |  |  [optional] |
 
 
 

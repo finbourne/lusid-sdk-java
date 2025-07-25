@@ -63,6 +63,10 @@ public class SettlementSchedule {
   @SerializedName(SERIALIZED_NAME_UNITS)
   private java.math.BigDecimal units;
 
+  public static final String SERIALIZED_NAME_BOND_INTEREST = "bondInterest";
+  @SerializedName(SERIALIZED_NAME_BOND_INTEREST)
+  private java.math.BigDecimal bondInterest;
+
   public SettlementSchedule() {
   }
 
@@ -129,6 +133,27 @@ public class SettlementSchedule {
   }
 
 
+  public SettlementSchedule bondInterest(java.math.BigDecimal bondInterest) {
+    
+    this.bondInterest = bondInterest;
+    return this;
+  }
+
+   /**
+   * Get bondInterest
+   * @return bondInterest
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getBondInterest() {
+    return bondInterest;
+  }
+
+
+  public void setBondInterest(java.math.BigDecimal bondInterest) {
+    this.bondInterest = bondInterest;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -141,7 +166,8 @@ public class SettlementSchedule {
     SettlementSchedule settlementSchedule = (SettlementSchedule) o;
     return Objects.equals(this.tradeId, settlementSchedule.tradeId) &&
         Objects.equals(this.settlementDate, settlementSchedule.settlementDate) &&
-        (this.units.compareTo(settlementSchedule.getUnits()) == 0);
+        (this.units.compareTo(settlementSchedule.getUnits()) == 0) &&
+        (this.bondInterest.compareTo(settlementSchedule.getBondInterest()) == 0);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -150,7 +176,7 @@ public class SettlementSchedule {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tradeId, settlementDate, units);
+    return Objects.hash(tradeId, settlementDate, units, bondInterest);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -167,6 +193,7 @@ public class SettlementSchedule {
     sb.append("    tradeId: ").append(toIndentedString(tradeId)).append("\n");
     sb.append("    settlementDate: ").append(toIndentedString(settlementDate)).append("\n");
     sb.append("    units: ").append(toIndentedString(units)).append("\n");
+    sb.append("    bondInterest: ").append(toIndentedString(bondInterest)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -192,6 +219,7 @@ public class SettlementSchedule {
     openapiFields.add("tradeId");
     openapiFields.add("settlementDate");
     openapiFields.add("units");
+    openapiFields.add("bondInterest");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
