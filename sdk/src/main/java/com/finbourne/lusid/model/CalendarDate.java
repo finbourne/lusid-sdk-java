@@ -255,7 +255,7 @@ public class CalendarDate {
    * Get type
    * @return type
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getType() {
     return type;
   }
@@ -409,7 +409,6 @@ public class CalendarDate {
     openapiRequiredFields.add("localDate");
     openapiRequiredFields.add("timezone");
     openapiRequiredFields.add("description");
-    openapiRequiredFields.add("type");
   }
 
  /**
@@ -447,7 +446,7 @@ public class CalendarDate {
       if (!jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      if (!jsonObj.get("type").isJsonPrimitive()) {
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
       // validate the optional field `attributes`

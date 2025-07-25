@@ -14,7 +14,7 @@
 |**_localDate** | **String** |  |  |
 |**timezone** | **String** |  |  |
 |**description** | **String** |  |  |
-|**type** | **String** |  |  |
+|**type** | **String** |  |  [optional] |
 |**attributes** | [**DateAttributes**](DateAttributes.md) |  |  [optional] |
 |**sourceData** | **Map&lt;String, String&gt;** |  |  [optional] |
 
