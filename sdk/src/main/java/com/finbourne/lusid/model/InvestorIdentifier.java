@@ -57,9 +57,9 @@ public class InvestorIdentifier {
   @SerializedName(SERIALIZED_NAME_INVESTOR_TYPE)
   private String investorType;
 
-  public static final String SERIALIZED_NAME_INVESTOR_IDENTIFIERS = "investorIdentifiers";
-  @SerializedName(SERIALIZED_NAME_INVESTOR_IDENTIFIERS)
-  private Map<String, Property> investorIdentifiers;
+  public static final String SERIALIZED_NAME_IDENTIFIERS = "identifiers";
+  @SerializedName(SERIALIZED_NAME_IDENTIFIERS)
+  private Map<String, Property> identifiers;
 
   public InvestorIdentifier() {
   }
@@ -74,7 +74,7 @@ public class InvestorIdentifier {
    * The type of the investor of the Investor Record. Can be either a Person or a LegalEntity
    * @return investorType
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public String getInvestorType() {
     return investorType;
   }
@@ -85,32 +85,32 @@ public class InvestorIdentifier {
   }
 
 
-  public InvestorIdentifier investorIdentifiers(Map<String, Property> investorIdentifiers) {
+  public InvestorIdentifier identifiers(Map<String, Property> identifiers) {
     
-    this.investorIdentifiers = investorIdentifiers;
+    this.identifiers = identifiers;
     return this;
   }
 
-  public InvestorIdentifier putInvestorIdentifiersItem(String key, Property investorIdentifiersItem) {
-    if (this.investorIdentifiers == null) {
-      this.investorIdentifiers = new HashMap<>();
+  public InvestorIdentifier putIdentifiersItem(String key, Property identifiersItem) {
+    if (this.identifiers == null) {
+      this.identifiers = new HashMap<>();
     }
-    this.investorIdentifiers.put(key, investorIdentifiersItem);
+    this.identifiers.put(key, identifiersItem);
     return this;
   }
 
    /**
    * Single identifier that should target the desired person or legal entity
-   * @return investorIdentifiers
+   * @return identifiers
   **/
   @jakarta.annotation.Nullable
-  public Map<String, Property> getInvestorIdentifiers() {
-    return investorIdentifiers;
+  public Map<String, Property> getIdentifiers() {
+    return identifiers;
   }
 
 
-  public void setInvestorIdentifiers(Map<String, Property> investorIdentifiers) {
-    this.investorIdentifiers = investorIdentifiers;
+  public void setIdentifiers(Map<String, Property> identifiers) {
+    this.identifiers = identifiers;
   }
 
 
@@ -125,7 +125,7 @@ public class InvestorIdentifier {
     }
     InvestorIdentifier investorIdentifier = (InvestorIdentifier) o;
     return Objects.equals(this.investorType, investorIdentifier.investorType) &&
-        Objects.equals(this.investorIdentifiers, investorIdentifier.investorIdentifiers);
+        Objects.equals(this.identifiers, investorIdentifier.identifiers);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -134,7 +134,7 @@ public class InvestorIdentifier {
 
   @Override
   public int hashCode() {
-    return Objects.hash(investorType, investorIdentifiers);
+    return Objects.hash(investorType, identifiers);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -149,7 +149,7 @@ public class InvestorIdentifier {
     StringBuilder sb = new StringBuilder();
     sb.append("class InvestorIdentifier {\n");
     sb.append("    investorType: ").append(toIndentedString(investorType)).append("\n");
-    sb.append("    investorIdentifiers: ").append(toIndentedString(investorIdentifiers)).append("\n");
+    sb.append("    identifiers: ").append(toIndentedString(identifiers)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -173,10 +173,11 @@ public class InvestorIdentifier {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("investorType");
-    openapiFields.add("investorIdentifiers");
+    openapiFields.add("identifiers");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("investorType");
   }
 
  /**
@@ -191,8 +192,15 @@ public class InvestorIdentifier {
           throw new IllegalArgumentException(String.format("The required field(s) %s in InvestorIdentifier is not found in the empty JSON string", InvestorIdentifier.openapiRequiredFields.toString()));
         }
       }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : InvestorIdentifier.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
+      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("investorType") != null && !jsonObj.get("investorType").isJsonNull()) && !jsonObj.get("investorType").isJsonPrimitive()) {
+      if (!jsonObj.get("investorType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `investorType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("investorType").toString()));
       }
   }

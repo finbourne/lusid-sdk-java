@@ -17,7 +17,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -57,6 +59,10 @@ public class UpdatePropertyDefinitionRequest {
   public static final String SERIALIZED_NAME_PROPERTY_DESCRIPTION = "propertyDescription";
   @SerializedName(SERIALIZED_NAME_PROPERTY_DESCRIPTION)
   private String propertyDescription;
+
+  public static final String SERIALIZED_NAME_CUSTOM_ENTITY_TYPES = "customEntityTypes";
+  @SerializedName(SERIALIZED_NAME_CUSTOM_ENTITY_TYPES)
+  private List<String> customEntityTypes;
 
   public UpdatePropertyDefinitionRequest() {
   }
@@ -103,6 +109,35 @@ public class UpdatePropertyDefinitionRequest {
   }
 
 
+  public UpdatePropertyDefinitionRequest customEntityTypes(List<String> customEntityTypes) {
+    
+    this.customEntityTypes = customEntityTypes;
+    return this;
+  }
+
+  public UpdatePropertyDefinitionRequest addCustomEntityTypesItem(String customEntityTypesItem) {
+    if (this.customEntityTypes == null) {
+      this.customEntityTypes = new ArrayList<>();
+    }
+    this.customEntityTypes.add(customEntityTypesItem);
+    return this;
+  }
+
+   /**
+   * The custom entity types that properties relating to this property definition can be applied to.
+   * @return customEntityTypes
+  **/
+  @jakarta.annotation.Nullable
+  public List<String> getCustomEntityTypes() {
+    return customEntityTypes;
+  }
+
+
+  public void setCustomEntityTypes(List<String> customEntityTypes) {
+    this.customEntityTypes = customEntityTypes;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -114,7 +149,8 @@ public class UpdatePropertyDefinitionRequest {
     }
     UpdatePropertyDefinitionRequest updatePropertyDefinitionRequest = (UpdatePropertyDefinitionRequest) o;
     return Objects.equals(this.displayName, updatePropertyDefinitionRequest.displayName) &&
-        Objects.equals(this.propertyDescription, updatePropertyDefinitionRequest.propertyDescription);
+        Objects.equals(this.propertyDescription, updatePropertyDefinitionRequest.propertyDescription) &&
+        Objects.equals(this.customEntityTypes, updatePropertyDefinitionRequest.customEntityTypes);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -123,7 +159,7 @@ public class UpdatePropertyDefinitionRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, propertyDescription);
+    return Objects.hash(displayName, propertyDescription, customEntityTypes);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -139,6 +175,7 @@ public class UpdatePropertyDefinitionRequest {
     sb.append("class UpdatePropertyDefinitionRequest {\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    propertyDescription: ").append(toIndentedString(propertyDescription)).append("\n");
+    sb.append("    customEntityTypes: ").append(toIndentedString(customEntityTypes)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -163,6 +200,7 @@ public class UpdatePropertyDefinitionRequest {
     openapiFields = new HashSet<String>();
     openapiFields.add("displayName");
     openapiFields.add("propertyDescription");
+    openapiFields.add("customEntityTypes");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -194,6 +232,10 @@ public class UpdatePropertyDefinitionRequest {
       }
       if ((jsonObj.get("propertyDescription") != null && !jsonObj.get("propertyDescription").isJsonNull()) && !jsonObj.get("propertyDescription").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `propertyDescription` to be a primitive type in the JSON string but got `%s`", jsonObj.get("propertyDescription").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("customEntityTypes") != null && !jsonObj.get("customEntityTypes").isJsonNull() && !jsonObj.get("customEntityTypes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `customEntityTypes` to be an array in the JSON string but got `%s`", jsonObj.get("customEntityTypes").toString()));
       }
   }
 

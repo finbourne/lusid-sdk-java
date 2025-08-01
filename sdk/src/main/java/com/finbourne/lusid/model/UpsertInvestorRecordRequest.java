@@ -187,7 +187,7 @@ public class UpsertInvestorRecordRequest {
    * Get investor
    * @return investor
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public InvestorIdentifier getInvestor() {
     return investor;
   }
@@ -272,6 +272,7 @@ public class UpsertInvestorRecordRequest {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("identifiers");
     openapiRequiredFields.add("displayName");
+    openapiRequiredFields.add("investor");
   }
 
  /**
@@ -300,10 +301,8 @@ public class UpsertInvestorRecordRequest {
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      // validate the optional field `investor`
-      if (jsonObj.get("investor") != null && !jsonObj.get("investor").isJsonNull()) {
-        InvestorIdentifier.validateJsonElement(jsonObj.get("investor"));
-      }
+      // validate the required field `investor`
+      InvestorIdentifier.validateJsonElement(jsonObj.get("investor"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

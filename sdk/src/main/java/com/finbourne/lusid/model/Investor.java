@@ -59,9 +59,9 @@ public class Investor {
   @SerializedName(SERIALIZED_NAME_INVESTOR_TYPE)
   private String investorType;
 
-  public static final String SERIALIZED_NAME_INVESTOR_IDENTIFIERS = "investorIdentifiers";
-  @SerializedName(SERIALIZED_NAME_INVESTOR_IDENTIFIERS)
-  private Map<String, Property> investorIdentifiers;
+  public static final String SERIALIZED_NAME_IDENTIFIERS = "identifiers";
+  @SerializedName(SERIALIZED_NAME_IDENTIFIERS)
+  private Map<String, Property> identifiers;
 
   public static final String SERIALIZED_NAME_ENTITY_UNIQUE_ID = "entityUniqueId";
   @SerializedName(SERIALIZED_NAME_ENTITY_UNIQUE_ID)
@@ -99,32 +99,32 @@ public class Investor {
   }
 
 
-  public Investor investorIdentifiers(Map<String, Property> investorIdentifiers) {
+  public Investor identifiers(Map<String, Property> identifiers) {
     
-    this.investorIdentifiers = investorIdentifiers;
+    this.identifiers = identifiers;
     return this;
   }
 
-  public Investor putInvestorIdentifiersItem(String key, Property investorIdentifiersItem) {
-    if (this.investorIdentifiers == null) {
-      this.investorIdentifiers = new HashMap<>();
+  public Investor putIdentifiersItem(String key, Property identifiersItem) {
+    if (this.identifiers == null) {
+      this.identifiers = new HashMap<>();
     }
-    this.investorIdentifiers.put(key, investorIdentifiersItem);
+    this.identifiers.put(key, identifiersItem);
     return this;
   }
 
    /**
    * The identifiers of the Investor
-   * @return investorIdentifiers
+   * @return identifiers
   **/
   @jakarta.annotation.Nullable
-  public Map<String, Property> getInvestorIdentifiers() {
-    return investorIdentifiers;
+  public Map<String, Property> getIdentifiers() {
+    return identifiers;
   }
 
 
-  public void setInvestorIdentifiers(Map<String, Property> investorIdentifiers) {
-    this.investorIdentifiers = investorIdentifiers;
+  public void setIdentifiers(Map<String, Property> identifiers) {
+    this.identifiers = identifiers;
   }
 
 
@@ -202,7 +202,7 @@ public class Investor {
     }
     Investor investor = (Investor) o;
     return Objects.equals(this.investorType, investor.investorType) &&
-        Objects.equals(this.investorIdentifiers, investor.investorIdentifiers) &&
+        Objects.equals(this.identifiers, investor.identifiers) &&
         Objects.equals(this.entityUniqueId, investor.entityUniqueId) &&
         Objects.equals(this.person, investor.person) &&
         Objects.equals(this.legalEntity, investor.legalEntity);
@@ -214,7 +214,7 @@ public class Investor {
 
   @Override
   public int hashCode() {
-    return Objects.hash(investorType, investorIdentifiers, entityUniqueId, person, legalEntity);
+    return Objects.hash(investorType, identifiers, entityUniqueId, person, legalEntity);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -229,7 +229,7 @@ public class Investor {
     StringBuilder sb = new StringBuilder();
     sb.append("class Investor {\n");
     sb.append("    investorType: ").append(toIndentedString(investorType)).append("\n");
-    sb.append("    investorIdentifiers: ").append(toIndentedString(investorIdentifiers)).append("\n");
+    sb.append("    identifiers: ").append(toIndentedString(identifiers)).append("\n");
     sb.append("    entityUniqueId: ").append(toIndentedString(entityUniqueId)).append("\n");
     sb.append("    person: ").append(toIndentedString(person)).append("\n");
     sb.append("    legalEntity: ").append(toIndentedString(legalEntity)).append("\n");
@@ -256,7 +256,7 @@ public class Investor {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("investorType");
-    openapiFields.add("investorIdentifiers");
+    openapiFields.add("identifiers");
     openapiFields.add("entityUniqueId");
     openapiFields.add("person");
     openapiFields.add("legalEntity");

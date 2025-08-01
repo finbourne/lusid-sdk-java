@@ -2,7 +2,7 @@
 
 # Portfolio
 
-A list of portfolios.
+A portfolio of a particular type.
 
 ## Properties
 

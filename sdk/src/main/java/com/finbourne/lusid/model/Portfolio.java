@@ -59,7 +59,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * A list of portfolios.
+ * A portfolio of a particular type.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Portfolio {

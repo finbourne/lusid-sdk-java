@@ -20,7 +20,7 @@
 |**instrumentScopes** | **List&lt;String&gt;** | The resolution strategy used to resolve instruments of transactions/holdings upserted to the portfolios. |  [optional] |
 |**amortisationMethod** | **String** |  |  |
 |**transactionTypeScope** | **String** |  |  [optional] |
-|**cashGainLossCalculationDate** | **String** |  |  [optional] |
+|**cashGainLossCalculationDate** | **String** |  |  |
 
 
 

@@ -427,7 +427,7 @@ public class NavTypeDefinition {
    * Get cashGainLossCalculationDate
    * @return cashGainLossCalculationDate
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public String getCashGainLossCalculationDate() {
     return cashGainLossCalculationDate;
   }
@@ -542,6 +542,7 @@ public class NavTypeDefinition {
     openapiRequiredFields.add("holdingRecipeId");
     openapiRequiredFields.add("accountingMethod");
     openapiRequiredFields.add("amortisationMethod");
+    openapiRequiredFields.add("cashGainLossCalculationDate");
   }
 
  /**
@@ -604,7 +605,7 @@ public class NavTypeDefinition {
       if ((jsonObj.get("transactionTypeScope") != null && !jsonObj.get("transactionTypeScope").isJsonNull()) && !jsonObj.get("transactionTypeScope").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `transactionTypeScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transactionTypeScope").toString()));
       }
-      if ((jsonObj.get("cashGainLossCalculationDate") != null && !jsonObj.get("cashGainLossCalculationDate").isJsonNull()) && !jsonObj.get("cashGainLossCalculationDate").isJsonPrimitive()) {
+      if (!jsonObj.get("cashGainLossCalculationDate").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `cashGainLossCalculationDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cashGainLossCalculationDate").toString()));
       }
   }

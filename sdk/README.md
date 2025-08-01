@@ -307,8 +307,9 @@ Class | Method | HTTP request | Description
 *InstrumentsApi* | [**updateInstrumentIdentifier**](docs/InstrumentsApi.md#updateinstrumentidentifier) | **POST** /api/instruments/{identifierType}/{identifier} | UpdateInstrumentIdentifier: Update instrument identifier
 *InstrumentsApi* | [**upsertInstruments**](docs/InstrumentsApi.md#upsertinstruments) | **POST** /api/instruments | UpsertInstruments: Upsert instruments
 *InstrumentsApi* | [**upsertInstrumentsProperties**](docs/InstrumentsApi.md#upsertinstrumentsproperties) | **POST** /api/instruments/$upsertproperties | UpsertInstrumentsProperties: Upsert instruments properties
-*InvestmentAccountsApi* | [**getInvestmentAccount**](docs/InvestmentAccountsApi.md#getinvestmentaccount) | **GET** /api/investmentaccounts/{idTypeScope}/{idTypeCode}/{code} | [EARLY ACCESS] GetInvestmentAccount: Get Investment Account
-*InvestmentAccountsApi* | [**upsertInvestmentAccounts**](docs/InvestmentAccountsApi.md#upsertinvestmentaccounts) | **POST** /api/investmentaccounts/$batchUpsert | [EARLY ACCESS] UpsertInvestmentAccounts: Upsert Investment Accounts
+*InvestmentAccountsApi* | [**getInvestmentAccount**](docs/InvestmentAccountsApi.md#getinvestmentaccount) | **GET** /api/investmentaccounts/{idTypeScope}/{idTypeCode}/{code} | [EXPERIMENTAL] GetInvestmentAccount: Get Investment Account
+*InvestmentAccountsApi* | [**listAllInvestmentAccounts**](docs/InvestmentAccountsApi.md#listallinvestmentaccounts) | **GET** /api/investmentaccounts | [EXPERIMENTAL] ListAllInvestmentAccounts: List Investment Accounts
+*InvestmentAccountsApi* | [**upsertInvestmentAccounts**](docs/InvestmentAccountsApi.md#upsertinvestmentaccounts) | **POST** /api/investmentaccounts/$batchUpsert | [EXPERIMENTAL] UpsertInvestmentAccounts: Upsert Investment Accounts
 *InvestorRecordsApi* | [**deleteInvestorRecord**](docs/InvestorRecordsApi.md#deleteinvestorrecord) | **DELETE** /api/investorrecords/{idTypeScope}/{idTypeCode}/{code} | [EARLY ACCESS] DeleteInvestorRecord: Delete Investor Record
 *InvestorRecordsApi* | [**getInvestorRecord**](docs/InvestorRecordsApi.md#getinvestorrecord) | **GET** /api/investorrecords/{idTypeScope}/{idTypeCode}/{code} | [EARLY ACCESS] GetInvestorRecord: Get Investor Record
 *InvestorRecordsApi* | [**listAllInvestorRecords**](docs/InvestorRecordsApi.md#listallinvestorrecords) | **GET** /api/investorrecords | [EARLY ACCESS] ListAllInvestorRecords: List Investor Records
@@ -1049,6 +1050,7 @@ Class | Method | HTTP request | Description
  - [FlexibleRepoCashFlowEvent](docs/FlexibleRepoCashFlowEvent.md)
  - [FlexibleRepoCollateralEvent](docs/FlexibleRepoCollateralEvent.md)
  - [FlexibleRepoInterestPaymentEvent](docs/FlexibleRepoInterestPaymentEvent.md)
+ - [FlexibleRepoPartialClosureEvent](docs/FlexibleRepoPartialClosureEvent.md)
  - [FloatSchedule](docs/FloatSchedule.md)
  - [FloatingLeg](docs/FloatingLeg.md)
  - [FlowConventionName](docs/FlowConventionName.md)
@@ -1411,6 +1413,7 @@ Class | Method | HTTP request | Description
  - [PagedResourceListOfVirtualRow](docs/PagedResourceListOfVirtualRow.md)
  - [PagedResourceListOfWorkspace](docs/PagedResourceListOfWorkspace.md)
  - [PagedResourceListOfWorkspaceItem](docs/PagedResourceListOfWorkspaceItem.md)
+ - [PartialClosureConstituent](docs/PartialClosureConstituent.md)
  - [Participation](docs/Participation.md)
  - [ParticipationRequest](docs/ParticipationRequest.md)
  - [ParticipationSetRequest](docs/ParticipationSetRequest.md)
@@ -1591,6 +1594,7 @@ Class | Method | HTTP request | Description
  - [ResourceListOfInstrumentCashFlow](docs/ResourceListOfInstrumentCashFlow.md)
  - [ResourceListOfInstrumentEventHolder](docs/ResourceListOfInstrumentEventHolder.md)
  - [ResourceListOfInstrumentIdTypeDescriptor](docs/ResourceListOfInstrumentIdTypeDescriptor.md)
+ - [ResourceListOfInvestmentAccount](docs/ResourceListOfInvestmentAccount.md)
  - [ResourceListOfInvestorRecord](docs/ResourceListOfInvestorRecord.md)
  - [ResourceListOfLegalEntity](docs/ResourceListOfLegalEntity.md)
  - [ResourceListOfListComplexMarketDataWithMetaDataResponse](docs/ResourceListOfListComplexMarketDataWithMetaDataResponse.md)

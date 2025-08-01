@@ -19,6 +19,7 @@
 |**deletedDataType** | [**DataType**](DataType.md) |  |  [optional] |
 |**previewedStatus** | **String** | The status of the previewed entity. |  [optional] |
 |**previewedDataType** | [**DataType**](DataType.md) |  |  [optional] |
+|**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 
 
