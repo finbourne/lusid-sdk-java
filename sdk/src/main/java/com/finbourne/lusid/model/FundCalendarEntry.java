@@ -19,6 +19,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.net.URI;
+import java.time.OffsetDateTime;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -67,6 +68,14 @@ public class FundCalendarEntry {
   public static final String SERIALIZED_NAME_NAV_TYPE_CODE = "navTypeCode";
   @SerializedName(SERIALIZED_NAME_NAV_TYPE_CODE)
   private String navTypeCode;
+
+  public static final String SERIALIZED_NAME_EFFECTIVE_AT = "effectiveAt";
+  @SerializedName(SERIALIZED_NAME_EFFECTIVE_AT)
+  private OffsetDateTime effectiveAt;
+
+  public static final String SERIALIZED_NAME_AS_AT = "asAt";
+  @SerializedName(SERIALIZED_NAME_AS_AT)
+  private OffsetDateTime asAt;
 
   /**
    * The type of the Fund Calendar Entry. Only &#39;ValuationPoint&#39; currently supported. The available values are: ValuationPointFundCalendarEntry
@@ -212,6 +221,48 @@ public class FundCalendarEntry {
   }
 
 
+  public FundCalendarEntry effectiveAt(OffsetDateTime effectiveAt) {
+    
+    this.effectiveAt = effectiveAt;
+    return this;
+  }
+
+   /**
+   * The effective at of the Calendar Entry.
+   * @return effectiveAt
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getEffectiveAt() {
+    return effectiveAt;
+  }
+
+
+  public void setEffectiveAt(OffsetDateTime effectiveAt) {
+    this.effectiveAt = effectiveAt;
+  }
+
+
+  public FundCalendarEntry asAt(OffsetDateTime asAt) {
+    
+    this.asAt = asAt;
+    return this;
+  }
+
+   /**
+   * The asAt datetime for the Calendar Entry.
+   * @return asAt
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getAsAt() {
+    return asAt;
+  }
+
+
+  public void setAsAt(OffsetDateTime asAt) {
+    this.asAt = asAt;
+  }
+
+
   public FundCalendarEntry entryType(EntryTypeEnum entryType) {
     
     this.entryType = entryType;
@@ -289,6 +340,8 @@ public class FundCalendarEntry {
         Objects.equals(this.displayName, fundCalendarEntry.displayName) &&
         Objects.equals(this.description, fundCalendarEntry.description) &&
         Objects.equals(this.navTypeCode, fundCalendarEntry.navTypeCode) &&
+        Objects.equals(this.effectiveAt, fundCalendarEntry.effectiveAt) &&
+        Objects.equals(this.asAt, fundCalendarEntry.asAt) &&
         Objects.equals(this.entryType, fundCalendarEntry.entryType) &&
         Objects.equals(this.version, fundCalendarEntry.version) &&
         Objects.equals(this.href, fundCalendarEntry.href);
@@ -300,7 +353,7 @@ public class FundCalendarEntry {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, displayName, description, navTypeCode, entryType, version, href);
+    return Objects.hash(code, displayName, description, navTypeCode, effectiveAt, asAt, entryType, version, href);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -318,6 +371,8 @@ public class FundCalendarEntry {
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    navTypeCode: ").append(toIndentedString(navTypeCode)).append("\n");
+    sb.append("    effectiveAt: ").append(toIndentedString(effectiveAt)).append("\n");
+    sb.append("    asAt: ").append(toIndentedString(asAt)).append("\n");
     sb.append("    entryType: ").append(toIndentedString(entryType)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
@@ -347,6 +402,8 @@ public class FundCalendarEntry {
     openapiFields.add("displayName");
     openapiFields.add("description");
     openapiFields.add("navTypeCode");
+    openapiFields.add("effectiveAt");
+    openapiFields.add("asAt");
     openapiFields.add("entryType");
     openapiFields.add("version");
     openapiFields.add("href");
