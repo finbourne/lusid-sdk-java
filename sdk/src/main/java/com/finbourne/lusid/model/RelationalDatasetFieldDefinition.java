@@ -193,7 +193,7 @@ public class RelationalDatasetFieldDefinition {
    * The intended usage of the field (SeriesIdentifier, Value, or Metadata).
    * @return usage
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public String getUsage() {
     return usage;
   }
@@ -281,6 +281,7 @@ public class RelationalDatasetFieldDefinition {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("fieldName");
     openapiRequiredFields.add("dataTypeId");
+    openapiRequiredFields.add("usage");
   }
 
  /**
@@ -314,7 +315,7 @@ public class RelationalDatasetFieldDefinition {
       }
       // validate the required field `dataTypeId`
       ResourceId.validateJsonElement(jsonObj.get("dataTypeId"));
-      if ((jsonObj.get("usage") != null && !jsonObj.get("usage").isJsonNull()) && !jsonObj.get("usage").isJsonPrimitive()) {
+      if (!jsonObj.get("usage").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `usage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("usage").toString()));
       }
   }
