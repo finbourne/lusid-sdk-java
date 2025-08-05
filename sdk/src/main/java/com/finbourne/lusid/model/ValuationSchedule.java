@@ -85,6 +85,10 @@ public class ValuationSchedule {
   @SerializedName(SERIALIZED_NAME_TIMELINE_ID)
   private ResourceId timelineId;
 
+  public static final String SERIALIZED_NAME_CLOSED_PERIOD_ID = "closedPeriodId";
+  @SerializedName(SERIALIZED_NAME_CLOSED_PERIOD_ID)
+  private String closedPeriodId;
+
   public ValuationSchedule() {
   }
 
@@ -119,7 +123,7 @@ public class ValuationSchedule {
    * The market data time, i.e. the time to run the valuation request effective of.
    * @return effectiveAt
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getEffectiveAt() {
     return effectiveAt;
   }
@@ -272,6 +276,27 @@ public class ValuationSchedule {
   }
 
 
+  public ValuationSchedule closedPeriodId(String closedPeriodId) {
+    
+    this.closedPeriodId = closedPeriodId;
+    return this;
+  }
+
+   /**
+   * Unique identifier for a closed period within a given timeline. If this field is specified, the TimelineId  field must also be specified. If given, this field defines the effective date of the request as the  EffectiveEnd of the given closed period.
+   * @return closedPeriodId
+  **/
+  @jakarta.annotation.Nullable
+  public String getClosedPeriodId() {
+    return closedPeriodId;
+  }
+
+
+  public void setClosedPeriodId(String closedPeriodId) {
+    this.closedPeriodId = closedPeriodId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -289,7 +314,8 @@ public class ValuationSchedule {
         Objects.equals(this.holidayCalendars, valuationSchedule.holidayCalendars) &&
         Objects.equals(this.valuationDateTimes, valuationSchedule.valuationDateTimes) &&
         Objects.equals(this.businessDayConvention, valuationSchedule.businessDayConvention) &&
-        Objects.equals(this.timelineId, valuationSchedule.timelineId);
+        Objects.equals(this.timelineId, valuationSchedule.timelineId) &&
+        Objects.equals(this.closedPeriodId, valuationSchedule.closedPeriodId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -298,7 +324,7 @@ public class ValuationSchedule {
 
   @Override
   public int hashCode() {
-    return Objects.hash(effectiveFrom, effectiveAt, tenor, rollConvention, holidayCalendars, valuationDateTimes, businessDayConvention, timelineId);
+    return Objects.hash(effectiveFrom, effectiveAt, tenor, rollConvention, holidayCalendars, valuationDateTimes, businessDayConvention, timelineId, closedPeriodId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -320,6 +346,7 @@ public class ValuationSchedule {
     sb.append("    valuationDateTimes: ").append(toIndentedString(valuationDateTimes)).append("\n");
     sb.append("    businessDayConvention: ").append(toIndentedString(businessDayConvention)).append("\n");
     sb.append("    timelineId: ").append(toIndentedString(timelineId)).append("\n");
+    sb.append("    closedPeriodId: ").append(toIndentedString(closedPeriodId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -350,10 +377,10 @@ public class ValuationSchedule {
     openapiFields.add("valuationDateTimes");
     openapiFields.add("businessDayConvention");
     openapiFields.add("timelineId");
+    openapiFields.add("closedPeriodId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("effectiveAt");
   }
 
  /**
@@ -368,18 +395,11 @@ public class ValuationSchedule {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ValuationSchedule is not found in the empty JSON string", ValuationSchedule.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ValuationSchedule.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("effectiveFrom") != null && !jsonObj.get("effectiveFrom").isJsonNull()) && !jsonObj.get("effectiveFrom").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `effectiveFrom` to be a primitive type in the JSON string but got `%s`", jsonObj.get("effectiveFrom").toString()));
       }
-      if (!jsonObj.get("effectiveAt").isJsonPrimitive()) {
+      if ((jsonObj.get("effectiveAt") != null && !jsonObj.get("effectiveAt").isJsonNull()) && !jsonObj.get("effectiveAt").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `effectiveAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("effectiveAt").toString()));
       }
       if ((jsonObj.get("tenor") != null && !jsonObj.get("tenor").isJsonNull()) && !jsonObj.get("tenor").isJsonPrimitive()) {
@@ -402,6 +422,9 @@ public class ValuationSchedule {
       // validate the optional field `timelineId`
       if (jsonObj.get("timelineId") != null && !jsonObj.get("timelineId").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("timelineId"));
+      }
+      if ((jsonObj.get("closedPeriodId") != null && !jsonObj.get("closedPeriodId").isJsonNull()) && !jsonObj.get("closedPeriodId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `closedPeriodId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("closedPeriodId").toString()));
       }
   }
 

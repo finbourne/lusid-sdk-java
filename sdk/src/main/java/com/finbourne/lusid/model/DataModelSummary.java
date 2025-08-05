@@ -76,6 +76,10 @@ public class DataModelSummary {
   @SerializedName(SERIALIZED_NAME_PRECEDENCE)
   private Integer precedence;
 
+  public static final String SERIALIZED_NAME_PARENT = "parent";
+  @SerializedName(SERIALIZED_NAME_PARENT)
+  private ResourceId parent;
+
   public static final String SERIALIZED_NAME_CHILDREN = "children";
   @SerializedName(SERIALIZED_NAME_CHILDREN)
   private List<DataModelSummary> children = new ArrayList<>();
@@ -209,6 +213,27 @@ public class DataModelSummary {
   }
 
 
+  public DataModelSummary parent(ResourceId parent) {
+    
+    this.parent = parent;
+    return this;
+  }
+
+   /**
+   * Get parent
+   * @return parent
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getParent() {
+    return parent;
+  }
+
+
+  public void setParent(ResourceId parent) {
+    this.parent = parent;
+  }
+
+
   public DataModelSummary children(List<DataModelSummary> children) {
     
     this.children = children;
@@ -254,12 +279,13 @@ public class DataModelSummary {
         Objects.equals(this.entityType, dataModelSummary.entityType) &&
         Objects.equals(this.type, dataModelSummary.type) &&
         Objects.equals(this.precedence, dataModelSummary.precedence) &&
+        Objects.equals(this.parent, dataModelSummary.parent) &&
         Objects.equals(this.children, dataModelSummary.children);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, displayName, description, entityType, type, precedence, children);
+    return Objects.hash(id, displayName, description, entityType, type, precedence, parent, children);
   }
 
   @Override
@@ -272,6 +298,7 @@ public class DataModelSummary {
     sb.append("    entityType: ").append(toIndentedString(entityType)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    precedence: ").append(toIndentedString(precedence)).append("\n");
+    sb.append("    parent: ").append(toIndentedString(parent)).append("\n");
     sb.append("    children: ").append(toIndentedString(children)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -301,6 +328,7 @@ public class DataModelSummary {
     openapiFields.add("entityType");
     openapiFields.add("type");
     openapiFields.add("precedence");
+    openapiFields.add("parent");
     openapiFields.add("children");
 
     // a set of required properties/fields (JSON key names)
@@ -347,6 +375,10 @@ public class DataModelSummary {
       }
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      // validate the optional field `parent`
+      if (jsonObj.get("parent") != null && !jsonObj.get("parent").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("parent"));
       }
       // ensure the json data is an array
       if (!jsonObj.get("children").isJsonArray()) {

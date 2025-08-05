@@ -4,7 +4,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**batchAmend**](CustomDataModelsApi.md#batchAmend) | **POST** /api/datamodel/$batchamend | [INTERNAL] BatchAmend: Batch amend Custom Data Models |
+| [**batchAmend**](CustomDataModelsApi.md#batchAmend) | **POST** /api/datamodel/$batchamend | [EXPERIMENTAL] BatchAmend: Batch amend entities Custom Data Model membership. |
 | [**createCustomDataModel**](CustomDataModelsApi.md#createCustomDataModel) | **POST** /api/datamodel/{entityType} | [EXPERIMENTAL] CreateCustomDataModel: Create a Custom Data Model |
 | [**deleteCustomDataModel**](CustomDataModelsApi.md#deleteCustomDataModel) | **DELETE** /api/datamodel/{entityType}/{scope}/{code} | [EXPERIMENTAL] DeleteCustomDataModel: Delete a Custom Data Model |
 | [**getCustomDataModel**](CustomDataModelsApi.md#getCustomDataModel) | **GET** /api/datamodel/{entityType}/{scope}/{code} | [EXPERIMENTAL] GetCustomDataModel: Get a Custom Data Model |
@@ -18,7 +18,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 > BatchAmendCustomDataModelMembershipResponse batchAmend(successMode, requestBody)
 
-[INTERNAL] BatchAmend: Batch amend Custom Data Models
+[EXPERIMENTAL] BatchAmend: Batch amend entities Custom Data Model membership.
 
 Add/Remove entities to/from a Custom Data Model in a single operation.     Each amendment request must be keyed by a unique correlation ID. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each amendment in the response.     Note: If using partial failure modes, then it is important to check the response body for failures as any  failures will still return a 200 status code.
 

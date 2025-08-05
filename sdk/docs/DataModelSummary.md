@@ -13,6 +13,7 @@
 |**entityType** | **String** | The entity type that the Custom Data Model binds to. |  |
 |**type** | **String** | Either Root or Leaf or Intermediate. |  |
 |**precedence** | **Integer** | Where in the hierarchy this model sits. |  |
+|**parent** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 |**children** | [**List&lt;DataModelSummary&gt;**](DataModelSummary.md) | Child Custom Data Models that will inherit from this data model. |  |
 
 

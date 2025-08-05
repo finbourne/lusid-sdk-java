@@ -93,10 +93,6 @@ public class NavTypeDefinition {
   @SerializedName(SERIALIZED_NAME_SUB_HOLDING_KEYS)
   private List<String> subHoldingKeys;
 
-  public static final String SERIALIZED_NAME_INSTRUMENT_SCOPES = "instrumentScopes";
-  @SerializedName(SERIALIZED_NAME_INSTRUMENT_SCOPES)
-  private List<String> instrumentScopes;
-
   public static final String SERIALIZED_NAME_AMORTISATION_METHOD = "amortisationMethod";
   @SerializedName(SERIALIZED_NAME_AMORTISATION_METHOD)
   private String amortisationMethod;
@@ -346,35 +342,6 @@ public class NavTypeDefinition {
   }
 
 
-  public NavTypeDefinition instrumentScopes(List<String> instrumentScopes) {
-    
-    this.instrumentScopes = instrumentScopes;
-    return this;
-  }
-
-  public NavTypeDefinition addInstrumentScopesItem(String instrumentScopesItem) {
-    if (this.instrumentScopes == null) {
-      this.instrumentScopes = new ArrayList<>();
-    }
-    this.instrumentScopes.add(instrumentScopesItem);
-    return this;
-  }
-
-   /**
-   * The resolution strategy used to resolve instruments of transactions/holdings upserted to the portfolios.
-   * @return instrumentScopes
-  **/
-  @jakarta.annotation.Nullable
-  public List<String> getInstrumentScopes() {
-    return instrumentScopes;
-  }
-
-
-  public void setInstrumentScopes(List<String> instrumentScopes) {
-    this.instrumentScopes = instrumentScopes;
-  }
-
-
   public NavTypeDefinition amortisationMethod(String amortisationMethod) {
     
     this.amortisationMethod = amortisationMethod;
@@ -458,7 +425,6 @@ public class NavTypeDefinition {
         Objects.equals(this.holdingRecipeId, navTypeDefinition.holdingRecipeId) &&
         Objects.equals(this.accountingMethod, navTypeDefinition.accountingMethod) &&
         Objects.equals(this.subHoldingKeys, navTypeDefinition.subHoldingKeys) &&
-        Objects.equals(this.instrumentScopes, navTypeDefinition.instrumentScopes) &&
         Objects.equals(this.amortisationMethod, navTypeDefinition.amortisationMethod) &&
         Objects.equals(this.transactionTypeScope, navTypeDefinition.transactionTypeScope) &&
         Objects.equals(this.cashGainLossCalculationDate, navTypeDefinition.cashGainLossCalculationDate);
@@ -470,7 +436,7 @@ public class NavTypeDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, displayName, description, chartOfAccountsId, postingModuleCodes, cleardownModuleCodes, valuationRecipeId, holdingRecipeId, accountingMethod, subHoldingKeys, instrumentScopes, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate);
+    return Objects.hash(code, displayName, description, chartOfAccountsId, postingModuleCodes, cleardownModuleCodes, valuationRecipeId, holdingRecipeId, accountingMethod, subHoldingKeys, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -494,7 +460,6 @@ public class NavTypeDefinition {
     sb.append("    holdingRecipeId: ").append(toIndentedString(holdingRecipeId)).append("\n");
     sb.append("    accountingMethod: ").append(toIndentedString(accountingMethod)).append("\n");
     sb.append("    subHoldingKeys: ").append(toIndentedString(subHoldingKeys)).append("\n");
-    sb.append("    instrumentScopes: ").append(toIndentedString(instrumentScopes)).append("\n");
     sb.append("    amortisationMethod: ").append(toIndentedString(amortisationMethod)).append("\n");
     sb.append("    transactionTypeScope: ").append(toIndentedString(transactionTypeScope)).append("\n");
     sb.append("    cashGainLossCalculationDate: ").append(toIndentedString(cashGainLossCalculationDate)).append("\n");
@@ -530,7 +495,6 @@ public class NavTypeDefinition {
     openapiFields.add("holdingRecipeId");
     openapiFields.add("accountingMethod");
     openapiFields.add("subHoldingKeys");
-    openapiFields.add("instrumentScopes");
     openapiFields.add("amortisationMethod");
     openapiFields.add("transactionTypeScope");
     openapiFields.add("cashGainLossCalculationDate");
@@ -594,10 +558,6 @@ public class NavTypeDefinition {
       // ensure the optional json data is an array if present
       if (jsonObj.get("subHoldingKeys") != null && !jsonObj.get("subHoldingKeys").isJsonNull() && !jsonObj.get("subHoldingKeys").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `subHoldingKeys` to be an array in the JSON string but got `%s`", jsonObj.get("subHoldingKeys").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("instrumentScopes") != null && !jsonObj.get("instrumentScopes").isJsonNull() && !jsonObj.get("instrumentScopes").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `instrumentScopes` to be an array in the JSON string but got `%s`", jsonObj.get("instrumentScopes").toString()));
       }
       if (!jsonObj.get("amortisationMethod").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `amortisationMethod` to be a primitive type in the JSON string but got `%s`", jsonObj.get("amortisationMethod").toString()));

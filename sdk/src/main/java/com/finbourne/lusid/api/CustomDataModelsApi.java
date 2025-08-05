@@ -311,7 +311,7 @@ public class CustomDataModelsApi {
     }
 
     /**
-     * [INTERNAL] BatchAmend: Batch amend Custom Data Models
+     * [EXPERIMENTAL] BatchAmend: Batch amend entities Custom Data Model membership.
      * Add/Remove entities to/from a Custom Data Model in a single operation.     Each amendment request must be keyed by a unique correlation ID. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each amendment in the response.     Note: If using partial failure modes, then it is important to check the response body for failures as any  failures will still return a 200 status code.
      * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial. (required)
      * @param requestBody The payload describing the amendments to make for the given Custom Data Model. (required)
