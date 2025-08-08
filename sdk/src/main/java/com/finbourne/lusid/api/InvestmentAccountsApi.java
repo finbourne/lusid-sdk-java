@@ -76,11 +76,11 @@ public class InvestmentAccountsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    private okhttp3.Call getInvestmentAccountCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
-        return getInvestmentAccountCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getInvestmentAccountCall(String identifierType, String identifierValue, String scope, String identifierScope, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+        return getInvestmentAccountCall(identifierType, identifierValue, scope, identifierScope, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getInvestmentAccountCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getInvestmentAccountCall(String identifierType, String identifierValue, String scope, String identifierScope, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -97,16 +97,23 @@ public class InvestmentAccountsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/investmentaccounts/{idTypeScope}/{idTypeCode}/{code}"
-            .replace("{" + "idTypeScope" + "}", localVarApiClient.escapeString(idTypeScope.toString()))
-            .replace("{" + "idTypeCode" + "}", localVarApiClient.escapeString(idTypeCode.toString()))
-            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+        String localVarPath = "/api/investmentaccounts/{identifierType}/{identifierValue}"
+            .replace("{" + "identifierType" + "}", localVarApiClient.escapeString(identifierType.toString()))
+            .replace("{" + "identifierValue" + "}", localVarApiClient.escapeString(identifierValue.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (scope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("scope", scope));
+        }
+
+        if (identifierScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("identifierScope", identifierScope));
+        }
 
         if (propertyKeys != null) {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
@@ -146,68 +153,75 @@ public class InvestmentAccountsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getInvestmentAccountValidateBeforeCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        // verify the required parameter 'idTypeScope' is set
-        if (idTypeScope == null) {
-            throw new ApiException("Missing the required parameter 'idTypeScope' when calling getInvestmentAccount(Async)");
+    private okhttp3.Call getInvestmentAccountValidateBeforeCall(String identifierType, String identifierValue, String scope, String identifierScope, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'identifierType' is set
+        if (identifierType == null) {
+            throw new ApiException("Missing the required parameter 'identifierType' when calling getInvestmentAccount(Async)");
         }
 
-        // verify the required parameter 'idTypeCode' is set
-        if (idTypeCode == null) {
-            throw new ApiException("Missing the required parameter 'idTypeCode' when calling getInvestmentAccount(Async)");
+        // verify the required parameter 'identifierValue' is set
+        if (identifierValue == null) {
+            throw new ApiException("Missing the required parameter 'identifierValue' when calling getInvestmentAccount(Async)");
         }
 
-        // verify the required parameter 'code' is set
-        if (code == null) {
-            throw new ApiException("Missing the required parameter 'code' when calling getInvestmentAccount(Async)");
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getInvestmentAccount(Async)");
         }
 
-        return getInvestmentAccountCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback, opts);
+        // verify the required parameter 'identifierScope' is set
+        if (identifierScope == null) {
+            throw new ApiException("Missing the required parameter 'identifierScope' when calling getInvestmentAccount(Async)");
+        }
+
+        return getInvestmentAccountCall(identifierType, identifierValue, scope, identifierScope, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback, opts);
 
     }
 
 
-    private ApiResponse<InvestmentAccount> getInvestmentAccountWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds) throws ApiException {
-        okhttp3.Call localVarCall = getInvestmentAccountValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, null, new ConfigurationOptions());
+    private ApiResponse<InvestmentAccount> getInvestmentAccountWithHttpInfo(String identifierType, String identifierValue, String scope, String identifierScope, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds) throws ApiException {
+        okhttp3.Call localVarCall = getInvestmentAccountValidateBeforeCall(identifierType, identifierValue, scope, identifierScope, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<InvestmentAccount>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<InvestmentAccount> getInvestmentAccountWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getInvestmentAccountValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, null, opts);
+    private ApiResponse<InvestmentAccount> getInvestmentAccountWithHttpInfo(String identifierType, String identifierValue, String scope, String identifierScope, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getInvestmentAccountValidateBeforeCall(identifierType, identifierValue, scope, identifierScope, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, null, opts);
         Type localVarReturnType = new TypeToken<InvestmentAccount>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getInvestmentAccountAsync(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback<InvestmentAccount> _callback) throws ApiException {
+    private okhttp3.Call getInvestmentAccountAsync(String identifierType, String identifierValue, String scope, String identifierScope, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback<InvestmentAccount> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getInvestmentAccountValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getInvestmentAccountValidateBeforeCall(identifierType, identifierValue, scope, identifierScope, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<InvestmentAccount>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getInvestmentAccountAsync(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback<InvestmentAccount> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getInvestmentAccountAsync(String identifierType, String identifierValue, String scope, String identifierScope, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback<InvestmentAccount> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getInvestmentAccountValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback, opts);
+        okhttp3.Call localVarCall = getInvestmentAccountValidateBeforeCall(identifierType, identifierValue, scope, identifierScope, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback, opts);
         Type localVarReturnType = new TypeToken<InvestmentAccount>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
     public class APIgetInvestmentAccountRequest {
-        private final String idTypeScope;
-        private final String idTypeCode;
-        private final String code;
+        private final String identifierType;
+        private final String identifierValue;
+        private final String scope;
+        private final String identifierScope;
         private List<String> propertyKeys;
         private String effectiveAt;
         private OffsetDateTime asAt;
         private List<String> relationshipDefinitionIds;
 
-        private APIgetInvestmentAccountRequest(String idTypeScope, String idTypeCode, String code) {
-            this.idTypeScope = idTypeScope;
-            this.idTypeCode = idTypeCode;
-            this.code = code;
+        private APIgetInvestmentAccountRequest(String identifierType, String identifierValue, String scope, String identifierScope) {
+            this.identifierType = identifierType;
+            this.identifierValue = identifierValue;
+            this.scope = scope;
+            this.identifierScope = identifierScope;
         }
 
         /**
@@ -264,7 +278,7 @@ public class InvestmentAccountsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getInvestmentAccountCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback);
+            return getInvestmentAccountCall(identifierType, identifierValue, scope, identifierScope, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback);
         }
 
         /**
@@ -280,7 +294,7 @@ public class InvestmentAccountsApi {
          </table>
          */
         public InvestmentAccount execute() throws ApiException {
-            ApiResponse<InvestmentAccount> localVarResp = getInvestmentAccountWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds);
+            ApiResponse<InvestmentAccount> localVarResp = getInvestmentAccountWithHttpInfo(identifierType, identifierValue, scope, identifierScope, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds);
             return localVarResp.getData();
         }
 
@@ -297,7 +311,7 @@ public class InvestmentAccountsApi {
          </table>
          */
         public InvestmentAccount execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<InvestmentAccount> localVarResp = getInvestmentAccountWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, opts);
+            ApiResponse<InvestmentAccount> localVarResp = getInvestmentAccountWithHttpInfo(identifierType, identifierValue, scope, identifierScope, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, opts);
             return localVarResp.getData();
         }
 
@@ -314,7 +328,7 @@ public class InvestmentAccountsApi {
          </table>
          */
         public ApiResponse<InvestmentAccount> executeWithHttpInfo() throws ApiException {
-            return getInvestmentAccountWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds);
+            return getInvestmentAccountWithHttpInfo(identifierType, identifierValue, scope, identifierScope, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds);
         }
 
         /**
@@ -330,7 +344,7 @@ public class InvestmentAccountsApi {
          </table>
          */
         public ApiResponse<InvestmentAccount> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getInvestmentAccountWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, opts);
+            return getInvestmentAccountWithHttpInfo(identifierType, identifierValue, scope, identifierScope, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, opts);
         }
 
         /**
@@ -347,7 +361,7 @@ public class InvestmentAccountsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<InvestmentAccount> _callback) throws ApiException {
-            return getInvestmentAccountAsync(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback);
+            return getInvestmentAccountAsync(identifierType, identifierValue, scope, identifierScope, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback);
         }
 
         /**
@@ -364,16 +378,17 @@ public class InvestmentAccountsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<InvestmentAccount> _callback, ConfigurationOptions opts) throws ApiException {
-            return getInvestmentAccountAsync(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback, opts);
+            return getInvestmentAccountAsync(identifierType, identifierValue, scope, identifierScope, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback, opts);
         }
     }
 
     /**
      * [EXPERIMENTAL] GetInvestmentAccount: Get Investment Account
      * Retrieve the definition of an investment account.
-     * @param idTypeScope Scope of the investment account identifier type. (required)
-     * @param idTypeCode Code of the investment account identifier type. (required)
-     * @param code Code of the investment account under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the investment account. (required)
+     * @param identifierType Code of the investment account identifier type. (required)
+     * @param identifierValue Code of the investment account under specified identifier type&#39;s scope and code. (required)
+     * @param scope The scope of the investment account entity. (required)
+     * @param identifierScope Scope of the investment account identifier type. (required)
      * @return APIgetInvestmentAccountRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -383,8 +398,8 @@ public class InvestmentAccountsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIgetInvestmentAccountRequest getInvestmentAccount(String idTypeScope, String idTypeCode, String code) {
-        return new APIgetInvestmentAccountRequest(idTypeScope, idTypeCode, code);
+    public APIgetInvestmentAccountRequest getInvestmentAccount(String identifierType, String identifierValue, String scope, String identifierScope) {
+        return new APIgetInvestmentAccountRequest(identifierType, identifierValue, scope, identifierScope);
     }
     private okhttp3.Call listAllInvestmentAccountsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
         return listAllInvestmentAccountsCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds,  _callback, new ConfigurationOptions());

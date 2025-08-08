@@ -56,6 +56,10 @@ public class AccountHolderIdentifier {
   @SerializedName(SERIALIZED_NAME_KEY)
   private String key;
 
+  public static final String SERIALIZED_NAME_SCOPE = "scope";
+  @SerializedName(SERIALIZED_NAME_SCOPE)
+  private String scope;
+
   public static final String SERIALIZED_NAME_IDENTIFIERS = "identifiers";
   @SerializedName(SERIALIZED_NAME_IDENTIFIERS)
   private Map<String, Property> identifiers = new HashMap<>();
@@ -81,6 +85,27 @@ public class AccountHolderIdentifier {
 
   public void setKey(String key) {
     this.key = key;
+  }
+
+
+  public AccountHolderIdentifier scope(String scope) {
+    
+    this.scope = scope;
+    return this;
+  }
+
+   /**
+   * The scope in which the Investor Record lies.
+   * @return scope
+  **/
+  @jakarta.annotation.Nonnull
+  public String getScope() {
+    return scope;
+  }
+
+
+  public void setScope(String scope) {
+    this.scope = scope;
   }
 
 
@@ -124,12 +149,13 @@ public class AccountHolderIdentifier {
     }
     AccountHolderIdentifier accountHolderIdentifier = (AccountHolderIdentifier) o;
     return Objects.equals(this.key, accountHolderIdentifier.key) &&
+        Objects.equals(this.scope, accountHolderIdentifier.scope) &&
         Objects.equals(this.identifiers, accountHolderIdentifier.identifiers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(key, identifiers);
+    return Objects.hash(key, scope, identifiers);
   }
 
   @Override
@@ -137,6 +163,7 @@ public class AccountHolderIdentifier {
     StringBuilder sb = new StringBuilder();
     sb.append("class AccountHolderIdentifier {\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
+    sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("    identifiers: ").append(toIndentedString(identifiers)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -161,11 +188,13 @@ public class AccountHolderIdentifier {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("key");
+    openapiFields.add("scope");
     openapiFields.add("identifiers");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("key");
+    openapiRequiredFields.add("scope");
     openapiRequiredFields.add("identifiers");
   }
 
@@ -191,6 +220,9 @@ public class AccountHolderIdentifier {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("key").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `key` to be a primitive type in the JSON string but got `%s`", jsonObj.get("key").toString()));
+      }
+      if (!jsonObj.get("scope").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
       }
   }
 

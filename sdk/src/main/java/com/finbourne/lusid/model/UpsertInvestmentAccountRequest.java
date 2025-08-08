@@ -57,13 +57,13 @@ import com.finbourne.lusid.JSON;
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UpsertInvestmentAccountRequest {
+  public static final String SERIALIZED_NAME_SCOPE = "scope";
+  @SerializedName(SERIALIZED_NAME_SCOPE)
+  private String scope;
+
   public static final String SERIALIZED_NAME_IDENTIFIERS = "identifiers";
   @SerializedName(SERIALIZED_NAME_IDENTIFIERS)
   private Map<String, Property> identifiers = new HashMap<>();
-
-  public static final String SERIALIZED_NAME_PROPERTIES = "properties";
-  @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private Map<String, Property> properties;
 
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
@@ -85,8 +85,33 @@ public class UpsertInvestmentAccountRequest {
   @SerializedName(SERIALIZED_NAME_INVESTMENT_PORTFOLIOS)
   private List<InvestmentPortfolioIdentifier> investmentPortfolios;
 
+  public static final String SERIALIZED_NAME_PROPERTIES = "properties";
+  @SerializedName(SERIALIZED_NAME_PROPERTIES)
+  private Map<String, Property> properties;
+
   public UpsertInvestmentAccountRequest() {
   }
+
+  public UpsertInvestmentAccountRequest scope(String scope) {
+    
+    this.scope = scope;
+    return this;
+  }
+
+   /**
+   * The scope in which the Investment Account lies.
+   * @return scope
+  **/
+  @jakarta.annotation.Nonnull
+  public String getScope() {
+    return scope;
+  }
+
+
+  public void setScope(String scope) {
+    this.scope = scope;
+  }
+
 
   public UpsertInvestmentAccountRequest identifiers(Map<String, Property> identifiers) {
     
@@ -114,35 +139,6 @@ public class UpsertInvestmentAccountRequest {
 
   public void setIdentifiers(Map<String, Property> identifiers) {
     this.identifiers = identifiers;
-  }
-
-
-  public UpsertInvestmentAccountRequest properties(Map<String, Property> properties) {
-    
-    this.properties = properties;
-    return this;
-  }
-
-  public UpsertInvestmentAccountRequest putPropertiesItem(String key, Property propertiesItem) {
-    if (this.properties == null) {
-      this.properties = new HashMap<>();
-    }
-    this.properties.put(key, propertiesItem);
-    return this;
-  }
-
-   /**
-   * A set of properties associated to the Investment Account.
-   * @return properties
-  **/
-  @jakarta.annotation.Nullable
-  public Map<String, Property> getProperties() {
-    return properties;
-  }
-
-
-  public void setProperties(Map<String, Property> properties) {
-    this.properties = properties;
   }
 
 
@@ -267,6 +263,35 @@ public class UpsertInvestmentAccountRequest {
   }
 
 
+  public UpsertInvestmentAccountRequest properties(Map<String, Property> properties) {
+    
+    this.properties = properties;
+    return this;
+  }
+
+  public UpsertInvestmentAccountRequest putPropertiesItem(String key, Property propertiesItem) {
+    if (this.properties == null) {
+      this.properties = new HashMap<>();
+    }
+    this.properties.put(key, propertiesItem);
+    return this;
+  }
+
+   /**
+   * A set of properties associated to the Investment Account.
+   * @return properties
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, Property> getProperties() {
+    return properties;
+  }
+
+
+  public void setProperties(Map<String, Property> properties) {
+    this.properties = properties;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -277,13 +302,14 @@ public class UpsertInvestmentAccountRequest {
       return false;
     }
     UpsertInvestmentAccountRequest upsertInvestmentAccountRequest = (UpsertInvestmentAccountRequest) o;
-    return Objects.equals(this.identifiers, upsertInvestmentAccountRequest.identifiers) &&
-        Objects.equals(this.properties, upsertInvestmentAccountRequest.properties) &&
+    return Objects.equals(this.scope, upsertInvestmentAccountRequest.scope) &&
+        Objects.equals(this.identifiers, upsertInvestmentAccountRequest.identifiers) &&
         Objects.equals(this.displayName, upsertInvestmentAccountRequest.displayName) &&
         Objects.equals(this.description, upsertInvestmentAccountRequest.description) &&
         Objects.equals(this.accountType, upsertInvestmentAccountRequest.accountType) &&
         Objects.equals(this.accountHolders, upsertInvestmentAccountRequest.accountHolders) &&
-        Objects.equals(this.investmentPortfolios, upsertInvestmentAccountRequest.investmentPortfolios);
+        Objects.equals(this.investmentPortfolios, upsertInvestmentAccountRequest.investmentPortfolios) &&
+        Objects.equals(this.properties, upsertInvestmentAccountRequest.properties);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -292,7 +318,7 @@ public class UpsertInvestmentAccountRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(identifiers, properties, displayName, description, accountType, accountHolders, investmentPortfolios);
+    return Objects.hash(scope, identifiers, displayName, description, accountType, accountHolders, investmentPortfolios, properties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -306,13 +332,14 @@ public class UpsertInvestmentAccountRequest {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpsertInvestmentAccountRequest {\n");
+    sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("    identifiers: ").append(toIndentedString(identifiers)).append("\n");
-    sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    accountType: ").append(toIndentedString(accountType)).append("\n");
     sb.append("    accountHolders: ").append(toIndentedString(accountHolders)).append("\n");
     sb.append("    investmentPortfolios: ").append(toIndentedString(investmentPortfolios)).append("\n");
+    sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -335,16 +362,18 @@ public class UpsertInvestmentAccountRequest {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("scope");
     openapiFields.add("identifiers");
-    openapiFields.add("properties");
     openapiFields.add("displayName");
     openapiFields.add("description");
     openapiFields.add("accountType");
     openapiFields.add("accountHolders");
     openapiFields.add("investmentPortfolios");
+    openapiFields.add("properties");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("scope");
     openapiRequiredFields.add("identifiers");
     openapiRequiredFields.add("displayName");
     openapiRequiredFields.add("accountType");
@@ -370,6 +399,9 @@ public class UpsertInvestmentAccountRequest {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (!jsonObj.get("scope").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
+      }
       if (!jsonObj.get("displayName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
       }

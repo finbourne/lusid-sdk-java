@@ -4,8 +4,8 @@ All URIs are relative to *https://www.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteInvestorRecord**](InvestorRecordsApi.md#deleteInvestorRecord) | **DELETE** /api/investorrecords/{idTypeScope}/{idTypeCode}/{code} | [EARLY ACCESS] DeleteInvestorRecord: Delete Investor Record |
-| [**getInvestorRecord**](InvestorRecordsApi.md#getInvestorRecord) | **GET** /api/investorrecords/{idTypeScope}/{idTypeCode}/{code} | [EARLY ACCESS] GetInvestorRecord: Get Investor Record |
+| [**deleteInvestorRecord**](InvestorRecordsApi.md#deleteInvestorRecord) | **DELETE** /api/investorrecords/{identifierType}/{identifierValue} | [EARLY ACCESS] DeleteInvestorRecord: Delete Investor Record |
+| [**getInvestorRecord**](InvestorRecordsApi.md#getInvestorRecord) | **GET** /api/investorrecords/{identifierType}/{identifierValue} | [EARLY ACCESS] GetInvestorRecord: Get Investor Record |
 | [**listAllInvestorRecords**](InvestorRecordsApi.md#listAllInvestorRecords) | **GET** /api/investorrecords | [EARLY ACCESS] ListAllInvestorRecords: List Investor Records |
 | [**upsertInvestorRecords**](InvestorRecordsApi.md#upsertInvestorRecords) | **POST** /api/investorrecords/$batchUpsert | [EARLY ACCESS] UpsertInvestorRecords: Upsert investor records |
 
@@ -13,7 +13,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 ## deleteInvestorRecord
 
-> DeletedEntityResponse deleteInvestorRecord(idTypeScope, idTypeCode, code)
+> DeletedEntityResponse deleteInvestorRecord(identifierType, identifierValue, scope, identifierScope)
 
 [EARLY ACCESS] DeleteInvestorRecord: Delete Investor Record
 
@@ -58,14 +58,15 @@ public class InvestorRecordsApiExample {
         // InvestorRecordsApi apiInstance = apiFactory.build(InvestorRecordsApi.class);
 
         InvestorRecordsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InvestorRecordsApi.class);
-        String idTypeScope = "idTypeScope_example"; // String | The scope of the investor record identifier type.
-        String idTypeCode = "idTypeCode_example"; // String | The code of the investor record identifier type.
-        String code = "code_example"; // String | Code of the investor record under specified identifier type's scope and code. This together with defined   identifier type uniquely identifies the investor record to delete.
+        String identifierType = "identifierType_example"; // String | Code of the investor record identifier type.
+        String identifierValue = "identifierValue_example"; // String | Code of the investor record under specified identifier type's scope and code.
+        String scope = "scope_example"; // String | The scope of the investor record entity.
+        String identifierScope = "identifierScope_example"; // String | Scope of the investor record identifier type.
         try {
             // uncomment the below to set overrides at the request level
-            // DeletedEntityResponse result = apiInstance.deleteInvestorRecord(idTypeScope, idTypeCode, code).execute(opts);
+            // DeletedEntityResponse result = apiInstance.deleteInvestorRecord(identifierType, identifierValue, scope, identifierScope).execute(opts);
 
-            DeletedEntityResponse result = apiInstance.deleteInvestorRecord(idTypeScope, idTypeCode, code).execute();
+            DeletedEntityResponse result = apiInstance.deleteInvestorRecord(identifierType, identifierValue, scope, identifierScope).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling InvestorRecordsApi#deleteInvestorRecord");
@@ -82,9 +83,10 @@ public class InvestorRecordsApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **idTypeScope** | **String**| The scope of the investor record identifier type. | |
-| **idTypeCode** | **String**| The code of the investor record identifier type. | |
-| **code** | **String**| Code of the investor record under specified identifier type&#39;s scope and code. This together with defined   identifier type uniquely identifies the investor record to delete. | |
+| **identifierType** | **String**| Code of the investor record identifier type. | |
+| **identifierValue** | **String**| Code of the investor record under specified identifier type&#39;s scope and code. | |
+| **scope** | **String**| The scope of the investor record entity. | |
+| **identifierScope** | **String**| Scope of the investor record identifier type. | |
 
 ### Return type
 
@@ -108,7 +110,7 @@ public class InvestorRecordsApiExample {
 
 ## getInvestorRecord
 
-> InvestorRecord getInvestorRecord(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds)
+> InvestorRecord getInvestorRecord(identifierType, identifierValue, scope, identifierScope, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds)
 
 [EARLY ACCESS] GetInvestorRecord: Get Investor Record
 
@@ -153,18 +155,19 @@ public class InvestorRecordsApiExample {
         // InvestorRecordsApi apiInstance = apiFactory.build(InvestorRecordsApi.class);
 
         InvestorRecordsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InvestorRecordsApi.class);
-        String idTypeScope = "idTypeScope_example"; // String | Scope of the investor record identifier type.
-        String idTypeCode = "idTypeCode_example"; // String | Code of the investor record identifier type.
-        String code = "code_example"; // String | Code of the investor record under specified identifier type's scope and code. This together with stated identifier type uniquely   identifies the investor record.
+        String identifierType = "identifierType_example"; // String | Code of the investor record identifier type.
+        String identifierValue = "identifierValue_example"; // String | Code of the investor record under specified identifier type's scope and code.
+        String scope = "scope_example"; // String | The scope of the investor record entity.
+        String identifierScope = "identifierScope_example"; // String | Scope of the investor record identifier type.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys or identifier types (as property keys) from the \"InvestorRecord\" domain   to include for found investor record, or from any domain that supports relationships to decorate onto related entities.   These take the format {domain}/{scope}/{code} e.g. \"InvestorRecord/ContactDetails/Address\".
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the investor record. Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the investor record. Defaults to return the latest version of the investor record if not specified.
         List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto the investor record in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
         try {
             // uncomment the below to set overrides at the request level
-            // InvestorRecord result = apiInstance.getInvestorRecord(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds).execute(opts);
+            // InvestorRecord result = apiInstance.getInvestorRecord(identifierType, identifierValue, scope, identifierScope, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds).execute(opts);
 
-            InvestorRecord result = apiInstance.getInvestorRecord(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds).execute();
+            InvestorRecord result = apiInstance.getInvestorRecord(identifierType, identifierValue, scope, identifierScope, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling InvestorRecordsApi#getInvestorRecord");
@@ -181,9 +184,10 @@ public class InvestorRecordsApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **idTypeScope** | **String**| Scope of the investor record identifier type. | |
-| **idTypeCode** | **String**| Code of the investor record identifier type. | |
-| **code** | **String**| Code of the investor record under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the investor record. | |
+| **identifierType** | **String**| Code of the investor record identifier type. | |
+| **identifierValue** | **String**| Code of the investor record under specified identifier type&#39;s scope and code. | |
+| **scope** | **String**| The scope of the investor record entity. | |
+| **identifierScope** | **String**| Scope of the investor record identifier type. | |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys or identifier types (as property keys) from the \&quot;InvestorRecord\&quot; domain   to include for found investor record, or from any domain that supports relationships to decorate onto related entities.   These take the format {domain}/{scope}/{code} e.g. \&quot;InvestorRecord/ContactDetails/Address\&quot;. | [optional] |
 | **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the investor record. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the investor record. Defaults to return the latest version of the investor record if not specified. | [optional] |

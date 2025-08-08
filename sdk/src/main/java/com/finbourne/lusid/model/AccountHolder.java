@@ -58,6 +58,10 @@ public class AccountHolder {
   @SerializedName(SERIALIZED_NAME_KEY)
   private String key;
 
+  public static final String SERIALIZED_NAME_SCOPE = "scope";
+  @SerializedName(SERIALIZED_NAME_SCOPE)
+  private String scope;
+
   public static final String SERIALIZED_NAME_IDENTIFIERS = "identifiers";
   @SerializedName(SERIALIZED_NAME_IDENTIFIERS)
   private Map<String, Property> identifiers;
@@ -91,6 +95,27 @@ public class AccountHolder {
 
   public void setKey(String key) {
     this.key = key;
+  }
+
+
+  public AccountHolder scope(String scope) {
+    
+    this.scope = scope;
+    return this;
+  }
+
+   /**
+   * The scope in which the Investor Record lies.
+   * @return scope
+  **/
+  @jakarta.annotation.Nullable
+  public String getScope() {
+    return scope;
+  }
+
+
+  public void setScope(String scope) {
+    this.scope = scope;
   }
 
 
@@ -176,6 +201,7 @@ public class AccountHolder {
     }
     AccountHolder accountHolder = (AccountHolder) o;
     return Objects.equals(this.key, accountHolder.key) &&
+        Objects.equals(this.scope, accountHolder.scope) &&
         Objects.equals(this.identifiers, accountHolder.identifiers) &&
         Objects.equals(this.entityUniqueId, accountHolder.entityUniqueId) &&
         Objects.equals(this.investorRecord, accountHolder.investorRecord);
@@ -187,7 +213,7 @@ public class AccountHolder {
 
   @Override
   public int hashCode() {
-    return Objects.hash(key, identifiers, entityUniqueId, investorRecord);
+    return Objects.hash(key, scope, identifiers, entityUniqueId, investorRecord);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -202,6 +228,7 @@ public class AccountHolder {
     StringBuilder sb = new StringBuilder();
     sb.append("class AccountHolder {\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
+    sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("    identifiers: ").append(toIndentedString(identifiers)).append("\n");
     sb.append("    entityUniqueId: ").append(toIndentedString(entityUniqueId)).append("\n");
     sb.append("    investorRecord: ").append(toIndentedString(investorRecord)).append("\n");
@@ -228,6 +255,7 @@ public class AccountHolder {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("key");
+    openapiFields.add("scope");
     openapiFields.add("identifiers");
     openapiFields.add("entityUniqueId");
     openapiFields.add("investorRecord");
@@ -251,6 +279,9 @@ public class AccountHolder {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("key") != null && !jsonObj.get("key").isJsonNull()) && !jsonObj.get("key").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `key` to be a primitive type in the JSON string but got `%s`", jsonObj.get("key").toString()));
+      }
+      if ((jsonObj.get("scope") != null && !jsonObj.get("scope").isJsonNull()) && !jsonObj.get("scope").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
       }
       if ((jsonObj.get("entityUniqueId") != null && !jsonObj.get("entityUniqueId").isJsonNull()) && !jsonObj.get("entityUniqueId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `entityUniqueId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("entityUniqueId").toString()));

@@ -157,7 +157,7 @@ public class LoanPrincipalRepaymentEvent extends InstrumentEvent {
   }
 
    /**
-   * Fraction of the outstanding settled principal balance to be repaid. Must be between 0 and 1, inclusive.  Defaults to 1 if not set. Ignored if the field Amount is set to a value different than zero.  Note that if there is a repayment on an unsettled trade and the repayment is specified as a fraction,  this repayment will not be applied to the unsettled position, as the fraction is always applied to  the settled balance only.
+   * Fraction of the outstanding settled principal balance to be repaid. Must be between 0 and 1, inclusive.  Defaults to 1 if not set. Ignored if the field Amount is set to a value different than zero.
    * @return fraction
   **/
   @jakarta.annotation.Nullable

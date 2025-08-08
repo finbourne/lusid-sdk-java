@@ -60,9 +60,13 @@ import com.finbourne.lusid.JSON;
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class InvestorRecord {
-  public static final String SERIALIZED_NAME_LUSID_INVESTOR_RECORD_ID = "lusidInvestorRecordId";
-  @SerializedName(SERIALIZED_NAME_LUSID_INVESTOR_RECORD_ID)
-  private String lusidInvestorRecordId;
+  public static final String SERIALIZED_NAME_SCOPE = "scope";
+  @SerializedName(SERIALIZED_NAME_SCOPE)
+  private String scope;
+
+  public static final String SERIALIZED_NAME_IDENTIFIERS = "identifiers";
+  @SerializedName(SERIALIZED_NAME_IDENTIFIERS)
+  private Map<String, Property> identifiers;
 
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
@@ -76,9 +80,9 @@ public class InvestorRecord {
   @SerializedName(SERIALIZED_NAME_INVESTOR)
   private Investor investor;
 
-  public static final String SERIALIZED_NAME_IDENTIFIERS = "identifiers";
-  @SerializedName(SERIALIZED_NAME_IDENTIFIERS)
-  private Map<String, Property> identifiers;
+  public static final String SERIALIZED_NAME_LUSID_INVESTOR_RECORD_ID = "lusidInvestorRecordId";
+  @SerializedName(SERIALIZED_NAME_LUSID_INVESTOR_RECORD_ID)
+  private String lusidInvestorRecordId;
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
@@ -103,24 +107,53 @@ public class InvestorRecord {
   public InvestorRecord() {
   }
 
-  public InvestorRecord lusidInvestorRecordId(String lusidInvestorRecordId) {
+  public InvestorRecord scope(String scope) {
     
-    this.lusidInvestorRecordId = lusidInvestorRecordId;
+    this.scope = scope;
     return this;
   }
 
    /**
-   * The unique LUSID Investor Record Identifier of the Investor Record.
-   * @return lusidInvestorRecordId
+   * The scope in which the Investor Record lies.
+   * @return scope
   **/
   @jakarta.annotation.Nullable
-  public String getLusidInvestorRecordId() {
-    return lusidInvestorRecordId;
+  public String getScope() {
+    return scope;
   }
 
 
-  public void setLusidInvestorRecordId(String lusidInvestorRecordId) {
-    this.lusidInvestorRecordId = lusidInvestorRecordId;
+  public void setScope(String scope) {
+    this.scope = scope;
+  }
+
+
+  public InvestorRecord identifiers(Map<String, Property> identifiers) {
+    
+    this.identifiers = identifiers;
+    return this;
+  }
+
+  public InvestorRecord putIdentifiersItem(String key, Property identifiersItem) {
+    if (this.identifiers == null) {
+      this.identifiers = new HashMap<>();
+    }
+    this.identifiers.put(key, identifiersItem);
+    return this;
+  }
+
+   /**
+   * Unique client-defined identifiers of the Investor Record.
+   * @return identifiers
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, Property> getIdentifiers() {
+    return identifiers;
+  }
+
+
+  public void setIdentifiers(Map<String, Property> identifiers) {
+    this.identifiers = identifiers;
   }
 
 
@@ -187,32 +220,24 @@ public class InvestorRecord {
   }
 
 
-  public InvestorRecord identifiers(Map<String, Property> identifiers) {
+  public InvestorRecord lusidInvestorRecordId(String lusidInvestorRecordId) {
     
-    this.identifiers = identifiers;
-    return this;
-  }
-
-  public InvestorRecord putIdentifiersItem(String key, Property identifiersItem) {
-    if (this.identifiers == null) {
-      this.identifiers = new HashMap<>();
-    }
-    this.identifiers.put(key, identifiersItem);
+    this.lusidInvestorRecordId = lusidInvestorRecordId;
     return this;
   }
 
    /**
-   * Unique client-defined identifiers of the Investor Record.
-   * @return identifiers
+   * The unique LUSID Investor Record Identifier of the Investor Record.
+   * @return lusidInvestorRecordId
   **/
   @jakarta.annotation.Nullable
-  public Map<String, Property> getIdentifiers() {
-    return identifiers;
+  public String getLusidInvestorRecordId() {
+    return lusidInvestorRecordId;
   }
 
 
-  public void setIdentifiers(Map<String, Property> identifiers) {
-    this.identifiers = identifiers;
+  public void setLusidInvestorRecordId(String lusidInvestorRecordId) {
+    this.lusidInvestorRecordId = lusidInvestorRecordId;
   }
 
 
@@ -355,11 +380,12 @@ public class InvestorRecord {
       return false;
     }
     InvestorRecord investorRecord = (InvestorRecord) o;
-    return Objects.equals(this.lusidInvestorRecordId, investorRecord.lusidInvestorRecordId) &&
+    return Objects.equals(this.scope, investorRecord.scope) &&
+        Objects.equals(this.identifiers, investorRecord.identifiers) &&
         Objects.equals(this.displayName, investorRecord.displayName) &&
         Objects.equals(this.description, investorRecord.description) &&
         Objects.equals(this.investor, investorRecord.investor) &&
-        Objects.equals(this.identifiers, investorRecord.identifiers) &&
+        Objects.equals(this.lusidInvestorRecordId, investorRecord.lusidInvestorRecordId) &&
         Objects.equals(this.properties, investorRecord.properties) &&
         Objects.equals(this.relationships, investorRecord.relationships) &&
         Objects.equals(this.href, investorRecord.href) &&
@@ -373,7 +399,7 @@ public class InvestorRecord {
 
   @Override
   public int hashCode() {
-    return Objects.hash(lusidInvestorRecordId, displayName, description, investor, identifiers, properties, relationships, href, version, links);
+    return Objects.hash(scope, identifiers, displayName, description, investor, lusidInvestorRecordId, properties, relationships, href, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -387,11 +413,12 @@ public class InvestorRecord {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InvestorRecord {\n");
-    sb.append("    lusidInvestorRecordId: ").append(toIndentedString(lusidInvestorRecordId)).append("\n");
+    sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
+    sb.append("    identifiers: ").append(toIndentedString(identifiers)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    investor: ").append(toIndentedString(investor)).append("\n");
-    sb.append("    identifiers: ").append(toIndentedString(identifiers)).append("\n");
+    sb.append("    lusidInvestorRecordId: ").append(toIndentedString(lusidInvestorRecordId)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    relationships: ").append(toIndentedString(relationships)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
@@ -419,11 +446,12 @@ public class InvestorRecord {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("lusidInvestorRecordId");
+    openapiFields.add("scope");
+    openapiFields.add("identifiers");
     openapiFields.add("displayName");
     openapiFields.add("description");
     openapiFields.add("investor");
-    openapiFields.add("identifiers");
+    openapiFields.add("lusidInvestorRecordId");
     openapiFields.add("properties");
     openapiFields.add("relationships");
     openapiFields.add("href");
@@ -447,8 +475,8 @@ public class InvestorRecord {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("lusidInvestorRecordId") != null && !jsonObj.get("lusidInvestorRecordId").isJsonNull()) && !jsonObj.get("lusidInvestorRecordId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `lusidInvestorRecordId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lusidInvestorRecordId").toString()));
+      if ((jsonObj.get("scope") != null && !jsonObj.get("scope").isJsonNull()) && !jsonObj.get("scope").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
       }
       if ((jsonObj.get("displayName") != null && !jsonObj.get("displayName").isJsonNull()) && !jsonObj.get("displayName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
@@ -459,6 +487,9 @@ public class InvestorRecord {
       // validate the optional field `investor`
       if (jsonObj.get("investor") != null && !jsonObj.get("investor").isJsonNull()) {
         Investor.validateJsonElement(jsonObj.get("investor"));
+      }
+      if ((jsonObj.get("lusidInvestorRecordId") != null && !jsonObj.get("lusidInvestorRecordId").isJsonNull()) && !jsonObj.get("lusidInvestorRecordId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `lusidInvestorRecordId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lusidInvestorRecordId").toString()));
       }
       if (jsonObj.get("relationships") != null && !jsonObj.get("relationships").isJsonNull()) {
         JsonArray jsonArrayrelationships = jsonObj.getAsJsonArray("relationships");

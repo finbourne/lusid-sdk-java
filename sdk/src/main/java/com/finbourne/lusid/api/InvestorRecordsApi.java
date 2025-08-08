@@ -77,11 +77,11 @@ public class InvestorRecordsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    private okhttp3.Call deleteInvestorRecordCall(String idTypeScope, String idTypeCode, String code, final ApiCallback _callback) throws ApiException {
-        return deleteInvestorRecordCall(idTypeScope, idTypeCode, code,  _callback, new ConfigurationOptions());
+    private okhttp3.Call deleteInvestorRecordCall(String identifierType, String identifierValue, String scope, String identifierScope, final ApiCallback _callback) throws ApiException {
+        return deleteInvestorRecordCall(identifierType, identifierValue, scope, identifierScope,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call deleteInvestorRecordCall(String idTypeScope, String idTypeCode, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call deleteInvestorRecordCall(String identifierType, String identifierValue, String scope, String identifierScope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -98,16 +98,23 @@ public class InvestorRecordsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/investorrecords/{idTypeScope}/{idTypeCode}/{code}"
-            .replace("{" + "idTypeScope" + "}", localVarApiClient.escapeString(idTypeScope.toString()))
-            .replace("{" + "idTypeCode" + "}", localVarApiClient.escapeString(idTypeCode.toString()))
-            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+        String localVarPath = "/api/investorrecords/{identifierType}/{identifierValue}"
+            .replace("{" + "identifierType" + "}", localVarApiClient.escapeString(identifierType.toString()))
+            .replace("{" + "identifierValue" + "}", localVarApiClient.escapeString(identifierValue.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (scope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("scope", scope));
+        }
+
+        if (identifierScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("identifierScope", identifierScope));
+        }
 
         final String[] localVarAccepts = {
             "text/plain",
@@ -131,64 +138,71 @@ public class InvestorRecordsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteInvestorRecordValidateBeforeCall(String idTypeScope, String idTypeCode, String code, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        // verify the required parameter 'idTypeScope' is set
-        if (idTypeScope == null) {
-            throw new ApiException("Missing the required parameter 'idTypeScope' when calling deleteInvestorRecord(Async)");
+    private okhttp3.Call deleteInvestorRecordValidateBeforeCall(String identifierType, String identifierValue, String scope, String identifierScope, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'identifierType' is set
+        if (identifierType == null) {
+            throw new ApiException("Missing the required parameter 'identifierType' when calling deleteInvestorRecord(Async)");
         }
 
-        // verify the required parameter 'idTypeCode' is set
-        if (idTypeCode == null) {
-            throw new ApiException("Missing the required parameter 'idTypeCode' when calling deleteInvestorRecord(Async)");
+        // verify the required parameter 'identifierValue' is set
+        if (identifierValue == null) {
+            throw new ApiException("Missing the required parameter 'identifierValue' when calling deleteInvestorRecord(Async)");
         }
 
-        // verify the required parameter 'code' is set
-        if (code == null) {
-            throw new ApiException("Missing the required parameter 'code' when calling deleteInvestorRecord(Async)");
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling deleteInvestorRecord(Async)");
         }
 
-        return deleteInvestorRecordCall(idTypeScope, idTypeCode, code, _callback, opts);
+        // verify the required parameter 'identifierScope' is set
+        if (identifierScope == null) {
+            throw new ApiException("Missing the required parameter 'identifierScope' when calling deleteInvestorRecord(Async)");
+        }
+
+        return deleteInvestorRecordCall(identifierType, identifierValue, scope, identifierScope, _callback, opts);
 
     }
 
 
-    private ApiResponse<DeletedEntityResponse> deleteInvestorRecordWithHttpInfo(String idTypeScope, String idTypeCode, String code) throws ApiException {
-        okhttp3.Call localVarCall = deleteInvestorRecordValidateBeforeCall(idTypeScope, idTypeCode, code, null, new ConfigurationOptions());
+    private ApiResponse<DeletedEntityResponse> deleteInvestorRecordWithHttpInfo(String identifierType, String identifierValue, String scope, String identifierScope) throws ApiException {
+        okhttp3.Call localVarCall = deleteInvestorRecordValidateBeforeCall(identifierType, identifierValue, scope, identifierScope, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<DeletedEntityResponse> deleteInvestorRecordWithHttpInfo(String idTypeScope, String idTypeCode, String code, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = deleteInvestorRecordValidateBeforeCall(idTypeScope, idTypeCode, code, null, opts);
+    private ApiResponse<DeletedEntityResponse> deleteInvestorRecordWithHttpInfo(String identifierType, String identifierValue, String scope, String identifierScope, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteInvestorRecordValidateBeforeCall(identifierType, identifierValue, scope, identifierScope, null, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call deleteInvestorRecordAsync(String idTypeScope, String idTypeCode, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call deleteInvestorRecordAsync(String identifierType, String identifierValue, String scope, String identifierScope, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteInvestorRecordValidateBeforeCall(idTypeScope, idTypeCode, code, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = deleteInvestorRecordValidateBeforeCall(identifierType, identifierValue, scope, identifierScope, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call deleteInvestorRecordAsync(String idTypeScope, String idTypeCode, String code, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call deleteInvestorRecordAsync(String identifierType, String identifierValue, String scope, String identifierScope, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteInvestorRecordValidateBeforeCall(idTypeScope, idTypeCode, code, _callback, opts);
+        okhttp3.Call localVarCall = deleteInvestorRecordValidateBeforeCall(identifierType, identifierValue, scope, identifierScope, _callback, opts);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
     public class APIdeleteInvestorRecordRequest {
-        private final String idTypeScope;
-        private final String idTypeCode;
-        private final String code;
+        private final String identifierType;
+        private final String identifierValue;
+        private final String scope;
+        private final String identifierScope;
 
-        private APIdeleteInvestorRecordRequest(String idTypeScope, String idTypeCode, String code) {
-            this.idTypeScope = idTypeScope;
-            this.idTypeCode = idTypeCode;
-            this.code = code;
+        private APIdeleteInvestorRecordRequest(String identifierType, String identifierValue, String scope, String identifierScope) {
+            this.identifierType = identifierType;
+            this.identifierValue = identifierValue;
+            this.scope = scope;
+            this.identifierScope = identifierScope;
         }
 
         /**
@@ -205,7 +219,7 @@ public class InvestorRecordsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return deleteInvestorRecordCall(idTypeScope, idTypeCode, code, _callback);
+            return deleteInvestorRecordCall(identifierType, identifierValue, scope, identifierScope, _callback);
         }
 
         /**
@@ -221,7 +235,7 @@ public class InvestorRecordsApi {
          </table>
          */
         public DeletedEntityResponse execute() throws ApiException {
-            ApiResponse<DeletedEntityResponse> localVarResp = deleteInvestorRecordWithHttpInfo(idTypeScope, idTypeCode, code);
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteInvestorRecordWithHttpInfo(identifierType, identifierValue, scope, identifierScope);
             return localVarResp.getData();
         }
 
@@ -238,7 +252,7 @@ public class InvestorRecordsApi {
          </table>
          */
         public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<DeletedEntityResponse> localVarResp = deleteInvestorRecordWithHttpInfo(idTypeScope, idTypeCode, code, opts);
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteInvestorRecordWithHttpInfo(identifierType, identifierValue, scope, identifierScope, opts);
             return localVarResp.getData();
         }
 
@@ -255,7 +269,7 @@ public class InvestorRecordsApi {
          </table>
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
-            return deleteInvestorRecordWithHttpInfo(idTypeScope, idTypeCode, code);
+            return deleteInvestorRecordWithHttpInfo(identifierType, identifierValue, scope, identifierScope);
         }
 
         /**
@@ -271,7 +285,7 @@ public class InvestorRecordsApi {
          </table>
          */
         public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return deleteInvestorRecordWithHttpInfo(idTypeScope, idTypeCode, code, opts);
+            return deleteInvestorRecordWithHttpInfo(identifierType, identifierValue, scope, identifierScope, opts);
         }
 
         /**
@@ -288,7 +302,7 @@ public class InvestorRecordsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
-            return deleteInvestorRecordAsync(idTypeScope, idTypeCode, code, _callback);
+            return deleteInvestorRecordAsync(identifierType, identifierValue, scope, identifierScope, _callback);
         }
 
         /**
@@ -305,16 +319,17 @@ public class InvestorRecordsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return deleteInvestorRecordAsync(idTypeScope, idTypeCode, code, _callback, opts);
+            return deleteInvestorRecordAsync(identifierType, identifierValue, scope, identifierScope, _callback, opts);
         }
     }
 
     /**
      * [EARLY ACCESS] DeleteInvestorRecord: Delete Investor Record
      * Delete an investor record. Deletion will be valid from the investor record&#39;s creation datetime.  This means that the investor record will no longer exist at any effective datetime from the asAt datetime of deletion.
-     * @param idTypeScope The scope of the investor record identifier type. (required)
-     * @param idTypeCode The code of the investor record identifier type. (required)
-     * @param code Code of the investor record under specified identifier type&#39;s scope and code. This together with defined   identifier type uniquely identifies the investor record to delete. (required)
+     * @param identifierType Code of the investor record identifier type. (required)
+     * @param identifierValue Code of the investor record under specified identifier type&#39;s scope and code. (required)
+     * @param scope The scope of the investor record entity. (required)
+     * @param identifierScope Scope of the investor record identifier type. (required)
      * @return APIdeleteInvestorRecordRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -324,14 +339,14 @@ public class InvestorRecordsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIdeleteInvestorRecordRequest deleteInvestorRecord(String idTypeScope, String idTypeCode, String code) {
-        return new APIdeleteInvestorRecordRequest(idTypeScope, idTypeCode, code);
+    public APIdeleteInvestorRecordRequest deleteInvestorRecord(String identifierType, String identifierValue, String scope, String identifierScope) {
+        return new APIdeleteInvestorRecordRequest(identifierType, identifierValue, scope, identifierScope);
     }
-    private okhttp3.Call getInvestorRecordCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
-        return getInvestorRecordCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getInvestorRecordCall(String identifierType, String identifierValue, String scope, String identifierScope, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
+        return getInvestorRecordCall(identifierType, identifierValue, scope, identifierScope, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getInvestorRecordCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getInvestorRecordCall(String identifierType, String identifierValue, String scope, String identifierScope, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -348,16 +363,23 @@ public class InvestorRecordsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/investorrecords/{idTypeScope}/{idTypeCode}/{code}"
-            .replace("{" + "idTypeScope" + "}", localVarApiClient.escapeString(idTypeScope.toString()))
-            .replace("{" + "idTypeCode" + "}", localVarApiClient.escapeString(idTypeCode.toString()))
-            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+        String localVarPath = "/api/investorrecords/{identifierType}/{identifierValue}"
+            .replace("{" + "identifierType" + "}", localVarApiClient.escapeString(identifierType.toString()))
+            .replace("{" + "identifierValue" + "}", localVarApiClient.escapeString(identifierValue.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (scope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("scope", scope));
+        }
+
+        if (identifierScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("identifierScope", identifierScope));
+        }
 
         if (propertyKeys != null) {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
@@ -397,68 +419,75 @@ public class InvestorRecordsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getInvestorRecordValidateBeforeCall(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        // verify the required parameter 'idTypeScope' is set
-        if (idTypeScope == null) {
-            throw new ApiException("Missing the required parameter 'idTypeScope' when calling getInvestorRecord(Async)");
+    private okhttp3.Call getInvestorRecordValidateBeforeCall(String identifierType, String identifierValue, String scope, String identifierScope, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'identifierType' is set
+        if (identifierType == null) {
+            throw new ApiException("Missing the required parameter 'identifierType' when calling getInvestorRecord(Async)");
         }
 
-        // verify the required parameter 'idTypeCode' is set
-        if (idTypeCode == null) {
-            throw new ApiException("Missing the required parameter 'idTypeCode' when calling getInvestorRecord(Async)");
+        // verify the required parameter 'identifierValue' is set
+        if (identifierValue == null) {
+            throw new ApiException("Missing the required parameter 'identifierValue' when calling getInvestorRecord(Async)");
         }
 
-        // verify the required parameter 'code' is set
-        if (code == null) {
-            throw new ApiException("Missing the required parameter 'code' when calling getInvestorRecord(Async)");
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getInvestorRecord(Async)");
         }
 
-        return getInvestorRecordCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback, opts);
+        // verify the required parameter 'identifierScope' is set
+        if (identifierScope == null) {
+            throw new ApiException("Missing the required parameter 'identifierScope' when calling getInvestorRecord(Async)");
+        }
+
+        return getInvestorRecordCall(identifierType, identifierValue, scope, identifierScope, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback, opts);
 
     }
 
 
-    private ApiResponse<InvestorRecord> getInvestorRecordWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds) throws ApiException {
-        okhttp3.Call localVarCall = getInvestorRecordValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, null, new ConfigurationOptions());
+    private ApiResponse<InvestorRecord> getInvestorRecordWithHttpInfo(String identifierType, String identifierValue, String scope, String identifierScope, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds) throws ApiException {
+        okhttp3.Call localVarCall = getInvestorRecordValidateBeforeCall(identifierType, identifierValue, scope, identifierScope, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<InvestorRecord>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<InvestorRecord> getInvestorRecordWithHttpInfo(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getInvestorRecordValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, null, opts);
+    private ApiResponse<InvestorRecord> getInvestorRecordWithHttpInfo(String identifierType, String identifierValue, String scope, String identifierScope, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getInvestorRecordValidateBeforeCall(identifierType, identifierValue, scope, identifierScope, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, null, opts);
         Type localVarReturnType = new TypeToken<InvestorRecord>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getInvestorRecordAsync(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback<InvestorRecord> _callback) throws ApiException {
+    private okhttp3.Call getInvestorRecordAsync(String identifierType, String identifierValue, String scope, String identifierScope, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback<InvestorRecord> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getInvestorRecordValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getInvestorRecordValidateBeforeCall(identifierType, identifierValue, scope, identifierScope, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<InvestorRecord>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getInvestorRecordAsync(String idTypeScope, String idTypeCode, String code, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback<InvestorRecord> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getInvestorRecordAsync(String identifierType, String identifierValue, String scope, String identifierScope, List<String> propertyKeys, String effectiveAt, OffsetDateTime asAt, List<String> relationshipDefinitionIds, final ApiCallback<InvestorRecord> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getInvestorRecordValidateBeforeCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback, opts);
+        okhttp3.Call localVarCall = getInvestorRecordValidateBeforeCall(identifierType, identifierValue, scope, identifierScope, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback, opts);
         Type localVarReturnType = new TypeToken<InvestorRecord>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
     public class APIgetInvestorRecordRequest {
-        private final String idTypeScope;
-        private final String idTypeCode;
-        private final String code;
+        private final String identifierType;
+        private final String identifierValue;
+        private final String scope;
+        private final String identifierScope;
         private List<String> propertyKeys;
         private String effectiveAt;
         private OffsetDateTime asAt;
         private List<String> relationshipDefinitionIds;
 
-        private APIgetInvestorRecordRequest(String idTypeScope, String idTypeCode, String code) {
-            this.idTypeScope = idTypeScope;
-            this.idTypeCode = idTypeCode;
-            this.code = code;
+        private APIgetInvestorRecordRequest(String identifierType, String identifierValue, String scope, String identifierScope) {
+            this.identifierType = identifierType;
+            this.identifierValue = identifierValue;
+            this.scope = scope;
+            this.identifierScope = identifierScope;
         }
 
         /**
@@ -515,7 +544,7 @@ public class InvestorRecordsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getInvestorRecordCall(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback);
+            return getInvestorRecordCall(identifierType, identifierValue, scope, identifierScope, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback);
         }
 
         /**
@@ -531,7 +560,7 @@ public class InvestorRecordsApi {
          </table>
          */
         public InvestorRecord execute() throws ApiException {
-            ApiResponse<InvestorRecord> localVarResp = getInvestorRecordWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds);
+            ApiResponse<InvestorRecord> localVarResp = getInvestorRecordWithHttpInfo(identifierType, identifierValue, scope, identifierScope, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds);
             return localVarResp.getData();
         }
 
@@ -548,7 +577,7 @@ public class InvestorRecordsApi {
          </table>
          */
         public InvestorRecord execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<InvestorRecord> localVarResp = getInvestorRecordWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, opts);
+            ApiResponse<InvestorRecord> localVarResp = getInvestorRecordWithHttpInfo(identifierType, identifierValue, scope, identifierScope, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, opts);
             return localVarResp.getData();
         }
 
@@ -565,7 +594,7 @@ public class InvestorRecordsApi {
          </table>
          */
         public ApiResponse<InvestorRecord> executeWithHttpInfo() throws ApiException {
-            return getInvestorRecordWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds);
+            return getInvestorRecordWithHttpInfo(identifierType, identifierValue, scope, identifierScope, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds);
         }
 
         /**
@@ -581,7 +610,7 @@ public class InvestorRecordsApi {
          </table>
          */
         public ApiResponse<InvestorRecord> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getInvestorRecordWithHttpInfo(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, opts);
+            return getInvestorRecordWithHttpInfo(identifierType, identifierValue, scope, identifierScope, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, opts);
         }
 
         /**
@@ -598,7 +627,7 @@ public class InvestorRecordsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<InvestorRecord> _callback) throws ApiException {
-            return getInvestorRecordAsync(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback);
+            return getInvestorRecordAsync(identifierType, identifierValue, scope, identifierScope, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback);
         }
 
         /**
@@ -615,16 +644,17 @@ public class InvestorRecordsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<InvestorRecord> _callback, ConfigurationOptions opts) throws ApiException {
-            return getInvestorRecordAsync(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback, opts);
+            return getInvestorRecordAsync(identifierType, identifierValue, scope, identifierScope, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds, _callback, opts);
         }
     }
 
     /**
      * [EARLY ACCESS] GetInvestorRecord: Get Investor Record
      * Retrieve the definition of a investor record.
-     * @param idTypeScope Scope of the investor record identifier type. (required)
-     * @param idTypeCode Code of the investor record identifier type. (required)
-     * @param code Code of the investor record under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the investor record. (required)
+     * @param identifierType Code of the investor record identifier type. (required)
+     * @param identifierValue Code of the investor record under specified identifier type&#39;s scope and code. (required)
+     * @param scope The scope of the investor record entity. (required)
+     * @param identifierScope Scope of the investor record identifier type. (required)
      * @return APIgetInvestorRecordRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -634,8 +664,8 @@ public class InvestorRecordsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public APIgetInvestorRecordRequest getInvestorRecord(String idTypeScope, String idTypeCode, String code) {
-        return new APIgetInvestorRecordRequest(idTypeScope, idTypeCode, code);
+    public APIgetInvestorRecordRequest getInvestorRecord(String identifierType, String identifierValue, String scope, String identifierScope) {
+        return new APIgetInvestorRecordRequest(identifierType, identifierValue, scope, identifierScope);
     }
     private okhttp3.Call listAllInvestorRecordsCall(String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
         return listAllInvestorRecordsCall(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds,  _callback, new ConfigurationOptions());

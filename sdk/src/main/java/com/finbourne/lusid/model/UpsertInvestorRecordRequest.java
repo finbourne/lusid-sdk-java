@@ -54,6 +54,10 @@ import com.finbourne.lusid.JSON;
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UpsertInvestorRecordRequest {
+  public static final String SERIALIZED_NAME_SCOPE = "scope";
+  @SerializedName(SERIALIZED_NAME_SCOPE)
+  private String scope;
+
   public static final String SERIALIZED_NAME_IDENTIFIERS = "identifiers";
   @SerializedName(SERIALIZED_NAME_IDENTIFIERS)
   private Map<String, Property> identifiers = new HashMap<>();
@@ -76,6 +80,27 @@ public class UpsertInvestorRecordRequest {
 
   public UpsertInvestorRecordRequest() {
   }
+
+  public UpsertInvestorRecordRequest scope(String scope) {
+    
+    this.scope = scope;
+    return this;
+  }
+
+   /**
+   * The scope in which the Investor Record lies.
+   * @return scope
+  **/
+  @jakarta.annotation.Nonnull
+  public String getScope() {
+    return scope;
+  }
+
+
+  public void setScope(String scope) {
+    this.scope = scope;
+  }
+
 
   public UpsertInvestorRecordRequest identifiers(Map<String, Property> identifiers) {
     
@@ -208,7 +233,8 @@ public class UpsertInvestorRecordRequest {
       return false;
     }
     UpsertInvestorRecordRequest upsertInvestorRecordRequest = (UpsertInvestorRecordRequest) o;
-    return Objects.equals(this.identifiers, upsertInvestorRecordRequest.identifiers) &&
+    return Objects.equals(this.scope, upsertInvestorRecordRequest.scope) &&
+        Objects.equals(this.identifiers, upsertInvestorRecordRequest.identifiers) &&
         Objects.equals(this.properties, upsertInvestorRecordRequest.properties) &&
         Objects.equals(this.displayName, upsertInvestorRecordRequest.displayName) &&
         Objects.equals(this.description, upsertInvestorRecordRequest.description) &&
@@ -221,7 +247,7 @@ public class UpsertInvestorRecordRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(identifiers, properties, displayName, description, investor);
+    return Objects.hash(scope, identifiers, properties, displayName, description, investor);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -235,6 +261,7 @@ public class UpsertInvestorRecordRequest {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpsertInvestorRecordRequest {\n");
+    sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("    identifiers: ").append(toIndentedString(identifiers)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
@@ -262,6 +289,7 @@ public class UpsertInvestorRecordRequest {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("scope");
     openapiFields.add("identifiers");
     openapiFields.add("properties");
     openapiFields.add("displayName");
@@ -270,6 +298,7 @@ public class UpsertInvestorRecordRequest {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("scope");
     openapiRequiredFields.add("identifiers");
     openapiRequiredFields.add("displayName");
     openapiRequiredFields.add("investor");
@@ -295,6 +324,9 @@ public class UpsertInvestorRecordRequest {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (!jsonObj.get("scope").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
+      }
       if (!jsonObj.get("displayName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
       }
