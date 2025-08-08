@@ -589,11 +589,11 @@ public class OrdersApi {
     public APIgetOrderRequest getOrder(String scope, String code) {
         return new APIgetOrderRequest(scope, code);
     }
-    private okhttp3.Call listOrdersCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
-        return listOrdersCall(asAt, page, sortBy, limit, filter, propertyKeys,  _callback, new ConfigurationOptions());
+    private okhttp3.Call listOrdersCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, String dataModelScope, String dataModelCode, String membershipType, final ApiCallback _callback) throws ApiException {
+        return listOrdersCall(asAt, page, sortBy, limit, filter, propertyKeys, dataModelScope, dataModelCode, membershipType,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call listOrdersCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listOrdersCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, String dataModelScope, String dataModelCode, String membershipType, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -642,6 +642,18 @@ public class OrdersApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
         }
 
+        if (dataModelScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dataModelScope", dataModelScope));
+        }
+
+        if (dataModelCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dataModelCode", dataModelCode));
+        }
+
+        if (membershipType != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("membershipType", membershipType));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -664,35 +676,35 @@ public class OrdersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listOrdersValidateBeforeCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        return listOrdersCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback, opts);
+    private okhttp3.Call listOrdersValidateBeforeCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, String dataModelScope, String dataModelCode, String membershipType, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listOrdersCall(asAt, page, sortBy, limit, filter, propertyKeys, dataModelScope, dataModelCode, membershipType, _callback, opts);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfOrder> listOrdersWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = listOrdersValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, null, new ConfigurationOptions());
+    private ApiResponse<PagedResourceListOfOrder> listOrdersWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, String dataModelScope, String dataModelCode, String membershipType) throws ApiException {
+        okhttp3.Call localVarCall = listOrdersValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, dataModelScope, dataModelCode, membershipType, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfOrder>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<PagedResourceListOfOrder> listOrdersWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = listOrdersValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, null, opts);
+    private ApiResponse<PagedResourceListOfOrder> listOrdersWithHttpInfo(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, String dataModelScope, String dataModelCode, String membershipType, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listOrdersValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, dataModelScope, dataModelCode, membershipType, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfOrder>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listOrdersAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfOrder> _callback) throws ApiException {
+    private okhttp3.Call listOrdersAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, String dataModelScope, String dataModelCode, String membershipType, final ApiCallback<PagedResourceListOfOrder> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listOrdersValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = listOrdersValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, dataModelScope, dataModelCode, membershipType, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfOrder>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call listOrdersAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfOrder> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listOrdersAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, String dataModelScope, String dataModelCode, String membershipType, final ApiCallback<PagedResourceListOfOrder> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = listOrdersValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback, opts);
+        okhttp3.Call localVarCall = listOrdersValidateBeforeCall(asAt, page, sortBy, limit, filter, propertyKeys, dataModelScope, dataModelCode, membershipType, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfOrder>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -705,6 +717,9 @@ public class OrdersApi {
         private Integer limit;
         private String filter;
         private List<String> propertyKeys;
+        private String dataModelScope;
+        private String dataModelCode;
+        private String membershipType;
 
         private APIlistOrdersRequest() {
         }
@@ -770,6 +785,36 @@ public class OrdersApi {
         }
 
         /**
+         * Set dataModelScope
+         * @param dataModelScope The optional scope of a Custom Data Model to use (optional)
+         * @return APIlistOrdersRequest
+         */
+        public APIlistOrdersRequest dataModelScope(String dataModelScope) {
+            this.dataModelScope = dataModelScope;
+            return this;
+        }
+
+        /**
+         * Set dataModelCode
+         * @param dataModelCode The optional code of a Custom Data Model to use (optional)
+         * @return APIlistOrdersRequest
+         */
+        public APIlistOrdersRequest dataModelCode(String dataModelCode) {
+            this.dataModelCode = dataModelCode;
+            return this;
+        }
+
+        /**
+         * Set membershipType
+         * @param membershipType The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member. (optional)
+         * @return APIlistOrdersRequest
+         */
+        public APIlistOrdersRequest membershipType(String membershipType) {
+            this.membershipType = membershipType;
+            return this;
+        }
+
+        /**
          * Build call for listOrders
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -783,7 +828,7 @@ public class OrdersApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listOrdersCall(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
+            return listOrdersCall(asAt, page, sortBy, limit, filter, propertyKeys, dataModelScope, dataModelCode, membershipType, _callback);
         }
 
         /**
@@ -799,7 +844,7 @@ public class OrdersApi {
          </table>
          */
         public PagedResourceListOfOrder execute() throws ApiException {
-            ApiResponse<PagedResourceListOfOrder> localVarResp = listOrdersWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys);
+            ApiResponse<PagedResourceListOfOrder> localVarResp = listOrdersWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys, dataModelScope, dataModelCode, membershipType);
             return localVarResp.getData();
         }
 
@@ -816,7 +861,7 @@ public class OrdersApi {
          </table>
          */
         public PagedResourceListOfOrder execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<PagedResourceListOfOrder> localVarResp = listOrdersWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys, opts);
+            ApiResponse<PagedResourceListOfOrder> localVarResp = listOrdersWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys, dataModelScope, dataModelCode, membershipType, opts);
             return localVarResp.getData();
         }
 
@@ -833,7 +878,7 @@ public class OrdersApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfOrder> executeWithHttpInfo() throws ApiException {
-            return listOrdersWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys);
+            return listOrdersWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys, dataModelScope, dataModelCode, membershipType);
         }
 
         /**
@@ -849,7 +894,7 @@ public class OrdersApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfOrder> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return listOrdersWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys, opts);
+            return listOrdersWithHttpInfo(asAt, page, sortBy, limit, filter, propertyKeys, dataModelScope, dataModelCode, membershipType, opts);
         }
 
         /**
@@ -866,7 +911,7 @@ public class OrdersApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfOrder> _callback) throws ApiException {
-            return listOrdersAsync(asAt, page, sortBy, limit, filter, propertyKeys, _callback);
+            return listOrdersAsync(asAt, page, sortBy, limit, filter, propertyKeys, dataModelScope, dataModelCode, membershipType, _callback);
         }
 
         /**
@@ -883,7 +928,7 @@ public class OrdersApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfOrder> _callback, ConfigurationOptions opts) throws ApiException {
-            return listOrdersAsync(asAt, page, sortBy, limit, filter, propertyKeys, _callback, opts);
+            return listOrdersAsync(asAt, page, sortBy, limit, filter, propertyKeys, dataModelScope, dataModelCode, membershipType, _callback, opts);
         }
     }
 

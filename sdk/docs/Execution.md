@@ -25,6 +25,7 @@ The record of a number of executions against a single Placement (directly analog
 |**counterparty** | **String** | The market entity this placement is placed with. |  |
 |**averagePrice** | **java.math.BigDecimal** | The average price of all executions for a given placement at the time of upsert |  [optional] |
 |**version** | [**Version**](Version.md) |  |  [optional] |
+|**dataModelMembership** | [**DataModelMembership**](DataModelMembership.md) |  |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 

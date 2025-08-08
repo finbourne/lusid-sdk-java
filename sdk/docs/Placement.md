@@ -26,6 +26,7 @@ A street order for a quantity of a single instrument placed with a single market
 |**executionSystem** | **String** | Optionally specifies the execution system in use. |  [optional] |
 |**entryType** | **String** | Optionally specifies the entry type of this placement. |  [optional] |
 |**version** | [**Version**](Version.md) |  |  [optional] |
+|**dataModelMembership** | [**DataModelMembership**](DataModelMembership.md) |  |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 

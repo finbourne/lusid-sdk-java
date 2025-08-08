@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.CurrencyAndAmount;
+import com.finbourne.lusid.model.DataModelMembership;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.ResourceId;
@@ -139,6 +140,10 @@ public class Allocation {
   public static final String SERIALIZED_NAME_EXECUTION_IDS = "executionIds";
   @SerializedName(SERIALIZED_NAME_EXECUTION_IDS)
   private List<ResourceId> executionIds;
+
+  public static final String SERIALIZED_NAME_DATA_MODEL_MEMBERSHIP = "dataModelMembership";
+  @SerializedName(SERIALIZED_NAME_DATA_MODEL_MEMBERSHIP)
+  private DataModelMembership dataModelMembership;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -599,6 +604,27 @@ public class Allocation {
   }
 
 
+  public Allocation dataModelMembership(DataModelMembership dataModelMembership) {
+    
+    this.dataModelMembership = dataModelMembership;
+    return this;
+  }
+
+   /**
+   * Get dataModelMembership
+   * @return dataModelMembership
+  **/
+  @jakarta.annotation.Nullable
+  public DataModelMembership getDataModelMembership() {
+    return dataModelMembership;
+  }
+
+
+  public void setDataModelMembership(DataModelMembership dataModelMembership) {
+    this.dataModelMembership = dataModelMembership;
+  }
+
+
   public Allocation links(List<Link> links) {
     
     this.links = links;
@@ -658,6 +684,7 @@ public class Allocation {
         (this.settlementCurrencyFxRate.compareTo(allocation.getSettlementCurrencyFxRate()) == 0) &&
         Objects.equals(this.counterparty, allocation.counterparty) &&
         Objects.equals(this.executionIds, allocation.executionIds) &&
+        Objects.equals(this.dataModelMembership, allocation.dataModelMembership) &&
         Objects.equals(this.links, allocation.links);
   }
 
@@ -667,7 +694,7 @@ public class Allocation {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, allocatedOrderId, portfolioId, quantity, instrumentIdentifiers, version, properties, instrumentScope, lusidInstrumentId, placementIds, state, side, type, settlementDate, date, price, settlementCurrency, settlementCurrencyFxRate, counterparty, executionIds, links);
+    return Objects.hash(id, allocatedOrderId, portfolioId, quantity, instrumentIdentifiers, version, properties, instrumentScope, lusidInstrumentId, placementIds, state, side, type, settlementDate, date, price, settlementCurrency, settlementCurrencyFxRate, counterparty, executionIds, dataModelMembership, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -701,6 +728,7 @@ public class Allocation {
     sb.append("    settlementCurrencyFxRate: ").append(toIndentedString(settlementCurrencyFxRate)).append("\n");
     sb.append("    counterparty: ").append(toIndentedString(counterparty)).append("\n");
     sb.append("    executionIds: ").append(toIndentedString(executionIds)).append("\n");
+    sb.append("    dataModelMembership: ").append(toIndentedString(dataModelMembership)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -744,6 +772,7 @@ public class Allocation {
     openapiFields.add("settlementCurrencyFxRate");
     openapiFields.add("counterparty");
     openapiFields.add("executionIds");
+    openapiFields.add("dataModelMembership");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -838,6 +867,10 @@ public class Allocation {
             ResourceId.validateJsonElement(jsonArrayexecutionIds.get(i));
           };
         }
+      }
+      // validate the optional field `dataModelMembership`
+      if (jsonObj.get("dataModelMembership") != null && !jsonObj.get("dataModelMembership").isJsonNull()) {
+        DataModelMembership.validateJsonElement(jsonObj.get("dataModelMembership"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.CurrencyAndAmount;
+import com.finbourne.lusid.model.DataModelMembership;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.ResourceId;
@@ -143,6 +144,10 @@ public class Order {
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
   private CurrencyAndAmount amount;
+
+  public static final String SERIALIZED_NAME_DATA_MODEL_MEMBERSHIP = "dataModelMembership";
+  @SerializedName(SERIALIZED_NAME_DATA_MODEL_MEMBERSHIP)
+  private DataModelMembership dataModelMembership;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -608,6 +613,27 @@ public class Order {
   }
 
 
+  public Order dataModelMembership(DataModelMembership dataModelMembership) {
+    
+    this.dataModelMembership = dataModelMembership;
+    return this;
+  }
+
+   /**
+   * Get dataModelMembership
+   * @return dataModelMembership
+  **/
+  @jakarta.annotation.Nullable
+  public DataModelMembership getDataModelMembership() {
+    return dataModelMembership;
+  }
+
+
+  public void setDataModelMembership(DataModelMembership dataModelMembership) {
+    this.dataModelMembership = dataModelMembership;
+  }
+
+
   public Order links(List<Link> links) {
     
     this.links = links;
@@ -668,6 +694,7 @@ public class Order {
         Objects.equals(this.packageId, order.packageId) &&
         (this.weight.compareTo(order.getWeight()) == 0) &&
         Objects.equals(this.amount, order.amount) &&
+        Objects.equals(this.dataModelMembership, order.dataModelMembership) &&
         Objects.equals(this.links, order.links);
   }
 
@@ -677,7 +704,7 @@ public class Order {
 
   @Override
   public int hashCode() {
-    return Objects.hash(properties, version, instrumentIdentifiers, quantity, side, orderBookId, portfolioId, id, instrumentScope, lusidInstrumentId, state, type, timeInForce, date, price, limitPrice, stopPrice, orderInstructionId, packageId, weight, amount, links);
+    return Objects.hash(properties, version, instrumentIdentifiers, quantity, side, orderBookId, portfolioId, id, instrumentScope, lusidInstrumentId, state, type, timeInForce, date, price, limitPrice, stopPrice, orderInstructionId, packageId, weight, amount, dataModelMembership, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -712,6 +739,7 @@ public class Order {
     sb.append("    packageId: ").append(toIndentedString(packageId)).append("\n");
     sb.append("    weight: ").append(toIndentedString(weight)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("    dataModelMembership: ").append(toIndentedString(dataModelMembership)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -756,6 +784,7 @@ public class Order {
     openapiFields.add("packageId");
     openapiFields.add("weight");
     openapiFields.add("amount");
+    openapiFields.add("dataModelMembership");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -841,6 +870,10 @@ public class Order {
       // validate the optional field `amount`
       if (jsonObj.get("amount") != null && !jsonObj.get("amount").isJsonNull()) {
         CurrencyAndAmount.validateJsonElement(jsonObj.get("amount"));
+      }
+      // validate the optional field `dataModelMembership`
+      if (jsonObj.get("dataModelMembership") != null && !jsonObj.get("dataModelMembership").isJsonNull()) {
+        DataModelMembership.validateJsonElement(jsonObj.get("dataModelMembership"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

@@ -133,7 +133,7 @@ public class FundsApiExample {
 
 ## createFee
 
-> Fee createFee(scope, code, feeRequest)
+> Fee createFee(scope, code, feeRequest, navTypeCode)
 
 [EXPERIMENTAL] CreateFee: Create a Fee.
 
@@ -181,11 +181,12 @@ public class FundsApiExample {
         String scope = "scope_example"; // String | The scope of the Fund.
         String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
         FeeRequest feeRequest = new FeeRequest(); // FeeRequest | The Fee to create.
+        String navTypeCode = "navTypeCode_example"; // String | When provided runs against the specified NAV Type, otherwise the Primary NAV Type will be used.
         try {
             // uncomment the below to set overrides at the request level
-            // Fee result = apiInstance.createFee(scope, code, feeRequest).execute(opts);
+            // Fee result = apiInstance.createFee(scope, code, feeRequest, navTypeCode).execute(opts);
 
-            Fee result = apiInstance.createFee(scope, code, feeRequest).execute();
+            Fee result = apiInstance.createFee(scope, code, feeRequest, navTypeCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling FundsApi#createFee");
@@ -205,6 +206,7 @@ public class FundsApiExample {
 | **scope** | **String**| The scope of the Fund. | |
 | **code** | **String**| The code of the Fund. Together with the scope this uniquely identifies the Fund. | |
 | **feeRequest** | [**FeeRequest**](FeeRequest.md)| The Fee to create. | |
+| **navTypeCode** | **String**| When provided runs against the specified NAV Type, otherwise the Primary NAV Type will be used. | [optional] |
 
 ### Return type
 

@@ -29,6 +29,7 @@ An Order for a certain quantity of a specific instrument
 |**packageId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 |**weight** | **java.math.BigDecimal** | The proportion of the total portfolio value ordered for the given instrument ordered. |  [optional] |
 |**amount** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional] |
+|**dataModelMembership** | [**DataModelMembership**](DataModelMembership.md) |  |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 

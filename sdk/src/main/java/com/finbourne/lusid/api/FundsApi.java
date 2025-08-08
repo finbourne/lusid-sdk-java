@@ -365,11 +365,11 @@ public class FundsApi {
     public APIacceptEstimateValuationPointRequest acceptEstimateValuationPoint(String scope, String code, ValuationPointDataRequest valuationPointDataRequest) {
         return new APIacceptEstimateValuationPointRequest(scope, code, valuationPointDataRequest);
     }
-    private okhttp3.Call createFeeCall(String scope, String code, FeeRequest feeRequest, final ApiCallback _callback) throws ApiException {
-        return createFeeCall(scope, code, feeRequest,  _callback, new ConfigurationOptions());
+    private okhttp3.Call createFeeCall(String scope, String code, FeeRequest feeRequest, String navTypeCode, final ApiCallback _callback) throws ApiException {
+        return createFeeCall(scope, code, feeRequest, navTypeCode,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call createFeeCall(String scope, String code, FeeRequest feeRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call createFeeCall(String scope, String code, FeeRequest feeRequest, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -395,6 +395,10 @@ public class FundsApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (navTypeCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
+        }
 
         final String[] localVarAccepts = {
             "text/plain",
@@ -422,7 +426,7 @@ public class FundsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createFeeValidateBeforeCall(String scope, String code, FeeRequest feeRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call createFeeValidateBeforeCall(String scope, String code, FeeRequest feeRequest, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling createFee(Async)");
@@ -438,34 +442,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'feeRequest' when calling createFee(Async)");
         }
 
-        return createFeeCall(scope, code, feeRequest, _callback, opts);
+        return createFeeCall(scope, code, feeRequest, navTypeCode, _callback, opts);
 
     }
 
 
-    private ApiResponse<Fee> createFeeWithHttpInfo(String scope, String code, FeeRequest feeRequest) throws ApiException {
-        okhttp3.Call localVarCall = createFeeValidateBeforeCall(scope, code, feeRequest, null, new ConfigurationOptions());
+    private ApiResponse<Fee> createFeeWithHttpInfo(String scope, String code, FeeRequest feeRequest, String navTypeCode) throws ApiException {
+        okhttp3.Call localVarCall = createFeeValidateBeforeCall(scope, code, feeRequest, navTypeCode, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<Fee>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<Fee> createFeeWithHttpInfo(String scope, String code, FeeRequest feeRequest, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = createFeeValidateBeforeCall(scope, code, feeRequest, null, opts);
+    private ApiResponse<Fee> createFeeWithHttpInfo(String scope, String code, FeeRequest feeRequest, String navTypeCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = createFeeValidateBeforeCall(scope, code, feeRequest, navTypeCode, null, opts);
         Type localVarReturnType = new TypeToken<Fee>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call createFeeAsync(String scope, String code, FeeRequest feeRequest, final ApiCallback<Fee> _callback) throws ApiException {
+    private okhttp3.Call createFeeAsync(String scope, String code, FeeRequest feeRequest, String navTypeCode, final ApiCallback<Fee> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createFeeValidateBeforeCall(scope, code, feeRequest, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = createFeeValidateBeforeCall(scope, code, feeRequest, navTypeCode, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<Fee>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call createFeeAsync(String scope, String code, FeeRequest feeRequest, final ApiCallback<Fee> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call createFeeAsync(String scope, String code, FeeRequest feeRequest, String navTypeCode, final ApiCallback<Fee> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = createFeeValidateBeforeCall(scope, code, feeRequest, _callback, opts);
+        okhttp3.Call localVarCall = createFeeValidateBeforeCall(scope, code, feeRequest, navTypeCode, _callback, opts);
         Type localVarReturnType = new TypeToken<Fee>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -475,11 +479,22 @@ public class FundsApi {
         private final String scope;
         private final String code;
         private final FeeRequest feeRequest;
+        private String navTypeCode;
 
         private APIcreateFeeRequest(String scope, String code, FeeRequest feeRequest) {
             this.scope = scope;
             this.code = code;
             this.feeRequest = feeRequest;
+        }
+
+        /**
+         * Set navTypeCode
+         * @param navTypeCode When provided runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
+         * @return APIcreateFeeRequest
+         */
+        public APIcreateFeeRequest navTypeCode(String navTypeCode) {
+            this.navTypeCode = navTypeCode;
+            return this;
         }
 
         /**
@@ -496,7 +511,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return createFeeCall(scope, code, feeRequest, _callback);
+            return createFeeCall(scope, code, feeRequest, navTypeCode, _callback);
         }
 
         /**
@@ -512,7 +527,7 @@ public class FundsApi {
          </table>
          */
         public Fee execute() throws ApiException {
-            ApiResponse<Fee> localVarResp = createFeeWithHttpInfo(scope, code, feeRequest);
+            ApiResponse<Fee> localVarResp = createFeeWithHttpInfo(scope, code, feeRequest, navTypeCode);
             return localVarResp.getData();
         }
 
@@ -529,7 +544,7 @@ public class FundsApi {
          </table>
          */
         public Fee execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<Fee> localVarResp = createFeeWithHttpInfo(scope, code, feeRequest, opts);
+            ApiResponse<Fee> localVarResp = createFeeWithHttpInfo(scope, code, feeRequest, navTypeCode, opts);
             return localVarResp.getData();
         }
 
@@ -546,7 +561,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<Fee> executeWithHttpInfo() throws ApiException {
-            return createFeeWithHttpInfo(scope, code, feeRequest);
+            return createFeeWithHttpInfo(scope, code, feeRequest, navTypeCode);
         }
 
         /**
@@ -562,7 +577,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<Fee> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return createFeeWithHttpInfo(scope, code, feeRequest, opts);
+            return createFeeWithHttpInfo(scope, code, feeRequest, navTypeCode, opts);
         }
 
         /**
@@ -579,7 +594,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<Fee> _callback) throws ApiException {
-            return createFeeAsync(scope, code, feeRequest, _callback);
+            return createFeeAsync(scope, code, feeRequest, navTypeCode, _callback);
         }
 
         /**
@@ -596,7 +611,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<Fee> _callback, ConfigurationOptions opts) throws ApiException {
-            return createFeeAsync(scope, code, feeRequest, _callback, opts);
+            return createFeeAsync(scope, code, feeRequest, navTypeCode, _callback, opts);
         }
     }
 

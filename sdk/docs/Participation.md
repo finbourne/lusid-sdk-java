@@ -12,6 +12,7 @@ The record an order's participation in a specific placement.
 |**placementId** | [**ResourceId**](ResourceId.md) |  |  |
 |**orderId** | [**ResourceId**](ResourceId.md) |  |  |
 |**version** | [**Version**](Version.md) |  |  [optional] |
+|**dataModelMembership** | [**DataModelMembership**](DataModelMembership.md) |  |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 

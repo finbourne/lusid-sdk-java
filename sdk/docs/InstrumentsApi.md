@@ -1681,7 +1681,7 @@ public class InstrumentsApiExample {
         List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
         String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Custom Data Model to use.
         String dataModelCode = "dataModelCode_example"; // String | The optional code of a Custom Data Model to use.
-        String membershipType = "membershipType_example"; // String | The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All.
+        String membershipType = "membershipType_example"; // String | The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member.
         try {
             // uncomment the below to set overrides at the request level
             // PagedResourceListOfInstrument result = apiInstance.listInstruments(asAt, effectiveAt, page, sortBy, limit, filter, instrumentPropertyKeys, scope, relationshipDefinitionIds, dataModelScope, dataModelCode, membershipType).execute(opts);
@@ -1714,7 +1714,7 @@ public class InstrumentsApiExample {
 | **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities   onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
 | **dataModelScope** | **String**| The optional scope of a Custom Data Model to use. | [optional] |
 | **dataModelCode** | **String**| The optional code of a Custom Data Model to use. | [optional] |
-| **membershipType** | **String**| The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. | [optional] |
+| **membershipType** | **String**| The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member. | [optional] |
 
 ### Return type
 

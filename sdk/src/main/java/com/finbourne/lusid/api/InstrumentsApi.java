@@ -5071,7 +5071,7 @@ public class InstrumentsApi {
 
         /**
          * Set membershipType
-         * @param membershipType The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. (optional)
+         * @param membershipType The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member. (optional)
          * @return APIlistInstrumentsRequest
          */
         public APIlistInstrumentsRequest membershipType(String membershipType) {

@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.DataModelMembership;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.ResourceId;
@@ -77,6 +78,10 @@ public class ModelPackage {
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
   private Version version;
+
+  public static final String SERIALIZED_NAME_DATA_MODEL_MEMBERSHIP = "dataModelMembership";
+  @SerializedName(SERIALIZED_NAME_DATA_MODEL_MEMBERSHIP)
+  private DataModelMembership dataModelMembership;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -214,6 +219,27 @@ public class ModelPackage {
   }
 
 
+  public ModelPackage dataModelMembership(DataModelMembership dataModelMembership) {
+    
+    this.dataModelMembership = dataModelMembership;
+    return this;
+  }
+
+   /**
+   * Get dataModelMembership
+   * @return dataModelMembership
+  **/
+  @jakarta.annotation.Nullable
+  public DataModelMembership getDataModelMembership() {
+    return dataModelMembership;
+  }
+
+
+  public void setDataModelMembership(DataModelMembership dataModelMembership) {
+    this.dataModelMembership = dataModelMembership;
+  }
+
+
   public ModelPackage links(List<Link> links) {
     
     this.links = links;
@@ -258,6 +284,7 @@ public class ModelPackage {
         Objects.equals(this.orderInstructionIds, _package.orderInstructionIds) &&
         Objects.equals(this.properties, _package.properties) &&
         Objects.equals(this.version, _package.version) &&
+        Objects.equals(this.dataModelMembership, _package.dataModelMembership) &&
         Objects.equals(this.links, _package.links);
   }
 
@@ -267,7 +294,7 @@ public class ModelPackage {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, orderIds, orderInstructionIds, properties, version, links);
+    return Objects.hash(id, orderIds, orderInstructionIds, properties, version, dataModelMembership, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -286,6 +313,7 @@ public class ModelPackage {
     sb.append("    orderInstructionIds: ").append(toIndentedString(orderInstructionIds)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
+    sb.append("    dataModelMembership: ").append(toIndentedString(dataModelMembership)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -314,6 +342,7 @@ public class ModelPackage {
     openapiFields.add("orderInstructionIds");
     openapiFields.add("properties");
     openapiFields.add("version");
+    openapiFields.add("dataModelMembership");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -368,6 +397,10 @@ public class ModelPackage {
       // validate the optional field `version`
       if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
         Version.validateJsonElement(jsonObj.get("version"));
+      }
+      // validate the optional field `dataModelMembership`
+      if (jsonObj.get("dataModelMembership") != null && !jsonObj.get("dataModelMembership").isJsonNull()) {
+        DataModelMembership.validateJsonElement(jsonObj.get("dataModelMembership"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

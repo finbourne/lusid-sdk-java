@@ -28,6 +28,7 @@ An Allocation of a certain quantity of a specific instrument against an originat
 |**settlementCurrencyFxRate** | **java.math.BigDecimal** | The settlement currency to allocation currency FX rate. |  [optional] |
 |**counterparty** | **String** | The counterparty for this allocation. |  [optional] |
 |**executionIds** | [**List&lt;ResourceId&gt;**](ResourceId.md) | The executions associated with this allocation |  [optional] |
+|**dataModelMembership** | [**DataModelMembership**](DataModelMembership.md) |  |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 

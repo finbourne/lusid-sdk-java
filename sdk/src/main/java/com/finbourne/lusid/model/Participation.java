@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.DataModelMembership;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.Version;
@@ -70,6 +71,10 @@ public class Participation {
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
   private Version version;
+
+  public static final String SERIALIZED_NAME_DATA_MODEL_MEMBERSHIP = "dataModelMembership";
+  @SerializedName(SERIALIZED_NAME_DATA_MODEL_MEMBERSHIP)
+  private DataModelMembership dataModelMembership;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -162,6 +167,27 @@ public class Participation {
   }
 
 
+  public Participation dataModelMembership(DataModelMembership dataModelMembership) {
+    
+    this.dataModelMembership = dataModelMembership;
+    return this;
+  }
+
+   /**
+   * Get dataModelMembership
+   * @return dataModelMembership
+  **/
+  @jakarta.annotation.Nullable
+  public DataModelMembership getDataModelMembership() {
+    return dataModelMembership;
+  }
+
+
+  public void setDataModelMembership(DataModelMembership dataModelMembership) {
+    this.dataModelMembership = dataModelMembership;
+  }
+
+
   public Participation links(List<Link> links) {
     
     this.links = links;
@@ -205,6 +231,7 @@ public class Participation {
         Objects.equals(this.placementId, participation.placementId) &&
         Objects.equals(this.orderId, participation.orderId) &&
         Objects.equals(this.version, participation.version) &&
+        Objects.equals(this.dataModelMembership, participation.dataModelMembership) &&
         Objects.equals(this.links, participation.links);
   }
 
@@ -214,7 +241,7 @@ public class Participation {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, placementId, orderId, version, links);
+    return Objects.hash(id, placementId, orderId, version, dataModelMembership, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -232,6 +259,7 @@ public class Participation {
     sb.append("    placementId: ").append(toIndentedString(placementId)).append("\n");
     sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
+    sb.append("    dataModelMembership: ").append(toIndentedString(dataModelMembership)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -259,6 +287,7 @@ public class Participation {
     openapiFields.add("placementId");
     openapiFields.add("orderId");
     openapiFields.add("version");
+    openapiFields.add("dataModelMembership");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -297,6 +326,10 @@ public class Participation {
       // validate the optional field `version`
       if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
         Version.validateJsonElement(jsonObj.get("version"));
+      }
+      // validate the optional field `dataModelMembership`
+      if (jsonObj.get("dataModelMembership") != null && !jsonObj.get("dataModelMembership").isJsonNull()) {
+        DataModelMembership.validateJsonElement(jsonObj.get("dataModelMembership"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
