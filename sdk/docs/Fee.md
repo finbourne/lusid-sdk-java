@@ -27,6 +27,7 @@
 |**version** | [**Version**](Version.md) |  |  [optional] |
 |**portfolioId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 |**shareClasses** | **List&lt;String&gt;** | The short codes of the ShareClasses that the Fee should be applied to. Optional: if this is null or empty, then the Fee will be divided between all the ShareClasses of the Fund according to the capital ratio. |  [optional] |
+|**navTypeCode** | **String** | When provided runs against the specified NAV Type, otherwise the Primary NAV Type will be used. |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 

@@ -141,6 +141,10 @@ public class Fee {
   @SerializedName(SERIALIZED_NAME_SHARE_CLASSES)
   private List<String> shareClasses;
 
+  public static final String SERIALIZED_NAME_NAV_TYPE_CODE = "navTypeCode";
+  @SerializedName(SERIALIZED_NAME_NAV_TYPE_CODE)
+  private String navTypeCode;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -584,6 +588,27 @@ public class Fee {
   }
 
 
+  public Fee navTypeCode(String navTypeCode) {
+    
+    this.navTypeCode = navTypeCode;
+    return this;
+  }
+
+   /**
+   * When provided runs against the specified NAV Type, otherwise the Primary NAV Type will be used.
+   * @return navTypeCode
+  **/
+  @jakarta.annotation.Nullable
+  public String getNavTypeCode() {
+    return navTypeCode;
+  }
+
+
+  public void setNavTypeCode(String navTypeCode) {
+    this.navTypeCode = navTypeCode;
+  }
+
+
   public Fee links(List<Link> links) {
     
     this.links = links;
@@ -643,6 +668,7 @@ public class Fee {
         Objects.equals(this.version, fee.version) &&
         Objects.equals(this.portfolioId, fee.portfolioId) &&
         Objects.equals(this.shareClasses, fee.shareClasses) &&
+        Objects.equals(this.navTypeCode, fee.navTypeCode) &&
         Objects.equals(this.links, fee.links);
   }
 
@@ -652,7 +678,7 @@ public class Fee {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, feeCode, feeTypeId, displayName, description, origin, calculationBase, accrualCurrency, treatment, totalAnnualAccrualAmount, feeRatePercentage, payableFrequency, businessDayConvention, startDate, endDate, anchorDate, properties, version, portfolioId, shareClasses, links);
+    return Objects.hash(href, feeCode, feeTypeId, displayName, description, origin, calculationBase, accrualCurrency, treatment, totalAnnualAccrualAmount, feeRatePercentage, payableFrequency, businessDayConvention, startDate, endDate, anchorDate, properties, version, portfolioId, shareClasses, navTypeCode, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -686,6 +712,7 @@ public class Fee {
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    portfolioId: ").append(toIndentedString(portfolioId)).append("\n");
     sb.append("    shareClasses: ").append(toIndentedString(shareClasses)).append("\n");
+    sb.append("    navTypeCode: ").append(toIndentedString(navTypeCode)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -729,6 +756,7 @@ public class Fee {
     openapiFields.add("version");
     openapiFields.add("portfolioId");
     openapiFields.add("shareClasses");
+    openapiFields.add("navTypeCode");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -809,6 +837,9 @@ public class Fee {
       // ensure the optional json data is an array if present
       if (jsonObj.get("shareClasses") != null && !jsonObj.get("shareClasses").isJsonNull() && !jsonObj.get("shareClasses").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `shareClasses` to be an array in the JSON string but got `%s`", jsonObj.get("shareClasses").toString()));
+      }
+      if ((jsonObj.get("navTypeCode") != null && !jsonObj.get("navTypeCode").isJsonNull()) && !jsonObj.get("navTypeCode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `navTypeCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("navTypeCode").toString()));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
