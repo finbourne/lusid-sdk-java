@@ -62,6 +62,8 @@ import com.finbourne.lusid.model.ResourceListOfOutputTransaction;
 import com.finbourne.lusid.model.ResourceListOfPortfolioCashFlow;
 import com.finbourne.lusid.model.ResourceListOfPortfolioCashLadder;
 import com.finbourne.lusid.model.ResourceListOfTransaction;
+import com.finbourne.lusid.model.ResourceListOfTransactionSettlementInstruction;
+import com.finbourne.lusid.model.SettlementInstructionRequest;
 import com.finbourne.lusid.model.TransactionQueryParameters;
 import com.finbourne.lusid.model.TransactionRequest;
 import com.finbourne.lusid.model.UpsertPortfolioTransactionsResponse;
@@ -3618,6 +3620,259 @@ public class TransactionPortfoliosApi {
      */
     public APIdeletePropertiesFromTransactionRequest deletePropertiesFromTransaction(String scope, String code, String transactionId, List<String> propertyKeys) {
         return new APIdeletePropertiesFromTransactionRequest(scope, code, transactionId, propertyKeys);
+    }
+    private okhttp3.Call deleteSettlementInstructionsCall(String scope, String code, List<String> settlementInstructionIds, final ApiCallback _callback) throws ApiException {
+        return deleteSettlementInstructionsCall(scope, code, settlementInstructionIds,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteSettlementInstructionsCall(String scope, String code, List<String> settlementInstructionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/transactionportfolios/{scope}/{code}/settlementinstructions"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (settlementInstructionIds != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "settlementInstructionIds", settlementInstructionIds));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteSettlementInstructionsValidateBeforeCall(String scope, String code, List<String> settlementInstructionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling deleteSettlementInstructions(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling deleteSettlementInstructions(Async)");
+        }
+
+        // verify the required parameter 'settlementInstructionIds' is set
+        if (settlementInstructionIds == null) {
+            throw new ApiException("Missing the required parameter 'settlementInstructionIds' when calling deleteSettlementInstructions(Async)");
+        }
+
+        return deleteSettlementInstructionsCall(scope, code, settlementInstructionIds, _callback, opts);
+
+    }
+
+
+    private ApiResponse<DeletedEntityResponse> deleteSettlementInstructionsWithHttpInfo(String scope, String code, List<String> settlementInstructionIds) throws ApiException {
+        okhttp3.Call localVarCall = deleteSettlementInstructionsValidateBeforeCall(scope, code, settlementInstructionIds, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteSettlementInstructionsWithHttpInfo(String scope, String code, List<String> settlementInstructionIds, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteSettlementInstructionsValidateBeforeCall(scope, code, settlementInstructionIds, null, opts);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call deleteSettlementInstructionsAsync(String scope, String code, List<String> settlementInstructionIds, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteSettlementInstructionsValidateBeforeCall(scope, code, settlementInstructionIds, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteSettlementInstructionsAsync(String scope, String code, List<String> settlementInstructionIds, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteSettlementInstructionsValidateBeforeCall(scope, code, settlementInstructionIds, _callback, opts);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIdeleteSettlementInstructionsRequest {
+        private final String scope;
+        private final String code;
+        private final List<String> settlementInstructionIds;
+
+        private APIdeleteSettlementInstructionsRequest(String scope, String code, List<String> settlementInstructionIds) {
+            this.scope = scope;
+            this.code = code;
+            this.settlementInstructionIds = settlementInstructionIds;
+        }
+
+        /**
+         * Build call for deleteSettlementInstructions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The ids of the deleted settlement instructions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteSettlementInstructionsCall(scope, code, settlementInstructionIds, _callback);
+        }
+
+        /**
+         * Execute deleteSettlementInstructions request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The ids of the deleted settlement instructions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteSettlementInstructionsWithHttpInfo(scope, code, settlementInstructionIds);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteSettlementInstructions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The ids of the deleted settlement instructions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteSettlementInstructionsWithHttpInfo(scope, code, settlementInstructionIds, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteSettlementInstructions request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The ids of the deleted settlement instructions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteSettlementInstructionsWithHttpInfo(scope, code, settlementInstructionIds);
+        }
+
+        /**
+         * Execute deleteSettlementInstructions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The ids of the deleted settlement instructions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteSettlementInstructionsWithHttpInfo(scope, code, settlementInstructionIds, opts);
+        }
+
+        /**
+         * Execute deleteSettlementInstructions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The ids of the deleted settlement instructions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteSettlementInstructionsAsync(scope, code, settlementInstructionIds, _callback);
+        }
+
+        /**
+         * Execute deleteSettlementInstructions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The ids of the deleted settlement instructions </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteSettlementInstructionsAsync(scope, code, settlementInstructionIds, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] DeleteSettlementInstructions: Delete Settlement Instructions.
+     * Delete the specified settlement instructions
+     * @param scope The scope of the portfolio. (required)
+     * @param code The code of the portfolio. Together with the scope this uniquely identifies   the portfolio. (required)
+     * @param settlementInstructionIds A list of Ids of settlement instructions to be deleted. (required)
+     * @return APIdeleteSettlementInstructionsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The ids of the deleted settlement instructions </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIdeleteSettlementInstructionsRequest deleteSettlementInstructions(String scope, String code, List<String> settlementInstructionIds) {
+        return new APIdeleteSettlementInstructionsRequest(scope, code, settlementInstructionIds);
     }
     private okhttp3.Call getA2BDataCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, String recipeIdScope, String recipeIdCode, List<String> propertyKeys, String filter, final ApiCallback _callback) throws ApiException {
         return getA2BDataCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, recipeIdScope, recipeIdCode, propertyKeys, filter,  _callback, new ConfigurationOptions());
@@ -9592,6 +9847,337 @@ public class TransactionPortfoliosApi {
     public APIlistHoldingsAdjustmentsRequest listHoldingsAdjustments(String scope, String code) {
         return new APIlistHoldingsAdjustmentsRequest(scope, code);
     }
+    private okhttp3.Call listSettlementInstructionsCall(String scope, String code, String fromDate, String toDate, String page, Integer limit, String filter, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return listSettlementInstructionsCall(scope, code, fromDate, toDate, page, limit, filter, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listSettlementInstructionsCall(String scope, String code, String fromDate, String toDate, String page, Integer limit, String filter, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/transactionportfolios/{scope}/{code}/settlementinstructions"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (fromDate != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("fromDate", fromDate));
+        }
+
+        if (toDate != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("toDate", toDate));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listSettlementInstructionsValidateBeforeCall(String scope, String code, String fromDate, String toDate, String page, Integer limit, String filter, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling listSettlementInstructions(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling listSettlementInstructions(Async)");
+        }
+
+        return listSettlementInstructionsCall(scope, code, fromDate, toDate, page, limit, filter, asAt, _callback, opts);
+
+    }
+
+
+    private ApiResponse<ResourceListOfTransactionSettlementInstruction> listSettlementInstructionsWithHttpInfo(String scope, String code, String fromDate, String toDate, String page, Integer limit, String filter, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = listSettlementInstructionsValidateBeforeCall(scope, code, fromDate, toDate, page, limit, filter, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfTransactionSettlementInstruction>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfTransactionSettlementInstruction> listSettlementInstructionsWithHttpInfo(String scope, String code, String fromDate, String toDate, String page, Integer limit, String filter, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listSettlementInstructionsValidateBeforeCall(scope, code, fromDate, toDate, page, limit, filter, asAt, null, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfTransactionSettlementInstruction>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listSettlementInstructionsAsync(String scope, String code, String fromDate, String toDate, String page, Integer limit, String filter, OffsetDateTime asAt, final ApiCallback<ResourceListOfTransactionSettlementInstruction> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listSettlementInstructionsValidateBeforeCall(scope, code, fromDate, toDate, page, limit, filter, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfTransactionSettlementInstruction>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listSettlementInstructionsAsync(String scope, String code, String fromDate, String toDate, String page, Integer limit, String filter, OffsetDateTime asAt, final ApiCallback<ResourceListOfTransactionSettlementInstruction> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listSettlementInstructionsValidateBeforeCall(scope, code, fromDate, toDate, page, limit, filter, asAt, _callback, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfTransactionSettlementInstruction>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIlistSettlementInstructionsRequest {
+        private final String scope;
+        private final String code;
+        private String fromDate;
+        private String toDate;
+        private String page;
+        private Integer limit;
+        private String filter;
+        private OffsetDateTime asAt;
+
+        private APIlistSettlementInstructionsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set fromDate
+         * @param fromDate The lower bound effective datetime or cut label (inclusive) from which to retrieve instructions.   There is no lower bound if this is not specified. (optional)
+         * @return APIlistSettlementInstructionsRequest
+         */
+        public APIlistSettlementInstructionsRequest fromDate(String fromDate) {
+            this.fromDate = fromDate;
+            return this;
+        }
+
+        /**
+         * Set toDate
+         * @param toDate The upper bound effective datetime or cut label (inclusive) from which to retrieve instructions. (optional)
+         * @return APIlistSettlementInstructionsRequest
+         */
+        public APIlistSettlementInstructionsRequest toDate(String toDate) {
+            this.toDate = toDate;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing instructions; this value is returned from the previous call.   If a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the original request. (optional)
+         * @return APIlistSettlementInstructionsRequest
+         */
+        public APIlistSettlementInstructionsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+         * @return APIlistSettlementInstructionsRequest
+         */
+        public APIlistSettlementInstructionsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter The expression to filter out settlement instructions (optional)
+         * @return APIlistSettlementInstructionsRequest
+         */
+        public APIlistSettlementInstructionsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the settlement instructions. Defaults to return the latest if not specified. (optional)
+         * @return APIlistSettlementInstructionsRequest
+         */
+        public APIlistSettlementInstructionsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for listSettlementInstructions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Requested settlement instructions from the specified portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listSettlementInstructionsCall(scope, code, fromDate, toDate, page, limit, filter, asAt, _callback);
+        }
+
+        /**
+         * Execute listSettlementInstructions request
+         * @return ResourceListOfTransactionSettlementInstruction
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Requested settlement instructions from the specified portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfTransactionSettlementInstruction execute() throws ApiException {
+            ApiResponse<ResourceListOfTransactionSettlementInstruction> localVarResp = listSettlementInstructionsWithHttpInfo(scope, code, fromDate, toDate, page, limit, filter, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listSettlementInstructions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfTransactionSettlementInstruction
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Requested settlement instructions from the specified portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfTransactionSettlementInstruction execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfTransactionSettlementInstruction> localVarResp = listSettlementInstructionsWithHttpInfo(scope, code, fromDate, toDate, page, limit, filter, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listSettlementInstructions request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfTransactionSettlementInstruction&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Requested settlement instructions from the specified portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfTransactionSettlementInstruction> executeWithHttpInfo() throws ApiException {
+            return listSettlementInstructionsWithHttpInfo(scope, code, fromDate, toDate, page, limit, filter, asAt);
+        }
+
+        /**
+         * Execute listSettlementInstructions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfTransactionSettlementInstruction&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Requested settlement instructions from the specified portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfTransactionSettlementInstruction> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listSettlementInstructionsWithHttpInfo(scope, code, fromDate, toDate, page, limit, filter, asAt, opts);
+        }
+
+        /**
+         * Execute listSettlementInstructions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Requested settlement instructions from the specified portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfTransactionSettlementInstruction> _callback) throws ApiException {
+            return listSettlementInstructionsAsync(scope, code, fromDate, toDate, page, limit, filter, asAt, _callback);
+        }
+
+        /**
+         * Execute listSettlementInstructions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Requested settlement instructions from the specified portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfTransactionSettlementInstruction> _callback, ConfigurationOptions opts) throws ApiException {
+            return listSettlementInstructionsAsync(scope, code, fromDate, toDate, page, limit, filter, asAt, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] ListSettlementInstructions: List Settlement Instructions.
+     * Display all the Settlement Instructions for a given Portfolio. The transaction Id filter can be ued to return instructions for an individual transaction.
+     * @param scope The scope of the portfolio to retrieve settlement instructions for. (required)
+     * @param code The code of the portfolio to retrieve settlement instructions for. (required)
+     * @return APIlistSettlementInstructionsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Requested settlement instructions from the specified portfolio </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIlistSettlementInstructionsRequest listSettlementInstructions(String scope, String code) {
+        return new APIlistSettlementInstructionsRequest(scope, code);
+    }
     private okhttp3.Call patchPortfolioDetailsCall(String scope, String code, List<Operation> operation, String effectiveAt, final ApiCallback _callback) throws ApiException {
         return patchPortfolioDetailsCall(scope, code, operation, effectiveAt,  _callback, new ConfigurationOptions());
     }
@@ -11542,6 +12128,259 @@ public class TransactionPortfoliosApi {
      */
     public APIupsertPortfolioDetailsRequest upsertPortfolioDetails(String scope, String code, CreatePortfolioDetails createPortfolioDetails) {
         return new APIupsertPortfolioDetailsRequest(scope, code, createPortfolioDetails);
+    }
+    private okhttp3.Call upsertSettlementInstructionsCall(String scope, String code, List<SettlementInstructionRequest> settlementInstructionRequest, final ApiCallback _callback) throws ApiException {
+        return upsertSettlementInstructionsCall(scope, code, settlementInstructionRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertSettlementInstructionsCall(String scope, String code, List<SettlementInstructionRequest> settlementInstructionRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = settlementInstructionRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/transactionportfolios/{scope}/{code}/settlementinstructions"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call upsertSettlementInstructionsValidateBeforeCall(String scope, String code, List<SettlementInstructionRequest> settlementInstructionRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling upsertSettlementInstructions(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling upsertSettlementInstructions(Async)");
+        }
+
+        // verify the required parameter 'settlementInstructionRequest' is set
+        if (settlementInstructionRequest == null) {
+            throw new ApiException("Missing the required parameter 'settlementInstructionRequest' when calling upsertSettlementInstructions(Async)");
+        }
+
+        return upsertSettlementInstructionsCall(scope, code, settlementInstructionRequest, _callback, opts);
+
+    }
+
+
+    private ApiResponse<ResourceListOfTransactionSettlementInstruction> upsertSettlementInstructionsWithHttpInfo(String scope, String code, List<SettlementInstructionRequest> settlementInstructionRequest) throws ApiException {
+        okhttp3.Call localVarCall = upsertSettlementInstructionsValidateBeforeCall(scope, code, settlementInstructionRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfTransactionSettlementInstruction>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfTransactionSettlementInstruction> upsertSettlementInstructionsWithHttpInfo(String scope, String code, List<SettlementInstructionRequest> settlementInstructionRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertSettlementInstructionsValidateBeforeCall(scope, code, settlementInstructionRequest, null, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfTransactionSettlementInstruction>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call upsertSettlementInstructionsAsync(String scope, String code, List<SettlementInstructionRequest> settlementInstructionRequest, final ApiCallback<ResourceListOfTransactionSettlementInstruction> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertSettlementInstructionsValidateBeforeCall(scope, code, settlementInstructionRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfTransactionSettlementInstruction>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertSettlementInstructionsAsync(String scope, String code, List<SettlementInstructionRequest> settlementInstructionRequest, final ApiCallback<ResourceListOfTransactionSettlementInstruction> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertSettlementInstructionsValidateBeforeCall(scope, code, settlementInstructionRequest, _callback, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfTransactionSettlementInstruction>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertSettlementInstructionsRequest {
+        private final String scope;
+        private final String code;
+        private final List<SettlementInstructionRequest> settlementInstructionRequest;
+
+        private APIupsertSettlementInstructionsRequest(String scope, String code, List<SettlementInstructionRequest> settlementInstructionRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.settlementInstructionRequest = settlementInstructionRequest;
+        }
+
+        /**
+         * Build call for upsertSettlementInstructions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created or undated Settlement Instructions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertSettlementInstructionsCall(scope, code, settlementInstructionRequest, _callback);
+        }
+
+        /**
+         * Execute upsertSettlementInstructions request
+         * @return ResourceListOfTransactionSettlementInstruction
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created or undated Settlement Instructions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfTransactionSettlementInstruction execute() throws ApiException {
+            ApiResponse<ResourceListOfTransactionSettlementInstruction> localVarResp = upsertSettlementInstructionsWithHttpInfo(scope, code, settlementInstructionRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertSettlementInstructions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfTransactionSettlementInstruction
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created or undated Settlement Instructions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfTransactionSettlementInstruction execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfTransactionSettlementInstruction> localVarResp = upsertSettlementInstructionsWithHttpInfo(scope, code, settlementInstructionRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertSettlementInstructions request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfTransactionSettlementInstruction&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created or undated Settlement Instructions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfTransactionSettlementInstruction> executeWithHttpInfo() throws ApiException {
+            return upsertSettlementInstructionsWithHttpInfo(scope, code, settlementInstructionRequest);
+        }
+
+        /**
+         * Execute upsertSettlementInstructions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfTransactionSettlementInstruction&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created or undated Settlement Instructions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfTransactionSettlementInstruction> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertSettlementInstructionsWithHttpInfo(scope, code, settlementInstructionRequest, opts);
+        }
+
+        /**
+         * Execute upsertSettlementInstructions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created or undated Settlement Instructions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfTransactionSettlementInstruction> _callback) throws ApiException {
+            return upsertSettlementInstructionsAsync(scope, code, settlementInstructionRequest, _callback);
+        }
+
+        /**
+         * Execute upsertSettlementInstructions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 201 </td><td> The newly created or undated Settlement Instructions. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfTransactionSettlementInstruction> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertSettlementInstructionsAsync(scope, code, settlementInstructionRequest, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] UpsertSettlementInstructions: Upsert Settlement Instructions.
+     * Create or update instructions to settle specific transactions.
+     * @param scope The scope of the portfolio. (required)
+     * @param code The code of the portfolio. (required)
+     * @param settlementInstructionRequest The definition of the settlement instruction. (required)
+     * @return APIupsertSettlementInstructionsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The newly created or undated Settlement Instructions. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIupsertSettlementInstructionsRequest upsertSettlementInstructions(String scope, String code, List<SettlementInstructionRequest> settlementInstructionRequest) {
+        return new APIupsertSettlementInstructionsRequest(scope, code, settlementInstructionRequest);
     }
     private okhttp3.Call upsertTransactionPropertiesCall(String scope, String code, String transactionId, Map<String, PerpetualProperty> requestBody, final ApiCallback _callback) throws ApiException {
         return upsertTransactionPropertiesCall(scope, code, transactionId, requestBody,  _callback, new ConfigurationOptions());

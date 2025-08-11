@@ -45,6 +45,7 @@ import com.finbourne.lusid.model.PagedResourceListOfFundCalendarEntry;
 import com.finbourne.lusid.model.PagedResourceListOfValuationPointOverview;
 import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.SetShareClassInstrumentsRequest;
+import com.finbourne.lusid.model.SingleValuationPointQueryParameters;
 import com.finbourne.lusid.model.UpsertValuationPointRequest;
 import com.finbourne.lusid.model.ValuationPointDataQueryParameters;
 import com.finbourne.lusid.model.ValuationPointDataRequest;
@@ -53,6 +54,7 @@ import com.finbourne.lusid.model.ValuationPointResourceListOfAccountedTransactio
 import com.finbourne.lusid.model.ValuationPointResourceListOfFundJournalEntryLine;
 import com.finbourne.lusid.model.ValuationPointResourceListOfPnlJournalEntryLine;
 import com.finbourne.lusid.model.ValuationPointResourceListOfTrialBalance;
+import com.finbourne.lusid.model.VersionedResourceListOfPortfolioHolding;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -3276,6 +3278,349 @@ public class FundsApi {
      */
     public APIgetFundPropertiesRequest getFundProperties(String scope, String code) {
         return new APIgetFundPropertiesRequest(scope, code);
+    }
+    private okhttp3.Call getHoldingsForFundCall(String scope, String code, SingleValuationPointQueryParameters singleValuationPointQueryParameters, String navTypeCode, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, final ApiCallback _callback) throws ApiException {
+        return getHoldingsForFundCall(scope, code, singleValuationPointQueryParameters, navTypeCode, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getHoldingsForFundCall(String scope, String code, SingleValuationPointQueryParameters singleValuationPointQueryParameters, String navTypeCode, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = singleValuationPointQueryParameters;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/$holdings"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (navTypeCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
+        if (propertyKeys != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
+        }
+
+        if (byTaxlots != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("byTaxlots", byTaxlots));
+        }
+
+        if (includeSettlementEventsAfterDays != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("includeSettlementEventsAfterDays", includeSettlementEventsAfterDays));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getHoldingsForFundValidateBeforeCall(String scope, String code, SingleValuationPointQueryParameters singleValuationPointQueryParameters, String navTypeCode, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getHoldingsForFund(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling getHoldingsForFund(Async)");
+        }
+
+        // verify the required parameter 'singleValuationPointQueryParameters' is set
+        if (singleValuationPointQueryParameters == null) {
+            throw new ApiException("Missing the required parameter 'singleValuationPointQueryParameters' when calling getHoldingsForFund(Async)");
+        }
+
+        return getHoldingsForFundCall(scope, code, singleValuationPointQueryParameters, navTypeCode, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, _callback, opts);
+
+    }
+
+
+    private ApiResponse<VersionedResourceListOfPortfolioHolding> getHoldingsForFundWithHttpInfo(String scope, String code, SingleValuationPointQueryParameters singleValuationPointQueryParameters, String navTypeCode, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays) throws ApiException {
+        okhttp3.Call localVarCall = getHoldingsForFundValidateBeforeCall(scope, code, singleValuationPointQueryParameters, navTypeCode, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfPortfolioHolding>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<VersionedResourceListOfPortfolioHolding> getHoldingsForFundWithHttpInfo(String scope, String code, SingleValuationPointQueryParameters singleValuationPointQueryParameters, String navTypeCode, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getHoldingsForFundValidateBeforeCall(scope, code, singleValuationPointQueryParameters, navTypeCode, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, null, opts);
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfPortfolioHolding>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getHoldingsForFundAsync(String scope, String code, SingleValuationPointQueryParameters singleValuationPointQueryParameters, String navTypeCode, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, final ApiCallback<VersionedResourceListOfPortfolioHolding> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getHoldingsForFundValidateBeforeCall(scope, code, singleValuationPointQueryParameters, navTypeCode, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfPortfolioHolding>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getHoldingsForFundAsync(String scope, String code, SingleValuationPointQueryParameters singleValuationPointQueryParameters, String navTypeCode, OffsetDateTime asAt, String filter, List<String> propertyKeys, Boolean byTaxlots, Integer includeSettlementEventsAfterDays, final ApiCallback<VersionedResourceListOfPortfolioHolding> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getHoldingsForFundValidateBeforeCall(scope, code, singleValuationPointQueryParameters, navTypeCode, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, _callback, opts);
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfPortfolioHolding>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetHoldingsForFundRequest {
+        private final String scope;
+        private final String code;
+        private final SingleValuationPointQueryParameters singleValuationPointQueryParameters;
+        private String navTypeCode;
+        private OffsetDateTime asAt;
+        private String filter;
+        private List<String> propertyKeys;
+        private Boolean byTaxlots;
+        private Integer includeSettlementEventsAfterDays;
+
+        private APIgetHoldingsForFundRequest(String scope, String code, SingleValuationPointQueryParameters singleValuationPointQueryParameters) {
+            this.scope = scope;
+            this.code = code;
+            this.singleValuationPointQueryParameters = singleValuationPointQueryParameters;
+        }
+
+        /**
+         * Set navTypeCode
+         * @param navTypeCode When provided runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
+         * @return APIgetHoldingsForFundRequest
+         */
+        public APIgetHoldingsForFundRequest navTypeCode(String navTypeCode) {
+            this.navTypeCode = navTypeCode;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the holdings of transaction portfolios in the Fund. Defaults   to return the latest version of the holdings if not specified. (optional)
+         * @return APIgetHoldingsForFundRequest
+         */
+        public APIgetHoldingsForFundRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIgetHoldingsForFundRequest
+         */
+        public APIgetHoldingsForFundRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot; or \&quot;Portfolio\&quot; domain to decorate onto   the holdings. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. (optional)
+         * @return APIgetHoldingsForFundRequest
+         */
+        public APIgetHoldingsForFundRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Set byTaxlots
+         * @param byTaxlots Whether to expand the holdings to return the underlying tax-lots. Defaults to False. (optional)
+         * @return APIgetHoldingsForFundRequest
+         */
+        public APIgetHoldingsForFundRequest byTaxlots(Boolean byTaxlots) {
+            this.byTaxlots = byTaxlots;
+            return this;
+        }
+
+        /**
+         * Set includeSettlementEventsAfterDays
+         * @param includeSettlementEventsAfterDays Number of days ahead to bring back settlements from, in relation to the specified effectiveAt (optional)
+         * @return APIgetHoldingsForFundRequest
+         */
+        public APIgetHoldingsForFundRequest includeSettlementEventsAfterDays(Integer includeSettlementEventsAfterDays) {
+            this.includeSettlementEventsAfterDays = includeSettlementEventsAfterDays;
+            return this;
+        }
+
+        /**
+         * Build call for getHoldingsForFund
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The holdings of transaction portfolios in a specific version of a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getHoldingsForFundCall(scope, code, singleValuationPointQueryParameters, navTypeCode, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, _callback);
+        }
+
+        /**
+         * Execute getHoldingsForFund request
+         * @return VersionedResourceListOfPortfolioHolding
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The holdings of transaction portfolios in a specific version of a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionedResourceListOfPortfolioHolding execute() throws ApiException {
+            ApiResponse<VersionedResourceListOfPortfolioHolding> localVarResp = getHoldingsForFundWithHttpInfo(scope, code, singleValuationPointQueryParameters, navTypeCode, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getHoldingsForFund request. Use any specified configuration options to override any other configuration for this request only.
+         * @return VersionedResourceListOfPortfolioHolding
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The holdings of transaction portfolios in a specific version of a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionedResourceListOfPortfolioHolding execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<VersionedResourceListOfPortfolioHolding> localVarResp = getHoldingsForFundWithHttpInfo(scope, code, singleValuationPointQueryParameters, navTypeCode, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getHoldingsForFund request with HTTP info returned
+         * @return ApiResponse&lt;VersionedResourceListOfPortfolioHolding&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The holdings of transaction portfolios in a specific version of a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionedResourceListOfPortfolioHolding> executeWithHttpInfo() throws ApiException {
+            return getHoldingsForFundWithHttpInfo(scope, code, singleValuationPointQueryParameters, navTypeCode, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays);
+        }
+
+        /**
+         * Execute getHoldingsForFund request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;VersionedResourceListOfPortfolioHolding&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The holdings of transaction portfolios in a specific version of a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionedResourceListOfPortfolioHolding> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getHoldingsForFundWithHttpInfo(scope, code, singleValuationPointQueryParameters, navTypeCode, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, opts);
+        }
+
+        /**
+         * Execute getHoldingsForFund request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The holdings of transaction portfolios in a specific version of a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfPortfolioHolding> _callback) throws ApiException {
+            return getHoldingsForFundAsync(scope, code, singleValuationPointQueryParameters, navTypeCode, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, _callback);
+        }
+
+        /**
+         * Execute getHoldingsForFund request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The holdings of transaction portfolios in a specific version of a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfPortfolioHolding> _callback, ConfigurationOptions opts) throws ApiException {
+            return getHoldingsForFundAsync(scope, code, singleValuationPointQueryParameters, navTypeCode, asAt, filter, propertyKeys, byTaxlots, includeSettlementEventsAfterDays, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] GetHoldingsForFund: Get holdings for transaction portfolios in a Fund.
+     * Get the holdings of transaction portfolios in a specified Fund.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @param singleValuationPointQueryParameters The query parameters used for diary entry or effective date of Holdings (required)
+     * @return APIgetHoldingsForFundRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The holdings of transaction portfolios in a specific version of a Fund </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetHoldingsForFundRequest getHoldingsForFund(String scope, String code, SingleValuationPointQueryParameters singleValuationPointQueryParameters) {
+        return new APIgetHoldingsForFundRequest(scope, code, singleValuationPointQueryParameters);
     }
     private okhttp3.Call getValuationPointDataCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String navTypeCode, final ApiCallback _callback) throws ApiException {
         return getValuationPointDataCall(scope, code, valuationPointDataQueryParameters, asAt, navTypeCode,  _callback, new ConfigurationOptions());

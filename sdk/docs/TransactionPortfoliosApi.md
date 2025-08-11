@@ -17,6 +17,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**createTradeTicket**](TransactionPortfoliosApi.md#createTradeTicket) | **POST** /api/transactionportfolios/{scope}/{code}/$tradeticket | CreateTradeTicket: Create Trade Ticket |
 | [**deleteCustodianAccounts**](TransactionPortfoliosApi.md#deleteCustodianAccounts) | **POST** /api/transactionportfolios/{scope}/{code}/custodianaccounts/$delete | DeleteCustodianAccounts: Soft or hard delete multiple custodian accounts |
 | [**deletePropertiesFromTransaction**](TransactionPortfoliosApi.md#deletePropertiesFromTransaction) | **DELETE** /api/transactionportfolios/{scope}/{code}/transactions/{transactionId}/properties | DeletePropertiesFromTransaction: Delete properties from transaction |
+| [**deleteSettlementInstructions**](TransactionPortfoliosApi.md#deleteSettlementInstructions) | **DELETE** /api/transactionportfolios/{scope}/{code}/settlementinstructions | [EARLY ACCESS] DeleteSettlementInstructions: Delete Settlement Instructions. |
 | [**getA2BData**](TransactionPortfoliosApi.md#getA2BData) | **GET** /api/transactionportfolios/{scope}/{code}/a2b | GetA2BData: Get A2B data |
 | [**getA2BMovements**](TransactionPortfoliosApi.md#getA2BMovements) | **GET** /api/transactionportfolios/{scope}/{code}/a2bmovements | GetA2BMovements: Get an A2B report at the movement level for the given portfolio. |
 | [**getBucketedCashFlows**](TransactionPortfoliosApi.md#getBucketedCashFlows) | **POST** /api/transactionportfolios/{scope}/{code}/bucketedCashFlows | GetBucketedCashFlows: Get bucketed cash flows from a list of portfolios |
@@ -35,6 +36,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**getUpsertablePortfolioCashFlows**](TransactionPortfoliosApi.md#getUpsertablePortfolioCashFlows) | **GET** /api/transactionportfolios/{scope}/{code}/upsertablecashflows | GetUpsertablePortfolioCashFlows: Get upsertable portfolio cash flows. |
 | [**listCustodianAccounts**](TransactionPortfoliosApi.md#listCustodianAccounts) | **GET** /api/transactionportfolios/{scope}/{code}/custodianaccounts | ListCustodianAccounts: List Custodian Accounts |
 | [**listHoldingsAdjustments**](TransactionPortfoliosApi.md#listHoldingsAdjustments) | **GET** /api/transactionportfolios/{scope}/{code}/holdingsadjustments | ListHoldingsAdjustments: List holdings adjustments |
+| [**listSettlementInstructions**](TransactionPortfoliosApi.md#listSettlementInstructions) | **GET** /api/transactionportfolios/{scope}/{code}/settlementinstructions | [EARLY ACCESS] ListSettlementInstructions: List Settlement Instructions. |
 | [**patchPortfolioDetails**](TransactionPortfoliosApi.md#patchPortfolioDetails) | **PATCH** /api/transactionportfolios/{scope}/{code}/details | PatchPortfolioDetails: Patch portfolio details |
 | [**previewTransaction**](TransactionPortfoliosApi.md#previewTransaction) | **POST** /api/transactionportfolios/{scope}/{code}/previewTransaction | PreviewTransaction: Preview a transaction |
 | [**resolveInstrument**](TransactionPortfoliosApi.md#resolveInstrument) | **POST** /api/transactionportfolios/{scope}/{code}/$resolve | ResolveInstrument: Resolve instrument |
@@ -42,6 +44,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**upsertCustodianAccounts**](TransactionPortfoliosApi.md#upsertCustodianAccounts) | **POST** /api/transactionportfolios/{scope}/{code}/custodianaccounts | UpsertCustodianAccounts: Upsert Custodian Accounts |
 | [**upsertCustodianAccountsProperties**](TransactionPortfoliosApi.md#upsertCustodianAccountsProperties) | **POST** /api/transactionportfolios/{scope}/{code}/custodianaccounts/{custodianAccountScope}/{custodianAccountCode}/properties/$upsert | UpsertCustodianAccountsProperties: Upsert custodian accounts properties |
 | [**upsertPortfolioDetails**](TransactionPortfoliosApi.md#upsertPortfolioDetails) | **POST** /api/transactionportfolios/{scope}/{code}/details | UpsertPortfolioDetails: Upsert portfolio details |
+| [**upsertSettlementInstructions**](TransactionPortfoliosApi.md#upsertSettlementInstructions) | **POST** /api/transactionportfolios/{scope}/{code}/settlementinstructions | [EARLY ACCESS] UpsertSettlementInstructions: Upsert Settlement Instructions. |
 | [**upsertTransactionProperties**](TransactionPortfoliosApi.md#upsertTransactionProperties) | **POST** /api/transactionportfolios/{scope}/{code}/transactions/{transactionId}/properties | UpsertTransactionProperties: Upsert transaction properties |
 | [**upsertTransactions**](TransactionPortfoliosApi.md#upsertTransactions) | **POST** /api/transactionportfolios/{scope}/{code}/transactions | UpsertTransactions: Upsert transactions |
 
@@ -1306,6 +1309,101 @@ public class TransactionPortfoliosApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The datetime that the property was deleted |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## deleteSettlementInstructions
+
+> DeletedEntityResponse deleteSettlementInstructions(scope, code, settlementInstructionIds)
+
+[EARLY ACCESS] DeleteSettlementInstructions: Delete Settlement Instructions.
+
+Delete the specified settlement instructions
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.TransactionPortfoliosApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class TransactionPortfoliosApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
+        TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
+        String scope = "scope_example"; // String | The scope of the portfolio.
+        String code = "code_example"; // String | The code of the portfolio. Together with the scope this uniquely identifies   the portfolio.
+        List<String> settlementInstructionIds = Arrays.asList(); // List<String> | A list of Ids of settlement instructions to be deleted.
+        try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteSettlementInstructions(scope, code, settlementInstructionIds).execute(opts);
+
+            DeletedEntityResponse result = apiInstance.deleteSettlementInstructions(scope, code, settlementInstructionIds).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TransactionPortfoliosApi#deleteSettlementInstructions");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the portfolio. | |
+| **code** | **String**| The code of the portfolio. Together with the scope this uniquely identifies   the portfolio. | |
+| **settlementInstructionIds** | [**List&lt;String&gt;**](String.md)| A list of Ids of settlement instructions to be deleted. | |
+
+### Return type
+
+[**DeletedEntityResponse**](DeletedEntityResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The ids of the deleted settlement instructions |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -3212,6 +3310,111 @@ public class TransactionPortfoliosApiExample {
 [Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 
+## listSettlementInstructions
+
+> ResourceListOfTransactionSettlementInstruction listSettlementInstructions(scope, code, fromDate, toDate, page, limit, filter, asAt)
+
+[EARLY ACCESS] ListSettlementInstructions: List Settlement Instructions.
+
+Display all the Settlement Instructions for a given Portfolio. The transaction Id filter can be ued to return instructions for an individual transaction.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.TransactionPortfoliosApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class TransactionPortfoliosApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
+        TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
+        String scope = "scope_example"; // String | The scope of the portfolio to retrieve settlement instructions for.
+        String code = "code_example"; // String | The code of the portfolio to retrieve settlement instructions for.
+        String fromDate = "fromDate_example"; // String | The lower bound effective datetime or cut label (inclusive) from which to retrieve instructions.   There is no lower bound if this is not specified.
+        String toDate = "toDate_example"; // String | The upper bound effective datetime or cut label (inclusive) from which to retrieve instructions.
+        String page = "page_example"; // String | The pagination token to use to continue listing instructions; this value is returned from the previous call.   If a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the original request.
+        Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
+        String filter = "filter_example"; // String | The expression to filter out settlement instructions
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the settlement instructions. Defaults to return the latest if not specified.
+        try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfTransactionSettlementInstruction result = apiInstance.listSettlementInstructions(scope, code, fromDate, toDate, page, limit, filter, asAt).execute(opts);
+
+            ResourceListOfTransactionSettlementInstruction result = apiInstance.listSettlementInstructions(scope, code, fromDate, toDate, page, limit, filter, asAt).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TransactionPortfoliosApi#listSettlementInstructions");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the portfolio to retrieve settlement instructions for. | |
+| **code** | **String**| The code of the portfolio to retrieve settlement instructions for. | |
+| **fromDate** | **String**| The lower bound effective datetime or cut label (inclusive) from which to retrieve instructions.   There is no lower bound if this is not specified. | [optional] |
+| **toDate** | **String**| The upper bound effective datetime or cut label (inclusive) from which to retrieve instructions. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing instructions; this value is returned from the previous call.   If a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the original request. | [optional] |
+| **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
+| **filter** | **String**| The expression to filter out settlement instructions | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the settlement instructions. Defaults to return the latest if not specified. | [optional] |
+
+### Return type
+
+[**ResourceListOfTransactionSettlementInstruction**](ResourceListOfTransactionSettlementInstruction.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Requested settlement instructions from the specified portfolio |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
 ## patchPortfolioDetails
 
 > PortfolioDetails patchPortfolioDetails(scope, code, operation, effectiveAt)
@@ -3897,6 +4100,101 @@ public class TransactionPortfoliosApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The newly updated or inserted details |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## upsertSettlementInstructions
+
+> ResourceListOfTransactionSettlementInstruction upsertSettlementInstructions(scope, code, settlementInstructionRequest)
+
+[EARLY ACCESS] UpsertSettlementInstructions: Upsert Settlement Instructions.
+
+Create or update instructions to settle specific transactions.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.TransactionPortfoliosApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class TransactionPortfoliosApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
+        TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
+        String scope = "scope_example"; // String | The scope of the portfolio.
+        String code = "code_example"; // String | The code of the portfolio.
+        List<SettlementInstructionRequest> settlementInstructionRequest = Arrays.asList(); // List<SettlementInstructionRequest> | The definition of the settlement instruction.
+        try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfTransactionSettlementInstruction result = apiInstance.upsertSettlementInstructions(scope, code, settlementInstructionRequest).execute(opts);
+
+            ResourceListOfTransactionSettlementInstruction result = apiInstance.upsertSettlementInstructions(scope, code, settlementInstructionRequest).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TransactionPortfoliosApi#upsertSettlementInstructions");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the portfolio. | |
+| **code** | **String**| The code of the portfolio. | |
+| **settlementInstructionRequest** | [**List&lt;SettlementInstructionRequest&gt;**](SettlementInstructionRequest.md)| The definition of the settlement instruction. | |
+
+### Return type
+
+[**ResourceListOfTransactionSettlementInstruction**](ResourceListOfTransactionSettlementInstruction.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | The newly created or undated Settlement Instructions. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
