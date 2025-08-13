@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.InstrumentEventConfiguration;
 import com.finbourne.lusid.model.Link;
+import com.finbourne.lusid.model.PortfolioSettlementConfiguration;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.StagedModificationsInfo;
 import com.finbourne.lusid.model.Version;
@@ -188,6 +189,10 @@ public class PortfolioDetails {
   public static final String SERIALIZED_NAME_TAX_RULE_SET_SCOPE = "taxRuleSetScope";
   @SerializedName(SERIALIZED_NAME_TAX_RULE_SET_SCOPE)
   private String taxRuleSetScope;
+
+  public static final String SERIALIZED_NAME_SETTLEMENT_CONFIGURATION = "settlementConfiguration";
+  @SerializedName(SERIALIZED_NAME_SETTLEMENT_CONFIGURATION)
+  private PortfolioSettlementConfiguration settlementConfiguration;
 
   public static final String SERIALIZED_NAME_STAGED_MODIFICATIONS = "stagedModifications";
   @SerializedName(SERIALIZED_NAME_STAGED_MODIFICATIONS)
@@ -510,6 +515,27 @@ public class PortfolioDetails {
   }
 
 
+  public PortfolioDetails settlementConfiguration(PortfolioSettlementConfiguration settlementConfiguration) {
+    
+    this.settlementConfiguration = settlementConfiguration;
+    return this;
+  }
+
+   /**
+   * Get settlementConfiguration
+   * @return settlementConfiguration
+  **/
+  @jakarta.annotation.Nullable
+  public PortfolioSettlementConfiguration getSettlementConfiguration() {
+    return settlementConfiguration;
+  }
+
+
+  public void setSettlementConfiguration(PortfolioSettlementConfiguration settlementConfiguration) {
+    this.settlementConfiguration = settlementConfiguration;
+  }
+
+
   public PortfolioDetails stagedModifications(StagedModificationsInfo stagedModifications) {
     
     this.stagedModifications = stagedModifications;
@@ -584,6 +610,7 @@ public class PortfolioDetails {
         Objects.equals(this.instrumentEventConfiguration, portfolioDetails.instrumentEventConfiguration) &&
         Objects.equals(this.amortisationRuleSetId, portfolioDetails.amortisationRuleSetId) &&
         Objects.equals(this.taxRuleSetScope, portfolioDetails.taxRuleSetScope) &&
+        Objects.equals(this.settlementConfiguration, portfolioDetails.settlementConfiguration) &&
         Objects.equals(this.stagedModifications, portfolioDetails.stagedModifications) &&
         Objects.equals(this.links, portfolioDetails.links);
   }
@@ -594,7 +621,7 @@ public class PortfolioDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, originPortfolioId, version, baseCurrency, corporateActionSourceId, subHoldingKeys, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, taxRuleSetScope, stagedModifications, links);
+    return Objects.hash(href, originPortfolioId, version, baseCurrency, corporateActionSourceId, subHoldingKeys, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, taxRuleSetScope, settlementConfiguration, stagedModifications, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -622,6 +649,7 @@ public class PortfolioDetails {
     sb.append("    instrumentEventConfiguration: ").append(toIndentedString(instrumentEventConfiguration)).append("\n");
     sb.append("    amortisationRuleSetId: ").append(toIndentedString(amortisationRuleSetId)).append("\n");
     sb.append("    taxRuleSetScope: ").append(toIndentedString(taxRuleSetScope)).append("\n");
+    sb.append("    settlementConfiguration: ").append(toIndentedString(settlementConfiguration)).append("\n");
     sb.append("    stagedModifications: ").append(toIndentedString(stagedModifications)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
@@ -660,6 +688,7 @@ public class PortfolioDetails {
     openapiFields.add("instrumentEventConfiguration");
     openapiFields.add("amortisationRuleSetId");
     openapiFields.add("taxRuleSetScope");
+    openapiFields.add("settlementConfiguration");
     openapiFields.add("stagedModifications");
     openapiFields.add("links");
 
@@ -734,6 +763,10 @@ public class PortfolioDetails {
       }
       if ((jsonObj.get("taxRuleSetScope") != null && !jsonObj.get("taxRuleSetScope").isJsonNull()) && !jsonObj.get("taxRuleSetScope").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `taxRuleSetScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("taxRuleSetScope").toString()));
+      }
+      // validate the optional field `settlementConfiguration`
+      if (jsonObj.get("settlementConfiguration") != null && !jsonObj.get("settlementConfiguration").isJsonNull()) {
+        PortfolioSettlementConfiguration.validateJsonElement(jsonObj.get("settlementConfiguration"));
       }
       // validate the optional field `stagedModifications`
       if (jsonObj.get("stagedModifications") != null && !jsonObj.get("stagedModifications").isJsonNull()) {

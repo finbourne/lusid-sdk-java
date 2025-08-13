@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.InstrumentEventConfiguration;
+import com.finbourne.lusid.model.PortfolioSettlementConfiguration;
 import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
@@ -196,6 +197,10 @@ public class CreateTransactionPortfolioRequest {
   public static final String SERIALIZED_NAME_TAX_RULE_SET_SCOPE = "taxRuleSetScope";
   @SerializedName(SERIALIZED_NAME_TAX_RULE_SET_SCOPE)
   private String taxRuleSetScope;
+
+  public static final String SERIALIZED_NAME_SETTLEMENT_CONFIGURATION = "settlementConfiguration";
+  @SerializedName(SERIALIZED_NAME_SETTLEMENT_CONFIGURATION)
+  private PortfolioSettlementConfiguration settlementConfiguration;
 
   public CreateTransactionPortfolioRequest() {
   }
@@ -560,6 +565,27 @@ public class CreateTransactionPortfolioRequest {
   }
 
 
+  public CreateTransactionPortfolioRequest settlementConfiguration(PortfolioSettlementConfiguration settlementConfiguration) {
+    
+    this.settlementConfiguration = settlementConfiguration;
+    return this;
+  }
+
+   /**
+   * Get settlementConfiguration
+   * @return settlementConfiguration
+  **/
+  @jakarta.annotation.Nullable
+  public PortfolioSettlementConfiguration getSettlementConfiguration() {
+    return settlementConfiguration;
+  }
+
+
+  public void setSettlementConfiguration(PortfolioSettlementConfiguration settlementConfiguration) {
+    this.settlementConfiguration = settlementConfiguration;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -585,7 +611,8 @@ public class CreateTransactionPortfolioRequest {
         Objects.equals(this.cashGainLossCalculationDate, createTransactionPortfolioRequest.cashGainLossCalculationDate) &&
         Objects.equals(this.instrumentEventConfiguration, createTransactionPortfolioRequest.instrumentEventConfiguration) &&
         Objects.equals(this.amortisationRuleSetId, createTransactionPortfolioRequest.amortisationRuleSetId) &&
-        Objects.equals(this.taxRuleSetScope, createTransactionPortfolioRequest.taxRuleSetScope);
+        Objects.equals(this.taxRuleSetScope, createTransactionPortfolioRequest.taxRuleSetScope) &&
+        Objects.equals(this.settlementConfiguration, createTransactionPortfolioRequest.settlementConfiguration);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -594,7 +621,7 @@ public class CreateTransactionPortfolioRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, description, code, created, baseCurrency, corporateActionSourceId, accountingMethod, subHoldingKeys, properties, instrumentScopes, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, taxRuleSetScope);
+    return Objects.hash(displayName, description, code, created, baseCurrency, corporateActionSourceId, accountingMethod, subHoldingKeys, properties, instrumentScopes, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, taxRuleSetScope, settlementConfiguration);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -624,6 +651,7 @@ public class CreateTransactionPortfolioRequest {
     sb.append("    instrumentEventConfiguration: ").append(toIndentedString(instrumentEventConfiguration)).append("\n");
     sb.append("    amortisationRuleSetId: ").append(toIndentedString(amortisationRuleSetId)).append("\n");
     sb.append("    taxRuleSetScope: ").append(toIndentedString(taxRuleSetScope)).append("\n");
+    sb.append("    settlementConfiguration: ").append(toIndentedString(settlementConfiguration)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -662,6 +690,7 @@ public class CreateTransactionPortfolioRequest {
     openapiFields.add("instrumentEventConfiguration");
     openapiFields.add("amortisationRuleSetId");
     openapiFields.add("taxRuleSetScope");
+    openapiFields.add("settlementConfiguration");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -736,6 +765,10 @@ public class CreateTransactionPortfolioRequest {
       }
       if ((jsonObj.get("taxRuleSetScope") != null && !jsonObj.get("taxRuleSetScope").isJsonNull()) && !jsonObj.get("taxRuleSetScope").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `taxRuleSetScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("taxRuleSetScope").toString()));
+      }
+      // validate the optional field `settlementConfiguration`
+      if (jsonObj.get("settlementConfiguration") != null && !jsonObj.get("settlementConfiguration").isJsonNull()) {
+        PortfolioSettlementConfiguration.validateJsonElement(jsonObj.get("settlementConfiguration"));
       }
   }
 

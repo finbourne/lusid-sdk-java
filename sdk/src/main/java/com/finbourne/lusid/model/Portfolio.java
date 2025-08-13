@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.InstrumentEventConfiguration;
 import com.finbourne.lusid.model.Link;
+import com.finbourne.lusid.model.PortfolioSettlementConfiguration;
 import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.Relationship;
 import com.finbourne.lusid.model.ResourceId;
@@ -272,6 +273,10 @@ public class Portfolio {
   public static final String SERIALIZED_NAME_TAX_RULE_SET_SCOPE = "taxRuleSetScope";
   @SerializedName(SERIALIZED_NAME_TAX_RULE_SET_SCOPE)
   private String taxRuleSetScope;
+
+  public static final String SERIALIZED_NAME_SETTLEMENT_CONFIGURATION = "settlementConfiguration";
+  @SerializedName(SERIALIZED_NAME_SETTLEMENT_CONFIGURATION)
+  private PortfolioSettlementConfiguration settlementConfiguration;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -745,6 +750,27 @@ public class Portfolio {
   }
 
 
+  public Portfolio settlementConfiguration(PortfolioSettlementConfiguration settlementConfiguration) {
+    
+    this.settlementConfiguration = settlementConfiguration;
+    return this;
+  }
+
+   /**
+   * Get settlementConfiguration
+   * @return settlementConfiguration
+  **/
+  @jakarta.annotation.Nullable
+  public PortfolioSettlementConfiguration getSettlementConfiguration() {
+    return settlementConfiguration;
+  }
+
+
+  public void setSettlementConfiguration(PortfolioSettlementConfiguration settlementConfiguration) {
+    this.settlementConfiguration = settlementConfiguration;
+  }
+
+
   public Portfolio links(List<Link> links) {
     
     this.links = links;
@@ -805,6 +831,7 @@ public class Portfolio {
         Objects.equals(this.instrumentEventConfiguration, portfolio.instrumentEventConfiguration) &&
         Objects.equals(this.amortisationRuleSetId, portfolio.amortisationRuleSetId) &&
         Objects.equals(this.taxRuleSetScope, portfolio.taxRuleSetScope) &&
+        Objects.equals(this.settlementConfiguration, portfolio.settlementConfiguration) &&
         Objects.equals(this.links, portfolio.links);
   }
 
@@ -814,7 +841,7 @@ public class Portfolio {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, type, displayName, description, created, parentPortfolioId, version, stagedModifications, isDerived, baseCurrency, properties, relationships, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, taxRuleSetScope, links);
+    return Objects.hash(href, id, type, displayName, description, created, parentPortfolioId, version, stagedModifications, isDerived, baseCurrency, properties, relationships, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, taxRuleSetScope, settlementConfiguration, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -849,6 +876,7 @@ public class Portfolio {
     sb.append("    instrumentEventConfiguration: ").append(toIndentedString(instrumentEventConfiguration)).append("\n");
     sb.append("    amortisationRuleSetId: ").append(toIndentedString(amortisationRuleSetId)).append("\n");
     sb.append("    taxRuleSetScope: ").append(toIndentedString(taxRuleSetScope)).append("\n");
+    sb.append("    settlementConfiguration: ").append(toIndentedString(settlementConfiguration)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -893,6 +921,7 @@ public class Portfolio {
     openapiFields.add("instrumentEventConfiguration");
     openapiFields.add("amortisationRuleSetId");
     openapiFields.add("taxRuleSetScope");
+    openapiFields.add("settlementConfiguration");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -992,6 +1021,10 @@ public class Portfolio {
       }
       if ((jsonObj.get("taxRuleSetScope") != null && !jsonObj.get("taxRuleSetScope").isJsonNull()) && !jsonObj.get("taxRuleSetScope").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `taxRuleSetScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("taxRuleSetScope").toString()));
+      }
+      // validate the optional field `settlementConfiguration`
+      if (jsonObj.get("settlementConfiguration") != null && !jsonObj.get("settlementConfiguration").isJsonNull()) {
+        PortfolioSettlementConfiguration.validateJsonElement(jsonObj.get("settlementConfiguration"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

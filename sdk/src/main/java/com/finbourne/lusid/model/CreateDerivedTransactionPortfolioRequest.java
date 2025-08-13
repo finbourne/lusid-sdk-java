@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.InstrumentEventConfiguration;
+import com.finbourne.lusid.model.PortfolioSettlementConfiguration;
 import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -185,6 +186,10 @@ public class CreateDerivedTransactionPortfolioRequest {
   public static final String SERIALIZED_NAME_INSTRUMENT_EVENT_CONFIGURATION = "instrumentEventConfiguration";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_EVENT_CONFIGURATION)
   private InstrumentEventConfiguration instrumentEventConfiguration;
+
+  public static final String SERIALIZED_NAME_SETTLEMENT_CONFIGURATION = "settlementConfiguration";
+  @SerializedName(SERIALIZED_NAME_SETTLEMENT_CONFIGURATION)
+  private PortfolioSettlementConfiguration settlementConfiguration;
 
   public CreateDerivedTransactionPortfolioRequest() {
   }
@@ -499,6 +504,27 @@ public class CreateDerivedTransactionPortfolioRequest {
   }
 
 
+  public CreateDerivedTransactionPortfolioRequest settlementConfiguration(PortfolioSettlementConfiguration settlementConfiguration) {
+    
+    this.settlementConfiguration = settlementConfiguration;
+    return this;
+  }
+
+   /**
+   * Get settlementConfiguration
+   * @return settlementConfiguration
+  **/
+  @jakarta.annotation.Nullable
+  public PortfolioSettlementConfiguration getSettlementConfiguration() {
+    return settlementConfiguration;
+  }
+
+
+  public void setSettlementConfiguration(PortfolioSettlementConfiguration settlementConfiguration) {
+    this.settlementConfiguration = settlementConfiguration;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -522,7 +548,8 @@ public class CreateDerivedTransactionPortfolioRequest {
         Objects.equals(this.transactionTypeScope, createDerivedTransactionPortfolioRequest.transactionTypeScope) &&
         Objects.equals(this.cashGainLossCalculationDate, createDerivedTransactionPortfolioRequest.cashGainLossCalculationDate) &&
         Objects.equals(this.amortisationRuleSetId, createDerivedTransactionPortfolioRequest.amortisationRuleSetId) &&
-        Objects.equals(this.instrumentEventConfiguration, createDerivedTransactionPortfolioRequest.instrumentEventConfiguration);
+        Objects.equals(this.instrumentEventConfiguration, createDerivedTransactionPortfolioRequest.instrumentEventConfiguration) &&
+        Objects.equals(this.settlementConfiguration, createDerivedTransactionPortfolioRequest.settlementConfiguration);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -531,7 +558,7 @@ public class CreateDerivedTransactionPortfolioRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, description, code, parentPortfolioId, created, corporateActionSourceId, accountingMethod, subHoldingKeys, instrumentScopes, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, amortisationRuleSetId, instrumentEventConfiguration);
+    return Objects.hash(displayName, description, code, parentPortfolioId, created, corporateActionSourceId, accountingMethod, subHoldingKeys, instrumentScopes, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, amortisationRuleSetId, instrumentEventConfiguration, settlementConfiguration);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -559,6 +586,7 @@ public class CreateDerivedTransactionPortfolioRequest {
     sb.append("    cashGainLossCalculationDate: ").append(toIndentedString(cashGainLossCalculationDate)).append("\n");
     sb.append("    amortisationRuleSetId: ").append(toIndentedString(amortisationRuleSetId)).append("\n");
     sb.append("    instrumentEventConfiguration: ").append(toIndentedString(instrumentEventConfiguration)).append("\n");
+    sb.append("    settlementConfiguration: ").append(toIndentedString(settlementConfiguration)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -595,6 +623,7 @@ public class CreateDerivedTransactionPortfolioRequest {
     openapiFields.add("cashGainLossCalculationDate");
     openapiFields.add("amortisationRuleSetId");
     openapiFields.add("instrumentEventConfiguration");
+    openapiFields.add("settlementConfiguration");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -665,6 +694,10 @@ public class CreateDerivedTransactionPortfolioRequest {
       // validate the optional field `instrumentEventConfiguration`
       if (jsonObj.get("instrumentEventConfiguration") != null && !jsonObj.get("instrumentEventConfiguration").isJsonNull()) {
         InstrumentEventConfiguration.validateJsonElement(jsonObj.get("instrumentEventConfiguration"));
+      }
+      // validate the optional field `settlementConfiguration`
+      if (jsonObj.get("settlementConfiguration") != null && !jsonObj.get("settlementConfiguration").isJsonNull()) {
+        PortfolioSettlementConfiguration.validateJsonElement(jsonObj.get("settlementConfiguration"));
       }
   }
 

@@ -15,6 +15,8 @@ A request to create or update a Order.
 |**price** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional] |
 |**limitPrice** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional] |
 |**stopPrice** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional] |
+|**date** | **OffsetDateTime** | The date on which the order was made |  [optional] |
+|**side** | **String** | The client&#39;s representation of the order&#39;s side (buy, sell, short, etc) |  [optional] |
 
 
 

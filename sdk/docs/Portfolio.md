@@ -29,6 +29,7 @@ A portfolio of a particular type.
 |**instrumentEventConfiguration** | [**InstrumentEventConfiguration**](InstrumentEventConfiguration.md) |  |  [optional] |
 |**amortisationRuleSetId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 |**taxRuleSetScope** | **String** | The scope of the tax rule sets for this portfolio. |  [optional] |
+|**settlementConfiguration** | [**PortfolioSettlementConfiguration**](PortfolioSettlementConfiguration.md) |  |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 

@@ -92,6 +92,10 @@ public class TransactionTypeMovement {
   @SerializedName(SERIALIZED_NAME_CONDITION)
   private String condition;
 
+  public static final String SERIALIZED_NAME_SETTLEMENT_MODE = "settlementMode";
+  @SerializedName(SERIALIZED_NAME_SETTLEMENT_MODE)
+  private String settlementMode;
+
   public TransactionTypeMovement() {
   }
 
@@ -308,6 +312,27 @@ public class TransactionTypeMovement {
   }
 
 
+  public TransactionTypeMovement settlementMode(String settlementMode) {
+    
+    this.settlementMode = settlementMode;
+    return this;
+  }
+
+   /**
+   * Configures how movements should settle. Allowed values: &#39;Internal&#39; and &#39;External&#39;. A movement with &#39;Internal&#39; settlement mode will settle automatically on the contractual settlement date regardlesss of portfolio configuration or settlement instruction. An &#39;External&#39; movement can be settled automatically or by a settlement instruction.
+   * @return settlementMode
+  **/
+  @jakarta.annotation.Nullable
+  public String getSettlementMode() {
+    return settlementMode;
+  }
+
+
+  public void setSettlementMode(String settlementMode) {
+    this.settlementMode = settlementMode;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -326,7 +351,8 @@ public class TransactionTypeMovement {
         Objects.equals(this.name, transactionTypeMovement.name) &&
         Objects.equals(this.movementOptions, transactionTypeMovement.movementOptions) &&
         Objects.equals(this.settlementDateOverride, transactionTypeMovement.settlementDateOverride) &&
-        Objects.equals(this.condition, transactionTypeMovement.condition);
+        Objects.equals(this.condition, transactionTypeMovement.condition) &&
+        Objects.equals(this.settlementMode, transactionTypeMovement.settlementMode);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -335,7 +361,7 @@ public class TransactionTypeMovement {
 
   @Override
   public int hashCode() {
-    return Objects.hash(movementTypes, side, direction, properties, mappings, name, movementOptions, settlementDateOverride, condition);
+    return Objects.hash(movementTypes, side, direction, properties, mappings, name, movementOptions, settlementDateOverride, condition, settlementMode);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -358,6 +384,7 @@ public class TransactionTypeMovement {
     sb.append("    movementOptions: ").append(toIndentedString(movementOptions)).append("\n");
     sb.append("    settlementDateOverride: ").append(toIndentedString(settlementDateOverride)).append("\n");
     sb.append("    condition: ").append(toIndentedString(condition)).append("\n");
+    sb.append("    settlementMode: ").append(toIndentedString(settlementMode)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -389,6 +416,7 @@ public class TransactionTypeMovement {
     openapiFields.add("movementOptions");
     openapiFields.add("settlementDateOverride");
     openapiFields.add("condition");
+    openapiFields.add("settlementMode");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -449,6 +477,9 @@ public class TransactionTypeMovement {
       }
       if ((jsonObj.get("condition") != null && !jsonObj.get("condition").isJsonNull()) && !jsonObj.get("condition").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `condition` to be a primitive type in the JSON string but got `%s`", jsonObj.get("condition").toString()));
+      }
+      if ((jsonObj.get("settlementMode") != null && !jsonObj.get("settlementMode").isJsonNull()) && !jsonObj.get("settlementMode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `settlementMode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("settlementMode").toString()));
       }
   }
 

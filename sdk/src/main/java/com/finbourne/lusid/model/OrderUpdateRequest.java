@@ -20,6 +20,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -82,6 +83,14 @@ public class OrderUpdateRequest {
   public static final String SERIALIZED_NAME_STOP_PRICE = "stopPrice";
   @SerializedName(SERIALIZED_NAME_STOP_PRICE)
   private CurrencyAndAmount stopPrice;
+
+  public static final String SERIALIZED_NAME_DATE = "date";
+  @SerializedName(SERIALIZED_NAME_DATE)
+  private OffsetDateTime date;
+
+  public static final String SERIALIZED_NAME_SIDE = "side";
+  @SerializedName(SERIALIZED_NAME_SIDE)
+  private String side;
 
   public OrderUpdateRequest() {
   }
@@ -241,6 +250,48 @@ public class OrderUpdateRequest {
   }
 
 
+  public OrderUpdateRequest date(OffsetDateTime date) {
+    
+    this.date = date;
+    return this;
+  }
+
+   /**
+   * The date on which the order was made
+   * @return date
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getDate() {
+    return date;
+  }
+
+
+  public void setDate(OffsetDateTime date) {
+    this.date = date;
+  }
+
+
+  public OrderUpdateRequest side(String side) {
+    
+    this.side = side;
+    return this;
+  }
+
+   /**
+   * The client&#39;s representation of the order&#39;s side (buy, sell, short, etc)
+   * @return side
+  **/
+  @jakarta.annotation.Nullable
+  public String getSide() {
+    return side;
+  }
+
+
+  public void setSide(String side) {
+    this.side = side;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -257,7 +308,9 @@ public class OrderUpdateRequest {
         Objects.equals(this.properties, orderUpdateRequest.properties) &&
         Objects.equals(this.price, orderUpdateRequest.price) &&
         Objects.equals(this.limitPrice, orderUpdateRequest.limitPrice) &&
-        Objects.equals(this.stopPrice, orderUpdateRequest.stopPrice);
+        Objects.equals(this.stopPrice, orderUpdateRequest.stopPrice) &&
+        Objects.equals(this.date, orderUpdateRequest.date) &&
+        Objects.equals(this.side, orderUpdateRequest.side);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -266,7 +319,7 @@ public class OrderUpdateRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, quantity, portfolioId, properties, price, limitPrice, stopPrice);
+    return Objects.hash(id, quantity, portfolioId, properties, price, limitPrice, stopPrice, date, side);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -287,6 +340,8 @@ public class OrderUpdateRequest {
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
     sb.append("    limitPrice: ").append(toIndentedString(limitPrice)).append("\n");
     sb.append("    stopPrice: ").append(toIndentedString(stopPrice)).append("\n");
+    sb.append("    date: ").append(toIndentedString(date)).append("\n");
+    sb.append("    side: ").append(toIndentedString(side)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -316,6 +371,8 @@ public class OrderUpdateRequest {
     openapiFields.add("price");
     openapiFields.add("limitPrice");
     openapiFields.add("stopPrice");
+    openapiFields.add("date");
+    openapiFields.add("side");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -359,6 +416,9 @@ public class OrderUpdateRequest {
       // validate the optional field `stopPrice`
       if (jsonObj.get("stopPrice") != null && !jsonObj.get("stopPrice").isJsonNull()) {
         CurrencyAndAmount.validateJsonElement(jsonObj.get("stopPrice"));
+      }
+      if ((jsonObj.get("side") != null && !jsonObj.get("side").isJsonNull()) && !jsonObj.get("side").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `side` to be a primitive type in the JSON string but got `%s`", jsonObj.get("side").toString()));
       }
   }
 

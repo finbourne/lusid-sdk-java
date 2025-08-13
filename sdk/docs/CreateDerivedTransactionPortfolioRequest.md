@@ -21,6 +21,7 @@
 |**cashGainLossCalculationDate** | **String** | The option when the Cash Gain Loss to be calulated, TransactionDate/SettlementDate. Defaults to SettlementDate. |  [optional] |
 |**amortisationRuleSetId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 |**instrumentEventConfiguration** | [**InstrumentEventConfiguration**](InstrumentEventConfiguration.md) |  |  [optional] |
+|**settlementConfiguration** | [**PortfolioSettlementConfiguration**](PortfolioSettlementConfiguration.md) |  |  [optional] |
 
 
 
