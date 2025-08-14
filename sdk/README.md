@@ -1,7 +1,7 @@
 <a id="documentation-for-api-endpoints"></a>
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://www.lusid.com/api*
+All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -246,6 +246,7 @@ Class | Method | HTTP request | Description
 *FundsApi* | [**getFund**](docs/FundsApi.md#getfund) | **GET** /api/funds/{scope}/{code} | [EXPERIMENTAL] GetFund: Get a Fund.
 *FundsApi* | [**getFundProperties**](docs/FundsApi.md#getfundproperties) | **GET** /api/funds/{scope}/{code}/properties | [EXPERIMENTAL] GetFundProperties: Get Fund properties
 *FundsApi* | [**getHoldingsForFund**](docs/FundsApi.md#getholdingsforfund) | **POST** /api/funds/{scope}/{code}/$holdings | [EXPERIMENTAL] GetHoldingsForFund: Get holdings for transaction portfolios in a Fund.
+*FundsApi* | [**getValuationForFund**](docs/FundsApi.md#getvaluationforfund) | **POST** /api/funds/{scope}/{code}/$valuation | [EXPERIMENTAL] GetValuationForFund: Perform valuation for a Fund
 *FundsApi* | [**getValuationPointData**](docs/FundsApi.md#getvaluationpointdata) | **POST** /api/funds/{scope}/{code}/valuationpoints/$query | [EXPERIMENTAL] GetValuationPointData: Get Valuation Point Data for a Fund.
 *FundsApi* | [**getValuationPointJournalEntryLines**](docs/FundsApi.md#getvaluationpointjournalentrylines) | **POST** /api/funds/{scope}/{code}/valuationpoints/journalentrylines/$query | [EXPERIMENTAL] GetValuationPointJournalEntryLines: Get the Journal Entry lines for the given Fund.
 *FundsApi* | [**getValuationPointPnlSummary**](docs/FundsApi.md#getvaluationpointpnlsummary) | **POST** /api/funds/{scope}/{code}/valuationpoints/pnlsummary/$query | [EXPERIMENTAL] GetValuationPointPnlSummary: Get a PnL summary for the given Valuation Point in the Fund.
@@ -1089,6 +1090,8 @@ Class | Method | HTTP request | Description
  - [FundRequest](docs/FundRequest.md)
  - [FundShareClass](docs/FundShareClass.md)
  - [FundValuationPointData](docs/FundValuationPointData.md)
+ - [FundValuationRequest](docs/FundValuationRequest.md)
+ - [FundValuationSchedule](docs/FundValuationSchedule.md)
  - [FundingLeg](docs/FundingLeg.md)
  - [FundingLegOptions](docs/FundingLegOptions.md)
  - [Future](docs/Future.md)
@@ -1896,6 +1899,7 @@ Class | Method | HTTP request | Description
  - [ValuationPointDataQueryParameters](docs/ValuationPointDataQueryParameters.md)
  - [ValuationPointDataRequest](docs/ValuationPointDataRequest.md)
  - [ValuationPointDataResponse](docs/ValuationPointDataResponse.md)
+ - [ValuationPointFundCalendarEntry](docs/ValuationPointFundCalendarEntry.md)
  - [ValuationPointOverview](docs/ValuationPointOverview.md)
  - [ValuationPointResourceListOfAccountedTransaction](docs/ValuationPointResourceListOfAccountedTransaction.md)
  - [ValuationPointResourceListOfFundJournalEntryLine](docs/ValuationPointResourceListOfFundJournalEntryLine.md)

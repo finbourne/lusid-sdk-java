@@ -35,6 +35,8 @@ import com.finbourne.lusid.model.Fund;
 import com.finbourne.lusid.model.FundDefinitionRequest;
 import com.finbourne.lusid.model.FundProperties;
 import com.finbourne.lusid.model.FundRequest;
+import com.finbourne.lusid.model.FundValuationRequest;
+import com.finbourne.lusid.model.ListAggregationResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import java.time.OffsetDateTime;
@@ -3622,6 +3624,277 @@ public class FundsApi {
     public APIgetHoldingsForFundRequest getHoldingsForFund(String scope, String code, SingleValuationPointQueryParameters singleValuationPointQueryParameters) {
         return new APIgetHoldingsForFundRequest(scope, code, singleValuationPointQueryParameters);
     }
+    private okhttp3.Call getValuationForFundCall(String scope, String code, String navTypeCode, FundValuationRequest fundValuationRequest, final ApiCallback _callback) throws ApiException {
+        return getValuationForFundCall(scope, code, navTypeCode, fundValuationRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getValuationForFundCall(String scope, String code, String navTypeCode, FundValuationRequest fundValuationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = fundValuationRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/$valuation"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (navTypeCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getValuationForFundValidateBeforeCall(String scope, String code, String navTypeCode, FundValuationRequest fundValuationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getValuationForFund(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling getValuationForFund(Async)");
+        }
+
+        return getValuationForFundCall(scope, code, navTypeCode, fundValuationRequest, _callback, opts);
+
+    }
+
+
+    private ApiResponse<ListAggregationResponse> getValuationForFundWithHttpInfo(String scope, String code, String navTypeCode, FundValuationRequest fundValuationRequest) throws ApiException {
+        okhttp3.Call localVarCall = getValuationForFundValidateBeforeCall(scope, code, navTypeCode, fundValuationRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ListAggregationResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ListAggregationResponse> getValuationForFundWithHttpInfo(String scope, String code, String navTypeCode, FundValuationRequest fundValuationRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getValuationForFundValidateBeforeCall(scope, code, navTypeCode, fundValuationRequest, null, opts);
+        Type localVarReturnType = new TypeToken<ListAggregationResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getValuationForFundAsync(String scope, String code, String navTypeCode, FundValuationRequest fundValuationRequest, final ApiCallback<ListAggregationResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getValuationForFundValidateBeforeCall(scope, code, navTypeCode, fundValuationRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ListAggregationResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getValuationForFundAsync(String scope, String code, String navTypeCode, FundValuationRequest fundValuationRequest, final ApiCallback<ListAggregationResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getValuationForFundValidateBeforeCall(scope, code, navTypeCode, fundValuationRequest, _callback, opts);
+        Type localVarReturnType = new TypeToken<ListAggregationResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetValuationForFundRequest {
+        private final String scope;
+        private final String code;
+        private String navTypeCode;
+        private FundValuationRequest fundValuationRequest;
+
+        private APIgetValuationForFundRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set navTypeCode
+         * @param navTypeCode When provided runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
+         * @return APIgetValuationForFundRequest
+         */
+        public APIgetValuationForFundRequest navTypeCode(String navTypeCode) {
+            this.navTypeCode = navTypeCode;
+            return this;
+        }
+
+        /**
+         * Set fundValuationRequest
+         * @param fundValuationRequest The request specifying the dates (or DiaryEntry) on which to calculate a set of valuation metrics (optional)
+         * @return APIgetValuationForFundRequest
+         */
+        public APIgetValuationForFundRequest fundValuationRequest(FundValuationRequest fundValuationRequest) {
+            this.fundValuationRequest = fundValuationRequest;
+            return this;
+        }
+
+        /**
+         * Build call for getValuationForFund
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getValuationForFundCall(scope, code, navTypeCode, fundValuationRequest, _callback);
+        }
+
+        /**
+         * Execute getValuationForFund request
+         * @return ListAggregationResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ListAggregationResponse execute() throws ApiException {
+            ApiResponse<ListAggregationResponse> localVarResp = getValuationForFundWithHttpInfo(scope, code, navTypeCode, fundValuationRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getValuationForFund request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ListAggregationResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ListAggregationResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ListAggregationResponse> localVarResp = getValuationForFundWithHttpInfo(scope, code, navTypeCode, fundValuationRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getValuationForFund request with HTTP info returned
+         * @return ApiResponse&lt;ListAggregationResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ListAggregationResponse> executeWithHttpInfo() throws ApiException {
+            return getValuationForFundWithHttpInfo(scope, code, navTypeCode, fundValuationRequest);
+        }
+
+        /**
+         * Execute getValuationForFund request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ListAggregationResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ListAggregationResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getValuationForFundWithHttpInfo(scope, code, navTypeCode, fundValuationRequest, opts);
+        }
+
+        /**
+         * Execute getValuationForFund request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ListAggregationResponse> _callback) throws ApiException {
+            return getValuationForFundAsync(scope, code, navTypeCode, fundValuationRequest, _callback);
+        }
+
+        /**
+         * Execute getValuationForFund request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ListAggregationResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return getValuationForFundAsync(scope, code, navTypeCode, fundValuationRequest, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] GetValuationForFund: Perform valuation for a Fund
+     * Perform valuation on a specified Fund.
+     * @param scope The scope of the Fund (required)
+     * @param code The code of the Fund (required)
+     * @return APIgetValuationForFundRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetValuationForFundRequest getValuationForFund(String scope, String code) {
+        return new APIgetValuationForFundRequest(scope, code);
+    }
     private okhttp3.Call getValuationPointDataCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, String navTypeCode, final ApiCallback _callback) throws ApiException {
         return getValuationPointDataCall(scope, code, valuationPointDataQueryParameters, asAt, navTypeCode,  _callback, new ConfigurationOptions());
     }
@@ -7142,7 +7415,7 @@ public class FundsApi {
 
     /**
      * [EXPERIMENTAL] PatchFund: Patch a Fund.
-     * Update fields on a Fund.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, BaseCurrency, PortfolioIds, FundConfigurationId, ShareClassInstrumentScopes, ShareClassInstruments, Type, InceptionDate, DecimalPlaces, PrimaryNavType, AdditionalNavTypes, AborId, YearEndDate.
+     * Update fields on a Fund.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, PortfolioIds, FundConfigurationId, ShareClassInstruments, Type, InceptionDate, DecimalPlaces, PrimaryNavType, AdditionalNavTypes, AborId, YearEndDate.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
      * @param operation The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902. (required)

@@ -1,6 +1,6 @@
 # TransactionPortfoliosApi
 
-All URIs are relative to *https://www.lusid.com/api*
+All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
@@ -52,7 +52,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 ## adjustHoldings
 
-> AdjustHolding adjustHoldings(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods)
+> AdjustHolding adjustHoldings(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, overrideMovementName, overrideOffsetMovementName)
 
 AdjustHoldings: Adjust holdings
 
@@ -102,11 +102,13 @@ public class TransactionPortfoliosApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which the holdings should be set to the provided targets.
         List<AdjustHoldingRequest> adjustHoldingRequest = Arrays.asList(); // List<AdjustHoldingRequest> | The selected set of holdings to adjust to the provided targets for the   transaction portfolio.
         List<String> reconciliationMethods = Arrays.asList(); // List<String> | Optional parameter for specifying a reconciliation method: e.g. FxForward.
+        String overrideMovementName = "overrideMovementName_example"; // String | Optional parameter to override movement name for the set holdings.
+        String overrideOffsetMovementName = "overrideOffsetMovementName_example"; // String | Optional parameter will create an additional offset movement for the set holdings with this new name and transaction type: CarryAsPnl
         try {
             // uncomment the below to set overrides at the request level
-            // AdjustHolding result = apiInstance.adjustHoldings(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods).execute(opts);
+            // AdjustHolding result = apiInstance.adjustHoldings(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, overrideMovementName, overrideOffsetMovementName).execute(opts);
 
-            AdjustHolding result = apiInstance.adjustHoldings(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods).execute();
+            AdjustHolding result = apiInstance.adjustHoldings(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, overrideMovementName, overrideOffsetMovementName).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TransactionPortfoliosApi#adjustHoldings");
@@ -128,6 +130,8 @@ public class TransactionPortfoliosApiExample {
 | **effectiveAt** | **String**| The effective datetime or cut label at which the holdings should be set to the provided targets. | |
 | **adjustHoldingRequest** | [**List&lt;AdjustHoldingRequest&gt;**](AdjustHoldingRequest.md)| The selected set of holdings to adjust to the provided targets for the   transaction portfolio. | |
 | **reconciliationMethods** | [**List&lt;String&gt;**](String.md)| Optional parameter for specifying a reconciliation method: e.g. FxForward. | [optional] |
+| **overrideMovementName** | **String**| Optional parameter to override movement name for the set holdings. | [optional] |
+| **overrideOffsetMovementName** | **String**| Optional parameter will create an additional offset movement for the set holdings with this new name and transaction type: CarryAsPnl | [optional] |
 
 ### Return type
 
@@ -3718,7 +3722,7 @@ public class TransactionPortfoliosApiExample {
 
 ## setHoldings
 
-> AdjustHolding setHoldings(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods)
+> AdjustHolding setHoldings(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, overrideMovementName, overrideOffsetMovementName)
 
 SetHoldings: Set holdings
 
@@ -3768,11 +3772,13 @@ public class TransactionPortfoliosApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which the holdings should be set to the provided targets.
         List<AdjustHoldingRequest> adjustHoldingRequest = Arrays.asList(); // List<AdjustHoldingRequest> | The complete set of target holdings for the transaction portfolio.
         List<String> reconciliationMethods = Arrays.asList(); // List<String> | Optional parameter for specifying a reconciliation method: e.g. FxForward.
+        String overrideMovementName = "overrideMovementName_example"; // String | Optional parameter to override movement name for the set holdings.
+        String overrideOffsetMovementName = "overrideOffsetMovementName_example"; // String | Optional parameter will create an additional offset movement for the set holdings with this new name and transaction type: CarryAsPnl
         try {
             // uncomment the below to set overrides at the request level
-            // AdjustHolding result = apiInstance.setHoldings(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods).execute(opts);
+            // AdjustHolding result = apiInstance.setHoldings(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, overrideMovementName, overrideOffsetMovementName).execute(opts);
 
-            AdjustHolding result = apiInstance.setHoldings(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods).execute();
+            AdjustHolding result = apiInstance.setHoldings(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, overrideMovementName, overrideOffsetMovementName).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TransactionPortfoliosApi#setHoldings");
@@ -3794,6 +3800,8 @@ public class TransactionPortfoliosApiExample {
 | **effectiveAt** | **String**| The effective datetime or cut label at which the holdings should be set to the provided targets. | |
 | **adjustHoldingRequest** | [**List&lt;AdjustHoldingRequest&gt;**](AdjustHoldingRequest.md)| The complete set of target holdings for the transaction portfolio. | |
 | **reconciliationMethods** | [**List&lt;String&gt;**](String.md)| Optional parameter for specifying a reconciliation method: e.g. FxForward. | [optional] |
+| **overrideMovementName** | **String**| Optional parameter to override movement name for the set holdings. | [optional] |
+| **overrideOffsetMovementName** | **String**| Optional parameter will create an additional offset movement for the set holdings with this new name and transaction type: CarryAsPnl | [optional] |
 
 ### Return type
 

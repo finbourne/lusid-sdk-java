@@ -11,17 +11,13 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.net.URI;
-import java.time.OffsetDateTime;
 import java.util.Arrays;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -53,30 +49,6 @@ import com.finbourne.lusid.JSON;
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FundCalendarEntry {
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
-  private String code;
-
-  public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
-  @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
-  private String displayName;
-
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
-  private String description;
-
-  public static final String SERIALIZED_NAME_NAV_TYPE_CODE = "navTypeCode";
-  @SerializedName(SERIALIZED_NAME_NAV_TYPE_CODE)
-  private String navTypeCode;
-
-  public static final String SERIALIZED_NAME_EFFECTIVE_AT = "effectiveAt";
-  @SerializedName(SERIALIZED_NAME_EFFECTIVE_AT)
-  private OffsetDateTime effectiveAt;
-
-  public static final String SERIALIZED_NAME_AS_AT = "asAt";
-  @SerializedName(SERIALIZED_NAME_AS_AT)
-  private OffsetDateTime asAt;
-
   /**
    * The type of the Fund Calendar Entry. Only &#39;ValuationPoint&#39; currently supported. The available values are: ValuationPointFundCalendarEntry
    */
@@ -124,144 +96,10 @@ public class FundCalendarEntry {
 
   public static final String SERIALIZED_NAME_ENTRY_TYPE = "entryType";
   @SerializedName(SERIALIZED_NAME_ENTRY_TYPE)
-  private EntryTypeEnum entryType;
-
-  public static final String SERIALIZED_NAME_VERSION = "version";
-  @SerializedName(SERIALIZED_NAME_VERSION)
-  private Version version;
-
-  public static final String SERIALIZED_NAME_HREF = "href";
-  @SerializedName(SERIALIZED_NAME_HREF)
-  private URI href;
+  protected EntryTypeEnum entryType;
 
   public FundCalendarEntry() {
   }
-
-  public FundCalendarEntry code(String code) {
-    
-    this.code = code;
-    return this;
-  }
-
-   /**
-   * The unique Code of the Calendar Entry. The Calendar Entry, together with the Fund Scope and Code, uniquely identifies a Fund Calendar Entry
-   * @return code
-  **/
-  @jakarta.annotation.Nonnull
-  public String getCode() {
-    return code;
-  }
-
-
-  public void setCode(String code) {
-    this.code = code;
-  }
-
-
-  public FundCalendarEntry displayName(String displayName) {
-    
-    this.displayName = displayName;
-    return this;
-  }
-
-   /**
-   * The name of the Fund Calendar entry.
-   * @return displayName
-  **/
-  @jakarta.annotation.Nonnull
-  public String getDisplayName() {
-    return displayName;
-  }
-
-
-  public void setDisplayName(String displayName) {
-    this.displayName = displayName;
-  }
-
-
-  public FundCalendarEntry description(String description) {
-    
-    this.description = description;
-    return this;
-  }
-
-   /**
-   * A description for the Fund Calendar entry.
-   * @return description
-  **/
-  @jakarta.annotation.Nullable
-  public String getDescription() {
-    return description;
-  }
-
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-
-  public FundCalendarEntry navTypeCode(String navTypeCode) {
-    
-    this.navTypeCode = navTypeCode;
-    return this;
-  }
-
-   /**
-   * The navTypeCode of the Fund Calendar Entry. This is the code of the NAV type that this Calendar Entry is associated with.
-   * @return navTypeCode
-  **/
-  @jakarta.annotation.Nonnull
-  public String getNavTypeCode() {
-    return navTypeCode;
-  }
-
-
-  public void setNavTypeCode(String navTypeCode) {
-    this.navTypeCode = navTypeCode;
-  }
-
-
-  public FundCalendarEntry effectiveAt(OffsetDateTime effectiveAt) {
-    
-    this.effectiveAt = effectiveAt;
-    return this;
-  }
-
-   /**
-   * The effective at of the Calendar Entry.
-   * @return effectiveAt
-  **/
-  @jakarta.annotation.Nullable
-  public OffsetDateTime getEffectiveAt() {
-    return effectiveAt;
-  }
-
-
-  public void setEffectiveAt(OffsetDateTime effectiveAt) {
-    this.effectiveAt = effectiveAt;
-  }
-
-
-  public FundCalendarEntry asAt(OffsetDateTime asAt) {
-    
-    this.asAt = asAt;
-    return this;
-  }
-
-   /**
-   * The asAt datetime for the Calendar Entry.
-   * @return asAt
-  **/
-  @jakarta.annotation.Nullable
-  public OffsetDateTime getAsAt() {
-    return asAt;
-  }
-
-
-  public void setAsAt(OffsetDateTime asAt) {
-    this.asAt = asAt;
-  }
-
 
   public FundCalendarEntry entryType(EntryTypeEnum entryType) {
     
@@ -284,48 +122,6 @@ public class FundCalendarEntry {
   }
 
 
-  public FundCalendarEntry version(Version version) {
-    
-    this.version = version;
-    return this;
-  }
-
-   /**
-   * Get version
-   * @return version
-  **/
-  @jakarta.annotation.Nonnull
-  public Version getVersion() {
-    return version;
-  }
-
-
-  public void setVersion(Version version) {
-    this.version = version;
-  }
-
-
-  public FundCalendarEntry href(URI href) {
-    
-    this.href = href;
-    return this;
-  }
-
-   /**
-   * The specific Uniform Resource Identifier (URI) for this resource at the requested asAt datetime.
-   * @return href
-  **/
-  @jakarta.annotation.Nullable
-  public URI getHref() {
-    return href;
-  }
-
-
-  public void setHref(URI href) {
-    this.href = href;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -336,46 +132,19 @@ public class FundCalendarEntry {
       return false;
     }
     FundCalendarEntry fundCalendarEntry = (FundCalendarEntry) o;
-    return Objects.equals(this.code, fundCalendarEntry.code) &&
-        Objects.equals(this.displayName, fundCalendarEntry.displayName) &&
-        Objects.equals(this.description, fundCalendarEntry.description) &&
-        Objects.equals(this.navTypeCode, fundCalendarEntry.navTypeCode) &&
-        Objects.equals(this.effectiveAt, fundCalendarEntry.effectiveAt) &&
-        Objects.equals(this.asAt, fundCalendarEntry.asAt) &&
-        Objects.equals(this.entryType, fundCalendarEntry.entryType) &&
-        Objects.equals(this.version, fundCalendarEntry.version) &&
-        Objects.equals(this.href, fundCalendarEntry.href);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    return Objects.equals(this.entryType, fundCalendarEntry.entryType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, displayName, description, navTypeCode, effectiveAt, asAt, entryType, version, href);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(entryType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class FundCalendarEntry {\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    navTypeCode: ").append(toIndentedString(navTypeCode)).append("\n");
-    sb.append("    effectiveAt: ").append(toIndentedString(effectiveAt)).append("\n");
-    sb.append("    asAt: ").append(toIndentedString(asAt)).append("\n");
     sb.append("    entryType: ").append(toIndentedString(entryType)).append("\n");
-    sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -398,23 +167,11 @@ public class FundCalendarEntry {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("code");
-    openapiFields.add("displayName");
-    openapiFields.add("description");
-    openapiFields.add("navTypeCode");
-    openapiFields.add("effectiveAt");
-    openapiFields.add("asAt");
     openapiFields.add("entryType");
-    openapiFields.add("version");
-    openapiFields.add("href");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("code");
-    openapiRequiredFields.add("displayName");
-    openapiRequiredFields.add("navTypeCode");
     openapiRequiredFields.add("entryType");
-    openapiRequiredFields.add("version");
   }
 
  /**
@@ -430,63 +187,16 @@ public class FundCalendarEntry {
         }
       }
 
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : FundCalendarEntry.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("code").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
-      }
-      if (!jsonObj.get("displayName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
-      }
-      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
-      }
-      if (!jsonObj.get("navTypeCode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `navTypeCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("navTypeCode").toString()));
-      }
-      if (!jsonObj.get("entryType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `entryType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("entryType").toString()));
-      }
-      // validate the required field `version`
-      Version.validateJsonElement(jsonObj.get("version"));
-      if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
+      String discriminatorValue = jsonElement.getAsJsonObject().get("entryType").getAsString();
+      switch (discriminatorValue) {
+        case "ValuationPointFundCalendarEntry":
+          ValuationPointFundCalendarEntry.validateJsonElement(jsonElement);
+          break;
+        default:
+          throw new IllegalArgumentException(String.format("The value of the `entryType` field `%s` does not match any key defined in the discriminator's mapping.", discriminatorValue));
       }
   }
 
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!FundCalendarEntry.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'FundCalendarEntry' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<FundCalendarEntry> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(FundCalendarEntry.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<FundCalendarEntry>() {
-           @Override
-           public void write(JsonWriter out, FundCalendarEntry value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public FundCalendarEntry read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
-    }
-  }
 
  /**
   * Create an instance of FundCalendarEntry given an JSON string

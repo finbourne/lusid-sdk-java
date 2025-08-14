@@ -119,11 +119,11 @@ public class TransactionPortfoliosApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    private okhttp3.Call adjustHoldingsCall(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, final ApiCallback _callback) throws ApiException {
-        return adjustHoldingsCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods,  _callback, new ConfigurationOptions());
+    private okhttp3.Call adjustHoldingsCall(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, String overrideMovementName, String overrideOffsetMovementName, final ApiCallback _callback) throws ApiException {
+        return adjustHoldingsCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, overrideMovementName, overrideOffsetMovementName,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call adjustHoldingsCall(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call adjustHoldingsCall(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, String overrideMovementName, String overrideOffsetMovementName, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -158,6 +158,14 @@ public class TransactionPortfoliosApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "reconciliationMethods", reconciliationMethods));
         }
 
+        if (overrideMovementName != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("overrideMovementName", overrideMovementName));
+        }
+
+        if (overrideOffsetMovementName != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("overrideOffsetMovementName", overrideOffsetMovementName));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -184,7 +192,7 @@ public class TransactionPortfoliosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call adjustHoldingsValidateBeforeCall(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call adjustHoldingsValidateBeforeCall(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, String overrideMovementName, String overrideOffsetMovementName, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling adjustHoldings(Async)");
@@ -205,34 +213,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'adjustHoldingRequest' when calling adjustHoldings(Async)");
         }
 
-        return adjustHoldingsCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, _callback, opts);
+        return adjustHoldingsCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, overrideMovementName, overrideOffsetMovementName, _callback, opts);
 
     }
 
 
-    private ApiResponse<AdjustHolding> adjustHoldingsWithHttpInfo(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods) throws ApiException {
-        okhttp3.Call localVarCall = adjustHoldingsValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, null, new ConfigurationOptions());
+    private ApiResponse<AdjustHolding> adjustHoldingsWithHttpInfo(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, String overrideMovementName, String overrideOffsetMovementName) throws ApiException {
+        okhttp3.Call localVarCall = adjustHoldingsValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, overrideMovementName, overrideOffsetMovementName, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<AdjustHolding>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<AdjustHolding> adjustHoldingsWithHttpInfo(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = adjustHoldingsValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, null, opts);
+    private ApiResponse<AdjustHolding> adjustHoldingsWithHttpInfo(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, String overrideMovementName, String overrideOffsetMovementName, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = adjustHoldingsValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, overrideMovementName, overrideOffsetMovementName, null, opts);
         Type localVarReturnType = new TypeToken<AdjustHolding>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call adjustHoldingsAsync(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, final ApiCallback<AdjustHolding> _callback) throws ApiException {
+    private okhttp3.Call adjustHoldingsAsync(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, String overrideMovementName, String overrideOffsetMovementName, final ApiCallback<AdjustHolding> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = adjustHoldingsValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = adjustHoldingsValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, overrideMovementName, overrideOffsetMovementName, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<AdjustHolding>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call adjustHoldingsAsync(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, final ApiCallback<AdjustHolding> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call adjustHoldingsAsync(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, String overrideMovementName, String overrideOffsetMovementName, final ApiCallback<AdjustHolding> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = adjustHoldingsValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, _callback, opts);
+        okhttp3.Call localVarCall = adjustHoldingsValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, overrideMovementName, overrideOffsetMovementName, _callback, opts);
         Type localVarReturnType = new TypeToken<AdjustHolding>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -244,6 +252,8 @@ public class TransactionPortfoliosApi {
         private final String effectiveAt;
         private final List<AdjustHoldingRequest> adjustHoldingRequest;
         private List<String> reconciliationMethods;
+        private String overrideMovementName;
+        private String overrideOffsetMovementName;
 
         private APIadjustHoldingsRequest(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest) {
             this.scope = scope;
@@ -263,6 +273,26 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Set overrideMovementName
+         * @param overrideMovementName Optional parameter to override movement name for the set holdings. (optional)
+         * @return APIadjustHoldingsRequest
+         */
+        public APIadjustHoldingsRequest overrideMovementName(String overrideMovementName) {
+            this.overrideMovementName = overrideMovementName;
+            return this;
+        }
+
+        /**
+         * Set overrideOffsetMovementName
+         * @param overrideOffsetMovementName Optional parameter will create an additional offset movement for the set holdings with this new name and transaction type: CarryAsPnl (optional)
+         * @return APIadjustHoldingsRequest
+         */
+        public APIadjustHoldingsRequest overrideOffsetMovementName(String overrideOffsetMovementName) {
+            this.overrideOffsetMovementName = overrideOffsetMovementName;
+            return this;
+        }
+
+        /**
          * Build call for adjustHoldings
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -276,7 +306,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return adjustHoldingsCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, _callback);
+            return adjustHoldingsCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, overrideMovementName, overrideOffsetMovementName, _callback);
         }
 
         /**
@@ -292,7 +322,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public AdjustHolding execute() throws ApiException {
-            ApiResponse<AdjustHolding> localVarResp = adjustHoldingsWithHttpInfo(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods);
+            ApiResponse<AdjustHolding> localVarResp = adjustHoldingsWithHttpInfo(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, overrideMovementName, overrideOffsetMovementName);
             return localVarResp.getData();
         }
 
@@ -309,7 +339,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public AdjustHolding execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<AdjustHolding> localVarResp = adjustHoldingsWithHttpInfo(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, opts);
+            ApiResponse<AdjustHolding> localVarResp = adjustHoldingsWithHttpInfo(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, overrideMovementName, overrideOffsetMovementName, opts);
             return localVarResp.getData();
         }
 
@@ -326,7 +356,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<AdjustHolding> executeWithHttpInfo() throws ApiException {
-            return adjustHoldingsWithHttpInfo(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods);
+            return adjustHoldingsWithHttpInfo(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, overrideMovementName, overrideOffsetMovementName);
         }
 
         /**
@@ -342,7 +372,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<AdjustHolding> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return adjustHoldingsWithHttpInfo(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, opts);
+            return adjustHoldingsWithHttpInfo(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, overrideMovementName, overrideOffsetMovementName, opts);
         }
 
         /**
@@ -359,7 +389,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<AdjustHolding> _callback) throws ApiException {
-            return adjustHoldingsAsync(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, _callback);
+            return adjustHoldingsAsync(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, overrideMovementName, overrideOffsetMovementName, _callback);
         }
 
         /**
@@ -376,7 +406,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<AdjustHolding> _callback, ConfigurationOptions opts) throws ApiException {
-            return adjustHoldingsAsync(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, _callback, opts);
+            return adjustHoldingsAsync(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, overrideMovementName, overrideOffsetMovementName, _callback, opts);
         }
     }
 
@@ -11054,11 +11084,11 @@ public class TransactionPortfoliosApi {
     public APIresolveInstrumentRequest resolveInstrument(String scope, String code, String instrumentIdentifierType, String instrumentIdentifierValue) {
         return new APIresolveInstrumentRequest(scope, code, instrumentIdentifierType, instrumentIdentifierValue);
     }
-    private okhttp3.Call setHoldingsCall(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, final ApiCallback _callback) throws ApiException {
-        return setHoldingsCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods,  _callback, new ConfigurationOptions());
+    private okhttp3.Call setHoldingsCall(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, String overrideMovementName, String overrideOffsetMovementName, final ApiCallback _callback) throws ApiException {
+        return setHoldingsCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, overrideMovementName, overrideOffsetMovementName,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call setHoldingsCall(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call setHoldingsCall(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, String overrideMovementName, String overrideOffsetMovementName, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -11093,6 +11123,14 @@ public class TransactionPortfoliosApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "reconciliationMethods", reconciliationMethods));
         }
 
+        if (overrideMovementName != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("overrideMovementName", overrideMovementName));
+        }
+
+        if (overrideOffsetMovementName != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("overrideOffsetMovementName", overrideOffsetMovementName));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -11119,7 +11157,7 @@ public class TransactionPortfoliosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call setHoldingsValidateBeforeCall(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call setHoldingsValidateBeforeCall(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, String overrideMovementName, String overrideOffsetMovementName, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling setHoldings(Async)");
@@ -11140,34 +11178,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'adjustHoldingRequest' when calling setHoldings(Async)");
         }
 
-        return setHoldingsCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, _callback, opts);
+        return setHoldingsCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, overrideMovementName, overrideOffsetMovementName, _callback, opts);
 
     }
 
 
-    private ApiResponse<AdjustHolding> setHoldingsWithHttpInfo(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods) throws ApiException {
-        okhttp3.Call localVarCall = setHoldingsValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, null, new ConfigurationOptions());
+    private ApiResponse<AdjustHolding> setHoldingsWithHttpInfo(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, String overrideMovementName, String overrideOffsetMovementName) throws ApiException {
+        okhttp3.Call localVarCall = setHoldingsValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, overrideMovementName, overrideOffsetMovementName, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<AdjustHolding>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<AdjustHolding> setHoldingsWithHttpInfo(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = setHoldingsValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, null, opts);
+    private ApiResponse<AdjustHolding> setHoldingsWithHttpInfo(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, String overrideMovementName, String overrideOffsetMovementName, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = setHoldingsValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, overrideMovementName, overrideOffsetMovementName, null, opts);
         Type localVarReturnType = new TypeToken<AdjustHolding>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call setHoldingsAsync(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, final ApiCallback<AdjustHolding> _callback) throws ApiException {
+    private okhttp3.Call setHoldingsAsync(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, String overrideMovementName, String overrideOffsetMovementName, final ApiCallback<AdjustHolding> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = setHoldingsValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = setHoldingsValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, overrideMovementName, overrideOffsetMovementName, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<AdjustHolding>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call setHoldingsAsync(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, final ApiCallback<AdjustHolding> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call setHoldingsAsync(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, List<String> reconciliationMethods, String overrideMovementName, String overrideOffsetMovementName, final ApiCallback<AdjustHolding> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = setHoldingsValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, _callback, opts);
+        okhttp3.Call localVarCall = setHoldingsValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, overrideMovementName, overrideOffsetMovementName, _callback, opts);
         Type localVarReturnType = new TypeToken<AdjustHolding>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -11179,6 +11217,8 @@ public class TransactionPortfoliosApi {
         private final String effectiveAt;
         private final List<AdjustHoldingRequest> adjustHoldingRequest;
         private List<String> reconciliationMethods;
+        private String overrideMovementName;
+        private String overrideOffsetMovementName;
 
         private APIsetHoldingsRequest(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest) {
             this.scope = scope;
@@ -11198,6 +11238,26 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Set overrideMovementName
+         * @param overrideMovementName Optional parameter to override movement name for the set holdings. (optional)
+         * @return APIsetHoldingsRequest
+         */
+        public APIsetHoldingsRequest overrideMovementName(String overrideMovementName) {
+            this.overrideMovementName = overrideMovementName;
+            return this;
+        }
+
+        /**
+         * Set overrideOffsetMovementName
+         * @param overrideOffsetMovementName Optional parameter will create an additional offset movement for the set holdings with this new name and transaction type: CarryAsPnl (optional)
+         * @return APIsetHoldingsRequest
+         */
+        public APIsetHoldingsRequest overrideOffsetMovementName(String overrideOffsetMovementName) {
+            this.overrideOffsetMovementName = overrideOffsetMovementName;
+            return this;
+        }
+
+        /**
          * Build call for setHoldings
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -11211,7 +11271,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return setHoldingsCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, _callback);
+            return setHoldingsCall(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, overrideMovementName, overrideOffsetMovementName, _callback);
         }
 
         /**
@@ -11227,7 +11287,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public AdjustHolding execute() throws ApiException {
-            ApiResponse<AdjustHolding> localVarResp = setHoldingsWithHttpInfo(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods);
+            ApiResponse<AdjustHolding> localVarResp = setHoldingsWithHttpInfo(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, overrideMovementName, overrideOffsetMovementName);
             return localVarResp.getData();
         }
 
@@ -11244,7 +11304,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public AdjustHolding execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<AdjustHolding> localVarResp = setHoldingsWithHttpInfo(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, opts);
+            ApiResponse<AdjustHolding> localVarResp = setHoldingsWithHttpInfo(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, overrideMovementName, overrideOffsetMovementName, opts);
             return localVarResp.getData();
         }
 
@@ -11261,7 +11321,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<AdjustHolding> executeWithHttpInfo() throws ApiException {
-            return setHoldingsWithHttpInfo(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods);
+            return setHoldingsWithHttpInfo(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, overrideMovementName, overrideOffsetMovementName);
         }
 
         /**
@@ -11277,7 +11337,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<AdjustHolding> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return setHoldingsWithHttpInfo(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, opts);
+            return setHoldingsWithHttpInfo(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, overrideMovementName, overrideOffsetMovementName, opts);
         }
 
         /**
@@ -11294,7 +11354,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<AdjustHolding> _callback) throws ApiException {
-            return setHoldingsAsync(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, _callback);
+            return setHoldingsAsync(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, overrideMovementName, overrideOffsetMovementName, _callback);
         }
 
         /**
@@ -11311,7 +11371,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<AdjustHolding> _callback, ConfigurationOptions opts) throws ApiException {
-            return setHoldingsAsync(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, _callback, opts);
+            return setHoldingsAsync(scope, code, effectiveAt, adjustHoldingRequest, reconciliationMethods, overrideMovementName, overrideOffsetMovementName, _callback, opts);
         }
     }
 
