@@ -15,6 +15,7 @@
 |**contractualSettlementDate** | **OffsetDateTime** |  |  [optional] |
 |**actualSettlementDate** | **OffsetDateTime** |  |  |
 |**units** | **java.math.BigDecimal** |  |  |
+|**subHoldingKeyOverrides** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) |  |  [optional] |
 
 
 

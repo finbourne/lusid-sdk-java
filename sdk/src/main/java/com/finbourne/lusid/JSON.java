@@ -998,16 +998,6 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "instrumentType"));
                     }
           })
-                .registerTypeSelector(com.finbourne.lusid.model.FundCalendarEntry.class, new TypeSelector<com.finbourne.lusid.model.FundCalendarEntry>() {
-                    @Override
-                    public Class<? extends com.finbourne.lusid.model.FundCalendarEntry> getClassForElement(JsonElement readElement) {
-                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
-                        classByDiscriminatorValue.put("ValuationPointFundCalendarEntry", com.finbourne.lusid.model.ValuationPointFundCalendarEntry.class);
-                        classByDiscriminatorValue.put("FundCalendarEntry", com.finbourne.lusid.model.FundCalendarEntry.class);
-                        return getClassByDiscriminator(classByDiscriminatorValue,
-                                getDiscriminatorValue(readElement, "entryType"));
-                    }
-          })
                 .registerTypeSelector(com.finbourne.lusid.model.FundIdList.class, new TypeSelector<com.finbourne.lusid.model.FundIdList>() {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.FundIdList> getClassForElement(JsonElement readElement) {
@@ -2394,15 +2384,6 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "instrumentEventType"));
                     }
           })
-                .registerTypeSelector(com.finbourne.lusid.model.ValuationPointFundCalendarEntry.class, new TypeSelector<com.finbourne.lusid.model.ValuationPointFundCalendarEntry>() {
-                    @Override
-                    public Class<? extends com.finbourne.lusid.model.ValuationPointFundCalendarEntry> getClassForElement(JsonElement readElement) {
-                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
-                        classByDiscriminatorValue.put("ValuationPointFundCalendarEntry", com.finbourne.lusid.model.ValuationPointFundCalendarEntry.class);
-                        return getClassByDiscriminator(classByDiscriminatorValue,
-                                getDiscriminatorValue(readElement, "entryType"));
-                    }
-          })
                 .registerTypeSelector(com.finbourne.lusid.model.VendorDependency.class, new TypeSelector<com.finbourne.lusid.model.VendorDependency>() {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.VendorDependency> getClassForElement(JsonElement readElement) {
@@ -2850,6 +2831,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FromRecipe.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.Fund.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FundAmount.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FundCalendarEntry.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FundConfiguration.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FundConfigurationProperties.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.FundConfigurationRequest.CustomTypeAdapterFactory());
@@ -3623,7 +3605,6 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ValuationPointDataQueryParameters.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ValuationPointDataRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ValuationPointDataResponse.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ValuationPointFundCalendarEntry.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ValuationPointOverview.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ValuationPointResourceListOfAccountedTransaction.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ValuationPointResourceListOfFundJournalEntryLine.CustomTypeAdapterFactory());

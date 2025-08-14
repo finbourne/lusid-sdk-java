@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.PerpetualProperty;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -84,6 +85,10 @@ public class SettlementInstructionRequest {
   public static final String SERIALIZED_NAME_UNITS = "units";
   @SerializedName(SERIALIZED_NAME_UNITS)
   private java.math.BigDecimal units;
+
+  public static final String SERIALIZED_NAME_SUB_HOLDING_KEY_OVERRIDES = "subHoldingKeyOverrides";
+  @SerializedName(SERIALIZED_NAME_SUB_HOLDING_KEY_OVERRIDES)
+  private Map<String, PerpetualProperty> subHoldingKeyOverrides;
 
   public SettlementInstructionRequest() {
   }
@@ -264,6 +269,35 @@ public class SettlementInstructionRequest {
   }
 
 
+  public SettlementInstructionRequest subHoldingKeyOverrides(Map<String, PerpetualProperty> subHoldingKeyOverrides) {
+    
+    this.subHoldingKeyOverrides = subHoldingKeyOverrides;
+    return this;
+  }
+
+  public SettlementInstructionRequest putSubHoldingKeyOverridesItem(String key, PerpetualProperty subHoldingKeyOverridesItem) {
+    if (this.subHoldingKeyOverrides == null) {
+      this.subHoldingKeyOverrides = new HashMap<>();
+    }
+    this.subHoldingKeyOverrides.put(key, subHoldingKeyOverridesItem);
+    return this;
+  }
+
+   /**
+   * Get subHoldingKeyOverrides
+   * @return subHoldingKeyOverrides
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, PerpetualProperty> getSubHoldingKeyOverrides() {
+    return subHoldingKeyOverrides;
+  }
+
+
+  public void setSubHoldingKeyOverrides(Map<String, PerpetualProperty> subHoldingKeyOverrides) {
+    this.subHoldingKeyOverrides = subHoldingKeyOverrides;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -281,7 +315,8 @@ public class SettlementInstructionRequest {
         Objects.equals(this.instrumentIdentifiers, settlementInstructionRequest.instrumentIdentifiers) &&
         Objects.equals(this.contractualSettlementDate, settlementInstructionRequest.contractualSettlementDate) &&
         Objects.equals(this.actualSettlementDate, settlementInstructionRequest.actualSettlementDate) &&
-        (this.units.compareTo(settlementInstructionRequest.getUnits()) == 0);
+        (this.units.compareTo(settlementInstructionRequest.getUnits()) == 0) &&
+        Objects.equals(this.subHoldingKeyOverrides, settlementInstructionRequest.subHoldingKeyOverrides);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -290,7 +325,7 @@ public class SettlementInstructionRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(settlementInstructionId, transactionId, settlementCategory, instructionType, instrumentIdentifiers, contractualSettlementDate, actualSettlementDate, units);
+    return Objects.hash(settlementInstructionId, transactionId, settlementCategory, instructionType, instrumentIdentifiers, contractualSettlementDate, actualSettlementDate, units, subHoldingKeyOverrides);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -312,6 +347,7 @@ public class SettlementInstructionRequest {
     sb.append("    contractualSettlementDate: ").append(toIndentedString(contractualSettlementDate)).append("\n");
     sb.append("    actualSettlementDate: ").append(toIndentedString(actualSettlementDate)).append("\n");
     sb.append("    units: ").append(toIndentedString(units)).append("\n");
+    sb.append("    subHoldingKeyOverrides: ").append(toIndentedString(subHoldingKeyOverrides)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -342,6 +378,7 @@ public class SettlementInstructionRequest {
     openapiFields.add("contractualSettlementDate");
     openapiFields.add("actualSettlementDate");
     openapiFields.add("units");
+    openapiFields.add("subHoldingKeyOverrides");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

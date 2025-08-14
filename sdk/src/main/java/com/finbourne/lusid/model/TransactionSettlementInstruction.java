@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.PerpetualProperty;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -19,6 +20,8 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -82,6 +85,10 @@ public class TransactionSettlementInstruction {
   public static final String SERIALIZED_NAME_CONTRACTUAL_SETTLEMENT_DATE = "contractualSettlementDate";
   @SerializedName(SERIALIZED_NAME_CONTRACTUAL_SETTLEMENT_DATE)
   private OffsetDateTime contractualSettlementDate;
+
+  public static final String SERIALIZED_NAME_SUB_HOLDING_KEY_OVERRIDES = "subHoldingKeyOverrides";
+  @SerializedName(SERIALIZED_NAME_SUB_HOLDING_KEY_OVERRIDES)
+  private Map<String, PerpetualProperty> subHoldingKeyOverrides;
 
   public TransactionSettlementInstruction() {
   }
@@ -254,6 +261,35 @@ public class TransactionSettlementInstruction {
   }
 
 
+  public TransactionSettlementInstruction subHoldingKeyOverrides(Map<String, PerpetualProperty> subHoldingKeyOverrides) {
+    
+    this.subHoldingKeyOverrides = subHoldingKeyOverrides;
+    return this;
+  }
+
+  public TransactionSettlementInstruction putSubHoldingKeyOverridesItem(String key, PerpetualProperty subHoldingKeyOverridesItem) {
+    if (this.subHoldingKeyOverrides == null) {
+      this.subHoldingKeyOverrides = new HashMap<>();
+    }
+    this.subHoldingKeyOverrides.put(key, subHoldingKeyOverridesItem);
+    return this;
+  }
+
+   /**
+   * Allows one or more sub-holding keys to be overridden for any movement being settled by an instruction. Providing a key and value will set the sub-holding key to the specified value; Providing a key only will nullify the sub-holding key. Not referenced sub-holding keys will not be impacted. 
+   * @return subHoldingKeyOverrides
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, PerpetualProperty> getSubHoldingKeyOverrides() {
+    return subHoldingKeyOverrides;
+  }
+
+
+  public void setSubHoldingKeyOverrides(Map<String, PerpetualProperty> subHoldingKeyOverrides) {
+    this.subHoldingKeyOverrides = subHoldingKeyOverrides;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -271,7 +307,8 @@ public class TransactionSettlementInstruction {
         Objects.equals(this.transactionId, transactionSettlementInstruction.transactionId) &&
         Objects.equals(this.settlementCategory, transactionSettlementInstruction.settlementCategory) &&
         Objects.equals(this.lusidInstrumentId, transactionSettlementInstruction.lusidInstrumentId) &&
-        Objects.equals(this.contractualSettlementDate, transactionSettlementInstruction.contractualSettlementDate);
+        Objects.equals(this.contractualSettlementDate, transactionSettlementInstruction.contractualSettlementDate) &&
+        Objects.equals(this.subHoldingKeyOverrides, transactionSettlementInstruction.subHoldingKeyOverrides);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -280,7 +317,7 @@ public class TransactionSettlementInstruction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(settlementInstructionId, instructionType, actualSettlementDate, units, transactionId, settlementCategory, lusidInstrumentId, contractualSettlementDate);
+    return Objects.hash(settlementInstructionId, instructionType, actualSettlementDate, units, transactionId, settlementCategory, lusidInstrumentId, contractualSettlementDate, subHoldingKeyOverrides);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -302,6 +339,7 @@ public class TransactionSettlementInstruction {
     sb.append("    settlementCategory: ").append(toIndentedString(settlementCategory)).append("\n");
     sb.append("    lusidInstrumentId: ").append(toIndentedString(lusidInstrumentId)).append("\n");
     sb.append("    contractualSettlementDate: ").append(toIndentedString(contractualSettlementDate)).append("\n");
+    sb.append("    subHoldingKeyOverrides: ").append(toIndentedString(subHoldingKeyOverrides)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -332,6 +370,7 @@ public class TransactionSettlementInstruction {
     openapiFields.add("settlementCategory");
     openapiFields.add("lusidInstrumentId");
     openapiFields.add("contractualSettlementDate");
+    openapiFields.add("subHoldingKeyOverrides");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
