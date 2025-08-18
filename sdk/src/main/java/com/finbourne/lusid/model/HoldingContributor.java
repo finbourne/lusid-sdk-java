@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.MovementSettlementSummary;
 import com.finbourne.lusid.model.Transaction;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -18,7 +19,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -58,6 +61,10 @@ public class HoldingContributor {
   public static final String SERIALIZED_NAME_HOLDING_ID = "holdingId";
   @SerializedName(SERIALIZED_NAME_HOLDING_ID)
   private Long holdingId;
+
+  public static final String SERIALIZED_NAME_MOVEMENTS = "movements";
+  @SerializedName(SERIALIZED_NAME_MOVEMENTS)
+  private List<MovementSettlementSummary> movements;
 
   public HoldingContributor() {
   }
@@ -104,6 +111,35 @@ public class HoldingContributor {
   }
 
 
+  public HoldingContributor movements(List<MovementSettlementSummary> movements) {
+    
+    this.movements = movements;
+    return this;
+  }
+
+  public HoldingContributor addMovementsItem(MovementSettlementSummary movementsItem) {
+    if (this.movements == null) {
+      this.movements = new ArrayList<>();
+    }
+    this.movements.add(movementsItem);
+    return this;
+  }
+
+   /**
+   * Movements contributed to holding
+   * @return movements
+  **/
+  @jakarta.annotation.Nullable
+  public List<MovementSettlementSummary> getMovements() {
+    return movements;
+  }
+
+
+  public void setMovements(List<MovementSettlementSummary> movements) {
+    this.movements = movements;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -115,7 +151,8 @@ public class HoldingContributor {
     }
     HoldingContributor holdingContributor = (HoldingContributor) o;
     return Objects.equals(this.transaction, holdingContributor.transaction) &&
-        Objects.equals(this.holdingId, holdingContributor.holdingId);
+        Objects.equals(this.holdingId, holdingContributor.holdingId) &&
+        Objects.equals(this.movements, holdingContributor.movements);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -124,7 +161,7 @@ public class HoldingContributor {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transaction, holdingId);
+    return Objects.hash(transaction, holdingId, movements);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -140,6 +177,7 @@ public class HoldingContributor {
     sb.append("class HoldingContributor {\n");
     sb.append("    transaction: ").append(toIndentedString(transaction)).append("\n");
     sb.append("    holdingId: ").append(toIndentedString(holdingId)).append("\n");
+    sb.append("    movements: ").append(toIndentedString(movements)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -164,6 +202,7 @@ public class HoldingContributor {
     openapiFields = new HashSet<String>();
     openapiFields.add("transaction");
     openapiFields.add("holdingId");
+    openapiFields.add("movements");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -192,6 +231,20 @@ public class HoldingContributor {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `transaction`
       Transaction.validateJsonElement(jsonObj.get("transaction"));
+      if (jsonObj.get("movements") != null && !jsonObj.get("movements").isJsonNull()) {
+        JsonArray jsonArraymovements = jsonObj.getAsJsonArray("movements");
+        if (jsonArraymovements != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("movements").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `movements` to be an array in the JSON string but got `%s`", jsonObj.get("movements").toString()));
+          }
+
+          // validate the optional field `movements` (array)
+          for (int i = 0; i < jsonArraymovements.size(); i++) {
+            MovementSettlementSummary.validateJsonElement(jsonArraymovements.get(i));
+          };
+        }
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

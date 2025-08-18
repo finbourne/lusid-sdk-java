@@ -32,6 +32,7 @@ import com.finbourne.lusid.model.Fee;
 import com.finbourne.lusid.model.FeeProperties;
 import com.finbourne.lusid.model.FeeRequest;
 import com.finbourne.lusid.model.Fund;
+import com.finbourne.lusid.model.FundCalendarEntry;
 import com.finbourne.lusid.model.FundDefinitionRequest;
 import com.finbourne.lusid.model.FundProperties;
 import com.finbourne.lusid.model.FundRequest;
@@ -48,6 +49,7 @@ import com.finbourne.lusid.model.PagedResourceListOfValuationPointOverview;
 import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.SetShareClassInstrumentsRequest;
 import com.finbourne.lusid.model.SingleValuationPointQueryParameters;
+import com.finbourne.lusid.model.UpsertFundBookmarkRequest;
 import com.finbourne.lusid.model.UpsertValuationPointRequest;
 import com.finbourne.lusid.model.ValuationPointDataQueryParameters;
 import com.finbourne.lusid.model.ValuationPointDataRequest;
@@ -1124,6 +1126,271 @@ public class FundsApi {
      */
     public APIcreateFundV2Request createFundV2(String scope, FundDefinitionRequest fundDefinitionRequest) {
         return new APIcreateFundV2Request(scope, fundDefinitionRequest);
+    }
+    private okhttp3.Call deleteBookmarkCall(String scope, String code, String bookmarkCode, String navTypeCode, final ApiCallback _callback) throws ApiException {
+        return deleteBookmarkCall(scope, code, bookmarkCode, navTypeCode,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteBookmarkCall(String scope, String code, String bookmarkCode, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/bookmarks/{bookmarkCode}"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
+            .replace("{" + "bookmarkCode" + "}", localVarApiClient.escapeString(bookmarkCode.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (navTypeCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteBookmarkValidateBeforeCall(String scope, String code, String bookmarkCode, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling deleteBookmark(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling deleteBookmark(Async)");
+        }
+
+        // verify the required parameter 'bookmarkCode' is set
+        if (bookmarkCode == null) {
+            throw new ApiException("Missing the required parameter 'bookmarkCode' when calling deleteBookmark(Async)");
+        }
+
+        return deleteBookmarkCall(scope, code, bookmarkCode, navTypeCode, _callback, opts);
+
+    }
+
+
+    private ApiResponse<DeletedEntityResponse> deleteBookmarkWithHttpInfo(String scope, String code, String bookmarkCode, String navTypeCode) throws ApiException {
+        okhttp3.Call localVarCall = deleteBookmarkValidateBeforeCall(scope, code, bookmarkCode, navTypeCode, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteBookmarkWithHttpInfo(String scope, String code, String bookmarkCode, String navTypeCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteBookmarkValidateBeforeCall(scope, code, bookmarkCode, navTypeCode, null, opts);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call deleteBookmarkAsync(String scope, String code, String bookmarkCode, String navTypeCode, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteBookmarkValidateBeforeCall(scope, code, bookmarkCode, navTypeCode, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteBookmarkAsync(String scope, String code, String bookmarkCode, String navTypeCode, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteBookmarkValidateBeforeCall(scope, code, bookmarkCode, navTypeCode, _callback, opts);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIdeleteBookmarkRequest {
+        private final String scope;
+        private final String code;
+        private final String bookmarkCode;
+        private String navTypeCode;
+
+        private APIdeleteBookmarkRequest(String scope, String code, String bookmarkCode) {
+            this.scope = scope;
+            this.code = code;
+            this.bookmarkCode = bookmarkCode;
+        }
+
+        /**
+         * Set navTypeCode
+         * @param navTypeCode When provided, Deletes the Bookmark against the specified NAV Type. When not provided the Primary NAV Type will be Deleted. (optional)
+         * @return APIdeleteBookmarkRequest
+         */
+        public APIdeleteBookmarkRequest navTypeCode(String navTypeCode) {
+            this.navTypeCode = navTypeCode;
+            return this;
+        }
+
+        /**
+         * Build call for deleteBookmark
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Bookmark was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteBookmarkCall(scope, code, bookmarkCode, navTypeCode, _callback);
+        }
+
+        /**
+         * Execute deleteBookmark request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Bookmark was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteBookmarkWithHttpInfo(scope, code, bookmarkCode, navTypeCode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteBookmark request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Bookmark was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteBookmarkWithHttpInfo(scope, code, bookmarkCode, navTypeCode, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteBookmark request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Bookmark was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteBookmarkWithHttpInfo(scope, code, bookmarkCode, navTypeCode);
+        }
+
+        /**
+         * Execute deleteBookmark request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Bookmark was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteBookmarkWithHttpInfo(scope, code, bookmarkCode, navTypeCode, opts);
+        }
+
+        /**
+         * Execute deleteBookmark request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Bookmark was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteBookmarkAsync(scope, code, bookmarkCode, navTypeCode, _callback);
+        }
+
+        /**
+         * Execute deleteBookmark request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Bookmark was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteBookmarkAsync(scope, code, bookmarkCode, navTypeCode, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] DeleteBookmark: Delete a Bookmark.
+     * Deletes the given Bookmark.
+     * @param scope The scope of the Fund for the Bookmark to be deleted. (required)
+     * @param code The code of the Fund containing the Bookmark to be deleted. Together with the scope this uniquely identifies the Fund. (required)
+     * @param bookmarkCode The bookmark code for the bookmark to be deleted (required)
+     * @return APIdeleteBookmarkRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The datetime that the Bookmark was deleted </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIdeleteBookmarkRequest deleteBookmark(String scope, String code, String bookmarkCode) {
+        return new APIdeleteBookmarkRequest(scope, code, bookmarkCode);
     }
     private okhttp3.Call deleteFeeCall(String scope, String code, String feeCode, final ApiCallback _callback) throws ApiException {
         return deleteFeeCall(scope, code, feeCode,  _callback, new ConfigurationOptions());
@@ -7683,6 +7950,274 @@ public class FundsApi {
      */
     public APIsetShareClassInstrumentsRequest setShareClassInstruments(String scope, String code, SetShareClassInstrumentsRequest setShareClassInstrumentsRequest) {
         return new APIsetShareClassInstrumentsRequest(scope, code, setShareClassInstrumentsRequest);
+    }
+    private okhttp3.Call upsertBookmarkCall(String scope, String code, UpsertFundBookmarkRequest upsertFundBookmarkRequest, String navTypeCode, final ApiCallback _callback) throws ApiException {
+        return upsertBookmarkCall(scope, code, upsertFundBookmarkRequest, navTypeCode,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertBookmarkCall(String scope, String code, UpsertFundBookmarkRequest upsertFundBookmarkRequest, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = upsertFundBookmarkRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/bookmarks"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (navTypeCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call upsertBookmarkValidateBeforeCall(String scope, String code, UpsertFundBookmarkRequest upsertFundBookmarkRequest, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling upsertBookmark(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling upsertBookmark(Async)");
+        }
+
+        // verify the required parameter 'upsertFundBookmarkRequest' is set
+        if (upsertFundBookmarkRequest == null) {
+            throw new ApiException("Missing the required parameter 'upsertFundBookmarkRequest' when calling upsertBookmark(Async)");
+        }
+
+        return upsertBookmarkCall(scope, code, upsertFundBookmarkRequest, navTypeCode, _callback, opts);
+
+    }
+
+
+    private ApiResponse<FundCalendarEntry> upsertBookmarkWithHttpInfo(String scope, String code, UpsertFundBookmarkRequest upsertFundBookmarkRequest, String navTypeCode) throws ApiException {
+        okhttp3.Call localVarCall = upsertBookmarkValidateBeforeCall(scope, code, upsertFundBookmarkRequest, navTypeCode, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FundCalendarEntry>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<FundCalendarEntry> upsertBookmarkWithHttpInfo(String scope, String code, UpsertFundBookmarkRequest upsertFundBookmarkRequest, String navTypeCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertBookmarkValidateBeforeCall(scope, code, upsertFundBookmarkRequest, navTypeCode, null, opts);
+        Type localVarReturnType = new TypeToken<FundCalendarEntry>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call upsertBookmarkAsync(String scope, String code, UpsertFundBookmarkRequest upsertFundBookmarkRequest, String navTypeCode, final ApiCallback<FundCalendarEntry> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertBookmarkValidateBeforeCall(scope, code, upsertFundBookmarkRequest, navTypeCode, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FundCalendarEntry>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertBookmarkAsync(String scope, String code, UpsertFundBookmarkRequest upsertFundBookmarkRequest, String navTypeCode, final ApiCallback<FundCalendarEntry> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertBookmarkValidateBeforeCall(scope, code, upsertFundBookmarkRequest, navTypeCode, _callback, opts);
+        Type localVarReturnType = new TypeToken<FundCalendarEntry>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertBookmarkRequest {
+        private final String scope;
+        private final String code;
+        private final UpsertFundBookmarkRequest upsertFundBookmarkRequest;
+        private String navTypeCode;
+
+        private APIupsertBookmarkRequest(String scope, String code, UpsertFundBookmarkRequest upsertFundBookmarkRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.upsertFundBookmarkRequest = upsertFundBookmarkRequest;
+        }
+
+        /**
+         * Set navTypeCode
+         * @param navTypeCode When provided, Upserts the Valuation Point against the specified NAV Type. When not provided, the Primary NAV Type will be used. (optional)
+         * @return APIupsertBookmarkRequest
+         */
+        public APIupsertBookmarkRequest navTypeCode(String navTypeCode) {
+            this.navTypeCode = navTypeCode;
+            return this;
+        }
+
+        /**
+         * Build call for upsertBookmark
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted Bookmark </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertBookmarkCall(scope, code, upsertFundBookmarkRequest, navTypeCode, _callback);
+        }
+
+        /**
+         * Execute upsertBookmark request
+         * @return FundCalendarEntry
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted Bookmark </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public FundCalendarEntry execute() throws ApiException {
+            ApiResponse<FundCalendarEntry> localVarResp = upsertBookmarkWithHttpInfo(scope, code, upsertFundBookmarkRequest, navTypeCode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertBookmark request. Use any specified configuration options to override any other configuration for this request only.
+         * @return FundCalendarEntry
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted Bookmark </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public FundCalendarEntry execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<FundCalendarEntry> localVarResp = upsertBookmarkWithHttpInfo(scope, code, upsertFundBookmarkRequest, navTypeCode, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertBookmark request with HTTP info returned
+         * @return ApiResponse&lt;FundCalendarEntry&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted Bookmark </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<FundCalendarEntry> executeWithHttpInfo() throws ApiException {
+            return upsertBookmarkWithHttpInfo(scope, code, upsertFundBookmarkRequest, navTypeCode);
+        }
+
+        /**
+         * Execute upsertBookmark request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;FundCalendarEntry&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted Bookmark </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<FundCalendarEntry> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertBookmarkWithHttpInfo(scope, code, upsertFundBookmarkRequest, navTypeCode, opts);
+        }
+
+        /**
+         * Execute upsertBookmark request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted Bookmark </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<FundCalendarEntry> _callback) throws ApiException {
+            return upsertBookmarkAsync(scope, code, upsertFundBookmarkRequest, navTypeCode, _callback);
+        }
+
+        /**
+         * Execute upsertBookmark request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated or inserted Bookmark </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<FundCalendarEntry> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertBookmarkAsync(scope, code, upsertFundBookmarkRequest, navTypeCode, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] UpsertBookmark: Upsert a bookmark.
+     * This method will update or upsert a Bookmark for the Fund.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @param upsertFundBookmarkRequest The bookmark definition to Upsert (required)
+     * @return APIupsertBookmarkRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The updated or inserted Bookmark </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIupsertBookmarkRequest upsertBookmark(String scope, String code, UpsertFundBookmarkRequest upsertFundBookmarkRequest) {
+        return new APIupsertBookmarkRequest(scope, code, upsertFundBookmarkRequest);
     }
     private okhttp3.Call upsertDiaryEntryTypeValuationPointCall(String scope, String code, UpsertValuationPointRequest upsertValuationPointRequest, String navTypeCode, final ApiCallback _callback) throws ApiException {
         return upsertDiaryEntryTypeValuationPointCall(scope, code, upsertValuationPointRequest, navTypeCode,  _callback, new ConfigurationOptions());

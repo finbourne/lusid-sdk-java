@@ -10,6 +10,7 @@ A list of transactions contributed to a holding.
 |------------ | ------------- | ------------- | -------------|
 |**transaction** | [**Transaction**](Transaction.md) |  |  |
 |**holdingId** | **Long** | The unique holding identifier |  [optional] |
+|**movements** | [**List&lt;MovementSettlementSummary&gt;**](MovementSettlementSummary.md) | Movements contributed to holding |  [optional] |
 
 
 

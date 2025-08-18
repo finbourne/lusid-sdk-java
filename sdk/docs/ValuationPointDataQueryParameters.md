@@ -10,6 +10,7 @@ The parameters used in getting the ValuationPointData.
 |------------ | ------------- | ------------- | -------------|
 |**start** | [**DateOrDiaryEntry**](DateOrDiaryEntry.md) |  |  [optional] |
 |**end** | [**DateOrDiaryEntry**](DateOrDiaryEntry.md) |  |  |
+|**excludeCleardownModule** | **Boolean** | By deafult this flag is set to false, if this is set to true, no cleardown module will be applied to the trial balance. |  [optional] |
 
 
 

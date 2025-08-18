@@ -74,6 +74,10 @@ public class UpsertValuationPointRequest {
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   private Map<String, Property> properties;
 
+  public static final String SERIALIZED_NAME_APPLY_CLEAR_DOWN = "applyClearDown";
+  @SerializedName(SERIALIZED_NAME_APPLY_CLEAR_DOWN)
+  private Boolean applyClearDown;
+
   public UpsertValuationPointRequest() {
   }
 
@@ -190,6 +194,27 @@ public class UpsertValuationPointRequest {
   }
 
 
+  public UpsertValuationPointRequest applyClearDown(Boolean applyClearDown) {
+    
+    this.applyClearDown = applyClearDown;
+    return this;
+  }
+
+   /**
+   * Defaults to false. Set to true if you want that the closed period to have the clear down applied.
+   * @return applyClearDown
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getApplyClearDown() {
+    return applyClearDown;
+  }
+
+
+  public void setApplyClearDown(Boolean applyClearDown) {
+    this.applyClearDown = applyClearDown;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -204,7 +229,8 @@ public class UpsertValuationPointRequest {
         Objects.equals(this.name, upsertValuationPointRequest.name) &&
         Objects.equals(this.effectiveAt, upsertValuationPointRequest.effectiveAt) &&
         Objects.equals(this.queryAsAt, upsertValuationPointRequest.queryAsAt) &&
-        Objects.equals(this.properties, upsertValuationPointRequest.properties);
+        Objects.equals(this.properties, upsertValuationPointRequest.properties) &&
+        Objects.equals(this.applyClearDown, upsertValuationPointRequest.applyClearDown);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -213,7 +239,7 @@ public class UpsertValuationPointRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(diaryEntryCode, name, effectiveAt, queryAsAt, properties);
+    return Objects.hash(diaryEntryCode, name, effectiveAt, queryAsAt, properties, applyClearDown);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -232,6 +258,7 @@ public class UpsertValuationPointRequest {
     sb.append("    effectiveAt: ").append(toIndentedString(effectiveAt)).append("\n");
     sb.append("    queryAsAt: ").append(toIndentedString(queryAsAt)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
+    sb.append("    applyClearDown: ").append(toIndentedString(applyClearDown)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -259,6 +286,7 @@ public class UpsertValuationPointRequest {
     openapiFields.add("effectiveAt");
     openapiFields.add("queryAsAt");
     openapiFields.add("properties");
+    openapiFields.add("applyClearDown");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

@@ -25,7 +25,9 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(FundCalendarEntryType.Adapter.class)
 public enum FundCalendarEntryType {
   
-  VALUATIONPOINTFUNDCALENDARENTRY("ValuationPointFundCalendarEntry");
+  VALUATIONPOINTFUNDCALENDARENTRY("ValuationPointFundCalendarEntry"),
+  
+  BOOKMARKFUNDCALENDARENTRY("BookmarkFundCalendarEntry");
 
   private String value;
 

@@ -936,11 +936,11 @@ public class CustomEntitiesApi {
     public APIgetAllCustomEntityAccessMetadataRequest getAllCustomEntityAccessMetadata(String entityType, String identifierType, String identifierValue, String identifierScope) {
         return new APIgetAllCustomEntityAccessMetadataRequest(entityType, identifierType, identifierValue, identifierScope);
     }
-    private okhttp3.Call getCustomEntityCall(String entityType, String identifierType, String identifierValue, String identifierScope, OffsetDateTime asAt, String effectiveAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
-        return getCustomEntityCall(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getCustomEntityCall(String entityType, String identifierType, String identifierValue, String identifierScope, OffsetDateTime asAt, String effectiveAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return getCustomEntityCall(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getCustomEntityCall(String entityType, String identifierType, String identifierValue, String identifierScope, OffsetDateTime asAt, String effectiveAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getCustomEntityCall(String entityType, String identifierType, String identifierValue, String identifierScope, OffsetDateTime asAt, String effectiveAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -988,6 +988,10 @@ public class CustomEntitiesApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "relationshipDefinitionIds", relationshipDefinitionIds));
         }
 
+        if (propertyKeys != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -1010,7 +1014,7 @@ public class CustomEntitiesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCustomEntityValidateBeforeCall(String entityType, String identifierType, String identifierValue, String identifierScope, OffsetDateTime asAt, String effectiveAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getCustomEntityValidateBeforeCall(String entityType, String identifierType, String identifierValue, String identifierScope, OffsetDateTime asAt, String effectiveAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'entityType' is set
         if (entityType == null) {
             throw new ApiException("Missing the required parameter 'entityType' when calling getCustomEntity(Async)");
@@ -1031,34 +1035,34 @@ public class CustomEntitiesApi {
             throw new ApiException("Missing the required parameter 'identifierScope' when calling getCustomEntity(Async)");
         }
 
-        return getCustomEntityCall(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback, opts);
+        return getCustomEntityCall(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, _callback, opts);
 
     }
 
 
-    private ApiResponse<CustomEntityResponse> getCustomEntityWithHttpInfo(String entityType, String identifierType, String identifierValue, String identifierScope, OffsetDateTime asAt, String effectiveAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
-        okhttp3.Call localVarCall = getCustomEntityValidateBeforeCall(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds, null, new ConfigurationOptions());
+    private ApiResponse<CustomEntityResponse> getCustomEntityWithHttpInfo(String entityType, String identifierType, String identifierValue, String identifierScope, OffsetDateTime asAt, String effectiveAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys) throws ApiException {
+        okhttp3.Call localVarCall = getCustomEntityValidateBeforeCall(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<CustomEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<CustomEntityResponse> getCustomEntityWithHttpInfo(String entityType, String identifierType, String identifierValue, String identifierScope, OffsetDateTime asAt, String effectiveAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getCustomEntityValidateBeforeCall(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds, null, opts);
+    private ApiResponse<CustomEntityResponse> getCustomEntityWithHttpInfo(String entityType, String identifierType, String identifierValue, String identifierScope, OffsetDateTime asAt, String effectiveAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getCustomEntityValidateBeforeCall(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<CustomEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getCustomEntityAsync(String entityType, String identifierType, String identifierValue, String identifierScope, OffsetDateTime asAt, String effectiveAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<CustomEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call getCustomEntityAsync(String entityType, String identifierType, String identifierValue, String identifierScope, OffsetDateTime asAt, String effectiveAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys, final ApiCallback<CustomEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getCustomEntityValidateBeforeCall(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getCustomEntityValidateBeforeCall(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<CustomEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getCustomEntityAsync(String entityType, String identifierType, String identifierValue, String identifierScope, OffsetDateTime asAt, String effectiveAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<CustomEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getCustomEntityAsync(String entityType, String identifierType, String identifierValue, String identifierScope, OffsetDateTime asAt, String effectiveAt, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys, final ApiCallback<CustomEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getCustomEntityValidateBeforeCall(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback, opts);
+        okhttp3.Call localVarCall = getCustomEntityValidateBeforeCall(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<CustomEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1073,6 +1077,7 @@ public class CustomEntitiesApi {
         private String effectiveAt;
         private List<String> relatedEntityPropertyKeys;
         private List<String> relationshipDefinitionIds;
+        private List<String> propertyKeys;
 
         private APIgetCustomEntityRequest(String entityType, String identifierType, String identifierValue, String identifierScope) {
             this.entityType = entityType;
@@ -1122,6 +1127,16 @@ public class CustomEntitiesApi {
         }
 
         /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;CustomEntity&#39; domain to decorate onto   the custom entities of any type supported by that property (defined within the property definition CustomEntityTypes).   These must have the format {domain}/{scope}/{code}, for example &#39;CustomEntity/someScope/id&#39;. (optional)
+         * @return APIgetCustomEntityRequest
+         */
+        public APIgetCustomEntityRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
          * Build call for getCustomEntity
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -1135,7 +1150,7 @@ public class CustomEntitiesApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getCustomEntityCall(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback);
+            return getCustomEntityCall(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, _callback);
         }
 
         /**
@@ -1151,7 +1166,7 @@ public class CustomEntitiesApi {
          </table>
          */
         public CustomEntityResponse execute() throws ApiException {
-            ApiResponse<CustomEntityResponse> localVarResp = getCustomEntityWithHttpInfo(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds);
+            ApiResponse<CustomEntityResponse> localVarResp = getCustomEntityWithHttpInfo(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys);
             return localVarResp.getData();
         }
 
@@ -1168,7 +1183,7 @@ public class CustomEntitiesApi {
          </table>
          */
         public CustomEntityResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<CustomEntityResponse> localVarResp = getCustomEntityWithHttpInfo(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds, opts);
+            ApiResponse<CustomEntityResponse> localVarResp = getCustomEntityWithHttpInfo(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, opts);
             return localVarResp.getData();
         }
 
@@ -1185,7 +1200,7 @@ public class CustomEntitiesApi {
          </table>
          */
         public ApiResponse<CustomEntityResponse> executeWithHttpInfo() throws ApiException {
-            return getCustomEntityWithHttpInfo(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds);
+            return getCustomEntityWithHttpInfo(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys);
         }
 
         /**
@@ -1201,7 +1216,7 @@ public class CustomEntitiesApi {
          </table>
          */
         public ApiResponse<CustomEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getCustomEntityWithHttpInfo(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds, opts);
+            return getCustomEntityWithHttpInfo(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, opts);
         }
 
         /**
@@ -1218,7 +1233,7 @@ public class CustomEntitiesApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<CustomEntityResponse> _callback) throws ApiException {
-            return getCustomEntityAsync(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback);
+            return getCustomEntityAsync(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, _callback);
         }
 
         /**
@@ -1235,7 +1250,7 @@ public class CustomEntitiesApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<CustomEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return getCustomEntityAsync(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback, opts);
+            return getCustomEntityAsync(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, _callback, opts);
         }
     }
 
@@ -1881,11 +1896,11 @@ public class CustomEntitiesApi {
     public APIgetCustomEntityRelationshipsRequest getCustomEntityRelationships(String entityType, String identifierScope, String identifierType, String identifierValue) {
         return new APIgetCustomEntityRelationshipsRequest(entityType, identifierScope, identifierType, identifierValue);
     }
-    private okhttp3.Call listCustomEntitiesCall(String entityType, String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, List<String> sortBy, String page, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback) throws ApiException {
-        return listCustomEntitiesCall(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds,  _callback, new ConfigurationOptions());
+    private okhttp3.Call listCustomEntitiesCall(String entityType, String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, List<String> sortBy, String page, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return listCustomEntitiesCall(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call listCustomEntitiesCall(String entityType, String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, List<String> sortBy, String page, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listCustomEntitiesCall(String entityType, String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, List<String> sortBy, String page, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1943,6 +1958,10 @@ public class CustomEntitiesApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "relationshipDefinitionIds", relationshipDefinitionIds));
         }
 
+        if (propertyKeys != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -1965,40 +1984,40 @@ public class CustomEntitiesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listCustomEntitiesValidateBeforeCall(String entityType, String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, List<String> sortBy, String page, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listCustomEntitiesValidateBeforeCall(String entityType, String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, List<String> sortBy, String page, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'entityType' is set
         if (entityType == null) {
             throw new ApiException("Missing the required parameter 'entityType' when calling listCustomEntities(Async)");
         }
 
-        return listCustomEntitiesCall(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback, opts);
+        return listCustomEntitiesCall(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, _callback, opts);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfCustomEntityResponse> listCustomEntitiesWithHttpInfo(String entityType, String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, List<String> sortBy, String page, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds) throws ApiException {
-        okhttp3.Call localVarCall = listCustomEntitiesValidateBeforeCall(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds, null, new ConfigurationOptions());
+    private ApiResponse<PagedResourceListOfCustomEntityResponse> listCustomEntitiesWithHttpInfo(String entityType, String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, List<String> sortBy, String page, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys) throws ApiException {
+        okhttp3.Call localVarCall = listCustomEntitiesValidateBeforeCall(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfCustomEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<PagedResourceListOfCustomEntityResponse> listCustomEntitiesWithHttpInfo(String entityType, String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, List<String> sortBy, String page, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = listCustomEntitiesValidateBeforeCall(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds, null, opts);
+    private ApiResponse<PagedResourceListOfCustomEntityResponse> listCustomEntitiesWithHttpInfo(String entityType, String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, List<String> sortBy, String page, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listCustomEntitiesValidateBeforeCall(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfCustomEntityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listCustomEntitiesAsync(String entityType, String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, List<String> sortBy, String page, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<PagedResourceListOfCustomEntityResponse> _callback) throws ApiException {
+    private okhttp3.Call listCustomEntitiesAsync(String entityType, String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, List<String> sortBy, String page, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys, final ApiCallback<PagedResourceListOfCustomEntityResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listCustomEntitiesValidateBeforeCall(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = listCustomEntitiesValidateBeforeCall(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfCustomEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call listCustomEntitiesAsync(String entityType, String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, List<String> sortBy, String page, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, final ApiCallback<PagedResourceListOfCustomEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listCustomEntitiesAsync(String entityType, String effectiveAt, OffsetDateTime asAt, Integer limit, String filter, List<String> sortBy, String page, List<String> relatedEntityPropertyKeys, List<String> relationshipDefinitionIds, List<String> propertyKeys, final ApiCallback<PagedResourceListOfCustomEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = listCustomEntitiesValidateBeforeCall(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback, opts);
+        okhttp3.Call localVarCall = listCustomEntitiesValidateBeforeCall(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfCustomEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2014,6 +2033,7 @@ public class CustomEntitiesApi {
         private String page;
         private List<String> relatedEntityPropertyKeys;
         private List<String> relationshipDefinitionIds;
+        private List<String> propertyKeys;
 
         private APIlistCustomEntitiesRequest(String entityType) {
             this.entityType = entityType;
@@ -2100,6 +2120,16 @@ public class CustomEntitiesApi {
         }
 
         /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;CustomEntity&#39; domain to decorate onto   the custom entities of any type supported by that property (defined within the property definition CustomEntityTypes).   These must have the format {domain}/{scope}/{code}, for example &#39;CustomEntity/someScope/id&#39;. (optional)
+         * @return APIlistCustomEntitiesRequest
+         */
+        public APIlistCustomEntitiesRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
          * Build call for listCustomEntities
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -2113,7 +2143,7 @@ public class CustomEntitiesApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listCustomEntitiesCall(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback);
+            return listCustomEntitiesCall(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, _callback);
         }
 
         /**
@@ -2129,7 +2159,7 @@ public class CustomEntitiesApi {
          </table>
          */
         public PagedResourceListOfCustomEntityResponse execute() throws ApiException {
-            ApiResponse<PagedResourceListOfCustomEntityResponse> localVarResp = listCustomEntitiesWithHttpInfo(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds);
+            ApiResponse<PagedResourceListOfCustomEntityResponse> localVarResp = listCustomEntitiesWithHttpInfo(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys);
             return localVarResp.getData();
         }
 
@@ -2146,7 +2176,7 @@ public class CustomEntitiesApi {
          </table>
          */
         public PagedResourceListOfCustomEntityResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<PagedResourceListOfCustomEntityResponse> localVarResp = listCustomEntitiesWithHttpInfo(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds, opts);
+            ApiResponse<PagedResourceListOfCustomEntityResponse> localVarResp = listCustomEntitiesWithHttpInfo(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, opts);
             return localVarResp.getData();
         }
 
@@ -2163,7 +2193,7 @@ public class CustomEntitiesApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfCustomEntityResponse> executeWithHttpInfo() throws ApiException {
-            return listCustomEntitiesWithHttpInfo(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds);
+            return listCustomEntitiesWithHttpInfo(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys);
         }
 
         /**
@@ -2179,7 +2209,7 @@ public class CustomEntitiesApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfCustomEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return listCustomEntitiesWithHttpInfo(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds, opts);
+            return listCustomEntitiesWithHttpInfo(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, opts);
         }
 
         /**
@@ -2196,7 +2226,7 @@ public class CustomEntitiesApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfCustomEntityResponse> _callback) throws ApiException {
-            return listCustomEntitiesAsync(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback);
+            return listCustomEntitiesAsync(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, _callback);
         }
 
         /**
@@ -2213,7 +2243,7 @@ public class CustomEntitiesApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfCustomEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return listCustomEntitiesAsync(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds, _callback, opts);
+            return listCustomEntitiesAsync(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys, _callback, opts);
         }
     }
 

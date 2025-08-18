@@ -11,10 +11,11 @@
 |**displayName** | **String** | The name of the Fund Calendar entry. |  |
 |**description** | **String** | A description for the Fund Calendar entry. |  [optional] |
 |**navTypeCode** | **String** | The navTypeCode of the Fund Calendar Entry. This is the code of the NAV type that this Calendar Entry is associated with. |  |
-|**effectiveAt** | **OffsetDateTime** | The effective at of the Calendar Entry. |  |
+|**effectiveAt** | **OffsetDateTime** | The effective at of the Calendar Entry. |  [optional] |
 |**asAt** | **OffsetDateTime** | The asAt datetime for the Calendar Entry. |  |
-|**entryType** | [**EntryTypeEnum**](#EntryTypeEnum) | The type of the Fund Calendar Entry. Only &#39;ValuationPoint&#39; currently supported. The available values are: ValuationPointFundCalendarEntry |  |
+|**entryType** | [**EntryTypeEnum**](#EntryTypeEnum) | The type of the Fund Calendar Entry. Only &#39;ValuationPoint&#39; currently supported. The available values are: ValuationPointFundCalendarEntry, BookmarkFundCalendarEntry |  |
 |**status** | **String** | The status of the Fund Calendar Entry. Can be &#39;Estimate&#39;, &#39;Candidate&#39; or &#39;Final&#39;. |  [optional] |
+|**applyClearDown** | **Boolean** | Set to true if that closed period shoould have the clear down applied. |  |
 |**version** | [**Version**](Version.md) |  |  |
 |**href** | **URI** | The specific Uniform Resource Identifier (URI) for this resource at the requested asAt datetime. |  [optional] |
 
@@ -25,6 +26,7 @@
 | Name | Value |
 |---- | -----|
 | VALUATIONPOINTFUNDCALENDARENTRY | &quot;ValuationPointFundCalendarEntry&quot; |
+| BOOKMARKFUNDCALENDARENTRY | &quot;BookmarkFundCalendarEntry&quot; |
 
 
 

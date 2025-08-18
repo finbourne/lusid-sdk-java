@@ -11,6 +11,7 @@
 |**description** | **String** | A description of the custom entity. |  |
 |**identifiers** | [**List&lt;CustomEntityId&gt;**](CustomEntityId.md) | The identifiers the custom entity will be upserted with. |  |
 |**fields** | [**List&lt;CustomEntityField&gt;**](CustomEntityField.md) | The fields that decorate the custom entity. |  [optional] |
+|**properties** | [**Map&lt;String, Property&gt;**](Property.md) | The properties that decorate the custom entity. |  [optional] |
 
 
 

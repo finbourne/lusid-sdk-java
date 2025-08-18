@@ -58,6 +58,10 @@ public class ValuationPointDataQueryParameters {
   @SerializedName(SERIALIZED_NAME_END)
   private DateOrDiaryEntry end;
 
+  public static final String SERIALIZED_NAME_EXCLUDE_CLEARDOWN_MODULE = "excludeCleardownModule";
+  @SerializedName(SERIALIZED_NAME_EXCLUDE_CLEARDOWN_MODULE)
+  private Boolean excludeCleardownModule;
+
   public ValuationPointDataQueryParameters() {
   }
 
@@ -103,6 +107,27 @@ public class ValuationPointDataQueryParameters {
   }
 
 
+  public ValuationPointDataQueryParameters excludeCleardownModule(Boolean excludeCleardownModule) {
+    
+    this.excludeCleardownModule = excludeCleardownModule;
+    return this;
+  }
+
+   /**
+   * By deafult this flag is set to false, if this is set to true, no cleardown module will be applied to the trial balance.
+   * @return excludeCleardownModule
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getExcludeCleardownModule() {
+    return excludeCleardownModule;
+  }
+
+
+  public void setExcludeCleardownModule(Boolean excludeCleardownModule) {
+    this.excludeCleardownModule = excludeCleardownModule;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -114,12 +139,13 @@ public class ValuationPointDataQueryParameters {
     }
     ValuationPointDataQueryParameters valuationPointDataQueryParameters = (ValuationPointDataQueryParameters) o;
     return Objects.equals(this.start, valuationPointDataQueryParameters.start) &&
-        Objects.equals(this.end, valuationPointDataQueryParameters.end);
+        Objects.equals(this.end, valuationPointDataQueryParameters.end) &&
+        Objects.equals(this.excludeCleardownModule, valuationPointDataQueryParameters.excludeCleardownModule);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(start, end);
+    return Objects.hash(start, end, excludeCleardownModule);
   }
 
   @Override
@@ -128,6 +154,7 @@ public class ValuationPointDataQueryParameters {
     sb.append("class ValuationPointDataQueryParameters {\n");
     sb.append("    start: ").append(toIndentedString(start)).append("\n");
     sb.append("    end: ").append(toIndentedString(end)).append("\n");
+    sb.append("    excludeCleardownModule: ").append(toIndentedString(excludeCleardownModule)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -152,6 +179,7 @@ public class ValuationPointDataQueryParameters {
     openapiFields = new HashSet<String>();
     openapiFields.add("start");
     openapiFields.add("end");
+    openapiFields.add("excludeCleardownModule");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

@@ -78,11 +78,13 @@ public class FundCalendarEntry {
   private OffsetDateTime asAt;
 
   /**
-   * The type of the Fund Calendar Entry. Only &#39;ValuationPoint&#39; currently supported. The available values are: ValuationPointFundCalendarEntry
+   * The type of the Fund Calendar Entry. Only &#39;ValuationPoint&#39; currently supported. The available values are: ValuationPointFundCalendarEntry, BookmarkFundCalendarEntry
    */
   @JsonAdapter(EntryTypeEnum.Adapter.class)
   public enum EntryTypeEnum {
-    VALUATIONPOINTFUNDCALENDARENTRY("ValuationPointFundCalendarEntry");
+    VALUATIONPOINTFUNDCALENDARENTRY("ValuationPointFundCalendarEntry"),
+    
+    BOOKMARKFUNDCALENDARENTRY("BookmarkFundCalendarEntry");
 
     private String value;
 
@@ -129,6 +131,10 @@ public class FundCalendarEntry {
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
   private String status;
+
+  public static final String SERIALIZED_NAME_APPLY_CLEAR_DOWN = "applyClearDown";
+  @SerializedName(SERIALIZED_NAME_APPLY_CLEAR_DOWN)
+  private Boolean applyClearDown;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
@@ -235,7 +241,7 @@ public class FundCalendarEntry {
    * The effective at of the Calendar Entry.
    * @return effectiveAt
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public OffsetDateTime getEffectiveAt() {
     return effectiveAt;
   }
@@ -274,7 +280,7 @@ public class FundCalendarEntry {
   }
 
    /**
-   * The type of the Fund Calendar Entry. Only &#39;ValuationPoint&#39; currently supported. The available values are: ValuationPointFundCalendarEntry
+   * The type of the Fund Calendar Entry. Only &#39;ValuationPoint&#39; currently supported. The available values are: ValuationPointFundCalendarEntry, BookmarkFundCalendarEntry
    * @return entryType
   **/
   @jakarta.annotation.Nonnull
@@ -306,6 +312,27 @@ public class FundCalendarEntry {
 
   public void setStatus(String status) {
     this.status = status;
+  }
+
+
+  public FundCalendarEntry applyClearDown(Boolean applyClearDown) {
+    
+    this.applyClearDown = applyClearDown;
+    return this;
+  }
+
+   /**
+   * Set to true if that closed period shoould have the clear down applied.
+   * @return applyClearDown
+  **/
+  @jakarta.annotation.Nonnull
+  public Boolean getApplyClearDown() {
+    return applyClearDown;
+  }
+
+
+  public void setApplyClearDown(Boolean applyClearDown) {
+    this.applyClearDown = applyClearDown;
   }
 
 
@@ -369,6 +396,7 @@ public class FundCalendarEntry {
         Objects.equals(this.asAt, fundCalendarEntry.asAt) &&
         Objects.equals(this.entryType, fundCalendarEntry.entryType) &&
         Objects.equals(this.status, fundCalendarEntry.status) &&
+        Objects.equals(this.applyClearDown, fundCalendarEntry.applyClearDown) &&
         Objects.equals(this.version, fundCalendarEntry.version) &&
         Objects.equals(this.href, fundCalendarEntry.href);
   }
@@ -379,7 +407,7 @@ public class FundCalendarEntry {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, displayName, description, navTypeCode, effectiveAt, asAt, entryType, status, version, href);
+    return Objects.hash(code, displayName, description, navTypeCode, effectiveAt, asAt, entryType, status, applyClearDown, version, href);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -401,6 +429,7 @@ public class FundCalendarEntry {
     sb.append("    asAt: ").append(toIndentedString(asAt)).append("\n");
     sb.append("    entryType: ").append(toIndentedString(entryType)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    applyClearDown: ").append(toIndentedString(applyClearDown)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("}");
@@ -433,6 +462,7 @@ public class FundCalendarEntry {
     openapiFields.add("asAt");
     openapiFields.add("entryType");
     openapiFields.add("status");
+    openapiFields.add("applyClearDown");
     openapiFields.add("version");
     openapiFields.add("href");
 
@@ -441,9 +471,9 @@ public class FundCalendarEntry {
     openapiRequiredFields.add("code");
     openapiRequiredFields.add("displayName");
     openapiRequiredFields.add("navTypeCode");
-    openapiRequiredFields.add("effectiveAt");
     openapiRequiredFields.add("asAt");
     openapiRequiredFields.add("entryType");
+    openapiRequiredFields.add("applyClearDown");
     openapiRequiredFields.add("version");
   }
 

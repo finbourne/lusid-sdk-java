@@ -84,6 +84,10 @@ public class DiaryEntry {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private String status;
 
+  public static final String SERIALIZED_NAME_APPLY_CLEAR_DOWN = "applyClearDown";
+  @SerializedName(SERIALIZED_NAME_APPLY_CLEAR_DOWN)
+  private Boolean applyClearDown;
+
   public static final String SERIALIZED_NAME_EFFECTIVE_AT = "effectiveAt";
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_AT)
   private OffsetDateTime effectiveAt;
@@ -234,6 +238,27 @@ public class DiaryEntry {
 
   public void setStatus(String status) {
     this.status = status;
+  }
+
+
+  public DiaryEntry applyClearDown(Boolean applyClearDown) {
+    
+    this.applyClearDown = applyClearDown;
+    return this;
+  }
+
+   /**
+   * Defaults to false. Set to true if you want that the closed period to have the clear down applied.
+   * @return applyClearDown
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getApplyClearDown() {
+    return applyClearDown;
+  }
+
+
+  public void setApplyClearDown(Boolean applyClearDown) {
+    this.applyClearDown = applyClearDown;
   }
 
 
@@ -395,6 +420,7 @@ public class DiaryEntry {
         Objects.equals(this.type, diaryEntry.type) &&
         Objects.equals(this.name, diaryEntry.name) &&
         Objects.equals(this.status, diaryEntry.status) &&
+        Objects.equals(this.applyClearDown, diaryEntry.applyClearDown) &&
         Objects.equals(this.effectiveAt, diaryEntry.effectiveAt) &&
         Objects.equals(this.queryAsAt, diaryEntry.queryAsAt) &&
         Objects.equals(this.previousEntryTime, diaryEntry.previousEntryTime) &&
@@ -409,7 +435,7 @@ public class DiaryEntry {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, aborId, diaryEntryCode, type, name, status, effectiveAt, queryAsAt, previousEntryTime, properties, version, links);
+    return Objects.hash(href, aborId, diaryEntryCode, type, name, status, applyClearDown, effectiveAt, queryAsAt, previousEntryTime, properties, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -429,6 +455,7 @@ public class DiaryEntry {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    applyClearDown: ").append(toIndentedString(applyClearDown)).append("\n");
     sb.append("    effectiveAt: ").append(toIndentedString(effectiveAt)).append("\n");
     sb.append("    queryAsAt: ").append(toIndentedString(queryAsAt)).append("\n");
     sb.append("    previousEntryTime: ").append(toIndentedString(previousEntryTime)).append("\n");
@@ -463,6 +490,7 @@ public class DiaryEntry {
     openapiFields.add("type");
     openapiFields.add("name");
     openapiFields.add("status");
+    openapiFields.add("applyClearDown");
     openapiFields.add("effectiveAt");
     openapiFields.add("queryAsAt");
     openapiFields.add("previousEntryTime");

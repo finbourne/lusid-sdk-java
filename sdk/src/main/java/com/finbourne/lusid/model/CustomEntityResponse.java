@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.CustomEntityField;
 import com.finbourne.lusid.model.CustomEntityId;
 import com.finbourne.lusid.model.Link;
+import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.Relationship;
 import com.finbourne.lusid.model.StagedModificationsInfo;
 import com.finbourne.lusid.model.Version;
@@ -26,7 +27,9 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -94,6 +97,10 @@ public class CustomEntityResponse {
   public static final String SERIALIZED_NAME_RELATIONSHIPS = "relationships";
   @SerializedName(SERIALIZED_NAME_RELATIONSHIPS)
   private List<Relationship> relationships = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_PROPERTIES = "properties";
+  @SerializedName(SERIALIZED_NAME_PROPERTIES)
+  private Map<String, Property> properties;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -315,6 +322,35 @@ public class CustomEntityResponse {
   }
 
 
+  public CustomEntityResponse properties(Map<String, Property> properties) {
+    
+    this.properties = properties;
+    return this;
+  }
+
+  public CustomEntityResponse putPropertiesItem(String key, Property propertiesItem) {
+    if (this.properties == null) {
+      this.properties = new HashMap<>();
+    }
+    this.properties.put(key, propertiesItem);
+    return this;
+  }
+
+   /**
+   * The properties that decorate the custom entity.
+   * @return properties
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, Property> getProperties() {
+    return properties;
+  }
+
+
+  public void setProperties(Map<String, Property> properties) {
+    this.properties = properties;
+  }
+
+
   public CustomEntityResponse links(List<Link> links) {
     
     this.links = links;
@@ -363,6 +399,7 @@ public class CustomEntityResponse {
         Objects.equals(this.identifiers, customEntityResponse.identifiers) &&
         Objects.equals(this.fields, customEntityResponse.fields) &&
         Objects.equals(this.relationships, customEntityResponse.relationships) &&
+        Objects.equals(this.properties, customEntityResponse.properties) &&
         Objects.equals(this.links, customEntityResponse.links);
   }
 
@@ -372,7 +409,7 @@ public class CustomEntityResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, entityType, version, stagedModifications, displayName, description, identifiers, fields, relationships, links);
+    return Objects.hash(href, entityType, version, stagedModifications, displayName, description, identifiers, fields, relationships, properties, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -395,6 +432,7 @@ public class CustomEntityResponse {
     sb.append("    identifiers: ").append(toIndentedString(identifiers)).append("\n");
     sb.append("    fields: ").append(toIndentedString(fields)).append("\n");
     sb.append("    relationships: ").append(toIndentedString(relationships)).append("\n");
+    sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -427,6 +465,7 @@ public class CustomEntityResponse {
     openapiFields.add("identifiers");
     openapiFields.add("fields");
     openapiFields.add("relationships");
+    openapiFields.add("properties");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)

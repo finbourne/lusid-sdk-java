@@ -1925,7 +1925,7 @@ public class TransactionPortfoliosApiExample {
 
 ## getHoldingContributors
 
-> VersionedResourceListOfHoldingContributor getHoldingContributors(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, limit, asAt, page)
+> VersionedResourceListOfHoldingContributor getHoldingContributors(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page)
 
 GetHoldingContributors: Get Holdings Contributors
 
@@ -1978,14 +1978,15 @@ public class TransactionPortfoliosApiExample {
         String toTradeDate = "toTradeDate_example"; // String | The to trade date upper bound date, defaults to effectiveDate. upper bound for transactions
         Boolean includeHistoric = false; // Boolean | If true, transactions from previously closed holdings are returned.   If false, only transactions from last time position is opened.
         String taxLotId = "taxLotId_example"; // String | Constrains the Holding Contributors to those which contributed to the specified tax lot.
+        Boolean includeUnsettledMovements = false; // Boolean | If true, contributing transaction which have not settled yet will also be returned. False by default
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to build the transactions. Defaults to return the latest   version of each transaction if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing transactions from a previous call to GetHoldingContributors.
         try {
             // uncomment the below to set overrides at the request level
-            // VersionedResourceListOfHoldingContributor result = apiInstance.getHoldingContributors(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, limit, asAt, page).execute(opts);
+            // VersionedResourceListOfHoldingContributor result = apiInstance.getHoldingContributors(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page).execute(opts);
 
-            VersionedResourceListOfHoldingContributor result = apiInstance.getHoldingContributors(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, limit, asAt, page).execute();
+            VersionedResourceListOfHoldingContributor result = apiInstance.getHoldingContributors(scope, code, holdingId, effectiveDate, fromTradeDate, toTradeDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TransactionPortfoliosApi#getHoldingContributors");
@@ -2010,6 +2011,7 @@ public class TransactionPortfoliosApiExample {
 | **toTradeDate** | **String**| The to trade date upper bound date, defaults to effectiveDate. upper bound for transactions | [optional] |
 | **includeHistoric** | **Boolean**| If true, transactions from previously closed holdings are returned.   If false, only transactions from last time position is opened. | [optional] [default to false] |
 | **taxLotId** | **String**| Constrains the Holding Contributors to those which contributed to the specified tax lot. | [optional] |
+| **includeUnsettledMovements** | **Boolean**| If true, contributing transaction which have not settled yet will also be returned. False by default | [optional] [default to false] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to build the transactions. Defaults to return the latest   version of each transaction if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing transactions from a previous call to GetHoldingContributors. | [optional] |
@@ -2355,7 +2357,7 @@ public class TransactionPortfoliosApiExample {
 
 ## getMultipleHoldingContributors
 
-> VersionedResourceListOfHoldingContributor getMultipleHoldingContributors(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, limit, asAt, page)
+> VersionedResourceListOfHoldingContributor getMultipleHoldingContributors(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page)
 
 GetMultipleHoldingContributors: Get Multiple Holding Contributors
 
@@ -2408,14 +2410,15 @@ public class TransactionPortfoliosApiExample {
         String toTransactionDate = "toTransactionDate_example"; // String | The to trade date upper bound date, defaults to effectiveDate. upper bound for transactions
         Boolean includeHistoric = false; // Boolean | If true, transactions from previously closed holdings are returned.   If false, only transactions from last time position is opened.
         String taxLotId = "taxLotId_example"; // String | Constrains the Holding Contributors to those which contributed to the specified tax lot.
+        Boolean includeUnsettledMovements = false; // Boolean | If true, contributing transaction which have not settled yet will also be returned. False by default
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to build the transactions. Defaults to return the latest   version of each transaction if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing transactions from a previous call to GetHoldingContributors.
         try {
             // uncomment the below to set overrides at the request level
-            // VersionedResourceListOfHoldingContributor result = apiInstance.getMultipleHoldingContributors(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, limit, asAt, page).execute(opts);
+            // VersionedResourceListOfHoldingContributor result = apiInstance.getMultipleHoldingContributors(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page).execute(opts);
 
-            VersionedResourceListOfHoldingContributor result = apiInstance.getMultipleHoldingContributors(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, limit, asAt, page).execute();
+            VersionedResourceListOfHoldingContributor result = apiInstance.getMultipleHoldingContributors(scope, code, holdingIdsRequest, effectiveDate, fromTransactionDate, toTransactionDate, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TransactionPortfoliosApi#getMultipleHoldingContributors");
@@ -2440,6 +2443,7 @@ public class TransactionPortfoliosApiExample {
 | **toTransactionDate** | **String**| The to trade date upper bound date, defaults to effectiveDate. upper bound for transactions | [optional] |
 | **includeHistoric** | **Boolean**| If true, transactions from previously closed holdings are returned.   If false, only transactions from last time position is opened. | [optional] [default to false] |
 | **taxLotId** | **String**| Constrains the Holding Contributors to those which contributed to the specified tax lot. | [optional] |
+| **includeUnsettledMovements** | **Boolean**| If true, contributing transaction which have not settled yet will also be returned. False by default | [optional] [default to false] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to build the transactions. Defaults to return the latest   version of each transaction if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing transactions from a previous call to GetHoldingContributors. | [optional] |

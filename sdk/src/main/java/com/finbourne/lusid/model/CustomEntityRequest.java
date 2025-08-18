@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.CustomEntityField;
 import com.finbourne.lusid.model.CustomEntityId;
+import com.finbourne.lusid.model.Property;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -21,7 +22,9 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -69,6 +72,10 @@ public class CustomEntityRequest {
   public static final String SERIALIZED_NAME_FIELDS = "fields";
   @SerializedName(SERIALIZED_NAME_FIELDS)
   private List<CustomEntityField> fields;
+
+  public static final String SERIALIZED_NAME_PROPERTIES = "properties";
+  @SerializedName(SERIALIZED_NAME_PROPERTIES)
+  private Map<String, Property> properties;
 
   public CustomEntityRequest() {
   }
@@ -173,6 +180,35 @@ public class CustomEntityRequest {
   }
 
 
+  public CustomEntityRequest properties(Map<String, Property> properties) {
+    
+    this.properties = properties;
+    return this;
+  }
+
+  public CustomEntityRequest putPropertiesItem(String key, Property propertiesItem) {
+    if (this.properties == null) {
+      this.properties = new HashMap<>();
+    }
+    this.properties.put(key, propertiesItem);
+    return this;
+  }
+
+   /**
+   * The properties that decorate the custom entity.
+   * @return properties
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, Property> getProperties() {
+    return properties;
+  }
+
+
+  public void setProperties(Map<String, Property> properties) {
+    this.properties = properties;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -186,7 +222,8 @@ public class CustomEntityRequest {
     return Objects.equals(this.displayName, customEntityRequest.displayName) &&
         Objects.equals(this.description, customEntityRequest.description) &&
         Objects.equals(this.identifiers, customEntityRequest.identifiers) &&
-        Objects.equals(this.fields, customEntityRequest.fields);
+        Objects.equals(this.fields, customEntityRequest.fields) &&
+        Objects.equals(this.properties, customEntityRequest.properties);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -195,7 +232,7 @@ public class CustomEntityRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, description, identifiers, fields);
+    return Objects.hash(displayName, description, identifiers, fields, properties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -213,6 +250,7 @@ public class CustomEntityRequest {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    identifiers: ").append(toIndentedString(identifiers)).append("\n");
     sb.append("    fields: ").append(toIndentedString(fields)).append("\n");
+    sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -239,6 +277,7 @@ public class CustomEntityRequest {
     openapiFields.add("description");
     openapiFields.add("identifiers");
     openapiFields.add("fields");
+    openapiFields.add("properties");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
