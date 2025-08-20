@@ -194,7 +194,7 @@ public class SearchApi {
 
         /**
          * Set masteredEffectiveAt
-         * @param masteredEffectiveAt The effective datetime or cut label to use when searching mastered instruments. This parameter has no effect on instruments that  have not been mastered within LUSID. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @param masteredEffectiveAt The effective datetime or cut label to use when searching mastered instruments. This parameter has no effect on instruments that have not been mastered within LUSID. Defaults to the current LUSID system datetime if not specified. (optional)
          * @return APIinstrumentsSearchRequest
          */
         public APIinstrumentsSearchRequest masteredEffectiveAt(String masteredEffectiveAt) {
@@ -342,8 +342,8 @@ public class SearchApi {
 
     /**
      * [EARLY ACCESS] InstrumentsSearch: Instruments search
-     * Search across all instruments that have been mastered in LUSID. Optionally augment the results with instruments from an external symbology service,  currently OpenFIGI.
-     * @param instrumentSearchProperty A collection of instrument properties to search for. LUSID will return instruments for any matched   properties. (required)
+     * Search across all instruments that have been mastered in LUSID. Optionally augment the results with instruments from an external symbology service, currently OpenFIGI.
+     * @param instrumentSearchProperty A collection of instrument properties to search for. LUSID will return instruments for any matched  properties. (required)
      * @return APIinstrumentsSearchRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -483,7 +483,7 @@ public class SearchApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.   For example, to filter on the Scope, use \&quot;id.scope eq &#39;string&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set.  For example, to filter on the Scope, use \&quot;id.scope eq &#39;string&#39;\&quot; Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIsearchPortfolioGroupsRequest
          */
         public APIsearchPortfolioGroupsRequest filter(String filter) {
@@ -781,7 +781,7 @@ public class SearchApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.   For example, to filter on the portfolio Type, use \&quot;type eq &#39;Transaction&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set.  For example, to filter on the portfolio Type, use \&quot;type eq &#39;Transaction&#39;\&quot; Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIsearchPortfoliosRequest
          */
         public APIsearchPortfoliosRequest filter(String filter) {
@@ -1079,7 +1079,7 @@ public class SearchApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.   For example, to filter on the Value Type, use \&quot;valueType eq &#39;string&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set.  For example, to filter on the Value Type, use \&quot;valueType eq &#39;string&#39;\&quot; Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIsearchPropertiesRequest
          */
         public APIsearchPropertiesRequest filter(String filter) {

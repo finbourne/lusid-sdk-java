@@ -45,7 +45,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Object describing a particular industry classifier,  which comprises a classification code and the name of the classification system to which the code belongs.
+ * Object describing a particular industry classifier, which comprises a classification code and the name of the classification system to which the code belongs.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class IndustryClassifier {

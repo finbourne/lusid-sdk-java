@@ -961,7 +961,7 @@ public class ReconciliationsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;Reconciliation&#39; property domain to decorate onto the reconciliation.   These must take the form {domain}/{scope}/{code}, for example &#39;Reconciliation/Broker/Id&#39;. (optional)
+         * @param propertyKeys A list of property keys from the &#39;Reconciliation&#39; property domain to decorate onto the reconciliation.  These must take the form {domain}/{scope}/{code}, for example &#39;Reconciliation/Broker/Id&#39;. (optional)
          * @return APIgetReconciliationRequest
          */
         public APIgetReconciliationRequest propertyKeys(List<String> propertyKeys) {
@@ -1442,7 +1442,7 @@ public class ReconciliationsApi {
 
         /**
          * Set reconciliationType
-         * @param reconciliationType Optional parameter to specify which type of mappings should be returned.  Defaults to Transaction if not provided. (optional)
+         * @param reconciliationType Optional parameter to specify which type of mappings should be returned. Defaults to Transaction if not provided. (optional)
          * @return APIlistReconciliationMappingsRequest
          */
         public APIlistReconciliationMappingsRequest reconciliationType(String reconciliationType) {
@@ -1705,7 +1705,7 @@ public class ReconciliationsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the reconciliation. Defaults to the current LUSID   system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the reconciliation. Defaults to the current LUSID  system datetime if not specified. (optional)
          * @return APIlistReconciliationsRequest
          */
         public APIlistReconciliationsRequest effectiveAt(String effectiveAt) {
@@ -1715,7 +1715,7 @@ public class ReconciliationsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to list the reconciliation. Defaults to returning the latest version   of each reconciliation if not specified. (optional)
+         * @param asAt The asAt datetime at which to list the reconciliation. Defaults to returning the latest version  of each reconciliation if not specified. (optional)
          * @return APIlistReconciliationsRequest
          */
         public APIlistReconciliationsRequest asAt(OffsetDateTime asAt) {
@@ -1725,7 +1725,7 @@ public class ReconciliationsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing reconciliations; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing reconciliations; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. (optional)
          * @return APIlistReconciliationsRequest
          */
         public APIlistReconciliationsRequest page(String page) {
@@ -1745,7 +1745,7 @@ public class ReconciliationsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.   For example, to filter on the reconciliation type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.  For example, to filter on the reconciliation type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIlistReconciliationsRequest
          */
         public APIlistReconciliationsRequest filter(String filter) {
@@ -1755,7 +1755,7 @@ public class ReconciliationsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;Reconciliation&#39; domain to decorate onto each reconciliation.   These must take the format {domain}/{scope}/{code}, for example &#39;Reconciliation/Broker/Id&#39;. (optional)
+         * @param propertyKeys A list of property keys from the &#39;Reconciliation&#39; domain to decorate onto each reconciliation.  These must take the format {domain}/{scope}/{code}, for example &#39;Reconciliation/Broker/Id&#39;. (optional)
          * @return APIlistReconciliationsRequest
          */
         public APIlistReconciliationsRequest propertyKeys(List<String> propertyKeys) {
@@ -2120,8 +2120,8 @@ public class ReconciliationsApi {
     }
 
     /**
-     * ReconcileGeneric: Reconcile either holdings or valuations performed on one or two sets of holdings using one or two configuration recipes.     The output is configurable for various types of comparisons, to allow tolerances on numerical and date-time data or case-insensitivity on strings,  and elision of resulting differences where they are &#39;empty&#39; or null or zero.
-     * Perform evaluation of one or two set of holdings (a portfolio of instruments) using one or two (potentially different) configuration recipes.  Produce a breakdown of the resulting differences in evaluation that can be iterated through.
+     * ReconcileGeneric: Reconcile either holdings or valuations performed on one or two sets of holdings using one or two configuration recipes.   The output is configurable for various types of comparisons, to allow tolerances on numerical and date-time data or case-insensitivity on strings, and elision of resulting differences where they are &#39;empty&#39; or null or zero.
+     * Perform evaluation of one or two set of holdings (a portfolio of instruments) using one or two (potentially different) configuration recipes. Produce a breakdown of the resulting differences in evaluation that can be iterated through.
      * @return APIreconcileGenericRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2266,7 +2266,7 @@ public class ReconciliationsApi {
 
         /**
          * Set filter
-         * @param filter Optional. Expression to filter the result set.   For example, to filter on the left portfolio Code, use \&quot;left.portfolioId.code eq &#39;string&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Optional. Expression to filter the result set.  For example, to filter on the left portfolio Code, use \&quot;left.portfolioId.code eq &#39;string&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIreconcileHoldingsRequest
          */
         public APIreconcileHoldingsRequest filter(String filter) {
@@ -2880,7 +2880,7 @@ public class ReconciliationsApi {
 
     /**
      * [EARLY ACCESS] ReconcileTransactions: Perform a Transactions Reconciliation.
-     * Evaluates two sets of transactions to determine which transactions from each set likely match  using the rules of a specified mapping.
+     * Evaluates two sets of transactions to determine which transactions from each set likely match using the rules of a specified mapping.
      * @return APIreconcileTransactionsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -3118,7 +3118,7 @@ public class ReconciliationsApi {
 
     /**
      * [EXPERIMENTAL] ReconcileTransactionsV2: Perform a Transactions Reconciliation.
-     * Evaluates two sets of transactions to determine which transactions from each set likely match  using the rules of a specified mapping.
+     * Evaluates two sets of transactions to determine which transactions from each set likely match using the rules of a specified mapping.
      * @return APIreconcileTransactionsV2Request
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -3850,7 +3850,7 @@ public class ReconciliationsApi {
 
     /**
      * [EARLY ACCESS] UpsertReconciliationMapping: Create or update a mapping
-     * If no mapping exists with the specified scope and code will create a new one.  Else will update the existing mapping
+     * If no mapping exists with the specified scope and code will create a new one. Else will update the existing mapping
      * @return APIupsertReconciliationMappingRequest
      * @http.response.details
      <table summary="Response Details" border="1">

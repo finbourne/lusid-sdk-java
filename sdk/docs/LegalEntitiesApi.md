@@ -31,7 +31,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 DeleteLegalEntity: Delete Legal Entity
 
-Delete a legal entity. Deletion will be valid from the legal entity&#39;s creation datetime.  This means that the legal entity will no longer exist at any effective datetime from the asAt datetime of deletion.
+Delete a legal entity. Deletion will be valid from the legal entity&#39;s creation datetime. This means that the legal entity will no longer exist at any effective datetime from the asAt datetime of deletion.
 
 ### Example
 
@@ -74,7 +74,7 @@ public class LegalEntitiesApiExample {
         LegalEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegalEntitiesApi.class);
         String idTypeScope = "idTypeScope_example"; // String | The scope of the legal entity identifier type.
         String idTypeCode = "idTypeCode_example"; // String | The code of the legal entity identifier type.
-        String code = "code_example"; // String | Code of the legal entity under specified identifier type's scope and code. This together with defined   identifier type uniquely identifies the legal entity to delete.
+        String code = "code_example"; // String | Code of the legal entity under specified identifier type's scope and code. This together with defined  identifier type uniquely identifies the legal entity to delete.
         try {
             // uncomment the below to set overrides at the request level
             // DeletedEntityResponse result = apiInstance.deleteLegalEntity(idTypeScope, idTypeCode, code).execute(opts);
@@ -98,7 +98,7 @@ public class LegalEntitiesApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **idTypeScope** | **String**| The scope of the legal entity identifier type. | |
 | **idTypeCode** | **String**| The code of the legal entity identifier type. | |
-| **code** | **String**| Code of the legal entity under specified identifier type&#39;s scope and code. This together with defined   identifier type uniquely identifies the legal entity to delete. | |
+| **code** | **String**| Code of the legal entity under specified identifier type&#39;s scope and code. This together with defined  identifier type uniquely identifies the legal entity to delete. | |
 
 ### Return type
 
@@ -126,7 +126,7 @@ public class LegalEntitiesApiExample {
 
 DeleteLegalEntityAccessMetadata: Delete a Legal Entity Access Metadata entry
 
-Deletes the Legal Entity Access Metadata entry that exactly matches the provided identifier parts.    It is important to always check to verify success (or failure).
+Deletes the Legal Entity Access Metadata entry that exactly matches the provided identifier parts.  It is important to always check to verify success (or failure).
 
 ### Example
 
@@ -270,9 +270,9 @@ public class LegalEntitiesApiExample {
         LegalEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegalEntitiesApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the legal entity identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the legal entity identifier type.
-        String code = "code_example"; // String | Code of the legal entity under specified identifier type's scope and code. This together with stated identifier type uniquely   identifies the legal entity.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | The property keys of the identifiers to delete. These take the format   {domain}/{scope}/{code} e.g. \"LegalEntity/CreditAgency/Identifier\". Each property must be from the \"LegalEntity\" domain. Identifiers or identifiers not specified in request will not be changed.
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to delete the identifiers. Defaults to the current LUSID system datetime if not specified.   Must not include an effective datetime if identifiers are perpetual.
+        String code = "code_example"; // String | Code of the legal entity under specified identifier type's scope and code. This together with stated identifier type uniquely  identifies the legal entity.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | The property keys of the identifiers to delete. These take the format  {domain}/{scope}/{code} e.g. \"LegalEntity/CreditAgency/Identifier\". Each property must be from the \"LegalEntity\" domain. Identifiers or identifiers not specified in request will not be changed.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to delete the identifiers. Defaults to the current LUSID system datetime if not specified.  Must not include an effective datetime if identifiers are perpetual.
         try {
             // uncomment the below to set overrides at the request level
             // DeletedEntityResponse result = apiInstance.deleteLegalEntityIdentifiers(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt).execute(opts);
@@ -296,9 +296,9 @@ public class LegalEntitiesApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **idTypeScope** | **String**| Scope of the legal entity identifier type. | |
 | **idTypeCode** | **String**| Code of the legal entity identifier type. | |
-| **code** | **String**| Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the legal entity. | |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| The property keys of the identifiers to delete. These take the format   {domain}/{scope}/{code} e.g. \&quot;LegalEntity/CreditAgency/Identifier\&quot;. Each property must be from the \&quot;LegalEntity\&quot; domain. Identifiers or identifiers not specified in request will not be changed. | |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to delete the identifiers. Defaults to the current LUSID system datetime if not specified.   Must not include an effective datetime if identifiers are perpetual. | [optional] |
+| **code** | **String**| Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely  identifies the legal entity. | |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| The property keys of the identifiers to delete. These take the format  {domain}/{scope}/{code} e.g. \&quot;LegalEntity/CreditAgency/Identifier\&quot;. Each property must be from the \&quot;LegalEntity\&quot; domain. Identifiers or identifiers not specified in request will not be changed. | |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to delete the identifiers. Defaults to the current LUSID system datetime if not specified.  Must not include an effective datetime if identifiers are perpetual. | [optional] |
 
 ### Return type
 
@@ -369,9 +369,9 @@ public class LegalEntitiesApiExample {
         LegalEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegalEntitiesApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the legal entity identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the legal entity identifier type.
-        String code = "code_example"; // String | Code of the legal entity under specified identifier type's scope and code. This together with stated identifier type uniquely   identifies the legal entity.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | The property keys of the legal entities properties to delete. These take the format   {domain}/{scope}/{code} e.g. \"LegalEntity/CompanyDetails/Role\". Each property must be from the \"LegalEntity\" domain. Properties or identifiers not specified in request will not be changed.
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified 'effectiveAt' datetime. If the 'effectiveAt' is not provided or is   before the time-variant property exists then a failure is returned. Do not specify this parameter if any of   the properties to delete are perpetual.
+        String code = "code_example"; // String | Code of the legal entity under specified identifier type's scope and code. This together with stated identifier type uniquely  identifies the legal entity.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | The property keys of the legal entities properties to delete. These take the format  {domain}/{scope}/{code} e.g. \"LegalEntity/CompanyDetails/Role\". Each property must be from the \"LegalEntity\" domain. Properties or identifiers not specified in request will not be changed.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to delete time-variant properties from.  The property must exist at the specified 'effectiveAt' datetime. If the 'effectiveAt' is not provided or is  before the time-variant property exists then a failure is returned. Do not specify this parameter if any of  the properties to delete are perpetual.
         try {
             // uncomment the below to set overrides at the request level
             // DeletedEntityResponse result = apiInstance.deleteLegalEntityProperties(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt).execute(opts);
@@ -395,9 +395,9 @@ public class LegalEntitiesApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **idTypeScope** | **String**| Scope of the legal entity identifier type. | |
 | **idTypeCode** | **String**| Code of the legal entity identifier type. | |
-| **code** | **String**| Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the legal entity. | |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| The property keys of the legal entities properties to delete. These take the format   {domain}/{scope}/{code} e.g. \&quot;LegalEntity/CompanyDetails/Role\&quot;. Each property must be from the \&quot;LegalEntity\&quot; domain. Properties or identifiers not specified in request will not be changed. | |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is   before the time-variant property exists then a failure is returned. Do not specify this parameter if any of   the properties to delete are perpetual. | [optional] |
+| **code** | **String**| Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely  identifies the legal entity. | |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| The property keys of the legal entities properties to delete. These take the format  {domain}/{scope}/{code} e.g. \&quot;LegalEntity/CompanyDetails/Role\&quot;. Each property must be from the \&quot;LegalEntity\&quot; domain. Properties or identifiers not specified in request will not be changed. | |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to delete time-variant properties from.  The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is  before the time-variant property exists then a failure is returned. Do not specify this parameter if any of  the properties to delete are perpetual. | [optional] |
 
 ### Return type
 
@@ -567,11 +567,11 @@ public class LegalEntitiesApiExample {
         LegalEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegalEntitiesApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the legal entity identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the legal entity identifier type.
-        String code = "code_example"; // String | Code of the legal entity under specified identifier type's scope and code. This together with stated identifier type uniquely   identifies the legal entity.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys or identifier types (as property keys) from the \"LegalEntity\" domain   to include for found legal entity, or from any domain that supports relationships to decorate onto related entities.   These take the format {domain}/{scope}/{code} e.g. \"LegalEntity/ContactDetails/Address\".
+        String code = "code_example"; // String | Code of the legal entity under specified identifier type's scope and code. This together with stated identifier type uniquely  identifies the legal entity.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys or identifier types (as property keys) from the \"LegalEntity\" domain  to include for found legal entity, or from any domain that supports relationships to decorate onto related entities.  These take the format {domain}/{scope}/{code} e.g. \"LegalEntity/ContactDetails/Address\".
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the legal entity. Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the legal entity. Defaults to return the latest version of the legal entity if not specified.
-        List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto the legal entity in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
+        List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities  onto the legal entity in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
         try {
             // uncomment the below to set overrides at the request level
             // LegalEntity result = apiInstance.getLegalEntity(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds).execute(opts);
@@ -595,11 +595,11 @@ public class LegalEntitiesApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **idTypeScope** | **String**| Scope of the legal entity identifier type. | |
 | **idTypeCode** | **String**| Code of the legal entity identifier type. | |
-| **code** | **String**| Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the legal entity. | |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys or identifier types (as property keys) from the \&quot;LegalEntity\&quot; domain   to include for found legal entity, or from any domain that supports relationships to decorate onto related entities.   These take the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;. | [optional] |
+| **code** | **String**| Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely  identifies the legal entity. | |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys or identifier types (as property keys) from the \&quot;LegalEntity\&quot; domain  to include for found legal entity, or from any domain that supports relationships to decorate onto related entities.  These take the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;. | [optional] |
 | **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the legal entity. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the legal entity. Defaults to return the latest version of the legal entity if not specified. | [optional] |
-| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities   onto the legal entity in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
+| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities  onto the legal entity in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
 
 ### Return type
 
@@ -627,7 +627,7 @@ public class LegalEntitiesApiExample {
 
 [EARLY ACCESS] GetLegalEntityAccessMetadataByKey: Get an entry identified by a metadataKey in the Access Metadata of a Legal Entity
 
-Get a specific Legal Entity Access Metadata by specifying the corresponding identifier parts and Legal Entity code     No matching will be performed through this endpoint. To retrieve an entry, it is necessary to specify, exactly, the identifier of the entry
+Get a specific Legal Entity Access Metadata by specifying the corresponding identifier parts and Legal Entity code   No matching will be performed through this endpoint. To retrieve an entry, it is necessary to specify, exactly, the identifier of the entry
 
 ### Example
 
@@ -772,10 +772,10 @@ public class LegalEntitiesApiExample {
         String idTypeScope = "idTypeScope_example"; // String | Scope of the legal entity identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the legal entity identifier type.
         String code = "code_example"; // String | Code of the legal entity under specified identifier type's scope and code. This together with stated identifier type uniquely identifies the legal entity.
-        String propertyKey = "propertyKey_example"; // String | The property key of the property that will have its history shown. These must be in the format {domain}/{scope}/{code} e.g. \"LegalEntity/ContactDetails/Address\".   Each property must be from the \"LegalEntity\" domain.
+        String propertyKey = "propertyKey_example"; // String | The property key of the property that will have its history shown. These must be in the format {domain}/{scope}/{code} e.g. \"LegalEntity/ContactDetails/Address\".  Each property must be from the \"LegalEntity\" domain.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the person's property history. Defaults to return the current datetime if not supplied.
         String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
-        String page = "page_example"; // String | The pagination token to use to continue listing properties from a previous call to get property time series.   This value is returned from the previous call. If a pagination token is provided the filter and asAt fields   must not have changed since the original request.
+        String page = "page_example"; // String | The pagination token to use to continue listing properties from a previous call to get property time series.  This value is returned from the previous call. If a pagination token is provided the filter and asAt fields  must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
         try {
             // uncomment the below to set overrides at the request level
@@ -801,10 +801,10 @@ public class LegalEntitiesApiExample {
 | **idTypeScope** | **String**| Scope of the legal entity identifier type. | |
 | **idTypeCode** | **String**| Code of the legal entity identifier type. | |
 | **code** | **String**| Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely identifies the legal entity. | |
-| **propertyKey** | **String**| The property key of the property that will have its history shown. These must be in the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;.   Each property must be from the \&quot;LegalEntity\&quot; domain. | |
+| **propertyKey** | **String**| The property key of the property that will have its history shown. These must be in the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;.  Each property must be from the \&quot;LegalEntity\&quot; domain. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the person&#39;s property history. Defaults to return the current datetime if not supplied. | [optional] |
 | **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing properties from a previous call to get property time series.   This value is returned from the previous call. If a pagination token is provided the filter and asAt fields   must not have changed since the original request. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing properties from a previous call to get property time series.  This value is returned from the previous call. If a pagination token is provided the filter and asAt fields  must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional] |
 
 ### Return type
@@ -876,11 +876,11 @@ public class LegalEntitiesApiExample {
         LegalEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegalEntitiesApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the legal entity identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the legal entity identifier type.
-        String code = "code_example"; // String | Code of the legal entity under specified identifier type's scope and code. This together with stated identifier type uniquely   identifies the legal entity.
+        String code = "code_example"; // String | Code of the legal entity under specified identifier type's scope and code. This together with stated identifier type uniquely  identifies the legal entity.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to get relations. Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the legal entity's relations. Defaults to return the latest LUSID AsAt time if not specified.
         String filter = "filter_example"; // String | Expression to filter the relations. Users should provide null or empty string for this field until further notice.
-        List<String> identifierTypes = Arrays.asList(); // List<String> | Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format   {domain}/{scope}/{code} e.g. \"Person/CompanyDetails/Role\". They must be from the \"Person\" or \"LegalEntity\" domain.   Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array.
+        List<String> identifierTypes = Arrays.asList(); // List<String> | Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format  {domain}/{scope}/{code} e.g. \"Person/CompanyDetails/Role\". They must be from the \"Person\" or \"LegalEntity\" domain.  Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array.
         try {
             // uncomment the below to set overrides at the request level
             // ResourceListOfRelation result = apiInstance.getLegalEntityRelations(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes).execute(opts);
@@ -904,11 +904,11 @@ public class LegalEntitiesApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **idTypeScope** | **String**| Scope of the legal entity identifier type. | |
 | **idTypeCode** | **String**| Code of the legal entity identifier type. | |
-| **code** | **String**| Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the legal entity. | |
+| **code** | **String**| Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely  identifies the legal entity. | |
 | **effectiveAt** | **String**| The effective datetime or cut label at which to get relations. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the legal entity&#39;s relations. Defaults to return the latest LUSID AsAt time if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the relations. Users should provide null or empty string for this field until further notice. | [optional] |
-| **identifierTypes** | [**List&lt;String&gt;**](String.md)| Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format   {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.   Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array. | [optional] |
+| **identifierTypes** | [**List&lt;String&gt;**](String.md)| Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format  {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.  Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array. | [optional] |
 
 ### Return type
 
@@ -979,11 +979,11 @@ public class LegalEntitiesApiExample {
         LegalEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegalEntitiesApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the legal entity's identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the legal entity's identifier type.
-        String code = "code_example"; // String | Code of the legal entity under specified identifier type's scope and code. This together with stated identifier type uniquely   identifies the legal entity.
+        String code = "code_example"; // String | Code of the legal entity under specified identifier type's scope and code. This together with stated identifier type uniquely  identifies the legal entity.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified.
         String filter = "filter_example"; // String | Expression to filter relationships. Users should provide null or empty string for this field until further notice.
-        List<String> identifierTypes = Arrays.asList(); // List<String> | Identifier types (as property keys) used for referencing Persons or Legal Entities.   These can be specified from the 'Person' or 'LegalEntity' domains and have the format {domain}/{scope}/{code}, for example   'Person/CompanyDetails/Role'. An Empty array may be used to return all related Entities.
+        List<String> identifierTypes = Arrays.asList(); // List<String> | Identifier types (as property keys) used for referencing Persons or Legal Entities.  These can be specified from the 'Person' or 'LegalEntity' domains and have the format {domain}/{scope}/{code}, for example  'Person/CompanyDetails/Role'. An Empty array may be used to return all related Entities.
         try {
             // uncomment the below to set overrides at the request level
             // ResourceListOfRelationship result = apiInstance.getLegalEntityRelationships(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes).execute(opts);
@@ -1007,11 +1007,11 @@ public class LegalEntitiesApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **idTypeScope** | **String**| Scope of the legal entity&#39;s identifier type. | |
 | **idTypeCode** | **String**| Code of the legal entity&#39;s identifier type. | |
-| **code** | **String**| Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the legal entity. | |
+| **code** | **String**| Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely  identifies the legal entity. | |
 | **effectiveAt** | **String**| The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. | [optional] |
 | **filter** | **String**| Expression to filter relationships. Users should provide null or empty string for this field until further notice. | [optional] |
-| **identifierTypes** | [**List&lt;String&gt;**](String.md)| Identifier types (as property keys) used for referencing Persons or Legal Entities.   These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example   &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. | [optional] |
+| **identifierTypes** | [**List&lt;String&gt;**](String.md)| Identifier types (as property keys) used for referencing Persons or Legal Entities.  These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example  &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. | [optional] |
 
 ### Return type
 
@@ -1080,14 +1080,14 @@ public class LegalEntitiesApiExample {
         // LegalEntitiesApi apiInstance = apiFactory.build(LegalEntitiesApi.class);
 
         LegalEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegalEntitiesApi.class);
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the legal entities. Defaults to the current LUSID   system datetime if not specified.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the legal entities. Defaults to return the latest version   of each legal entities if not specified.
-        String page = "page_example"; // String | The pagination token to use to continue listing legal entities from a previous call to list legal entities. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy  and asAt fields must not have changed since the original request.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the legal entities. Defaults to the current LUSID  system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the legal entities. Defaults to return the latest version  of each legal entities if not specified.
+        String page = "page_example"; // String | The pagination token to use to continue listing legal entities from a previous call to list legal entities. This value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 5000 if not specified.
-        String filter = "filter_example"; // String | Expression to filter the result set.    Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        String filter = "filter_example"; // String | Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\".
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys or identifier types (as property keys) from the \"LegalEntity\" domain   to include for each legal entity, or from any domain that supports relationships to decorate onto related entities.   These take the format {domain}/{scope}/{code} e.g. \"LegalEntity/ContactDetails/Address\".
-        List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto each portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys or identifier types (as property keys) from the \"LegalEntity\" domain  to include for each legal entity, or from any domain that supports relationships to decorate onto related entities.  These take the format {domain}/{scope}/{code} e.g. \"LegalEntity/ContactDetails/Address\".
+        List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities  onto each portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
         try {
             // uncomment the below to set overrides at the request level
             // ResourceListOfLegalEntity result = apiInstance.listAllLegalEntities(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds).execute(opts);
@@ -1109,14 +1109,14 @@ public class LegalEntitiesApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **effectiveAt** | **String**| The effective datetime or cut label at which to list the legal entities. Defaults to the current LUSID   system datetime if not specified. | [optional] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the legal entities. Defaults to return the latest version   of each legal entities if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing legal entities from a previous call to list legal entities. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy  and asAt fields must not have changed since the original request. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list the legal entities. Defaults to the current LUSID  system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the legal entities. Defaults to return the latest version  of each legal entities if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing legal entities from a previous call to list legal entities. This value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 5000 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the result set.    Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **filter** | **String**| Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys or identifier types (as property keys) from the \&quot;LegalEntity\&quot; domain   to include for each legal entity, or from any domain that supports relationships to decorate onto related entities.   These take the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;. | [optional] |
-| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities   onto each portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys or identifier types (as property keys) from the \&quot;LegalEntity\&quot; domain  to include for each legal entity, or from any domain that supports relationships to decorate onto related entities.  These take the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;. | [optional] |
+| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities  onto each portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
 
 ### Return type
 
@@ -1187,14 +1187,14 @@ public class LegalEntitiesApiExample {
         LegalEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegalEntitiesApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the legal entity identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the legal entity identifier type.
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the people. Defaults to the current LUSID   system datetime if not specified.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the people. Defaults to return the latest version   of each people if not specified.
-        String page = "page_example"; // String | The pagination token to use to continue listing legal entities from a previous call to list legal entities. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy  and asAt fields must not have changed since the original request.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the people. Defaults to the current LUSID  system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the people. Defaults to return the latest version  of each people if not specified.
+        String page = "page_example"; // String | The pagination token to use to continue listing legal entities from a previous call to list legal entities. This value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
-        String filter = "filter_example"; // String | Expression to filter the result set.    Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        String filter = "filter_example"; // String | Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\".
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys or identifier types (as property keys) from the \"LegalEntity\" domain   to include for each legal entity, or from any domain that supports relationships to decorate onto related entities.   These take the format {domain}/{scope}/{code} e.g. \"LegalEntity/ContactDetails/Address\".
-        List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto each portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys or identifier types (as property keys) from the \"LegalEntity\" domain  to include for each legal entity, or from any domain that supports relationships to decorate onto related entities.  These take the format {domain}/{scope}/{code} e.g. \"LegalEntity/ContactDetails/Address\".
+        List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities  onto each portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
         try {
             // uncomment the below to set overrides at the request level
             // PagedResourceListOfLegalEntity result = apiInstance.listLegalEntities(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds).execute(opts);
@@ -1218,14 +1218,14 @@ public class LegalEntitiesApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **idTypeScope** | **String**| Scope of the legal entity identifier type. | |
 | **idTypeCode** | **String**| Code of the legal entity identifier type. | |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to list the people. Defaults to the current LUSID   system datetime if not specified. | [optional] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the people. Defaults to return the latest version   of each people if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing legal entities from a previous call to list legal entities. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy  and asAt fields must not have changed since the original request. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list the people. Defaults to the current LUSID  system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the people. Defaults to return the latest version  of each people if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing legal entities from a previous call to list legal entities. This value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the result set.    Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **filter** | **String**| Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys or identifier types (as property keys) from the \&quot;LegalEntity\&quot; domain   to include for each legal entity, or from any domain that supports relationships to decorate onto related entities.   These take the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;. | [optional] |
-| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities   onto each portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys or identifier types (as property keys) from the \&quot;LegalEntity\&quot; domain  to include for each legal entity, or from any domain that supports relationships to decorate onto related entities.  These take the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;. | [optional] |
+| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities  onto each portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
 
 ### Return type
 
@@ -1253,7 +1253,7 @@ public class LegalEntitiesApiExample {
 
 [EARLY ACCESS] PatchLegalEntityAccessMetadata: Patch Access Metadata rules for a Legal Entity.
 
-Patch Legal Entity Access Metadata Rules in a single scope.  The behaviour is defined by the JSON Patch specification.     Currently only &#39;add&#39; is a supported operation on the patch document    Currently only valid metadata keys are supported paths on the patch document     The response will return any affected Legal Entity Access Metadata rules or a failure message if unsuccessful.     It is important to always check to verify success (or failure).     Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
+Patch Legal Entity Access Metadata Rules in a single scope. The behaviour is defined by the JSON Patch specification.   Currently only &#39;add&#39; is a supported operation on the patch document  Currently only valid metadata keys are supported paths on the patch document   The response will return any affected Legal Entity Access Metadata rules or a failure message if unsuccessful.   It is important to always check to verify success (or failure).   Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
 
 ### Example
 
@@ -1397,7 +1397,7 @@ public class LegalEntitiesApiExample {
         LegalEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegalEntitiesApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the legal entity identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the legal entity identifier type.
-        String code = "code_example"; // String | Code of the legal entity under specified identifier type's scope and code. This together with stated identifier type uniquely   identifies the legal entity.
+        String code = "code_example"; // String | Code of the legal entity under specified identifier type's scope and code. This together with stated identifier type uniquely  identifies the legal entity.
         SetLegalEntityIdentifiersRequest setLegalEntityIdentifiersRequest = new SetLegalEntityIdentifiersRequest(); // SetLegalEntityIdentifiersRequest | Request containing identifiers to set for the legal entity. Identifiers not specified in request will not be changed.
         try {
             // uncomment the below to set overrides at the request level
@@ -1422,7 +1422,7 @@ public class LegalEntitiesApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **idTypeScope** | **String**| Scope of the legal entity identifier type. | |
 | **idTypeCode** | **String**| Code of the legal entity identifier type. | |
-| **code** | **String**| Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the legal entity. | |
+| **code** | **String**| Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely  identifies the legal entity. | |
 | **setLegalEntityIdentifiersRequest** | [**SetLegalEntityIdentifiersRequest**](SetLegalEntityIdentifiersRequest.md)| Request containing identifiers to set for the legal entity. Identifiers not specified in request will not be changed. | |
 
 ### Return type
@@ -1494,7 +1494,7 @@ public class LegalEntitiesApiExample {
         LegalEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegalEntitiesApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the legal entity identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the legal entity identifier type.
-        String code = "code_example"; // String | Code of the legal entity under specified identifier type's scope and code. This together with stated identifier type uniquely   identifies the legal entity.
+        String code = "code_example"; // String | Code of the legal entity under specified identifier type's scope and code. This together with stated identifier type uniquely  identifies the legal entity.
         SetLegalEntityPropertiesRequest setLegalEntityPropertiesRequest = new SetLegalEntityPropertiesRequest(); // SetLegalEntityPropertiesRequest | Request containing properties to set for the legal entity. Properties not specified in request will not be changed.
         try {
             // uncomment the below to set overrides at the request level
@@ -1519,7 +1519,7 @@ public class LegalEntitiesApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **idTypeScope** | **String**| Scope of the legal entity identifier type. | |
 | **idTypeCode** | **String**| Code of the legal entity identifier type. | |
-| **code** | **String**| Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the legal entity. | |
+| **code** | **String**| Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely  identifies the legal entity. | |
 | **setLegalEntityPropertiesRequest** | [**SetLegalEntityPropertiesRequest**](SetLegalEntityPropertiesRequest.md)| Request containing properties to set for the legal entity. Properties not specified in request will not be changed. | |
 
 ### Return type
@@ -1732,7 +1732,7 @@ public class LegalEntitiesApiExample {
 
 UpsertLegalEntityAccessMetadata: Upsert a Legal Entity Access Metadata entry associated with a specific metadataKey. This creates or updates the data in LUSID.
 
-Update or insert one Legal Entity Access Metadata entry in a single scope. An item will be updated if it already exists  and inserted if it does not.     The response will return the successfully updated or inserted Legal Entity Access Metadata rule or failure message if unsuccessful.     It is important to always check to verify success (or failure).     Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
+Update or insert one Legal Entity Access Metadata entry in a single scope. An item will be updated if it already exists and inserted if it does not.   The response will return the successfully updated or inserted Legal Entity Access Metadata rule or failure message if unsuccessful.   It is important to always check to verify success (or failure).   Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
 
 ### Example
 

@@ -50,7 +50,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Schedule to define fx conversion of cashflows on complex bonds. If an fx schedule is defined then  on payment schedule generation the coupon and principal payoffs will be wrapped in an fx rate payoff method.  Either the fx rate is predefined (fixed) or relies on fx resets (floating).  Used in representation of dual currency bond.
+ * Schedule to define fx conversion of cashflows on complex bonds. If an fx schedule is defined then on payment schedule generation the coupon and principal payoffs will be wrapped in an fx rate payoff method. Either the fx rate is predefined (fixed) or relies on fx resets (floating). Used in representation of dual currency bond.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FxRateSchedule extends Schedule {

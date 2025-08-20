@@ -47,7 +47,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Definition of an Expiry Event  This is an event that describes the expiry of the instrument.
+ * Definition of an Expiry Event This is an event that describes the expiry of the instrument.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExpiryEvent extends InstrumentEvent {

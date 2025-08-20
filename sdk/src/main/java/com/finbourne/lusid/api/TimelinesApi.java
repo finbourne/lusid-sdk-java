@@ -322,7 +322,7 @@ public class TimelinesApi {
 
     /**
      * [EXPERIMENTAL] CreateClosedPeriod: Create a new closed period against a timeline entity
-     * Creates a new closed period against a timeline entity  Returns the newly created closed period entity with properties
+     * Creates a new closed period against a timeline entity Returns the newly created closed period entity with properties
      * @param scope The scope of the specified Timeline. (required)
      * @param code The code of the specified Timeline. Together with the domain and scope this uniquely identifies the Timeline. (required)
      * @return APIcreateClosedPeriodRequest
@@ -562,7 +562,7 @@ public class TimelinesApi {
 
     /**
      * [EXPERIMENTAL] CreateTimeline: Create a Timeline
-     * Creates a Timeline. Returns the created Timeline at the current effectiveAt.  Note that Timelines are mono-temporal, however they can have Time-Variant Properties.  Upserted Properties will be returned at the latest AsAt and EffectiveAt
+     * Creates a Timeline. Returns the created Timeline at the current effectiveAt. Note that Timelines are mono-temporal, however they can have Time-Variant Properties. Upserted Properties will be returned at the latest AsAt and EffectiveAt
      * @return APIcreateTimelineRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -801,9 +801,9 @@ public class TimelinesApi {
 
     /**
      * [EXPERIMENTAL] DeleteTimeline: Deletes a particular Timeline
-     * The deletion will take effect from the Timeline deletion datetime.  i.e. will no longer exist at any asAt datetime after the asAt datetime of deletion.
+     * The deletion will take effect from the Timeline deletion datetime. i.e. will no longer exist at any asAt datetime after the asAt datetime of deletion.
      * @param scope The scope of the specified Timeline. (required)
-     * @param code The code of the specified Timeline. Together with the domain and scope this uniquely   identifies the Timeline. (required)
+     * @param code The code of the specified Timeline. Together with the domain and scope this uniquely  identifies the Timeline. (required)
      * @return APIdeleteTimelineRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -942,7 +942,7 @@ public class TimelinesApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the ClosedPeriod definition. Defaults to return   the latest version of the definition if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the ClosedPeriod definition. Defaults to return  the latest version of the definition if not specified. (optional)
          * @return APIgetClosedPeriodRequest
          */
         public APIgetClosedPeriodRequest asAt(OffsetDateTime asAt) {
@@ -952,7 +952,7 @@ public class TimelinesApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;ClosedPeriod&#39; domain to decorate onto   the ClosedPeriod.   These must have the format {domain}/{scope}/{code}, for example &#39;ClosedPeriod/system/Name&#39;. (optional)
+         * @param propertyKeys A list of property keys from the &#39;ClosedPeriod&#39; domain to decorate onto  the ClosedPeriod.  These must have the format {domain}/{scope}/{code}, for example &#39;ClosedPeriod/system/Name&#39;. (optional)
          * @return APIgetClosedPeriodRequest
          */
         public APIgetClosedPeriodRequest propertyKeys(List<String> propertyKeys) {
@@ -1082,8 +1082,8 @@ public class TimelinesApi {
      * [EXPERIMENTAL] GetClosedPeriod: Gets a Closed Period entity.
      * Retrieves one ClosedPeriod uniquely defined by the Timelines Scope/Code and a ClosedPeriodId.
      * @param scope The scope of the Timeline. (required)
-     * @param code The code of the Timeline. Together with the scope this uniquely   identifies the Timeline. (required)
-     * @param closedPeriodId The id of the Closed Period. Together with the scope and code of the Timeline,   this uniquely identifies the ClosedPeriod (required)
+     * @param code The code of the Timeline. Together with the scope this uniquely  identifies the Timeline. (required)
+     * @param closedPeriodId The id of the Closed Period. Together with the scope and code of the Timeline,  this uniquely identifies the ClosedPeriod (required)
      * @return APIgetClosedPeriodRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1219,7 +1219,7 @@ public class TimelinesApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the Timeline definition. Defaults to return   the latest version of the definition if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the Timeline definition. Defaults to return  the latest version of the definition if not specified. (optional)
          * @return APIgetTimelineRequest
          */
         public APIgetTimelineRequest asAt(OffsetDateTime asAt) {
@@ -1229,7 +1229,7 @@ public class TimelinesApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to retrieve the timeline properties.   Defaults to the current LUSID system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the timeline properties.  Defaults to the current LUSID system datetime if not specified. (optional)
          * @return APIgetTimelineRequest
          */
         public APIgetTimelineRequest effectiveAt(String effectiveAt) {
@@ -1239,7 +1239,7 @@ public class TimelinesApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;Timeline&#39; domain to decorate onto   the Timeline.   These must have the format {domain}/{scope}/{code}, for example &#39;Timeline/system/Name&#39;. (optional)
+         * @param propertyKeys A list of property keys from the &#39;Timeline&#39; domain to decorate onto  the Timeline.  These must have the format {domain}/{scope}/{code}, for example &#39;Timeline/system/Name&#39;. (optional)
          * @return APIgetTimelineRequest
          */
         public APIgetTimelineRequest propertyKeys(List<String> propertyKeys) {
@@ -1367,9 +1367,9 @@ public class TimelinesApi {
 
     /**
      * [EXPERIMENTAL] GetTimeline: Get a single Timeline by scope and code.
-     * Retrieves one Timeline by scope and code.  Timelines are mono-temporal. The EffectiveAt is only applied to Time-Variant Properties.
+     * Retrieves one Timeline by scope and code. Timelines are mono-temporal. The EffectiveAt is only applied to Time-Variant Properties.
      * @param scope The scope of the specified Timeline. (required)
-     * @param code The code of the specified Timeline. Together with the scope this uniquely   identifies the Timeline. (required)
+     * @param code The code of the specified Timeline. Together with the scope this uniquely  identifies the Timeline. (required)
      * @return APIgetTimelineRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1530,7 +1530,7 @@ public class TimelinesApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing ClosedPeriods; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing ClosedPeriods; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. (optional)
          * @return APIlistClosedPeriodsRequest
          */
         public APIlistClosedPeriodsRequest page(String page) {
@@ -1550,7 +1550,7 @@ public class TimelinesApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.   For example, to filter on the effectiveEnd, specify \&quot;effectiveEnd gt 2019-01-15T10:00:00\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.  For example, to filter on the effectiveEnd, specify \&quot;effectiveEnd gt 2019-01-15T10:00:00\&quot;. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIlistClosedPeriodsRequest
          */
         public APIlistClosedPeriodsRequest filter(String filter) {
@@ -1570,7 +1570,7 @@ public class TimelinesApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;ClosedPeriod&#39; domain to decorate onto each ClosedPeriod.   These must take the format {domain}/{scope}/{code}, for example &#39;ClosedPeriod/Account/id&#39;. (optional)
+         * @param propertyKeys A list of property keys from the &#39;ClosedPeriod&#39; domain to decorate onto each ClosedPeriod.  These must take the format {domain}/{scope}/{code}, for example &#39;ClosedPeriod/Account/id&#39;. (optional)
          * @return APIlistClosedPeriodsRequest
          */
         public APIlistClosedPeriodsRequest propertyKeys(List<String> propertyKeys) {
@@ -1850,7 +1850,7 @@ public class TimelinesApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to list the Timelines.   Note that Timelines are monotemporal, the effectiveAt is for Timevariant Properties on the Timeline only.   Defaults to the current LUSID system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to list the Timelines.  Note that Timelines are monotemporal, the effectiveAt is for Timevariant Properties on the Timeline only.  Defaults to the current LUSID system datetime if not specified. (optional)
          * @return APIlistTimelinesRequest
          */
         public APIlistTimelinesRequest effectiveAt(String effectiveAt) {
@@ -1860,7 +1860,7 @@ public class TimelinesApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing Timelines; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing Timelines; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. (optional)
          * @return APIlistTimelinesRequest
          */
         public APIlistTimelinesRequest page(String page) {
@@ -1880,7 +1880,7 @@ public class TimelinesApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.   For example, to filter on the displayName, specify \&quot;displayName eq &#39;AccountingTimeline&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.  For example, to filter on the displayName, specify \&quot;displayName eq &#39;AccountingTimeline&#39;\&quot;. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIlistTimelinesRequest
          */
         public APIlistTimelinesRequest filter(String filter) {
@@ -1900,7 +1900,7 @@ public class TimelinesApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;Timeline&#39; domain to decorate onto each Timeline.   These must take the format {domain}/{scope}/{code}, for example &#39;Timeline/Account/id&#39;. (optional)
+         * @param propertyKeys A list of property keys from the &#39;Timeline&#39; domain to decorate onto each Timeline.  These must take the format {domain}/{scope}/{code}, for example &#39;Timeline/Account/id&#39;. (optional)
          * @return APIlistTimelinesRequest
          */
         public APIlistTimelinesRequest propertyKeys(List<String> propertyKeys) {
@@ -2293,7 +2293,7 @@ public class TimelinesApi {
      * Sets empty or more post close activities to the specific closed period.
      * @param scope The scope of the Timeline. (required)
      * @param code The code of the Timeline. (required)
-     * @param closedPeriodId The id of the Closed Period. Together with the scope and code of the Timeline,   this uniquely identifies the ClosedPeriod (required)
+     * @param closedPeriodId The id of the Closed Period. Together with the scope and code of the Timeline,  this uniquely identifies the ClosedPeriod (required)
      * @return APIsetPostCloseActivityRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2547,7 +2547,7 @@ public class TimelinesApi {
 
     /**
      * [EXPERIMENTAL] UpdateTimeline: Update Timeline defined by scope and code
-     * Overwrites an existing Timeline  Update request has the same required fields as Create apart from the id.  Returns the updated Timeline at the current effectiveAt.  Note that Timelines are mono-temporal, however they can have Time-Variant Properties.  Updated Properties will be returned at the latest AsAt and EffectiveAt
+     * Overwrites an existing Timeline Update request has the same required fields as Create apart from the id. Returns the updated Timeline at the current effectiveAt. Note that Timelines are mono-temporal, however they can have Time-Variant Properties. Updated Properties will be returned at the latest AsAt and EffectiveAt
      * @param scope The scope of the specified Timeline. (required)
      * @param code The code of the specified Timeline. Together with the domain and scope this uniquely identifies the Timeline. (required)
      * @return APIupdateTimelineRequest

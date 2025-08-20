@@ -48,7 +48,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Market Data required to build a volatility surface for pricing.  Single constant volatility point.
+ * Market Data required to build a volatility surface for pricing. Single constant volatility point.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ConstantVolatilitySurface extends ComplexMarketData {
@@ -100,7 +100,7 @@ public class ConstantVolatilitySurface extends ComplexMarketData {
   }
 
    /**
-   * What is the asset that the engine is for.  Supported string (enumeration) values are: [Cash, Commodity, Credit, Equity, Fx, Rates, FxVol, IrVol, EquityVol, HolidayCalendar, IndexConvention, FlowConvention, CdsFlowConvention, CorporateActions, FxForwards, Quote, Inflation, EquityCurve, All, VendorOpaque].
+   * What is the asset that the engine is for. Supported string (enumeration) values are: [Cash, Commodity, Credit, Equity, Fx, Rates, FxVol, IrVol, EquityVol, HolidayCalendar, IndexConvention, FlowConvention, CdsFlowConvention, CorporateActions, FxForwards, Quote, Inflation, EquityCurve, All, VendorOpaque].
    * @return assetType
   **/
   @jakarta.annotation.Nonnull

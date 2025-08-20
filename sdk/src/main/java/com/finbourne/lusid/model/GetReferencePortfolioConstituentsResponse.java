@@ -309,7 +309,7 @@ public class GetReferencePortfolioConstituentsResponse {
   }
 
    /**
-   * The Uri that returns the same result as the original request,  but may include resolved as at time(s).
+   * The Uri that returns the same result as the original request, but may include resolved as at time(s).
    * @return href
   **/
   @jakarta.annotation.Nullable

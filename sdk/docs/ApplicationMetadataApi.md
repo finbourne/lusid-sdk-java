@@ -234,7 +234,7 @@ public class ApplicationMetadataApiExample {
         // ApplicationMetadataApi apiInstance = apiFactory.build(ApplicationMetadataApi.class);
 
         ApplicationMetadataApi apiInstance = ApiFactoryBuilder.build(fileName).build(ApplicationMetadataApi.class);
-        String filter = "filter_example"; // String | Optional. Expression to filter the result set.    For example, to filter on the Application, use \"application eq 'string'\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        String filter = "filter_example"; // String | Optional. Expression to filter the result set.   For example, to filter on the Application, use \"application eq 'string'\"  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         try {
             // uncomment the below to set overrides at the request level
             // ResourceListOfAccessControlledResource result = apiInstance.listAccessControlledResources(filter).execute(opts);
@@ -256,7 +256,7 @@ public class ApplicationMetadataApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **filter** | **String**| Optional. Expression to filter the result set.    For example, to filter on the Application, use \&quot;application eq &#39;string&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **filter** | **String**| Optional. Expression to filter the result set.   For example, to filter on the Application, use \&quot;application eq &#39;string&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
 ### Return type
 

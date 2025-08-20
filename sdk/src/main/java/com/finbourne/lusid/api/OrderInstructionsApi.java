@@ -303,7 +303,7 @@ public class OrderInstructionsApi {
 
     /**
      * DeleteOrderInstruction: Delete orderInstruction
-     * Delete an orderInstruction. Deletion will be valid from the orderInstruction&#39;s creation datetime.  This means that the orderInstruction will no longer exist at any effective datetime from the asAt datetime of deletion.
+     * Delete an orderInstruction. Deletion will be valid from the orderInstruction&#39;s creation datetime. This means that the orderInstruction will no longer exist at any effective datetime from the asAt datetime of deletion.
      * @param scope The orderInstruction scope. (required)
      * @param code The orderInstruction&#39;s code. This, together with the scope uniquely identifies the orderInstruction to delete. (required)
      * @return APIdeleteOrderInstructionRequest
@@ -446,7 +446,7 @@ public class OrderInstructionsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;OrderInstruction\&quot; domain to decorate onto the orderInstruction.   These take the format {domain}/{scope}/{code} e.g. \&quot;OrderInstruction/system/Name\&quot;. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;OrderInstruction\&quot; domain to decorate onto the orderInstruction.  These take the format {domain}/{scope}/{code} e.g. \&quot;OrderInstruction/system/Name\&quot;. (optional)
          * @return APIgetOrderInstructionRequest
          */
         public APIgetOrderInstructionRequest propertyKeys(List<String> propertyKeys) {
@@ -721,7 +721,7 @@ public class OrderInstructionsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing orderInstructions from a previous call to list orderInstructions.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing orderInstructions from a previous call to list orderInstructions.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields  must not have changed since the original request. (optional)
          * @return APIlistOrderInstructionsRequest
          */
         public APIlistOrderInstructionsRequest page(String page) {
@@ -751,7 +751,7 @@ public class OrderInstructionsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIlistOrderInstructionsRequest
          */
         public APIlistOrderInstructionsRequest filter(String filter) {
@@ -761,7 +761,7 @@ public class OrderInstructionsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;OrderInstruction\&quot; domain to decorate onto each orderInstruction.   These take the format {domain}/{scope}/{code} e.g. \&quot;OrderInstruction/system/Name\&quot;.   All properties, except derived properties, are returned by default, without specifying here. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;OrderInstruction\&quot; domain to decorate onto each orderInstruction.  These take the format {domain}/{scope}/{code} e.g. \&quot;OrderInstruction/system/Name\&quot;.  All properties, except derived properties, are returned by default, without specifying here. (optional)
          * @return APIlistOrderInstructionsRequest
          */
         public APIlistOrderInstructionsRequest propertyKeys(List<String> propertyKeys) {

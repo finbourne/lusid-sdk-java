@@ -27,7 +27,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 [EXPERIMENTAL] BatchUpdateComparisonResults: Add User Review entries for a range of comparison results related to a specific GroupReconciliationDefinition.
 
-Allows to update multiple Group Reconciliation Comparison Results related to the same definition specified by the Finbourne.Identifiers.Abstractions.Scope and Finbourne.Identifiers.Abstractions.Code.  Updates User Review with new entries and sets the relevant Review Status.  Supports partial success when all the entries that haven&#39;t passed validation or are not related to the definition will be returned with respectful error details.
+Allows to update multiple Group Reconciliation Comparison Results related to the same definition specified by the Finbourne.Identifiers.Abstractions.Scope and Finbourne.Identifiers.Abstractions.Code. Updates User Review with new entries and sets the relevant Review Status. Supports partial success when all the entries that haven&#39;t passed validation or are not related to the definition will be returned with respectful error details.
 
 ### Example
 
@@ -70,8 +70,8 @@ public class GroupReconciliationsApiExample {
         GroupReconciliationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(GroupReconciliationsApi.class);
         String scope = "scope_example"; // String | Shared Scope of the GroupReconciliationDefinition and GroupReconciliationComparisonResults.
         String code = "code_example"; // String | GroupReconciliationDefinitionId code.
-        List<BatchUpdateUserReviewForComparisonResultRequest> batchUpdateUserReviewForComparisonResultRequest = Arrays.asList(); // List<BatchUpdateUserReviewForComparisonResultRequest> | A collection of the comparison result Ids and their user review entries to be added or removed.   Single request contains resultId, break code/match key/comment to add and break code/match key/comment to remove by added timestamp.
-        String successMode = "Partial"; // String | Defines whether the request should fail if at least one of the entries is failed to update   or process all the entries regardless and return collections of successful and failed updates. \"Partial\" (default) | \"Atomic\".
+        List<BatchUpdateUserReviewForComparisonResultRequest> batchUpdateUserReviewForComparisonResultRequest = Arrays.asList(); // List<BatchUpdateUserReviewForComparisonResultRequest> | A collection of the comparison result Ids and their user review entries to be added or removed.  Single request contains resultId, break code/match key/comment to add and break code/match key/comment to remove by added timestamp.
+        String successMode = "Partial"; // String | Defines whether the request should fail if at least one of the entries is failed to update  or process all the entries regardless and return collections of successful and failed updates. \"Partial\" (default) | \"Atomic\".
         try {
             // uncomment the below to set overrides at the request level
             // BatchUpdateUserReviewForComparisonResultResponse result = apiInstance.batchUpdateComparisonResults(scope, code, batchUpdateUserReviewForComparisonResultRequest, successMode).execute(opts);
@@ -95,8 +95,8 @@ public class GroupReconciliationsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| Shared Scope of the GroupReconciliationDefinition and GroupReconciliationComparisonResults. | |
 | **code** | **String**| GroupReconciliationDefinitionId code. | |
-| **batchUpdateUserReviewForComparisonResultRequest** | [**List&lt;BatchUpdateUserReviewForComparisonResultRequest&gt;**](BatchUpdateUserReviewForComparisonResultRequest.md)| A collection of the comparison result Ids and their user review entries to be added or removed.   Single request contains resultId, break code/match key/comment to add and break code/match key/comment to remove by added timestamp. | |
-| **successMode** | **String**| Defines whether the request should fail if at least one of the entries is failed to update   or process all the entries regardless and return collections of successful and failed updates. \&quot;Partial\&quot; (default) | \&quot;Atomic\&quot;. | [optional] [default to Partial] |
+| **batchUpdateUserReviewForComparisonResultRequest** | [**List&lt;BatchUpdateUserReviewForComparisonResultRequest&gt;**](BatchUpdateUserReviewForComparisonResultRequest.md)| A collection of the comparison result Ids and their user review entries to be added or removed.  Single request contains resultId, break code/match key/comment to add and break code/match key/comment to remove by added timestamp. | |
+| **successMode** | **String**| Defines whether the request should fail if at least one of the entries is failed to update  or process all the entries regardless and return collections of successful and failed updates. \&quot;Partial\&quot; (default) | \&quot;Atomic\&quot;. | [optional] [default to Partial] |
 
 ### Return type
 
@@ -306,7 +306,7 @@ public class GroupReconciliationsApiExample {
 
 [EXPERIMENTAL] DeleteComparisonRuleset: Deletes a particular Group Reconciliation Comparison Ruleset
 
-The deletion will take effect from the reconciliation comparison ruleset deletion datetime.  i.e. will no longer exist at any asAt datetime after the asAt datetime of deletion.
+The deletion will take effect from the reconciliation comparison ruleset deletion datetime. i.e. will no longer exist at any asAt datetime after the asAt datetime of deletion.
 
 ### Example
 
@@ -348,7 +348,7 @@ public class GroupReconciliationsApiExample {
 
         GroupReconciliationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(GroupReconciliationsApi.class);
         String scope = "scope_example"; // String | The scope of the specified comparison ruleset.
-        String code = "code_example"; // String | The code of the specified comparison ruleset. Together with the domain and scope this uniquely   identifies the reconciliation comparison ruleset.
+        String code = "code_example"; // String | The code of the specified comparison ruleset. Together with the domain and scope this uniquely  identifies the reconciliation comparison ruleset.
         try {
             // uncomment the below to set overrides at the request level
             // DeletedEntityResponse result = apiInstance.deleteComparisonRuleset(scope, code).execute(opts);
@@ -371,7 +371,7 @@ public class GroupReconciliationsApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the specified comparison ruleset. | |
-| **code** | **String**| The code of the specified comparison ruleset. Together with the domain and scope this uniquely   identifies the reconciliation comparison ruleset. | |
+| **code** | **String**| The code of the specified comparison ruleset. Together with the domain and scope this uniquely  identifies the reconciliation comparison ruleset. | |
 
 ### Return type
 
@@ -492,7 +492,7 @@ public class GroupReconciliationsApiExample {
 
 [EXPERIMENTAL] GetComparisonResult: Get a single Group Reconciliation Comparison Result by scope and code.
 
-Retrieves one Group Reconciliation Comparison Result by scope and code  with the prior validation that its related reconciliation definition exists.
+Retrieves one Group Reconciliation Comparison Result by scope and code with the prior validation that its related reconciliation definition exists.
 
 ### Example
 
@@ -535,8 +535,8 @@ public class GroupReconciliationsApiExample {
         GroupReconciliationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(GroupReconciliationsApi.class);
         String scope = "scope_example"; // String | The scope of the specified comparison result and its related reconciliation definition.
         String code = "code_example"; // String | The code of the reconciliation definition that was used to produce the reconciliation result.
-        String resultId = "resultId_example"; // String | The code of the specified reconciliation result. Together with the domain and scope this uniquely   identifies the reconciliation comparison result. This value is also the same as the computed result hash based on property values.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the comparison result definition. Defaults to return   the latest version if not specified.
+        String resultId = "resultId_example"; // String | The code of the specified reconciliation result. Together with the domain and scope this uniquely  identifies the reconciliation comparison result. This value is also the same as the computed result hash based on property values.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the comparison result definition. Defaults to return  the latest version if not specified.
         try {
             // uncomment the below to set overrides at the request level
             // GroupReconciliationComparisonResult result = apiInstance.getComparisonResult(scope, code, resultId, asAt).execute(opts);
@@ -560,8 +560,8 @@ public class GroupReconciliationsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the specified comparison result and its related reconciliation definition. | |
 | **code** | **String**| The code of the reconciliation definition that was used to produce the reconciliation result. | |
-| **resultId** | **String**| The code of the specified reconciliation result. Together with the domain and scope this uniquely   identifies the reconciliation comparison result. This value is also the same as the computed result hash based on property values. | |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the comparison result definition. Defaults to return   the latest version if not specified. | [optional] |
+| **resultId** | **String**| The code of the specified reconciliation result. Together with the domain and scope this uniquely  identifies the reconciliation comparison result. This value is also the same as the computed result hash based on property values. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the comparison result definition. Defaults to return  the latest version if not specified. | [optional] |
 
 ### Return type
 
@@ -631,8 +631,8 @@ public class GroupReconciliationsApiExample {
 
         GroupReconciliationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(GroupReconciliationsApi.class);
         String scope = "scope_example"; // String | The scope of the specified comparison ruleset.
-        String code = "code_example"; // String | The code of the specified comparison ruleset. Together with the domain and scope this uniquely   identifies the reconciliation comparison ruleset.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the comparison ruleset definition. Defaults to return   the latest version of the definition if not specified.
+        String code = "code_example"; // String | The code of the specified comparison ruleset. Together with the domain and scope this uniquely  identifies the reconciliation comparison ruleset.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the comparison ruleset definition. Defaults to return  the latest version of the definition if not specified.
         try {
             // uncomment the below to set overrides at the request level
             // GroupReconciliationComparisonRuleset result = apiInstance.getComparisonRuleset(scope, code, asAt).execute(opts);
@@ -655,8 +655,8 @@ public class GroupReconciliationsApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the specified comparison ruleset. | |
-| **code** | **String**| The code of the specified comparison ruleset. Together with the domain and scope this uniquely   identifies the reconciliation comparison ruleset. | |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the comparison ruleset definition. Defaults to return   the latest version of the definition if not specified. | [optional] |
+| **code** | **String**| The code of the specified comparison ruleset. Together with the domain and scope this uniquely  identifies the reconciliation comparison ruleset. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the comparison ruleset definition. Defaults to return  the latest version of the definition if not specified. | [optional] |
 
 ### Return type
 
@@ -726,7 +726,7 @@ public class GroupReconciliationsApiExample {
 
         GroupReconciliationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(GroupReconciliationsApi.class);
         String scope = "scope_example"; // String | The scope of the group reconciliation definition to retrieve.
-        String code = "code_example"; // String | The code of the group reconciliation definition to retrieve. Together with the scope   this uniquely identifies the group reconciliation definition.
+        String code = "code_example"; // String | The code of the group reconciliation definition to retrieve. Together with the scope  this uniquely identifies the group reconciliation definition.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the group reconciliation definition. Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the group reconciliation definition. Defaults to return the latest version of the portfolio group definition if not specified.
         try {
@@ -751,7 +751,7 @@ public class GroupReconciliationsApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the group reconciliation definition to retrieve. | |
-| **code** | **String**| The code of the group reconciliation definition to retrieve. Together with the scope   this uniquely identifies the group reconciliation definition. | |
+| **code** | **String**| The code of the group reconciliation definition to retrieve. Together with the scope  this uniquely identifies the group reconciliation definition. | |
 | **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the group reconciliation definition. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the group reconciliation definition. Defaults to return the latest version of the portfolio group definition if not specified. | [optional] |
 
@@ -781,7 +781,7 @@ public class GroupReconciliationsApiExample {
 
 [EXPERIMENTAL] ListComparisonResults: Get a set of Group Reconciliation Comparison Results.
 
-Retrieves all Group Reconciliation Comparison Results that fit the filter, in a specific order if sortBy is provided.  Supports pagination.
+Retrieves all Group Reconciliation Comparison Results that fit the filter, in a specific order if sortBy is provided. Supports pagination.
 
 ### Example
 
@@ -822,11 +822,11 @@ public class GroupReconciliationsApiExample {
         // GroupReconciliationsApi apiInstance = apiFactory.build(GroupReconciliationsApi.class);
 
         GroupReconciliationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(GroupReconciliationsApi.class);
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the comparison results. Defaults to return the latest   version of the comparison results if not specified.
-        String page = "page_example"; // String | The pagination token to use to continue listing comparison results from a previous call to list   comparison results. This value is returned from the previous call. If a pagination token is provided the sortBy,   filter, effectiveAt, and asAt fields must not have changed since the original request.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the comparison results. Defaults to return the latest  version of the comparison results if not specified.
+        String page = "page_example"; // String | The pagination token to use to continue listing comparison results from a previous call to list  comparison results. This value is returned from the previous call. If a pagination token is provided the sortBy,  filter, effectiveAt, and asAt fields must not have changed since the original request.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names to sort by, each suffixed by \" ASC\" or \" DESC\".
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many per page.
-        String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
+        String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid.
         try {
             // uncomment the below to set overrides at the request level
             // PagedResourceListOfGroupReconciliationComparisonResult result = apiInstance.listComparisonResults(asAt, page, sortBy, limit, filter).execute(opts);
@@ -848,11 +848,11 @@ public class GroupReconciliationsApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the comparison results. Defaults to return the latest   version of the comparison results if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing comparison results from a previous call to list   comparison results. This value is returned from the previous call. If a pagination token is provided the sortBy,   filter, effectiveAt, and asAt fields must not have changed since the original request. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the comparison results. Defaults to return the latest  version of the comparison results if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing comparison results from a previous call to list  comparison results. This value is returned from the previous call. If a pagination token is provided the sortBy,  filter, effectiveAt, and asAt fields must not have changed since the original request. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many per page. | [optional] |
-| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
 ### Return type
 
@@ -880,7 +880,7 @@ public class GroupReconciliationsApiExample {
 
 [EXPERIMENTAL] ListComparisonRulesets: Get a set of Group Reconciliation Comparison Rulesets
 
-Retrieves all Group Reconciliation Comparison Ruleset that fit the filter, in a specific order if sortBy is provided  Supports pagination
+Retrieves all Group Reconciliation Comparison Ruleset that fit the filter, in a specific order if sortBy is provided Supports pagination
 
 ### Example
 
@@ -921,11 +921,11 @@ public class GroupReconciliationsApiExample {
         // GroupReconciliationsApi apiInstance = apiFactory.build(GroupReconciliationsApi.class);
 
         GroupReconciliationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(GroupReconciliationsApi.class);
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the comparison rulesets. Defaults to return the latest   version of the comparison rulesets if not specified.
-        String page = "page_example"; // String | The pagination token to use to continue listing comparison rulesets from a previous call to list   comparison rulesets. This value is returned from the previous call. If a pagination token is provided the sortBy,   filter, effectiveAt, and asAt fields must not have changed since the original request.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the comparison rulesets. Defaults to return the latest  version of the comparison rulesets if not specified.
+        String page = "page_example"; // String | The pagination token to use to continue listing comparison rulesets from a previous call to list  comparison rulesets. This value is returned from the previous call. If a pagination token is provided the sortBy,  filter, effectiveAt, and asAt fields must not have changed since the original request.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names to sort by, each suffixed by \" ASC\" or \" DESC\"
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many per page.
-        String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
+        String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid.
         try {
             // uncomment the below to set overrides at the request level
             // PagedResourceListOfGroupReconciliationComparisonRuleset result = apiInstance.listComparisonRulesets(asAt, page, sortBy, limit, filter).execute(opts);
@@ -947,11 +947,11 @@ public class GroupReconciliationsApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the comparison rulesets. Defaults to return the latest   version of the comparison rulesets if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing comparison rulesets from a previous call to list   comparison rulesets. This value is returned from the previous call. If a pagination token is provided the sortBy,   filter, effectiveAt, and asAt fields must not have changed since the original request. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the comparison rulesets. Defaults to return the latest  version of the comparison rulesets if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing comparison rulesets from a previous call to list  comparison rulesets. This value is returned from the previous call. If a pagination token is provided the sortBy,  filter, effectiveAt, and asAt fields must not have changed since the original request. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many per page. | [optional] |
-| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
 ### Return type
 
@@ -1022,9 +1022,9 @@ public class GroupReconciliationsApiExample {
         GroupReconciliationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(GroupReconciliationsApi.class);
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the group reconciliation definitions. Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the group reconciliation definitions. Defaults to return the latest version of each group reconciliation definition if not specified.
-        String page = "page_example"; // String | The pagination token to use to continue listing group reconciliation definitions from a previous call to list group reconciliation definitions. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy  and asAt fields must not have changed since the original request.
+        String page = "page_example"; // String | The pagination token to use to continue listing group reconciliation definitions from a previous call to list group reconciliation definitions. This value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to no limit if not specified.
-        String filter = "filter_example"; // String | Expression to filter the result set.   For example, to filter on the Display Name, use \"displayName eq 'string'\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        String filter = "filter_example"; // String | Expression to filter the result set.  For example, to filter on the Display Name, use \"displayName eq 'string'\"  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names to sort by, each suffixed by \" ASC\" or \" DESC\"
         try {
             // uncomment the below to set overrides at the request level
@@ -1049,9 +1049,9 @@ public class GroupReconciliationsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **effectiveAt** | **String**| The effective datetime or cut label at which to list the group reconciliation definitions. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the group reconciliation definitions. Defaults to return the latest version of each group reconciliation definition if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing group reconciliation definitions from a previous call to list group reconciliation definitions. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy  and asAt fields must not have changed since the original request. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing group reconciliation definitions from a previous call to list group reconciliation definitions. This value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to no limit if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the result set.   For example, to filter on the Display Name, use \&quot;displayName eq &#39;string&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **filter** | **String**| Expression to filter the result set.  For example, to filter on the Display Name, use \&quot;displayName eq &#39;string&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
 
 ### Return type
@@ -1080,7 +1080,7 @@ public class GroupReconciliationsApiExample {
 
 [EXPERIMENTAL] RunReconciliation: Runs a Group Reconciliation
 
-Runs a Group Reconciliation using the definition specified by the Finbourne.Identifiers.Abstractions.Scope and Finbourne.Identifiers.Abstractions.Code  Supports pagination.
+Runs a Group Reconciliation using the definition specified by the Finbourne.Identifiers.Abstractions.Scope and Finbourne.Identifiers.Abstractions.Code Supports pagination.
 
 ### Example
 
@@ -1175,7 +1175,7 @@ public class GroupReconciliationsApiExample {
 
 [EXPERIMENTAL] UpdateComparisonRuleset: Update Group Reconciliation Comparison Ruleset defined by scope and code
 
-Overwrites an existing Group Reconciliation Comparison Ruleset  Update request has the same required fields as Create apart from the Id
+Overwrites an existing Group Reconciliation Comparison Ruleset Update request has the same required fields as Create apart from the Id
 
 ### Example
 
@@ -1217,7 +1217,7 @@ public class GroupReconciliationsApiExample {
 
         GroupReconciliationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(GroupReconciliationsApi.class);
         String scope = "scope_example"; // String | The scope of the specified comparison ruleset.
-        String code = "code_example"; // String | The code of the specified comparison ruleset. Together with the domain and scope this uniquely   identifies the reconciliation comparison ruleset.
+        String code = "code_example"; // String | The code of the specified comparison ruleset. Together with the domain and scope this uniquely  identifies the reconciliation comparison ruleset.
         UpdateGroupReconciliationComparisonRulesetRequest updateGroupReconciliationComparisonRulesetRequest = new UpdateGroupReconciliationComparisonRulesetRequest(); // UpdateGroupReconciliationComparisonRulesetRequest | The request containing the updated details of the ruleset
         try {
             // uncomment the below to set overrides at the request level
@@ -1241,7 +1241,7 @@ public class GroupReconciliationsApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the specified comparison ruleset. | |
-| **code** | **String**| The code of the specified comparison ruleset. Together with the domain and scope this uniquely   identifies the reconciliation comparison ruleset. | |
+| **code** | **String**| The code of the specified comparison ruleset. Together with the domain and scope this uniquely  identifies the reconciliation comparison ruleset. | |
 | **updateGroupReconciliationComparisonRulesetRequest** | [**UpdateGroupReconciliationComparisonRulesetRequest**](UpdateGroupReconciliationComparisonRulesetRequest.md)| The request containing the updated details of the ruleset | [optional] |
 
 ### Return type

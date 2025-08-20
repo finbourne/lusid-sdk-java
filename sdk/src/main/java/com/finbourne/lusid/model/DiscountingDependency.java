@@ -47,7 +47,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * For indicating a dependency on discounting for a given currency.  E.g Valuing a Bond with the Discounting model will declare a DiscountingDependency  for the domestic currency of the bond to account for the time-value of the future cashFlows of the bond.
+ * For indicating a dependency on discounting for a given currency. E.g Valuing a Bond with the Discounting model will declare a DiscountingDependency for the domestic currency of the bond to account for the time-value of the future cashFlows of the bond.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DiscountingDependency extends EconomicDependency {
@@ -91,7 +91,7 @@ public class DiscountingDependency extends EconomicDependency {
   }
 
    /**
-   * The effectiveDate of the entity that this is a dependency for.  Unless there is an obvious date this should be, like for a historic reset, then this is the valuation date.
+   * The effectiveDate of the entity that this is a dependency for. Unless there is an obvious date this should be, like for a historic reset, then this is the valuation date.
    * @return date
   **/
   @jakarta.annotation.Nonnull

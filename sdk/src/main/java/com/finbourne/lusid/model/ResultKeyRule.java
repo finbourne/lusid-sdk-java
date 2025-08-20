@@ -45,7 +45,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Base class for representing result key rules in LUSID, which describe how to resolve (unit) result data.  This base class should not be directly instantiated; each supported ResultKeyRuleType has a corresponding inherited class.
+ * Base class for representing result key rules in LUSID, which describe how to resolve (unit) result data. This base class should not be directly instantiated; each supported ResultKeyRuleType has a corresponding inherited class.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ResultKeyRule {

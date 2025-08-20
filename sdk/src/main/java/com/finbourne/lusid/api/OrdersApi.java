@@ -303,7 +303,7 @@ public class OrdersApi {
 
     /**
      * [EARLY ACCESS] DeleteOrder: Delete order
-     * Delete an order. Deletion will be valid from the order&#39;s creation datetime.  This means that the order will no longer exist at any effective datetime from the asAt datetime of deletion.
+     * Delete an order. Deletion will be valid from the order&#39;s creation datetime. This means that the order will no longer exist at any effective datetime from the asAt datetime of deletion.
      * @param scope The order scope. (required)
      * @param code The order&#39;s code. This, together with the scope uniquely identifies the order to delete. (required)
      * @return APIdeleteOrderRequest
@@ -446,7 +446,7 @@ public class OrdersApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;Orders\&quot; domain to decorate onto the order.   These take the format {domain}/{scope}/{code} e.g. \&quot;Orders/system/Name\&quot;. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;Orders\&quot; domain to decorate onto the order.  These take the format {domain}/{scope}/{code} e.g. \&quot;Orders/system/Name\&quot;. (optional)
          * @return APIgetOrderRequest
          */
         public APIgetOrderRequest propertyKeys(List<String> propertyKeys) {
@@ -736,7 +736,7 @@ public class OrdersApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing orders from a previous call to list orders.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing orders from a previous call to list orders.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields  must not have changed since the original request. (optional)
          * @return APIlistOrdersRequest
          */
         public APIlistOrdersRequest page(String page) {
@@ -766,7 +766,7 @@ public class OrdersApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIlistOrdersRequest
          */
         public APIlistOrdersRequest filter(String filter) {
@@ -776,7 +776,7 @@ public class OrdersApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;Orders\&quot; domain to decorate onto each order.   These take the format {domain}/{scope}/{code} e.g. \&quot;Orders/system/Name\&quot;.   All properties, except derived properties, are returned by default, without specifying here. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;Orders\&quot; domain to decorate onto each order.  These take the format {domain}/{scope}/{code} e.g. \&quot;Orders/system/Name\&quot;.  All properties, except derived properties, are returned by default, without specifying here. (optional)
          * @return APIlistOrdersRequest
          */
         public APIlistOrdersRequest propertyKeys(List<String> propertyKeys) {

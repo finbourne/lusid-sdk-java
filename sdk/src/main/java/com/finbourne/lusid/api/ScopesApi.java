@@ -198,7 +198,7 @@ public class ScopesApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing scopes from a previous call to list scopes.   This value is returned from the previous call. If a pagination token is provided, the limit and asAt fields   must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing scopes from a previous call to list scopes.  This value is returned from the previous call. If a pagination token is provided, the limit and asAt fields  must not have changed since the original request. (optional)
          * @return APIlistEntityScopesRequest
          */
         public APIlistEntityScopesRequest page(String page) {
@@ -447,7 +447,7 @@ public class ScopesApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.   For example, to filter on the Scope, use \&quot;scope eq &#39;string&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set.  For example, to filter on the Scope, use \&quot;scope eq &#39;string&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIlistScopesRequest
          */
         public APIlistScopesRequest filter(String filter) {

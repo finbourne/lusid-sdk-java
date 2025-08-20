@@ -303,7 +303,7 @@ public class ExecutionsApi {
 
     /**
      * [EARLY ACCESS] DeleteExecution: Delete execution
-     * Delete an execution. Deletion will be valid from the execution&#39;s creation datetime.  This means that the execution will no longer exist at any effective datetime from the asAt datetime of deletion.
+     * Delete an execution. Deletion will be valid from the execution&#39;s creation datetime. This means that the execution will no longer exist at any effective datetime from the asAt datetime of deletion.
      * @param scope The execution scope. (required)
      * @param code The execution&#39;s code. This, together with the scope uniquely identifies the execution to delete. (required)
      * @return APIdeleteExecutionRequest
@@ -446,7 +446,7 @@ public class ExecutionsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;Execution\&quot; domain to decorate onto the execution.   These take the format {domain}/{scope}/{code} e.g. \&quot;Execution/system/Name\&quot;. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;Execution\&quot; domain to decorate onto the execution.  These take the format {domain}/{scope}/{code} e.g. \&quot;Execution/system/Name\&quot;. (optional)
          * @return APIgetExecutionRequest
          */
         public APIgetExecutionRequest propertyKeys(List<String> propertyKeys) {
@@ -721,7 +721,7 @@ public class ExecutionsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing execution from a previous call to list executions.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing execution from a previous call to list executions.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields  must not have changed since the original request. (optional)
          * @return APIlistExecutionsRequest
          */
         public APIlistExecutionsRequest page(String page) {
@@ -751,7 +751,7 @@ public class ExecutionsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIlistExecutionsRequest
          */
         public APIlistExecutionsRequest filter(String filter) {
@@ -761,7 +761,7 @@ public class ExecutionsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;Execution\&quot; domain to decorate onto each execution.   These take the format {domain}/{scope}/{code} e.g. \&quot;Execution/system/Name\&quot;.   All properties, except derived properties, are returned by default, without specifying here. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;Execution\&quot; domain to decorate onto each execution.  These take the format {domain}/{scope}/{code} e.g. \&quot;Execution/system/Name\&quot;.  All properties, except derived properties, are returned by default, without specifying here. (optional)
          * @return APIlistExecutionsRequest
          */
         public APIlistExecutionsRequest propertyKeys(List<String> propertyKeys) {

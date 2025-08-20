@@ -9,8 +9,8 @@ Event for rolling over one or more FlexibleLoan contracts into one or more diffe
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**date** | **OffsetDateTime** | Effective date of the event. |  [optional] |
-|**rolloverConstituents** | [**List&lt;RolloverConstituent&gt;**](RolloverConstituent.md) | Source and target contracts of the rollover. That is, a set of contracts and their respective changes to balance  Expect at least one contract to as the source of the rollover and at least one target contract. |  |
-|**withInterest** | **Boolean** | If set to true, then active contracts whose balance is reduced by the rollover will have their accrued interest  repaid pro rata to the balance reduction. |  |
+|**rolloverConstituents** | [**List&lt;RolloverConstituent&gt;**](RolloverConstituent.md) | Source and target contracts of the rollover. That is, a set of contracts and their respective changes to balance Expect at least one contract to as the source of the rollover and at least one target contract. |  |
+|**withInterest** | **Boolean** | If set to true, then active contracts whose balance is reduced by the rollover will have their accrued interest repaid pro rata to the balance reduction. |  |
 
 
 

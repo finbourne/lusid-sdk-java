@@ -48,7 +48,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Definition of FlexibleRepoCollateralEvent which represents a single collateral transfer as part of a repo contract  modelled as a FlexibleRepo, either as part of the purchase leg or repurchase leg, or any early closure.
+ * Definition of FlexibleRepoCollateralEvent which represents a single collateral transfer as part of a repo contract modelled as a FlexibleRepo, either as part of the purchase leg or repurchase leg, or any early closure.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FlexibleRepoCollateralEvent extends InstrumentEvent {
@@ -121,7 +121,7 @@ public class FlexibleRepoCollateralEvent extends InstrumentEvent {
   }
 
    /**
-   * The total amount of collateral being transferred as part of the repo contract.  Signed to indicate direction of transfer. This is a required field.
+   * The total amount of collateral being transferred as part of the repo contract. Signed to indicate direction of transfer. This is a required field.
    * @return amount
   **/
   @jakarta.annotation.Nonnull

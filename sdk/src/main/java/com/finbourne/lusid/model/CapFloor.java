@@ -95,7 +95,7 @@ public class CapFloor extends LusidInstrument {
   }
 
    /**
-   * Determine if it&#39;s CAP, FLOOR, or COLLAR.    Supported string (enumeration) values are: [Cap, Floor, Collar].
+   * Determine if it&#39;s CAP, FLOOR, or COLLAR.  Supported string (enumeration) values are: [Cap, Floor, Collar].
    * @return capFloorType
   **/
   @jakarta.annotation.Nonnull
@@ -208,7 +208,7 @@ public class CapFloor extends LusidInstrument {
   }
 
    /**
-   * Optional additional payments at a given date e.g. to level off an uneven equity swap.  The dates must be distinct and either all payments are Pay or all payments are Receive.
+   * Optional additional payments at a given date e.g. to level off an uneven equity swap. The dates must be distinct and either all payments are Pay or all payments are Receive.
    * @return additionalPayments
   **/
   @jakarta.annotation.Nullable

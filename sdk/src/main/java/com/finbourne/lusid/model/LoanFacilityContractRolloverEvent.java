@@ -106,7 +106,7 @@ public class LoanFacilityContractRolloverEvent extends InstrumentEvent {
   }
 
    /**
-   * Source and target contracts of the rollover. That is, a set of contracts and their respective changes to balance  Expect at least one contract to as the source of the rollover and at least one target contract.
+   * Source and target contracts of the rollover. That is, a set of contracts and their respective changes to balance Expect at least one contract to as the source of the rollover and at least one target contract.
    * @return rolloverConstituents
   **/
   @jakarta.annotation.Nonnull
@@ -127,7 +127,7 @@ public class LoanFacilityContractRolloverEvent extends InstrumentEvent {
   }
 
    /**
-   * If set to true, then active contracts whose balance is reduced by the rollover will have their accrued interest  repaid pro rata to the balance reduction.
+   * If set to true, then active contracts whose balance is reduced by the rollover will have their accrued interest repaid pro rata to the balance reduction.
    * @return withInterest
   **/
   @jakarta.annotation.Nonnull

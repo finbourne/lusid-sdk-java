@@ -44,7 +44,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 [EARLY ACCESS] BatchUpsertPortfolioAccessMetadata: Upsert multiple Portfolio Access Metadata Rules to multiple Portfolios
 
-Update or insert multiple Access Metadata rules for multiple Portfolios. Items will be updated if they already exist  and inserted if they do not. No other items will be affected    The response will return the successfully updated or inserted Portfolio Access Metadata Rules or a failure message if unsuccessful     Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched
+Update or insert multiple Access Metadata rules for multiple Portfolios. Items will be updated if they already exist and inserted if they do not. No other items will be affected  The response will return the successfully updated or inserted Portfolio Access Metadata Rules or a failure message if unsuccessful   Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched
 
 ### Example
 
@@ -335,7 +335,7 @@ public class PortfoliosApiExample {
 
 DeletePortfolio: Delete portfolio
 
-Delete a particular portfolio.     The deletion will take effect from the portfolio&#39;s creation datetime. This means that the portfolio will no longer exist at any effective datetime, as per the asAt datetime of deletion.
+Delete a particular portfolio.   The deletion will take effect from the portfolio&#39;s creation datetime. This means that the portfolio will no longer exist at any effective datetime, as per the asAt datetime of deletion.
 
 ### Example
 
@@ -428,7 +428,7 @@ public class PortfoliosApiExample {
 
 DeletePortfolioProperties: Delete portfolio properties
 
-Delete one or more properties from a particular portfolio. If the properties are time-variant then an effective datetime from which  to delete properties must be specified. If the properties are perpetual then it is invalid to specify an effective datetime for deletion.
+Delete one or more properties from a particular portfolio. If the properties are time-variant then an effective datetime from which to delete properties must be specified. If the properties are perpetual then it is invalid to specify an effective datetime for deletion.
 
 ### Example
 
@@ -471,8 +471,8 @@ public class PortfoliosApiExample {
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio.
         String code = "code_example"; // String | The code of the portfolio. Together with the scope this uniquely identifies the portfolio.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | The property keys of the properties to delete. These must take the format   {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'. Each property must be from the 'Portfolio' domain.
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified 'effectiveAt' datetime. If the 'effectiveAt' is not provided or is   before the time-variant property exists then a failure is returned. Do not specify this parameter if any of   the properties to delete are perpetual.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | The property keys of the properties to delete. These must take the format  {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'. Each property must be from the 'Portfolio' domain.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to delete time-variant properties from.  The property must exist at the specified 'effectiveAt' datetime. If the 'effectiveAt' is not provided or is  before the time-variant property exists then a failure is returned. Do not specify this parameter if any of  the properties to delete are perpetual.
         try {
             // uncomment the below to set overrides at the request level
             // DeletedEntityResponse result = apiInstance.deletePortfolioProperties(scope, code, propertyKeys, effectiveAt).execute(opts);
@@ -496,8 +496,8 @@ public class PortfoliosApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the portfolio. | |
 | **code** | **String**| The code of the portfolio. Together with the scope this uniquely identifies the portfolio. | |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| The property keys of the properties to delete. These must take the format   {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. Each property must be from the &#39;Portfolio&#39; domain. | |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is   before the time-variant property exists then a failure is returned. Do not specify this parameter if any of   the properties to delete are perpetual. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| The property keys of the properties to delete. These must take the format  {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. Each property must be from the &#39;Portfolio&#39; domain. | |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to delete time-variant properties from.  The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is  before the time-variant property exists then a failure is returned. Do not specify this parameter if any of  the properties to delete are perpetual. | [optional] |
 
 ### Return type
 
@@ -628,7 +628,7 @@ public class PortfoliosApiExample {
 
 [EARLY ACCESS] GetAggregatedReturnsDispersionMetrics: Get the Aggregated Returns Dispersion metric
 
-Calculate the dispersion metric with the Aggregate Returns which are on the specified portfolio.   This works only for composites which have at least 6 constituents for a full year in.
+Calculate the dispersion metric with the Aggregate Returns which are on the specified portfolio.  This works only for composites which have at least 6 constituents for a full year in.
 
 ### Example
 
@@ -970,8 +970,8 @@ public class PortfoliosApiExample {
         String code = "code_example"; // String | The code of the portfolio. Together with the scope this uniquely identifies the portfolio.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the portfolio definition. Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the portfolio definition. Defaults to returning the latest version of the portfolio definition if not specified.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Portfolio' domain to decorate onto the portfolio,   or from any domain that supports relationships to decorate onto related entities. These must take the format   {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'.
-        List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto the portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Portfolio' domain to decorate onto the portfolio,  or from any domain that supports relationships to decorate onto related entities. These must take the format  {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'.
+        List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities  onto the portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
         try {
             // uncomment the below to set overrides at the request level
             // Portfolio result = apiInstance.getPortfolio(scope, code, effectiveAt, asAt, propertyKeys, relationshipDefinitionIds).execute(opts);
@@ -997,8 +997,8 @@ public class PortfoliosApiExample {
 | **code** | **String**| The code of the portfolio. Together with the scope this uniquely identifies the portfolio. | |
 | **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the portfolio definition. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the portfolio definition. Defaults to returning the latest version of the portfolio definition if not specified. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Portfolio&#39; domain to decorate onto the portfolio,   or from any domain that supports relationships to decorate onto related entities. These must take the format   {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. | [optional] |
-| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities   onto the portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Portfolio&#39; domain to decorate onto the portfolio,  or from any domain that supports relationships to decorate onto related entities. These must take the format  {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. | [optional] |
+| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities  onto the portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
 
 ### Return type
 
@@ -1075,7 +1075,7 @@ public class PortfoliosApiExample {
         String recipeIdCode = "recipeIdCode_example"; // String | The Recipe Code for getting the fx rates
         String fromEffectiveAt = "fromEffectiveAt_example"; // String | The start date from which to calculate the Returns.
         String toEffectiveAt = "toEffectiveAt_example"; // String | The end date for which to calculate the Returns.
-        String compositeMethod = "compositeMethod_example"; // String | The method used to calculate the Portfolio performance:   Equal/Asset.
+        String compositeMethod = "compositeMethod_example"; // String | The method used to calculate the Portfolio performance:  Equal/Asset.
         String period = "period_example"; // String | The type of the returns used to calculate the aggregation result: Daily/Monthly.
         String outputFrequency = "outputFrequency_example"; // String | The type of calculated output: Daily/Weekly/Monthly/Quarterly/Half-Yearly/Yearly.
         List<String> metrics = Arrays.asList(); // List<String> | Determines what type of returns should be calculated, see https://support.lusid.com/knowledgebase/article/KA-01675/en-us for a list of available metrics.
@@ -1110,7 +1110,7 @@ public class PortfoliosApiExample {
 | **recipeIdCode** | **String**| The Recipe Code for getting the fx rates | [optional] |
 | **fromEffectiveAt** | **String**| The start date from which to calculate the Returns. | [optional] |
 | **toEffectiveAt** | **String**| The end date for which to calculate the Returns. | [optional] |
-| **compositeMethod** | **String**| The method used to calculate the Portfolio performance:   Equal/Asset. | [optional] |
+| **compositeMethod** | **String**| The method used to calculate the Portfolio performance:  Equal/Asset. | [optional] |
 | **period** | **String**| The type of the returns used to calculate the aggregation result: Daily/Monthly. | [optional] |
 | **outputFrequency** | **String**| The type of calculated output: Daily/Weekly/Monthly/Quarterly/Half-Yearly/Yearly. | [optional] |
 | **metrics** | [**List&lt;String&gt;**](String.md)| Determines what type of returns should be calculated, see https://support.lusid.com/knowledgebase/article/KA-01675/en-us for a list of available metrics. | [optional] |
@@ -1289,7 +1289,7 @@ public class PortfoliosApiExample {
         String code = "code_example"; // String | The code of the portfolio. Together with the scope this uniquely identifies the portfolio.
         OffsetDateTime fromAsAt = OffsetDateTime.now(); // OffsetDateTime | The lower bound asAt datetime (inclusive) from which to retrieve commands. There is no lower bound if this is not specified.
         OffsetDateTime toAsAt = OffsetDateTime.now(); // OffsetDateTime | The upper bound asAt datetime (inclusive) from which to retrieve commands. There is no upper bound if this is not specified.
-        String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the User ID, specify \"userId.id eq 'string'\".   For more information about filtering, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        String filter = "filter_example"; // String | Expression to filter the results.  For example, to filter on the User ID, specify \"userId.id eq 'string'\".  For more information about filtering, see https://support.lusid.com/knowledgebase/article/KA-01914.
         String page = "page_example"; // String | The pagination token to use to continue listing commands; this value is returned from the previous call.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 500 if not specified.
         try {
@@ -1317,7 +1317,7 @@ public class PortfoliosApiExample {
 | **code** | **String**| The code of the portfolio. Together with the scope this uniquely identifies the portfolio. | |
 | **fromAsAt** | **OffsetDateTime**| The lower bound asAt datetime (inclusive) from which to retrieve commands. There is no lower bound if this is not specified. | [optional] |
 | **toAsAt** | **OffsetDateTime**| The upper bound asAt datetime (inclusive) from which to retrieve commands. There is no upper bound if this is not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results.   For example, to filter on the User ID, specify \&quot;userId.id eq &#39;string&#39;\&quot;.   For more information about filtering, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **filter** | **String**| Expression to filter the results.  For example, to filter on the User ID, specify \&quot;userId.id eq &#39;string&#39;\&quot;.  For more information about filtering, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing commands; this value is returned from the previous call. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 500 if not specified. | [optional] |
 
@@ -1584,11 +1584,11 @@ public class PortfoliosApiExample {
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio.
         String code = "code_example"; // String | The code of the portfolio. Together with the scope this uniquely identifies the portfolio.
-        String propertyKey = "propertyKey_example"; // String | The property key of the property whose history to show.   This must be from the 'Portfolio' domain and in the format {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'.
+        String propertyKey = "propertyKey_example"; // String | The property key of the property whose history to show.  This must be from the 'Portfolio' domain and in the format {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'.
         String portfolioEffectiveAt = "portfolioEffectiveAt_example"; // String | The effective datetime used to resolve the portfolio. Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to show the history. Defaults to returning the current datetime if not supplied.
-        String filter = "filter_example"; // String | Expression to filter the results. For more information about filtering,   see https://support.lusid.com/knowledgebase/article/KA-01914.
-        String page = "page_example"; // String | The pagination token to use to continue listing properties; this value is returned from   the previous call. If a pagination token is provided, the filter, portfolioEffectiveAt, and asAt fields   must not have changed since the original request.
+        String filter = "filter_example"; // String | Expression to filter the results. For more information about filtering,  see https://support.lusid.com/knowledgebase/article/KA-01914.
+        String page = "page_example"; // String | The pagination token to use to continue listing properties; this value is returned from  the previous call. If a pagination token is provided, the filter, portfolioEffectiveAt, and asAt fields  must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the results to this number.
         try {
             // uncomment the below to set overrides at the request level
@@ -1613,11 +1613,11 @@ public class PortfoliosApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the portfolio. | |
 | **code** | **String**| The code of the portfolio. Together with the scope this uniquely identifies the portfolio. | |
-| **propertyKey** | **String**| The property key of the property whose history to show.   This must be from the &#39;Portfolio&#39; domain and in the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. | |
+| **propertyKey** | **String**| The property key of the property whose history to show.  This must be from the &#39;Portfolio&#39; domain and in the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. | |
 | **portfolioEffectiveAt** | **String**| The effective datetime used to resolve the portfolio. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to show the history. Defaults to returning the current datetime if not supplied. | [optional] |
-| **filter** | **String**| Expression to filter the results. For more information about filtering,   see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing properties; this value is returned from   the previous call. If a pagination token is provided, the filter, portfolioEffectiveAt, and asAt fields   must not have changed since the original request. | [optional] |
+| **filter** | **String**| Expression to filter the results. For more information about filtering,  see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing properties; this value is returned from  the previous call. If a pagination token is provided, the filter, portfolioEffectiveAt, and asAt fields  must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. | [optional] |
 
 ### Return type
@@ -1692,7 +1692,7 @@ public class PortfoliosApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve relations. Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve relations. Defaults to returning the latest LUSID AsAt time if not specified.
         String filter = "filter_example"; // String | Expression to filter the relations. Provide a null or empty string for this field until further notice.
-        List<String> identifierTypes = Arrays.asList(); // List<String> | Identifier types (as property keys) used for referencing Persons or Legal Entities.   These must be from the 'Person' or 'LegalEntity' domains and have the format {domain}/{scope}/{code}, for example   'Person/CompanyDetails/Role'. Only identifier types provided will be used to look up relevant entities in relations. If not applicable, provide an empty array.
+        List<String> identifierTypes = Arrays.asList(); // List<String> | Identifier types (as property keys) used for referencing Persons or Legal Entities.  These must be from the 'Person' or 'LegalEntity' domains and have the format {domain}/{scope}/{code}, for example  'Person/CompanyDetails/Role'. Only identifier types provided will be used to look up relevant entities in relations. If not applicable, provide an empty array.
         try {
             // uncomment the below to set overrides at the request level
             // ResourceListOfRelation result = apiInstance.getPortfolioRelations(scope, code, effectiveAt, asAt, filter, identifierTypes).execute(opts);
@@ -1719,7 +1719,7 @@ public class PortfoliosApiExample {
 | **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve relations. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve relations. Defaults to returning the latest LUSID AsAt time if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the relations. Provide a null or empty string for this field until further notice. | [optional] |
-| **identifierTypes** | [**List&lt;String&gt;**](String.md)| Identifier types (as property keys) used for referencing Persons or Legal Entities.   These must be from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example   &#39;Person/CompanyDetails/Role&#39;. Only identifier types provided will be used to look up relevant entities in relations. If not applicable, provide an empty array. | [optional] |
+| **identifierTypes** | [**List&lt;String&gt;**](String.md)| Identifier types (as property keys) used for referencing Persons or Legal Entities.  These must be from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example  &#39;Person/CompanyDetails/Role&#39;. Only identifier types provided will be used to look up relevant entities in relations. If not applicable, provide an empty array. | [optional] |
 
 ### Return type
 
@@ -1793,7 +1793,7 @@ public class PortfoliosApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve relationships. Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve relationships. Defaults to returning the latest LUSID AsAt time if not specified.
         String filter = "filter_example"; // String | Expression to filter the relationships. Provide a null or empty string for this field until further notice.
-        List<String> identifierTypes = Arrays.asList(); // List<String> | Identifier types (as property keys) used for referencing Persons or Legal Entities.   These can be specified from the 'Person' or 'LegalEntity' domains and have the format {domain}/{scope}/{code}, for example   'Person/CompanyDetails/Role'. An Empty array may be used to return all related Entities.
+        List<String> identifierTypes = Arrays.asList(); // List<String> | Identifier types (as property keys) used for referencing Persons or Legal Entities.  These can be specified from the 'Person' or 'LegalEntity' domains and have the format {domain}/{scope}/{code}, for example  'Person/CompanyDetails/Role'. An Empty array may be used to return all related Entities.
         try {
             // uncomment the below to set overrides at the request level
             // ResourceListOfRelationship result = apiInstance.getPortfolioRelationships(scope, code, effectiveAt, asAt, filter, identifierTypes).execute(opts);
@@ -1820,7 +1820,7 @@ public class PortfoliosApiExample {
 | **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve relationships. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve relationships. Defaults to returning the latest LUSID AsAt time if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the relationships. Provide a null or empty string for this field until further notice. | [optional] |
-| **identifierTypes** | [**List&lt;String&gt;**](String.md)| Identifier types (as property keys) used for referencing Persons or Legal Entities.   These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example   &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. | [optional] |
+| **identifierTypes** | [**List&lt;String&gt;**](String.md)| Identifier types (as property keys) used for referencing Persons or Legal Entities.  These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example  &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. | [optional] |
 
 ### Return type
 
@@ -1953,7 +1953,7 @@ public class PortfoliosApiExample {
 
 [EARLY ACCESS] GetPortfoliosAccessMetadataByKey: Get an entry identified by a metadataKey in the access metadata object
 
-Get a specific portfolio access metadata rule by specifying the corresponding identifier parts     No matching will be performed through this endpoint. To retrieve a rule, it is necessary to specify, exactly, the identifier of the rule
+Get a specific portfolio access metadata rule by specifying the corresponding identifier parts   No matching will be performed through this endpoint. To retrieve a rule, it is necessary to specify, exactly, the identifier of the rule
 
 ### Example
 
@@ -2097,9 +2097,9 @@ public class PortfoliosApiExample {
         String code = "code_example"; // String | The code of the portfolio. Together with the scope this uniquely identifies the portfolio.
         String portfolioEffectiveAt = "portfolioEffectiveAt_example"; // String | The effective date at which the portfolio will be resolved. Defaults to current time if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the instructions. Defaults to latest if not specified.
-        String page = "page_example"; // String | The pagination token to use to continue listing instructions; this value is returned from the previous call.   If a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the original request.
+        String page = "page_example"; // String | The pagination token to use to continue listing instructions; this value is returned from the previous call.  If a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
-        String filter = "filter_example"; // String | Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        String filter = "filter_example"; // String | Expression to filter the results. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names to sort by, each suffixed by \" ASC\" or \" DESC\".
         try {
             // uncomment the below to set overrides at the request level
@@ -2126,9 +2126,9 @@ public class PortfoliosApiExample {
 | **code** | **String**| The code of the portfolio. Together with the scope this uniquely identifies the portfolio. | |
 | **portfolioEffectiveAt** | **String**| The effective date at which the portfolio will be resolved. Defaults to current time if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the instructions. Defaults to latest if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing instructions; this value is returned from the previous call.   If a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the original request. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing instructions; this value is returned from the previous call.  If a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **filter** | **String**| Expression to filter the results. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. | [optional] |
 
 ### Return type
@@ -2299,15 +2299,15 @@ public class PortfoliosApiExample {
         // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
 
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the portfolios. Defaults to the current LUSID   system datetime if not specified.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the portfolios. Defaults to returning the latest version   of each portfolio if not specified.
-        String page = "page_example"; // String | The pagination token to use to continue listing portfolios; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the portfolios. Defaults to the current LUSID  system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the portfolios. Defaults to returning the latest version  of each portfolio if not specified.
+        String page = "page_example"; // String | The pagination token to use to continue listing portfolios; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
-        String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the transaction type, specify \"type eq 'Transaction'\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        String filter = "filter_example"; // String | Expression to filter the results.  For example, to filter on the transaction type, specify \"type eq 'Transaction'\". For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\".
-        String query = "query_example"; // String | Expression specifying the criteria that the returned portfolios must meet. For example, to see which   portfolios have holdings in instruments with a LusidInstrumentId (LUID) of 'LUID_PPA8HI6M' or a Figi of 'BBG000BLNNH6',   specify \"instrument.identifiers in (('LusidInstrumentId', 'LUID_PPA8HI6M'), ('Figi', 'BBG000BLNNH6'))\".
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Portfolio' domain to decorate onto each portfolio,   or from any domain that supports relationships to decorate onto related entities. These must take the   format {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'.
-        List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto the portfolios in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
+        String query = "query_example"; // String | Expression specifying the criteria that the returned portfolios must meet. For example, to see which  portfolios have holdings in instruments with a LusidInstrumentId (LUID) of 'LUID_PPA8HI6M' or a Figi of 'BBG000BLNNH6',  specify \"instrument.identifiers in (('LusidInstrumentId', 'LUID_PPA8HI6M'), ('Figi', 'BBG000BLNNH6'))\".
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Portfolio' domain to decorate onto each portfolio,  or from any domain that supports relationships to decorate onto related entities. These must take the  format {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'.
+        List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities  onto the portfolios in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
         try {
             // uncomment the below to set overrides at the request level
             // ResourceListOfPortfolio result = apiInstance.listPortfolios(effectiveAt, asAt, page, limit, filter, sortBy, query, propertyKeys, relationshipDefinitionIds).execute(opts);
@@ -2329,15 +2329,15 @@ public class PortfoliosApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **effectiveAt** | **String**| The effective datetime or cut label at which to list the portfolios. Defaults to the current LUSID   system datetime if not specified. | [optional] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the portfolios. Defaults to returning the latest version   of each portfolio if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing portfolios; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list the portfolios. Defaults to the current LUSID  system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the portfolios. Defaults to returning the latest version  of each portfolio if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing portfolios; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results.   For example, to filter on the transaction type, specify \&quot;type eq &#39;Transaction&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **filter** | **String**| Expression to filter the results.  For example, to filter on the transaction type, specify \&quot;type eq &#39;Transaction&#39;\&quot;. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. | [optional] |
-| **query** | **String**| Expression specifying the criteria that the returned portfolios must meet. For example, to see which   portfolios have holdings in instruments with a LusidInstrumentId (LUID) of &#39;LUID_PPA8HI6M&#39; or a Figi of &#39;BBG000BLNNH6&#39;,   specify \&quot;instrument.identifiers in ((&#39;LusidInstrumentId&#39;, &#39;LUID_PPA8HI6M&#39;), (&#39;Figi&#39;, &#39;BBG000BLNNH6&#39;))\&quot;. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Portfolio&#39; domain to decorate onto each portfolio,   or from any domain that supports relationships to decorate onto related entities. These must take the   format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. | [optional] |
-| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities   onto the portfolios in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
+| **query** | **String**| Expression specifying the criteria that the returned portfolios must meet. For example, to see which  portfolios have holdings in instruments with a LusidInstrumentId (LUID) of &#39;LUID_PPA8HI6M&#39; or a Figi of &#39;BBG000BLNNH6&#39;,  specify \&quot;instrument.identifiers in ((&#39;LusidInstrumentId&#39;, &#39;LUID_PPA8HI6M&#39;), (&#39;Figi&#39;, &#39;BBG000BLNNH6&#39;))\&quot;. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Portfolio&#39; domain to decorate onto each portfolio,  or from any domain that supports relationships to decorate onto related entities. These must take the  format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. | [optional] |
+| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities  onto the portfolios in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
 
 ### Return type
 
@@ -2407,14 +2407,14 @@ public class PortfoliosApiExample {
 
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String scope = "scope_example"; // String | The scope whose portfolios to list.
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the portfolios. Defaults to the current LUSID   system datetime if not specified.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the portfolios. Defaults to returning the latest version   of each portfolio if not specified.
-        String page = "page_example"; // String | The pagination token to use to continue listing portfolios. This  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the portfolios. Defaults to the current LUSID  system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the portfolios. Defaults to returning the latest version  of each portfolio if not specified.
+        String page = "page_example"; // String | The pagination token to use to continue listing portfolios. This value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
-        String filter = "filter_example"; // String | Expression to filter the results.   For example, to return only transactions with a transaction type of 'Buy', specify \"type eq 'Buy'\".   For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        String filter = "filter_example"; // String | Expression to filter the results.  For example, to return only transactions with a transaction type of 'Buy', specify \"type eq 'Buy'\".  For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\".
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Portfolio' domain to decorate onto each portfolio,   or from any domain that supports relationships to decorate onto related entities. These must take the   format {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'.
-        List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto the portfolios in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Portfolio' domain to decorate onto each portfolio,  or from any domain that supports relationships to decorate onto related entities. These must take the  format {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'.
+        List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities  onto the portfolios in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
         try {
             // uncomment the below to set overrides at the request level
             // ResourceListOfPortfolio result = apiInstance.listPortfoliosForScope(scope, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys, relationshipDefinitionIds).execute(opts);
@@ -2437,14 +2437,14 @@ public class PortfoliosApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope whose portfolios to list. | |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to list the portfolios. Defaults to the current LUSID   system datetime if not specified. | [optional] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the portfolios. Defaults to returning the latest version   of each portfolio if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing portfolios. This  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list the portfolios. Defaults to the current LUSID  system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the portfolios. Defaults to returning the latest version  of each portfolio if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing portfolios. This value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **filter** | **String**| Expression to filter the results.  For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.  For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Portfolio&#39; domain to decorate onto each portfolio,   or from any domain that supports relationships to decorate onto related entities. These must take the   format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. | [optional] |
-| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities   onto the portfolios in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Portfolio&#39; domain to decorate onto each portfolio,  or from any domain that supports relationships to decorate onto related entities. These must take the  format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. | [optional] |
+| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities  onto the portfolios in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
 
 ### Return type
 
@@ -2514,7 +2514,7 @@ public class PortfoliosApiExample {
 
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio.
-        String code = "code_example"; // String | The code of the portfolio. Together with the   scope this uniquely identifies the portfolio.
+        String code = "code_example"; // String | The code of the portfolio. Together with the  scope this uniquely identifies the portfolio.
         List<Operation> operation = Arrays.asList(); // List<Operation> | The json patch document. For more check: https://datatracker.ietf.org/doc/html/rfc6902.
         try {
             // uncomment the below to set overrides at the request level
@@ -2538,7 +2538,7 @@ public class PortfoliosApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the portfolio. | |
-| **code** | **String**| The code of the portfolio. Together with the   scope this uniquely identifies the portfolio. | |
+| **code** | **String**| The code of the portfolio. Together with the  scope this uniquely identifies the portfolio. | |
 | **operation** | [**List&lt;Operation&gt;**](Operation.md)| The json patch document. For more check: https://datatracker.ietf.org/doc/html/rfc6902. | |
 
 ### Return type
@@ -2567,7 +2567,7 @@ public class PortfoliosApiExample {
 
 [EARLY ACCESS] PatchPortfolioAccessMetadata: Patch Access Metadata rules for a Portfolio.
 
-Patch Portfolio Access Metadata Rules in a single scope.  The behaviour is defined by the JSON Patch specification.     Currently only &#39;add&#39; is a supported operation on the patch document.    Currently only valid metadata keys are supported paths on the patch document.    The response will return any affected Portfolio Access Metadata rules or a failure message if unsuccessful.    It is important to always check to verify success (or failure).     Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
+Patch Portfolio Access Metadata Rules in a single scope. The behaviour is defined by the JSON Patch specification.   Currently only &#39;add&#39; is a supported operation on the patch document.  Currently only valid metadata keys are supported paths on the patch document.  The response will return any affected Portfolio Access Metadata rules or a failure message if unsuccessful.  It is important to always check to verify success (or failure).   Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
 
 ### Example
 
@@ -2666,7 +2666,7 @@ public class PortfoliosApiExample {
 
 UpdatePortfolio: Update portfolio
 
-Update the definition of a particular portfolio.     Note that not all elements of a portfolio definition are  modifiable due to the potential implications for data already stored.
+Update the definition of a particular portfolio.   Note that not all elements of a portfolio definition are modifiable due to the potential implications for data already stored.
 
 ### Example
 
@@ -2710,7 +2710,7 @@ public class PortfoliosApiExample {
         String scope = "scope_example"; // String | The scope of the portfolio.
         String code = "code_example"; // String | The code of the portfolio. Together with the scope this uniquely identifies the portfolio.
         UpdatePortfolioRequest updatePortfolioRequest = new UpdatePortfolioRequest(); // UpdatePortfolioRequest | The updated portfolio definition.
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to update the definition. Defaults to the current   LUSID system datetime if not specified.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to update the definition. Defaults to the current  LUSID system datetime if not specified.
         try {
             // uncomment the below to set overrides at the request level
             // Portfolio result = apiInstance.updatePortfolio(scope, code, updatePortfolioRequest, effectiveAt).execute(opts);
@@ -2735,7 +2735,7 @@ public class PortfoliosApiExample {
 | **scope** | **String**| The scope of the portfolio. | |
 | **code** | **String**| The code of the portfolio. Together with the scope this uniquely identifies the portfolio. | |
 | **updatePortfolioRequest** | [**UpdatePortfolioRequest**](UpdatePortfolioRequest.md)| The updated portfolio definition. | |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to update the definition. Defaults to the current   LUSID system datetime if not specified. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to update the definition. Defaults to the current  LUSID system datetime if not specified. | [optional] |
 
 ### Return type
 
@@ -2862,7 +2862,7 @@ public class PortfoliosApiExample {
 
 UpsertPortfolioAccessMetadata: Upsert a Portfolio Access Metadata Rule associated with specific metadataKey. This creates or updates the data in LUSID.
 
-Update or insert one Portfolio Access Metadata Rule in a single scope. An item will be updated if it already exists  and inserted if it does not.    The response will return the successfully updated or inserted Portfolio Access Metadata Rule or failure message if unsuccessful    It is important to always check to verify success (or failure).     Multiple rules for a metadataKey can exists with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched
+Update or insert one Portfolio Access Metadata Rule in a single scope. An item will be updated if it already exists and inserted if it does not.  The response will return the successfully updated or inserted Portfolio Access Metadata Rule or failure message if unsuccessful  It is important to always check to verify success (or failure).   Multiple rules for a metadataKey can exists with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched
 
 ### Example
 
@@ -2963,7 +2963,7 @@ public class PortfoliosApiExample {
 
 UpsertPortfolioProperties: Upsert portfolio properties
 
-Create or update one or more properties for a particular portfolio. A property is updated if it  already exists and created if it does not. All properties must be from the &#39;Portfolio&#39; domain.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime from which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which it is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+Create or update one or more properties for a particular portfolio. A property is updated if it already exists and created if it does not. All properties must be from the &#39;Portfolio&#39; domain.   Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime from which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime until which it is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
 
 ### Example
 
@@ -3006,7 +3006,7 @@ public class PortfoliosApiExample {
         PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the portfolio.
         String code = "code_example"; // String | The code of the portfolio. Together with the scope this uniquely identifies the portfolio.
-        Map<String, Property> requestBody = new HashMap(); // Map<String, Property> | The properties to be created or updated. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example   'Portfolio/Manager/Id'.
+        Map<String, Property> requestBody = new HashMap(); // Map<String, Property> | The properties to be created or updated. Each property in  the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example  'Portfolio/Manager/Id'.
         try {
             // uncomment the below to set overrides at the request level
             // PortfolioProperties result = apiInstance.upsertPortfolioProperties(scope, code, requestBody).execute(opts);
@@ -3030,7 +3030,7 @@ public class PortfoliosApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the portfolio. | |
 | **code** | **String**| The code of the portfolio. Together with the scope this uniquely identifies the portfolio. | |
-| **requestBody** | [**Map&lt;String, Property&gt;**](Property.md)| The properties to be created or updated. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example   &#39;Portfolio/Manager/Id&#39;. | |
+| **requestBody** | [**Map&lt;String, Property&gt;**](Property.md)| The properties to be created or updated. Each property in  the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example  &#39;Portfolio/Manager/Id&#39;. | |
 
 ### Return type
 

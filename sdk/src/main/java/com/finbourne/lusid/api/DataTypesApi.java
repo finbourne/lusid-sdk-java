@@ -306,7 +306,7 @@ public class DataTypesApi {
 
     /**
      * [EARLY ACCESS] CreateDataType: Create data type definition
-     * Create a new data type definition    Data types cannot be created in either the \&quot;default\&quot; or \&quot;system\&quot; scopes.
+     * Create a new data type definition  Data types cannot be created in either the \&quot;default\&quot; or \&quot;system\&quot; scopes.
      * @return APIcreateDataTypeRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -545,7 +545,7 @@ public class DataTypesApi {
 
     /**
      * DeleteDataType: Delete a data type definition.
-     * Delete an existing data type definition.    Data types cannot be deleted in either the \&quot;default\&quot; or \&quot;system\&quot; scopes, scopes beginning with \&quot;LUSID-\&quot;,  or data types that are in use on a property definition.
+     * Delete an existing data type definition.  Data types cannot be deleted in either the \&quot;default\&quot; or \&quot;system\&quot; scopes, scopes beginning with \&quot;LUSID-\&quot;, or data types that are in use on a property definition.
      * @param scope The scope of the data type (required)
      * @param code The code of the data type (required)
      * @return APIdeleteDataTypeRequest
@@ -673,7 +673,7 @@ public class DataTypesApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the data type definition. Defaults to   return the latest version of the instrument definition if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the data type definition. Defaults to  return the latest version of the instrument definition if not specified. (optional)
          * @return APIgetDataTypeRequest
          */
         public APIgetDataTypeRequest asAt(OffsetDateTime asAt) {
@@ -949,7 +949,7 @@ public class DataTypesApi {
 
         /**
          * Set filter
-         * @param filter Optional. Expression to filter the result set.    For example, to filter on the Schema, use \&quot;schema eq &#39;string&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Optional. Expression to filter the result set.   For example, to filter on the Schema, use \&quot;schema eq &#39;string&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIgetUnitsFromDataTypeRequest
          */
         public APIgetUnitsFromDataTypeRequest filter(String filter) {
@@ -1219,7 +1219,7 @@ public class DataTypesApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to list the data type summaries. Defaults to returning the latest version   of each summary if not specified. (optional)
+         * @param asAt The asAt datetime at which to list the data type summaries. Defaults to returning the latest version  of each summary if not specified. (optional)
          * @return APIlistDataTypeSummariesRequest
          */
         public APIlistDataTypeSummariesRequest asAt(OffsetDateTime asAt) {
@@ -1229,7 +1229,7 @@ public class DataTypesApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing data type summaries. This  value is returned from the previous call. If a pagination token is provided, the filter, sortBy  and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing data type summaries. This value is returned from the previous call. If a pagination token is provided, the filter, sortBy and asAt fields must not have changed since the original request. (optional)
          * @return APIlistDataTypeSummariesRequest
          */
         public APIlistDataTypeSummariesRequest page(String page) {
@@ -1249,7 +1249,7 @@ public class DataTypesApi {
 
         /**
          * Set filter
-         * @param filter Optional. Expression to filter the result set.    For example, to filter on the Scope, use \&quot;id.scope eq &#39;myscope&#39;\&quot;, to filter on Schema, use \&quot;schema eq &#39;string&#39;\&quot;,   to filter on AcceptableValues use \&quot;acceptableValues any (~ eq &#39;value&#39;)\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Optional. Expression to filter the result set.   For example, to filter on the Scope, use \&quot;id.scope eq &#39;myscope&#39;\&quot;, to filter on Schema, use \&quot;schema eq &#39;string&#39;\&quot;,  to filter on AcceptableValues use \&quot;acceptableValues any (~ eq &#39;value&#39;)\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIlistDataTypeSummariesRequest
          */
         public APIlistDataTypeSummariesRequest filter(String filter) {
@@ -1565,7 +1565,7 @@ public class DataTypesApi {
 
         /**
          * Set filter
-         * @param filter Optional. Expression to filter the result set.   For example, to filter on the Display Name, use \&quot;displayName eq &#39;string&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Optional. Expression to filter the result set.  For example, to filter on the Display Name, use \&quot;displayName eq &#39;string&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIlistDataTypesRequest
          */
         public APIlistDataTypesRequest filter(String filter) {
@@ -1944,7 +1944,7 @@ public class DataTypesApi {
 
     /**
      * [EARLY ACCESS] UpdateDataType: Update data type definition
-     * Update the definition of the specified existing data type    Not all elements within a data type definition are modifiable due to the potential implications for data  already stored against the types
+     * Update the definition of the specified existing data type  Not all elements within a data type definition are modifiable due to the potential implications for data already stored against the types
      * @param scope The scope of the data type (required)
      * @param code The code of the data type (required)
      * @param updateDataTypeRequest The updated definition of the data type (required)

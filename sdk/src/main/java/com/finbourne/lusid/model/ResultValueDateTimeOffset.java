@@ -92,7 +92,7 @@ public class ResultValueDateTimeOffset extends ResultValue {
   }
 
    /**
-   * The dimension of the result. Can be null if there is no sensible way of defining the dimension. This field should not be  populate by the user on upsertion.
+   * The dimension of the result. Can be null if there is no sensible way of defining the dimension. This field should not be populate by the user on upsertion.
    * @return dimension
   **/
   @jakarta.annotation.Nullable

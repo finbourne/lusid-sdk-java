@@ -294,7 +294,7 @@ public class TransferAgencyApi {
 
     /**
      * [EXPERIMENTAL] CalculateOrderDates: Calculate the key dates associated with transfer agency orders
-     * The response contains both the collection of successfully calculated dates and any failed calculations,  each in the form of a dictionary keyed by the request&#39;s keys.  For each failure, a reason is provided. It is important to check the failed set for unsuccessful results.
+     * The response contains both the collection of successfully calculated dates and any failed calculations, each in the form of a dictionary keyed by the request&#39;s keys. For each failure, a reason is provided. It is important to check the failed set for unsuccessful results.
      * @param requestBody The request containing the dates used for calculation (required)
      * @return APIcalculateOrderDatesRequest
      * @http.response.details

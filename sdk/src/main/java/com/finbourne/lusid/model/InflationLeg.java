@@ -51,7 +51,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * LUSID representation of an Inflation Leg.  This leg instrument is part of the InflationSwap instrument, but can also be used as a standalone instrument.  The implementation supports the following inflation leg types:  * Zero Coupon inflation leg (CPI Leg), with a single payment at maturity.  * Year on Year inflation leg  * LPI Swap Leg (capped and floored YoY)
+ * LUSID representation of an Inflation Leg. This leg instrument is part of the InflationSwap instrument, but can also be used as a standalone instrument. The implementation supports the following inflation leg types: * Zero Coupon inflation leg (CPI Leg), with a single payment at maturity. * Year on Year inflation leg * LPI Swap Leg (capped and floored YoY)
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class InflationLeg extends LusidInstrument {
@@ -131,7 +131,7 @@ public class InflationLeg extends LusidInstrument {
   }
 
    /**
-   * The final maturity date of the instrument. This means the last date on which the instruments makes a payment of any amount.  For the avoidance of doubt, that is not necessarily prior to its last sensitivity date for the purposes of risk; e.g. instruments such as  Constant Maturity Swaps (CMS) often have sensitivities to rates that may well be observed or set prior to the maturity date, but refer to a termination date beyond it.
+   * The final maturity date of the instrument. This means the last date on which the instruments makes a payment of any amount. For the avoidance of doubt, that is not necessarily prior to its last sensitivity date for the purposes of risk; e.g. instruments such as Constant Maturity Swaps (CMS) often have sensitivities to rates that may well be observed or set prior to the maturity date, but refer to a termination date beyond it.
    * @return maturityDate
   **/
   @jakarta.annotation.Nonnull
@@ -173,7 +173,7 @@ public class InflationLeg extends LusidInstrument {
   }
 
    /**
-   * Optional BaseCPI, if specified it will be used in place of BaseCPI(StartDate).  This should not be required for standard inflation swaps.
+   * Optional BaseCPI, if specified it will be used in place of BaseCPI(StartDate). This should not be required for standard inflation swaps.
    * @return baseCPI
   **/
   @jakarta.annotation.Nullable
@@ -194,7 +194,7 @@ public class InflationLeg extends LusidInstrument {
   }
 
    /**
-   * The calculation type.  ZeroCoupon is used for CPILegs where there is a single payment at maturity of  Notional generate justfile test_sdk (CPI(T) / CPI(T0) - 1)  where CPI(T0) is the BaseCPI of this leg  YearOnYear is used for YoY and LPI swap legs where there is a series of annual payments  Notional generate justfile test_sdk dayCount generate justfile test_sdk (CPI(t) / CPI(t-1) - 1)  If a cap and floor is added to this it becomes an LPI swap leg.  Compounded is used for inflation swap legs where there is a series of annual payments  Notional generate justfile test_sdk dayCount generate justfile test_sdk (CPI(t) / CPI(T0) - 1)  i.e. the BaseCPI is used every year. These swaps are not as common as CPI or    Supported string (enumeration) values are: [ZeroCoupon, YearOnYear, Compounded].
+   * The calculation type. ZeroCoupon is used for CPILegs where there is a single payment at maturity of Notional generate justfile test_sdk (CPI(T) / CPI(T0) - 1) where CPI(T0) is the BaseCPI of this leg YearOnYear is used for YoY and LPI swap legs where there is a series of annual payments Notional generate justfile test_sdk dayCount generate justfile test_sdk (CPI(t) / CPI(t-1) - 1) If a cap and floor is added to this it becomes an LPI swap leg. Compounded is used for inflation swap legs where there is a series of annual payments Notional generate justfile test_sdk dayCount generate justfile test_sdk (CPI(t) / CPI(T0) - 1) i.e. the BaseCPI is used every year. These swaps are not as common as CPI or  Supported string (enumeration) values are: [ZeroCoupon, YearOnYear, Compounded].
    * @return calculationType
   **/
   @jakarta.annotation.Nonnull
@@ -299,7 +299,7 @@ public class InflationLeg extends LusidInstrument {
   }
 
    /**
-   * PayReceive flag for the inflation leg.  This field is optional and defaults to Pay.    Supported string (enumeration) values are: [Pay, Receive].
+   * PayReceive flag for the inflation leg. This field is optional and defaults to Pay.  Supported string (enumeration) values are: [Pay, Receive].
    * @return payReceive
   **/
   @jakarta.annotation.Nullable

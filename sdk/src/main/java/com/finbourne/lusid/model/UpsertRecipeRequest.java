@@ -46,7 +46,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * A recipe that is to be stored in the recipe structured data store.  Only one of these must be present.
+ * A recipe that is to be stored in the recipe structured data store. Only one of these must be present.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UpsertRecipeRequest {

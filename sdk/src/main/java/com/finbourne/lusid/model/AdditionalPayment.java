@@ -139,7 +139,7 @@ public class AdditionalPayment {
   }
 
    /**
-   * Is it pay or receive.    Supported string (enumeration) values are: [Pay, Receive].
+   * Is it pay or receive.  Supported string (enumeration) values are: [Pay, Receive].
    * @return payReceive
   **/
   @jakarta.annotation.Nonnull

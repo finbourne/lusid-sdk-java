@@ -47,7 +47,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Event to adjust the limit/balance of a LoanFacility.  Used to initially set up the facility, but also used to increase/reduce the associated limit and balance.
+ * Event to adjust the limit/balance of a LoanFacility. Used to initially set up the facility, but also used to increase/reduce the associated limit and balance.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AdjustGlobalCommitmentEvent extends InstrumentEvent {
@@ -70,7 +70,7 @@ public class AdjustGlobalCommitmentEvent extends InstrumentEvent {
   }
 
    /**
-   * Amount that the limit and balance are changed by.  A positive number signifies an increase, and a negative number here signifies a decrease.
+   * Amount that the limit and balance are changed by. A positive number signifies an increase, and a negative number here signifies a decrease.
    * @return amount
   **/
   @jakarta.annotation.Nonnull

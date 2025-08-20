@@ -77,7 +77,7 @@ public class ConstituentsAdjustmentHeader {
   }
 
    /**
-   * There can be at most one holdings adjustment for a portfolio at a  specific effective time so this uniquely identifies the adjustment.
+   * There can be at most one holdings adjustment for a portfolio at a specific effective time so this uniquely identifies the adjustment.
    * @return effectiveAt
   **/
   @jakarta.annotation.Nullable

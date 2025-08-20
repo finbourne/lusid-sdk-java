@@ -49,7 +49,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Request to translate financial entities with a given script body.  The output of the translation is validated against a schema specified in the request.
+ * Request to translate financial entities with a given script body. The output of the translation is validated against a schema specified in the request.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class TranslateEntitiesInlinedRequest {

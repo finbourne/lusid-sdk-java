@@ -324,7 +324,7 @@ public class InstrumentEventTypesApi {
      * CreateTransactionTemplate: Create Transaction Template
      * Create a transaction template for a particular instrument event type in a scope.
      * @param instrumentEventType The type of instrument events that the template is applied to. (required)
-     * @param instrumentType The instrument type of the transaction template. The combination of the instrument   event type, instrument type and scope uniquely identifies a transaction template (required)
+     * @param instrumentType The instrument type of the transaction template. The combination of the instrument  event type, instrument type and scope uniquely identifies a transaction template (required)
      * @param scope The scope in which the template lies. (required)
      * @param transactionTemplateRequest A request defining a new transaction template to be created. (required)
      * @return APIcreateTransactionTemplateRequest
@@ -575,7 +575,7 @@ public class InstrumentEventTypesApi {
      * DeleteTransactionTemplate: Delete Transaction Template
      * Delete a transaction template for a particular instrument event type in a scope.
      * @param instrumentEventType The type of instrument events that the template is applied to. (required)
-     * @param instrumentType The instrument type of the transaction template. The combination of the instrument   event type, instrument type and scope uniquely identifies a transaction template (required)
+     * @param instrumentType The instrument type of the transaction template. The combination of the instrument  event type, instrument type and scope uniquely identifies a transaction template (required)
      * @param scope The scope of the template. (required)
      * @return APIdeleteTransactionTemplateRequest
      * @http.response.details
@@ -840,7 +840,7 @@ public class InstrumentEventTypesApi {
      * GetTransactionTemplate: Get Transaction Template
      * Gets the Transaction Template that for the instrument event type within the scope specified.
      * @param instrumentEventType The instrument event type of the transaction template (required)
-     * @param instrumentType The instrument type of the transaction template. The combination of the instrument   event type, instrument type and scope uniquely identifies a transaction template (required)
+     * @param instrumentType The instrument type of the transaction template. The combination of the instrument  event type, instrument type and scope uniquely identifies a transaction template (required)
      * @param scope The scope in which the template lies. When not supplied the scope is &#39;default&#39;. (required)
      * @return APIgetTransactionTemplateRequest
      * @http.response.details
@@ -1213,7 +1213,7 @@ public class InstrumentEventTypesApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing Transaction Template Specifications from   a previous call to list Transaction Template Specifications.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt   fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing Transaction Template Specifications from  a previous call to list Transaction Template Specifications.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt  fields must not have changed since the original request. (optional)
          * @return APIlistTransactionTemplateSpecificationsRequest
          */
         public APIlistTransactionTemplateSpecificationsRequest page(String page) {
@@ -1233,7 +1233,7 @@ public class InstrumentEventTypesApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIlistTransactionTemplateSpecificationsRequest
          */
         public APIlistTransactionTemplateSpecificationsRequest filter(String filter) {
@@ -1511,7 +1511,7 @@ public class InstrumentEventTypesApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing Transaction Templates from a previous call to list Transaction Templates.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, limit, and asAt fields   must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing Transaction Templates from a previous call to list Transaction Templates.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, limit, and asAt fields  must not have changed since the original request. (optional)
          * @return APIlistTransactionTemplatesRequest
          */
         public APIlistTransactionTemplatesRequest page(String page) {
@@ -1531,7 +1531,7 @@ public class InstrumentEventTypesApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIlistTransactionTemplatesRequest
          */
         public APIlistTransactionTemplatesRequest filter(String filter) {
@@ -1929,7 +1929,7 @@ public class InstrumentEventTypesApi {
      * UpdateTransactionTemplate: Update Transaction Template
      * Update a transaction template for a particular instrument event type in a scope.
      * @param instrumentEventType The type of instrument events that the template is applied to. (required)
-     * @param instrumentType The instrument type of the transaction template. The combination of the instrument   event type, instrument type and scope uniquely identifies a transaction template (required)
+     * @param instrumentType The instrument type of the transaction template. The combination of the instrument  event type, instrument type and scope uniquely identifies a transaction template (required)
      * @param scope The scope in which the template lies. (required)
      * @param transactionTemplateRequest A request defining the updated values for the transaction template. (required)
      * @return APIupdateTransactionTemplateRequest

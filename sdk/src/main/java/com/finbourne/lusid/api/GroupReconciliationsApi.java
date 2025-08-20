@@ -211,7 +211,7 @@ public class GroupReconciliationsApi {
 
         /**
          * Set successMode
-         * @param successMode Defines whether the request should fail if at least one of the entries is failed to update   or process all the entries regardless and return collections of successful and failed updates. \&quot;Partial\&quot; (default) | \&quot;Atomic\&quot;. (optional, default to Partial)
+         * @param successMode Defines whether the request should fail if at least one of the entries is failed to update  or process all the entries regardless and return collections of successful and failed updates. \&quot;Partial\&quot; (default) | \&quot;Atomic\&quot;. (optional, default to Partial)
          * @return APIbatchUpdateComparisonResultsRequest
          */
         public APIbatchUpdateComparisonResultsRequest successMode(String successMode) {
@@ -339,10 +339,10 @@ public class GroupReconciliationsApi {
 
     /**
      * [EXPERIMENTAL] BatchUpdateComparisonResults: Add User Review entries for a range of comparison results related to a specific GroupReconciliationDefinition.
-     * Allows to update multiple Group Reconciliation Comparison Results related to the same definition specified by the Finbourne.Identifiers.Abstractions.Scope and Finbourne.Identifiers.Abstractions.Code.  Updates User Review with new entries and sets the relevant Review Status.  Supports partial success when all the entries that haven&#39;t passed validation or are not related to the definition will be returned with respectful error details.
+     * Allows to update multiple Group Reconciliation Comparison Results related to the same definition specified by the Finbourne.Identifiers.Abstractions.Scope and Finbourne.Identifiers.Abstractions.Code. Updates User Review with new entries and sets the relevant Review Status. Supports partial success when all the entries that haven&#39;t passed validation or are not related to the definition will be returned with respectful error details.
      * @param scope Shared Scope of the GroupReconciliationDefinition and GroupReconciliationComparisonResults. (required)
      * @param code GroupReconciliationDefinitionId code. (required)
-     * @param batchUpdateUserReviewForComparisonResultRequest A collection of the comparison result Ids and their user review entries to be added or removed.   Single request contains resultId, break code/match key/comment to add and break code/match key/comment to remove by added timestamp. (required)
+     * @param batchUpdateUserReviewForComparisonResultRequest A collection of the comparison result Ids and their user review entries to be added or removed.  Single request contains resultId, break code/match key/comment to add and break code/match key/comment to remove by added timestamp. (required)
      * @return APIbatchUpdateComparisonResultsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1057,9 +1057,9 @@ public class GroupReconciliationsApi {
 
     /**
      * [EXPERIMENTAL] DeleteComparisonRuleset: Deletes a particular Group Reconciliation Comparison Ruleset
-     * The deletion will take effect from the reconciliation comparison ruleset deletion datetime.  i.e. will no longer exist at any asAt datetime after the asAt datetime of deletion.
+     * The deletion will take effect from the reconciliation comparison ruleset deletion datetime. i.e. will no longer exist at any asAt datetime after the asAt datetime of deletion.
      * @param scope The scope of the specified comparison ruleset. (required)
-     * @param code The code of the specified comparison ruleset. Together with the domain and scope this uniquely   identifies the reconciliation comparison ruleset. (required)
+     * @param code The code of the specified comparison ruleset. Together with the domain and scope this uniquely  identifies the reconciliation comparison ruleset. (required)
      * @return APIdeleteComparisonRulesetRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1434,7 +1434,7 @@ public class GroupReconciliationsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the comparison result definition. Defaults to return   the latest version if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the comparison result definition. Defaults to return  the latest version if not specified. (optional)
          * @return APIgetComparisonResultRequest
          */
         public APIgetComparisonResultRequest asAt(OffsetDateTime asAt) {
@@ -1562,10 +1562,10 @@ public class GroupReconciliationsApi {
 
     /**
      * [EXPERIMENTAL] GetComparisonResult: Get a single Group Reconciliation Comparison Result by scope and code.
-     * Retrieves one Group Reconciliation Comparison Result by scope and code  with the prior validation that its related reconciliation definition exists.
+     * Retrieves one Group Reconciliation Comparison Result by scope and code with the prior validation that its related reconciliation definition exists.
      * @param scope The scope of the specified comparison result and its related reconciliation definition. (required)
      * @param code The code of the reconciliation definition that was used to produce the reconciliation result. (required)
-     * @param resultId The code of the specified reconciliation result. Together with the domain and scope this uniquely   identifies the reconciliation comparison result. This value is also the same as the computed result hash based on property values. (required)
+     * @param resultId The code of the specified reconciliation result. Together with the domain and scope this uniquely  identifies the reconciliation comparison result. This value is also the same as the computed result hash based on property values. (required)
      * @return APIgetComparisonResultRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1691,7 +1691,7 @@ public class GroupReconciliationsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the comparison ruleset definition. Defaults to return   the latest version of the definition if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the comparison ruleset definition. Defaults to return  the latest version of the definition if not specified. (optional)
          * @return APIgetComparisonRulesetRequest
          */
         public APIgetComparisonRulesetRequest asAt(OffsetDateTime asAt) {
@@ -1821,7 +1821,7 @@ public class GroupReconciliationsApi {
      * [EXPERIMENTAL] GetComparisonRuleset: Get a single Group Reconciliation Comparison Ruleset by scope and code.
      * Retrieves one Group Reconciliation Comparison Ruleset by scope and code.
      * @param scope The scope of the specified comparison ruleset. (required)
-     * @param code The code of the specified comparison ruleset. Together with the domain and scope this uniquely   identifies the reconciliation comparison ruleset. (required)
+     * @param code The code of the specified comparison ruleset. Together with the domain and scope this uniquely  identifies the reconciliation comparison ruleset. (required)
      * @return APIgetComparisonRulesetRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2092,7 +2092,7 @@ public class GroupReconciliationsApi {
      * [EXPERIMENTAL] GetGroupReconciliationDefinition: Get group reconciliation definition
      * Retrieves a Group Reconciliation Definition by scope and code
      * @param scope The scope of the group reconciliation definition to retrieve. (required)
-     * @param code The code of the group reconciliation definition to retrieve. Together with the scope   this uniquely identifies the group reconciliation definition. (required)
+     * @param code The code of the group reconciliation definition to retrieve. Together with the scope  this uniquely identifies the group reconciliation definition. (required)
      * @return APIgetGroupReconciliationDefinitionRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2222,7 +2222,7 @@ public class GroupReconciliationsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the comparison results. Defaults to return the latest   version of the comparison results if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the comparison results. Defaults to return the latest  version of the comparison results if not specified. (optional)
          * @return APIlistComparisonResultsRequest
          */
         public APIlistComparisonResultsRequest asAt(OffsetDateTime asAt) {
@@ -2232,7 +2232,7 @@ public class GroupReconciliationsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing comparison results from a previous call to list   comparison results. This value is returned from the previous call. If a pagination token is provided the sortBy,   filter, effectiveAt, and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing comparison results from a previous call to list  comparison results. This value is returned from the previous call. If a pagination token is provided the sortBy,  filter, effectiveAt, and asAt fields must not have changed since the original request. (optional)
          * @return APIlistComparisonResultsRequest
          */
         public APIlistComparisonResultsRequest page(String page) {
@@ -2262,7 +2262,7 @@ public class GroupReconciliationsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIlistComparisonResultsRequest
          */
         public APIlistComparisonResultsRequest filter(String filter) {
@@ -2390,7 +2390,7 @@ public class GroupReconciliationsApi {
 
     /**
      * [EXPERIMENTAL] ListComparisonResults: Get a set of Group Reconciliation Comparison Results.
-     * Retrieves all Group Reconciliation Comparison Results that fit the filter, in a specific order if sortBy is provided.  Supports pagination.
+     * Retrieves all Group Reconciliation Comparison Results that fit the filter, in a specific order if sortBy is provided. Supports pagination.
      * @return APIlistComparisonResultsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2520,7 +2520,7 @@ public class GroupReconciliationsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the comparison rulesets. Defaults to return the latest   version of the comparison rulesets if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the comparison rulesets. Defaults to return the latest  version of the comparison rulesets if not specified. (optional)
          * @return APIlistComparisonRulesetsRequest
          */
         public APIlistComparisonRulesetsRequest asAt(OffsetDateTime asAt) {
@@ -2530,7 +2530,7 @@ public class GroupReconciliationsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing comparison rulesets from a previous call to list   comparison rulesets. This value is returned from the previous call. If a pagination token is provided the sortBy,   filter, effectiveAt, and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing comparison rulesets from a previous call to list  comparison rulesets. This value is returned from the previous call. If a pagination token is provided the sortBy,  filter, effectiveAt, and asAt fields must not have changed since the original request. (optional)
          * @return APIlistComparisonRulesetsRequest
          */
         public APIlistComparisonRulesetsRequest page(String page) {
@@ -2560,7 +2560,7 @@ public class GroupReconciliationsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIlistComparisonRulesetsRequest
          */
         public APIlistComparisonRulesetsRequest filter(String filter) {
@@ -2688,7 +2688,7 @@ public class GroupReconciliationsApi {
 
     /**
      * [EXPERIMENTAL] ListComparisonRulesets: Get a set of Group Reconciliation Comparison Rulesets
-     * Retrieves all Group Reconciliation Comparison Ruleset that fit the filter, in a specific order if sortBy is provided  Supports pagination
+     * Retrieves all Group Reconciliation Comparison Ruleset that fit the filter, in a specific order if sortBy is provided Supports pagination
      * @return APIlistComparisonRulesetsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2843,7 +2843,7 @@ public class GroupReconciliationsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing group reconciliation definitions from a previous call to list group reconciliation definitions. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy  and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing group reconciliation definitions from a previous call to list group reconciliation definitions. This value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy and asAt fields must not have changed since the original request. (optional)
          * @return APIlistGroupReconciliationDefinitionsRequest
          */
         public APIlistGroupReconciliationDefinitionsRequest page(String page) {
@@ -2863,7 +2863,7 @@ public class GroupReconciliationsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.   For example, to filter on the Display Name, use \&quot;displayName eq &#39;string&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set.  For example, to filter on the Display Name, use \&quot;displayName eq &#39;string&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIlistGroupReconciliationDefinitionsRequest
          */
         public APIlistGroupReconciliationDefinitionsRequest filter(String filter) {
@@ -3255,7 +3255,7 @@ public class GroupReconciliationsApi {
 
     /**
      * [EXPERIMENTAL] RunReconciliation: Runs a Group Reconciliation
-     * Runs a Group Reconciliation using the definition specified by the Finbourne.Identifiers.Abstractions.Scope and Finbourne.Identifiers.Abstractions.Code  Supports pagination.
+     * Runs a Group Reconciliation using the definition specified by the Finbourne.Identifiers.Abstractions.Scope and Finbourne.Identifiers.Abstractions.Code Supports pagination.
      * @param scope The scope of the group reconciliation definition to use for the reconciliation. (required)
      * @param code The code of the group reconciliation definition to use for the reconciliation. (required)
      * @return APIrunReconciliationRequest
@@ -3511,9 +3511,9 @@ public class GroupReconciliationsApi {
 
     /**
      * [EXPERIMENTAL] UpdateComparisonRuleset: Update Group Reconciliation Comparison Ruleset defined by scope and code
-     * Overwrites an existing Group Reconciliation Comparison Ruleset  Update request has the same required fields as Create apart from the Id
+     * Overwrites an existing Group Reconciliation Comparison Ruleset Update request has the same required fields as Create apart from the Id
      * @param scope The scope of the specified comparison ruleset. (required)
-     * @param code The code of the specified comparison ruleset. Together with the domain and scope this uniquely   identifies the reconciliation comparison ruleset. (required)
+     * @param code The code of the specified comparison ruleset. Together with the domain and scope this uniquely  identifies the reconciliation comparison ruleset. (required)
      * @return APIupdateComparisonRulesetRequest
      * @http.response.details
      <table summary="Response Details" border="1">

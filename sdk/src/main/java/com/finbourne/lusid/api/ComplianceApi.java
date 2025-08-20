@@ -559,7 +559,7 @@ public class ComplianceApi {
 
     /**
      * [EARLY ACCESS] DeleteComplianceRule: Delete compliance rule.
-     * Use this endpoint to delete a compliance rule. The rule will be recoverable for asat times earlier than the  delete time, but will otherwise appear to have never existed.
+     * Use this endpoint to delete a compliance rule. The rule will be recoverable for asat times earlier than the delete time, but will otherwise appear to have never existed.
      * @param scope The compliance rule&#39;s scope. (required)
      * @param code The compliance rule&#39;s code. (required)
      * @return APIdeleteComplianceRuleRequest
@@ -943,7 +943,7 @@ public class ComplianceApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;Compliance&#39; domain to decorate onto the rule.   These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. (optional)
+         * @param propertyKeys A list of property keys from the &#39;Compliance&#39; domain to decorate onto the rule.  These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. (optional)
          * @return APIgetComplianceRuleRequest
          */
         public APIgetComplianceRuleRequest propertyKeys(List<String> propertyKeys) {
@@ -1999,7 +1999,7 @@ public class ComplianceApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;Compliance&#39; domain to decorate onto each rule.   These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. If not provided will return all the entitled properties for each rule. (optional)
+         * @param propertyKeys A list of property keys from the &#39;Compliance&#39; domain to decorate onto each rule.  These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. If not provided will return all the entitled properties for each rule. (optional)
          * @return APIlistComplianceRulesRequest
          */
         public APIlistComplianceRulesRequest propertyKeys(List<String> propertyKeys) {
@@ -2267,7 +2267,7 @@ public class ComplianceApi {
 
         /**
          * Set page
-         * @param page Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. (optional)
+         * @param page Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields  must not have changed since the original request. (optional)
          * @return APIlistComplianceRunsRequest
          */
         public APIlistComplianceRunsRequest page(String page) {
@@ -2560,7 +2560,7 @@ public class ComplianceApi {
 
         /**
          * Set page
-         * @param page Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. (optional)
+         * @param page Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields  must not have changed since the original request. (optional)
          * @return APIlistComplianceTemplatesRequest
          */
         public APIlistComplianceTemplatesRequest page(String page) {
@@ -2848,7 +2848,7 @@ public class ComplianceApi {
 
         /**
          * Set page
-         * @param page Optional. The pagination token to use to continue listing historical order breaches from a previous call to list historical order breaches.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. (optional)
+         * @param page Optional. The pagination token to use to continue listing historical order breaches from a previous call to list historical order breaches.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields  must not have changed since the original request. (optional)
          * @return APIlistOrderBreachHistoryRequest
          */
         public APIlistOrderBreachHistoryRequest page(String page) {
@@ -4066,7 +4066,7 @@ public class ComplianceApi {
 
     /**
      * [EARLY ACCESS] UpsertComplianceRule: Upsert a compliance rule.
-     * Use this endpoint to upsert a single compliance rule. The template and variation specified must already  exist, as must the portfolio group. The parameters passed must match those required by the template variation.
+     * Use this endpoint to upsert a single compliance rule. The template and variation specified must already exist, as must the portfolio group. The parameters passed must match those required by the template variation.
      * @return APIupsertComplianceRuleRequest
      * @http.response.details
      <table summary="Response Details" border="1">

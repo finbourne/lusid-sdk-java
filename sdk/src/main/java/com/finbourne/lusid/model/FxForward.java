@@ -49,7 +49,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * LUSID representation of an FX Forward.  Including FX Spot and Non-Deliverable Forwards.     This instrument has multiple legs, to see how legs are used in LUSID see [knowledge base article KA-02252](https://support.lusid.com/knowledgebase/article/KA-02252).     | Leg Index | Leg Identifier | Description |  | --------- | -------------- | ----------- |  | 1 | DomesticLeg | Cash flows in the domestic currency of the forward. |  | 2 | ForeignLeg | Cash flows in the foreign currency of the forward (not present for non-deliverable forwards). |
+ * LUSID representation of an FX Forward. Including FX Spot and Non-Deliverable Forwards.   This instrument has multiple legs, to see how legs are used in LUSID see [knowledge base article KA-02252](https://support.lusid.com/knowledgebase/article/KA-02252).   | Leg Index | Leg Identifier | Description | | --------- | -------------- | ----------- | | 1 | DomesticLeg | Cash flows in the domestic currency of the forward. | | 2 | ForeignLeg | Cash flows in the foreign currency of the forward (not present for non-deliverable forwards). |
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FxForward extends LusidInstrument {
@@ -133,7 +133,7 @@ public class FxForward extends LusidInstrument {
   }
 
    /**
-   * The final maturity date of the instrument. This means the last date on which the instruments makes a payment of any amount.  For the avoidance of doubt, that is not necessarily prior to its last sensitivity date for the purposes of risk; e.g. instruments such as  Constant Maturity Swaps (CMS) often have sensitivities to rates that may well be observed or set prior to the maturity date, but refer to a termination date beyond it.
+   * The final maturity date of the instrument. This means the last date on which the instruments makes a payment of any amount. For the avoidance of doubt, that is not necessarily prior to its last sensitivity date for the purposes of risk; e.g. instruments such as Constant Maturity Swaps (CMS) often have sensitivities to rates that may well be observed or set prior to the maturity date, but refer to a termination date beyond it.
    * @return maturityDate
   **/
   @jakarta.annotation.Nonnull
@@ -217,7 +217,7 @@ public class FxForward extends LusidInstrument {
   }
 
    /**
-   * The foreign (other) currency of the instrument. In the NDF case, only payments are made in the domestic currency.  For the outright forward, currencies are exchanged.
+   * The foreign (other) currency of the instrument. In the NDF case, only payments are made in the domestic currency. For the outright forward, currencies are exchanged.
    * @return fgnCcy
   **/
   @jakarta.annotation.Nonnull
@@ -259,7 +259,7 @@ public class FxForward extends LusidInstrument {
   }
 
    /**
-   * Is the contract an Fx-Forward of \&quot;Non-Deliverable\&quot; type, meaning a single payment in the domestic currency based on the change in fx-rate vs  a reference rate is used.
+   * Is the contract an Fx-Forward of \&quot;Non-Deliverable\&quot; type, meaning a single payment in the domestic currency based on the change in fx-rate vs a reference rate is used.
    * @return isNdf
   **/
   @jakarta.annotation.Nullable
@@ -301,7 +301,7 @@ public class FxForward extends LusidInstrument {
   }
 
    /**
-   * The settlement currency.  If provided, present value will be calculated in settlement currency, otherwise the domestic currency. Applies only to non-deliverable FX Forwards.
+   * The settlement currency. If provided, present value will be calculated in settlement currency, otherwise the domestic currency. Applies only to non-deliverable FX Forwards.
    * @return settlementCcy
   **/
   @jakarta.annotation.Nullable
@@ -322,7 +322,7 @@ public class FxForward extends LusidInstrument {
   }
 
    /**
-   * Boolean flag for FX Forward transactions booked with Spot settlement. This will default to False if not provided.  For information purposes only, this does not impact LUSID valuation, analytics, cashflows or events, but may be used by third party vendors.
+   * Boolean flag for FX Forward transactions booked with Spot settlement. This will default to False if not provided. For information purposes only, this does not impact LUSID valuation, analytics, cashflows or events, but may be used by third party vendors.
    * @return bookedAsSpot
   **/
   @jakarta.annotation.Nullable

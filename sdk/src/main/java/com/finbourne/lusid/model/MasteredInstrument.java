@@ -193,7 +193,7 @@ public class MasteredInstrument extends LusidInstrument {
 
 
    /**
-   * Asset class of the underlying mastered instrument - read only field    Supported string (enumeration) values are: [InterestRates, FX, Inflation, Equities, Credit, Commodities, Money].
+   * Asset class of the underlying mastered instrument - read only field  Supported string (enumeration) values are: [InterestRates, FX, Inflation, Equities, Credit, Commodities, Money].
    * @return masteredAssetClass
   **/
   @jakarta.annotation.Nullable

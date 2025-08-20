@@ -1357,9 +1357,9 @@ public class ChartOfAccountsApi {
 
     /**
      * [EXPERIMENTAL] DeleteAccounts: Soft or hard delete multiple accounts
-     * Delete one or more account from the Chart of Accounts. Soft deletion marks the account as inactive  While the Hard deletion is deleting the account.  The maximum number of accounts that this method can delete per request is 2,000.
+     * Delete one or more account from the Chart of Accounts. Soft deletion marks the account as inactive While the Hard deletion is deleting the account.  The maximum number of accounts that this method can delete per request is 2,000.
      * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies   the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies  the Chart of Accounts. (required)
      * @param requestBody The codes of the accounts to delete. (required)
      * @return APIdeleteAccountsRequest
      * @http.response.details
@@ -2515,7 +2515,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;Account&#39; domain to decorate onto the Account.   These must take the format {domain}/{scope}/{code}, for example &#39;Account/Manager/Id&#39;. If no properties are specified, then no properties will be returned. (optional)
+         * @param propertyKeys A list of property keys from the &#39;Account&#39; domain to decorate onto the Account.  These must take the format {domain}/{scope}/{code}, for example &#39;Account/Manager/Id&#39;. If no properties are specified, then no properties will be returned. (optional)
          * @return APIgetAccountRequest
          */
         public APIgetAccountRequest propertyKeys(List<String> propertyKeys) {
@@ -3082,7 +3082,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto the Chart of Accounts.   These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. If no properties are specified, then no properties will be returned. (optional)
+         * @param propertyKeys A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto the Chart of Accounts.  These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. If no properties are specified, then no properties will be returned. (optional)
          * @return APIgetChartOfAccountsRequest
          */
         public APIgetChartOfAccountsRequest propertyKeys(List<String> propertyKeys) {
@@ -4429,7 +4429,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties decorated on Accounts. Defaults to the current LUSID   system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties decorated on Accounts. Defaults to the current LUSID  system datetime if not specified. (optional)
          * @return APIlistAccountsRequest
          */
         public APIlistAccountsRequest effectiveAt(String effectiveAt) {
@@ -4439,7 +4439,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the Accounts. Defaults to   returning the latest version if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the Accounts. Defaults to  returning the latest version if not specified. (optional)
          * @return APIlistAccountsRequest
          */
         public APIlistAccountsRequest asAt(OffsetDateTime asAt) {
@@ -4449,7 +4449,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing charts of accounts; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing charts of accounts; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. (optional)
          * @return APIlistAccountsRequest
          */
         public APIlistAccountsRequest page(String page) {
@@ -4469,7 +4469,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.   For example, to filter on the Account type, specify \&quot;code eq &#39;001&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.  For example, to filter on the Account type, specify \&quot;code eq &#39;001&#39;\&quot;. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIlistAccountsRequest
          */
         public APIlistAccountsRequest filter(String filter) {
@@ -4479,7 +4479,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;Account&#39; domain to decorate onto the Account.   These must have the format {domain}/{scope}/{code}, for example &#39;Account/system/Name&#39;. (optional)
+         * @param propertyKeys A list of property keys from the &#39;Account&#39; domain to decorate onto the Account.  These must have the format {domain}/{scope}/{code}, for example &#39;Account/system/Name&#39;. (optional)
          * @return APIlistAccountsRequest
          */
         public APIlistAccountsRequest propertyKeys(List<String> propertyKeys) {
@@ -4609,7 +4609,7 @@ public class ChartOfAccountsApi {
      * [EXPERIMENTAL] ListAccounts: List Accounts
      * List the accounts in a Chart of Accounts
      * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies   the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies  the Chart of Accounts. (required)
      * @return APIlistAccountsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -4749,7 +4749,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the Chart Of Accounts. Defaults to the current LUSID   system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the Chart Of Accounts. Defaults to the current LUSID  system datetime if not specified. (optional)
          * @return APIlistChartsOfAccountsRequest
          */
         public APIlistChartsOfAccountsRequest effectiveAt(String effectiveAt) {
@@ -4759,7 +4759,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to list the charts of accounts. Defaults to returning the latest version   of each Chart of Accounts if not specified. (optional)
+         * @param asAt The asAt datetime at which to list the charts of accounts. Defaults to returning the latest version  of each Chart of Accounts if not specified. (optional)
          * @return APIlistChartsOfAccountsRequest
          */
         public APIlistChartsOfAccountsRequest asAt(OffsetDateTime asAt) {
@@ -4769,7 +4769,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing charts of accounts; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing charts of accounts; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. (optional)
          * @return APIlistChartsOfAccountsRequest
          */
         public APIlistChartsOfAccountsRequest page(String page) {
@@ -4789,7 +4789,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.   For example, to filter on the Chart of Accounts type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.  For example, to filter on the Chart of Accounts type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIlistChartsOfAccountsRequest
          */
         public APIlistChartsOfAccountsRequest filter(String filter) {
@@ -4809,7 +4809,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto each Chart of Accounts.   These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. (optional)
+         * @param propertyKeys A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto each Chart of Accounts.  These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. (optional)
          * @return APIlistChartsOfAccountsRequest
          */
         public APIlistChartsOfAccountsRequest propertyKeys(List<String> propertyKeys) {
@@ -5086,7 +5086,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to   returning the latest version if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to  returning the latest version if not specified. (optional)
          * @return APIlistCleardownModuleRulesRequest
          */
         public APIlistCleardownModuleRulesRequest asAt(OffsetDateTime asAt) {
@@ -5096,7 +5096,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing cleardown module rules; this   value is returned from the previous call. If a pagination token is provided, the filter   and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing cleardown module rules; this  value is returned from the previous call. If a pagination token is provided, the filter  and asAt fields must not have changed since the original request. (optional)
          * @return APIlistCleardownModuleRulesRequest
          */
         public APIlistCleardownModuleRulesRequest page(String page) {
@@ -5116,7 +5116,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.   For example, to filter on the rule id, specify \&quot;ruleId eq &#39;rule 1&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.  For example, to filter on the rule id, specify \&quot;ruleId eq &#39;rule 1&#39;\&quot;. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIlistCleardownModuleRulesRequest
          */
         public APIlistCleardownModuleRulesRequest filter(String filter) {
@@ -5393,7 +5393,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to list the Cleardown Module. Defaults to returning the latest version   of each Cleardown Module if not specified. (optional)
+         * @param asAt The asAt datetime at which to list the Cleardown Module. Defaults to returning the latest version  of each Cleardown Module if not specified. (optional)
          * @return APIlistCleardownModulesRequest
          */
         public APIlistCleardownModulesRequest asAt(OffsetDateTime asAt) {
@@ -5403,7 +5403,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing Cleardown Modules; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing Cleardown Modules; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. (optional)
          * @return APIlistCleardownModulesRequest
          */
         public APIlistCleardownModulesRequest page(String page) {
@@ -5423,7 +5423,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.   For example, to filter on the Cleardown Module status, specify \&quot;status eq &#39;Active&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.  For example, to filter on the Cleardown Module status, specify \&quot;status eq &#39;Active&#39;\&quot;. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIlistCleardownModulesRequest
          */
         public APIlistCleardownModulesRequest filter(String filter) {
@@ -5719,7 +5719,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing General Ledger Profiles; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing General Ledger Profiles; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. (optional)
          * @return APIlistGeneralLedgerProfilesRequest
          */
         public APIlistGeneralLedgerProfilesRequest page(String page) {
@@ -5739,7 +5739,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.   For example, to filter on the General Ledger profiles type, specify \&quot;type eq &#39;PeriodBoundary&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.  For example, to filter on the General Ledger profiles type, specify \&quot;type eq &#39;PeriodBoundary&#39;\&quot;. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIlistGeneralLedgerProfilesRequest
          */
         public APIlistGeneralLedgerProfilesRequest filter(String filter) {
@@ -6028,7 +6028,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to   returning the latest version if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to  returning the latest version if not specified. (optional)
          * @return APIlistPostingModuleRulesRequest
          */
         public APIlistPostingModuleRulesRequest asAt(OffsetDateTime asAt) {
@@ -6038,7 +6038,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing posting module rules; this   value is returned from the previous call. If a pagination token is provided, the filter   and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing posting module rules; this  value is returned from the previous call. If a pagination token is provided, the filter  and asAt fields must not have changed since the original request. (optional)
          * @return APIlistPostingModuleRulesRequest
          */
         public APIlistPostingModuleRulesRequest page(String page) {
@@ -6058,7 +6058,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.   For example, to filter on the rule id, specify \&quot;ruleId eq &#39;rule 1&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.  For example, to filter on the rule id, specify \&quot;ruleId eq &#39;rule 1&#39;\&quot;. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIlistPostingModuleRulesRequest
          */
         public APIlistPostingModuleRulesRequest filter(String filter) {
@@ -6335,7 +6335,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to list the Posting Module. Defaults to returning the latest version   of each Posting Module if not specified. (optional)
+         * @param asAt The asAt datetime at which to list the Posting Module. Defaults to returning the latest version  of each Posting Module if not specified. (optional)
          * @return APIlistPostingModulesRequest
          */
         public APIlistPostingModulesRequest asAt(OffsetDateTime asAt) {
@@ -6345,7 +6345,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing Posting Modules; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing Posting Modules; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. (optional)
          * @return APIlistPostingModulesRequest
          */
         public APIlistPostingModulesRequest page(String page) {
@@ -6365,7 +6365,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.   For example, to filter on the Posting Module status, specify \&quot;status eq &#39;Active&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.  For example, to filter on the Posting Module status, specify \&quot;status eq &#39;Active&#39;\&quot;. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIlistPostingModulesRequest
          */
         public APIlistPostingModulesRequest filter(String filter) {
@@ -8726,7 +8726,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set requestBody
-         * @param requestBody The properties to be updated or inserted onto the chart of account. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Account/Manager/Id\&quot;. (optional)
+         * @param requestBody The properties to be updated or inserted onto the chart of account. Each property in  the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Account/Manager/Id\&quot;. (optional)
          * @return APIupsertAccountPropertiesRequest
          */
         public APIupsertAccountPropertiesRequest requestBody(Map<String, Property> requestBody) {
@@ -8854,7 +8854,7 @@ public class ChartOfAccountsApi {
 
     /**
      * [EXPERIMENTAL] UpsertAccountProperties: Upsert account properties
-     * Update or insert one or more properties onto a single account. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Account&#39;.     Upserting a property that exists for an account, with a null value, will delete the instance of the property for that group.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+     * Update or insert one or more properties onto a single account. A property will be updated if it already exists and inserted if it does not. All properties must be of the domain &#39;Account&#39;.   Upserting a property that exists for an account, with a null value, will delete the instance of the property for that group.   Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
      * @param scope The scope of the Chart of Accounts to update or insert the properties onto. (required)
      * @param code The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the Chart of Accounts. (required)
      * @param accountCode The unique ID of the account to create or update properties for. (required)
@@ -9107,9 +9107,9 @@ public class ChartOfAccountsApi {
 
     /**
      * [EXPERIMENTAL] UpsertAccounts: Upsert Accounts
-     * Create or update accounts in the Chart of Accounts. An account will be updated  if it already exists and created if it does not.  The maximum number of accounts that this method can upsert per request is 2,000.
+     * Create or update accounts in the Chart of Accounts. An account will be updated if it already exists and created if it does not.  The maximum number of accounts that this method can upsert per request is 2,000.
      * @param scope The scope of the Chart of Accounts. (required)
-     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies   the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies  the Chart of Accounts. (required)
      * @param account A list of accounts to be created or updated. (required)
      * @return APIupsertAccountsRequest
      * @http.response.details
@@ -9236,7 +9236,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Set requestBody
-         * @param requestBody The properties to be updated or inserted onto the chart of account. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;ChartOfAccounts/Manager/Id\&quot;. (optional)
+         * @param requestBody The properties to be updated or inserted onto the chart of account. Each property in  the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;ChartOfAccounts/Manager/Id\&quot;. (optional)
          * @return APIupsertChartOfAccountsPropertiesRequest
          */
         public APIupsertChartOfAccountsPropertiesRequest requestBody(Map<String, Property> requestBody) {
@@ -9364,7 +9364,7 @@ public class ChartOfAccountsApi {
 
     /**
      * [EXPERIMENTAL] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties
-     * Update or insert one or more properties onto a single Chart of Accounts. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;ChartOfAccounts&#39;.     Upserting a property that exists for a Chart of Accounts, with a null value, will delete the instance of the property for that group.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+     * Update or insert one or more properties onto a single Chart of Accounts. A property will be updated if it already exists and inserted if it does not. All properties must be of the domain &#39;ChartOfAccounts&#39;.   Upserting a property that exists for a Chart of Accounts, with a null value, will delete the instance of the property for that group.   Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
      * @param scope The scope of the Chart of Accounts to update or insert the properties onto. (required)
      * @param code The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the Chart of Accounts. (required)
      * @return APIupsertChartOfAccountsPropertiesRequest

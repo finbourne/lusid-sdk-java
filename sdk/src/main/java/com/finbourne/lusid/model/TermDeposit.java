@@ -203,7 +203,7 @@ public class TermDeposit extends LusidInstrument {
   }
 
    /**
-   * The domestic currency of the instrument. This should be the same as the Currency set on the FlowConventions.  You do not need to populate this field for Term Deposits in LUSID as all functionality is driven by the Currency set on the FlowConventions.  LUSID will not store values saved on this field.
+   * The domestic currency of the instrument. This should be the same as the Currency set on the FlowConventions. You do not need to populate this field for Term Deposits in LUSID as all functionality is driven by the Currency set on the FlowConventions. LUSID will not store values saved on this field.
    * @return domCcy
   **/
   @jakarta.annotation.Nullable

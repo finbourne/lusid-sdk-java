@@ -45,7 +45,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Holding context node.  Contains settings that control how LUSID handles holdings within portfolios.
+ * Holding context node. Contains settings that control how LUSID handles holdings within portfolios.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class HoldingContext {

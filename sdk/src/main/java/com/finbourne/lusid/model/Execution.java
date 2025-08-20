@@ -57,7 +57,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * The record of a number of executions against a single Placement (directly analogous to  a partial or full fill against a street order).
+ * The record of a number of executions against a single Placement (directly analogous to a partial or full fill against a street order).
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Execution {

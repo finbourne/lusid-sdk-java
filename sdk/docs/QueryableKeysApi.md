@@ -56,7 +56,7 @@ public class QueryableKeysApiExample {
 
         QueryableKeysApi apiInstance = ApiFactoryBuilder.build(fileName).build(QueryableKeysApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | For user defined DerivedValuation keys.
-        String filter = "filter_example"; // String | Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        String filter = "filter_example"; // String | Expression to filter the result set.  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         try {
             // uncomment the below to set overrides at the request level
             // ResourceListOfQueryableKey result = apiInstance.getAllQueryableKeys(asAt, filter).execute(opts);
@@ -79,7 +79,7 @@ public class QueryableKeysApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| For user defined DerivedValuation keys. | [optional] |
-| **filter** | **String**| Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **filter** | **String**| Expression to filter the result set.  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
 ### Return type
 

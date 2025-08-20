@@ -22,7 +22,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 [EARLY ACCESS] BatchUpsertCorporateActions: Batch upsert corporate actions (instrument transition events) to corporate action source.
 
-Create or update one or more corporate actions in a particular corporate action source. Failures are identified in the body of the response.     If a corporate action is upserted at exactly the same effective datetime as a transaction for the same instrument, the corporate action takes precedence. Depending on the nature of the corporate action, this may mean it affects the transaction.     The maximum number of corporate actions that this method can upsert per request is 10,000.
+Create or update one or more corporate actions in a particular corporate action source. Failures are identified in the body of the response.   If a corporate action is upserted at exactly the same effective datetime as a transaction for the same instrument, the corporate action takes precedence. Depending on the nature of the corporate action, this may mean it affects the transaction.   The maximum number of corporate actions that this method can upsert per request is 10,000.
 
 ### Example
 
@@ -301,7 +301,7 @@ public class CorporateActionSourcesApiExample {
 
 [EARLY ACCESS] DeleteCorporateActions: Delete corporate actions (instrument transition events) from a corporate action source
 
-Delete one or more corporate actions from a particular corporate action source.     The maximum number of corporate actions that this method can delete per request is 1,000.
+Delete one or more corporate actions from a particular corporate action source.   The maximum number of corporate actions that this method can delete per request is 1,000.
 
 ### Example
 
@@ -396,7 +396,7 @@ public class CorporateActionSourcesApiExample {
 
 [EARLY ACCESS] DeleteInstrumentEvents: Delete instrument events from a corporate action source
 
-Delete one or more corporate actions from a particular corporate action source.     The maximum number of instrument events that this method can delete per request is 1,000.
+Delete one or more corporate actions from a particular corporate action source.   The maximum number of instrument events that this method can delete per request is 1,000.
 
 ### Example
 
@@ -539,7 +539,7 @@ public class CorporateActionSourcesApiExample {
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. The AsAt date of the data.
         List<String> sortBy = Arrays.asList(); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
         Integer limit = 56; // Integer | Optional. When paginating, limit the results to this number.
-        String filter = "filter_example"; // String | Optional. Expression to filter the result set.   For example, to filter on the Announcement Date, use \"announcementDate eq '2020-03-06'\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        String filter = "filter_example"; // String | Optional. Expression to filter the result set.  For example, to filter on the Announcement Date, use \"announcementDate eq '2020-03-06'\"  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         try {
             // uncomment the below to set overrides at the request level
             // ResourceListOfCorporateAction result = apiInstance.getCorporateActions(scope, code, fromEffectiveAt, toEffectiveAt, asAt, sortBy, limit, filter).execute(opts);
@@ -568,7 +568,7 @@ public class CorporateActionSourcesApiExample {
 | **asAt** | **OffsetDateTime**| Optional. The AsAt date of the data. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional] |
 | **limit** | **Integer**| Optional. When paginating, limit the results to this number. | [optional] |
-| **filter** | **String**| Optional. Expression to filter the result set.   For example, to filter on the Announcement Date, use \&quot;announcementDate eq &#39;2020-03-06&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **filter** | **String**| Optional. Expression to filter the result set.  For example, to filter on the Announcement Date, use \&quot;announcementDate eq &#39;2020-03-06&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
 ### Return type
 
@@ -640,8 +640,8 @@ public class CorporateActionSourcesApiExample {
         String scope = "scope_example"; // String | The scope of the corporate action source.
         String code = "code_example"; // String | The code of the corporate action source.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. The AsAt date of the data.
-        Integer limit = 1000; // Integer | Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used.
-        String page = "page_example"; // String | Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, asAt, filter and limit must not  be modified.
+        Integer limit = 1000; // Integer | Optional. When paginating, limit the number of returned results to this many. If not specified, a default of 1000 is used.
+        String page = "page_example"; // String | Optional. The pagination token to use to continue listing items from a previous call. Page values are return from list calls, and must be supplied exactly as returned. Additionally, when specifying this value, asAt, filter and limit must not be modified.
         String filter = "filter_example"; // String | Optional. Expression to filter the result set.
         try {
             // uncomment the below to set overrides at the request level
@@ -667,8 +667,8 @@ public class CorporateActionSourcesApiExample {
 | **scope** | **String**| The scope of the corporate action source. | |
 | **code** | **String**| The code of the corporate action source. | |
 | **asAt** | **OffsetDateTime**| Optional. The AsAt date of the data. | [optional] |
-| **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used. | [optional] [default to 1000] |
-| **page** | **String**| Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, asAt, filter and limit must not  be modified. | [optional] |
+| **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. If not specified, a default of 1000 is used. | [optional] [default to 1000] |
+| **page** | **String**| Optional. The pagination token to use to continue listing items from a previous call. Page values are return from list calls, and must be supplied exactly as returned. Additionally, when specifying this value, asAt, filter and limit must not be modified. | [optional] |
 | **filter** | **String**| Optional. Expression to filter the result set. | [optional] |
 
 ### Return type
@@ -740,9 +740,9 @@ public class CorporateActionSourcesApiExample {
         CorporateActionSourcesApi apiInstance = ApiFactoryBuilder.build(fileName).build(CorporateActionSourcesApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. The AsAt date of the data
         List<String> sortBy = Arrays.asList(); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
-        Integer limit = 100; // Integer | Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 100 is used.
-        String filter = "filter_example"; // String | Optional. Expression to filter the result set. For example, to  filter on the Display Name, use \"displayName eq 'string'\"  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
-        String page = "page_example"; // String | Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, the filter, asAt, and limit must not  be modified.
+        Integer limit = 100; // Integer | Optional. When paginating, limit the number of returned results to this many. If not specified, a default of 100 is used.
+        String filter = "filter_example"; // String | Optional. Expression to filter the result set. For example, to filter on the Display Name, use \"displayName eq 'string'\" Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        String page = "page_example"; // String | Optional. The pagination token to use to continue listing items from a previous call. Page values are return from list calls, and must be supplied exactly as returned. Additionally, when specifying this value, the filter, asAt, and limit must not be modified.
         try {
             // uncomment the below to set overrides at the request level
             // PagedResourceListOfCorporateActionSource result = apiInstance.listCorporateActionSources(asAt, sortBy, limit, filter, page).execute(opts);
@@ -766,9 +766,9 @@ public class CorporateActionSourcesApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| Optional. The AsAt date of the data | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional] |
-| **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 100 is used. | [optional] [default to 100] |
-| **filter** | **String**| Optional. Expression to filter the result set. For example, to  filter on the Display Name, use \&quot;displayName eq &#39;string&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
-| **page** | **String**| Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, the filter, asAt, and limit must not  be modified. | [optional] |
+| **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. If not specified, a default of 100 is used. | [optional] [default to 100] |
+| **filter** | **String**| Optional. Expression to filter the result set. For example, to filter on the Display Name, use \&quot;displayName eq &#39;string&#39;\&quot; Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **page** | **String**| Optional. The pagination token to use to continue listing items from a previous call. Page values are return from list calls, and must be supplied exactly as returned. Additionally, when specifying this value, the filter, asAt, and limit must not be modified. | [optional] |
 
 ### Return type
 
@@ -796,7 +796,7 @@ public class CorporateActionSourcesApiExample {
 
 [EARLY ACCESS] UpsertInstrumentEvents: Upsert instrument events to the provided corporate actions source.
 
-Batch upsert instrument events to corporate action sources.     The maximum number of instrument events that this method can upsert per request is 10,000.
+Batch upsert instrument events to corporate action sources.   The maximum number of instrument events that this method can upsert per request is 10,000.
 
 ### Example
 

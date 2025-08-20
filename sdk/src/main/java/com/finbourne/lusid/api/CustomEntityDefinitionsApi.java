@@ -670,7 +670,7 @@ public class CustomEntityDefinitionsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to list the entities. Defaults to returning the latest version   of each portfolio if not specified. (optional)
+         * @param asAt The asAt datetime at which to list the entities. Defaults to returning the latest version  of each portfolio if not specified. (optional)
          * @return APIlistCustomEntityDefinitionsRequest
          */
         public APIlistCustomEntityDefinitionsRequest asAt(OffsetDateTime asAt) {
@@ -690,7 +690,7 @@ public class CustomEntityDefinitionsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIlistCustomEntityDefinitionsRequest
          */
         public APIlistCustomEntityDefinitionsRequest filter(String filter) {
@@ -700,7 +700,7 @@ public class CustomEntityDefinitionsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing entities; this   value is returned from the previous call. If a pagination token is provided, the filter, limit   and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing entities; this  value is returned from the previous call. If a pagination token is provided, the filter, limit  and asAt fields must not have changed since the original request. (optional)
          * @return APIlistCustomEntityDefinitionsRequest
          */
         public APIlistCustomEntityDefinitionsRequest page(String page) {

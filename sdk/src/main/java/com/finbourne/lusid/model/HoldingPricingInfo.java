@@ -49,7 +49,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Enables price quotes to be created from Holding fields as either overrides or fallbacks to the Market Data  resolution process. For example, we may wish to price an instrument at Cost if Market Data resolution fails.  We may also wish to always price Bonds using the LastTradedPrice on the corresponding Holding.
+ * Enables price quotes to be created from Holding fields as either overrides or fallbacks to the Market Data resolution process. For example, we may wish to price an instrument at Cost if Market Data resolution fails. We may also wish to always price Bonds using the LastTradedPrice on the corresponding Holding.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class HoldingPricingInfo {
@@ -100,7 +100,7 @@ public class HoldingPricingInfo {
   }
 
    /**
-   * The default Holding field to be used as an override for instrument price quotes. This cannot be specified  along with a FallbackField or any SpecificFallbacks, since we&#39;ll never attempt Market Data resolution  for price quotes if this field is populated.
+   * The default Holding field to be used as an override for instrument price quotes. This cannot be specified along with a FallbackField or any SpecificFallbacks, since we&#39;ll never attempt Market Data resolution for price quotes if this field is populated.
    * @return overrideField
   **/
   @jakarta.annotation.Nullable

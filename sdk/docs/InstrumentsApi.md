@@ -10,7 +10,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**deleteInstrumentProperties**](InstrumentsApi.md#deleteInstrumentProperties) | **POST** /api/instruments/{identifierType}/{identifier}/properties/$delete | DeleteInstrumentProperties: Delete instrument properties |
 | [**deleteInstruments**](InstrumentsApi.md#deleteInstruments) | **POST** /api/instruments/$delete | DeleteInstruments: Soft or hard delete multiple instruments |
 | [**getAllPossibleFeatures**](InstrumentsApi.md#getAllPossibleFeatures) | **GET** /api/instruments/{instrumentType}/allfeatures | GetAllPossibleFeatures: Provides list of all possible features for instrument type. |
-| [**getExistingInstrumentCapabilities**](InstrumentsApi.md#getExistingInstrumentCapabilities) | **GET** /api/instruments/{identifier}/capabilities | GetExistingInstrumentCapabilities: Retrieve capabilities of an existing instrument identified by LUID. These include instrument features, and if model is provided it also includes supported address keys and economic dependencies.  Given an lusid instrument id provides instrument capabilities, outlining features, and, given the model, the capabilities also include supported addresses as well as economic dependencies. |
+| [**getExistingInstrumentCapabilities**](InstrumentsApi.md#getExistingInstrumentCapabilities) | **GET** /api/instruments/{identifier}/capabilities | GetExistingInstrumentCapabilities: Retrieve capabilities of an existing instrument identified by LUID. These include instrument features, and if model is provided it also includes supported address keys and economic dependencies. Given an lusid instrument id provides instrument capabilities, outlining features, and, given the model, the capabilities also include supported addresses as well as economic dependencies. |
 | [**getExistingInstrumentModels**](InstrumentsApi.md#getExistingInstrumentModels) | **GET** /api/instruments/{identifier}/models | GetExistingInstrumentModels: Retrieve supported pricing models for an existing instrument identified by LUID. |
 | [**getInstrument**](InstrumentsApi.md#getInstrument) | **GET** /api/instruments/{identifierType}/{identifier} | GetInstrument: Get instrument |
 | [**getInstrumentIdentifierTypes**](InstrumentsApi.md#getInstrumentIdentifierTypes) | **GET** /api/instruments/identifierTypes | GetInstrumentIdentifierTypes: Get instrument identifier types |
@@ -34,7 +34,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 BatchUpsertInstrumentProperties: Batch upsert instruments properties
 
-Create or update one or more properties for particular instruments.    Each instrument property is updated if it exists and created if it does not. For any failures, a reason  is provided.    Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime from which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+Create or update one or more properties for particular instruments.  Each instrument property is updated if it exists and created if it does not. For any failures, a reason is provided.  Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime from which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
 
 ### Example
 
@@ -135,7 +135,7 @@ public class InstrumentsApiExample {
 
 CalculateSettlementDate: Get the settlement date for an instrument.
 
-Get the settlement date for a given trade date and instrument. The calculated settlement date will be in UTC.  If a cut label transaction date is provided, the settlement date will be calculated relative to the absolute UTC datetime.
+Get the settlement date for a given trade date and instrument. The calculated settlement date will be in UTC. If a cut label transaction date is provided, the settlement date will be calculated relative to the absolute UTC datetime.
 
 ### Example
 
@@ -180,7 +180,7 @@ public class InstrumentsApiExample {
         String identifier = "identifier_example"; // String | The identifier value.
         String transactionDate = "transactionDate_example"; // String | The transaction date to calculate the settlement date from. This can be a UTC datetime offset or a cut label.
         String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the related instrument and calendars for calculation. Defaults to   returning the latest version if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the related instrument and calendars for calculation. Defaults to  returning the latest version if not specified.
         try {
             // uncomment the below to set overrides at the request level
             // AddBusinessDaysToDateResponse result = apiInstance.calculateSettlementDate(identifierType, identifier, transactionDate, scope, asAt).execute(opts);
@@ -206,7 +206,7 @@ public class InstrumentsApiExample {
 | **identifier** | **String**| The identifier value. | |
 | **transactionDate** | **String**| The transaction date to calculate the settlement date from. This can be a UTC datetime offset or a cut label. | [optional] |
 | **scope** | **String**| The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the related instrument and calendars for calculation. Defaults to   returning the latest version if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the related instrument and calendars for calculation. Defaults to  returning the latest version if not specified. | [optional] |
 
 ### Return type
 
@@ -234,7 +234,7 @@ public class InstrumentsApiExample {
 
 DeleteInstrument: Soft delete a single instrument
 
-Soft delete a particular instrument, as identified by a particular instrument identifier.     Once deleted, an instrument is marked as inactive and can no longer be referenced when creating or updating  transactions or holdings. You can still query existing transactions and holdings related to the  deleted instrument.
+Soft delete a particular instrument, as identified by a particular instrument identifier.   Once deleted, an instrument is marked as inactive and can no longer be referenced when creating or updating transactions or holdings. You can still query existing transactions and holdings related to the deleted instrument.
 
 ### Example
 
@@ -329,7 +329,7 @@ public class InstrumentsApiExample {
 
 DeleteInstrumentProperties: Delete instrument properties
 
-Delete one or more properties from a particular instrument. If the properties are time-variant then an effective datetime from which  to delete properties must be specified. If the properties are perpetual then it is invalid to specify an effective datetime for deletion.
+Delete one or more properties from a particular instrument. If the properties are time-variant then an effective datetime from which to delete properties must be specified. If the properties are perpetual then it is invalid to specify an effective datetime for deletion.
 
 ### Example
 
@@ -373,7 +373,7 @@ public class InstrumentsApiExample {
         String identifierType = "identifierType_example"; // String | The unique identifier type to search, for example 'Figi'.
         String identifier = "identifier_example"; // String | An <i>identifierType</i> value to use to identify the instrument, for example 'BBG000BLNNV0'.
         List<String> requestBody = ["Instrument/scope/market-sector","Instrument/scope/tenor"]; // List<String> | A list of property keys from the 'Instruments' domain whose properties to delete.
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified 'effectiveAt' datetime. If the 'effectiveAt' is not provided or is   before the time-variant property exists then a failure is returned. Do not specify this parameter if any of   the properties to delete are perpetual.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to delete time-variant properties from.  The property must exist at the specified 'effectiveAt' datetime. If the 'effectiveAt' is not provided or is  before the time-variant property exists then a failure is returned. Do not specify this parameter if any of  the properties to delete are perpetual.
         String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
         String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Custom Data Model to use
         String dataModelCode = "dataModelCode_example"; // String | The optional code of a Custom Data Model to use
@@ -401,7 +401,7 @@ public class InstrumentsApiExample {
 | **identifierType** | **String**| The unique identifier type to search, for example &#39;Figi&#39;. | |
 | **identifier** | **String**| An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. | |
 | **requestBody** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Instruments&#39; domain whose properties to delete. | |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is   before the time-variant property exists then a failure is returned. Do not specify this parameter if any of   the properties to delete are perpetual. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to delete time-variant properties from.  The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is  before the time-variant property exists then a failure is returned. Do not specify this parameter if any of  the properties to delete are perpetual. | [optional] |
 | **scope** | **String**| The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
 | **dataModelScope** | **String**| The optional scope of a Custom Data Model to use | [optional] |
 | **dataModelCode** | **String**| The optional code of a Custom Data Model to use | [optional] |
@@ -432,7 +432,7 @@ public class InstrumentsApiExample {
 
 DeleteInstruments: Soft or hard delete multiple instruments
 
-Deletes a number of instruments identified by LusidInstrumentId.     Soft deletion marks the instrument as inactive so it can no longer be referenced when creating or updating transactions or holdings. You can still query existing transactions and holdings related to the inactive instrument.     In addition to the above behaviour, hard deletion: (i) completely removes all external identifiers from the instrument; (ii) marks the instrument as &#39;Deleted&#39;; (iii) prepends the instrument&#39;s name with &#39;DELETED &#39;; (iv) prevents the instrument from being returned in list instruments queries.     Following hard deletion, an instrument may only be retrieved by making a direct get instrument request for the LusidInstrumentId. Instrument deletion cannot be undone. Please note that currency instruments cannot currently be deleted.  The maximum number of instruments that this method can delete per request is 2,000.
+Deletes a number of instruments identified by LusidInstrumentId.   Soft deletion marks the instrument as inactive so it can no longer be referenced when creating or updating transactions or holdings. You can still query existing transactions and holdings related to the inactive instrument.   In addition to the above behaviour, hard deletion: (i) completely removes all external identifiers from the instrument; (ii) marks the instrument as &#39;Deleted&#39;; (iii) prepends the instrument&#39;s name with &#39;DELETED &#39;; (iv) prevents the instrument from being returned in list instruments queries.   Following hard deletion, an instrument may only be retrieved by making a direct get instrument request for the LusidInstrumentId. Instrument deletion cannot be undone. Please note that currency instruments cannot currently be deleted.  The maximum number of instruments that this method can delete per request is 2,000.
 
 ### Example
 
@@ -616,9 +616,9 @@ public class InstrumentsApiExample {
 
 > InstrumentCapabilities getExistingInstrumentCapabilities(identifier, model, effectiveAt, asAt, instrumentScope, recipeScope, recipeCode)
 
-GetExistingInstrumentCapabilities: Retrieve capabilities of an existing instrument identified by LUID. These include instrument features, and if model is provided it also includes supported address keys and economic dependencies.  Given an lusid instrument id provides instrument capabilities, outlining features, and, given the model, the capabilities also include supported addresses as well as economic dependencies.
+GetExistingInstrumentCapabilities: Retrieve capabilities of an existing instrument identified by LUID. These include instrument features, and if model is provided it also includes supported address keys and economic dependencies. Given an lusid instrument id provides instrument capabilities, outlining features, and, given the model, the capabilities also include supported addresses as well as economic dependencies.
 
-Returns instrument capabilities containing useful information about the instrument and the model. This includes  - features corresponding to the instrument e.g. Optionality:American, Other:InflationLinked  - supported addresses (if model provided) e.g. Valuation/Pv, Valuation/DirtyPriceKey, Valuation/Accrued  - economic dependencies (if model provided) e.g. Cash:USD, Fx:GBP.USD, Rates:GBP.GBPOIS
+Returns instrument capabilities containing useful information about the instrument and the model. This includes - features corresponding to the instrument e.g. Optionality:American, Other:InflationLinked - supported addresses (if model provided) e.g. Valuation/Pv, Valuation/DirtyPriceKey, Valuation/Accrued - economic dependencies (if model provided) e.g. Cash:USD, Fx:GBP.USD, Rates:GBP.GBPOIS
 
 ### Example
 
@@ -661,8 +661,8 @@ public class InstrumentsApiExample {
         InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
         String identifier = "identifier_example"; // String | A lusid instrument id identifying the instrument.
         String model = "model_example"; // String | A pricing model for the instrument. Defaults to Unknown if not specified. If not specified the SupportedAddresses and EconomicDependencies are not provided.
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the instrument.   Defaults to the current LUSID system datetime if not specified.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument. Defaults to   returning the latest version if not specified.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the instrument.  Defaults to the current LUSID system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument. Defaults to  returning the latest version if not specified.
         String instrumentScope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
         String recipeScope = "default"; // String | The scope in which the recipe lies. When not supplied the scope is 'default'.
         String recipeCode = "recipeCode_example"; // String | A unique identifier for an entity, used to obtain configuration recipe details. Default configuration recipe is used if not provided.
@@ -689,8 +689,8 @@ public class InstrumentsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **identifier** | **String**| A lusid instrument id identifying the instrument. | |
 | **model** | **String**| A pricing model for the instrument. Defaults to Unknown if not specified. If not specified the SupportedAddresses and EconomicDependencies are not provided. | [optional] |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the instrument.   Defaults to the current LUSID system datetime if not specified. | [optional] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the instrument. Defaults to   returning the latest version if not specified. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the instrument.  Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the instrument. Defaults to  returning the latest version if not specified. | [optional] |
 | **instrumentScope** | **String**| The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
 | **recipeScope** | **String**| The scope in which the recipe lies. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
 | **recipeCode** | **String**| A unique identifier for an entity, used to obtain configuration recipe details. Default configuration recipe is used if not provided. | [optional] |
@@ -763,8 +763,8 @@ public class InstrumentsApiExample {
 
         InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
         String identifier = "identifier_example"; // String | A lusid instrument id identifying the instrument.
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the instrument.   Defaults to the current LUSID system datetime if not specified.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument. Defaults to   returning the latest version if not specified.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the instrument.  Defaults to the current LUSID system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument. Defaults to  returning the latest version if not specified.
         String instrumentScope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
         String recipeScope = "default"; // String | The scope in which the recipe lies. When not supplied the scope is 'default'.
         String recipeCode = "recipeCode_example"; // String | A unique identifier for an entity, used to obtain configuration recipe details. Default configuration recipe is used if not provided.
@@ -790,8 +790,8 @@ public class InstrumentsApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **identifier** | **String**| A lusid instrument id identifying the instrument. | |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the instrument.   Defaults to the current LUSID system datetime if not specified. | [optional] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the instrument. Defaults to   returning the latest version if not specified. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the instrument.  Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the instrument. Defaults to  returning the latest version if not specified. | [optional] |
 | **instrumentScope** | **String**| The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
 | **recipeScope** | **String**| The scope in which the recipe lies. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
 | **recipeCode** | **String**| A unique identifier for an entity, used to obtain configuration recipe details. Default configuration recipe is used if not provided. | [optional] |
@@ -865,11 +865,11 @@ public class InstrumentsApiExample {
         InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
         String identifierType = "identifierType_example"; // String | The unique identifier type to use, for example 'Figi'.
         String identifier = "identifier_example"; // String | An <i>identifierType</i> value to use to identify the instrument, for example 'BBG000BLNNV0'.
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the instrument.   Defaults to the current LUSID system datetime if not specified.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument. Defaults to   returning the latest version if not specified.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument' domain to decorate onto   the instrument, or from any domain that supports relationships to decorate onto related entities.   These must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the instrument.  Defaults to the current LUSID system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument. Defaults to  returning the latest version if not specified.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument' domain to decorate onto  the instrument, or from any domain that supports relationships to decorate onto related entities.  These must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'.
         String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
-        List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto the instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
+        List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities  onto the instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
         try {
             // uncomment the below to set overrides at the request level
             // Instrument result = apiInstance.getInstrument(identifierType, identifier, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds).execute(opts);
@@ -893,11 +893,11 @@ public class InstrumentsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **identifierType** | **String**| The unique identifier type to use, for example &#39;Figi&#39;. | |
 | **identifier** | **String**| An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. | |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the instrument.   Defaults to the current LUSID system datetime if not specified. | [optional] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the instrument. Defaults to   returning the latest version if not specified. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Instrument&#39; domain to decorate onto   the instrument, or from any domain that supports relationships to decorate onto related entities.   These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the instrument.  Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the instrument. Defaults to  returning the latest version if not specified. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Instrument&#39; domain to decorate onto  the instrument, or from any domain that supports relationships to decorate onto related entities.  These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. | [optional] |
 | **scope** | **String**| The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
-| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities   onto the instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
+| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities  onto the instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
 
 ### Return type
 
@@ -925,7 +925,7 @@ public class InstrumentsApiExample {
 
 GetInstrumentIdentifierTypes: Get instrument identifier types
 
-Retrieve a list of all valid instrument identifier types and whether they are unique or not.     An instrument must have a value for at least one unique identifier type (it can have more than one unique type and value).  In addition, a value is automatically generated for a LUSID Instrument ID (LUID) unique type by the system.     An instrument can have values for multiple non-unique identifier types (or it can have zero non-unique types and values).
+Retrieve a list of all valid instrument identifier types and whether they are unique or not.   An instrument must have a value for at least one unique identifier type (it can have more than one unique type and value). In addition, a value is automatically generated for a LUSID Instrument ID (LUID) unique type by the system.   An instrument can have values for multiple non-unique identifier types (or it can have zero non-unique types and values).
 
 ### Example
 
@@ -1157,8 +1157,8 @@ public class InstrumentsApiExample {
         InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
         String identifierType = "identifierType_example"; // String | The unique identifier type to search, for example 'Figi'.
         String identifier = "identifier_example"; // String | An <i>identifierType</i> value to use to identify the instrument, for example 'BBG000BLNNV0'.
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the instrument's properties.   Defaults to the current LUSID system datetime if not specified.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the instrument's properties. Defaults to returning   the latest version of each property if not specified.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the instrument's properties.  Defaults to the current LUSID system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the instrument's properties. Defaults to returning  the latest version of each property if not specified.
         String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
         try {
             // uncomment the below to set overrides at the request level
@@ -1183,8 +1183,8 @@ public class InstrumentsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **identifierType** | **String**| The unique identifier type to search, for example &#39;Figi&#39;. | |
 | **identifier** | **String**| An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. | |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to list the instrument&#39;s properties.   Defaults to the current LUSID system datetime if not specified. | [optional] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the instrument&#39;s properties. Defaults to returning   the latest version of each property if not specified. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list the instrument&#39;s properties.  Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the instrument&#39;s properties. Defaults to returning  the latest version of each property if not specified. | [optional] |
 | **scope** | **String**| The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
 
 ### Return type
@@ -1256,11 +1256,11 @@ public class InstrumentsApiExample {
         InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
         String identifierType = "identifierType_example"; // String | The unique identifier type to search, for example 'Figi'.
         String identifier = "identifier_example"; // String | An <i>identifierType</i> value to use to identify the instrument, for example 'BBG000BLNNV0'.
-        String propertyKey = "propertyKey_example"; // String | The property key of a property from the 'Instrument' domain whose history to retrieve.   This must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'.
-        String identifierEffectiveAt = "identifierEffectiveAt_example"; // String | The effective datetime used to resolve the instrument from the identifier.   Defaults to the current LUSID system datetime if not specified.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument's property history. Defaults to   returning the current datetime if not supplied.
-        String filter = "filter_example"; // String | Expression to filter the results. For more information about filtering,   see https://support.lusid.com/knowledgebase/article/KA-01914.
-        String page = "page_example"; // String | The pagination token to use to continue listing properties; this value is returned from   the previous call. If a pagination token is provided, the <i>filter</i>, <i>effectiveAt</i> and   <i>asAt</i> fields must not have changed since the original request. For more information, see   https://support.lusid.com/knowledgebase/article/KA-01915.
+        String propertyKey = "propertyKey_example"; // String | The property key of a property from the 'Instrument' domain whose history to retrieve.  This must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'.
+        String identifierEffectiveAt = "identifierEffectiveAt_example"; // String | The effective datetime used to resolve the instrument from the identifier.  Defaults to the current LUSID system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument's property history. Defaults to  returning the current datetime if not supplied.
+        String filter = "filter_example"; // String | Expression to filter the results. For more information about filtering,  see https://support.lusid.com/knowledgebase/article/KA-01914.
+        String page = "page_example"; // String | The pagination token to use to continue listing properties; this value is returned from  the previous call. If a pagination token is provided, the <i>filter</i>, <i>effectiveAt</i> and  <i>asAt</i> fields must not have changed since the original request. For more information, see  https://support.lusid.com/knowledgebase/article/KA-01915.
         Integer limit = 56; // Integer | When paginating, limit the results to this number.
         String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
         try {
@@ -1286,11 +1286,11 @@ public class InstrumentsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **identifierType** | **String**| The unique identifier type to search, for example &#39;Figi&#39;. | |
 | **identifier** | **String**| An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. | |
-| **propertyKey** | **String**| The property key of a property from the &#39;Instrument&#39; domain whose history to retrieve.   This must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. | |
-| **identifierEffectiveAt** | **String**| The effective datetime used to resolve the instrument from the identifier.   Defaults to the current LUSID system datetime if not specified. | [optional] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the instrument&#39;s property history. Defaults to   returning the current datetime if not supplied. | [optional] |
-| **filter** | **String**| Expression to filter the results. For more information about filtering,   see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing properties; this value is returned from   the previous call. If a pagination token is provided, the &lt;i&gt;filter&lt;/i&gt;, &lt;i&gt;effectiveAt&lt;/i&gt; and   &lt;i&gt;asAt&lt;/i&gt; fields must not have changed since the original request. For more information, see   https://support.lusid.com/knowledgebase/article/KA-01915. | [optional] |
+| **propertyKey** | **String**| The property key of a property from the &#39;Instrument&#39; domain whose history to retrieve.  This must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. | |
+| **identifierEffectiveAt** | **String**| The effective datetime used to resolve the instrument from the identifier.  Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the instrument&#39;s property history. Defaults to  returning the current datetime if not supplied. | [optional] |
+| **filter** | **String**| Expression to filter the results. For more information about filtering,  see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing properties; this value is returned from  the previous call. If a pagination token is provided, the &lt;i&gt;filter&lt;/i&gt;, &lt;i&gt;effectiveAt&lt;/i&gt; and  &lt;i&gt;asAt&lt;/i&gt; fields must not have changed since the original request. For more information, see  https://support.lusid.com/knowledgebase/article/KA-01915. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. | [optional] |
 | **scope** | **String**| The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
 
@@ -1366,7 +1366,7 @@ public class InstrumentsApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified.
         String filter = "filter_example"; // String | Expression to filter relationships. Users should provide null or empty string for this field until further notice.
-        List<String> identifierTypes = Arrays.asList(); // List<String> | Identifier types (as property keys) used for referencing Persons or Legal Entities.   These can be specified from the 'Person' or 'LegalEntity' domains and have the format {domain}/{scope}/{code}, for example   'Person/CompanyDetails/Role'. An Empty array may be used to return all related Entities.
+        List<String> identifierTypes = Arrays.asList(); // List<String> | Identifier types (as property keys) used for referencing Persons or Legal Entities.  These can be specified from the 'Person' or 'LegalEntity' domains and have the format {domain}/{scope}/{code}, for example  'Person/CompanyDetails/Role'. An Empty array may be used to return all related Entities.
         String scope = "default"; // String | The entity scope in which the instrument lies. When not supplied the scope is 'default'.
         try {
             // uncomment the below to set overrides at the request level
@@ -1394,7 +1394,7 @@ public class InstrumentsApiExample {
 | **effectiveAt** | **String**| The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. | [optional] |
 | **filter** | **String**| Expression to filter relationships. Users should provide null or empty string for this field until further notice. | [optional] |
-| **identifierTypes** | [**List&lt;String&gt;**](String.md)| Identifier types (as property keys) used for referencing Persons or Legal Entities.   These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example   &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. | [optional] |
+| **identifierTypes** | [**List&lt;String&gt;**](String.md)| Identifier types (as property keys) used for referencing Persons or Legal Entities.  These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example  &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. | [optional] |
 | **scope** | **String**| The entity scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
 
 ### Return type
@@ -1423,7 +1423,7 @@ public class InstrumentsApiExample {
 
 GetInstruments: Get instruments
 
-Retrieve the definition of one or more instruments, as identified by a collection of unique identifiers.     Note that to retrieve all the instruments in the instrument master, use the List instruments endpoint instead.
+Retrieve the definition of one or more instruments, as identified by a collection of unique identifiers.   Note that to retrieve all the instruments in the instrument master, use the List instruments endpoint instead.
 
 ### Example
 
@@ -1466,11 +1466,11 @@ public class InstrumentsApiExample {
         InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
         String identifierType = "identifierType_example"; // String | The unique identifier type to use, for example 'Figi'.
         List<String> requestBody = ["instrument-identifier-1","instrument-identifier-2"]; // List<String> | A list of one or more <i>identifierType</i> values to use to identify instruments.
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the instrument definitions.   Defaults to the current LUSID system datetime if not specified.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument definitions.   Defaults to returning the latest version of each instrument definition if not specified.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument' domain to decorate onto   each instrument, or from any domain that supports relationships to decorate onto related entities.   These must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the instrument definitions.  Defaults to the current LUSID system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument definitions.  Defaults to returning the latest version of each instrument definition if not specified.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument' domain to decorate onto  each instrument, or from any domain that supports relationships to decorate onto related entities.  These must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'.
         String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
-        List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
+        List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities  onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
         try {
             // uncomment the below to set overrides at the request level
             // GetInstrumentsResponse result = apiInstance.getInstruments(identifierType, requestBody, effectiveAt, asAt, propertyKeys, scope, relationshipDefinitionIds).execute(opts);
@@ -1494,11 +1494,11 @@ public class InstrumentsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **identifierType** | **String**| The unique identifier type to use, for example &#39;Figi&#39;. | |
 | **requestBody** | [**List&lt;String&gt;**](String.md)| A list of one or more &lt;i&gt;identifierType&lt;/i&gt; values to use to identify instruments. | |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the instrument definitions.   Defaults to the current LUSID system datetime if not specified. | [optional] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the instrument definitions.   Defaults to returning the latest version of each instrument definition if not specified. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Instrument&#39; domain to decorate onto   each instrument, or from any domain that supports relationships to decorate onto related entities.   These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the instrument definitions.  Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the instrument definitions.  Defaults to returning the latest version of each instrument definition if not specified. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Instrument&#39; domain to decorate onto  each instrument, or from any domain that supports relationships to decorate onto related entities.  These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. | [optional] |
 | **scope** | **String**| The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
-| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities   onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
+| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities  onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
 
 ### Return type
 
@@ -1569,8 +1569,8 @@ public class InstrumentsApiExample {
         InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
         String identifierType = "identifierType_example"; // String | The unique identifier type to search, for example 'Figi'.
         String identifier = "identifier_example"; // String | An <i>identifierType</i> value to use to identify the instrument, for example 'BBG000BLNNV0'.
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the instrument's properties.   Defaults to the current LUSID system datetime if not specified.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the instrument's properties. Defaults to returning   the latest version of each property if not specified.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the instrument's properties.  Defaults to the current LUSID system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the instrument's properties. Defaults to returning  the latest version of each property if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing commands; this value is returned from the previous call.
         Integer limit = 56; // Integer | When paginating, limit the results per page to this number.
         String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
@@ -1597,8 +1597,8 @@ public class InstrumentsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **identifierType** | **String**| The unique identifier type to search, for example &#39;Figi&#39;. | |
 | **identifier** | **String**| An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. | |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to list the instrument&#39;s properties.   Defaults to the current LUSID system datetime if not specified. | [optional] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the instrument&#39;s properties. Defaults to returning   the latest version of each property if not specified. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list the instrument&#39;s properties.  Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the instrument&#39;s properties. Defaults to returning  the latest version of each property if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing commands; this value is returned from the previous call. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results per page to this number. | [optional] |
 | **scope** | **String**| The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
@@ -1629,7 +1629,7 @@ public class InstrumentsApiExample {
 
 ListInstruments: List instruments
 
-List all the instruments in the instrument master.     To retrieve a particular set of instruments instead, use the Get instruments endpoint.  The maximum number of instruments that this method can list per request is 2,000.
+List all the instruments in the instrument master.   To retrieve a particular set of instruments instead, use the Get instruments endpoint.  The maximum number of instruments that this method can list per request is 2,000.
 
 ### Example
 
@@ -1670,15 +1670,15 @@ public class InstrumentsApiExample {
         // InstrumentsApi apiInstance = apiFactory.build(InstrumentsApi.class);
 
         InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list instruments. Defaults to returning the latest   version of each instrument if not specified.
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list instruments.   Defaults to the current LUSID system datetime if not specified.
-        String page = "page_example"; // String | The pagination token to use to continue listing instruments; this value is returned from   the previous call. If a pagination token is provided, the <i>sortBy</i>, <i>filter</i>, <i>effectiveAt</i> and   <i>asAt</i> fields must not have changed since the original request.   For more information, see https://support.lusid.com/knowledgebase/article/KA-01915.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list instruments. Defaults to returning the latest  version of each instrument if not specified.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list instruments.  Defaults to the current LUSID system datetime if not specified.
+        String page = "page_example"; // String | The pagination token to use to continue listing instruments; this value is returned from  the previous call. If a pagination token is provided, the <i>sortBy</i>, <i>filter</i>, <i>effectiveAt</i> and  <i>asAt</i> fields must not have changed since the original request.  For more information, see https://support.lusid.com/knowledgebase/article/KA-01915.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\".
         Integer limit = 56; // Integer | When paginating, limit the results to this number.
-        String filter = "State eq 'Active'"; // String | Expression to filter the result set. Defaults to filtering out inactive instruments   (that is, those that have been deleted). For more information about filtering results,   see https://support.lusid.com/knowledgebase/article/KA-01914.
-        List<String> instrumentPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument' domain to decorate onto   instruments, or from any domain that supports relationships to decorate onto related entities.   These must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'.
+        String filter = "State eq 'Active'"; // String | Expression to filter the result set. Defaults to filtering out inactive instruments  (that is, those that have been deleted). For more information about filtering results,  see https://support.lusid.com/knowledgebase/article/KA-01914.
+        List<String> instrumentPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument' domain to decorate onto  instruments, or from any domain that supports relationships to decorate onto related entities.  These must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'.
         String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
-        List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
+        List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities  onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
         String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Custom Data Model to use.
         String dataModelCode = "dataModelCode_example"; // String | The optional code of a Custom Data Model to use.
         String membershipType = "membershipType_example"; // String | The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member.
@@ -1703,15 +1703,15 @@ public class InstrumentsApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to list instruments. Defaults to returning the latest   version of each instrument if not specified. | [optional] |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to list instruments.   Defaults to the current LUSID system datetime if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing instruments; this value is returned from   the previous call. If a pagination token is provided, the &lt;i&gt;sortBy&lt;/i&gt;, &lt;i&gt;filter&lt;/i&gt;, &lt;i&gt;effectiveAt&lt;/i&gt; and   &lt;i&gt;asAt&lt;/i&gt; fields must not have changed since the original request.   For more information, see https://support.lusid.com/knowledgebase/article/KA-01915. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list instruments. Defaults to returning the latest  version of each instrument if not specified. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list instruments.  Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing instruments; this value is returned from  the previous call. If a pagination token is provided, the &lt;i&gt;sortBy&lt;/i&gt;, &lt;i&gt;filter&lt;/i&gt;, &lt;i&gt;effectiveAt&lt;/i&gt; and  &lt;i&gt;asAt&lt;/i&gt; fields must not have changed since the original request.  For more information, see https://support.lusid.com/knowledgebase/article/KA-01915. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. | [optional] |
-| **filter** | **String**| Expression to filter the result set. Defaults to filtering out inactive instruments   (that is, those that have been deleted). For more information about filtering results,   see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] [default to State eq &#39;Active&#39;] |
-| **instrumentPropertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Instrument&#39; domain to decorate onto   instruments, or from any domain that supports relationships to decorate onto related entities.   These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. | [optional] |
+| **filter** | **String**| Expression to filter the result set. Defaults to filtering out inactive instruments  (that is, those that have been deleted). For more information about filtering results,  see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] [default to State eq &#39;Active&#39;] |
+| **instrumentPropertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Instrument&#39; domain to decorate onto  instruments, or from any domain that supports relationships to decorate onto related entities.  These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. | [optional] |
 | **scope** | **String**| The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
-| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities   onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
+| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities  onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
 | **dataModelScope** | **String**| The optional scope of a Custom Data Model to use. | [optional] |
 | **dataModelCode** | **String**| The optional code of a Custom Data Model to use. | [optional] |
 | **membershipType** | **String**| The membership types of the specified Custom Data Model to return. Allowable values are Member, Candidate and All. Defaults to Member. | [optional] |
@@ -1742,7 +1742,7 @@ public class InstrumentsApiExample {
 
 QueryInstrumentCapabilities: Query capabilities of a particular instrument in advance of creating it. These include instrument features, and if model is provided it also includes supported address keys and economic dependencies.
 
-Returns instrument capabilities containing useful information about the instrument and the model. This includes  - features corresponding to the instrument e.g. Optionality:American, Other:InflationLinked  - supported addresses (if model provided) e.g. Valuation/Pv, Valuation/DirtyPriceKey, Valuation/Accrued  - economic dependencies (if model provided) e.g. Cash:USD, Fx:GBP.USD, Rates:GBP.GBPOIS
+Returns instrument capabilities containing useful information about the instrument and the model. This includes - features corresponding to the instrument e.g. Optionality:American, Other:InflationLinked - supported addresses (if model provided) e.g. Valuation/Pv, Valuation/DirtyPriceKey, Valuation/Accrued - economic dependencies (if model provided) e.g. Cash:USD, Fx:GBP.USD, Rates:GBP.GBPOIS
 
 ### Example
 
@@ -1835,7 +1835,7 @@ public class InstrumentsApiExample {
 
 UpdateInstrumentIdentifier: Update instrument identifier
 
-Create, update or delete a particular instrument identifier for an instrument.     To delete the identifier, leave the value unspecified in the request. If not being deleted, the  identifier is updated if it exists and created if it does not.
+Create, update or delete a particular instrument identifier for an instrument.   To delete the identifier, leave the value unspecified in the request. If not being deleted, the identifier is updated if it exists and created if it does not.
 
 ### Example
 
@@ -1878,7 +1878,7 @@ public class InstrumentsApiExample {
         InstrumentsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentsApi.class);
         String identifierType = "identifierType_example"; // String | The unique identifier type to search, for example 'Figi'.
         String identifier = "identifier_example"; // String | An <i>identifierType</i> value to use to identify the instrument, for example 'BBG000BLNNV0'.
-        UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest = new UpdateInstrumentIdentifierRequest(); // UpdateInstrumentIdentifierRequest | The identifier to update or delete. This need not be the same value as the   'identifier' parameter used to retrieve the instrument.
+        UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest = new UpdateInstrumentIdentifierRequest(); // UpdateInstrumentIdentifierRequest | The identifier to update or delete. This need not be the same value as the  'identifier' parameter used to retrieve the instrument.
         String scope = "default"; // String | The scope in which the instrument lies. When not supplied the scope is 'default'.
         String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Custom Data Model to use
         String dataModelCode = "dataModelCode_example"; // String | The optional code of a Custom Data Model to use
@@ -1905,7 +1905,7 @@ public class InstrumentsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **identifierType** | **String**| The unique identifier type to search, for example &#39;Figi&#39;. | |
 | **identifier** | **String**| An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. | |
-| **updateInstrumentIdentifierRequest** | [**UpdateInstrumentIdentifierRequest**](UpdateInstrumentIdentifierRequest.md)| The identifier to update or delete. This need not be the same value as the   &#39;identifier&#39; parameter used to retrieve the instrument. | |
+| **updateInstrumentIdentifierRequest** | [**UpdateInstrumentIdentifierRequest**](UpdateInstrumentIdentifierRequest.md)| The identifier to update or delete. This need not be the same value as the  &#39;identifier&#39; parameter used to retrieve the instrument. | |
 | **scope** | **String**| The scope in which the instrument lies. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
 | **dataModelScope** | **String**| The optional scope of a Custom Data Model to use | [optional] |
 | **dataModelCode** | **String**| The optional code of a Custom Data Model to use | [optional] |
@@ -1936,7 +1936,7 @@ public class InstrumentsApiExample {
 
 UpsertInstruments: Upsert instruments
 
-Create or update one or more instruments in the instrument master. An instrument is updated  if it already exists and created if it does not.     In the request, each instrument definition should be keyed by a unique correlation ID. This ID is ephemeral  and not stored by LUSID. It serves only to easily identify each instrument in the response.     Note that an instrument must have at least one unique identifier, which is a combination of a type  (such as &#39;Figi&#39;) and a value (such as &#39;BBG000BS1N49&#39;). In addition, a random value is automatically  generated for a LUSID Instrument ID (LUID) unique type by the system. For more information, see  https://support.lusid.com/knowledgebase/article/KA-01862.     The response returns both the collection of successfully created or updated instruments, as well as those  that failed. For each failure, a reason is provided. It is important to check the failed set for  unsuccessful results.  The maximum number of instruments that this method can upsert per request is 2,000.
+Create or update one or more instruments in the instrument master. An instrument is updated if it already exists and created if it does not.   In the request, each instrument definition should be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID. It serves only to easily identify each instrument in the response.   Note that an instrument must have at least one unique identifier, which is a combination of a type (such as &#39;Figi&#39;) and a value (such as &#39;BBG000BS1N49&#39;). In addition, a random value is automatically generated for a LUSID Instrument ID (LUID) unique type by the system. For more information, see https://support.lusid.com/knowledgebase/article/KA-01862.   The response returns both the collection of successfully created or updated instruments, as well as those that failed. For each failure, a reason is provided. It is important to check the failed set for unsuccessful results.  The maximum number of instruments that this method can upsert per request is 2,000.
 
 ### Example
 
@@ -2033,7 +2033,7 @@ public class InstrumentsApiExample {
 
 UpsertInstrumentsProperties: Upsert instruments properties
 
-Create or update one or more properties for particular instruments.     Each instrument property is updated if it exists and created if it does not. For any failures, a reason  is provided.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime from which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+Create or update one or more properties for particular instruments.   Each instrument property is updated if it exists and created if it does not. For any failures, a reason is provided.   Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime from which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
 
 ### Example
 

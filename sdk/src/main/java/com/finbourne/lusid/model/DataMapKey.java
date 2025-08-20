@@ -68,7 +68,7 @@ public class DataMapKey {
   }
 
    /**
-   * The version of the mappings. It is possible that a client will wish to update mappings over time. The version identifies the MAJOR.MINOR.PATCH version  of the mappings that the client assigns it.
+   * The version of the mappings. It is possible that a client will wish to update mappings over time. The version identifies the MAJOR.MINOR.PATCH version of the mappings that the client assigns it.
    * @return version
   **/
   @jakarta.annotation.Nullable

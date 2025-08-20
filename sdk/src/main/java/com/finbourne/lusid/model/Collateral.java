@@ -100,7 +100,7 @@ public class Collateral {
   }
 
    /**
-   * Does the buyer of the FlexibleRepo receive any dividend or cash payments as the result of a corporate action  on any of the collateral instruments, or are these amounts paid to the seller.  Referred to as \&quot;manufactured payments\&quot; in the UK, and valid only under a repo with GMRA in Europe
+   * Does the buyer of the FlexibleRepo receive any dividend or cash payments as the result of a corporate action on any of the collateral instruments, or are these amounts paid to the seller. Referred to as \&quot;manufactured payments\&quot; in the UK, and valid only under a repo with GMRA in Europe
    * @return buyerReceivesCorporateActionPayments
   **/
   @jakarta.annotation.Nonnull
@@ -150,7 +150,7 @@ public class Collateral {
   }
 
    /**
-   * Total value of the collateral before any margin or haircut applied.  Can be provided instead of PurchasePrice, so that PurchasePrice can be inferred from the CollateralValue and one of  Haircut or Margin.
+   * Total value of the collateral before any margin or haircut applied. Can be provided instead of PurchasePrice, so that PurchasePrice can be inferred from the CollateralValue and one of Haircut or Margin.
    * @return collateralValue
   **/
   @jakarta.annotation.Nullable

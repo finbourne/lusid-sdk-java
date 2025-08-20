@@ -50,7 +50,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Request to translate financial entities with a specified script stored in LUSID,  specified in the request by its id. The output of the translation is validated against a dialect stored in LUSID,  again specified in the request by its id.
+ * Request to translate financial entities with a specified script stored in LUSID, specified in the request by its id. The output of the translation is validated against a dialect stored in LUSID, again specified in the request by its id.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class TranslateEntitiesRequest {

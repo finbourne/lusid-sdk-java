@@ -303,7 +303,7 @@ public class PlacementsApi {
 
     /**
      * [EARLY ACCESS] DeletePlacement: Delete placement
-     * Delete an placement. Deletion will be valid from the placement&#39;s creation datetime.  This means that the placement will no longer exist at any effective datetime from the asAt datetime of deletion.
+     * Delete an placement. Deletion will be valid from the placement&#39;s creation datetime. This means that the placement will no longer exist at any effective datetime from the asAt datetime of deletion.
      * @param scope The placement scope. (required)
      * @param code The placement&#39;s code. This, together with the scope uniquely identifies the placement to delete. (required)
      * @return APIdeletePlacementRequest
@@ -446,7 +446,7 @@ public class PlacementsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;Placement\&quot; domain to decorate onto the placement. If none are given, all applied properties are returned.   These take the format {domain}/{scope}/{code} e.g. \&quot;Placement/system/Name\&quot;. Property keys from the instrument domain can also be decorated   onto the placement, e.g. \&quot;Instrument/default/Isin\&quot;. These are only decorated if requested. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;Placement\&quot; domain to decorate onto the placement. If none are given, all applied properties are returned.  These take the format {domain}/{scope}/{code} e.g. \&quot;Placement/system/Name\&quot;. Property keys from the instrument domain can also be decorated  onto the placement, e.g. \&quot;Instrument/default/Isin\&quot;. These are only decorated if requested. (optional)
          * @return APIgetPlacementRequest
          */
         public APIgetPlacementRequest propertyKeys(List<String> propertyKeys) {
@@ -721,7 +721,7 @@ public class PlacementsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing placements from a previous call to list placements.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing placements from a previous call to list placements.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields  must not have changed since the original request. (optional)
          * @return APIlistPlacementsRequest
          */
         public APIlistPlacementsRequest page(String page) {
@@ -751,7 +751,7 @@ public class PlacementsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIlistPlacementsRequest
          */
         public APIlistPlacementsRequest filter(String filter) {
@@ -761,7 +761,7 @@ public class PlacementsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;Placement\&quot; domain to decorate onto each placement.   These take the format {domain}/{scope}/{code} e.g. \&quot;Placement/system/Name\&quot;.   All properties, except derived properties, are returned by default, without specifying here. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;Placement\&quot; domain to decorate onto each placement.  These take the format {domain}/{scope}/{code} e.g. \&quot;Placement/system/Name\&quot;.  All properties, except derived properties, are returned by default, without specifying here. (optional)
          * @return APIlistPlacementsRequest
          */
         public APIlistPlacementsRequest propertyKeys(List<String> propertyKeys) {

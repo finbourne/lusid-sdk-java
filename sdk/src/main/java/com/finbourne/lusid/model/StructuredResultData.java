@@ -47,7 +47,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * An item of structured result data that is to be inserted into Lusid. This will typically be a Json or Xml document that  contains a set of result data appropriate to a specific entity such as an instrument or potentially an index.
+ * An item of structured result data that is to be inserted into Lusid. This will typically be a Json or Xml document that contains a set of result data appropriate to a specific entity such as an instrument or potentially an index.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class StructuredResultData {

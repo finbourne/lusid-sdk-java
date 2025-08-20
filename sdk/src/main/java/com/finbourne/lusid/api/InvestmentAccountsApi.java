@@ -226,7 +226,7 @@ public class InvestmentAccountsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys or identifier types (as property keys) from the \&quot;InvestmentAccount\&quot; domain   to include for found investment account, or from any domain that supports relationships to decorate onto related entities.   These take the format {domain}/{scope}/{code} e.g. \&quot;InvestmentAccount/ContactDetails/Address\&quot;. (optional)
+         * @param propertyKeys A list of property keys or identifier types (as property keys) from the \&quot;InvestmentAccount\&quot; domain  to include for found investment account, or from any domain that supports relationships to decorate onto related entities.  These take the format {domain}/{scope}/{code} e.g. \&quot;InvestmentAccount/ContactDetails/Address\&quot;. (optional)
          * @return APIgetInvestmentAccountRequest
          */
         public APIgetInvestmentAccountRequest propertyKeys(List<String> propertyKeys) {
@@ -256,7 +256,7 @@ public class InvestmentAccountsApi {
 
         /**
          * Set relationshipDefinitionIds
-         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities   onto the investment account in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
+         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities  onto the investment account in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
          * @return APIgetInvestmentAccountRequest
          */
         public APIgetInvestmentAccountRequest relationshipDefinitionIds(List<String> relationshipDefinitionIds) {
@@ -533,7 +533,7 @@ public class InvestmentAccountsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to list the investment accounts. Defaults to the current LUSID   system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to list the investment accounts. Defaults to the current LUSID  system datetime if not specified. (optional)
          * @return APIlistAllInvestmentAccountsRequest
          */
         public APIlistAllInvestmentAccountsRequest effectiveAt(String effectiveAt) {
@@ -543,7 +543,7 @@ public class InvestmentAccountsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to list the investment accounts. Defaults to return the latest version   of each investment accounts if not specified. (optional)
+         * @param asAt The asAt datetime at which to list the investment accounts. Defaults to return the latest version  of each investment accounts if not specified. (optional)
          * @return APIlistAllInvestmentAccountsRequest
          */
         public APIlistAllInvestmentAccountsRequest asAt(OffsetDateTime asAt) {
@@ -553,7 +553,7 @@ public class InvestmentAccountsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing investment accounts from a previous call to list investment accounts. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy  and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing investment accounts from a previous call to list investment accounts. This value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy and asAt fields must not have changed since the original request. (optional)
          * @return APIlistAllInvestmentAccountsRequest
          */
         public APIlistAllInvestmentAccountsRequest page(String page) {
@@ -573,7 +573,7 @@ public class InvestmentAccountsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.    Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIlistAllInvestmentAccountsRequest
          */
         public APIlistAllInvestmentAccountsRequest filter(String filter) {
@@ -593,7 +593,7 @@ public class InvestmentAccountsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys or identifier types (as property keys) from the \&quot;InvestmentAccount\&quot; domain   to include for each investment account, or from any domain that supports relationships to decorate onto related entities.   These take the format {domain}/{scope}/{code} e.g. \&quot;InvestmentAccount/ContactDetails/Address\&quot;. (optional)
+         * @param propertyKeys A list of property keys or identifier types (as property keys) from the \&quot;InvestmentAccount\&quot; domain  to include for each investment account, or from any domain that supports relationships to decorate onto related entities.  These take the format {domain}/{scope}/{code} e.g. \&quot;InvestmentAccount/ContactDetails/Address\&quot;. (optional)
          * @return APIlistAllInvestmentAccountsRequest
          */
         public APIlistAllInvestmentAccountsRequest propertyKeys(List<String> propertyKeys) {
@@ -603,7 +603,7 @@ public class InvestmentAccountsApi {
 
         /**
          * Set relationshipDefinitionIds
-         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities   onto each investment account in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
+         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities  onto each investment account in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
          * @return APIlistAllInvestmentAccountsRequest
          */
         public APIlistAllInvestmentAccountsRequest relationshipDefinitionIds(List<String> relationshipDefinitionIds) {

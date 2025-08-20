@@ -48,7 +48,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Schedule for notional changes based on the change in FX rate.  Used in the representation of a resettable cross currency interest rate swap.
+ * Schedule for notional changes based on the change in FX rate. Used in the representation of a resettable cross currency interest rate swap.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FxLinkedNotionalSchedule extends Schedule {

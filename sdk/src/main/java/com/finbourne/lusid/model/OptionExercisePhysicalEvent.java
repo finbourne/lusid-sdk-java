@@ -162,7 +162,7 @@ public class OptionExercisePhysicalEvent extends InstrumentEvent {
   }
 
    /**
-   * The optionality type of the underlying option e.g. American, European.    Supported string (enumeration) values are: [European, Bermudan, American].
+   * The optionality type of the underlying option e.g. American, European.  Supported string (enumeration) values are: [European, Bermudan, American].
    * @return exerciseType
   **/
   @jakarta.annotation.Nonnull
@@ -204,7 +204,7 @@ public class OptionExercisePhysicalEvent extends InstrumentEvent {
   }
 
    /**
-   * The moneyness of the option e.g. InTheMoney, OutOfTheMoney.    Supported string (enumeration) values are: [InTheMoney, OutOfTheMoney, AtTheMoney].
+   * The moneyness of the option e.g. InTheMoney, OutOfTheMoney.  Supported string (enumeration) values are: [InTheMoney, OutOfTheMoney, AtTheMoney].
    * @return moneyness
   **/
   @jakarta.annotation.Nullable
@@ -275,7 +275,7 @@ public class OptionExercisePhysicalEvent extends InstrumentEvent {
   }
 
    /**
-   * Type of optionality that is present e.g. call, put.    Supported string (enumeration) values are: [Call, Put].
+   * Type of optionality that is present e.g. call, put.  Supported string (enumeration) values are: [Call, Put].
    * @return optionType
   **/
   @jakarta.annotation.Nonnull

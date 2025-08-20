@@ -207,7 +207,7 @@ public class AddressDefinition {
   }
 
    /**
-   * What is the status of the address path. If it is not Production then it might be removed at some point in the future.  See the removal date for the likely timing of that if any.
+   * What is the status of the address path. If it is not Production then it might be removed at some point in the future. See the removal date for the likely timing of that if any.
    * @return lifeCycleStatus
   **/
   @jakarta.annotation.Nullable
@@ -228,7 +228,7 @@ public class AddressDefinition {
   }
 
    /**
-   * If the life-cycle status of the address is Deprecated then this is the date at which support of the address will be suspended.  After that date it will be removed at the earliest possible point subject to any specific contractual support and development constraints.
+   * If the life-cycle status of the address is Deprecated then this is the date at which support of the address will be suspended. After that date it will be removed at the earliest possible point subject to any specific contractual support and development constraints.
    * @return removalDate
   **/
   @jakarta.annotation.Nullable

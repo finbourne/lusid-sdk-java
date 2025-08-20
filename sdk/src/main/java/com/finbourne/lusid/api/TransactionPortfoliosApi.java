@@ -412,11 +412,11 @@ public class TransactionPortfoliosApi {
 
     /**
      * AdjustHoldings: Adjust holdings
-     * Adjust one or more holdings of the specified transaction portfolio to the provided targets. LUSID will  automatically construct adjustment transactions to ensure that the holdings which have been adjusted are  always set to the provided targets for the specified effective datetime. Read more about the difference between  adjusting and setting holdings here https://support.lusid.com/docs/how-do-i-manually-adjust-or-set-holdings.
+     * Adjust one or more holdings of the specified transaction portfolio to the provided targets. LUSID will automatically construct adjustment transactions to ensure that the holdings which have been adjusted are always set to the provided targets for the specified effective datetime. Read more about the difference between adjusting and setting holdings here https://support.lusid.com/docs/how-do-i-manually-adjust-or-set-holdings.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies  the transaction portfolio. (required)
      * @param effectiveAt The effective datetime or cut label at which the holdings should be set to the provided targets. (required)
-     * @param adjustHoldingRequest The selected set of holdings to adjust to the provided targets for the   transaction portfolio. (required)
+     * @param adjustHoldingRequest The selected set of holdings to adjust to the provided targets for the  transaction portfolio. (required)
      * @return APIadjustHoldingsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -692,11 +692,11 @@ public class TransactionPortfoliosApi {
 
     /**
      * BatchAdjustHoldings: Batch adjust holdings
-     * Adjust one or more holdings of the specified transaction portfolio to the provided targets. LUSID will  automatically construct adjustment transactions to ensure that the holdings which have been adjusted are  always set to the provided targets for the specified effective datetime in each request.     Each request must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each adjustment in the response.    Note: If using partial failure modes, then it is important to check the response body for failures as any failures will still return a 200 status code
+     * Adjust one or more holdings of the specified transaction portfolio to the provided targets. LUSID will automatically construct adjustment transactions to ensure that the holdings which have been adjusted are always set to the provided targets for the specified effective datetime in each request.   Each request must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID. It serves only as a way to easily identify each adjustment in the response.  Note: If using partial failure modes, then it is important to check the response body for failures as any failures will still return a 200 status code
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies  the transaction portfolio. (required)
      * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial (required)
-     * @param requestBody The selected set of holdings to adjust to the provided targets for the   transaction portfolio. (required)
+     * @param requestBody The selected set of holdings to adjust to the provided targets for the  transaction portfolio. (required)
      * @return APIbatchAdjustHoldingsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -946,9 +946,9 @@ public class TransactionPortfoliosApi {
 
     /**
      * BatchCreateTradeTickets: Batch Create Trade Tickets
-     * Batch create trade tickets. Each ticket is broadly equivalent to a singular call to upsert an instrument, then a counterparty and finally  a transaction that makes use of the two.
+     * Batch create trade tickets. Each ticket is broadly equivalent to a singular call to upsert an instrument, then a counterparty and finally a transaction that makes use of the two.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies  the transaction portfolio. (required)
      * @param lusidTradeTicket the trade tickets to create (required)
      * @return APIbatchCreateTradeTicketsRequest
      * @http.response.details
@@ -1225,11 +1225,11 @@ public class TransactionPortfoliosApi {
 
     /**
      * BatchSetHoldings: Batch set holdings
-     * Set the holdings of the specified transaction portfolio to the provided targets. LUSID will automatically  construct adjustment transactions to ensure that the entire set of holdings for the transaction portfolio  are always set to the provided targets for the specified effective datetime. Read more about the difference between  adjusting and setting holdings here https://support.lusid.com/docs/how-do-i-manually-adjust-or-set-holdings.     Each request must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each adjustment in the response.    Note: If using partial failure modes, then it is important to check the response body for failures as any failures will still return a 200 status code
+     * Set the holdings of the specified transaction portfolio to the provided targets. LUSID will automatically construct adjustment transactions to ensure that the entire set of holdings for the transaction portfolio are always set to the provided targets for the specified effective datetime. Read more about the difference between adjusting and setting holdings here https://support.lusid.com/docs/how-do-i-manually-adjust-or-set-holdings.   Each request must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID. It serves only as a way to easily identify each adjustment in the response.  Note: If using partial failure modes, then it is important to check the response body for failures as any failures will still return a 200 status code
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies  the transaction portfolio. (required)
      * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial (required)
-     * @param requestBody The selected set of holdings to adjust to the provided targets for the   transaction portfolio. (required)
+     * @param requestBody The selected set of holdings to adjust to the provided targets for the  transaction portfolio. (required)
      * @return APIbatchSetHoldingsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1505,9 +1505,9 @@ public class TransactionPortfoliosApi {
 
     /**
      * BatchUpsertTransactions: Batch upsert transactions
-     * Create or update transactions in the transaction portfolio. A transaction will be updated  if it already exists and created if it does not.    Each request must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each transaction in the response.    Note: If using partial failure modes, then it is important to check the response body for failures as any failures will still return a 200 status code
+     * Create or update transactions in the transaction portfolio. A transaction will be updated if it already exists and created if it does not.  Each request must be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID. It serves only as a way to easily identify each transaction in the response.  Note: If using partial failure modes, then it is important to check the response body for failures as any failures will still return a 200 status code
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies  the transaction portfolio. (required)
      * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial. (required)
      * @param requestBody The payload describing the transactions to be created or updated. (required)
      * @return APIbatchUpsertTransactionsRequest
@@ -1666,7 +1666,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to build the transactions. Defaults to return the latest   version of each transaction if not specified. (optional)
+         * @param asAt The asAt datetime at which to build the transactions. Defaults to return the latest  version of each transaction if not specified. (optional)
          * @return APIbuildTransactionsRequest
          */
         public APIbuildTransactionsRequest asAt(OffsetDateTime asAt) {
@@ -1676,7 +1676,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the result set.  For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.  For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIbuildTransactionsRequest
          */
         public APIbuildTransactionsRequest filter(String filter) {
@@ -1686,7 +1686,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; or \&quot;Transaction\&quot; domain to decorate onto   the transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or   \&quot;Transaction/strategy/quantsignal\&quot;. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; or \&quot;Transaction\&quot; domain to decorate onto  the transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or  \&quot;Transaction/strategy/quantsignal\&quot;. (optional)
          * @return APIbuildTransactionsRequest
          */
         public APIbuildTransactionsRequest propertyKeys(List<String> propertyKeys) {
@@ -1834,9 +1834,9 @@ public class TransactionPortfoliosApi {
 
     /**
      * BuildTransactions: Build transactions
-     * Builds and returns all transactions that affect the holdings of a portfolio over a given interval of  effective time into a set of output transactions. This includes transactions automatically generated by  LUSID such as holding adjustments.
+     * Builds and returns all transactions that affect the holdings of a portfolio over a given interval of effective time into a set of output transactions. This includes transactions automatically generated by LUSID such as holding adjustments.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies  the transaction portfolio. (required)
      * @param transactionQueryParameters The query queryParameters which control how the output transactions are built. (required)
      * @return APIbuildTransactionsRequest
      * @http.response.details
@@ -2087,9 +2087,9 @@ public class TransactionPortfoliosApi {
 
     /**
      * CancelAdjustHoldings: Cancel adjust holdings
-     * Cancel all previous holding adjustments made on the specified transaction portfolio for a specified effective  datetime. This should be used to undo holding adjustments made via set holdings or adjust holdings.
+     * Cancel all previous holding adjustments made on the specified transaction portfolio for a specified effective datetime. This should be used to undo holding adjustments made via set holdings or adjust holdings.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies  the transaction portfolio. (required)
      * @param effectiveAt The effective datetime or cut label at which the holding adjustments should be undone. (required)
      * @return APIcancelAdjustHoldingsRequest
      * @http.response.details
@@ -2353,7 +2353,7 @@ public class TransactionPortfoliosApi {
      * CancelSingleAdjustHolding: Cancel single holding adjustment.
      * Cancel one previously sent holding adjustment without affecting the rest of the adjustment in the previous request on the specified effective datetime.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies  the transaction portfolio. (required)
      * @param effectiveAt The effective datetime or cut label at which the previous adjustment was made. (required)
      * @param cancelSingleHoldingAdjustmentRequest The selected holding adjustment to be canceled. (required)
      * @return APIcancelSingleAdjustHoldingRequest
@@ -2607,7 +2607,7 @@ public class TransactionPortfoliosApi {
      * CancelTransactions: Cancel transactions
      * Cancel one or more transactions from the transaction portfolio.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies  the transaction portfolio. (required)
      * @param transactionIds The IDs of the transactions to cancel. (required)
      * @return APIcancelTransactionsRequest
      * @http.response.details
@@ -3106,9 +3106,9 @@ public class TransactionPortfoliosApi {
 
     /**
      * CreateTradeTicket: Create Trade Ticket
-     * Upsert a trade ticket. Broadly equivalent to a singular call to upsert an instrument, then a counterparty and finally  a transaction that makes use of the two. It can be viewed as a utility function or part of a workflow more familiar to users  with OTC systems than flow and equity trading ones.
+     * Upsert a trade ticket. Broadly equivalent to a singular call to upsert an instrument, then a counterparty and finally a transaction that makes use of the two. It can be viewed as a utility function or part of a workflow more familiar to users with OTC systems than flow and equity trading ones.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies  the transaction portfolio. (required)
      * @return APIcreateTradeTicketRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -3373,9 +3373,9 @@ public class TransactionPortfoliosApi {
 
     /**
      * DeleteCustodianAccounts: Soft or hard delete multiple custodian accounts
-     * Delete one or more custodian accounts from the Transaction Portfolios. Soft deletion marks the custodian account as inactive  While the Hard deletion is deleting the custodian account.  The batch limit per request is 2,000.
+     * Delete one or more custodian accounts from the Transaction Portfolios. Soft deletion marks the custodian account as inactive While the Hard deletion is deleting the custodian account.  The batch limit per request is 2,000.
      * @param scope The scope of the Transaction Portfolios. (required)
-     * @param code The code of the Transaction Portfolios. Together with the scope this uniquely identifies   the Transaction Portfolios. (required)
+     * @param code The code of the Transaction Portfolios. Together with the scope this uniquely identifies  the Transaction Portfolios. (required)
      * @param resourceId The scope and codes of the custodian accounts to delete. (required)
      * @return APIdeleteCustodianAccountsRequest
      * @http.response.details
@@ -3636,9 +3636,9 @@ public class TransactionPortfoliosApi {
      * DeletePropertiesFromTransaction: Delete properties from transaction
      * Delete one or more properties from a single transaction in a transaction portfolio.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies  the transaction portfolio. (required)
      * @param transactionId The unique ID of the transaction from which to delete properties. (required)
-     * @param propertyKeys The property keys of the properties to delete.   These must be from the \&quot;Transaction\&quot; domain and have the format {domain}/{scope}/{code}, for example   \&quot;Transaction/strategy/quantsignal\&quot;. (required)
+     * @param propertyKeys The property keys of the properties to delete.  These must be from the \&quot;Transaction\&quot; domain and have the format {domain}/{scope}/{code}, for example  \&quot;Transaction/strategy/quantsignal\&quot;. (required)
      * @return APIdeletePropertiesFromTransactionRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -3890,7 +3890,7 @@ public class TransactionPortfoliosApi {
      * [EARLY ACCESS] DeleteSettlementInstructions: Delete Settlement Instructions.
      * Delete the specified settlement instructions
      * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the scope this uniquely identifies   the portfolio. (required)
+     * @param code The code of the portfolio. Together with the scope this uniquely identifies  the portfolio. (required)
      * @param settlementInstructionIds A list of Ids of settlement instructions to be deleted. (required)
      * @return APIdeleteSettlementInstructionsRequest
      * @http.response.details
@@ -4059,7 +4059,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version   of each transaction if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version  of each transaction if not specified. (optional)
          * @return APIgetA2BDataRequest
          */
         public APIgetA2BDataRequest asAt(OffsetDateTime asAt) {
@@ -4089,7 +4089,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto   the results. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto  the results. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)
          * @return APIgetA2BDataRequest
          */
         public APIgetA2BDataRequest propertyKeys(List<String> propertyKeys) {
@@ -4099,7 +4099,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set.  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIgetA2BDataRequest
          */
         public APIgetA2BDataRequest filter(String filter) {
@@ -4229,9 +4229,9 @@ public class TransactionPortfoliosApi {
      * GetA2BData: Get A2B data
      * Get an A2B report for the given portfolio.
      * @param scope The scope of the portfolio to retrieve the A2B report for. (required)
-     * @param code The code of the portfolio to retrieve the A2B report for. Together with the scope this   uniquely identifies the portfolio. (required)
-     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.   There is no lower bound if this is not specified. (required)
-     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.   There is no upper bound if this is not specified. (required)
+     * @param code The code of the portfolio to retrieve the A2B report for. Together with the scope this  uniquely identifies the portfolio. (required)
+     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.  There is no lower bound if this is not specified. (required)
+     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.  There is no upper bound if this is not specified. (required)
      * @return APIgetA2BDataRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -4399,7 +4399,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version   of each transaction if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version  of each transaction if not specified. (optional)
          * @return APIgetA2BMovementsRequest
          */
         public APIgetA2BMovementsRequest asAt(OffsetDateTime asAt) {
@@ -4429,7 +4429,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto   the results. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto  the results. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)
          * @return APIgetA2BMovementsRequest
          */
         public APIgetA2BMovementsRequest propertyKeys(List<String> propertyKeys) {
@@ -4439,7 +4439,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set.  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIgetA2BMovementsRequest
          */
         public APIgetA2BMovementsRequest filter(String filter) {
@@ -4569,9 +4569,9 @@ public class TransactionPortfoliosApi {
      * GetA2BMovements: Get an A2B report at the movement level for the given portfolio.
      * Get an A2B report at the movement level for the given portfolio.
      * @param scope The scope of the portfolio to retrieve the A2B movement report for. (required)
-     * @param code The code of the portfolio to retrieve the A2B movement report for. Together with the scope this   uniquely identifies the portfolio. (required)
-     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.   There is no lower bound if this is not specified. (required)
-     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.   There is no upper bound if this is not specified. (required)
+     * @param code The code of the portfolio to retrieve the A2B movement report for. Together with the scope this  uniquely identifies the portfolio. (required)
+     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.  There is no lower bound if this is not specified. (required)
+     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.  There is no upper bound if this is not specified. (required)
      * @return APIgetA2BMovementsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -4825,7 +4825,7 @@ public class TransactionPortfoliosApi {
 
     /**
      * GetBucketedCashFlows: Get bucketed cash flows from a list of portfolios
-     * We bucket/aggregate a transaction portfolio&#39;s instruments by date or tenor specified in the request.  The cashflows are grouped by both instrumentId and currency.     If you want transactional level cashflow, please use the &#39;GetUpsertableCashFlows&#39; endpoint.  If you want instrument cashflow, please use the &#39;GetPortfolioCashFlows&#39; endpoint.  Note that these endpoints do not apply bucketing.
+     * We bucket/aggregate a transaction portfolio&#39;s instruments by date or tenor specified in the request. The cashflows are grouped by both instrumentId and currency.   If you want transactional level cashflow, please use the &#39;GetUpsertableCashFlows&#39; endpoint. If you want instrument cashflow, please use the &#39;GetPortfolioCashFlows&#39; endpoint. Note that these endpoints do not apply bucketing.
      * @param scope The scope of the transaction portfolio. (required)
      * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies the portfolio. (required)
      * @return APIgetBucketedCashFlowsRequest
@@ -4999,7 +4999,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;CustodianAccount&#39; domain to decorate onto the Custodian Account.   These must take the format {domain}/{scope}/{code}, for example &#39;CustodianAccount/Manager/Id&#39;. If no properties are specified, then no properties will be returned. (optional)
+         * @param propertyKeys A list of property keys from the &#39;CustodianAccount&#39; domain to decorate onto the Custodian Account.  These must take the format {domain}/{scope}/{code}, for example &#39;CustodianAccount/Manager/Id&#39;. If no properties are specified, then no properties will be returned. (optional)
          * @return APIgetCustodianAccountRequest
          */
         public APIgetCustodianAccountRequest propertyKeys(List<String> propertyKeys) {
@@ -5262,7 +5262,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to retrieve the details of the transaction   portfolio. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the details of the transaction  portfolio. Defaults to the current LUSID system datetime if not specified. (optional)
          * @return APIgetDetailsRequest
          */
         public APIgetDetailsRequest effectiveAt(String effectiveAt) {
@@ -5272,7 +5272,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the details of the transaction portfolio. Defaults   to returning the latest version of the details if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the details of the transaction portfolio. Defaults  to returning the latest version of the details if not specified. (optional)
          * @return APIgetDetailsRequest
          */
         public APIgetDetailsRequest asAt(OffsetDateTime asAt) {
@@ -5402,7 +5402,7 @@ public class TransactionPortfoliosApi {
      * GetDetails: Get details
      * Get certain details associated with a transaction portfolio.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the   scope this uniquely identifies the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the  scope this uniquely identifies the transaction portfolio. (required)
      * @return APIgetDetailsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -5606,7 +5606,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set includeHistoric
-         * @param includeHistoric If true, transactions from previously closed holdings are returned.   If false, only transactions from last time position is opened. (optional, default to false)
+         * @param includeHistoric If true, transactions from previously closed holdings are returned.  If false, only transactions from last time position is opened. (optional, default to false)
          * @return APIgetHoldingContributorsRequest
          */
         public APIgetHoldingContributorsRequest includeHistoric(Boolean includeHistoric) {
@@ -5646,7 +5646,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to build the transactions. Defaults to return the latest   version of each transaction if not specified. (optional)
+         * @param asAt The asAt datetime at which to build the transactions. Defaults to return the latest  version of each transaction if not specified. (optional)
          * @return APIgetHoldingContributorsRequest
          */
         public APIgetHoldingContributorsRequest asAt(OffsetDateTime asAt) {
@@ -5784,9 +5784,9 @@ public class TransactionPortfoliosApi {
 
     /**
      * GetHoldingContributors: Get Holdings Contributors
-     * Lists all transactions that affect the holdings of a portfolio over a given effective interval. This includes  transactions automatically generated by LUSID such as holding adjustments.
+     * Lists all transactions that affect the holdings of a portfolio over a given effective interval. This includes transactions automatically generated by LUSID such as holding adjustments.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies  the transaction portfolio. (required)
      * @param holdingId The unique holding identifier (required)
      * @return APIgetHoldingContributorsRequest
      * @http.response.details
@@ -5953,7 +5953,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to retrieve the holdings of the transaction   portfolio. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the holdings of the transaction  portfolio. Defaults to the current LUSID system datetime if not specified. (optional)
          * @return APIgetHoldingsRequest
          */
         public APIgetHoldingsRequest effectiveAt(String effectiveAt) {
@@ -5963,7 +5963,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the holdings of the transaction portfolio. Defaults   to return the latest version if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the holdings of the transaction portfolio. Defaults  to return the latest version if not specified. (optional)
          * @return APIgetHoldingsRequest
          */
         public APIgetHoldingsRequest asAt(OffsetDateTime asAt) {
@@ -5973,7 +5973,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.   For example, to filter on the Holding Type, use \&quot;holdingType eq &#39;p&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the result set.  For example, to filter on the Holding Type, use \&quot;holdingType eq &#39;p&#39;\&quot;.  For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIgetHoldingsRequest
          */
         public APIgetHoldingsRequest filter(String filter) {
@@ -5983,7 +5983,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot;, \&quot;Custodian Account\&quot;, \&quot;Legal Entity\&quot; or \&quot;Portfolio\&quot; domain to decorate onto   holdings. These must have the format {domain}/{scope}/{code}, for example \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot;, \&quot;Custodian Account\&quot;, \&quot;Legal Entity\&quot; or \&quot;Portfolio\&quot; domain to decorate onto  holdings. These must have the format {domain}/{scope}/{code}, for example \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. (optional)
          * @return APIgetHoldingsRequest
          */
         public APIgetHoldingsRequest propertyKeys(List<String> propertyKeys) {
@@ -5993,7 +5993,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set byTaxlots
-         * @param byTaxlots Whether or not to expand the holdings to return the underlying tax-lots. Defaults to   False. (optional)
+         * @param byTaxlots Whether or not to expand the holdings to return the underlying tax-lots. Defaults to  False. (optional)
          * @return APIgetHoldingsRequest
          */
         public APIgetHoldingsRequest byTaxlots(Boolean byTaxlots) {
@@ -6163,7 +6163,7 @@ public class TransactionPortfoliosApi {
      * GetHoldings: Get holdings
      * Calculate holdings for a transaction portfolio.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies  the transaction portfolio. (required)
      * @return APIgetHoldingsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -6302,7 +6302,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the holdings adjustment. Defaults to the return the latest   version of the holdings adjustment if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the holdings adjustment. Defaults to the return the latest  version of the holdings adjustment if not specified. (optional)
          * @return APIgetHoldingsAdjustmentRequest
          */
         public APIgetHoldingsAdjustmentRequest asAt(OffsetDateTime asAt) {
@@ -6312,7 +6312,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the ‘Instrument&#39; domain to decorate onto holdings adjustments.   These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;.   Note that properties from the &#39;Holding’ domain are automatically returned. (optional)
+         * @param propertyKeys A list of property keys from the ‘Instrument&#39; domain to decorate onto holdings adjustments.  These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;.  Note that properties from the &#39;Holding’ domain are automatically returned. (optional)
          * @return APIgetHoldingsAdjustmentRequest
          */
         public APIgetHoldingsAdjustmentRequest propertyKeys(List<String> propertyKeys) {
@@ -6440,9 +6440,9 @@ public class TransactionPortfoliosApi {
 
     /**
      * GetHoldingsAdjustment: Get holdings adjustment
-     * Get a holdings adjustment made to a transaction portfolio at a specific effective datetime. Note that a  holdings adjustment will only be returned if one exists for the specified effective datetime.
+     * Get a holdings adjustment made to a transaction portfolio at a specific effective datetime. Note that a holdings adjustment will only be returned if one exists for the specified effective datetime.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies  the transaction portfolio. (required)
      * @param effectiveAt The effective datetime or cut label of the holdings adjustment. (required)
      * @return APIgetHoldingsAdjustmentRequest
      * @http.response.details
@@ -6604,7 +6604,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to retrieve the holdings of the transaction   portfolio. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the holdings of the transaction  portfolio. Defaults to the current LUSID system datetime if not specified. (optional)
          * @return APIgetHoldingsWithOrdersRequest
          */
         public APIgetHoldingsWithOrdersRequest effectiveAt(String effectiveAt) {
@@ -6614,7 +6614,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the holdings of the transaction portfolio. Defaults   to return the latest version of the holdings if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the holdings of the transaction portfolio. Defaults  to return the latest version of the holdings if not specified. (optional)
          * @return APIgetHoldingsWithOrdersRequest
          */
         public APIgetHoldingsWithOrdersRequest asAt(OffsetDateTime asAt) {
@@ -6624,7 +6624,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.   For example, to filter on the Holding Type, use \&quot;holdingType eq &#39;p&#39;\&quot;   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the result set.  For example, to filter on the Holding Type, use \&quot;holdingType eq &#39;p&#39;\&quot;  For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIgetHoldingsWithOrdersRequest
          */
         public APIgetHoldingsWithOrdersRequest filter(String filter) {
@@ -6634,7 +6634,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot; or \&quot;Portfolio\&quot; domain to decorate onto   the holdings. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot; or \&quot;Portfolio\&quot; domain to decorate onto  the holdings. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. (optional)
          * @return APIgetHoldingsWithOrdersRequest
          */
         public APIgetHoldingsWithOrdersRequest propertyKeys(List<String> propertyKeys) {
@@ -6644,7 +6644,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set byTaxlots
-         * @param byTaxlots Whether or not to expand the holdings to return the underlying tax-lots. Defaults to   False. (optional)
+         * @param byTaxlots Whether or not to expand the holdings to return the underlying tax-lots. Defaults to  False. (optional)
          * @return APIgetHoldingsWithOrdersRequest
          */
         public APIgetHoldingsWithOrdersRequest byTaxlots(Boolean byTaxlots) {
@@ -6802,9 +6802,9 @@ public class TransactionPortfoliosApi {
 
     /**
      * GetHoldingsWithOrders: Get holdings with orders
-     * Get the holdings of a transaction portfolio. Create virtual holdings for any outstanding orders,  and account for order state/fulfillment; that is, treat outstanding orders (and related records) as  if they had been realised at moment of query.
+     * Get the holdings of a transaction portfolio. Create virtual holdings for any outstanding orders, and account for order state/fulfillment; that is, treat outstanding orders (and related records) as if they had been realised at moment of query.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies  the transaction portfolio. (required)
      * @return APIgetHoldingsWithOrdersRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -7011,7 +7011,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set includeHistoric
-         * @param includeHistoric If true, transactions from previously closed holdings are returned.   If false, only transactions from last time position is opened. (optional, default to false)
+         * @param includeHistoric If true, transactions from previously closed holdings are returned.  If false, only transactions from last time position is opened. (optional, default to false)
          * @return APIgetMultipleHoldingContributorsRequest
          */
         public APIgetMultipleHoldingContributorsRequest includeHistoric(Boolean includeHistoric) {
@@ -7051,7 +7051,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to build the transactions. Defaults to return the latest   version of each transaction if not specified. (optional)
+         * @param asAt The asAt datetime at which to build the transactions. Defaults to return the latest  version of each transaction if not specified. (optional)
          * @return APIgetMultipleHoldingContributorsRequest
          */
         public APIgetMultipleHoldingContributorsRequest asAt(OffsetDateTime asAt) {
@@ -7189,9 +7189,9 @@ public class TransactionPortfoliosApi {
 
     /**
      * GetMultipleHoldingContributors: Get Multiple Holding Contributors
-     * Lists all transactions that affect multiple specified holdings of a portfolio over a given effective interval. This includes  transactions automatically generated by LUSID such as holding adjustments.
+     * Lists all transactions that affect multiple specified holdings of a portfolio over a given effective interval. This includes transactions automatically generated by LUSID such as holding adjustments.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies  the transaction portfolio. (required)
      * @param holdingIdsRequest The array of unique holding identifiers (required)
      * @return APIgetMultipleHoldingContributorsRequest
      * @http.response.details
@@ -7353,7 +7353,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The valuation (pricing) effective datetime or cut label (inclusive) at which to evaluate the cashflows.  This determines whether cashflows are evaluated in a historic or forward looking context and will, for certain models, affect where data is looked up.  For example, on a swap if the effectiveAt is in the middle of the window, cashflows before it will be historic and resets assumed to exist where if the effectiveAt  is before the start of the range they are forward looking and will be expectations assuming the model supports that.  There is evidently a presumption here about availability of data and that the effectiveAt is realistically on or before the real-world today. (optional)
+         * @param effectiveAt The valuation (pricing) effective datetime or cut label (inclusive) at which to evaluate the cashflows. This determines whether cashflows are evaluated in a historic or forward looking context and will, for certain models, affect where data is looked up. For example, on a swap if the effectiveAt is in the middle of the window, cashflows before it will be historic and resets assumed to exist where if the effectiveAt is before the start of the range they are forward looking and will be expectations assuming the model supports that. There is evidently a presumption here about availability of data and that the effectiveAt is realistically on or before the real-world today. (optional)
          * @return APIgetPortfolioCashFlowsRequest
          */
         public APIgetPortfolioCashFlowsRequest effectiveAt(String effectiveAt) {
@@ -7363,7 +7363,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set windowStart
-         * @param windowStart The lower bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.   There is no lower bound if this is not specified. i.e. it is the minimum date. (optional)
+         * @param windowStart The lower bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.  There is no lower bound if this is not specified. i.e. it is the minimum date. (optional)
          * @return APIgetPortfolioCashFlowsRequest
          */
         public APIgetPortfolioCashFlowsRequest windowStart(String windowStart) {
@@ -7373,7 +7373,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set windowEnd
-         * @param windowEnd The upper bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.   The upper bound defaults to &#39;max date&#39; if it is not specified (optional)
+         * @param windowEnd The upper bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.  The upper bound defaults to &#39;max date&#39; if it is not specified (optional)
          * @return APIgetPortfolioCashFlowsRequest
          */
         public APIgetPortfolioCashFlowsRequest windowEnd(String windowEnd) {
@@ -7383,7 +7383,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the data. Defaults to returning the latest version   of each transaction if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the data. Defaults to returning the latest version  of each transaction if not specified. (optional)
          * @return APIgetPortfolioCashFlowsRequest
          */
         public APIgetPortfolioCashFlowsRequest asAt(OffsetDateTime asAt) {
@@ -7393,7 +7393,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the result set.  For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.  For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIgetPortfolioCashFlowsRequest
          */
         public APIgetPortfolioCashFlowsRequest filter(String filter) {
@@ -7551,9 +7551,9 @@ public class TransactionPortfoliosApi {
 
     /**
      * GetPortfolioCashFlows: Get portfolio cash flows
-     * Get the set of cash flows that occur in a window for the transaction portfolio&#39;s instruments.     Note that grouping can affect the quantity of information returned; where a holding is an amalgamation of one or more (e.g. cash) instruments, a unique  transaction identifier will not be available. The same may go for diagnostic information (e.g. multiple sources of an aggregate cash amount on a date that is  not split out. Grouping at the transaction and instrument level is recommended for those seeking to attribute individual flows.
+     * Get the set of cash flows that occur in a window for the transaction portfolio&#39;s instruments.   Note that grouping can affect the quantity of information returned; where a holding is an amalgamation of one or more (e.g. cash) instruments, a unique transaction identifier will not be available. The same may go for diagnostic information (e.g. multiple sources of an aggregate cash amount on a date that is not split out. Grouping at the transaction and instrument level is recommended for those seeking to attribute individual flows.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this   uniquely identifies the portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this  uniquely identifies the portfolio. (required)
      * @return APIgetPortfolioCashFlowsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -7732,7 +7732,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to returning the latest version   of each transaction if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to returning the latest version  of each transaction if not specified. (optional)
          * @return APIgetPortfolioCashLadderRequest
          */
         public APIgetPortfolioCashLadderRequest asAt(OffsetDateTime asAt) {
@@ -7742,7 +7742,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the result set.  For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.  For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIgetPortfolioCashLadderRequest
          */
         public APIgetPortfolioCashLadderRequest filter(String filter) {
@@ -7902,10 +7902,10 @@ public class TransactionPortfoliosApi {
      * GetPortfolioCashLadder: Get portfolio cash ladder
      * Get a cash ladder for a transaction portfolio.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this   uniquely identifies the portfolio. (required)
-     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.   There is no lower bound if this is not specified. (required)
-     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.   There is no upper bound if this is not specified. (required)
-     * @param effectiveAt The valuation (pricing) effective datetime or cut label (inclusive) at which to evaluate the cashflows.  This determines whether cashflows are evaluated in a historic or forward looking context and will, for certain models, affect where data is looked up.  For example, on a swap if the effectiveAt is in the middle of the window, cashflows before it will be historic and resets assumed to exist where if the effectiveAt  is before the start of the range they are forward looking and will be expectations assuming the model supports that.  There is evidently a presumption here about availability of data and that the effectiveAt is realistically on or before the real-world today. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this  uniquely identifies the portfolio. (required)
+     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.  There is no lower bound if this is not specified. (required)
+     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.  There is no upper bound if this is not specified. (required)
+     * @param effectiveAt The valuation (pricing) effective datetime or cut label (inclusive) at which to evaluate the cashflows. This determines whether cashflows are evaluated in a historic or forward looking context and will, for certain models, affect where data is looked up. For example, on a swap if the effectiveAt is in the middle of the window, cashflows before it will be historic and resets assumed to exist where if the effectiveAt is before the start of the range they are forward looking and will be expectations assuming the model supports that. There is evidently a presumption here about availability of data and that the effectiveAt is realistically on or before the real-world today. (required)
      * @return APIgetPortfolioCashLadderRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -8073,7 +8073,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to returning the latest version   of each transaction if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to returning the latest version  of each transaction if not specified. (optional)
          * @return APIgetPortfolioCashStatementRequest
          */
         public APIgetPortfolioCashStatementRequest asAt(OffsetDateTime asAt) {
@@ -8083,7 +8083,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the result set.  For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.  For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIgetPortfolioCashStatementRequest
          */
         public APIgetPortfolioCashStatementRequest filter(String filter) {
@@ -8113,7 +8113,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; or \&quot;Transaction\&quot; domain to decorate onto   the cash flows&#39; transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or   \&quot;Transaction/strategy/quantsignal\&quot;. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; or \&quot;Transaction\&quot; domain to decorate onto  the cash flows&#39; transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or  \&quot;Transaction/strategy/quantsignal\&quot;. (optional)
          * @return APIgetPortfolioCashStatementRequest
          */
         public APIgetPortfolioCashStatementRequest propertyKeys(List<String> propertyKeys) {
@@ -8243,9 +8243,9 @@ public class TransactionPortfoliosApi {
      * GetPortfolioCashStatement: Get portfolio cash statement
      * Get a cash statement for a transaction portfolio.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this   uniquely identifies the portfolio. (required)
-     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.   There is no lower bound if this is not specified. (required)
-     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.   There is no upper bound if this is not specified. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this  uniquely identifies the portfolio. (required)
+     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.  There is no lower bound if this is not specified. (required)
+     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.  There is no upper bound if this is not specified. (required)
      * @return APIgetPortfolioCashStatementRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -8379,7 +8379,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the history of the transaction. Defaults   to return the latest version if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the history of the transaction. Defaults  to return the latest version if not specified. (optional)
          * @return APIgetTransactionHistoryRequest
          */
         public APIgetTransactionHistoryRequest asAt(OffsetDateTime asAt) {
@@ -8509,7 +8509,7 @@ public class TransactionPortfoliosApi {
      * GetTransactionHistory: Get the history of a transaction
      * Get all of the changes that have happened to a transaction.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies  the transaction portfolio. (required)
      * @param transactionId The unique ID of the transaction to create or update. (required)
      * @return APIgetTransactionHistoryRequest
      * @http.response.details
@@ -8686,7 +8686,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set fromTransactionDate
-         * @param fromTransactionDate The lower bound effective datetime or cut label (inclusive) from which to retrieve transactions.   There is no lower bound if this is not specified. (optional)
+         * @param fromTransactionDate The lower bound effective datetime or cut label (inclusive) from which to retrieve transactions.  There is no lower bound if this is not specified. (optional)
          * @return APIgetTransactionsRequest
          */
         public APIgetTransactionsRequest fromTransactionDate(String fromTransactionDate) {
@@ -8696,7 +8696,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set toTransactionDate
-         * @param toTransactionDate The upper bound effective datetime or cut label (inclusive) from which to retrieve transactions.   There is no upper bound if this is not specified. (optional)
+         * @param toTransactionDate The upper bound effective datetime or cut label (inclusive) from which to retrieve transactions.  There is no upper bound if this is not specified. (optional)
          * @return APIgetTransactionsRequest
          */
         public APIgetTransactionsRequest toTransactionDate(String toTransactionDate) {
@@ -8706,7 +8706,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve transactions. Defaults to returning the latest version   of each transaction if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve transactions. Defaults to returning the latest version  of each transaction if not specified. (optional)
          * @return APIgetTransactionsRequest
          */
         public APIgetTransactionsRequest asAt(OffsetDateTime asAt) {
@@ -8716,7 +8716,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set filter
-         * @param filter Expression with which to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression with which to filter the result set.  For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;  For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIgetTransactionsRequest
          */
         public APIgetTransactionsRequest filter(String filter) {
@@ -8726,7 +8726,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, \&quot;LegalEntity\&quot; or \&quot;CustodianAccount\&quot; domain to decorate onto   transactions. These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39; or   &#39;Transaction/strategy/quantsignal&#39;. (optional)
+         * @param propertyKeys A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, \&quot;LegalEntity\&quot; or \&quot;CustodianAccount\&quot; domain to decorate onto  transactions. These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39; or  &#39;Transaction/strategy/quantsignal&#39;. (optional)
          * @return APIgetTransactionsRequest
          */
         public APIgetTransactionsRequest propertyKeys(List<String> propertyKeys) {
@@ -8746,7 +8746,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set limit
-         * @param limit When paginating, limit the number of returned results to this many. The current behaviour is   to return all transactions if possible, but this will change to defaulting to 1000 if not specified in the future. It is recommended   to populate this field to enable pagination. (optional)
+         * @param limit When paginating, limit the number of returned results to this many. The current behaviour is  to return all transactions if possible, but this will change to defaulting to 1000 if not specified in the future. It is recommended  to populate this field to enable pagination. (optional)
          * @return APIgetTransactionsRequest
          */
         public APIgetTransactionsRequest limit(Integer limit) {
@@ -8756,7 +8756,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set showCancelledTransactions
-         * @param showCancelledTransactions Option to specify whether or not to include cancelled transactions,   including previous versions of transactions which have since been amended.   Defaults to False if not specified. (optional)
+         * @param showCancelledTransactions Option to specify whether or not to include cancelled transactions,  including previous versions of transactions which have since been amended.  Defaults to False if not specified. (optional)
          * @return APIgetTransactionsRequest
          */
         public APIgetTransactionsRequest showCancelledTransactions(Boolean showCancelledTransactions) {
@@ -8914,9 +8914,9 @@ public class TransactionPortfoliosApi {
 
     /**
      * GetTransactions: Get transactions
-     * Retrieve all the transactions that occurred during a particular time interval.     If the portfolio is a derived transaction portfolio, the transactions returned are the  union set of all transactions of the parent (and any grandparents, etc.) as well as  those of the derived transaction portfolio itself.
+     * Retrieve all the transactions that occurred during a particular time interval.   If the portfolio is a derived transaction portfolio, the transactions returned are the union set of all transactions of the parent (and any grandparents, etc.) as well as those of the derived transaction portfolio itself.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies  the transaction portfolio. (required)
      * @return APIgetTransactionsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -9077,7 +9077,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The valuation (pricing) effective datetime or cut label (inclusive) at which to evaluate the cashflows.  This determines whether cashflows are evaluated in a historic or forward looking context and will, for certain models, affect where data is looked up.  For example, on a swap if the effectiveAt is in the middle of the window, cashflows before it will be historic and resets assumed to exist where if the effectiveAt  is before the start of the range they are forward looking and will be expectations assuming the model supports that.  There is evidently a presumption here about availability of data and that the effectiveAt is realistically on or before the real-world today. (optional)
+         * @param effectiveAt The valuation (pricing) effective datetime or cut label (inclusive) at which to evaluate the cashflows. This determines whether cashflows are evaluated in a historic or forward looking context and will, for certain models, affect where data is looked up. For example, on a swap if the effectiveAt is in the middle of the window, cashflows before it will be historic and resets assumed to exist where if the effectiveAt is before the start of the range they are forward looking and will be expectations assuming the model supports that. There is evidently a presumption here about availability of data and that the effectiveAt is realistically on or before the real-world today. (optional)
          * @return APIgetUpsertablePortfolioCashFlowsRequest
          */
         public APIgetUpsertablePortfolioCashFlowsRequest effectiveAt(String effectiveAt) {
@@ -9087,7 +9087,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set windowStart
-         * @param windowStart The lower bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.   There is no lower bound if this is not specified. i.e. uses minimum date-time (optional)
+         * @param windowStart The lower bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.  There is no lower bound if this is not specified. i.e. uses minimum date-time (optional)
          * @return APIgetUpsertablePortfolioCashFlowsRequest
          */
         public APIgetUpsertablePortfolioCashFlowsRequest windowStart(String windowStart) {
@@ -9097,7 +9097,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set windowEnd
-         * @param windowEnd The upper bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.   The upper bound defaults to &#39;max date&#39; if it is not specified (optional)
+         * @param windowEnd The upper bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.  The upper bound defaults to &#39;max date&#39; if it is not specified (optional)
          * @return APIgetUpsertablePortfolioCashFlowsRequest
          */
         public APIgetUpsertablePortfolioCashFlowsRequest windowEnd(String windowEnd) {
@@ -9107,7 +9107,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version   of each transaction if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version  of each transaction if not specified. (optional)
          * @return APIgetUpsertablePortfolioCashFlowsRequest
          */
         public APIgetUpsertablePortfolioCashFlowsRequest asAt(OffsetDateTime asAt) {
@@ -9117,7 +9117,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the result set.  For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.  For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIgetUpsertablePortfolioCashFlowsRequest
          */
         public APIgetUpsertablePortfolioCashFlowsRequest filter(String filter) {
@@ -9275,9 +9275,9 @@ public class TransactionPortfoliosApi {
 
     /**
      * GetUpsertablePortfolioCashFlows: Get upsertable portfolio cash flows.
-     * Get the set of cash flows that occur in a window for the given portfolio instruments as a set of upsertable transactions (DTOs).     Note that grouping can affect the quantity of information returned; where a holding is an amalgamation of one or more (e.g. cash) instruments, a unique  transaction identifier will not be available. The same may go for diagnostic information (e.g. multiple sources of an aggregate cash amount on a date that is  not split out. Grouping at the transaction and instrument level is recommended for those seeking to attribute individual flows.     In essence this is identical to the &#39;GetCashFlows&#39; endpoint but returns the cash flows as a set of transactions suitable for directly putting back into LUSID.  There are a couple of important points:  (1) Internally it can not be fully known where the user wishes to insert these transactions, e.g. portfolio and movement type.   These are therefore defaulted to a sensible option; the user will likely need to change these.  (2) Similarly, knowledge of any properties the user might wish to add to a transaction are unknown and consequently left empty.  (3) The transaction id that is added is simply a concatenation of the original transaction id, instrument id and payment date and direction. The user can happily override this.
+     * Get the set of cash flows that occur in a window for the given portfolio instruments as a set of upsertable transactions (DTOs).   Note that grouping can affect the quantity of information returned; where a holding is an amalgamation of one or more (e.g. cash) instruments, a unique transaction identifier will not be available. The same may go for diagnostic information (e.g. multiple sources of an aggregate cash amount on a date that is not split out. Grouping at the transaction and instrument level is recommended for those seeking to attribute individual flows.   In essence this is identical to the &#39;GetCashFlows&#39; endpoint but returns the cash flows as a set of transactions suitable for directly putting back into LUSID. There are a couple of important points: (1) Internally it can not be fully known where the user wishes to insert these transactions, e.g. portfolio and movement type.  These are therefore defaulted to a sensible option; the user will likely need to change these. (2) Similarly, knowledge of any properties the user might wish to add to a transaction are unknown and consequently left empty. (3) The transaction id that is added is simply a concatenation of the original transaction id, instrument id and payment date and direction. The user can happily override this.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this   uniquely identifies the portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this  uniquely identifies the portfolio. (required)
      * @return APIgetUpsertablePortfolioCashFlowsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -9428,7 +9428,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties decorated on Custodian Accounts. Defaults to the current LUSID   system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties decorated on Custodian Accounts. Defaults to the current LUSID  system datetime if not specified. (optional)
          * @return APIlistCustodianAccountsRequest
          */
         public APIlistCustodianAccountsRequest effectiveAt(String effectiveAt) {
@@ -9438,7 +9438,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to   returning the latest version if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to  returning the latest version if not specified. (optional)
          * @return APIlistCustodianAccountsRequest
          */
         public APIlistCustodianAccountsRequest asAt(OffsetDateTime asAt) {
@@ -9448,7 +9448,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing custodian accounts; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing custodian accounts; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. (optional)
          * @return APIlistCustodianAccountsRequest
          */
         public APIlistCustodianAccountsRequest page(String page) {
@@ -9468,7 +9468,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.   For example, to filter on the Custodian Account type, specify \&quot;code eq &#39;001&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.  For example, to filter on the Custodian Account type, specify \&quot;code eq &#39;001&#39;\&quot;. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIlistCustodianAccountsRequest
          */
         public APIlistCustodianAccountsRequest filter(String filter) {
@@ -9478,7 +9478,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;CustodianAccount&#39; domain to decorate onto the Custodian Account.   These must have the format {domain}/{scope}/{code}, for example &#39;CustodianAccount/system/Name&#39;. (optional)
+         * @param propertyKeys A list of property keys from the &#39;CustodianAccount&#39; domain to decorate onto the Custodian Account.  These must have the format {domain}/{scope}/{code}, for example &#39;CustodianAccount/system/Name&#39;. (optional)
          * @return APIlistCustodianAccountsRequest
          */
         public APIlistCustodianAccountsRequest propertyKeys(List<String> propertyKeys) {
@@ -9608,7 +9608,7 @@ public class TransactionPortfoliosApi {
      * ListCustodianAccounts: List Custodian Accounts
      * List the custodian accounts in a Transaction Portfolios
      * @param scope The scope of the Transaction Portfolio. (required)
-     * @param code The code of the Transaction Portfolio. Together with the scope this uniquely identifies   the Transaction Portfolios. (required)
+     * @param code The code of the Transaction Portfolio. Together with the scope this uniquely identifies  the Transaction Portfolios. (required)
      * @return APIlistCustodianAccountsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -9744,7 +9744,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set fromEffectiveAt
-         * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the holdings   adjustments. There is no lower bound if this is not specified. (optional)
+         * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the holdings  adjustments. There is no lower bound if this is not specified. (optional)
          * @return APIlistHoldingsAdjustmentsRequest
          */
         public APIlistHoldingsAdjustmentsRequest fromEffectiveAt(String fromEffectiveAt) {
@@ -9754,7 +9754,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set toEffectiveAt
-         * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the holdings   adjustments. There is no upper bound if this is not specified. (optional)
+         * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the holdings  adjustments. There is no upper bound if this is not specified. (optional)
          * @return APIlistHoldingsAdjustmentsRequest
          */
         public APIlistHoldingsAdjustmentsRequest toEffectiveAt(String toEffectiveAt) {
@@ -9764,7 +9764,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the holdings adjustments. Defaults to return the   latest version of each holding adjustment if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the holdings adjustments. Defaults to return the  latest version of each holding adjustment if not specified. (optional)
          * @return APIlistHoldingsAdjustmentsRequest
          */
         public APIlistHoldingsAdjustmentsRequest asAt(OffsetDateTime asAt) {
@@ -9894,7 +9894,7 @@ public class TransactionPortfoliosApi {
      * ListHoldingsAdjustments: List holdings adjustments
      * List the holdings adjustments made to the specified transaction portfolio over a specified interval of effective time.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies  the transaction portfolio. (required)
      * @return APIlistHoldingsAdjustmentsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -10045,7 +10045,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set fromDate
-         * @param fromDate The lower bound effective datetime or cut label (inclusive) from which to retrieve instructions.   There is no lower bound if this is not specified. (optional)
+         * @param fromDate The lower bound effective datetime or cut label (inclusive) from which to retrieve instructions.  There is no lower bound if this is not specified. (optional)
          * @return APIlistSettlementInstructionsRequest
          */
         public APIlistSettlementInstructionsRequest fromDate(String fromDate) {
@@ -10065,7 +10065,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing instructions; this value is returned from the previous call.   If a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing instructions; this value is returned from the previous call.  If a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the original request. (optional)
          * @return APIlistSettlementInstructionsRequest
          */
         public APIlistSettlementInstructionsRequest page(String page) {
@@ -10362,7 +10362,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which the updated or inserted details should become valid.   Defaults to the current LUSID system datetime if not specified.   Note that this will affect all bitemporal entities in the request, but will not be used for any perpetual entities. (optional)
+         * @param effectiveAt The effective datetime or cut label at which the updated or inserted details should become valid.  Defaults to the current LUSID system datetime if not specified.  Note that this will affect all bitemporal entities in the request, but will not be used for any perpetual entities. (optional)
          * @return APIpatchPortfolioDetailsRequest
          */
         public APIpatchPortfolioDetailsRequest effectiveAt(String effectiveAt) {
@@ -10490,9 +10490,9 @@ public class TransactionPortfoliosApi {
 
     /**
      * PatchPortfolioDetails: Patch portfolio details
-     * Create or update certain details for a particular transaction portfolio.  Note that not all elements of a transaction portfolio definition are  modifiable once it has been created due to the potential implications for data already stored.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: BaseCurrency, SubHoldingKeys, AmortisationMethod, TransactionTypeScope, CashGainLossCalculationDate, InstrumentEventConfiguration, AmortisationRuleSetId, TaxRuleSetScope, SettlementConfiguration.
+     * Create or update certain details for a particular transaction portfolio. Note that not all elements of a transaction portfolio definition are modifiable once it has been created due to the potential implications for data already stored.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: BaseCurrency, SubHoldingKeys, AmortisationMethod, TransactionTypeScope, CashGainLossCalculationDate, InstrumentEventConfiguration, AmortisationRuleSetId, TaxRuleSetScope, SettlementConfiguration.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the   scope this uniquely identifies the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the  scope this uniquely identifies the transaction portfolio. (required)
      * @param operation The patch document. (required)
      * @return APIpatchPortfolioDetailsRequest
      * @http.response.details
@@ -10640,7 +10640,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; or \&quot;Transaction\&quot; domain to decorate onto   the transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or   \&quot;Transaction/strategy/quantsignal\&quot;. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; or \&quot;Transaction\&quot; domain to decorate onto  the transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or  \&quot;Transaction/strategy/quantsignal\&quot;. (optional)
          * @return APIpreviewTransactionRequest
          */
         public APIpreviewTransactionRequest propertyKeys(List<String> propertyKeys) {
@@ -10650,7 +10650,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set showCancelledTransactions
-         * @param showCancelledTransactions Option to specify whether to include previous versions of an amended transaction in the response.   Defaults to False if not specified. (optional)
+         * @param showCancelledTransactions Option to specify whether to include previous versions of an amended transaction in the response.  Defaults to False if not specified. (optional)
          * @return APIpreviewTransactionRequest
          */
         public APIpreviewTransactionRequest showCancelledTransactions(Boolean showCancelledTransactions) {
@@ -10788,9 +10788,9 @@ public class TransactionPortfoliosApi {
 
     /**
      * PreviewTransaction: Preview a transaction
-     * Returns the output-transaction(s) - e.g. as returned by BuildTransactions  that would come out of LUSID if the provided TransactionRequest was booked.
+     * Returns the output-transaction(s) - e.g. as returned by BuildTransactions that would come out of LUSID if the provided TransactionRequest was booked.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies  the transaction portfolio. (required)
      * @param transactionRequest The transaction to be previewed. (required)
      * @return APIpreviewTransactionRequest
      * @http.response.details
@@ -10949,7 +10949,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set fromEffectiveAt
-         * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.   There is no lower bound if this is not specified. (optional)
+         * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.  There is no lower bound if this is not specified. (optional)
          * @return APIresolveInstrumentRequest
          */
         public APIresolveInstrumentRequest fromEffectiveAt(String fromEffectiveAt) {
@@ -10959,7 +10959,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set reResolve
-         * @param reResolve When set to true, instrument resolution will be attempted for all transactions and holdings for the given identifier and date range.   When set to false (default behaviour), instrument resolution will only be attempted for those transactions and holdings that were previously unresolved. (optional, default to false)
+         * @param reResolve When set to true, instrument resolution will be attempted for all transactions and holdings for the given identifier and date range.  When set to false (default behaviour), instrument resolution will only be attempted for those transactions and holdings that were previously unresolved. (optional, default to false)
          * @return APIresolveInstrumentRequest
          */
         public APIresolveInstrumentRequest reResolve(Boolean reResolve) {
@@ -10969,7 +10969,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set requestBody
-         * @param requestBody The dictionary with the instrument identifiers to be updated on the   transaction and holdings. (optional)
+         * @param requestBody The dictionary with the instrument identifiers to be updated on the  transaction and holdings. (optional)
          * @return APIresolveInstrumentRequest
          */
         public APIresolveInstrumentRequest requestBody(Map<String, String> requestBody) {
@@ -11097,9 +11097,9 @@ public class TransactionPortfoliosApi {
 
     /**
      * ResolveInstrument: Resolve instrument
-     * Try to resolve the instrument for transaction and holdings for a given instrument identifier and a specified  period of time. Also update the instrument identifiers with the given instrument identifiers collection.
+     * Try to resolve the instrument for transaction and holdings for a given instrument identifier and a specified period of time. Also update the instrument identifiers with the given instrument identifiers collection.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies  the transaction portfolio. (required)
      * @param instrumentIdentifierType The instrument identifier type. (required)
      * @param instrumentIdentifierValue The value for the given instrument identifier. (required)
      * @return APIresolveInstrumentRequest
@@ -11407,9 +11407,9 @@ public class TransactionPortfoliosApi {
 
     /**
      * SetHoldings: Set holdings
-     * Set the holdings of the specified transaction portfolio to the provided targets. LUSID will automatically  construct adjustment transactions to ensure that the entire set of holdings for the transaction portfolio  are always set to the provided targets for the specified effective datetime. Read more about the difference between  adjusting and setting holdings here https://support.lusid.com/docs/how-do-i-manually-adjust-or-set-holdings.
+     * Set the holdings of the specified transaction portfolio to the provided targets. LUSID will automatically construct adjustment transactions to ensure that the entire set of holdings for the transaction portfolio are always set to the provided targets for the specified effective datetime. Read more about the difference between adjusting and setting holdings here https://support.lusid.com/docs/how-do-i-manually-adjust-or-set-holdings.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies  the transaction portfolio. (required)
      * @param effectiveAt The effective datetime or cut label at which the holdings should be set to the provided targets. (required)
      * @param adjustHoldingRequest The complete set of target holdings for the transaction portfolio. (required)
      * @return APIsetHoldingsRequest
@@ -11661,9 +11661,9 @@ public class TransactionPortfoliosApi {
 
     /**
      * UpsertCustodianAccounts: Upsert Custodian Accounts
-     * Create or update Custodian Accounts in the Transaction Portfolios. A Custodian Account will be updated  if it already exists and created if it does not.  The batch limit per request is 2,000.
+     * Create or update Custodian Accounts in the Transaction Portfolios. A Custodian Account will be updated if it already exists and created if it does not.  The batch limit per request is 2,000.
      * @param scope The scope of the Transaction Portfolio. (required)
-     * @param code The code of the Transaction Portfolio. Together with the scope this uniquely identifies   the Transaction Portfolios. (required)
+     * @param code The code of the Transaction Portfolio. Together with the scope this uniquely identifies  the Transaction Portfolios. (required)
      * @param custodianAccountRequest A list of Custodian Accounts to be created or updated. (required)
      * @return APIupsertCustodianAccountsRequest
      * @http.response.details
@@ -11806,7 +11806,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set requestBody
-         * @param requestBody The properties to be updated or inserted onto the Transaction Portfolio. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;CustodianAccount/Manager/Id\&quot;. (optional)
+         * @param requestBody The properties to be updated or inserted onto the Transaction Portfolio. Each property in  the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;CustodianAccount/Manager/Id\&quot;. (optional)
          * @return APIupsertCustodianAccountsPropertiesRequest
          */
         public APIupsertCustodianAccountsPropertiesRequest requestBody(Map<String, Property> requestBody) {
@@ -11934,7 +11934,7 @@ public class TransactionPortfoliosApi {
 
     /**
      * UpsertCustodianAccountsProperties: Upsert custodian accounts properties
-     * Update or insert one or more properties onto a single custodian account. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;CustodianAccount&#39;.     Upserting a property that exists for a Transaction Portfolios, with a null value, will delete the instance of the property for that group.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+     * Update or insert one or more properties onto a single custodian account. A property will be updated if it already exists and inserted if it does not. All properties must be of the domain &#39;CustodianAccount&#39;.   Upserting a property that exists for a Transaction Portfolios, with a null value, will delete the instance of the property for that group.   Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
      * @param scope The scope of the Transaction Portfolios to update or insert the properties onto. (required)
      * @param code The code of the Transaction Portfolios to update or insert the properties onto. Together with the scope this uniquely identifies the Transaction Portfolios. (required)
      * @param custodianAccountScope The scope of the Custodian Account to update or insert the properties onto. (required)
@@ -12075,7 +12075,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which the updated or inserted details should become valid.   Defaults to the current LUSID system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which the updated or inserted details should become valid.  Defaults to the current LUSID system datetime if not specified. (optional)
          * @return APIupsertPortfolioDetailsRequest
          */
         public APIupsertPortfolioDetailsRequest effectiveAt(String effectiveAt) {
@@ -12203,9 +12203,9 @@ public class TransactionPortfoliosApi {
 
     /**
      * UpsertPortfolioDetails: Upsert portfolio details
-     * Create or update certain details for a particular transaction portfolio. The details are updated if they already exist, and inserted if they do not.     Note that not all elements of a transaction portfolio definition are  modifiable once it has been created due to the potential implications for data already stored.
+     * Create or update certain details for a particular transaction portfolio. The details are updated if they already exist, and inserted if they do not.   Note that not all elements of a transaction portfolio definition are modifiable once it has been created due to the potential implications for data already stored.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the   scope this uniquely identifies the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the  scope this uniquely identifies the transaction portfolio. (required)
      * @param createPortfolioDetails The details to create or update for the specified transaction portfolio. (required)
      * @return APIupsertPortfolioDetailsRequest
      * @http.response.details
@@ -12717,9 +12717,9 @@ public class TransactionPortfoliosApi {
 
     /**
      * UpsertTransactionProperties: Upsert transaction properties
-     * Create or update one or more transaction properties for a single transaction in the transaction portfolio.  Each property will be updated if it already exists and created if it does not.  Both transaction and portfolio must exist at the time when properties are created or updated.
+     * Create or update one or more transaction properties for a single transaction in the transaction portfolio. Each property will be updated if it already exists and created if it does not. Both transaction and portfolio must exist at the time when properties are created or updated.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies  the transaction portfolio. (required)
      * @param transactionId The unique ID of the transaction to create or update properties for. (required)
      * @param requestBody The properties and their associated values to create or update. (required)
      * @return APIupsertTransactionPropertiesRequest
@@ -13016,9 +13016,9 @@ public class TransactionPortfoliosApi {
 
     /**
      * UpsertTransactions: Upsert transactions
-     * Create or update transactions in the transaction portfolio. A transaction will be updated  if it already exists and created if it does not.  The maximum number of transactions that this method can upsert per request is 10,000.
+     * Create or update transactions in the transaction portfolio. A transaction will be updated if it already exists and created if it does not.  The maximum number of transactions that this method can upsert per request is 10,000.
      * @param scope The scope of the transaction portfolio. (required)
-     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies  the transaction portfolio. (required)
      * @param transactionRequest A list of transactions to be created or updated. (required)
      * @return APIupsertTransactionsRequest
      * @http.response.details

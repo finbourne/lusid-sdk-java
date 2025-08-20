@@ -47,7 +47,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Definition of an Amortisation event.  This is an event that describes the occurence of amortisation.
+ * Definition of an Amortisation event. This is an event that describes the occurence of amortisation.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AmortisationEvent extends InstrumentEvent {
@@ -78,7 +78,7 @@ public class AmortisationEvent extends InstrumentEvent {
   }
 
    /**
-   * The amount reduced in this amortisation event.  That is, the difference between the previous notional amount and the current notional amount as set in this event.
+   * The amount reduced in this amortisation event. That is, the difference between the previous notional amount and the current notional amount as set in this event.
    * @return amountReduced
   **/
   @jakarta.annotation.Nonnull

@@ -247,9 +247,9 @@ public class ReferenceListsApiExample {
 
         ReferenceListsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ReferenceListsApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list Reference Lists. Defaults to return the latest version of Reference Lists if not specified.
-        String page = "page_example"; // String | The pagination token to use to continue listing Reference Lists from a previous call to list Reference Lists.   This value is returned from the previous call. If a pagination token is provided, the filter, limit and asAt fields   must not have changed since the original request.
+        String page = "page_example"; // String | The pagination token to use to continue listing Reference Lists from a previous call to list Reference Lists.  This value is returned from the previous call. If a pagination token is provided, the filter, limit and asAt fields  must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this number. Defaults to 100 if not specified.
-        String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
+        String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid.
         try {
             // uncomment the below to set overrides at the request level
             // PagedResourceListOfReferenceListResponse result = apiInstance.listReferenceLists(asAt, page, limit, filter).execute(opts);
@@ -272,9 +272,9 @@ public class ReferenceListsApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list Reference Lists. Defaults to return the latest version of Reference Lists if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing Reference Lists from a previous call to list Reference Lists.   This value is returned from the previous call. If a pagination token is provided, the filter, limit and asAt fields   must not have changed since the original request. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing Reference Lists from a previous call to list Reference Lists.  This value is returned from the previous call. If a pagination token is provided, the filter, limit and asAt fields  must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this number. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
 ### Return type
 

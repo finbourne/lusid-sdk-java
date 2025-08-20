@@ -110,7 +110,7 @@ public class InterestRateSwaption extends LusidInstrument {
   }
 
    /**
-   * Pay or Receive the fixed leg of the underlying swap.    Supported string (enumeration) values are: [Pay, Receive].
+   * Pay or Receive the fixed leg of the underlying swap.  Supported string (enumeration) values are: [Pay, Receive].
    * @return payOrReceiveFixed
   **/
   @jakarta.annotation.Nonnull
@@ -152,7 +152,7 @@ public class InterestRateSwaption extends LusidInstrument {
   }
 
    /**
-   * How does the option settle    Supported string (enumeration) values are: [Cash, Physical].
+   * How does the option settle  Supported string (enumeration) values are: [Cash, Physical].
    * @return deliveryMethod
   **/
   @jakarta.annotation.Nonnull

@@ -123,7 +123,7 @@ public class SecurityElection {
   }
 
    /**
-   * Is this election automatically applied in the absence of an election having been made.  May only be true for one election if multiple are provided.
+   * Is this election automatically applied in the absence of an election having been made. May only be true for one election if multiple are provided.
    * @return isDefault
   **/
   @jakarta.annotation.Nullable
@@ -144,7 +144,7 @@ public class SecurityElection {
   }
 
    /**
-   * Price per unit of the security. At least one of UnitsRatio or Price must be provided.  Price must non-zero.
+   * Price per unit of the security. At least one of UnitsRatio or Price must be provided. Price must non-zero.
    * @return price
   **/
   @jakarta.annotation.Nullable

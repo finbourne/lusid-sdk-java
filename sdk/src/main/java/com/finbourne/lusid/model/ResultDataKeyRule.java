@@ -80,6 +80,10 @@ public class ResultDataKeyRule extends ResultKeyRule {
   @SerializedName(SERIALIZED_NAME_DOCUMENT_RESULT_TYPE)
   private String documentResultType;
 
+  public static final String SERIALIZED_NAME_USE_DOCUMENT_TO_INFER_HOLDINGS = "useDocumentToInferHoldings";
+  @SerializedName(SERIALIZED_NAME_USE_DOCUMENT_TO_INFER_HOLDINGS)
+  private Boolean useDocumentToInferHoldings;
+
   public ResultDataKeyRule() {
     // this.resultKeyRuleType = this.getClass().getSimpleName();
   }
@@ -154,7 +158,7 @@ public class ResultDataKeyRule extends ResultKeyRule {
   }
 
    /**
-   * Shorthand for the time interval used to select result data. This must be a dot-separated string   specifying a start and end date, for example &#39;5D.0D&#39; to look back 5 days from today (0 days ago).
+   * Shorthand for the time interval used to select result data. This must be a dot-separated string  specifying a start and end date, for example &#39;5D.0D&#39; to look back 5 days from today (0 days ago).
    * @return quoteInterval
   **/
   @jakarta.annotation.Nullable
@@ -231,6 +235,27 @@ public class ResultDataKeyRule extends ResultKeyRule {
   }
 
 
+  public ResultDataKeyRule useDocumentToInferHoldings(Boolean useDocumentToInferHoldings) {
+    
+    this.useDocumentToInferHoldings = useDocumentToInferHoldings;
+    return this;
+  }
+
+   /**
+   * Indicates whether the relevant document should be used to infer the set of holdings in the valuation.
+   * @return useDocumentToInferHoldings
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getUseDocumentToInferHoldings() {
+    return useDocumentToInferHoldings;
+  }
+
+
+  public void setUseDocumentToInferHoldings(Boolean useDocumentToInferHoldings) {
+    this.useDocumentToInferHoldings = useDocumentToInferHoldings;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -248,6 +273,7 @@ public class ResultDataKeyRule extends ResultKeyRule {
         Objects.equals(this.asAt, resultDataKeyRule.asAt) &&
         Objects.equals(this.resourceKey, resultDataKeyRule.resourceKey) &&
         Objects.equals(this.documentResultType, resultDataKeyRule.documentResultType) &&
+        Objects.equals(this.useDocumentToInferHoldings, resultDataKeyRule.useDocumentToInferHoldings) &&
         super.equals(o);
   }
 
@@ -257,7 +283,7 @@ public class ResultDataKeyRule extends ResultKeyRule {
 
   @Override
   public int hashCode() {
-    return Objects.hash(supplier, dataScope, documentCode, quoteInterval, asAt, resourceKey, documentResultType, super.hashCode());
+    return Objects.hash(supplier, dataScope, documentCode, quoteInterval, asAt, resourceKey, documentResultType, useDocumentToInferHoldings, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -279,6 +305,7 @@ public class ResultDataKeyRule extends ResultKeyRule {
     sb.append("    asAt: ").append(toIndentedString(asAt)).append("\n");
     sb.append("    resourceKey: ").append(toIndentedString(resourceKey)).append("\n");
     sb.append("    documentResultType: ").append(toIndentedString(documentResultType)).append("\n");
+    sb.append("    useDocumentToInferHoldings: ").append(toIndentedString(useDocumentToInferHoldings)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -309,6 +336,7 @@ public class ResultDataKeyRule extends ResultKeyRule {
     openapiFields.add("asAt");
     openapiFields.add("resourceKey");
     openapiFields.add("documentResultType");
+    openapiFields.add("useDocumentToInferHoldings");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

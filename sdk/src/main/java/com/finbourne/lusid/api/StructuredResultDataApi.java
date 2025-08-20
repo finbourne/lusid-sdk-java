@@ -313,7 +313,7 @@ public class StructuredResultDataApi {
 
     /**
      * CreateDataMap: Create data map
-     * Create or update one or more structured result store address definition data maps in a particular scope. Note these are immutable and cannot be changed once created.     In the request, each data map must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data map object in the response.     The response returns both the collection of successfully created or updated data maps, as well as those that failed.  For each failure, a reason is provided.     It is important to check the failed set for any unsuccessful results.
+     * Create or update one or more structured result store address definition data maps in a particular scope. Note these are immutable and cannot be changed once created.   In the request, each data map must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID. It serves only to easily identify each data map object in the response.   The response returns both the collection of successfully created or updated data maps, as well as those that failed. For each failure, a reason is provided.   It is important to check the failed set for any unsuccessful results.
      * @param scope The scope in which to create or update data maps. (required)
      * @param requestBody Individual data map creation requests. (required)
      * @return APIcreateDataMapRequest
@@ -557,7 +557,7 @@ public class StructuredResultDataApi {
 
     /**
      * DeleteStructuredResultData: Delete structured result data
-     * Delete one or more structured result data items from a particular scope. Each item is identified by a unique ID which includes  information about its type as well as the exact effective datetime (to the microsecond) at which it entered the system (became valid).     In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data item in the response.     The response returns both the collection of successfully deleted data items, as well as those that failed.  For each failure, a reason is provided.     It is important to check the failed set for any unsuccessful results.
+     * Delete one or more structured result data items from a particular scope. Each item is identified by a unique ID which includes information about its type as well as the exact effective datetime (to the microsecond) at which it entered the system (became valid).   In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID. It serves only to easily identify each data item in the response.   The response returns both the collection of successfully deleted data items, as well as those that failed. For each failure, a reason is provided.   It is important to check the failed set for any unsuccessful results.
      * @param scope The scope from which to delete data items. (required)
      * @param requestBody The data IDs to delete, each keyed by a unique, ephemeral correlation ID. (required)
      * @return APIdeleteStructuredResultDataRequest
@@ -706,7 +706,7 @@ public class StructuredResultDataApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime to query the document for which the address key definitions are retrieved.   Defaults to querying the latest version if not specified. (optional)
+         * @param effectiveAt The effective datetime to query the document for which the address key definitions are retrieved.  Defaults to querying the latest version if not specified. (optional)
          * @return APIgetAddressKeyDefinitionsForDocumentRequest
          */
         public APIgetAddressKeyDefinitionsForDocumentRequest effectiveAt(String effectiveAt) {
@@ -716,7 +716,7 @@ public class StructuredResultDataApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime to query the document for which the address key definitions are retrieved.   Defaults to querying the latest version if not specified. (optional)
+         * @param asAt The asAt datetime to query the document for which the address key definitions are retrieved.  Defaults to querying the latest version if not specified. (optional)
          * @return APIgetAddressKeyDefinitionsForDocumentRequest
          */
         public APIgetAddressKeyDefinitionsForDocumentRequest asAt(OffsetDateTime asAt) {
@@ -1090,7 +1090,7 @@ public class StructuredResultDataApi {
 
     /**
      * GetDataMap: Get data map
-     * Retrieve one or more structured result store address definition data maps from a particular scope.     Each data map can be identified by its invariant key, which can be thought of as a permanent URL.  For each ID, LUSID returns the most recently matched item.     In the request, each data map must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data map in the response.     The response returns three collections. The first contains successfully retrieved data maps. The second contains those with a  valid identifier but that could not be found. The third contains those that failed because LUSID could not construct a valid identifier from the request.     For the IDs that failed to resolve or could not be found, a reason is provided.     It is important to check the failed sets for any unsuccessful results.
+     * Retrieve one or more structured result store address definition data maps from a particular scope.   Each data map can be identified by its invariant key, which can be thought of as a permanent URL. For each ID, LUSID returns the most recently matched item.   In the request, each data map must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID. It serves only to easily identify each data map in the response.   The response returns three collections. The first contains successfully retrieved data maps. The second contains those with a valid identifier but that could not be found. The third contains those that failed because LUSID could not construct a valid identifier from the request.   For the IDs that failed to resolve or could not be found, a reason is provided.   It is important to check the failed sets for any unsuccessful results.
      * @param scope The scope from which to retrieve data maps. (required)
      * @param requestBody The data map keys to look up, each keyed by a unique, ephemeral correlation ID. (required)
      * @return APIgetDataMapRequest
@@ -1236,7 +1236,7 @@ public class StructuredResultDataApi {
 
         /**
          * Set maxAge
-         * @param maxAge The duration of the look-back window in ISO8601 time interval format, for example &#39;P1Y2M3DT4H30M&#39; (1 year, 2 months, 3 days, 4 hours and 30 minutes).   This is subtracted from the provided effectiveAt datetime to generate a effective datetime window inside which a data item must exist to be retrieved. (optional)
+         * @param maxAge The duration of the look-back window in ISO8601 time interval format, for example &#39;P1Y2M3DT4H30M&#39; (1 year, 2 months, 3 days, 4 hours and 30 minutes).  This is subtracted from the provided effectiveAt datetime to generate a effective datetime window inside which a data item must exist to be retrieved. (optional)
          * @return APIgetStructuredResultDataRequest
          */
         public APIgetStructuredResultDataRequest maxAge(String maxAge) {
@@ -1364,7 +1364,7 @@ public class StructuredResultDataApi {
 
     /**
      * GetStructuredResultData: Get structured result data
-     * Retrieve one or more structured result data items from a particular scope.     Each item can be identified by its time invariant structured result data identifier. For each ID, LUSID  returns the most recently matched item with respect to the provided (or default) effective datetime.      An optional maximum age range window can be specified to control how far back to look from the specified  effective datetime. LUSID returns the most recent item within this window.     In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data item in the response.    The response returns three collections. The first contains successfully retrieved data items. The second contains those with a  valid identifier but that could not be found. The third contains those that failed because LUSID could not construct a valid identifier from the request.    For the IDs that failed to resolve or could not be found, a reason is provided.     It is important to check the failed sets for any unsuccessful results.
+     * Retrieve one or more structured result data items from a particular scope.   Each item can be identified by its time invariant structured result data identifier. For each ID, LUSID returns the most recently matched item with respect to the provided (or default) effective datetime.    An optional maximum age range window can be specified to control how far back to look from the specified effective datetime. LUSID returns the most recent item within this window.   In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID. It serves only to easily identify each data item in the response.  The response returns three collections. The first contains successfully retrieved data items. The second contains those with a valid identifier but that could not be found. The third contains those that failed because LUSID could not construct a valid identifier from the request.  For the IDs that failed to resolve or could not be found, a reason is provided.   It is important to check the failed sets for any unsuccessful results.
      * @param scope The scope from which to retrieve data items. (required)
      * @param requestBody The time invariant set of structured data identifiers to retrieve, keyed by a unique, ephemeral correlation ID. (required)
      * @return APIgetStructuredResultDataRequest
@@ -1623,7 +1623,7 @@ public class StructuredResultDataApi {
 
     /**
      * GetVirtualDocument: Get Virtual Documents
-     * Retrieve one or more virtual documents from a particular scope.     Each item can be identified by its time invariant structured result data identifier. For each ID, LUSID  returns the most recently matched item with respect to the provided effective datetime.     In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data item in the response.     The response returns two collections. The first contains successfully retrieved data items. The second contains those with a  valid identifier but that could not be found, or those that failed because LUSID could not construct a valid identifier from the request.     For the IDs that failed to resolve or could not be found, a reason is provided.     It is important to check the failed sets for any unsuccessful results.
+     * Retrieve one or more virtual documents from a particular scope.   Each item can be identified by its time invariant structured result data identifier. For each ID, LUSID returns the most recently matched item with respect to the provided effective datetime.   In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID. It serves only to easily identify each data item in the response.   The response returns two collections. The first contains successfully retrieved data items. The second contains those with a valid identifier but that could not be found, or those that failed because LUSID could not construct a valid identifier from the request.   For the IDs that failed to resolve or could not be found, a reason is provided.   It is important to check the failed sets for any unsuccessful results.
      * @param scope The scope in which to construct the virtual documents. (required)
      * @param requestBody The time invariant set of structured data identifiers to retrieve, keyed by a unique, ephemeral correlation ID. (required)
      * @return APIgetVirtualDocumentRequest
@@ -1803,7 +1803,7 @@ public class StructuredResultDataApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing virtual document rows from a previous   call to list virtual document rows. This value is returned from the previous call. If a pagination token is   provided the filter, effectiveAt, and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing virtual document rows from a previous  call to list virtual document rows. This value is returned from the previous call. If a pagination token is  provided the filter, effectiveAt, and asAt fields must not have changed since the original request. (optional)
          * @return APIgetVirtualDocumentRowsRequest
          */
         public APIgetVirtualDocumentRowsRequest page(String page) {
@@ -1823,7 +1823,7 @@ public class StructuredResultDataApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIgetVirtualDocumentRowsRequest
          */
         public APIgetVirtualDocumentRowsRequest filter(String filter) {
@@ -1951,7 +1951,7 @@ public class StructuredResultDataApi {
 
     /**
      * GetVirtualDocumentRows: Get Virtual Document Rows
-     * Retrieve the rows of the virtual document with the specified identifiers and the given effectiveAt date time.    Get virtual document rows merges multiple StructuredResultData items upserted with UpsertStructuredResultData  for a single StructuredResultDataId.     Since an item of StructuredResultData is always upserted with a StructuredResultDataId, of which  effectiveAt is a part, then merging across the asAt dimension is supported but not merging across the  effectiveAt dimension.
+     * Retrieve the rows of the virtual document with the specified identifiers and the given effectiveAt date time.  Get virtual document rows merges multiple StructuredResultData items upserted with UpsertStructuredResultData for a single StructuredResultDataId.   Since an item of StructuredResultData is always upserted with a StructuredResultDataId, of which effectiveAt is a part, then merging across the asAt dimension is supported but not merging across the effectiveAt dimension.
      * @param scope The scope in which to retrieve the virtual document. (required)
      * @param code The code of the virtual document to retrieve. (required)
      * @param source The source of the virtual document to retrieve. (required)
@@ -2198,7 +2198,7 @@ public class StructuredResultDataApi {
 
     /**
      * UpsertResultValue: Upsert result value
-     * Create or update one or more Upsert one or more result values in a particular scope. An item is updated if it already exists  and created if it does not.     In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data item in the response.     The response returns both the collection of successfully created or updated data items, as well as those that failed.  For each failure, a reason is provided.     It is important to check the failed set for any unsuccessful results.
+     * Create or update one or more Upsert one or more result values in a particular scope. An item is updated if it already exists and created if it does not.   In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID. It serves only to easily identify each data item in the response.   The response returns both the collection of successfully created or updated data items, as well as those that failed. For each failure, a reason is provided.   It is important to check the failed set for any unsuccessful results.
      * @param scope The scope in which to construct the virtual documents. (required)
      * @param requestBody The time invariant set of structured data identifiers to retrieve, keyed by a unique, ephemeral correlation ID. (required)
      * @return APIupsertResultValueRequest
@@ -2442,7 +2442,7 @@ public class StructuredResultDataApi {
 
     /**
      * UpsertStructuredResultData: Upsert structured result data
-     * Create or update one or more structured result data items in a particular scope. An item is updated if it already exists  and created if it does not.     In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID.  It serves only to easily identify each data item in the response.     The response returns both the collection of successfully created or updated data items, as well as those that failed.  For each failure, a reason is provided.     It is important to check the failed set for any unsuccessful results.
+     * Create or update one or more structured result data items in a particular scope. An item is updated if it already exists and created if it does not.   In the request, each data item must be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID. It serves only to easily identify each data item in the response.   The response returns both the collection of successfully created or updated data items, as well as those that failed. For each failure, a reason is provided.   It is important to check the failed set for any unsuccessful results.
      * @param scope The scope in which to create or update data items. (required)
      * @param requestBody The set of data items to create or update, keyed by a unique, ephemeral correlation ID. (required)
      * @return APIupsertStructuredResultDataRequest

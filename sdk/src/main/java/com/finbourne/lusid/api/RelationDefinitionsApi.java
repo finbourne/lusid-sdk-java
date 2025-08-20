@@ -538,7 +538,7 @@ public class RelationDefinitionsApi {
      * [EXPERIMENTAL] DeleteRelationDefinition: Delete relation definition
      * Delete the definition of the specified relation.
      * @param scope The scope of the relation to be deleted. (required)
-     * @param code The code of the relation to be deleted. Together with the domain and scope this uniquely   identifies the relation. (required)
+     * @param code The code of the relation to be deleted. Together with the domain and scope this uniquely  identifies the relation. (required)
      * @return APIdeleteRelationDefinitionRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -664,7 +664,7 @@ public class RelationDefinitionsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the relation definition. Defaults to return   the latest version of the definition if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the relation definition. Defaults to return  the latest version of the definition if not specified. (optional)
          * @return APIgetRelationDefinitionRequest
          */
         public APIgetRelationDefinitionRequest asAt(OffsetDateTime asAt) {
@@ -794,7 +794,7 @@ public class RelationDefinitionsApi {
      * [EXPERIMENTAL] GetRelationDefinition: Get relation definition
      * Retrieve the definition of a specified relation.
      * @param scope The scope of the specified relation. (required)
-     * @param code The code of the specified relation. Together with the domain and scope this uniquely   identifies the relation. (required)
+     * @param code The code of the specified relation. Together with the domain and scope this uniquely  identifies the relation. (required)
      * @return APIgetRelationDefinitionRequest
      * @http.response.details
      <table summary="Response Details" border="1">

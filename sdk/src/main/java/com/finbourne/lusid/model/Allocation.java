@@ -57,7 +57,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * An Allocation of a certain quantity of a specific instrument against an originating  Order.
+ * An Allocation of a certain quantity of a specific instrument against an originating Order.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Allocation {

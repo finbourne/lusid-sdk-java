@@ -48,7 +48,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Definition of a Future Mark to Market Event.  Represents &#39;Mark to Market&#39; daily settlement of Future instruments.
+ * Definition of a Future Mark to Market Event. Represents &#39;Mark to Market&#39; daily settlement of Future instruments.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FutureMarkToMarketEvent extends InstrumentEvent {

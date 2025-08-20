@@ -151,7 +151,7 @@ public class RelationshipDefinitionsApiExample {
 
         RelationshipDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(RelationshipDefinitionsApi.class);
         String scope = "scope_example"; // String | The scope of the relationship definition to be deleted.
-        String code = "code_example"; // String | The code of the relationship definition to be deleted. Together with the domain and scope this uniquely   identifies the relationship.
+        String code = "code_example"; // String | The code of the relationship definition to be deleted. Together with the domain and scope this uniquely  identifies the relationship.
         try {
             // uncomment the below to set overrides at the request level
             // DeletedEntityResponse result = apiInstance.deleteRelationshipDefinition(scope, code).execute(opts);
@@ -174,7 +174,7 @@ public class RelationshipDefinitionsApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the relationship definition to be deleted. | |
-| **code** | **String**| The code of the relationship definition to be deleted. Together with the domain and scope this uniquely   identifies the relationship. | |
+| **code** | **String**| The code of the relationship definition to be deleted. Together with the domain and scope this uniquely  identifies the relationship. | |
 
 ### Return type
 
@@ -244,8 +244,8 @@ public class RelationshipDefinitionsApiExample {
 
         RelationshipDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(RelationshipDefinitionsApi.class);
         String scope = "scope_example"; // String | The scope of the specified relationship definition.
-        String code = "code_example"; // String | The code of the specified relationship definition. Together with the domain and scope this uniquely   identifies the relationship definition.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the relationship definition. Defaults to return   the latest version of the definition if not specified.
+        String code = "code_example"; // String | The code of the specified relationship definition. Together with the domain and scope this uniquely  identifies the relationship definition.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the relationship definition. Defaults to return  the latest version of the definition if not specified.
         try {
             // uncomment the below to set overrides at the request level
             // RelationshipDefinition result = apiInstance.getRelationshipDefinition(scope, code, asAt).execute(opts);
@@ -268,8 +268,8 @@ public class RelationshipDefinitionsApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the specified relationship definition. | |
-| **code** | **String**| The code of the specified relationship definition. Together with the domain and scope this uniquely   identifies the relationship definition. | |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the relationship definition. Defaults to return   the latest version of the definition if not specified. | [optional] |
+| **code** | **String**| The code of the specified relationship definition. Together with the domain and scope this uniquely  identifies the relationship definition. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the relationship definition. Defaults to return  the latest version of the definition if not specified. | [optional] |
 
 ### Return type
 
@@ -338,10 +338,10 @@ public class RelationshipDefinitionsApiExample {
         // RelationshipDefinitionsApi apiInstance = apiFactory.build(RelationshipDefinitionsApi.class);
 
         RelationshipDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(RelationshipDefinitionsApi.class);
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the relationship definitions. Defaults to return   the latest version of each definition if not specified.
-        String page = "page_example"; // String | The pagination token to use to continue listing relationship definitions from a previous call to list relationship definitions. This  value is returned from the previous call. If a pagination token is provided the filter, sortBy and asAt field  must not have changed since the original request.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the relationship definitions. Defaults to return  the latest version of each definition if not specified.
+        String page = "page_example"; // String | The pagination token to use to continue listing relationship definitions from a previous call to list relationship definitions. This value is returned from the previous call. If a pagination token is provided the filter, sortBy and asAt field must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
-        String filter = "filter_example"; // String | Expression to filter the result set.   For example, to filter on the Scope, use \"scope eq 'ExampleScope'\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        String filter = "filter_example"; // String | Expression to filter the result set.  For example, to filter on the Scope, use \"scope eq 'ExampleScope'\"  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names to sort by, each suffixed by \" ASC\" or \" DESC\"
         try {
             // uncomment the below to set overrides at the request level
@@ -364,10 +364,10 @@ public class RelationshipDefinitionsApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the relationship definitions. Defaults to return   the latest version of each definition if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing relationship definitions from a previous call to list relationship definitions. This  value is returned from the previous call. If a pagination token is provided the filter, sortBy and asAt field  must not have changed since the original request. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the relationship definitions. Defaults to return  the latest version of each definition if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing relationship definitions from a previous call to list relationship definitions. This value is returned from the previous call. If a pagination token is provided the filter, sortBy and asAt field must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the result set.   For example, to filter on the Scope, use \&quot;scope eq &#39;ExampleScope&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **filter** | **String**| Expression to filter the result set.  For example, to filter on the Scope, use \&quot;scope eq &#39;ExampleScope&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
 
 ### Return type
@@ -396,7 +396,7 @@ public class RelationshipDefinitionsApiExample {
 
 [EARLY ACCESS] UpdateRelationshipDefinition: Update Relationship Definition
 
-Update the definition of a specified existing relationship. Not all elements within a relationship definition  are modifiable due to the potential implications for values already stored against the relationship.
+Update the definition of a specified existing relationship. Not all elements within a relationship definition are modifiable due to the potential implications for values already stored against the relationship.
 
 ### Example
 
@@ -438,7 +438,7 @@ public class RelationshipDefinitionsApiExample {
 
         RelationshipDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(RelationshipDefinitionsApi.class);
         String scope = "scope_example"; // String | The scope of the relationship definition being updated.
-        String code = "code_example"; // String | The code of the relationship definition being updated. Together with the scope this uniquely   identifies the relationship definition.
+        String code = "code_example"; // String | The code of the relationship definition being updated. Together with the scope this uniquely  identifies the relationship definition.
         UpdateRelationshipDefinitionRequest updateRelationshipDefinitionRequest = new UpdateRelationshipDefinitionRequest(); // UpdateRelationshipDefinitionRequest | The details of relationship definition to update.
         try {
             // uncomment the below to set overrides at the request level
@@ -462,7 +462,7 @@ public class RelationshipDefinitionsApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the relationship definition being updated. | |
-| **code** | **String**| The code of the relationship definition being updated. Together with the scope this uniquely   identifies the relationship definition. | |
+| **code** | **String**| The code of the relationship definition being updated. Together with the scope this uniquely  identifies the relationship definition. | |
 | **updateRelationshipDefinitionRequest** | [**UpdateRelationshipDefinitionRequest**](UpdateRelationshipDefinitionRequest.md)| The details of relationship definition to update. | |
 
 ### Return type

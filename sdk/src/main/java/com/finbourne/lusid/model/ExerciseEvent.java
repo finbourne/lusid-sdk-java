@@ -48,7 +48,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Definition of an exercise event.  This is an event that occurs on transformation of an instrument owing to exercise. e.g. an option of  some type into its underlying.
+ * Definition of an exercise event. This is an event that occurs on transformation of an instrument owing to exercise. e.g. an option of some type into its underlying.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExerciseEvent extends InstrumentEvent {

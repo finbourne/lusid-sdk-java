@@ -20,7 +20,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 [EXPERIMENTAL] BatchAmend: Batch amend entities Custom Data Model membership.
 
-Add/Remove entities to/from a Custom Data Model in a single operation.     Each amendment request must be keyed by a unique correlation ID. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each amendment in the response.     Note: If using partial failure modes, then it is important to check the response body for failures as any  failures will still return a 200 status code.
+Add/Remove entities to/from a Custom Data Model in a single operation.   Each amendment request must be keyed by a unique correlation ID. This id is ephemeral and is not stored by LUSID. It serves only as a way to easily identify each amendment in the response.   Note: If using partial failure modes, then it is important to check the response body for failures as any failures will still return a 200 status code.
 
 ### Example
 
@@ -206,7 +206,7 @@ public class CustomDataModelsApiExample {
 
 [EXPERIMENTAL] DeleteCustomDataModel: Delete a Custom Data Model
 
-Delete a Custom Data Model. The data model will remain viewable at previous as at times, but will no longer  be part of any hierarchies.
+Delete a Custom Data Model. The data model will remain viewable at previous as at times, but will no longer be part of any hierarchies.
 
 ### Example
 
@@ -345,7 +345,7 @@ public class CustomDataModelsApiExample {
         String entityType = "entityType_example"; // String | The entity type of the Data Model.
         String scope = "scope_example"; // String | The scope of the specified Data Model.
         String code = "code_example"; // String | The code of the specified Data Model.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Data Model. Defaults to return   the latest version of the Data Model if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Data Model. Defaults to return  the latest version of the Data Model if not specified.
         try {
             // uncomment the below to set overrides at the request level
             // CustomDataModel result = apiInstance.getCustomDataModel(entityType, scope, code, asAt).execute(opts);
@@ -370,7 +370,7 @@ public class CustomDataModelsApiExample {
 | **entityType** | **String**| The entity type of the Data Model. | |
 | **scope** | **String**| The scope of the specified Data Model. | |
 | **code** | **String**| The code of the specified Data Model. | |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Data Model. Defaults to return   the latest version of the Data Model if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Data Model. Defaults to return  the latest version of the Data Model if not specified. | [optional] |
 
 ### Return type
 
@@ -439,7 +439,7 @@ public class CustomDataModelsApiExample {
         // CustomDataModelsApi apiInstance = apiFactory.build(CustomDataModelsApi.class);
 
         CustomDataModelsApi apiInstance = ApiFactoryBuilder.build(fileName).build(CustomDataModelsApi.class);
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Data Model. Defaults to return   the latest version of the Data Model if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Data Model. Defaults to return  the latest version of the Data Model if not specified.
         String filter = "filter_example"; // String | Expression to filter the results. Only EntityType is supported
         try {
             // uncomment the below to set overrides at the request level
@@ -462,7 +462,7 @@ public class CustomDataModelsApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Data Model. Defaults to return   the latest version of the Data Model if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Data Model. Defaults to return  the latest version of the Data Model if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the results. Only EntityType is supported | [optional] |
 
 ### Return type

@@ -53,7 +53,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Representation of a repurchase offer corporate action.  Represents an offer by the issuer to repurchase its own shares from a shareholder at a given price.
+ * Representation of a repurchase offer corporate action. Represents an offer by the issuer to repurchase its own shares from a shareholder at a given price.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RepurchaseOfferEvent extends InstrumentEvent {
@@ -200,7 +200,7 @@ public class RepurchaseOfferEvent extends InstrumentEvent {
   }
 
    /**
-   * List of possible LapseElections for this event. Only 1 should be provided.  Allows the user to opt out of the offer.
+   * List of possible LapseElections for this event. Only 1 should be provided. Allows the user to opt out of the offer.
    * @return lapseElections
   **/
   @jakarta.annotation.Nonnull
@@ -250,7 +250,7 @@ public class RepurchaseOfferEvent extends InstrumentEvent {
   }
 
    /**
-   * The fraction used to calculate a proportional adjustment for RepurchaseQuantity when a full period is not used.  Defaults to 1 if not set. Must be greater than 0 and less than or equal to 1.
+   * The fraction used to calculate a proportional adjustment for RepurchaseQuantity when a full period is not used. Defaults to 1 if not set. Must be greater than 0 and less than or equal to 1.
    * @return prorationRate
   **/
   @jakarta.annotation.Nullable
@@ -271,7 +271,7 @@ public class RepurchaseOfferEvent extends InstrumentEvent {
   }
 
    /**
-   * Date set by the account servicer as the latest date to respond to the offer.  Optional. If set, must be before or equal to MarketDeadlineDate.  Defaults to MarketDeadlineDate if not set.
+   * Date set by the account servicer as the latest date to respond to the offer. Optional. If set, must be before or equal to MarketDeadlineDate. Defaults to MarketDeadlineDate if not set.
    * @return responseDeadlineDate
   **/
   @jakarta.annotation.Nullable

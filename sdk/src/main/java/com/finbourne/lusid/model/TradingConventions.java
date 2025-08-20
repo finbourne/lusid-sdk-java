@@ -71,7 +71,7 @@ public class TradingConventions {
   }
 
    /**
-   * The factor used to scale prices for the instrument. Currently used by LUSID when calculating cost  and notional amounts on transactions. Note this factor does not yet impact Valuation, PV, exposure,  all of which use the scale factor attached to the price quotes in the QuoteStore.  Must be positive and defaults to 1 if not set.
+   * The factor used to scale prices for the instrument. Currently used by LUSID when calculating cost and notional amounts on transactions. Note this factor does not yet impact Valuation, PV, exposure, all of which use the scale factor attached to the price quotes in the QuoteStore. Must be positive and defaults to 1 if not set.
    * @return priceScaleFactor
   **/
   @jakarta.annotation.Nullable
@@ -92,7 +92,7 @@ public class TradingConventions {
   }
 
    /**
-   * The Minimum Order Size  Must be non-negative and defaults to 0 if not set.
+   * The Minimum Order Size Must be non-negative and defaults to 0 if not set.
    * @return minimumOrderSize
   **/
   @jakarta.annotation.Nullable
@@ -113,7 +113,7 @@ public class TradingConventions {
   }
 
    /**
-   * The Minimum Order Increment  Must be non-negative and defaults to 0 if not set.
+   * The Minimum Order Increment Must be non-negative and defaults to 0 if not set.
    * @return minimumOrderIncrement
   **/
   @jakarta.annotation.Nullable

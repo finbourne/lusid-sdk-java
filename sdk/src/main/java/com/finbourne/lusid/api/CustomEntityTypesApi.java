@@ -675,7 +675,7 @@ public class CustomEntityTypesApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to list the entities. Defaults to returning the latest version   of each Custom Entity Type if not specified. (optional)
+         * @param asAt The asAt datetime at which to list the entities. Defaults to returning the latest version  of each Custom Entity Type if not specified. (optional)
          * @return APIlistCustomEntityTypesRequest
          */
         public APIlistCustomEntityTypesRequest asAt(OffsetDateTime asAt) {
@@ -695,7 +695,7 @@ public class CustomEntityTypesApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIlistCustomEntityTypesRequest
          */
         public APIlistCustomEntityTypesRequest filter(String filter) {
@@ -715,7 +715,7 @@ public class CustomEntityTypesApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing entities; this   value is returned from the previous call. If a pagination token is provided, the filter, limit, sortBy,   and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing entities; this  value is returned from the previous call. If a pagination token is provided, the filter, limit, sortBy,  and asAt fields must not have changed since the original request. (optional)
          * @return APIlistCustomEntityTypesRequest
          */
         public APIlistCustomEntityTypesRequest page(String page) {

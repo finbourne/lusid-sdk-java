@@ -568,7 +568,7 @@ public class TransactionConfigurationApi {
 
     /**
      * DeleteTransactionType: Delete a transaction type
-     * /// WARNING! Changing existing transaction types has a material impact on how data, new and old,  is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
+     * /// WARNING! Changing existing transaction types has a material impact on how data, new and old, is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
      * @param source The source that the type is in (required)
      * @param type One of the type&#39;s aliases (required)
      * @return APIdeleteTransactionTypeRequest
@@ -1210,7 +1210,7 @@ public class TransactionConfigurationApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the transaction configuration.   Defaults to returning the latest version of the transaction configuration type if not specified (optional)
+         * @param asAt The asAt datetime at which to retrieve the transaction configuration.  Defaults to returning the latest version of the transaction configuration type if not specified (optional)
          * @return APIgetTransactionTypeRequest
          */
         public APIgetTransactionTypeRequest asAt(OffsetDateTime asAt) {
@@ -1718,7 +1718,7 @@ public class TransactionConfigurationApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the transaction types. Defaults   to returning the latest versions if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the transaction types. Defaults  to returning the latest versions if not specified. (optional)
          * @return APIlistTransactionTypesRequest
          */
         public APIlistTransactionTypesRequest asAt(OffsetDateTime asAt) {
@@ -1856,7 +1856,7 @@ public class TransactionConfigurationApi {
 
     /**
      * ListTransactionTypes: List transaction types
-     * Get the list of current transaction types. For information on the default transaction types provided with  LUSID, see https://support.lusid.com/knowledgebase/article/KA-01873/.
+     * Get the list of current transaction types. For information on the default transaction types provided with LUSID, see https://support.lusid.com/knowledgebase/article/KA-01873/.
      * @return APIlistTransactionTypesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2630,7 +2630,7 @@ public class TransactionConfigurationApi {
 
     /**
      * SetTransactionType: Set a specific transaction type
-     * Set a transaction type for the given source and type. If the requested transaction type does not exist, it will be created    WARNING! Changing existing transaction types has a material impact on how data, new and old, is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
+     * Set a transaction type for the given source and type. If the requested transaction type does not exist, it will be created  WARNING! Changing existing transaction types has a material impact on how data, new and old, is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
      * @param source The source to set the transaction configuration for (required)
      * @param type One of the transaction configuration alias types to uniquely identify the configuration. If this type does not exist, then a new transaction type is created using the body of the request in the given source, without including this type (required)
      * @param transactionTypeRequest The transaction configuration to set (required)

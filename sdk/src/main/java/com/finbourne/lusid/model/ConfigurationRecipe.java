@@ -51,7 +51,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * The Configuration or Calculation Recipe controls how LUSID processes a given request.  This can be used to change where market data used in pricing is loaded from and in what order, or which model is used to  price a given instrument as well as how aggregation will process the produced results.
+ * The Configuration or Calculation Recipe controls how LUSID processes a given request. This can be used to change where market data used in pricing is loaded from and in what order, or which model is used to price a given instrument as well as how aggregation will process the produced results.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ConfigurationRecipe {

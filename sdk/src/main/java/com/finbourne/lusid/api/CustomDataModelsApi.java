@@ -312,7 +312,7 @@ public class CustomDataModelsApi {
 
     /**
      * [EXPERIMENTAL] BatchAmend: Batch amend entities Custom Data Model membership.
-     * Add/Remove entities to/from a Custom Data Model in a single operation.     Each amendment request must be keyed by a unique correlation ID. This id is ephemeral and is not stored by LUSID.  It serves only as a way to easily identify each amendment in the response.     Note: If using partial failure modes, then it is important to check the response body for failures as any  failures will still return a 200 status code.
+     * Add/Remove entities to/from a Custom Data Model in a single operation.   Each amendment request must be keyed by a unique correlation ID. This id is ephemeral and is not stored by LUSID. It serves only as a way to easily identify each amendment in the response.   Note: If using partial failure modes, then it is important to check the response body for failures as any failures will still return a 200 status code.
      * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial. (required)
      * @param requestBody The payload describing the amendments to make for the given Custom Data Model. (required)
      * @return APIbatchAmendRequest
@@ -808,7 +808,7 @@ public class CustomDataModelsApi {
 
     /**
      * [EXPERIMENTAL] DeleteCustomDataModel: Delete a Custom Data Model
-     * Delete a Custom Data Model. The data model will remain viewable at previous as at times, but will no longer  be part of any hierarchies.
+     * Delete a Custom Data Model. The data model will remain viewable at previous as at times, but will no longer be part of any hierarchies.
      * @param entityType The entity type of the Data Model. (required)
      * @param scope The scope of the specified Data Model. (required)
      * @param code The code of the specified Data Model. (required)
@@ -945,7 +945,7 @@ public class CustomDataModelsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the Data Model. Defaults to return   the latest version of the Data Model if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the Data Model. Defaults to return  the latest version of the Data Model if not specified. (optional)
          * @return APIgetCustomDataModelRequest
          */
         public APIgetCustomDataModelRequest asAt(OffsetDateTime asAt) {
@@ -1191,7 +1191,7 @@ public class CustomDataModelsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the Data Model. Defaults to return   the latest version of the Data Model if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the Data Model. Defaults to return  the latest version of the Data Model if not specified. (optional)
          * @return APIlistDataModelHierarchiesRequest
          */
         public APIlistDataModelHierarchiesRequest asAt(OffsetDateTime asAt) {

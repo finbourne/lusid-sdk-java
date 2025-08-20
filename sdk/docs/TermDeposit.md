@@ -13,7 +13,7 @@ LUSID representation of a Term Deposit.
 |**contractSize** | **java.math.BigDecimal** | The principal amount of the term deposit. |  |
 |**flowConvention** | [**FlowConventions**](FlowConventions.md) |  |  |
 |**rate** | **java.math.BigDecimal** | The fixed rate for the term deposit. Specified as a decimal, e.g 0.03 is meant to be 3% interest |  |
-|**domCcy** | **String** | The domestic currency of the instrument. This should be the same as the Currency set on the FlowConventions.  You do not need to populate this field for Term Deposits in LUSID as all functionality is driven by the Currency set on the FlowConventions.  LUSID will not store values saved on this field. |  [optional] |
+|**domCcy** | **String** | The domestic currency of the instrument. This should be the same as the Currency set on the FlowConventions. You do not need to populate this field for Term Deposits in LUSID as all functionality is driven by the Currency set on the FlowConventions. LUSID will not store values saved on this field. |  [optional] |
 |**tradingConventions** | [**TradingConventions**](TradingConventions.md) |  |  [optional] |
 |**timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  |  [optional] |
 

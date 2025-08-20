@@ -50,7 +50,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * LUSID representation of an Exchange Traded Option.  Including, but not limited to, Equity Options, Bond Options, Index Options, Future Options, and Interest Rate Options.
+ * LUSID representation of an Exchange Traded Option. Including, but not limited to, Equity Options, Bond Options, Index Options, Future Options, and Interest Rate Options.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExchangeTradedOption extends LusidInstrument {

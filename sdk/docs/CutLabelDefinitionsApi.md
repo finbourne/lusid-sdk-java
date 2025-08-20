@@ -337,8 +337,8 @@ public class CutLabelDefinitionsApiExample {
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. The As At time at which listed Cut Labels are valid
         List<String> sortBy = Arrays.asList(); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
         Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
-        String filter = "filter_example"; // String | Optional. Expression to filter the result set.   For example, to filter on code, use \"code eq 'string'\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
-        String page = "page_example"; // String | The pagination token to use to continue listing cut labels from a previous call This value is returned from the previous call.  If a pagination token is provided the sortBy, filter, and asAt fields  must not have changed since the original request.
+        String filter = "filter_example"; // String | Optional. Expression to filter the result set.  For example, to filter on code, use \"code eq 'string'\"  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        String page = "page_example"; // String | The pagination token to use to continue listing cut labels from a previous call This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields must not have changed since the original request.
         try {
             // uncomment the below to set overrides at the request level
             // PagedResourceListOfCutLabelDefinition result = apiInstance.listCutLabelDefinitions(asAt, sortBy, limit, filter, page).execute(opts);
@@ -363,8 +363,8 @@ public class CutLabelDefinitionsApiExample {
 | **asAt** | **OffsetDateTime**| Optional. The As At time at which listed Cut Labels are valid | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional] |
 | **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional] |
-| **filter** | **String**| Optional. Expression to filter the result set.   For example, to filter on code, use \&quot;code eq &#39;string&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing cut labels from a previous call This value is returned from the previous call.  If a pagination token is provided the sortBy, filter, and asAt fields  must not have changed since the original request. | [optional] |
+| **filter** | **String**| Optional. Expression to filter the result set.  For example, to filter on code, use \&quot;code eq &#39;string&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing cut labels from a previous call This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields must not have changed since the original request. | [optional] |
 
 ### Return type
 

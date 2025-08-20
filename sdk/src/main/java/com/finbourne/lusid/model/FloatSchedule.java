@@ -149,7 +149,7 @@ public class FloatSchedule extends Schedule {
   }
 
    /**
-   * Last date of the payment generation schedule. May not necessarily be the maturity date  of the underlying instrument (e.g. in case the instrument has multiple payment schedules).
+   * Last date of the payment generation schedule. May not necessarily be the maturity date of the underlying instrument (e.g. in case the instrument has multiple payment schedules).
    * @return maturityDate
   **/
   @jakarta.annotation.Nullable
@@ -212,7 +212,7 @@ public class FloatSchedule extends Schedule {
   }
 
    /**
-   * Optional. Number of calendar days in the ex-dividend period.  If the settlement date falls in the ex-dividend period then the coupon paid is zero and the accrued interest is negative.  If set, this must be a non-negative number.  If not set, or set to 0, then there is no ex-dividend period.     NOTE: This field is deprecated. If you wish to set the ExDividendDays on a bond, please use the ExDividendConfiguration.
+   * Optional. Number of calendar days in the ex-dividend period. If the settlement date falls in the ex-dividend period then the coupon paid is zero and the accrued interest is negative. If set, this must be a non-negative number. If not set, or set to 0, then there is no ex-dividend period.   NOTE: This field is deprecated. If you wish to set the ExDividendDays on a bond, please use the ExDividendConfiguration.
    * @return exDividendDays
   **/
   @jakarta.annotation.Nullable
@@ -338,7 +338,7 @@ public class FloatSchedule extends Schedule {
   }
 
    /**
-   * When a payment schedule doesn&#39;t have regular payment intervals just because of the  first and/or last coupons of the schedule, we call those irregular coupons stubs.  This configuration specifies what type of stub is used when building the schedule  Supported values are:  None &#x3D; this is a regular payment schedule with no stubs. DO NOT use it with irregular schedules or you will get incorrect and unexpected behaviour.  ShortFront &#x3D; this is an irregular payment schedule where only the first coupon is irregular, and covers a payment period that is shorter than the regular payment period.  ShortBack &#x3D; this is an irregular payment schedule where only the last coupon is irregular, and covers a payment period that is shorter than the regular payment period.  LongFront &#x3D; this is an irregular payment schedule where only the first coupon is irregular, and covers a payment period that is longer than the regular payment period.  LongBack &#x3D; this is an irregular payment schedule where only the last coupon is irregular, and covers a payment period that is longer than the regular payment period.  Both &#x3D; this is an irregular payment schedule where both the first and the last coupons are irregular, and the length of these periods is calculated based on the first coupon payment date that should have been explicitly set.
+   * When a payment schedule doesn&#39;t have regular payment intervals just because of the first and/or last coupons of the schedule, we call those irregular coupons stubs. This configuration specifies what type of stub is used when building the schedule Supported values are: None &#x3D; this is a regular payment schedule with no stubs. DO NOT use it with irregular schedules or you will get incorrect and unexpected behaviour. ShortFront &#x3D; this is an irregular payment schedule where only the first coupon is irregular, and covers a payment period that is shorter than the regular payment period. ShortBack &#x3D; this is an irregular payment schedule where only the last coupon is irregular, and covers a payment period that is shorter than the regular payment period. LongFront &#x3D; this is an irregular payment schedule where only the first coupon is irregular, and covers a payment period that is longer than the regular payment period. LongBack &#x3D; this is an irregular payment schedule where only the last coupon is irregular, and covers a payment period that is longer than the regular payment period. Both &#x3D; this is an irregular payment schedule where both the first and the last coupons are irregular, and the length of these periods is calculated based on the first coupon payment date that should have been explicitly set.
    * @return stubType
   **/
   @jakarta.annotation.Nullable
@@ -401,7 +401,7 @@ public class FloatSchedule extends Schedule {
   }
 
    /**
-   * Control how resets are generated relative to payment convention(s).    Supported string (enumeration) values are: [InAdvance, InArrears].
+   * Control how resets are generated relative to payment convention(s).  Supported string (enumeration) values are: [InAdvance, InArrears].
    * @return resetConvention
   **/
   @jakarta.annotation.Nullable
@@ -422,7 +422,7 @@ public class FloatSchedule extends Schedule {
   }
 
    /**
-   * Flag indicating whether to use daily updated annualised interest  rates for calculating the accrued interest. Defaults to false.
+   * Flag indicating whether to use daily updated annualised interest rates for calculating the accrued interest. Defaults to false.
    * @return useAnnualisedDirectRates
   **/
   @jakarta.annotation.Nullable

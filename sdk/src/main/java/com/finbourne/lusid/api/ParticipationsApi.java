@@ -303,7 +303,7 @@ public class ParticipationsApi {
 
     /**
      * [EARLY ACCESS] DeleteParticipation: Delete participation
-     * Delete an participation. Deletion will be valid from the participation&#39;s creation datetime.  This means that the participation will no longer exist at any effective datetime from the asAt datetime of deletion.
+     * Delete an participation. Deletion will be valid from the participation&#39;s creation datetime. This means that the participation will no longer exist at any effective datetime from the asAt datetime of deletion.
      * @param scope The participation scope. (required)
      * @param code The participation&#39;s code. This, together with the scope uniquely identifies the participation to delete. (required)
      * @return APIdeleteParticipationRequest
@@ -446,7 +446,7 @@ public class ParticipationsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;Participation\&quot; domain to decorate onto the participation.   These take the format {domain}/{scope}/{code} e.g. \&quot;Participation/system/Name\&quot;. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;Participation\&quot; domain to decorate onto the participation.  These take the format {domain}/{scope}/{code} e.g. \&quot;Participation/system/Name\&quot;. (optional)
          * @return APIgetParticipationRequest
          */
         public APIgetParticipationRequest propertyKeys(List<String> propertyKeys) {
@@ -721,7 +721,7 @@ public class ParticipationsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing participations from a previous call to list participations.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing participations from a previous call to list participations.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields  must not have changed since the original request. (optional)
          * @return APIlistParticipationsRequest
          */
         public APIlistParticipationsRequest page(String page) {
@@ -751,7 +751,7 @@ public class ParticipationsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIlistParticipationsRequest
          */
         public APIlistParticipationsRequest filter(String filter) {
@@ -761,7 +761,7 @@ public class ParticipationsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;Participation\&quot; domain to decorate onto each participation.   These take the format {domain}/{scope}/{code} e.g. \&quot;Participation/system/Name\&quot;.   All properties, except derived properties, are returned by default, without specifying here. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;Participation\&quot; domain to decorate onto each participation.  These take the format {domain}/{scope}/{code} e.g. \&quot;Participation/system/Name\&quot;.  All properties, except derived properties, are returned by default, without specifying here. (optional)
          * @return APIlistParticipationsRequest
          */
         public APIlistParticipationsRequest propertyKeys(List<String> propertyKeys) {

@@ -47,7 +47,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * A single transition component request, when grouped with other transition component requests a corporate action  transition request is formed.
+ * A single transition component request, when grouped with other transition component requests a corporate action transition request is formed.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CorporateActionTransitionComponentRequest {

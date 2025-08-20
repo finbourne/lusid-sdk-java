@@ -112,7 +112,7 @@ public class AggregationApiExample {
 
 GetQueryableKeys: Query the set of supported \&quot;addresses\&quot; that can be queried from the aggregation endpoint.
 
-When a request is made for aggregation, the user needs to know what keys can be passed to it for queryable data. This endpoint allows to queries to provide the set of keys,  what they are and what they return.
+When a request is made for aggregation, the user needs to know what keys can be passed to it for queryable data. This endpoint allows to queries to provide the set of keys, what they are and what they return.
 
 ### Example
 
@@ -153,9 +153,9 @@ public class AggregationApiExample {
         // AggregationApi apiInstance = apiFactory.build(AggregationApi.class);
 
         AggregationApi apiInstance = ApiFactoryBuilder.build(fileName).build(AggregationApi.class);
-        String page = "page_example"; // String | The pagination token to use to continue listing queryable keys from a previous call to list queryable keys.   This value is returned from the previous call.
+        String page = "page_example"; // String | The pagination token to use to continue listing queryable keys from a previous call to list queryable keys.  This value is returned from the previous call.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
-        String filter = "filter_example"; // String | Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        String filter = "filter_example"; // String | Expression to filter the result set.  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         try {
             // uncomment the below to set overrides at the request level
             // ResourceListOfAggregationQuery result = apiInstance.getQueryableKeys(page, limit, filter).execute(opts);
@@ -177,9 +177,9 @@ public class AggregationApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **page** | **String**| The pagination token to use to continue listing queryable keys from a previous call to list queryable keys.   This value is returned from the previous call. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing queryable keys from a previous call to list queryable keys.  This value is returned from the previous call. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional] |
-| **filter** | **String**| Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **filter** | **String**| Expression to filter the result set.  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
 ### Return type
 

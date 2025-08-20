@@ -144,6 +144,14 @@ public class PortfolioHolding {
   @SerializedName(SERIALIZED_NAME_CUSTODIAN_ACCOUNT_ID)
   private ResourceId custodianAccountId;
 
+  public static final String SERIALIZED_NAME_UNSETTLED_UNITS = "unsettledUnits";
+  @SerializedName(SERIALIZED_NAME_UNSETTLED_UNITS)
+  private java.math.BigDecimal unsettledUnits;
+
+  public static final String SERIALIZED_NAME_OVERDUE_UNITS = "overdueUnits";
+  @SerializedName(SERIALIZED_NAME_OVERDUE_UNITS)
+  private java.math.BigDecimal overdueUnits;
+
   public PortfolioHolding() {
   }
 
@@ -612,6 +620,48 @@ public class PortfolioHolding {
   }
 
 
+  public PortfolioHolding unsettledUnits(java.math.BigDecimal unsettledUnits) {
+    
+    this.unsettledUnits = unsettledUnits;
+    return this;
+  }
+
+   /**
+   * The number of unsettled units for the holding.
+   * @return unsettledUnits
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getUnsettledUnits() {
+    return unsettledUnits;
+  }
+
+
+  public void setUnsettledUnits(java.math.BigDecimal unsettledUnits) {
+    this.unsettledUnits = unsettledUnits;
+  }
+
+
+  public PortfolioHolding overdueUnits(java.math.BigDecimal overdueUnits) {
+    
+    this.overdueUnits = overdueUnits;
+    return this;
+  }
+
+   /**
+   * The number of unsettled units for the holding that are beyond their contractual settlement date.
+   * @return overdueUnits
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getOverdueUnits() {
+    return overdueUnits;
+  }
+
+
+  public void setOverdueUnits(java.math.BigDecimal overdueUnits) {
+    this.overdueUnits = overdueUnits;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -642,7 +692,9 @@ public class PortfolioHolding {
         Objects.equals(this.variationMarginPortfolioCcy, portfolioHolding.variationMarginPortfolioCcy) &&
         Objects.equals(this.settlementSchedule, portfolioHolding.settlementSchedule) &&
         (this.currentFace.compareTo(portfolioHolding.getCurrentFace()) == 0) &&
-        Objects.equals(this.custodianAccountId, portfolioHolding.custodianAccountId);
+        Objects.equals(this.custodianAccountId, portfolioHolding.custodianAccountId) &&
+        (this.unsettledUnits.compareTo(portfolioHolding.getUnsettledUnits()) == 0) &&
+        (this.overdueUnits.compareTo(portfolioHolding.getOverdueUnits()) == 0);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -651,7 +703,7 @@ public class PortfolioHolding {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentScope, instrumentUid, subHoldingKeys, properties, holdingType, units, settledUnits, cost, costPortfolioCcy, transaction, currency, holdingTypeName, holdingId, notionalCost, amortisedCost, amortisedCostPortfolioCcy, variationMargin, variationMarginPortfolioCcy, settlementSchedule, currentFace, custodianAccountId);
+    return Objects.hash(instrumentScope, instrumentUid, subHoldingKeys, properties, holdingType, units, settledUnits, cost, costPortfolioCcy, transaction, currency, holdingTypeName, holdingId, notionalCost, amortisedCost, amortisedCostPortfolioCcy, variationMargin, variationMarginPortfolioCcy, settlementSchedule, currentFace, custodianAccountId, unsettledUnits, overdueUnits);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -686,6 +738,8 @@ public class PortfolioHolding {
     sb.append("    settlementSchedule: ").append(toIndentedString(settlementSchedule)).append("\n");
     sb.append("    currentFace: ").append(toIndentedString(currentFace)).append("\n");
     sb.append("    custodianAccountId: ").append(toIndentedString(custodianAccountId)).append("\n");
+    sb.append("    unsettledUnits: ").append(toIndentedString(unsettledUnits)).append("\n");
+    sb.append("    overdueUnits: ").append(toIndentedString(overdueUnits)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -729,6 +783,8 @@ public class PortfolioHolding {
     openapiFields.add("settlementSchedule");
     openapiFields.add("currentFace");
     openapiFields.add("custodianAccountId");
+    openapiFields.add("unsettledUnits");
+    openapiFields.add("overdueUnits");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

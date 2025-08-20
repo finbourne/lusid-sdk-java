@@ -217,7 +217,7 @@ public class FxForwardModelOptions extends ModelOptions {
   }
 
    /**
-   * Convert all FX flows to the report currency  By setting this all FX forwards will be priced using Forward Curves that have Report Currency as the base.
+   * Convert all FX flows to the report currency By setting this all FX forwards will be priced using Forward Curves that have Report Currency as the base.
    * @return convertToReportCcy
   **/
   @jakarta.annotation.Nonnull

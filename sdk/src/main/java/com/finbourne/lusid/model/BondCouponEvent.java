@@ -48,7 +48,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Definition of a Bond Coupon Event  This is an event that describes the occurence of a cashflow due to a fixed rate bond coupon payment.
+ * Definition of a Bond Coupon Event This is an event that describes the occurence of a cashflow due to a fixed rate bond coupon payment.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class BondCouponEvent extends InstrumentEvent {

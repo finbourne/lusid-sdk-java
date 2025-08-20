@@ -50,7 +50,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Virtual document consists of (potentially several) upserted documents.     The documents get parsed according to the provided data map on upsert, the collection of resulting values in  aggregated in a virtual document
+ * Virtual document consists of (potentially several) upserted documents.   The documents get parsed according to the provided data map on upsert, the collection of resulting values in aggregated in a virtual document
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class VirtualDocument {

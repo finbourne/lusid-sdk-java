@@ -46,7 +46,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * CDS Flow convention that is to be stored in the convention data store.  Only one of these must be present.
+ * CDS Flow convention that is to be stored in the convention data store. Only one of these must be present.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UpsertCdsFlowConventionsRequest {

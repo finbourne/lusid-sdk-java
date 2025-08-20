@@ -48,7 +48,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Definition of a Future Expiry Event.  This is an event that describes the expiry of a Future instrument.
+ * Definition of a Future Expiry Event. This is an event that describes the expiry of a Future instrument.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FutureExpiryEvent extends InstrumentEvent {

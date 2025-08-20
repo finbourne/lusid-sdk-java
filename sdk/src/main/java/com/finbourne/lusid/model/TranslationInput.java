@@ -63,7 +63,7 @@ public class TranslationInput {
   }
 
    /**
-   * The serialised entity to be passed to the translation script. This could represent e.g. an instrument in any  dialect.
+   * The serialised entity to be passed to the translation script. This could represent e.g. an instrument in any dialect.
    * @return entity
   **/
   @jakarta.annotation.Nonnull

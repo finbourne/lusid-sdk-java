@@ -202,7 +202,7 @@ public class SystemConfigurationApiExample {
 
 [EXPERIMENTAL] DeleteTransactionConfigurationSource: Delete all transaction configurations for a source
 
-/// WARNING! Changing existing transaction types has a material impact on how data, new and old,  is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
+/// WARNING! Changing existing transaction types has a material impact on how data, new and old, is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
 
 ### Example
 
@@ -335,7 +335,7 @@ public class SystemConfigurationApiExample {
 
         SystemConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(SystemConfigurationApi.class);
         String source = "source_example"; // String | The source for which to retrieve transaction configurations
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction configurations.   Defaults to returning the latest version of the transaction configurations if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction configurations.  Defaults to returning the latest version of the transaction configurations if not specified.
         try {
             // uncomment the below to set overrides at the request level
             // TransactionSetConfigurationData result = apiInstance.getTransactionConfigurationSource(source, asAt).execute(opts);
@@ -358,7 +358,7 @@ public class SystemConfigurationApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **source** | **String**| The source for which to retrieve transaction configurations | |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the transaction configurations.   Defaults to returning the latest version of the transaction configurations if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the transaction configurations.  Defaults to returning the latest version of the transaction configurations if not specified. | [optional] |
 
 ### Return type
 
@@ -386,7 +386,7 @@ public class SystemConfigurationApiExample {
 
 [EARLY ACCESS] ListConfigurationTransactionTypes: List transaction types
 
-Get the list of current transaction types. For information on the default transaction types provided with  LUSID, see https://support.lusid.com/knowledgebase/article/KA-01873/.
+Get the list of current transaction types. For information on the default transaction types provided with LUSID, see https://support.lusid.com/knowledgebase/article/KA-01873/.
 
 ### Example
 
@@ -427,7 +427,7 @@ public class SystemConfigurationApiExample {
         // SystemConfigurationApi apiInstance = apiFactory.build(SystemConfigurationApi.class);
 
         SystemConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(SystemConfigurationApi.class);
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction types. Defaults   to returning the latest versions if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction types. Defaults  to returning the latest versions if not specified.
         try {
             // uncomment the below to set overrides at the request level
             // TransactionSetConfigurationData result = apiInstance.listConfigurationTransactionTypes(asAt).execute(opts);
@@ -449,7 +449,7 @@ public class SystemConfigurationApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the transaction types. Defaults   to returning the latest versions if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the transaction types. Defaults  to returning the latest versions if not specified. | [optional] |
 
 ### Return type
 
@@ -477,7 +477,7 @@ public class SystemConfigurationApiExample {
 
 [EXPERIMENTAL] SetConfigurationTransactionTypes: Set transaction types
 
-Configure all existing transaction types. Note it is not possible to configure a single existing transaction type on its own.     WARNING! Changing existing transaction types has a material impact on how data, new and old, is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
+Configure all existing transaction types. Note it is not possible to configure a single existing transaction type on its own.   WARNING! Changing existing transaction types has a material impact on how data, new and old, is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
 
 ### Example
 
@@ -568,7 +568,7 @@ public class SystemConfigurationApiExample {
 
 [EXPERIMENTAL] SetTransactionConfigurationSource: Set transaction types for a source
 
-This will replace all the existing transaction configurations for the given source     WARNING! Changing existing transaction types has a material impact on how data, new and old, is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
+This will replace all the existing transaction configurations for the given source   WARNING! Changing existing transaction types has a material impact on how data, new and old, is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
 
 ### Example
 

@@ -45,7 +45,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * External market codes and identifiers for the equity, e.g. IBM.  Required for valuation via SimpleStatic (look-up pricing).  Valuation will not succeed without a matching quote.
+ * External market codes and identifiers for the equity, e.g. IBM. Required for valuation via SimpleStatic (look-up pricing). Valuation will not succeed without a matching quote.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class WeightedInstrumentInLineLookupIdentifiers {

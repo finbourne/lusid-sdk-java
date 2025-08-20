@@ -46,7 +46,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Counterparty Agreement that is to be stored in the convention data store.  There must be only one of these present.
+ * Counterparty Agreement that is to be stored in the convention data store. There must be only one of these present.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UpsertCounterpartyAgreementRequest {

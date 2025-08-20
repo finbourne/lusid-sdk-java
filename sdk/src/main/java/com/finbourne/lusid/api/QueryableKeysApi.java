@@ -185,7 +185,7 @@ public class QueryableKeysApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set.  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIgetAllQueryableKeysRequest
          */
         public APIgetAllQueryableKeysRequest filter(String filter) {

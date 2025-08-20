@@ -48,7 +48,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Definition of a credit premium cash flow event.  This event describes a premium cashflow for credit default instruments (CDS or CDX).
+ * Definition of a credit premium cash flow event. This event describes a premium cashflow for credit default instruments (CDS or CDX).
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreditPremiumCashFlowEvent extends InstrumentEvent {

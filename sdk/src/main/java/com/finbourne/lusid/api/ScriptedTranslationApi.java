@@ -750,7 +750,7 @@ public class ScriptedTranslationApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the dialects.   Defaults to return the latest version of the dialect if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the dialects.  Defaults to return the latest version of the dialect if not specified. (optional)
          * @return APIlistDialectIdsRequest
          */
         public APIlistDialectIdsRequest asAt(OffsetDateTime asAt) {
@@ -760,7 +760,7 @@ public class ScriptedTranslationApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing dialect IDs from a previous call to list dialect IDs.   This value is returned from the previous call. If a pagination token is provided the filter and asAt fields   must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing dialect IDs from a previous call to list dialect IDs.  This value is returned from the previous call. If a pagination token is provided the filter and asAt fields  must not have changed since the original request. (optional)
          * @return APIlistDialectIdsRequest
          */
         public APIlistDialectIdsRequest page(String page) {
@@ -780,7 +780,7 @@ public class ScriptedTranslationApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIlistDialectIdsRequest
          */
         public APIlistDialectIdsRequest filter(String filter) {
@@ -1053,7 +1053,7 @@ public class ScriptedTranslationApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results. For example, Id.Version.Major eq 1 to list IDs with major version 1   or Id.Scope eq &#39;my-scripts&#39; to list result only for a particular scope. (optional)
+         * @param filter Expression to filter the results. For example, Id.Version.Major eq 1 to list IDs with major version 1  or Id.Scope eq &#39;my-scripts&#39; to list result only for a particular scope. (optional)
          * @return APIlistTranslationScriptIdsRequest
          */
         public APIlistTranslationScriptIdsRequest filter(String filter) {
@@ -1063,7 +1063,7 @@ public class ScriptedTranslationApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing translation script IDs; this   value is returned from the previous call. If a pagination token is provided, the filter field   must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing translation script IDs; this  value is returned from the previous call. If a pagination token is provided, the filter field  must not have changed since the original request. (optional)
          * @return APIlistTranslationScriptIdsRequest
          */
         public APIlistTranslationScriptIdsRequest page(String page) {
@@ -1425,7 +1425,7 @@ public class ScriptedTranslationApi {
 
     /**
      * [EARLY ACCESS] TranslateEntities: Translate a collection of entities with a specified translation script.
-     * Run the provided translation request. The entities to translate are specified in the request body as a  dictionary with (ephemeral) unique correlation IDs. The script to use and optional dialect to validate  results against are sourced from the database.
+     * Run the provided translation request. The entities to translate are specified in the request body as a dictionary with (ephemeral) unique correlation IDs. The script to use and optional dialect to validate results against are sourced from the database.
      * @param translateEntitiesRequest The entities to translate, along with identifiers for the script and (optional) dialect to use. (required)
      * @return APItranslateEntitiesRequest
      * @http.response.details
@@ -1660,7 +1660,7 @@ public class ScriptedTranslationApi {
 
     /**
      * [EARLY ACCESS] TranslateEntitiesInlined: Translate a collection of entities, inlining the body of the translation script.
-     * Run the provided translation request. The entities to translate, script to use and dialect to validate results against  are all specified in the request body. The entities are given as a dictionary with (ephemeral) unique correlation IDs.
+     * Run the provided translation request. The entities to translate, script to use and dialect to validate results against are all specified in the request body. The entities are given as a dictionary with (ephemeral) unique correlation IDs.
      * @param translateEntitiesInlinedRequest The entities to translate, along with the script to use and an optional schema for validation. (required)
      * @return APItranslateEntitiesInlinedRequest
      * @http.response.details

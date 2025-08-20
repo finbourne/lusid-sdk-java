@@ -321,10 +321,10 @@ public class LegalEntitiesApi {
 
     /**
      * DeleteLegalEntity: Delete Legal Entity
-     * Delete a legal entity. Deletion will be valid from the legal entity&#39;s creation datetime.  This means that the legal entity will no longer exist at any effective datetime from the asAt datetime of deletion.
+     * Delete a legal entity. Deletion will be valid from the legal entity&#39;s creation datetime. This means that the legal entity will no longer exist at any effective datetime from the asAt datetime of deletion.
      * @param idTypeScope The scope of the legal entity identifier type. (required)
      * @param idTypeCode The code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with defined   identifier type uniquely identifies the legal entity to delete. (required)
+     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with defined  identifier type uniquely identifies the legal entity to delete. (required)
      * @return APIdeleteLegalEntityRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -609,7 +609,7 @@ public class LegalEntitiesApi {
 
     /**
      * DeleteLegalEntityAccessMetadata: Delete a Legal Entity Access Metadata entry
-     * Deletes the Legal Entity Access Metadata entry that exactly matches the provided identifier parts.    It is important to always check to verify success (or failure).
+     * Deletes the Legal Entity Access Metadata entry that exactly matches the provided identifier parts.  It is important to always check to verify success (or failure).
      * @param idTypeScope Scope of the Legal Entity identifier. (required)
      * @param idTypeCode Code of the Legal Entity identifier. (required)
      * @param code Code of the Legal Entity under specified identifier type&#39;s scope and code. (required)
@@ -758,7 +758,7 @@ public class LegalEntitiesApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to delete the identifiers. Defaults to the current LUSID system datetime if not specified.   Must not include an effective datetime if identifiers are perpetual. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to delete the identifiers. Defaults to the current LUSID system datetime if not specified.  Must not include an effective datetime if identifiers are perpetual. (optional)
          * @return APIdeleteLegalEntityIdentifiersRequest
          */
         public APIdeleteLegalEntityIdentifiersRequest effectiveAt(String effectiveAt) {
@@ -889,8 +889,8 @@ public class LegalEntitiesApi {
      * Delete identifiers that belong to the given property keys of the legal entity.
      * @param idTypeScope Scope of the legal entity identifier type. (required)
      * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the legal entity. (required)
-     * @param propertyKeys The property keys of the identifiers to delete. These take the format   {domain}/{scope}/{code} e.g. \&quot;LegalEntity/CreditAgency/Identifier\&quot;. Each property must be from the \&quot;LegalEntity\&quot; domain. Identifiers or identifiers not specified in request will not be changed. (required)
+     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely  identifies the legal entity. (required)
+     * @param propertyKeys The property keys of the identifiers to delete. These take the format  {domain}/{scope}/{code} e.g. \&quot;LegalEntity/CreditAgency/Identifier\&quot;. Each property must be from the \&quot;LegalEntity\&quot; domain. Identifiers or identifiers not specified in request will not be changed. (required)
      * @return APIdeleteLegalEntityIdentifiersRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1035,7 +1035,7 @@ public class LegalEntitiesApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is   before the time-variant property exists then a failure is returned. Do not specify this parameter if any of   the properties to delete are perpetual. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to delete time-variant properties from.  The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is  before the time-variant property exists then a failure is returned. Do not specify this parameter if any of  the properties to delete are perpetual. (optional)
          * @return APIdeleteLegalEntityPropertiesRequest
          */
         public APIdeleteLegalEntityPropertiesRequest effectiveAt(String effectiveAt) {
@@ -1166,8 +1166,8 @@ public class LegalEntitiesApi {
      * Delete all properties that belong to the given property keys of the legal entity.
      * @param idTypeScope Scope of the legal entity identifier type. (required)
      * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the legal entity. (required)
-     * @param propertyKeys The property keys of the legal entities properties to delete. These take the format   {domain}/{scope}/{code} e.g. \&quot;LegalEntity/CompanyDetails/Role\&quot;. Each property must be from the \&quot;LegalEntity\&quot; domain. Properties or identifiers not specified in request will not be changed. (required)
+     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely  identifies the legal entity. (required)
+     * @param propertyKeys The property keys of the legal entities properties to delete. These take the format  {domain}/{scope}/{code} e.g. \&quot;LegalEntity/CompanyDetails/Role\&quot;. Each property must be from the \&quot;LegalEntity\&quot; domain. Properties or identifiers not specified in request will not be changed. (required)
      * @return APIdeleteLegalEntityPropertiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1596,7 +1596,7 @@ public class LegalEntitiesApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys or identifier types (as property keys) from the \&quot;LegalEntity\&quot; domain   to include for found legal entity, or from any domain that supports relationships to decorate onto related entities.   These take the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;. (optional)
+         * @param propertyKeys A list of property keys or identifier types (as property keys) from the \&quot;LegalEntity\&quot; domain  to include for found legal entity, or from any domain that supports relationships to decorate onto related entities.  These take the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;. (optional)
          * @return APIgetLegalEntityRequest
          */
         public APIgetLegalEntityRequest propertyKeys(List<String> propertyKeys) {
@@ -1626,7 +1626,7 @@ public class LegalEntitiesApi {
 
         /**
          * Set relationshipDefinitionIds
-         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities   onto the legal entity in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
+         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities  onto the legal entity in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
          * @return APIgetLegalEntityRequest
          */
         public APIgetLegalEntityRequest relationshipDefinitionIds(List<String> relationshipDefinitionIds) {
@@ -1757,7 +1757,7 @@ public class LegalEntitiesApi {
      * Retrieve the definition of a legal entity.
      * @param idTypeScope Scope of the legal entity identifier type. (required)
      * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the legal entity. (required)
+     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely  identifies the legal entity. (required)
      * @return APIgetLegalEntityRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2042,7 +2042,7 @@ public class LegalEntitiesApi {
 
     /**
      * [EARLY ACCESS] GetLegalEntityAccessMetadataByKey: Get an entry identified by a metadataKey in the Access Metadata of a Legal Entity
-     * Get a specific Legal Entity Access Metadata by specifying the corresponding identifier parts and Legal Entity code     No matching will be performed through this endpoint. To retrieve an entry, it is necessary to specify, exactly, the identifier of the entry
+     * Get a specific Legal Entity Access Metadata by specifying the corresponding identifier parts and Legal Entity code   No matching will be performed through this endpoint. To retrieve an entry, it is necessary to specify, exactly, the identifier of the entry
      * @param idTypeScope Scope of the Legal Entity identifier. (required)
      * @param idTypeCode Code of the Legal Entity identifier. (required)
      * @param code Code of the Legal Entity under specified identifier type&#39;s scope and code. (required)
@@ -2226,7 +2226,7 @@ public class LegalEntitiesApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing properties from a previous call to get property time series.   This value is returned from the previous call. If a pagination token is provided the filter and asAt fields   must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing properties from a previous call to get property time series.  This value is returned from the previous call. If a pagination token is provided the filter and asAt fields  must not have changed since the original request. (optional)
          * @return APIgetLegalEntityPropertyTimeSeriesRequest
          */
         public APIgetLegalEntityPropertyTimeSeriesRequest page(String page) {
@@ -2368,7 +2368,7 @@ public class LegalEntitiesApi {
      * @param idTypeScope Scope of the legal entity identifier type. (required)
      * @param idTypeCode Code of the legal entity identifier type. (required)
      * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely identifies the legal entity. (required)
-     * @param propertyKey The property key of the property that will have its history shown. These must be in the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;.   Each property must be from the \&quot;LegalEntity\&quot; domain. (required)
+     * @param propertyKey The property key of the property that will have its history shown. These must be in the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;.  Each property must be from the \&quot;LegalEntity\&quot; domain. (required)
      * @return APIgetLegalEntityPropertyTimeSeriesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2547,7 +2547,7 @@ public class LegalEntitiesApi {
 
         /**
          * Set identifierTypes
-         * @param identifierTypes Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format   {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.   Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array. (optional)
+         * @param identifierTypes Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format  {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.  Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array. (optional)
          * @return APIgetLegalEntityRelationsRequest
          */
         public APIgetLegalEntityRelationsRequest identifierTypes(List<String> identifierTypes) {
@@ -2678,7 +2678,7 @@ public class LegalEntitiesApi {
      * Get relations for the specified Legal Entity
      * @param idTypeScope Scope of the legal entity identifier type. (required)
      * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the legal entity. (required)
+     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely  identifies the legal entity. (required)
      * @return APIgetLegalEntityRelationsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2857,7 +2857,7 @@ public class LegalEntitiesApi {
 
         /**
          * Set identifierTypes
-         * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.   These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example   &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. (optional)
+         * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.  These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example  &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. (optional)
          * @return APIgetLegalEntityRelationshipsRequest
          */
         public APIgetLegalEntityRelationshipsRequest identifierTypes(List<String> identifierTypes) {
@@ -2988,7 +2988,7 @@ public class LegalEntitiesApi {
      * Get Relationships for the specified Legal Entity
      * @param idTypeScope Scope of the legal entity&#39;s identifier type. (required)
      * @param idTypeCode Code of the legal entity&#39;s identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the legal entity. (required)
+     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely  identifies the legal entity. (required)
      * @return APIgetLegalEntityRelationshipsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -3133,7 +3133,7 @@ public class LegalEntitiesApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to list the legal entities. Defaults to the current LUSID   system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to list the legal entities. Defaults to the current LUSID  system datetime if not specified. (optional)
          * @return APIlistAllLegalEntitiesRequest
          */
         public APIlistAllLegalEntitiesRequest effectiveAt(String effectiveAt) {
@@ -3143,7 +3143,7 @@ public class LegalEntitiesApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to list the legal entities. Defaults to return the latest version   of each legal entities if not specified. (optional)
+         * @param asAt The asAt datetime at which to list the legal entities. Defaults to return the latest version  of each legal entities if not specified. (optional)
          * @return APIlistAllLegalEntitiesRequest
          */
         public APIlistAllLegalEntitiesRequest asAt(OffsetDateTime asAt) {
@@ -3153,7 +3153,7 @@ public class LegalEntitiesApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing legal entities from a previous call to list legal entities. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy  and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing legal entities from a previous call to list legal entities. This value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy and asAt fields must not have changed since the original request. (optional)
          * @return APIlistAllLegalEntitiesRequest
          */
         public APIlistAllLegalEntitiesRequest page(String page) {
@@ -3173,7 +3173,7 @@ public class LegalEntitiesApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.    Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIlistAllLegalEntitiesRequest
          */
         public APIlistAllLegalEntitiesRequest filter(String filter) {
@@ -3193,7 +3193,7 @@ public class LegalEntitiesApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys or identifier types (as property keys) from the \&quot;LegalEntity\&quot; domain   to include for each legal entity, or from any domain that supports relationships to decorate onto related entities.   These take the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;. (optional)
+         * @param propertyKeys A list of property keys or identifier types (as property keys) from the \&quot;LegalEntity\&quot; domain  to include for each legal entity, or from any domain that supports relationships to decorate onto related entities.  These take the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;. (optional)
          * @return APIlistAllLegalEntitiesRequest
          */
         public APIlistAllLegalEntitiesRequest propertyKeys(List<String> propertyKeys) {
@@ -3203,7 +3203,7 @@ public class LegalEntitiesApi {
 
         /**
          * Set relationshipDefinitionIds
-         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities   onto each portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
+         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities  onto each portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
          * @return APIlistAllLegalEntitiesRequest
          */
         public APIlistAllLegalEntitiesRequest relationshipDefinitionIds(List<String> relationshipDefinitionIds) {
@@ -3492,7 +3492,7 @@ public class LegalEntitiesApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to list the people. Defaults to the current LUSID   system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to list the people. Defaults to the current LUSID  system datetime if not specified. (optional)
          * @return APIlistLegalEntitiesRequest
          */
         public APIlistLegalEntitiesRequest effectiveAt(String effectiveAt) {
@@ -3502,7 +3502,7 @@ public class LegalEntitiesApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to list the people. Defaults to return the latest version   of each people if not specified. (optional)
+         * @param asAt The asAt datetime at which to list the people. Defaults to return the latest version  of each people if not specified. (optional)
          * @return APIlistLegalEntitiesRequest
          */
         public APIlistLegalEntitiesRequest asAt(OffsetDateTime asAt) {
@@ -3512,7 +3512,7 @@ public class LegalEntitiesApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing legal entities from a previous call to list legal entities. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy  and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing legal entities from a previous call to list legal entities. This value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy and asAt fields must not have changed since the original request. (optional)
          * @return APIlistLegalEntitiesRequest
          */
         public APIlistLegalEntitiesRequest page(String page) {
@@ -3532,7 +3532,7 @@ public class LegalEntitiesApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.    Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIlistLegalEntitiesRequest
          */
         public APIlistLegalEntitiesRequest filter(String filter) {
@@ -3552,7 +3552,7 @@ public class LegalEntitiesApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys or identifier types (as property keys) from the \&quot;LegalEntity\&quot; domain   to include for each legal entity, or from any domain that supports relationships to decorate onto related entities.   These take the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;. (optional)
+         * @param propertyKeys A list of property keys or identifier types (as property keys) from the \&quot;LegalEntity\&quot; domain  to include for each legal entity, or from any domain that supports relationships to decorate onto related entities.  These take the format {domain}/{scope}/{code} e.g. \&quot;LegalEntity/ContactDetails/Address\&quot;. (optional)
          * @return APIlistLegalEntitiesRequest
          */
         public APIlistLegalEntitiesRequest propertyKeys(List<String> propertyKeys) {
@@ -3562,7 +3562,7 @@ public class LegalEntitiesApi {
 
         /**
          * Set relationshipDefinitionIds
-         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities   onto each portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
+         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities  onto each portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
          * @return APIlistLegalEntitiesRequest
          */
         public APIlistLegalEntitiesRequest relationshipDefinitionIds(List<String> relationshipDefinitionIds) {
@@ -3980,7 +3980,7 @@ public class LegalEntitiesApi {
 
     /**
      * [EARLY ACCESS] PatchLegalEntityAccessMetadata: Patch Access Metadata rules for a Legal Entity.
-     * Patch Legal Entity Access Metadata Rules in a single scope.  The behaviour is defined by the JSON Patch specification.     Currently only &#39;add&#39; is a supported operation on the patch document    Currently only valid metadata keys are supported paths on the patch document     The response will return any affected Legal Entity Access Metadata rules or a failure message if unsuccessful.     It is important to always check to verify success (or failure).     Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
+     * Patch Legal Entity Access Metadata Rules in a single scope. The behaviour is defined by the JSON Patch specification.   Currently only &#39;add&#39; is a supported operation on the patch document  Currently only valid metadata keys are supported paths on the patch document   The response will return any affected Legal Entity Access Metadata rules or a failure message if unsuccessful.   It is important to always check to verify success (or failure).   Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
      * @param idTypeScope Scope of the Legal Entity identifier. (required)
      * @param idTypeCode Code of the Legal Entity identifier. (required)
      * @param code Code of the Legal Entity under specified identifier type&#39;s scope and code. (required)
@@ -4245,7 +4245,7 @@ public class LegalEntitiesApi {
      * Set identifiers of the Legal Entity.
      * @param idTypeScope Scope of the legal entity identifier type. (required)
      * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the legal entity. (required)
+     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely  identifies the legal entity. (required)
      * @param setLegalEntityIdentifiersRequest Request containing identifiers to set for the legal entity. Identifiers not specified in request will not be changed. (required)
      * @return APIsetLegalEntityIdentifiersRequest
      * @http.response.details
@@ -4507,7 +4507,7 @@ public class LegalEntitiesApi {
      * Set properties of the legal entity.
      * @param idTypeScope Scope of the legal entity identifier type. (required)
      * @param idTypeCode Code of the legal entity identifier type. (required)
-     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the legal entity. (required)
+     * @param code Code of the legal entity under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely  identifies the legal entity. (required)
      * @param setLegalEntityPropertiesRequest Request containing properties to set for the legal entity. Properties not specified in request will not be changed. (required)
      * @return APIsetLegalEntityPropertiesRequest
      * @http.response.details
@@ -5286,7 +5286,7 @@ public class LegalEntitiesApi {
 
     /**
      * UpsertLegalEntityAccessMetadata: Upsert a Legal Entity Access Metadata entry associated with a specific metadataKey. This creates or updates the data in LUSID.
-     * Update or insert one Legal Entity Access Metadata entry in a single scope. An item will be updated if it already exists  and inserted if it does not.     The response will return the successfully updated or inserted Legal Entity Access Metadata rule or failure message if unsuccessful.     It is important to always check to verify success (or failure).     Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
+     * Update or insert one Legal Entity Access Metadata entry in a single scope. An item will be updated if it already exists and inserted if it does not.   The response will return the successfully updated or inserted Legal Entity Access Metadata rule or failure message if unsuccessful.   It is important to always check to verify success (or failure).   Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
      * @param idTypeScope Scope of the Legal Entity identifier. (required)
      * @param idTypeCode Code of the Legal Entity identifier. (required)
      * @param code Code of the Legal Entity under specified identifier type&#39;s scope and code. (required)

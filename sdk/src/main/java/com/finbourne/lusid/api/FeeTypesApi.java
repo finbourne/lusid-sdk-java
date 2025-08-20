@@ -1161,7 +1161,7 @@ public class FeeTypesApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing FeeTypes; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing FeeTypes; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. (optional)
          * @return APIlistFeeTypesRequest
          */
         public APIlistFeeTypesRequest page(String page) {
@@ -1181,7 +1181,7 @@ public class FeeTypesApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.   For example, to filter on the Code of the FeeType type, specify \&quot;id.Code eq &#39;FeeType1&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.  For example, to filter on the Code of the FeeType type, specify \&quot;id.Code eq &#39;FeeType1&#39;\&quot;. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIlistFeeTypesRequest
          */
         public APIlistFeeTypesRequest filter(String filter) {

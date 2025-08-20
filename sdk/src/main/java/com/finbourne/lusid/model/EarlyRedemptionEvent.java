@@ -90,7 +90,7 @@ public class EarlyRedemptionEvent extends InstrumentEvent {
   }
 
    /**
-   * Date of redemption.  For internally generated European callables, this is set to the exercise date.  For internally generated American callables, this is set to the start of the exercise period.
+   * Date of redemption. For internally generated European callables, this is set to the exercise date. For internally generated American callables, this is set to the start of the exercise period.
    * @return effectiveDate
   **/
   @jakarta.annotation.Nullable
@@ -203,7 +203,7 @@ public class EarlyRedemptionEvent extends InstrumentEvent {
   }
 
    /**
-   * Unpaid accrued interest also repaid as part of the redemption, per unit.  Optional field.  If left empty, will be resolved internally by calculating the accrued owed on the EffectiveDate.  This process may require additional market data.
+   * Unpaid accrued interest also repaid as part of the redemption, per unit. Optional field. If left empty, will be resolved internally by calculating the accrued owed on the EffectiveDate. This process may require additional market data.
    * @return accruedInterestPerUnit
   **/
   @jakarta.annotation.Nullable

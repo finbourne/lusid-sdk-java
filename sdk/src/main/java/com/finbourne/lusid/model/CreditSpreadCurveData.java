@@ -152,7 +152,7 @@ public class CreditSpreadCurveData extends ComplexMarketData {
   }
 
    /**
-   * The tenors for which the rates apply  For more information on tenors, see [knowledge base article KA-02097](https://support.lusid.com/knowledgebase/article/KA-02097)
+   * The tenors for which the rates apply For more information on tenors, see [knowledge base article KA-02097](https://support.lusid.com/knowledgebase/article/KA-02097)
    * @return tenors
   **/
   @jakarta.annotation.Nonnull
@@ -223,7 +223,7 @@ public class CreditSpreadCurveData extends ComplexMarketData {
   }
 
    /**
-   * If tenors are provided, this is the date against which the tenors will be resolved.  This is of importance to CDX spread quotes, which are usually quoted in tenors relative to the CDX start date.  In this case, the ReferenceDate would be equal to the CDX start date, and the BaseDate would be the date for which the spreads are valid.  If not provided, this defaults to the BaseDate of the curve.
+   * If tenors are provided, this is the date against which the tenors will be resolved. This is of importance to CDX spread quotes, which are usually quoted in tenors relative to the CDX start date. In this case, the ReferenceDate would be equal to the CDX start date, and the BaseDate would be the date for which the spreads are valid. If not provided, this defaults to the BaseDate of the curve.
    * @return referenceDate
   **/
   @jakarta.annotation.Nullable
@@ -252,7 +252,7 @@ public class CreditSpreadCurveData extends ComplexMarketData {
   }
 
    /**
-   * The maturity dates for which the rates apply.  Either tenors or maturities should be provided, not both.
+   * The maturity dates for which the rates apply. Either tenors or maturities should be provided, not both.
    * @return maturities
   **/
   @jakarta.annotation.Nullable

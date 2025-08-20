@@ -48,7 +48,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Definition of FlexibleRepoInterestPaymentEvent, which represents the regular interest payments associated with an  open repo contract modelled as a FlexibleRepo.
+ * Definition of FlexibleRepoInterestPaymentEvent, which represents the regular interest payments associated with an open repo contract modelled as a FlexibleRepo.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FlexibleRepoInterestPaymentEvent extends InstrumentEvent {
@@ -142,7 +142,7 @@ public class FlexibleRepoInterestPaymentEvent extends InstrumentEvent {
   }
 
    /**
-   * Interest payment per unit held of the FlexibleRepo. This field is optional. If not specified, the system  will not generate a virtual transaction for this event
+   * Interest payment per unit held of the FlexibleRepo. This field is optional. If not specified, the system will not generate a virtual transaction for this event
    * @return interestPerUnit
   **/
   @jakarta.annotation.Nullable

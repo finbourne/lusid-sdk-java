@@ -67,6 +67,22 @@ public class SettlementSchedule {
   @SerializedName(SERIALIZED_NAME_BOND_INTEREST)
   private java.math.BigDecimal bondInterest;
 
+  public static final String SERIALIZED_NAME_MOVEMENT_NAME = "movementName";
+  @SerializedName(SERIALIZED_NAME_MOVEMENT_NAME)
+  private String movementName;
+
+  public static final String SERIALIZED_NAME_MOVEMENT_TYPE = "movementType";
+  @SerializedName(SERIALIZED_NAME_MOVEMENT_TYPE)
+  private String movementType;
+
+  public static final String SERIALIZED_NAME_UNSETTLED_UNITS = "unsettledUnits";
+  @SerializedName(SERIALIZED_NAME_UNSETTLED_UNITS)
+  private java.math.BigDecimal unsettledUnits;
+
+  public static final String SERIALIZED_NAME_OVERDUE_UNITS = "overdueUnits";
+  @SerializedName(SERIALIZED_NAME_OVERDUE_UNITS)
+  private java.math.BigDecimal overdueUnits;
+
   public SettlementSchedule() {
   }
 
@@ -154,6 +170,90 @@ public class SettlementSchedule {
   }
 
 
+  public SettlementSchedule movementName(String movementName) {
+    
+    this.movementName = movementName;
+    return this;
+  }
+
+   /**
+   * Get movementName
+   * @return movementName
+  **/
+  @jakarta.annotation.Nullable
+  public String getMovementName() {
+    return movementName;
+  }
+
+
+  public void setMovementName(String movementName) {
+    this.movementName = movementName;
+  }
+
+
+  public SettlementSchedule movementType(String movementType) {
+    
+    this.movementType = movementType;
+    return this;
+  }
+
+   /**
+   * Get movementType
+   * @return movementType
+  **/
+  @jakarta.annotation.Nullable
+  public String getMovementType() {
+    return movementType;
+  }
+
+
+  public void setMovementType(String movementType) {
+    this.movementType = movementType;
+  }
+
+
+  public SettlementSchedule unsettledUnits(java.math.BigDecimal unsettledUnits) {
+    
+    this.unsettledUnits = unsettledUnits;
+    return this;
+  }
+
+   /**
+   * Get unsettledUnits
+   * @return unsettledUnits
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getUnsettledUnits() {
+    return unsettledUnits;
+  }
+
+
+  public void setUnsettledUnits(java.math.BigDecimal unsettledUnits) {
+    this.unsettledUnits = unsettledUnits;
+  }
+
+
+  public SettlementSchedule overdueUnits(java.math.BigDecimal overdueUnits) {
+    
+    this.overdueUnits = overdueUnits;
+    return this;
+  }
+
+   /**
+   * Get overdueUnits
+   * @return overdueUnits
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getOverdueUnits() {
+    return overdueUnits;
+  }
+
+
+  public void setOverdueUnits(java.math.BigDecimal overdueUnits) {
+    this.overdueUnits = overdueUnits;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -167,7 +267,11 @@ public class SettlementSchedule {
     return Objects.equals(this.tradeId, settlementSchedule.tradeId) &&
         Objects.equals(this.settlementDate, settlementSchedule.settlementDate) &&
         (this.units.compareTo(settlementSchedule.getUnits()) == 0) &&
-        (this.bondInterest.compareTo(settlementSchedule.getBondInterest()) == 0);
+        (this.bondInterest.compareTo(settlementSchedule.getBondInterest()) == 0) &&
+        Objects.equals(this.movementName, settlementSchedule.movementName) &&
+        Objects.equals(this.movementType, settlementSchedule.movementType) &&
+        (this.unsettledUnits.compareTo(settlementSchedule.getUnsettledUnits()) == 0) &&
+        (this.overdueUnits.compareTo(settlementSchedule.getOverdueUnits()) == 0);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -176,7 +280,7 @@ public class SettlementSchedule {
 
   @Override
   public int hashCode() {
-    return Objects.hash(tradeId, settlementDate, units, bondInterest);
+    return Objects.hash(tradeId, settlementDate, units, bondInterest, movementName, movementType, unsettledUnits, overdueUnits);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -194,6 +298,10 @@ public class SettlementSchedule {
     sb.append("    settlementDate: ").append(toIndentedString(settlementDate)).append("\n");
     sb.append("    units: ").append(toIndentedString(units)).append("\n");
     sb.append("    bondInterest: ").append(toIndentedString(bondInterest)).append("\n");
+    sb.append("    movementName: ").append(toIndentedString(movementName)).append("\n");
+    sb.append("    movementType: ").append(toIndentedString(movementType)).append("\n");
+    sb.append("    unsettledUnits: ").append(toIndentedString(unsettledUnits)).append("\n");
+    sb.append("    overdueUnits: ").append(toIndentedString(overdueUnits)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -220,6 +328,10 @@ public class SettlementSchedule {
     openapiFields.add("settlementDate");
     openapiFields.add("units");
     openapiFields.add("bondInterest");
+    openapiFields.add("movementName");
+    openapiFields.add("movementType");
+    openapiFields.add("unsettledUnits");
+    openapiFields.add("overdueUnits");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -240,6 +352,12 @@ public class SettlementSchedule {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("tradeId") != null && !jsonObj.get("tradeId").isJsonNull()) && !jsonObj.get("tradeId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tradeId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tradeId").toString()));
+      }
+      if ((jsonObj.get("movementName") != null && !jsonObj.get("movementName").isJsonNull()) && !jsonObj.get("movementName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `movementName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("movementName").toString()));
+      }
+      if ((jsonObj.get("movementType") != null && !jsonObj.get("movementType").isJsonNull()) && !jsonObj.get("movementType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `movementType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("movementType").toString()));
       }
   }
 

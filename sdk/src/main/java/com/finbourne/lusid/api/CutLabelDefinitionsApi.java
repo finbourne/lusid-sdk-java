@@ -940,7 +940,7 @@ public class CutLabelDefinitionsApi {
 
         /**
          * Set filter
-         * @param filter Optional. Expression to filter the result set.   For example, to filter on code, use \&quot;code eq &#39;string&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Optional. Expression to filter the result set.  For example, to filter on code, use \&quot;code eq &#39;string&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIlistCutLabelDefinitionsRequest
          */
         public APIlistCutLabelDefinitionsRequest filter(String filter) {
@@ -950,7 +950,7 @@ public class CutLabelDefinitionsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing cut labels from a previous call This value is returned from the previous call.  If a pagination token is provided the sortBy, filter, and asAt fields  must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing cut labels from a previous call This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields must not have changed since the original request. (optional)
          * @return APIlistCutLabelDefinitionsRequest
          */
         public APIlistCutLabelDefinitionsRequest page(String page) {

@@ -8,7 +8,7 @@ Model options for equity related pricing.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**equityForwardProjectionType** | **String** | Determines how forward equity prices should be projected.     Supported string (enumeration) values are: [FlatForwardCurveFromSpot, EquityCurveByPrices, ForwardProjectedFromRatesCurve]. |  |
+|**equityForwardProjectionType** | **String** | Determines how forward equity prices should be projected.   Supported string (enumeration) values are: [FlatForwardCurveFromSpot, EquityCurveByPrices, ForwardProjectedFromRatesCurve]. |  |
 
 
 

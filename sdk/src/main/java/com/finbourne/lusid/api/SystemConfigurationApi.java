@@ -772,7 +772,7 @@ public class SystemConfigurationApi {
 
     /**
      * [EXPERIMENTAL] DeleteTransactionConfigurationSource: Delete all transaction configurations for a source
-     * /// WARNING! Changing existing transaction types has a material impact on how data, new and old,  is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
+     * /// WARNING! Changing existing transaction types has a material impact on how data, new and old, is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
      * @param source The source to delete transaction configurations for (required)
      * @return APIdeleteTransactionConfigurationSourceRequest
      * @http.response.details
@@ -891,7 +891,7 @@ public class SystemConfigurationApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the transaction configurations.   Defaults to returning the latest version of the transaction configurations if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the transaction configurations.  Defaults to returning the latest version of the transaction configurations if not specified. (optional)
          * @return APIgetTransactionConfigurationSourceRequest
          */
         public APIgetTransactionConfigurationSourceRequest asAt(OffsetDateTime asAt) {
@@ -1130,7 +1130,7 @@ public class SystemConfigurationApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the transaction types. Defaults   to returning the latest versions if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the transaction types. Defaults  to returning the latest versions if not specified. (optional)
          * @return APIlistConfigurationTransactionTypesRequest
          */
         public APIlistConfigurationTransactionTypesRequest asAt(OffsetDateTime asAt) {
@@ -1258,7 +1258,7 @@ public class SystemConfigurationApi {
 
     /**
      * [EARLY ACCESS] ListConfigurationTransactionTypes: List transaction types
-     * Get the list of current transaction types. For information on the default transaction types provided with  LUSID, see https://support.lusid.com/knowledgebase/article/KA-01873/.
+     * Get the list of current transaction types. For information on the default transaction types provided with LUSID, see https://support.lusid.com/knowledgebase/article/KA-01873/.
      * @return APIlistConfigurationTransactionTypesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1496,7 +1496,7 @@ public class SystemConfigurationApi {
 
     /**
      * [EXPERIMENTAL] SetConfigurationTransactionTypes: Set transaction types
-     * Configure all existing transaction types. Note it is not possible to configure a single existing transaction type on its own.     WARNING! Changing existing transaction types has a material impact on how data, new and old, is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
+     * Configure all existing transaction types. Note it is not possible to configure a single existing transaction type on its own.   WARNING! Changing existing transaction types has a material impact on how data, new and old, is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
      * @return APIsetConfigurationTransactionTypesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1738,7 +1738,7 @@ public class SystemConfigurationApi {
 
     /**
      * [EXPERIMENTAL] SetTransactionConfigurationSource: Set transaction types for a source
-     * This will replace all the existing transaction configurations for the given source     WARNING! Changing existing transaction types has a material impact on how data, new and old, is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
+     * This will replace all the existing transaction configurations for the given source   WARNING! Changing existing transaction types has a material impact on how data, new and old, is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
      * @param source The source to set the transaction configurations for (required)
      * @param setTransactionConfigurationSourceRequest The set of transaction configurations (required)
      * @return APIsetTransactionConfigurationSourceRequest

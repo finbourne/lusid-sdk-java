@@ -17,7 +17,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 [EARLY ACCESS] DeleteBlock: Delete block
 
-Delete an block. Deletion will be valid from the block&#39;s creation datetime.  This means that the block will no longer exist at any effective datetime from the asAt datetime of deletion.
+Delete an block. Deletion will be valid from the block&#39;s creation datetime. This means that the block will no longer exist at any effective datetime from the asAt datetime of deletion.
 
 ### Example
 
@@ -154,7 +154,7 @@ public class BlocksApiExample {
         String scope = "scope_example"; // String | The scope to which the block belongs.
         String code = "code_example"; // String | The block's unique identifier.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the block. Defaults to return the latest version of the block if not specified.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Block\" domain to decorate onto the block.   These take the format {domain}/{scope}/{code} e.g. \"Block/system/Name\".
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Block\" domain to decorate onto the block.  These take the format {domain}/{scope}/{code} e.g. \"Block/system/Name\".
         try {
             // uncomment the below to set overrides at the request level
             // Block result = apiInstance.getBlock(scope, code, asAt, propertyKeys).execute(opts);
@@ -179,7 +179,7 @@ public class BlocksApiExample {
 | **scope** | **String**| The scope to which the block belongs. | |
 | **code** | **String**| The block&#39;s unique identifier. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the block. Defaults to return the latest version of the block if not specified. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Block\&quot; domain to decorate onto the block.   These take the format {domain}/{scope}/{code} e.g. \&quot;Block/system/Name\&quot;. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Block\&quot; domain to decorate onto the block.  These take the format {domain}/{scope}/{code} e.g. \&quot;Block/system/Name\&quot;. | [optional] |
 
 ### Return type
 
@@ -249,11 +249,11 @@ public class BlocksApiExample {
 
         BlocksApi apiInstance = ApiFactoryBuilder.build(fileName).build(BlocksApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the block. Defaults to return the latest version of the block if not specified.
-        String page = "page_example"; // String | The pagination token to use to continue listing blocks from a previous call to list blocks.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request.
+        String page = "page_example"; // String | The pagination token to use to continue listing blocks from a previous call to list blocks.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields  must not have changed since the original request.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\".
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
-        String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Block\" domain to decorate onto each block.   These take the format {domain}/{scope}/{code} e.g. \"Block/system/Name\".   All properties, except derived properties, are returned by default, without specifying here.
+        String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Block\" domain to decorate onto each block.  These take the format {domain}/{scope}/{code} e.g. \"Block/system/Name\".  All properties, except derived properties, are returned by default, without specifying here.
         try {
             // uncomment the below to set overrides at the request level
             // PagedResourceListOfBlock result = apiInstance.listBlocks(asAt, page, sortBy, limit, filter, propertyKeys).execute(opts);
@@ -276,11 +276,11 @@ public class BlocksApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the block. Defaults to return the latest version of the block if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing blocks from a previous call to list blocks.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing blocks from a previous call to list blocks.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields  must not have changed since the original request. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional] |
-| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Block\&quot; domain to decorate onto each block.   These take the format {domain}/{scope}/{code} e.g. \&quot;Block/system/Name\&quot;.   All properties, except derived properties, are returned by default, without specifying here. | [optional] |
+| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Block\&quot; domain to decorate onto each block.  These take the format {domain}/{scope}/{code} e.g. \&quot;Block/system/Name\&quot;.  All properties, except derived properties, are returned by default, without specifying here. | [optional] |
 
 ### Return type
 

@@ -389,7 +389,7 @@ public class OrderGraphApi {
 
     /**
      * ListOrderGraphBlocks: Lists blocks that pass the filter provided, and builds a summary picture of the state of their associated order entities.
-     * Lists all blocks of orders, subject to the filter, along with the IDs of orders, placements, allocations and  executions in the block, the total quantities of each, and a simple text field describing the overall state.
+     * Lists all blocks of orders, subject to the filter, along with the IDs of orders, placements, allocations and executions in the block, the total quantities of each, and a simple text field describing the overall state.
      * @return APIlistOrderGraphBlocksRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -703,7 +703,7 @@ public class OrderGraphApi {
 
     /**
      * [EARLY ACCESS] ListOrderGraphPlacementChildren: Lists all placements for the parent placement specified by the scope and code, and builds a summary picture of the state of their associated order entities.
-     * Lists all child order placements, for the specified parent placement, along with the IDs of the block and order that the  placement is for, each placement&#39;s quantity, the IDs of all allocations and executions in the placement  and the total quantities of those, and a simple text field describing the overall state of the placement.
+     * Lists all child order placements, for the specified parent placement, along with the IDs of the block and order that the placement is for, each placement&#39;s quantity, the IDs of all allocations and executions in the placement and the total quantities of those, and a simple text field describing the overall state of the placement.
      * @param scope The parent placement&#39;s scope (required)
      * @param code The parent placement&#39;s code (required)
      * @return APIlistOrderGraphPlacementChildrenRequest
@@ -1018,7 +1018,7 @@ public class OrderGraphApi {
 
     /**
      * ListOrderGraphPlacements: Lists placements that pass the filter provided, and builds a summary picture of the state of their associated order entities.
-     * Lists all order placements, subject to the filter, along with the IDs of the block and order that the  placement is for, each placement&#39;s quantity, the IDs of all allocations and executions in the placement  and the total quantities of those, and a simple text field describing the overall state of the placement.
+     * Lists all order placements, subject to the filter, along with the IDs of the block and order that the placement is for, each placement&#39;s quantity, the IDs of all allocations and executions in the placement and the total quantities of those, and a simple text field describing the overall state of the placement.
      * @return APIlistOrderGraphPlacementsRequest
      * @http.response.details
      <table summary="Response Details" border="1">

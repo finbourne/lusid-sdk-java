@@ -2,7 +2,7 @@
 
 # Allocation
 
-An Allocation of a certain quantity of a specific instrument against an originating  Order.
+An Allocation of a certain quantity of a specific instrument against an originating Order.
 
 ## Properties
 

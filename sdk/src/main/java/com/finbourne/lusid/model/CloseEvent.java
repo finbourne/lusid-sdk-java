@@ -47,7 +47,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * The termination of an instrument.  In some cases termination can happen over a range of dates e.g. american option exercise.  In most cases the startDate &#x3D;&#x3D; endDate
+ * The termination of an instrument. In some cases termination can happen over a range of dates e.g. american option exercise. In most cases the startDate &#x3D;&#x3D; endDate
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CloseEvent extends InstrumentEvent {

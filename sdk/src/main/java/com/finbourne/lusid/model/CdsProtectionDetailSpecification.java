@@ -46,7 +46,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * CDSs generally conform to fairly standard definitions, but can be tweaked in a number of different ways.  This class gathers a number of common features which may deviate. These will default to the market standard when  no overrides are provided.
+ * CDSs generally conform to fairly standard definitions, but can be tweaked in a number of different ways. This class gathers a number of common features which may deviate. These will default to the market standard when no overrides are provided.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CdsProtectionDetailSpecification {
@@ -76,7 +76,7 @@ public class CdsProtectionDetailSpecification {
   }
 
    /**
-   * The seniority level of the CDS.  Supported string (enumeration) values are: [SNR, SUB, JRSUBUT2, PREFT1, SECDOM, SNRFOR, SUBLT2].  Defaults to \&quot;SUB\&quot; if not set.
+   * The seniority level of the CDS. Supported string (enumeration) values are: [SNR, SUB, JRSUBUT2, PREFT1, SECDOM, SNRFOR, SUBLT2]. Defaults to \&quot;SUB\&quot; if not set.
    * @return seniority
   **/
   @jakarta.annotation.Nullable
@@ -97,7 +97,7 @@ public class CdsProtectionDetailSpecification {
   }
 
    /**
-   * The restructuring clause.  Supported string (enumeration) values are: [CR, MR, MM, XR]. Defaults to \&quot;MM\&quot; if not set.
+   * The restructuring clause. Supported string (enumeration) values are: [CR, MR, MM, XR]. Defaults to \&quot;MM\&quot; if not set.
    * @return restructuringType
   **/
   @jakarta.annotation.Nullable

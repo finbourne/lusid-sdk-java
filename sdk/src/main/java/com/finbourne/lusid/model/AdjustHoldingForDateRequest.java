@@ -53,7 +53,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * This request specifies target holdings. i.e. holding data that the  system should match. When processed by the movement  engine, it will create &#39;true-up&#39; adjustments on the fly.
+ * This request specifies target holdings. i.e. holding data that the system should match. When processed by the movement engine, it will create &#39;true-up&#39; adjustments on the fly.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AdjustHoldingForDateRequest {

@@ -46,7 +46,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Certain bonds will follow certain rounding conventions.  For example, Thai government bonds will round accrued interest and cashflow values 2dp, whereas for  French government bonds, the rounding is to 7dp.
+ * Certain bonds will follow certain rounding conventions. For example, Thai government bonds will round accrued interest and cashflow values 2dp, whereas for French government bonds, the rounding is to 7dp.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SimpleRoundingConvention {
@@ -89,7 +89,7 @@ public class SimpleRoundingConvention {
   }
 
    /**
-   * The type of rounding. e.g. Round Up, Round Down    Supported string (enumeration) values are: [Down, Up, Nearest].
+   * The type of rounding. e.g. Round Up, Round Down  Supported string (enumeration) values are: [Down, Up, Nearest].
    * @return roundingType
   **/
   @jakarta.annotation.Nullable

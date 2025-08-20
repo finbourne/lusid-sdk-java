@@ -75,7 +75,7 @@ public class ExDividendConfiguration {
   }
 
    /**
-   * Is the ex-dividend period counted in business days or calendar days.  Defaults to false if not set.
+   * Is the ex-dividend period counted in business days or calendar days. Defaults to false if not set.
    * @return useBusinessDays
   **/
   @jakarta.annotation.Nullable
@@ -96,7 +96,7 @@ public class ExDividendConfiguration {
   }
 
    /**
-   * Number of days in the ex-dividend period.  If the settlement date falls in the ex-dividend period then the coupon paid is zero and the accrued interest is negative.  If set, this must be a non-negative number.  If not set, or set to 0, than there is no ex-dividend period.
+   * Number of days in the ex-dividend period. If the settlement date falls in the ex-dividend period then the coupon paid is zero and the accrued interest is negative. If set, this must be a non-negative number. If not set, or set to 0, than there is no ex-dividend period.
    * @return exDividendDays
   **/
   @jakarta.annotation.Nonnull
@@ -138,7 +138,7 @@ public class ExDividendConfiguration {
   }
 
    /**
-   * Set this flag to true if the ex-dividend days represent a pay delay from the accrual end date in calendar  days under the 30/360 day count convention. The typical use case for this flag are Mortgage Backed Securities  with pay delay between 1 and 60 days, such as FreddieMac and FannieMae. If this flag is set, the useBusinessDays  setting will be ignored.  Defaults to false if not provided.
+   * Set this flag to true if the ex-dividend days represent a pay delay from the accrual end date in calendar days under the 30/360 day count convention. The typical use case for this flag are Mortgage Backed Securities with pay delay between 1 and 60 days, such as FreddieMac and FannieMae. If this flag is set, the useBusinessDays setting will be ignored. Defaults to false if not provided.
    * @return applyThirty360PayDelay
   **/
   @jakarta.annotation.Nullable

@@ -135,7 +135,7 @@ public class Repo extends LusidInstrument {
   }
 
    /**
-   * The final maturity date of the instrument. This means the last date on which the instruments makes a payment of any amount.  For the avoidance of doubt, that is not necessarily prior to its last sensitivity date for the purposes of risk; e.g. instruments such as  Constant Maturity Swaps (CMS) often have sensitivities to rates that may well be observed or set prior to the maturity date, but refer to a termination date beyond it.
+   * The final maturity date of the instrument. This means the last date on which the instruments makes a payment of any amount. For the avoidance of doubt, that is not necessarily prior to its last sensitivity date for the purposes of risk; e.g. instruments such as Constant Maturity Swaps (CMS) often have sensitivities to rates that may well be observed or set prior to the maturity date, but refer to a termination date beyond it.
    * @return maturityDate
   **/
   @jakarta.annotation.Nonnull
@@ -177,7 +177,7 @@ public class Repo extends LusidInstrument {
   }
 
    /**
-   * For calculation of interest, the accrual basis to be used.  For more information on day counts, see [knowledge base article KA-01798](https://support.lusid.com/knowledgebase/article/KA-01798)     Supported string (enumeration) values are: [Actual360, Act360, MoneyMarket, Actual365, Act365, Thirty360, ThirtyU360, Bond, ThirtyE360, EuroBond, ActualActual, ActAct, ActActIsda, ActActIsma, ActActIcma, OneOne, Act364, Act365F, Act365L, Act365_25, Act252, Bus252, NL360, NL365, ActActAFB, Act365Cad, ThirtyActIsda, Thirty365Isda, ThirtyEActIsda, ThirtyE360Isda, ThirtyE365Isda, ThirtyU360EOM].
+   * For calculation of interest, the accrual basis to be used. For more information on day counts, see [knowledge base article KA-01798](https://support.lusid.com/knowledgebase/article/KA-01798)   Supported string (enumeration) values are: [Actual360, Act360, MoneyMarket, Actual365, Act365, Thirty360, ThirtyU360, Bond, ThirtyE360, EuroBond, ActualActual, ActAct, ActActIsda, ActActIsma, ActActIcma, OneOne, Act364, Act365F, Act365L, Act365_25, Act252, Bus252, NL360, NL365, ActActAFB, Act365Cad, ThirtyActIsda, Thirty365Isda, ThirtyEActIsda, ThirtyE360Isda, ThirtyE365Isda, ThirtyU360EOM].
    * @return accrualBasis
   **/
   @jakarta.annotation.Nonnull
@@ -206,7 +206,7 @@ public class Repo extends LusidInstrument {
   }
 
    /**
-   * The actual collateral in the Repo.  This property is for informational purposes only, Lusid pricing is not affected.
+   * The actual collateral in the Repo. This property is for informational purposes only, Lusid pricing is not affected.
    * @return collateral
   **/
   @jakarta.annotation.Nullable
@@ -248,7 +248,7 @@ public class Repo extends LusidInstrument {
   }
 
    /**
-   * The haircut (or margin percentage) applied to the collateral, this should be a number between 0 and 1, i.e. for a 5% haircut this should be 0.05.  This is defined as (CollateralValue - PurchasePrice) / CollateralValue.  If this property is specified, so too must CollateralValue.  While this property is optional, one, and only one, of PurchasePrice, Margin and Haircut must be specified.
+   * The haircut (or margin percentage) applied to the collateral, this should be a number between 0 and 1, i.e. for a 5% haircut this should be 0.05. This is defined as (CollateralValue - PurchasePrice) / CollateralValue. If this property is specified, so too must CollateralValue. While this property is optional, one, and only one, of PurchasePrice, Margin and Haircut must be specified.
    * @return haircut
   **/
   @jakarta.annotation.Nullable
@@ -269,7 +269,7 @@ public class Repo extends LusidInstrument {
   }
 
    /**
-   * The initial margin (or margin ratio) applied to the collateral, this should be a number greater than or equal to 1.0,  i.e. for a 102% margin this should be 1.02. A value of 1.0 means no margin (100%).  This is defined as CollateralValue / PurchasePrice.  If this property is specified, so too must CollateralValue.  While this property is optional, one, and only one, of PurchasePrice, Margin and Haircut must be specified.
+   * The initial margin (or margin ratio) applied to the collateral, this should be a number greater than or equal to 1.0, i.e. for a 102% margin this should be 1.02. A value of 1.0 means no margin (100%). This is defined as CollateralValue / PurchasePrice. If this property is specified, so too must CollateralValue. While this property is optional, one, and only one, of PurchasePrice, Margin and Haircut must be specified.
    * @return margin
   **/
   @jakarta.annotation.Nullable
@@ -290,7 +290,7 @@ public class Repo extends LusidInstrument {
   }
 
    /**
-   * The price the collateral is initially purchased for, this property can be used to explicitly set the purchase price and not require  collateral value and a margin or haircut.  While this property is optional, one, and only one, of PurchasePrice, Margin and Haircut must be specified.
+   * The price the collateral is initially purchased for, this property can be used to explicitly set the purchase price and not require collateral value and a margin or haircut. While this property is optional, one, and only one, of PurchasePrice, Margin and Haircut must be specified.
    * @return purchasePrice
   **/
   @jakarta.annotation.Nullable
@@ -311,7 +311,7 @@ public class Repo extends LusidInstrument {
   }
 
    /**
-   * The rate at which interest is to be accrue and be paid upon redemption of the collateral at maturity.  This field is used to calculate the Repurchase price.  While this property is optional, one, and only one, of the RepoRate and RepurchasePrice must be specified.
+   * The rate at which interest is to be accrue and be paid upon redemption of the collateral at maturity. This field is used to calculate the Repurchase price. While this property is optional, one, and only one, of the RepoRate and RepurchasePrice must be specified.
    * @return repoRate
   **/
   @jakarta.annotation.Nullable
@@ -332,7 +332,7 @@ public class Repo extends LusidInstrument {
   }
 
    /**
-   * The price at which the collateral is repurchased, this field is optional and can be explicitly set here or will be calculated  from the PurchasePrice and RepoRate.  One, and only one, of the RepoRate and RepurchasePrice must be specified.
+   * The price at which the collateral is repurchased, this field is optional and can be explicitly set here or will be calculated from the PurchasePrice and RepoRate. One, and only one, of the RepoRate and RepurchasePrice must be specified.
    * @return repurchasePrice
   **/
   @jakarta.annotation.Nullable

@@ -122,7 +122,7 @@ public class ComplianceApiExample {
 
 [EARLY ACCESS] DeleteComplianceRule: Delete compliance rule.
 
-Use this endpoint to delete a compliance rule. The rule will be recoverable for asat times earlier than the  delete time, but will otherwise appear to have never existed.
+Use this endpoint to delete a compliance rule. The rule will be recoverable for asat times earlier than the delete time, but will otherwise appear to have never existed.
 
 ### Example
 
@@ -352,7 +352,7 @@ public class ComplianceApiExample {
         String scope = "scope_example"; // String | The compliance rule's scope.
         String code = "code_example"; // String | The compliance rule's code.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. Asat time for query.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Compliance' domain to decorate onto the rule.   These must take the format {domain}/{scope}/{code}, for example 'Compliance/live/UCITS'.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Compliance' domain to decorate onto the rule.  These must take the format {domain}/{scope}/{code}, for example 'Compliance/live/UCITS'.
         try {
             // uncomment the below to set overrides at the request level
             // ComplianceRuleResponse result = apiInstance.getComplianceRule(scope, code, asAt, propertyKeys).execute(opts);
@@ -377,7 +377,7 @@ public class ComplianceApiExample {
 | **scope** | **String**| The compliance rule&#39;s scope. | |
 | **code** | **String**| The compliance rule&#39;s code. | |
 | **asAt** | **OffsetDateTime**| Optional. Asat time for query. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Compliance&#39; domain to decorate onto the rule.   These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Compliance&#39; domain to decorate onto the rule.  These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. | [optional] |
 
 ### Return type
 
@@ -735,7 +735,7 @@ public class ComplianceApiExample {
         String page = "page_example"; // String | Optional. Pagination token.
         Integer limit = 56; // Integer | Optional. Entries per page.
         String filter = "filter_example"; // String | Optional. Filter.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Compliance' domain to decorate onto each rule.   These must take the format {domain}/{scope}/{code}, for example 'Compliance/live/UCITS'. If not provided will return all the entitled properties for each rule.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Compliance' domain to decorate onto each rule.  These must take the format {domain}/{scope}/{code}, for example 'Compliance/live/UCITS'. If not provided will return all the entitled properties for each rule.
         try {
             // uncomment the below to set overrides at the request level
             // PagedResourceListOfComplianceRuleResponse result = apiInstance.listComplianceRules(asAt, page, limit, filter, propertyKeys).execute(opts);
@@ -761,7 +761,7 @@ public class ComplianceApiExample {
 | **page** | **String**| Optional. Pagination token. | [optional] |
 | **limit** | **Integer**| Optional. Entries per page. | [optional] |
 | **filter** | **String**| Optional. Filter. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Compliance&#39; domain to decorate onto each rule.   These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. If not provided will return all the entitled properties for each rule. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Compliance&#39; domain to decorate onto each rule.  These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. If not provided will return all the entitled properties for each rule. | [optional] |
 
 ### Return type
 
@@ -831,7 +831,7 @@ public class ComplianceApiExample {
 
         ComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplianceApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. The time at which to get results from. Default : latest
-        String page = "page_example"; // String | Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request.
+        String page = "page_example"; // String | Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields  must not have changed since the original request.
         Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
         String filter = "filter_example"; // String | Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         List<String> sortBy = Arrays.asList(); // List<String> | Optional. A list of field names to sort by, each suffixed by \"ASC\" or \"DESC\"
@@ -857,7 +857,7 @@ public class ComplianceApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| Optional. The time at which to get results from. Default : latest | [optional] |
-| **page** | **String**| Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. | [optional] |
+| **page** | **String**| Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields  must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional] |
 | **filter** | **String**| Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. A list of field names to sort by, each suffixed by \&quot;ASC\&quot; or \&quot;DESC\&quot; | [optional] |
@@ -930,7 +930,7 @@ public class ComplianceApiExample {
 
         ComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplianceApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. The time at which to get results from. Default : latest
-        String page = "page_example"; // String | Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request.
+        String page = "page_example"; // String | Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields  must not have changed since the original request.
         Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
         String filter = "filter_example"; // String | Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         try {
@@ -955,7 +955,7 @@ public class ComplianceApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| Optional. The time at which to get results from. Default : latest | [optional] |
-| **page** | **String**| Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. | [optional] |
+| **page** | **String**| Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields  must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional] |
 | **filter** | **String**| Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
@@ -1027,7 +1027,7 @@ public class ComplianceApiExample {
 
         ComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplianceApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. The time at which to get results from. Default : latest
-        String page = "page_example"; // String | Optional. The pagination token to use to continue listing historical order breaches from a previous call to list historical order breaches.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request.
+        String page = "page_example"; // String | Optional. The pagination token to use to continue listing historical order breaches from a previous call to list historical order breaches.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields  must not have changed since the original request.
         Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
         String filter = "filter_example"; // String | Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         List<String> sortBy = Arrays.asList(); // List<String> | Optional. A list of field names to sort by, each suffixed by \"ASC\" or \"DESC\"
@@ -1053,7 +1053,7 @@ public class ComplianceApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| Optional. The time at which to get results from. Default : latest | [optional] |
-| **page** | **String**| Optional. The pagination token to use to continue listing historical order breaches from a previous call to list historical order breaches.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. | [optional] |
+| **page** | **String**| Optional. The pagination token to use to continue listing historical order breaches from a previous call to list historical order breaches.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields  must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional] |
 | **filter** | **String**| Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. A list of field names to sort by, each suffixed by \&quot;ASC\&quot; or \&quot;DESC\&quot; | [optional] |
@@ -1377,7 +1377,7 @@ public class ComplianceApiExample {
 
 [EARLY ACCESS] UpsertComplianceRule: Upsert a compliance rule.
 
-Use this endpoint to upsert a single compliance rule. The template and variation specified must already  exist, as must the portfolio group. The parameters passed must match those required by the template variation.
+Use this endpoint to upsert a single compliance rule. The template and variation specified must already exist, as must the portfolio group. The parameters passed must match those required by the template variation.
 
 ### Example
 

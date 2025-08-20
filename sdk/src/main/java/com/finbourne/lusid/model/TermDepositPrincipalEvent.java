@@ -48,7 +48,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Definition of a Term Deposit Interest Event.  This is an event that describes the occurence of principal on a term deposit ().
+ * Definition of a Term Deposit Interest Event. This is an event that describes the occurence of principal on a term deposit ().
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class TermDepositPrincipalEvent extends InstrumentEvent {

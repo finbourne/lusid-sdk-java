@@ -47,7 +47,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Definition of a Maturity Event  This is an event that describes the maturity of the instrument.
+ * Definition of a Maturity Event This is an event that describes the maturity of the instrument.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class MaturityEvent extends InstrumentEvent {

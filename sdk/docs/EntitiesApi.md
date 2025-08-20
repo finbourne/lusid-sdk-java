@@ -20,7 +20,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 GetCustomEntityByEntityUniqueId: Get a Custom Entity instance by its EntityUniqueId
 
-Retrieve a particular Custom Entity instance.  If the Custom Entity is deleted, this will return the state of the Custom Entity immediately prior to deletion.
+Retrieve a particular Custom Entity instance. If the Custom Entity is deleted, this will return the state of the Custom Entity immediately prior to deletion.
 
 ### Example
 
@@ -117,7 +117,7 @@ public class EntitiesApiExample {
 
 GetDataTypeByEntityUniqueId: Get DataType by EntityUniqueId
 
-Retrieve the definition of a particular DataType.  If the DataType is deleted, this will return the state of the DataType immediately prior to deletion.
+Retrieve the definition of a particular DataType. If the DataType is deleted, this will return the state of the DataType immediately prior to deletion.
 
 ### Example
 
@@ -256,9 +256,9 @@ public class EntitiesApiExample {
         String entityType = "entityType_example"; // String | The type of the entity to list the change history for.
         String entityUniqueId = "entityUniqueId_example"; // String | The universally unique identifier of the entity.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list change history information. Defaults to return the change history at the latest datetime if not specified.
-        String page = "page_example"; // String | The pagination token to use to continue listing change history information from a previous call to list change   history information. This value is returned from the previous call. If a pagination token is provided the filter, sortBy   and asAt fields must not have changed since the original request.
+        String page = "page_example"; // String | The pagination token to use to continue listing change history information from a previous call to list change  history information. This value is returned from the previous call. If a pagination token is provided the filter, sortBy  and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
-        String filter = "filter_example"; // String | Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        String filter = "filter_example"; // String | Expression to filter the result set.  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names suffixed by \" ASC\" or \" DESC\"
         try {
             // uncomment the below to set overrides at the request level
@@ -284,9 +284,9 @@ public class EntitiesApiExample {
 | **entityType** | **String**| The type of the entity to list the change history for. | |
 | **entityUniqueId** | **String**| The universally unique identifier of the entity. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list change history information. Defaults to return the change history at the latest datetime if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing change history information from a previous call to list change   history information. This value is returned from the previous call. If a pagination token is provided the filter, sortBy   and asAt fields must not have changed since the original request. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing change history information from a previous call to list change  history information. This value is returned from the previous call. If a pagination token is provided the filter, sortBy  and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **filter** | **String**| Expression to filter the result set.  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
 
 ### Return type
@@ -315,7 +315,7 @@ public class EntitiesApiExample {
 
 GetInstrumentByEntityUniqueId: Get instrument by EntityUniqueId
 
-Retrieve the definition of a particular instrument.  If the instrument is deleted, this will return the state of the instrument immediately prior to deletion.
+Retrieve the definition of a particular instrument. If the instrument is deleted, this will return the state of the instrument immediately prior to deletion.
 
 ### Example
 
@@ -412,7 +412,7 @@ public class EntitiesApiExample {
 
 GetPortfolioByEntityUniqueId: Get portfolio by EntityUniqueId
 
-Retrieve the definition of a particular portfolio.  If the portfolio is deleted, this will return the state of the portfolio immediately prior to deletion.
+Retrieve the definition of a particular portfolio. If the portfolio is deleted, this will return the state of the portfolio immediately prior to deletion.
 
 ### Example
 
@@ -509,7 +509,7 @@ public class EntitiesApiExample {
 
 GetPortfolioChanges: Get the next change to each portfolio in a scope.
 
-Gets the time of the next (earliest effective at) modification (correction and/or amendment) to each portfolio in a scope relative to a point in bitemporal time.  Includes changes from parent portfolios in different scopes.  Excludes changes from subscriptions (e.g corporate actions).
+Gets the time of the next (earliest effective at) modification (correction and/or amendment) to each portfolio in a scope relative to a point in bitemporal time. Includes changes from parent portfolios in different scopes. Excludes changes from subscriptions (e.g corporate actions).
 
 ### Example
 
@@ -604,7 +604,7 @@ public class EntitiesApiExample {
 
 GetPropertyDefinitionByEntityUniqueId: Get property definition by EntityUniqueId
 
-Retrieve a particular property definition.  If the property definition is deleted, this will return the state of the property definition immediately prior to deletion.
+Retrieve a particular property definition. If the property definition is deleted, this will return the state of the property definition immediately prior to deletion.
 
 ### Example
 

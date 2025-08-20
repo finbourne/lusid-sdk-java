@@ -29,6 +29,8 @@ A list of holdings.
 |**settlementSchedule** | [**List&lt;SettlementSchedule&gt;**](SettlementSchedule.md) | Where no. of days ahead has been specified, future dated settlements will be captured here. |  [optional] |
 |**currentFace** | **java.math.BigDecimal** | Current face value of the holding. |  [optional] |
 |**custodianAccountId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
+|**unsettledUnits** | **java.math.BigDecimal** | The number of unsettled units for the holding. |  [optional] |
+|**overdueUnits** | **java.math.BigDecimal** | The number of unsettled units for the holding that are beyond their contractual settlement date. |  [optional] |
 
 
 

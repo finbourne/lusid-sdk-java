@@ -549,7 +549,7 @@ public class IdentifierDefinitionsApi {
 
     /**
      * [EXPERIMENTAL] DeleteIdentifierDefinition: Delete a particular Identifier Definition
-     * The deletion will take effect from the Identifier Definition deletion datetime.  i.e. will no longer exist at any asAt datetime after the asAt datetime of deletion.
+     * The deletion will take effect from the Identifier Definition deletion datetime. i.e. will no longer exist at any asAt datetime after the asAt datetime of deletion.
      * @param domain The type of entity to which the identifier relates (required)
      * @param identifierScope The scope that the identifier exists in (required)
      * @param identifierType What the identifier represents. Together with \&quot;domain\&quot; and \&quot;identifierScope\&quot; this uniquely identifies the identifier definition (required)
@@ -696,7 +696,7 @@ public class IdentifierDefinitionsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the Identifier Definition. Defaults to return   the latest version of the definition if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the Identifier Definition. Defaults to return  the latest version of the definition if not specified. (optional)
          * @return APIgetIdentifierDefinitionRequest
          */
         public APIgetIdentifierDefinitionRequest asAt(OffsetDateTime asAt) {
@@ -706,7 +706,7 @@ public class IdentifierDefinitionsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effectiveAt datetime at which to retrieve the Identifier Definitions.   Since Identifier Definitions exist for all effective time, this will only apply to properties (if requested)   on the Identifier Definition. (optional)
+         * @param effectiveAt The effectiveAt datetime at which to retrieve the Identifier Definitions.  Since Identifier Definitions exist for all effective time, this will only apply to properties (if requested)  on the Identifier Definition. (optional)
          * @return APIgetIdentifierDefinitionRequest
          */
         public APIgetIdentifierDefinitionRequest effectiveAt(String effectiveAt) {
@@ -716,7 +716,7 @@ public class IdentifierDefinitionsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;IdentifierDefinition&#39; domain to decorate onto the Identifier Definition.   These must take the format {domain}/{scope}/{code}. If no properties are specified, then no properties will be returned. (optional)
+         * @param propertyKeys A list of property keys from the &#39;IdentifierDefinition&#39; domain to decorate onto the Identifier Definition.  These must take the format {domain}/{scope}/{code}. If no properties are specified, then no properties will be returned. (optional)
          * @return APIgetIdentifierDefinitionRequest
          */
         public APIgetIdentifierDefinitionRequest propertyKeys(List<String> propertyKeys) {
@@ -844,7 +844,7 @@ public class IdentifierDefinitionsApi {
 
     /**
      * [EXPERIMENTAL] GetIdentifierDefinition: Get a single Identifier Definition
-     * Get a single Identifier Definition using domain, identifierScope, identifierType, and an optional asAt   - defaulting to latest if not specified
+     * Get a single Identifier Definition using domain, identifierScope, identifierType, and an optional asAt  - defaulting to latest if not specified
      * @param domain The type of entity to which the identifier relates. (required)
      * @param identifierScope The scope that the identifier exists in (required)
      * @param identifierType What the identifier represents. Together with \&quot;domain\&quot; and \&quot;identifierScope\&quot; this uniquely identifies the identifier definition (required)
@@ -987,7 +987,7 @@ public class IdentifierDefinitionsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effectiveAt datetime at which to retrieve the Identifier Definitions.   Since Identifier Definitions exist for all effective time, this will only apply to properties (if requested)   on the Identifier Definition. (optional)
+         * @param effectiveAt The effectiveAt datetime at which to retrieve the Identifier Definitions.  Since Identifier Definitions exist for all effective time, this will only apply to properties (if requested)  on the Identifier Definition. (optional)
          * @return APIlistIdentifierDefinitionsRequest
          */
         public APIlistIdentifierDefinitionsRequest effectiveAt(String effectiveAt) {
@@ -997,7 +997,7 @@ public class IdentifierDefinitionsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the Identifier Definitions. Defaults to return the latest   version of the Identifier Definitions if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the Identifier Definitions. Defaults to return the latest  version of the Identifier Definitions if not specified. (optional)
          * @return APIlistIdentifierDefinitionsRequest
          */
         public APIlistIdentifierDefinitionsRequest asAt(OffsetDateTime asAt) {
@@ -1007,7 +1007,7 @@ public class IdentifierDefinitionsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing Identifier Definitions from a previous call to list   Identifier Definitions. This value is returned from the previous call. If a pagination token is provided the sortBy,   filter, effectiveAt, and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing Identifier Definitions from a previous call to list  Identifier Definitions. This value is returned from the previous call. If a pagination token is provided the sortBy,  filter, effectiveAt, and asAt fields must not have changed since the original request. (optional)
          * @return APIlistIdentifierDefinitionsRequest
          */
         public APIlistIdentifierDefinitionsRequest page(String page) {
@@ -1027,7 +1027,7 @@ public class IdentifierDefinitionsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIlistIdentifierDefinitionsRequest
          */
         public APIlistIdentifierDefinitionsRequest filter(String filter) {
@@ -1047,7 +1047,7 @@ public class IdentifierDefinitionsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;IdentifierDefinition&#39; domain to decorate onto the Identifier Definition.   These must take the format {domain}/{scope}/{code}. (optional)
+         * @param propertyKeys A list of property keys from the &#39;IdentifierDefinition&#39; domain to decorate onto the Identifier Definition.  These must take the format {domain}/{scope}/{code}. (optional)
          * @return APIlistIdentifierDefinitionsRequest
          */
         public APIlistIdentifierDefinitionsRequest propertyKeys(List<String> propertyKeys) {
@@ -1175,7 +1175,7 @@ public class IdentifierDefinitionsApi {
 
     /**
      * [EXPERIMENTAL] ListIdentifierDefinitions: List Identifier Definitions
-     * Retrieves all Identifier Definitions that fit the filter, in a specific order if sortBy is provided  Supports pagination
+     * Retrieves all Identifier Definitions that fit the filter, in a specific order if sortBy is provided Supports pagination
      * @return APIlistIdentifierDefinitionsRequest
      * @http.response.details
      <table summary="Response Details" border="1">

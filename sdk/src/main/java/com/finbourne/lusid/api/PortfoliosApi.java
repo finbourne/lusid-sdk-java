@@ -355,7 +355,7 @@ public class PortfoliosApi {
 
     /**
      * [EARLY ACCESS] BatchUpsertPortfolioAccessMetadata: Upsert multiple Portfolio Access Metadata Rules to multiple Portfolios
-     * Update or insert multiple Access Metadata rules for multiple Portfolios. Items will be updated if they already exist  and inserted if they do not. No other items will be affected    The response will return the successfully updated or inserted Portfolio Access Metadata Rules or a failure message if unsuccessful     Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched
+     * Update or insert multiple Access Metadata rules for multiple Portfolios. Items will be updated if they already exist and inserted if they do not. No other items will be affected  The response will return the successfully updated or inserted Portfolio Access Metadata Rules or a failure message if unsuccessful   Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched
      * @param requestBody The Access Metadata Rules to upsert and the Portfolio identifiers to upsert for (required)
      * @return APIbatchUpsertPortfolioAccessMetadataRequest
      * @http.response.details
@@ -1140,7 +1140,7 @@ public class PortfoliosApi {
 
     /**
      * DeletePortfolio: Delete portfolio
-     * Delete a particular portfolio.     The deletion will take effect from the portfolio&#39;s creation datetime. This means that the portfolio will no longer exist at any effective datetime, as per the asAt datetime of deletion.
+     * Delete a particular portfolio.   The deletion will take effect from the portfolio&#39;s creation datetime. This means that the portfolio will no longer exist at any effective datetime, as per the asAt datetime of deletion.
      * @param scope The scope of the portfolio. (required)
      * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
      * @return APIdeletePortfolioRequest
@@ -1279,7 +1279,7 @@ public class PortfoliosApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is   before the time-variant property exists then a failure is returned. Do not specify this parameter if any of   the properties to delete are perpetual. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to delete time-variant properties from.  The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is  before the time-variant property exists then a failure is returned. Do not specify this parameter if any of  the properties to delete are perpetual. (optional)
          * @return APIdeletePortfolioPropertiesRequest
          */
         public APIdeletePortfolioPropertiesRequest effectiveAt(String effectiveAt) {
@@ -1407,10 +1407,10 @@ public class PortfoliosApi {
 
     /**
      * DeletePortfolioProperties: Delete portfolio properties
-     * Delete one or more properties from a particular portfolio. If the properties are time-variant then an effective datetime from which  to delete properties must be specified. If the properties are perpetual then it is invalid to specify an effective datetime for deletion.
+     * Delete one or more properties from a particular portfolio. If the properties are time-variant then an effective datetime from which to delete properties must be specified. If the properties are perpetual then it is invalid to specify an effective datetime for deletion.
      * @param scope The scope of the portfolio. (required)
      * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param propertyKeys The property keys of the properties to delete. These must take the format   {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. Each property must be from the &#39;Portfolio&#39; domain. (required)
+     * @param propertyKeys The property keys of the properties to delete. These must take the format  {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. Each property must be from the &#39;Portfolio&#39; domain. (required)
      * @return APIdeletePortfolioPropertiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1973,7 +1973,7 @@ public class PortfoliosApi {
 
     /**
      * [EARLY ACCESS] GetAggregatedReturnsDispersionMetrics: Get the Aggregated Returns Dispersion metric
-     * Calculate the dispersion metric with the Aggregate Returns which are on the specified portfolio.   This works only for composites which have at least 6 constituents for a full year in.
+     * Calculate the dispersion metric with the Aggregate Returns which are on the specified portfolio.  This works only for composites which have at least 6 constituents for a full year in.
      * @param scope The scope of the Portfolio. (required)
      * @param code The code of the Portfolio. (required)
      * @param aggregatedReturnsDispersionRequest The request used in the AggregatedReturnsDispersionMetric. (required)
@@ -2715,7 +2715,7 @@ public class PortfoliosApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;Portfolio&#39; domain to decorate onto the portfolio,   or from any domain that supports relationships to decorate onto related entities. These must take the format   {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
+         * @param propertyKeys A list of property keys from the &#39;Portfolio&#39; domain to decorate onto the portfolio,  or from any domain that supports relationships to decorate onto related entities. These must take the format  {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
          * @return APIgetPortfolioRequest
          */
         public APIgetPortfolioRequest propertyKeys(List<String> propertyKeys) {
@@ -2725,7 +2725,7 @@ public class PortfoliosApi {
 
         /**
          * Set relationshipDefinitionIds
-         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities   onto the portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
+         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities  onto the portfolio in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
          * @return APIgetPortfolioRequest
          */
         public APIgetPortfolioRequest relationshipDefinitionIds(List<String> relationshipDefinitionIds) {
@@ -3082,7 +3082,7 @@ public class PortfoliosApi {
 
         /**
          * Set compositeMethod
-         * @param compositeMethod The method used to calculate the Portfolio performance:   Equal/Asset. (optional)
+         * @param compositeMethod The method used to calculate the Portfolio performance:  Equal/Asset. (optional)
          * @return APIgetPortfolioAggregateReturnsRequest
          */
         public APIgetPortfolioAggregateReturnsRequest compositeMethod(String compositeMethod) {
@@ -3728,7 +3728,7 @@ public class PortfoliosApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.   For example, to filter on the User ID, specify \&quot;userId.id eq &#39;string&#39;\&quot;.   For more information about filtering, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.  For example, to filter on the User ID, specify \&quot;userId.id eq &#39;string&#39;\&quot;.  For more information about filtering, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIgetPortfolioCommandsRequest
          */
         public APIgetPortfolioCommandsRequest filter(String filter) {
@@ -4597,7 +4597,7 @@ public class PortfoliosApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results. For more information about filtering,   see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results. For more information about filtering,  see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIgetPortfolioPropertyTimeSeriesRequest
          */
         public APIgetPortfolioPropertyTimeSeriesRequest filter(String filter) {
@@ -4607,7 +4607,7 @@ public class PortfoliosApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing properties; this value is returned from   the previous call. If a pagination token is provided, the filter, portfolioEffectiveAt, and asAt fields   must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing properties; this value is returned from  the previous call. If a pagination token is provided, the filter, portfolioEffectiveAt, and asAt fields  must not have changed since the original request. (optional)
          * @return APIgetPortfolioPropertyTimeSeriesRequest
          */
         public APIgetPortfolioPropertyTimeSeriesRequest page(String page) {
@@ -4748,7 +4748,7 @@ public class PortfoliosApi {
      * Show the complete time series (history) for a particular portfolio property.
      * @param scope The scope of the portfolio. (required)
      * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param propertyKey The property key of the property whose history to show.   This must be from the &#39;Portfolio&#39; domain and in the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (required)
+     * @param propertyKey The property key of the property whose history to show.  This must be from the &#39;Portfolio&#39; domain and in the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (required)
      * @return APIgetPortfolioPropertyTimeSeriesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -4919,7 +4919,7 @@ public class PortfoliosApi {
 
         /**
          * Set identifierTypes
-         * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.   These must be from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example   &#39;Person/CompanyDetails/Role&#39;. Only identifier types provided will be used to look up relevant entities in relations. If not applicable, provide an empty array. (optional)
+         * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.  These must be from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example  &#39;Person/CompanyDetails/Role&#39;. Only identifier types provided will be used to look up relevant entities in relations. If not applicable, provide an empty array. (optional)
          * @return APIgetPortfolioRelationsRequest
          */
         public APIgetPortfolioRelationsRequest identifierTypes(List<String> identifierTypes) {
@@ -5220,7 +5220,7 @@ public class PortfoliosApi {
 
         /**
          * Set identifierTypes
-         * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.   These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example   &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. (optional)
+         * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.  These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example  &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. (optional)
          * @return APIgetPortfolioRelationshipsRequest
          */
         public APIgetPortfolioRelationshipsRequest identifierTypes(List<String> identifierTypes) {
@@ -5946,7 +5946,7 @@ public class PortfoliosApi {
 
     /**
      * [EARLY ACCESS] GetPortfoliosAccessMetadataByKey: Get an entry identified by a metadataKey in the access metadata object
-     * Get a specific portfolio access metadata rule by specifying the corresponding identifier parts     No matching will be performed through this endpoint. To retrieve a rule, it is necessary to specify, exactly, the identifier of the rule
+     * Get a specific portfolio access metadata rule by specifying the corresponding identifier parts   No matching will be performed through this endpoint. To retrieve a rule, it is necessary to specify, exactly, the identifier of the rule
      * @param scope The scope of the Portfolio Access Metadata Rule to retrieve. (required)
      * @param code The code of the portfolio (required)
      * @param metadataKey Key of the metadata to retrieve (required)
@@ -6120,7 +6120,7 @@ public class PortfoliosApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing instructions; this value is returned from the previous call.   If a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing instructions; this value is returned from the previous call.  If a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the original request. (optional)
          * @return APIlistInstrumentEventInstructionsRequest
          */
         public APIlistInstrumentEventInstructionsRequest page(String page) {
@@ -6140,7 +6140,7 @@ public class PortfoliosApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIlistInstrumentEventInstructionsRequest
          */
         public APIlistInstrumentEventInstructionsRequest filter(String filter) {
@@ -6731,7 +6731,7 @@ public class PortfoliosApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to list the portfolios. Defaults to the current LUSID   system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to list the portfolios. Defaults to the current LUSID  system datetime if not specified. (optional)
          * @return APIlistPortfoliosRequest
          */
         public APIlistPortfoliosRequest effectiveAt(String effectiveAt) {
@@ -6741,7 +6741,7 @@ public class PortfoliosApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to list the portfolios. Defaults to returning the latest version   of each portfolio if not specified. (optional)
+         * @param asAt The asAt datetime at which to list the portfolios. Defaults to returning the latest version  of each portfolio if not specified. (optional)
          * @return APIlistPortfoliosRequest
          */
         public APIlistPortfoliosRequest asAt(OffsetDateTime asAt) {
@@ -6751,7 +6751,7 @@ public class PortfoliosApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing portfolios; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing portfolios; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. (optional)
          * @return APIlistPortfoliosRequest
          */
         public APIlistPortfoliosRequest page(String page) {
@@ -6771,7 +6771,7 @@ public class PortfoliosApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.   For example, to filter on the transaction type, specify \&quot;type eq &#39;Transaction&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.  For example, to filter on the transaction type, specify \&quot;type eq &#39;Transaction&#39;\&quot;. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIlistPortfoliosRequest
          */
         public APIlistPortfoliosRequest filter(String filter) {
@@ -6791,7 +6791,7 @@ public class PortfoliosApi {
 
         /**
          * Set query
-         * @param query Expression specifying the criteria that the returned portfolios must meet. For example, to see which   portfolios have holdings in instruments with a LusidInstrumentId (LUID) of &#39;LUID_PPA8HI6M&#39; or a Figi of &#39;BBG000BLNNH6&#39;,   specify \&quot;instrument.identifiers in ((&#39;LusidInstrumentId&#39;, &#39;LUID_PPA8HI6M&#39;), (&#39;Figi&#39;, &#39;BBG000BLNNH6&#39;))\&quot;. (optional)
+         * @param query Expression specifying the criteria that the returned portfolios must meet. For example, to see which  portfolios have holdings in instruments with a LusidInstrumentId (LUID) of &#39;LUID_PPA8HI6M&#39; or a Figi of &#39;BBG000BLNNH6&#39;,  specify \&quot;instrument.identifiers in ((&#39;LusidInstrumentId&#39;, &#39;LUID_PPA8HI6M&#39;), (&#39;Figi&#39;, &#39;BBG000BLNNH6&#39;))\&quot;. (optional)
          * @return APIlistPortfoliosRequest
          */
         public APIlistPortfoliosRequest query(String query) {
@@ -6801,7 +6801,7 @@ public class PortfoliosApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;Portfolio&#39; domain to decorate onto each portfolio,   or from any domain that supports relationships to decorate onto related entities. These must take the   format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
+         * @param propertyKeys A list of property keys from the &#39;Portfolio&#39; domain to decorate onto each portfolio,  or from any domain that supports relationships to decorate onto related entities. These must take the  format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
          * @return APIlistPortfoliosRequest
          */
         public APIlistPortfoliosRequest propertyKeys(List<String> propertyKeys) {
@@ -6811,7 +6811,7 @@ public class PortfoliosApi {
 
         /**
          * Set relationshipDefinitionIds
-         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities   onto the portfolios in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
+         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities  onto the portfolios in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
          * @return APIlistPortfoliosRequest
          */
         public APIlistPortfoliosRequest relationshipDefinitionIds(List<String> relationshipDefinitionIds) {
@@ -7092,7 +7092,7 @@ public class PortfoliosApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to list the portfolios. Defaults to the current LUSID   system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to list the portfolios. Defaults to the current LUSID  system datetime if not specified. (optional)
          * @return APIlistPortfoliosForScopeRequest
          */
         public APIlistPortfoliosForScopeRequest effectiveAt(String effectiveAt) {
@@ -7102,7 +7102,7 @@ public class PortfoliosApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to list the portfolios. Defaults to returning the latest version   of each portfolio if not specified. (optional)
+         * @param asAt The asAt datetime at which to list the portfolios. Defaults to returning the latest version  of each portfolio if not specified. (optional)
          * @return APIlistPortfoliosForScopeRequest
          */
         public APIlistPortfoliosForScopeRequest asAt(OffsetDateTime asAt) {
@@ -7112,7 +7112,7 @@ public class PortfoliosApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing portfolios. This  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing portfolios. This value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the original request. (optional)
          * @return APIlistPortfoliosForScopeRequest
          */
         public APIlistPortfoliosForScopeRequest page(String page) {
@@ -7132,7 +7132,7 @@ public class PortfoliosApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.   For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.   For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.  For example, to return only transactions with a transaction type of &#39;Buy&#39;, specify \&quot;type eq &#39;Buy&#39;\&quot;.  For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIlistPortfoliosForScopeRequest
          */
         public APIlistPortfoliosForScopeRequest filter(String filter) {
@@ -7152,7 +7152,7 @@ public class PortfoliosApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;Portfolio&#39; domain to decorate onto each portfolio,   or from any domain that supports relationships to decorate onto related entities. These must take the   format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
+         * @param propertyKeys A list of property keys from the &#39;Portfolio&#39; domain to decorate onto each portfolio,  or from any domain that supports relationships to decorate onto related entities. These must take the  format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
          * @return APIlistPortfoliosForScopeRequest
          */
         public APIlistPortfoliosForScopeRequest propertyKeys(List<String> propertyKeys) {
@@ -7162,7 +7162,7 @@ public class PortfoliosApi {
 
         /**
          * Set relationshipDefinitionIds
-         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities   onto the portfolios in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
+         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities  onto the portfolios in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
          * @return APIlistPortfoliosForScopeRequest
          */
         public APIlistPortfoliosForScopeRequest relationshipDefinitionIds(List<String> relationshipDefinitionIds) {
@@ -7543,7 +7543,7 @@ public class PortfoliosApi {
      * PatchPortfolio: Patch portfolio.
      * Create or update certain fields for a particular portfolio.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: Created, InstrumentScopes, Type.
      * @param scope The scope of the portfolio. (required)
-     * @param code The code of the portfolio. Together with the   scope this uniquely identifies the portfolio. (required)
+     * @param code The code of the portfolio. Together with the  scope this uniquely identifies the portfolio. (required)
      * @param operation The json patch document. For more check: https://datatracker.ietf.org/doc/html/rfc6902. (required)
      * @return APIpatchPortfolioRequest
      * @http.response.details
@@ -7824,7 +7824,7 @@ public class PortfoliosApi {
 
     /**
      * [EARLY ACCESS] PatchPortfolioAccessMetadata: Patch Access Metadata rules for a Portfolio.
-     * Patch Portfolio Access Metadata Rules in a single scope.  The behaviour is defined by the JSON Patch specification.     Currently only &#39;add&#39; is a supported operation on the patch document.    Currently only valid metadata keys are supported paths on the patch document.    The response will return any affected Portfolio Access Metadata rules or a failure message if unsuccessful.    It is important to always check to verify success (or failure).     Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
+     * Patch Portfolio Access Metadata Rules in a single scope. The behaviour is defined by the JSON Patch specification.   Currently only &#39;add&#39; is a supported operation on the patch document.  Currently only valid metadata keys are supported paths on the patch document.  The response will return any affected Portfolio Access Metadata rules or a failure message if unsuccessful.  It is important to always check to verify success (or failure).   Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
      * @param scope The scope of the Portfolio Access Metadata Rule. (required)
      * @param code Portfolio code (required)
      * @param accessMetadataOperation The Json Patch document (required)
@@ -7964,7 +7964,7 @@ public class PortfoliosApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to update the definition. Defaults to the current   LUSID system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to update the definition. Defaults to the current  LUSID system datetime if not specified. (optional)
          * @return APIupdatePortfolioRequest
          */
         public APIupdatePortfolioRequest effectiveAt(String effectiveAt) {
@@ -8092,7 +8092,7 @@ public class PortfoliosApi {
 
     /**
      * UpdatePortfolio: Update portfolio
-     * Update the definition of a particular portfolio.     Note that not all elements of a portfolio definition are  modifiable due to the potential implications for data already stored.
+     * Update the definition of a particular portfolio.   Note that not all elements of a portfolio definition are modifiable due to the potential implications for data already stored.
      * @param scope The scope of the portfolio. (required)
      * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
      * @param updatePortfolioRequest The updated portfolio definition. (required)
@@ -8663,7 +8663,7 @@ public class PortfoliosApi {
 
     /**
      * UpsertPortfolioAccessMetadata: Upsert a Portfolio Access Metadata Rule associated with specific metadataKey. This creates or updates the data in LUSID.
-     * Update or insert one Portfolio Access Metadata Rule in a single scope. An item will be updated if it already exists  and inserted if it does not.    The response will return the successfully updated or inserted Portfolio Access Metadata Rule or failure message if unsuccessful    It is important to always check to verify success (or failure).     Multiple rules for a metadataKey can exists with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched
+     * Update or insert one Portfolio Access Metadata Rule in a single scope. An item will be updated if it already exists and inserted if it does not.  The response will return the successfully updated or inserted Portfolio Access Metadata Rule or failure message if unsuccessful  It is important to always check to verify success (or failure).   Multiple rules for a metadataKey can exists with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched
      * @param scope The scope to use when updating or inserting the Portfolio Access Metadata Rule. (required)
      * @param code Portfolio code (required)
      * @param metadataKey Key of the access metadata to upsert (required)
@@ -8917,10 +8917,10 @@ public class PortfoliosApi {
 
     /**
      * UpsertPortfolioProperties: Upsert portfolio properties
-     * Create or update one or more properties for a particular portfolio. A property is updated if it  already exists and created if it does not. All properties must be from the &#39;Portfolio&#39; domain.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime from which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which it is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+     * Create or update one or more properties for a particular portfolio. A property is updated if it already exists and created if it does not. All properties must be from the &#39;Portfolio&#39; domain.   Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime from which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime until which it is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
      * @param scope The scope of the portfolio. (required)
      * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
-     * @param requestBody The properties to be created or updated. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example   &#39;Portfolio/Manager/Id&#39;. (required)
+     * @param requestBody The properties to be created or updated. Each property in  the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example  &#39;Portfolio/Manager/Id&#39;. (required)
      * @return APIupsertPortfolioPropertiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">

@@ -47,7 +47,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Definition of a Swap Principal Event.  This is an event that describes the occurence of a cashflow due to the principal payment.
+ * Definition of a Swap Principal Event. This is an event that describes the occurence of a cashflow due to the principal payment.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SwapPrincipalEvent extends InstrumentEvent {

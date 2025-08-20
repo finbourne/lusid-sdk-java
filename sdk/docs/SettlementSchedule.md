@@ -11,6 +11,10 @@
 |**settlementDate** | **OffsetDateTime** |  |  [optional] |
 |**units** | **java.math.BigDecimal** |  |  [optional] |
 |**bondInterest** | **java.math.BigDecimal** |  |  [optional] |
+|**movementName** | **String** |  |  [optional] |
+|**movementType** | **String** |  |  [optional] |
+|**unsettledUnits** | **java.math.BigDecimal** |  |  [optional] |
+|**overdueUnits** | **java.math.BigDecimal** |  |  [optional] |
 
 
 
