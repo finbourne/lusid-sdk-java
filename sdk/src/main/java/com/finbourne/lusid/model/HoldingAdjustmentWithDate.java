@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.PerpetualProperty;
+import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.TargetTaxLot;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -88,6 +89,10 @@ public class HoldingAdjustmentWithDate {
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
   private String currency;
+
+  public static final String SERIALIZED_NAME_CUSTODIAN_ACCOUNT_ID = "custodianAccountId";
+  @SerializedName(SERIALIZED_NAME_CUSTODIAN_ACCOUNT_ID)
+  private ResourceId custodianAccountId;
 
   public HoldingAdjustmentWithDate() {
   }
@@ -292,6 +297,27 @@ public class HoldingAdjustmentWithDate {
   }
 
 
+  public HoldingAdjustmentWithDate custodianAccountId(ResourceId custodianAccountId) {
+    
+    this.custodianAccountId = custodianAccountId;
+    return this;
+  }
+
+   /**
+   * Get custodianAccountId
+   * @return custodianAccountId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getCustodianAccountId() {
+    return custodianAccountId;
+  }
+
+
+  public void setCustodianAccountId(ResourceId custodianAccountId) {
+    this.custodianAccountId = custodianAccountId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -309,7 +335,8 @@ public class HoldingAdjustmentWithDate {
         Objects.equals(this.subHoldingKeys, holdingAdjustmentWithDate.subHoldingKeys) &&
         Objects.equals(this.properties, holdingAdjustmentWithDate.properties) &&
         Objects.equals(this.taxLots, holdingAdjustmentWithDate.taxLots) &&
-        Objects.equals(this.currency, holdingAdjustmentWithDate.currency);
+        Objects.equals(this.currency, holdingAdjustmentWithDate.currency) &&
+        Objects.equals(this.custodianAccountId, holdingAdjustmentWithDate.custodianAccountId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -318,7 +345,7 @@ public class HoldingAdjustmentWithDate {
 
   @Override
   public int hashCode() {
-    return Objects.hash(effectiveAt, instrumentIdentifiers, instrumentScope, instrumentUid, subHoldingKeys, properties, taxLots, currency);
+    return Objects.hash(effectiveAt, instrumentIdentifiers, instrumentScope, instrumentUid, subHoldingKeys, properties, taxLots, currency, custodianAccountId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -340,6 +367,7 @@ public class HoldingAdjustmentWithDate {
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    taxLots: ").append(toIndentedString(taxLots)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
+    sb.append("    custodianAccountId: ").append(toIndentedString(custodianAccountId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -370,6 +398,7 @@ public class HoldingAdjustmentWithDate {
     openapiFields.add("properties");
     openapiFields.add("taxLots");
     openapiFields.add("currency");
+    openapiFields.add("custodianAccountId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -415,6 +444,10 @@ public class HoldingAdjustmentWithDate {
       };
       if ((jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) && !jsonObj.get("currency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
+      }
+      // validate the optional field `custodianAccountId`
+      if (jsonObj.get("custodianAccountId") != null && !jsonObj.get("custodianAccountId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("custodianAccountId"));
       }
   }
 

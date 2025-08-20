@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.PerpetualProperty;
+import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -64,6 +65,10 @@ public class CancelSingleHoldingAdjustmentRequest {
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
   private String currency;
+
+  public static final String SERIALIZED_NAME_CUSTODIAN_ACCOUNT_ID = "custodianAccountId";
+  @SerializedName(SERIALIZED_NAME_CUSTODIAN_ACCOUNT_ID)
+  private ResourceId custodianAccountId;
 
   public CancelSingleHoldingAdjustmentRequest() {
   }
@@ -147,6 +152,27 @@ public class CancelSingleHoldingAdjustmentRequest {
   }
 
 
+  public CancelSingleHoldingAdjustmentRequest custodianAccountId(ResourceId custodianAccountId) {
+    
+    this.custodianAccountId = custodianAccountId;
+    return this;
+  }
+
+   /**
+   * Get custodianAccountId
+   * @return custodianAccountId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getCustodianAccountId() {
+    return custodianAccountId;
+  }
+
+
+  public void setCustodianAccountId(ResourceId custodianAccountId) {
+    this.custodianAccountId = custodianAccountId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -159,7 +185,8 @@ public class CancelSingleHoldingAdjustmentRequest {
     CancelSingleHoldingAdjustmentRequest cancelSingleHoldingAdjustmentRequest = (CancelSingleHoldingAdjustmentRequest) o;
     return Objects.equals(this.instrumentIdentifiers, cancelSingleHoldingAdjustmentRequest.instrumentIdentifiers) &&
         Objects.equals(this.subHoldingKeys, cancelSingleHoldingAdjustmentRequest.subHoldingKeys) &&
-        Objects.equals(this.currency, cancelSingleHoldingAdjustmentRequest.currency);
+        Objects.equals(this.currency, cancelSingleHoldingAdjustmentRequest.currency) &&
+        Objects.equals(this.custodianAccountId, cancelSingleHoldingAdjustmentRequest.custodianAccountId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -168,7 +195,7 @@ public class CancelSingleHoldingAdjustmentRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentIdentifiers, subHoldingKeys, currency);
+    return Objects.hash(instrumentIdentifiers, subHoldingKeys, currency, custodianAccountId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -185,6 +212,7 @@ public class CancelSingleHoldingAdjustmentRequest {
     sb.append("    instrumentIdentifiers: ").append(toIndentedString(instrumentIdentifiers)).append("\n");
     sb.append("    subHoldingKeys: ").append(toIndentedString(subHoldingKeys)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
+    sb.append("    custodianAccountId: ").append(toIndentedString(custodianAccountId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -210,6 +238,7 @@ public class CancelSingleHoldingAdjustmentRequest {
     openapiFields.add("instrumentIdentifiers");
     openapiFields.add("subHoldingKeys");
     openapiFields.add("currency");
+    openapiFields.add("custodianAccountId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -238,6 +267,10 @@ public class CancelSingleHoldingAdjustmentRequest {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) && !jsonObj.get("currency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
+      }
+      // validate the optional field `custodianAccountId`
+      if (jsonObj.get("custodianAccountId") != null && !jsonObj.get("custodianAccountId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("custodianAccountId"));
       }
   }
 

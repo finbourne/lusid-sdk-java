@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.CurrencyAndAmount;
 import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.Property;
+import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.SettlementSchedule;
 import com.finbourne.lusid.model.Transaction;
 import com.google.gson.TypeAdapter;
@@ -138,6 +139,10 @@ public class PortfolioHolding {
   public static final String SERIALIZED_NAME_CURRENT_FACE = "currentFace";
   @SerializedName(SERIALIZED_NAME_CURRENT_FACE)
   private java.math.BigDecimal currentFace;
+
+  public static final String SERIALIZED_NAME_CUSTODIAN_ACCOUNT_ID = "custodianAccountId";
+  @SerializedName(SERIALIZED_NAME_CUSTODIAN_ACCOUNT_ID)
+  private ResourceId custodianAccountId;
 
   public PortfolioHolding() {
   }
@@ -586,6 +591,27 @@ public class PortfolioHolding {
   }
 
 
+  public PortfolioHolding custodianAccountId(ResourceId custodianAccountId) {
+    
+    this.custodianAccountId = custodianAccountId;
+    return this;
+  }
+
+   /**
+   * Get custodianAccountId
+   * @return custodianAccountId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getCustodianAccountId() {
+    return custodianAccountId;
+  }
+
+
+  public void setCustodianAccountId(ResourceId custodianAccountId) {
+    this.custodianAccountId = custodianAccountId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -615,7 +641,8 @@ public class PortfolioHolding {
         Objects.equals(this.variationMargin, portfolioHolding.variationMargin) &&
         Objects.equals(this.variationMarginPortfolioCcy, portfolioHolding.variationMarginPortfolioCcy) &&
         Objects.equals(this.settlementSchedule, portfolioHolding.settlementSchedule) &&
-        (this.currentFace.compareTo(portfolioHolding.getCurrentFace()) == 0);
+        (this.currentFace.compareTo(portfolioHolding.getCurrentFace()) == 0) &&
+        Objects.equals(this.custodianAccountId, portfolioHolding.custodianAccountId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -624,7 +651,7 @@ public class PortfolioHolding {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentScope, instrumentUid, subHoldingKeys, properties, holdingType, units, settledUnits, cost, costPortfolioCcy, transaction, currency, holdingTypeName, holdingId, notionalCost, amortisedCost, amortisedCostPortfolioCcy, variationMargin, variationMarginPortfolioCcy, settlementSchedule, currentFace);
+    return Objects.hash(instrumentScope, instrumentUid, subHoldingKeys, properties, holdingType, units, settledUnits, cost, costPortfolioCcy, transaction, currency, holdingTypeName, holdingId, notionalCost, amortisedCost, amortisedCostPortfolioCcy, variationMargin, variationMarginPortfolioCcy, settlementSchedule, currentFace, custodianAccountId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -658,6 +685,7 @@ public class PortfolioHolding {
     sb.append("    variationMarginPortfolioCcy: ").append(toIndentedString(variationMarginPortfolioCcy)).append("\n");
     sb.append("    settlementSchedule: ").append(toIndentedString(settlementSchedule)).append("\n");
     sb.append("    currentFace: ").append(toIndentedString(currentFace)).append("\n");
+    sb.append("    custodianAccountId: ").append(toIndentedString(custodianAccountId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -700,6 +728,7 @@ public class PortfolioHolding {
     openapiFields.add("variationMarginPortfolioCcy");
     openapiFields.add("settlementSchedule");
     openapiFields.add("currentFace");
+    openapiFields.add("custodianAccountId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -787,6 +816,10 @@ public class PortfolioHolding {
             SettlementSchedule.validateJsonElement(jsonArraysettlementSchedule.get(i));
           };
         }
+      }
+      // validate the optional field `custodianAccountId`
+      if (jsonObj.get("custodianAccountId") != null && !jsonObj.get("custodianAccountId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("custodianAccountId"));
       }
   }
 

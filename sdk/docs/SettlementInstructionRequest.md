@@ -16,6 +16,7 @@
 |**actualSettlementDate** | **OffsetDateTime** |  |  |
 |**units** | **java.math.BigDecimal** |  |  |
 |**subHoldingKeyOverrides** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) |  |  [optional] |
+|**custodianAccountOverride** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 
 
 

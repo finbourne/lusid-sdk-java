@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.PerpetualProperty;
+import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -89,6 +90,10 @@ public class SettlementInstructionRequest {
   public static final String SERIALIZED_NAME_SUB_HOLDING_KEY_OVERRIDES = "subHoldingKeyOverrides";
   @SerializedName(SERIALIZED_NAME_SUB_HOLDING_KEY_OVERRIDES)
   private Map<String, PerpetualProperty> subHoldingKeyOverrides;
+
+  public static final String SERIALIZED_NAME_CUSTODIAN_ACCOUNT_OVERRIDE = "custodianAccountOverride";
+  @SerializedName(SERIALIZED_NAME_CUSTODIAN_ACCOUNT_OVERRIDE)
+  private ResourceId custodianAccountOverride;
 
   public SettlementInstructionRequest() {
   }
@@ -298,6 +303,27 @@ public class SettlementInstructionRequest {
   }
 
 
+  public SettlementInstructionRequest custodianAccountOverride(ResourceId custodianAccountOverride) {
+    
+    this.custodianAccountOverride = custodianAccountOverride;
+    return this;
+  }
+
+   /**
+   * Get custodianAccountOverride
+   * @return custodianAccountOverride
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getCustodianAccountOverride() {
+    return custodianAccountOverride;
+  }
+
+
+  public void setCustodianAccountOverride(ResourceId custodianAccountOverride) {
+    this.custodianAccountOverride = custodianAccountOverride;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -316,7 +342,8 @@ public class SettlementInstructionRequest {
         Objects.equals(this.contractualSettlementDate, settlementInstructionRequest.contractualSettlementDate) &&
         Objects.equals(this.actualSettlementDate, settlementInstructionRequest.actualSettlementDate) &&
         (this.units.compareTo(settlementInstructionRequest.getUnits()) == 0) &&
-        Objects.equals(this.subHoldingKeyOverrides, settlementInstructionRequest.subHoldingKeyOverrides);
+        Objects.equals(this.subHoldingKeyOverrides, settlementInstructionRequest.subHoldingKeyOverrides) &&
+        Objects.equals(this.custodianAccountOverride, settlementInstructionRequest.custodianAccountOverride);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -325,7 +352,7 @@ public class SettlementInstructionRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(settlementInstructionId, transactionId, settlementCategory, instructionType, instrumentIdentifiers, contractualSettlementDate, actualSettlementDate, units, subHoldingKeyOverrides);
+    return Objects.hash(settlementInstructionId, transactionId, settlementCategory, instructionType, instrumentIdentifiers, contractualSettlementDate, actualSettlementDate, units, subHoldingKeyOverrides, custodianAccountOverride);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -348,6 +375,7 @@ public class SettlementInstructionRequest {
     sb.append("    actualSettlementDate: ").append(toIndentedString(actualSettlementDate)).append("\n");
     sb.append("    units: ").append(toIndentedString(units)).append("\n");
     sb.append("    subHoldingKeyOverrides: ").append(toIndentedString(subHoldingKeyOverrides)).append("\n");
+    sb.append("    custodianAccountOverride: ").append(toIndentedString(custodianAccountOverride)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -379,6 +407,7 @@ public class SettlementInstructionRequest {
     openapiFields.add("actualSettlementDate");
     openapiFields.add("units");
     openapiFields.add("subHoldingKeyOverrides");
+    openapiFields.add("custodianAccountOverride");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -421,6 +450,10 @@ public class SettlementInstructionRequest {
       }
       if ((jsonObj.get("instructionType") != null && !jsonObj.get("instructionType").isJsonNull()) && !jsonObj.get("instructionType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `instructionType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instructionType").toString()));
+      }
+      // validate the optional field `custodianAccountOverride`
+      if (jsonObj.get("custodianAccountOverride") != null && !jsonObj.get("custodianAccountOverride").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("custodianAccountOverride"));
       }
   }
 

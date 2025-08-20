@@ -28,6 +28,7 @@ A list of holdings.
 |**variationMarginPortfolioCcy** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional] |
 |**settlementSchedule** | [**List&lt;SettlementSchedule&gt;**](SettlementSchedule.md) | Where no. of days ahead has been specified, future dated settlements will be captured here. |  [optional] |
 |**currentFace** | **java.math.BigDecimal** | Current face value of the holding. |  [optional] |
+|**custodianAccountId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 
 
 

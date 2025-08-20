@@ -14,6 +14,7 @@ This request specifies target holdings. i.e. holding data that the  system shoul
 |**properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Set of unique holding properties and associated values to store with the target holding. Each property must be from the &#39;Holding&#39; domain. |  [optional] |
 |**taxLots** | [**List&lt;TargetTaxLotRequest&gt;**](TargetTaxLotRequest.md) | The tax-lots that together make up the target holding. |  |
 |**currency** | **String** | The Holding currency. This needs to be equal with the one on the TaxLot -&gt; cost if one is specified |  [optional] |
+|**custodianAccountId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 
 
 

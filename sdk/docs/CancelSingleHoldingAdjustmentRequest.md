@@ -11,6 +11,7 @@ This request specifies single target holding. i.e. holding data that the  system
 |**instrumentIdentifiers** | **Map&lt;String, String&gt;** | A set of instrument identifiers that can resolve the holding adjustment to a unique instrument. |  |
 |**subHoldingKeys** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | The sub-holding properties which identify the holding. Each property must be from the &#39;Transaction&#39; domain. |  [optional] |
 |**currency** | **String** | The Holding currency. |  [optional] |
+|**custodianAccountId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 
 
 
