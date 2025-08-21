@@ -17,6 +17,7 @@
 |**contractualSettlementDate** | **OffsetDateTime** | The contractual settlement date. Used to match the instruction to the correct settlement bucket. |  [optional] |
 |**subHoldingKeyOverrides** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Allows one or more sub-holding keys to be overridden for any movement being settled by an instruction. Providing a key and value will set the sub-holding key to the specified value; Providing a key only will nullify the sub-holding key. Not referenced sub-holding keys will not be impacted.  |  [optional] |
 |**custodianAccountOverride** | [**ResourceId**](ResourceId.md) |  |  [optional] |
+|**instrumentIdentifiers** | **Map&lt;String, String&gt;** | A set of instrument identifiers that can resolve the settlement instruction to a unique instrument. |  |
 
 
 

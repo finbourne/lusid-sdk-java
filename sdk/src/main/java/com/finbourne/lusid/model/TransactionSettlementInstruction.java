@@ -95,6 +95,10 @@ public class TransactionSettlementInstruction {
   @SerializedName(SERIALIZED_NAME_CUSTODIAN_ACCOUNT_OVERRIDE)
   private ResourceId custodianAccountOverride;
 
+  public static final String SERIALIZED_NAME_INSTRUMENT_IDENTIFIERS = "instrumentIdentifiers";
+  @SerializedName(SERIALIZED_NAME_INSTRUMENT_IDENTIFIERS)
+  private Map<String, String> instrumentIdentifiers = new HashMap<>();
+
   public TransactionSettlementInstruction() {
   }
 
@@ -316,6 +320,35 @@ public class TransactionSettlementInstruction {
   }
 
 
+  public TransactionSettlementInstruction instrumentIdentifiers(Map<String, String> instrumentIdentifiers) {
+    
+    this.instrumentIdentifiers = instrumentIdentifiers;
+    return this;
+  }
+
+  public TransactionSettlementInstruction putInstrumentIdentifiersItem(String key, String instrumentIdentifiersItem) {
+    if (this.instrumentIdentifiers == null) {
+      this.instrumentIdentifiers = new HashMap<>();
+    }
+    this.instrumentIdentifiers.put(key, instrumentIdentifiersItem);
+    return this;
+  }
+
+   /**
+   * A set of instrument identifiers that can resolve the settlement instruction to a unique instrument.
+   * @return instrumentIdentifiers
+  **/
+  @jakarta.annotation.Nonnull
+  public Map<String, String> getInstrumentIdentifiers() {
+    return instrumentIdentifiers;
+  }
+
+
+  public void setInstrumentIdentifiers(Map<String, String> instrumentIdentifiers) {
+    this.instrumentIdentifiers = instrumentIdentifiers;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -335,7 +368,8 @@ public class TransactionSettlementInstruction {
         Objects.equals(this.lusidInstrumentId, transactionSettlementInstruction.lusidInstrumentId) &&
         Objects.equals(this.contractualSettlementDate, transactionSettlementInstruction.contractualSettlementDate) &&
         Objects.equals(this.subHoldingKeyOverrides, transactionSettlementInstruction.subHoldingKeyOverrides) &&
-        Objects.equals(this.custodianAccountOverride, transactionSettlementInstruction.custodianAccountOverride);
+        Objects.equals(this.custodianAccountOverride, transactionSettlementInstruction.custodianAccountOverride) &&
+        Objects.equals(this.instrumentIdentifiers, transactionSettlementInstruction.instrumentIdentifiers);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -344,7 +378,7 @@ public class TransactionSettlementInstruction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(settlementInstructionId, instructionType, actualSettlementDate, units, transactionId, settlementCategory, lusidInstrumentId, contractualSettlementDate, subHoldingKeyOverrides, custodianAccountOverride);
+    return Objects.hash(settlementInstructionId, instructionType, actualSettlementDate, units, transactionId, settlementCategory, lusidInstrumentId, contractualSettlementDate, subHoldingKeyOverrides, custodianAccountOverride, instrumentIdentifiers);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -368,6 +402,7 @@ public class TransactionSettlementInstruction {
     sb.append("    contractualSettlementDate: ").append(toIndentedString(contractualSettlementDate)).append("\n");
     sb.append("    subHoldingKeyOverrides: ").append(toIndentedString(subHoldingKeyOverrides)).append("\n");
     sb.append("    custodianAccountOverride: ").append(toIndentedString(custodianAccountOverride)).append("\n");
+    sb.append("    instrumentIdentifiers: ").append(toIndentedString(instrumentIdentifiers)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -400,6 +435,7 @@ public class TransactionSettlementInstruction {
     openapiFields.add("contractualSettlementDate");
     openapiFields.add("subHoldingKeyOverrides");
     openapiFields.add("custodianAccountOverride");
+    openapiFields.add("instrumentIdentifiers");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -410,6 +446,7 @@ public class TransactionSettlementInstruction {
     openapiRequiredFields.add("transactionId");
     openapiRequiredFields.add("settlementCategory");
     openapiRequiredFields.add("lusidInstrumentId");
+    openapiRequiredFields.add("instrumentIdentifiers");
   }
 
  /**
