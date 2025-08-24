@@ -63,7 +63,7 @@ public class PreTradeConfiguration {
   }
 
    /**
-   * Controls whether Orders and Allocations orders are included in the Portfolio valuation done for this compliance run. Valid values are: None (to account for Transactions only), Allocations (to include Allocations and Transactions) and OrdersAndAllocations (to include Orders, Allocations and Transactions).
+   * Controls whether Orders and Allocations orders are included in the Portfolio valuation done for this compliance run.  Valid values are:  None (to account for Transactions only), Allocations (to include Allocations and Transactions) and  OrdersAndAllocations (to include Orders, Allocations and Transactions).
    * @return includeEntityTypes
   **/
   @jakarta.annotation.Nonnull

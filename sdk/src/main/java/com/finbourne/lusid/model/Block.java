@@ -57,7 +57,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * A block of orders for the same instrument, intended to record for example a trader&#39;s aggregation of outstanding orders at a given time.
+ * A block of orders for the same instrument, intended to record for example a trader&#39;s aggregation  of outstanding orders at a given time.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Block {

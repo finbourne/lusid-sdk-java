@@ -46,7 +46,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * An access control value. Provider should only be used if you are a service provider licensing data. In that case the provider value must match your domain.
+ * An access control value. Provider should only be used if you are a service provider licensing data. In that case  the provider value must match your domain.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AccessMetadataValue {

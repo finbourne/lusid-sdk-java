@@ -117,7 +117,7 @@ public class TransactionConfigurationApiExample {
 
 DeleteTransactionType: Delete a transaction type
 
-/// WARNING! Changing existing transaction types has a material impact on how data, new and old, is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
+/// WARNING! Changing existing transaction types has a material impact on how data, new and old,  is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
 
 ### Example
 
@@ -443,7 +443,7 @@ public class TransactionConfigurationApiExample {
         TransactionConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionConfigurationApi.class);
         String source = "source_example"; // String | The source that the type is in
         String type = "type_example"; // String | One of the type's aliases
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction configuration.  Defaults to returning the latest version of the transaction configuration type if not specified
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction configuration.   Defaults to returning the latest version of the transaction configuration type if not specified
         String scope = "default"; // String | The scope in which the transaction types exists. When not supplied the scope is 'default'.
         try {
             // uncomment the below to set overrides at the request level
@@ -468,7 +468,7 @@ public class TransactionConfigurationApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **source** | **String**| The source that the type is in | |
 | **type** | **String**| One of the type&#39;s aliases | |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the transaction configuration.  Defaults to returning the latest version of the transaction configuration type if not specified | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the transaction configuration.   Defaults to returning the latest version of the transaction configuration type if not specified | [optional] |
 | **scope** | **String**| The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
 
 ### Return type
@@ -590,7 +590,7 @@ public class TransactionConfigurationApiExample {
 
 ListTransactionTypes: List transaction types
 
-Get the list of current transaction types. For information on the default transaction types provided with LUSID, see https://support.lusid.com/knowledgebase/article/KA-01873/.
+Get the list of current transaction types. For information on the default transaction types provided with  LUSID, see https://support.lusid.com/knowledgebase/article/KA-01873/.
 
 ### Example
 
@@ -631,7 +631,7 @@ public class TransactionConfigurationApiExample {
         // TransactionConfigurationApi apiInstance = apiFactory.build(TransactionConfigurationApi.class);
 
         TransactionConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionConfigurationApi.class);
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction types. Defaults  to returning the latest versions if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction types. Defaults   to returning the latest versions if not specified.
         String scope = "default"; // String | The scope in which the side exists. When not supplied the scope is 'default'.
         try {
             // uncomment the below to set overrides at the request level
@@ -654,7 +654,7 @@ public class TransactionConfigurationApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the transaction types. Defaults  to returning the latest versions if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the transaction types. Defaults   to returning the latest versions if not specified. | [optional] |
 | **scope** | **String**| The scope in which the side exists. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
 
 ### Return type
@@ -871,7 +871,7 @@ public class TransactionConfigurationApiExample {
 
 SetTransactionType: Set a specific transaction type
 
-Set a transaction type for the given source and type. If the requested transaction type does not exist, it will be created  WARNING! Changing existing transaction types has a material impact on how data, new and old, is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
+Set a transaction type for the given source and type. If the requested transaction type does not exist, it will be created    WARNING! Changing existing transaction types has a material impact on how data, new and old, is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
 
 ### Example
 

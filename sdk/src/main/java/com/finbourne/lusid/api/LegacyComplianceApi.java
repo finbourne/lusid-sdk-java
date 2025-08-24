@@ -307,7 +307,7 @@ public class LegacyComplianceApi {
 
     /**
      * [EXPERIMENTAL] DeleteLegacyComplianceRule: Deletes a compliance rule.
-     * Deletes the rule for all effective time.   The rule will remain viewable at previous as at times, and as part of the results of compliance runs, but it will no longer be considered in new compliance runs.   This cannot be undone.
+     * Deletes the rule for all effective time.     The rule will remain viewable at previous as at times, and as part of the results of compliance runs, but it  will no longer be considered in new compliance runs.     This cannot be undone.
      * @param scope The compliance rule scope. (required)
      * @param code The compliance rule code. (required)
      * @return APIdeleteLegacyComplianceRuleRequest
@@ -717,7 +717,7 @@ public class LegacyComplianceApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definition. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definition. Defaults to the current LUSID  system datetime if not specified. (optional)
          * @return APIgetLegacyComplianceRuleRequest
          */
         public APIgetLegacyComplianceRuleRequest effectiveAt(String effectiveAt) {
@@ -727,7 +727,7 @@ public class LegacyComplianceApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the rule definition. Defaults to returning the latest version if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the rule definition. Defaults to returning the latest version if not  specified. (optional)
          * @return APIgetLegacyComplianceRuleRequest
          */
         public APIgetLegacyComplianceRuleRequest asAt(OffsetDateTime asAt) {
@@ -985,7 +985,7 @@ public class LegacyComplianceApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing compliance rule results from a previous call to list compliance rule result.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields  must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing compliance rule results from a previous call to list compliance rule result.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. (optional)
          * @return APIgetLegacyComplianceRunResultsRequest
          */
         public APIgetLegacyComplianceRunResultsRequest page(String page) {
@@ -1133,7 +1133,7 @@ public class LegacyComplianceApi {
 
     /**
      * [EXPERIMENTAL] GetLegacyComplianceRunResults: Get the details of a single compliance run.
-     * Use this endpoint to fetch the detail associated with a specific compliance run, including a breakdown of the passing state of each rule, portfolio combination.
+     * Use this endpoint to fetch the detail associated with a specific compliance run, including a breakdown  of the passing state of each rule, portfolio combination.
      * @param runId The unique identifier of the compliance run requested. (required)
      * @return APIgetLegacyComplianceRunResultsRequest
      * @http.response.details
@@ -1264,7 +1264,7 @@ public class LegacyComplianceApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definitions. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definitions. Defaults to the current LUSID  system datetime if not specified. (optional)
          * @return APIlistLegacyComplianceRulesRequest
          */
         public APIlistLegacyComplianceRulesRequest effectiveAt(String effectiveAt) {
@@ -1274,7 +1274,7 @@ public class LegacyComplianceApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the rule definitions. Defaults to returning the latest version if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the rule definitions. Defaults to returning the latest version if not  specified. (optional)
          * @return APIlistLegacyComplianceRulesRequest
          */
         public APIlistLegacyComplianceRulesRequest asAt(OffsetDateTime asAt) {
@@ -1284,7 +1284,7 @@ public class LegacyComplianceApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing entities; this value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing entities; this value is returned from the previous call. If  a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the  original request. (optional)
          * @return APIlistLegacyComplianceRulesRequest
          */
         public APIlistLegacyComplianceRulesRequest page(String page) {
@@ -1432,7 +1432,7 @@ public class LegacyComplianceApi {
 
     /**
      * [EXPERIMENTAL] ListLegacyComplianceRules: List compliance rules, with optional filtering.
-     * For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+     * For more information about filtering results,  see https://support.lusid.com/knowledgebase/article/KA-01914.
      * @return APIlistLegacyComplianceRulesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1567,7 +1567,7 @@ public class LegacyComplianceApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields  must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. (optional)
          * @return APIlistLegacyComplianceRunInfoRequest
          */
         public APIlistLegacyComplianceRunInfoRequest page(String page) {
@@ -2113,7 +2113,7 @@ public class LegacyComplianceApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which the rule will take effect. Defaults to the current LUSID system datetime if not specified. In the case of an update, the changes will take place from this effective time until the next effective time that the rule as been upserted at. For example, consider a rule that already exists, and has previously had an update applied so that the definition will change on the first day of the coming month. An upsert effective from the current day will only change the definition until the first day of the coming month. An additional upsert at the same time (first day of the month) is required if the newly-updated definition is to supersede the future definition. (optional)
+         * @param effectiveAt The effective datetime or cut label at which the rule will take effect. Defaults to the current LUSID  system datetime if not specified. In the case of an update, the changes will take place from this effective  time until the next effective time that the rule as been upserted at. For example, consider a rule that  already exists, and has previously had an update applied so that the definition will change on the first day  of the coming month. An upsert effective from the current day will only change the definition until the  first day of the coming month. An additional upsert at the same time (first day of the month) is required  if the newly-updated definition is to supersede the future definition. (optional)
          * @return APIupsertLegacyComplianceRulesRequest
          */
         public APIupsertLegacyComplianceRulesRequest effectiveAt(String effectiveAt) {
@@ -2241,8 +2241,8 @@ public class LegacyComplianceApi {
 
     /**
      * [EXPERIMENTAL] UpsertLegacyComplianceRules: Upsert compliance rules.
-     * To upsert a new rule, the code field must be left empty, a code will then be assigned and returned as part of the response. To update an existing rule, include the rule code. It is possible to both create and update compliance rules in the same request.   The upsert is transactional - either all create/update operations will succeed or none of them will.
-     * @param requestBody A dictionary of upsert request identifiers to rule upsert requests. The request  identifiers are valid for the request only and can be used to link the upserted compliance rule to the code  of a created compliance rule. (required)
+     * To upsert a new rule, the code field must be left empty, a code will then be assigned and returned as part  of the response. To update an existing rule, include the rule code. It is possible to both create and update  compliance rules in the same request.     The upsert is transactional - either all create/update operations will succeed or none of them will.
+     * @param requestBody A dictionary of upsert request identifiers to rule upsert requests. The request   identifiers are valid for the request only and can be used to link the upserted compliance rule to the code   of a created compliance rule. (required)
      * @return APIupsertLegacyComplianceRulesRequest
      * @http.response.details
      <table summary="Response Details" border="1">

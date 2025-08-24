@@ -790,7 +790,7 @@ public class PropertyDefinitionsApi {
      * Delete the definition of the specified property.
      * @param domain The domain of the property to be deleted. (required)
      * @param scope The scope of the property to be deleted. (required)
-     * @param code The code of the property to be deleted. Together with the domain and scope this uniquely  identifies the property. (required)
+     * @param code The code of the property to be deleted. Together with the domain and scope this uniquely   identifies the property. (required)
      * @return APIdeletePropertyDefinitionRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -935,7 +935,7 @@ public class PropertyDefinitionsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to delete time-variant properties from.  The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is before  the time-variant property exists then a failure is returned. Do not specify this parameter if an of the properties to delete are perpetual. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is before   the time-variant property exists then a failure is returned. Do not specify this parameter if an of the properties to delete are perpetual. (optional)
          * @return APIdeletePropertyDefinitionPropertiesRequest
          */
         public APIdeletePropertyDefinitionPropertiesRequest effectiveAt(String effectiveAt) {
@@ -1063,11 +1063,11 @@ public class PropertyDefinitionsApi {
 
     /**
      * [EARLY ACCESS] DeletePropertyDefinitionProperties: Delete property definition properties
-     * Delete one or more properties from a single property definition. If the properties are time-variant then an effective date time from which the properties will be deleted must be specified. If the properties are perpetual then it is invalid to specify an effective date time for deletion.
+     * Delete one or more properties from a single property definition. If the properties are time-variant then an effective date time from which the  properties will be deleted must be specified. If the properties are perpetual then it is invalid to specify an effective date time for deletion.
      * @param domain The domain of the property definition to delete properties from. (required)
      * @param scope The scope of the property definition to delete properties from. (required)
      * @param code The code of the property definition to delete properties from. (required)
-     * @param requestBody The property keys of the properties to delete. These must take the format  {domain}/{scope}/{code} e.g \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;. Each property must be from the \&quot;PropertyDefinition\&quot; domain. (required)
+     * @param requestBody The property keys of the properties to delete. These must take the format   {domain}/{scope}/{code} e.g \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;. Each property must be from the \&quot;PropertyDefinition\&quot; domain. (required)
      * @return APIdeletePropertyDefinitionPropertiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1198,7 +1198,7 @@ public class PropertyDefinitionsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the property definitions. Defaults to return  the latest version of each definition if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the property definitions. Defaults to return   the latest version of each definition if not specified. (optional)
          * @return APIgetMultiplePropertyDefinitionsRequest
          */
         public APIgetMultiplePropertyDefinitionsRequest asAt(OffsetDateTime asAt) {
@@ -1208,7 +1208,7 @@ public class PropertyDefinitionsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.   For example, to filter on the Lifetime, use \&quot;lifeTime eq &#39;Perpetual&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set.    For example, to filter on the Lifetime, use \&quot;lifeTime eq &#39;Perpetual&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIgetMultiplePropertyDefinitionsRequest
          */
         public APIgetMultiplePropertyDefinitionsRequest filter(String filter) {
@@ -1218,7 +1218,7 @@ public class PropertyDefinitionsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to list properties attached to the Property Definition.  Defaults to the current LUSID system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to list properties attached to the Property Definition.   Defaults to the current LUSID system datetime if not specified. (optional)
          * @return APIgetMultiplePropertyDefinitionsRequest
          */
         public APIgetMultiplePropertyDefinitionsRequest effectiveAt(String effectiveAt) {
@@ -1347,7 +1347,7 @@ public class PropertyDefinitionsApi {
     /**
      * GetMultiplePropertyDefinitions: Get multiple property definitions
      * Retrieve the definition of one or more specified properties.
-     * @param propertyKeys One or more property keys which identify each property that a definition should  be retrieved for. The format for each property key is {domain}/{scope}/{code}, e.g. &#39;Portfolio/Manager/Id&#39;. (required)
+     * @param propertyKeys One or more property keys which identify each property that a definition should   be retrieved for. The format for each property key is {domain}/{scope}/{code}, e.g. &#39;Portfolio/Manager/Id&#39;. (required)
      * @return APIgetMultiplePropertyDefinitionsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1486,7 +1486,7 @@ public class PropertyDefinitionsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the property definition. Defaults to return  the latest version of the definition if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the property definition. Defaults to return   the latest version of the definition if not specified. (optional)
          * @return APIgetPropertyDefinitionRequest
          */
         public APIgetPropertyDefinitionRequest asAt(OffsetDateTime asAt) {
@@ -1496,7 +1496,7 @@ public class PropertyDefinitionsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to list properties attached to the Property Definition.  Defaults to the current LUSID system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to list properties attached to the Property Definition.   Defaults to the current LUSID system datetime if not specified. (optional)
          * @return APIgetPropertyDefinitionRequest
          */
         public APIgetPropertyDefinitionRequest effectiveAt(String effectiveAt) {
@@ -1627,7 +1627,7 @@ public class PropertyDefinitionsApi {
      * Retrieve the definition of a specified property.
      * @param domain The domain of the specified property. (required)
      * @param scope The scope of the specified property. (required)
-     * @param code The code of the specified property. Together with the domain and scope this uniquely  identifies the property. (required)
+     * @param code The code of the specified property. Together with the domain and scope this uniquely   identifies the property. (required)
      * @return APIgetPropertyDefinitionRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1807,7 +1807,7 @@ public class PropertyDefinitionsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing properties from a previous call to get property time series.  This value is returned from the previous call. If a pagination token is provided the filter and asAt fields  must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing properties from a previous call to get property time series.   This value is returned from the previous call. If a pagination token is provided the filter and asAt fields   must not have changed since the original request. (optional)
          * @return APIgetPropertyDefinitionPropertyTimeSeriesRequest
          */
         public APIgetPropertyDefinitionPropertyTimeSeriesRequest page(String page) {
@@ -1949,7 +1949,7 @@ public class PropertyDefinitionsApi {
      * @param domain The domain of the property definition to which the property is attached (required)
      * @param scope The scope of the property definition to which the property is attached (required)
      * @param code The code of the property definition to which the property is attached (required)
-     * @param propertyKey The property key of the property whose history to show. This must be from the \&quot;Property Definition\&quot; domain and in the format  {domain}/{scope}/{code}, for example \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;. (required)
+     * @param propertyKey The property key of the property whose history to show. This must be from the \&quot;Property Definition\&quot; domain and in the format   {domain}/{scope}/{code}, for example \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;. (required)
      * @return APIgetPropertyDefinitionPropertyTimeSeriesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2089,7 +2089,7 @@ public class PropertyDefinitionsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to list the property definitions. Defaults to the current LUSID  system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to list the property definitions. Defaults to the current LUSID   system datetime if not specified. (optional)
          * @return APIlistPropertyDefinitionsRequest
          */
         public APIlistPropertyDefinitionsRequest effectiveAt(String effectiveAt) {
@@ -2099,7 +2099,7 @@ public class PropertyDefinitionsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to list the property definitions. Defaults to returning the latest version  of each property definition if not specified. (optional)
+         * @param asAt The asAt datetime at which to list the property definitions. Defaults to returning the latest version   of each property definition if not specified. (optional)
          * @return APIlistPropertyDefinitionsRequest
          */
         public APIlistPropertyDefinitionsRequest asAt(OffsetDateTime asAt) {
@@ -2109,7 +2109,7 @@ public class PropertyDefinitionsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;Property Definition&#39; domain to decorate onto  property definitions. These must take the format  {domain}/{scope}/{code} e.g \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;. Each property must be from the \&quot;PropertyDefinition\&quot; domain. (optional)
+         * @param propertyKeys A list of property keys from the &#39;Property Definition&#39; domain to decorate onto   property definitions. These must take the format   {domain}/{scope}/{code} e.g \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;. Each property must be from the \&quot;PropertyDefinition\&quot; domain. (optional)
          * @return APIlistPropertyDefinitionsRequest
          */
         public APIlistPropertyDefinitionsRequest propertyKeys(List<String> propertyKeys) {
@@ -2119,7 +2119,7 @@ public class PropertyDefinitionsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing property definitions; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing property definitions; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
          * @return APIlistPropertyDefinitionsRequest
          */
         public APIlistPropertyDefinitionsRequest page(String page) {
@@ -2139,7 +2139,7 @@ public class PropertyDefinitionsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.  For example, to filter on the display name, specify \&quot;DisplayName eq &#39;DisplayName&#39;\&quot;. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.   For example, to filter on the display name, specify \&quot;DisplayName eq &#39;DisplayName&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIlistPropertyDefinitionsRequest
          */
         public APIlistPropertyDefinitionsRequest filter(String filter) {
@@ -2797,10 +2797,10 @@ public class PropertyDefinitionsApi {
 
     /**
      * UpdatePropertyDefinition: Update property definition
-     * Update the definition of a specified existing property. Not all elements within a property definition are modifiable due to the potential implications for values already stored against the property.
+     * Update the definition of a specified existing property. Not all elements within a property definition  are modifiable due to the potential implications for values already stored against the property.
      * @param domain The domain of the property being updated. (required)
      * @param scope The scope of the property being updated. (required)
-     * @param code The code of the property being updated. Together with the domain and scope this uniquely  identifies the property. (required)
+     * @param code The code of the property being updated. Together with the domain and scope this uniquely   identifies the property. (required)
      * @param updatePropertyDefinitionRequest The updated definition of the property. (required)
      * @return APIupdatePropertyDefinitionRequest
      * @http.response.details
@@ -3078,7 +3078,7 @@ public class PropertyDefinitionsApi {
      * @param domain The domain of the specified property. (required)
      * @param scope The scope of the specified property. (required)
      * @param code The code of the specified property. Together with the domain and scope this uniquely (required)
-     * @param requestBody The properties to be created or updated. Each property in  the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example  &#39;PropertyDefinition/Manager/Id&#39;. (required)
+     * @param requestBody The properties to be created or updated. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example   &#39;PropertyDefinition/Manager/Id&#39;. (required)
      * @return APIupsertPropertyDefinitionPropertiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">

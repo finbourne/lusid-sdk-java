@@ -122,7 +122,7 @@ public class ComplexMarketDataId {
   }
 
    /**
-   * This is obsolete. It is not used, it will not be stored, and has no effects. If you wish to attach a Lineage to your ComplexMarketData, you should provide it in the optional Lineage field in the ComplexMarketData class.
+   * This is obsolete. It is not used, it will not be stored, and has no effects.  If you wish to attach a Lineage to your ComplexMarketData,  you should provide it in the optional Lineage field in the ComplexMarketData class.
    * @return lineage
   **/
   @jakarta.annotation.Nullable

@@ -65,7 +65,7 @@ public class EquityModelOptions extends ModelOptions {
   }
 
    /**
-   * Determines how forward equity prices should be projected.   Supported string (enumeration) values are: [FlatForwardCurveFromSpot, EquityCurveByPrices, ForwardProjectedFromRatesCurve].
+   * Determines how forward equity prices should be projected.     Supported string (enumeration) values are: [FlatForwardCurveFromSpot, EquityCurveByPrices, ForwardProjectedFromRatesCurve].
    * @return equityForwardProjectionType
   **/
   @jakarta.annotation.Nonnull

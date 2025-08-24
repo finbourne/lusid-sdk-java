@@ -245,10 +245,10 @@ public class StagedModificationsApiExample {
 
         StagedModificationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(StagedModificationsApi.class);
         String id = "id_example"; // String | Unique Id for a staged modification..
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list changes. Defaults to return the latest version  of each staged change if not specified.
-        String page = "page_example"; // String | The pagination token to use to continue listing requested staged modification changes from a previous call to list requested  staged modifications. This value is returned from the previous call. If a pagination token is provided the filter, effectiveAt  and asAt fields must not have changed since the original request.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list changes. Defaults to return the latest version   of each staged change if not specified.
+        String page = "page_example"; // String | The pagination token to use to continue listing requested staged modification changes from a previous call to list requested   staged modifications. This value is returned from the previous call. If a pagination token is provided the filter, effectiveAt   and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
-        String filter = "filter_example"; // String | Expression to filter the result set.  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        String filter = "filter_example"; // String | Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names suffixed by \" ASC\" or \" DESC\"
         try {
             // uncomment the below to set overrides at the request level
@@ -272,10 +272,10 @@ public class StagedModificationsApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **String**| Unique Id for a staged modification.. | |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to list changes. Defaults to return the latest version  of each staged change if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing requested staged modification changes from a previous call to list requested  staged modifications. This value is returned from the previous call. If a pagination token is provided the filter, effectiveAt  and asAt fields must not have changed since the original request. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list changes. Defaults to return the latest version   of each staged change if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing requested staged modification changes from a previous call to list requested   staged modifications. This value is returned from the previous call. If a pagination token is provided the filter, effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the result set.  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **filter** | **String**| Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
 
 ### Return type
@@ -345,10 +345,10 @@ public class StagedModificationsApiExample {
         // StagedModificationsApi apiInstance = apiFactory.build(StagedModificationsApi.class);
 
         StagedModificationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(StagedModificationsApi.class);
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list staged modifications. Defaults to return the latest version  of each staged modification if not specified.
-        String page = "page_example"; // String | The pagination token to use to continue listing staged modifications from a previous call to list staged modifications. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt  and asAt fields must not have changed since the original request.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list staged modifications. Defaults to return the latest version   of each staged modification if not specified.
+        String page = "page_example"; // String | The pagination token to use to continue listing staged modifications from a previous call to list staged modifications. This   value is returned from the previous call. If a pagination token is provided the filter, effectiveAt   and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
-        String filter = "filter_example"; // String | Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        String filter = "filter_example"; // String | Expression to filter the result set.    Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names suffixed by \" ASC\" or \" DESC\"
         try {
             // uncomment the below to set overrides at the request level
@@ -371,10 +371,10 @@ public class StagedModificationsApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to list staged modifications. Defaults to return the latest version  of each staged modification if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing staged modifications from a previous call to list staged modifications. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt  and asAt fields must not have changed since the original request. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list staged modifications. Defaults to return the latest version   of each staged modification if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing staged modifications from a previous call to list staged modifications. This   value is returned from the previous call. If a pagination token is provided the filter, effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **filter** | **String**| Expression to filter the result set.    Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
 
 ### Return type

@@ -151,7 +151,7 @@ public class UpsertFundBookmarkRequest {
   }
 
    /**
-   * The effective time of the diary entry.
+   * The effective time of the Bookmark.
    * @return effectiveAt
   **/
   @jakarta.annotation.Nonnull
@@ -172,7 +172,7 @@ public class UpsertFundBookmarkRequest {
   }
 
    /**
-   * The query time of the diary entry. Defaults to latest.
+   * The query time of the Bookmark. Defaults to latest.
    * @return queryAsAt
   **/
   @jakarta.annotation.Nullable
@@ -201,7 +201,7 @@ public class UpsertFundBookmarkRequest {
   }
 
    /**
-   * A set of properties for the diary entry.
+   * A set of properties for the Bookmark.
    * @return properties
   **/
   @jakarta.annotation.Nullable

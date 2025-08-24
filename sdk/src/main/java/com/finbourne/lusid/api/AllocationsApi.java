@@ -303,7 +303,7 @@ public class AllocationsApi {
 
     /**
      * [EARLY ACCESS] DeleteAllocation: Delete allocation
-     * Delete an allocation. Deletion will be valid from the allocation&#39;s creation datetime. This means that the allocation will no longer exist at any effective datetime from the asAt datetime of deletion.
+     * Delete an allocation. Deletion will be valid from the allocation&#39;s creation datetime.  This means that the allocation will no longer exist at any effective datetime from the asAt datetime of deletion.
      * @param scope The allocation scope. (required)
      * @param code The allocation&#39;s code. This, together with the scope uniquely identifies the allocation to delete. (required)
      * @return APIdeleteAllocationRequest
@@ -446,7 +446,7 @@ public class AllocationsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;Allocations\&quot; domain to decorate onto the allocation.  These take the format {domain}/{scope}/{code} e.g. \&quot;Allocations/system/Name\&quot;. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;Allocations\&quot; domain to decorate onto the allocation.   These take the format {domain}/{scope}/{code} e.g. \&quot;Allocations/system/Name\&quot;. (optional)
          * @return APIgetAllocationRequest
          */
         public APIgetAllocationRequest propertyKeys(List<String> propertyKeys) {
@@ -721,7 +721,7 @@ public class AllocationsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing allocations from a previous call to list allocations.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields  must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing allocations from a previous call to list allocations.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. (optional)
          * @return APIlistAllocationsRequest
          */
         public APIlistAllocationsRequest page(String page) {
@@ -751,7 +751,7 @@ public class AllocationsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIlistAllocationsRequest
          */
         public APIlistAllocationsRequest filter(String filter) {
@@ -761,7 +761,7 @@ public class AllocationsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;Allocations\&quot; domain to decorate onto each allocation.  These take the format {domain}/{scope}/{code} e.g. \&quot;Allocations/system/Name\&quot;.  All properties, except derived properties, are returned by default, without specifying here. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;Allocations\&quot; domain to decorate onto each allocation.   These take the format {domain}/{scope}/{code} e.g. \&quot;Allocations/system/Name\&quot;.   All properties, except derived properties, are returned by default, without specifying here. (optional)
          * @return APIlistAllocationsRequest
          */
         public APIlistAllocationsRequest propertyKeys(List<String> propertyKeys) {
@@ -1025,7 +1025,7 @@ public class AllocationsApi {
 
         /**
          * Set retryWithoutChangedEntities
-         * @param retryWithoutChangedEntities Optionally choose to keep retrying upsert for remaining entities if some are being updated concurrently. If set to true, any entities that have  changed since the verificationAsAt will be dropped from the set of allocations to upsert and the upsert will be retried. The response will only contain the allocations in the original request  that have been successfully upserted. (optional, default to false)
+         * @param retryWithoutChangedEntities Optionally choose to keep retrying upsert for remaining entities if some are being updated concurrently. If set to true, any entities that have   changed since the verificationAsAt will be dropped from the set of allocations to upsert and the upsert will be retried. The response will only contain the allocations in the original request   that have been successfully upserted. (optional, default to false)
          * @return APIupsertAllocationsRequest
          */
         public APIupsertAllocationsRequest retryWithoutChangedEntities(Boolean retryWithoutChangedEntities) {

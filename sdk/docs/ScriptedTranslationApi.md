@@ -262,10 +262,10 @@ public class ScriptedTranslationApiExample {
         // ScriptedTranslationApi apiInstance = apiFactory.build(ScriptedTranslationApi.class);
 
         ScriptedTranslationApi apiInstance = ApiFactoryBuilder.build(fileName).build(ScriptedTranslationApi.class);
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the dialects.  Defaults to return the latest version of the dialect if not specified.
-        String page = "page_example"; // String | The pagination token to use to continue listing dialect IDs from a previous call to list dialect IDs.  This value is returned from the previous call. If a pagination token is provided the filter and asAt fields  must not have changed since the original request.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the dialects.   Defaults to return the latest version of the dialect if not specified.
+        String page = "page_example"; // String | The pagination token to use to continue listing dialect IDs from a previous call to list dialect IDs.   This value is returned from the previous call. If a pagination token is provided the filter and asAt fields   must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
-        String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid.
+        String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
         try {
             // uncomment the below to set overrides at the request level
             // PagedResourceListOfDialectId result = apiInstance.listDialectIds(asAt, page, limit, filter).execute(opts);
@@ -287,10 +287,10 @@ public class ScriptedTranslationApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the dialects.  Defaults to return the latest version of the dialect if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing dialect IDs from a previous call to list dialect IDs.  This value is returned from the previous call. If a pagination token is provided the filter and asAt fields  must not have changed since the original request. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the dialects.   Defaults to return the latest version of the dialect if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing dialect IDs from a previous call to list dialect IDs.   This value is returned from the previous call. If a pagination token is provided the filter and asAt fields   must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional] |
-| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
 ### Return type
 
@@ -361,8 +361,8 @@ public class ScriptedTranslationApiExample {
         ScriptedTranslationApi apiInstance = ApiFactoryBuilder.build(fileName).build(ScriptedTranslationApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the script identifiers. Defaults to latest.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
-        String filter = "filter_example"; // String | Expression to filter the results. For example, Id.Version.Major eq 1 to list IDs with major version 1  or Id.Scope eq 'my-scripts' to list result only for a particular scope.
-        String page = "page_example"; // String | The pagination token to use to continue listing translation script IDs; this  value is returned from the previous call. If a pagination token is provided, the filter field  must not have changed since the original request.
+        String filter = "filter_example"; // String | Expression to filter the results. For example, Id.Version.Major eq 1 to list IDs with major version 1   or Id.Scope eq 'my-scripts' to list result only for a particular scope.
+        String page = "page_example"; // String | The pagination token to use to continue listing translation script IDs; this   value is returned from the previous call. If a pagination token is provided, the filter field   must not have changed since the original request.
         try {
             // uncomment the below to set overrides at the request level
             // PagedResourceListOfTranslationScriptId result = apiInstance.listTranslationScriptIds(asAt, limit, filter, page).execute(opts);
@@ -386,8 +386,8 @@ public class ScriptedTranslationApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the script identifiers. Defaults to latest. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results. For example, Id.Version.Major eq 1 to list IDs with major version 1  or Id.Scope eq &#39;my-scripts&#39; to list result only for a particular scope. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing translation script IDs; this  value is returned from the previous call. If a pagination token is provided, the filter field  must not have changed since the original request. | [optional] |
+| **filter** | **String**| Expression to filter the results. For example, Id.Version.Major eq 1 to list IDs with major version 1   or Id.Scope eq &#39;my-scripts&#39; to list result only for a particular scope. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing translation script IDs; this   value is returned from the previous call. If a pagination token is provided, the filter field   must not have changed since the original request. | [optional] |
 
 ### Return type
 
@@ -415,7 +415,7 @@ public class ScriptedTranslationApiExample {
 
 [EARLY ACCESS] TranslateEntities: Translate a collection of entities with a specified translation script.
 
-Run the provided translation request. The entities to translate are specified in the request body as a dictionary with (ephemeral) unique correlation IDs. The script to use and optional dialect to validate results against are sourced from the database.
+Run the provided translation request. The entities to translate are specified in the request body as a  dictionary with (ephemeral) unique correlation IDs. The script to use and optional dialect to validate  results against are sourced from the database.
 
 ### Example
 
@@ -506,7 +506,7 @@ public class ScriptedTranslationApiExample {
 
 [EARLY ACCESS] TranslateEntitiesInlined: Translate a collection of entities, inlining the body of the translation script.
 
-Run the provided translation request. The entities to translate, script to use and dialect to validate results against are all specified in the request body. The entities are given as a dictionary with (ephemeral) unique correlation IDs.
+Run the provided translation request. The entities to translate, script to use and dialect to validate results against  are all specified in the request body. The entities are given as a dictionary with (ephemeral) unique correlation IDs.
 
 ### Example
 

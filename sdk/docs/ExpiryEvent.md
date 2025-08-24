@@ -2,7 +2,7 @@
 
 # ExpiryEvent
 
-Definition of an Expiry Event This is an event that describes the expiry of the instrument.
+Definition of an Expiry Event  This is an event that describes the expiry of the instrument.
 
 ## Properties
 

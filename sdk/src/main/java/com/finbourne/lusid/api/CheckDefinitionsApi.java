@@ -302,7 +302,7 @@ public class CheckDefinitionsApi {
 
     /**
      * [EXPERIMENTAL] CreateCheckDefinition: Create a Check Definition
-     * Creates a Check Definition. Returns the created Check Definition at the current effectiveAt. Note that Check Definitions are mono-temporal, however they can have Time-Variant Properties. Upserted Properties will be returned at the latest AsAt and EffectiveAt
+     * Creates a Check Definition. Returns the created Check Definition at the current effectiveAt.  Note that Check Definitions are mono-temporal, however they can have Time-Variant Properties.  Upserted Properties will be returned at the latest AsAt and EffectiveAt
      * @return APIcreateCheckDefinitionRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -541,9 +541,9 @@ public class CheckDefinitionsApi {
 
     /**
      * [EXPERIMENTAL] DeleteCheckDefinition: Deletes a particular Check Definition
-     * The deletion will take effect from the Check Definition deletion datetime. i.e. will no longer exist at any asAt datetime after the asAt datetime of deletion.
+     * The deletion will take effect from the Check Definition deletion datetime.  i.e. will no longer exist at any asAt datetime after the asAt datetime of deletion.
      * @param scope The scope of the specified Check Definition. (required)
-     * @param code The code of the specified Check Definition. Together with the domain and scope this uniquely  identifies the Check Definition. (required)
+     * @param code The code of the specified Check Definition. Together with the domain and scope this uniquely   identifies the Check Definition. (required)
      * @return APIdeleteCheckDefinitionRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -679,7 +679,7 @@ public class CheckDefinitionsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the Check Definition definition. Defaults to return  the latest version of the definition if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the Check Definition definition. Defaults to return   the latest version of the definition if not specified. (optional)
          * @return APIgetCheckDefinitionRequest
          */
         public APIgetCheckDefinitionRequest asAt(OffsetDateTime asAt) {
@@ -689,7 +689,7 @@ public class CheckDefinitionsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to retrieve the check definition properties.  Defaults to the current LUSID system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the check definition properties.   Defaults to the current LUSID system datetime if not specified. (optional)
          * @return APIgetCheckDefinitionRequest
          */
         public APIgetCheckDefinitionRequest effectiveAt(String effectiveAt) {
@@ -699,7 +699,7 @@ public class CheckDefinitionsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;CheckDefinition&#39; domain to decorate onto  the Check Definition.  These must have the format {domain}/{scope}/{code}, for example &#39;CheckDefinition/system/Name&#39;. (optional)
+         * @param propertyKeys A list of property keys from the &#39;CheckDefinition&#39; domain to decorate onto   the Check Definition.   These must have the format {domain}/{scope}/{code}, for example &#39;CheckDefinition/system/Name&#39;. (optional)
          * @return APIgetCheckDefinitionRequest
          */
         public APIgetCheckDefinitionRequest propertyKeys(List<String> propertyKeys) {
@@ -827,9 +827,9 @@ public class CheckDefinitionsApi {
 
     /**
      * [EXPERIMENTAL] GetCheckDefinition: Get a single Check Definition by scope and code.
-     * Retrieves one Check Definition by scope and code. Check Definitions are mono-temporal. The EffectiveAt is only applied to Time-Variant Properties.
+     * Retrieves one Check Definition by scope and code.  Check Definitions are mono-temporal. The EffectiveAt is only applied to Time-Variant Properties.
      * @param scope The scope of the specified Check Definition. (required)
-     * @param code The code of the specified Check Definition. Together with the scope this uniquely  identifies the Check Definition. (required)
+     * @param code The code of the specified Check Definition. Together with the scope this uniquely   identifies the Check Definition. (required)
      * @return APIgetCheckDefinitionRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -979,7 +979,7 @@ public class CheckDefinitionsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to list the Check Definitions.  Note that Check Definitions are monotemporal, the effectiveAt is for Timevariant Properties on the Check Definition only.  Defaults to the current LUSID system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to list the Check Definitions.   Note that Check Definitions are monotemporal, the effectiveAt is for Timevariant Properties on the Check Definition only.   Defaults to the current LUSID system datetime if not specified. (optional)
          * @return APIlistCheckDefinitionsRequest
          */
         public APIlistCheckDefinitionsRequest effectiveAt(String effectiveAt) {
@@ -989,7 +989,7 @@ public class CheckDefinitionsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing Check Definitions; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing Check Definitions; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
          * @return APIlistCheckDefinitionsRequest
          */
         public APIlistCheckDefinitionsRequest page(String page) {
@@ -1009,7 +1009,7 @@ public class CheckDefinitionsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.  For example, to filter on the displayName, specify \&quot;displayName eq &#39;MyCheckDefinition&#39;\&quot;. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.   For example, to filter on the displayName, specify \&quot;displayName eq &#39;MyCheckDefinition&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIlistCheckDefinitionsRequest
          */
         public APIlistCheckDefinitionsRequest filter(String filter) {
@@ -1029,7 +1029,7 @@ public class CheckDefinitionsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;CheckDefinition&#39; domain to decorate onto each Check Definition.  These must take the format {domain}/{scope}/{code}, for example &#39;CheckDefinition/Account/id&#39;. (optional)
+         * @param propertyKeys A list of property keys from the &#39;CheckDefinition&#39; domain to decorate onto each Check Definition.   These must take the format {domain}/{scope}/{code}, for example &#39;CheckDefinition/Account/id&#39;. (optional)
          * @return APIlistCheckDefinitionsRequest
          */
         public APIlistCheckDefinitionsRequest propertyKeys(List<String> propertyKeys) {
@@ -1411,7 +1411,7 @@ public class CheckDefinitionsApi {
 
     /**
      * [EXPERIMENTAL] UpdateCheckDefinition: Update Check Definition defined by scope and code
-     * Overwrites an existing Check Definition Update request has the same required fields as Create apart from the id. Returns the updated Check Definition at the current effectiveAt. Note that Check Definitions are mono-temporal, however they can have Time-Variant Properties. Updated Properties will be returned at the latest AsAt and EffectiveAt
+     * Overwrites an existing Check Definition  Update request has the same required fields as Create apart from the id.  Returns the updated Check Definition at the current effectiveAt.  Note that Check Definitions are mono-temporal, however they can have Time-Variant Properties.  Updated Properties will be returned at the latest AsAt and EffectiveAt
      * @param scope The scope of the specified Check Definition. (required)
      * @param code The code of the specified Check Definition. Together with the domain and scope this uniquely identifies the Check Definition. (required)
      * @return APIupdateCheckDefinitionRequest

@@ -78,7 +78,7 @@ public class TranslateTradeTicketRequest {
   }
 
    /**
-   * The collection of trade tickets to translate.   Each trade ticket should be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID. It serves only as a way to easily identify each instrument in the response.
+   * The collection of trade tickets to translate.     Each trade ticket should be keyed by a unique correlation id. This id is ephemeral  and is not stored by LUSID. It serves only as a way to easily identify each instrument in the response.
    * @return tickets
   **/
   @jakarta.annotation.Nonnull

@@ -47,7 +47,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Definition of a CashFlow event. This is an event that describes the occurence of a cashflow and associated information.
+ * Definition of a CashFlow event.  This is an event that describes the occurence of a cashflow and associated information.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CashFlowEvent extends InstrumentEvent {

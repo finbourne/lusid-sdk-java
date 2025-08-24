@@ -127,7 +127,7 @@ public class Equity extends LusidInstrument {
   }
 
    /**
-   * Deprecated: Use TradingConventions field instead Equity LotSize, the minimum number of shares that can be bought at once. Optional, if set must be non-negative, if not set defaults to 1.  Note this property does not impact valuation. From a LUSID analytics perspective, it is purely informational.
+   * Deprecated: Use TradingConventions field instead  Equity LotSize, the minimum number of shares that can be bought at once.  Optional, if set must be non-negative, if not set defaults to 1.    Note this property does not impact valuation. From a LUSID analytics perspective, it is purely informational.
    * @return lotSize
   **/
   @jakarta.annotation.Nullable

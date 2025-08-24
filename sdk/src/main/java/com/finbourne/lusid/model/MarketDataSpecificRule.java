@@ -48,7 +48,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Extends market data key rules to be able to catch dependencies depending on where the dependency comes from, as opposed to what the dependency is asking for. For example, a market data rule might instruct all rates curves to be retrieved from a particular scope. This class gives the ability to set different behaviour depending on what is requesting the rates curve. Using two specific rules, one could instruct rates curves requested by bonds to be retrieved from a different scope than rates curves requested by swaps.
+ * Extends market data key rules to be able to catch dependencies depending on where the dependency comes from, as opposed to what the dependency is asking for.  For example, a market data rule might instruct all rates curves to be retrieved from a particular scope.  This class gives the ability to set different behaviour depending on what is requesting the rates curve.  Using two specific rules, one could instruct rates curves requested by bonds to be retrieved from a different scope than rates curves requested by swaps.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class MarketDataSpecificRule {
@@ -273,7 +273,7 @@ public class MarketDataSpecificRule {
   }
 
    /**
-   * The conceptual qualification for the field, such as bid, mid, or ask. The field must be one of a defined set for the given supplier, in the same way as it is for the Finbourne.WebApi.Interface.Dto.Quotes.QuoteSeriesId
+   * The conceptual qualification for the field, such as bid, mid, or ask.  The field must be one of a defined set for the given supplier, in the same way as it  is for the Finbourne.WebApi.Interface.Dto.Quotes.QuoteSeriesId
    * @return field
   **/
   @jakarta.annotation.Nonnull
@@ -294,7 +294,7 @@ public class MarketDataSpecificRule {
   }
 
    /**
-   * Shorthand for the time interval used to select market data. This must be a dot-separated string  nominating a start and end date, for example &#39;5D.0D&#39; to look back 5 days from today (0 days ago). The syntax  is &lt;i&gt;int&lt;/i&gt;&lt;i&gt;char&lt;/i&gt;.&lt;i&gt;int&lt;/i&gt;&lt;i&gt;char&lt;/i&gt;, where &lt;i&gt;char&lt;/i&gt; is one of D(ay), W(eek), M(onth) or Y(ear).
+   * Shorthand for the time interval used to select market data. This must be a dot-separated string   nominating a start and end date, for example &#39;5D.0D&#39; to look back 5 days from today (0 days ago). The syntax   is &lt;i&gt;int&lt;/i&gt;&lt;i&gt;char&lt;/i&gt;.&lt;i&gt;int&lt;/i&gt;&lt;i&gt;char&lt;/i&gt;, where &lt;i&gt;char&lt;/i&gt; is one of D(ay), W(eek), M(onth) or Y(ear).
    * @return quoteInterval
   **/
   @jakarta.annotation.Nullable
@@ -357,7 +357,7 @@ public class MarketDataSpecificRule {
   }
 
    /**
-   * Allows for partial or complete override of the market asset resolved for a dependency Either a named override or a dot separated string (A.B.C.D.*). e.g. for Rates curve &#39;EUR.*&#39; will replace the resolve MarketAsset &#39;GBP/12M&#39;, &#39;GBP/3M&#39; with the EUR equivalent, if there are no wildcards in the mask, the mask is taken as the MarketAsset for any dependency matching the rule.
+   * Allows for partial or complete override of the market asset resolved for a dependency  Either a named override or a dot separated string (A.B.C.D.*).  e.g. for Rates curve &#39;EUR.*&#39; will replace the resolve MarketAsset &#39;GBP/12M&#39;, &#39;GBP/3M&#39; with the EUR equivalent, if there  are no wildcards in the mask, the mask is taken as the MarketAsset for any dependency matching the rule.
    * @return mask
   **/
   @jakarta.annotation.Nullable
@@ -399,7 +399,7 @@ public class MarketDataSpecificRule {
   }
 
    /**
-   * Determines from where LUSID should attempt to find the data. Optional and, if omitted, will default to \&quot;Lusid\&quot;. This means that data will be retrieved from the Quotes store and the ComplexMarketData store. These can be populated using the Quotes and ComplexMarketData endpoints.
+   * Determines from where LUSID should attempt to find the data. Optional and, if omitted, will default to \&quot;Lusid\&quot;.  This means that data will be retrieved from the Quotes store and the ComplexMarketData store.  These can be populated using the Quotes and ComplexMarketData endpoints.
    * @return sourceSystem
   **/
   @jakarta.annotation.Nullable
@@ -420,7 +420,7 @@ public class MarketDataSpecificRule {
   }
 
    /**
-   * When a user attempts to use a rule to access data to which they are not entitled, the rule will fail to resolve any market data. By default, such an access denied failure will stop any further attempts to resolve market data. This is so that differently entitled users always receive the same market data from market data resolution, if they have sufficient entitlements to retrieve the required data. If set to true, then an access denied failure will not stop further market data resolution, and resolution will continue with the next specified MarketDataKeyRule. Optional, and defaults to false.
+   * When a user attempts to use a rule to access data to which they are not entitled,  the rule will fail to resolve any market data.  By default, such an access denied failure will stop any further attempts to resolve market data.  This is so that differently entitled users always receive the same market data from market data resolution,  if they have sufficient entitlements to retrieve the required data.  If set to true, then an access denied failure will not stop further market data resolution,  and resolution will continue with the next specified MarketDataKeyRule.  Optional, and defaults to false.
    * @return fallThroughOnAccessDenied
   **/
   @jakarta.annotation.Nullable

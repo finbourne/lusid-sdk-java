@@ -46,7 +46,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * The counterpartyAgreement is signed by two parties, one of which is implicitly the LUSID user. The CounterpartySignatory represents the &#39;other side&#39; of the agreement. It comprises a name and identifier for a Legal Entity in LUSID.
+ * The counterpartyAgreement is signed by two parties, one of which is implicitly the LUSID user.  The CounterpartySignatory represents the &#39;other side&#39; of the agreement.  It comprises a name and identifier for a Legal Entity in LUSID.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CounterpartySignatory {

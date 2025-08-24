@@ -2,7 +2,7 @@
 
 # MaturityEvent
 
-Definition of a Maturity Event This is an event that describes the maturity of the instrument.
+Definition of a Maturity Event  This is an event that describes the maturity of the instrument.
 
 ## Properties
 

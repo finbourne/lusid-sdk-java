@@ -547,7 +547,7 @@ public class SequencesApi {
      * [EARLY ACCESS] GetSequence: Get a specified sequence
      * Return the details of a specified sequence
      * @param scope Scope of the sequence. (required)
-     * @param code Code of the sequence. This together with stated scope uniquely  identifies the sequence. (required)
+     * @param code Code of the sequence. This together with stated scope uniquely   identifies the sequence. (required)
      * @return APIgetSequenceRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -667,7 +667,7 @@ public class SequencesApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing sequences from a previous call to list sequences. This value is returned from the previous call. (optional)
+         * @param page The pagination token to use to continue listing sequences from a previous call to list sequences. This  value is returned from the previous call. (optional)
          * @return APIlistSequencesRequest
          */
         public APIlistSequencesRequest page(String page) {
@@ -687,7 +687,7 @@ public class SequencesApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set.    Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIlistSequencesRequest
          */
         public APIlistSequencesRequest filter(String filter) {
@@ -1071,7 +1071,7 @@ public class SequencesApi {
      * [EARLY ACCESS] Next: Get next values from sequence
      * Get the next set of values from a specified sequence
      * @param scope Scope of the sequence. (required)
-     * @param code Code of the sequence. This together with stated scope uniquely  identifies the sequence. (required)
+     * @param code Code of the sequence. This together with stated scope uniquely   identifies the sequence. (required)
      * @return APInextRequest
      * @http.response.details
      <table summary="Response Details" border="1">

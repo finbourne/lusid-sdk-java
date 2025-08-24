@@ -96,7 +96,7 @@ public class Basket extends LusidInstrument {
   }
 
    /**
-   * What contents does the basket have. The validation will check that the instrument types contained match those expected.  Supported string (enumeration) values are: [Bonds, Credits, Equities, EquitySwap].
+   * What contents does the basket have. The validation will check that the instrument types contained match those expected.    Supported string (enumeration) values are: [Bonds, Credits, Equities, EquitySwap].
    * @return basketType
   **/
   @jakarta.annotation.Nonnull

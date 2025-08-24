@@ -48,7 +48,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Definition of FlexibleRepoCashFlowEvent which represents a cash transfer as part of a repo contract modelled as a FlexibleRepo, either as part of the purchase leg or repurchase leg, or any early closure.
+ * Definition of FlexibleRepoCashFlowEvent which represents a cash transfer as part of a repo contract modelled  as a FlexibleRepo, either as part of the purchase leg or repurchase leg, or any early closure.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FlexibleRepoCashFlowEvent extends InstrumentEvent {
@@ -142,7 +142,7 @@ public class FlexibleRepoCashFlowEvent extends InstrumentEvent {
   }
 
    /**
-   * Amount of cash to be paid per unit of the instrument. This amount is signed to indicate direction of the payment, i.e. as part of the purchase leg vs the repurchase leg. This field is optional. If not specified, the system will not generate a virtual transaction for this event.
+   * Amount of cash to be paid per unit of the instrument.  This amount is signed to indicate direction of the payment, i.e. as part of the purchase leg vs the repurchase leg.  This field is optional. If not specified, the system will not generate a virtual transaction for this event.
    * @return cashFlowPerUnit
   **/
   @jakarta.annotation.Nullable

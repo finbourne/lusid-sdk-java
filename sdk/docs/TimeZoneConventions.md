@@ -2,7 +2,7 @@
 
 # TimeZoneConventions
 
-Provides information on the primary time zone of an instrument and optional cut labels for defining times to be used by instrument events.
+Provides information on the primary time zone of an instrument and optional cut labels  for defining times to be used by instrument events.
 
 ## Properties
 

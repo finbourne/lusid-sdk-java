@@ -47,7 +47,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Information about a change to a field / property. At least one of &#39;PreviousValue&#39; or &#39;NewValue&#39; will be set.
+ * Information about a change to a field / property.  At least one of &#39;PreviousValue&#39; or &#39;NewValue&#39; will be set.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ChangeItem {

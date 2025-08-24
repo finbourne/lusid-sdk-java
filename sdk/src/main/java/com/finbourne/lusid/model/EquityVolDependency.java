@@ -47,7 +47,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Economic dependency required to price Equity derivative products that contain optionality. Equity Vol surface is a grid of implied volatilities for an array of strikes and tenors, derived from vanilla option prices in the market.
+ * Economic dependency required to price Equity derivative products that contain optionality.  Equity Vol surface is a grid of implied volatilities for an array of strikes and tenors,  derived from vanilla option prices in the market.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class EquityVolDependency extends EconomicDependency {
@@ -141,7 +141,7 @@ public class EquityVolDependency extends EconomicDependency {
   }
 
    /**
-   * The effectiveDate of the entity that this is a dependency for. Unless there is an obvious date this should be, like for a historic reset, then this is the valuation date.
+   * The effectiveDate of the entity that this is a dependency for.  Unless there is an obvious date this should be, like for a historic reset, then this is the valuation date.
    * @return date
   **/
   @jakarta.annotation.Nonnull

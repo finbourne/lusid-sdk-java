@@ -624,7 +624,7 @@ public class ApplicationMetadataApi {
 
         /**
          * Set filter
-         * @param filter Optional. Expression to filter the result set.   For example, to filter on the Application, use \&quot;application eq &#39;string&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Optional. Expression to filter the result set.    For example, to filter on the Application, use \&quot;application eq &#39;string&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIlistAccessControlledResourcesRequest
          */
         public APIlistAccessControlledResourcesRequest filter(String filter) {

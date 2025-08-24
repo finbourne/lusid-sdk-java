@@ -45,7 +45,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * A condition to be evaluated. Each supported CriterionType has a corresponding schema.
+ * A condition to be evaluated.  Each supported CriterionType has a corresponding schema.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class MatchCriterion {

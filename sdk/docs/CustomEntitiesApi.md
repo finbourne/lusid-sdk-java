@@ -121,7 +121,7 @@ public class CustomEntitiesApiExample {
 
 [EARLY ACCESS] DeleteCustomEntityAccessMetadata: Delete a Custom Entity Access Metadata entry
 
-Deletes the Custom Entity Access Metadata entry that exactly matches the provided identifier parts.  It is important to always check to verify success (or failure).
+Deletes the Custom Entity Access Metadata entry that exactly matches the provided identifier parts.    It is important to always check to verify success (or failure).
 
 ### Example
 
@@ -372,9 +372,9 @@ public class CustomEntitiesApiExample {
         String identifierScope = "identifierScope_example"; // String | The identifier scope.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The AsAt datetime at which to retrieve the Custom Entity instance.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to get the Custom Entity instance. Defaults to the current LUSID system datetime if not specified.
-        List<String> relatedEntityPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from any domain that supports relationships  to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'.
-        List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities  onto the entity in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'CustomEntity' domain to decorate onto  the custom entities of any type supported by that property (defined within the property definition CustomEntityTypes).  These must have the format {domain}/{scope}/{code}, for example 'CustomEntity/someScope/id'.
+        List<String> relatedEntityPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from any domain that supports relationships   to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'.
+        List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto the entity in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'CustomEntity' domain to decorate onto   the custom entities of any type supported by that property (defined within the property definition CustomEntityTypes).   These must have the format {domain}/{scope}/{code}, for example 'CustomEntity/someScope/id'.
         try {
             // uncomment the below to set overrides at the request level
             // CustomEntityResponse result = apiInstance.getCustomEntity(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys).execute(opts);
@@ -402,9 +402,9 @@ public class CustomEntitiesApiExample {
 | **identifierScope** | **String**| The identifier scope. | |
 | **asAt** | **OffsetDateTime**| The AsAt datetime at which to retrieve the Custom Entity instance. | [optional] |
 | **effectiveAt** | **String**| The effective datetime or cut label at which to get the Custom Entity instance. Defaults to the current LUSID system datetime if not specified. | [optional] |
-| **relatedEntityPropertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from any domain that supports relationships  to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. | [optional] |
-| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities  onto the entity in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;CustomEntity&#39; domain to decorate onto  the custom entities of any type supported by that property (defined within the property definition CustomEntityTypes).  These must have the format {domain}/{scope}/{code}, for example &#39;CustomEntity/someScope/id&#39;. | [optional] |
+| **relatedEntityPropertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from any domain that supports relationships   to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. | [optional] |
+| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities   onto the entity in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;CustomEntity&#39; domain to decorate onto   the custom entities of any type supported by that property (defined within the property definition CustomEntityTypes).   These must have the format {domain}/{scope}/{code}, for example &#39;CustomEntity/someScope/id&#39;. | [optional] |
 
 ### Return type
 
@@ -583,7 +583,7 @@ public class CustomEntitiesApiExample {
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified.
         String filter = "filter_example"; // String | Expression to filter relationships. Users should provide null or empty string for this field until further notice.
-        List<String> identifierTypes = Arrays.asList(); // List<String> | Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format  {domain}/{scope}/{code} e.g. \"Person/CompanyDetails/Role\". They must be from the \"Person\" or \"LegalEntity\" domain.  Only identifier types stated will be used to look up relevant entities in relationships. If not applicable, provide an empty array.
+        List<String> identifierTypes = Arrays.asList(); // List<String> | Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format   {domain}/{scope}/{code} e.g. \"Person/CompanyDetails/Role\". They must be from the \"Person\" or \"LegalEntity\" domain.   Only identifier types stated will be used to look up relevant entities in relationships. If not applicable, provide an empty array.
         try {
             // uncomment the below to set overrides at the request level
             // ResourceListOfRelationship result = apiInstance.getCustomEntityRelationships(entityType, identifierScope, identifierType, identifierValue, effectiveAt, asAt, filter, identifierTypes).execute(opts);
@@ -612,7 +612,7 @@ public class CustomEntitiesApiExample {
 | **effectiveAt** | **String**| The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. | [optional] |
 | **filter** | **String**| Expression to filter relationships. Users should provide null or empty string for this field until further notice. | [optional] |
-| **identifierTypes** | [**List&lt;String&gt;**](String.md)| Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format  {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.  Only identifier types stated will be used to look up relevant entities in relationships. If not applicable, provide an empty array. | [optional] |
+| **identifierTypes** | [**List&lt;String&gt;**](String.md)| Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format   {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.   Only identifier types stated will be used to look up relevant entities in relationships. If not applicable, provide an empty array. | [optional] |
 
 ### Return type
 
@@ -682,15 +682,15 @@ public class CustomEntitiesApiExample {
 
         CustomEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(CustomEntitiesApi.class);
         String entityType = "entityType_example"; // String | The type of Custom Entity to list.
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the entities. Defaults to the current LUSID  system datetime if not specified.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the entities. Defaults to returning the latest version  of each portfolio if not specified.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the entities. Defaults to the current LUSID   system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the entities. Defaults to returning the latest version   of each portfolio if not specified.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
-        String filter = "filter_example"; // String | Expression to filter the results. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        String filter = "filter_example"; // String | Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\".
-        String page = "page_example"; // String | The pagination token to use to continue listing entities; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request.
-        List<String> relatedEntityPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from any domain that supports relationships  to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'.
-        List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities  onto the entities in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'CustomEntity' domain to decorate onto  the custom entities of any type supported by that property (defined within the property definition CustomEntityTypes).  These must have the format {domain}/{scope}/{code}, for example 'CustomEntity/someScope/id'.
+        String page = "page_example"; // String | The pagination token to use to continue listing entities; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request.
+        List<String> relatedEntityPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from any domain that supports relationships   to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'.
+        List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto the entities in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'CustomEntity' domain to decorate onto   the custom entities of any type supported by that property (defined within the property definition CustomEntityTypes).   These must have the format {domain}/{scope}/{code}, for example 'CustomEntity/someScope/id'.
         try {
             // uncomment the below to set overrides at the request level
             // PagedResourceListOfCustomEntityResponse result = apiInstance.listCustomEntities(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds, propertyKeys).execute(opts);
@@ -713,15 +713,15 @@ public class CustomEntitiesApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **entityType** | **String**| The type of Custom Entity to list. | |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to list the entities. Defaults to the current LUSID  system datetime if not specified. | [optional] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the entities. Defaults to returning the latest version  of each portfolio if not specified. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list the entities. Defaults to the current LUSID   system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the entities. Defaults to returning the latest version   of each portfolio if not specified. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **filter** | **String**| Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing entities; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. | [optional] |
-| **relatedEntityPropertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from any domain that supports relationships  to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. | [optional] |
-| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities  onto the entities in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;CustomEntity&#39; domain to decorate onto  the custom entities of any type supported by that property (defined within the property definition CustomEntityTypes).  These must have the format {domain}/{scope}/{code}, for example &#39;CustomEntity/someScope/id&#39;. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing entities; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
+| **relatedEntityPropertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from any domain that supports relationships   to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. | [optional] |
+| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities   onto the entities in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;CustomEntity&#39; domain to decorate onto   the custom entities of any type supported by that property (defined within the property definition CustomEntityTypes).   These must have the format {domain}/{scope}/{code}, for example &#39;CustomEntity/someScope/id&#39;. | [optional] |
 
 ### Return type
 
@@ -749,7 +749,7 @@ public class CustomEntitiesApiExample {
 
 [EARLY ACCESS] PatchCustomEntityAccessMetadata: Patch Access Metadata rules for a Custom Entity.
 
-Patch Custom Entity Access Metadata Rules in a single scope. The behaviour is defined by the JSON Patch specification.   Currently only &#39;add&#39; is a supported operation on the patch document  Currently only valid metadata keys are supported paths on the patch document   The response will return any affected Custom Entity Access Metadata rules or a failure message if unsuccessful.   It is important to always check to verify success (or failure).   Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
+Patch Custom Entity Access Metadata Rules in a single scope.  The behaviour is defined by the JSON Patch specification.     Currently only &#39;add&#39; is a supported operation on the patch document    Currently only valid metadata keys are supported paths on the patch document     The response will return any affected Custom Entity Access Metadata rules or a failure message if unsuccessful.     It is important to always check to verify success (or failure).     Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
 
 ### Example
 
@@ -1040,7 +1040,7 @@ public class CustomEntitiesApiExample {
 
 [EARLY ACCESS] UpsertCustomEntityAccessMetadata: Upsert a Custom Entity Access Metadata entry associated with a specific metadataKey. This creates or updates the data in LUSID.
 
-Update or insert one Custom Entity Access Metadata entry in a single scope. An item will be updated if it already exists and inserted if it does not.   The response will return the successfully updated or inserted Custom Entity Access Metadata rule or failure message if unsuccessful.   It is important to always check to verify success (or failure).   Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
+Update or insert one Custom Entity Access Metadata entry in a single scope. An item will be updated if it already exists  and inserted if it does not.     The response will return the successfully updated or inserted Custom Entity Access Metadata rule or failure message if unsuccessful.     It is important to always check to verify success (or failure).     Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
 
 ### Example
 

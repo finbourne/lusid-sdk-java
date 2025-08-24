@@ -84,7 +84,7 @@ public class CashFlowLineage {
   }
 
    /**
-   * The instrument type of the instrument to which the cash flow belongs to. When upserting CashFlowValues, this should be null.
+   * The instrument type of the instrument to which the cash flow belongs to. When upserting CashFlowValues, this  should be null.
    * @return instrumentType
   **/
   @jakarta.annotation.Nullable
@@ -105,7 +105,7 @@ public class CashFlowLineage {
   }
 
    /**
-   * The cashflow type.When upserting CashFlowValues, this should be null, or one of [Unknown, Coupon, Notional, Premium, Principal, Protection, Cash]
+   * The cashflow type.When upserting CashFlowValues, this should be null, or one of [Unknown, Coupon, Notional,  Premium, Principal, Protection, Cash]
    * @return cashFlowType
   **/
   @jakarta.annotation.Nullable

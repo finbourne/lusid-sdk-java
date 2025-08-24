@@ -22,7 +22,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 [EXPERIMENTAL] CreateClosedPeriod: Create a new closed period against a timeline entity
 
-Creates a new closed period against a timeline entity Returns the newly created closed period entity with properties
+Creates a new closed period against a timeline entity  Returns the newly created closed period entity with properties
 
 ### Example
 
@@ -117,7 +117,7 @@ public class TimelinesApiExample {
 
 [EXPERIMENTAL] CreateTimeline: Create a Timeline
 
-Creates a Timeline. Returns the created Timeline at the current effectiveAt. Note that Timelines are mono-temporal, however they can have Time-Variant Properties. Upserted Properties will be returned at the latest AsAt and EffectiveAt
+Creates a Timeline. Returns the created Timeline at the current effectiveAt.  Note that Timelines are mono-temporal, however they can have Time-Variant Properties.  Upserted Properties will be returned at the latest AsAt and EffectiveAt
 
 ### Example
 
@@ -208,7 +208,7 @@ public class TimelinesApiExample {
 
 [EXPERIMENTAL] DeleteTimeline: Deletes a particular Timeline
 
-The deletion will take effect from the Timeline deletion datetime. i.e. will no longer exist at any asAt datetime after the asAt datetime of deletion.
+The deletion will take effect from the Timeline deletion datetime.  i.e. will no longer exist at any asAt datetime after the asAt datetime of deletion.
 
 ### Example
 
@@ -250,7 +250,7 @@ public class TimelinesApiExample {
 
         TimelinesApi apiInstance = ApiFactoryBuilder.build(fileName).build(TimelinesApi.class);
         String scope = "scope_example"; // String | The scope of the specified Timeline.
-        String code = "code_example"; // String | The code of the specified Timeline. Together with the domain and scope this uniquely  identifies the Timeline.
+        String code = "code_example"; // String | The code of the specified Timeline. Together with the domain and scope this uniquely   identifies the Timeline.
         try {
             // uncomment the below to set overrides at the request level
             // DeletedEntityResponse result = apiInstance.deleteTimeline(scope, code).execute(opts);
@@ -273,7 +273,7 @@ public class TimelinesApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the specified Timeline. | |
-| **code** | **String**| The code of the specified Timeline. Together with the domain and scope this uniquely  identifies the Timeline. | |
+| **code** | **String**| The code of the specified Timeline. Together with the domain and scope this uniquely   identifies the Timeline. | |
 
 ### Return type
 
@@ -343,10 +343,10 @@ public class TimelinesApiExample {
 
         TimelinesApi apiInstance = ApiFactoryBuilder.build(fileName).build(TimelinesApi.class);
         String scope = "scope_example"; // String | The scope of the Timeline.
-        String code = "code_example"; // String | The code of the Timeline. Together with the scope this uniquely  identifies the Timeline.
-        String closedPeriodId = "closedPeriodId_example"; // String | The id of the Closed Period. Together with the scope and code of the Timeline,  this uniquely identifies the ClosedPeriod
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the ClosedPeriod definition. Defaults to return  the latest version of the definition if not specified.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'ClosedPeriod' domain to decorate onto  the ClosedPeriod.  These must have the format {domain}/{scope}/{code}, for example 'ClosedPeriod/system/Name'.
+        String code = "code_example"; // String | The code of the Timeline. Together with the scope this uniquely   identifies the Timeline.
+        String closedPeriodId = "closedPeriodId_example"; // String | The id of the Closed Period. Together with the scope and code of the Timeline,   this uniquely identifies the ClosedPeriod
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the ClosedPeriod definition. Defaults to return   the latest version of the definition if not specified.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'ClosedPeriod' domain to decorate onto   the ClosedPeriod.   These must have the format {domain}/{scope}/{code}, for example 'ClosedPeriod/system/Name'.
         try {
             // uncomment the below to set overrides at the request level
             // ClosedPeriod result = apiInstance.getClosedPeriod(scope, code, closedPeriodId, asAt, propertyKeys).execute(opts);
@@ -369,10 +369,10 @@ public class TimelinesApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the Timeline. | |
-| **code** | **String**| The code of the Timeline. Together with the scope this uniquely  identifies the Timeline. | |
-| **closedPeriodId** | **String**| The id of the Closed Period. Together with the scope and code of the Timeline,  this uniquely identifies the ClosedPeriod | |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the ClosedPeriod definition. Defaults to return  the latest version of the definition if not specified. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;ClosedPeriod&#39; domain to decorate onto  the ClosedPeriod.  These must have the format {domain}/{scope}/{code}, for example &#39;ClosedPeriod/system/Name&#39;. | [optional] |
+| **code** | **String**| The code of the Timeline. Together with the scope this uniquely   identifies the Timeline. | |
+| **closedPeriodId** | **String**| The id of the Closed Period. Together with the scope and code of the Timeline,   this uniquely identifies the ClosedPeriod | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the ClosedPeriod definition. Defaults to return   the latest version of the definition if not specified. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;ClosedPeriod&#39; domain to decorate onto   the ClosedPeriod.   These must have the format {domain}/{scope}/{code}, for example &#39;ClosedPeriod/system/Name&#39;. | [optional] |
 
 ### Return type
 
@@ -400,7 +400,7 @@ public class TimelinesApiExample {
 
 [EXPERIMENTAL] GetTimeline: Get a single Timeline by scope and code.
 
-Retrieves one Timeline by scope and code. Timelines are mono-temporal. The EffectiveAt is only applied to Time-Variant Properties.
+Retrieves one Timeline by scope and code.  Timelines are mono-temporal. The EffectiveAt is only applied to Time-Variant Properties.
 
 ### Example
 
@@ -442,10 +442,10 @@ public class TimelinesApiExample {
 
         TimelinesApi apiInstance = ApiFactoryBuilder.build(fileName).build(TimelinesApi.class);
         String scope = "scope_example"; // String | The scope of the specified Timeline.
-        String code = "code_example"; // String | The code of the specified Timeline. Together with the scope this uniquely  identifies the Timeline.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Timeline definition. Defaults to return  the latest version of the definition if not specified.
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the timeline properties.  Defaults to the current LUSID system datetime if not specified.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Timeline' domain to decorate onto  the Timeline.  These must have the format {domain}/{scope}/{code}, for example 'Timeline/system/Name'.
+        String code = "code_example"; // String | The code of the specified Timeline. Together with the scope this uniquely   identifies the Timeline.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Timeline definition. Defaults to return   the latest version of the definition if not specified.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the timeline properties.   Defaults to the current LUSID system datetime if not specified.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Timeline' domain to decorate onto   the Timeline.   These must have the format {domain}/{scope}/{code}, for example 'Timeline/system/Name'.
         try {
             // uncomment the below to set overrides at the request level
             // Timeline result = apiInstance.getTimeline(scope, code, asAt, effectiveAt, propertyKeys).execute(opts);
@@ -468,10 +468,10 @@ public class TimelinesApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the specified Timeline. | |
-| **code** | **String**| The code of the specified Timeline. Together with the scope this uniquely  identifies the Timeline. | |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Timeline definition. Defaults to return  the latest version of the definition if not specified. | [optional] |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the timeline properties.  Defaults to the current LUSID system datetime if not specified. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Timeline&#39; domain to decorate onto  the Timeline.  These must have the format {domain}/{scope}/{code}, for example &#39;Timeline/system/Name&#39;. | [optional] |
+| **code** | **String**| The code of the specified Timeline. Together with the scope this uniquely   identifies the Timeline. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Timeline definition. Defaults to return   the latest version of the definition if not specified. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the timeline properties.   Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Timeline&#39; domain to decorate onto   the Timeline.   These must have the format {domain}/{scope}/{code}, for example &#39;Timeline/system/Name&#39;. | [optional] |
 
 ### Return type
 
@@ -543,11 +543,11 @@ public class TimelinesApiExample {
         String scope = "scope_example"; // String | The scope of the Timeline.
         String code = "code_example"; // String | The code of the Timeline.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the ClosedPeriods. Defaults to returning the latest version of each ClosedPeriod if not specified.
-        String page = "page_example"; // String | The pagination token to use to continue listing ClosedPeriods; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request.
+        String page = "page_example"; // String | The pagination token to use to continue listing ClosedPeriods; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
-        String filter = "filter_example"; // String | Expression to filter the results.  For example, to filter on the effectiveEnd, specify \"effectiveEnd gt 2019-01-15T10:00:00\". For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the effectiveEnd, specify \"effectiveEnd gt 2019-01-15T10:00:00\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\"
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'ClosedPeriod' domain to decorate onto each ClosedPeriod.  These must take the format {domain}/{scope}/{code}, for example 'ClosedPeriod/Account/id'.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'ClosedPeriod' domain to decorate onto each ClosedPeriod.   These must take the format {domain}/{scope}/{code}, for example 'ClosedPeriod/Account/id'.
         try {
             // uncomment the below to set overrides at the request level
             // PagedResourceListOfClosedPeriod result = apiInstance.listClosedPeriods(scope, code, asAt, page, limit, filter, sortBy, propertyKeys).execute(opts);
@@ -572,11 +572,11 @@ public class TimelinesApiExample {
 | **scope** | **String**| The scope of the Timeline. | |
 | **code** | **String**| The code of the Timeline. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the ClosedPeriods. Defaults to returning the latest version of each ClosedPeriod if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing ClosedPeriods; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing ClosedPeriods; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results.  For example, to filter on the effectiveEnd, specify \&quot;effectiveEnd gt 2019-01-15T10:00:00\&quot;. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **filter** | **String**| Expression to filter the results.   For example, to filter on the effectiveEnd, specify \&quot;effectiveEnd gt 2019-01-15T10:00:00\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;ClosedPeriod&#39; domain to decorate onto each ClosedPeriod.  These must take the format {domain}/{scope}/{code}, for example &#39;ClosedPeriod/Account/id&#39;. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;ClosedPeriod&#39; domain to decorate onto each ClosedPeriod.   These must take the format {domain}/{scope}/{code}, for example &#39;ClosedPeriod/Account/id&#39;. | [optional] |
 
 ### Return type
 
@@ -646,12 +646,12 @@ public class TimelinesApiExample {
 
         TimelinesApi apiInstance = ApiFactoryBuilder.build(fileName).build(TimelinesApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the Timelines. Defaults to returning the latest version of each Timeline if not specified.
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the Timelines.  Note that Timelines are monotemporal, the effectiveAt is for Timevariant Properties on the Timeline only.  Defaults to the current LUSID system datetime if not specified.
-        String page = "page_example"; // String | The pagination token to use to continue listing Timelines; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the Timelines.   Note that Timelines are monotemporal, the effectiveAt is for Timevariant Properties on the Timeline only.   Defaults to the current LUSID system datetime if not specified.
+        String page = "page_example"; // String | The pagination token to use to continue listing Timelines; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
-        String filter = "filter_example"; // String | Expression to filter the results.  For example, to filter on the displayName, specify \"displayName eq 'AccountingTimeline'\". For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the displayName, specify \"displayName eq 'AccountingTimeline'\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\"
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Timeline' domain to decorate onto each Timeline.  These must take the format {domain}/{scope}/{code}, for example 'Timeline/Account/id'.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Timeline' domain to decorate onto each Timeline.   These must take the format {domain}/{scope}/{code}, for example 'Timeline/Account/id'.
         try {
             // uncomment the below to set overrides at the request level
             // PagedResourceListOfTimeline result = apiInstance.listTimelines(asAt, effectiveAt, page, limit, filter, sortBy, propertyKeys).execute(opts);
@@ -674,12 +674,12 @@ public class TimelinesApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the Timelines. Defaults to returning the latest version of each Timeline if not specified. | [optional] |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to list the Timelines.  Note that Timelines are monotemporal, the effectiveAt is for Timevariant Properties on the Timeline only.  Defaults to the current LUSID system datetime if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing Timelines; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list the Timelines.   Note that Timelines are monotemporal, the effectiveAt is for Timevariant Properties on the Timeline only.   Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing Timelines; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results.  For example, to filter on the displayName, specify \&quot;displayName eq &#39;AccountingTimeline&#39;\&quot;. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **filter** | **String**| Expression to filter the results.   For example, to filter on the displayName, specify \&quot;displayName eq &#39;AccountingTimeline&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Timeline&#39; domain to decorate onto each Timeline.  These must take the format {domain}/{scope}/{code}, for example &#39;Timeline/Account/id&#39;. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Timeline&#39; domain to decorate onto each Timeline.   These must take the format {domain}/{scope}/{code}, for example &#39;Timeline/Account/id&#39;. | [optional] |
 
 ### Return type
 
@@ -750,7 +750,7 @@ public class TimelinesApiExample {
         TimelinesApi apiInstance = ApiFactoryBuilder.build(fileName).build(TimelinesApi.class);
         String scope = "scope_example"; // String | The scope of the Timeline.
         String code = "code_example"; // String | The code of the Timeline.
-        String closedPeriodId = "closedPeriodId_example"; // String | The id of the Closed Period. Together with the scope and code of the Timeline,  this uniquely identifies the ClosedPeriod
+        String closedPeriodId = "closedPeriodId_example"; // String | The id of the Closed Period. Together with the scope and code of the Timeline,   this uniquely identifies the ClosedPeriod
         PostCloseActivitiesRequest postCloseActivitiesRequest = new PostCloseActivitiesRequest(); // PostCloseActivitiesRequest | Specifies collection of post close activities
         try {
             // uncomment the below to set overrides at the request level
@@ -775,7 +775,7 @@ public class TimelinesApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the Timeline. | |
 | **code** | **String**| The code of the Timeline. | |
-| **closedPeriodId** | **String**| The id of the Closed Period. Together with the scope and code of the Timeline,  this uniquely identifies the ClosedPeriod | |
+| **closedPeriodId** | **String**| The id of the Closed Period. Together with the scope and code of the Timeline,   this uniquely identifies the ClosedPeriod | |
 | **postCloseActivitiesRequest** | [**PostCloseActivitiesRequest**](PostCloseActivitiesRequest.md)| Specifies collection of post close activities | [optional] |
 
 ### Return type
@@ -804,7 +804,7 @@ public class TimelinesApiExample {
 
 [EXPERIMENTAL] UpdateTimeline: Update Timeline defined by scope and code
 
-Overwrites an existing Timeline Update request has the same required fields as Create apart from the id. Returns the updated Timeline at the current effectiveAt. Note that Timelines are mono-temporal, however they can have Time-Variant Properties. Updated Properties will be returned at the latest AsAt and EffectiveAt
+Overwrites an existing Timeline  Update request has the same required fields as Create apart from the id.  Returns the updated Timeline at the current effectiveAt.  Note that Timelines are mono-temporal, however they can have Time-Variant Properties.  Updated Properties will be returned at the latest AsAt and EffectiveAt
 
 ### Example
 

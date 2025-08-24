@@ -305,7 +305,7 @@ public class LusidTradeTicket {
   }
 
    /**
-   * Number of units in the transaction. For an OTC this is somewhat interchangeable with the quantity booked in the instrument. As M x N or N x M are equivalent it is advised a client chooses one approach and sticks to it. Arguably either the unit or holding is best unitised.
+   * Number of units in the transaction. For an OTC this is somewhat interchangeable with the quantity booked in the  instrument. As M x N or N x M are equivalent it is advised a client chooses one approach and sticks to it.  Arguably either the unit or holding is best unitised.
    * @return units
   **/
   @jakarta.annotation.Nonnull

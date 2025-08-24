@@ -11,7 +11,7 @@ Record describing additional payment entity.
 |**amount** | **java.math.BigDecimal** | The payment amount. |  |
 |**currency** | **String** | The payment currency. |  |
 |**payDate** | **OffsetDateTime** | Date when the payment is made. |  |
-|**payReceive** | **String** | Is it pay or receive.  Supported string (enumeration) values are: [Pay, Receive]. |  |
+|**payReceive** | **String** | Is it pay or receive.    Supported string (enumeration) values are: [Pay, Receive]. |  |
 
 
 

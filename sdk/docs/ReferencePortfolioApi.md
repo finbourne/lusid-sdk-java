@@ -153,10 +153,10 @@ public class ReferencePortfolioApiExample {
 
         ReferencePortfolioApi apiInstance = ApiFactoryBuilder.build(fileName).build(ReferencePortfolioApi.class);
         String scope = "scope_example"; // String | The scope of the reference portfolio.
-        String code = "code_example"; // String | The code of the reference portfolio. Together with the scope this uniquely identifies  the reference portfolio.
+        String code = "code_example"; // String | The code of the reference portfolio. Together with the scope this uniquely identifies   the reference portfolio.
         String effectiveAt = "effectiveAt_example"; // String | The effective date of the constituents to retrieve. Defaults to the current LUSID system datetime if not specified.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve constituents. Defaults to return the latest version  of each constituent if not specified.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument' or 'ReferenceHolding' domain to decorate onto  constituents. These take the format {domain}/{scope}/{code} e.g. 'Instrument/system/Name' or  'ReferenceHolding/strategy/quantsignal'. Defaults to return all available instrument and reference holding properties if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve constituents. Defaults to return the latest version   of each constituent if not specified.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument' or 'ReferenceHolding' domain to decorate onto   constituents. These take the format {domain}/{scope}/{code} e.g. 'Instrument/system/Name' or   'ReferenceHolding/strategy/quantsignal'. Defaults to return all available instrument and reference holding properties if not specified.
         try {
             // uncomment the below to set overrides at the request level
             // GetReferencePortfolioConstituentsResponse result = apiInstance.getReferencePortfolioConstituents(scope, code, effectiveAt, asAt, propertyKeys).execute(opts);
@@ -179,10 +179,10 @@ public class ReferencePortfolioApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the reference portfolio. | |
-| **code** | **String**| The code of the reference portfolio. Together with the scope this uniquely identifies  the reference portfolio. | |
+| **code** | **String**| The code of the reference portfolio. Together with the scope this uniquely identifies   the reference portfolio. | |
 | **effectiveAt** | **String**| The effective date of the constituents to retrieve. Defaults to the current LUSID system datetime if not specified. | [optional] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve constituents. Defaults to return the latest version  of each constituent if not specified. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Instrument&#39; or &#39;ReferenceHolding&#39; domain to decorate onto  constituents. These take the format {domain}/{scope}/{code} e.g. &#39;Instrument/system/Name&#39; or  &#39;ReferenceHolding/strategy/quantsignal&#39;. Defaults to return all available instrument and reference holding properties if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve constituents. Defaults to return the latest version   of each constituent if not specified. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Instrument&#39; or &#39;ReferenceHolding&#39; domain to decorate onto   constituents. These take the format {domain}/{scope}/{code} e.g. &#39;Instrument/system/Name&#39; or   &#39;ReferenceHolding/strategy/quantsignal&#39;. Defaults to return all available instrument and reference holding properties if not specified. | [optional] |
 
 ### Return type
 
@@ -252,7 +252,7 @@ public class ReferencePortfolioApiExample {
 
         ReferencePortfolioApi apiInstance = ApiFactoryBuilder.build(fileName).build(ReferencePortfolioApi.class);
         String scope = "scope_example"; // String | The scope of the reference portfolio.
-        String code = "code_example"; // String | The code of the reference portfolio. Together with the scope this uniquely identifies  the reference portfolio.
+        String code = "code_example"; // String | The code of the reference portfolio. Together with the scope this uniquely identifies   the reference portfolio.
         String fromEffectiveAt = "fromEffectiveAt_example"; // String | Events between this time (inclusive) and the toEffectiveAt are returned.
         String toEffectiveAt = "toEffectiveAt_example"; // String | Events between this time (inclusive) and the fromEffectiveAt are returned.
         OffsetDateTime asAtTime = OffsetDateTime.now(); // OffsetDateTime | The asAt time for which the result is valid.
@@ -278,7 +278,7 @@ public class ReferencePortfolioApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the reference portfolio. | |
-| **code** | **String**| The code of the reference portfolio. Together with the scope this uniquely identifies  the reference portfolio. | |
+| **code** | **String**| The code of the reference portfolio. Together with the scope this uniquely identifies   the reference portfolio. | |
 | **fromEffectiveAt** | **String**| Events between this time (inclusive) and the toEffectiveAt are returned. | |
 | **toEffectiveAt** | **String**| Events between this time (inclusive) and the fromEffectiveAt are returned. | |
 | **asAtTime** | **OffsetDateTime**| The asAt time for which the result is valid. | [optional] |
@@ -309,7 +309,7 @@ public class ReferencePortfolioApiExample {
 
 [EARLY ACCESS] UpsertReferencePortfolioConstituentProperties: Upsert constituent properties
 
-Create or update one or more constituent properties for a single constituent in the reference portfolio. Each property will be updated if it already exists, created if it does not and deleted if value is null. Both constituent and portfolio must exist at the time when properties are created or updated.
+Create or update one or more constituent properties for a single constituent in the reference portfolio.  Each property will be updated if it already exists, created if it does not and deleted if value is null.  Both constituent and portfolio must exist at the time when properties are created or updated.
 
 ### Example
 
@@ -351,7 +351,7 @@ public class ReferencePortfolioApiExample {
 
         ReferencePortfolioApi apiInstance = ApiFactoryBuilder.build(fileName).build(ReferencePortfolioApi.class);
         String scope = "scope_example"; // String | The scope of the reference portfolio.
-        String code = "code_example"; // String | The code of the reference portfolio. Together with the scope this uniquely identifies  the reference portfolio.
+        String code = "code_example"; // String | The code of the reference portfolio. Together with the scope this uniquely identifies   the reference portfolio.
         UpsertReferencePortfolioConstituentPropertiesRequest upsertReferencePortfolioConstituentPropertiesRequest = new UpsertReferencePortfolioConstituentPropertiesRequest(); // UpsertReferencePortfolioConstituentPropertiesRequest | The request to modify properties for the constituent.
         try {
             // uncomment the below to set overrides at the request level
@@ -375,7 +375,7 @@ public class ReferencePortfolioApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the reference portfolio. | |
-| **code** | **String**| The code of the reference portfolio. Together with the scope this uniquely identifies  the reference portfolio. | |
+| **code** | **String**| The code of the reference portfolio. Together with the scope this uniquely identifies   the reference portfolio. | |
 | **upsertReferencePortfolioConstituentPropertiesRequest** | [**UpsertReferencePortfolioConstituentPropertiesRequest**](UpsertReferencePortfolioConstituentPropertiesRequest.md)| The request to modify properties for the constituent. | |
 
 ### Return type
@@ -446,7 +446,7 @@ public class ReferencePortfolioApiExample {
 
         ReferencePortfolioApi apiInstance = ApiFactoryBuilder.build(fileName).build(ReferencePortfolioApi.class);
         String scope = "scope_example"; // String | The scope of the reference portfolio.
-        String code = "code_example"; // String | The code of the reference portfolio. Together with the scope this uniquely identifies  the reference portfolio.
+        String code = "code_example"; // String | The code of the reference portfolio. Together with the scope this uniquely identifies   the reference portfolio.
         UpsertReferencePortfolioConstituentsRequest upsertReferencePortfolioConstituentsRequest = new UpsertReferencePortfolioConstituentsRequest(); // UpsertReferencePortfolioConstituentsRequest | The constituents to upload to the reference portfolio.
         try {
             // uncomment the below to set overrides at the request level
@@ -470,7 +470,7 @@ public class ReferencePortfolioApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the reference portfolio. | |
-| **code** | **String**| The code of the reference portfolio. Together with the scope this uniquely identifies  the reference portfolio. | |
+| **code** | **String**| The code of the reference portfolio. Together with the scope this uniquely identifies   the reference portfolio. | |
 | **upsertReferencePortfolioConstituentsRequest** | [**UpsertReferencePortfolioConstituentsRequest**](UpsertReferencePortfolioConstituentsRequest.md)| The constituents to upload to the reference portfolio. | |
 
 ### Return type

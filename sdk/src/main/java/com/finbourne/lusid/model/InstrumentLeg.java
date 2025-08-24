@@ -46,7 +46,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Base class for representing instrument legs in LUSID. An instrument leg describes a set of cashflows that are paid at a set of points in time according to some set of conventions. This base class should not be directly instantiated; only its inheritors should be used.
+ * Base class for representing instrument legs in LUSID.  An instrument leg describes a set of cashflows that are paid at a set of points in time according to some set of conventions.  This base class should not be directly instantiated; only its inheritors should be used.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class InstrumentLeg extends LusidInstrument {

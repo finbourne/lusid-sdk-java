@@ -185,7 +185,7 @@ public class TaxRuleSetsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which the rule set will take effect. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which the rule set will take effect.  Defaults to the current LUSID system datetime if not specified. (optional)
          * @return APIcreateTaxRuleSetRequest
          */
         public APIcreateTaxRuleSetRequest effectiveAt(String effectiveAt) {
@@ -313,7 +313,7 @@ public class TaxRuleSetsApi {
 
     /**
      * [EXPERIMENTAL] CreateTaxRuleSet: Create a tax rule set.
-     * Creates a tax rule set definition at the given effective time. The user must be entitled to read any properties specified in each rule.
+     * Creates a tax rule set definition at the given effective time.  The user must be entitled to read any properties specified in each rule.
      * @param createTaxRuleSetRequest The contents of the rule set. (required)
      * @return APIcreateTaxRuleSetRequest
      * @http.response.details
@@ -553,7 +553,7 @@ public class TaxRuleSetsApi {
 
     /**
      * [EXPERIMENTAL] DeleteTaxRuleSet: Delete a tax rule set.
-     * Deletes the rule set for all effective time.  The rule set will remain viewable at previous as at times, but it will no longer be considered applicable.  This cannot be undone.
+     * Deletes the rule set for all effective time.    The rule set will remain viewable at previous as at times, but it will no longer be considered applicable.    This cannot be undone.
      * @param scope The rule set scope. (required)
      * @param code The rule set code. (required)
      * @return APIdeleteTaxRuleSetRequest
@@ -686,7 +686,7 @@ public class TaxRuleSetsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definition. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definition.  Defaults to the current LUSID system datetime if not specified. (optional)
          * @return APIgetTaxRuleSetRequest
          */
         public APIgetTaxRuleSetRequest effectiveAt(String effectiveAt) {
@@ -696,7 +696,7 @@ public class TaxRuleSetsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the rule definition. Defaults to returning the latest version if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the rule definition. Defaults to returning the latest version if not  specified. (optional)
          * @return APIgetTaxRuleSetRequest
          */
         public APIgetTaxRuleSetRequest asAt(OffsetDateTime asAt) {
@@ -941,7 +941,7 @@ public class TaxRuleSetsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definitions. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definitions.  Defaults to the current LUSID system datetime if not specified. (optional)
          * @return APIlistTaxRuleSetsRequest
          */
         public APIlistTaxRuleSetsRequest effectiveAt(String effectiveAt) {
@@ -951,7 +951,7 @@ public class TaxRuleSetsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the rule definitions. Defaults to returning the latest version if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the rule definitions. Defaults to returning the latest version if not  specified. (optional)
          * @return APIlistTaxRuleSetsRequest
          */
         public APIlistTaxRuleSetsRequest asAt(OffsetDateTime asAt) {
@@ -1216,7 +1216,7 @@ public class TaxRuleSetsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which the rule set will take effect. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which the rule set will take effect.  Defaults to the current LUSID system datetime if not specified. (optional)
          * @return APIupdateTaxRuleSetRequest
          */
         public APIupdateTaxRuleSetRequest effectiveAt(String effectiveAt) {
@@ -1344,7 +1344,7 @@ public class TaxRuleSetsApi {
 
     /**
      * [EXPERIMENTAL] UpdateTaxRuleSet: Update a tax rule set.
-     * Updates the tax rule set definition at the given effective time. The changes will take place from this effective time until the next effective time that the rule has been updated at. For example, consider a rule that has been created or updated effective at the first day of the coming month. An upsert effective from the current day will only change the definition until that day. An additional upsert at the same time (first day of the month) is required if the newly-updated definition is to supersede the future definition. The user must be entitled to read any properties specified in each rule.
+     * Updates the tax rule set definition at the given effective time.  The changes will take place from this effective time until the next effective time that the rule has been updated at.  For example, consider a rule that has been created or updated effective at the first day of the coming month.  An upsert effective from the current day will only change the definition until that day.  An additional upsert at the same time (first day of the month) is required if the newly-updated definition is to supersede the future definition.  The user must be entitled to read any properties specified in each rule.
      * @param scope The rule set scope. (required)
      * @param code The rule set code. (required)
      * @param updateTaxRuleSetRequest The contents of the rule set. (required)

@@ -115,7 +115,7 @@ public class EquityCurveByPricesData extends ComplexMarketData {
   }
 
    /**
-   * Dates provided for the forward price of the Equity at the corresponding price in Prices. These dates should be in the future with respect to the BaseDate.
+   * Dates provided for the forward price of the Equity at the corresponding price in Prices.  These dates should be in the future with respect to the BaseDate.
    * @return dates
   **/
   @jakarta.annotation.Nonnull

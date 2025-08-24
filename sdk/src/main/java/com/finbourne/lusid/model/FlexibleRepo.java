@@ -150,7 +150,7 @@ public class FlexibleRepo extends LusidInstrument {
   }
 
    /**
-   * The maturity date of the instrument. This is the date at which the repurchase will occur for a TermRepo. Optional for OpenRepo, but if not provided, defaults to the StartDate plus a long period (e.g. 2099-12-31).
+   * The maturity date of the instrument. This is the date at which the repurchase will occur for a TermRepo.  Optional for OpenRepo, but if not provided, defaults to the StartDate plus a long period (e.g. 2099-12-31).
    * @return maturityDate
   **/
   @jakarta.annotation.Nullable
@@ -171,7 +171,7 @@ public class FlexibleRepo extends LusidInstrument {
   }
 
    /**
-   * Is the user the Buyer or the Seller of this repo? Every repo agreement has two sides, a buyer and a seller. The Buyer pays the PurchasePrice to the Seller in exchange for legal ownership of the collateral. At Maturity, the Buyer then receives the RepurchasePrice in exchange for returning legal ownership of the collateral. Controls the direction of purchase and repurchase cashflows, as well as the recipient of cashflows from the collateral.  Supported string (enumeration) values are: [Buyer, Seller].
+   * Is the user the Buyer or the Seller of this repo?  Every repo agreement has two sides, a buyer and a seller.  The Buyer pays the PurchasePrice to the Seller in exchange for legal ownership of the collateral.  At Maturity, the Buyer then receives the RepurchasePrice in exchange for returning legal ownership of the collateral.  Controls the direction of purchase and repurchase cashflows, as well as the recipient of cashflows from the collateral.    Supported string (enumeration) values are: [Buyer, Seller].
    * @return buyerOrSeller
   **/
   @jakarta.annotation.Nonnull
@@ -213,7 +213,7 @@ public class FlexibleRepo extends LusidInstrument {
   }
 
    /**
-   * The type of the repurchase agreement, Open or Term. If Term, the repurchase automatically takes place at Maturity. If Open, the agreement is rolled by the given tenor, and an interest cashflow is paid out with each roll, unless manually triggered by a FlexibleRepoFullClosureEvent.  Supported string (enumeration) values are: [OpenRepo, TermRepo].
+   * The type of the repurchase agreement, Open or Term.  If Term, the repurchase automatically takes place at Maturity.  If Open, the agreement is rolled by the given tenor, and an interest cashflow is paid out with each roll,  unless manually triggered by a FlexibleRepoFullClosureEvent.    Supported string (enumeration) values are: [OpenRepo, TermRepo].
    * @return repoType
   **/
   @jakarta.annotation.Nonnull
@@ -234,7 +234,7 @@ public class FlexibleRepo extends LusidInstrument {
   }
 
    /**
-   * For calculation of interest, the accrual day count to be used. Required if no RepoRateSchedules are provided. If both RepoRateSchedules and AccrualBasis are provided, then AccrualBasis will take precedence.  Supported string (enumeration) values are: [Actual360, Act360, MoneyMarket, Actual365, Act365, Thirty360, ThirtyU360, Bond, ThirtyE360, EuroBond, ActualActual, ActAct, ActActIsda, ActActIsma, ActActIcma, OneOne, Act364, Act365F, Act365L, Act365_25, Act252, Bus252, NL360, NL365, ActActAFB, Act365Cad, ThirtyActIsda, Thirty365Isda, ThirtyEActIsda, ThirtyE360Isda, ThirtyE365Isda, ThirtyU360EOM].
+   * For calculation of interest, the accrual day count to be used.  Required if no RepoRateSchedules are provided.  If both RepoRateSchedules and AccrualBasis are provided,  then AccrualBasis will take precedence.    Supported string (enumeration) values are: [Actual360, Act360, MoneyMarket, Actual365, Act365, Thirty360, ThirtyU360, Bond, ThirtyE360, EuroBond, ActualActual, ActAct, ActActIsda, ActActIsma, ActActIcma, OneOne, Act364, Act365F, Act365L, Act365_25, Act252, Bus252, NL360, NL365, ActActAFB, Act365Cad, ThirtyActIsda, Thirty365Isda, ThirtyEActIsda, ThirtyE360Isda, ThirtyE365Isda, ThirtyU360EOM].
    * @return accrualBasis
   **/
   @jakarta.annotation.Nullable
@@ -276,7 +276,7 @@ public class FlexibleRepo extends LusidInstrument {
   }
 
    /**
-   * Haircut on the value of the collateral, used to calculate PurchasePrice if not provided directly. Haircut or Margin should be specified if PurchasePrice is not specified.
+   * Haircut on the value of the collateral, used to calculate PurchasePrice if not provided directly.  Haircut or Margin should be specified if PurchasePrice is not specified.
    * @return haircut
   **/
   @jakarta.annotation.Nullable
@@ -297,7 +297,7 @@ public class FlexibleRepo extends LusidInstrument {
   }
 
    /**
-   * Initial margin on the value of the collateral, used to calculate PurchasePrice if not provided directly. Haircut or Margin should be specified if PurchasePrice is not specified.
+   * Initial margin on the value of the collateral, used to calculate PurchasePrice if not provided directly.  Haircut or Margin should be specified if PurchasePrice is not specified.
    * @return margin
   **/
   @jakarta.annotation.Nullable
@@ -318,7 +318,7 @@ public class FlexibleRepo extends LusidInstrument {
   }
 
    /**
-   * Required if the RepoType is Open. The tenor representing the mandatory roll period if the FlexibleRepo is not manually matured. If a user matures the FlexibleRepo via an instrument event, then the repurchase will delay until the end of this rolling period. Generally this is set to 1D (one day), i.e. the repurchase will occur on the same day as the instrument event, though any valid tenor is accepted with TenorUnit set to Day, Week, Month, or Year. Note that TenorUnit T is not accepted here.
+   * Required if the RepoType is Open.  The tenor representing the mandatory roll period if the FlexibleRepo is not manually matured.  If a user matures the FlexibleRepo via an instrument event, then the repurchase will delay until the end of this rolling period.  Generally this is set to 1D (one day), i.e. the repurchase will occur on the same day as the instrument event,  though any valid tenor is accepted with TenorUnit set to Day, Week, Month, or Year.  Note that TenorUnit T is not accepted here.
    * @return openRepoRollingPeriod
   **/
   @jakarta.annotation.Nullable
@@ -339,7 +339,7 @@ public class FlexibleRepo extends LusidInstrument {
   }
 
    /**
-   * The initial purchase price of the collateral. If provided directly in this field, then Collateral.CollateralValue, Haircut, and Margin should not be provided.
+   * The initial purchase price of the collateral.  If provided directly in this field, then Collateral.CollateralValue,  Haircut, and Margin should not be provided.
    * @return purchasePrice
   **/
   @jakarta.annotation.Nullable
@@ -368,7 +368,7 @@ public class FlexibleRepo extends LusidInstrument {
   }
 
    /**
-   * Schedules used to calculate the repurchase price and any interest payments on the FlexibleRepo. Only one schedule may be provided, and must be of type FixedSchedule or FloatSchedule. If RepoType is OpenRepo, a FixedSchedule or FloatSchedule must be provided to calculate the expected Repo Rate, and RepurchasePrice must be omitted. If RepoType is TermRepo, only one of RepurchasePrice and RepoRateSchedules should be provided. If a RepoRateSchedule is provided on a TermRepo, the PaymentFrequency in the FlowConventions should be 1T. StubType must be set to None, and no ExDividend configuration should be provided.
+   * Schedules used to calculate the repurchase price and any interest payments on the FlexibleRepo.  Only one schedule may be provided, and must be of type FixedSchedule or FloatSchedule.  If RepoType is OpenRepo, a FixedSchedule or FloatSchedule must be provided to calculate the expected Repo Rate,  and RepurchasePrice must be omitted.  If RepoType is TermRepo, only one of RepurchasePrice and RepoRateSchedules should be provided.  If a RepoRateSchedule is provided on a TermRepo, the PaymentFrequency in the FlowConventions should be 1T.  StubType must be set to None, and no ExDividend configuration should be provided.
    * @return repoRateSchedules
   **/
   @jakarta.annotation.Nullable
@@ -389,7 +389,7 @@ public class FlexibleRepo extends LusidInstrument {
   }
 
    /**
-   * The repurchase price of the repo, if known. Only one of RepurchasePrice and RepoRateSchedules should be provided. In the case of an OpenRepo, RepurchasePrice should not be provided, and RepoRateSchedules should be provided instead in order to calculate the RepoRate.
+   * The repurchase price of the repo, if known.  Only one of RepurchasePrice and RepoRateSchedules should be provided.  In the case of an OpenRepo, RepurchasePrice should not be provided,  and RepoRateSchedules should be provided instead in order to calculate the RepoRate.
    * @return repurchasePrice
   **/
   @jakarta.annotation.Nullable

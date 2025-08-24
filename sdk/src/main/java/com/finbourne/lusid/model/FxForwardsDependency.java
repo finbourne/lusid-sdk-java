@@ -47,7 +47,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Indicates a dependency on an FxForwardCurve. Identical to Fx dependencies in the meaning of domestic and foreign currencies, but describes a *set* of fx rates. These rates are quoted rates for fx forwards, which can be used to interpolate the forward rate at a specific time in the future. In the case of pips, the absolute rates can be expressed as rate &#x3D; spotFx + pips / pipsPerUnit
+ * Indicates a dependency on an FxForwardCurve.  Identical to Fx dependencies in the meaning of domestic and foreign currencies, but describes a *set* of fx rates.  These rates are quoted rates for fx forwards, which can be used to interpolate the forward rate at a specific time in the future.  In the case of pips, the absolute rates can be expressed as rate &#x3D; spotFx + pips / pipsPerUnit
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FxForwardsDependency extends EconomicDependency {
@@ -120,7 +120,7 @@ public class FxForwardsDependency extends EconomicDependency {
   }
 
    /**
-   * Used to describe the format in which the curve is expressed e.g. FxFwdCurve (general term to describe any representation), TenorFxFwdCurve, PipsFxFwdCurve.
+   * Used to describe the format in which the curve is expressed  e.g. FxFwdCurve (general term to describe any representation), TenorFxFwdCurve, PipsFxFwdCurve.
    * @return curveType
   **/
   @jakarta.annotation.Nonnull
@@ -141,7 +141,7 @@ public class FxForwardsDependency extends EconomicDependency {
   }
 
    /**
-   * The effectiveDate of the entity that this is a dependency for. Unless there is an obvious date this should be, like for a historic reset, then this is the valuation date.
+   * The effectiveDate of the entity that this is a dependency for.  Unless there is an obvious date this should be, like for a historic reset, then this is the valuation date.
    * @return date
   **/
   @jakarta.annotation.Nonnull

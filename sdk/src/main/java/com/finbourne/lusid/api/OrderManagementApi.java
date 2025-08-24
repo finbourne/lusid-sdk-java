@@ -579,7 +579,7 @@ public class OrderManagementApi {
 
     /**
      * [EARLY ACCESS] CancelOrders: Cancel existing orders
-     * The response returns both the collection of successfully canceled orders, as well as those that failed. For each failure, a reason is provided. It is important to check the failed set for unsuccessful results.
+     * The response returns both the collection of successfully canceled orders, as well as those  that failed. For each failure, a reason is provided. It is important to check the failed set for  unsuccessful results.
      * @param requestBody The request containing the ids of the orders to be cancelled. (required)
      * @return APIcancelOrdersRequest
      * @http.response.details
@@ -814,7 +814,7 @@ public class OrderManagementApi {
 
     /**
      * [EARLY ACCESS] CancelOrdersAndMoveRemaining: Cancel existing orders and move any unplaced quantities to new orders in new blocks
-     * Cancels existing orders, reducing their quantities to those aleady placed. Any remaining quantities are moved to new orders in new blocks. The placed quantities are distributed to the cancelled orders on a pro-rata basis.
+     * Cancels existing orders, reducing their quantities to those aleady placed. Any remaining quantities are moved  to new orders in new blocks. The placed quantities are distributed to the cancelled orders on a pro-rata basis.
      * @param requestBody The request containing the orders to be cancelled, and the destinations of remaining quantities. (required)
      * @return APIcancelOrdersAndMoveRemainingRequest
      * @http.response.details
@@ -1049,7 +1049,7 @@ public class OrderManagementApi {
 
     /**
      * [EARLY ACCESS] CancelPlacements: Cancel existing placements
-     * The response returns both the collection of successfully canceled placements, as well as those that failed. For each failure, a reason is provided. It is important to check the failed set for unsuccessful results.
+     * The response returns both the collection of successfully canceled placements, as well as those  that failed. For each failure, a reason is provided. It is important to check the failed set for  unsuccessful results.
      * @param requestBody The request containing the ids of the placements to be cancelled. (required)
      * @return APIcancelPlacementsRequest
      * @http.response.details
@@ -1284,7 +1284,7 @@ public class OrderManagementApi {
 
     /**
      * CreateOrders: Upsert a Block and associated orders
-     * Create orders, and blocks if they don&#39;t already exist. This will fail if the block exists and already references orders with differing blocking fields.
+     * Create orders, and blocks if they don&#39;t already exist.  This will fail if the block exists and already references orders with differing blocking fields.
      * @param blockAndOrdersCreateRequest The collection of block and orders requests. (required)
      * @return APIcreateOrdersRequest
      * @http.response.details
@@ -1411,7 +1411,7 @@ public class OrderManagementApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the history of the order and related entities. Defaults  to return the latest version if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the history of the order and related entities. Defaults   to return the latest version if not specified. (optional)
          * @return APIgetOrderHistoryRequest
          */
         public APIgetOrderHistoryRequest asAt(OffsetDateTime asAt) {
@@ -1783,7 +1783,7 @@ public class OrderManagementApi {
 
     /**
      * [EARLY ACCESS] MoveOrders: Move orders to new or existing block
-     * Move an order to a block, creating the block if it does not already exist.  This will fail if the block exists and already references orders with differing fields to the upsert request.
+     * Move an order to a block, creating the block if it does not already exist.   This will fail if the block exists and already references orders with differing fields to the upsert request.
      * @param moveOrdersToDifferentBlocksRequest The collection of order and destination block ids. (required)
      * @return APImoveOrdersRequest
      * @http.response.details
@@ -2143,7 +2143,7 @@ public class OrderManagementApi {
 
         /**
          * Set allocationAlgorithm
-         * @param allocationAlgorithm A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-FIFO\&quot;. This defaults to \&quot;PR-FIFO\&quot;. (optional)
+         * @param allocationAlgorithm A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-FIFO\&quot;.  This defaults to \&quot;PR-FIFO\&quot;. (optional)
          * @return APIrunAllocationServiceRequest
          */
         public APIrunAllocationServiceRequest allocationAlgorithm(String allocationAlgorithm) {
@@ -2506,7 +2506,7 @@ public class OrderManagementApi {
 
     /**
      * [EXPERIMENTAL] SweepBlocks: Sweeps specified blocks, for each block that meets the requirements. The request may be partially successful.
-     * The requirements are: &lt;list type&#x3D;\&quot;bullet\&quot;&gt;&lt;term&gt;The block exists.&lt;/term&gt;&lt;term&gt;All orders have state \&quot;Closed\&quot;, \&quot;Cancelled\&quot;, \&quot;Canceled\&quot; or \&quot;Booked\&quot;.&lt;/term&gt;&lt;term&gt;All placements have state \&quot;Allocated\&quot; or \&quot;Over-allocated\&quot;.&lt;/term&gt;&lt;term&gt;All allocations have state \&quot;Closed\&quot;, \&quot;Cancelled\&quot;, \&quot;Canceled\&quot; or \&quot;Booked\&quot;.&lt;/term&gt;&lt;term&gt;No execution or allocation has been modified since the passed LatestAllowableModificationTime.&lt;/term&gt;&lt;/list&gt;
+     * The requirements are:  &lt;list type&#x3D;\&quot;bullet\&quot;&gt;&lt;term&gt;The block exists.&lt;/term&gt;&lt;term&gt;All orders have state \&quot;Closed\&quot;, \&quot;Cancelled\&quot;, \&quot;Canceled\&quot; or \&quot;Booked\&quot;.&lt;/term&gt;&lt;term&gt;All placements have state \&quot;Allocated\&quot; or \&quot;Over-allocated\&quot;.&lt;/term&gt;&lt;term&gt;All allocations have state \&quot;Closed\&quot;, \&quot;Cancelled\&quot;, \&quot;Canceled\&quot; or \&quot;Booked\&quot;.&lt;/term&gt;&lt;term&gt;No execution or allocation has been modified since the passed LatestAllowableModificationTime.&lt;/term&gt;&lt;/list&gt;
      * @param sweepBlocksRequest  (required)
      * @return APIsweepBlocksRequest
      * @http.response.details
@@ -2741,7 +2741,7 @@ public class OrderManagementApi {
 
     /**
      * [EARLY ACCESS] UpdateOrders: Update existing orders
-     * The response returns both the collection of successfully updated orders, as well as those that failed. For each failure, a reason is provided. It is important to check the failed set for unsuccessful results.
+     * The response returns both the collection of successfully updated orders, as well as those  that failed. For each failure, a reason is provided. It is important to check the failed set for  unsuccessful results.
      * @param requestBody The request containing the orders to be updated. (required)
      * @return APIupdateOrdersRequest
      * @http.response.details
@@ -2976,7 +2976,7 @@ public class OrderManagementApi {
 
     /**
      * [EARLY ACCESS] UpdatePlacements: Update existing placements
-     * The response returns both the collection of successfully updated placements, as well as those that failed. For each failure, a reason is provided. It is important to check the failed set for unsuccessful results.
+     * The response returns both the collection of successfully updated placements, as well as those  that failed. For each failure, a reason is provided. It is important to check the failed set for  unsuccessful results.
      * @param requestBody The request containing the placements to be updated. (required)
      * @return APIupdatePlacementsRequest
      * @http.response.details

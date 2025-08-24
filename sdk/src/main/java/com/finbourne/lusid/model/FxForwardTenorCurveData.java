@@ -174,7 +174,7 @@ public class FxForwardTenorCurveData extends ComplexMarketData {
   }
 
    /**
-   * Tenors for which the forward rates apply. For more information on tenors, see [knowledge base article KA-02097](https://support.lusid.com/knowledgebase/article/KA-02097)
+   * Tenors for which the forward rates apply.  For more information on tenors, see [knowledge base article KA-02097](https://support.lusid.com/knowledgebase/article/KA-02097)
    * @return tenors
   **/
   @jakarta.annotation.Nonnull
@@ -295,7 +295,7 @@ public class FxForwardTenorCurveData extends ComplexMarketData {
   }
 
    /**
-   * Configures how to calculate the spot date from the build date using the Calendars provided. Supported string (enumeration) values are: [ SingleCalendar, UnionCalendars ]
+   * Configures how to calculate the spot date from the build date using the Calendars provided.  Supported string (enumeration) values are: [ SingleCalendar, UnionCalendars ]
    * @return spotDaysCalculationType
   **/
   @jakarta.annotation.Nullable

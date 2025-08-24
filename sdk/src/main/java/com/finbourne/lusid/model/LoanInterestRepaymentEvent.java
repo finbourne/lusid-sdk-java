@@ -149,7 +149,7 @@ public class LoanInterestRepaymentEvent extends InstrumentEvent {
   }
 
    /**
-   * Fraction of the accrued on the holding to be repaid. Must be between 0 and 1, inclusive. Defaults to 1 if not set.
+   * Fraction of the accrued on the holding to be repaid. Must be between 0 and 1, inclusive.  Defaults to 1 if not set.
    * @return fraction
   **/
   @jakarta.annotation.Nullable
@@ -178,7 +178,7 @@ public class LoanInterestRepaymentEvent extends InstrumentEvent {
   }
 
    /**
-   * Election for controlling whether the interest is paid automatically or not. Exactly one election must be provided.
+   * Election for controlling whether the interest is paid automatically or not.  Exactly one election must be provided.
    * @return lapseElections
   **/
   @jakarta.annotation.Nullable

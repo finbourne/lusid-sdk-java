@@ -195,7 +195,7 @@ public class AggregateSpec {
   }
 
    /**
-   * Additional options to apply when performing computations. Options that do not apply to the Key will be ignored. Option values can be boolean, numeric, string or date-time.
+   * Additional options to apply when performing computations. Options that do not apply to the Key will be  ignored. Option values can be boolean, numeric, string or date-time.
    * @return options
   **/
   @jakarta.annotation.Nullable

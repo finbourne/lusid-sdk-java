@@ -48,7 +48,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * The language/format of a translatable entity. Entities can be LUSID native or external and the Dialect describes 1) the system that understands the entity and 2) applicable validation for the entity, in the form of a schema.
+ * The language/format of a translatable entity. Entities can be LUSID native or external and the Dialect describes  1) the system that understands the entity and  2) applicable validation for the entity, in the form of a schema.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Dialect {

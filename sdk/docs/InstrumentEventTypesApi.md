@@ -62,7 +62,7 @@ public class InstrumentEventTypesApiExample {
 
         InstrumentEventTypesApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentEventTypesApi.class);
         String instrumentEventType = "instrumentEventType_example"; // String | The type of instrument events that the template is applied to.
-        String instrumentType = "instrumentType_example"; // String | The instrument type of the transaction template. The combination of the instrument  event type, instrument type and scope uniquely identifies a transaction template
+        String instrumentType = "instrumentType_example"; // String | The instrument type of the transaction template. The combination of the instrument   event type, instrument type and scope uniquely identifies a transaction template
         String scope = "scope_example"; // String | The scope in which the template lies.
         TransactionTemplateRequest transactionTemplateRequest = new TransactionTemplateRequest(); // TransactionTemplateRequest | A request defining a new transaction template to be created.
         try {
@@ -87,7 +87,7 @@ public class InstrumentEventTypesApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **instrumentEventType** | **String**| The type of instrument events that the template is applied to. | |
-| **instrumentType** | **String**| The instrument type of the transaction template. The combination of the instrument  event type, instrument type and scope uniquely identifies a transaction template | |
+| **instrumentType** | **String**| The instrument type of the transaction template. The combination of the instrument   event type, instrument type and scope uniquely identifies a transaction template | |
 | **scope** | **String**| The scope in which the template lies. | |
 | **transactionTemplateRequest** | [**TransactionTemplateRequest**](TransactionTemplateRequest.md)| A request defining a new transaction template to be created. | |
 
@@ -159,7 +159,7 @@ public class InstrumentEventTypesApiExample {
 
         InstrumentEventTypesApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentEventTypesApi.class);
         String instrumentEventType = "instrumentEventType_example"; // String | The type of instrument events that the template is applied to.
-        String instrumentType = "instrumentType_example"; // String | The instrument type of the transaction template. The combination of the instrument  event type, instrument type and scope uniquely identifies a transaction template
+        String instrumentType = "instrumentType_example"; // String | The instrument type of the transaction template. The combination of the instrument   event type, instrument type and scope uniquely identifies a transaction template
         String scope = "scope_example"; // String | The scope of the template.
         try {
             // uncomment the below to set overrides at the request level
@@ -183,7 +183,7 @@ public class InstrumentEventTypesApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **instrumentEventType** | **String**| The type of instrument events that the template is applied to. | |
-| **instrumentType** | **String**| The instrument type of the transaction template. The combination of the instrument  event type, instrument type and scope uniquely identifies a transaction template | |
+| **instrumentType** | **String**| The instrument type of the transaction template. The combination of the instrument   event type, instrument type and scope uniquely identifies a transaction template | |
 | **scope** | **String**| The scope of the template. | |
 
 ### Return type
@@ -254,7 +254,7 @@ public class InstrumentEventTypesApiExample {
 
         InstrumentEventTypesApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentEventTypesApi.class);
         String instrumentEventType = "instrumentEventType_example"; // String | The instrument event type of the transaction template
-        String instrumentType = "instrumentType_example"; // String | The instrument type of the transaction template. The combination of the instrument  event type, instrument type and scope uniquely identifies a transaction template
+        String instrumentType = "instrumentType_example"; // String | The instrument type of the transaction template. The combination of the instrument   event type, instrument type and scope uniquely identifies a transaction template
         String scope = "scope_example"; // String | The scope in which the template lies. When not supplied the scope is 'default'.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The AsAt time of the requested Transaction Template
         try {
@@ -279,7 +279,7 @@ public class InstrumentEventTypesApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **instrumentEventType** | **String**| The instrument event type of the transaction template | |
-| **instrumentType** | **String**| The instrument type of the transaction template. The combination of the instrument  event type, instrument type and scope uniquely identifies a transaction template | |
+| **instrumentType** | **String**| The instrument type of the transaction template. The combination of the instrument   event type, instrument type and scope uniquely identifies a transaction template | |
 | **scope** | **String**| The scope in which the template lies. When not supplied the scope is &#39;default&#39;. | |
 | **asAt** | **OffsetDateTime**| The AsAt time of the requested Transaction Template | [optional] |
 
@@ -442,9 +442,9 @@ public class InstrumentEventTypesApiExample {
 
         InstrumentEventTypesApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentEventTypesApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | AsAt of the request
-        String page = "page_example"; // String | The pagination token to use to continue listing Transaction Template Specifications from  a previous call to list Transaction Template Specifications.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt  fields must not have changed since the original request.
+        String page = "page_example"; // String | The pagination token to use to continue listing Transaction Template Specifications from   a previous call to list Transaction Template Specifications.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt   fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
-        String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid.
+        String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names to sort by, each suffixed by \" ASC\" or \" DESC\".
         try {
             // uncomment the below to set overrides at the request level
@@ -468,9 +468,9 @@ public class InstrumentEventTypesApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| AsAt of the request | [optional] |
-| **page** | **String**| The pagination token to use to continue listing Transaction Template Specifications from  a previous call to list Transaction Template Specifications.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt  fields must not have changed since the original request. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing Transaction Template Specifications from   a previous call to list Transaction Template Specifications.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt   fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional] |
-| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. | [optional] |
 
 ### Return type
@@ -541,9 +541,9 @@ public class InstrumentEventTypesApiExample {
 
         InstrumentEventTypesApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentEventTypesApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The AsAt time at which to retrieve the Transaction Templates
-        String page = "page_example"; // String | The pagination token to use to continue listing Transaction Templates from a previous call to list Transaction Templates.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, limit, and asAt fields  must not have changed since the original request.
+        String page = "page_example"; // String | The pagination token to use to continue listing Transaction Templates from a previous call to list Transaction Templates.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, limit, and asAt fields   must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
-        String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid.
+        String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names to sort by, each suffixed by \" ASC\" or \" DESC\"
         try {
             // uncomment the below to set overrides at the request level
@@ -567,9 +567,9 @@ public class InstrumentEventTypesApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| The AsAt time at which to retrieve the Transaction Templates | [optional] |
-| **page** | **String**| The pagination token to use to continue listing Transaction Templates from a previous call to list Transaction Templates.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, limit, and asAt fields  must not have changed since the original request. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing Transaction Templates from a previous call to list Transaction Templates.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, limit, and asAt fields   must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional] |
-| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
 
 ### Return type
@@ -640,7 +640,7 @@ public class InstrumentEventTypesApiExample {
 
         InstrumentEventTypesApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentEventTypesApi.class);
         String instrumentEventType = "instrumentEventType_example"; // String | The type of instrument events that the template is applied to.
-        String instrumentType = "instrumentType_example"; // String | The instrument type of the transaction template. The combination of the instrument  event type, instrument type and scope uniquely identifies a transaction template
+        String instrumentType = "instrumentType_example"; // String | The instrument type of the transaction template. The combination of the instrument   event type, instrument type and scope uniquely identifies a transaction template
         String scope = "scope_example"; // String | The scope in which the template lies.
         TransactionTemplateRequest transactionTemplateRequest = new TransactionTemplateRequest(); // TransactionTemplateRequest | A request defining the updated values for the transaction template.
         try {
@@ -665,7 +665,7 @@ public class InstrumentEventTypesApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **instrumentEventType** | **String**| The type of instrument events that the template is applied to. | |
-| **instrumentType** | **String**| The instrument type of the transaction template. The combination of the instrument  event type, instrument type and scope uniquely identifies a transaction template | |
+| **instrumentType** | **String**| The instrument type of the transaction template. The combination of the instrument   event type, instrument type and scope uniquely identifies a transaction template | |
 | **scope** | **String**| The scope in which the template lies. | |
 | **transactionTemplateRequest** | [**TransactionTemplateRequest**](TransactionTemplateRequest.md)| A request defining the updated values for the transaction template. | |
 

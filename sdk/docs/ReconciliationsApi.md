@@ -11,7 +11,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**getReconciliationMapping**](ReconciliationsApi.md#getReconciliationMapping) | **GET** /api/portfolios/mapping/{scope}/{code} | [EARLY ACCESS] GetReconciliationMapping: Get a mapping |
 | [**listReconciliationMappings**](ReconciliationsApi.md#listReconciliationMappings) | **GET** /api/portfolios/mapping | [EARLY ACCESS] ListReconciliationMappings: List the reconciliation mappings |
 | [**listReconciliations**](ReconciliationsApi.md#listReconciliations) | **GET** /api/portfolios/$scheduledReconciliations | [EXPERIMENTAL] ListReconciliations: List scheduled reconciliations |
-| [**reconcileGeneric**](ReconciliationsApi.md#reconcileGeneric) | **POST** /api/portfolios/$reconcileGeneric | ReconcileGeneric: Reconcile either holdings or valuations performed on one or two sets of holdings using one or two configuration recipes.   The output is configurable for various types of comparisons, to allow tolerances on numerical and date-time data or case-insensitivity on strings, and elision of resulting differences where they are &#39;empty&#39; or null or zero. |
+| [**reconcileGeneric**](ReconciliationsApi.md#reconcileGeneric) | **POST** /api/portfolios/$reconcileGeneric | ReconcileGeneric: Reconcile either holdings or valuations performed on one or two sets of holdings using one or two configuration recipes.     The output is configurable for various types of comparisons, to allow tolerances on numerical and date-time data or case-insensitivity on strings,  and elision of resulting differences where they are &#39;empty&#39; or null or zero. |
 | [**reconcileHoldings**](ReconciliationsApi.md#reconcileHoldings) | **POST** /api/portfolios/$reconcileholdings | [EARLY ACCESS] ReconcileHoldings: Reconcile portfolio holdings |
 | [**reconcileInline**](ReconciliationsApi.md#reconcileInline) | **POST** /api/portfolios/$reconcileInline | ReconcileInline: Reconcile valuations performed on one or two sets of inline instruments using one or two configuration recipes. |
 | [**reconcileTransactions**](ReconciliationsApi.md#reconcileTransactions) | **POST** /api/portfolios/$reconcileTransactions | [EARLY ACCESS] ReconcileTransactions: Perform a Transactions Reconciliation. |
@@ -352,7 +352,7 @@ public class ReconciliationsApiExample {
         String code = "code_example"; // String | The code of the scheduled reconciliation
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the scheduled reconciliation. Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the scheduled reconciliation. Defaults to returning the latest version of the reconciliation if not specified.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Reconciliation' property domain to decorate onto the reconciliation.  These must take the form {domain}/{scope}/{code}, for example 'Reconciliation/Broker/Id'.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Reconciliation' property domain to decorate onto the reconciliation.   These must take the form {domain}/{scope}/{code}, for example 'Reconciliation/Broker/Id'.
         try {
             // uncomment the below to set overrides at the request level
             // Reconciliation result = apiInstance.getReconciliation(scope, code, effectiveAt, asAt, propertyKeys).execute(opts);
@@ -378,7 +378,7 @@ public class ReconciliationsApiExample {
 | **code** | **String**| The code of the scheduled reconciliation | |
 | **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the scheduled reconciliation. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the scheduled reconciliation. Defaults to returning the latest version of the reconciliation if not specified. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Reconciliation&#39; property domain to decorate onto the reconciliation.  These must take the form {domain}/{scope}/{code}, for example &#39;Reconciliation/Broker/Id&#39;. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Reconciliation&#39; property domain to decorate onto the reconciliation.   These must take the form {domain}/{scope}/{code}, for example &#39;Reconciliation/Broker/Id&#39;. | [optional] |
 
 ### Return type
 
@@ -540,7 +540,7 @@ public class ReconciliationsApiExample {
         // ReconciliationsApi apiInstance = apiFactory.build(ReconciliationsApi.class);
 
         ReconciliationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ReconciliationsApi.class);
-        String reconciliationType = "reconciliationType_example"; // String | Optional parameter to specify which type of mappings should be returned. Defaults to Transaction if not provided.
+        String reconciliationType = "reconciliationType_example"; // String | Optional parameter to specify which type of mappings should be returned.  Defaults to Transaction if not provided.
         try {
             // uncomment the below to set overrides at the request level
             // ResourceListOfMapping result = apiInstance.listReconciliationMappings(reconciliationType).execute(opts);
@@ -562,7 +562,7 @@ public class ReconciliationsApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **reconciliationType** | **String**| Optional parameter to specify which type of mappings should be returned. Defaults to Transaction if not provided. | [optional] |
+| **reconciliationType** | **String**| Optional parameter to specify which type of mappings should be returned.  Defaults to Transaction if not provided. | [optional] |
 
 ### Return type
 
@@ -631,12 +631,12 @@ public class ReconciliationsApiExample {
         // ReconciliationsApi apiInstance = apiFactory.build(ReconciliationsApi.class);
 
         ReconciliationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ReconciliationsApi.class);
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the TimeVariant properties for the reconciliation. Defaults to the current LUSID  system datetime if not specified.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the reconciliation. Defaults to returning the latest version  of each reconciliation if not specified.
-        String page = "page_example"; // String | The pagination token to use to continue listing reconciliations; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the TimeVariant properties for the reconciliation. Defaults to the current LUSID   system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the reconciliation. Defaults to returning the latest version   of each reconciliation if not specified.
+        String page = "page_example"; // String | The pagination token to use to continue listing reconciliations; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
-        String filter = "filter_example"; // String | Expression to filter the results.  For example, to filter on the reconciliation type, specify \"id.Code eq '001'\". For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Reconciliation' domain to decorate onto each reconciliation.  These must take the format {domain}/{scope}/{code}, for example 'Reconciliation/Broker/Id'.
+        String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the reconciliation type, specify \"id.Code eq '001'\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Reconciliation' domain to decorate onto each reconciliation.   These must take the format {domain}/{scope}/{code}, for example 'Reconciliation/Broker/Id'.
         try {
             // uncomment the below to set overrides at the request level
             // PagedResourceListOfReconciliation result = apiInstance.listReconciliations(effectiveAt, asAt, page, limit, filter, propertyKeys).execute(opts);
@@ -658,12 +658,12 @@ public class ReconciliationsApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **effectiveAt** | **String**| The effective datetime or cut label at which to list the TimeVariant properties for the reconciliation. Defaults to the current LUSID  system datetime if not specified. | [optional] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the reconciliation. Defaults to returning the latest version  of each reconciliation if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing reconciliations; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list the TimeVariant properties for the reconciliation. Defaults to the current LUSID   system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the reconciliation. Defaults to returning the latest version   of each reconciliation if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing reconciliations; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results.  For example, to filter on the reconciliation type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Reconciliation&#39; domain to decorate onto each reconciliation.  These must take the format {domain}/{scope}/{code}, for example &#39;Reconciliation/Broker/Id&#39;. | [optional] |
+| **filter** | **String**| Expression to filter the results.   For example, to filter on the reconciliation type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Reconciliation&#39; domain to decorate onto each reconciliation.   These must take the format {domain}/{scope}/{code}, for example &#39;Reconciliation/Broker/Id&#39;. | [optional] |
 
 ### Return type
 
@@ -689,9 +689,9 @@ public class ReconciliationsApiExample {
 
 > ReconciliationResponse reconcileGeneric(reconciliationRequest)
 
-ReconcileGeneric: Reconcile either holdings or valuations performed on one or two sets of holdings using one or two configuration recipes.   The output is configurable for various types of comparisons, to allow tolerances on numerical and date-time data or case-insensitivity on strings, and elision of resulting differences where they are &#39;empty&#39; or null or zero.
+ReconcileGeneric: Reconcile either holdings or valuations performed on one or two sets of holdings using one or two configuration recipes.     The output is configurable for various types of comparisons, to allow tolerances on numerical and date-time data or case-insensitivity on strings,  and elision of resulting differences where they are &#39;empty&#39; or null or zero.
 
-Perform evaluation of one or two set of holdings (a portfolio of instruments) using one or two (potentially different) configuration recipes. Produce a breakdown of the resulting differences in evaluation that can be iterated through.
+Perform evaluation of one or two set of holdings (a portfolio of instruments) using one or two (potentially different) configuration recipes.  Produce a breakdown of the resulting differences in evaluation that can be iterated through.
 
 ### Example
 
@@ -825,7 +825,7 @@ public class ReconciliationsApiExample {
         ReconciliationsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ReconciliationsApi.class);
         List<String> sortBy = Arrays.asList(); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
         Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
-        String filter = "filter_example"; // String | Optional. Expression to filter the result set.  For example, to filter on the left portfolio Code, use \"left.portfolioId.code eq 'string'\"  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        String filter = "filter_example"; // String | Optional. Expression to filter the result set.   For example, to filter on the left portfolio Code, use \"left.portfolioId.code eq 'string'\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         PortfoliosReconciliationRequest portfoliosReconciliationRequest = new PortfoliosReconciliationRequest(); // PortfoliosReconciliationRequest | The specifications of the inputs to the reconciliation
         try {
             // uncomment the below to set overrides at the request level
@@ -850,7 +850,7 @@ public class ReconciliationsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional] |
 | **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional] |
-| **filter** | **String**| Optional. Expression to filter the result set.  For example, to filter on the left portfolio Code, use \&quot;left.portfolioId.code eq &#39;string&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **filter** | **String**| Optional. Expression to filter the result set.   For example, to filter on the left portfolio Code, use \&quot;left.portfolioId.code eq &#39;string&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 | **portfoliosReconciliationRequest** | [**PortfoliosReconciliationRequest**](PortfoliosReconciliationRequest.md)| The specifications of the inputs to the reconciliation | [optional] |
 
 ### Return type
@@ -970,7 +970,7 @@ public class ReconciliationsApiExample {
 
 [EARLY ACCESS] ReconcileTransactions: Perform a Transactions Reconciliation.
 
-Evaluates two sets of transactions to determine which transactions from each set likely match using the rules of a specified mapping.
+Evaluates two sets of transactions to determine which transactions from each set likely match  using the rules of a specified mapping.
 
 ### Example
 
@@ -1061,7 +1061,7 @@ public class ReconciliationsApiExample {
 
 [EXPERIMENTAL] ReconcileTransactionsV2: Perform a Transactions Reconciliation.
 
-Evaluates two sets of transactions to determine which transactions from each set likely match using the rules of a specified mapping.
+Evaluates two sets of transactions to determine which transactions from each set likely match  using the rules of a specified mapping.
 
 ### Example
 
@@ -1338,7 +1338,7 @@ public class ReconciliationsApiExample {
 
 [EARLY ACCESS] UpsertReconciliationMapping: Create or update a mapping
 
-If no mapping exists with the specified scope and code will create a new one. Else will update the existing mapping
+If no mapping exists with the specified scope and code will create a new one.  Else will update the existing mapping
 
 ### Example
 

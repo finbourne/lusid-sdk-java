@@ -695,7 +695,7 @@ public class ReferenceListsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing Reference Lists from a previous call to list Reference Lists.  This value is returned from the previous call. If a pagination token is provided, the filter, limit and asAt fields  must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing Reference Lists from a previous call to list Reference Lists.   This value is returned from the previous call. If a pagination token is provided, the filter, limit and asAt fields   must not have changed since the original request. (optional)
          * @return APIlistReferenceListsRequest
          */
         public APIlistReferenceListsRequest page(String page) {
@@ -715,7 +715,7 @@ public class ReferenceListsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIlistReferenceListsRequest
          */
         public APIlistReferenceListsRequest filter(String filter) {

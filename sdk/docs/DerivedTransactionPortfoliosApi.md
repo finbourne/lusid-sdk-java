@@ -150,7 +150,7 @@ public class DerivedTransactionPortfoliosApiExample {
 
         DerivedTransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(DerivedTransactionPortfoliosApi.class);
         String scope = "scope_example"; // String | The scope of the derived transaction portfolio.
-        String code = "code_example"; // String | The code of the derived transaction portfolio. Together with the scope this uniquely identifies  the derived transaction portfolio.
+        String code = "code_example"; // String | The code of the derived transaction portfolio. Together with the scope this uniquely identifies   the derived transaction portfolio.
         String effectiveAt = "effectiveAt_example"; // String | The effective date of the change.
         try {
             // uncomment the below to set overrides at the request level
@@ -174,7 +174,7 @@ public class DerivedTransactionPortfoliosApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the derived transaction portfolio. | |
-| **code** | **String**| The code of the derived transaction portfolio. Together with the scope this uniquely identifies  the derived transaction portfolio. | |
+| **code** | **String**| The code of the derived transaction portfolio. Together with the scope this uniquely identifies   the derived transaction portfolio. | |
 | **effectiveAt** | **String**| The effective date of the change. | [optional] |
 
 ### Return type

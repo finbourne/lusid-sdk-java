@@ -48,7 +48,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Entity to capture the calculable and queryable methods and practices of determining and transferring collateral to a counterparty as part of margining of transactions. These typically come from a particular ISDA agreement that is in place between the two counterparties.
+ * Entity to capture the calculable and queryable methods and practices of determining and transferring collateral  to a counterparty as part of margining of transactions. These typically come from a particular ISDA agreement  that is in place between the two counterparties.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreditSupportAnnex {
@@ -102,7 +102,7 @@ public class CreditSupportAnnex {
   }
 
    /**
-   * The base, or reference, currency against which MtM value and exposure should be calculated and in which the CSA parameters are defined if the currency is not otherwise explicitly stated.
+   * The base, or reference, currency against which MtM value and exposure should be calculated  and in which the CSA parameters are defined if the currency is not otherwise explicitly stated.
    * @return referenceCurrency
   **/
   @jakarta.annotation.Nonnull
@@ -152,7 +152,7 @@ public class CreditSupportAnnex {
   }
 
    /**
-   * The transactions will take place with reference to a particular ISDA master agreement. This will likely be either the ISDA 1992 or ISDA 2002 agremeents or ISDA close-out 2009.
+   * The transactions will take place with reference to a particular ISDA master agreement. This  will likely be either the ISDA 1992 or ISDA 2002 agremeents or ISDA close-out 2009.
    * @return isdaAgreementVersion
   **/
   @jakarta.annotation.Nonnull
@@ -173,7 +173,7 @@ public class CreditSupportAnnex {
   }
 
    /**
-   * The tenor, e.g. daily (1D) or biweekly (2W), at which frequency a margin call will be made, calculations made and money transferred to readjust. The calculation might also require a specific time for valuation and notification.
+   * The tenor, e.g. daily (1D) or biweekly (2W), at which frequency a margin call will be made, calculations  made and money transferred to readjust. The calculation might also require a specific time for valuation and notification.
    * @return marginCallFrequency
   **/
   @jakarta.annotation.Nonnull
@@ -215,7 +215,7 @@ public class CreditSupportAnnex {
   }
 
    /**
-   * At what level of exposure does collateral need to be posted. Will typically be zero for banks. Should be stated in reference currency
+   * At what level of exposure does collateral need to be posted. Will typically be zero for banks.  Should be stated in reference currency
    * @return thresholdAmount
   **/
   @jakarta.annotation.Nonnull
@@ -236,7 +236,7 @@ public class CreditSupportAnnex {
   }
 
    /**
-   * Where a calculation needs to be rounded to a specific number of decimal places, this states the number that that requires.
+   * Where a calculation needs to be rounded to a specific number of decimal places,  this states the number that that requires.
    * @return roundingDecimalPlaces
   **/
   @jakarta.annotation.Nonnull

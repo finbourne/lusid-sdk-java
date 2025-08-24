@@ -204,7 +204,7 @@ public class InstrumentEventsApi {
 
         /**
          * Set limit
-         * @param limit Optional. When paginating, limit the number of returned results to this many. If not specified, a default of 100 is used. (optional, default to 100)
+         * @param limit Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 100 is used. (optional, default to 100)
          * @return APIqueryApplicableInstrumentEventsRequest
          */
         public APIqueryApplicableInstrumentEventsRequest limit(Integer limit) {
@@ -214,7 +214,7 @@ public class InstrumentEventsApi {
 
         /**
          * Set page
-         * @param page Optional. The pagination token to use to continue listing items from a previous call. Page values are return from list calls, and must be supplied exactly as returned. Additionally, when specifying this (optional)
+         * @param page Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this (optional)
          * @return APIqueryApplicableInstrumentEventsRequest
          */
         public APIqueryApplicableInstrumentEventsRequest page(String page) {
@@ -710,7 +710,7 @@ public class InstrumentEventsApi {
 
         /**
          * Set limit
-         * @param limit Optional. When paginating, limit the number of returned results to this many. If not specified, a default of 1000 is used. (optional, default to 1000)
+         * @param limit Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used. (optional, default to 1000)
          * @return APIqueryCashFlowsRequest
          */
         public APIqueryCashFlowsRequest limit(Integer limit) {
@@ -720,7 +720,7 @@ public class InstrumentEventsApi {
 
         /**
          * Set page
-         * @param page Optional. The pagination token to use to continue listing items from a previous call. Page values are return from list calls, and must be supplied exactly as returned. Additionally, when specifying this value, queryBody, and limit must not be modified. (optional)
+         * @param page Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, queryBody, and limit must not  be modified. (optional)
          * @return APIqueryCashFlowsRequest
          */
         public APIqueryCashFlowsRequest page(String page) {
@@ -978,7 +978,7 @@ public class InstrumentEventsApi {
 
         /**
          * Set limit
-         * @param limit Optional. When paginating, limit the number of returned results to this many. If not specified, a default of 1000 is used. (optional, default to 1000)
+         * @param limit Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used. (optional, default to 1000)
          * @return APIqueryInstrumentEventsRequest
          */
         public APIqueryInstrumentEventsRequest limit(Integer limit) {
@@ -988,7 +988,7 @@ public class InstrumentEventsApi {
 
         /**
          * Set page
-         * @param page Optional. The pagination token to use to continue listing items from a previous call. Page values are return from list calls, and must be supplied exactly as returned. Additionally, when specifying this value, queryBody, and limit must not be modified. (optional)
+         * @param page Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, queryBody, and limit must not  be modified. (optional)
          * @return APIqueryInstrumentEventsRequest
          */
         public APIqueryInstrumentEventsRequest page(String page) {
@@ -1246,7 +1246,7 @@ public class InstrumentEventsApi {
 
         /**
          * Set limit
-         * @param limit Optional. When paginating, limit the number of returned results to this many. If not specified, a default of 1000 is used. (optional, default to 1000)
+         * @param limit Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used. (optional, default to 1000)
          * @return APIqueryTradeTicketsRequest
          */
         public APIqueryTradeTicketsRequest limit(Integer limit) {
@@ -1256,7 +1256,7 @@ public class InstrumentEventsApi {
 
         /**
          * Set page
-         * @param page Optional. The pagination token to use to continue listing items from a previous call. Page values are return from list calls, and must be supplied exactly as returned. Additionally, when specifying this value, queryBody, and limit must not be modified. (optional)
+         * @param page Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, queryBody, and limit must not  be modified. (optional)
          * @return APIqueryTradeTicketsRequest
          */
         public APIqueryTradeTicketsRequest page(String page) {
@@ -1394,7 +1394,7 @@ public class InstrumentEventsApi {
 
     /**
      * QueryTradeTickets: Returns a list of trade tickets based on the holdings of the portfolios and date range specified in the query.
-     * Returns a list of trade tickets based on the holdings of the portfolios and date range specified in the query.  These trade tickets are derived from events that involve transition of instrument states, such as transitions on exercise or default of an instrument. The trade tickets are to allow the new position to be created given the existing portfolio configuration.
+     * Returns a list of trade tickets based on the holdings of the portfolios and date range specified in the query.    These trade tickets are derived from events that involve transition of instrument states, such as transitions  on exercise or default of an instrument. The trade tickets are to allow the new position to be created given the  existing portfolio configuration.
      * @return APIqueryTradeTicketsRequest
      * @http.response.details
      <table summary="Response Details" border="1">

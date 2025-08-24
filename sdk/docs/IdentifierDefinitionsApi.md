@@ -109,7 +109,7 @@ public class IdentifierDefinitionsApiExample {
 
 [EXPERIMENTAL] DeleteIdentifierDefinition: Delete a particular Identifier Definition
 
-The deletion will take effect from the Identifier Definition deletion datetime. i.e. will no longer exist at any asAt datetime after the asAt datetime of deletion.
+The deletion will take effect from the Identifier Definition deletion datetime.  i.e. will no longer exist at any asAt datetime after the asAt datetime of deletion.
 
 ### Example
 
@@ -204,7 +204,7 @@ public class IdentifierDefinitionsApiExample {
 
 [EXPERIMENTAL] GetIdentifierDefinition: Get a single Identifier Definition
 
-Get a single Identifier Definition using domain, identifierScope, identifierType, and an optional asAt  - defaulting to latest if not specified
+Get a single Identifier Definition using domain, identifierScope, identifierType, and an optional asAt   - defaulting to latest if not specified
 
 ### Example
 
@@ -248,9 +248,9 @@ public class IdentifierDefinitionsApiExample {
         String domain = "NotDefined"; // String | The type of entity to which the identifier relates.
         String identifierScope = "identifierScope_example"; // String | The scope that the identifier exists in
         String identifierType = "identifierType_example"; // String | What the identifier represents. Together with \"domain\" and \"identifierScope\" this uniquely identifies the identifier definition
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Identifier Definition. Defaults to return  the latest version of the definition if not specified.
-        String effectiveAt = "effectiveAt_example"; // String | The effectiveAt datetime at which to retrieve the Identifier Definitions.  Since Identifier Definitions exist for all effective time, this will only apply to properties (if requested)  on the Identifier Definition.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'IdentifierDefinition' domain to decorate onto the Identifier Definition.  These must take the format {domain}/{scope}/{code}. If no properties are specified, then no properties will be returned.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Identifier Definition. Defaults to return   the latest version of the definition if not specified.
+        String effectiveAt = "effectiveAt_example"; // String | The effectiveAt datetime at which to retrieve the Identifier Definitions.   Since Identifier Definitions exist for all effective time, this will only apply to properties (if requested)   on the Identifier Definition.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'IdentifierDefinition' domain to decorate onto the Identifier Definition.   These must take the format {domain}/{scope}/{code}. If no properties are specified, then no properties will be returned.
         try {
             // uncomment the below to set overrides at the request level
             // IdentifierDefinition result = apiInstance.getIdentifierDefinition(domain, identifierScope, identifierType, asAt, effectiveAt, propertyKeys).execute(opts);
@@ -275,9 +275,9 @@ public class IdentifierDefinitionsApiExample {
 | **domain** | **String**| The type of entity to which the identifier relates. | [enum: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, AddressKeyDefinition, AmortisationRuleSet, AnalyticsSetInventory, AtomUnitResult, CleardownModule, ComplexMarketData, ComplianceRunSummary, ComplianceRule, ComplianceRunInfo, CorporateActionSource, CounterpartyAgreement, CustomEntityDefinition, DataType, Dialect, EventHandler, GeneralLedgerProfile, PostingModule, Quote, RecipeComposer, ReconciliationRunBreak, ReferenceList, RelationDefinition, ReturnBlockIndex, SRSDocument, SRSIndex, TransactionTemplate, TransactionTemplateScope, TransactionType, TransactionTypeConfig, TranslationScript, TaskDefinition, TaskInstance, Worker, StagingRuleSet, IdentifierDefinition] |
 | **identifierScope** | **String**| The scope that the identifier exists in | |
 | **identifierType** | **String**| What the identifier represents. Together with \&quot;domain\&quot; and \&quot;identifierScope\&quot; this uniquely identifies the identifier definition | |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Identifier Definition. Defaults to return  the latest version of the definition if not specified. | [optional] |
-| **effectiveAt** | **String**| The effectiveAt datetime at which to retrieve the Identifier Definitions.  Since Identifier Definitions exist for all effective time, this will only apply to properties (if requested)  on the Identifier Definition. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;IdentifierDefinition&#39; domain to decorate onto the Identifier Definition.  These must take the format {domain}/{scope}/{code}. If no properties are specified, then no properties will be returned. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Identifier Definition. Defaults to return   the latest version of the definition if not specified. | [optional] |
+| **effectiveAt** | **String**| The effectiveAt datetime at which to retrieve the Identifier Definitions.   Since Identifier Definitions exist for all effective time, this will only apply to properties (if requested)   on the Identifier Definition. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;IdentifierDefinition&#39; domain to decorate onto the Identifier Definition.   These must take the format {domain}/{scope}/{code}. If no properties are specified, then no properties will be returned. | [optional] |
 
 ### Return type
 
@@ -305,7 +305,7 @@ public class IdentifierDefinitionsApiExample {
 
 [EXPERIMENTAL] ListIdentifierDefinitions: List Identifier Definitions
 
-Retrieves all Identifier Definitions that fit the filter, in a specific order if sortBy is provided Supports pagination
+Retrieves all Identifier Definitions that fit the filter, in a specific order if sortBy is provided  Supports pagination
 
 ### Example
 
@@ -346,13 +346,13 @@ public class IdentifierDefinitionsApiExample {
         // IdentifierDefinitionsApi apiInstance = apiFactory.build(IdentifierDefinitionsApi.class);
 
         IdentifierDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(IdentifierDefinitionsApi.class);
-        String effectiveAt = "effectiveAt_example"; // String | The effectiveAt datetime at which to retrieve the Identifier Definitions.  Since Identifier Definitions exist for all effective time, this will only apply to properties (if requested)  on the Identifier Definition.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Identifier Definitions. Defaults to return the latest  version of the Identifier Definitions if not specified.
-        String page = "page_example"; // String | The pagination token to use to continue listing Identifier Definitions from a previous call to list  Identifier Definitions. This value is returned from the previous call. If a pagination token is provided the sortBy,  filter, effectiveAt, and asAt fields must not have changed since the original request.
+        String effectiveAt = "effectiveAt_example"; // String | The effectiveAt datetime at which to retrieve the Identifier Definitions.   Since Identifier Definitions exist for all effective time, this will only apply to properties (if requested)   on the Identifier Definition.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Identifier Definitions. Defaults to return the latest   version of the Identifier Definitions if not specified.
+        String page = "page_example"; // String | The pagination token to use to continue listing Identifier Definitions from a previous call to list   Identifier Definitions. This value is returned from the previous call. If a pagination token is provided the sortBy,   filter, effectiveAt, and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many per page.
-        String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid.
+        String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names to sort by, each suffixed by \" ASC\" or \" DESC\"
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'IdentifierDefinition' domain to decorate onto the Identifier Definition.  These must take the format {domain}/{scope}/{code}.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'IdentifierDefinition' domain to decorate onto the Identifier Definition.   These must take the format {domain}/{scope}/{code}.
         try {
             // uncomment the below to set overrides at the request level
             // PagedResourceListOfIdentifierDefinition result = apiInstance.listIdentifierDefinitions(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys).execute(opts);
@@ -374,13 +374,13 @@ public class IdentifierDefinitionsApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **effectiveAt** | **String**| The effectiveAt datetime at which to retrieve the Identifier Definitions.  Since Identifier Definitions exist for all effective time, this will only apply to properties (if requested)  on the Identifier Definition. | [optional] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Identifier Definitions. Defaults to return the latest  version of the Identifier Definitions if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing Identifier Definitions from a previous call to list  Identifier Definitions. This value is returned from the previous call. If a pagination token is provided the sortBy,  filter, effectiveAt, and asAt fields must not have changed since the original request. | [optional] |
+| **effectiveAt** | **String**| The effectiveAt datetime at which to retrieve the Identifier Definitions.   Since Identifier Definitions exist for all effective time, this will only apply to properties (if requested)   on the Identifier Definition. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Identifier Definitions. Defaults to return the latest   version of the Identifier Definitions if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing Identifier Definitions from a previous call to list   Identifier Definitions. This value is returned from the previous call. If a pagination token is provided the sortBy,   filter, effectiveAt, and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many per page. | [optional] |
-| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;IdentifierDefinition&#39; domain to decorate onto the Identifier Definition.  These must take the format {domain}/{scope}/{code}. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;IdentifierDefinition&#39; domain to decorate onto the Identifier Definition.   These must take the format {domain}/{scope}/{code}. | [optional] |
 
 ### Return type
 

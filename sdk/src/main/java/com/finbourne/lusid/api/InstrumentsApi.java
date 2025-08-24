@@ -390,7 +390,7 @@ public class InstrumentsApi {
 
     /**
      * BatchUpsertInstrumentProperties: Batch upsert instruments properties
-     * Create or update one or more properties for particular instruments.  Each instrument property is updated if it exists and created if it does not. For any failures, a reason is provided.  Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime from which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+     * Create or update one or more properties for particular instruments.    Each instrument property is updated if it exists and created if it does not. For any failures, a reason  is provided.    Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime from which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
      * @param requestBody A list of instruments and associated instrument properties to create or update. (required)
      * @return APIbatchUpsertInstrumentPropertiesRequest
      * @http.response.details
@@ -547,7 +547,7 @@ public class InstrumentsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the related instrument and calendars for calculation. Defaults to  returning the latest version if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the related instrument and calendars for calculation. Defaults to   returning the latest version if not specified. (optional)
          * @return APIcalculateSettlementDateRequest
          */
         public APIcalculateSettlementDateRequest asAt(OffsetDateTime asAt) {
@@ -675,7 +675,7 @@ public class InstrumentsApi {
 
     /**
      * CalculateSettlementDate: Get the settlement date for an instrument.
-     * Get the settlement date for a given trade date and instrument. The calculated settlement date will be in UTC. If a cut label transaction date is provided, the settlement date will be calculated relative to the absolute UTC datetime.
+     * Get the settlement date for a given trade date and instrument. The calculated settlement date will be in UTC.  If a cut label transaction date is provided, the settlement date will be calculated relative to the absolute UTC datetime.
      * @param identifierType An identifier type attached to the Instrument. (required)
      * @param identifier The identifier value. (required)
      * @return APIcalculateSettlementDateRequest
@@ -931,7 +931,7 @@ public class InstrumentsApi {
 
     /**
      * DeleteInstrument: Soft delete a single instrument
-     * Soft delete a particular instrument, as identified by a particular instrument identifier.   Once deleted, an instrument is marked as inactive and can no longer be referenced when creating or updating transactions or holdings. You can still query existing transactions and holdings related to the deleted instrument.
+     * Soft delete a particular instrument, as identified by a particular instrument identifier.     Once deleted, an instrument is marked as inactive and can no longer be referenced when creating or updating  transactions or holdings. You can still query existing transactions and holdings related to the  deleted instrument.
      * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
      * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
      * @return APIdeleteInstrumentRequest
@@ -1085,7 +1085,7 @@ public class InstrumentsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to delete time-variant properties from.  The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is  before the time-variant property exists then a failure is returned. Do not specify this parameter if any of  the properties to delete are perpetual. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is   before the time-variant property exists then a failure is returned. Do not specify this parameter if any of   the properties to delete are perpetual. (optional)
          * @return APIdeleteInstrumentPropertiesRequest
          */
         public APIdeleteInstrumentPropertiesRequest effectiveAt(String effectiveAt) {
@@ -1243,7 +1243,7 @@ public class InstrumentsApi {
 
     /**
      * DeleteInstrumentProperties: Delete instrument properties
-     * Delete one or more properties from a particular instrument. If the properties are time-variant then an effective datetime from which to delete properties must be specified. If the properties are perpetual then it is invalid to specify an effective datetime for deletion.
+     * Delete one or more properties from a particular instrument. If the properties are time-variant then an effective datetime from which  to delete properties must be specified. If the properties are perpetual then it is invalid to specify an effective datetime for deletion.
      * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
      * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
      * @param requestBody A list of property keys from the &#39;Instruments&#39; domain whose properties to delete. (required)
@@ -1510,7 +1510,7 @@ public class InstrumentsApi {
 
     /**
      * DeleteInstruments: Soft or hard delete multiple instruments
-     * Deletes a number of instruments identified by LusidInstrumentId.   Soft deletion marks the instrument as inactive so it can no longer be referenced when creating or updating transactions or holdings. You can still query existing transactions and holdings related to the inactive instrument.   In addition to the above behaviour, hard deletion: (i) completely removes all external identifiers from the instrument; (ii) marks the instrument as &#39;Deleted&#39;; (iii) prepends the instrument&#39;s name with &#39;DELETED &#39;; (iv) prevents the instrument from being returned in list instruments queries.   Following hard deletion, an instrument may only be retrieved by making a direct get instrument request for the LusidInstrumentId. Instrument deletion cannot be undone. Please note that currency instruments cannot currently be deleted.  The maximum number of instruments that this method can delete per request is 2,000.
+     * Deletes a number of instruments identified by LusidInstrumentId.     Soft deletion marks the instrument as inactive so it can no longer be referenced when creating or updating transactions or holdings. You can still query existing transactions and holdings related to the inactive instrument.     In addition to the above behaviour, hard deletion: (i) completely removes all external identifiers from the instrument; (ii) marks the instrument as &#39;Deleted&#39;; (iii) prepends the instrument&#39;s name with &#39;DELETED &#39;; (iv) prevents the instrument from being returned in list instruments queries.     Following hard deletion, an instrument may only be retrieved by making a direct get instrument request for the LusidInstrumentId. Instrument deletion cannot be undone. Please note that currency instruments cannot currently be deleted.  The maximum number of instruments that this method can delete per request is 2,000.
      * @param requestBody The list of lusidInstrumentId&#39;s to delete. (required)
      * @return APIdeleteInstrumentsRequest
      * @http.response.details
@@ -1896,7 +1896,7 @@ public class InstrumentsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to retrieve the instrument.  Defaults to the current LUSID system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the instrument.   Defaults to the current LUSID system datetime if not specified. (optional)
          * @return APIgetExistingInstrumentCapabilitiesRequest
          */
         public APIgetExistingInstrumentCapabilitiesRequest effectiveAt(String effectiveAt) {
@@ -1906,7 +1906,7 @@ public class InstrumentsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to  returning the latest version if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to   returning the latest version if not specified. (optional)
          * @return APIgetExistingInstrumentCapabilitiesRequest
          */
         public APIgetExistingInstrumentCapabilitiesRequest asAt(OffsetDateTime asAt) {
@@ -2063,8 +2063,8 @@ public class InstrumentsApi {
     }
 
     /**
-     * GetExistingInstrumentCapabilities: Retrieve capabilities of an existing instrument identified by LUID. These include instrument features, and if model is provided it also includes supported address keys and economic dependencies. Given an lusid instrument id provides instrument capabilities, outlining features, and, given the model, the capabilities also include supported addresses as well as economic dependencies.
-     * Returns instrument capabilities containing useful information about the instrument and the model. This includes - features corresponding to the instrument e.g. Optionality:American, Other:InflationLinked - supported addresses (if model provided) e.g. Valuation/Pv, Valuation/DirtyPriceKey, Valuation/Accrued - economic dependencies (if model provided) e.g. Cash:USD, Fx:GBP.USD, Rates:GBP.GBPOIS
+     * GetExistingInstrumentCapabilities: Retrieve capabilities of an existing instrument identified by LUID. These include instrument features, and if model is provided it also includes supported address keys and economic dependencies.  Given an lusid instrument id provides instrument capabilities, outlining features, and, given the model, the capabilities also include supported addresses as well as economic dependencies.
+     * Returns instrument capabilities containing useful information about the instrument and the model. This includes  - features corresponding to the instrument e.g. Optionality:American, Other:InflationLinked  - supported addresses (if model provided) e.g. Valuation/Pv, Valuation/DirtyPriceKey, Valuation/Accrued  - economic dependencies (if model provided) e.g. Cash:USD, Fx:GBP.USD, Rates:GBP.GBPOIS
      * @param identifier A lusid instrument id identifying the instrument. (required)
      * @return APIgetExistingInstrumentCapabilitiesRequest
      * @http.response.details
@@ -2203,7 +2203,7 @@ public class InstrumentsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to retrieve the instrument.  Defaults to the current LUSID system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the instrument.   Defaults to the current LUSID system datetime if not specified. (optional)
          * @return APIgetExistingInstrumentModelsRequest
          */
         public APIgetExistingInstrumentModelsRequest effectiveAt(String effectiveAt) {
@@ -2213,7 +2213,7 @@ public class InstrumentsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to  returning the latest version if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to   returning the latest version if not specified. (optional)
          * @return APIgetExistingInstrumentModelsRequest
          */
         public APIgetExistingInstrumentModelsRequest asAt(OffsetDateTime asAt) {
@@ -2518,7 +2518,7 @@ public class InstrumentsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to retrieve the instrument.  Defaults to the current LUSID system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the instrument.   Defaults to the current LUSID system datetime if not specified. (optional)
          * @return APIgetInstrumentRequest
          */
         public APIgetInstrumentRequest effectiveAt(String effectiveAt) {
@@ -2528,7 +2528,7 @@ public class InstrumentsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to  returning the latest version if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the instrument. Defaults to   returning the latest version if not specified. (optional)
          * @return APIgetInstrumentRequest
          */
         public APIgetInstrumentRequest asAt(OffsetDateTime asAt) {
@@ -2538,7 +2538,7 @@ public class InstrumentsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;Instrument&#39; domain to decorate onto  the instrument, or from any domain that supports relationships to decorate onto related entities.  These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (optional)
+         * @param propertyKeys A list of property keys from the &#39;Instrument&#39; domain to decorate onto   the instrument, or from any domain that supports relationships to decorate onto related entities.   These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (optional)
          * @return APIgetInstrumentRequest
          */
         public APIgetInstrumentRequest propertyKeys(List<String> propertyKeys) {
@@ -2558,7 +2558,7 @@ public class InstrumentsApi {
 
         /**
          * Set relationshipDefinitionIds
-         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities  onto the instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
+         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities   onto the instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
          * @return APIgetInstrumentRequest
          */
         public APIgetInstrumentRequest relationshipDefinitionIds(List<String> relationshipDefinitionIds) {
@@ -2904,7 +2904,7 @@ public class InstrumentsApi {
 
     /**
      * GetInstrumentIdentifierTypes: Get instrument identifier types
-     * Retrieve a list of all valid instrument identifier types and whether they are unique or not.   An instrument must have a value for at least one unique identifier type (it can have more than one unique type and value). In addition, a value is automatically generated for a LUSID Instrument ID (LUID) unique type by the system.   An instrument can have values for multiple non-unique identifier types (or it can have zero non-unique types and values).
+     * Retrieve a list of all valid instrument identifier types and whether they are unique or not.     An instrument must have a value for at least one unique identifier type (it can have more than one unique type and value).  In addition, a value is automatically generated for a LUSID Instrument ID (LUID) unique type by the system.     An instrument can have values for multiple non-unique identifier types (or it can have zero non-unique types and values).
      * @return APIgetInstrumentIdentifierTypesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -3349,7 +3349,7 @@ public class InstrumentsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to list the instrument&#39;s properties.  Defaults to the current LUSID system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to list the instrument&#39;s properties.   Defaults to the current LUSID system datetime if not specified. (optional)
          * @return APIgetInstrumentPropertiesRequest
          */
         public APIgetInstrumentPropertiesRequest effectiveAt(String effectiveAt) {
@@ -3359,7 +3359,7 @@ public class InstrumentsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to list the instrument&#39;s properties. Defaults to returning  the latest version of each property if not specified. (optional)
+         * @param asAt The asAt datetime at which to list the instrument&#39;s properties. Defaults to returning   the latest version of each property if not specified. (optional)
          * @return APIgetInstrumentPropertiesRequest
          */
         public APIgetInstrumentPropertiesRequest asAt(OffsetDateTime asAt) {
@@ -3661,7 +3661,7 @@ public class InstrumentsApi {
 
         /**
          * Set identifierEffectiveAt
-         * @param identifierEffectiveAt The effective datetime used to resolve the instrument from the identifier.  Defaults to the current LUSID system datetime if not specified. (optional)
+         * @param identifierEffectiveAt The effective datetime used to resolve the instrument from the identifier.   Defaults to the current LUSID system datetime if not specified. (optional)
          * @return APIgetInstrumentPropertyTimeSeriesRequest
          */
         public APIgetInstrumentPropertyTimeSeriesRequest identifierEffectiveAt(String identifierEffectiveAt) {
@@ -3671,7 +3671,7 @@ public class InstrumentsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the instrument&#39;s property history. Defaults to  returning the current datetime if not supplied. (optional)
+         * @param asAt The asAt datetime at which to retrieve the instrument&#39;s property history. Defaults to   returning the current datetime if not supplied. (optional)
          * @return APIgetInstrumentPropertyTimeSeriesRequest
          */
         public APIgetInstrumentPropertyTimeSeriesRequest asAt(OffsetDateTime asAt) {
@@ -3681,7 +3681,7 @@ public class InstrumentsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results. For more information about filtering,  see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results. For more information about filtering,   see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIgetInstrumentPropertyTimeSeriesRequest
          */
         public APIgetInstrumentPropertyTimeSeriesRequest filter(String filter) {
@@ -3691,7 +3691,7 @@ public class InstrumentsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing properties; this value is returned from  the previous call. If a pagination token is provided, the &lt;i&gt;filter&lt;/i&gt;, &lt;i&gt;effectiveAt&lt;/i&gt; and  &lt;i&gt;asAt&lt;/i&gt; fields must not have changed since the original request. For more information, see  https://support.lusid.com/knowledgebase/article/KA-01915. (optional)
+         * @param page The pagination token to use to continue listing properties; this value is returned from   the previous call. If a pagination token is provided, the &lt;i&gt;filter&lt;/i&gt;, &lt;i&gt;effectiveAt&lt;/i&gt; and   &lt;i&gt;asAt&lt;/i&gt; fields must not have changed since the original request. For more information, see   https://support.lusid.com/knowledgebase/article/KA-01915. (optional)
          * @return APIgetInstrumentPropertyTimeSeriesRequest
          */
         public APIgetInstrumentPropertyTimeSeriesRequest page(String page) {
@@ -3842,7 +3842,7 @@ public class InstrumentsApi {
      * Retrieve the complete time series (history) for a particular property of an instrument.
      * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
      * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
-     * @param propertyKey The property key of a property from the &#39;Instrument&#39; domain whose history to retrieve.  This must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (required)
+     * @param propertyKey The property key of a property from the &#39;Instrument&#39; domain whose history to retrieve.   This must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (required)
      * @return APIgetInstrumentPropertyTimeSeriesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -4018,7 +4018,7 @@ public class InstrumentsApi {
 
         /**
          * Set identifierTypes
-         * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.  These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example  &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. (optional)
+         * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.   These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example   &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. (optional)
          * @return APIgetInstrumentRelationshipsRequest
          */
         public APIgetInstrumentRelationshipsRequest identifierTypes(List<String> identifierTypes) {
@@ -4310,7 +4310,7 @@ public class InstrumentsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to retrieve the instrument definitions.  Defaults to the current LUSID system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the instrument definitions.   Defaults to the current LUSID system datetime if not specified. (optional)
          * @return APIgetInstrumentsRequest
          */
         public APIgetInstrumentsRequest effectiveAt(String effectiveAt) {
@@ -4320,7 +4320,7 @@ public class InstrumentsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the instrument definitions.  Defaults to returning the latest version of each instrument definition if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the instrument definitions.   Defaults to returning the latest version of each instrument definition if not specified. (optional)
          * @return APIgetInstrumentsRequest
          */
         public APIgetInstrumentsRequest asAt(OffsetDateTime asAt) {
@@ -4330,7 +4330,7 @@ public class InstrumentsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;Instrument&#39; domain to decorate onto  each instrument, or from any domain that supports relationships to decorate onto related entities.  These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (optional)
+         * @param propertyKeys A list of property keys from the &#39;Instrument&#39; domain to decorate onto   each instrument, or from any domain that supports relationships to decorate onto related entities.   These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (optional)
          * @return APIgetInstrumentsRequest
          */
         public APIgetInstrumentsRequest propertyKeys(List<String> propertyKeys) {
@@ -4350,7 +4350,7 @@ public class InstrumentsApi {
 
         /**
          * Set relationshipDefinitionIds
-         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities  onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
+         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities   onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
          * @return APIgetInstrumentsRequest
          */
         public APIgetInstrumentsRequest relationshipDefinitionIds(List<String> relationshipDefinitionIds) {
@@ -4478,7 +4478,7 @@ public class InstrumentsApi {
 
     /**
      * GetInstruments: Get instruments
-     * Retrieve the definition of one or more instruments, as identified by a collection of unique identifiers.   Note that to retrieve all the instruments in the instrument master, use the List instruments endpoint instead.
+     * Retrieve the definition of one or more instruments, as identified by a collection of unique identifiers.     Note that to retrieve all the instruments in the instrument master, use the List instruments endpoint instead.
      * @param identifierType The unique identifier type to use, for example &#39;Figi&#39;. (required)
      * @param requestBody A list of one or more &lt;i&gt;identifierType&lt;/i&gt; values to use to identify instruments. (required)
      * @return APIgetInstrumentsRequest
@@ -4626,7 +4626,7 @@ public class InstrumentsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to list the instrument&#39;s properties.  Defaults to the current LUSID system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to list the instrument&#39;s properties.   Defaults to the current LUSID system datetime if not specified. (optional)
          * @return APIlistInstrumentPropertiesRequest
          */
         public APIlistInstrumentPropertiesRequest effectiveAt(String effectiveAt) {
@@ -4636,7 +4636,7 @@ public class InstrumentsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to list the instrument&#39;s properties. Defaults to returning  the latest version of each property if not specified. (optional)
+         * @param asAt The asAt datetime at which to list the instrument&#39;s properties. Defaults to returning   the latest version of each property if not specified. (optional)
          * @return APIlistInstrumentPropertiesRequest
          */
         public APIlistInstrumentPropertiesRequest asAt(OffsetDateTime asAt) {
@@ -4961,7 +4961,7 @@ public class InstrumentsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to list instruments. Defaults to returning the latest  version of each instrument if not specified. (optional)
+         * @param asAt The asAt datetime at which to list instruments. Defaults to returning the latest   version of each instrument if not specified. (optional)
          * @return APIlistInstrumentsRequest
          */
         public APIlistInstrumentsRequest asAt(OffsetDateTime asAt) {
@@ -4971,7 +4971,7 @@ public class InstrumentsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to list instruments.  Defaults to the current LUSID system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to list instruments.   Defaults to the current LUSID system datetime if not specified. (optional)
          * @return APIlistInstrumentsRequest
          */
         public APIlistInstrumentsRequest effectiveAt(String effectiveAt) {
@@ -4981,7 +4981,7 @@ public class InstrumentsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing instruments; this value is returned from  the previous call. If a pagination token is provided, the &lt;i&gt;sortBy&lt;/i&gt;, &lt;i&gt;filter&lt;/i&gt;, &lt;i&gt;effectiveAt&lt;/i&gt; and  &lt;i&gt;asAt&lt;/i&gt; fields must not have changed since the original request.  For more information, see https://support.lusid.com/knowledgebase/article/KA-01915. (optional)
+         * @param page The pagination token to use to continue listing instruments; this value is returned from   the previous call. If a pagination token is provided, the &lt;i&gt;sortBy&lt;/i&gt;, &lt;i&gt;filter&lt;/i&gt;, &lt;i&gt;effectiveAt&lt;/i&gt; and   &lt;i&gt;asAt&lt;/i&gt; fields must not have changed since the original request.   For more information, see https://support.lusid.com/knowledgebase/article/KA-01915. (optional)
          * @return APIlistInstrumentsRequest
          */
         public APIlistInstrumentsRequest page(String page) {
@@ -5011,7 +5011,7 @@ public class InstrumentsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set. Defaults to filtering out inactive instruments  (that is, those that have been deleted). For more information about filtering results,  see https://support.lusid.com/knowledgebase/article/KA-01914. (optional, default to State eq &#39;Active&#39;)
+         * @param filter Expression to filter the result set. Defaults to filtering out inactive instruments   (that is, those that have been deleted). For more information about filtering results,   see https://support.lusid.com/knowledgebase/article/KA-01914. (optional, default to State eq &#39;Active&#39;)
          * @return APIlistInstrumentsRequest
          */
         public APIlistInstrumentsRequest filter(String filter) {
@@ -5021,7 +5021,7 @@ public class InstrumentsApi {
 
         /**
          * Set instrumentPropertyKeys
-         * @param instrumentPropertyKeys A list of property keys from the &#39;Instrument&#39; domain to decorate onto  instruments, or from any domain that supports relationships to decorate onto related entities.  These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (optional)
+         * @param instrumentPropertyKeys A list of property keys from the &#39;Instrument&#39; domain to decorate onto   instruments, or from any domain that supports relationships to decorate onto related entities.   These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. (optional)
          * @return APIlistInstrumentsRequest
          */
         public APIlistInstrumentsRequest instrumentPropertyKeys(List<String> instrumentPropertyKeys) {
@@ -5041,7 +5041,7 @@ public class InstrumentsApi {
 
         /**
          * Set relationshipDefinitionIds
-         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities  onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
+         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities   onto each instrument in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
          * @return APIlistInstrumentsRequest
          */
         public APIlistInstrumentsRequest relationshipDefinitionIds(List<String> relationshipDefinitionIds) {
@@ -5199,7 +5199,7 @@ public class InstrumentsApi {
 
     /**
      * ListInstruments: List instruments
-     * List all the instruments in the instrument master.   To retrieve a particular set of instruments instead, use the Get instruments endpoint.  The maximum number of instruments that this method can list per request is 2,000.
+     * List all the instruments in the instrument master.     To retrieve a particular set of instruments instead, use the Get instruments endpoint.  The maximum number of instruments that this method can list per request is 2,000.
      * @return APIlistInstrumentsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -5448,7 +5448,7 @@ public class InstrumentsApi {
 
     /**
      * QueryInstrumentCapabilities: Query capabilities of a particular instrument in advance of creating it. These include instrument features, and if model is provided it also includes supported address keys and economic dependencies.
-     * Returns instrument capabilities containing useful information about the instrument and the model. This includes - features corresponding to the instrument e.g. Optionality:American, Other:InflationLinked - supported addresses (if model provided) e.g. Valuation/Pv, Valuation/DirtyPriceKey, Valuation/Accrued - economic dependencies (if model provided) e.g. Cash:USD, Fx:GBP.USD, Rates:GBP.GBPOIS
+     * Returns instrument capabilities containing useful information about the instrument and the model. This includes  - features corresponding to the instrument e.g. Optionality:American, Other:InflationLinked  - supported addresses (if model provided) e.g. Valuation/Pv, Valuation/DirtyPriceKey, Valuation/Accrued  - economic dependencies (if model provided) e.g. Cash:USD, Fx:GBP.USD, Rates:GBP.GBPOIS
      * @param lusidInstrument The definition of the instrument. (required)
      * @return APIqueryInstrumentCapabilitiesRequest
      * @http.response.details
@@ -5744,10 +5744,10 @@ public class InstrumentsApi {
 
     /**
      * UpdateInstrumentIdentifier: Update instrument identifier
-     * Create, update or delete a particular instrument identifier for an instrument.   To delete the identifier, leave the value unspecified in the request. If not being deleted, the identifier is updated if it exists and created if it does not.
+     * Create, update or delete a particular instrument identifier for an instrument.     To delete the identifier, leave the value unspecified in the request. If not being deleted, the  identifier is updated if it exists and created if it does not.
      * @param identifierType The unique identifier type to search, for example &#39;Figi&#39;. (required)
      * @param identifier An &lt;i&gt;identifierType&lt;/i&gt; value to use to identify the instrument, for example &#39;BBG000BLNNV0&#39;. (required)
-     * @param updateInstrumentIdentifierRequest The identifier to update or delete. This need not be the same value as the  &#39;identifier&#39; parameter used to retrieve the instrument. (required)
+     * @param updateInstrumentIdentifierRequest The identifier to update or delete. This need not be the same value as the   &#39;identifier&#39; parameter used to retrieve the instrument. (required)
      * @return APIupdateInstrumentIdentifierRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -6026,7 +6026,7 @@ public class InstrumentsApi {
 
     /**
      * UpsertInstruments: Upsert instruments
-     * Create or update one or more instruments in the instrument master. An instrument is updated if it already exists and created if it does not.   In the request, each instrument definition should be keyed by a unique correlation ID. This ID is ephemeral and not stored by LUSID. It serves only to easily identify each instrument in the response.   Note that an instrument must have at least one unique identifier, which is a combination of a type (such as &#39;Figi&#39;) and a value (such as &#39;BBG000BS1N49&#39;). In addition, a random value is automatically generated for a LUSID Instrument ID (LUID) unique type by the system. For more information, see https://support.lusid.com/knowledgebase/article/KA-01862.   The response returns both the collection of successfully created or updated instruments, as well as those that failed. For each failure, a reason is provided. It is important to check the failed set for unsuccessful results.  The maximum number of instruments that this method can upsert per request is 2,000.
+     * Create or update one or more instruments in the instrument master. An instrument is updated  if it already exists and created if it does not.     In the request, each instrument definition should be keyed by a unique correlation ID. This ID is ephemeral  and not stored by LUSID. It serves only to easily identify each instrument in the response.     Note that an instrument must have at least one unique identifier, which is a combination of a type  (such as &#39;Figi&#39;) and a value (such as &#39;BBG000BS1N49&#39;). In addition, a random value is automatically  generated for a LUSID Instrument ID (LUID) unique type by the system. For more information, see  https://support.lusid.com/knowledgebase/article/KA-01862.     The response returns both the collection of successfully created or updated instruments, as well as those  that failed. For each failure, a reason is provided. It is important to check the failed set for  unsuccessful results.  The maximum number of instruments that this method can upsert per request is 2,000.
      * @param requestBody The definitions of the instruments to create or update. (required)
      * @return APIupsertInstrumentsRequest
      * @http.response.details
@@ -6306,7 +6306,7 @@ public class InstrumentsApi {
 
     /**
      * UpsertInstrumentsProperties: Upsert instruments properties
-     * Create or update one or more properties for particular instruments.   Each instrument property is updated if it exists and created if it does not. For any failures, a reason is provided.   Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime from which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+     * Create or update one or more properties for particular instruments.     Each instrument property is updated if it exists and created if it does not. For any failures, a reason  is provided.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime from which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
      * @param upsertInstrumentPropertyRequest A list of instruments and associated instrument properties to create or update. (required)
      * @return APIupsertInstrumentsPropertiesRequest
      * @http.response.details

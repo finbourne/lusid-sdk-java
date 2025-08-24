@@ -53,7 +53,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * A BondConversionSchedule object represents a class containing the information required for the creation of convertible features in a ComplexBond
+ * A BondConversionSchedule object represents a class containing the  information required for the creation of convertible features in a ComplexBond
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class BondConversionSchedule extends Schedule {
@@ -112,7 +112,7 @@ public class BondConversionSchedule extends Schedule {
   }
 
    /**
-   * The market identifier(s) of the share that the bond converts to. The instrument will not fail validation if no identifier is supplied.
+   * The market identifier(s) of the share that the bond converts to. The instrument  will not fail validation if no identifier is supplied.
    * @return identifiers
   **/
   @jakarta.annotation.Nullable
@@ -162,7 +162,7 @@ public class BondConversionSchedule extends Schedule {
   }
 
    /**
-   * Corporate event that triggers a conversion  Supported string (enumeration) values are: [NextEquityFinancing, IpoConversion, KnownDates, SoftCall].
+   * Corporate event that triggers a conversion    Supported string (enumeration) values are: [NextEquityFinancing, IpoConversion, KnownDates, SoftCall].
    * @return conversionTrigger
   **/
   @jakarta.annotation.Nonnull
@@ -183,7 +183,7 @@ public class BondConversionSchedule extends Schedule {
   }
 
    /**
-   * Is a conversion made into cash or into shares?  Supported string (enumeration) values are: [Cash, Physical].
+   * Is a conversion made into cash or into shares?    Supported string (enumeration) values are: [Cash, Physical].
    * @return deliveryType
   **/
   @jakarta.annotation.Nullable
@@ -204,7 +204,7 @@ public class BondConversionSchedule extends Schedule {
   }
 
    /**
-   * The exercise type of the conversion schedule (American or European). For American type, the bond is convertible from a given exercise date until the next date in the schedule, or until it matures. For European type, the bond is only convertible on the given exercise date.  Supported string (enumeration) values are: [European, Bermudan, American].
+   * The exercise type of the conversion schedule (American or European).  For American type, the bond is convertible from a given exercise date until the next date in the schedule, or until it matures.  For European type, the bond is only convertible on the given exercise date.    Supported string (enumeration) values are: [European, Bermudan, American].
    * @return exerciseType
   **/
   @jakarta.annotation.Nonnull

@@ -46,7 +46,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Flow conventions that is to be stored in the convention data store. Only one of these must be present.
+ * Flow conventions that is to be stored in the convention data store.  Only one of these must be present.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UpsertFlowConventionsRequest {

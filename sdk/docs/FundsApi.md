@@ -44,7 +44,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 [EXPERIMENTAL] AcceptEstimateValuationPoint: Accepts an Estimate Valuation Point.
 
-Accepts the specified estimate Valuation Point. Should the Valuation Point differ since the Valuation Point was last run, both Valuation Points will be returned and status will be marked as &#39;Candidate&#39;, otherwise it will be marked as &#39;Final&#39;.
+Accepts the specified estimate Valuation Point.  Should the Valuation Point differ since the Valuation Point was last run, both Valuation Points will be returned and status will be marked as &#39;Candidate&#39;,  otherwise it will be marked as &#39;Final&#39;.
 
 ### Example
 
@@ -949,7 +949,7 @@ public class FundsApiExample {
         String feeCode = "feeCode_example"; // String | The code of the Fee.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the Fee properties. Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Fee. Defaults to returning the latest version of the Fee if not specified.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Fee' domain to decorate onto the Fee.  These must take the format {domain}/{scope}/{code}, for example 'Fee/Account/Id'. If no properties are specified, then no properties will be returned.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Fee' domain to decorate onto the Fee.   These must take the format {domain}/{scope}/{code}, for example 'Fee/Account/Id'. If no properties are specified, then no properties will be returned.
         try {
             // uncomment the below to set overrides at the request level
             // Fee result = apiInstance.getFee(scope, code, feeCode, effectiveAt, asAt, propertyKeys).execute(opts);
@@ -976,7 +976,7 @@ public class FundsApiExample {
 | **feeCode** | **String**| The code of the Fee. | |
 | **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the Fee properties. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Fee. Defaults to returning the latest version of the Fee if not specified. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Fee&#39; domain to decorate onto the Fee.  These must take the format {domain}/{scope}/{code}, for example &#39;Fee/Account/Id&#39;. If no properties are specified, then no properties will be returned. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Fee&#39; domain to decorate onto the Fee.   These must take the format {domain}/{scope}/{code}, for example &#39;Fee/Account/Id&#39;. If no properties are specified, then no properties will be returned. | [optional] |
 
 ### Return type
 
@@ -1148,7 +1148,7 @@ public class FundsApiExample {
         String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the Fund properties. Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Fund definition. Defaults to returning the latest version of the Fund definition if not specified.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Fund' domain to decorate onto the Fund.  These must take the format {domain}/{scope}/{code}, for example 'Fund/Manager/Id'. If no properties are specified, then no properties will be returned.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Fund' domain to decorate onto the Fund.   These must take the format {domain}/{scope}/{code}, for example 'Fund/Manager/Id'. If no properties are specified, then no properties will be returned.
         try {
             // uncomment the below to set overrides at the request level
             // Fund result = apiInstance.getFund(scope, code, effectiveAt, asAt, propertyKeys).execute(opts);
@@ -1174,7 +1174,7 @@ public class FundsApiExample {
 | **code** | **String**| The code of the Fund. Together with the scope this uniquely identifies the Fund. | |
 | **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the Fund properties. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Fund definition. Defaults to returning the latest version of the Fund definition if not specified. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Fund&#39; domain to decorate onto the Fund.  These must take the format {domain}/{scope}/{code}, for example &#39;Fund/Manager/Id&#39;. If no properties are specified, then no properties will be returned. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Fund&#39; domain to decorate onto the Fund.   These must take the format {domain}/{scope}/{code}, for example &#39;Fund/Manager/Id&#39;. If no properties are specified, then no properties will be returned. | [optional] |
 
 ### Return type
 
@@ -1344,9 +1344,9 @@ public class FundsApiExample {
         String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
         SingleValuationPointQueryParameters singleValuationPointQueryParameters = new SingleValuationPointQueryParameters(); // SingleValuationPointQueryParameters | The query parameters used for diary entry or effective date of Holdings
         String navTypeCode = "navTypeCode_example"; // String | When provided runs against the specified NAV Type, otherwise the Primary NAV Type will be used.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the holdings of transaction portfolios in the Fund. Defaults  to return the latest version of the holdings if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the holdings of transaction portfolios in the Fund. Defaults   to return the latest version of the holdings if not specified.
         String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\", \"Holding\" or \"Portfolio\" domain to decorate onto  the holdings. These take the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\" or \"Holding/system/Cost\".
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\", \"Holding\" or \"Portfolio\" domain to decorate onto   the holdings. These take the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\" or \"Holding/system/Cost\".
         Boolean byTaxlots = true; // Boolean | Whether to expand the holdings to return the underlying tax-lots. Defaults to False.
         Integer includeSettlementEventsAfterDays = 56; // Integer | Number of days ahead to bring back settlements from, in relation to the specified effectiveAt
         try {
@@ -1374,9 +1374,9 @@ public class FundsApiExample {
 | **code** | **String**| The code of the Fund. Together with the scope this uniquely identifies the Fund. | |
 | **singleValuationPointQueryParameters** | [**SingleValuationPointQueryParameters**](SingleValuationPointQueryParameters.md)| The query parameters used for diary entry or effective date of Holdings | |
 | **navTypeCode** | **String**| When provided runs against the specified NAV Type, otherwise the Primary NAV Type will be used. | [optional] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the holdings of transaction portfolios in the Fund. Defaults  to return the latest version of the holdings if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the holdings of transaction portfolios in the Fund. Defaults   to return the latest version of the holdings if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot; or \&quot;Portfolio\&quot; domain to decorate onto  the holdings. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot; or \&quot;Portfolio\&quot; domain to decorate onto   the holdings. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. | [optional] |
 | **byTaxlots** | **Boolean**| Whether to expand the holdings to return the underlying tax-lots. Defaults to False. | [optional] |
 | **includeSettlementEventsAfterDays** | **Integer**| Number of days ahead to bring back settlements from, in relation to the specified effectiveAt | [optional] |
 
@@ -1503,7 +1503,7 @@ public class FundsApiExample {
 
 [EXPERIMENTAL] GetValuationPointData: Get Valuation Point Data for a Fund.
 
-Retrieves the Valuation Point data for a date or specified Diary Entry Id. The endpoint will internally extract all &#39;Assets&#39; and &#39;Liabilities&#39; from the related ABOR&#39;s Trial balance to produce a GAV. Start date will be assumed from the last &#39;official&#39; DiaryEntry and EndDate will be as provided.
+Retrieves the Valuation Point data for a date or specified Diary Entry Id.  The endpoint will internally extract all &#39;Assets&#39; and &#39;Liabilities&#39; from the related ABOR&#39;s Trial balance to produce a GAV.  Start date will be assumed from the last &#39;official&#39; DiaryEntry and EndDate will be as provided.
 
 ### Example
 
@@ -1602,7 +1602,7 @@ public class FundsApiExample {
 
 [EXPERIMENTAL] GetValuationPointJournalEntryLines: Get the Journal Entry lines for the given Fund.
 
-Gets the Journal Entry lines for the given Valuation Point for a Fund   The Journal Entry lines have been generated from transactions, translated via posting rules and used in the valuation point
+Gets the Journal Entry lines for the given Valuation Point for a Fund     The Journal Entry lines have been generated from transactions, translated via posting rules and used in the valuation point
 
 ### Example
 
@@ -1647,11 +1647,11 @@ public class FundsApiExample {
         String code = "code_example"; // String | The code of the Fund. Together with the scope is creating the unique identifier for the given Fund.
         ValuationPointDataQueryParameters valuationPointDataQueryParameters = new ValuationPointDataQueryParameters(); // ValuationPointDataQueryParameters | The arguments to use for querying the Journal Entry lines.
         String generalLedgerProfileCode = "generalLedgerProfileCode_example"; // String | The optional code of a general ledger profile used to decorate journal entry lines with levels.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve Journal Entry lines. Defaults to returning the latest version  of each transaction if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve Journal Entry lines. Defaults to returning the latest version   of each transaction if not specified.
         String filter = "filter_example"; // String | Expression to filter the result set.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing Journal Entry lines from a previous call to GetValuationPointJournalEntryLines.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument', 'Transaction', 'Portfolio', 'Account', 'LegalEntity' or 'CustodianAccount'  domain to decorate onto the journal entry lines.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument', 'Transaction', 'Portfolio', 'Account', 'LegalEntity' or 'CustodianAccount'   domain to decorate onto the journal entry lines.
         String navTypeCode = "navTypeCode_example"; // String | May be provided to view a specific NAV type. When not provided, Primary NAV will be used.
         try {
             // uncomment the below to set overrides at the request level
@@ -1678,11 +1678,11 @@ public class FundsApiExample {
 | **code** | **String**| The code of the Fund. Together with the scope is creating the unique identifier for the given Fund. | |
 | **valuationPointDataQueryParameters** | [**ValuationPointDataQueryParameters**](ValuationPointDataQueryParameters.md)| The arguments to use for querying the Journal Entry lines. | |
 | **generalLedgerProfileCode** | **String**| The optional code of a general ledger profile used to decorate journal entry lines with levels. | [optional] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve Journal Entry lines. Defaults to returning the latest version  of each transaction if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve Journal Entry lines. Defaults to returning the latest version   of each transaction if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the result set. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing Journal Entry lines from a previous call to GetValuationPointJournalEntryLines. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;  domain to decorate onto the journal entry lines. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;   domain to decorate onto the journal entry lines. | [optional] |
 | **navTypeCode** | **String**| May be provided to view a specific NAV type. When not provided, Primary NAV will be used. | [optional] |
 
 ### Return type
@@ -1756,7 +1756,7 @@ public class FundsApiExample {
         String code = "code_example"; // String | The code of the Fund. Together with the scope is the unique identifier for the given Fund.
         ValuationPointDataQueryParameters valuationPointDataQueryParameters = new ValuationPointDataQueryParameters(); // ValuationPointDataQueryParameters | The query parameters used in running the generation of the PnL summary
         String generalLedgerProfileCode = "generalLedgerProfileCode_example"; // String | The optional code of a general ledger profile used to decorate journal entry lines with levels.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve PnL summary. Defaults to returning the latest version  of each transaction if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve PnL summary. Defaults to returning the latest version   of each transaction if not specified.
         String filter = "filter_example"; // String | \"Expression to filter the result set.\"
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing Trial balance from a previous call to Trial balance.
@@ -1786,7 +1786,7 @@ public class FundsApiExample {
 | **code** | **String**| The code of the Fund. Together with the scope is the unique identifier for the given Fund. | |
 | **valuationPointDataQueryParameters** | [**ValuationPointDataQueryParameters**](ValuationPointDataQueryParameters.md)| The query parameters used in running the generation of the PnL summary | |
 | **generalLedgerProfileCode** | **String**| The optional code of a general ledger profile used to decorate journal entry lines with levels. | [optional] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve PnL summary. Defaults to returning the latest version  of each transaction if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve PnL summary. Defaults to returning the latest version   of each transaction if not specified. | [optional] |
 | **filter** | **String**| \&quot;Expression to filter the result set.\&quot; | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing Trial balance from a previous call to Trial balance. | [optional] |
@@ -1862,11 +1862,11 @@ public class FundsApiExample {
         String scope = "scope_example"; // String | The scope of the Fund.
         String code = "code_example"; // String | The code of the Fund. Together with the scope is creating the unique identifier for the given Fund.
         ValuationPointDataQueryParameters valuationPointDataQueryParameters = new ValuationPointDataQueryParameters(); // ValuationPointDataQueryParameters | The arguments to use for querying the transactions.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve transactions. Defaults to returning the latest version  of each transaction if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve transactions. Defaults to returning the latest version   of each transaction if not specified.
         String filter = "filter_example"; // String | Expression to filter the result set.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing transactions from a previous call to GetValuationPointTransactions.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument', 'Transaction', 'Portfolio', 'Account', 'LegalEntity' or 'CustodianAccount'  domain to decorate onto the journal entry lines.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument', 'Transaction', 'Portfolio', 'Account', 'LegalEntity' or 'CustodianAccount'   domain to decorate onto the journal entry lines.
         String navTypeCode = "navTypeCode_example"; // String | May be provided to view a specific NAV type. When not provided, Primary NAV will be used.
         try {
             // uncomment the below to set overrides at the request level
@@ -1892,11 +1892,11 @@ public class FundsApiExample {
 | **scope** | **String**| The scope of the Fund. | |
 | **code** | **String**| The code of the Fund. Together with the scope is creating the unique identifier for the given Fund. | |
 | **valuationPointDataQueryParameters** | [**ValuationPointDataQueryParameters**](ValuationPointDataQueryParameters.md)| The arguments to use for querying the transactions. | |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve transactions. Defaults to returning the latest version  of each transaction if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve transactions. Defaults to returning the latest version   of each transaction if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the result set. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing transactions from a previous call to GetValuationPointTransactions. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;  domain to decorate onto the journal entry lines. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;   domain to decorate onto the journal entry lines. | [optional] |
 | **navTypeCode** | **String**| May be provided to view a specific NAV type. When not provided, Primary NAV will be used. | [optional] |
 
 ### Return type
@@ -1925,7 +1925,7 @@ public class FundsApiExample {
 
 [EXPERIMENTAL] GetValuationPointTrialBalance: Get Trial Balance for the given Fund.
 
-Gets the Trial Balance for the given Valuation Point for a Fund.   The Trial Balance has been generated from transactions, translated via Posting Rules and aggregated based on a General Ledger Profile (where specified).
+Gets the Trial Balance for the given Valuation Point for a Fund.     The Trial Balance has been generated from transactions, translated via Posting Rules  and aggregated based on a General Ledger Profile (where specified).
 
 ### Example
 
@@ -1970,11 +1970,11 @@ public class FundsApiExample {
         String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
         ValuationPointDataQueryParameters valuationPointDataQueryParameters = new ValuationPointDataQueryParameters(); // ValuationPointDataQueryParameters | The query parameters used in running the generation of the Trial Balance.
         String generalLedgerProfileCode = "generalLedgerProfileCode_example"; // String | The optional code of a general ledger profile used to decorate journal entry lines with levels.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Trial Balance.  Defaults to returning the latest version if not specified.
-        String filter = "filter_example"; // String | Expression to filter the results by.  For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914.
-        Integer limit = 56; // Integer | When paginating, limit the number of returned results to this number.  Defaults to 100 if not specified.
-        String page = "page_example"; // String | The pagination token to use to continue listing Trial Balances.  This token is returned from the previous call.  If a pagination token is provided, the filter, effectiveAt and asAt fields  must not have changed since the original request.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument', 'Transaction', 'Portfolio', 'Account', 'LegalEntity' or 'CustodianAccount'  domain to decorate onto the journal entry lines.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Trial Balance.   Defaults to returning the latest version if not specified.
+        String filter = "filter_example"; // String | Expression to filter the results by.   For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        Integer limit = 56; // Integer | When paginating, limit the number of returned results to this number.   Defaults to 100 if not specified.
+        String page = "page_example"; // String | The pagination token to use to continue listing Trial Balances.   This token is returned from the previous call.   If a pagination token is provided, the filter, effectiveAt and asAt fields   must not have changed since the original request.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument', 'Transaction', 'Portfolio', 'Account', 'LegalEntity' or 'CustodianAccount'   domain to decorate onto the journal entry lines.
         String navTypeCode = "navTypeCode_example"; // String | May be provided to view a specific NAV type. When not provided, Primary NAV will be used.
         try {
             // uncomment the below to set overrides at the request level
@@ -2001,11 +2001,11 @@ public class FundsApiExample {
 | **code** | **String**| The code of the Fund. Together with the scope this uniquely identifies the Fund. | |
 | **valuationPointDataQueryParameters** | [**ValuationPointDataQueryParameters**](ValuationPointDataQueryParameters.md)| The query parameters used in running the generation of the Trial Balance. | |
 | **generalLedgerProfileCode** | **String**| The optional code of a general ledger profile used to decorate journal entry lines with levels. | [optional] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Trial Balance.  Defaults to returning the latest version if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results by.  For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
-| **limit** | **Integer**| When paginating, limit the number of returned results to this number.  Defaults to 100 if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing Trial Balances.  This token is returned from the previous call.  If a pagination token is provided, the filter, effectiveAt and asAt fields  must not have changed since the original request. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;  domain to decorate onto the journal entry lines. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Trial Balance.   Defaults to returning the latest version if not specified. | [optional] |
+| **filter** | **String**| Expression to filter the results by.   For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **limit** | **Integer**| When paginating, limit the number of returned results to this number.   Defaults to 100 if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing Trial Balances.   This token is returned from the previous call.   If a pagination token is provided, the filter, effectiveAt and asAt fields   must not have changed since the original request. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;   domain to decorate onto the journal entry lines. | [optional] |
 | **navTypeCode** | **String**| May be provided to view a specific NAV type. When not provided, Primary NAV will be used. | [optional] |
 
 ### Return type
@@ -2077,13 +2077,13 @@ public class FundsApiExample {
         FundsApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundsApi.class);
         String scope = "scope_example"; // String | The scope of the Fund.
         String code = "code_example"; // String | The code of the Fund.
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the TimeVariant properties for the Fees. Defaults to the current LUSID  system datetime if not specified.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the TimeVariant properties for the Fees. Defaults to the current LUSID   system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the Fees. Defaults to returning the latest version of each Fee if not specified.
-        String page = "page_example"; // String | The pagination token to use to continue listing fees; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request.
+        String page = "page_example"; // String | The pagination token to use to continue listing fees; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
-        String filter = "filter_example"; // String | Expression to filter the results.  For example, to filter on the treatment, specify \"treatment eq 'Monthly'\". For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the treatment, specify \"treatment eq 'Monthly'\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\"
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Fee' domain to decorate onto each Fee.  These must take the format {domain}/{scope}/{code}, for example 'Fee/Account/Id'.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Fee' domain to decorate onto each Fee.   These must take the format {domain}/{scope}/{code}, for example 'Fee/Account/Id'.
         try {
             // uncomment the below to set overrides at the request level
             // PagedResourceListOfFee result = apiInstance.listFees(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys).execute(opts);
@@ -2107,13 +2107,13 @@ public class FundsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the Fund. | |
 | **code** | **String**| The code of the Fund. | |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to list the TimeVariant properties for the Fees. Defaults to the current LUSID  system datetime if not specified. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list the TimeVariant properties for the Fees. Defaults to the current LUSID   system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the Fees. Defaults to returning the latest version of each Fee if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing fees; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing fees; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results.  For example, to filter on the treatment, specify \&quot;treatment eq &#39;Monthly&#39;\&quot;. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **filter** | **String**| Expression to filter the results.   For example, to filter on the treatment, specify \&quot;treatment eq &#39;Monthly&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Fee&#39; domain to decorate onto each Fee.  These must take the format {domain}/{scope}/{code}, for example &#39;Fee/Account/Id&#39;. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Fee&#39; domain to decorate onto each Fee.   These must take the format {domain}/{scope}/{code}, for example &#39;Fee/Account/Id&#39;. | [optional] |
 
 ### Return type
 
@@ -2137,7 +2137,7 @@ public class FundsApiExample {
 
 ## listFundCalendar
 
-> PagedResourceListOfFundCalendarEntry listFundCalendar(scope, code, asAt, page, limit, filter, sortBy)
+> PagedResourceListOfFundCalendarEntry listFundCalendar(scope, code, asAt, page, limit, filter, sortBy, propertyKeys)
 
 [EXPERIMENTAL] ListFundCalendar: List Fund Calendar.
 
@@ -2185,15 +2185,16 @@ public class FundsApiExample {
         String scope = "scope_example"; // String | The Scope for the Fund.
         String code = "code_example"; // String | The Code for the Fund.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the Calendar. Defaults to returning the latest version of each Calendar Entry if not specified.
-        String page = "page_example"; // String | The pagination token to use to continue listing Valuation Points; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request.
+        String page = "page_example"; // String | The pagination token to use to continue listing Valuation Points; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
-        String filter = "filter_example"; // String | Expression to filter the results.  For example, to filter on the DisplayName, specify \"displayName eq 'VP 1'\". For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the DisplayName, specify \"displayName eq 'VP 1'\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\"
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'ClosedPeriod' domain to decorate onto each item.
         try {
             // uncomment the below to set overrides at the request level
-            // PagedResourceListOfFundCalendarEntry result = apiInstance.listFundCalendar(scope, code, asAt, page, limit, filter, sortBy).execute(opts);
+            // PagedResourceListOfFundCalendarEntry result = apiInstance.listFundCalendar(scope, code, asAt, page, limit, filter, sortBy, propertyKeys).execute(opts);
 
-            PagedResourceListOfFundCalendarEntry result = apiInstance.listFundCalendar(scope, code, asAt, page, limit, filter, sortBy).execute();
+            PagedResourceListOfFundCalendarEntry result = apiInstance.listFundCalendar(scope, code, asAt, page, limit, filter, sortBy, propertyKeys).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling FundsApi#listFundCalendar");
@@ -2213,10 +2214,11 @@ public class FundsApiExample {
 | **scope** | **String**| The Scope for the Fund. | |
 | **code** | **String**| The Code for the Fund. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the Calendar. Defaults to returning the latest version of each Calendar Entry if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing Valuation Points; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing Valuation Points; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results.  For example, to filter on the DisplayName, specify \&quot;displayName eq &#39;VP 1&#39;\&quot;. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **filter** | **String**| Expression to filter the results.   For example, to filter on the DisplayName, specify \&quot;displayName eq &#39;VP 1&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;ClosedPeriod&#39; domain to decorate onto each item. | [optional] |
 
 ### Return type
 
@@ -2285,13 +2287,13 @@ public class FundsApiExample {
         // FundsApi apiInstance = apiFactory.build(FundsApi.class);
 
         FundsApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundsApi.class);
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the TimeVariant properties for the Funds. Defaults to the current LUSID  system datetime if not specified.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the TimeVariant properties for the Funds. Defaults to the current LUSID   system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the Funds. Defaults to returning the latest version of each Fund if not specified.
-        String page = "page_example"; // String | The pagination token to use to continue listing Funds; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request.
+        String page = "page_example"; // String | The pagination token to use to continue listing Funds; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
-        String filter = "filter_example"; // String | Expression to filter the results.  For example, to filter on the Fund type, specify \"id.Code eq 'Fund1'\". For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the Fund type, specify \"id.Code eq 'Fund1'\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\"
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Fund' domain to decorate onto each Fund.  These must take the format {domain}/{scope}/{code}, for example 'Fund/Manager/Id'.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Fund' domain to decorate onto each Fund.   These must take the format {domain}/{scope}/{code}, for example 'Fund/Manager/Id'.
         try {
             // uncomment the below to set overrides at the request level
             // PagedResourceListOfFund result = apiInstance.listFunds(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys).execute(opts);
@@ -2313,13 +2315,13 @@ public class FundsApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **effectiveAt** | **String**| The effective datetime or cut label at which to list the TimeVariant properties for the Funds. Defaults to the current LUSID  system datetime if not specified. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list the TimeVariant properties for the Funds. Defaults to the current LUSID   system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the Funds. Defaults to returning the latest version of each Fund if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing Funds; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing Funds; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results.  For example, to filter on the Fund type, specify \&quot;id.Code eq &#39;Fund1&#39;\&quot;. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **filter** | **String**| Expression to filter the results.   For example, to filter on the Fund type, specify \&quot;id.Code eq &#39;Fund1&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Fund&#39; domain to decorate onto each Fund.  These must take the format {domain}/{scope}/{code}, for example &#39;Fund/Manager/Id&#39;. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Fund&#39; domain to decorate onto each Fund.   These must take the format {domain}/{scope}/{code}, for example &#39;Fund/Manager/Id&#39;. | [optional] |
 
 ### Return type
 
@@ -2390,12 +2392,12 @@ public class FundsApiExample {
         FundsApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundsApi.class);
         String scope = "scope_example"; // String | The scope of the Fund.
         String code = "code_example"; // String | The code of the Fund.
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the TimeVariant properties for the ValuationPoints. Defaults to the current LUSID  system datetime if not specified.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the TimeVariant properties for the ValuationPoints. Defaults to the current LUSID   system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the ValuationPoints. Defaults to returning the latest version of each ValuationPoint if not specified.
-        String page = "page_example"; // String | The pagination token to use to continue listing ValuationPoints; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request.
+        String page = "page_example"; // String | The pagination token to use to continue listing ValuationPoints; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
-        String filter = "filter_example"; // String | Expression to filter the results by.  For example, to filter on the NAV, specify \"NAV gt 300\". For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'DiaryEntry' domain to decorate onto each ValuationPoint.  These must take the format {domain}/{scope}/{code}, for example 'DiaryEntry/ValuationPoint/Id'.
+        String filter = "filter_example"; // String | Expression to filter the results by.   For example, to filter on the NAV, specify \"NAV gt 300\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'DiaryEntry' domain to decorate onto each ValuationPoint.   These must take the format {domain}/{scope}/{code}, for example 'DiaryEntry/ValuationPoint/Id'.
         String navTypeCode = "navTypeCode_example"; // String | May be provided to view a specific NAV type. When not provided, Primary NAV will be used.
         try {
             // uncomment the below to set overrides at the request level
@@ -2420,12 +2422,12 @@ public class FundsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the Fund. | |
 | **code** | **String**| The code of the Fund. | |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to list the TimeVariant properties for the ValuationPoints. Defaults to the current LUSID  system datetime if not specified. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list the TimeVariant properties for the ValuationPoints. Defaults to the current LUSID   system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the ValuationPoints. Defaults to returning the latest version of each ValuationPoint if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing ValuationPoints; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing ValuationPoints; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results by.  For example, to filter on the NAV, specify \&quot;NAV gt 300\&quot;. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;DiaryEntry&#39; domain to decorate onto each ValuationPoint.  These must take the format {domain}/{scope}/{code}, for example &#39;DiaryEntry/ValuationPoint/Id&#39;. | [optional] |
+| **filter** | **String**| Expression to filter the results by.   For example, to filter on the NAV, specify \&quot;NAV gt 300\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;DiaryEntry&#39; domain to decorate onto each ValuationPoint.   These must take the format {domain}/{scope}/{code}, for example &#39;DiaryEntry/ValuationPoint/Id&#39;. | [optional] |
 | **navTypeCode** | **String**| May be provided to view a specific NAV type. When not provided, Primary NAV will be used. | [optional] |
 
 ### Return type
@@ -2838,7 +2840,7 @@ public class FundsApiExample {
 
 [EXPERIMENTAL] UpsertDiaryEntryTypeValuationPoint: Upsert Valuation Point.
 
-Update or insert the estimate Valuation Point.   If the Valuation Point does not exist, this method will create it in estimate state.   If the Valuation Point already exists and is in estimate state, the Valuation Point will be updated with the newly specified information in this request.
+Update or insert the estimate Valuation Point.     If the Valuation Point does not exist, this method will create it in estimate state.     If the Valuation Point already exists and is in estimate state, the Valuation Point will be updated with the newly specified information in this request.
 
 ### Example
 
@@ -2935,7 +2937,7 @@ public class FundsApiExample {
 
 [EXPERIMENTAL] UpsertFeeProperties: Upsert Fee properties.
 
-Update or insert one or more properties onto a single Fee. A property will be updated if it already exists and inserted if it does not. All properties must be of the domain &#39;Fee&#39;.   Upserting a property that exists for an Fee, with a null value, will delete the instance of the property for that group.   Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+Update or insert one or more properties onto a single Fee. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Fee&#39;.     Upserting a property that exists for an Fee, with a null value, will delete the instance of the property for that group.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
 
 ### Example
 
@@ -2979,7 +2981,7 @@ public class FundsApiExample {
         String scope = "scope_example"; // String | The scope of the Fund.
         String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
         String feeCode = "feeCode_example"; // String | The code of the Fee to update or insert the properties onto.
-        Map<String, Property> requestBody = new HashMap(); // Map<String, Property> | The properties to be updated or inserted onto the Fee. Each property in  the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \"Fee/Manager/Id\".
+        Map<String, Property> requestBody = new HashMap(); // Map<String, Property> | The properties to be updated or inserted onto the Fee. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \"Fee/Manager/Id\".
         try {
             // uncomment the below to set overrides at the request level
             // FeeProperties result = apiInstance.upsertFeeProperties(scope, code, feeCode, requestBody).execute(opts);
@@ -3004,7 +3006,7 @@ public class FundsApiExample {
 | **scope** | **String**| The scope of the Fund. | |
 | **code** | **String**| The code of the Fund. Together with the scope this uniquely identifies the Fund. | |
 | **feeCode** | **String**| The code of the Fee to update or insert the properties onto. | |
-| **requestBody** | [**Map&lt;String, Property&gt;**](Property.md)| The properties to be updated or inserted onto the Fee. Each property in  the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Fee/Manager/Id\&quot;. | [optional] |
+| **requestBody** | [**Map&lt;String, Property&gt;**](Property.md)| The properties to be updated or inserted onto the Fee. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Fee/Manager/Id\&quot;. | [optional] |
 
 ### Return type
 
@@ -3032,7 +3034,7 @@ public class FundsApiExample {
 
 [EXPERIMENTAL] UpsertFundProperties: Upsert Fund properties.
 
-Update or insert one or more properties onto a single Fund. A property will be updated if it already exists and inserted if it does not. All properties must be of the domain &#39;Fund&#39;.   Upserting a property that exists for an Fund, with a null value, will delete the instance of the property for that group.   Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+Update or insert one or more properties onto a single Fund. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Fund&#39;.     Upserting a property that exists for an Fund, with a null value, will delete the instance of the property for that group.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
 
 ### Example
 
@@ -3075,7 +3077,7 @@ public class FundsApiExample {
         FundsApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundsApi.class);
         String scope = "scope_example"; // String | The scope of the Fund to update or insert the properties onto.
         String code = "code_example"; // String | The code of the Fund to update or insert the properties onto. Together with the scope this uniquely identifies the Fund.
-        Map<String, Property> requestBody = new HashMap(); // Map<String, Property> | The properties to be updated or inserted onto the Fund. Each property in  the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \"Fund/Manager/Id\".
+        Map<String, Property> requestBody = new HashMap(); // Map<String, Property> | The properties to be updated or inserted onto the Fund. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \"Fund/Manager/Id\".
         try {
             // uncomment the below to set overrides at the request level
             // FundProperties result = apiInstance.upsertFundProperties(scope, code, requestBody).execute(opts);
@@ -3099,7 +3101,7 @@ public class FundsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the Fund to update or insert the properties onto. | |
 | **code** | **String**| The code of the Fund to update or insert the properties onto. Together with the scope this uniquely identifies the Fund. | |
-| **requestBody** | [**Map&lt;String, Property&gt;**](Property.md)| The properties to be updated or inserted onto the Fund. Each property in  the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Fund/Manager/Id\&quot;. | [optional] |
+| **requestBody** | [**Map&lt;String, Property&gt;**](Property.md)| The properties to be updated or inserted onto the Fund. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Fund/Manager/Id\&quot;. | [optional] |
 
 ### Return type
 

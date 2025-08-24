@@ -245,7 +245,7 @@ public class FxForwardSettlementEvent extends InstrumentEvent {
   }
 
    /**
-   * Optional. Required if the event is an NDF (i.e. if IsNdf &#x3D; true). Date of the FxRate fixings.
+   * Optional. Required if the event is an NDF (i.e. if IsNdf &#x3D; true).  Date of the FxRate fixings.
    * @return fixingDate
   **/
   @jakarta.annotation.Nullable
@@ -266,7 +266,7 @@ public class FxForwardSettlementEvent extends InstrumentEvent {
   }
 
    /**
-   * Optional. Required if the event is an NDF (i.e. if IsNdf &#x3D; true). May be set to either DomCcy or FgnCcy, or a third currency.
+   * Optional. Required if the event is an NDF (i.e. if IsNdf &#x3D; true).  May be set to either DomCcy or FgnCcy, or a third currency.
    * @return settlementCcy
   **/
   @jakarta.annotation.Nullable
@@ -287,7 +287,7 @@ public class FxForwardSettlementEvent extends InstrumentEvent {
   }
 
    /**
-   * Optional. Required if the event is an NDF (i.e. if IsNdf &#x3D; true). CashFlow per unit. Paid in the SettlementCcy.
+   * Optional. Required if the event is an NDF (i.e. if IsNdf &#x3D; true).  CashFlow per unit. Paid in the SettlementCcy.
    * @return cashFlowPerUnit
   **/
   @jakarta.annotation.Nullable
@@ -308,7 +308,7 @@ public class FxForwardSettlementEvent extends InstrumentEvent {
   }
 
    /**
-   * Domestic currency to foreign currency FX rate. Not required, only used to override quotes.
+   * Domestic currency to foreign currency FX rate.  Not required, only used to override quotes.
    * @return domesticToForeignRate
   **/
   @jakarta.annotation.Nullable
@@ -329,7 +329,7 @@ public class FxForwardSettlementEvent extends InstrumentEvent {
   }
 
    /**
-   * Domestic currency to settlement currency FX rate Not required, only used to override quotes.
+   * Domestic currency to settlement currency FX rate  Not required, only used to override quotes.
    * @return domesticToSettlementRate
   **/
   @jakarta.annotation.Nullable
@@ -344,7 +344,7 @@ public class FxForwardSettlementEvent extends InstrumentEvent {
 
 
    /**
-   * Foreign currency to settlement currency FX rate Not required, only used to override quotes.
+   * Foreign currency to settlement currency FX rate  Not required, only used to override quotes.
    * @return foreignToSettlementRate
   **/
   @jakarta.annotation.Nullable

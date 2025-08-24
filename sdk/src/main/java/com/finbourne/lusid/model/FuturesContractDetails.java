@@ -48,7 +48,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Most, if not all, information about contracts is standardized. See, e.g. https://www.cmegroup.com/ for common codes and similar data. This appears to be in common use by well known market information providers, e.g. Bloomberg and Refinitiv.
+ * Most, if not all, information about contracts is standardized. See, e.g. https://www.cmegroup.com/ for  common codes and similar data. This appears to be in common use by well known market information providers, e.g. Bloomberg and Refinitiv.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FuturesContractDetails {
@@ -164,7 +164,7 @@ public class FuturesContractDetails {
   }
 
    /**
-   * The asset class of the underlying. Optional and will default to Unknown if not set.  Supported string (enumeration) values are: [InterestRates, FX, Inflation, Equities, Credit, Commodities, Money].
+   * The asset class of the underlying. Optional and will default to Unknown if not set.    Supported string (enumeration) values are: [InterestRates, FX, Inflation, Equities, Credit, Commodities, Money].
    * @return assetClass
   **/
   @jakarta.annotation.Nullable
@@ -206,7 +206,7 @@ public class FuturesContractDetails {
   }
 
    /**
-   * Which month does the contract trade for.  Supported string (enumeration) values are: [F, G, H, J, K, M, N, Q, U, V, X, Z].
+   * Which month does the contract trade for.    Supported string (enumeration) values are: [F, G, H, J, K, M, N, Q, U, V, X, Z].
    * @return contractMonth
   **/
   @jakarta.annotation.Nullable
@@ -248,7 +248,7 @@ public class FuturesContractDetails {
   }
 
    /**
-   * If appropriate, the day count convention method used in pricing (rates futures). For more information on day counts, see [knowledge base article KA-01798](https://support.lusid.com/knowledgebase/article/KA-01798)   Supported string (enumeration) values are: [Actual360, Act360, MoneyMarket, Actual365, Act365, Thirty360, ThirtyU360, Bond, ThirtyE360, EuroBond, ActualActual, ActAct, ActActIsda, ActActIsma, ActActIcma, OneOne, Act364, Act365F, Act365L, Act365_25, Act252, Bus252, NL360, NL365, ActActAFB, Act365Cad, ThirtyActIsda, Thirty365Isda, ThirtyEActIsda, ThirtyE360Isda, ThirtyE365Isda, ThirtyU360EOM].
+   * If appropriate, the day count convention method used in pricing (rates futures).  For more information on day counts, see [knowledge base article KA-01798](https://support.lusid.com/knowledgebase/article/KA-01798)     Supported string (enumeration) values are: [Actual360, Act360, MoneyMarket, Actual365, Act365, Thirty360, ThirtyU360, Bond, ThirtyE360, EuroBond, ActualActual, ActAct, ActActIsda, ActActIsma, ActActIcma, OneOne, Act364, Act365F, Act365L, Act365_25, Act252, Bus252, NL360, NL365, ActActAFB, Act365Cad, ThirtyActIsda, Thirty365Isda, ThirtyEActIsda, ThirtyE360Isda, ThirtyE365Isda, ThirtyU360EOM].
    * @return convention
   **/
   @jakarta.annotation.Nullable
@@ -424,7 +424,7 @@ public class FuturesContractDetails {
   }
 
    /**
-   * Delivery type to be used on settling the contract. Optional: Defaults to DeliveryType.Physical if not provided.  Supported string (enumeration) values are: [Cash, Physical].
+   * Delivery type to be used on settling the contract.  Optional: Defaults to DeliveryType.Physical if not provided.    Supported string (enumeration) values are: [Cash, Physical].
    * @return deliveryType
   **/
   @jakarta.annotation.Nullable

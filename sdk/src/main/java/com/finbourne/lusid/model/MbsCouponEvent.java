@@ -48,7 +48,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Definition of an MBS Coupon Event This is an event that describes the occurence of a cashflow due to a mortgage-backed security coupon payment.
+ * Definition of an MBS Coupon Event  This is an event that describes the occurence of a cashflow due to a mortgage-backed security coupon payment.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class MbsCouponEvent extends InstrumentEvent {

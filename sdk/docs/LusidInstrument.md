@@ -2,7 +2,7 @@
 
 # LusidInstrument
 
-Base class in the hierarchy for representing the full economic definition of instruments in LUSID. These definitions are used to provide instrument analytics such as PV, accrual, cash flows, and risk. This base class should not be directly instantiated; each supported InstrumentType has a corresponding inherited class.
+Base class in the hierarchy for representing the full economic definition of instruments in LUSID.  These definitions are used to provide instrument analytics such as PV, accrual, cash flows, and risk.  This base class should not be directly instantiated; each supported InstrumentType has a corresponding inherited class.
 
 ## Properties
 

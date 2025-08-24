@@ -46,7 +46,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * A schema that a given document must obey. A representation of the validation of a particular Dialect, in a given language.
+ * A schema that a given document must obey. A representation of the validation of a particular Dialect,  in a given language.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DialectSchema {

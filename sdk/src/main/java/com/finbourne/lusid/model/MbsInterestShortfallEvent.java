@@ -48,7 +48,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Definition of an MBS Interest Shortfall Event This is an event that describes the occurence of a cashflow due to unpaid interest that was deferred and not capitalised into the outstanding principal balance of a mortgage-backed security.
+ * Definition of an MBS Interest Shortfall Event  This is an event that describes the occurence of a cashflow due to unpaid interest that was deferred and  not capitalised into the outstanding principal balance of a mortgage-backed security.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class MbsInterestShortfallEvent extends InstrumentEvent {

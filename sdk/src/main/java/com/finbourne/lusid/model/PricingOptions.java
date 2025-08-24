@@ -143,7 +143,7 @@ public class PricingOptions {
   }
 
    /**
-   * If true then use the instrument type to set the default instrument pricer This applies where no more specific set of overrides are provided on a per-vendor and instrument basis.
+   * If true then use the instrument type to set the default instrument pricer  This applies where no more specific set of overrides are provided on a per-vendor and instrument basis.
    * @return useInstrumentTypeToDeterminePricer
   **/
   @jakarta.annotation.Nullable
@@ -164,7 +164,7 @@ public class PricingOptions {
   }
 
    /**
-   * By default, one would not expect to price and exotic instrument, i.e. an instrument with a complicated instrument definition simply through looking up a price as there should be a better way of evaluating it. To override that behaviour and allow lookup for a price from the instrument identifier(s), set this to true.
+   * By default, one would not expect to price and exotic instrument, i.e. an instrument with a complicated  instrument definition simply through looking up a price as there should be a better way of evaluating it.  To override that behaviour and allow lookup for a price from the instrument identifier(s), set this to true.
    * @return allowAnyInstrumentsWithSecUidToPriceOffLookup
   **/
   @jakarta.annotation.Nullable
@@ -185,7 +185,7 @@ public class PricingOptions {
   }
 
    /**
-   * If true then a failure in task evaluation doesn&#39;t cause overall failure. results will be returned where they succeeded and annotation elsewhere
+   * If true then a failure in task evaluation doesn&#39;t cause overall failure.  results will be returned where they succeeded and annotation elsewhere
    * @return allowPartiallySuccessfulEvaluation
   **/
   @jakarta.annotation.Nullable
@@ -206,7 +206,7 @@ public class PricingOptions {
   }
 
    /**
-   * If true (default), when pricing an Fx-Forward or Interest Rate Swap, Future and other linearly separable products, product two results, one for each leg rather than a single line result with the amalgamated/summed pv from both legs.
+   * If true (default), when pricing an Fx-Forward or Interest Rate Swap, Future and other linearly separable products, product two results, one for each leg  rather than a single line result with the amalgamated/summed pv from both legs.
    * @return produceSeparateResultForLinearOtcLegs
   **/
   @jakarta.annotation.Nullable
@@ -227,7 +227,7 @@ public class PricingOptions {
   }
 
    /**
-   * If true, when pricing using a model or for an instrument that supports use of intermediate cached-results, use them. Default is that this caching is turned off.
+   * If true, when pricing using a model or for an instrument that supports use of intermediate cached-results, use them.  Default is that this caching is turned off.
    * @return enableUseOfCachedUnitResults
   **/
   @jakarta.annotation.Nullable
@@ -269,7 +269,7 @@ public class PricingOptions {
   }
 
    /**
-   * When creating a payment diary, should contingent cash payments (e.g. from exercise of a swaption into a swap) be included or not. i.e. Is exercise or default being assumed to happen or not.
+   * When creating a payment diary, should contingent cash payments (e.g. from exercise of a swaption into a swap) be included or not.  i.e. Is exercise or default being assumed to happen or not.
    * @return removeContingentCashflowsInPaymentDiary
   **/
   @jakarta.annotation.Nullable
@@ -353,7 +353,7 @@ public class PricingOptions {
   }
 
    /**
-   * In the case upserted structured result store (SRS) cashflows are not  in the portfolio currency, set this parameter to True to convert said cashflows into the portfolio currency. By default, this flag is set  to False and Lusid will not do any FX conversion.  Please note that FX conversion is dependent on the data available in the quote store - ensure that all relevant FX quotes have been loaded for cashflow currency conversion.
+   * In the case upserted structured result store (SRS) cashflows are not   in the portfolio currency, set this parameter to True to convert said  cashflows into the portfolio currency. By default, this flag is set   to False and Lusid will not do any FX conversion.    Please note that FX conversion is dependent on the data available in  the quote store - ensure that all relevant FX quotes have been loaded  for cashflow currency conversion.
    * @return convertSrsCashFlowsToPortfolioCurrency
   **/
   @jakarta.annotation.Nullable
@@ -374,7 +374,7 @@ public class PricingOptions {
   }
 
    /**
-   * When performing lookthrough portfolio expansion with ScalingMethodology set to \&quot;Sum\&quot; or \&quot;AbsoluteSum\&quot;, the quantity specified here will be conserved and apportioned to lookthrough constituents. For example, an equal-weighting index with 100 constituents can be modelled as a reference portfolio with 1% weights on each equity. When expanding a $9000 holding of that index into its constituents while conserving PV, we end up with $90 of each equity. The number of units of each equity held is then implied. Note that conservation of one quantity may imply non-conservation of others, especially when some constituents are OTCs.   Allowed values are: \&quot;PV\&quot; (default), \&quot;Exposure\&quot;.
+   * When performing lookthrough portfolio expansion with ScalingMethodology set to \&quot;Sum\&quot; or \&quot;AbsoluteSum\&quot;,  the quantity specified here will be conserved and apportioned to lookthrough constituents.  For example, an equal-weighting index with 100 constituents can be modelled as a reference portfolio with 1% weights on each equity.  When expanding a $9000 holding of that index into its constituents while conserving PV, we end up with $90 of each equity.  The number of units of each equity held is then implied.  Note that conservation of one quantity may imply non-conservation of others, especially when some constituents are OTCs.     Allowed values are: \&quot;PV\&quot; (default), \&quot;Exposure\&quot;.
    * @return conservedQuantityForLookthroughExpansion
   **/
   @jakarta.annotation.Nullable
@@ -416,7 +416,7 @@ public class PricingOptions {
   }
 
    /**
-   * When enabled, allows inference between leg-level and instrument-level data during portfolio valuation. If data is missing at one level, it may be inferred from the other level. For example, missing leg-level data  may be inferred from existing leg-level and instrument- level data when ProduceSeparateResultForLinearOtcLegs is enabled, and vice versa. Explicitly provided data always takes precedence.
+   * When enabled, allows inference between leg-level and  instrument-level data during portfolio valuation. If  data is missing at one level, it may be inferred from  the other level. For example, missing leg-level data   may be inferred from existing leg-level and instrument-  level data when ProduceSeparateResultForLinearOtcLegs  is enabled, and vice versa. Explicitly provided data  always takes precedence.
    * @return enableLegLevelInferenceForCustomSrsColumns
   **/
   @jakarta.annotation.Nullable

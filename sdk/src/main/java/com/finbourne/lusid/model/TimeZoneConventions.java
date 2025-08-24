@@ -46,7 +46,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Provides information on the primary time zone of an instrument and optional cut labels for defining times to be used by instrument events.
+ * Provides information on the primary time zone of an instrument and optional cut labels  for defining times to be used by instrument events.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class TimeZoneConventions {

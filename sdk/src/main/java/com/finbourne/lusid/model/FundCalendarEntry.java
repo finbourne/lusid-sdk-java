@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -21,6 +22,8 @@ import java.io.IOException;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -135,6 +138,10 @@ public class FundCalendarEntry {
   public static final String SERIALIZED_NAME_APPLY_CLEAR_DOWN = "applyClearDown";
   @SerializedName(SERIALIZED_NAME_APPLY_CLEAR_DOWN)
   private Boolean applyClearDown;
+
+  public static final String SERIALIZED_NAME_PROPERTIES = "properties";
+  @SerializedName(SERIALIZED_NAME_PROPERTIES)
+  private Map<String, Property> properties;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
@@ -336,6 +343,35 @@ public class FundCalendarEntry {
   }
 
 
+  public FundCalendarEntry properties(Map<String, Property> properties) {
+    
+    this.properties = properties;
+    return this;
+  }
+
+  public FundCalendarEntry putPropertiesItem(String key, Property propertiesItem) {
+    if (this.properties == null) {
+      this.properties = new HashMap<>();
+    }
+    this.properties.put(key, propertiesItem);
+    return this;
+  }
+
+   /**
+   * The properties for the Calendar Entry. These will be from the &#39;ClosedPeriod&#39; domain.
+   * @return properties
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, Property> getProperties() {
+    return properties;
+  }
+
+
+  public void setProperties(Map<String, Property> properties) {
+    this.properties = properties;
+  }
+
+
   public FundCalendarEntry version(Version version) {
     
     this.version = version;
@@ -397,6 +433,7 @@ public class FundCalendarEntry {
         Objects.equals(this.entryType, fundCalendarEntry.entryType) &&
         Objects.equals(this.status, fundCalendarEntry.status) &&
         Objects.equals(this.applyClearDown, fundCalendarEntry.applyClearDown) &&
+        Objects.equals(this.properties, fundCalendarEntry.properties) &&
         Objects.equals(this.version, fundCalendarEntry.version) &&
         Objects.equals(this.href, fundCalendarEntry.href);
   }
@@ -407,7 +444,7 @@ public class FundCalendarEntry {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, displayName, description, navTypeCode, effectiveAt, asAt, entryType, status, applyClearDown, version, href);
+    return Objects.hash(code, displayName, description, navTypeCode, effectiveAt, asAt, entryType, status, applyClearDown, properties, version, href);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -430,6 +467,7 @@ public class FundCalendarEntry {
     sb.append("    entryType: ").append(toIndentedString(entryType)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    applyClearDown: ").append(toIndentedString(applyClearDown)).append("\n");
+    sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("}");
@@ -463,6 +501,7 @@ public class FundCalendarEntry {
     openapiFields.add("entryType");
     openapiFields.add("status");
     openapiFields.add("applyClearDown");
+    openapiFields.add("properties");
     openapiFields.add("version");
     openapiFields.add("href");
 

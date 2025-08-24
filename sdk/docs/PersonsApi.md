@@ -31,7 +31,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 DeletePerson: Delete person
 
-Delete a person. Deletion will be valid from the person&#39;s creation datetime. This means that the person will no longer exist at any effective datetime from the asAt datetime of deletion.
+Delete a person. Deletion will be valid from the person&#39;s creation datetime.  This means that the person will no longer exist at any effective datetime from the asAt datetime of deletion.
 
 ### Example
 
@@ -74,7 +74,7 @@ public class PersonsApiExample {
         PersonsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PersonsApi.class);
         String idTypeScope = "idTypeScope_example"; // String | The scope of the person identifier type.
         String idTypeCode = "idTypeCode_example"; // String | The code of the person identifier type.
-        String code = "code_example"; // String | Code of the person under specified identifier type scope and code. This together with defined  identifier type uniquely identifies the person to delete.
+        String code = "code_example"; // String | Code of the person under specified identifier type scope and code. This together with defined   identifier type uniquely identifies the person to delete.
         try {
             // uncomment the below to set overrides at the request level
             // DeletedEntityResponse result = apiInstance.deletePerson(idTypeScope, idTypeCode, code).execute(opts);
@@ -98,7 +98,7 @@ public class PersonsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **idTypeScope** | **String**| The scope of the person identifier type. | |
 | **idTypeCode** | **String**| The code of the person identifier type. | |
-| **code** | **String**| Code of the person under specified identifier type scope and code. This together with defined  identifier type uniquely identifies the person to delete. | |
+| **code** | **String**| Code of the person under specified identifier type scope and code. This together with defined   identifier type uniquely identifies the person to delete. | |
 
 ### Return type
 
@@ -126,7 +126,7 @@ public class PersonsApiExample {
 
 [EARLY ACCESS] DeletePersonAccessMetadata: Delete a Person Access Metadata entry
 
-Deletes the Person Access Metadata entry that exactly matches the provided identifier parts.  It is important to always check to verify success (or failure).
+Deletes the Person Access Metadata entry that exactly matches the provided identifier parts.    It is important to always check to verify success (or failure).
 
 ### Example
 
@@ -270,9 +270,9 @@ public class PersonsApiExample {
         PersonsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PersonsApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the person identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the person identifier type.
-        String code = "code_example"; // String | Code of the person under specified identifier type's scope and code. This together with stated identifier type uniquely  identifies the person.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | The property keys of the identifiers to delete. These take the format  {domain}/{scope}/{code} e.g. \"Person/CompanyDetails/Role\". Each property must be from the \"Person\" domain. Identifiers or identifiers not specified in request will not be changed.
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to delete the identifiers. Defaults to the current LUSID system datetime if not specified.  Must not include an effective datetime if identifiers are perpetual.
+        String code = "code_example"; // String | Code of the person under specified identifier type's scope and code. This together with stated identifier type uniquely   identifies the person.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | The property keys of the identifiers to delete. These take the format   {domain}/{scope}/{code} e.g. \"Person/CompanyDetails/Role\". Each property must be from the \"Person\" domain. Identifiers or identifiers not specified in request will not be changed.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to delete the identifiers. Defaults to the current LUSID system datetime if not specified.   Must not include an effective datetime if identifiers are perpetual.
         try {
             // uncomment the below to set overrides at the request level
             // DeletedEntityResponse result = apiInstance.deletePersonIdentifiers(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt).execute(opts);
@@ -296,9 +296,9 @@ public class PersonsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **idTypeScope** | **String**| Scope of the person identifier type. | |
 | **idTypeCode** | **String**| Code of the person identifier type. | |
-| **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely  identifies the person. | |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| The property keys of the identifiers to delete. These take the format  {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. Each property must be from the \&quot;Person\&quot; domain. Identifiers or identifiers not specified in request will not be changed. | |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to delete the identifiers. Defaults to the current LUSID system datetime if not specified.  Must not include an effective datetime if identifiers are perpetual. | [optional] |
+| **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the person. | |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| The property keys of the identifiers to delete. These take the format   {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. Each property must be from the \&quot;Person\&quot; domain. Identifiers or identifiers not specified in request will not be changed. | |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to delete the identifiers. Defaults to the current LUSID system datetime if not specified.   Must not include an effective datetime if identifiers are perpetual. | [optional] |
 
 ### Return type
 
@@ -369,9 +369,9 @@ public class PersonsApiExample {
         PersonsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PersonsApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the person identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the person identifier type.
-        String code = "code_example"; // String | Code of the person under specified identifier type's scope and code. This together with stated identifier type uniquely  identifies the person.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | The property keys of the person's properties to delete. These take the format  {domain}/{scope}/{code} e.g. \"Person/CompanyDetails/Role\". Each property must be from the \"Person\" domain. Properties or identifiers not specified in request will not be changed.
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to delete time-variant properties from.  The property must exist at the specified 'effectiveAt' datetime. If the 'effectiveAt' is not provided or is  before the time-variant property exists then a failure is returned. Do not specify this parameter if any of  the properties to delete are perpetual.
+        String code = "code_example"; // String | Code of the person under specified identifier type's scope and code. This together with stated identifier type uniquely   identifies the person.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | The property keys of the person's properties to delete. These take the format   {domain}/{scope}/{code} e.g. \"Person/CompanyDetails/Role\". Each property must be from the \"Person\" domain. Properties or identifiers not specified in request will not be changed.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified 'effectiveAt' datetime. If the 'effectiveAt' is not provided or is   before the time-variant property exists then a failure is returned. Do not specify this parameter if any of   the properties to delete are perpetual.
         try {
             // uncomment the below to set overrides at the request level
             // DeletedEntityResponse result = apiInstance.deletePersonProperties(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt).execute(opts);
@@ -395,9 +395,9 @@ public class PersonsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **idTypeScope** | **String**| Scope of the person identifier type. | |
 | **idTypeCode** | **String**| Code of the person identifier type. | |
-| **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely  identifies the person. | |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| The property keys of the person&#39;s properties to delete. These take the format  {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. Each property must be from the \&quot;Person\&quot; domain. Properties or identifiers not specified in request will not be changed. | |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to delete time-variant properties from.  The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is  before the time-variant property exists then a failure is returned. Do not specify this parameter if any of  the properties to delete are perpetual. | [optional] |
+| **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the person. | |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| The property keys of the person&#39;s properties to delete. These take the format   {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. Each property must be from the \&quot;Person\&quot; domain. Properties or identifiers not specified in request will not be changed. | |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is   before the time-variant property exists then a failure is returned. Do not specify this parameter if any of   the properties to delete are perpetual. | [optional] |
 
 ### Return type
 
@@ -567,11 +567,11 @@ public class PersonsApiExample {
         PersonsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PersonsApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the person identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the person identifier type.
-        String code = "code_example"; // String | Code of the person under specified scope and code. This together with stated identifier type uniquely  identifies the person.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Person\" domain to decorate onto the person,   or from any domain that supports relationships to decorate onto related entities.  These take the format {domain}/{scope}/{code} e.g. \"Person/ContactDetails/Address\".
+        String code = "code_example"; // String | Code of the person under specified scope and code. This together with stated identifier type uniquely   identifies the person.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Person\" domain to decorate onto the person,    or from any domain that supports relationships to decorate onto related entities.   These take the format {domain}/{scope}/{code} e.g. \"Person/ContactDetails/Address\".
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the person. Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the person. Defaults to return the latest version of the person if not specified.
-        List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities  onto the person in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
+        List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto the person in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
         try {
             // uncomment the below to set overrides at the request level
             // Person result = apiInstance.getPerson(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds).execute(opts);
@@ -595,11 +595,11 @@ public class PersonsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **idTypeScope** | **String**| Scope of the person identifier type. | |
 | **idTypeCode** | **String**| Code of the person identifier type. | |
-| **code** | **String**| Code of the person under specified scope and code. This together with stated identifier type uniquely  identifies the person. | |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Person\&quot; domain to decorate onto the person,   or from any domain that supports relationships to decorate onto related entities.  These take the format {domain}/{scope}/{code} e.g. \&quot;Person/ContactDetails/Address\&quot;. | [optional] |
+| **code** | **String**| Code of the person under specified scope and code. This together with stated identifier type uniquely   identifies the person. | |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Person\&quot; domain to decorate onto the person,    or from any domain that supports relationships to decorate onto related entities.   These take the format {domain}/{scope}/{code} e.g. \&quot;Person/ContactDetails/Address\&quot;. | [optional] |
 | **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the person. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the person. Defaults to return the latest version of the person if not specified. | [optional] |
-| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities  onto the person in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
+| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities   onto the person in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
 
 ### Return type
 
@@ -627,7 +627,7 @@ public class PersonsApiExample {
 
 [EARLY ACCESS] GetPersonAccessMetadataByKey: Get an entry identified by a metadataKey in the Access Metadata of a Person
 
-Get a specific Person Access Metadata by specifying the corresponding identifier parts and Person code   No matching will be performed through this endpoint. To retrieve an entry, it is necessary to specify, exactly, the identifier of the entry
+Get a specific Person Access Metadata by specifying the corresponding identifier parts and Person code     No matching will be performed through this endpoint. To retrieve an entry, it is necessary to specify, exactly, the identifier of the entry
 
 ### Example
 
@@ -772,10 +772,10 @@ public class PersonsApiExample {
         String idTypeScope = "idTypeScope_example"; // String | Scope of the person identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the person identifier type.
         String code = "code_example"; // String | Code of the person under specified identifier type's scope and code. This together with stated identifier type uniquely identifies the person.
-        String propertyKey = "propertyKey_example"; // String | The property key of the property that will have its history shown. These must be in the format {domain}/{scope}/{code} e.g. \"Person/CompanyDetails/Role\".  Each property must be from the \"Person\" domain.
+        String propertyKey = "propertyKey_example"; // String | The property key of the property that will have its history shown. These must be in the format {domain}/{scope}/{code} e.g. \"Person/CompanyDetails/Role\".   Each property must be from the \"Person\" domain.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the person's property history. Defaults to return the current datetime if not supplied.
         String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
-        String page = "page_example"; // String | The pagination token to use to continue listing properties from a previous call to get property time series.  This value is returned from the previous call. If a pagination token is provided the filter and asAt fields  must not have changed since the original request.
+        String page = "page_example"; // String | The pagination token to use to continue listing properties from a previous call to get property time series.   This value is returned from the previous call. If a pagination token is provided the filter and asAt fields   must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
         try {
             // uncomment the below to set overrides at the request level
@@ -801,10 +801,10 @@ public class PersonsApiExample {
 | **idTypeScope** | **String**| Scope of the person identifier type. | |
 | **idTypeCode** | **String**| Code of the person identifier type. | |
 | **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely identifies the person. | |
-| **propertyKey** | **String**| The property key of the property that will have its history shown. These must be in the format {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;.  Each property must be from the \&quot;Person\&quot; domain. | |
+| **propertyKey** | **String**| The property key of the property that will have its history shown. These must be in the format {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;.   Each property must be from the \&quot;Person\&quot; domain. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the person&#39;s property history. Defaults to return the current datetime if not supplied. | [optional] |
 | **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing properties from a previous call to get property time series.  This value is returned from the previous call. If a pagination token is provided the filter and asAt fields  must not have changed since the original request. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing properties from a previous call to get property time series.   This value is returned from the previous call. If a pagination token is provided the filter and asAt fields   must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional] |
 
 ### Return type
@@ -876,11 +876,11 @@ public class PersonsApiExample {
         PersonsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PersonsApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the person identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the person identifier type.
-        String code = "code_example"; // String | Code of the person under specified identifier type's scope and code. This together with stated identifier type uniquely  identifies the person.
+        String code = "code_example"; // String | Code of the person under specified identifier type's scope and code. This together with stated identifier type uniquely   identifies the person.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to get relations. Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the person's relations. Defaults to return the latest LUSID AsAt time if not specified.
         String filter = "filter_example"; // String | Expression to filter the relations. Users should provide null or empty string for this field until further notice.
-        List<String> identifierTypes = Arrays.asList(); // List<String> | Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format  {domain}/{scope}/{code} e.g. \"Person/CompanyDetails/Role\". They must be from the \"Person\" or \"LegalEntity\" domain.  Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array.
+        List<String> identifierTypes = Arrays.asList(); // List<String> | Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format   {domain}/{scope}/{code} e.g. \"Person/CompanyDetails/Role\". They must be from the \"Person\" or \"LegalEntity\" domain.   Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array.
         try {
             // uncomment the below to set overrides at the request level
             // ResourceListOfRelation result = apiInstance.getPersonRelations(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes).execute(opts);
@@ -904,11 +904,11 @@ public class PersonsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **idTypeScope** | **String**| Scope of the person identifier type. | |
 | **idTypeCode** | **String**| Code of the person identifier type. | |
-| **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely  identifies the person. | |
+| **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the person. | |
 | **effectiveAt** | **String**| The effective datetime or cut label at which to get relations. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the person&#39;s relations. Defaults to return the latest LUSID AsAt time if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the relations. Users should provide null or empty string for this field until further notice. | [optional] |
-| **identifierTypes** | [**List&lt;String&gt;**](String.md)| Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format  {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.  Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array. | [optional] |
+| **identifierTypes** | [**List&lt;String&gt;**](String.md)| Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format   {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.   Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array. | [optional] |
 
 ### Return type
 
@@ -979,11 +979,11 @@ public class PersonsApiExample {
         PersonsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PersonsApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the person's identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the person's identifier type.
-        String code = "code_example"; // String | Code of the person under specified identifier type's scope and code. This together with stated identifier type uniquely  identifies the person.
+        String code = "code_example"; // String | Code of the person under specified identifier type's scope and code. This together with stated identifier type uniquely   identifies the person.
         String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified.
         String filter = "filter_example"; // String | Expression to filter relationships. Users should provide null or empty string for this field until further notice.
-        List<String> identifierTypes = Arrays.asList(); // List<String> | Identifier types (as property keys) used for referencing Persons or Legal Entities.  These can be specified from the 'Person' or 'LegalEntity' domains and have the format {domain}/{scope}/{code}, for example  'Person/CompanyDetails/Role'. An Empty array may be used to return all related Entities.
+        List<String> identifierTypes = Arrays.asList(); // List<String> | Identifier types (as property keys) used for referencing Persons or Legal Entities.   These can be specified from the 'Person' or 'LegalEntity' domains and have the format {domain}/{scope}/{code}, for example   'Person/CompanyDetails/Role'. An Empty array may be used to return all related Entities.
         try {
             // uncomment the below to set overrides at the request level
             // ResourceListOfRelationship result = apiInstance.getPersonRelationships(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes).execute(opts);
@@ -1007,11 +1007,11 @@ public class PersonsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **idTypeScope** | **String**| Scope of the person&#39;s identifier type. | |
 | **idTypeCode** | **String**| Code of the person&#39;s identifier type. | |
-| **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely  identifies the person. | |
+| **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the person. | |
 | **effectiveAt** | **String**| The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. | [optional] |
 | **filter** | **String**| Expression to filter relationships. Users should provide null or empty string for this field until further notice. | [optional] |
-| **identifierTypes** | [**List&lt;String&gt;**](String.md)| Identifier types (as property keys) used for referencing Persons or Legal Entities.  These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example  &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. | [optional] |
+| **identifierTypes** | [**List&lt;String&gt;**](String.md)| Identifier types (as property keys) used for referencing Persons or Legal Entities.   These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example   &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. | [optional] |
 
 ### Return type
 
@@ -1080,13 +1080,13 @@ public class PersonsApiExample {
         // PersonsApi apiInstance = apiFactory.build(PersonsApi.class);
 
         PersonsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PersonsApi.class);
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the people. Defaults to the current LUSID  system datetime if not specified.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the people. Defaults to return the latest version  of each people if not specified.
-        String page = "page_example"; // String | The pagination token to use to continue listing persons from a previous call to list persons. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt  and asAt fields must not have changed since the original request.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the people. Defaults to the current LUSID   system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the people. Defaults to return the latest version   of each people if not specified.
+        String page = "page_example"; // String | The pagination token to use to continue listing persons from a previous call to list persons. This   value is returned from the previous call. If a pagination token is provided the filter, effectiveAt   and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 5000 if not specified.
-        String filter = "filter_example"; // String | Expression to filter the result set.   For example, to filter on the display name, use \"displayName eq 'John'\"  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Person\" domain to decorate onto each person,   or from any domain that supports relationships to decorate onto related entities.  These take the format {domain}/{scope}/{code} e.g. \"Person/ContactDetails/Address\".
-        List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities  onto the persons in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
+        String filter = "filter_example"; // String | Expression to filter the result set.    For example, to filter on the display name, use \"displayName eq 'John'\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Person\" domain to decorate onto each person,    or from any domain that supports relationships to decorate onto related entities.   These take the format {domain}/{scope}/{code} e.g. \"Person/ContactDetails/Address\".
+        List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto the persons in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
         try {
             // uncomment the below to set overrides at the request level
             // ResourceListOfPerson result = apiInstance.listAllPersons(effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds).execute(opts);
@@ -1108,13 +1108,13 @@ public class PersonsApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **effectiveAt** | **String**| The effective datetime or cut label at which to list the people. Defaults to the current LUSID  system datetime if not specified. | [optional] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the people. Defaults to return the latest version  of each people if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing persons from a previous call to list persons. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt  and asAt fields must not have changed since the original request. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list the people. Defaults to the current LUSID   system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the people. Defaults to return the latest version   of each people if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing persons from a previous call to list persons. This   value is returned from the previous call. If a pagination token is provided the filter, effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 5000 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the result set.   For example, to filter on the display name, use \&quot;displayName eq &#39;John&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Person\&quot; domain to decorate onto each person,   or from any domain that supports relationships to decorate onto related entities.  These take the format {domain}/{scope}/{code} e.g. \&quot;Person/ContactDetails/Address\&quot;. | [optional] |
-| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities  onto the persons in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
+| **filter** | **String**| Expression to filter the result set.    For example, to filter on the display name, use \&quot;displayName eq &#39;John&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Person\&quot; domain to decorate onto each person,    or from any domain that supports relationships to decorate onto related entities.   These take the format {domain}/{scope}/{code} e.g. \&quot;Person/ContactDetails/Address\&quot;. | [optional] |
+| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities   onto the persons in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
 
 ### Return type
 
@@ -1185,13 +1185,13 @@ public class PersonsApiExample {
         PersonsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PersonsApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the person identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the person identifier type.
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the people. Defaults to the current LUSID  system datetime if not specified.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the people. Defaults to return the latest version  of each people if not specified.
-        String page = "page_example"; // String | The pagination token to use to continue listing persons from a previous call to list persons. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt  and asAt fields must not have changed since the original request.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the people. Defaults to the current LUSID   system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the people. Defaults to return the latest version   of each people if not specified.
+        String page = "page_example"; // String | The pagination token to use to continue listing persons from a previous call to list persons. This   value is returned from the previous call. If a pagination token is provided the filter, effectiveAt   and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
-        String filter = "filter_example"; // String | Expression to filter the result set.   For example, to filter on the LUPID, use \"lusidPersonId eq 'string'\"  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Person\" domain to decorate onto each person,   or from any domain that supports relationships to decorate onto related entities.  These take the format {domain}/{scope}/{code} e.g. \"Person/ContactDetails/Address\".
-        List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities  onto the persons in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
+        String filter = "filter_example"; // String | Expression to filter the result set.    For example, to filter on the LUPID, use \"lusidPersonId eq 'string'\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Person\" domain to decorate onto each person,    or from any domain that supports relationships to decorate onto related entities.   These take the format {domain}/{scope}/{code} e.g. \"Person/ContactDetails/Address\".
+        List<String> relationshipDefinitionIds = Arrays.asList(); // List<String> | A list of relationship definitions that are used to decorate related entities   onto the persons in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}.
         try {
             // uncomment the below to set overrides at the request level
             // PagedResourceListOfPerson result = apiInstance.listPersons(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds).execute(opts);
@@ -1215,13 +1215,13 @@ public class PersonsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **idTypeScope** | **String**| Scope of the person identifier type. | |
 | **idTypeCode** | **String**| Code of the person identifier type. | |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to list the people. Defaults to the current LUSID  system datetime if not specified. | [optional] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the people. Defaults to return the latest version  of each people if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing persons from a previous call to list persons. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt  and asAt fields must not have changed since the original request. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list the people. Defaults to the current LUSID   system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the people. Defaults to return the latest version   of each people if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing persons from a previous call to list persons. This   value is returned from the previous call. If a pagination token is provided the filter, effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the result set.   For example, to filter on the LUPID, use \&quot;lusidPersonId eq &#39;string&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Person\&quot; domain to decorate onto each person,   or from any domain that supports relationships to decorate onto related entities.  These take the format {domain}/{scope}/{code} e.g. \&quot;Person/ContactDetails/Address\&quot;. | [optional] |
-| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities  onto the persons in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
+| **filter** | **String**| Expression to filter the result set.    For example, to filter on the LUPID, use \&quot;lusidPersonId eq &#39;string&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Person\&quot; domain to decorate onto each person,    or from any domain that supports relationships to decorate onto related entities.   These take the format {domain}/{scope}/{code} e.g. \&quot;Person/ContactDetails/Address\&quot;. | [optional] |
+| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities   onto the persons in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
 
 ### Return type
 
@@ -1249,7 +1249,7 @@ public class PersonsApiExample {
 
 [EARLY ACCESS] PatchPersonAccessMetadata: Patch Access Metadata rules for a Person.
 
-Patch Person Access Metadata Rules in a single scope. The behaviour is defined by the JSON Patch specification.   Currently only &#39;add&#39; is a supported operation on the patch document.  Currently only valid metadata keys are supported paths on the patch document.   The response will return any affected Person Access Metadata rules or a failure message if unsuccessful.   It is important to always check to verify success (or failure).   Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
+Patch Person Access Metadata Rules in a single scope.  The behaviour is defined by the JSON Patch specification.     Currently only &#39;add&#39; is a supported operation on the patch document.    Currently only valid metadata keys are supported paths on the patch document.     The response will return any affected Person Access Metadata rules or a failure message if unsuccessful.     It is important to always check to verify success (or failure).     Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
 
 ### Example
 
@@ -1393,7 +1393,7 @@ public class PersonsApiExample {
         PersonsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PersonsApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the person identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the person identifier type.
-        String code = "code_example"; // String | Code of the person under specified identifier type's scope and code. This together with stated identifier type uniquely  identifies the person.
+        String code = "code_example"; // String | Code of the person under specified identifier type's scope and code. This together with stated identifier type uniquely   identifies the person.
         SetPersonIdentifiersRequest setPersonIdentifiersRequest = new SetPersonIdentifiersRequest(); // SetPersonIdentifiersRequest | Request containing identifiers to set for the person. Identifiers not specified in request will not be changed.
         try {
             // uncomment the below to set overrides at the request level
@@ -1418,7 +1418,7 @@ public class PersonsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **idTypeScope** | **String**| Scope of the person identifier type. | |
 | **idTypeCode** | **String**| Code of the person identifier type. | |
-| **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely  identifies the person. | |
+| **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the person. | |
 | **setPersonIdentifiersRequest** | [**SetPersonIdentifiersRequest**](SetPersonIdentifiersRequest.md)| Request containing identifiers to set for the person. Identifiers not specified in request will not be changed. | |
 
 ### Return type
@@ -1490,7 +1490,7 @@ public class PersonsApiExample {
         PersonsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PersonsApi.class);
         String idTypeScope = "idTypeScope_example"; // String | Scope of the person identifier type.
         String idTypeCode = "idTypeCode_example"; // String | Code of the person identifier type.
-        String code = "code_example"; // String | Code of the person under specified identifier type's scope and code. This together with stated identifier type uniquely  identifies the person.
+        String code = "code_example"; // String | Code of the person under specified identifier type's scope and code. This together with stated identifier type uniquely   identifies the person.
         SetPersonPropertiesRequest setPersonPropertiesRequest = new SetPersonPropertiesRequest(); // SetPersonPropertiesRequest | Request containing properties to set for the person. Properties not specified in request will not be changed.
         try {
             // uncomment the below to set overrides at the request level
@@ -1515,7 +1515,7 @@ public class PersonsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **idTypeScope** | **String**| Scope of the person identifier type. | |
 | **idTypeCode** | **String**| Code of the person identifier type. | |
-| **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely  identifies the person. | |
+| **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely   identifies the person. | |
 | **setPersonPropertiesRequest** | [**SetPersonPropertiesRequest**](SetPersonPropertiesRequest.md)| Request containing properties to set for the person. Properties not specified in request will not be changed. | |
 
 ### Return type
@@ -1635,7 +1635,7 @@ public class PersonsApiExample {
 
 [EARLY ACCESS] UpsertPersonAccessMetadata: Upsert a Person Access Metadata entry associated with a specific metadataKey. This creates or updates the data in LUSID.
 
-Update or insert one Person Access Metadata entry in a single scope. An item will be updated if it already exists and inserted if it does not.   The response will return the successfully updated or inserted Person Access Metadata rule or failure message if unsuccessful.   It is important to always check to verify success (or failure).   Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
+Update or insert one Person Access Metadata entry in a single scope. An item will be updated if it already exists  and inserted if it does not.     The response will return the successfully updated or inserted Person Access Metadata rule or failure message if unsuccessful.     It is important to always check to verify success (or failure).     Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
 
 ### Example
 

@@ -11,9 +11,9 @@ A definition for the period you wish to close
 |**bookmarkCode** | **String** | Unique code for the Bookmark. |  |
 |**displayName** | **String** | Identifiable Name assigned to the Bookmark. |  |
 |**description** | **String** | Description assigned to the Bookmark. |  [optional] |
-|**effectiveAt** | **OffsetDateTime** | The effective time of the diary entry. |  |
-|**queryAsAt** | **OffsetDateTime** | The query time of the diary entry. Defaults to latest. |  [optional] |
-|**properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the diary entry. |  [optional] |
+|**effectiveAt** | **OffsetDateTime** | The effective time of the Bookmark. |  |
+|**queryAsAt** | **OffsetDateTime** | The query time of the Bookmark. Defaults to latest. |  [optional] |
+|**properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the Bookmark. |  [optional] |
 
 
 

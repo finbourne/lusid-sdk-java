@@ -153,7 +153,7 @@ public class AggregatedReturnsApiExample {
         AggregatedReturnsApi apiInstance = ApiFactoryBuilder.build(fileName).build(AggregatedReturnsApi.class);
         String scope = "scope_example"; // String | Returns entity scope.
         String code = "code_example"; // String | Returns entity code.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the returns entity. Defaults to return  the latest version of the definition if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the returns entity. Defaults to return   the latest version of the definition if not specified.
         try {
             // uncomment the below to set overrides at the request level
             // ReturnsEntity result = apiInstance.getReturnsEntity(scope, code, asAt).execute(opts);
@@ -177,7 +177,7 @@ public class AggregatedReturnsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| Returns entity scope. | |
 | **code** | **String**| Returns entity code. | |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the returns entity. Defaults to return  the latest version of the definition if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the returns entity. Defaults to return   the latest version of the definition if not specified. | [optional] |
 
 ### Return type
 
@@ -246,7 +246,7 @@ public class AggregatedReturnsApiExample {
         // AggregatedReturnsApi apiInstance = apiFactory.build(AggregatedReturnsApi.class);
 
         AggregatedReturnsApi apiInstance = ApiFactoryBuilder.build(fileName).build(AggregatedReturnsApi.class);
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the relation definitions. Defaults to return  the latest version of each definition if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the relation definitions. Defaults to return   the latest version of each definition if not specified.
         try {
             // uncomment the below to set overrides at the request level
             // ResourceListOfReturnsEntity result = apiInstance.listReturnsEntities(asAt).execute(opts);
@@ -268,7 +268,7 @@ public class AggregatedReturnsApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the relation definitions. Defaults to return  the latest version of each definition if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the relation definitions. Defaults to return   the latest version of each definition if not specified. | [optional] |
 
 ### Return type
 

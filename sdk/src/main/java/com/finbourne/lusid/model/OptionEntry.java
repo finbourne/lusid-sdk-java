@@ -115,7 +115,7 @@ public class OptionEntry {
   }
 
    /**
-   * If American exercise, this is the end of the exercise period. Optional field. Defaults to the Date field if not set.
+   * If American exercise, this is the end of the exercise period.  Optional field. Defaults to the Date field if not set.
    * @return endDate
   **/
   @jakarta.annotation.Nullable

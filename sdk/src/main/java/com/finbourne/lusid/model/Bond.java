@@ -157,7 +157,7 @@ public class Bond extends LusidInstrument {
   }
 
    /**
-   * The Maturity date of the bond, this is when the last coupon accrual period ends. Note that while most bonds have their last payment on this date there are some cases where the final payment is the next working day.
+   * The Maturity date of the bond, this is when the last coupon accrual period ends.  Note that while most bonds have their last payment on this date there are some cases where the final payment is the next working day.
    * @return maturityDate
   **/
   @jakarta.annotation.Nonnull
@@ -220,7 +220,7 @@ public class Bond extends LusidInstrument {
   }
 
    /**
-   * The face-value or principal for the bond at outset. This might be reduced through its lifetime in the event of amortisation or similar.
+   * The face-value or principal for the bond at outset.  This might be reduced through its lifetime in the event of amortisation or similar.
    * @return principal
   **/
   @jakarta.annotation.Nonnull
@@ -291,7 +291,7 @@ public class Bond extends LusidInstrument {
   }
 
    /**
-   * Optional. Number of calendar days in the ex-dividend period. If the settlement date falls in the ex-dividend period then the coupon paid is zero and the accrued interest is negative. If set, this must be a non-negative number. If not set, or set to 0, then there is no ex-dividend period.   NOTE: This field is deprecated. If you wish to set the ExDividendDays on a bond, please use the ExDividendConfiguration.
+   * Optional. Number of calendar days in the ex-dividend period.  If the settlement date falls in the ex-dividend period then the coupon paid is zero and the accrued interest is negative.  If set, this must be a non-negative number.  If not set, or set to 0, then there is no ex-dividend period.     NOTE: This field is deprecated. If you wish to set the ExDividendDays on a bond, please use the ExDividendConfiguration.
    * @return exDividendDays
   **/
   @jakarta.annotation.Nullable
@@ -333,7 +333,7 @@ public class Bond extends LusidInstrument {
   }
 
    /**
-   * The date that the first coupon of the bond is paid. This is required for bonds that have a long first coupon or short first coupon. The first coupon pay date is used as an anchor to compare with the start date and determine if this is a long/short coupon period.
+   * The date that the first coupon of the bond is paid. This is required for bonds that have a long first coupon or short first coupon. The first coupon pay date is used  as an anchor to compare with the start date and determine if this is a long/short coupon period.
    * @return firstCouponPayDate
   **/
   @jakarta.annotation.Nullable
@@ -354,7 +354,7 @@ public class Bond extends LusidInstrument {
   }
 
    /**
-   * The calculation type applied to the bond coupon amount. This is required for bonds that have a particular type of computing the period coupon, such as simple compounding, irregular coupons etc. The default CalculationType is &#x60;Standard&#x60;, which returns a coupon amount equal to Principal generate justfile test_sdk Coupon Rate / Coupon Frequency. Coupon Frequency is 12M / Payment Frequency. Payment Frequency can be 1M, 3M, 6M, 12M etc. So Coupon Frequency can be 12, 4, 2, 1 respectively.  Supported string (enumeration) values are: [Standard, DayCountCoupon, NoCalculationFloater, BrazilFixedCoupon, StandardWithCappedAccruedInterest].
+   * The calculation type applied to the bond coupon amount. This is required for bonds that have a particular type of computing the period coupon, such as simple compounding,  irregular coupons etc.  The default CalculationType is &#x60;Standard&#x60;, which returns a coupon amount equal to Principal generate justfile test_sdk Coupon Rate / Coupon Frequency. Coupon Frequency is 12M / Payment Frequency.  Payment Frequency can be 1M, 3M, 6M, 12M etc. So Coupon Frequency can be 12, 4, 2, 1 respectively.    Supported string (enumeration) values are: [Standard, DayCountCoupon, NoCalculationFloater, BrazilFixedCoupon, StandardWithCappedAccruedInterest].
    * @return calculationType
   **/
   @jakarta.annotation.Nullable

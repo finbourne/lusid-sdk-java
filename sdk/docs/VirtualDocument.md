@@ -2,7 +2,7 @@
 
 # VirtualDocument
 
-Virtual document consists of (potentially several) upserted documents.   The documents get parsed according to the provided data map on upsert, the collection of resulting values in aggregated in a virtual document
+Virtual document consists of (potentially several) upserted documents.     The documents get parsed according to the provided data map on upsert, the collection of resulting values in  aggregated in a virtual document
 
 ## Properties
 

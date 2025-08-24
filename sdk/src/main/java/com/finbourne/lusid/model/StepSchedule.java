@@ -49,7 +49,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Schedule that steps at known dated points in time. Used in representation of a sinking bond, also called amortisation, steps in coupons for fixed bonds and spreads for floating bonds.
+ * Schedule that steps at known dated points in time.  Used in representation of a sinking bond, also called amortisation, steps in coupons for fixed bonds and spreads for floating bonds.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class StepSchedule extends Schedule {
@@ -76,7 +76,7 @@ public class StepSchedule extends Schedule {
   }
 
    /**
-   * The type of shift or adjustment that the quantity represents.  Supported string (enumeration) values are: [Absolute, AbsoluteShift, Percentage, AbsolutePercentage].
+   * The type of shift or adjustment that the quantity represents.    Supported string (enumeration) values are: [Absolute, AbsoluteShift, Percentage, AbsolutePercentage].
    * @return levelType
   **/
   @jakarta.annotation.Nonnull
@@ -97,7 +97,7 @@ public class StepSchedule extends Schedule {
   }
 
    /**
-   * The type of step that this schedule is for. Supported string (enumeration) values are: [Coupon, Notional, Spread].
+   * The type of step that this schedule is for.  Supported string (enumeration) values are: [Coupon, Notional, Spread].
    * @return stepScheduleType
   **/
   @jakarta.annotation.Nonnull

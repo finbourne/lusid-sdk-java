@@ -158,7 +158,7 @@ public class ResultDataKeyRule extends ResultKeyRule {
   }
 
    /**
-   * Shorthand for the time interval used to select result data. This must be a dot-separated string  specifying a start and end date, for example &#39;5D.0D&#39; to look back 5 days from today (0 days ago).
+   * Shorthand for the time interval used to select result data. This must be a dot-separated string   specifying a start and end date, for example &#39;5D.0D&#39; to look back 5 days from today (0 days ago).
    * @return quoteInterval
   **/
   @jakarta.annotation.Nullable

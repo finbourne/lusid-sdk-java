@@ -47,7 +47,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * A representation of an un-built piece of complex market data, to allow for passing through to the vendor library for building. The market data will usually be in some standard form such as XML or Json, representing a curve or surface.
+ * A representation of an un-built piece of complex market data, to allow for passing through  to the vendor library for building.  The market data will usually be in some standard form such as XML or Json, representing a curve or surface.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class OpaqueMarketData extends ComplexMarketData {
@@ -99,7 +99,7 @@ public class OpaqueMarketData extends ComplexMarketData {
   }
 
    /**
-   * What format is the document stored in, e.g. Xml. Supported string (enumeration) values are: [Unknown, Xml, Json, Csv].
+   * What format is the document stored in, e.g. Xml.  Supported string (enumeration) values are: [Unknown, Xml, Json, Csv].
    * @return format
   **/
   @jakarta.annotation.Nonnull
@@ -120,7 +120,7 @@ public class OpaqueMarketData extends ComplexMarketData {
   }
 
    /**
-   * Internal name of document. This is not used for search, it is simply a designator that helps identify the document and could be anything (filename, ftp address or similar)
+   * Internal name of document. This is not used for search, it is simply a designator that helps identify the document  and could be anything (filename, ftp address or similar)
    * @return name
   **/
   @jakarta.annotation.Nonnull

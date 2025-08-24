@@ -45,7 +45,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * What is the provenance of an instrument. This defines who creates/owns it, what format it is in (e.g. a proprietary format or a common and known one)  and what the version of that is.
+ * What is the provenance of an instrument. This defines who creates/owns it, what format it is in (e.g. a proprietary format or a common and known one)   and what the version of that is.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class InstrumentDefinitionFormat {
@@ -92,7 +92,7 @@ public class InstrumentDefinitionFormat {
   }
 
    /**
-   * An instrument will potentially have been created by any number of different organisations. Some will be understood completely (e.g. LUSID&#39;s), some won&#39;t.  The provenance of an instrument indicates who \&quot;owns\&quot; the associated format.
+   * An instrument will potentially have been created by any number of different organisations. Some will be understood completely (e.g. LUSID&#39;s), some won&#39;t.   The provenance of an instrument indicates who \&quot;owns\&quot; the associated format.
    * @return vendor
   **/
   @jakarta.annotation.Nonnull

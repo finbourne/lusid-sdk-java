@@ -669,7 +669,7 @@ public class AddressKeyDefinitionApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the address key definition.  Defaults to return the latest version of the address key definition if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the address key definition.   Defaults to return the latest version of the address key definition if not specified. (optional)
          * @return APIlistAddressKeyDefinitionsRequest
          */
         public APIlistAddressKeyDefinitionsRequest asAt(OffsetDateTime asAt) {
@@ -679,7 +679,7 @@ public class AddressKeyDefinitionApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing address key definitions from a previous call to list address key definitions.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields  must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing address key definitions from a previous call to list address key definitions.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. (optional)
          * @return APIlistAddressKeyDefinitionsRequest
          */
         public APIlistAddressKeyDefinitionsRequest page(String page) {
@@ -699,7 +699,7 @@ public class AddressKeyDefinitionApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIlistAddressKeyDefinitionsRequest
          */
         public APIlistAddressKeyDefinitionsRequest filter(String filter) {

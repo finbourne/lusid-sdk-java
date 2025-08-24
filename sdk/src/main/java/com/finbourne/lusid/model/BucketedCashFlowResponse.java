@@ -121,7 +121,7 @@ public class BucketedCashFlowResponse {
   }
 
    /**
-   * List of dictionary bucketed cash flow result set. Each dictionary represent a bucketed cashflow result set keyed by AddressKeys. e.g. dictionary[\&quot;Valuation/CashFlowAmount\&quot;] for the aggregated cash flow amount for the bucket. e.g. suppose \&quot;RoundUp\&quot; method, then dictionary[\&quot;Valuation/CashFlowDate/RoundUp\&quot;] returns the bucketed cashflow date.
+   * List of dictionary bucketed cash flow result set.  Each dictionary represent a bucketed cashflow result set keyed by AddressKeys.  e.g. dictionary[\&quot;Valuation/CashFlowAmount\&quot;] for the aggregated cash flow amount for the bucket.  e.g. suppose \&quot;RoundUp\&quot; method, then dictionary[\&quot;Valuation/CashFlowDate/RoundUp\&quot;] returns the bucketed cashflow date.
    * @return data
   **/
   @jakarta.annotation.Nullable
@@ -142,7 +142,7 @@ public class BucketedCashFlowResponse {
   }
 
    /**
-   * Three letter ISO currency string indicating what currency to report in for ReportCcy denominated queries. If not present then the currency of the relevant portfolio will be used in its place where relevant.
+   * Three letter ISO currency string indicating what currency to report in for ReportCcy denominated queries.  If not present then the currency of the relevant portfolio will be used in its place where relevant.
    * @return reportCurrency
   **/
   @jakarta.annotation.Nullable
@@ -192,7 +192,7 @@ public class BucketedCashFlowResponse {
   }
 
    /**
-   * Information about where instruments have failed to return cashflows in so far as it is available. e.g., failure to retrieve a market quote for a floating rate instrument.
+   * Information about where instruments have failed to return cashflows in so far as it is available.  e.g., failure to retrieve a market quote for a floating rate instrument.
    * @return failed
   **/
   @jakarta.annotation.Nullable

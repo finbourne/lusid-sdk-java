@@ -143,7 +143,7 @@ public class FundValuationRequest {
   }
 
    /**
-   * The set of specifications to calculate or retrieve during the valuation and present in the results. For example: AggregateSpec(&#39;Valuation/PV&#39;,&#39;Sum&#39;) for returning the PV (present value) of holdings AggregateSpec(&#39;Holding/default/Units&#39;,&#39;Sum&#39;) for returning the units of holidays AggregateSpec(&#39;Instrument/default/LusidInstrumentId&#39;,&#39;Value&#39;) for returning the Lusid Instrument identifier
+   * The set of specifications to calculate or retrieve during the valuation and present in the results. For example:  AggregateSpec(&#39;Valuation/PV&#39;,&#39;Sum&#39;) for returning the PV (present value) of holdings  AggregateSpec(&#39;Holding/default/Units&#39;,&#39;Sum&#39;) for returning the units of holidays  AggregateSpec(&#39;Instrument/default/LusidInstrumentId&#39;,&#39;Value&#39;) for returning the Lusid Instrument identifier
    * @return metrics
   **/
   @jakarta.annotation.Nonnull
@@ -172,7 +172,7 @@ public class FundValuationRequest {
   }
 
    /**
-   * The set of items by which to perform grouping. This primarily matters when one or more of the metric operators is a mapping that reduces set size, e.g. sum or proportion. The group-by statement determines the set of keys by which to break the results out.
+   * The set of items by which to perform grouping. This primarily matters when one or more of the metric operators is a mapping  that reduces set size, e.g. sum or proportion. The group-by statement determines the set of keys by which to break the results out.
    * @return groupBy
   **/
   @jakarta.annotation.Nullable
@@ -201,7 +201,7 @@ public class FundValuationRequest {
   }
 
    /**
-   * A set of filters to use to reduce the data found in a request. Equivalent to the &#39;where ...&#39; part of a Sql select statement. For example, filter a set of values within a given range or matching a particular value.
+   * A set of filters to use to reduce the data found in a request. Equivalent to the &#39;where ...&#39; part of a Sql select statement.  For example, filter a set of values within a given range or matching a particular value.
    * @return filters
   **/
   @jakarta.annotation.Nullable
@@ -272,7 +272,7 @@ public class FundValuationRequest {
   }
 
    /**
-   * Financially meaningful results can be presented as either simple flat types or more complex expanded types. For example, the present value (PV) of a holding could be represented either as a simple decimal (with currency implied) or as a decimal-currency pair. This flag allows either representation to be returned. In the PV example, the returned value would be the decimal-currency pair if this flag is true, or the decimal only if this flag is false.
+   * Financially meaningful results can be presented as either simple flat types or more complex expanded types.  For example, the present value (PV) of a holding could be represented either as a simple decimal (with currency implied)  or as a decimal-currency pair. This flag allows either representation to be returned. In the PV example,  the returned value would be the decimal-currency pair if this flag is true, or the decimal only if this flag is false.
    * @return returnResultAsExpandedTypes
   **/
   @jakarta.annotation.Nullable

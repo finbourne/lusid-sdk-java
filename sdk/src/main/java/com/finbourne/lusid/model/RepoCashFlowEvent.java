@@ -47,7 +47,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Event representing a repurchase agreement cashflow.  For example, cashflow for a partial closure of the  repurchase agreement.
+ * Event representing a repurchase agreement cashflow.   For example, cashflow for a partial closure of the   repurchase agreement.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RepoCashFlowEvent extends InstrumentEvent {
@@ -78,7 +78,7 @@ public class RepoCashFlowEvent extends InstrumentEvent {
   }
 
    /**
-   * The date on which the counterparties become entitled  to exchange cash as part of a partial closure of the  repurchase agreement. The date must be before or on  the settlement date, and on or before the maturity  date of the repo. This is a required field.
+   * The date on which the counterparties become entitled   to exchange cash as part of a partial closure of the   repurchase agreement. The date must be before or on   the settlement date, and on or before the maturity   date of the repo. This is a required field.
    * @return entitlementDate
   **/
   @jakarta.annotation.Nullable
@@ -99,7 +99,7 @@ public class RepoCashFlowEvent extends InstrumentEvent {
   }
 
    /**
-   * The date on which the exchange of cash is settled.  The date must be on or after the entitlement date, and on or before the maturity date of the repo.  This is a required field.
+   * The date on which the exchange of cash is settled.   The date must be on or after the entitlement date,  and on or before the maturity date of the repo.   This is a required field.
    * @return settlementDate
   **/
   @jakarta.annotation.Nullable
@@ -120,7 +120,7 @@ public class RepoCashFlowEvent extends InstrumentEvent {
   }
 
    /**
-   * The amount of cash to be exchanged for each unit  of the instrument held on the entitlement date.
+   * The amount of cash to be exchanged for each unit   of the instrument held on the entitlement date.
    * @return cashFlowPerUnit
   **/
   @jakarta.annotation.Nonnull

@@ -60,8 +60,8 @@ public class InstrumentEventsApiExample {
 
         InstrumentEventsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentEventsApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The as at time to use.
-        Integer limit = 100; // Integer | Optional. When paginating, limit the number of returned results to this many. If not specified, a default of 100 is used.
-        String page = "page_example"; // String | Optional. The pagination token to use to continue listing items from a previous call. Page values are return from list calls, and must be supplied exactly as returned. Additionally, when specifying this
+        Integer limit = 100; // Integer | Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 100 is used.
+        String page = "page_example"; // String | Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this
         QueryApplicableInstrumentEventsRequest queryApplicableInstrumentEventsRequest = new QueryApplicableInstrumentEventsRequest(); // QueryApplicableInstrumentEventsRequest | The filter parameters used to retrieve applicable instrument events.
         try {
             // uncomment the below to set overrides at the request level
@@ -85,8 +85,8 @@ public class InstrumentEventsApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| The as at time to use. | [optional] |
-| **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. If not specified, a default of 100 is used. | [optional] [default to 100] |
-| **page** | **String**| Optional. The pagination token to use to continue listing items from a previous call. Page values are return from list calls, and must be supplied exactly as returned. Additionally, when specifying this | [optional] |
+| **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 100 is used. | [optional] [default to 100] |
+| **page** | **String**| Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this | [optional] |
 | **queryApplicableInstrumentEventsRequest** | [**QueryApplicableInstrumentEventsRequest**](QueryApplicableInstrumentEventsRequest.md)| The filter parameters used to retrieve applicable instrument events. | [optional] |
 
 ### Return type
@@ -247,8 +247,8 @@ public class InstrumentEventsApiExample {
         // InstrumentEventsApi apiInstance = apiFactory.build(InstrumentEventsApi.class);
 
         InstrumentEventsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentEventsApi.class);
-        Integer limit = 1000; // Integer | Optional. When paginating, limit the number of returned results to this many. If not specified, a default of 1000 is used.
-        String page = "page_example"; // String | Optional. The pagination token to use to continue listing items from a previous call. Page values are return from list calls, and must be supplied exactly as returned. Additionally, when specifying this value, queryBody, and limit must not be modified.
+        Integer limit = 1000; // Integer | Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used.
+        String page = "page_example"; // String | Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, queryBody, and limit must not  be modified.
         QueryCashFlowsRequest queryCashFlowsRequest = new QueryCashFlowsRequest(); // QueryCashFlowsRequest | The filter parameters used to retrieve instrument events.
         try {
             // uncomment the below to set overrides at the request level
@@ -271,8 +271,8 @@ public class InstrumentEventsApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. If not specified, a default of 1000 is used. | [optional] [default to 1000] |
-| **page** | **String**| Optional. The pagination token to use to continue listing items from a previous call. Page values are return from list calls, and must be supplied exactly as returned. Additionally, when specifying this value, queryBody, and limit must not be modified. | [optional] |
+| **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used. | [optional] [default to 1000] |
+| **page** | **String**| Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, queryBody, and limit must not  be modified. | [optional] |
 | **queryCashFlowsRequest** | [**QueryCashFlowsRequest**](QueryCashFlowsRequest.md)| The filter parameters used to retrieve instrument events. | [optional] |
 
 ### Return type
@@ -342,8 +342,8 @@ public class InstrumentEventsApiExample {
         // InstrumentEventsApi apiInstance = apiFactory.build(InstrumentEventsApi.class);
 
         InstrumentEventsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentEventsApi.class);
-        Integer limit = 1000; // Integer | Optional. When paginating, limit the number of returned results to this many. If not specified, a default of 1000 is used.
-        String page = "page_example"; // String | Optional. The pagination token to use to continue listing items from a previous call. Page values are return from list calls, and must be supplied exactly as returned. Additionally, when specifying this value, queryBody, and limit must not be modified.
+        Integer limit = 1000; // Integer | Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used.
+        String page = "page_example"; // String | Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, queryBody, and limit must not  be modified.
         QueryInstrumentEventsRequest queryInstrumentEventsRequest = new QueryInstrumentEventsRequest(); // QueryInstrumentEventsRequest | The filter parameters used to retrieve instrument events.
         try {
             // uncomment the below to set overrides at the request level
@@ -366,8 +366,8 @@ public class InstrumentEventsApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. If not specified, a default of 1000 is used. | [optional] [default to 1000] |
-| **page** | **String**| Optional. The pagination token to use to continue listing items from a previous call. Page values are return from list calls, and must be supplied exactly as returned. Additionally, when specifying this value, queryBody, and limit must not be modified. | [optional] |
+| **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used. | [optional] [default to 1000] |
+| **page** | **String**| Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, queryBody, and limit must not  be modified. | [optional] |
 | **queryInstrumentEventsRequest** | [**QueryInstrumentEventsRequest**](QueryInstrumentEventsRequest.md)| The filter parameters used to retrieve instrument events. | [optional] |
 
 ### Return type
@@ -396,7 +396,7 @@ public class InstrumentEventsApiExample {
 
 QueryTradeTickets: Returns a list of trade tickets based on the holdings of the portfolios and date range specified in the query.
 
-Returns a list of trade tickets based on the holdings of the portfolios and date range specified in the query.  These trade tickets are derived from events that involve transition of instrument states, such as transitions on exercise or default of an instrument. The trade tickets are to allow the new position to be created given the existing portfolio configuration.
+Returns a list of trade tickets based on the holdings of the portfolios and date range specified in the query.    These trade tickets are derived from events that involve transition of instrument states, such as transitions  on exercise or default of an instrument. The trade tickets are to allow the new position to be created given the  existing portfolio configuration.
 
 ### Example
 
@@ -437,8 +437,8 @@ public class InstrumentEventsApiExample {
         // InstrumentEventsApi apiInstance = apiFactory.build(InstrumentEventsApi.class);
 
         InstrumentEventsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InstrumentEventsApi.class);
-        Integer limit = 1000; // Integer | Optional. When paginating, limit the number of returned results to this many. If not specified, a default of 1000 is used.
-        String page = "page_example"; // String | Optional. The pagination token to use to continue listing items from a previous call. Page values are return from list calls, and must be supplied exactly as returned. Additionally, when specifying this value, queryBody, and limit must not be modified.
+        Integer limit = 1000; // Integer | Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used.
+        String page = "page_example"; // String | Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, queryBody, and limit must not  be modified.
         QueryTradeTicketsRequest queryTradeTicketsRequest = new QueryTradeTicketsRequest(); // QueryTradeTicketsRequest | The filter parameters used to retrieve instrument events.
         try {
             // uncomment the below to set overrides at the request level
@@ -461,8 +461,8 @@ public class InstrumentEventsApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. If not specified, a default of 1000 is used. | [optional] [default to 1000] |
-| **page** | **String**| Optional. The pagination token to use to continue listing items from a previous call. Page values are return from list calls, and must be supplied exactly as returned. Additionally, when specifying this value, queryBody, and limit must not be modified. | [optional] |
+| **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. If not specified, a default  of 1000 is used. | [optional] [default to 1000] |
+| **page** | **String**| Optional. The pagination token to use to continue listing items from a previous call. Page values are  return from list calls, and must be supplied exactly as returned. Additionally, when specifying this  value, queryBody, and limit must not  be modified. | [optional] |
 | **queryTradeTicketsRequest** | [**QueryTradeTicketsRequest**](QueryTradeTicketsRequest.md)| The filter parameters used to retrieve instrument events. | [optional] |
 
 ### Return type

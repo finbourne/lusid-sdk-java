@@ -50,7 +50,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Most, if not all, information about contracts is standardised. See, e.g. https://www.cmegroup.com/ for common codes and similar data. This appears to be in common use by well known market information providers, e.g. Bloomberg and Refinitiv. There is a lot of overlap with this and FuturesContractDetails but as that is an established DTO we must duplicate a number of fields here
+ * Most, if not all, information about contracts is standardised. See, e.g. https://www.cmegroup.com/ for  common codes and similar data. This appears to be in common use by well known market information providers, e.g. Bloomberg and Refinitiv.  There is a lot of overlap with this and FuturesContractDetails but as that is an established DTO we must duplicate a number of fields here
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExchangeTradedOptionContractDetails {
@@ -212,7 +212,7 @@ public class ExchangeTradedOptionContractDetails {
   }
 
    /**
-   * The delivery type, cash or physical. An option on a future is physically settled if upon exercising the holder receives a future.  Supported string (enumeration) values are: [Cash, Physical].
+   * The delivery type, cash or physical. An option on a future is physically settled if upon exercising the  holder receives a future.    Supported string (enumeration) values are: [Cash, Physical].
    * @return deliveryType
   **/
   @jakarta.annotation.Nonnull
@@ -296,7 +296,7 @@ public class ExchangeTradedOptionContractDetails {
   }
 
    /**
-   * The exercise type, European, American or Bermudan.  Supported string (enumeration) values are: [European, Bermudan, American].
+   * The exercise type, European, American or Bermudan.    Supported string (enumeration) values are: [European, Bermudan, American].
    * @return exerciseType
   **/
   @jakarta.annotation.Nonnull
@@ -338,7 +338,7 @@ public class ExchangeTradedOptionContractDetails {
   }
 
    /**
-   * The option type, Call or Put.  Supported string (enumeration) values are: [Call, Put].
+   * The option type, Call or Put.    Supported string (enumeration) values are: [Call, Put].
    * @return optionType
   **/
   @jakarta.annotation.Nonnull
@@ -422,7 +422,7 @@ public class ExchangeTradedOptionContractDetails {
   }
 
    /**
-   * The adjustment type to apply to dates that fall upon a non-business day, e.g. modified following or following. Supported string (enumeration) values are: [NoAdjustment, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest].
+   * The adjustment type to apply to dates that fall upon a non-business day, e.g. modified following or following.  Supported string (enumeration) values are: [NoAdjustment, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest].
    * @return businessDayConvention
   **/
   @jakarta.annotation.Nullable

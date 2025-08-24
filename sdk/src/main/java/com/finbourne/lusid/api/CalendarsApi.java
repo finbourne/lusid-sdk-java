@@ -313,7 +313,7 @@ public class CalendarsApi {
 
     /**
      * [EARLY ACCESS] AddBusinessDaysToDate: Adds the requested number of Business Days to the provided date.
-     * A Business day is defined as a point in time that:  generate justfile test_sdk Does not represent a day in the calendar&#39;s weekend  generate justfile test_sdk Does not represent a day in the calendar&#39;s list of holidays (e.g. Christmas Day in the UK)   All dates specified must be UTC and the upper bound of a calendar is not inclusive   e.g. From: 2020-12-24-00-00-00:  Adding 3 business days returns 2020-12-30, assuming Saturday and Sunday are weekends, and the 25th and 28th are holidays.  Adding -2 business days returns 2020-12-22 under the same assumptions.   If the provided number of days to add is zero, returns a failure.
+     * A Business day is defined as a point in time that:   generate justfile test_sdk Does not represent a day in the calendar&#39;s weekend   generate justfile test_sdk Does not represent a day in the calendar&#39;s list of holidays (e.g. Christmas Day in the UK)     All dates specified must be UTC and the upper bound of a calendar is not inclusive     e.g. From: 2020-12-24-00-00-00:   Adding 3 business days returns 2020-12-30, assuming Saturday and Sunday are weekends, and the 25th and 28th are holidays.   Adding -2 business days returns 2020-12-22 under the same assumptions.     If the provided number of days to add is zero, returns a failure.
      * @param scope Scope within which to search for the calendars (required)
      * @param addBusinessDaysToDateRequest Request Details: start date, number of days to add (which can be negative, but not zero), calendar codes and optionally an AsAt date for searching the calendar store (required)
      * @return APIaddBusinessDaysToDateRequest
@@ -565,7 +565,7 @@ public class CalendarsApi {
 
     /**
      * AddDateToCalendar: Add a date to a calendar
-     * Add an event to the calendar. These Events can be a maximum of 24 hours and must be specified in UTC. A local date will be calculated by the system and applied to the calendar before processing.
+     * Add an event to the calendar. These Events can be a maximum of 24 hours and must be specified in UTC.  A local date will be calculated by the system and applied to the calendar before processing.
      * @param scope Scope of the calendar (required)
      * @param code Code of the calendar (required)
      * @param createDateRequest Add date to calendar request (required)
@@ -829,7 +829,7 @@ public class CalendarsApi {
 
     /**
      * BatchUpsertDatesForCalendar: Batch upsert dates to a calendar
-     * Create or update events in the calendar. These Events can be a maximum of 24 hours and must be specified in UTC. A local date will be calculated by the system and applied to the calendar before processing.
+     * Create or update events in the calendar. These Events can be a maximum of 24 hours and must be specified in UTC.  A local date will be calculated by the system and applied to the calendar before processing.
      * @param scope Scope of the calendar (required)
      * @param code Code of the calendar (required)
      * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial. (required)
@@ -2069,7 +2069,7 @@ public class CalendarsApi {
 
     /**
      * [EARLY ACCESS] GenerateSchedule: Generate an ordered schedule of dates.
-     * Returns an ordered array of dates. The dates will only fall on business days as defined by the scope and calendar codes in the valuation schedule.   Valuations are made at a frequency defined by the valuation schedule&#39;s tenor, e.g. every day (\&quot;1D\&quot;), every other week (\&quot;2W\&quot;) etc. These dates will be adjusted onto business days as defined by the schedule&#39;s rollConvention.
+     * Returns an ordered array of dates. The dates will only fall on business  days as defined by the scope and calendar codes in the valuation schedule.     Valuations are made at a frequency defined by the valuation schedule&#39;s tenor, e.g. every day (\&quot;1D\&quot;),  every other week (\&quot;2W\&quot;) etc. These dates will be adjusted onto business days as defined by the schedule&#39;s  rollConvention.
      * @param scope Scope of the calendars to use (required)
      * @param valuationSchedule The ValuationSchedule to generate schedule dates from (required)
      * @return APIgenerateScheduleRequest
@@ -2202,7 +2202,7 @@ public class CalendarsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;Calendar\&quot; domain to decorate onto the calendar,   These take the format {domain}/{scope}/{code} e.g. \&quot;Calendar/System/Name\&quot;. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;Calendar\&quot; domain to decorate onto the calendar,    These take the format {domain}/{scope}/{code} e.g. \&quot;Calendar/System/Name\&quot;. (optional)
          * @return APIgetCalendarRequest
          */
         public APIgetCalendarRequest propertyKeys(List<String> propertyKeys) {
@@ -2641,7 +2641,7 @@ public class CalendarsApi {
 
     /**
      * [EARLY ACCESS] GetDates: Get dates for a specific calendar
-     * Get dates from a specific calendar within a specific window of effective time, at a point in AsAt time. Providing an id filter can further refine the results.
+     * Get dates from a specific calendar within a specific window of effective time, at a point in AsAt time.  Providing an id filter can further refine the results.
      * @param scope Scope of the calendar (required)
      * @param code Code of the calendar (required)
      * @return APIgetDatesRequest
@@ -2908,7 +2908,7 @@ public class CalendarsApi {
 
     /**
      * [EARLY ACCESS] IsBusinessDateTime: Check whether a DateTime is a \&quot;Business DateTime\&quot;
-     * A Business DateTime is defined as a point in time that:  generate justfile test_sdk Does not represent a day that overlaps with the calendars WeekendMask  generate justfile test_sdk If the calendar is a \&quot;Holiday Calendar\&quot; Does not overlap with any dates in the calendar  generate justfile test_sdk If the calendar is a \&quot;TradingHours Calendar\&quot; Does overlap with a date in the calendar   All dates specified must be UTC and the upper bound of a calendar is not inclusive  e.g. From: 2020-12-25-00-00-00   To: 2020-12-26-00-00-00 IsBusinessDay(2020-12-26-00-00-00) &#x3D;&#x3D; false
+     * A Business DateTime is defined as a point in time that:   generate justfile test_sdk Does not represent a day that overlaps with the calendars WeekendMask   generate justfile test_sdk If the calendar is a \&quot;Holiday Calendar\&quot; Does not overlap with any dates in the calendar   generate justfile test_sdk If the calendar is a \&quot;TradingHours Calendar\&quot; Does overlap with a date in the calendar     All dates specified must be UTC and the upper bound of a calendar is not inclusive   e.g. From: 2020-12-25-00-00-00    To: 2020-12-26-00-00-00  IsBusinessDay(2020-12-26-00-00-00) &#x3D;&#x3D; false
      * @param dateTime DateTime to check - This DateTime must be UTC (required)
      * @param scope Scope of the calendar (required)
      * @param code Code of the calendar (required)
@@ -3051,7 +3051,7 @@ public class CalendarsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing calendars from a previous call to list calendars.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields  must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing calendars from a previous call to list calendars.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. (optional)
          * @return APIlistCalendarsRequest
          */
         public APIlistCalendarsRequest page(String page) {
@@ -3071,7 +3071,7 @@ public class CalendarsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;Calendar\&quot; domain to decorate onto the calendar,   These take the format {domain}/{scope}/{code} e.g. \&quot;Calendar/System/Name\&quot;. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;Calendar\&quot; domain to decorate onto the calendar,    These take the format {domain}/{scope}/{code} e.g. \&quot;Calendar/System/Name\&quot;. (optional)
          * @return APIlistCalendarsRequest
          */
         public APIlistCalendarsRequest propertyKeys(List<String> propertyKeys) {
@@ -3357,7 +3357,7 @@ public class CalendarsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing calendars from a previous call to list calendars.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields  must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing calendars from a previous call to list calendars.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. (optional)
          * @return APIlistCalendarsInScopeRequest
          */
         public APIlistCalendarsInScopeRequest page(String page) {
@@ -3377,7 +3377,7 @@ public class CalendarsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;Calendar\&quot; domain to decorate onto the calendar,   These take the format {domain}/{scope}/{code} e.g. \&quot;Calendar/System/Name\&quot;. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;Calendar\&quot; domain to decorate onto the calendar,    These take the format {domain}/{scope}/{code} e.g. \&quot;Calendar/System/Name\&quot;. (optional)
          * @return APIlistCalendarsInScopeRequest
          */
         public APIlistCalendarsInScopeRequest propertyKeys(List<String> propertyKeys) {

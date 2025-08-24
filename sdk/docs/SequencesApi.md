@@ -152,7 +152,7 @@ public class SequencesApiExample {
 
         SequencesApi apiInstance = ApiFactoryBuilder.build(fileName).build(SequencesApi.class);
         String scope = "scope_example"; // String | Scope of the sequence.
-        String code = "code_example"; // String | Code of the sequence. This together with stated scope uniquely  identifies the sequence.
+        String code = "code_example"; // String | Code of the sequence. This together with stated scope uniquely   identifies the sequence.
         try {
             // uncomment the below to set overrides at the request level
             // SequenceDefinition result = apiInstance.getSequence(scope, code).execute(opts);
@@ -175,7 +175,7 @@ public class SequencesApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| Scope of the sequence. | |
-| **code** | **String**| Code of the sequence. This together with stated scope uniquely  identifies the sequence. | |
+| **code** | **String**| Code of the sequence. This together with stated scope uniquely   identifies the sequence. | |
 
 ### Return type
 
@@ -244,9 +244,9 @@ public class SequencesApiExample {
         // SequencesApi apiInstance = apiFactory.build(SequencesApi.class);
 
         SequencesApi apiInstance = ApiFactoryBuilder.build(fileName).build(SequencesApi.class);
-        String page = "page_example"; // String | The pagination token to use to continue listing sequences from a previous call to list sequences. This value is returned from the previous call.
+        String page = "page_example"; // String | The pagination token to use to continue listing sequences from a previous call to list sequences. This  value is returned from the previous call.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 500 if not specified.
-        String filter = "filter_example"; // String | Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        String filter = "filter_example"; // String | Expression to filter the result set.    Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         try {
             // uncomment the below to set overrides at the request level
             // PagedResourceListOfSequenceDefinition result = apiInstance.listSequences(page, limit, filter).execute(opts);
@@ -268,9 +268,9 @@ public class SequencesApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **page** | **String**| The pagination token to use to continue listing sequences from a previous call to list sequences. This value is returned from the previous call. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing sequences from a previous call to list sequences. This  value is returned from the previous call. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 500 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **filter** | **String**| Expression to filter the result set.    Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
 ### Return type
 
@@ -340,7 +340,7 @@ public class SequencesApiExample {
 
         SequencesApi apiInstance = ApiFactoryBuilder.build(fileName).build(SequencesApi.class);
         String scope = "scope_example"; // String | Scope of the sequence.
-        String code = "code_example"; // String | Code of the sequence. This together with stated scope uniquely  identifies the sequence.
+        String code = "code_example"; // String | Code of the sequence. This together with stated scope uniquely   identifies the sequence.
         Integer batch = 56; // Integer | Number of sequences items to return for the specified sequence. Default to 1 if not specified.
         try {
             // uncomment the below to set overrides at the request level
@@ -364,7 +364,7 @@ public class SequencesApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| Scope of the sequence. | |
-| **code** | **String**| Code of the sequence. This together with stated scope uniquely  identifies the sequence. | |
+| **code** | **String**| Code of the sequence. This together with stated scope uniquely   identifies the sequence. | |
 | **batch** | **Integer**| Number of sequences items to return for the specified sequence. Default to 1 if not specified. | [optional] |
 
 ### Return type

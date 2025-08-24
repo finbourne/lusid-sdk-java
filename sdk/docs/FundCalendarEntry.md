@@ -16,6 +16,7 @@
 |**entryType** | [**EntryTypeEnum**](#EntryTypeEnum) | The type of the Fund Calendar Entry. Only &#39;ValuationPoint&#39; currently supported. The available values are: ValuationPointFundCalendarEntry, BookmarkFundCalendarEntry |  |
 |**status** | **String** | The status of the Fund Calendar Entry. Can be &#39;Estimate&#39;, &#39;Candidate&#39; or &#39;Final&#39;. |  [optional] |
 |**applyClearDown** | **Boolean** | Set to true if that closed period shoould have the clear down applied. |  |
+|**properties** | [**Map&lt;String, Property&gt;**](Property.md) | The properties for the Calendar Entry. These will be from the &#39;ClosedPeriod&#39; domain. |  [optional] |
 |**version** | [**Version**](Version.md) |  |  |
 |**href** | **URI** | The specific Uniform Resource Identifier (URI) for this resource at the requested asAt datetime. |  [optional] |
 

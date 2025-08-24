@@ -149,7 +149,7 @@ public class RelationDefinitionsApiExample {
 
         RelationDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(RelationDefinitionsApi.class);
         String scope = "scope_example"; // String | The scope of the relation to be deleted.
-        String code = "code_example"; // String | The code of the relation to be deleted. Together with the domain and scope this uniquely  identifies the relation.
+        String code = "code_example"; // String | The code of the relation to be deleted. Together with the domain and scope this uniquely   identifies the relation.
         try {
             // uncomment the below to set overrides at the request level
             // DeletedEntityResponse result = apiInstance.deleteRelationDefinition(scope, code).execute(opts);
@@ -172,7 +172,7 @@ public class RelationDefinitionsApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the relation to be deleted. | |
-| **code** | **String**| The code of the relation to be deleted. Together with the domain and scope this uniquely  identifies the relation. | |
+| **code** | **String**| The code of the relation to be deleted. Together with the domain and scope this uniquely   identifies the relation. | |
 
 ### Return type
 
@@ -242,8 +242,8 @@ public class RelationDefinitionsApiExample {
 
         RelationDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(RelationDefinitionsApi.class);
         String scope = "scope_example"; // String | The scope of the specified relation.
-        String code = "code_example"; // String | The code of the specified relation. Together with the domain and scope this uniquely  identifies the relation.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the relation definition. Defaults to return  the latest version of the definition if not specified.
+        String code = "code_example"; // String | The code of the specified relation. Together with the domain and scope this uniquely   identifies the relation.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the relation definition. Defaults to return   the latest version of the definition if not specified.
         try {
             // uncomment the below to set overrides at the request level
             // RelationDefinition result = apiInstance.getRelationDefinition(scope, code, asAt).execute(opts);
@@ -266,8 +266,8 @@ public class RelationDefinitionsApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the specified relation. | |
-| **code** | **String**| The code of the specified relation. Together with the domain and scope this uniquely  identifies the relation. | |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the relation definition. Defaults to return  the latest version of the definition if not specified. | [optional] |
+| **code** | **String**| The code of the specified relation. Together with the domain and scope this uniquely   identifies the relation. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the relation definition. Defaults to return   the latest version of the definition if not specified. | [optional] |
 
 ### Return type
 

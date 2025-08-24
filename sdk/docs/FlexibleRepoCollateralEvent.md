@@ -2,7 +2,7 @@
 
 # FlexibleRepoCollateralEvent
 
-Definition of FlexibleRepoCollateralEvent which represents a single collateral transfer as part of a repo contract modelled as a FlexibleRepo, either as part of the purchase leg or repurchase leg, or any early closure.
+Definition of FlexibleRepoCollateralEvent which represents a single collateral transfer as part of a repo contract  modelled as a FlexibleRepo, either as part of the purchase leg or repurchase leg, or any early closure.
 
 ## Properties
 
@@ -10,7 +10,7 @@ Definition of FlexibleRepoCollateralEvent which represents a single collateral t
 |------------ | ------------- | ------------- | -------------|
 |**settlementDate** | **OffsetDateTime** | Date at which the transfer of units settles. This is a required field. |  [optional] |
 |**entitlementDate** | **OffsetDateTime** | Date at which the recipient of the collateral is entitled to the units being transferred. This is a required field. |  [optional] |
-|**amount** | **java.math.BigDecimal** | The total amount of collateral being transferred as part of the repo contract. Signed to indicate direction of transfer. This is a required field. |  |
+|**amount** | **java.math.BigDecimal** | The total amount of collateral being transferred as part of the repo contract.  Signed to indicate direction of transfer. This is a required field. |  |
 |**collateralInstrument** | [**NewInstrument**](NewInstrument.md) |  |  |
 
 

@@ -2,7 +2,7 @@
 
 # SwapCashFlowEvent
 
-Definition of a swap cash flow event. This event describes the cashflow generated from either an interest rate swap or inflation swap instrument.
+Definition of a swap cash flow event.  This event describes the cashflow generated from either an interest rate swap or inflation swap instrument.
 
 ## Properties
 

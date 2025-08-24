@@ -309,7 +309,7 @@ public class ConventionsApi {
 
     /**
      * [BETA] DeleteCdsFlowConventions: Delete the CDS Flow Conventions of given scope and code, assuming that it is present.
-     * Delete the specified CDS Flow Conventions from a single scope. The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed. It is important to always check for any unsuccessful response.
+     * Delete the specified CDS Flow Conventions from a single scope.  The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed.  It is important to always check for any unsuccessful response.
      * @param scope The scope of the CDS Flow Conventions to delete. (required)
      * @param code The CDS Flow Conventions to delete. (required)
      * @return APIdeleteCdsFlowConventionsRequest
@@ -550,7 +550,7 @@ public class ConventionsApi {
 
     /**
      * [BETA] DeleteFlowConventions: Delete the Flow Conventions of given scope and code, assuming that it is present.
-     * Delete the specified conventions from a single scope. The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed. It is important to always check for any unsuccessful response.
+     * Delete the specified conventions from a single scope.  The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed.  It is important to always check for any unsuccessful response.
      * @param scope The scope of the Flow Conventions to delete. (required)
      * @param code The Flow Conventions to delete. (required)
      * @return APIdeleteFlowConventionsRequest
@@ -791,7 +791,7 @@ public class ConventionsApi {
 
     /**
      * [BETA] DeleteIndexConvention: Delete the Index Convention of given scope and code, assuming that it is present.
-     * Delete the specified Index Convention from a single scope. The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed. It is important to always check for any unsuccessful response.
+     * Delete the specified Index Convention from a single scope.  The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed.  It is important to always check for any unsuccessful response.
      * @param scope The scope of the Index Convention to delete. (required)
      * @param code The Index Convention to delete. (required)
      * @return APIdeleteIndexConventionRequest
@@ -1047,7 +1047,7 @@ public class ConventionsApi {
 
     /**
      * [BETA] GetCdsFlowConventions: Get CDS Flow Conventions
-     * Get a CDS Flow Conventions from a single scope. The response will return either the conventions that has been stored, or a failure explaining why the request was unsuccessful. It is important to always check for any unsuccessful requests (failures).
+     * Get a CDS Flow Conventions from a single scope.  The response will return either the conventions that has been stored, or a failure explaining why the request was unsuccessful.  It is important to always check for any unsuccessful requests (failures).
      * @param scope The scope of the CDS Flow Conventions to retrieve. (required)
      * @param code The name of the CDS Flow Conventions to retrieve the data for. (required)
      * @return APIgetCdsFlowConventionsRequest
@@ -1303,7 +1303,7 @@ public class ConventionsApi {
 
     /**
      * [BETA] GetFlowConventions: Get Flow Conventions
-     * Get a Flow Conventions from a single scope. The response will return either the conventions that has been stored, or a failure explaining why the request was unsuccessful. It is important to always check for any unsuccessful requests (failures).
+     * Get a Flow Conventions from a single scope.  The response will return either the conventions that has been stored, or a failure explaining why the request was unsuccessful.  It is important to always check for any unsuccessful requests (failures).
      * @param scope The scope of the Flow Conventions to retrieve. (required)
      * @param code The name of the Flow Conventions to retrieve the data for. (required)
      * @return APIgetFlowConventionsRequest
@@ -1559,7 +1559,7 @@ public class ConventionsApi {
 
     /**
      * [BETA] GetIndexConvention: Get Index Convention
-     * Get a Index Convention from a single scope. The response will return either the conventions that has been stored, or a failure explaining why the request was unsuccessful. It is important to always check for any unsuccessful requests (failures).
+     * Get a Index Convention from a single scope.  The response will return either the conventions that has been stored, or a failure explaining why the request was unsuccessful.  It is important to always check for any unsuccessful requests (failures).
      * @param scope The scope of the Index Convention to retrieve. (required)
      * @param code The name of the Index Convention to retrieve the data for. (required)
      * @return APIgetIndexConventionRequest
@@ -2509,7 +2509,7 @@ public class ConventionsApi {
 
     /**
      * [BETA] UpsertCdsFlowConventions: Upsert a set of CDS Flow Conventions. This creates or updates the data in Lusid.
-     * Update or insert CDS Flow Conventions in a single scope. An item will be updated if it already exists and inserted if it does not.   The response will return the successfully updated or inserted CDS Flow Conventions or failure message if unsuccessful   It is important to always check to verify success (or failure).
+     * Update or insert CDS Flow Conventions in a single scope. An item will be updated if it already exists  and inserted if it does not.     The response will return the successfully updated or inserted CDS Flow Conventions or failure message if unsuccessful     It is important to always check to verify success (or failure).
      * @param upsertCdsFlowConventionsRequest The CDS Flow Conventions to update or insert (required)
      * @return APIupsertCdsFlowConventionsRequest
      * @http.response.details
@@ -2744,7 +2744,7 @@ public class ConventionsApi {
 
     /**
      * [BETA] UpsertFlowConventions: Upsert Flow Conventions. This creates or updates the data in Lusid.
-     * Update or insert Flow Conventions in a single scope. An item will be updated if it already exists and inserted if it does not.   The response will return the successfully updated or inserted Flow Conventions or failure message if unsuccessful   It is important to always check to verify success (or failure).
+     * Update or insert Flow Conventions in a single scope. An item will be updated if it already exists  and inserted if it does not.     The response will return the successfully updated or inserted Flow Conventions or failure message if unsuccessful     It is important to always check to verify success (or failure).
      * @param upsertFlowConventionsRequest The Flow Conventions to update or insert (required)
      * @return APIupsertFlowConventionsRequest
      * @http.response.details
@@ -2979,7 +2979,7 @@ public class ConventionsApi {
 
     /**
      * [BETA] UpsertIndexConvention: Upsert a set of Index Convention. This creates or updates the data in Lusid.
-     * Update or insert Index Convention in a single scope. An item will be updated if it already exists and inserted if it does not.   The response will return the successfully updated or inserted Index Convention or failure message if unsuccessful   It is important to always check to verify success (or failure).
+     * Update or insert Index Convention in a single scope. An item will be updated if it already exists  and inserted if it does not.     The response will return the successfully updated or inserted Index Convention or failure message if unsuccessful     It is important to always check to verify success (or failure).
      * @param upsertIndexConventionRequest The Index Conventions to update or insert (required)
      * @return APIupsertIndexConventionRequest
      * @http.response.details

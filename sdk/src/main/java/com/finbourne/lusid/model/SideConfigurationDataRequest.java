@@ -45,7 +45,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Configuration needed to define a side. Sides are referenced by Label. Beyond that, other properties can be used to reference either transaction fields, or transaction properties.
+ * Configuration needed to define a side. Sides are referenced by Label. Beyond that, other properties  can be used to reference either transaction fields, or transaction properties.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SideConfigurationDataRequest {

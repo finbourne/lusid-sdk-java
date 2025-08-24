@@ -2,7 +2,7 @@
 
 # ResultValue
 
-Base class for representing result values in LUSID. This base class should not be directly instantiated; each supported ResultValueType has a corresponding inherited class.
+Base class for representing result values in LUSID.  This base class should not be directly instantiated; each supported ResultValueType has a corresponding inherited class.
 
 ## Properties
 

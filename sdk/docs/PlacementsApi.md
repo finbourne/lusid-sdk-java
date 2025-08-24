@@ -17,7 +17,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 [EARLY ACCESS] DeletePlacement: Delete placement
 
-Delete an placement. Deletion will be valid from the placement&#39;s creation datetime. This means that the placement will no longer exist at any effective datetime from the asAt datetime of deletion.
+Delete an placement. Deletion will be valid from the placement&#39;s creation datetime.  This means that the placement will no longer exist at any effective datetime from the asAt datetime of deletion.
 
 ### Example
 
@@ -154,7 +154,7 @@ public class PlacementsApiExample {
         String scope = "scope_example"; // String | The scope to which the placement belongs.
         String code = "code_example"; // String | The placement's unique identifier.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the placement. Defaults to return the latest version of the placement if not specified.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Placement\" domain to decorate onto the placement. If none are given, all applied properties are returned.  These take the format {domain}/{scope}/{code} e.g. \"Placement/system/Name\". Property keys from the instrument domain can also be decorated  onto the placement, e.g. \"Instrument/default/Isin\". These are only decorated if requested.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Placement\" domain to decorate onto the placement. If none are given, all applied properties are returned.   These take the format {domain}/{scope}/{code} e.g. \"Placement/system/Name\". Property keys from the instrument domain can also be decorated   onto the placement, e.g. \"Instrument/default/Isin\". These are only decorated if requested.
         try {
             // uncomment the below to set overrides at the request level
             // Placement result = apiInstance.getPlacement(scope, code, asAt, propertyKeys).execute(opts);
@@ -179,7 +179,7 @@ public class PlacementsApiExample {
 | **scope** | **String**| The scope to which the placement belongs. | |
 | **code** | **String**| The placement&#39;s unique identifier. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the placement. Defaults to return the latest version of the placement if not specified. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Placement\&quot; domain to decorate onto the placement. If none are given, all applied properties are returned.  These take the format {domain}/{scope}/{code} e.g. \&quot;Placement/system/Name\&quot;. Property keys from the instrument domain can also be decorated  onto the placement, e.g. \&quot;Instrument/default/Isin\&quot;. These are only decorated if requested. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Placement\&quot; domain to decorate onto the placement. If none are given, all applied properties are returned.   These take the format {domain}/{scope}/{code} e.g. \&quot;Placement/system/Name\&quot;. Property keys from the instrument domain can also be decorated   onto the placement, e.g. \&quot;Instrument/default/Isin\&quot;. These are only decorated if requested. | [optional] |
 
 ### Return type
 
@@ -249,11 +249,11 @@ public class PlacementsApiExample {
 
         PlacementsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PlacementsApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the placement. Defaults to return the latest version of the placement if not specified.
-        String page = "page_example"; // String | The pagination token to use to continue listing placements from a previous call to list placements.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields  must not have changed since the original request.
+        String page = "page_example"; // String | The pagination token to use to continue listing placements from a previous call to list placements.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\".
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
-        String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Placement\" domain to decorate onto each placement.  These take the format {domain}/{scope}/{code} e.g. \"Placement/system/Name\".  All properties, except derived properties, are returned by default, without specifying here.
+        String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Placement\" domain to decorate onto each placement.   These take the format {domain}/{scope}/{code} e.g. \"Placement/system/Name\".   All properties, except derived properties, are returned by default, without specifying here.
         try {
             // uncomment the below to set overrides at the request level
             // PagedResourceListOfPlacement result = apiInstance.listPlacements(asAt, page, sortBy, limit, filter, propertyKeys).execute(opts);
@@ -276,11 +276,11 @@ public class PlacementsApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the placement. Defaults to return the latest version of the placement if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing placements from a previous call to list placements.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields  must not have changed since the original request. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing placements from a previous call to list placements.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional] |
-| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Placement\&quot; domain to decorate onto each placement.  These take the format {domain}/{scope}/{code} e.g. \&quot;Placement/system/Name\&quot;.  All properties, except derived properties, are returned by default, without specifying here. | [optional] |
+| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Placement\&quot; domain to decorate onto each placement.   These take the format {domain}/{scope}/{code} e.g. \&quot;Placement/system/Name\&quot;.   All properties, except derived properties, are returned by default, without specifying here. | [optional] |
 
 ### Return type
 

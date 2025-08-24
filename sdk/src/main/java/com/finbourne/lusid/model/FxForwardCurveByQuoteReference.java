@@ -149,7 +149,7 @@ public class FxForwardCurveByQuoteReference extends ComplexMarketData {
   }
 
    /**
-   * Tenors for which the forward rates apply. For more information on tenors, see [knowledge base article KA-02097](https://support.lusid.com/knowledgebase/article/KA-02097)
+   * Tenors for which the forward rates apply.  For more information on tenors, see [knowledge base article KA-02097](https://support.lusid.com/knowledgebase/article/KA-02097)
    * @return tenors
   **/
   @jakarta.annotation.Nonnull
@@ -178,7 +178,7 @@ public class FxForwardCurveByQuoteReference extends ComplexMarketData {
   }
 
    /**
-   * For each tenor, a collection of identifiers. These will be looked up in the LUSID Quote Store to resolve the actual rates. Accepts an array of Dictionary&lt;string, string&gt;. The keys of each dictionary must be chosen from the following enumeration: [LusidInstrumentId, Isin, Sedol, Cusip, ClientInternal, Figi, RIC, QuotePermId, REDCode, BBGId, ICECode]. For example:  \&quot;quoteReferences\&quot;: [{\&quot;ClientInternal\&quot;: \&quot;SomeIdentifierForFirstTenor\&quot;},{\&quot;ClientInternal\&quot;: \&quot;SomeIdentifierForSecondTenor\&quot;}
+   * For each tenor, a collection of identifiers. These will be looked up in the LUSID Quote Store to resolve the actual rates.  Accepts an array of Dictionary&lt;string, string&gt;. The keys of each dictionary must be chosen from the following enumeration:  [LusidInstrumentId, Isin, Sedol, Cusip, ClientInternal, Figi, RIC, QuotePermId, REDCode, BBGId, ICECode].  For example:    \&quot;quoteReferences\&quot;: [{\&quot;ClientInternal\&quot;: \&quot;SomeIdentifierForFirstTenor\&quot;},{\&quot;ClientInternal\&quot;: \&quot;SomeIdentifierForSecondTenor\&quot;}
    * @return quoteReferences
   **/
   @jakarta.annotation.Nonnull
@@ -270,7 +270,7 @@ public class FxForwardCurveByQuoteReference extends ComplexMarketData {
   }
 
    /**
-   * Configures how to calculate the spot date from the build date using the Calendars provided. Supported string (enumeration) values are: [ SingleCalendar, UnionCalendars ]
+   * Configures how to calculate the spot date from the build date using the Calendars provided.  Supported string (enumeration) values are: [ SingleCalendar, UnionCalendars ]
    * @return spotDaysCalculationType
   **/
   @jakarta.annotation.Nullable

@@ -429,7 +429,7 @@ public class AggregatedReturnsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the returns entity. Defaults to return  the latest version of the definition if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the returns entity. Defaults to return   the latest version of the definition if not specified. (optional)
          * @return APIgetReturnsEntityRequest
          */
         public APIgetReturnsEntityRequest asAt(OffsetDateTime asAt) {
@@ -669,7 +669,7 @@ public class AggregatedReturnsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the relation definitions. Defaults to return  the latest version of each definition if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the relation definitions. Defaults to return   the latest version of each definition if not specified. (optional)
          * @return APIlistReturnsEntitiesRequest
          */
         public APIlistReturnsEntitiesRequest asAt(OffsetDateTime asAt) {

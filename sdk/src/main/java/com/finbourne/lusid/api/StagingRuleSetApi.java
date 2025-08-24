@@ -539,7 +539,7 @@ public class StagingRuleSetApi {
 
     /**
      * DeleteStagingRuleSet: Delete a StagingRuleSet
-     * Delete a staging rule set of a specific entity type. Deletion will be valid from the staging rule set&#39;s creation datetime. This means that the staging rule set will no longer exist at any effective datetime from the asAt datetime of deletion.
+     * Delete a staging rule set of a specific entity type. Deletion will be valid from the staging rule set&#39;s creation datetime.  This means that the staging rule set will no longer exist at any effective datetime from the asAt datetime of deletion.
      * @param entityType The entity type for which to delete the staging rule set. (required)
      * @return APIdeleteStagingRuleSetRequest
      * @http.response.details
@@ -658,7 +658,7 @@ public class StagingRuleSetApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the staging rule set. Defaults to return the latest  version of the staging rule set if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the staging rule set. Defaults to return the latest   version of the staging rule set if not specified. (optional)
          * @return APIgetStagingRuleSetRequest
          */
         public APIgetStagingRuleSetRequest asAt(OffsetDateTime asAt) {
@@ -917,7 +917,7 @@ public class StagingRuleSetApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the staging rule sets. Defaults to return the latest  version of the staging rule sets if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the staging rule sets. Defaults to return the latest   version of the staging rule sets if not specified. (optional)
          * @return APIlistStagingRuleSetsRequest
          */
         public APIlistStagingRuleSetsRequest asAt(OffsetDateTime asAt) {
@@ -927,7 +927,7 @@ public class StagingRuleSetApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing staging rule sets from a previous call to list  staging rule sets. This value is returned from the previous call. If a pagination token is provided the sortBy,  filter, effectiveAt, and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing staging rule sets from a previous call to list   staging rule sets. This value is returned from the previous call. If a pagination token is provided the sortBy,   filter, effectiveAt, and asAt fields must not have changed since the original request. (optional)
          * @return APIlistStagingRuleSetsRequest
          */
         public APIlistStagingRuleSetsRequest page(String page) {
@@ -957,7 +957,7 @@ public class StagingRuleSetApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIlistStagingRuleSetsRequest
          */
         public APIlistStagingRuleSetsRequest filter(String filter) {

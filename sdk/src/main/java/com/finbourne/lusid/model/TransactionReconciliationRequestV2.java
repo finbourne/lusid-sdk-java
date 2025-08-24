@@ -51,7 +51,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Specification for the reconciliation request. Left and Right hand sides are constructed. Each consists of transactions from a portfolio The results of this can then be compared to each other.
+ * Specification for the reconciliation request. Left and Right hand sides are constructed. Each consists of transactions from a portfolio  The results of this can then be compared to each other.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class TransactionReconciliationRequestV2 {
@@ -164,7 +164,7 @@ public class TransactionReconciliationRequestV2 {
   }
 
    /**
-   * The set of rules to be used in comparing values. These are the rules that determine what constitutes a match. The simplest is obviously an exact one-for-one comparison, but tolerances on numerical or date time values and case-insensitive string comparison are supported amongst other types.
+   * The set of rules to be used in comparing values. These are the rules that determine what constitutes a match.  The simplest is obviously an exact one-for-one comparison, but tolerances on numerical or date time values and  case-insensitive string comparison are supported amongst other types.
    * @return comparisonRules
   **/
   @jakarta.annotation.Nullable
@@ -193,7 +193,7 @@ public class TransactionReconciliationRequestV2 {
   }
 
    /**
-   * List of keys to preserve (from rhs) in the diff. Used in conjunction with filtering/grouping. If two values are equal, for a given key then the value is elided from the results. Setting it here will preserve it (takes the values from the RHS and puts it into the line by line results).
+   * List of keys to preserve (from rhs) in the diff. Used in conjunction with filtering/grouping.  If two values are equal, for a given key then the value is elided from the results. Setting it here  will preserve it (takes the values from the RHS and puts it into the line by line results).
    * @return preserveKeys
   **/
   @jakarta.annotation.Nullable

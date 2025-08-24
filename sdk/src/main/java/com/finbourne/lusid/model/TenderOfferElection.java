@@ -163,7 +163,7 @@ public class TenderOfferElection {
   }
 
    /**
-   * Is this election automatically applied in the absence of an election having been made. May only be true for one election if multiple are provided.
+   * Is this election automatically applied in the absence of an election having been made.  May only be true for one election if multiple are provided.
    * @return isDefault
   **/
   @jakarta.annotation.Nullable

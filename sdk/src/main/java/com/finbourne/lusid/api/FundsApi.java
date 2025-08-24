@@ -355,7 +355,7 @@ public class FundsApi {
 
     /**
      * [EXPERIMENTAL] AcceptEstimateValuationPoint: Accepts an Estimate Valuation Point.
-     * Accepts the specified estimate Valuation Point. Should the Valuation Point differ since the Valuation Point was last run, both Valuation Points will be returned and status will be marked as &#39;Candidate&#39;, otherwise it will be marked as &#39;Final&#39;.
+     * Accepts the specified estimate Valuation Point.  Should the Valuation Point differ since the Valuation Point was last run, both Valuation Points will be returned and status will be marked as &#39;Candidate&#39;,  otherwise it will be marked as &#39;Final&#39;.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
      * @param valuationPointDataRequest The valuationPointDataRequest which contains the Diary Entry code for the Estimate Valuation Point to move to Candidate or Final state. (required)
@@ -2567,7 +2567,7 @@ public class FundsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;Fee&#39; domain to decorate onto the Fee.  These must take the format {domain}/{scope}/{code}, for example &#39;Fee/Account/Id&#39;. If no properties are specified, then no properties will be returned. (optional)
+         * @param propertyKeys A list of property keys from the &#39;Fee&#39; domain to decorate onto the Fee.   These must take the format {domain}/{scope}/{code}, for example &#39;Fee/Account/Id&#39;. If no properties are specified, then no properties will be returned. (optional)
          * @return APIgetFeeRequest
          */
         public APIgetFeeRequest propertyKeys(List<String> propertyKeys) {
@@ -3134,7 +3134,7 @@ public class FundsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;Fund&#39; domain to decorate onto the Fund.  These must take the format {domain}/{scope}/{code}, for example &#39;Fund/Manager/Id&#39;. If no properties are specified, then no properties will be returned. (optional)
+         * @param propertyKeys A list of property keys from the &#39;Fund&#39; domain to decorate onto the Fund.   These must take the format {domain}/{scope}/{code}, for example &#39;Fund/Manager/Id&#39;. If no properties are specified, then no properties will be returned. (optional)
          * @return APIgetFundRequest
          */
         public APIgetFundRequest propertyKeys(List<String> propertyKeys) {
@@ -3707,7 +3707,7 @@ public class FundsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the holdings of transaction portfolios in the Fund. Defaults  to return the latest version of the holdings if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the holdings of transaction portfolios in the Fund. Defaults   to return the latest version of the holdings if not specified. (optional)
          * @return APIgetHoldingsForFundRequest
          */
         public APIgetHoldingsForFundRequest asAt(OffsetDateTime asAt) {
@@ -3727,7 +3727,7 @@ public class FundsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot; or \&quot;Portfolio\&quot; domain to decorate onto  the holdings. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot; or \&quot;Portfolio\&quot; domain to decorate onto   the holdings. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. (optional)
          * @return APIgetHoldingsForFundRequest
          */
         public APIgetHoldingsForFundRequest propertyKeys(List<String> propertyKeys) {
@@ -4429,7 +4429,7 @@ public class FundsApi {
 
     /**
      * [EXPERIMENTAL] GetValuationPointData: Get Valuation Point Data for a Fund.
-     * Retrieves the Valuation Point data for a date or specified Diary Entry Id. The endpoint will internally extract all &#39;Assets&#39; and &#39;Liabilities&#39; from the related ABOR&#39;s Trial balance to produce a GAV. Start date will be assumed from the last &#39;official&#39; DiaryEntry and EndDate will be as provided.
+     * Retrieves the Valuation Point data for a date or specified Diary Entry Id.  The endpoint will internally extract all &#39;Assets&#39; and &#39;Liabilities&#39; from the related ABOR&#39;s Trial balance to produce a GAV.  Start date will be assumed from the last &#39;official&#39; DiaryEntry and EndDate will be as provided.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
      * @param valuationPointDataQueryParameters The arguments to use for querying the Valuation Point data (required)
@@ -4609,7 +4609,7 @@ public class FundsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve Journal Entry lines. Defaults to returning the latest version  of each transaction if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve Journal Entry lines. Defaults to returning the latest version   of each transaction if not specified. (optional)
          * @return APIgetValuationPointJournalEntryLinesRequest
          */
         public APIgetValuationPointJournalEntryLinesRequest asAt(OffsetDateTime asAt) {
@@ -4649,7 +4649,7 @@ public class FundsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;  domain to decorate onto the journal entry lines. (optional)
+         * @param propertyKeys A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;   domain to decorate onto the journal entry lines. (optional)
          * @return APIgetValuationPointJournalEntryLinesRequest
          */
         public APIgetValuationPointJournalEntryLinesRequest propertyKeys(List<String> propertyKeys) {
@@ -4787,7 +4787,7 @@ public class FundsApi {
 
     /**
      * [EXPERIMENTAL] GetValuationPointJournalEntryLines: Get the Journal Entry lines for the given Fund.
-     * Gets the Journal Entry lines for the given Valuation Point for a Fund   The Journal Entry lines have been generated from transactions, translated via posting rules and used in the valuation point
+     * Gets the Journal Entry lines for the given Valuation Point for a Fund     The Journal Entry lines have been generated from transactions, translated via posting rules and used in the valuation point
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope is creating the unique identifier for the given Fund. (required)
      * @param valuationPointDataQueryParameters The arguments to use for querying the Journal Entry lines. (required)
@@ -4962,7 +4962,7 @@ public class FundsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve PnL summary. Defaults to returning the latest version  of each transaction if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve PnL summary. Defaults to returning the latest version   of each transaction if not specified. (optional)
          * @return APIgetValuationPointPnlSummaryRequest
          */
         public APIgetValuationPointPnlSummaryRequest asAt(OffsetDateTime asAt) {
@@ -5295,7 +5295,7 @@ public class FundsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve transactions. Defaults to returning the latest version  of each transaction if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve transactions. Defaults to returning the latest version   of each transaction if not specified. (optional)
          * @return APIgetValuationPointTransactionsRequest
          */
         public APIgetValuationPointTransactionsRequest asAt(OffsetDateTime asAt) {
@@ -5335,7 +5335,7 @@ public class FundsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;  domain to decorate onto the journal entry lines. (optional)
+         * @param propertyKeys A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;   domain to decorate onto the journal entry lines. (optional)
          * @return APIgetValuationPointTransactionsRequest
          */
         public APIgetValuationPointTransactionsRequest propertyKeys(List<String> propertyKeys) {
@@ -5653,7 +5653,7 @@ public class FundsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the Trial Balance.  Defaults to returning the latest version if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the Trial Balance.   Defaults to returning the latest version if not specified. (optional)
          * @return APIgetValuationPointTrialBalanceRequest
          */
         public APIgetValuationPointTrialBalanceRequest asAt(OffsetDateTime asAt) {
@@ -5663,7 +5663,7 @@ public class FundsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results by.  For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results by.   For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIgetValuationPointTrialBalanceRequest
          */
         public APIgetValuationPointTrialBalanceRequest filter(String filter) {
@@ -5673,7 +5673,7 @@ public class FundsApi {
 
         /**
          * Set limit
-         * @param limit When paginating, limit the number of returned results to this number.  Defaults to 100 if not specified. (optional)
+         * @param limit When paginating, limit the number of returned results to this number.   Defaults to 100 if not specified. (optional)
          * @return APIgetValuationPointTrialBalanceRequest
          */
         public APIgetValuationPointTrialBalanceRequest limit(Integer limit) {
@@ -5683,7 +5683,7 @@ public class FundsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing Trial Balances.  This token is returned from the previous call.  If a pagination token is provided, the filter, effectiveAt and asAt fields  must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing Trial Balances.   This token is returned from the previous call.   If a pagination token is provided, the filter, effectiveAt and asAt fields   must not have changed since the original request. (optional)
          * @return APIgetValuationPointTrialBalanceRequest
          */
         public APIgetValuationPointTrialBalanceRequest page(String page) {
@@ -5693,7 +5693,7 @@ public class FundsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;  domain to decorate onto the journal entry lines. (optional)
+         * @param propertyKeys A list of property keys from the &#39;Instrument&#39;, &#39;Transaction&#39;, &#39;Portfolio&#39;, &#39;Account&#39;, &#39;LegalEntity&#39; or &#39;CustodianAccount&#39;   domain to decorate onto the journal entry lines. (optional)
          * @return APIgetValuationPointTrialBalanceRequest
          */
         public APIgetValuationPointTrialBalanceRequest propertyKeys(List<String> propertyKeys) {
@@ -5831,7 +5831,7 @@ public class FundsApi {
 
     /**
      * [EXPERIMENTAL] GetValuationPointTrialBalance: Get Trial Balance for the given Fund.
-     * Gets the Trial Balance for the given Valuation Point for a Fund.   The Trial Balance has been generated from transactions, translated via Posting Rules and aggregated based on a General Ledger Profile (where specified).
+     * Gets the Trial Balance for the given Valuation Point for a Fund.     The Trial Balance has been generated from transactions, translated via Posting Rules  and aggregated based on a General Ledger Profile (where specified).
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
      * @param valuationPointDataQueryParameters The query parameters used in running the generation of the Trial Balance. (required)
@@ -5990,7 +5990,7 @@ public class FundsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the Fees. Defaults to the current LUSID  system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the Fees. Defaults to the current LUSID   system datetime if not specified. (optional)
          * @return APIlistFeesRequest
          */
         public APIlistFeesRequest effectiveAt(String effectiveAt) {
@@ -6010,7 +6010,7 @@ public class FundsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing fees; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing fees; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
          * @return APIlistFeesRequest
          */
         public APIlistFeesRequest page(String page) {
@@ -6030,7 +6030,7 @@ public class FundsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.  For example, to filter on the treatment, specify \&quot;treatment eq &#39;Monthly&#39;\&quot;. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.   For example, to filter on the treatment, specify \&quot;treatment eq &#39;Monthly&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIlistFeesRequest
          */
         public APIlistFeesRequest filter(String filter) {
@@ -6050,7 +6050,7 @@ public class FundsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;Fee&#39; domain to decorate onto each Fee.  These must take the format {domain}/{scope}/{code}, for example &#39;Fee/Account/Id&#39;. (optional)
+         * @param propertyKeys A list of property keys from the &#39;Fee&#39; domain to decorate onto each Fee.   These must take the format {domain}/{scope}/{code}, for example &#39;Fee/Account/Id&#39;. (optional)
          * @return APIlistFeesRequest
          */
         public APIlistFeesRequest propertyKeys(List<String> propertyKeys) {
@@ -6193,11 +6193,11 @@ public class FundsApi {
     public APIlistFeesRequest listFees(String scope, String code) {
         return new APIlistFeesRequest(scope, code);
     }
-    private okhttp3.Call listFundCalendarCall(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
-        return listFundCalendarCall(scope, code, asAt, page, limit, filter, sortBy,  _callback, new ConfigurationOptions());
+    private okhttp3.Call listFundCalendarCall(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return listFundCalendarCall(scope, code, asAt, page, limit, filter, sortBy, propertyKeys,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call listFundCalendarCall(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listFundCalendarCall(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -6244,6 +6244,10 @@ public class FundsApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "sortBy", sortBy));
         }
 
+        if (propertyKeys != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -6266,7 +6270,7 @@ public class FundsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listFundCalendarValidateBeforeCall(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listFundCalendarValidateBeforeCall(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling listFundCalendar(Async)");
@@ -6277,34 +6281,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'code' when calling listFundCalendar(Async)");
         }
 
-        return listFundCalendarCall(scope, code, asAt, page, limit, filter, sortBy, _callback, opts);
+        return listFundCalendarCall(scope, code, asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfFundCalendarEntry> listFundCalendarWithHttpInfo(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy) throws ApiException {
-        okhttp3.Call localVarCall = listFundCalendarValidateBeforeCall(scope, code, asAt, page, limit, filter, sortBy, null, new ConfigurationOptions());
+    private ApiResponse<PagedResourceListOfFundCalendarEntry> listFundCalendarWithHttpInfo(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys) throws ApiException {
+        okhttp3.Call localVarCall = listFundCalendarValidateBeforeCall(scope, code, asAt, page, limit, filter, sortBy, propertyKeys, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfFundCalendarEntry>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<PagedResourceListOfFundCalendarEntry> listFundCalendarWithHttpInfo(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = listFundCalendarValidateBeforeCall(scope, code, asAt, page, limit, filter, sortBy, null, opts);
+    private ApiResponse<PagedResourceListOfFundCalendarEntry> listFundCalendarWithHttpInfo(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listFundCalendarValidateBeforeCall(scope, code, asAt, page, limit, filter, sortBy, propertyKeys, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfFundCalendarEntry>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listFundCalendarAsync(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfFundCalendarEntry> _callback) throws ApiException {
+    private okhttp3.Call listFundCalendarAsync(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback<PagedResourceListOfFundCalendarEntry> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listFundCalendarValidateBeforeCall(scope, code, asAt, page, limit, filter, sortBy, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = listFundCalendarValidateBeforeCall(scope, code, asAt, page, limit, filter, sortBy, propertyKeys, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfFundCalendarEntry>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call listFundCalendarAsync(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfFundCalendarEntry> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listFundCalendarAsync(String scope, String code, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback<PagedResourceListOfFundCalendarEntry> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = listFundCalendarValidateBeforeCall(scope, code, asAt, page, limit, filter, sortBy, _callback, opts);
+        okhttp3.Call localVarCall = listFundCalendarValidateBeforeCall(scope, code, asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfFundCalendarEntry>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -6318,6 +6322,7 @@ public class FundsApi {
         private Integer limit;
         private String filter;
         private List<String> sortBy;
+        private List<String> propertyKeys;
 
         private APIlistFundCalendarRequest(String scope, String code) {
             this.scope = scope;
@@ -6336,7 +6341,7 @@ public class FundsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing Valuation Points; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing Valuation Points; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
          * @return APIlistFundCalendarRequest
          */
         public APIlistFundCalendarRequest page(String page) {
@@ -6356,7 +6361,7 @@ public class FundsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.  For example, to filter on the DisplayName, specify \&quot;displayName eq &#39;VP 1&#39;\&quot;. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.   For example, to filter on the DisplayName, specify \&quot;displayName eq &#39;VP 1&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIlistFundCalendarRequest
          */
         public APIlistFundCalendarRequest filter(String filter) {
@@ -6375,6 +6380,16 @@ public class FundsApi {
         }
 
         /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the &#39;ClosedPeriod&#39; domain to decorate onto each item. (optional)
+         * @return APIlistFundCalendarRequest
+         */
+        public APIlistFundCalendarRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
          * Build call for listFundCalendar
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -6388,7 +6403,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listFundCalendarCall(scope, code, asAt, page, limit, filter, sortBy, _callback);
+            return listFundCalendarCall(scope, code, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
         }
 
         /**
@@ -6404,7 +6419,7 @@ public class FundsApi {
          </table>
          */
         public PagedResourceListOfFundCalendarEntry execute() throws ApiException {
-            ApiResponse<PagedResourceListOfFundCalendarEntry> localVarResp = listFundCalendarWithHttpInfo(scope, code, asAt, page, limit, filter, sortBy);
+            ApiResponse<PagedResourceListOfFundCalendarEntry> localVarResp = listFundCalendarWithHttpInfo(scope, code, asAt, page, limit, filter, sortBy, propertyKeys);
             return localVarResp.getData();
         }
 
@@ -6421,7 +6436,7 @@ public class FundsApi {
          </table>
          */
         public PagedResourceListOfFundCalendarEntry execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<PagedResourceListOfFundCalendarEntry> localVarResp = listFundCalendarWithHttpInfo(scope, code, asAt, page, limit, filter, sortBy, opts);
+            ApiResponse<PagedResourceListOfFundCalendarEntry> localVarResp = listFundCalendarWithHttpInfo(scope, code, asAt, page, limit, filter, sortBy, propertyKeys, opts);
             return localVarResp.getData();
         }
 
@@ -6438,7 +6453,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfFundCalendarEntry> executeWithHttpInfo() throws ApiException {
-            return listFundCalendarWithHttpInfo(scope, code, asAt, page, limit, filter, sortBy);
+            return listFundCalendarWithHttpInfo(scope, code, asAt, page, limit, filter, sortBy, propertyKeys);
         }
 
         /**
@@ -6454,7 +6469,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfFundCalendarEntry> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return listFundCalendarWithHttpInfo(scope, code, asAt, page, limit, filter, sortBy, opts);
+            return listFundCalendarWithHttpInfo(scope, code, asAt, page, limit, filter, sortBy, propertyKeys, opts);
         }
 
         /**
@@ -6471,7 +6486,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfFundCalendarEntry> _callback) throws ApiException {
-            return listFundCalendarAsync(scope, code, asAt, page, limit, filter, sortBy, _callback);
+            return listFundCalendarAsync(scope, code, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
         }
 
         /**
@@ -6488,7 +6503,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfFundCalendarEntry> _callback, ConfigurationOptions opts) throws ApiException {
-            return listFundCalendarAsync(scope, code, asAt, page, limit, filter, sortBy, _callback, opts);
+            return listFundCalendarAsync(scope, code, asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
         }
     }
 
@@ -6636,7 +6651,7 @@ public class FundsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the Funds. Defaults to the current LUSID  system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the Funds. Defaults to the current LUSID   system datetime if not specified. (optional)
          * @return APIlistFundsRequest
          */
         public APIlistFundsRequest effectiveAt(String effectiveAt) {
@@ -6656,7 +6671,7 @@ public class FundsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing Funds; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing Funds; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
          * @return APIlistFundsRequest
          */
         public APIlistFundsRequest page(String page) {
@@ -6676,7 +6691,7 @@ public class FundsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.  For example, to filter on the Fund type, specify \&quot;id.Code eq &#39;Fund1&#39;\&quot;. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.   For example, to filter on the Fund type, specify \&quot;id.Code eq &#39;Fund1&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIlistFundsRequest
          */
         public APIlistFundsRequest filter(String filter) {
@@ -6696,7 +6711,7 @@ public class FundsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;Fund&#39; domain to decorate onto each Fund.  These must take the format {domain}/{scope}/{code}, for example &#39;Fund/Manager/Id&#39;. (optional)
+         * @param propertyKeys A list of property keys from the &#39;Fund&#39; domain to decorate onto each Fund.   These must take the format {domain}/{scope}/{code}, for example &#39;Fund/Manager/Id&#39;. (optional)
          * @return APIlistFundsRequest
          */
         public APIlistFundsRequest propertyKeys(List<String> propertyKeys) {
@@ -6980,7 +6995,7 @@ public class FundsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the ValuationPoints. Defaults to the current LUSID  system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the ValuationPoints. Defaults to the current LUSID   system datetime if not specified. (optional)
          * @return APIlistValuationPointOverviewRequest
          */
         public APIlistValuationPointOverviewRequest effectiveAt(String effectiveAt) {
@@ -7000,7 +7015,7 @@ public class FundsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing ValuationPoints; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing ValuationPoints; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
          * @return APIlistValuationPointOverviewRequest
          */
         public APIlistValuationPointOverviewRequest page(String page) {
@@ -7020,7 +7035,7 @@ public class FundsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results by.  For example, to filter on the NAV, specify \&quot;NAV gt 300\&quot;. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results by.   For example, to filter on the NAV, specify \&quot;NAV gt 300\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIlistValuationPointOverviewRequest
          */
         public APIlistValuationPointOverviewRequest filter(String filter) {
@@ -7030,7 +7045,7 @@ public class FundsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;DiaryEntry&#39; domain to decorate onto each ValuationPoint.  These must take the format {domain}/{scope}/{code}, for example &#39;DiaryEntry/ValuationPoint/Id&#39;. (optional)
+         * @param propertyKeys A list of property keys from the &#39;DiaryEntry&#39; domain to decorate onto each ValuationPoint.   These must take the format {domain}/{scope}/{code}, for example &#39;DiaryEntry/ValuationPoint/Id&#39;. (optional)
          * @return APIlistValuationPointOverviewRequest
          */
         public APIlistValuationPointOverviewRequest propertyKeys(List<String> propertyKeys) {
@@ -8471,7 +8486,7 @@ public class FundsApi {
 
     /**
      * [EXPERIMENTAL] UpsertDiaryEntryTypeValuationPoint: Upsert Valuation Point.
-     * Update or insert the estimate Valuation Point.   If the Valuation Point does not exist, this method will create it in estimate state.   If the Valuation Point already exists and is in estimate state, the Valuation Point will be updated with the newly specified information in this request.
+     * Update or insert the estimate Valuation Point.     If the Valuation Point does not exist, this method will create it in estimate state.     If the Valuation Point already exists and is in estimate state, the Valuation Point will be updated with the newly specified information in this request.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
      * @param upsertValuationPointRequest The Valuation Point Estimate definition to Upsert (required)
@@ -8608,7 +8623,7 @@ public class FundsApi {
 
         /**
          * Set requestBody
-         * @param requestBody The properties to be updated or inserted onto the Fee. Each property in  the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Fee/Manager/Id\&quot;. (optional)
+         * @param requestBody The properties to be updated or inserted onto the Fee. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Fee/Manager/Id\&quot;. (optional)
          * @return APIupsertFeePropertiesRequest
          */
         public APIupsertFeePropertiesRequest requestBody(Map<String, Property> requestBody) {
@@ -8736,7 +8751,7 @@ public class FundsApi {
 
     /**
      * [EXPERIMENTAL] UpsertFeeProperties: Upsert Fee properties.
-     * Update or insert one or more properties onto a single Fee. A property will be updated if it already exists and inserted if it does not. All properties must be of the domain &#39;Fee&#39;.   Upserting a property that exists for an Fee, with a null value, will delete the instance of the property for that group.   Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+     * Update or insert one or more properties onto a single Fee. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Fee&#39;.     Upserting a property that exists for an Fee, with a null value, will delete the instance of the property for that group.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
      * @param feeCode The code of the Fee to update or insert the properties onto. (required)
@@ -8865,7 +8880,7 @@ public class FundsApi {
 
         /**
          * Set requestBody
-         * @param requestBody The properties to be updated or inserted onto the Fund. Each property in  the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Fund/Manager/Id\&quot;. (optional)
+         * @param requestBody The properties to be updated or inserted onto the Fund. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Fund/Manager/Id\&quot;. (optional)
          * @return APIupsertFundPropertiesRequest
          */
         public APIupsertFundPropertiesRequest requestBody(Map<String, Property> requestBody) {
@@ -8993,7 +9008,7 @@ public class FundsApi {
 
     /**
      * [EXPERIMENTAL] UpsertFundProperties: Upsert Fund properties.
-     * Update or insert one or more properties onto a single Fund. A property will be updated if it already exists and inserted if it does not. All properties must be of the domain &#39;Fund&#39;.   Upserting a property that exists for an Fund, with a null value, will delete the instance of the property for that group.   Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+     * Update or insert one or more properties onto a single Fund. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Fund&#39;.     Upserting a property that exists for an Fund, with a null value, will delete the instance of the property for that group.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
      * @param scope The scope of the Fund to update or insert the properties onto. (required)
      * @param code The code of the Fund to update or insert the properties onto. Together with the scope this uniquely identifies the Fund. (required)
      * @return APIupsertFundPropertiesRequest

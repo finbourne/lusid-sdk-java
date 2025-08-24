@@ -2,7 +2,7 @@
 
 # TranslateEntitiesInlinedRequest
 
-Request to translate financial entities with a given script body. The output of the translation is validated against a schema specified in the request.
+Request to translate financial entities with a given script body.  The output of the translation is validated against a schema specified in the request.
 
 ## Properties
 

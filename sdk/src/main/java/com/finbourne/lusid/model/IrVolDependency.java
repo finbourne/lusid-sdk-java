@@ -47,7 +47,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Economic dependency required to price interest rate products that contain optionality, for example swaptions. For example, can indicate a dependency on an IrVolCubeData.
+ * Economic dependency required to price interest rate products that contain optionality, for example swaptions.  For example, can indicate a dependency on an IrVolCubeData.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class IrVolDependency extends EconomicDependency {
@@ -116,7 +116,7 @@ public class IrVolDependency extends EconomicDependency {
   }
 
    /**
-   * The effectiveDate of the entity that this is a dependency for. Unless there is an obvious date this should be, like for a historic reset, then this is the valuation date.
+   * The effectiveDate of the entity that this is a dependency for.  Unless there is an obvious date this should be, like for a historic reset, then this is the valuation date.
    * @return date
   **/
   @jakarta.annotation.Nonnull

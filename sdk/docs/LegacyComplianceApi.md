@@ -21,7 +21,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 [EXPERIMENTAL] DeleteLegacyComplianceRule: Deletes a compliance rule.
 
-Deletes the rule for all effective time.   The rule will remain viewable at previous as at times, and as part of the results of compliance runs, but it will no longer be considered in new compliance runs.   This cannot be undone.
+Deletes the rule for all effective time.     The rule will remain viewable at previous as at times, and as part of the results of compliance runs, but it  will no longer be considered in new compliance runs.     This cannot be undone.
 
 ### Example
 
@@ -254,8 +254,8 @@ public class LegacyComplianceApiExample {
         LegacyComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegacyComplianceApi.class);
         String scope = "scope_example"; // String | The compliance rule scope.
         String code = "code_example"; // String | The compliance rule code.
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the rule definition. Defaults to the current LUSID system datetime if not specified.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the rule definition. Defaults to returning the latest version if not specified.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the rule definition. Defaults to the current LUSID  system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the rule definition. Defaults to returning the latest version if not  specified.
         try {
             // uncomment the below to set overrides at the request level
             // ComplianceRule result = apiInstance.getLegacyComplianceRule(scope, code, effectiveAt, asAt).execute(opts);
@@ -279,8 +279,8 @@ public class LegacyComplianceApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The compliance rule scope. | |
 | **code** | **String**| The compliance rule code. | |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the rule definition. Defaults to the current LUSID system datetime if not specified. | [optional] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the rule definition. Defaults to returning the latest version if not specified. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the rule definition. Defaults to the current LUSID  system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the rule definition. Defaults to returning the latest version if not  specified. | [optional] |
 
 ### Return type
 
@@ -308,7 +308,7 @@ public class LegacyComplianceApiExample {
 
 [EXPERIMENTAL] GetLegacyComplianceRunResults: Get the details of a single compliance run.
 
-Use this endpoint to fetch the detail associated with a specific compliance run, including a breakdown of the passing state of each rule, portfolio combination.
+Use this endpoint to fetch the detail associated with a specific compliance run, including a breakdown  of the passing state of each rule, portfolio combination.
 
 ### Example
 
@@ -350,7 +350,7 @@ public class LegacyComplianceApiExample {
 
         LegacyComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegacyComplianceApi.class);
         String runId = "runId_example"; // String | The unique identifier of the compliance run requested.
-        String page = "page_example"; // String | The pagination token to use to continue listing compliance rule results from a previous call to list compliance rule result.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields  must not have changed since the original request.
+        String page = "page_example"; // String | The pagination token to use to continue listing compliance rule results from a previous call to list compliance rule result.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
         String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         try {
@@ -375,7 +375,7 @@ public class LegacyComplianceApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **runId** | **String**| The unique identifier of the compliance run requested. | |
-| **page** | **String**| The pagination token to use to continue listing compliance rule results from a previous call to list compliance rule result.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields  must not have changed since the original request. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing compliance rule results from a previous call to list compliance rule result.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional] |
 | **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
@@ -405,7 +405,7 @@ public class LegacyComplianceApiExample {
 
 [EXPERIMENTAL] ListLegacyComplianceRules: List compliance rules, with optional filtering.
 
-For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+For more information about filtering results,  see https://support.lusid.com/knowledgebase/article/KA-01914.
 
 ### Example
 
@@ -446,9 +446,9 @@ public class LegacyComplianceApiExample {
         // LegacyComplianceApi apiInstance = apiFactory.build(LegacyComplianceApi.class);
 
         LegacyComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegacyComplianceApi.class);
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the rule definitions. Defaults to the current LUSID system datetime if not specified.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the rule definitions. Defaults to returning the latest version if not specified.
-        String page = "page_example"; // String | The pagination token to use to continue listing entities; this value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the original request.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the rule definitions. Defaults to the current LUSID  system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the rule definitions. Defaults to returning the latest version if not  specified.
+        String page = "page_example"; // String | The pagination token to use to continue listing entities; this value is returned from the previous call. If  a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the  original request.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
         String filter = "filter_example"; // String | Expression to filter the results.
         try {
@@ -472,9 +472,9 @@ public class LegacyComplianceApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the rule definitions. Defaults to the current LUSID system datetime if not specified. | [optional] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the rule definitions. Defaults to returning the latest version if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing entities; this value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the original request. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the rule definitions. Defaults to the current LUSID  system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the rule definitions. Defaults to returning the latest version if not  specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing entities; this value is returned from the previous call. If  a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the  original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the results. | [optional] |
 
@@ -546,7 +546,7 @@ public class LegacyComplianceApiExample {
 
         LegacyComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegacyComplianceApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. The time at which to get results from. Default : latest
-        String page = "page_example"; // String | The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields  must not have changed since the original request.
+        String page = "page_example"; // String | The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
         String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         try {
@@ -571,7 +571,7 @@ public class LegacyComplianceApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| Optional. The time at which to get results from. Default : latest | [optional] |
-| **page** | **String**| The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields  must not have changed since the original request. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields   must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional] |
 | **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
@@ -698,7 +698,7 @@ public class LegacyComplianceApiExample {
 
 [EXPERIMENTAL] UpsertLegacyComplianceRules: Upsert compliance rules.
 
-To upsert a new rule, the code field must be left empty, a code will then be assigned and returned as part of the response. To update an existing rule, include the rule code. It is possible to both create and update compliance rules in the same request.   The upsert is transactional - either all create/update operations will succeed or none of them will.
+To upsert a new rule, the code field must be left empty, a code will then be assigned and returned as part  of the response. To update an existing rule, include the rule code. It is possible to both create and update  compliance rules in the same request.     The upsert is transactional - either all create/update operations will succeed or none of them will.
 
 ### Example
 
@@ -739,8 +739,8 @@ public class LegacyComplianceApiExample {
         // LegacyComplianceApi apiInstance = apiFactory.build(LegacyComplianceApi.class);
 
         LegacyComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(LegacyComplianceApi.class);
-        Map<String, ComplianceRuleUpsertRequest> requestBody = new HashMap(); // Map<String, ComplianceRuleUpsertRequest> | A dictionary of upsert request identifiers to rule upsert requests. The request  identifiers are valid for the request only and can be used to link the upserted compliance rule to the code  of a created compliance rule.
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which the rule will take effect. Defaults to the current LUSID system datetime if not specified. In the case of an update, the changes will take place from this effective time until the next effective time that the rule as been upserted at. For example, consider a rule that already exists, and has previously had an update applied so that the definition will change on the first day of the coming month. An upsert effective from the current day will only change the definition until the first day of the coming month. An additional upsert at the same time (first day of the month) is required if the newly-updated definition is to supersede the future definition.
+        Map<String, ComplianceRuleUpsertRequest> requestBody = new HashMap(); // Map<String, ComplianceRuleUpsertRequest> | A dictionary of upsert request identifiers to rule upsert requests. The request   identifiers are valid for the request only and can be used to link the upserted compliance rule to the code   of a created compliance rule.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which the rule will take effect. Defaults to the current LUSID  system datetime if not specified. In the case of an update, the changes will take place from this effective  time until the next effective time that the rule as been upserted at. For example, consider a rule that  already exists, and has previously had an update applied so that the definition will change on the first day  of the coming month. An upsert effective from the current day will only change the definition until the  first day of the coming month. An additional upsert at the same time (first day of the month) is required  if the newly-updated definition is to supersede the future definition.
         try {
             // uncomment the below to set overrides at the request level
             // ComplianceRuleUpsertResponse result = apiInstance.upsertLegacyComplianceRules(requestBody, effectiveAt).execute(opts);
@@ -762,8 +762,8 @@ public class LegacyComplianceApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **requestBody** | [**Map&lt;String, ComplianceRuleUpsertRequest&gt;**](ComplianceRuleUpsertRequest.md)| A dictionary of upsert request identifiers to rule upsert requests. The request  identifiers are valid for the request only and can be used to link the upserted compliance rule to the code  of a created compliance rule. | |
-| **effectiveAt** | **String**| The effective datetime or cut label at which the rule will take effect. Defaults to the current LUSID system datetime if not specified. In the case of an update, the changes will take place from this effective time until the next effective time that the rule as been upserted at. For example, consider a rule that already exists, and has previously had an update applied so that the definition will change on the first day of the coming month. An upsert effective from the current day will only change the definition until the first day of the coming month. An additional upsert at the same time (first day of the month) is required if the newly-updated definition is to supersede the future definition. | [optional] |
+| **requestBody** | [**Map&lt;String, ComplianceRuleUpsertRequest&gt;**](ComplianceRuleUpsertRequest.md)| A dictionary of upsert request identifiers to rule upsert requests. The request   identifiers are valid for the request only and can be used to link the upserted compliance rule to the code   of a created compliance rule. | |
+| **effectiveAt** | **String**| The effective datetime or cut label at which the rule will take effect. Defaults to the current LUSID  system datetime if not specified. In the case of an update, the changes will take place from this effective  time until the next effective time that the rule as been upserted at. For example, consider a rule that  already exists, and has previously had an update applied so that the definition will change on the first day  of the coming month. An upsert effective from the current day will only change the definition until the  first day of the coming month. An additional upsert at the same time (first day of the month) is required  if the newly-updated definition is to supersede the future definition. | [optional] |
 
 ### Return type
 

@@ -306,7 +306,7 @@ public class ConfigurationRecipeApi {
 
     /**
      * DeleteConfigurationRecipe: Delete a Configuration Recipe, assuming that it is present.
-     * Delete the specified Configuration Recipe from a single scope.   The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed.   It is important to always check for any unsuccessful response.
+     * Delete the specified Configuration Recipe from a single scope.     The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed.     It is important to always check for any unsuccessful response.
      * @param scope The scope of the Configuration Recipe to delete. (required)
      * @param code The Configuration Recipe to delete. (required)
      * @return APIdeleteConfigurationRecipeRequest
@@ -547,7 +547,7 @@ public class ConfigurationRecipeApi {
 
     /**
      * DeleteRecipeComposer: Delete a Recipe Composer, assuming that it is present.
-     * Delete the specified Recipe Composer from a single scope.   The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed.   It is important to always check for any unsuccessful response.
+     * Delete the specified Recipe Composer from a single scope.     The response will return either detail of the deleted item, or an explanation (failure) as to why this did not succeed.     It is important to always check for any unsuccessful response.
      * @param scope The scope of the Recipe Composer to delete. (required)
      * @param code The Recipe Composer to delete. (required)
      * @return APIdeleteRecipeComposerRequest
@@ -803,7 +803,7 @@ public class ConfigurationRecipeApi {
 
     /**
      * GetConfigurationRecipe: Get Configuration Recipe
-     * Get a Configuration Recipe from a single scope.   The response will return either the recipe that has been stored, or a failure explaining why the request was unsuccessful.   It is important to always check for any unsuccessful requests (failures).
+     * Get a Configuration Recipe from a single scope.     The response will return either the recipe that has been stored, or a failure explaining why the request was unsuccessful.     It is important to always check for any unsuccessful requests (failures).
      * @param scope The scope of the Configuration Recipe to retrieve. (required)
      * @param code The name of the recipe to retrieve the data for. (required)
      * @return APIgetConfigurationRecipeRequest
@@ -1315,7 +1315,7 @@ public class ConfigurationRecipeApi {
 
     /**
      * GetRecipeComposer: Get Recipe Composer
-     * Get a Recipe Composer from a single scope.   The response will return either the recipe composer that has been stored, or a failure explaining why the request was unsuccessful.   It is important to always check for any unsuccessful requests (failures).
+     * Get a Recipe Composer from a single scope.     The response will return either the recipe composer that has been stored, or a failure explaining why the request was unsuccessful.     It is important to always check for any unsuccessful requests (failures).
      * @param scope The scope of the Recipe Composer to retrieve. (required)
      * @param code The name of the Recipe Composer to retrieve the data for. (required)
      * @return APIgetRecipeComposerRequest
@@ -1677,7 +1677,7 @@ public class ConfigurationRecipeApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIlistConfigurationRecipesRequest
          */
         public APIlistConfigurationRecipesRequest filter(String filter) {
@@ -2058,7 +2058,7 @@ public class ConfigurationRecipeApi {
 
     /**
      * ListDerivedRecipes: List the complete set of all Configuration Recipes, both from the configuration recipe store and also from expanded recipe composers.
-     * This endpoints returns a union of the output of ListConfigurationRecipes and the resolved Recipe Composers from the ListRecipeComposers endpoints. Recipe Composers that fail to generate a valid Configuration Recipe will not be reported.
+     * This endpoints returns a union of the output of ListConfigurationRecipes and the resolved Recipe Composers from the ListRecipeComposers endpoints.  Recipe Composers that fail to generate a valid Configuration Recipe will not be reported.
      * @return APIlistDerivedRecipesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2545,7 +2545,7 @@ public class ConfigurationRecipeApi {
 
     /**
      * UpsertConfigurationRecipe: Upsert a Configuration Recipe. This creates or updates the data in Lusid.
-     * Update or insert one Configuration Recipe in a single scope. An item will be updated if it already exists and inserted if it does not.   The response will return the successfully updated or inserted Configuration Recipe or failure message if unsuccessful   It is important to always check to verify success (or failure).
+     * Update or insert one Configuration Recipe in a single scope. An item will be updated if it already exists  and inserted if it does not.     The response will return the successfully updated or inserted Configuration Recipe or failure message if unsuccessful     It is important to always check to verify success (or failure).
      * @param upsertRecipeRequest The Configuration Recipe to update or insert (required)
      * @return APIupsertConfigurationRecipeRequest
      * @http.response.details
@@ -2780,7 +2780,7 @@ public class ConfigurationRecipeApi {
 
     /**
      * UpsertRecipeComposer: Upsert a Recipe Composer. This creates or updates the data in Lusid.
-     * Update or insert one Recipe Composer in a single scope. An item will be updated if it already exists and inserted if it does not.   The response will return the successfully updated or inserted Recipe Composer or failure message if unsuccessful   It is important to always check to verify success (or failure).
+     * Update or insert one Recipe Composer in a single scope. An item will be updated if it already exists  and inserted if it does not.     The response will return the successfully updated or inserted Recipe Composer or failure message if unsuccessful     It is important to always check to verify success (or failure).
      * @param upsertRecipeComposerRequest The Recipe Composer to update or insert (required)
      * @return APIupsertRecipeComposerRequest
      * @http.response.details

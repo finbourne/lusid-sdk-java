@@ -11,7 +11,7 @@ Accumulation dividend
 |**announcementDate** | **OffsetDateTime** | Date on which the dividend was announced / declared. |  [optional] |
 |**dividendCurrency** | **String** | Payment currency |  |
 |**dividendRate** | **java.math.BigDecimal** | Dividend rate or payment rate as a percentage. i.e. 5% is written as 0.05 |  |
-|**exDate** | **OffsetDateTime** | The first business day on which the dividend is not owed to the buying party. Typically this is T-1 from the RecordDate. |  [optional] |
+|**exDate** | **OffsetDateTime** | The first business day on which the dividend is not owed to the buying party.  Typically this is T-1 from the RecordDate. |  [optional] |
 |**paymentDate** | **OffsetDateTime** | The date the company pays out dividends to shareholders. |  [optional] |
 
 

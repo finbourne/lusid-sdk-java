@@ -457,7 +457,7 @@ public class ReferencePortfolioApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve constituents. Defaults to return the latest version  of each constituent if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve constituents. Defaults to return the latest version   of each constituent if not specified. (optional)
          * @return APIgetReferencePortfolioConstituentsRequest
          */
         public APIgetReferencePortfolioConstituentsRequest asAt(OffsetDateTime asAt) {
@@ -467,7 +467,7 @@ public class ReferencePortfolioApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;Instrument&#39; or &#39;ReferenceHolding&#39; domain to decorate onto  constituents. These take the format {domain}/{scope}/{code} e.g. &#39;Instrument/system/Name&#39; or  &#39;ReferenceHolding/strategy/quantsignal&#39;. Defaults to return all available instrument and reference holding properties if not specified. (optional)
+         * @param propertyKeys A list of property keys from the &#39;Instrument&#39; or &#39;ReferenceHolding&#39; domain to decorate onto   constituents. These take the format {domain}/{scope}/{code} e.g. &#39;Instrument/system/Name&#39; or   &#39;ReferenceHolding/strategy/quantsignal&#39;. Defaults to return all available instrument and reference holding properties if not specified. (optional)
          * @return APIgetReferencePortfolioConstituentsRequest
          */
         public APIgetReferencePortfolioConstituentsRequest propertyKeys(List<String> propertyKeys) {
@@ -597,7 +597,7 @@ public class ReferencePortfolioApi {
      * GetReferencePortfolioConstituents: Get reference portfolio constituents
      * Get constituents from a reference portfolio at a particular effective time.
      * @param scope The scope of the reference portfolio. (required)
-     * @param code The code of the reference portfolio. Together with the scope this uniquely identifies  the reference portfolio. (required)
+     * @param code The code of the reference portfolio. Together with the scope this uniquely identifies   the reference portfolio. (required)
      * @return APIgetReferencePortfolioConstituentsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -875,7 +875,7 @@ public class ReferencePortfolioApi {
      * ListConstituentsAdjustments: List constituents adjustments
      * List adjustments made to constituents in a reference portfolio.
      * @param scope The scope of the reference portfolio. (required)
-     * @param code The code of the reference portfolio. Together with the scope this uniquely identifies  the reference portfolio. (required)
+     * @param code The code of the reference portfolio. Together with the scope this uniquely identifies   the reference portfolio. (required)
      * @param fromEffectiveAt Events between this time (inclusive) and the toEffectiveAt are returned. (required)
      * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned. (required)
      * @return APIlistConstituentsAdjustmentsRequest
@@ -1127,9 +1127,9 @@ public class ReferencePortfolioApi {
 
     /**
      * [EARLY ACCESS] UpsertReferencePortfolioConstituentProperties: Upsert constituent properties
-     * Create or update one or more constituent properties for a single constituent in the reference portfolio. Each property will be updated if it already exists, created if it does not and deleted if value is null. Both constituent and portfolio must exist at the time when properties are created or updated.
+     * Create or update one or more constituent properties for a single constituent in the reference portfolio.  Each property will be updated if it already exists, created if it does not and deleted if value is null.  Both constituent and portfolio must exist at the time when properties are created or updated.
      * @param scope The scope of the reference portfolio. (required)
-     * @param code The code of the reference portfolio. Together with the scope this uniquely identifies  the reference portfolio. (required)
+     * @param code The code of the reference portfolio. Together with the scope this uniquely identifies   the reference portfolio. (required)
      * @param upsertReferencePortfolioConstituentPropertiesRequest The request to modify properties for the constituent. (required)
      * @return APIupsertReferencePortfolioConstituentPropertiesRequest
      * @http.response.details
@@ -1382,7 +1382,7 @@ public class ReferencePortfolioApi {
      * UpsertReferencePortfolioConstituents: Upsert reference portfolio constituents
      * Add constituents to a reference portfolio.
      * @param scope The scope of the reference portfolio. (required)
-     * @param code The code of the reference portfolio. Together with the scope this uniquely identifies  the reference portfolio. (required)
+     * @param code The code of the reference portfolio. Together with the scope this uniquely identifies   the reference portfolio. (required)
      * @param upsertReferencePortfolioConstituentsRequest The constituents to upload to the reference portfolio. (required)
      * @return APIupsertReferencePortfolioConstituentsRequest
      * @http.response.details

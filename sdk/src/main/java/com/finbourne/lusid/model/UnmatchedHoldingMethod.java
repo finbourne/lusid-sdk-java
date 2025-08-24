@@ -20,7 +20,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * When holdings adjustments are specified for a single effective date, any holdings for the portfolio not included in the adjustments are adjusted according to this value.
+ * When holdings adjustments are specified for a single effective date,  any holdings for the portfolio not included in the adjustments are  adjusted according to this value.
  */
 @JsonAdapter(UnmatchedHoldingMethod.Adapter.class)
 public enum UnmatchedHoldingMethod {

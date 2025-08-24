@@ -202,7 +202,7 @@ public class EquityOption extends LusidInstrument {
   }
 
    /**
-   * Is the option cash settled or physical delivery of option  Supported string (enumeration) values are: [Cash, Physical].
+   * Is the option cash settled or physical delivery of option    Supported string (enumeration) values are: [Cash, Physical].
    * @return deliveryType
   **/
   @jakarta.annotation.Nonnull
@@ -223,7 +223,7 @@ public class EquityOption extends LusidInstrument {
   }
 
    /**
-   * Type of optionality for the option  Supported string (enumeration) values are: [Call, Put].
+   * Type of optionality for the option    Supported string (enumeration) values are: [Call, Put].
    * @return optionType
   **/
   @jakarta.annotation.Nonnull
@@ -286,7 +286,7 @@ public class EquityOption extends LusidInstrument {
   }
 
    /**
-   * The market identifier type of the underlying code, e.g RIC.  Supported string (enumeration) values are: [LusidInstrumentId, Isin, Sedol, Cusip, ClientInternal, Figi, RIC, QuotePermId, REDCode, BBGId, ICECode]. Optional field, should be used in combination with the Code field. Not compatible with the Underlying field.
+   * The market identifier type of the underlying code, e.g RIC.    Supported string (enumeration) values are: [LusidInstrumentId, Isin, Sedol, Cusip, ClientInternal, Figi, RIC, QuotePermId, REDCode, BBGId, ICECode].  Optional field, should be used in combination with the Code field.  Not compatible with the Underlying field.
    * @return underlyingIdentifier
   **/
   @jakarta.annotation.Nullable
@@ -307,7 +307,7 @@ public class EquityOption extends LusidInstrument {
   }
 
    /**
-   * The identifying code for the equity underlying, e.g. &#39;IBM.N&#39;. Optional field, should be used in combination with the UnderlyingIdentifier field. Not compatible with the Underlying field.
+   * The identifying code for the equity underlying, e.g. &#39;IBM.N&#39;.  Optional field, should be used in combination with the UnderlyingIdentifier field.  Not compatible with the Underlying field.
    * @return code
   **/
   @jakarta.annotation.Nullable
@@ -328,7 +328,7 @@ public class EquityOption extends LusidInstrument {
   }
 
    /**
-   * Equity option types. E.g. Vanilla (default), RightsIssue, Warrant.  Supported string (enumeration) values are: [Vanilla, RightsIssue, Warrant].
+   * Equity option types. E.g. Vanilla (default), RightsIssue, Warrant.    Supported string (enumeration) values are: [Vanilla, RightsIssue, Warrant].
    * @return equityOptionType
   **/
   @jakarta.annotation.Nullable
@@ -391,7 +391,7 @@ public class EquityOption extends LusidInstrument {
   }
 
    /**
-   * Type of optionality that is present; European, American.  Supported string (enumeration) values are: [European, American].
+   * Type of optionality that is present; European, American.    Supported string (enumeration) values are: [European, American].
    * @return exerciseType
   **/
   @jakarta.annotation.Nullable
@@ -454,7 +454,7 @@ public class EquityOption extends LusidInstrument {
   }
 
    /**
-   * Business day convention for option exercise date to settlement date calculation. Supported string (enumeration) values are: [NoAdjustment, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest].
+   * Business day convention for option exercise date to settlement date calculation.  Supported string (enumeration) values are: [NoAdjustment, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest].
    * @return businessDayConvention
   **/
   @jakarta.annotation.Nullable

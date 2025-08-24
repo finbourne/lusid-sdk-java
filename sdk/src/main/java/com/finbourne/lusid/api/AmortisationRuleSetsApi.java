@@ -307,7 +307,7 @@ public class AmortisationRuleSetsApi {
 
     /**
      * [EXPERIMENTAL] CreateAmortisationRuleSet: Create an amortisation rule set.
-     * Creates an amortisation rule set definition at the given effective time. The user must be entitled to read any properties specified in each rule.
+     * Creates an amortisation rule set definition at the given effective time.  The user must be entitled to read any properties specified in each rule.
      * @param scope The scope of the rule set. (required)
      * @param createAmortisationRuleSetRequest The contents of the rule set. (required)
      * @return APIcreateAmortisationRuleSetRequest
@@ -548,7 +548,7 @@ public class AmortisationRuleSetsApi {
 
     /**
      * [EXPERIMENTAL] DeleteAmortisationRuleset: Delete an amortisation rule set.
-     * Deletes the rule set perpetually, including its rules.  The rule set will remain viewable at previous as at times, but it will no longer be considered applicable.  This cannot be undone.
+     * Deletes the rule set perpetually, including its rules.    The rule set will remain viewable at previous as at times, but it will no longer be considered applicable.    This cannot be undone.
      * @param scope The rule set scope. (required)
      * @param code The rule set code. (required)
      * @return APIdeleteAmortisationRulesetRequest
@@ -681,7 +681,7 @@ public class AmortisationRuleSetsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definition. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definition.  Defaults to the current LUSID system datetime if not specified. (optional)
          * @return APIgetAmortisationRuleSetRequest
          */
         public APIgetAmortisationRuleSetRequest effectiveAt(String effectiveAt) {
@@ -691,7 +691,7 @@ public class AmortisationRuleSetsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the rule definition. Defaults to returning the latest version if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the rule definition. Defaults to returning the latest version if not  specified. (optional)
          * @return APIgetAmortisationRuleSetRequest
          */
         public APIgetAmortisationRuleSetRequest asAt(OffsetDateTime asAt) {
@@ -956,7 +956,7 @@ public class AmortisationRuleSetsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definitions. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the rule definitions.  Defaults to the current LUSID system datetime if not specified. (optional)
          * @return APIlistAmortisationRuleSetsRequest
          */
         public APIlistAmortisationRuleSetsRequest effectiveAt(String effectiveAt) {
@@ -966,7 +966,7 @@ public class AmortisationRuleSetsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the rule definitions. Defaults to returning the latest version if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the rule definitions. Defaults to returning the latest version if not  specified. (optional)
          * @return APIlistAmortisationRuleSetsRequest
          */
         public APIlistAmortisationRuleSetsRequest asAt(OffsetDateTime asAt) {
@@ -976,7 +976,7 @@ public class AmortisationRuleSetsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing AmortisationRuleSets; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing AmortisationRuleSets; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
          * @return APIlistAmortisationRuleSetsRequest
          */
         public APIlistAmortisationRuleSetsRequest page(String page) {
@@ -996,7 +996,7 @@ public class AmortisationRuleSetsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.  For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.   For more information about filtering results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIlistAmortisationRuleSetsRequest
          */
         public APIlistAmortisationRuleSetsRequest filter(String filter) {

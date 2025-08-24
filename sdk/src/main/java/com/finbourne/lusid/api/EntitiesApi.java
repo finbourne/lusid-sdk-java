@@ -342,7 +342,7 @@ public class EntitiesApi {
 
     /**
      * GetCustomEntityByEntityUniqueId: Get a Custom Entity instance by its EntityUniqueId
-     * Retrieve a particular Custom Entity instance. If the Custom Entity is deleted, this will return the state of the Custom Entity immediately prior to deletion.
+     * Retrieve a particular Custom Entity instance.  If the Custom Entity is deleted, this will return the state of the Custom Entity immediately prior to deletion.
      * @param entityUniqueId The universally unique identifier of the Custom Entity. (required)
      * @return APIgetCustomEntityByEntityUniqueIdRequest
      * @http.response.details
@@ -604,7 +604,7 @@ public class EntitiesApi {
 
     /**
      * GetDataTypeByEntityUniqueId: Get DataType by EntityUniqueId
-     * Retrieve the definition of a particular DataType. If the DataType is deleted, this will return the state of the DataType immediately prior to deletion.
+     * Retrieve the definition of a particular DataType.  If the DataType is deleted, this will return the state of the DataType immediately prior to deletion.
      * @param entityUniqueId The universally unique identifier of the DataType definition. (required)
      * @return APIgetDataTypeByEntityUniqueIdRequest
      * @http.response.details
@@ -761,7 +761,7 @@ public class EntitiesApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing change history information from a previous call to list change  history information. This value is returned from the previous call. If a pagination token is provided the filter, sortBy  and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing change history information from a previous call to list change   history information. This value is returned from the previous call. If a pagination token is provided the filter, sortBy   and asAt fields must not have changed since the original request. (optional)
          * @return APIgetEntityHistoryRequest
          */
         public APIgetEntityHistoryRequest page(String page) {
@@ -781,7 +781,7 @@ public class EntitiesApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIgetEntityHistoryRequest
          */
         public APIgetEntityHistoryRequest filter(String filter) {
@@ -1197,7 +1197,7 @@ public class EntitiesApi {
 
     /**
      * GetInstrumentByEntityUniqueId: Get instrument by EntityUniqueId
-     * Retrieve the definition of a particular instrument. If the instrument is deleted, this will return the state of the instrument immediately prior to deletion.
+     * Retrieve the definition of a particular instrument.  If the instrument is deleted, this will return the state of the instrument immediately prior to deletion.
      * @param entityUniqueId The universally unique identifier of the instrument definition. (required)
      * @return APIgetInstrumentByEntityUniqueIdRequest
      * @http.response.details
@@ -1474,7 +1474,7 @@ public class EntitiesApi {
 
     /**
      * GetPortfolioByEntityUniqueId: Get portfolio by EntityUniqueId
-     * Retrieve the definition of a particular portfolio. If the portfolio is deleted, this will return the state of the portfolio immediately prior to deletion.
+     * Retrieve the definition of a particular portfolio.  If the portfolio is deleted, this will return the state of the portfolio immediately prior to deletion.
      * @param entityUniqueId The universally unique identifier of the portfolio definition. (required)
      * @return APIgetPortfolioByEntityUniqueIdRequest
      * @http.response.details
@@ -1735,7 +1735,7 @@ public class EntitiesApi {
 
     /**
      * GetPortfolioChanges: Get the next change to each portfolio in a scope.
-     * Gets the time of the next (earliest effective at) modification (correction and/or amendment) to each portfolio in a scope relative to a point in bitemporal time. Includes changes from parent portfolios in different scopes. Excludes changes from subscriptions (e.g corporate actions).
+     * Gets the time of the next (earliest effective at) modification (correction and/or amendment) to each portfolio in a scope relative to a point in bitemporal time.  Includes changes from parent portfolios in different scopes.  Excludes changes from subscriptions (e.g corporate actions).
      * @param scope The scope (required)
      * @param effectiveAt The effective date of the origin. (required)
      * @return APIgetPortfolioChangesRequest
@@ -2013,7 +2013,7 @@ public class EntitiesApi {
 
     /**
      * GetPropertyDefinitionByEntityUniqueId: Get property definition by EntityUniqueId
-     * Retrieve a particular property definition. If the property definition is deleted, this will return the state of the property definition immediately prior to deletion.
+     * Retrieve a particular property definition.  If the property definition is deleted, this will return the state of the property definition immediately prior to deletion.
      * @param entityUniqueId The universally unique identifier of the property definition. (required)
      * @return APIgetPropertyDefinitionByEntityUniqueIdRequest
      * @http.response.details

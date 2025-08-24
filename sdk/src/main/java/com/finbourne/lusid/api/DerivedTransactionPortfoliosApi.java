@@ -564,7 +564,7 @@ public class DerivedTransactionPortfoliosApi {
      * [EARLY ACCESS] DeleteDerivedPortfolioDetails: Delete derived portfolio details
      * Delete all the portfolio details for a derived transaction portfolio.
      * @param scope The scope of the derived transaction portfolio. (required)
-     * @param code The code of the derived transaction portfolio. Together with the scope this uniquely identifies  the derived transaction portfolio. (required)
+     * @param code The code of the derived transaction portfolio. Together with the scope this uniquely identifies   the derived transaction portfolio. (required)
      * @return APIdeleteDerivedPortfolioDetailsRequest
      * @http.response.details
      <table summary="Response Details" border="1">

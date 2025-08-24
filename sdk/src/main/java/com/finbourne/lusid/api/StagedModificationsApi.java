@@ -692,7 +692,7 @@ public class StagedModificationsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to list changes. Defaults to return the latest version  of each staged change if not specified. (optional)
+         * @param asAt The asAt datetime at which to list changes. Defaults to return the latest version   of each staged change if not specified. (optional)
          * @return APIlistRequestedChangesRequest
          */
         public APIlistRequestedChangesRequest asAt(OffsetDateTime asAt) {
@@ -702,7 +702,7 @@ public class StagedModificationsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing requested staged modification changes from a previous call to list requested  staged modifications. This value is returned from the previous call. If a pagination token is provided the filter, effectiveAt  and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing requested staged modification changes from a previous call to list requested   staged modifications. This value is returned from the previous call. If a pagination token is provided the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
          * @return APIlistRequestedChangesRequest
          */
         public APIlistRequestedChangesRequest page(String page) {
@@ -722,7 +722,7 @@ public class StagedModificationsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIlistRequestedChangesRequest
          */
         public APIlistRequestedChangesRequest filter(String filter) {
@@ -991,7 +991,7 @@ public class StagedModificationsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to list staged modifications. Defaults to return the latest version  of each staged modification if not specified. (optional)
+         * @param asAt The asAt datetime at which to list staged modifications. Defaults to return the latest version   of each staged modification if not specified. (optional)
          * @return APIlistStagedModificationsRequest
          */
         public APIlistStagedModificationsRequest asAt(OffsetDateTime asAt) {
@@ -1001,7 +1001,7 @@ public class StagedModificationsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing staged modifications from a previous call to list staged modifications. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt  and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing staged modifications from a previous call to list staged modifications. This   value is returned from the previous call. If a pagination token is provided the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
          * @return APIlistStagedModificationsRequest
          */
         public APIlistStagedModificationsRequest page(String page) {
@@ -1021,7 +1021,7 @@ public class StagedModificationsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set.    Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIlistStagedModificationsRequest
          */
         public APIlistStagedModificationsRequest filter(String filter) {

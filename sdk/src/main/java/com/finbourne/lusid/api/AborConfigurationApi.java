@@ -707,7 +707,7 @@ public class AborConfigurationApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;AborConfiguration&#39; domain to decorate onto the AborConfiguration.  These must take the format {domain}/{scope}/{code}, for example &#39;AborConfiguration/Manager/Id&#39;. If no properties are specified, then no properties will be returned. (optional)
+         * @param propertyKeys A list of property keys from the &#39;AborConfiguration&#39; domain to decorate onto the AborConfiguration.   These must take the format {domain}/{scope}/{code}, for example &#39;AborConfiguration/Manager/Id&#39;. If no properties are specified, then no properties will be returned. (optional)
          * @return APIgetAborConfigurationRequest
          */
         public APIgetAborConfigurationRequest propertyKeys(List<String> propertyKeys) {
@@ -1248,7 +1248,7 @@ public class AborConfigurationApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the AborConfiguration. Defaults to the current LUSID  system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the AborConfiguration. Defaults to the current LUSID   system datetime if not specified. (optional)
          * @return APIlistAborConfigurationsRequest
          */
         public APIlistAborConfigurationsRequest effectiveAt(String effectiveAt) {
@@ -1268,7 +1268,7 @@ public class AborConfigurationApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing AborConfiguration; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing AborConfiguration; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
          * @return APIlistAborConfigurationsRequest
          */
         public APIlistAborConfigurationsRequest page(String page) {
@@ -1288,7 +1288,7 @@ public class AborConfigurationApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results.  For example, to filter on the AborConfiguration type, specify \&quot;id.Code eq &#39;AborConfiguration1&#39;\&quot;. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+         * @param filter Expression to filter the results.   For example, to filter on the AborConfiguration type, specify \&quot;id.Code eq &#39;AborConfiguration1&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
          * @return APIlistAborConfigurationsRequest
          */
         public APIlistAborConfigurationsRequest filter(String filter) {
@@ -1308,7 +1308,7 @@ public class AborConfigurationApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the &#39;AborConfiguration&#39; domain to decorate onto each AborConfiguration.  These must take the format {domain}/{scope}/{code}, for example &#39;AborConfiguration/Manager/Id&#39;. (optional)
+         * @param propertyKeys A list of property keys from the &#39;AborConfiguration&#39; domain to decorate onto each AborConfiguration.   These must take the format {domain}/{scope}/{code}, for example &#39;AborConfiguration/Manager/Id&#39;. (optional)
          * @return APIlistAborConfigurationsRequest
          */
         public APIlistAborConfigurationsRequest propertyKeys(List<String> propertyKeys) {
@@ -1688,7 +1688,7 @@ public class AborConfigurationApi {
      * [EXPERIMENTAL] PatchAborConfiguration: Patch Abor Configuration.
      * Create or update certain fields for a particular AborConfiguration.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: DisplayName, Description, PostingModuleCodes, CleardownModuleCodes.
      * @param scope The scope of the AborConfiguration. (required)
-     * @param code The code of the AborConfiguration.  Together with the scope this uniquely identifies the AborConfiguration. (required)
+     * @param code The code of the AborConfiguration.   Together with the scope this uniquely identifies the AborConfiguration. (required)
      * @param operation The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902. (required)
      * @return APIpatchAborConfigurationRequest
      * @http.response.details
@@ -1815,7 +1815,7 @@ public class AborConfigurationApi {
 
         /**
          * Set requestBody
-         * @param requestBody The properties to be updated or inserted onto the chart of account. Each property in  the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;AborConfiguration/Manager/Id\&quot;. (optional)
+         * @param requestBody The properties to be updated or inserted onto the chart of account. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;AborConfiguration/Manager/Id\&quot;. (optional)
          * @return APIupsertAborConfigurationPropertiesRequest
          */
         public APIupsertAborConfigurationPropertiesRequest requestBody(Map<String, Property> requestBody) {
@@ -1943,7 +1943,7 @@ public class AborConfigurationApi {
 
     /**
      * [EXPERIMENTAL] UpsertAborConfigurationProperties: Upsert AborConfiguration properties
-     * Update or insert one or more properties onto a single AborConfiguration. A property will be updated if it already exists and inserted if it does not. All properties must be of the domain &#39;AborConfiguration&#39;.   Upserting a property that exists for an AborConfiguration, with a null value, will delete the instance of the property for that group.   Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+     * Update or insert one or more properties onto a single AborConfiguration. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;AborConfiguration&#39;.     Upserting a property that exists for an AborConfiguration, with a null value, will delete the instance of the property for that group.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
      * @param scope The scope of the AborConfiguration to update or insert the properties onto. (required)
      * @param code The code of the AborConfiguration to update or insert the properties onto. Together with the scope this uniquely identifies the AborConfiguration. (required)
      * @return APIupsertAborConfigurationPropertiesRequest

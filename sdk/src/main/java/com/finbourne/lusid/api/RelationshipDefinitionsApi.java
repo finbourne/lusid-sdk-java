@@ -540,7 +540,7 @@ public class RelationshipDefinitionsApi {
      * [EARLY ACCESS] DeleteRelationshipDefinition: Delete Relationship Definition
      * Delete the definition of the specified relationship.
      * @param scope The scope of the relationship definition to be deleted. (required)
-     * @param code The code of the relationship definition to be deleted. Together with the domain and scope this uniquely  identifies the relationship. (required)
+     * @param code The code of the relationship definition to be deleted. Together with the domain and scope this uniquely   identifies the relationship. (required)
      * @return APIdeleteRelationshipDefinitionRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -666,7 +666,7 @@ public class RelationshipDefinitionsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the relationship definition. Defaults to return  the latest version of the definition if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the relationship definition. Defaults to return   the latest version of the definition if not specified. (optional)
          * @return APIgetRelationshipDefinitionRequest
          */
         public APIgetRelationshipDefinitionRequest asAt(OffsetDateTime asAt) {
@@ -796,7 +796,7 @@ public class RelationshipDefinitionsApi {
      * [EARLY ACCESS] GetRelationshipDefinition: Get relationship definition
      * Retrieve the specified relationship definition
      * @param scope The scope of the specified relationship definition. (required)
-     * @param code The code of the specified relationship definition. Together with the domain and scope this uniquely  identifies the relationship definition. (required)
+     * @param code The code of the specified relationship definition. Together with the domain and scope this uniquely   identifies the relationship definition. (required)
      * @return APIgetRelationshipDefinitionRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -926,7 +926,7 @@ public class RelationshipDefinitionsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the relationship definitions. Defaults to return  the latest version of each definition if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the relationship definitions. Defaults to return   the latest version of each definition if not specified. (optional)
          * @return APIlistRelationshipDefinitionsRequest
          */
         public APIlistRelationshipDefinitionsRequest asAt(OffsetDateTime asAt) {
@@ -936,7 +936,7 @@ public class RelationshipDefinitionsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing relationship definitions from a previous call to list relationship definitions. This value is returned from the previous call. If a pagination token is provided the filter, sortBy and asAt field must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing relationship definitions from a previous call to list relationship definitions. This  value is returned from the previous call. If a pagination token is provided the filter, sortBy and asAt field  must not have changed since the original request. (optional)
          * @return APIlistRelationshipDefinitionsRequest
          */
         public APIlistRelationshipDefinitionsRequest page(String page) {
@@ -956,7 +956,7 @@ public class RelationshipDefinitionsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.  For example, to filter on the Scope, use \&quot;scope eq &#39;ExampleScope&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set.   For example, to filter on the Scope, use \&quot;scope eq &#39;ExampleScope&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIlistRelationshipDefinitionsRequest
          */
         public APIlistRelationshipDefinitionsRequest filter(String filter) {
@@ -1344,9 +1344,9 @@ public class RelationshipDefinitionsApi {
 
     /**
      * [EARLY ACCESS] UpdateRelationshipDefinition: Update Relationship Definition
-     * Update the definition of a specified existing relationship. Not all elements within a relationship definition are modifiable due to the potential implications for values already stored against the relationship.
+     * Update the definition of a specified existing relationship. Not all elements within a relationship definition  are modifiable due to the potential implications for values already stored against the relationship.
      * @param scope The scope of the relationship definition being updated. (required)
-     * @param code The code of the relationship definition being updated. Together with the scope this uniquely  identifies the relationship definition. (required)
+     * @param code The code of the relationship definition being updated. Together with the scope this uniquely   identifies the relationship definition. (required)
      * @param updateRelationshipDefinitionRequest The details of relationship definition to update. (required)
      * @return APIupdateRelationshipDefinitionRequest
      * @http.response.details

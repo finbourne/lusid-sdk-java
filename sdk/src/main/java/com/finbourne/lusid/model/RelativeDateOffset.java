@@ -93,7 +93,7 @@ public class RelativeDateOffset {
   }
 
    /**
-   * The adjustment type to apply to dates that fall upon a non-business day, e.g. modified following or following.  Supported string (enumeration) values are: [NoAdjustment, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest].
+   * The adjustment type to apply to dates that fall upon a non-business day, e.g. modified following or following.    Supported string (enumeration) values are: [NoAdjustment, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest].
    * @return businessDayConvention
   **/
   @jakarta.annotation.Nonnull
@@ -114,7 +114,7 @@ public class RelativeDateOffset {
   }
 
    /**
-   * Indicates if consideration is given to whether a day is a good business day or not when calculating the offset date.  Supported string (enumeration) values are: [Business, Calendar].
+   * Indicates if consideration is given to whether a day is a good business day or not when calculating the offset date.    Supported string (enumeration) values are: [Business, Calendar].
    * @return dayType
   **/
   @jakarta.annotation.Nullable

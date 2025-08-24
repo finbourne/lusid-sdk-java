@@ -249,7 +249,7 @@ public class PropertyDefinitionsApiExample {
         PropertyDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PropertyDefinitionsApi.class);
         String domain = "NotDefined"; // String | The domain of the property to be deleted.
         String scope = "scope_example"; // String | The scope of the property to be deleted.
-        String code = "code_example"; // String | The code of the property to be deleted. Together with the domain and scope this uniquely  identifies the property.
+        String code = "code_example"; // String | The code of the property to be deleted. Together with the domain and scope this uniquely   identifies the property.
         try {
             // uncomment the below to set overrides at the request level
             // DeletedEntityResponse result = apiInstance.deletePropertyDefinition(domain, scope, code).execute(opts);
@@ -273,7 +273,7 @@ public class PropertyDefinitionsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **domain** | **String**| The domain of the property to be deleted. | [enum: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, AddressKeyDefinition, AmortisationRuleSet, AnalyticsSetInventory, AtomUnitResult, CleardownModule, ComplexMarketData, ComplianceRunSummary, ComplianceRule, ComplianceRunInfo, CorporateActionSource, CounterpartyAgreement, CustomEntityDefinition, DataType, Dialect, EventHandler, GeneralLedgerProfile, PostingModule, Quote, RecipeComposer, ReconciliationRunBreak, ReferenceList, RelationDefinition, ReturnBlockIndex, SRSDocument, SRSIndex, TransactionTemplate, TransactionTemplateScope, TransactionType, TransactionTypeConfig, TranslationScript, TaskDefinition, TaskInstance, Worker, StagingRuleSet, IdentifierDefinition] |
 | **scope** | **String**| The scope of the property to be deleted. | |
-| **code** | **String**| The code of the property to be deleted. Together with the domain and scope this uniquely  identifies the property. | |
+| **code** | **String**| The code of the property to be deleted. Together with the domain and scope this uniquely   identifies the property. | |
 
 ### Return type
 
@@ -301,7 +301,7 @@ public class PropertyDefinitionsApiExample {
 
 [EARLY ACCESS] DeletePropertyDefinitionProperties: Delete property definition properties
 
-Delete one or more properties from a single property definition. If the properties are time-variant then an effective date time from which the properties will be deleted must be specified. If the properties are perpetual then it is invalid to specify an effective date time for deletion.
+Delete one or more properties from a single property definition. If the properties are time-variant then an effective date time from which the  properties will be deleted must be specified. If the properties are perpetual then it is invalid to specify an effective date time for deletion.
 
 ### Example
 
@@ -345,8 +345,8 @@ public class PropertyDefinitionsApiExample {
         String domain = "NotDefined"; // String | The domain of the property definition to delete properties from.
         String scope = "scope_example"; // String | The scope of the property definition to delete properties from.
         String code = "code_example"; // String | The code of the property definition to delete properties from.
-        List<String> requestBody = ["PropertyDefinition/MyScope/MyPropertyName","PropertyDefinition/MyScope/MyPropertyName2"]; // List<String> | The property keys of the properties to delete. These must take the format  {domain}/{scope}/{code} e.g \"PropertyDefinition/myScope/someAttributeKey\". Each property must be from the \"PropertyDefinition\" domain.
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to delete time-variant properties from.  The property must exist at the specified 'effectiveAt' datetime. If the 'effectiveAt' is not provided or is before  the time-variant property exists then a failure is returned. Do not specify this parameter if an of the properties to delete are perpetual.
+        List<String> requestBody = ["PropertyDefinition/MyScope/MyPropertyName","PropertyDefinition/MyScope/MyPropertyName2"]; // List<String> | The property keys of the properties to delete. These must take the format   {domain}/{scope}/{code} e.g \"PropertyDefinition/myScope/someAttributeKey\". Each property must be from the \"PropertyDefinition\" domain.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified 'effectiveAt' datetime. If the 'effectiveAt' is not provided or is before   the time-variant property exists then a failure is returned. Do not specify this parameter if an of the properties to delete are perpetual.
         try {
             // uncomment the below to set overrides at the request level
             // DeletedEntityResponse result = apiInstance.deletePropertyDefinitionProperties(domain, scope, code, requestBody, effectiveAt).execute(opts);
@@ -371,8 +371,8 @@ public class PropertyDefinitionsApiExample {
 | **domain** | **String**| The domain of the property definition to delete properties from. | [enum: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, AddressKeyDefinition, AmortisationRuleSet, AnalyticsSetInventory, AtomUnitResult, CleardownModule, ComplexMarketData, ComplianceRunSummary, ComplianceRule, ComplianceRunInfo, CorporateActionSource, CounterpartyAgreement, CustomEntityDefinition, DataType, Dialect, EventHandler, GeneralLedgerProfile, PostingModule, Quote, RecipeComposer, ReconciliationRunBreak, ReferenceList, RelationDefinition, ReturnBlockIndex, SRSDocument, SRSIndex, TransactionTemplate, TransactionTemplateScope, TransactionType, TransactionTypeConfig, TranslationScript, TaskDefinition, TaskInstance, Worker, StagingRuleSet, IdentifierDefinition] |
 | **scope** | **String**| The scope of the property definition to delete properties from. | |
 | **code** | **String**| The code of the property definition to delete properties from. | |
-| **requestBody** | [**List&lt;String&gt;**](String.md)| The property keys of the properties to delete. These must take the format  {domain}/{scope}/{code} e.g \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;. Each property must be from the \&quot;PropertyDefinition\&quot; domain. | |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to delete time-variant properties from.  The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is before  the time-variant property exists then a failure is returned. Do not specify this parameter if an of the properties to delete are perpetual. | [optional] |
+| **requestBody** | [**List&lt;String&gt;**](String.md)| The property keys of the properties to delete. These must take the format   {domain}/{scope}/{code} e.g \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;. Each property must be from the \&quot;PropertyDefinition\&quot; domain. | |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is before   the time-variant property exists then a failure is returned. Do not specify this parameter if an of the properties to delete are perpetual. | [optional] |
 
 ### Return type
 
@@ -441,10 +441,10 @@ public class PropertyDefinitionsApiExample {
         // PropertyDefinitionsApi apiInstance = apiFactory.build(PropertyDefinitionsApi.class);
 
         PropertyDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PropertyDefinitionsApi.class);
-        List<String> propertyKeys = Arrays.asList(); // List<String> | One or more property keys which identify each property that a definition should  be retrieved for. The format for each property key is {domain}/{scope}/{code}, e.g. 'Portfolio/Manager/Id'.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the property definitions. Defaults to return  the latest version of each definition if not specified.
-        String filter = "filter_example"; // String | Expression to filter the result set.   For example, to filter on the Lifetime, use \"lifeTime eq 'Perpetual'\"  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list properties attached to the Property Definition.  Defaults to the current LUSID system datetime if not specified.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | One or more property keys which identify each property that a definition should   be retrieved for. The format for each property key is {domain}/{scope}/{code}, e.g. 'Portfolio/Manager/Id'.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the property definitions. Defaults to return   the latest version of each definition if not specified.
+        String filter = "filter_example"; // String | Expression to filter the result set.    For example, to filter on the Lifetime, use \"lifeTime eq 'Perpetual'\"   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list properties attached to the Property Definition.   Defaults to the current LUSID system datetime if not specified.
         try {
             // uncomment the below to set overrides at the request level
             // ResourceListOfPropertyDefinition result = apiInstance.getMultiplePropertyDefinitions(propertyKeys, asAt, filter, effectiveAt).execute(opts);
@@ -466,10 +466,10 @@ public class PropertyDefinitionsApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| One or more property keys which identify each property that a definition should  be retrieved for. The format for each property key is {domain}/{scope}/{code}, e.g. &#39;Portfolio/Manager/Id&#39;. | |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the property definitions. Defaults to return  the latest version of each definition if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the result set.   For example, to filter on the Lifetime, use \&quot;lifeTime eq &#39;Perpetual&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to list properties attached to the Property Definition.  Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| One or more property keys which identify each property that a definition should   be retrieved for. The format for each property key is {domain}/{scope}/{code}, e.g. &#39;Portfolio/Manager/Id&#39;. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the property definitions. Defaults to return   the latest version of each definition if not specified. | [optional] |
+| **filter** | **String**| Expression to filter the result set.    For example, to filter on the Lifetime, use \&quot;lifeTime eq &#39;Perpetual&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list properties attached to the Property Definition.   Defaults to the current LUSID system datetime if not specified. | [optional] |
 
 ### Return type
 
@@ -540,9 +540,9 @@ public class PropertyDefinitionsApiExample {
         PropertyDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PropertyDefinitionsApi.class);
         String domain = "NotDefined"; // String | The domain of the specified property.
         String scope = "scope_example"; // String | The scope of the specified property.
-        String code = "code_example"; // String | The code of the specified property. Together with the domain and scope this uniquely  identifies the property.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the property definition. Defaults to return  the latest version of the definition if not specified.
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list properties attached to the Property Definition.  Defaults to the current LUSID system datetime if not specified.
+        String code = "code_example"; // String | The code of the specified property. Together with the domain and scope this uniquely   identifies the property.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the property definition. Defaults to return   the latest version of the definition if not specified.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list properties attached to the Property Definition.   Defaults to the current LUSID system datetime if not specified.
         try {
             // uncomment the below to set overrides at the request level
             // PropertyDefinition result = apiInstance.getPropertyDefinition(domain, scope, code, asAt, effectiveAt).execute(opts);
@@ -566,9 +566,9 @@ public class PropertyDefinitionsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **domain** | **String**| The domain of the specified property. | [enum: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, AddressKeyDefinition, AmortisationRuleSet, AnalyticsSetInventory, AtomUnitResult, CleardownModule, ComplexMarketData, ComplianceRunSummary, ComplianceRule, ComplianceRunInfo, CorporateActionSource, CounterpartyAgreement, CustomEntityDefinition, DataType, Dialect, EventHandler, GeneralLedgerProfile, PostingModule, Quote, RecipeComposer, ReconciliationRunBreak, ReferenceList, RelationDefinition, ReturnBlockIndex, SRSDocument, SRSIndex, TransactionTemplate, TransactionTemplateScope, TransactionType, TransactionTypeConfig, TranslationScript, TaskDefinition, TaskInstance, Worker, StagingRuleSet, IdentifierDefinition] |
 | **scope** | **String**| The scope of the specified property. | |
-| **code** | **String**| The code of the specified property. Together with the domain and scope this uniquely  identifies the property. | |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the property definition. Defaults to return  the latest version of the definition if not specified. | [optional] |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to list properties attached to the Property Definition.  Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **code** | **String**| The code of the specified property. Together with the domain and scope this uniquely   identifies the property. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the property definition. Defaults to return   the latest version of the definition if not specified. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list properties attached to the Property Definition.   Defaults to the current LUSID system datetime if not specified. | [optional] |
 
 ### Return type
 
@@ -640,10 +640,10 @@ public class PropertyDefinitionsApiExample {
         String domain = "NotDefined"; // String | The domain of the property definition to which the property is attached
         String scope = "scope_example"; // String | The scope of the property definition to which the property is attached
         String code = "code_example"; // String | The code of the property definition to which the property is attached
-        String propertyKey = "propertyKey_example"; // String | The property key of the property whose history to show. This must be from the \"Property Definition\" domain and in the format  {domain}/{scope}/{code}, for example \"PropertyDefinition/myScope/someAttributeKey\".
+        String propertyKey = "propertyKey_example"; // String | The property key of the property whose history to show. This must be from the \"Property Definition\" domain and in the format   {domain}/{scope}/{code}, for example \"PropertyDefinition/myScope/someAttributeKey\".
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to show the history. Defaults to the current datetime if not specified.
         String filter = "filter_example"; // String | Expression to filter the results. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
-        String page = "page_example"; // String | The pagination token to use to continue listing properties from a previous call to get property time series.  This value is returned from the previous call. If a pagination token is provided the filter and asAt fields  must not have changed since the original request.
+        String page = "page_example"; // String | The pagination token to use to continue listing properties from a previous call to get property time series.   This value is returned from the previous call. If a pagination token is provided the filter and asAt fields   must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
         try {
             // uncomment the below to set overrides at the request level
@@ -669,10 +669,10 @@ public class PropertyDefinitionsApiExample {
 | **domain** | **String**| The domain of the property definition to which the property is attached | [enum: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, AddressKeyDefinition, AmortisationRuleSet, AnalyticsSetInventory, AtomUnitResult, CleardownModule, ComplexMarketData, ComplianceRunSummary, ComplianceRule, ComplianceRunInfo, CorporateActionSource, CounterpartyAgreement, CustomEntityDefinition, DataType, Dialect, EventHandler, GeneralLedgerProfile, PostingModule, Quote, RecipeComposer, ReconciliationRunBreak, ReferenceList, RelationDefinition, ReturnBlockIndex, SRSDocument, SRSIndex, TransactionTemplate, TransactionTemplateScope, TransactionType, TransactionTypeConfig, TranslationScript, TaskDefinition, TaskInstance, Worker, StagingRuleSet, IdentifierDefinition] |
 | **scope** | **String**| The scope of the property definition to which the property is attached | |
 | **code** | **String**| The code of the property definition to which the property is attached | |
-| **propertyKey** | **String**| The property key of the property whose history to show. This must be from the \&quot;Property Definition\&quot; domain and in the format  {domain}/{scope}/{code}, for example \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;. | |
+| **propertyKey** | **String**| The property key of the property whose history to show. This must be from the \&quot;Property Definition\&quot; domain and in the format   {domain}/{scope}/{code}, for example \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to show the history. Defaults to the current datetime if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the results. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing properties from a previous call to get property time series.  This value is returned from the previous call. If a pagination token is provided the filter and asAt fields  must not have changed since the original request. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing properties from a previous call to get property time series.   This value is returned from the previous call. If a pagination token is provided the filter and asAt fields   must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional] |
 
 ### Return type
@@ -742,12 +742,12 @@ public class PropertyDefinitionsApiExample {
         // PropertyDefinitionsApi apiInstance = apiFactory.build(PropertyDefinitionsApi.class);
 
         PropertyDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PropertyDefinitionsApi.class);
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the property definitions. Defaults to the current LUSID  system datetime if not specified.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the property definitions. Defaults to returning the latest version  of each property definition if not specified.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Property Definition' domain to decorate onto  property definitions. These must take the format  {domain}/{scope}/{code} e.g \"PropertyDefinition/myScope/someAttributeKey\". Each property must be from the \"PropertyDefinition\" domain.
-        String page = "page_example"; // String | The pagination token to use to continue listing property definitions; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the property definitions. Defaults to the current LUSID   system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the property definitions. Defaults to returning the latest version   of each property definition if not specified.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Property Definition' domain to decorate onto   property definitions. These must take the format   {domain}/{scope}/{code} e.g \"PropertyDefinition/myScope/someAttributeKey\". Each property must be from the \"PropertyDefinition\" domain.
+        String page = "page_example"; // String | The pagination token to use to continue listing property definitions; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
-        String filter = "filter_example"; // String | Expression to filter the results.  For example, to filter on the display name, specify \"DisplayName eq 'DisplayName'\". For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+        String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the display name, specify \"DisplayName eq 'DisplayName'\". For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\"
         try {
             // uncomment the below to set overrides at the request level
@@ -770,12 +770,12 @@ public class PropertyDefinitionsApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **effectiveAt** | **String**| The effective datetime or cut label at which to list the property definitions. Defaults to the current LUSID  system datetime if not specified. | [optional] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the property definitions. Defaults to returning the latest version  of each property definition if not specified. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Property Definition&#39; domain to decorate onto  property definitions. These must take the format  {domain}/{scope}/{code} e.g \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;. Each property must be from the \&quot;PropertyDefinition\&quot; domain. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing property definitions; this  value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt  and asAt fields must not have changed since the original request. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list the property definitions. Defaults to the current LUSID   system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the property definitions. Defaults to returning the latest version   of each property definition if not specified. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Property Definition&#39; domain to decorate onto   property definitions. These must take the format   {domain}/{scope}/{code} e.g \&quot;PropertyDefinition/myScope/someAttributeKey\&quot;. Each property must be from the \&quot;PropertyDefinition\&quot; domain. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing property definitions; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results.  For example, to filter on the display name, specify \&quot;DisplayName eq &#39;DisplayName&#39;\&quot;. For more information about filtering  results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **filter** | **String**| Expression to filter the results.   For example, to filter on the display name, specify \&quot;DisplayName eq &#39;DisplayName&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
 
 ### Return type
@@ -901,7 +901,7 @@ public class PropertyDefinitionsApiExample {
 
 UpdatePropertyDefinition: Update property definition
 
-Update the definition of a specified existing property. Not all elements within a property definition are modifiable due to the potential implications for values already stored against the property.
+Update the definition of a specified existing property. Not all elements within a property definition  are modifiable due to the potential implications for values already stored against the property.
 
 ### Example
 
@@ -944,7 +944,7 @@ public class PropertyDefinitionsApiExample {
         PropertyDefinitionsApi apiInstance = ApiFactoryBuilder.build(fileName).build(PropertyDefinitionsApi.class);
         String domain = "NotDefined"; // String | The domain of the property being updated.
         String scope = "scope_example"; // String | The scope of the property being updated.
-        String code = "code_example"; // String | The code of the property being updated. Together with the domain and scope this uniquely  identifies the property.
+        String code = "code_example"; // String | The code of the property being updated. Together with the domain and scope this uniquely   identifies the property.
         UpdatePropertyDefinitionRequest updatePropertyDefinitionRequest = new UpdatePropertyDefinitionRequest(); // UpdatePropertyDefinitionRequest | The updated definition of the property.
         try {
             // uncomment the below to set overrides at the request level
@@ -969,7 +969,7 @@ public class PropertyDefinitionsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **domain** | **String**| The domain of the property being updated. | [enum: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, AddressKeyDefinition, AmortisationRuleSet, AnalyticsSetInventory, AtomUnitResult, CleardownModule, ComplexMarketData, ComplianceRunSummary, ComplianceRule, ComplianceRunInfo, CorporateActionSource, CounterpartyAgreement, CustomEntityDefinition, DataType, Dialect, EventHandler, GeneralLedgerProfile, PostingModule, Quote, RecipeComposer, ReconciliationRunBreak, ReferenceList, RelationDefinition, ReturnBlockIndex, SRSDocument, SRSIndex, TransactionTemplate, TransactionTemplateScope, TransactionType, TransactionTypeConfig, TranslationScript, TaskDefinition, TaskInstance, Worker, StagingRuleSet, IdentifierDefinition] |
 | **scope** | **String**| The scope of the property being updated. | |
-| **code** | **String**| The code of the property being updated. Together with the domain and scope this uniquely  identifies the property. | |
+| **code** | **String**| The code of the property being updated. Together with the domain and scope this uniquely   identifies the property. | |
 | **updatePropertyDefinitionRequest** | [**UpdatePropertyDefinitionRequest**](UpdatePropertyDefinitionRequest.md)| The updated definition of the property. | |
 
 ### Return type
@@ -1042,7 +1042,7 @@ public class PropertyDefinitionsApiExample {
         String domain = "NotDefined"; // String | The domain of the specified property.
         String scope = "scope_example"; // String | The scope of the specified property.
         String code = "code_example"; // String | The code of the specified property. Together with the domain and scope this uniquely
-        Map<String, Property> requestBody = new HashMap(); // Map<String, Property> | The properties to be created or updated. Each property in  the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example  'PropertyDefinition/Manager/Id'.
+        Map<String, Property> requestBody = new HashMap(); // Map<String, Property> | The properties to be created or updated. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example   'PropertyDefinition/Manager/Id'.
         String successMode = "Partial"; // String | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial.
         try {
             // uncomment the below to set overrides at the request level
@@ -1068,7 +1068,7 @@ public class PropertyDefinitionsApiExample {
 | **domain** | **String**| The domain of the specified property. | [enum: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, AddressKeyDefinition, AmortisationRuleSet, AnalyticsSetInventory, AtomUnitResult, CleardownModule, ComplexMarketData, ComplianceRunSummary, ComplianceRule, ComplianceRunInfo, CorporateActionSource, CounterpartyAgreement, CustomEntityDefinition, DataType, Dialect, EventHandler, GeneralLedgerProfile, PostingModule, Quote, RecipeComposer, ReconciliationRunBreak, ReferenceList, RelationDefinition, ReturnBlockIndex, SRSDocument, SRSIndex, TransactionTemplate, TransactionTemplateScope, TransactionType, TransactionTypeConfig, TranslationScript, TaskDefinition, TaskInstance, Worker, StagingRuleSet, IdentifierDefinition] |
 | **scope** | **String**| The scope of the specified property. | |
 | **code** | **String**| The code of the specified property. Together with the domain and scope this uniquely | |
-| **requestBody** | [**Map&lt;String, Property&gt;**](Property.md)| The properties to be created or updated. Each property in  the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example  &#39;PropertyDefinition/Manager/Id&#39;. | |
+| **requestBody** | [**Map&lt;String, Property&gt;**](Property.md)| The properties to be created or updated. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code}, for example   &#39;PropertyDefinition/Manager/Id&#39;. | |
 | **successMode** | **String**| Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial. | [optional] [default to Partial] |
 
 ### Return type

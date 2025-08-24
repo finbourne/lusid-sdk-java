@@ -2,7 +2,7 @@
 
 # MatchCriterion
 
-A condition to be evaluated. Each supported CriterionType has a corresponding schema.
+A condition to be evaluated.  Each supported CriterionType has a corresponding schema.
 
 ## Properties
 

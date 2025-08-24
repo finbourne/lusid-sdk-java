@@ -47,7 +47,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * For indicating a dependency on the value of an asset at a point in time. If the time is omitted, then the dependency is interpreted as the latest value with respect to anything observing it. E.g. An EquitySwap will declare a dependency on the current price of the underlying equity.
+ * For indicating a dependency on the value of an asset at a point in time.  If the time is omitted, then the dependency is interpreted as the latest value with respect to anything observing it.  E.g. An EquitySwap will declare a dependency on the current price of the underlying equity.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class QuoteDependency extends EconomicDependency {

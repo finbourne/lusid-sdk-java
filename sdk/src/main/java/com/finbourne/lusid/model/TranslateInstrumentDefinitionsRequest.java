@@ -78,7 +78,7 @@ public class TranslateInstrumentDefinitionsRequest {
   }
 
    /**
-   * The collection of instruments to translate.   Each instrument definition should be keyed by a unique correlation id. This id is ephemeral and is not stored by LUSID. It serves only as a way to easily identify each instrument in the response.   Any instrument that is not already in the LUSID dialect should be given as an ExoticInstrument.
+   * The collection of instruments to translate.     Each instrument definition should be keyed by a unique correlation id. This id is ephemeral  and is not stored by LUSID. It serves only as a way to easily identify each instrument in the response.     Any instrument that is not already in the LUSID dialect should be given as an ExoticInstrument.
    * @return instruments
   **/
   @jakarta.annotation.Nonnull

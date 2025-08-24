@@ -780,7 +780,7 @@ public class PortfolioGroupsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to build the transactions. Defaults to return the latest  version of each transaction if not specified. (optional)
+         * @param asAt The asAt datetime at which to build the transactions. Defaults to return the latest   version of each transaction if not specified. (optional)
          * @return APIbuildTransactionsForPortfolioGroupRequest
          */
         public APIbuildTransactionsForPortfolioGroupRequest asAt(OffsetDateTime asAt) {
@@ -790,7 +790,7 @@ public class PortfolioGroupsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.  For example, to filter on the Transaction Type, use \&quot;type eq &#39;Buy&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set.   For example, to filter on the Transaction Type, use \&quot;type eq &#39;Buy&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIbuildTransactionsForPortfolioGroupRequest
          */
         public APIbuildTransactionsForPortfolioGroupRequest filter(String filter) {
@@ -800,7 +800,7 @@ public class PortfolioGroupsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; or \&quot;Transaction\&quot; domain to decorate onto  the transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or  \&quot;Transaction/strategy/quantsignal\&quot;. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; or \&quot;Transaction\&quot; domain to decorate onto   the transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or   \&quot;Transaction/strategy/quantsignal\&quot;. (optional)
          * @return APIbuildTransactionsForPortfolioGroupRequest
          */
         public APIbuildTransactionsForPortfolioGroupRequest propertyKeys(List<String> propertyKeys) {
@@ -948,9 +948,9 @@ public class PortfolioGroupsApi {
 
     /**
      * BuildTransactionsForPortfolioGroup: Build transactions for transaction portfolios in a portfolio group
-     * Build transactions for transaction portfolios in a portfolio group over a given interval of effective time.   When the specified portfolio in a portfolio group is a derived transaction portfolio, the returned set of transactions is the union set of all transactions of the parent (and any grandparents etc.) and the specified derived transaction portfolio itself.
+     * Build transactions for transaction portfolios in a portfolio group over a given interval of effective time.     When the specified portfolio in a portfolio group is a derived transaction portfolio, the returned set of transactions is the  union set of all transactions of the parent (and any grandparents etc.) and the specified derived transaction portfolio itself.
      * @param scope The scope of the portfolio group. (required)
-     * @param code The code of the portfolio group. Together with the scope this uniquely identifies  the portfolio group. (required)
+     * @param code The code of the portfolio group. Together with the scope this uniquely identifies   the portfolio group. (required)
      * @param transactionQueryParameters The query queryParameters which control how the output transactions are built. (required)
      * @return APIbuildTransactionsForPortfolioGroupRequest
      * @http.response.details
@@ -1335,7 +1335,7 @@ public class PortfolioGroupsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to delete time-variant properties from.  The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is  before the time-variant property exists then a failure is returned. Do not specify this parameter if any of  the properties to delete are perpetual. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to delete time-variant properties from.   The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is   before the time-variant property exists then a failure is returned. Do not specify this parameter if any of   the properties to delete are perpetual. (optional)
          * @return APIdeleteGroupPropertiesRequest
          */
         public APIdeleteGroupPropertiesRequest effectiveAt(String effectiveAt) {
@@ -1463,10 +1463,10 @@ public class PortfolioGroupsApi {
 
     /**
      * [EARLY ACCESS] DeleteGroupProperties: Delete group properties
-     * Delete one or more properties from a single portfolio group. If the properties are time variant then an effective date time from which the properties will be deleted must be specified. If the properties are perpetual then it is invalid to specify an effective date time for deletion.
+     * Delete one or more properties from a single portfolio group. If the properties are time variant then an effective date time from which the properties  will be deleted must be specified. If the properties are perpetual then it is invalid to specify an effective date time for deletion.
      * @param scope The scope of the group to delete properties from. (required)
      * @param code The code of the group to delete properties from. Together with the scope this uniquely identifies the group. (required)
-     * @param requestBody The property keys of the properties to delete. These take the format  {domain}/{scope}/{code} e.g. \&quot;PortfolioGroup/Manager/Id\&quot;. Each property must be from the \&quot;PortfolioGroup\&quot; domain. (required)
+     * @param requestBody The property keys of the properties to delete. These take the format   {domain}/{scope}/{code} e.g. \&quot;PortfolioGroup/Manager/Id\&quot;. Each property must be from the \&quot;PortfolioGroup\&quot; domain. (required)
      * @return APIdeleteGroupPropertiesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1743,7 +1743,7 @@ public class PortfolioGroupsApi {
 
     /**
      * [EARLY ACCESS] DeleteKeyFromPortfolioGroupAccessMetadata: Delete a Portfolio Group Access Metadata entry
-     * Deletes the Portfolio Group Access Metadata entry that exactly matches the provided identifier parts.  It is important to always check to verify success (or failure).
+     * Deletes the Portfolio Group Access Metadata entry that exactly matches the provided identifier parts.    It is important to always check to verify success (or failure).
      * @param scope The scope of the Portfolio Group (required)
      * @param code The Portfolio Group code (required)
      * @param metadataKey Key of the Access Metadata entry to delete (required)
@@ -2259,7 +2259,7 @@ public class PortfolioGroupsApi {
 
     /**
      * [EARLY ACCESS] DeletePortfolioGroup: Delete portfolio group
-     * Delete a single portfolio group. A portfolio group can be deleted while it still contains portfolios or sub groups. In this case any portfolios or sub groups contained in this group will not be deleted, however they will no longer be grouped together by this portfolio group. The deletion will be valid from the portfolio group&#39;s creation datetime, ie. the portfolio group will no longer exist at any effective datetime from the asAt datetime of deletion.
+     * Delete a single portfolio group. A portfolio group can be deleted while it still contains portfolios or sub groups.  In this case any portfolios or sub groups contained in this group will not be deleted, however they will no longer be grouped together by this portfolio group.  The deletion will be valid from the portfolio group&#39;s creation datetime, ie. the portfolio group will no longer exist at any effective datetime from the asAt datetime of deletion.
      * @param scope The scope of the portfolio group to delete. (required)
      * @param code The code of the portfolio group to delete. Together with the scope this uniquely identifies the portfolio group to delete. (required)
      * @return APIdeletePortfolioGroupRequest
@@ -2703,7 +2703,7 @@ public class PortfolioGroupsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version  of each transaction if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the portfolio. Defaults to return the latest version   of each transaction if not specified. (optional)
          * @return APIgetA2BDataForPortfolioGroupRequest
          */
         public APIgetA2BDataForPortfolioGroupRequest asAt(OffsetDateTime asAt) {
@@ -2733,7 +2733,7 @@ public class PortfolioGroupsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto  the results. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto   the results. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. (optional)
          * @return APIgetA2BDataForPortfolioGroupRequest
          */
         public APIgetA2BDataForPortfolioGroupRequest propertyKeys(List<String> propertyKeys) {
@@ -2743,7 +2743,7 @@ public class PortfolioGroupsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set.   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIgetA2BDataForPortfolioGroupRequest
          */
         public APIgetA2BDataForPortfolioGroupRequest filter(String filter) {
@@ -2873,9 +2873,9 @@ public class PortfolioGroupsApi {
      * [EARLY ACCESS] GetA2BDataForPortfolioGroup: Get A2B data for a Portfolio Group
      * Get an A2B report for all Transaction Portfolios within the given portfolio group.
      * @param scope The scope of the group to retrieve the A2B report for. (required)
-     * @param code The code of the group to retrieve the A2B report for. Together with the scope this  uniquely identifies the portfolio group. (required)
-     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.  There is no lower bound if this is not specified. (required)
-     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.  There is no upper bound if this is not specified. (required)
+     * @param code The code of the group to retrieve the A2B report for. Together with the scope this   uniquely identifies the portfolio group. (required)
+     * @param fromEffectiveAt The lower bound effective datetime or cut label (inclusive) from which to retrieve the data.   There is no lower bound if this is not specified. (required)
+     * @param toEffectiveAt The upper bound effective datetime or cut label (inclusive) from which to retrieve the data.   There is no upper bound if this is not specified. (required)
      * @return APIgetA2BDataForPortfolioGroupRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -3297,7 +3297,7 @@ public class PortfolioGroupsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which to retrieve the holdings of transaction  portfolios in the portfolio group. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the holdings of transaction   portfolios in the portfolio group. Defaults to the current LUSID system datetime if not specified. (optional)
          * @return APIgetHoldingsForPortfolioGroupRequest
          */
         public APIgetHoldingsForPortfolioGroupRequest effectiveAt(String effectiveAt) {
@@ -3307,7 +3307,7 @@ public class PortfolioGroupsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the holdings of transaction portfolios in the portfolio group. Defaults  to return the latest version of the holdings if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the holdings of transaction portfolios in the portfolio group. Defaults   to return the latest version of the holdings if not specified. (optional)
          * @return APIgetHoldingsForPortfolioGroupRequest
          */
         public APIgetHoldingsForPortfolioGroupRequest asAt(OffsetDateTime asAt) {
@@ -3327,7 +3327,7 @@ public class PortfolioGroupsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot; or \&quot;Portfolio\&quot; domain to decorate onto  the holdings. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot;, \&quot;Holding\&quot; or \&quot;Portfolio\&quot; domain to decorate onto   the holdings. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/Cost\&quot;. (optional)
          * @return APIgetHoldingsForPortfolioGroupRequest
          */
         public APIgetHoldingsForPortfolioGroupRequest propertyKeys(List<String> propertyKeys) {
@@ -3337,7 +3337,7 @@ public class PortfolioGroupsApi {
 
         /**
          * Set byTaxlots
-         * @param byTaxlots Whether or not to expand the holdings to return the underlying tax-lots. Defaults to  False. (optional)
+         * @param byTaxlots Whether or not to expand the holdings to return the underlying tax-lots. Defaults to   False. (optional)
          * @return APIgetHoldingsForPortfolioGroupRequest
          */
         public APIgetHoldingsForPortfolioGroupRequest byTaxlots(Boolean byTaxlots) {
@@ -3477,7 +3477,7 @@ public class PortfolioGroupsApi {
      * GetHoldingsForPortfolioGroup: Get holdings for transaction portfolios in portfolio group
      * Get the holdings of transaction portfolios in specified portfolio group.
      * @param scope The scope of the portfolio group. (required)
-     * @param code The code of the portfolio group. Together with the scope this uniquely identifies  the portfolio group. (required)
+     * @param code The code of the portfolio group. Together with the scope this uniquely identifies   the portfolio group. (required)
      * @return APIgetHoldingsForPortfolioGroupRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -3628,7 +3628,7 @@ public class PortfolioGroupsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the portfolio group definition. Defaults to return  the latest version of the portfolio group definition if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the portfolio group definition. Defaults to return   the latest version of the portfolio group definition if not specified. (optional)
          * @return APIgetPortfolioGroupRequest
          */
         public APIgetPortfolioGroupRequest asAt(OffsetDateTime asAt) {
@@ -3638,7 +3638,7 @@ public class PortfolioGroupsApi {
 
         /**
          * Set relatedEntityPropertyKeys
-         * @param relatedEntityPropertyKeys A list of property keys from any domain that supports relationships  to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
+         * @param relatedEntityPropertyKeys A list of property keys from any domain that supports relationships   to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
          * @return APIgetPortfolioGroupRequest
          */
         public APIgetPortfolioGroupRequest relatedEntityPropertyKeys(List<String> relatedEntityPropertyKeys) {
@@ -3648,7 +3648,7 @@ public class PortfolioGroupsApi {
 
         /**
          * Set relationshipDefinitionIds
-         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities  onto the portfolio group in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
+         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities   onto the portfolio group in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
          * @return APIgetPortfolioGroupRequest
          */
         public APIgetPortfolioGroupRequest relationshipDefinitionIds(List<String> relationshipDefinitionIds) {
@@ -3778,7 +3778,7 @@ public class PortfolioGroupsApi {
      * GetPortfolioGroup: Get portfolio group
      * Retrieve the definition of a single portfolio group.
      * @param scope The scope of the portfolio group to retrieve the definition for. (required)
-     * @param code The code of the portfolio group to retrieve the definition for. Together with the scope  this uniquely identifies the portfolio group. (required)
+     * @param code The code of the portfolio group to retrieve the definition for. Together with the scope   this uniquely identifies the portfolio group. (required)
      * @return APIgetPortfolioGroupRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -4055,7 +4055,7 @@ public class PortfolioGroupsApi {
 
     /**
      * [EARLY ACCESS] GetPortfolioGroupAccessMetadataByKey: Get an entry identified by a metadataKey in the Access Metadata of a Portfolio Group
-     * Get a specific Portfolio Group access metadata by specifying the corresponding identifier parts   No matching will be performed through this endpoint. To retrieve a rule, it is necessary to specify, exactly, the identifier of the rule
+     * Get a specific Portfolio Group access metadata by specifying the corresponding identifier parts     No matching will be performed through this endpoint. To retrieve a rule, it is necessary to specify, exactly, the identifier of the rule
      * @param scope The scope of the Portfolio Group (required)
      * @param code The Portfolio Group code (required)
      * @param metadataKey Key of the metadata entry to retrieve (required)
@@ -4214,7 +4214,7 @@ public class PortfolioGroupsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.  For example, to filter on the User ID, use \&quot;userId.id eq &#39;string&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set.   For example, to filter on the User ID, use \&quot;userId.id eq &#39;string&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIgetPortfolioGroupCommandsRequest
          */
         public APIgetPortfolioGroupCommandsRequest filter(String filter) {
@@ -4630,7 +4630,7 @@ public class PortfolioGroupsApi {
      * [EARLY ACCESS] GetPortfolioGroupExpansion: Get portfolio group expansion
      * List all the portfolios in a group, including all portfolios within sub groups in the group. Each portfolio will be decorated with all of its properties unless a property filter is specified.
      * @param scope The scope of the portfolio group to expand. (required)
-     * @param code The code of the portfolio group to expand. Together with the scope this uniquely identifies the portfolio  group to expand. (required)
+     * @param code The code of the portfolio group to expand. Together with the scope this uniquely identifies the portfolio   group to expand. (required)
      * @return APIgetPortfolioGroupExpansionRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -5088,7 +5088,7 @@ public class PortfolioGroupsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing properties from a previous call to get property time series.  This value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, and asAt fields  must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing properties from a previous call to get property time series.   This value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, and asAt fields   must not have changed since the original request. (optional)
          * @return APIgetPortfolioGroupPropertyTimeSeriesRequest
          */
         public APIgetPortfolioGroupPropertyTimeSeriesRequest page(String page) {
@@ -5228,8 +5228,8 @@ public class PortfolioGroupsApi {
      * [EARLY ACCESS] GetPortfolioGroupPropertyTimeSeries: Get the time series of a portfolio group property
      * List the complete time series of a portfolio group property.
      * @param scope The scope of the group. (required)
-     * @param code The code of the group. Together with the scope this uniquely identifies  the portfolio group. (required)
-     * @param propertyKey The property key of the property that will have its history shown. These must be in the format {domain}/{scope}/{code} e.g. \&quot;PortfolioGroup/Manager/Id\&quot;.  Each property must be from the \&quot;PortfolioGroup\&quot; domain. (required)
+     * @param code The code of the group. Together with the scope this uniquely identifies   the portfolio group. (required)
+     * @param propertyKey The property key of the property that will have its history shown. These must be in the format {domain}/{scope}/{code} e.g. \&quot;PortfolioGroup/Manager/Id\&quot;.   Each property must be from the \&quot;PortfolioGroup\&quot; domain. (required)
      * @return APIgetPortfolioGroupPropertyTimeSeriesRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -5400,7 +5400,7 @@ public class PortfolioGroupsApi {
 
         /**
          * Set identifierTypes
-         * @param identifierTypes Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format  {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.  Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array. (optional)
+         * @param identifierTypes Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format   {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.   Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array. (optional)
          * @return APIgetPortfolioGroupRelationsRequest
          */
         public APIgetPortfolioGroupRelationsRequest identifierTypes(List<String> identifierTypes) {
@@ -5530,7 +5530,7 @@ public class PortfolioGroupsApi {
      * [EXPERIMENTAL] GetPortfolioGroupRelations: Get Relations for Portfolio Group
      * Get relations for the specified Portfolio Group
      * @param scope The scope of the portfolio group. (required)
-     * @param code The code of the portfolio group. Together with the scope this uniquely identifies  the portfolio group. (required)
+     * @param code The code of the portfolio group. Together with the scope this uniquely identifies   the portfolio group. (required)
      * @return APIgetPortfolioGroupRelationsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -5701,7 +5701,7 @@ public class PortfolioGroupsApi {
 
         /**
          * Set identifierTypes
-         * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.  These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example  &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. (optional)
+         * @param identifierTypes Identifier types (as property keys) used for referencing Persons or Legal Entities.   These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example   &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. (optional)
          * @return APIgetPortfolioGroupRelationshipsRequest
          */
         public APIgetPortfolioGroupRelationshipsRequest identifierTypes(List<String> identifierTypes) {
@@ -5831,7 +5831,7 @@ public class PortfolioGroupsApi {
      * [EARLY ACCESS] GetPortfolioGroupRelationships: Get Relationships for Portfolio Group
      * Get relationships for the specified Portfolio Group
      * @param scope The scope of the portfolio group. (required)
-     * @param code The code of the portfolio group. Together with the scope this uniquely identifies  the portfolio group. (required)
+     * @param code The code of the portfolio group. Together with the scope this uniquely identifies   the portfolio group. (required)
      * @return APIgetPortfolioGroupRelationshipsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -5997,7 +5997,7 @@ public class PortfolioGroupsApi {
 
         /**
          * Set fromTransactionDate
-         * @param fromTransactionDate The lower bound effective datetime or cut label (inclusive) from which to retrieve the transactions.  There is no lower bound if this is not specified. (optional)
+         * @param fromTransactionDate The lower bound effective datetime or cut label (inclusive) from which to retrieve the transactions.   There is no lower bound if this is not specified. (optional)
          * @return APIgetTransactionsForPortfolioGroupRequest
          */
         public APIgetTransactionsForPortfolioGroupRequest fromTransactionDate(String fromTransactionDate) {
@@ -6007,7 +6007,7 @@ public class PortfolioGroupsApi {
 
         /**
          * Set toTransactionDate
-         * @param toTransactionDate The upper bound effective datetime or cut label (inclusive) from which to retrieve transactions.  There is no upper bound if this is not specified. (optional)
+         * @param toTransactionDate The upper bound effective datetime or cut label (inclusive) from which to retrieve transactions.   There is no upper bound if this is not specified. (optional)
          * @return APIgetTransactionsForPortfolioGroupRequest
          */
         public APIgetTransactionsForPortfolioGroupRequest toTransactionDate(String toTransactionDate) {
@@ -6017,7 +6017,7 @@ public class PortfolioGroupsApi {
 
         /**
          * Set asAt
-         * @param asAt The asAt datetime at which to retrieve the transactions. Defaults to return the latest version  of each transaction if not specified. (optional)
+         * @param asAt The asAt datetime at which to retrieve the transactions. Defaults to return the latest version   of each transaction if not specified. (optional)
          * @return APIgetTransactionsForPortfolioGroupRequest
          */
         public APIgetTransactionsForPortfolioGroupRequest asAt(OffsetDateTime asAt) {
@@ -6027,7 +6027,7 @@ public class PortfolioGroupsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.  For example, to filter on the Transaction Type, use \&quot;type eq &#39;Buy&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set.   For example, to filter on the Transaction Type, use \&quot;type eq &#39;Buy&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIgetTransactionsForPortfolioGroupRequest
          */
         public APIgetTransactionsForPortfolioGroupRequest filter(String filter) {
@@ -6037,7 +6037,7 @@ public class PortfolioGroupsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot;, \&quot;Transaction\&quot;, \&quot;LegalEntity\&quot; or \&quot;CustodianAccount\&quot; domain to decorate onto  the transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or  \&quot;Transaction/strategy/quantsignal\&quot;. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot;, \&quot;Transaction\&quot;, \&quot;LegalEntity\&quot; or \&quot;CustodianAccount\&quot; domain to decorate onto   the transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or   \&quot;Transaction/strategy/quantsignal\&quot;. (optional)
          * @return APIgetTransactionsForPortfolioGroupRequest
          */
         public APIgetTransactionsForPortfolioGroupRequest propertyKeys(List<String> propertyKeys) {
@@ -6067,7 +6067,7 @@ public class PortfolioGroupsApi {
 
         /**
          * Set showCancelledTransactions
-         * @param showCancelledTransactions Option to specify whether or not to include cancelled transactions,  including previous versions of transactions which have since been amended.  Defaults to False if not specified. (optional)
+         * @param showCancelledTransactions Option to specify whether or not to include cancelled transactions,   including previous versions of transactions which have since been amended.   Defaults to False if not specified. (optional)
          * @return APIgetTransactionsForPortfolioGroupRequest
          */
         public APIgetTransactionsForPortfolioGroupRequest showCancelledTransactions(Boolean showCancelledTransactions) {
@@ -6205,9 +6205,9 @@ public class PortfolioGroupsApi {
 
     /**
      * GetTransactionsForPortfolioGroup: Get transactions for transaction portfolios in a portfolio group
-     * Get transactions for transaction portfolios in a portfolio group over a given interval of effective time.   When the specified portfolio in a portfolio group is a derived transaction portfolio, the returned set of transactions is the union set of all transactions of the parent (and any grandparents etc.) and the specified derived transaction portfolio itself.
+     * Get transactions for transaction portfolios in a portfolio group over a given interval of effective time.     When the specified portfolio in a portfolio group is a derived transaction portfolio, the returned set of transactions is the  union set of all transactions of the parent (and any grandparents etc.) and the specified derived transaction portfolio itself.
      * @param scope The scope of the portfolio group. (required)
-     * @param code The code of the portfolio group. Together with the scope this uniquely identifies  the portfolio group. (required)
+     * @param code The code of the portfolio group. Together with the scope this uniquely identifies   the portfolio group. (required)
      * @return APIgetTransactionsForPortfolioGroupRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -6380,7 +6380,7 @@ public class PortfolioGroupsApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing portfolio groups from a previous call to list portfolio groups. This value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy and asAt fields must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing portfolio groups from a previous call to list portfolio groups. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt, sortBy  and asAt fields must not have changed since the original request. (optional)
          * @return APIlistPortfolioGroupsRequest
          */
         public APIlistPortfolioGroupsRequest page(String page) {
@@ -6400,7 +6400,7 @@ public class PortfolioGroupsApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set.  For example, to filter on the Display Name, use \&quot;displayName eq &#39;string&#39;\&quot;  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set.   For example, to filter on the Display Name, use \&quot;displayName eq &#39;string&#39;\&quot;   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIlistPortfolioGroupsRequest
          */
         public APIlistPortfolioGroupsRequest filter(String filter) {
@@ -6420,7 +6420,7 @@ public class PortfolioGroupsApi {
 
         /**
          * Set relatedEntityPropertyKeys
-         * @param relatedEntityPropertyKeys A list of property keys from any domain that supports relationships  to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
+         * @param relatedEntityPropertyKeys A list of property keys from any domain that supports relationships   to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. (optional)
          * @return APIlistPortfolioGroupsRequest
          */
         public APIlistPortfolioGroupsRequest relatedEntityPropertyKeys(List<String> relatedEntityPropertyKeys) {
@@ -6430,7 +6430,7 @@ public class PortfolioGroupsApi {
 
         /**
          * Set relationshipDefinitionIds
-         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities  onto the portfolio groups in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
+         * @param relationshipDefinitionIds A list of relationship definitions that are used to decorate related entities   onto the portfolio groups in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. (optional)
          * @return APIlistPortfolioGroupsRequest
          */
         public APIlistPortfolioGroupsRequest relationshipDefinitionIds(List<String> relationshipDefinitionIds) {
@@ -6839,7 +6839,7 @@ public class PortfolioGroupsApi {
 
     /**
      * [EARLY ACCESS] PatchPortfolioGroupAccessMetadata: Patch Access Metadata rules for a Portfolio Group.
-     * Patch Portfolio Group Access Metadata Rules in a single scope. The behaviour is defined by the JSON Patch specification.   Currently only &#39;add&#39; is a supported operation on the patch document.  Currently only valid metadata keys are supported paths on the patch document.   The response will return any affected Portfolio Group Access Metadata rules or a failure message if unsuccessful.   It is important to always check to verify success (or failure).   Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
+     * Patch Portfolio Group Access Metadata Rules in a single scope.  The behaviour is defined by the JSON Patch specification.     Currently only &#39;add&#39; is a supported operation on the patch document.    Currently only valid metadata keys are supported paths on the patch document.     The response will return any affected Portfolio Group Access Metadata rules or a failure message if unsuccessful.     It is important to always check to verify success (or failure).     Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
      * @param scope The scope of the Portfolio Group (required)
      * @param code The Portfolio Group code (required)
      * @param accessMetadataOperation The Json patch document (required)
@@ -7111,7 +7111,7 @@ public class PortfolioGroupsApi {
 
     /**
      * [EARLY ACCESS] UpdatePortfolioGroup: Update portfolio group
-     * Update the definition of a single portfolio group. Not all elements within a portfolio group definition are modifiable due to the potential implications for data already stored against the portfolio group.
+     * Update the definition of a single portfolio group. Not all elements within a portfolio group definition are modifiable  due to the potential implications for data already stored against the portfolio group.
      * @param scope The scope of the portfolio group to update the definition for. (required)
      * @param code The code of the portfolio group to update the definition for. Together with the scope this uniquely identifies the portfolio group. (required)
      * @return APIupdatePortfolioGroupRequest
@@ -7239,7 +7239,7 @@ public class PortfolioGroupsApi {
 
         /**
          * Set requestBody
-         * @param requestBody The properties to be updated or inserted onto the group. Each property in  the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;PortfolioGroup/Manager/Id\&quot;. (optional)
+         * @param requestBody The properties to be updated or inserted onto the group. Each property in   the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;PortfolioGroup/Manager/Id\&quot;. (optional)
          * @return APIupsertGroupPropertiesRequest
          */
         public APIupsertGroupPropertiesRequest requestBody(Map<String, Property> requestBody) {
@@ -7367,7 +7367,7 @@ public class PortfolioGroupsApi {
 
     /**
      * [EARLY ACCESS] UpsertGroupProperties: Upsert group properties
-     * Update or insert one or more properties onto a single group. A property will be updated if it already exists and inserted if it does not. All properties must be of the domain &#39;PortfolioGroup&#39;.   Upserting a property that exists for a group, with a null value, will delete the instance of the property for that group.   Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+     * Update or insert one or more properties onto a single group. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;PortfolioGroup&#39;.     Upserting a property that exists for a group, with a null value, will delete the instance of the property for that group.     Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
      * @param scope The scope of the group to update or insert the properties onto. (required)
      * @param code The code of the group to update or insert the properties onto. Together with the scope this uniquely identifies the group. (required)
      * @return APIupsertGroupPropertiesRequest
@@ -7657,7 +7657,7 @@ public class PortfolioGroupsApi {
 
     /**
      * UpsertPortfolioGroupAccessMetadata: Upsert a Portfolio Group Access Metadata entry associated with a specific metadataKey. This creates or updates the data in LUSID.
-     * Update or insert one Portfolio Group Access Metadata Entry in a single scope. An item will be updated if it already exists and inserted if it does not.   The response will return the successfully updated or inserted Portfolio Group Access Metadata rule or failure message if unsuccessful.   It is important to always check to verify success (or failure).   Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
+     * Update or insert one Portfolio Group Access Metadata Entry in a single scope. An item will be updated if it already exists  and inserted if it does not.     The response will return the successfully updated or inserted Portfolio Group Access Metadata rule or failure message if unsuccessful.     It is important to always check to verify success (or failure).     Multiple rules for a metadataKey can exist with different effective at dates, when resources are accessed the rule that is active for the current time will be fetched.
      * @param scope The scope of the Portfolio Group (required)
      * @param code The Portfolio Group code (required)
      * @param metadataKey Key of the access metadata entry to upsert (required)

@@ -133,7 +133,7 @@ public class ContractForDifference extends LusidInstrument {
   }
 
    /**
-   * The maturity date for the CFD. If CFDType is Futures, this should be set to be the maturity date of the underlying future. If CFDType is Cash, this should not be set.
+   * The maturity date for the CFD. If CFDType is Futures, this should be set to be the maturity date of the underlying  future. If CFDType is Cash, this should not be set.
    * @return maturityDate
   **/
   @jakarta.annotation.Nullable
@@ -175,7 +175,7 @@ public class ContractForDifference extends LusidInstrument {
   }
 
    /**
-   * The size of the CFD contract, this should represent the total number of stocks that the CFD represents.  This field is optional, if not set it will default to 1.
+   * The size of the CFD contract, this should represent the total number of stocks that the CFD represents.   This field is optional, if not set it will default to 1.
    * @return contractSize
   **/
   @jakarta.annotation.Nullable
@@ -217,7 +217,7 @@ public class ContractForDifference extends LusidInstrument {
   }
 
    /**
-   * The reference rate of the CFD, this can be set to 0 but not negative values. This field is optional, if not set it will default to 0.
+   * The reference rate of the CFD, this can be set to 0 but not negative values.  This field is optional, if not set it will default to 0.
    * @return referenceRate
   **/
   @jakarta.annotation.Nullable
@@ -238,7 +238,7 @@ public class ContractForDifference extends LusidInstrument {
   }
 
    /**
-   * The type of CFD.  Supported string (enumeration) values are: [Cash, Futures].
+   * The type of CFD.    Supported string (enumeration) values are: [Cash, Futures].
    * @return type
   **/
   @jakarta.annotation.Nonnull
@@ -280,7 +280,7 @@ public class ContractForDifference extends LusidInstrument {
   }
 
    /**
-   * External market codes and identifiers for the CFD, e.g. RIC.  Supported string (enumeration) values are: [LusidInstrumentId, Isin, Sedol, Cusip, ClientInternal, Figi, RIC, QuotePermId, REDCode, BBGId, ICECode].
+   * External market codes and identifiers for the CFD, e.g. RIC.    Supported string (enumeration) values are: [LusidInstrumentId, Isin, Sedol, Cusip, ClientInternal, Figi, RIC, QuotePermId, REDCode, BBGId, ICECode].
    * @return underlyingIdentifier
   **/
   @jakarta.annotation.Nullable
@@ -301,7 +301,7 @@ public class ContractForDifference extends LusidInstrument {
   }
 
    /**
-   * CFD LotSize, the minimum number of shares that can be bought or sold at once. Optional, if set must be non-negative, if not set defaults to 1.
+   * CFD LotSize, the minimum number of shares that can be bought or sold at once.  Optional, if set must be non-negative, if not set defaults to 1.
    * @return lotSize
   **/
   @jakarta.annotation.Nullable

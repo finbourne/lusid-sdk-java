@@ -113,7 +113,7 @@ public class StockDividendEvent extends InstrumentEvent {
   }
 
    /**
-   * The first business day on which the dividend is not owed to the buying party. Typically this is T-1 from the RecordDate.
+   * The first business day on which the dividend is not owed to the buying party.  Typically this is T-1 from the RecordDate.
    * @return exDate
   **/
   @jakarta.annotation.Nullable

@@ -303,7 +303,7 @@ public class BlocksApi {
 
     /**
      * [EARLY ACCESS] DeleteBlock: Delete block
-     * Delete an block. Deletion will be valid from the block&#39;s creation datetime. This means that the block will no longer exist at any effective datetime from the asAt datetime of deletion.
+     * Delete an block. Deletion will be valid from the block&#39;s creation datetime.  This means that the block will no longer exist at any effective datetime from the asAt datetime of deletion.
      * @param scope The block scope. (required)
      * @param code The block&#39;s code. This, together with the scope uniquely identifies the block to delete. (required)
      * @return APIdeleteBlockRequest
@@ -446,7 +446,7 @@ public class BlocksApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;Block\&quot; domain to decorate onto the block.  These take the format {domain}/{scope}/{code} e.g. \&quot;Block/system/Name\&quot;. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;Block\&quot; domain to decorate onto the block.   These take the format {domain}/{scope}/{code} e.g. \&quot;Block/system/Name\&quot;. (optional)
          * @return APIgetBlockRequest
          */
         public APIgetBlockRequest propertyKeys(List<String> propertyKeys) {
@@ -721,7 +721,7 @@ public class BlocksApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing blocks from a previous call to list blocks.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields  must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing blocks from a previous call to list blocks.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. (optional)
          * @return APIlistBlocksRequest
          */
         public APIlistBlocksRequest page(String page) {
@@ -751,7 +751,7 @@ public class BlocksApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIlistBlocksRequest
          */
         public APIlistBlocksRequest filter(String filter) {
@@ -761,7 +761,7 @@ public class BlocksApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;Block\&quot; domain to decorate onto each block.  These take the format {domain}/{scope}/{code} e.g. \&quot;Block/system/Name\&quot;.  All properties, except derived properties, are returned by default, without specifying here. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;Block\&quot; domain to decorate onto each block.   These take the format {domain}/{scope}/{code} e.g. \&quot;Block/system/Name\&quot;.   All properties, except derived properties, are returned by default, without specifying here. (optional)
          * @return APIlistBlocksRequest
          */
         public APIlistBlocksRequest propertyKeys(List<String> propertyKeys) {

@@ -2,7 +2,7 @@
 
 # FlexibleRepoInterestPaymentEvent
 
-Definition of FlexibleRepoInterestPaymentEvent, which represents the regular interest payments associated with an open repo contract modelled as a FlexibleRepo.
+Definition of FlexibleRepoInterestPaymentEvent, which represents the regular interest payments associated with an  open repo contract modelled as a FlexibleRepo.
 
 ## Properties
 
@@ -11,7 +11,7 @@ Definition of FlexibleRepoInterestPaymentEvent, which represents the regular int
 |**settlementDate** | **OffsetDateTime** | Settlement date of the interest payment. This is a required field. |  [optional] |
 |**entitlementDate** | **OffsetDateTime** | EntitlementDate of the interest payment. This is a required field. |  [optional] |
 |**currency** | **String** | Currency of the interest payment. This is a required field. |  |
-|**interestPerUnit** | **java.math.BigDecimal** | Interest payment per unit held of the FlexibleRepo. This field is optional. If not specified, the system will not generate a virtual transaction for this event |  [optional] |
+|**interestPerUnit** | **java.math.BigDecimal** | Interest payment per unit held of the FlexibleRepo. This field is optional. If not specified, the system  will not generate a virtual transaction for this event |  [optional] |
 
 
 

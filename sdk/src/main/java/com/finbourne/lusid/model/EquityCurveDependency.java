@@ -47,7 +47,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * For indicating a dependency on an EquityCurve. E.g. When pricing an EquitySwap one may want to make predictions about the price of the underlying equity at future dates. If so, that model would declare an EquityCurve dependency so that it could obtain predictions from the EquityCurve.
+ * For indicating a dependency on an EquityCurve.  E.g. When pricing an EquitySwap one may want to make predictions about the price of the underlying equity at future dates.  If so, that model would declare an EquityCurve dependency so that it could obtain predictions from the EquityCurve.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class EquityCurveDependency extends EconomicDependency {
@@ -141,7 +141,7 @@ public class EquityCurveDependency extends EconomicDependency {
   }
 
    /**
-   * The effectiveDate of the entity that this is a dependency for. Unless there is an obvious date this should be, like for a historic reset, then this is the valuation date.
+   * The effectiveDate of the entity that this is a dependency for.  Unless there is an obvious date this should be, like for a historic reset, then this is the valuation date.
    * @return date
   **/
   @jakarta.annotation.Nonnull

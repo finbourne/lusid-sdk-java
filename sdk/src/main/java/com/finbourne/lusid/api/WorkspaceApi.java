@@ -1758,7 +1758,7 @@ public class WorkspaceApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing workspaces items from a previous call to list workspaces items.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields  must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing workspaces items from a previous call to list workspaces items.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. (optional)
          * @return APIlistItemsRequest
          */
         public APIlistItemsRequest page(String page) {
@@ -1788,7 +1788,7 @@ public class WorkspaceApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIlistItemsRequest
          */
         public APIlistItemsRequest filter(String filter) {
@@ -2066,7 +2066,7 @@ public class WorkspaceApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing workspaces from a previous call to list workspaces.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields  must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing workspaces from a previous call to list workspaces.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. (optional)
          * @return APIlistWorkspacesRequest
          */
         public APIlistWorkspacesRequest page(String page) {
@@ -2096,7 +2096,7 @@ public class WorkspaceApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIlistWorkspacesRequest
          */
         public APIlistWorkspacesRequest filter(String filter) {
@@ -2373,7 +2373,7 @@ public class WorkspaceApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing workspaces items from a previous call to list workspaces items.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields  must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing workspaces items from a previous call to list workspaces items.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. (optional)
          * @return APIsearchItemsRequest
          */
         public APIsearchItemsRequest page(String page) {
@@ -2403,7 +2403,7 @@ public class WorkspaceApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIsearchItemsRequest
          */
         public APIsearchItemsRequest filter(String filter) {

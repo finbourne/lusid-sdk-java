@@ -303,7 +303,7 @@ public class PackagesApi {
 
     /**
      * [EXPERIMENTAL] DeletePackage: Delete package
-     * Delete an package. Deletion will be valid from the package&#39;s creation datetime. This means that the package will no longer exist at any effective datetime from the asAt datetime of deletion.
+     * Delete an package. Deletion will be valid from the package&#39;s creation datetime.  This means that the package will no longer exist at any effective datetime from the asAt datetime of deletion.
      * @param scope The package scope. (required)
      * @param code The package&#39;s code. This, together with the scope uniquely identifies the package to delete. (required)
      * @return APIdeletePackageRequest
@@ -446,7 +446,7 @@ public class PackagesApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;Package\&quot; domain to decorate onto the package.  These take the format {domain}/{scope}/{code} e.g. \&quot;Package/system/Name\&quot;. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;Package\&quot; domain to decorate onto the package.   These take the format {domain}/{scope}/{code} e.g. \&quot;Package/system/Name\&quot;. (optional)
          * @return APIgetPackageRequest
          */
         public APIgetPackageRequest propertyKeys(List<String> propertyKeys) {
@@ -721,7 +721,7 @@ public class PackagesApi {
 
         /**
          * Set page
-         * @param page The pagination token to use to continue listing packages from a previous call to list packages.  This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields  must not have changed since the original request. (optional)
+         * @param page The pagination token to use to continue listing packages from a previous call to list packages.   This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields   must not have changed since the original request. (optional)
          * @return APIlistPackagesRequest
          */
         public APIlistPackagesRequest page(String page) {
@@ -751,7 +751,7 @@ public class PackagesApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:  https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. (optional)
          * @return APIlistPackagesRequest
          */
         public APIlistPackagesRequest filter(String filter) {
@@ -761,7 +761,7 @@ public class PackagesApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys A list of property keys from the \&quot;Package\&quot; domain to decorate onto each package.  These take the format {domain}/{scope}/{code} e.g. \&quot;Package/system/Name\&quot;.  All properties, except derived properties, are returned by default, without specifying here. (optional)
+         * @param propertyKeys A list of property keys from the \&quot;Package\&quot; domain to decorate onto each package.   These take the format {domain}/{scope}/{code} e.g. \&quot;Package/system/Name\&quot;.   All properties, except derived properties, are returned by default, without specifying here. (optional)
          * @return APIlistPackagesRequest
          */
         public APIlistPackagesRequest propertyKeys(List<String> propertyKeys) {
