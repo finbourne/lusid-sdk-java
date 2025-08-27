@@ -20,6 +20,7 @@ An instrument event equipped with additional metadata.
 |**properties** | [**List&lt;PerpetualProperty&gt;**](PerpetualProperty.md) | The properties attached to this instrument event. |  [optional] |
 |**sequenceNumber** | **Integer** | The order of the instrument event relative others on the same date (0 being processed first). Must be non negative. |  [optional] |
 |**participationType** | **String** | Is participation in this event Mandatory, MandatoryWithChoices, or Voluntary. |  [optional] |
+|**asAt** | **OffsetDateTime** | The AsAt time of the instrument event, if available. This is a readonly field and should not be provided on upsert. |  [optional] [readonly] |
 
 
 

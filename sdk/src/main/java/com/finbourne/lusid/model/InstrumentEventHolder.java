@@ -21,6 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -106,15 +107,21 @@ public class InstrumentEventHolder {
   @SerializedName(SERIALIZED_NAME_PARTICIPATION_TYPE)
   private String participationType = "Mandatory";
 
+  public static final String SERIALIZED_NAME_AS_AT = "asAt";
+  @SerializedName(SERIALIZED_NAME_AS_AT)
+  private OffsetDateTime asAt;
+
   public InstrumentEventHolder() {
   }
 
   
   public InstrumentEventHolder(
-     String completeness
+     String completeness, 
+     OffsetDateTime asAt
   ) {
     this();
     this.completeness = completeness;
+    this.asAt = asAt;
   }
 
   public InstrumentEventHolder instrumentEventId(String instrumentEventId) {
@@ -376,6 +383,18 @@ public class InstrumentEventHolder {
   }
 
 
+   /**
+   * The AsAt time of the instrument event, if available. This is a readonly field and should not be provided on upsert.
+   * @return asAt
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getAsAt() {
+    return asAt;
+  }
+
+
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -397,7 +416,8 @@ public class InstrumentEventHolder {
         Objects.equals(this.instrumentEvent, instrumentEventHolder.instrumentEvent) &&
         Objects.equals(this.properties, instrumentEventHolder.properties) &&
         Objects.equals(this.sequenceNumber, instrumentEventHolder.sequenceNumber) &&
-        Objects.equals(this.participationType, instrumentEventHolder.participationType);
+        Objects.equals(this.participationType, instrumentEventHolder.participationType) &&
+        Objects.equals(this.asAt, instrumentEventHolder.asAt);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -406,7 +426,7 @@ public class InstrumentEventHolder {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentEventId, corporateActionSourceId, instrumentIdentifiers, lusidInstrumentId, instrumentScope, description, eventDateRange, completeness, instrumentEvent, properties, sequenceNumber, participationType);
+    return Objects.hash(instrumentEventId, corporateActionSourceId, instrumentIdentifiers, lusidInstrumentId, instrumentScope, description, eventDateRange, completeness, instrumentEvent, properties, sequenceNumber, participationType, asAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -432,6 +452,7 @@ public class InstrumentEventHolder {
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    sequenceNumber: ").append(toIndentedString(sequenceNumber)).append("\n");
     sb.append("    participationType: ").append(toIndentedString(participationType)).append("\n");
+    sb.append("    asAt: ").append(toIndentedString(asAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -466,6 +487,7 @@ public class InstrumentEventHolder {
     openapiFields.add("properties");
     openapiFields.add("sequenceNumber");
     openapiFields.add("participationType");
+    openapiFields.add("asAt");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
