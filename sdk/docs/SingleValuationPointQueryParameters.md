@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**dateOrDiaryEntry** | [**DateOrDiaryEntry**](DateOrDiaryEntry.md) |  |  [optional] |
+|**dateOrDiaryEntry** | [**DateOrDiaryEntry**](DateOrDiaryEntry.md) |  |  |
 
 
 

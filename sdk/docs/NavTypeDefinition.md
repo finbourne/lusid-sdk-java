@@ -18,7 +18,7 @@
 |**accountingMethod** | **String** |  |  |
 |**subHoldingKeys** | **List&lt;String&gt;** | Set of unique holding identifiers, e.g. trader, desk, strategy. |  [optional] |
 |**amortisationMethod** | **String** |  |  |
-|**transactionTypeScope** | **String** |  |  [optional] |
+|**transactionTypeScope** | **String** |  |  |
 |**cashGainLossCalculationDate** | **String** |  |  |
 
 

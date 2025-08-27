@@ -67,7 +67,7 @@ public class SingleValuationPointQueryParameters {
    * Get dateOrDiaryEntry
    * @return dateOrDiaryEntry
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public DateOrDiaryEntry getDateOrDiaryEntry() {
     return dateOrDiaryEntry;
   }
@@ -127,6 +127,7 @@ public class SingleValuationPointQueryParameters {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("dateOrDiaryEntry");
   }
 
  /**
@@ -141,11 +142,16 @@ public class SingleValuationPointQueryParameters {
           throw new IllegalArgumentException(String.format("The required field(s) %s in SingleValuationPointQueryParameters is not found in the empty JSON string", SingleValuationPointQueryParameters.openapiRequiredFields.toString()));
         }
       }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `dateOrDiaryEntry`
-      if (jsonObj.get("dateOrDiaryEntry") != null && !jsonObj.get("dateOrDiaryEntry").isJsonNull()) {
-        DateOrDiaryEntry.validateJsonElement(jsonObj.get("dateOrDiaryEntry"));
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : SingleValuationPointQueryParameters.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // validate the required field `dateOrDiaryEntry`
+      DateOrDiaryEntry.validateJsonElement(jsonObj.get("dateOrDiaryEntry"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
