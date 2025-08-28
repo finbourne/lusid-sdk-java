@@ -78,6 +78,10 @@ public class InterestRateSwaption extends LusidInstrument {
   @SerializedName(SERIALIZED_NAME_TIME_ZONE_CONVENTIONS)
   private TimeZoneConventions timeZoneConventions;
 
+  public static final String SERIALIZED_NAME_UNDERLYING = "underlying";
+  @SerializedName(SERIALIZED_NAME_UNDERLYING)
+  private LusidInstrument underlying;
+
   public InterestRateSwaption() {
     // this.instrumentType = this.getClass().getSimpleName();
   }
@@ -176,7 +180,7 @@ public class InterestRateSwaption extends LusidInstrument {
    * Get swap
    * @return swap
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public InterestRateSwap getSwap() {
     return swap;
   }
@@ -208,6 +212,27 @@ public class InterestRateSwaption extends LusidInstrument {
   }
 
 
+  public InterestRateSwaption underlying(LusidInstrument underlying) {
+    
+    this.underlying = underlying;
+    return this;
+  }
+
+   /**
+   * Get underlying
+   * @return underlying
+  **/
+  @jakarta.annotation.Nullable
+  public LusidInstrument getUnderlying() {
+    return underlying;
+  }
+
+
+  public void setUnderlying(LusidInstrument underlying) {
+    this.underlying = underlying;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -224,12 +249,13 @@ public class InterestRateSwaption extends LusidInstrument {
         Objects.equals(this.deliveryMethod, interestRateSwaption.deliveryMethod) &&
         Objects.equals(this.swap, interestRateSwaption.swap) &&
         Objects.equals(this.timeZoneConventions, interestRateSwaption.timeZoneConventions) &&
+        Objects.equals(this.underlying, interestRateSwaption.underlying) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, payOrReceiveFixed, premium, deliveryMethod, swap, timeZoneConventions, super.hashCode());
+    return Objects.hash(startDate, payOrReceiveFixed, premium, deliveryMethod, swap, timeZoneConventions, underlying, super.hashCode());
   }
 
   @Override
@@ -243,6 +269,7 @@ public class InterestRateSwaption extends LusidInstrument {
     sb.append("    deliveryMethod: ").append(toIndentedString(deliveryMethod)).append("\n");
     sb.append("    swap: ").append(toIndentedString(swap)).append("\n");
     sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
+    sb.append("    underlying: ").append(toIndentedString(underlying)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -272,13 +299,13 @@ public class InterestRateSwaption extends LusidInstrument {
     openapiFields.add("deliveryMethod");
     openapiFields.add("swap");
     openapiFields.add("timeZoneConventions");
+    openapiFields.add("underlying");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("startDate");
     openapiRequiredFields.add("payOrReceiveFixed");
     openapiRequiredFields.add("deliveryMethod");
-    openapiRequiredFields.add("swap");
     openapiRequiredFields.add("instrumentType");
   }
 

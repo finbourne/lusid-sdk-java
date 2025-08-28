@@ -54,6 +54,14 @@ public class MarkToMarketConventions {
   @SerializedName(SERIALIZED_NAME_CALENDAR_CODE)
   private String calendarCode;
 
+  public static final String SERIALIZED_NAME_HOUR_OFFSET_TENOR = "hourOffsetTenor";
+  @SerializedName(SERIALIZED_NAME_HOUR_OFFSET_TENOR)
+  private String hourOffsetTenor;
+
+  public static final String SERIALIZED_NAME_MINUTE_OFFSET_TENOR = "minuteOffsetTenor";
+  @SerializedName(SERIALIZED_NAME_MINUTE_OFFSET_TENOR)
+  private String minuteOffsetTenor;
+
   public MarkToMarketConventions() {
   }
 
@@ -78,6 +86,48 @@ public class MarkToMarketConventions {
   }
 
 
+  public MarkToMarketConventions hourOffsetTenor(String hourOffsetTenor) {
+    
+    this.hourOffsetTenor = hourOffsetTenor;
+    return this;
+  }
+
+   /**
+   * The hour tenor component of the time offset against the maturity date.  This is an optional field, if a value is provided it must be a positive value between &#39;0hour&#39; and &#39;23hour&#39;.
+   * @return hourOffsetTenor
+  **/
+  @jakarta.annotation.Nullable
+  public String getHourOffsetTenor() {
+    return hourOffsetTenor;
+  }
+
+
+  public void setHourOffsetTenor(String hourOffsetTenor) {
+    this.hourOffsetTenor = hourOffsetTenor;
+  }
+
+
+  public MarkToMarketConventions minuteOffsetTenor(String minuteOffsetTenor) {
+    
+    this.minuteOffsetTenor = minuteOffsetTenor;
+    return this;
+  }
+
+   /**
+   * The minute tenor component of the time offset against the maturity date.  This is an optional field, if a value is provided it must be a positive value between &#39;0min&#39; and &#39;59min&#39;.
+   * @return minuteOffsetTenor
+  **/
+  @jakarta.annotation.Nullable
+  public String getMinuteOffsetTenor() {
+    return minuteOffsetTenor;
+  }
+
+
+  public void setMinuteOffsetTenor(String minuteOffsetTenor) {
+    this.minuteOffsetTenor = minuteOffsetTenor;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -88,7 +138,9 @@ public class MarkToMarketConventions {
       return false;
     }
     MarkToMarketConventions markToMarketConventions = (MarkToMarketConventions) o;
-    return Objects.equals(this.calendarCode, markToMarketConventions.calendarCode);
+    return Objects.equals(this.calendarCode, markToMarketConventions.calendarCode) &&
+        Objects.equals(this.hourOffsetTenor, markToMarketConventions.hourOffsetTenor) &&
+        Objects.equals(this.minuteOffsetTenor, markToMarketConventions.minuteOffsetTenor);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -97,7 +149,7 @@ public class MarkToMarketConventions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(calendarCode);
+    return Objects.hash(calendarCode, hourOffsetTenor, minuteOffsetTenor);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -112,6 +164,8 @@ public class MarkToMarketConventions {
     StringBuilder sb = new StringBuilder();
     sb.append("class MarkToMarketConventions {\n");
     sb.append("    calendarCode: ").append(toIndentedString(calendarCode)).append("\n");
+    sb.append("    hourOffsetTenor: ").append(toIndentedString(hourOffsetTenor)).append("\n");
+    sb.append("    minuteOffsetTenor: ").append(toIndentedString(minuteOffsetTenor)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -135,6 +189,8 @@ public class MarkToMarketConventions {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("calendarCode");
+    openapiFields.add("hourOffsetTenor");
+    openapiFields.add("minuteOffsetTenor");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -155,6 +211,12 @@ public class MarkToMarketConventions {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("calendarCode") != null && !jsonObj.get("calendarCode").isJsonNull()) && !jsonObj.get("calendarCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `calendarCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("calendarCode").toString()));
+      }
+      if ((jsonObj.get("hourOffsetTenor") != null && !jsonObj.get("hourOffsetTenor").isJsonNull()) && !jsonObj.get("hourOffsetTenor").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `hourOffsetTenor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hourOffsetTenor").toString()));
+      }
+      if ((jsonObj.get("minuteOffsetTenor") != null && !jsonObj.get("minuteOffsetTenor").isJsonNull()) && !jsonObj.get("minuteOffsetTenor").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `minuteOffsetTenor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("minuteOffsetTenor").toString()));
       }
   }
 

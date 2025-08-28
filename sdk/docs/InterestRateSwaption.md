@@ -12,8 +12,9 @@ LUSID representation of an Interest Rate Swaption.
 |**payOrReceiveFixed** | **String** | Pay or Receive the fixed leg of the underlying swap.    Supported string (enumeration) values are: [Pay, Receive]. |  |
 |**premium** | [**Premium**](Premium.md) |  |  [optional] |
 |**deliveryMethod** | **String** | How does the option settle    Supported string (enumeration) values are: [Cash, Physical]. |  |
-|**swap** | [**InterestRateSwap**](InterestRateSwap.md) |  |  |
+|**swap** | [**InterestRateSwap**](InterestRateSwap.md) |  |  [optional] |
 |**timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  |  [optional] |
+|**underlying** | [**LusidInstrument**](LusidInstrument.md) |  |  [optional] |
 
 
 
