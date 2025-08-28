@@ -99,6 +99,10 @@ public class TransactionSettlementInstruction {
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_IDENTIFIERS)
   private Map<String, String> instrumentIdentifiers = new HashMap<>();
 
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private String status;
+
   public TransactionSettlementInstruction() {
   }
 
@@ -349,6 +353,27 @@ public class TransactionSettlementInstruction {
   }
 
 
+  public TransactionSettlementInstruction status(String status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * The status of the settlement instruction - &#39;Invalid&#39;, &#39;Rejected&#39; &#39;Applied&#39; or &#39;Orphan&#39;.
+   * @return status
+  **/
+  @jakarta.annotation.Nullable
+  public String getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(String status) {
+    this.status = status;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -369,7 +394,8 @@ public class TransactionSettlementInstruction {
         Objects.equals(this.contractualSettlementDate, transactionSettlementInstruction.contractualSettlementDate) &&
         Objects.equals(this.subHoldingKeyOverrides, transactionSettlementInstruction.subHoldingKeyOverrides) &&
         Objects.equals(this.custodianAccountOverride, transactionSettlementInstruction.custodianAccountOverride) &&
-        Objects.equals(this.instrumentIdentifiers, transactionSettlementInstruction.instrumentIdentifiers);
+        Objects.equals(this.instrumentIdentifiers, transactionSettlementInstruction.instrumentIdentifiers) &&
+        Objects.equals(this.status, transactionSettlementInstruction.status);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -378,7 +404,7 @@ public class TransactionSettlementInstruction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(settlementInstructionId, instructionType, actualSettlementDate, units, transactionId, settlementCategory, lusidInstrumentId, contractualSettlementDate, subHoldingKeyOverrides, custodianAccountOverride, instrumentIdentifiers);
+    return Objects.hash(settlementInstructionId, instructionType, actualSettlementDate, units, transactionId, settlementCategory, lusidInstrumentId, contractualSettlementDate, subHoldingKeyOverrides, custodianAccountOverride, instrumentIdentifiers, status);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -403,6 +429,7 @@ public class TransactionSettlementInstruction {
     sb.append("    subHoldingKeyOverrides: ").append(toIndentedString(subHoldingKeyOverrides)).append("\n");
     sb.append("    custodianAccountOverride: ").append(toIndentedString(custodianAccountOverride)).append("\n");
     sb.append("    instrumentIdentifiers: ").append(toIndentedString(instrumentIdentifiers)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -436,6 +463,7 @@ public class TransactionSettlementInstruction {
     openapiFields.add("subHoldingKeyOverrides");
     openapiFields.add("custodianAccountOverride");
     openapiFields.add("instrumentIdentifiers");
+    openapiFields.add("status");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -487,6 +515,9 @@ public class TransactionSettlementInstruction {
       // validate the optional field `custodianAccountOverride`
       if (jsonObj.get("custodianAccountOverride") != null && !jsonObj.get("custodianAccountOverride").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("custodianAccountOverride"));
+      }
+      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
   }
 

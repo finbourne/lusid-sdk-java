@@ -627,6 +627,7 @@ Class | Method | HTTP request | Description
 *TransactionPortfoliosApi* | [**getPortfolioCashLadder**](docs/TransactionPortfoliosApi.md#getportfoliocashladder) | **GET** /api/transactionportfolios/{scope}/{code}/cashladder | GetPortfolioCashLadder: Get portfolio cash ladder
 *TransactionPortfoliosApi* | [**getPortfolioCashStatement**](docs/TransactionPortfoliosApi.md#getportfoliocashstatement) | **GET** /api/transactionportfolios/{scope}/{code}/cashstatement | GetPortfolioCashStatement: Get portfolio cash statement
 *TransactionPortfoliosApi* | [**getTransactionHistory**](docs/TransactionPortfoliosApi.md#gettransactionhistory) | **GET** /api/transactionportfolios/{scope}/{code}/transactions/{transactionId}/history | GetTransactionHistory: Get the history of a transaction
+*TransactionPortfoliosApi* | [**getTransactionSettlementStatus**](docs/TransactionPortfoliosApi.md#gettransactionsettlementstatus) | **GET** /api/transactionportfolios/{scope}/{code}/transactions/{transactionId}/settlementstatus | [EARLY ACCESS] GetTransactionSettlementStatus: Gets the Transaction Settlement Status for the requested transaction.
 *TransactionPortfoliosApi* | [**getTransactions**](docs/TransactionPortfoliosApi.md#gettransactions) | **GET** /api/transactionportfolios/{scope}/{code}/transactions | GetTransactions: Get transactions
 *TransactionPortfoliosApi* | [**getUpsertablePortfolioCashFlows**](docs/TransactionPortfoliosApi.md#getupsertableportfoliocashflows) | **GET** /api/transactionportfolios/{scope}/{code}/upsertablecashflows | GetUpsertablePortfolioCashFlows: Get upsertable portfolio cash flows.
 *TransactionPortfoliosApi* | [**listCustodianAccounts**](docs/TransactionPortfoliosApi.md#listcustodianaccounts) | **GET** /api/transactionportfolios/{scope}/{code}/custodianaccounts | ListCustodianAccounts: List Custodian Accounts
@@ -1785,7 +1786,10 @@ Class | Method | HTTP request | Description
  - [TransactionRoles](docs/TransactionRoles.md)
  - [TransactionSetConfigurationData](docs/TransactionSetConfigurationData.md)
  - [TransactionSetConfigurationDataRequest](docs/TransactionSetConfigurationDataRequest.md)
+ - [TransactionSettlementBucket](docs/TransactionSettlementBucket.md)
  - [TransactionSettlementInstruction](docs/TransactionSettlementInstruction.md)
+ - [TransactionSettlementMovement](docs/TransactionSettlementMovement.md)
+ - [TransactionSettlementStatus](docs/TransactionSettlementStatus.md)
  - [TransactionStatus](docs/TransactionStatus.md)
  - [TransactionTemplate](docs/TransactionTemplate.md)
  - [TransactionTemplateRequest](docs/TransactionTemplateRequest.md)

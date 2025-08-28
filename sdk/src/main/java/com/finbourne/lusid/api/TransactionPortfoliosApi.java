@@ -66,6 +66,7 @@ import com.finbourne.lusid.model.ResourceListOfTransactionSettlementInstruction;
 import com.finbourne.lusid.model.SettlementInstructionRequest;
 import com.finbourne.lusid.model.TransactionQueryParameters;
 import com.finbourne.lusid.model.TransactionRequest;
+import com.finbourne.lusid.model.TransactionSettlementStatus;
 import com.finbourne.lusid.model.UpsertPortfolioTransactionsResponse;
 import com.finbourne.lusid.model.UpsertTransactionPropertiesResponse;
 import com.finbourne.lusid.model.VersionedResourceListOfA2BDataRecord;
@@ -8522,6 +8523,286 @@ public class TransactionPortfoliosApi {
      */
     public APIgetTransactionHistoryRequest getTransactionHistory(String scope, String code, String transactionId) {
         return new APIgetTransactionHistoryRequest(scope, code, transactionId);
+    }
+    private okhttp3.Call getTransactionSettlementStatusCall(String scope, String code, String transactionId, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getTransactionSettlementStatusCall(scope, code, transactionId, effectiveAt, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getTransactionSettlementStatusCall(String scope, String code, String transactionId, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/transactionportfolios/{scope}/{code}/transactions/{transactionId}/settlementstatus"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
+            .replace("{" + "transactionId" + "}", localVarApiClient.escapeString(transactionId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getTransactionSettlementStatusValidateBeforeCall(String scope, String code, String transactionId, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getTransactionSettlementStatus(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling getTransactionSettlementStatus(Async)");
+        }
+
+        // verify the required parameter 'transactionId' is set
+        if (transactionId == null) {
+            throw new ApiException("Missing the required parameter 'transactionId' when calling getTransactionSettlementStatus(Async)");
+        }
+
+        return getTransactionSettlementStatusCall(scope, code, transactionId, effectiveAt, asAt, _callback, opts);
+
+    }
+
+
+    private ApiResponse<TransactionSettlementStatus> getTransactionSettlementStatusWithHttpInfo(String scope, String code, String transactionId, String effectiveAt, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = getTransactionSettlementStatusValidateBeforeCall(scope, code, transactionId, effectiveAt, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TransactionSettlementStatus>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<TransactionSettlementStatus> getTransactionSettlementStatusWithHttpInfo(String scope, String code, String transactionId, String effectiveAt, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getTransactionSettlementStatusValidateBeforeCall(scope, code, transactionId, effectiveAt, asAt, null, opts);
+        Type localVarReturnType = new TypeToken<TransactionSettlementStatus>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getTransactionSettlementStatusAsync(String scope, String code, String transactionId, String effectiveAt, OffsetDateTime asAt, final ApiCallback<TransactionSettlementStatus> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getTransactionSettlementStatusValidateBeforeCall(scope, code, transactionId, effectiveAt, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TransactionSettlementStatus>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getTransactionSettlementStatusAsync(String scope, String code, String transactionId, String effectiveAt, OffsetDateTime asAt, final ApiCallback<TransactionSettlementStatus> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getTransactionSettlementStatusValidateBeforeCall(scope, code, transactionId, effectiveAt, asAt, _callback, opts);
+        Type localVarReturnType = new TypeToken<TransactionSettlementStatus>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetTransactionSettlementStatusRequest {
+        private final String scope;
+        private final String code;
+        private final String transactionId;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+
+        private APIgetTransactionSettlementStatusRequest(String scope, String code, String transactionId) {
+            this.scope = scope;
+            this.code = code;
+            this.transactionId = transactionId;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label for which to get the transaction    settlement status. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetTransactionSettlementStatusRequest
+         */
+        public APIgetTransactionSettlementStatusRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to get the transaction settlement status.    Defaults to return the latest status if not specified. (optional)
+         * @return APIgetTransactionSettlementStatusRequest
+         */
+        public APIgetTransactionSettlementStatusRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getTransactionSettlementStatus
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Transaction Settlement Status for the requested transaction. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getTransactionSettlementStatusCall(scope, code, transactionId, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getTransactionSettlementStatus request
+         * @return TransactionSettlementStatus
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Transaction Settlement Status for the requested transaction. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TransactionSettlementStatus execute() throws ApiException {
+            ApiResponse<TransactionSettlementStatus> localVarResp = getTransactionSettlementStatusWithHttpInfo(scope, code, transactionId, effectiveAt, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getTransactionSettlementStatus request. Use any specified configuration options to override any other configuration for this request only.
+         * @return TransactionSettlementStatus
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Transaction Settlement Status for the requested transaction. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TransactionSettlementStatus execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<TransactionSettlementStatus> localVarResp = getTransactionSettlementStatusWithHttpInfo(scope, code, transactionId, effectiveAt, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getTransactionSettlementStatus request with HTTP info returned
+         * @return ApiResponse&lt;TransactionSettlementStatus&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Transaction Settlement Status for the requested transaction. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TransactionSettlementStatus> executeWithHttpInfo() throws ApiException {
+            return getTransactionSettlementStatusWithHttpInfo(scope, code, transactionId, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getTransactionSettlementStatus request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;TransactionSettlementStatus&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Transaction Settlement Status for the requested transaction. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TransactionSettlementStatus> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getTransactionSettlementStatusWithHttpInfo(scope, code, transactionId, effectiveAt, asAt, opts);
+        }
+
+        /**
+         * Execute getTransactionSettlementStatus request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Transaction Settlement Status for the requested transaction. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TransactionSettlementStatus> _callback) throws ApiException {
+            return getTransactionSettlementStatusAsync(scope, code, transactionId, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getTransactionSettlementStatus request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Transaction Settlement Status for the requested transaction. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TransactionSettlementStatus> _callback, ConfigurationOptions opts) throws ApiException {
+            return getTransactionSettlementStatusAsync(scope, code, transactionId, effectiveAt, asAt, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] GetTransactionSettlementStatus: Gets the Transaction Settlement Status for the requested transaction.
+     * Gets the Transaction Settlement Status for the requested transaction.
+     * @param scope The scope of the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @param transactionId The id of the transaction (required)
+     * @return APIgetTransactionSettlementStatusRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The Transaction Settlement Status for the requested transaction. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetTransactionSettlementStatusRequest getTransactionSettlementStatus(String scope, String code, String transactionId) {
+        return new APIgetTransactionSettlementStatusRequest(scope, code, transactionId);
     }
     private okhttp3.Call getTransactionsCall(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, String page, Integer limit, Boolean showCancelledTransactions, List<String> sortBy, String dataModelScope, String dataModelCode, final ApiCallback _callback) throws ApiException {
         return getTransactionsCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, page, limit, showCancelledTransactions, sortBy, dataModelScope, dataModelCode,  _callback, new ConfigurationOptions());
