@@ -8,8 +8,8 @@ Certain bonds will follow certain rounding conventions.  For example, Thai gover
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**precision** | **Integer** | The precision of the rounding. The decimal places or significant figures to which the rounding takes place. |  [optional] |
-|**roundingType** | **String** | The type of rounding. e.g. Round Up, Round Down    Supported string (enumeration) values are: [Down, Up, Nearest]. |  [optional] |
+|**precision** | **Integer** | The precision of the rounding. The decimal places or significant figures to which the rounding takes place.  Defaults to 0 if not set. |  [optional] |
+|**roundingType** | **String** | The type of rounding. e.g. Round Up, Round Down    Supported string (enumeration) values are: [Down, Up, Nearest].  Defaults to \&quot;None\&quot; if not set. |  [optional] |
 
 
 

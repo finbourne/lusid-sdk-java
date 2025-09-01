@@ -118,7 +118,7 @@ public class Barrier {
   }
 
    /**
-   * Supported string (enumeration) values are: [European, Bermudan, American].
+   * Supported string (enumeration) values are: [European, Bermudan, American].  Defaults to \&quot;European\&quot; if not set.
    * @return monitoring
   **/
   @jakarta.annotation.Nullable

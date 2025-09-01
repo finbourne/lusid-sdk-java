@@ -117,7 +117,7 @@ public class ExDividendConfiguration {
   }
 
    /**
-   * Does the accrued interest go negative in the ex-dividend period, or does it go to zero.
+   * Does the accrued interest go negative in the ex-dividend period, or does it go to zero.  Defaults to true if not set.
    * @return returnNegativeAccrued
   **/
   @jakarta.annotation.Nullable

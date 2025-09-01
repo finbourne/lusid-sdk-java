@@ -114,7 +114,7 @@ public class RelativeDateOffset {
   }
 
    /**
-   * Indicates if consideration is given to whether a day is a good business day or not when calculating the offset date.    Supported string (enumeration) values are: [Business, Calendar].
+   * Indicates if consideration is given to whether a day is a good business day or not when calculating the offset date.    Supported string (enumeration) values are: [Business, Calendar].  Defaults to \&quot;Business\&quot; if not set.
    * @return dayType
   **/
   @jakarta.annotation.Nullable

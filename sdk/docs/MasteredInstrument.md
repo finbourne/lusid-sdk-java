@@ -14,7 +14,7 @@ LUSID representation of a reference to another instrument that has already been 
 |**masteredLusidInstrumentId** | **String** | Luid of the Instrument that Mastered Instrument points to - read only field |  [optional] [readonly] |
 |**masteredName** | **String** | Name of the Instrument that Mastered Instrument points to - read only field |  [optional] [readonly] |
 |**masteredScope** | **String** | Scope of the Instrument that Mastered Instrument points to - read only field |  [optional] [readonly] |
-|**masteredAssetClass** | **String** | Asset class of the underlying mastered instrument - read only field    Supported string (enumeration) values are: [InterestRates, FX, Inflation, Equities, Credit, Commodities, Money]. |  [optional] [readonly] |
+|**masteredAssetClass** | **String** | Asset class of the underlying mastered instrument - read only field    Supported string (enumeration) values are: [InterestRates, FX, Inflation, Equities, Credit, Commodities, Money].  Defaults to \&quot;Unknown\&quot; if not set. |  [optional] [readonly] |
 
 
 

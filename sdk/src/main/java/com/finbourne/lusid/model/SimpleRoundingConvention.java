@@ -68,7 +68,7 @@ public class SimpleRoundingConvention {
   }
 
    /**
-   * The precision of the rounding. The decimal places or significant figures to which the rounding takes place.
+   * The precision of the rounding. The decimal places or significant figures to which the rounding takes place.  Defaults to 0 if not set.
    * @return precision
   **/
   @jakarta.annotation.Nullable
@@ -89,7 +89,7 @@ public class SimpleRoundingConvention {
   }
 
    /**
-   * The type of rounding. e.g. Round Up, Round Down    Supported string (enumeration) values are: [Down, Up, Nearest].
+   * The type of rounding. e.g. Round Up, Round Down    Supported string (enumeration) values are: [Down, Up, Nearest].  Defaults to \&quot;None\&quot; if not set.
    * @return roundingType
   **/
   @jakarta.annotation.Nullable

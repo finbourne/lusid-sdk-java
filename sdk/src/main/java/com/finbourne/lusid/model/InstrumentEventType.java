@@ -159,7 +159,9 @@ public enum InstrumentEventType {
   
   FLEXIBLEREPOPARTIALCLOSUREEVENT("FlexibleRepoPartialClosureEvent"),
   
-  FLEXIBLEREPOFULLCLOSUREEVENT("FlexibleRepoFullClosureEvent");
+  FLEXIBLEREPOFULLCLOSUREEVENT("FlexibleRepoFullClosureEvent"),
+  
+  CAPLETFLOORLETCASHFLOWEVENT("CapletFloorletCashFlowEvent");
 
   private String value;
 

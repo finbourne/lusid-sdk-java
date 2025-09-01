@@ -394,7 +394,7 @@ public class CustomDataModelsApiExample {
 
 ## listDataModelHierarchies
 
-> ResourceListOfDataModelSummary listDataModelHierarchies(asAt, filter)
+> ResourceListOfDataModelSummary listDataModelHierarchies(asAt, filter, sortBy)
 
 [EXPERIMENTAL] ListDataModelHierarchies: List Custom Data Model hierarchies.
 
@@ -440,12 +440,13 @@ public class CustomDataModelsApiExample {
 
         CustomDataModelsApi apiInstance = ApiFactoryBuilder.build(fileName).build(CustomDataModelsApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Data Model. Defaults to return   the latest version of the Data Model if not specified.
-        String filter = "filter_example"; // String | Expression to filter the results. Only EntityType is supported
+        String filter = "filter_example"; // String | Expression to filter the results.
+        List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\".
         try {
             // uncomment the below to set overrides at the request level
-            // ResourceListOfDataModelSummary result = apiInstance.listDataModelHierarchies(asAt, filter).execute(opts);
+            // ResourceListOfDataModelSummary result = apiInstance.listDataModelHierarchies(asAt, filter, sortBy).execute(opts);
 
-            ResourceListOfDataModelSummary result = apiInstance.listDataModelHierarchies(asAt, filter).execute();
+            ResourceListOfDataModelSummary result = apiInstance.listDataModelHierarchies(asAt, filter, sortBy).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling CustomDataModelsApi#listDataModelHierarchies");
@@ -463,7 +464,8 @@ public class CustomDataModelsApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Data Model. Defaults to return   the latest version of the Data Model if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results. Only EntityType is supported | [optional] |
+| **filter** | **String**| Expression to filter the results. | [optional] |
+| **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. | [optional] |
 
 ### Return type
 

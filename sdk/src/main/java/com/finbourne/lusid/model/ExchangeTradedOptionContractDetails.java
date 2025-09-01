@@ -401,7 +401,7 @@ public class ExchangeTradedOptionContractDetails {
   }
 
    /**
-   * Number of business days between exercise date and settlement of the option payoff or underlying.
+   * Number of business days between exercise date and settlement of the option payoff or underlying.  Defaults to 0 if not set.
    * @return deliveryDays
   **/
   @jakarta.annotation.Nullable
@@ -422,7 +422,7 @@ public class ExchangeTradedOptionContractDetails {
   }
 
    /**
-   * The adjustment type to apply to dates that fall upon a non-business day, e.g. modified following or following.  Supported string (enumeration) values are: [NoAdjustment, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest].
+   * The adjustment type to apply to dates that fall upon a non-business day, e.g. modified following or following.  Supported string (enumeration) values are: [NoAdjustment, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest].  Defaults to \&quot;F\&quot; if not set.
    * @return businessDayConvention
   **/
   @jakarta.annotation.Nullable

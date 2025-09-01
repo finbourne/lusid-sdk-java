@@ -97,7 +97,7 @@ public class RoundingConvention {
   }
 
    /**
-   * The precision of the rounding. The decimal places to which the rounding takes place.
+   * The precision of the rounding. The decimal places to which the rounding takes place.  Defaults to 0 if not set.
    * @return precision
   **/
   @jakarta.annotation.Nullable
@@ -118,7 +118,7 @@ public class RoundingConvention {
   }
 
    /**
-   * The target of the rounding convention.  Accepted values are &#39;AccruedInterest&#39;, &#39;Cashflows&#39;, or &#39;All&#39;    Supported string (enumeration) values are: [All, AccruedInterest, Cashflows].
+   * The target of the rounding convention.  Accepted values are &#39;AccruedInterest&#39;, &#39;Cashflows&#39;, or &#39;All&#39;    Supported string (enumeration) values are: [All, AccruedInterest, Cashflows].  Defaults to \&quot;All\&quot; if not set.
    * @return roundingTarget
   **/
   @jakarta.annotation.Nullable
@@ -139,7 +139,7 @@ public class RoundingConvention {
   }
 
    /**
-   * The type of rounding. e.g. Round Up, Round Down    Supported string (enumeration) values are: [Down, Up, Floor, Ceiling, Nearest].
+   * The type of rounding. e.g. Round Up, Round Down    Supported string (enumeration) values are: [Down, Up, Floor, Ceiling, Nearest].  Defaults to \&quot;Nearest\&quot; if not set.
    * @return roundingType
   **/
   @jakarta.annotation.Nullable

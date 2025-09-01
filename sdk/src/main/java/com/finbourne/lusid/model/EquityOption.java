@@ -391,7 +391,7 @@ public class EquityOption extends LusidInstrument {
   }
 
    /**
-   * Type of optionality that is present; European, American.    Supported string (enumeration) values are: [European, American].
+   * Type of optionality that is present; European, American.    Supported string (enumeration) values are: [European, American].  Defaults to \&quot;European\&quot; if not set.
    * @return exerciseType
   **/
   @jakarta.annotation.Nullable
@@ -433,7 +433,7 @@ public class EquityOption extends LusidInstrument {
   }
 
    /**
-   * Number of business days between exercise date and settlement of the option payoff or underlying.
+   * Number of business days between exercise date and settlement of the option payoff or underlying.  Defaults to 0 if not set.
    * @return deliveryDays
   **/
   @jakarta.annotation.Nullable
@@ -454,7 +454,7 @@ public class EquityOption extends LusidInstrument {
   }
 
    /**
-   * Business day convention for option exercise date to settlement date calculation.  Supported string (enumeration) values are: [NoAdjustment, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest].
+   * Business day convention for option exercise date to settlement date calculation.  Supported string (enumeration) values are: [NoAdjustment, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest].  Defaults to \&quot;F\&quot; if not set.
    * @return businessDayConvention
   **/
   @jakarta.annotation.Nullable

@@ -183,7 +183,7 @@ public class BondConversionSchedule extends Schedule {
   }
 
    /**
-   * Is a conversion made into cash or into shares?    Supported string (enumeration) values are: [Cash, Physical].
+   * Is a conversion made into cash or into shares?  Defaults to \&quot;Physical\&quot; if not set.    Supported string (enumeration) values are: [Cash, Physical].
    * @return deliveryType
   **/
   @jakarta.annotation.Nullable

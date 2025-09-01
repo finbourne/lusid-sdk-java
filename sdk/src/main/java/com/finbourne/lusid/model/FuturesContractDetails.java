@@ -206,7 +206,7 @@ public class FuturesContractDetails {
   }
 
    /**
-   * Which month does the contract trade for.    Supported string (enumeration) values are: [F, G, H, J, K, M, N, Q, U, V, X, Z].
+   * Which month does the contract trade for.    Supported string (enumeration) values are: [F, G, H, J, K, M, N, Q, U, V, X, Z].  Defaults to \&quot;Unknown\&quot; if not set.
    * @return contractMonth
   **/
   @jakarta.annotation.Nullable

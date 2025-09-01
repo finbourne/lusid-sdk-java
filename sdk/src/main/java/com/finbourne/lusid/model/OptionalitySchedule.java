@@ -77,7 +77,7 @@ public class OptionalitySchedule extends Schedule {
   }
 
    /**
-   * The exercise type of the optionality schedule (American or European).  For American type, the bond is perpetually callable from a given exercise date until it matures, or the next date in the schedule.  For European type, the bond is only callable on a given exercise date.    Supported string (enumeration) values are: [European, American].
+   * The exercise type of the optionality schedule (American or European).  For American type, the bond is perpetually callable from a given exercise date until it matures, or the next date in the schedule.  For European type, the bond is only callable on a given exercise date.    Supported string (enumeration) values are: [European, American].  Defaults to \&quot;European\&quot; if not set.
    * @return exerciseType
   **/
   @jakarta.annotation.Nullable
@@ -127,7 +127,7 @@ public class OptionalitySchedule extends Schedule {
   }
 
    /**
-   * Type of optionality for the schedule.    Supported string (enumeration) values are: [Call, Put].
+   * Type of optionality for the schedule.    Supported string (enumeration) values are: [Call, Put].  Defaults to \&quot;Call\&quot; if not set.
    * @return optionType
   **/
   @jakarta.annotation.Nullable

@@ -292,7 +292,7 @@ public class FxOption extends LusidInstrument {
   }
 
    /**
-   * Type of optionality that is present; European, American.    Supported string (enumeration) values are: [European, American].
+   * Type of optionality that is present; European, American.    Supported string (enumeration) values are: [European, American].  Defaults to \&quot;European\&quot; if not set.
    * @return exerciseType
   **/
   @jakarta.annotation.Nullable
@@ -418,7 +418,7 @@ public class FxOption extends LusidInstrument {
   }
 
    /**
-   * PayoutStyle for touch options.     For options without touch optionality, payoutStyle should not be set.  For options with touch optionality (where the touches data has been set), payoutStyle must be defined and cannot be None.    Supported string (enumeration) values are: [Deferred, Immediate].
+   * PayoutStyle for touch options.     For options without touch optionality, payoutStyle should not be set.  For options with touch optionality (where the touches data has been set), payoutStyle must be defined and cannot be None.    Supported string (enumeration) values are: [Deferred, Immediate].  Defaults to \&quot;None\&quot; if not set.
    * @return payoutStyle
   **/
   @jakarta.annotation.Nullable

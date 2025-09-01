@@ -20,10 +20,10 @@ LUSID representation of a plain vanilla OTC Equity Option.
 |**equityOptionType** | **String** | Equity option types. E.g. Vanilla (default), RightsIssue, Warrant.    Supported string (enumeration) values are: [Vanilla, RightsIssue, Warrant]. |  [optional] |
 |**numberOfShares** | **java.math.BigDecimal** | The amount of shares to exchange if the option is exercised. |  [optional] |
 |**premium** | [**Premium**](Premium.md) |  |  [optional] |
-|**exerciseType** | **String** | Type of optionality that is present; European, American.    Supported string (enumeration) values are: [European, American]. |  [optional] |
+|**exerciseType** | **String** | Type of optionality that is present; European, American.    Supported string (enumeration) values are: [European, American].  Defaults to \&quot;European\&quot; if not set. |  [optional] |
 |**underlying** | [**LusidInstrument**](LusidInstrument.md) |  |  [optional] |
-|**deliveryDays** | **Integer** | Number of business days between exercise date and settlement of the option payoff or underlying. |  [optional] |
-|**businessDayConvention** | **String** | Business day convention for option exercise date to settlement date calculation.  Supported string (enumeration) values are: [NoAdjustment, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest]. |  [optional] |
+|**deliveryDays** | **Integer** | Number of business days between exercise date and settlement of the option payoff or underlying.  Defaults to 0 if not set. |  [optional] |
+|**businessDayConvention** | **String** | Business day convention for option exercise date to settlement date calculation.  Supported string (enumeration) values are: [NoAdjustment, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest].  Defaults to \&quot;F\&quot; if not set. |  [optional] |
 |**settlementCalendars** | **List&lt;String&gt;** | Holiday calendars for option exercise date to settlement date calculation. |  [optional] |
 |**timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  |  [optional] |
 

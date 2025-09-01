@@ -282,7 +282,7 @@ public class LegDefinition {
   }
 
    /**
-   * Control how resets are generated relative to swap payment convention(s).    Supported string (enumeration) values are: [InAdvance, InArrears].
+   * Control how resets are generated relative to swap payment convention(s).    Supported string (enumeration) values are: [InAdvance, InArrears].  Defaults to \&quot;InAdvance\&quot; if not set.
    * @return resetConvention
   **/
   @jakarta.annotation.Nullable

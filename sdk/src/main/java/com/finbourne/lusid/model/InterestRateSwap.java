@@ -138,7 +138,7 @@ public class InterestRateSwap extends LusidInstrument {
   }
 
    /**
-   * Is the contract an IRS of \&quot;Non-Deliverable\&quot; type, meaning a single payment in the settlement currency based on the difference between  the fixed and floating rates.
+   * Is the contract an IRS of \&quot;Non-Deliverable\&quot; type, meaning a single payment in the settlement currency based on the difference between  the fixed and floating rates.  Defaults to false if not set.
    * @return isNonDeliverable
   **/
   @jakarta.annotation.Nullable

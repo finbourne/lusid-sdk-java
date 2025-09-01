@@ -259,7 +259,7 @@ public class FxForward extends LusidInstrument {
   }
 
    /**
-   * Is the contract an Fx-Forward of \&quot;Non-Deliverable\&quot; type, meaning a single payment in the domestic currency based on the change in fx-rate vs  a reference rate is used.
+   * Is the contract an Fx-Forward of \&quot;Non-Deliverable\&quot; type, meaning a single payment in the domestic currency based on the change in fx-rate vs  a reference rate is used.  Defaults to false if not set.
    * @return isNdf
   **/
   @jakarta.annotation.Nullable
