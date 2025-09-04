@@ -9,7 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**key** | **String** | A client-defined key used to identify the Account Holder, unique within the Investment Account |  |
 |**scope** | **String** | The scope in which the Investor Record lies. |  |
-|**identifiers** | [**Map&lt;String, Property&gt;**](Property.md) | Single Account Holder identifier that should target the desired Investor Record. |  |
+|**identifiers** | **Map&lt;String, String&gt;** | Single Account Holder identifier that should target the desired Investor Record. |  |
 
 
 

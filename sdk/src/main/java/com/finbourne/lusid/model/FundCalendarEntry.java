@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.PreviousFundCalendarEntry;
 import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
@@ -71,6 +72,10 @@ public class FundCalendarEntry {
   public static final String SERIALIZED_NAME_NAV_TYPE_CODE = "navTypeCode";
   @SerializedName(SERIALIZED_NAME_NAV_TYPE_CODE)
   private String navTypeCode;
+
+  public static final String SERIALIZED_NAME_PREVIOUS_ENTRY = "previousEntry";
+  @SerializedName(SERIALIZED_NAME_PREVIOUS_ENTRY)
+  private PreviousFundCalendarEntry previousEntry;
 
   public static final String SERIALIZED_NAME_EFFECTIVE_AT = "effectiveAt";
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_AT)
@@ -235,6 +240,27 @@ public class FundCalendarEntry {
 
   public void setNavTypeCode(String navTypeCode) {
     this.navTypeCode = navTypeCode;
+  }
+
+
+  public FundCalendarEntry previousEntry(PreviousFundCalendarEntry previousEntry) {
+    
+    this.previousEntry = previousEntry;
+    return this;
+  }
+
+   /**
+   * Get previousEntry
+   * @return previousEntry
+  **/
+  @jakarta.annotation.Nullable
+  public PreviousFundCalendarEntry getPreviousEntry() {
+    return previousEntry;
+  }
+
+
+  public void setPreviousEntry(PreviousFundCalendarEntry previousEntry) {
+    this.previousEntry = previousEntry;
   }
 
 
@@ -428,6 +454,7 @@ public class FundCalendarEntry {
         Objects.equals(this.displayName, fundCalendarEntry.displayName) &&
         Objects.equals(this.description, fundCalendarEntry.description) &&
         Objects.equals(this.navTypeCode, fundCalendarEntry.navTypeCode) &&
+        Objects.equals(this.previousEntry, fundCalendarEntry.previousEntry) &&
         Objects.equals(this.effectiveAt, fundCalendarEntry.effectiveAt) &&
         Objects.equals(this.asAt, fundCalendarEntry.asAt) &&
         Objects.equals(this.entryType, fundCalendarEntry.entryType) &&
@@ -444,7 +471,7 @@ public class FundCalendarEntry {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, displayName, description, navTypeCode, effectiveAt, asAt, entryType, status, applyClearDown, properties, version, href);
+    return Objects.hash(code, displayName, description, navTypeCode, previousEntry, effectiveAt, asAt, entryType, status, applyClearDown, properties, version, href);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -462,6 +489,7 @@ public class FundCalendarEntry {
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    navTypeCode: ").append(toIndentedString(navTypeCode)).append("\n");
+    sb.append("    previousEntry: ").append(toIndentedString(previousEntry)).append("\n");
     sb.append("    effectiveAt: ").append(toIndentedString(effectiveAt)).append("\n");
     sb.append("    asAt: ").append(toIndentedString(asAt)).append("\n");
     sb.append("    entryType: ").append(toIndentedString(entryType)).append("\n");
@@ -496,6 +524,7 @@ public class FundCalendarEntry {
     openapiFields.add("displayName");
     openapiFields.add("description");
     openapiFields.add("navTypeCode");
+    openapiFields.add("previousEntry");
     openapiFields.add("effectiveAt");
     openapiFields.add("asAt");
     openapiFields.add("entryType");
@@ -547,6 +576,10 @@ public class FundCalendarEntry {
       }
       if (!jsonObj.get("navTypeCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `navTypeCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("navTypeCode").toString()));
+      }
+      // validate the optional field `previousEntry`
+      if (jsonObj.get("previousEntry") != null && !jsonObj.get("previousEntry").isJsonNull()) {
+        PreviousFundCalendarEntry.validateJsonElement(jsonObj.get("previousEntry"));
       }
       if (!jsonObj.get("entryType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `entryType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("entryType").toString()));

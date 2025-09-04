@@ -19,6 +19,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -59,9 +61,9 @@ public class InvestmentPortfolio {
   @SerializedName(SERIALIZED_NAME_SCOPE)
   private String scope;
 
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
-  private String code;
+  public static final String SERIALIZED_NAME_IDENTIFIERS = "identifiers";
+  @SerializedName(SERIALIZED_NAME_IDENTIFIERS)
+  private Map<String, String> identifiers;
 
   public static final String SERIALIZED_NAME_ENTITY_UNIQUE_ID = "entityUniqueId";
   @SerializedName(SERIALIZED_NAME_ENTITY_UNIQUE_ID)
@@ -116,24 +118,32 @@ public class InvestmentPortfolio {
   }
 
 
-  public InvestmentPortfolio code(String code) {
+  public InvestmentPortfolio identifiers(Map<String, String> identifiers) {
     
-    this.code = code;
+    this.identifiers = identifiers;
+    return this;
+  }
+
+  public InvestmentPortfolio putIdentifiersItem(String key, String identifiersItem) {
+    if (this.identifiers == null) {
+      this.identifiers = new HashMap<>();
+    }
+    this.identifiers.put(key, identifiersItem);
     return this;
   }
 
    /**
-   * The code of the Investment Portfolio
-   * @return code
+   * The code identifier of the Investment Portfolio
+   * @return identifiers
   **/
   @jakarta.annotation.Nullable
-  public String getCode() {
-    return code;
+  public Map<String, String> getIdentifiers() {
+    return identifiers;
   }
 
 
-  public void setCode(String code) {
-    this.code = code;
+  public void setIdentifiers(Map<String, String> identifiers) {
+    this.identifiers = identifiers;
   }
 
 
@@ -191,7 +201,7 @@ public class InvestmentPortfolio {
     InvestmentPortfolio investmentPortfolio = (InvestmentPortfolio) o;
     return Objects.equals(this.key, investmentPortfolio.key) &&
         Objects.equals(this.scope, investmentPortfolio.scope) &&
-        Objects.equals(this.code, investmentPortfolio.code) &&
+        Objects.equals(this.identifiers, investmentPortfolio.identifiers) &&
         Objects.equals(this.entityUniqueId, investmentPortfolio.entityUniqueId) &&
         Objects.equals(this.portfolio, investmentPortfolio.portfolio);
   }
@@ -202,7 +212,7 @@ public class InvestmentPortfolio {
 
   @Override
   public int hashCode() {
-    return Objects.hash(key, scope, code, entityUniqueId, portfolio);
+    return Objects.hash(key, scope, identifiers, entityUniqueId, portfolio);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -218,7 +228,7 @@ public class InvestmentPortfolio {
     sb.append("class InvestmentPortfolio {\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    identifiers: ").append(toIndentedString(identifiers)).append("\n");
     sb.append("    entityUniqueId: ").append(toIndentedString(entityUniqueId)).append("\n");
     sb.append("    portfolio: ").append(toIndentedString(portfolio)).append("\n");
     sb.append("}");
@@ -245,7 +255,7 @@ public class InvestmentPortfolio {
     openapiFields = new HashSet<String>();
     openapiFields.add("key");
     openapiFields.add("scope");
-    openapiFields.add("code");
+    openapiFields.add("identifiers");
     openapiFields.add("entityUniqueId");
     openapiFields.add("portfolio");
 
@@ -271,9 +281,6 @@ public class InvestmentPortfolio {
       }
       if ((jsonObj.get("scope") != null && !jsonObj.get("scope").isJsonNull()) && !jsonObj.get("scope").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
-      }
-      if ((jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull()) && !jsonObj.get("code").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
       }
       if ((jsonObj.get("entityUniqueId") != null && !jsonObj.get("entityUniqueId").isJsonNull()) && !jsonObj.get("entityUniqueId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `entityUniqueId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("entityUniqueId").toString()));

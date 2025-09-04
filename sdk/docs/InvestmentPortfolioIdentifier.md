@@ -8,8 +8,8 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**key** | **String** | A client-defined key used to identify the Investment Portfolio, unique within the Investment Account |  |
-|**portfolioScope** | **String** | The scope of the Investment Portfolio. |  |
-|**portfolioCode** | **String** | The code of the Investment Portfolio. |  |
+|**scope** | **String** | The scope of the Investment Portfolio. |  |
+|**identifiers** | **Map&lt;String, String&gt;** | The code identifier of the Investment Portfolio. |  |
 
 
 

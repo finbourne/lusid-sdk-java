@@ -18,6 +18,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -53,13 +55,13 @@ public class InvestmentPortfolioIdentifier {
   @SerializedName(SERIALIZED_NAME_KEY)
   private String key;
 
-  public static final String SERIALIZED_NAME_PORTFOLIO_SCOPE = "portfolioScope";
-  @SerializedName(SERIALIZED_NAME_PORTFOLIO_SCOPE)
-  private String portfolioScope;
+  public static final String SERIALIZED_NAME_SCOPE = "scope";
+  @SerializedName(SERIALIZED_NAME_SCOPE)
+  private String scope;
 
-  public static final String SERIALIZED_NAME_PORTFOLIO_CODE = "portfolioCode";
-  @SerializedName(SERIALIZED_NAME_PORTFOLIO_CODE)
-  private String portfolioCode;
+  public static final String SERIALIZED_NAME_IDENTIFIERS = "identifiers";
+  @SerializedName(SERIALIZED_NAME_IDENTIFIERS)
+  private Map<String, String> identifiers = new HashMap<>();
 
   public InvestmentPortfolioIdentifier() {
   }
@@ -85,45 +87,53 @@ public class InvestmentPortfolioIdentifier {
   }
 
 
-  public InvestmentPortfolioIdentifier portfolioScope(String portfolioScope) {
+  public InvestmentPortfolioIdentifier scope(String scope) {
     
-    this.portfolioScope = portfolioScope;
+    this.scope = scope;
     return this;
   }
 
    /**
    * The scope of the Investment Portfolio.
-   * @return portfolioScope
+   * @return scope
   **/
   @jakarta.annotation.Nonnull
-  public String getPortfolioScope() {
-    return portfolioScope;
+  public String getScope() {
+    return scope;
   }
 
 
-  public void setPortfolioScope(String portfolioScope) {
-    this.portfolioScope = portfolioScope;
+  public void setScope(String scope) {
+    this.scope = scope;
   }
 
 
-  public InvestmentPortfolioIdentifier portfolioCode(String portfolioCode) {
+  public InvestmentPortfolioIdentifier identifiers(Map<String, String> identifiers) {
     
-    this.portfolioCode = portfolioCode;
+    this.identifiers = identifiers;
+    return this;
+  }
+
+  public InvestmentPortfolioIdentifier putIdentifiersItem(String key, String identifiersItem) {
+    if (this.identifiers == null) {
+      this.identifiers = new HashMap<>();
+    }
+    this.identifiers.put(key, identifiersItem);
     return this;
   }
 
    /**
-   * The code of the Investment Portfolio.
-   * @return portfolioCode
+   * The code identifier of the Investment Portfolio.
+   * @return identifiers
   **/
   @jakarta.annotation.Nonnull
-  public String getPortfolioCode() {
-    return portfolioCode;
+  public Map<String, String> getIdentifiers() {
+    return identifiers;
   }
 
 
-  public void setPortfolioCode(String portfolioCode) {
-    this.portfolioCode = portfolioCode;
+  public void setIdentifiers(Map<String, String> identifiers) {
+    this.identifiers = identifiers;
   }
 
 
@@ -138,13 +148,13 @@ public class InvestmentPortfolioIdentifier {
     }
     InvestmentPortfolioIdentifier investmentPortfolioIdentifier = (InvestmentPortfolioIdentifier) o;
     return Objects.equals(this.key, investmentPortfolioIdentifier.key) &&
-        Objects.equals(this.portfolioScope, investmentPortfolioIdentifier.portfolioScope) &&
-        Objects.equals(this.portfolioCode, investmentPortfolioIdentifier.portfolioCode);
+        Objects.equals(this.scope, investmentPortfolioIdentifier.scope) &&
+        Objects.equals(this.identifiers, investmentPortfolioIdentifier.identifiers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(key, portfolioScope, portfolioCode);
+    return Objects.hash(key, scope, identifiers);
   }
 
   @Override
@@ -152,8 +162,8 @@ public class InvestmentPortfolioIdentifier {
     StringBuilder sb = new StringBuilder();
     sb.append("class InvestmentPortfolioIdentifier {\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
-    sb.append("    portfolioScope: ").append(toIndentedString(portfolioScope)).append("\n");
-    sb.append("    portfolioCode: ").append(toIndentedString(portfolioCode)).append("\n");
+    sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
+    sb.append("    identifiers: ").append(toIndentedString(identifiers)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -177,14 +187,14 @@ public class InvestmentPortfolioIdentifier {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("key");
-    openapiFields.add("portfolioScope");
-    openapiFields.add("portfolioCode");
+    openapiFields.add("scope");
+    openapiFields.add("identifiers");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("key");
-    openapiRequiredFields.add("portfolioScope");
-    openapiRequiredFields.add("portfolioCode");
+    openapiRequiredFields.add("scope");
+    openapiRequiredFields.add("identifiers");
   }
 
  /**
@@ -210,11 +220,8 @@ public class InvestmentPortfolioIdentifier {
       if (!jsonObj.get("key").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `key` to be a primitive type in the JSON string but got `%s`", jsonObj.get("key").toString()));
       }
-      if (!jsonObj.get("portfolioScope").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `portfolioScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("portfolioScope").toString()));
-      }
-      if (!jsonObj.get("portfolioCode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `portfolioCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("portfolioCode").toString()));
+      if (!jsonObj.get("scope").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
       }
   }
 

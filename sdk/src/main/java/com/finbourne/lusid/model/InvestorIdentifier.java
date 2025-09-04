@@ -11,7 +11,6 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.Property;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -59,7 +58,7 @@ public class InvestorIdentifier {
 
   public static final String SERIALIZED_NAME_IDENTIFIERS = "identifiers";
   @SerializedName(SERIALIZED_NAME_IDENTIFIERS)
-  private Map<String, Property> identifiers;
+  private Map<String, String> identifiers;
 
   public InvestorIdentifier() {
   }
@@ -85,13 +84,13 @@ public class InvestorIdentifier {
   }
 
 
-  public InvestorIdentifier identifiers(Map<String, Property> identifiers) {
+  public InvestorIdentifier identifiers(Map<String, String> identifiers) {
     
     this.identifiers = identifiers;
     return this;
   }
 
-  public InvestorIdentifier putIdentifiersItem(String key, Property identifiersItem) {
+  public InvestorIdentifier putIdentifiersItem(String key, String identifiersItem) {
     if (this.identifiers == null) {
       this.identifiers = new HashMap<>();
     }
@@ -104,12 +103,12 @@ public class InvestorIdentifier {
    * @return identifiers
   **/
   @jakarta.annotation.Nullable
-  public Map<String, Property> getIdentifiers() {
+  public Map<String, String> getIdentifiers() {
     return identifiers;
   }
 
 
-  public void setIdentifiers(Map<String, Property> identifiers) {
+  public void setIdentifiers(Map<String, String> identifiers) {
     this.identifiers = identifiers;
   }
 

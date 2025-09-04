@@ -9,7 +9,7 @@ Identification of an Investor on the LUSID API.
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**investorType** | **String** | The type of the investor of the Investor Record. Can be either a Person or a LegalEntity |  |
-|**identifiers** | [**Map&lt;String, Property&gt;**](Property.md) | Single identifier that should target the desired person or legal entity |  [optional] |
+|**identifiers** | **Map&lt;String, String&gt;** | Single identifier that should target the desired person or legal entity |  [optional] |
 
 
 
