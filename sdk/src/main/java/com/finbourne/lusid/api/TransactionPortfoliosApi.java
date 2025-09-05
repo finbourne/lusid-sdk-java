@@ -10643,7 +10643,7 @@ public class TransactionPortfoliosApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label at which the updated or inserted details should become valid.   Defaults to the current LUSID system datetime if not specified.   Note that this will affect all bitemporal entities in the request, but will not be used for any perpetual entities. (optional)
+         * @param effectiveAt The effective datetime or cut label at which the updated or inserted details should become valid.   Defaults to the current LUSID system datetime if not specified.   Note that this will affect all bitemporal fields (eg: SettlementConfiguration) in the request (but will not be used for any   perpetual fields). When patching a bitemporal field, the field will be updated from the   effectiveAt onwards and until the end of effective time. (optional)
          * @return APIpatchPortfolioDetailsRequest
          */
         public APIpatchPortfolioDetailsRequest effectiveAt(String effectiveAt) {

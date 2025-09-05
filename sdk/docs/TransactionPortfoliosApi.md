@@ -3573,7 +3573,7 @@ public class TransactionPortfoliosApiExample {
         String scope = "scope_example"; // String | The scope of the transaction portfolio.
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the   scope this uniquely identifies the transaction portfolio.
         List<Operation> operation = Arrays.asList(); // List<Operation> | The patch document.
-        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which the updated or inserted details should become valid.   Defaults to the current LUSID system datetime if not specified.   Note that this will affect all bitemporal entities in the request, but will not be used for any perpetual entities.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which the updated or inserted details should become valid.   Defaults to the current LUSID system datetime if not specified.   Note that this will affect all bitemporal fields (eg: SettlementConfiguration) in the request (but will not be used for any   perpetual fields). When patching a bitemporal field, the field will be updated from the   effectiveAt onwards and until the end of effective time.
         try {
             // uncomment the below to set overrides at the request level
             // PortfolioDetails result = apiInstance.patchPortfolioDetails(scope, code, operation, effectiveAt).execute(opts);
@@ -3598,7 +3598,7 @@ public class TransactionPortfoliosApiExample {
 | **scope** | **String**| The scope of the transaction portfolio. | |
 | **code** | **String**| The code of the transaction portfolio. Together with the   scope this uniquely identifies the transaction portfolio. | |
 | **operation** | [**List&lt;Operation&gt;**](Operation.md)| The patch document. | |
-| **effectiveAt** | **String**| The effective datetime or cut label at which the updated or inserted details should become valid.   Defaults to the current LUSID system datetime if not specified.   Note that this will affect all bitemporal entities in the request, but will not be used for any perpetual entities. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which the updated or inserted details should become valid.   Defaults to the current LUSID system datetime if not specified.   Note that this will affect all bitemporal fields (eg: SettlementConfiguration) in the request (but will not be used for any   perpetual fields). When patching a bitemporal field, the field will be updated from the   effectiveAt onwards and until the end of effective time. | [optional] |
 
 ### Return type
 
