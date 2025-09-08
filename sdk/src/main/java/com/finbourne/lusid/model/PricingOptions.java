@@ -112,6 +112,10 @@ public class PricingOptions {
   @SerializedName(SERIALIZED_NAME_ENABLE_LEG_LEVEL_INFERENCE_FOR_CUSTOM_SRS_COLUMNS)
   private Boolean enableLegLevelInferenceForCustomSrsColumns;
 
+  public static final String SERIALIZED_NAME_USE_INSTRUMENT_SCALE_FACTOR_AS_DEFAULT = "useInstrumentScaleFactorAsDefault";
+  @SerializedName(SERIALIZED_NAME_USE_INSTRUMENT_SCALE_FACTOR_AS_DEFAULT)
+  private Boolean useInstrumentScaleFactorAsDefault;
+
   public PricingOptions() {
   }
 
@@ -430,6 +434,27 @@ public class PricingOptions {
   }
 
 
+  public PricingOptions useInstrumentScaleFactorAsDefault(Boolean useInstrumentScaleFactorAsDefault) {
+    
+    this.useInstrumentScaleFactorAsDefault = useInstrumentScaleFactorAsDefault;
+    return this;
+  }
+
+   /**
+   * When enabled, priceScaleFactor defined at the instrument level will  be used in the absence of quote scaleFactor when resolving quotes.
+   * @return useInstrumentScaleFactorAsDefault
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getUseInstrumentScaleFactorAsDefault() {
+    return useInstrumentScaleFactorAsDefault;
+  }
+
+
+  public void setUseInstrumentScaleFactorAsDefault(Boolean useInstrumentScaleFactorAsDefault) {
+    this.useInstrumentScaleFactorAsDefault = useInstrumentScaleFactorAsDefault;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -454,7 +479,8 @@ public class PricingOptions {
         Objects.equals(this.convertSrsCashFlowsToPortfolioCurrency, pricingOptions.convertSrsCashFlowsToPortfolioCurrency) &&
         Objects.equals(this.conservedQuantityForLookthroughExpansion, pricingOptions.conservedQuantityForLookthroughExpansion) &&
         Objects.equals(this.returnZeroPv, pricingOptions.returnZeroPv) &&
-        Objects.equals(this.enableLegLevelInferenceForCustomSrsColumns, pricingOptions.enableLegLevelInferenceForCustomSrsColumns);
+        Objects.equals(this.enableLegLevelInferenceForCustomSrsColumns, pricingOptions.enableLegLevelInferenceForCustomSrsColumns) &&
+        Objects.equals(this.useInstrumentScaleFactorAsDefault, pricingOptions.useInstrumentScaleFactorAsDefault);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -463,7 +489,7 @@ public class PricingOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(modelSelection, useInstrumentTypeToDeterminePricer, allowAnyInstrumentsWithSecUidToPriceOffLookup, allowPartiallySuccessfulEvaluation, produceSeparateResultForLinearOtcLegs, enableUseOfCachedUnitResults, windowValuationOnInstrumentStartEnd, removeContingentCashflowsInPaymentDiary, useChildSubHoldingKeysForPortfolioExpansion, validateDomesticAndQuoteCurrenciesAreConsistent, mbsValuationUsingHoldingCurrentFace, convertSrsCashFlowsToPortfolioCurrency, conservedQuantityForLookthroughExpansion, returnZeroPv, enableLegLevelInferenceForCustomSrsColumns);
+    return Objects.hash(modelSelection, useInstrumentTypeToDeterminePricer, allowAnyInstrumentsWithSecUidToPriceOffLookup, allowPartiallySuccessfulEvaluation, produceSeparateResultForLinearOtcLegs, enableUseOfCachedUnitResults, windowValuationOnInstrumentStartEnd, removeContingentCashflowsInPaymentDiary, useChildSubHoldingKeysForPortfolioExpansion, validateDomesticAndQuoteCurrenciesAreConsistent, mbsValuationUsingHoldingCurrentFace, convertSrsCashFlowsToPortfolioCurrency, conservedQuantityForLookthroughExpansion, returnZeroPv, enableLegLevelInferenceForCustomSrsColumns, useInstrumentScaleFactorAsDefault);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -492,6 +518,7 @@ public class PricingOptions {
     sb.append("    conservedQuantityForLookthroughExpansion: ").append(toIndentedString(conservedQuantityForLookthroughExpansion)).append("\n");
     sb.append("    returnZeroPv: ").append(toIndentedString(returnZeroPv)).append("\n");
     sb.append("    enableLegLevelInferenceForCustomSrsColumns: ").append(toIndentedString(enableLegLevelInferenceForCustomSrsColumns)).append("\n");
+    sb.append("    useInstrumentScaleFactorAsDefault: ").append(toIndentedString(useInstrumentScaleFactorAsDefault)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -529,6 +556,7 @@ public class PricingOptions {
     openapiFields.add("conservedQuantityForLookthroughExpansion");
     openapiFields.add("returnZeroPv");
     openapiFields.add("enableLegLevelInferenceForCustomSrsColumns");
+    openapiFields.add("useInstrumentScaleFactorAsDefault");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
