@@ -65,7 +65,9 @@ public enum PricingModel {
   
   CDSLOOKUPPRICER("CdsLookupPricer"),
   
-  LOANFACILITYPRICER("LoanFacilityPricer");
+  LOANFACILITYPRICER("LoanFacilityPricer"),
+  
+  OVERRIDEONLYPRICER("OverrideOnlyPricer");
 
   private String value;
 

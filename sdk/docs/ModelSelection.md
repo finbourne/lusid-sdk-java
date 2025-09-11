@@ -9,7 +9,7 @@ The combination of a library to use and a model in that library that defines whi
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**library** | [**LibraryEnum**](#LibraryEnum) | The available values are: Lusid, RefinitivQps, RefinitivTracsWeb, VolMaster, IsdaCds, YieldBook, LusidCalc |  |
-|**model** | [**ModelEnum**](#ModelEnum) | The available values are: SimpleStatic, Discounting, VendorDefault, BlackScholes, ConstantTimeValueOfMoney, Bachelier, ForwardWithPoints, ForwardWithPointsUndiscounted, ForwardSpecifiedRate, ForwardSpecifiedRateUndiscounted, IndexNav, IndexPrice, InlinedIndex, ForwardFromCurve, ForwardFromCurveUndiscounted, BlackScholesDigital, BjerksundStensland1993, BondLookupPricer, FlexibleLoanPricer, CdsLookupPricer, LoanFacilityPricer |  |
+|**model** | [**ModelEnum**](#ModelEnum) | The available values are: SimpleStatic, Discounting, VendorDefault, BlackScholes, ConstantTimeValueOfMoney, Bachelier, ForwardWithPoints, ForwardWithPointsUndiscounted, ForwardSpecifiedRate, ForwardSpecifiedRateUndiscounted, IndexNav, IndexPrice, InlinedIndex, ForwardFromCurve, ForwardFromCurveUndiscounted, BlackScholesDigital, BjerksundStensland1993, BondLookupPricer, FlexibleLoanPricer, CdsLookupPricer, LoanFacilityPricer, OverrideOnlyPricer |  |
 
 
 
@@ -52,6 +52,7 @@ The combination of a library to use and a model in that library that defines whi
 | FLEXIBLELOANPRICER | &quot;FlexibleLoanPricer&quot; |
 | CDSLOOKUPPRICER | &quot;CdsLookupPricer&quot; |
 | LOANFACILITYPRICER | &quot;LoanFacilityPricer&quot; |
+| OVERRIDEONLYPRICER | &quot;OverrideOnlyPricer&quot; |
 
 
 
