@@ -15,6 +15,7 @@
 |**transactionDateWindows** | [**TransactionDateWindows**](TransactionDateWindows.md) |  |  [optional] |
 |**comparisonRulesetIds** | [**GroupReconciliationDefinitionComparisonRulesetIds**](GroupReconciliationDefinitionComparisonRulesetIds.md) |  |  [optional] |
 |**breakCodeSource** | [**BreakCodeSource**](BreakCodeSource.md) |  |  [optional] |
+|**primarySchedule** | [**PrimarySchedule**](PrimarySchedule.md) |  |  [optional] |
 
 
 

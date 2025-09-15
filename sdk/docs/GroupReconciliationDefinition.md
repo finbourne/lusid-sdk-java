@@ -16,6 +16,7 @@
 |**transactionDateWindows** | [**TransactionDateWindows**](TransactionDateWindows.md) |  |  [optional] |
 |**comparisonRulesetIds** | [**GroupReconciliationDefinitionComparisonRulesetIds**](GroupReconciliationDefinitionComparisonRulesetIds.md) |  |  [optional] |
 |**breakCodeSource** | [**BreakCodeSource**](BreakCodeSource.md) |  |  [optional] |
+|**primarySchedule** | [**PrimarySchedule**](PrimarySchedule.md) |  |  [optional] |
 |**href** | **URI** | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |  [optional] |
 |**version** | [**Version**](Version.md) |  |  [optional] |
 

@@ -16,6 +16,7 @@ import com.finbourne.lusid.model.GroupReconciliationDefinitionComparisonRulesetI
 import com.finbourne.lusid.model.GroupReconciliationDefinitionCurrencies;
 import com.finbourne.lusid.model.GroupReconciliationDefinitionPortfolioEntityIds;
 import com.finbourne.lusid.model.GroupReconciliationDefinitionRecipeIds;
+import com.finbourne.lusid.model.PrimarySchedule;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.TransactionDateWindows;
 import com.finbourne.lusid.model.Version;
@@ -94,6 +95,10 @@ public class GroupReconciliationDefinition {
   public static final String SERIALIZED_NAME_BREAK_CODE_SOURCE = "breakCodeSource";
   @SerializedName(SERIALIZED_NAME_BREAK_CODE_SOURCE)
   private BreakCodeSource breakCodeSource;
+
+  public static final String SERIALIZED_NAME_PRIMARY_SCHEDULE = "primarySchedule";
+  @SerializedName(SERIALIZED_NAME_PRIMARY_SCHEDULE)
+  private PrimarySchedule primarySchedule;
 
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
@@ -295,6 +300,27 @@ public class GroupReconciliationDefinition {
   }
 
 
+  public GroupReconciliationDefinition primarySchedule(PrimarySchedule primarySchedule) {
+    
+    this.primarySchedule = primarySchedule;
+    return this;
+  }
+
+   /**
+   * Get primarySchedule
+   * @return primarySchedule
+  **/
+  @jakarta.annotation.Nullable
+  public PrimarySchedule getPrimarySchedule() {
+    return primarySchedule;
+  }
+
+
+  public void setPrimarySchedule(PrimarySchedule primarySchedule) {
+    this.primarySchedule = primarySchedule;
+  }
+
+
   public GroupReconciliationDefinition href(URI href) {
     
     this.href = href;
@@ -356,6 +382,7 @@ public class GroupReconciliationDefinition {
         Objects.equals(this.transactionDateWindows, groupReconciliationDefinition.transactionDateWindows) &&
         Objects.equals(this.comparisonRulesetIds, groupReconciliationDefinition.comparisonRulesetIds) &&
         Objects.equals(this.breakCodeSource, groupReconciliationDefinition.breakCodeSource) &&
+        Objects.equals(this.primarySchedule, groupReconciliationDefinition.primarySchedule) &&
         Objects.equals(this.href, groupReconciliationDefinition.href) &&
         Objects.equals(this.version, groupReconciliationDefinition.version);
   }
@@ -366,7 +393,7 @@ public class GroupReconciliationDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, displayName, description, portfolioEntityIds, recipeIds, currencies, transactionDateWindows, comparisonRulesetIds, breakCodeSource, href, version);
+    return Objects.hash(id, displayName, description, portfolioEntityIds, recipeIds, currencies, transactionDateWindows, comparisonRulesetIds, breakCodeSource, primarySchedule, href, version);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -389,6 +416,7 @@ public class GroupReconciliationDefinition {
     sb.append("    transactionDateWindows: ").append(toIndentedString(transactionDateWindows)).append("\n");
     sb.append("    comparisonRulesetIds: ").append(toIndentedString(comparisonRulesetIds)).append("\n");
     sb.append("    breakCodeSource: ").append(toIndentedString(breakCodeSource)).append("\n");
+    sb.append("    primarySchedule: ").append(toIndentedString(primarySchedule)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("}");
@@ -422,6 +450,7 @@ public class GroupReconciliationDefinition {
     openapiFields.add("transactionDateWindows");
     openapiFields.add("comparisonRulesetIds");
     openapiFields.add("breakCodeSource");
+    openapiFields.add("primarySchedule");
     openapiFields.add("href");
     openapiFields.add("version");
 
@@ -475,6 +504,10 @@ public class GroupReconciliationDefinition {
       // validate the optional field `breakCodeSource`
       if (jsonObj.get("breakCodeSource") != null && !jsonObj.get("breakCodeSource").isJsonNull()) {
         BreakCodeSource.validateJsonElement(jsonObj.get("breakCodeSource"));
+      }
+      // validate the optional field `primarySchedule`
+      if (jsonObj.get("primarySchedule") != null && !jsonObj.get("primarySchedule").isJsonNull()) {
+        PrimarySchedule.validateJsonElement(jsonObj.get("primarySchedule"));
       }
       if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
