@@ -100,6 +100,14 @@ public class RealisedGainLoss {
   @SerializedName(SERIALIZED_NAME_REALISED_CURRENCY)
   private CurrencyAndAmount realisedCurrency;
 
+  public static final String SERIALIZED_NAME_TAX_LOT_ID = "taxLotId";
+  @SerializedName(SERIALIZED_NAME_TAX_LOT_ID)
+  private String taxLotId;
+
+  public static final String SERIALIZED_NAME_REALISED_AMORTISATION = "realisedAmortisation";
+  @SerializedName(SERIALIZED_NAME_REALISED_AMORTISATION)
+  private CurrencyAndAmount realisedAmortisation;
+
   public RealisedGainLoss() {
   }
 
@@ -347,6 +355,48 @@ public class RealisedGainLoss {
   }
 
 
+  public RealisedGainLoss taxLotId(String taxLotId) {
+    
+    this.taxLotId = taxLotId;
+    return this;
+  }
+
+   /**
+   * The identifier of the tax lot with which this gain or loss is associated.
+   * @return taxLotId
+  **/
+  @jakarta.annotation.Nullable
+  public String getTaxLotId() {
+    return taxLotId;
+  }
+
+
+  public void setTaxLotId(String taxLotId) {
+    this.taxLotId = taxLotId;
+  }
+
+
+  public RealisedGainLoss realisedAmortisation(CurrencyAndAmount realisedAmortisation) {
+    
+    this.realisedAmortisation = realisedAmortisation;
+    return this;
+  }
+
+   /**
+   * Get realisedAmortisation
+   * @return realisedAmortisation
+  **/
+  @jakarta.annotation.Nullable
+  public CurrencyAndAmount getRealisedAmortisation() {
+    return realisedAmortisation;
+  }
+
+
+  public void setRealisedAmortisation(CurrencyAndAmount realisedAmortisation) {
+    this.realisedAmortisation = realisedAmortisation;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -368,7 +418,9 @@ public class RealisedGainLoss {
         Objects.equals(this.realisedTradeCcy, realisedGainLoss.realisedTradeCcy) &&
         Objects.equals(this.realisedTotal, realisedGainLoss.realisedTotal) &&
         Objects.equals(this.realisedMarket, realisedGainLoss.realisedMarket) &&
-        Objects.equals(this.realisedCurrency, realisedGainLoss.realisedCurrency);
+        Objects.equals(this.realisedCurrency, realisedGainLoss.realisedCurrency) &&
+        Objects.equals(this.taxLotId, realisedGainLoss.taxLotId) &&
+        Objects.equals(this.realisedAmortisation, realisedGainLoss.realisedAmortisation);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -377,7 +429,7 @@ public class RealisedGainLoss {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentScope, instrumentUid, units, purchaseTradeDate, purchaseSettlementDate, purchasePrice, costTradeCcy, costPortfolioCcy, realisedTradeCcy, realisedTotal, realisedMarket, realisedCurrency);
+    return Objects.hash(instrumentScope, instrumentUid, units, purchaseTradeDate, purchaseSettlementDate, purchasePrice, costTradeCcy, costPortfolioCcy, realisedTradeCcy, realisedTotal, realisedMarket, realisedCurrency, taxLotId, realisedAmortisation);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -403,6 +455,8 @@ public class RealisedGainLoss {
     sb.append("    realisedTotal: ").append(toIndentedString(realisedTotal)).append("\n");
     sb.append("    realisedMarket: ").append(toIndentedString(realisedMarket)).append("\n");
     sb.append("    realisedCurrency: ").append(toIndentedString(realisedCurrency)).append("\n");
+    sb.append("    taxLotId: ").append(toIndentedString(taxLotId)).append("\n");
+    sb.append("    realisedAmortisation: ").append(toIndentedString(realisedAmortisation)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -437,6 +491,8 @@ public class RealisedGainLoss {
     openapiFields.add("realisedTotal");
     openapiFields.add("realisedMarket");
     openapiFields.add("realisedCurrency");
+    openapiFields.add("taxLotId");
+    openapiFields.add("realisedAmortisation");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -489,6 +545,13 @@ public class RealisedGainLoss {
       // validate the optional field `realisedCurrency`
       if (jsonObj.get("realisedCurrency") != null && !jsonObj.get("realisedCurrency").isJsonNull()) {
         CurrencyAndAmount.validateJsonElement(jsonObj.get("realisedCurrency"));
+      }
+      if ((jsonObj.get("taxLotId") != null && !jsonObj.get("taxLotId").isJsonNull()) && !jsonObj.get("taxLotId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `taxLotId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("taxLotId").toString()));
+      }
+      // validate the optional field `realisedAmortisation`
+      if (jsonObj.get("realisedAmortisation") != null && !jsonObj.get("realisedAmortisation").isJsonNull()) {
+        CurrencyAndAmount.validateJsonElement(jsonObj.get("realisedAmortisation"));
       }
   }
 

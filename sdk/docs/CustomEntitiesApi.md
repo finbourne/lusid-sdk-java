@@ -7,6 +7,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**deleteCustomEntity**](CustomEntitiesApi.md#deleteCustomEntity) | **DELETE** /api/customentities/{entityType}/{identifierType}/{identifierValue} | DeleteCustomEntity: Delete a Custom Entity instance. |
 | [**deleteCustomEntityAccessMetadata**](CustomEntitiesApi.md#deleteCustomEntityAccessMetadata) | **DELETE** /api/customentities/{entityType}/{identifierType}/{identifierValue}/metadata/{metadataKey} | [EARLY ACCESS] DeleteCustomEntityAccessMetadata: Delete a Custom Entity Access Metadata entry |
 | [**getAllCustomEntityAccessMetadata**](CustomEntitiesApi.md#getAllCustomEntityAccessMetadata) | **GET** /api/customentities/{entityType}/{identifierType}/{identifierValue}/metadata | [EARLY ACCESS] GetAllCustomEntityAccessMetadata: Get all the Access Metadata rules for a Custom Entity |
+| [**getAllCustomEntityProperties**](CustomEntitiesApi.md#getAllCustomEntityProperties) | **GET** /api/customentities/{entityType}/{identifierType}/{identifierValue}/properties | [EARLY ACCESS] GetAllCustomEntityProperties: Get all properties related to a Custom Entity instance. |
 | [**getCustomEntity**](CustomEntitiesApi.md#getCustomEntity) | **GET** /api/customentities/{entityType}/{identifierType}/{identifierValue} | GetCustomEntity: Get a Custom Entity instance. |
 | [**getCustomEntityAccessMetadataByKey**](CustomEntitiesApi.md#getCustomEntityAccessMetadataByKey) | **GET** /api/customentities/{entityType}/{identifierType}/{identifierValue}/metadata/{metadataKey} | [EARLY ACCESS] GetCustomEntityAccessMetadataByKey: Get an entry identified by a metadataKey in the Access Metadata of a Custom Entity |
 | [**getCustomEntityRelationships**](CustomEntitiesApi.md#getCustomEntityRelationships) | **GET** /api/customentities/{entityType}/{identifierType}/{identifierValue}/relationships | [EARLY ACCESS] GetCustomEntityRelationships: Get Relationships for Custom Entity |
@@ -313,6 +314,107 @@ public class CustomEntitiesApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The access metadata for the CustomEntity or any failure. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## getAllCustomEntityProperties
+
+> CustomEntityProperties getAllCustomEntityProperties(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt)
+
+[EARLY ACCESS] GetAllCustomEntityProperties: Get all properties related to a Custom Entity instance.
+
+Returns only properties that a user has permissions to read   and that are applicable to the specific entity type as per PropertyDefinition CustomEntityTypes.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.CustomEntitiesApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class CustomEntitiesApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CustomEntitiesApi apiInstance = apiFactory.build(CustomEntitiesApi.class);
+
+        CustomEntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(CustomEntitiesApi.class);
+        String entityType = "entityType_example"; // String | The type of Custom Entity.
+        String identifierType = "identifierType_example"; // String | An identifier type attached to the Custom Entity instance.
+        String identifierValue = "identifierValue_example"; // String | The identifier value.
+        String identifierScope = "identifierScope_example"; // String | The identifier scope.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The AsAt datetime at which to retrieve the Custom Entity properties.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime at which to get the Custom Entity properties. Defaults to the current LUSID system datetime if not specified.
+        try {
+            // uncomment the below to set overrides at the request level
+            // CustomEntityProperties result = apiInstance.getAllCustomEntityProperties(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt).execute(opts);
+
+            CustomEntityProperties result = apiInstance.getAllCustomEntityProperties(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CustomEntitiesApi#getAllCustomEntityProperties");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityType** | **String**| The type of Custom Entity. | |
+| **identifierType** | **String**| An identifier type attached to the Custom Entity instance. | |
+| **identifierValue** | **String**| The identifier value. | |
+| **identifierScope** | **String**| The identifier scope. | |
+| **asAt** | **OffsetDateTime**| The AsAt datetime at which to retrieve the Custom Entity properties. | [optional] |
+| **effectiveAt** | **String**| The effective datetime at which to get the Custom Entity properties. Defaults to the current LUSID system datetime if not specified. | [optional] |
+
+### Return type
+
+[**CustomEntityProperties**](CustomEntityProperties.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Get all properties for a custom entity instance. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

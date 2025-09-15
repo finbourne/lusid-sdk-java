@@ -19,6 +19,8 @@
 |**realisedTotal** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  |
 |**realisedMarket** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional] |
 |**realisedCurrency** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional] |
+|**taxLotId** | **String** | The identifier of the tax lot with which this gain or loss is associated. |  [optional] |
+|**realisedAmortisation** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional] |
 
 
 
