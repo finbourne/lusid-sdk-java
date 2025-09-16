@@ -12,7 +12,7 @@
 |**description** | **String** | A detailed description of the field and its purpose. |  [optional] |
 |**dataTypeId** | [**ResourceId**](ResourceId.md) |  |  |
 |**required** | **Boolean** | Whether this field is mandatory in the dataset. |  [optional] |
-|**usage** | **String** | The intended usage of the field (SeriesIdentifier, Value, or Metadata). |  |
+|**category** | **String** | The intended category of the field (SeriesIdentifier, Value, or Metadata). |  |
 
 
 

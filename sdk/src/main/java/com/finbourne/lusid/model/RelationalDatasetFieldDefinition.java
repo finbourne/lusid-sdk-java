@@ -71,9 +71,9 @@ public class RelationalDatasetFieldDefinition {
   @SerializedName(SERIALIZED_NAME_REQUIRED)
   private Boolean required;
 
-  public static final String SERIALIZED_NAME_USAGE = "usage";
-  @SerializedName(SERIALIZED_NAME_USAGE)
-  private String usage;
+  public static final String SERIALIZED_NAME_CATEGORY = "category";
+  @SerializedName(SERIALIZED_NAME_CATEGORY)
+  private String category;
 
   public RelationalDatasetFieldDefinition() {
   }
@@ -183,24 +183,24 @@ public class RelationalDatasetFieldDefinition {
   }
 
 
-  public RelationalDatasetFieldDefinition usage(String usage) {
+  public RelationalDatasetFieldDefinition category(String category) {
     
-    this.usage = usage;
+    this.category = category;
     return this;
   }
 
    /**
-   * The intended usage of the field (SeriesIdentifier, Value, or Metadata).
-   * @return usage
+   * The intended category of the field (SeriesIdentifier, Value, or Metadata).
+   * @return category
   **/
   @jakarta.annotation.Nonnull
-  public String getUsage() {
-    return usage;
+  public String getCategory() {
+    return category;
   }
 
 
-  public void setUsage(String usage) {
-    this.usage = usage;
+  public void setCategory(String category) {
+    this.category = category;
   }
 
 
@@ -219,7 +219,7 @@ public class RelationalDatasetFieldDefinition {
         Objects.equals(this.description, relationalDatasetFieldDefinition.description) &&
         Objects.equals(this.dataTypeId, relationalDatasetFieldDefinition.dataTypeId) &&
         Objects.equals(this.required, relationalDatasetFieldDefinition.required) &&
-        Objects.equals(this.usage, relationalDatasetFieldDefinition.usage);
+        Objects.equals(this.category, relationalDatasetFieldDefinition.category);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -228,7 +228,7 @@ public class RelationalDatasetFieldDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(fieldName, displayName, description, dataTypeId, required, usage);
+    return Objects.hash(fieldName, displayName, description, dataTypeId, required, category);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -247,7 +247,7 @@ public class RelationalDatasetFieldDefinition {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    dataTypeId: ").append(toIndentedString(dataTypeId)).append("\n");
     sb.append("    required: ").append(toIndentedString(required)).append("\n");
-    sb.append("    usage: ").append(toIndentedString(usage)).append("\n");
+    sb.append("    category: ").append(toIndentedString(category)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -275,13 +275,13 @@ public class RelationalDatasetFieldDefinition {
     openapiFields.add("description");
     openapiFields.add("dataTypeId");
     openapiFields.add("required");
-    openapiFields.add("usage");
+    openapiFields.add("category");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("fieldName");
     openapiRequiredFields.add("dataTypeId");
-    openapiRequiredFields.add("usage");
+    openapiRequiredFields.add("category");
   }
 
  /**
@@ -315,8 +315,8 @@ public class RelationalDatasetFieldDefinition {
       }
       // validate the required field `dataTypeId`
       ResourceId.validateJsonElement(jsonObj.get("dataTypeId"));
-      if (!jsonObj.get("usage").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `usage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("usage").toString()));
+      if (!jsonObj.get("category").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `category` to be a primitive type in the JSON string but got `%s`", jsonObj.get("category").toString()));
       }
   }
 
