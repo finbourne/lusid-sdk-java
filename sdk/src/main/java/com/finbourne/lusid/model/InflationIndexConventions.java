@@ -72,7 +72,7 @@ public class InflationIndexConventions {
 
   public static final String SERIALIZED_NAME_INFLATION_ROLL_DAY = "inflationRollDay";
   @SerializedName(SERIALIZED_NAME_INFLATION_ROLL_DAY)
-  private Integer inflationRollDay;
+  private Integer inflationRollDay = 1;
 
   public InflationIndexConventions() {
   }
@@ -190,6 +190,8 @@ public class InflationIndexConventions {
 
    /**
    * Day of the month that inflation rolls from one month to the next. This is optional and defaults to 1, which is  the typically value for the majority of inflation bonds (exceptions include Japan which rolls on the 10th  and some LatAm bonds which roll on the 15th).
+   * minimum: 1
+   * maximum: 28
    * @return inflationRollDay
   **/
   @jakarta.annotation.Nullable
