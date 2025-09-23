@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.CurrencyAndAmount;
 import com.finbourne.lusid.model.CustodianAccount;
+import com.finbourne.lusid.model.DataModelMembership;
 import com.finbourne.lusid.model.Economics;
 import com.finbourne.lusid.model.OtcConfirmation;
 import com.finbourne.lusid.model.PerpetualProperty;
@@ -254,6 +255,10 @@ public class OutputTransaction {
   public static final String SERIALIZED_NAME_ECONOMICS = "economics";
   @SerializedName(SERIALIZED_NAME_ECONOMICS)
   private List<Economics> economics;
+
+  public static final String SERIALIZED_NAME_DATA_MODEL_MEMBERSHIP = "dataModelMembership";
+  @SerializedName(SERIALIZED_NAME_DATA_MODEL_MEMBERSHIP)
+  private DataModelMembership dataModelMembership;
 
   public OutputTransaction() {
   }
@@ -1012,6 +1017,27 @@ public class OutputTransaction {
   }
 
 
+  public OutputTransaction dataModelMembership(DataModelMembership dataModelMembership) {
+    
+    this.dataModelMembership = dataModelMembership;
+    return this;
+  }
+
+   /**
+   * Get dataModelMembership
+   * @return dataModelMembership
+  **/
+  @jakarta.annotation.Nullable
+  public DataModelMembership getDataModelMembership() {
+    return dataModelMembership;
+  }
+
+
+  public void setDataModelMembership(DataModelMembership dataModelMembership) {
+    this.dataModelMembership = dataModelMembership;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -1055,7 +1081,8 @@ public class OutputTransaction {
         Objects.equals(this.orderId, outputTransaction.orderId) &&
         Objects.equals(this.allocationId, outputTransaction.allocationId) &&
         Objects.equals(this.accountingDate, outputTransaction.accountingDate) &&
-        Objects.equals(this.economics, outputTransaction.economics);
+        Objects.equals(this.economics, outputTransaction.economics) &&
+        Objects.equals(this.dataModelMembership, outputTransaction.dataModelMembership);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -1064,7 +1091,7 @@ public class OutputTransaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transactionId, type, description, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionAmount, transactionPrice, totalConsideration, exchangeRate, transactionToPortfolioRate, transactionCurrency, properties, counterpartyId, source, transactionStatus, entryDateTime, cancelDateTime, realisedGainLoss, holdingIds, sourceType, sourceInstrumentEventId, custodianAccount, transactionGroupId, resolvedTransactionTypeDetails, grossTransactionAmount, otcConfirmation, orderId, allocationId, accountingDate, economics);
+    return Objects.hash(transactionId, type, description, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionAmount, transactionPrice, totalConsideration, exchangeRate, transactionToPortfolioRate, transactionCurrency, properties, counterpartyId, source, transactionStatus, entryDateTime, cancelDateTime, realisedGainLoss, holdingIds, sourceType, sourceInstrumentEventId, custodianAccount, transactionGroupId, resolvedTransactionTypeDetails, grossTransactionAmount, otcConfirmation, orderId, allocationId, accountingDate, economics, dataModelMembership);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1112,6 +1139,7 @@ public class OutputTransaction {
     sb.append("    allocationId: ").append(toIndentedString(allocationId)).append("\n");
     sb.append("    accountingDate: ").append(toIndentedString(accountingDate)).append("\n");
     sb.append("    economics: ").append(toIndentedString(economics)).append("\n");
+    sb.append("    dataModelMembership: ").append(toIndentedString(dataModelMembership)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -1168,6 +1196,7 @@ public class OutputTransaction {
     openapiFields.add("allocationId");
     openapiFields.add("accountingDate");
     openapiFields.add("economics");
+    openapiFields.add("dataModelMembership");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -1294,6 +1323,10 @@ public class OutputTransaction {
             Economics.validateJsonElement(jsonArrayeconomics.get(i));
           };
         }
+      }
+      // validate the optional field `dataModelMembership`
+      if (jsonObj.get("dataModelMembership") != null && !jsonObj.get("dataModelMembership").isJsonNull()) {
+        DataModelMembership.validateJsonElement(jsonObj.get("dataModelMembership"));
       }
   }
 

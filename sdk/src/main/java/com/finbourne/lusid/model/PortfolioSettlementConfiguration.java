@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.SettlementConfigurationCategory;
+import com.finbourne.lusid.model.TransactionMatchingAlternativeId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -61,6 +62,10 @@ public class PortfolioSettlementConfiguration {
   public static final String SERIALIZED_NAME_DEFERRED_CASH_RECEIPT = "deferredCashReceipt";
   @SerializedName(SERIALIZED_NAME_DEFERRED_CASH_RECEIPT)
   private SettlementConfigurationCategory deferredCashReceipt;
+
+  public static final String SERIALIZED_NAME_TRANSACTION_MATCHING_ALTERNATIVE_ID = "transactionMatchingAlternativeId";
+  @SerializedName(SERIALIZED_NAME_TRANSACTION_MATCHING_ALTERNATIVE_ID)
+  private TransactionMatchingAlternativeId transactionMatchingAlternativeId;
 
   public PortfolioSettlementConfiguration() {
   }
@@ -128,6 +133,27 @@ public class PortfolioSettlementConfiguration {
   }
 
 
+  public PortfolioSettlementConfiguration transactionMatchingAlternativeId(TransactionMatchingAlternativeId transactionMatchingAlternativeId) {
+    
+    this.transactionMatchingAlternativeId = transactionMatchingAlternativeId;
+    return this;
+  }
+
+   /**
+   * Get transactionMatchingAlternativeId
+   * @return transactionMatchingAlternativeId
+  **/
+  @jakarta.annotation.Nullable
+  public TransactionMatchingAlternativeId getTransactionMatchingAlternativeId() {
+    return transactionMatchingAlternativeId;
+  }
+
+
+  public void setTransactionMatchingAlternativeId(TransactionMatchingAlternativeId transactionMatchingAlternativeId) {
+    this.transactionMatchingAlternativeId = transactionMatchingAlternativeId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -140,12 +166,13 @@ public class PortfolioSettlementConfiguration {
     PortfolioSettlementConfiguration portfolioSettlementConfiguration = (PortfolioSettlementConfiguration) o;
     return Objects.equals(this.stockSettlement, portfolioSettlementConfiguration.stockSettlement) &&
         Objects.equals(this.cashSettlement, portfolioSettlementConfiguration.cashSettlement) &&
-        Objects.equals(this.deferredCashReceipt, portfolioSettlementConfiguration.deferredCashReceipt);
+        Objects.equals(this.deferredCashReceipt, portfolioSettlementConfiguration.deferredCashReceipt) &&
+        Objects.equals(this.transactionMatchingAlternativeId, portfolioSettlementConfiguration.transactionMatchingAlternativeId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(stockSettlement, cashSettlement, deferredCashReceipt);
+    return Objects.hash(stockSettlement, cashSettlement, deferredCashReceipt, transactionMatchingAlternativeId);
   }
 
   @Override
@@ -155,6 +182,7 @@ public class PortfolioSettlementConfiguration {
     sb.append("    stockSettlement: ").append(toIndentedString(stockSettlement)).append("\n");
     sb.append("    cashSettlement: ").append(toIndentedString(cashSettlement)).append("\n");
     sb.append("    deferredCashReceipt: ").append(toIndentedString(deferredCashReceipt)).append("\n");
+    sb.append("    transactionMatchingAlternativeId: ").append(toIndentedString(transactionMatchingAlternativeId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -180,6 +208,7 @@ public class PortfolioSettlementConfiguration {
     openapiFields.add("stockSettlement");
     openapiFields.add("cashSettlement");
     openapiFields.add("deferredCashReceipt");
+    openapiFields.add("transactionMatchingAlternativeId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -209,6 +238,10 @@ public class PortfolioSettlementConfiguration {
       // validate the optional field `deferredCashReceipt`
       if (jsonObj.get("deferredCashReceipt") != null && !jsonObj.get("deferredCashReceipt").isJsonNull()) {
         SettlementConfigurationCategory.validateJsonElement(jsonObj.get("deferredCashReceipt"));
+      }
+      // validate the optional field `transactionMatchingAlternativeId`
+      if (jsonObj.get("transactionMatchingAlternativeId") != null && !jsonObj.get("transactionMatchingAlternativeId").isJsonNull()) {
+        TransactionMatchingAlternativeId.validateJsonElement(jsonObj.get("transactionMatchingAlternativeId"));
       }
   }
 

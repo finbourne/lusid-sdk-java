@@ -10,6 +10,7 @@
 |**stockSettlement** | [**SettlementConfigurationCategory**](SettlementConfigurationCategory.md) |  |  [optional] |
 |**cashSettlement** | [**SettlementConfigurationCategory**](SettlementConfigurationCategory.md) |  |  [optional] |
 |**deferredCashReceipt** | [**SettlementConfigurationCategory**](SettlementConfigurationCategory.md) |  |  [optional] |
+|**transactionMatchingAlternativeId** | [**TransactionMatchingAlternativeId**](TransactionMatchingAlternativeId.md) |  |  [optional] |
 
 
 

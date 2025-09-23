@@ -42,6 +42,7 @@ A list of output transactions.
 |**allocationId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 |**accountingDate** | **OffsetDateTime** | The accounting date of the transaction. |  [optional] |
 |**economics** | [**List&lt;Economics&gt;**](Economics.md) | Set of economic data related with the transaction impacts. |  [optional] |
+|**dataModelMembership** | [**DataModelMembership**](DataModelMembership.md) |  |  [optional] |
 
 
 

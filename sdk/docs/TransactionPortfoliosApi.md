@@ -9,6 +9,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**batchCreateTradeTickets**](TransactionPortfoliosApi.md#batchCreateTradeTickets) | **POST** /api/transactionportfolios/{scope}/{code}/$batchtradetickets | BatchCreateTradeTickets: Batch Create Trade Tickets |
 | [**batchSetHoldings**](TransactionPortfoliosApi.md#batchSetHoldings) | **POST** /api/transactionportfolios/{scope}/{code}/holdings/$batchSet | BatchSetHoldings: Batch set holdings |
 | [**batchUpsertTransactions**](TransactionPortfoliosApi.md#batchUpsertTransactions) | **POST** /api/transactionportfolios/{scope}/{code}/transactions/$batchUpsert | BatchUpsertTransactions: Batch upsert transactions |
+| [**buildSettlementInstructions**](TransactionPortfoliosApi.md#buildSettlementInstructions) | **POST** /api/transactionportfolios/{scope}/{code}/settlementinstructions/$build | [EARLY ACCESS] BuildSettlementInstructions: Build Settlement Instructions |
 | [**buildTransactions**](TransactionPortfoliosApi.md#buildTransactions) | **POST** /api/transactionportfolios/{scope}/{code}/transactions/$build | BuildTransactions: Build transactions |
 | [**cancelAdjustHoldings**](TransactionPortfoliosApi.md#cancelAdjustHoldings) | **DELETE** /api/transactionportfolios/{scope}/{code}/holdings | CancelAdjustHoldings: Cancel adjust holdings |
 | [**cancelSingleAdjustHolding**](TransactionPortfoliosApi.md#cancelSingleAdjustHolding) | **POST** /api/transactionportfolios/{scope}/{code}/holdings/$cancelAdjustment | CancelSingleAdjustHolding: Cancel single holding adjustment. |
@@ -540,6 +541,103 @@ public class TransactionPortfoliosApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The successfully upserted transaction requests along with any failures |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## buildSettlementInstructions
+
+> VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery buildSettlementInstructions(scope, code, settlementInstructionQuery, asAt)
+
+[EARLY ACCESS] BuildSettlementInstructions: Build Settlement Instructions
+
+Builds and returns all settlement instructions that have been loaded against this portfolio.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.TransactionPortfoliosApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class TransactionPortfoliosApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransactionPortfoliosApi apiInstance = apiFactory.build(TransactionPortfoliosApi.class);
+
+        TransactionPortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionPortfoliosApi.class);
+        String scope = "scope_example"; // String | The scope of the transaction portfolio.
+        String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio.
+        SettlementInstructionQuery settlementInstructionQuery = new SettlementInstructionQuery(); // SettlementInstructionQuery | The queryParameters which control how the settlement instructions are built and returned.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to build the settlement instructions. Defaults to return the latest   version of each transaction if not specified.
+        try {
+            // uncomment the below to set overrides at the request level
+            // VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery result = apiInstance.buildSettlementInstructions(scope, code, settlementInstructionQuery, asAt).execute(opts);
+
+            VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery result = apiInstance.buildSettlementInstructions(scope, code, settlementInstructionQuery, asAt).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TransactionPortfoliosApi#buildSettlementInstructions");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the transaction portfolio. | |
+| **code** | **String**| The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. | |
+| **settlementInstructionQuery** | [**SettlementInstructionQuery**](SettlementInstructionQuery.md)| The queryParameters which control how the settlement instructions are built and returned. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to build the settlement instructions. Defaults to return the latest   version of each transaction if not specified. | [optional] |
+
+### Return type
+
+[**VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery**](VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested settlement instructions from the specified transaction portfolio |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -3622,7 +3720,7 @@ public class TransactionPortfoliosApiExample {
 
 ## previewTransaction
 
-> ResourceListOfOutputTransaction previewTransaction(scope, code, transactionRequest, propertyKeys, showCancelledTransactions, preserveProperties)
+> ResourceListOfOutputTransaction previewTransaction(scope, code, transactionRequest, propertyKeys, showCancelledTransactions, preserveProperties, dataModelScope, dataModelCode)
 
 PreviewTransaction: Preview a transaction
 
@@ -3673,11 +3771,13 @@ public class TransactionPortfoliosApiExample {
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\" or \"Transaction\" domain to decorate onto   the transactions. These take the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\" or   \"Transaction/strategy/quantsignal\".
         Boolean showCancelledTransactions = true; // Boolean | Option to specify whether to include previous versions of an amended transaction in the response.   Defaults to False if not specified.
         Boolean preserveProperties = true; // Boolean | If the preview transaction is an amendment to an existing transaction, then setting this to true will carry forward any unmodified properties from the earlier version.
+        String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Custom Data Model to use
+        String dataModelCode = "dataModelCode_example"; // String | The optional code of a Custom Data Model to use
         try {
             // uncomment the below to set overrides at the request level
-            // ResourceListOfOutputTransaction result = apiInstance.previewTransaction(scope, code, transactionRequest, propertyKeys, showCancelledTransactions, preserveProperties).execute(opts);
+            // ResourceListOfOutputTransaction result = apiInstance.previewTransaction(scope, code, transactionRequest, propertyKeys, showCancelledTransactions, preserveProperties, dataModelScope, dataModelCode).execute(opts);
 
-            ResourceListOfOutputTransaction result = apiInstance.previewTransaction(scope, code, transactionRequest, propertyKeys, showCancelledTransactions, preserveProperties).execute();
+            ResourceListOfOutputTransaction result = apiInstance.previewTransaction(scope, code, transactionRequest, propertyKeys, showCancelledTransactions, preserveProperties, dataModelScope, dataModelCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TransactionPortfoliosApi#previewTransaction");
@@ -3700,6 +3800,8 @@ public class TransactionPortfoliosApiExample {
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Instrument\&quot; or \&quot;Transaction\&quot; domain to decorate onto   the transactions. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or   \&quot;Transaction/strategy/quantsignal\&quot;. | [optional] |
 | **showCancelledTransactions** | **Boolean**| Option to specify whether to include previous versions of an amended transaction in the response.   Defaults to False if not specified. | [optional] |
 | **preserveProperties** | **Boolean**| If the preview transaction is an amendment to an existing transaction, then setting this to true will carry forward any unmodified properties from the earlier version. | [optional] |
+| **dataModelScope** | **String**| The optional scope of a Custom Data Model to use | [optional] |
+| **dataModelCode** | **String**| The optional code of a Custom Data Model to use | [optional] |
 
 ### Return type
 

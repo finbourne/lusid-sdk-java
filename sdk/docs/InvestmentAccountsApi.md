@@ -4,10 +4,108 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**deleteInvestmentAccount**](InvestmentAccountsApi.md#deleteInvestmentAccount) | **DELETE** /api/investmentaccounts/{identifierType}/{identifierValue} | [EXPERIMENTAL] DeleteInvestmentAccount: Delete Investment Account |
 | [**getInvestmentAccount**](InvestmentAccountsApi.md#getInvestmentAccount) | **GET** /api/investmentaccounts/{identifierType}/{identifierValue} | [EXPERIMENTAL] GetInvestmentAccount: Get Investment Account |
 | [**listAllInvestmentAccounts**](InvestmentAccountsApi.md#listAllInvestmentAccounts) | **GET** /api/investmentaccounts | [EXPERIMENTAL] ListAllInvestmentAccounts: List Investment Accounts |
 | [**upsertInvestmentAccounts**](InvestmentAccountsApi.md#upsertInvestmentAccounts) | **POST** /api/investmentaccounts/$batchUpsert | [EXPERIMENTAL] UpsertInvestmentAccounts: Upsert Investment Accounts |
 
+
+
+## deleteInvestmentAccount
+
+> DeletedEntityResponse deleteInvestmentAccount(identifierType, identifierValue, scope, identifierScope)
+
+[EXPERIMENTAL] DeleteInvestmentAccount: Delete Investment Account
+
+Delete an investment account. Deletion will be valid from the investment account&#39;s creation datetime.  This means that the investment account will no longer exist at any effective datetime from the asAt datetime of deletion.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.InvestmentAccountsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class InvestmentAccountsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // InvestmentAccountsApi apiInstance = apiFactory.build(InvestmentAccountsApi.class);
+
+        InvestmentAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(InvestmentAccountsApi.class);
+        String identifierType = "identifierType_example"; // String | Code of the investment account identifier type.
+        String identifierValue = "identifierValue_example"; // String | Code of the investment account under specified identifier type's scope and code.
+        String scope = "scope_example"; // String | The scope of the investment account entity.
+        String identifierScope = "identifierScope_example"; // String | Scope of the investment account identifier type.
+        try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteInvestmentAccount(identifierType, identifierValue, scope, identifierScope).execute(opts);
+
+            DeletedEntityResponse result = apiInstance.deleteInvestmentAccount(identifierType, identifierValue, scope, identifierScope).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling InvestmentAccountsApi#deleteInvestmentAccount");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **identifierType** | **String**| Code of the investment account identifier type. | |
+| **identifierValue** | **String**| Code of the investment account under specified identifier type&#39;s scope and code. | |
+| **scope** | **String**| The scope of the investment account entity. | |
+| **identifierScope** | **String**| Scope of the investment account identifier type. | |
+
+### Return type
+
+[**DeletedEntityResponse**](DeletedEntityResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The response from deleting investment account. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 
 ## getInvestmentAccount

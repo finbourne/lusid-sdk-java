@@ -15,6 +15,9 @@ LUSID representation of an Interest Rate Swaption.
 |**swap** | [**InterestRateSwap**](InterestRateSwap.md) |  |  [optional] |
 |**timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  |  [optional] |
 |**underlying** | [**LusidInstrument**](LusidInstrument.md) |  |  [optional] |
+|**deliveryDays** | **Integer** | Number of business days between exercise date and settlement of the option payoff or underlying.     Defaults to 0. |  [optional] |
+|**businessDayConvention** | **String** | Business day convention for option exercise date to settlement date calculation.  Supported string (enumeration) values are: [NoAdjustment, Previous, P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing, Nearest].     Defaults to \&quot;F\&quot;. |  [optional] |
+|**settlementCalendars** | **List&lt;String&gt;** | Holiday calendars for option exercise date to settlement date calculation. |  [optional] |
 
 
 

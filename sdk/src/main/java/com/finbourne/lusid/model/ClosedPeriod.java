@@ -96,6 +96,10 @@ public class ClosedPeriod {
   @SerializedName(SERIALIZED_NAME_POST_CLOSE_ACTIVITIES)
   private List<PostCloseActivity> postCloseActivities;
 
+  public static final String SERIALIZED_NAME_HOLDINGS_AS_AT_CLOSED_OVERRIDE = "holdingsAsAtClosedOverride";
+  @SerializedName(SERIALIZED_NAME_HOLDINGS_AS_AT_CLOSED_OVERRIDE)
+  private OffsetDateTime holdingsAsAtClosedOverride;
+
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
   private URI href;
@@ -312,6 +316,27 @@ public class ClosedPeriod {
   }
 
 
+  public ClosedPeriod holdingsAsAtClosedOverride(OffsetDateTime holdingsAsAtClosedOverride) {
+    
+    this.holdingsAsAtClosedOverride = holdingsAsAtClosedOverride;
+    return this;
+  }
+
+   /**
+   * The optional AsAtClosed Override to use for building holdings in the Closed Period.If not specified, the AsAtClosed on the Closed Period will be used.
+   * @return holdingsAsAtClosedOverride
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getHoldingsAsAtClosedOverride() {
+    return holdingsAsAtClosedOverride;
+  }
+
+
+  public void setHoldingsAsAtClosedOverride(OffsetDateTime holdingsAsAtClosedOverride) {
+    this.holdingsAsAtClosedOverride = holdingsAsAtClosedOverride;
+  }
+
+
   public ClosedPeriod href(URI href) {
     
     this.href = href;
@@ -381,6 +406,7 @@ public class ClosedPeriod {
         Objects.equals(this.properties, closedPeriod.properties) &&
         Objects.equals(this.version, closedPeriod.version) &&
         Objects.equals(this.postCloseActivities, closedPeriod.postCloseActivities) &&
+        Objects.equals(this.holdingsAsAtClosedOverride, closedPeriod.holdingsAsAtClosedOverride) &&
         Objects.equals(this.href, closedPeriod.href) &&
         Objects.equals(this.links, closedPeriod.links);
   }
@@ -391,7 +417,7 @@ public class ClosedPeriod {
 
   @Override
   public int hashCode() {
-    return Objects.hash(closedPeriodId, displayName, description, effectiveStart, effectiveEnd, asAtClosed, properties, version, postCloseActivities, href, links);
+    return Objects.hash(closedPeriodId, displayName, description, effectiveStart, effectiveEnd, asAtClosed, properties, version, postCloseActivities, holdingsAsAtClosedOverride, href, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -414,6 +440,7 @@ public class ClosedPeriod {
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    postCloseActivities: ").append(toIndentedString(postCloseActivities)).append("\n");
+    sb.append("    holdingsAsAtClosedOverride: ").append(toIndentedString(holdingsAsAtClosedOverride)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
@@ -447,6 +474,7 @@ public class ClosedPeriod {
     openapiFields.add("properties");
     openapiFields.add("version");
     openapiFields.add("postCloseActivities");
+    openapiFields.add("holdingsAsAtClosedOverride");
     openapiFields.add("href");
     openapiFields.add("links");
 

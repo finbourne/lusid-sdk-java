@@ -13,6 +13,7 @@
 |**asAtClosed** | **OffsetDateTime** | The asAt closed datetime for the Closed Period |  [optional] |
 |**displayName** | **String** | The name of the Closed Period. |  [optional] |
 |**description** | **String** | A description for the Closed Period. |  [optional] |
+|**holdingsAsAtClosedOverride** | **OffsetDateTime** | The optional AsAtClosed Override to use for building holdings in the Closed Period.If not specified, the AsAtClosed on the Closed Period will be used. |  [optional] |
 
 
 
