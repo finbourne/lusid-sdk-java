@@ -1,33 +1,24 @@
-
-
-# Schedule
-
+# com.finbourne.lusid.model.Schedule
 Base class for representing schedules in LUSID.  This base class should not be directly instantiated; each supported ScheduleType has a corresponding inherited class.
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**scheduleType** | [**ScheduleTypeEnum**](#ScheduleTypeEnum) | The available values are: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, Invalid |  |
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**scheduleType** | **String** | The available values are: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, FxLinkedNotionalSchedule, BondConversionSchedule, Invalid | [default to String]
+
+```java
+import com.finbourne.lusid.model.Schedule;
+import java.util.*;
+import java.lang.System;
+import java.net.URI;
+
+String ScheduleType = "example ScheduleType";
 
 
-
-## Enum: ScheduleTypeEnum
-
-| Name | Value |
-|---- | -----|
-| FIXEDSCHEDULE | &quot;FixedSchedule&quot; |
-| FLOATSCHEDULE | &quot;FloatSchedule&quot; |
-| OPTIONALITYSCHEDULE | &quot;OptionalitySchedule&quot; |
-| STEPSCHEDULE | &quot;StepSchedule&quot; |
-| EXERCISE | &quot;Exercise&quot; |
-| FXRATESCHEDULE | &quot;FxRateSchedule&quot; |
-| FXLINKEDNOTIONALSCHEDULE | &quot;FxLinkedNotionalSchedule&quot; |
-| BONDCONVERSIONSCHEDULE | &quot;BondConversionSchedule&quot; |
-| INVALID | &quot;Invalid&quot; |
-
+Schedule scheduleInstance = new Schedule()
+    .ScheduleType(ScheduleType);
+```
 
 
 [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
-
-

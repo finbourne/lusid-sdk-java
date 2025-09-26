@@ -4,10 +4,11 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**addDiaryEntry**](AborApi.md#addDiaryEntry) | **POST** /api/abor/{scope}/{code}/accountingdiary | [EXPERIMENTAL] AddDiaryEntry: Add a diary entry to the specified Abor. |
+| [**addDiaryEntry**](AborApi.md#addDiaryEntry) | **POST** /api/abor/{scope}/{code}/accountingdiary | [EXPERIMENTAL] AddDiaryEntry: Add a diary entry to the specified Abor. This would be type &#39;Other&#39;. |
 | [**closePeriod**](AborApi.md#closePeriod) | **POST** /api/abor/{scope}/{code}/accountingdiary/$closeperiod | [EXPERIMENTAL] ClosePeriod: Closes or locks the current period for the given Abor. |
 | [**createAbor**](AborApi.md#createAbor) | **POST** /api/abor/{scope} | [EXPERIMENTAL] CreateAbor: Create an Abor. |
 | [**deleteAbor**](AborApi.md#deleteAbor) | **DELETE** /api/abor/{scope}/{code} | [EXPERIMENTAL] DeleteAbor: Delete an Abor. |
+| [**deleteDiaryEntry**](AborApi.md#deleteDiaryEntry) | **DELETE** /api/abor/{scope}/{code}/accountingdiary/{diaryEntryCode} | [EXPERIMENTAL] DeleteDiaryEntry: Delete a diary entry type &#39;Other&#39; from the specified Abor. |
 | [**getAbor**](AborApi.md#getAbor) | **GET** /api/abor/{scope}/{code} | [EXPERIMENTAL] GetAbor: Get Abor. |
 | [**getAborProperties**](AborApi.md#getAborProperties) | **GET** /api/abor/{scope}/{code}/properties | [EXPERIMENTAL] GetAborProperties: Get Abor properties |
 | [**getJournalEntryLines**](AborApi.md#getJournalEntryLines) | **POST** /api/abor/{scope}/{code}/journalentrylines/$query | [EXPERIMENTAL] GetJournalEntryLines: Get the Journal Entry lines for the given Abor. |
@@ -25,7 +26,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 > DiaryEntry addDiaryEntry(scope, code, diaryEntryRequest)
 
-[EXPERIMENTAL] AddDiaryEntry: Add a diary entry to the specified Abor.
+[EXPERIMENTAL] AddDiaryEntry: Add a diary entry to the specified Abor. This would be type &#39;Other&#39;.
 
 Adds a new diary entry to the specified Abor
 
@@ -391,6 +392,101 @@ public class AborApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The datetime that the Abor was deleted |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## deleteDiaryEntry
+
+> DeletedEntityResponse deleteDiaryEntry(scope, code, diaryEntryCode)
+
+[EXPERIMENTAL] DeleteDiaryEntry: Delete a diary entry type &#39;Other&#39; from the specified Abor.
+
+Delete a diary entry type &#39;Other&#39; from the specified Abor.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.AborApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class AborApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AborApi apiInstance = apiFactory.build(AborApi.class);
+
+        AborApi apiInstance = ApiFactoryBuilder.build(fileName).build(AborApi.class);
+        String scope = "scope_example"; // String | The scope of the Abor.
+        String code = "code_example"; // String | The code of the Abor.
+        String diaryEntryCode = "diaryEntryCode_example"; // String | The diary entry code to be deleted.
+        try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteDiaryEntry(scope, code, diaryEntryCode).execute(opts);
+
+            DeletedEntityResponse result = apiInstance.deleteDiaryEntry(scope, code, diaryEntryCode).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AborApi#deleteDiaryEntry");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Abor. | |
+| **code** | **String**| The code of the Abor. | |
+| **diaryEntryCode** | **String**| The diary entry code to be deleted. | |
+
+### Return type
+
+[**DeletedEntityResponse**](DeletedEntityResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The datetime that the Cleardown Module was deleted. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

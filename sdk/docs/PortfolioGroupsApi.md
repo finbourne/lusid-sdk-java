@@ -2025,7 +2025,7 @@ public class PortfolioGroupsApiExample {
 
 ## getTransactionsForPortfolioGroup
 
-> VersionedResourceListOfTransaction getTransactionsForPortfolioGroup(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy)
+> VersionedResourceListOfTransaction getTransactionsForPortfolioGroup(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy, dataModelScope, dataModelCode)
 
 GetTransactionsForPortfolioGroup: Get transactions for transaction portfolios in a portfolio group
 
@@ -2081,11 +2081,13 @@ public class PortfolioGroupsApiExample {
         String page = "page_example"; // String | The pagination token to use to continue listing transactions from a previous call to GetTransactions.
         Boolean showCancelledTransactions = true; // Boolean | Option to specify whether or not to include cancelled transactions,   including previous versions of transactions which have since been amended.   Defaults to False if not specified.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\".
+        String dataModelScope = "dataModelScope_example"; // String | The optional scope of a Custom Data Model to use
+        String dataModelCode = "dataModelCode_example"; // String | The optional code of a Custom Data Model to use
         try {
             // uncomment the below to set overrides at the request level
-            // VersionedResourceListOfTransaction result = apiInstance.getTransactionsForPortfolioGroup(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy).execute(opts);
+            // VersionedResourceListOfTransaction result = apiInstance.getTransactionsForPortfolioGroup(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy, dataModelScope, dataModelCode).execute(opts);
 
-            VersionedResourceListOfTransaction result = apiInstance.getTransactionsForPortfolioGroup(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy).execute();
+            VersionedResourceListOfTransaction result = apiInstance.getTransactionsForPortfolioGroup(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy, dataModelScope, dataModelCode).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling PortfolioGroupsApi#getTransactionsForPortfolioGroup");
@@ -2113,6 +2115,8 @@ public class PortfolioGroupsApiExample {
 | **page** | **String**| The pagination token to use to continue listing transactions from a previous call to GetTransactions. | [optional] |
 | **showCancelledTransactions** | **Boolean**| Option to specify whether or not to include cancelled transactions,   including previous versions of transactions which have since been amended.   Defaults to False if not specified. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. | [optional] |
+| **dataModelScope** | **String**| The optional scope of a Custom Data Model to use | [optional] |
+| **dataModelCode** | **String**| The optional code of a Custom Data Model to use | [optional] |
 
 ### Return type
 

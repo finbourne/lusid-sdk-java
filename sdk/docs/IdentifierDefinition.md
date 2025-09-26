@@ -1,124 +1,53 @@
-
-
-# IdentifierDefinition
-
+# com.finbourne.lusid.model.IdentifierDefinition
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**href** | **URI** | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |  [optional] |
-|**domain** | [**DomainEnum**](#DomainEnum) | The type of entity to which the identifier can be attached. Supported values are \&quot;Instrument\&quot;, \&quot;Person\&quot;, \&quot;LegalEntity\&quot;and \&quot;CustomEntity\&quot;. The available values are: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, AddressKeyDefinition, AmortisationRuleSet, AnalyticsSetInventory, AtomUnitResult, CleardownModule, ComplexMarketData, ComplianceRunSummary, ComplianceRule, ComplianceRunInfo, CorporateActionSource, CounterpartyAgreement, CustomEntityDefinition, DataType, Dialect, EventHandler, GeneralLedgerProfile, PostingModule, Quote, RecipeComposer, ReconciliationRunBreak, ReferenceList, RelationDefinition, ReturnBlockIndex, SRSDocument, SRSIndex, TransactionTemplate, TransactionTemplateScope, TransactionType, TransactionTypeConfig, TranslationScript, TaskDefinition, TaskInstance, Worker, StagingRuleSet, IdentifierDefinition |  |
-|**identifierScope** | **String** | The scope that the identifier definition exists in. |  |
-|**identifierType** | **String** | What the identifier represents. Together with \&quot;domain\&quot; and \&quot;identifierScope\&quot; this uniquely identifies the identifier definition. |  |
-|**lifeTime** | [**LifeTimeEnum**](#LifeTimeEnum) | Describes whether an identifier value is associated with an entity for all effective dates (“Perpetual”) or applies within a specified effective date range (“TimeVariant”). The available values are: Perpetual, TimeVariant |  |
-|**hierarchyUsage** | **String** | Nullable, defaults to \&quot;MasterIdentifier\&quot; if no value provided. \&quot;MasterIdentifier\&quot; (aka unique) An entity can have one value for this identifier definition on a given effective date. A value for this identifier definition can only be associated with one entity (in a given scope) on a given effective date. \&quot;ParentIdentifier\&quot; (aka non-unique) An entity can have one value for this identifier definition on a given effective date. A value for this identifier definition can be associated with many entities (in a given scope) on a given effective date. |  [optional] |
-|**hierarchyLevel** | **String** | Optional metadata associated with the identifier definition. |  [optional] |
-|**displayName** | **String** | A display name for the identifier. E.g. Figi. |  [optional] |
-|**description** | **String** | An optional description for the identifier. |  [optional] |
-|**properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the identifier definition. |  [optional] |
-|**version** | [**Version**](Version.md) |  |  [optional] |
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**href** | [**URI**](URI.md) | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. | [optional] [default to URI]
+**domain** | **String** | The type of entity to which the identifier can be attached. Supported values are \&quot;Instrument\&quot;, \&quot;Person\&quot;, \&quot;LegalEntity\&quot;and \&quot;CustomEntity\&quot;. The available values are: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar, LegalEntity, InvestorRecord, InvestmentAccount, Placement, Execution, Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, CheckDefinition, Abor, AborConfiguration, Fund, FundConfiguration, Fee, Reconciliation, PropertyDefinition, Compliance, DiaryEntry, Leg, DerivedValuation, Timeline, ClosedPeriod, AddressKeyDefinition, AmortisationRuleSet, AnalyticsSetInventory, AtomUnitResult, CleardownModule, ComplexMarketData, ComplianceRunSummary, ComplianceRule, ComplianceRunInfo, CorporateActionSource, CounterpartyAgreement, CustomEntityDefinition, DataType, Dialect, EventHandler, GeneralLedgerProfile, PostingModule, Quote, RecipeComposer, ReconciliationRunBreak, ReferenceList, RelationDefinition, ReturnBlockIndex, SRSDocument, SRSIndex, TransactionTemplate, TransactionTemplateScope, TransactionType, TransactionTypeConfig, TranslationScript, TaskDefinition, TaskInstance, Worker, StagingRuleSet, IdentifierDefinition | [default to String]
+**identifierScope** | **String** | The scope that the identifier definition exists in. | [default to String]
+**identifierType** | **String** | What the identifier represents. Together with \&quot;domain\&quot; and \&quot;identifierScope\&quot; this uniquely identifies the identifier definition. | [default to String]
+**lifeTime** | **String** | Describes whether an identifier value is associated with an entity for all effective dates (“Perpetual”) or applies within a specified effective date range (“TimeVariant”). The available values are: Perpetual, TimeVariant | [default to String]
+**hierarchyUsage** | **String** | Nullable, defaults to \&quot;MasterIdentifier\&quot; if no value provided. \&quot;MasterIdentifier\&quot; (aka unique) An entity can have one value for this identifier definition on a given effective date. A value for this identifier definition can only be associated with one entity (in a given scope) on a given effective date. \&quot;ParentIdentifier\&quot; (aka non-unique) An entity can have one value for this identifier definition on a given effective date. A value for this identifier definition can be associated with many entities (in a given scope) on a given effective date. | [optional] [default to String]
+**hierarchyLevel** | **String** | Optional metadata associated with the identifier definition. | [optional] [default to String]
+**displayName** | **String** | A display name for the identifier. E.g. Figi. | [optional] [default to String]
+**description** | **String** | An optional description for the identifier. | [optional] [default to String]
+**properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the identifier definition. | [optional] [default to Map<String, Property>]
+**version** | [**Version**](Version.md) |  | [optional] [default to Version]
+
+```java
+import com.finbourne.lusid.model.IdentifierDefinition;
+import java.util.*;
+import java.lang.System;
+import java.net.URI;
+
+@jakarta.annotation.Nullable URI Href = URI.create("http://example.com/Href");
+String Domain = "example Domain";
+String IdentifierScope = "example IdentifierScope";
+String IdentifierType = "example IdentifierType";
+String LifeTime = "example LifeTime";
+@jakarta.annotation.Nullable String HierarchyUsage = "example HierarchyUsage";
+@jakarta.annotation.Nullable String HierarchyLevel = "example HierarchyLevel";
+@jakarta.annotation.Nullable String DisplayName = "example DisplayName";
+@jakarta.annotation.Nullable String Description = "example Description";
+@jakarta.annotation.Nullable Map<String, Property> Properties = new Map<String, Property>();
+Version Version = new Version();
 
 
-
-## Enum: DomainEnum
-
-| Name | Value |
-|---- | -----|
-| NOTDEFINED | &quot;NotDefined&quot; |
-| TRANSACTION | &quot;Transaction&quot; |
-| PORTFOLIO | &quot;Portfolio&quot; |
-| HOLDING | &quot;Holding&quot; |
-| REFERENCEHOLDING | &quot;ReferenceHolding&quot; |
-| TRANSACTIONCONFIGURATION | &quot;TransactionConfiguration&quot; |
-| INSTRUMENT | &quot;Instrument&quot; |
-| CUTLABELDEFINITION | &quot;CutLabelDefinition&quot; |
-| ANALYTIC | &quot;Analytic&quot; |
-| PORTFOLIOGROUP | &quot;PortfolioGroup&quot; |
-| PERSON | &quot;Person&quot; |
-| ACCESSMETADATA | &quot;AccessMetadata&quot; |
-| ORDER | &quot;Order&quot; |
-| UNITRESULT | &quot;UnitResult&quot; |
-| MARKETDATA | &quot;MarketData&quot; |
-| CONFIGURATIONRECIPE | &quot;ConfigurationRecipe&quot; |
-| ALLOCATION | &quot;Allocation&quot; |
-| CALENDAR | &quot;Calendar&quot; |
-| LEGALENTITY | &quot;LegalEntity&quot; |
-| INVESTORRECORD | &quot;InvestorRecord&quot; |
-| INVESTMENTACCOUNT | &quot;InvestmentAccount&quot; |
-| PLACEMENT | &quot;Placement&quot; |
-| EXECUTION | &quot;Execution&quot; |
-| BLOCK | &quot;Block&quot; |
-| PARTICIPATION | &quot;Participation&quot; |
-| PACKAGE | &quot;Package&quot; |
-| ORDERINSTRUCTION | &quot;OrderInstruction&quot; |
-| NEXTBESTACTION | &quot;NextBestAction&quot; |
-| CUSTOMENTITY | &quot;CustomEntity&quot; |
-| INSTRUMENTEVENT | &quot;InstrumentEvent&quot; |
-| ACCOUNT | &quot;Account&quot; |
-| CHARTOFACCOUNTS | &quot;ChartOfAccounts&quot; |
-| CUSTODIANACCOUNT | &quot;CustodianAccount&quot; |
-| CHECKDEFINITION | &quot;CheckDefinition&quot; |
-| ABOR | &quot;Abor&quot; |
-| ABORCONFIGURATION | &quot;AborConfiguration&quot; |
-| FUND | &quot;Fund&quot; |
-| FUNDCONFIGURATION | &quot;FundConfiguration&quot; |
-| FEE | &quot;Fee&quot; |
-| RECONCILIATION | &quot;Reconciliation&quot; |
-| PROPERTYDEFINITION | &quot;PropertyDefinition&quot; |
-| COMPLIANCE | &quot;Compliance&quot; |
-| DIARYENTRY | &quot;DiaryEntry&quot; |
-| LEG | &quot;Leg&quot; |
-| DERIVEDVALUATION | &quot;DerivedValuation&quot; |
-| TIMELINE | &quot;Timeline&quot; |
-| CLOSEDPERIOD | &quot;ClosedPeriod&quot; |
-| ADDRESSKEYDEFINITION | &quot;AddressKeyDefinition&quot; |
-| AMORTISATIONRULESET | &quot;AmortisationRuleSet&quot; |
-| ANALYTICSSETINVENTORY | &quot;AnalyticsSetInventory&quot; |
-| ATOMUNITRESULT | &quot;AtomUnitResult&quot; |
-| CLEARDOWNMODULE | &quot;CleardownModule&quot; |
-| COMPLEXMARKETDATA | &quot;ComplexMarketData&quot; |
-| COMPLIANCERUNSUMMARY | &quot;ComplianceRunSummary&quot; |
-| COMPLIANCERULE | &quot;ComplianceRule&quot; |
-| COMPLIANCERUNINFO | &quot;ComplianceRunInfo&quot; |
-| CORPORATEACTIONSOURCE | &quot;CorporateActionSource&quot; |
-| COUNTERPARTYAGREEMENT | &quot;CounterpartyAgreement&quot; |
-| CUSTOMENTITYDEFINITION | &quot;CustomEntityDefinition&quot; |
-| DATATYPE | &quot;DataType&quot; |
-| DIALECT | &quot;Dialect&quot; |
-| EVENTHANDLER | &quot;EventHandler&quot; |
-| GENERALLEDGERPROFILE | &quot;GeneralLedgerProfile&quot; |
-| POSTINGMODULE | &quot;PostingModule&quot; |
-| QUOTE | &quot;Quote&quot; |
-| RECIPECOMPOSER | &quot;RecipeComposer&quot; |
-| RECONCILIATIONRUNBREAK | &quot;ReconciliationRunBreak&quot; |
-| REFERENCELIST | &quot;ReferenceList&quot; |
-| RELATIONDEFINITION | &quot;RelationDefinition&quot; |
-| RETURNBLOCKINDEX | &quot;ReturnBlockIndex&quot; |
-| SRSDOCUMENT | &quot;SRSDocument&quot; |
-| SRSINDEX | &quot;SRSIndex&quot; |
-| TRANSACTIONTEMPLATE | &quot;TransactionTemplate&quot; |
-| TRANSACTIONTEMPLATESCOPE | &quot;TransactionTemplateScope&quot; |
-| TRANSACTIONTYPE | &quot;TransactionType&quot; |
-| TRANSACTIONTYPECONFIG | &quot;TransactionTypeConfig&quot; |
-| TRANSLATIONSCRIPT | &quot;TranslationScript&quot; |
-| TASKDEFINITION | &quot;TaskDefinition&quot; |
-| TASKINSTANCE | &quot;TaskInstance&quot; |
-| WORKER | &quot;Worker&quot; |
-| STAGINGRULESET | &quot;StagingRuleSet&quot; |
-| IDENTIFIERDEFINITION | &quot;IdentifierDefinition&quot; |
-
-
-
-## Enum: LifeTimeEnum
-
-| Name | Value |
-|---- | -----|
-| PERPETUAL | &quot;Perpetual&quot; |
-| TIMEVARIANT | &quot;TimeVariant&quot; |
-
+IdentifierDefinition identifierDefinitionInstance = new IdentifierDefinition()
+    .Href(Href)
+    .Domain(Domain)
+    .IdentifierScope(IdentifierScope)
+    .IdentifierType(IdentifierType)
+    .LifeTime(LifeTime)
+    .HierarchyUsage(HierarchyUsage)
+    .HierarchyLevel(HierarchyLevel)
+    .DisplayName(DisplayName)
+    .Description(Description)
+    .Properties(Properties)
+    .Version(Version);
+```
 
 
 [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
-
-

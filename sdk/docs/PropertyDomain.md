@@ -1,176 +1,102 @@
-
-
-# PropertyDomain
-
-## Enum
-
-
-* `NOTDEFINED` (value: `"NotDefined"`)
-
-* `TRANSACTION` (value: `"Transaction"`)
-
-* `PORTFOLIO` (value: `"Portfolio"`)
-
-* `HOLDING` (value: `"Holding"`)
-
-* `REFERENCEHOLDING` (value: `"ReferenceHolding"`)
-
-* `TRANSACTIONCONFIGURATION` (value: `"TransactionConfiguration"`)
-
-* `INSTRUMENT` (value: `"Instrument"`)
-
-* `CUTLABELDEFINITION` (value: `"CutLabelDefinition"`)
-
-* `ANALYTIC` (value: `"Analytic"`)
-
-* `PORTFOLIOGROUP` (value: `"PortfolioGroup"`)
-
-* `PERSON` (value: `"Person"`)
-
-* `ACCESSMETADATA` (value: `"AccessMetadata"`)
-
-* `ORDER` (value: `"Order"`)
-
-* `UNITRESULT` (value: `"UnitResult"`)
-
-* `MARKETDATA` (value: `"MarketData"`)
-
-* `CONFIGURATIONRECIPE` (value: `"ConfigurationRecipe"`)
-
-* `ALLOCATION` (value: `"Allocation"`)
-
-* `CALENDAR` (value: `"Calendar"`)
-
-* `LEGALENTITY` (value: `"LegalEntity"`)
-
-* `INVESTORRECORD` (value: `"InvestorRecord"`)
-
-* `INVESTMENTACCOUNT` (value: `"InvestmentAccount"`)
-
-* `PLACEMENT` (value: `"Placement"`)
-
-* `EXECUTION` (value: `"Execution"`)
-
-* `BLOCK` (value: `"Block"`)
-
-* `PARTICIPATION` (value: `"Participation"`)
-
-* `PACKAGE` (value: `"Package"`)
-
-* `ORDERINSTRUCTION` (value: `"OrderInstruction"`)
-
-* `NEXTBESTACTION` (value: `"NextBestAction"`)
-
-* `CUSTOMENTITY` (value: `"CustomEntity"`)
-
-* `INSTRUMENTEVENT` (value: `"InstrumentEvent"`)
-
-* `ACCOUNT` (value: `"Account"`)
-
-* `CHARTOFACCOUNTS` (value: `"ChartOfAccounts"`)
-
-* `CUSTODIANACCOUNT` (value: `"CustodianAccount"`)
-
-* `CHECKDEFINITION` (value: `"CheckDefinition"`)
-
-* `ABOR` (value: `"Abor"`)
-
-* `ABORCONFIGURATION` (value: `"AborConfiguration"`)
-
-* `FUND` (value: `"Fund"`)
-
-* `FUNDCONFIGURATION` (value: `"FundConfiguration"`)
-
-* `FEE` (value: `"Fee"`)
-
-* `RECONCILIATION` (value: `"Reconciliation"`)
-
-* `PROPERTYDEFINITION` (value: `"PropertyDefinition"`)
-
-* `COMPLIANCE` (value: `"Compliance"`)
-
-* `DIARYENTRY` (value: `"DiaryEntry"`)
-
-* `LEG` (value: `"Leg"`)
-
-* `DERIVEDVALUATION` (value: `"DerivedValuation"`)
-
-* `TIMELINE` (value: `"Timeline"`)
-
-* `CLOSEDPERIOD` (value: `"ClosedPeriod"`)
-
-* `ADDRESSKEYDEFINITION` (value: `"AddressKeyDefinition"`)
-
-* `AMORTISATIONRULESET` (value: `"AmortisationRuleSet"`)
-
-* `ANALYTICSSETINVENTORY` (value: `"AnalyticsSetInventory"`)
-
-* `ATOMUNITRESULT` (value: `"AtomUnitResult"`)
-
-* `CLEARDOWNMODULE` (value: `"CleardownModule"`)
-
-* `COMPLEXMARKETDATA` (value: `"ComplexMarketData"`)
-
-* `COMPLIANCERUNSUMMARY` (value: `"ComplianceRunSummary"`)
-
-* `COMPLIANCERULE` (value: `"ComplianceRule"`)
-
-* `COMPLIANCERUNINFO` (value: `"ComplianceRunInfo"`)
-
-* `CORPORATEACTIONSOURCE` (value: `"CorporateActionSource"`)
-
-* `COUNTERPARTYAGREEMENT` (value: `"CounterpartyAgreement"`)
-
-* `CUSTOMENTITYDEFINITION` (value: `"CustomEntityDefinition"`)
-
-* `DATATYPE` (value: `"DataType"`)
-
-* `DIALECT` (value: `"Dialect"`)
-
-* `EVENTHANDLER` (value: `"EventHandler"`)
-
-* `GENERALLEDGERPROFILE` (value: `"GeneralLedgerProfile"`)
-
-* `POSTINGMODULE` (value: `"PostingModule"`)
-
-* `QUOTE` (value: `"Quote"`)
-
-* `RECIPECOMPOSER` (value: `"RecipeComposer"`)
-
-* `RECONCILIATIONRUNBREAK` (value: `"ReconciliationRunBreak"`)
-
-* `REFERENCELIST` (value: `"ReferenceList"`)
-
-* `RELATIONDEFINITION` (value: `"RelationDefinition"`)
-
-* `RETURNBLOCKINDEX` (value: `"ReturnBlockIndex"`)
-
-* `SRSDOCUMENT` (value: `"SRSDocument"`)
-
-* `SRSINDEX` (value: `"SRSIndex"`)
-
-* `TRANSACTIONTEMPLATE` (value: `"TransactionTemplate"`)
-
-* `TRANSACTIONTEMPLATESCOPE` (value: `"TransactionTemplateScope"`)
-
-* `TRANSACTIONTYPE` (value: `"TransactionType"`)
-
-* `TRANSACTIONTYPECONFIG` (value: `"TransactionTypeConfig"`)
-
-* `TRANSLATIONSCRIPT` (value: `"TranslationScript"`)
-
-* `TASKDEFINITION` (value: `"TaskDefinition"`)
-
-* `TASKINSTANCE` (value: `"TaskInstance"`)
-
-* `WORKER` (value: `"Worker"`)
-
-* `STAGINGRULESET` (value: `"StagingRuleSet"`)
-
-* `IDENTIFIERDEFINITION` (value: `"IdentifierDefinition"`)
-
+# com.finbourne.lusid.model.PropertyDomain
+See https://wiki.finbourne.com/information/domain-model-properties     Each domain refers to a logical set of properties which reside within it.
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**PropertyDomain** | [**String**](.md) | **See https://wiki.finbourne.com/information/domain-model-properties     Each domain refers to a logical set of properties which reside within it.** | [default to String]
+
+```java
+import com.finbourne.lusid.model.PropertyDomain;
+import java.util.*;
+import java.lang.System;
+import java.net.URI;
+
+// Example usage of PropertyDomain:
+PropertyDomain method = PropertyDomain.NOTDEFINED;
+PropertyDomain method = PropertyDomain.TRANSACTION;
+PropertyDomain method = PropertyDomain.PORTFOLIO;
+PropertyDomain method = PropertyDomain.HOLDING;
+PropertyDomain method = PropertyDomain.REFERENCEHOLDING;
+PropertyDomain method = PropertyDomain.TRANSACTIONCONFIGURATION;
+PropertyDomain method = PropertyDomain.INSTRUMENT;
+PropertyDomain method = PropertyDomain.CUTLABELDEFINITION;
+PropertyDomain method = PropertyDomain.ANALYTIC;
+PropertyDomain method = PropertyDomain.PORTFOLIOGROUP;
+PropertyDomain method = PropertyDomain.PERSON;
+PropertyDomain method = PropertyDomain.ACCESSMETADATA;
+PropertyDomain method = PropertyDomain.ORDER;
+PropertyDomain method = PropertyDomain.UNITRESULT;
+PropertyDomain method = PropertyDomain.MARKETDATA;
+PropertyDomain method = PropertyDomain.CONFIGURATIONRECIPE;
+PropertyDomain method = PropertyDomain.ALLOCATION;
+PropertyDomain method = PropertyDomain.CALENDAR;
+PropertyDomain method = PropertyDomain.LEGALENTITY;
+PropertyDomain method = PropertyDomain.INVESTORRECORD;
+PropertyDomain method = PropertyDomain.INVESTMENTACCOUNT;
+PropertyDomain method = PropertyDomain.PLACEMENT;
+PropertyDomain method = PropertyDomain.EXECUTION;
+PropertyDomain method = PropertyDomain.BLOCK;
+PropertyDomain method = PropertyDomain.PARTICIPATION;
+PropertyDomain method = PropertyDomain.PACKAGE;
+PropertyDomain method = PropertyDomain.ORDERINSTRUCTION;
+PropertyDomain method = PropertyDomain.NEXTBESTACTION;
+PropertyDomain method = PropertyDomain.CUSTOMENTITY;
+PropertyDomain method = PropertyDomain.INSTRUMENTEVENT;
+PropertyDomain method = PropertyDomain.ACCOUNT;
+PropertyDomain method = PropertyDomain.CHARTOFACCOUNTS;
+PropertyDomain method = PropertyDomain.CUSTODIANACCOUNT;
+PropertyDomain method = PropertyDomain.CHECKDEFINITION;
+PropertyDomain method = PropertyDomain.ABOR;
+PropertyDomain method = PropertyDomain.ABORCONFIGURATION;
+PropertyDomain method = PropertyDomain.FUND;
+PropertyDomain method = PropertyDomain.FUNDCONFIGURATION;
+PropertyDomain method = PropertyDomain.FEE;
+PropertyDomain method = PropertyDomain.RECONCILIATION;
+PropertyDomain method = PropertyDomain.PROPERTYDEFINITION;
+PropertyDomain method = PropertyDomain.COMPLIANCE;
+PropertyDomain method = PropertyDomain.DIARYENTRY;
+PropertyDomain method = PropertyDomain.LEG;
+PropertyDomain method = PropertyDomain.DERIVEDVALUATION;
+PropertyDomain method = PropertyDomain.TIMELINE;
+PropertyDomain method = PropertyDomain.CLOSEDPERIOD;
+PropertyDomain method = PropertyDomain.ADDRESSKEYDEFINITION;
+PropertyDomain method = PropertyDomain.AMORTISATIONRULESET;
+PropertyDomain method = PropertyDomain.ANALYTICSSETINVENTORY;
+PropertyDomain method = PropertyDomain.ATOMUNITRESULT;
+PropertyDomain method = PropertyDomain.CLEARDOWNMODULE;
+PropertyDomain method = PropertyDomain.COMPLEXMARKETDATA;
+PropertyDomain method = PropertyDomain.COMPLIANCERUNSUMMARY;
+PropertyDomain method = PropertyDomain.COMPLIANCERULE;
+PropertyDomain method = PropertyDomain.COMPLIANCERUNINFO;
+PropertyDomain method = PropertyDomain.CORPORATEACTIONSOURCE;
+PropertyDomain method = PropertyDomain.COUNTERPARTYAGREEMENT;
+PropertyDomain method = PropertyDomain.CUSTOMENTITYDEFINITION;
+PropertyDomain method = PropertyDomain.DATATYPE;
+PropertyDomain method = PropertyDomain.DIALECT;
+PropertyDomain method = PropertyDomain.EVENTHANDLER;
+PropertyDomain method = PropertyDomain.GENERALLEDGERPROFILE;
+PropertyDomain method = PropertyDomain.POSTINGMODULE;
+PropertyDomain method = PropertyDomain.QUOTE;
+PropertyDomain method = PropertyDomain.RECIPECOMPOSER;
+PropertyDomain method = PropertyDomain.RECONCILIATIONRUNBREAK;
+PropertyDomain method = PropertyDomain.REFERENCELIST;
+PropertyDomain method = PropertyDomain.RELATIONDEFINITION;
+PropertyDomain method = PropertyDomain.RETURNBLOCKINDEX;
+PropertyDomain method = PropertyDomain.SRSDOCUMENT;
+PropertyDomain method = PropertyDomain.SRSINDEX;
+PropertyDomain method = PropertyDomain.TRANSACTIONTEMPLATE;
+PropertyDomain method = PropertyDomain.TRANSACTIONTEMPLATESCOPE;
+PropertyDomain method = PropertyDomain.TRANSACTIONTYPE;
+PropertyDomain method = PropertyDomain.TRANSACTIONTYPECONFIG;
+PropertyDomain method = PropertyDomain.TRANSLATIONSCRIPT;
+PropertyDomain method = PropertyDomain.TASKDEFINITION;
+PropertyDomain method = PropertyDomain.TASKINSTANCE;
+PropertyDomain method = PropertyDomain.WORKER;
+PropertyDomain method = PropertyDomain.STAGINGRULESET;
+PropertyDomain method = PropertyDomain.IDENTIFIERDEFINITION;
+```
 
 
 [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
-
-

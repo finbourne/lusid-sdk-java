@@ -1,31 +1,23 @@
-
-
-# ReferenceList
-
+# com.finbourne.lusid.model.ReferenceList
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**referenceListType** | [**ReferenceListTypeEnum**](#ReferenceListTypeEnum) | The reference list values. The available values are: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList |  |
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**referenceListType** | **String** | The reference list values. The available values are: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList | [default to String]
+
+```java
+import com.finbourne.lusid.model.ReferenceList;
+import java.util.*;
+import java.lang.System;
+import java.net.URI;
+
+String ReferenceListType = "example ReferenceListType";
 
 
-
-## Enum: ReferenceListTypeEnum
-
-| Name | Value |
-|---- | -----|
-| PORTFOLIOGROUPIDLIST | &quot;PortfolioGroupIdList&quot; |
-| PORTFOLIOIDLIST | &quot;PortfolioIdList&quot; |
-| ADDRESSKEYLIST | &quot;AddressKeyList&quot; |
-| STRINGLIST | &quot;StringList&quot; |
-| INSTRUMENTLIST | &quot;InstrumentList&quot; |
-| DECIMALLIST | &quot;DecimalList&quot; |
-| PROPERTYLIST | &quot;PropertyList&quot; |
-| FUNDIDLIST | &quot;FundIdList&quot; |
-
+ReferenceList referenceListInstance = new ReferenceList()
+    .ReferenceListType(ReferenceListType);
+```
 
 
 [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
-
-

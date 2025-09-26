@@ -114,7 +114,7 @@ public class ConversionEvent extends InstrumentEvent {
   }
 
    /**
-   * Required.  Date at which positions are struck at the end of the day to  note which parties will receive the relevant amount of  entitlement, due to be distributed on the Finbourne.WebApi.Interface.Dto.InstrumentEvents.ConversionEvent.PaymentDate.
+   * Required.  Date at which positions are struck at the end of the day to  note which parties will receive the relevant amount of  entitlement, due to be distributed on the PaymentDate.
    * @return recordDate
   **/
   @jakarta.annotation.Nullable
@@ -240,7 +240,7 @@ public class ConversionEvent extends InstrumentEvent {
   }
 
    /**
-   * The cash price paid in lieu of fractionalUnits. Not required.  If provided, must have Finbourne.WebApi.Interface.Dto.InstrumentEvents.ConversionEvent.FractionalUnitsCashCurrency too.
+   * The cash price paid in lieu of fractionalUnits. Not required.  If provided, must have FractionalUnitsCashCurrency too.
    * @return fractionalUnitsCashPrice
   **/
   @jakarta.annotation.Nullable
@@ -261,7 +261,7 @@ public class ConversionEvent extends InstrumentEvent {
   }
 
    /**
-   * Optional. Used in calculating cash-in-lieu of fractional shares. Not required.  If provided, must have Finbourne.WebApi.Interface.Dto.InstrumentEvents.ConversionEvent.FractionalUnitsCashPrice too.
+   * Optional. Used in calculating cash-in-lieu of fractional shares. Not required.  If provided, must have FractionalUnitsCashPrice too.
    * @return fractionalUnitsCashCurrency
   **/
   @jakarta.annotation.Nullable
@@ -290,7 +290,7 @@ public class ConversionEvent extends InstrumentEvent {
   }
 
    /**
-   * List of possible security offers for this conversion event. There must be at most one election of this type.  If the Finbourne.LusidInstruments.Events.ParticipationType is Finbourne.LusidInstruments.Events.ParticipationType.Mandatory:  This list must have exactly one election that is chosen and default.  Finbourne.WebApi.Interface.Dto.InstrumentEvents.ConversionEvent.CashAndSecurityOfferElections and Finbourne.WebApi.Interface.Dto.InstrumentEvents.ConversionEvent.CashOfferElections&lt;b&gt; must be null or empty&lt;/b&gt;.  If the Finbourne.LusidInstruments.Events.ParticipationType is Finbourne.LusidInstruments.Events.ParticipationType.Voluntary:  This list can be empty,  so long as Finbourne.WebApi.Interface.Dto.InstrumentEvents.ConversionEvent.CashAndSecurityOfferElections or Finbourne.WebApi.Interface.Dto.InstrumentEvents.ConversionEvent.CashOfferElections  has at least one election. None of these elections have to be chosen or default.
+   * List of possible security offers for this conversion event. There must be at most one election of this type.    If the ParticipationType is Mandatory:     This list must have exactly one election that is chosen and default.  CashAndSecurityOfferElections and CashOfferElections &lt;b&gt; must be null or empty&lt;/b&gt;.     If the ParticipationType is Voluntary:     This list can be empty,  so long as CashAndSecurityOfferElections or CashOfferElections  has at least one election. None of these elections have to be chosen or default.
    * @return securityOfferElections
   **/
   @jakarta.annotation.Nullable
@@ -319,7 +319,7 @@ public class ConversionEvent extends InstrumentEvent {
   }
 
    /**
-   * List of possible cash and security offers for this conversion event. There must be at most one election of this type.  If the Finbourne.LusidInstruments.Events.ParticipationType is Finbourne.LusidInstruments.Events.ParticipationType.Mandatory:  This list &lt;b&gt; must be null or empty&lt;/b&gt;.  If the Finbourne.LusidInstruments.Events.ParticipationType is Finbourne.LusidInstruments.Events.ParticipationType.Voluntary:  This list can be empty,  so long as Finbourne.WebApi.Interface.Dto.InstrumentEvents.ConversionEvent.SecurityOfferElections or Finbourne.WebApi.Interface.Dto.InstrumentEvents.ConversionEvent.CashOfferElections  has at least one election. None of these elections have to be chosen or default.
+   * List of possible cash and security offers for this conversion event. There must be at most one election of this type.    If the ParticipationType is Mandatory:    This list &lt;b&gt; must be null or empty&lt;/b&gt;.    If the ParticipationType is Voluntary:    This list can be empty,  so long as SecurityOfferElections or CashOfferElections  has at least one election. None of these elections have to be chosen or default.
    * @return cashAndSecurityOfferElections
   **/
   @jakarta.annotation.Nullable
@@ -348,7 +348,7 @@ public class ConversionEvent extends InstrumentEvent {
   }
 
    /**
-   * List of possible cash offers for this conversion event. There must be at most one election of this type.  If the Finbourne.LusidInstruments.Events.ParticipationType is Finbourne.LusidInstruments.Events.ParticipationType.Mandatory:  This list &lt;b&gt; must be null or empty&lt;/b&gt;.  If the Finbourne.LusidInstruments.Events.ParticipationType is Finbourne.LusidInstruments.Events.ParticipationType.Voluntary:  This list can be empty,  so long as Finbourne.WebApi.Interface.Dto.InstrumentEvents.ConversionEvent.SecurityOfferElections or Finbourne.WebApi.Interface.Dto.InstrumentEvents.ConversionEvent.CashAndSecurityOfferElections  has at least one election. None of these elections have to be chosen or default.
+   * List of possible cash offers for this conversion event. There must be at most one election of this type.    If the ParticipationType is Mandatory:    This list &lt;b&gt; must be null or empty&lt;/b&gt;.    If the ParticipationType is Voluntary:    This list can be empty,  so long as SecurityOfferElections or CashAndSecurityOfferElections  has at least one election. None of these elections have to be chosen or default.
    * @return cashOfferElections
   **/
   @jakarta.annotation.Nullable

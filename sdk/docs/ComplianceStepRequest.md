@@ -1,29 +1,23 @@
-
-
-# ComplianceStepRequest
-
+# com.finbourne.lusid.model.ComplianceStepRequest
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**complianceStepTypeRequest** | [**ComplianceStepTypeRequestEnum**](#ComplianceStepTypeRequestEnum) | . The available values are: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, CheckStepRequest, PercentCheckStepRequest |  |
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**complianceStepTypeRequest** | **String** | . The available values are: FilterStepRequest, GroupByStepRequest, GroupFilterStepRequest, BranchStepRequest, CheckStepRequest, PercentCheckStepRequest | [default to String]
+
+```java
+import com.finbourne.lusid.model.ComplianceStepRequest;
+import java.util.*;
+import java.lang.System;
+import java.net.URI;
+
+String ComplianceStepTypeRequest = "example ComplianceStepTypeRequest";
 
 
-
-## Enum: ComplianceStepTypeRequestEnum
-
-| Name | Value |
-|---- | -----|
-| FILTERSTEPREQUEST | &quot;FilterStepRequest&quot; |
-| GROUPBYSTEPREQUEST | &quot;GroupByStepRequest&quot; |
-| GROUPFILTERSTEPREQUEST | &quot;GroupFilterStepRequest&quot; |
-| BRANCHSTEPREQUEST | &quot;BranchStepRequest&quot; |
-| CHECKSTEPREQUEST | &quot;CheckStepRequest&quot; |
-| PERCENTCHECKSTEPREQUEST | &quot;PercentCheckStepRequest&quot; |
-
+ComplianceStepRequest complianceStepRequestInstance = new ComplianceStepRequest()
+    .ComplianceStepTypeRequest(ComplianceStepTypeRequest);
+```
 
 
 [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
-
-

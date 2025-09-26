@@ -1,75 +1,59 @@
-
-
-# DataType
-
+# com.finbourne.lusid.model.DataType
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**typeValueRange** | [**TypeValueRangeEnum**](#TypeValueRangeEnum) | The available values are: Open, Closed |  |
-|**id** | [**ResourceId**](ResourceId.md) |  |  |
-|**displayName** | **String** |  |  |
-|**description** | **String** |  |  |
-|**valueType** | [**ValueTypeEnum**](#ValueTypeEnum) | The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText |  |
-|**acceptableValues** | **List&lt;String&gt;** |  |  [optional] |
-|**unitSchema** | [**UnitSchemaEnum**](#UnitSchemaEnum) | The available values are: NoUnits, Basic, Iso4217Currency |  [optional] |
-|**acceptableUnits** | [**List&lt;IUnitDefinitionDto&gt;**](IUnitDefinitionDto.md) |  |  [optional] |
-|**referenceData** | [**ReferenceData**](ReferenceData.md) |  |  [optional] |
-|**version** | [**Version**](Version.md) |  |  [optional] |
-|**href** | **URI** | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |  [optional] |
-|**stagedModifications** | [**StagedModificationsInfo**](StagedModificationsInfo.md) |  |  [optional] |
-|**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**typeValueRange** | **String** | The available values are: Open, Closed | [default to String]
+**id** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
+**displayName** | **String** |  | [default to String]
+**description** | **String** |  | [default to String]
+**valueType** | **String** | The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText | [default to String]
+**acceptableValues** | **List&lt;String&gt;** |  | [optional] [default to List<String>]
+**unitSchema** | **String** | The available values are: NoUnits, Basic, Iso4217Currency | [optional] [default to String]
+**acceptableUnits** | [**List&lt;IUnitDefinitionDto&gt;**](IUnitDefinitionDto.md) |  | [optional] [default to List<IUnitDefinitionDto>]
+**referenceData** | [**ReferenceData**](ReferenceData.md) |  | [optional] [default to ReferenceData]
+**version** | [**Version**](Version.md) |  | [optional] [default to Version]
+**href** | [**URI**](URI.md) | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. | [optional] [default to URI]
+**stagedModifications** | [**StagedModificationsInfo**](StagedModificationsInfo.md) |  | [optional] [default to StagedModificationsInfo]
+**links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
+
+```java
+import com.finbourne.lusid.model.DataType;
+import java.util.*;
+import java.lang.System;
+import java.net.URI;
+
+String TypeValueRange = "example TypeValueRange";
+ResourceId Id = new ResourceId();
+String DisplayName = "example DisplayName";
+String Description = "example Description";
+String ValueType = "example ValueType";
+@jakarta.annotation.Nullable List<String> AcceptableValues = new List<String>();
+String UnitSchema = "example UnitSchema";
+@jakarta.annotation.Nullable List<IUnitDefinitionDto> AcceptableUnits = new List<IUnitDefinitionDto>();
+ReferenceData ReferenceData = new ReferenceData();
+Version Version = new Version();
+@jakarta.annotation.Nullable URI Href = URI.create("http://example.com/Href");
+StagedModificationsInfo StagedModifications = new StagedModificationsInfo();
+@jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
-
-## Enum: TypeValueRangeEnum
-
-| Name | Value |
-|---- | -----|
-| OPEN | &quot;Open&quot; |
-| CLOSED | &quot;Closed&quot; |
-
-
-
-## Enum: ValueTypeEnum
-
-| Name | Value |
-|---- | -----|
-| STRING | &quot;String&quot; |
-| INT | &quot;Int&quot; |
-| DECIMAL | &quot;Decimal&quot; |
-| DATETIME | &quot;DateTime&quot; |
-| BOOLEAN | &quot;Boolean&quot; |
-| MAP | &quot;Map&quot; |
-| LIST | &quot;List&quot; |
-| PROPERTYARRAY | &quot;PropertyArray&quot; |
-| PERCENTAGE | &quot;Percentage&quot; |
-| CODE | &quot;Code&quot; |
-| ID | &quot;Id&quot; |
-| URI | &quot;Uri&quot; |
-| CURRENCYANDAMOUNT | &quot;CurrencyAndAmount&quot; |
-| TRADEPRICE | &quot;TradePrice&quot; |
-| CURRENCY | &quot;Currency&quot; |
-| METRICVALUE | &quot;MetricValue&quot; |
-| RESOURCEID | &quot;ResourceId&quot; |
-| RESULTVALUE | &quot;ResultValue&quot; |
-| CUTLOCALTIME | &quot;CutLocalTime&quot; |
-| DATEORCUTLABEL | &quot;DateOrCutLabel&quot; |
-| UNINDEXEDTEXT | &quot;UnindexedText&quot; |
-
-
-
-## Enum: UnitSchemaEnum
-
-| Name | Value |
-|---- | -----|
-| NOUNITS | &quot;NoUnits&quot; |
-| BASIC | &quot;Basic&quot; |
-| ISO4217CURRENCY | &quot;Iso4217Currency&quot; |
-
+DataType dataTypeInstance = new DataType()
+    .TypeValueRange(TypeValueRange)
+    .Id(Id)
+    .DisplayName(DisplayName)
+    .Description(Description)
+    .ValueType(ValueType)
+    .AcceptableValues(AcceptableValues)
+    .UnitSchema(UnitSchema)
+    .AcceptableUnits(AcceptableUnits)
+    .ReferenceData(ReferenceData)
+    .Version(Version)
+    .Href(Href)
+    .StagedModifications(StagedModifications)
+    .Links(Links);
+```
 
 
 [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
-
-

@@ -1,56 +1,41 @@
+# com.finbourne.lusid.model.ComplianceParameterType
 
+## Properties
 
-# ComplianceParameterType
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**ComplianceParameterType** | [**String**](.md) | **** | [default to String]
 
-## Enum
+```java
+import com.finbourne.lusid.model.ComplianceParameterType;
+import java.util.*;
+import java.lang.System;
+import java.net.URI;
 
-
-* `BOOLCOMPLIANCEPARAMETER` (value: `"BoolComplianceParameter"`)
-
-* `STRINGCOMPLIANCEPARAMETER` (value: `"StringComplianceParameter"`)
-
-* `DECIMALCOMPLIANCEPARAMETER` (value: `"DecimalComplianceParameter"`)
-
-* `DATETIMECOMPLIANCEPARAMETER` (value: `"DateTimeComplianceParameter"`)
-
-* `PROPERTYKEYCOMPLIANCEPARAMETER` (value: `"PropertyKeyComplianceParameter"`)
-
-* `ADDRESSKEYCOMPLIANCEPARAMETER` (value: `"AddressKeyComplianceParameter"`)
-
-* `PORTFOLIOIDCOMPLIANCEPARAMETER` (value: `"PortfolioIdComplianceParameter"`)
-
-* `PORTFOLIOGROUPIDCOMPLIANCEPARAMETER` (value: `"PortfolioGroupIdComplianceParameter"`)
-
-* `STRINGLISTCOMPLIANCEPARAMETER` (value: `"StringListComplianceParameter"`)
-
-* `BOOLLISTCOMPLIANCEPARAMETER` (value: `"BoolListComplianceParameter"`)
-
-* `DATETIMELISTCOMPLIANCEPARAMETER` (value: `"DateTimeListComplianceParameter"`)
-
-* `DECIMALLISTCOMPLIANCEPARAMETER` (value: `"DecimalListComplianceParameter"`)
-
-* `PROPERTYKEYLISTCOMPLIANCEPARAMETER` (value: `"PropertyKeyListComplianceParameter"`)
-
-* `ADDRESSKEYLISTCOMPLIANCEPARAMETER` (value: `"AddressKeyListComplianceParameter"`)
-
-* `PORTFOLIOIDLISTCOMPLIANCEPARAMETER` (value: `"PortfolioIdListComplianceParameter"`)
-
-* `PORTFOLIOGROUPIDLISTCOMPLIANCEPARAMETER` (value: `"PortfolioGroupIdListComplianceParameter"`)
-
-* `INSTRUMENTLISTCOMPLIANCEPARAMETER` (value: `"InstrumentListComplianceParameter"`)
-
-* `FILTERPREDICATECOMPLIANCEPARAMETER` (value: `"FilterPredicateComplianceParameter"`)
-
-* `GROUPFILTERPREDICATECOMPLIANCEPARAMETER` (value: `"GroupFilterPredicateComplianceParameter"`)
-
-* `GROUPBYSELECTORCOMPLIANCEPARAMETER` (value: `"GroupBySelectorComplianceParameter"`)
-
-* `PROPERTYLISTCOMPLIANCEPARAMETER` (value: `"PropertyListComplianceParameter"`)
-
-* `GROUPCALCULATIONCOMPLIANCEPARAMETER` (value: `"GroupCalculationComplianceParameter"`)
-
+// Example usage of ComplianceParameterType:
+ComplianceParameterType method = ComplianceParameterType.BOOLCOMPLIANCEPARAMETER;
+ComplianceParameterType method = ComplianceParameterType.STRINGCOMPLIANCEPARAMETER;
+ComplianceParameterType method = ComplianceParameterType.DECIMALCOMPLIANCEPARAMETER;
+ComplianceParameterType method = ComplianceParameterType.DATETIMECOMPLIANCEPARAMETER;
+ComplianceParameterType method = ComplianceParameterType.PROPERTYKEYCOMPLIANCEPARAMETER;
+ComplianceParameterType method = ComplianceParameterType.ADDRESSKEYCOMPLIANCEPARAMETER;
+ComplianceParameterType method = ComplianceParameterType.PORTFOLIOIDCOMPLIANCEPARAMETER;
+ComplianceParameterType method = ComplianceParameterType.PORTFOLIOGROUPIDCOMPLIANCEPARAMETER;
+ComplianceParameterType method = ComplianceParameterType.STRINGLISTCOMPLIANCEPARAMETER;
+ComplianceParameterType method = ComplianceParameterType.BOOLLISTCOMPLIANCEPARAMETER;
+ComplianceParameterType method = ComplianceParameterType.DATETIMELISTCOMPLIANCEPARAMETER;
+ComplianceParameterType method = ComplianceParameterType.DECIMALLISTCOMPLIANCEPARAMETER;
+ComplianceParameterType method = ComplianceParameterType.PROPERTYKEYLISTCOMPLIANCEPARAMETER;
+ComplianceParameterType method = ComplianceParameterType.ADDRESSKEYLISTCOMPLIANCEPARAMETER;
+ComplianceParameterType method = ComplianceParameterType.PORTFOLIOIDLISTCOMPLIANCEPARAMETER;
+ComplianceParameterType method = ComplianceParameterType.PORTFOLIOGROUPIDLISTCOMPLIANCEPARAMETER;
+ComplianceParameterType method = ComplianceParameterType.INSTRUMENTLISTCOMPLIANCEPARAMETER;
+ComplianceParameterType method = ComplianceParameterType.FILTERPREDICATECOMPLIANCEPARAMETER;
+ComplianceParameterType method = ComplianceParameterType.GROUPFILTERPREDICATECOMPLIANCEPARAMETER;
+ComplianceParameterType method = ComplianceParameterType.GROUPBYSELECTORCOMPLIANCEPARAMETER;
+ComplianceParameterType method = ComplianceParameterType.PROPERTYLISTCOMPLIANCEPARAMETER;
+ComplianceParameterType method = ComplianceParameterType.GROUPCALCULATIONCOMPLIANCEPARAMETER;
+```
 
 
 [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
-
-

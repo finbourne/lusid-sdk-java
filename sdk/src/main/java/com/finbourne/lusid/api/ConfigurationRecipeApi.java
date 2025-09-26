@@ -562,11 +562,11 @@ public class ConfigurationRecipeApi {
     public APIdeleteRecipeComposerRequest deleteRecipeComposer(String scope, String code) {
         return new APIdeleteRecipeComposerRequest(scope, code);
     }
-    private okhttp3.Call getConfigurationRecipeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
-        return getConfigurationRecipeCall(scope, code, asAt,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getConfigurationRecipeCall(String scope, String code, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback) throws ApiException {
+        return getConfigurationRecipeCall(scope, code, asAt, timelineScope, timelineCode, closedPeriodId,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getConfigurationRecipeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getConfigurationRecipeCall(String scope, String code, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -597,6 +597,18 @@ public class ConfigurationRecipeApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
         }
 
+        if (timelineScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineScope", timelineScope));
+        }
+
+        if (timelineCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineCode", timelineCode));
+        }
+
+        if (closedPeriodId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("closedPeriodId", closedPeriodId));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -619,7 +631,7 @@ public class ConfigurationRecipeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getConfigurationRecipeValidateBeforeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getConfigurationRecipeValidateBeforeCall(String scope, String code, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getConfigurationRecipe(Async)");
@@ -630,34 +642,34 @@ public class ConfigurationRecipeApi {
             throw new ApiException("Missing the required parameter 'code' when calling getConfigurationRecipe(Async)");
         }
 
-        return getConfigurationRecipeCall(scope, code, asAt, _callback, opts);
+        return getConfigurationRecipeCall(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, _callback, opts);
 
     }
 
 
-    private ApiResponse<GetRecipeResponse> getConfigurationRecipeWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getConfigurationRecipeValidateBeforeCall(scope, code, asAt, null, new ConfigurationOptions());
+    private ApiResponse<GetRecipeResponse> getConfigurationRecipeWithHttpInfo(String scope, String code, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId) throws ApiException {
+        okhttp3.Call localVarCall = getConfigurationRecipeValidateBeforeCall(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<GetRecipeResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<GetRecipeResponse> getConfigurationRecipeWithHttpInfo(String scope, String code, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getConfigurationRecipeValidateBeforeCall(scope, code, asAt, null, opts);
+    private ApiResponse<GetRecipeResponse> getConfigurationRecipeWithHttpInfo(String scope, String code, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getConfigurationRecipeValidateBeforeCall(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, null, opts);
         Type localVarReturnType = new TypeToken<GetRecipeResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getConfigurationRecipeAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<GetRecipeResponse> _callback) throws ApiException {
+    private okhttp3.Call getConfigurationRecipeAsync(String scope, String code, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<GetRecipeResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getConfigurationRecipeValidateBeforeCall(scope, code, asAt, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getConfigurationRecipeValidateBeforeCall(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<GetRecipeResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getConfigurationRecipeAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<GetRecipeResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getConfigurationRecipeAsync(String scope, String code, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<GetRecipeResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getConfigurationRecipeValidateBeforeCall(scope, code, asAt, _callback, opts);
+        okhttp3.Call localVarCall = getConfigurationRecipeValidateBeforeCall(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, _callback, opts);
         Type localVarReturnType = new TypeToken<GetRecipeResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -667,6 +679,9 @@ public class ConfigurationRecipeApi {
         private final String scope;
         private final String code;
         private OffsetDateTime asAt;
+        private String timelineScope;
+        private String timelineCode;
+        private String closedPeriodId;
 
         private APIgetConfigurationRecipeRequest(String scope, String code) {
             this.scope = scope;
@@ -684,6 +699,36 @@ public class ConfigurationRecipeApi {
         }
 
         /**
+         * Set timelineScope
+         * @param timelineScope The scope of the Timeline, used to override the AsAt.   If this is provided, timelineCode and closedPeriodId must also be provided. (optional)
+         * @return APIgetConfigurationRecipeRequest
+         */
+        public APIgetConfigurationRecipeRequest timelineScope(String timelineScope) {
+            this.timelineScope = timelineScope;
+            return this;
+        }
+
+        /**
+         * Set timelineCode
+         * @param timelineCode The code of the Timeline, used to override the AsAt.   If this is provided, timelineScope and closedPeriodId must also be provided. (optional)
+         * @return APIgetConfigurationRecipeRequest
+         */
+        public APIgetConfigurationRecipeRequest timelineCode(String timelineCode) {
+            this.timelineCode = timelineCode;
+            return this;
+        }
+
+        /**
+         * Set closedPeriodId
+         * @param closedPeriodId The code of the ClosedPeriod attached to the timeline, used to override the AsAt.   If this is provided, timelineScope and timelineCode must also be provided. (optional)
+         * @return APIgetConfigurationRecipeRequest
+         */
+        public APIgetConfigurationRecipeRequest closedPeriodId(String closedPeriodId) {
+            this.closedPeriodId = closedPeriodId;
+            return this;
+        }
+
+        /**
          * Build call for getConfigurationRecipe
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -697,7 +742,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getConfigurationRecipeCall(scope, code, asAt, _callback);
+            return getConfigurationRecipeCall(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, _callback);
         }
 
         /**
@@ -713,7 +758,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public GetRecipeResponse execute() throws ApiException {
-            ApiResponse<GetRecipeResponse> localVarResp = getConfigurationRecipeWithHttpInfo(scope, code, asAt);
+            ApiResponse<GetRecipeResponse> localVarResp = getConfigurationRecipeWithHttpInfo(scope, code, asAt, timelineScope, timelineCode, closedPeriodId);
             return localVarResp.getData();
         }
 
@@ -730,7 +775,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public GetRecipeResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<GetRecipeResponse> localVarResp = getConfigurationRecipeWithHttpInfo(scope, code, asAt, opts);
+            ApiResponse<GetRecipeResponse> localVarResp = getConfigurationRecipeWithHttpInfo(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, opts);
             return localVarResp.getData();
         }
 
@@ -747,7 +792,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public ApiResponse<GetRecipeResponse> executeWithHttpInfo() throws ApiException {
-            return getConfigurationRecipeWithHttpInfo(scope, code, asAt);
+            return getConfigurationRecipeWithHttpInfo(scope, code, asAt, timelineScope, timelineCode, closedPeriodId);
         }
 
         /**
@@ -763,7 +808,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public ApiResponse<GetRecipeResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getConfigurationRecipeWithHttpInfo(scope, code, asAt, opts);
+            return getConfigurationRecipeWithHttpInfo(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, opts);
         }
 
         /**
@@ -780,7 +825,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<GetRecipeResponse> _callback) throws ApiException {
-            return getConfigurationRecipeAsync(scope, code, asAt, _callback);
+            return getConfigurationRecipeAsync(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, _callback);
         }
 
         /**
@@ -797,7 +842,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<GetRecipeResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return getConfigurationRecipeAsync(scope, code, asAt, _callback, opts);
+            return getConfigurationRecipeAsync(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, _callback, opts);
         }
     }
 
@@ -818,11 +863,11 @@ public class ConfigurationRecipeApi {
     public APIgetConfigurationRecipeRequest getConfigurationRecipe(String scope, String code) {
         return new APIgetConfigurationRecipeRequest(scope, code);
     }
-    private okhttp3.Call getDerivedRecipeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
-        return getDerivedRecipeCall(scope, code, asAt,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getDerivedRecipeCall(String scope, String code, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback) throws ApiException {
+        return getDerivedRecipeCall(scope, code, asAt, timelineScope, timelineCode, closedPeriodId,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getDerivedRecipeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getDerivedRecipeCall(String scope, String code, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -853,6 +898,18 @@ public class ConfigurationRecipeApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
         }
 
+        if (timelineScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineScope", timelineScope));
+        }
+
+        if (timelineCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineCode", timelineCode));
+        }
+
+        if (closedPeriodId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("closedPeriodId", closedPeriodId));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -875,7 +932,7 @@ public class ConfigurationRecipeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getDerivedRecipeValidateBeforeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getDerivedRecipeValidateBeforeCall(String scope, String code, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getDerivedRecipe(Async)");
@@ -886,34 +943,34 @@ public class ConfigurationRecipeApi {
             throw new ApiException("Missing the required parameter 'code' when calling getDerivedRecipe(Async)");
         }
 
-        return getDerivedRecipeCall(scope, code, asAt, _callback, opts);
+        return getDerivedRecipeCall(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, _callback, opts);
 
     }
 
 
-    private ApiResponse<GetRecipeResponse> getDerivedRecipeWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getDerivedRecipeValidateBeforeCall(scope, code, asAt, null, new ConfigurationOptions());
+    private ApiResponse<GetRecipeResponse> getDerivedRecipeWithHttpInfo(String scope, String code, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId) throws ApiException {
+        okhttp3.Call localVarCall = getDerivedRecipeValidateBeforeCall(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<GetRecipeResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<GetRecipeResponse> getDerivedRecipeWithHttpInfo(String scope, String code, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getDerivedRecipeValidateBeforeCall(scope, code, asAt, null, opts);
+    private ApiResponse<GetRecipeResponse> getDerivedRecipeWithHttpInfo(String scope, String code, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getDerivedRecipeValidateBeforeCall(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, null, opts);
         Type localVarReturnType = new TypeToken<GetRecipeResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getDerivedRecipeAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<GetRecipeResponse> _callback) throws ApiException {
+    private okhttp3.Call getDerivedRecipeAsync(String scope, String code, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<GetRecipeResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getDerivedRecipeValidateBeforeCall(scope, code, asAt, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getDerivedRecipeValidateBeforeCall(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<GetRecipeResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getDerivedRecipeAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<GetRecipeResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getDerivedRecipeAsync(String scope, String code, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<GetRecipeResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getDerivedRecipeValidateBeforeCall(scope, code, asAt, _callback, opts);
+        okhttp3.Call localVarCall = getDerivedRecipeValidateBeforeCall(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, _callback, opts);
         Type localVarReturnType = new TypeToken<GetRecipeResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -923,6 +980,9 @@ public class ConfigurationRecipeApi {
         private final String scope;
         private final String code;
         private OffsetDateTime asAt;
+        private String timelineScope;
+        private String timelineCode;
+        private String closedPeriodId;
 
         private APIgetDerivedRecipeRequest(String scope, String code) {
             this.scope = scope;
@@ -940,6 +1000,36 @@ public class ConfigurationRecipeApi {
         }
 
         /**
+         * Set timelineScope
+         * @param timelineScope The scope of the Timeline, used to override the AsAt.   If this is provided, timelineCode and closedPeriodId must also be provided. (optional)
+         * @return APIgetDerivedRecipeRequest
+         */
+        public APIgetDerivedRecipeRequest timelineScope(String timelineScope) {
+            this.timelineScope = timelineScope;
+            return this;
+        }
+
+        /**
+         * Set timelineCode
+         * @param timelineCode The code of the Timeline, used to override the AsAt.   If this is provided, timelineScope and closedPeriodId must also be provided. (optional)
+         * @return APIgetDerivedRecipeRequest
+         */
+        public APIgetDerivedRecipeRequest timelineCode(String timelineCode) {
+            this.timelineCode = timelineCode;
+            return this;
+        }
+
+        /**
+         * Set closedPeriodId
+         * @param closedPeriodId The code of the ClosedPeriod attached to the timeline, used to override the AsAt.   If this is provided, timelineScope and timelineCode must also be provided. (optional)
+         * @return APIgetDerivedRecipeRequest
+         */
+        public APIgetDerivedRecipeRequest closedPeriodId(String closedPeriodId) {
+            this.closedPeriodId = closedPeriodId;
+            return this;
+        }
+
+        /**
          * Build call for getDerivedRecipe
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -953,7 +1043,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getDerivedRecipeCall(scope, code, asAt, _callback);
+            return getDerivedRecipeCall(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, _callback);
         }
 
         /**
@@ -969,7 +1059,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public GetRecipeResponse execute() throws ApiException {
-            ApiResponse<GetRecipeResponse> localVarResp = getDerivedRecipeWithHttpInfo(scope, code, asAt);
+            ApiResponse<GetRecipeResponse> localVarResp = getDerivedRecipeWithHttpInfo(scope, code, asAt, timelineScope, timelineCode, closedPeriodId);
             return localVarResp.getData();
         }
 
@@ -986,7 +1076,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public GetRecipeResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<GetRecipeResponse> localVarResp = getDerivedRecipeWithHttpInfo(scope, code, asAt, opts);
+            ApiResponse<GetRecipeResponse> localVarResp = getDerivedRecipeWithHttpInfo(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, opts);
             return localVarResp.getData();
         }
 
@@ -1003,7 +1093,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public ApiResponse<GetRecipeResponse> executeWithHttpInfo() throws ApiException {
-            return getDerivedRecipeWithHttpInfo(scope, code, asAt);
+            return getDerivedRecipeWithHttpInfo(scope, code, asAt, timelineScope, timelineCode, closedPeriodId);
         }
 
         /**
@@ -1019,7 +1109,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public ApiResponse<GetRecipeResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getDerivedRecipeWithHttpInfo(scope, code, asAt, opts);
+            return getDerivedRecipeWithHttpInfo(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, opts);
         }
 
         /**
@@ -1036,7 +1126,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<GetRecipeResponse> _callback) throws ApiException {
-            return getDerivedRecipeAsync(scope, code, asAt, _callback);
+            return getDerivedRecipeAsync(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, _callback);
         }
 
         /**
@@ -1053,7 +1143,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<GetRecipeResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return getDerivedRecipeAsync(scope, code, asAt, _callback, opts);
+            return getDerivedRecipeAsync(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, _callback, opts);
         }
     }
 
@@ -1074,11 +1164,11 @@ public class ConfigurationRecipeApi {
     public APIgetDerivedRecipeRequest getDerivedRecipe(String scope, String code) {
         return new APIgetDerivedRecipeRequest(scope, code);
     }
-    private okhttp3.Call getRecipeComposerCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
-        return getRecipeComposerCall(scope, code, asAt,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getRecipeComposerCall(String scope, String code, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback) throws ApiException {
+        return getRecipeComposerCall(scope, code, asAt, timelineScope, timelineCode, closedPeriodId,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getRecipeComposerCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getRecipeComposerCall(String scope, String code, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1109,6 +1199,18 @@ public class ConfigurationRecipeApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
         }
 
+        if (timelineScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineScope", timelineScope));
+        }
+
+        if (timelineCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineCode", timelineCode));
+        }
+
+        if (closedPeriodId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("closedPeriodId", closedPeriodId));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -1131,7 +1233,7 @@ public class ConfigurationRecipeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getRecipeComposerValidateBeforeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getRecipeComposerValidateBeforeCall(String scope, String code, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getRecipeComposer(Async)");
@@ -1142,34 +1244,34 @@ public class ConfigurationRecipeApi {
             throw new ApiException("Missing the required parameter 'code' when calling getRecipeComposer(Async)");
         }
 
-        return getRecipeComposerCall(scope, code, asAt, _callback, opts);
+        return getRecipeComposerCall(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, _callback, opts);
 
     }
 
 
-    private ApiResponse<GetRecipeComposerResponse> getRecipeComposerWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getRecipeComposerValidateBeforeCall(scope, code, asAt, null, new ConfigurationOptions());
+    private ApiResponse<GetRecipeComposerResponse> getRecipeComposerWithHttpInfo(String scope, String code, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId) throws ApiException {
+        okhttp3.Call localVarCall = getRecipeComposerValidateBeforeCall(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<GetRecipeComposerResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<GetRecipeComposerResponse> getRecipeComposerWithHttpInfo(String scope, String code, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getRecipeComposerValidateBeforeCall(scope, code, asAt, null, opts);
+    private ApiResponse<GetRecipeComposerResponse> getRecipeComposerWithHttpInfo(String scope, String code, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getRecipeComposerValidateBeforeCall(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, null, opts);
         Type localVarReturnType = new TypeToken<GetRecipeComposerResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getRecipeComposerAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<GetRecipeComposerResponse> _callback) throws ApiException {
+    private okhttp3.Call getRecipeComposerAsync(String scope, String code, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<GetRecipeComposerResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getRecipeComposerValidateBeforeCall(scope, code, asAt, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getRecipeComposerValidateBeforeCall(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<GetRecipeComposerResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getRecipeComposerAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<GetRecipeComposerResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getRecipeComposerAsync(String scope, String code, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<GetRecipeComposerResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getRecipeComposerValidateBeforeCall(scope, code, asAt, _callback, opts);
+        okhttp3.Call localVarCall = getRecipeComposerValidateBeforeCall(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, _callback, opts);
         Type localVarReturnType = new TypeToken<GetRecipeComposerResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1179,6 +1281,9 @@ public class ConfigurationRecipeApi {
         private final String scope;
         private final String code;
         private OffsetDateTime asAt;
+        private String timelineScope;
+        private String timelineCode;
+        private String closedPeriodId;
 
         private APIgetRecipeComposerRequest(String scope, String code) {
             this.scope = scope;
@@ -1196,6 +1301,36 @@ public class ConfigurationRecipeApi {
         }
 
         /**
+         * Set timelineScope
+         * @param timelineScope The scope of the Timeline, used to override the AsAt.   If this is provided, timelineCode and closedPeriodId must also be provided. (optional)
+         * @return APIgetRecipeComposerRequest
+         */
+        public APIgetRecipeComposerRequest timelineScope(String timelineScope) {
+            this.timelineScope = timelineScope;
+            return this;
+        }
+
+        /**
+         * Set timelineCode
+         * @param timelineCode The code of the Timeline, used to override the AsAt.   If this is provided, timelineScope and closedPeriodId must also be provided. (optional)
+         * @return APIgetRecipeComposerRequest
+         */
+        public APIgetRecipeComposerRequest timelineCode(String timelineCode) {
+            this.timelineCode = timelineCode;
+            return this;
+        }
+
+        /**
+         * Set closedPeriodId
+         * @param closedPeriodId The code of the ClosedPeriod attached to the timeline, used to override the AsAt.   If this is provided, timelineScope and timelineCode must also be provided. (optional)
+         * @return APIgetRecipeComposerRequest
+         */
+        public APIgetRecipeComposerRequest closedPeriodId(String closedPeriodId) {
+            this.closedPeriodId = closedPeriodId;
+            return this;
+        }
+
+        /**
          * Build call for getRecipeComposer
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -1209,7 +1344,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getRecipeComposerCall(scope, code, asAt, _callback);
+            return getRecipeComposerCall(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, _callback);
         }
 
         /**
@@ -1225,7 +1360,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public GetRecipeComposerResponse execute() throws ApiException {
-            ApiResponse<GetRecipeComposerResponse> localVarResp = getRecipeComposerWithHttpInfo(scope, code, asAt);
+            ApiResponse<GetRecipeComposerResponse> localVarResp = getRecipeComposerWithHttpInfo(scope, code, asAt, timelineScope, timelineCode, closedPeriodId);
             return localVarResp.getData();
         }
 
@@ -1242,7 +1377,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public GetRecipeComposerResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<GetRecipeComposerResponse> localVarResp = getRecipeComposerWithHttpInfo(scope, code, asAt, opts);
+            ApiResponse<GetRecipeComposerResponse> localVarResp = getRecipeComposerWithHttpInfo(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, opts);
             return localVarResp.getData();
         }
 
@@ -1259,7 +1394,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public ApiResponse<GetRecipeComposerResponse> executeWithHttpInfo() throws ApiException {
-            return getRecipeComposerWithHttpInfo(scope, code, asAt);
+            return getRecipeComposerWithHttpInfo(scope, code, asAt, timelineScope, timelineCode, closedPeriodId);
         }
 
         /**
@@ -1275,7 +1410,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public ApiResponse<GetRecipeComposerResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getRecipeComposerWithHttpInfo(scope, code, asAt, opts);
+            return getRecipeComposerWithHttpInfo(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, opts);
         }
 
         /**
@@ -1292,7 +1427,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<GetRecipeComposerResponse> _callback) throws ApiException {
-            return getRecipeComposerAsync(scope, code, asAt, _callback);
+            return getRecipeComposerAsync(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, _callback);
         }
 
         /**
@@ -1309,7 +1444,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<GetRecipeComposerResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return getRecipeComposerAsync(scope, code, asAt, _callback, opts);
+            return getRecipeComposerAsync(scope, code, asAt, timelineScope, timelineCode, closedPeriodId, _callback, opts);
         }
     }
 
@@ -1565,11 +1700,11 @@ public class ConfigurationRecipeApi {
     public APIgetRecipeComposerResolvedInlineRequest getRecipeComposerResolvedInline(UpsertRecipeComposerRequest upsertRecipeComposerRequest) {
         return new APIgetRecipeComposerResolvedInlineRequest(upsertRecipeComposerRequest);
     }
-    private okhttp3.Call listConfigurationRecipesCall(OffsetDateTime asAt, String filter, final ApiCallback _callback) throws ApiException {
-        return listConfigurationRecipesCall(asAt, filter,  _callback, new ConfigurationOptions());
+    private okhttp3.Call listConfigurationRecipesCall(OffsetDateTime asAt, String filter, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback) throws ApiException {
+        return listConfigurationRecipesCall(asAt, filter, timelineScope, timelineCode, closedPeriodId,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call listConfigurationRecipesCall(OffsetDateTime asAt, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listConfigurationRecipesCall(OffsetDateTime asAt, String filter, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1602,6 +1737,18 @@ public class ConfigurationRecipeApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
         }
 
+        if (timelineScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineScope", timelineScope));
+        }
+
+        if (timelineCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineCode", timelineCode));
+        }
+
+        if (closedPeriodId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("closedPeriodId", closedPeriodId));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -1624,35 +1771,35 @@ public class ConfigurationRecipeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listConfigurationRecipesValidateBeforeCall(OffsetDateTime asAt, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        return listConfigurationRecipesCall(asAt, filter, _callback, opts);
+    private okhttp3.Call listConfigurationRecipesValidateBeforeCall(OffsetDateTime asAt, String filter, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listConfigurationRecipesCall(asAt, filter, timelineScope, timelineCode, closedPeriodId, _callback, opts);
 
     }
 
 
-    private ApiResponse<ResourceListOfGetRecipeResponse> listConfigurationRecipesWithHttpInfo(OffsetDateTime asAt, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listConfigurationRecipesValidateBeforeCall(asAt, filter, null, new ConfigurationOptions());
+    private ApiResponse<ResourceListOfGetRecipeResponse> listConfigurationRecipesWithHttpInfo(OffsetDateTime asAt, String filter, String timelineScope, String timelineCode, String closedPeriodId) throws ApiException {
+        okhttp3.Call localVarCall = listConfigurationRecipesValidateBeforeCall(asAt, filter, timelineScope, timelineCode, closedPeriodId, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ResourceListOfGetRecipeResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ResourceListOfGetRecipeResponse> listConfigurationRecipesWithHttpInfo(OffsetDateTime asAt, String filter, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = listConfigurationRecipesValidateBeforeCall(asAt, filter, null, opts);
+    private ApiResponse<ResourceListOfGetRecipeResponse> listConfigurationRecipesWithHttpInfo(OffsetDateTime asAt, String filter, String timelineScope, String timelineCode, String closedPeriodId, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listConfigurationRecipesValidateBeforeCall(asAt, filter, timelineScope, timelineCode, closedPeriodId, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfGetRecipeResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listConfigurationRecipesAsync(OffsetDateTime asAt, String filter, final ApiCallback<ResourceListOfGetRecipeResponse> _callback) throws ApiException {
+    private okhttp3.Call listConfigurationRecipesAsync(OffsetDateTime asAt, String filter, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<ResourceListOfGetRecipeResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listConfigurationRecipesValidateBeforeCall(asAt, filter, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = listConfigurationRecipesValidateBeforeCall(asAt, filter, timelineScope, timelineCode, closedPeriodId, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ResourceListOfGetRecipeResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call listConfigurationRecipesAsync(OffsetDateTime asAt, String filter, final ApiCallback<ResourceListOfGetRecipeResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listConfigurationRecipesAsync(OffsetDateTime asAt, String filter, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<ResourceListOfGetRecipeResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = listConfigurationRecipesValidateBeforeCall(asAt, filter, _callback, opts);
+        okhttp3.Call localVarCall = listConfigurationRecipesValidateBeforeCall(asAt, filter, timelineScope, timelineCode, closedPeriodId, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfGetRecipeResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1661,6 +1808,9 @@ public class ConfigurationRecipeApi {
     public class APIlistConfigurationRecipesRequest {
         private OffsetDateTime asAt;
         private String filter;
+        private String timelineScope;
+        private String timelineCode;
+        private String closedPeriodId;
 
         private APIlistConfigurationRecipesRequest() {
         }
@@ -1686,6 +1836,36 @@ public class ConfigurationRecipeApi {
         }
 
         /**
+         * Set timelineScope
+         * @param timelineScope The scope of the Timeline, used to override the AsAt.   If this is provided, timelineCode and closedPeriodId must also be provided. (optional)
+         * @return APIlistConfigurationRecipesRequest
+         */
+        public APIlistConfigurationRecipesRequest timelineScope(String timelineScope) {
+            this.timelineScope = timelineScope;
+            return this;
+        }
+
+        /**
+         * Set timelineCode
+         * @param timelineCode The code of the Timeline, used to override the AsAt.   If this is provided, timelineScope and closedPeriodId must also be provided. (optional)
+         * @return APIlistConfigurationRecipesRequest
+         */
+        public APIlistConfigurationRecipesRequest timelineCode(String timelineCode) {
+            this.timelineCode = timelineCode;
+            return this;
+        }
+
+        /**
+         * Set closedPeriodId
+         * @param closedPeriodId The code of the ClosedPeriod attached to the timeline, used to override the AsAt.   If this is provided, timelineScope and timelineCode must also be provided. (optional)
+         * @return APIlistConfigurationRecipesRequest
+         */
+        public APIlistConfigurationRecipesRequest closedPeriodId(String closedPeriodId) {
+            this.closedPeriodId = closedPeriodId;
+            return this;
+        }
+
+        /**
          * Build call for listConfigurationRecipes
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -1699,7 +1879,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listConfigurationRecipesCall(asAt, filter, _callback);
+            return listConfigurationRecipesCall(asAt, filter, timelineScope, timelineCode, closedPeriodId, _callback);
         }
 
         /**
@@ -1715,7 +1895,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public ResourceListOfGetRecipeResponse execute() throws ApiException {
-            ApiResponse<ResourceListOfGetRecipeResponse> localVarResp = listConfigurationRecipesWithHttpInfo(asAt, filter);
+            ApiResponse<ResourceListOfGetRecipeResponse> localVarResp = listConfigurationRecipesWithHttpInfo(asAt, filter, timelineScope, timelineCode, closedPeriodId);
             return localVarResp.getData();
         }
 
@@ -1732,7 +1912,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public ResourceListOfGetRecipeResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ResourceListOfGetRecipeResponse> localVarResp = listConfigurationRecipesWithHttpInfo(asAt, filter, opts);
+            ApiResponse<ResourceListOfGetRecipeResponse> localVarResp = listConfigurationRecipesWithHttpInfo(asAt, filter, timelineScope, timelineCode, closedPeriodId, opts);
             return localVarResp.getData();
         }
 
@@ -1749,7 +1929,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public ApiResponse<ResourceListOfGetRecipeResponse> executeWithHttpInfo() throws ApiException {
-            return listConfigurationRecipesWithHttpInfo(asAt, filter);
+            return listConfigurationRecipesWithHttpInfo(asAt, filter, timelineScope, timelineCode, closedPeriodId);
         }
 
         /**
@@ -1765,7 +1945,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public ApiResponse<ResourceListOfGetRecipeResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return listConfigurationRecipesWithHttpInfo(asAt, filter, opts);
+            return listConfigurationRecipesWithHttpInfo(asAt, filter, timelineScope, timelineCode, closedPeriodId, opts);
         }
 
         /**
@@ -1782,7 +1962,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfGetRecipeResponse> _callback) throws ApiException {
-            return listConfigurationRecipesAsync(asAt, filter, _callback);
+            return listConfigurationRecipesAsync(asAt, filter, timelineScope, timelineCode, closedPeriodId, _callback);
         }
 
         /**
@@ -1799,7 +1979,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfGetRecipeResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return listConfigurationRecipesAsync(asAt, filter, _callback, opts);
+            return listConfigurationRecipesAsync(asAt, filter, timelineScope, timelineCode, closedPeriodId, _callback, opts);
         }
     }
 
@@ -1818,11 +1998,11 @@ public class ConfigurationRecipeApi {
     public APIlistConfigurationRecipesRequest listConfigurationRecipes() {
         return new APIlistConfigurationRecipesRequest();
     }
-    private okhttp3.Call listDerivedRecipesCall(OffsetDateTime asAt, String filter, final ApiCallback _callback) throws ApiException {
-        return listDerivedRecipesCall(asAt, filter,  _callback, new ConfigurationOptions());
+    private okhttp3.Call listDerivedRecipesCall(OffsetDateTime asAt, String filter, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback) throws ApiException {
+        return listDerivedRecipesCall(asAt, filter, timelineScope, timelineCode, closedPeriodId,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call listDerivedRecipesCall(OffsetDateTime asAt, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listDerivedRecipesCall(OffsetDateTime asAt, String filter, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1855,6 +2035,18 @@ public class ConfigurationRecipeApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
         }
 
+        if (timelineScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineScope", timelineScope));
+        }
+
+        if (timelineCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineCode", timelineCode));
+        }
+
+        if (closedPeriodId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("closedPeriodId", closedPeriodId));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -1877,35 +2069,35 @@ public class ConfigurationRecipeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listDerivedRecipesValidateBeforeCall(OffsetDateTime asAt, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        return listDerivedRecipesCall(asAt, filter, _callback, opts);
+    private okhttp3.Call listDerivedRecipesValidateBeforeCall(OffsetDateTime asAt, String filter, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listDerivedRecipesCall(asAt, filter, timelineScope, timelineCode, closedPeriodId, _callback, opts);
 
     }
 
 
-    private ApiResponse<ResourceListOfGetRecipeResponse> listDerivedRecipesWithHttpInfo(OffsetDateTime asAt, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listDerivedRecipesValidateBeforeCall(asAt, filter, null, new ConfigurationOptions());
+    private ApiResponse<ResourceListOfGetRecipeResponse> listDerivedRecipesWithHttpInfo(OffsetDateTime asAt, String filter, String timelineScope, String timelineCode, String closedPeriodId) throws ApiException {
+        okhttp3.Call localVarCall = listDerivedRecipesValidateBeforeCall(asAt, filter, timelineScope, timelineCode, closedPeriodId, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ResourceListOfGetRecipeResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ResourceListOfGetRecipeResponse> listDerivedRecipesWithHttpInfo(OffsetDateTime asAt, String filter, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = listDerivedRecipesValidateBeforeCall(asAt, filter, null, opts);
+    private ApiResponse<ResourceListOfGetRecipeResponse> listDerivedRecipesWithHttpInfo(OffsetDateTime asAt, String filter, String timelineScope, String timelineCode, String closedPeriodId, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listDerivedRecipesValidateBeforeCall(asAt, filter, timelineScope, timelineCode, closedPeriodId, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfGetRecipeResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listDerivedRecipesAsync(OffsetDateTime asAt, String filter, final ApiCallback<ResourceListOfGetRecipeResponse> _callback) throws ApiException {
+    private okhttp3.Call listDerivedRecipesAsync(OffsetDateTime asAt, String filter, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<ResourceListOfGetRecipeResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listDerivedRecipesValidateBeforeCall(asAt, filter, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = listDerivedRecipesValidateBeforeCall(asAt, filter, timelineScope, timelineCode, closedPeriodId, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ResourceListOfGetRecipeResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call listDerivedRecipesAsync(OffsetDateTime asAt, String filter, final ApiCallback<ResourceListOfGetRecipeResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listDerivedRecipesAsync(OffsetDateTime asAt, String filter, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<ResourceListOfGetRecipeResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = listDerivedRecipesValidateBeforeCall(asAt, filter, _callback, opts);
+        okhttp3.Call localVarCall = listDerivedRecipesValidateBeforeCall(asAt, filter, timelineScope, timelineCode, closedPeriodId, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfGetRecipeResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1914,6 +2106,9 @@ public class ConfigurationRecipeApi {
     public class APIlistDerivedRecipesRequest {
         private OffsetDateTime asAt;
         private String filter;
+        private String timelineScope;
+        private String timelineCode;
+        private String closedPeriodId;
 
         private APIlistDerivedRecipesRequest() {
         }
@@ -1939,6 +2134,36 @@ public class ConfigurationRecipeApi {
         }
 
         /**
+         * Set timelineScope
+         * @param timelineScope The scope of the Timeline, used to override the AsAt.   If this is provided, timelineCode and closedPeriodId must also be provided. (optional)
+         * @return APIlistDerivedRecipesRequest
+         */
+        public APIlistDerivedRecipesRequest timelineScope(String timelineScope) {
+            this.timelineScope = timelineScope;
+            return this;
+        }
+
+        /**
+         * Set timelineCode
+         * @param timelineCode The code of the Timeline, used to override the AsAt.   If this is provided, timelineScope and closedPeriodId must also be provided. (optional)
+         * @return APIlistDerivedRecipesRequest
+         */
+        public APIlistDerivedRecipesRequest timelineCode(String timelineCode) {
+            this.timelineCode = timelineCode;
+            return this;
+        }
+
+        /**
+         * Set closedPeriodId
+         * @param closedPeriodId The code of the ClosedPeriod attached to the timeline, used to override the AsAt.   If this is provided, timelineScope and timelineCode must also be provided. (optional)
+         * @return APIlistDerivedRecipesRequest
+         */
+        public APIlistDerivedRecipesRequest closedPeriodId(String closedPeriodId) {
+            this.closedPeriodId = closedPeriodId;
+            return this;
+        }
+
+        /**
          * Build call for listDerivedRecipes
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -1952,7 +2177,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listDerivedRecipesCall(asAt, filter, _callback);
+            return listDerivedRecipesCall(asAt, filter, timelineScope, timelineCode, closedPeriodId, _callback);
         }
 
         /**
@@ -1968,7 +2193,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public ResourceListOfGetRecipeResponse execute() throws ApiException {
-            ApiResponse<ResourceListOfGetRecipeResponse> localVarResp = listDerivedRecipesWithHttpInfo(asAt, filter);
+            ApiResponse<ResourceListOfGetRecipeResponse> localVarResp = listDerivedRecipesWithHttpInfo(asAt, filter, timelineScope, timelineCode, closedPeriodId);
             return localVarResp.getData();
         }
 
@@ -1985,7 +2210,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public ResourceListOfGetRecipeResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ResourceListOfGetRecipeResponse> localVarResp = listDerivedRecipesWithHttpInfo(asAt, filter, opts);
+            ApiResponse<ResourceListOfGetRecipeResponse> localVarResp = listDerivedRecipesWithHttpInfo(asAt, filter, timelineScope, timelineCode, closedPeriodId, opts);
             return localVarResp.getData();
         }
 
@@ -2002,7 +2227,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public ApiResponse<ResourceListOfGetRecipeResponse> executeWithHttpInfo() throws ApiException {
-            return listDerivedRecipesWithHttpInfo(asAt, filter);
+            return listDerivedRecipesWithHttpInfo(asAt, filter, timelineScope, timelineCode, closedPeriodId);
         }
 
         /**
@@ -2018,7 +2243,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public ApiResponse<ResourceListOfGetRecipeResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return listDerivedRecipesWithHttpInfo(asAt, filter, opts);
+            return listDerivedRecipesWithHttpInfo(asAt, filter, timelineScope, timelineCode, closedPeriodId, opts);
         }
 
         /**
@@ -2035,7 +2260,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfGetRecipeResponse> _callback) throws ApiException {
-            return listDerivedRecipesAsync(asAt, filter, _callback);
+            return listDerivedRecipesAsync(asAt, filter, timelineScope, timelineCode, closedPeriodId, _callback);
         }
 
         /**
@@ -2052,7 +2277,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfGetRecipeResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return listDerivedRecipesAsync(asAt, filter, _callback, opts);
+            return listDerivedRecipesAsync(asAt, filter, timelineScope, timelineCode, closedPeriodId, _callback, opts);
         }
     }
 
@@ -2071,11 +2296,11 @@ public class ConfigurationRecipeApi {
     public APIlistDerivedRecipesRequest listDerivedRecipes() {
         return new APIlistDerivedRecipesRequest();
     }
-    private okhttp3.Call listRecipeComposersCall(OffsetDateTime asAt, String filter, final ApiCallback _callback) throws ApiException {
-        return listRecipeComposersCall(asAt, filter,  _callback, new ConfigurationOptions());
+    private okhttp3.Call listRecipeComposersCall(OffsetDateTime asAt, String filter, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback) throws ApiException {
+        return listRecipeComposersCall(asAt, filter, timelineScope, timelineCode, closedPeriodId,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call listRecipeComposersCall(OffsetDateTime asAt, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listRecipeComposersCall(OffsetDateTime asAt, String filter, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2108,6 +2333,18 @@ public class ConfigurationRecipeApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
         }
 
+        if (timelineScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineScope", timelineScope));
+        }
+
+        if (timelineCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineCode", timelineCode));
+        }
+
+        if (closedPeriodId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("closedPeriodId", closedPeriodId));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -2130,35 +2367,35 @@ public class ConfigurationRecipeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listRecipeComposersValidateBeforeCall(OffsetDateTime asAt, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        return listRecipeComposersCall(asAt, filter, _callback, opts);
+    private okhttp3.Call listRecipeComposersValidateBeforeCall(OffsetDateTime asAt, String filter, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listRecipeComposersCall(asAt, filter, timelineScope, timelineCode, closedPeriodId, _callback, opts);
 
     }
 
 
-    private ApiResponse<ResourceListOfGetRecipeComposerResponse> listRecipeComposersWithHttpInfo(OffsetDateTime asAt, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listRecipeComposersValidateBeforeCall(asAt, filter, null, new ConfigurationOptions());
+    private ApiResponse<ResourceListOfGetRecipeComposerResponse> listRecipeComposersWithHttpInfo(OffsetDateTime asAt, String filter, String timelineScope, String timelineCode, String closedPeriodId) throws ApiException {
+        okhttp3.Call localVarCall = listRecipeComposersValidateBeforeCall(asAt, filter, timelineScope, timelineCode, closedPeriodId, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ResourceListOfGetRecipeComposerResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ResourceListOfGetRecipeComposerResponse> listRecipeComposersWithHttpInfo(OffsetDateTime asAt, String filter, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = listRecipeComposersValidateBeforeCall(asAt, filter, null, opts);
+    private ApiResponse<ResourceListOfGetRecipeComposerResponse> listRecipeComposersWithHttpInfo(OffsetDateTime asAt, String filter, String timelineScope, String timelineCode, String closedPeriodId, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listRecipeComposersValidateBeforeCall(asAt, filter, timelineScope, timelineCode, closedPeriodId, null, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfGetRecipeComposerResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listRecipeComposersAsync(OffsetDateTime asAt, String filter, final ApiCallback<ResourceListOfGetRecipeComposerResponse> _callback) throws ApiException {
+    private okhttp3.Call listRecipeComposersAsync(OffsetDateTime asAt, String filter, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<ResourceListOfGetRecipeComposerResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listRecipeComposersValidateBeforeCall(asAt, filter, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = listRecipeComposersValidateBeforeCall(asAt, filter, timelineScope, timelineCode, closedPeriodId, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ResourceListOfGetRecipeComposerResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call listRecipeComposersAsync(OffsetDateTime asAt, String filter, final ApiCallback<ResourceListOfGetRecipeComposerResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listRecipeComposersAsync(OffsetDateTime asAt, String filter, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<ResourceListOfGetRecipeComposerResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = listRecipeComposersValidateBeforeCall(asAt, filter, _callback, opts);
+        okhttp3.Call localVarCall = listRecipeComposersValidateBeforeCall(asAt, filter, timelineScope, timelineCode, closedPeriodId, _callback, opts);
         Type localVarReturnType = new TypeToken<ResourceListOfGetRecipeComposerResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2167,6 +2404,9 @@ public class ConfigurationRecipeApi {
     public class APIlistRecipeComposersRequest {
         private OffsetDateTime asAt;
         private String filter;
+        private String timelineScope;
+        private String timelineCode;
+        private String closedPeriodId;
 
         private APIlistRecipeComposersRequest() {
         }
@@ -2192,6 +2432,36 @@ public class ConfigurationRecipeApi {
         }
 
         /**
+         * Set timelineScope
+         * @param timelineScope The scope of the Timeline, used to override the AsAt.   If this is provided, timelineCode and closedPeriodId must also be provided. (optional)
+         * @return APIlistRecipeComposersRequest
+         */
+        public APIlistRecipeComposersRequest timelineScope(String timelineScope) {
+            this.timelineScope = timelineScope;
+            return this;
+        }
+
+        /**
+         * Set timelineCode
+         * @param timelineCode The code of the Timeline, used to override the AsAt.   If this is provided, timelineScope and closedPeriodId must also be provided. (optional)
+         * @return APIlistRecipeComposersRequest
+         */
+        public APIlistRecipeComposersRequest timelineCode(String timelineCode) {
+            this.timelineCode = timelineCode;
+            return this;
+        }
+
+        /**
+         * Set closedPeriodId
+         * @param closedPeriodId The code of the ClosedPeriod attached to the timeline, used to override the AsAt.   If this is provided, timelineScope and timelineCode must also be provided. (optional)
+         * @return APIlistRecipeComposersRequest
+         */
+        public APIlistRecipeComposersRequest closedPeriodId(String closedPeriodId) {
+            this.closedPeriodId = closedPeriodId;
+            return this;
+        }
+
+        /**
          * Build call for listRecipeComposers
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -2205,7 +2475,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listRecipeComposersCall(asAt, filter, _callback);
+            return listRecipeComposersCall(asAt, filter, timelineScope, timelineCode, closedPeriodId, _callback);
         }
 
         /**
@@ -2221,7 +2491,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public ResourceListOfGetRecipeComposerResponse execute() throws ApiException {
-            ApiResponse<ResourceListOfGetRecipeComposerResponse> localVarResp = listRecipeComposersWithHttpInfo(asAt, filter);
+            ApiResponse<ResourceListOfGetRecipeComposerResponse> localVarResp = listRecipeComposersWithHttpInfo(asAt, filter, timelineScope, timelineCode, closedPeriodId);
             return localVarResp.getData();
         }
 
@@ -2238,7 +2508,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public ResourceListOfGetRecipeComposerResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ResourceListOfGetRecipeComposerResponse> localVarResp = listRecipeComposersWithHttpInfo(asAt, filter, opts);
+            ApiResponse<ResourceListOfGetRecipeComposerResponse> localVarResp = listRecipeComposersWithHttpInfo(asAt, filter, timelineScope, timelineCode, closedPeriodId, opts);
             return localVarResp.getData();
         }
 
@@ -2255,7 +2525,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public ApiResponse<ResourceListOfGetRecipeComposerResponse> executeWithHttpInfo() throws ApiException {
-            return listRecipeComposersWithHttpInfo(asAt, filter);
+            return listRecipeComposersWithHttpInfo(asAt, filter, timelineScope, timelineCode, closedPeriodId);
         }
 
         /**
@@ -2271,7 +2541,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public ApiResponse<ResourceListOfGetRecipeComposerResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return listRecipeComposersWithHttpInfo(asAt, filter, opts);
+            return listRecipeComposersWithHttpInfo(asAt, filter, timelineScope, timelineCode, closedPeriodId, opts);
         }
 
         /**
@@ -2288,7 +2558,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfGetRecipeComposerResponse> _callback) throws ApiException {
-            return listRecipeComposersAsync(asAt, filter, _callback);
+            return listRecipeComposersAsync(asAt, filter, timelineScope, timelineCode, closedPeriodId, _callback);
         }
 
         /**
@@ -2305,7 +2575,7 @@ public class ConfigurationRecipeApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfGetRecipeComposerResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return listRecipeComposersAsync(asAt, filter, _callback, opts);
+            return listRecipeComposersAsync(asAt, filter, timelineScope, timelineCode, closedPeriodId, _callback, opts);
         }
     }
 

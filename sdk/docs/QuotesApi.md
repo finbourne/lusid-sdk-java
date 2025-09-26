@@ -426,7 +426,7 @@ public class QuotesApiExample {
 
 [DEPRECATED] ListQuotes: List quotes
 
-List all the quotes from a single scope at the specified date/time  Please use M:Finbourne.WebApi.Controllers.QuotesController.ListQuotesForScope(System.String,System.Nullable{System.DateTimeOffset},System.String,System.Nullable{System.Int32},System.String) - the signature and behaviour of this endpoint will be changing to omit scope
+List all the quotes from a single scope at the specified date/time  Please use ListQuotesForScope - the signature and behaviour of this endpoint will be changing to omit scope
 
 ### Example
 

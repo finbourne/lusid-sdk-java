@@ -339,7 +339,7 @@ public class GroupReconciliationsApi {
 
     /**
      * [EXPERIMENTAL] BatchUpdateComparisonResults: Add User Review entries for a range of comparison results related to a specific GroupReconciliationDefinition.
-     * Allows to update multiple Group Reconciliation Comparison Results related to the same definition specified by the Finbourne.Identifiers.Abstractions.Scope and Finbourne.Identifiers.Abstractions.Code.  Updates User Review with new entries and sets the relevant Review Status.  Supports partial success when all the entries that haven&#39;t passed validation or are not related to the definition will be returned with respectful error details.
+     * Allows to update multiple Group Reconciliation Comparison Results related to the same definition specified by the Scope and Code.  Updates User Review with new entries and sets the relevant Review Status.  Supports partial success when all the entries that haven&#39;t passed validation or are not related to the definition will be returned with respectful error details.
      * @param scope Shared Scope of the GroupReconciliationDefinition and GroupReconciliationComparisonResults. (required)
      * @param code GroupReconciliationDefinitionId code. (required)
      * @param batchUpdateUserReviewForComparisonResultRequest A collection of the comparison result Ids and their user review entries to be added or removed.   Single request contains resultId, break code/match key/comment to add and break code/match key/comment to remove by added timestamp. (required)
@@ -3255,7 +3255,7 @@ public class GroupReconciliationsApi {
 
     /**
      * [EXPERIMENTAL] RunReconciliation: Runs a Group Reconciliation
-     * Runs a Group Reconciliation using the definition specified by the Finbourne.Identifiers.Abstractions.Scope and Finbourne.Identifiers.Abstractions.Code  Supports pagination.
+     * Runs a Group Reconciliation using the definition specified by the Scope and Code  Supports pagination.
      * @param scope The scope of the group reconciliation definition to use for the reconciliation. (required)
      * @param code The code of the group reconciliation definition to use for the reconciliation. (required)
      * @return APIrunReconciliationRequest

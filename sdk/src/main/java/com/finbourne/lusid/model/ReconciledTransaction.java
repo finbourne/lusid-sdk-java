@@ -49,7 +49,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Information about reconciled transactions.  At least one of Finbourne.WebApi.Interface.Dto.Reconciliation.ReconciledTransaction.Left and Finbourne.WebApi.Interface.Dto.Reconciliation.ReconciledTransaction.Right will be populated.
+ * Information about reconciled transactions.  At least one of Left and Right will be populated.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ReconciledTransaction {
@@ -150,7 +150,7 @@ public class ReconciledTransaction {
   }
 
    /**
-   * The result of each individual mapping rule result.  Will only be present if both Finbourne.WebApi.Interface.Dto.Reconciliation.ReconciledTransaction.Left and Finbourne.WebApi.Interface.Dto.Reconciliation.ReconciledTransaction.Right are populated.
+   * The result of each individual mapping rule result.  Will only be present if both Left and Right are populated.
    * @return mappingRuleSetResults
   **/
   @jakarta.annotation.Nullable

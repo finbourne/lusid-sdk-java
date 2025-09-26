@@ -273,7 +273,7 @@ public class MarketDataSpecificRule {
   }
 
    /**
-   * The conceptual qualification for the field, such as bid, mid, or ask.  The field must be one of a defined set for the given supplier, in the same way as it  is for the Finbourne.WebApi.Interface.Dto.Quotes.QuoteSeriesId
+   * The conceptual qualification for the field, such as bid, mid, or ask.  The field must be one of a defined set for the given supplier, in the same way as it  is for the Quotes.QuoteSeriesId\&quot;
    * @return field
   **/
   @jakarta.annotation.Nonnull

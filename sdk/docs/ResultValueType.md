@@ -1,36 +1,32 @@
+# com.finbourne.lusid.model.ResultValueType
+Enum of possible result value type. Used discriminate the result values
 
+## Properties
 
-# ResultValueType
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**ResultValueType** | [**String**](.md) | **Enum of possible result value type. Used discriminate the result values** | [default to String]
 
-## Enum
+```java
+import com.finbourne.lusid.model.ResultValueType;
+import java.util.*;
+import java.lang.System;
+import java.net.URI;
 
-
-* `RESULTVALUE` (value: `"ResultValue"`)
-
-* `RESULTVALUEDICTIONARY` (value: `"ResultValueDictionary"`)
-
-* `RESULTVALUE0D` (value: `"ResultValue0D"`)
-
-* `RESULTVALUEDECIMAL` (value: `"ResultValueDecimal"`)
-
-* `RESULTVALUEINT` (value: `"ResultValueInt"`)
-
-* `RESULTVALUESTRING` (value: `"ResultValueString"`)
-
-* `RESULTVALUEBOOL` (value: `"ResultValueBool"`)
-
-* `RESULTVALUECURRENCY` (value: `"ResultValueCurrency"`)
-
-* `CASHFLOWVALUE` (value: `"CashFlowValue"`)
-
-* `CASHFLOWVALUESET` (value: `"CashFlowValueSet"`)
-
-* `RESULTVALUELIFECYCLEEVENTVALUE` (value: `"ResultValueLifeCycleEventValue"`)
-
-* `RESULTVALUEDATETIMEOFFSET` (value: `"ResultValueDateTimeOffset"`)
-
+// Example usage of ResultValueType:
+ResultValueType method = ResultValueType.RESULTVALUE;
+ResultValueType method = ResultValueType.RESULTVALUEDICTIONARY;
+ResultValueType method = ResultValueType.RESULTVALUE0D;
+ResultValueType method = ResultValueType.RESULTVALUEDECIMAL;
+ResultValueType method = ResultValueType.RESULTVALUEINT;
+ResultValueType method = ResultValueType.RESULTVALUESTRING;
+ResultValueType method = ResultValueType.RESULTVALUEBOOL;
+ResultValueType method = ResultValueType.RESULTVALUECURRENCY;
+ResultValueType method = ResultValueType.CASHFLOWVALUE;
+ResultValueType method = ResultValueType.CASHFLOWVALUESET;
+ResultValueType method = ResultValueType.RESULTVALUELIFECYCLEEVENTVALUE;
+ResultValueType method = ResultValueType.RESULTVALUEDATETIMEOFFSET;
+```
 
 
 [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
-
-

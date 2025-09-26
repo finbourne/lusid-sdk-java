@@ -1,28 +1,28 @@
+# com.finbourne.lusid.model.AggregationType
+A list of types, that define the expected output types found from an aggregation request in its result.
 
+## Properties
 
-# AggregationType
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**AggregationType** | [**String**](.md) | **A list of types, that define the expected output types found from an aggregation request in its result.** | [default to String]
 
-## Enum
+```java
+import com.finbourne.lusid.model.AggregationType;
+import java.util.*;
+import java.lang.System;
+import java.net.URI;
 
-
-* `STRING` (value: `"String"`)
-
-* `INT` (value: `"Int"`)
-
-* `DECIMAL` (value: `"Decimal"`)
-
-* `DATETIME` (value: `"DateTime"`)
-
-* `BOOLEAN` (value: `"Boolean"`)
-
-* `RESULTVALUE` (value: `"ResultValue"`)
-
-* `RESULT0D` (value: `"Result0D"`)
-
-* `JSON` (value: `"Json"`)
-
+// Example usage of AggregationType:
+AggregationType method = AggregationType.STRING;
+AggregationType method = AggregationType.INT;
+AggregationType method = AggregationType.DECIMAL;
+AggregationType method = AggregationType.DATETIME;
+AggregationType method = AggregationType.BOOLEAN;
+AggregationType method = AggregationType.RESULTVALUE;
+AggregationType method = AggregationType.RESULT0D;
+AggregationType method = AggregationType.JSON;
+```
 
 
 [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
-
-

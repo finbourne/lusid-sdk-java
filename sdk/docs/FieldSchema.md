@@ -1,48 +1,35 @@
-
-
-# FieldSchema
-
+# com.finbourne.lusid.model.FieldSchema
 
 ## Properties
 
-| Name | Type | Description | Notes |
-|------------ | ------------- | ------------- | -------------|
-|**id** | [**ResourceId**](ResourceId.md) |  |  [optional] |
-|**displayName** | **String** |  |  [optional] |
-|**description** | **String** |  |  [optional] |
-|**type** | [**TypeEnum**](#TypeEnum) | The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText |  [optional] |
-|**displayOrder** | **Integer** |  |  [optional] |
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
+**displayName** | **String** |  | [optional] [default to String]
+**description** | **String** |  | [optional] [default to String]
+**type** | **String** | The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText | [optional] [default to String]
+**displayOrder** | **Integer** |  | [optional] [default to Integer]
+
+```java
+import com.finbourne.lusid.model.FieldSchema;
+import java.util.*;
+import java.lang.System;
+import java.net.URI;
+
+ResourceId Id = new ResourceId();
+@jakarta.annotation.Nullable String DisplayName = "example DisplayName";
+@jakarta.annotation.Nullable String Description = "example Description";
+String Type = "example Type";
+Integer DisplayOrder = new Integer("100.00");
 
 
-
-## Enum: TypeEnum
-
-| Name | Value |
-|---- | -----|
-| STRING | &quot;String&quot; |
-| INT | &quot;Int&quot; |
-| DECIMAL | &quot;Decimal&quot; |
-| DATETIME | &quot;DateTime&quot; |
-| BOOLEAN | &quot;Boolean&quot; |
-| MAP | &quot;Map&quot; |
-| LIST | &quot;List&quot; |
-| PROPERTYARRAY | &quot;PropertyArray&quot; |
-| PERCENTAGE | &quot;Percentage&quot; |
-| CODE | &quot;Code&quot; |
-| ID | &quot;Id&quot; |
-| URI | &quot;Uri&quot; |
-| CURRENCYANDAMOUNT | &quot;CurrencyAndAmount&quot; |
-| TRADEPRICE | &quot;TradePrice&quot; |
-| CURRENCY | &quot;Currency&quot; |
-| METRICVALUE | &quot;MetricValue&quot; |
-| RESOURCEID | &quot;ResourceId&quot; |
-| RESULTVALUE | &quot;ResultValue&quot; |
-| CUTLOCALTIME | &quot;CutLocalTime&quot; |
-| DATEORCUTLABEL | &quot;DateOrCutLabel&quot; |
-| UNINDEXEDTEXT | &quot;UnindexedText&quot; |
-
+FieldSchema fieldSchemaInstance = new FieldSchema()
+    .Id(Id)
+    .DisplayName(DisplayName)
+    .Description(Description)
+    .Type(Type)
+    .DisplayOrder(DisplayOrder);
+```
 
 
 [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
-
-

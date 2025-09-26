@@ -1,18 +1,22 @@
+# com.finbourne.lusid.model.UnitSchema
 
+## Properties
 
-# UnitSchema
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**UnitSchema** | [**String**](.md) | **** | [default to String]
 
-## Enum
+```java
+import com.finbourne.lusid.model.UnitSchema;
+import java.util.*;
+import java.lang.System;
+import java.net.URI;
 
-
-* `NOUNITS` (value: `"NoUnits"`)
-
-* `BASIC` (value: `"Basic"`)
-
-* `ISO4217CURRENCY` (value: `"Iso4217Currency"`)
-
+// Example usage of UnitSchema:
+UnitSchema method = UnitSchema.NOUNITS;
+UnitSchema method = UnitSchema.BASIC;
+UnitSchema method = UnitSchema.ISO4217CURRENCY;
+```
 
 
 [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
-
-

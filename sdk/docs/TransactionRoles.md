@@ -1,28 +1,27 @@
+# com.finbourne.lusid.model.TransactionRoles
 
+## Properties
 
-# TransactionRoles
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**TransactionRoles** | [**String**](.md) | **** | [default to String]
 
-## Enum
+```java
+import com.finbourne.lusid.model.TransactionRoles;
+import java.util.*;
+import java.lang.System;
+import java.net.URI;
 
-
-* `NONE` (value: `"None"`)
-
-* `LONGLONGER` (value: `"LongLonger"`)
-
-* `LONGSHORTER` (value: `"LongShorter"`)
-
-* `SHORTSHORTER` (value: `"ShortShorter"`)
-
-* `SHORTER` (value: `"Shorter"`)
-
-* `SHORTLONGER` (value: `"ShortLonger"`)
-
-* `LONGER` (value: `"Longer"`)
-
-* `ALLROLES` (value: `"AllRoles"`)
-
+// Example usage of TransactionRoles:
+TransactionRoles method = TransactionRoles.NONE;
+TransactionRoles method = TransactionRoles.LONGLONGER;
+TransactionRoles method = TransactionRoles.LONGSHORTER;
+TransactionRoles method = TransactionRoles.SHORTSHORTER;
+TransactionRoles method = TransactionRoles.SHORTER;
+TransactionRoles method = TransactionRoles.SHORTLONGER;
+TransactionRoles method = TransactionRoles.LONGER;
+TransactionRoles method = TransactionRoles.ALLROLES;
+```
 
 
 [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
-
-

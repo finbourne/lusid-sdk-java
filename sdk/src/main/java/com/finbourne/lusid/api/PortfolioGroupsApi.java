@@ -5844,11 +5844,11 @@ public class PortfolioGroupsApi {
     public APIgetPortfolioGroupRelationshipsRequest getPortfolioGroupRelationships(String scope, String code) {
         return new APIgetPortfolioGroupRelationshipsRequest(scope, code);
     }
-    private okhttp3.Call getTransactionsForPortfolioGroupCall(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, Boolean showCancelledTransactions, List<String> sortBy, final ApiCallback _callback) throws ApiException {
-        return getTransactionsForPortfolioGroupCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getTransactionsForPortfolioGroupCall(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, Boolean showCancelledTransactions, List<String> sortBy, String dataModelScope, String dataModelCode, final ApiCallback _callback) throws ApiException {
+        return getTransactionsForPortfolioGroupCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy, dataModelScope, dataModelCode,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getTransactionsForPortfolioGroupCall(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, Boolean showCancelledTransactions, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getTransactionsForPortfolioGroupCall(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, Boolean showCancelledTransactions, List<String> sortBy, String dataModelScope, String dataModelCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5911,6 +5911,14 @@ public class PortfolioGroupsApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "sortBy", sortBy));
         }
 
+        if (dataModelScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dataModelScope", dataModelScope));
+        }
+
+        if (dataModelCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dataModelCode", dataModelCode));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -5933,7 +5941,7 @@ public class PortfolioGroupsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTransactionsForPortfolioGroupValidateBeforeCall(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, Boolean showCancelledTransactions, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getTransactionsForPortfolioGroupValidateBeforeCall(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, Boolean showCancelledTransactions, List<String> sortBy, String dataModelScope, String dataModelCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getTransactionsForPortfolioGroup(Async)");
@@ -5944,34 +5952,34 @@ public class PortfolioGroupsApi {
             throw new ApiException("Missing the required parameter 'code' when calling getTransactionsForPortfolioGroup(Async)");
         }
 
-        return getTransactionsForPortfolioGroupCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy, _callback, opts);
+        return getTransactionsForPortfolioGroupCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy, dataModelScope, dataModelCode, _callback, opts);
 
     }
 
 
-    private ApiResponse<VersionedResourceListOfTransaction> getTransactionsForPortfolioGroupWithHttpInfo(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, Boolean showCancelledTransactions, List<String> sortBy) throws ApiException {
-        okhttp3.Call localVarCall = getTransactionsForPortfolioGroupValidateBeforeCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy, null, new ConfigurationOptions());
+    private ApiResponse<VersionedResourceListOfTransaction> getTransactionsForPortfolioGroupWithHttpInfo(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, Boolean showCancelledTransactions, List<String> sortBy, String dataModelScope, String dataModelCode) throws ApiException {
+        okhttp3.Call localVarCall = getTransactionsForPortfolioGroupValidateBeforeCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy, dataModelScope, dataModelCode, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<VersionedResourceListOfTransaction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<VersionedResourceListOfTransaction> getTransactionsForPortfolioGroupWithHttpInfo(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, Boolean showCancelledTransactions, List<String> sortBy, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getTransactionsForPortfolioGroupValidateBeforeCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy, null, opts);
+    private ApiResponse<VersionedResourceListOfTransaction> getTransactionsForPortfolioGroupWithHttpInfo(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, Boolean showCancelledTransactions, List<String> sortBy, String dataModelScope, String dataModelCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getTransactionsForPortfolioGroupValidateBeforeCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy, dataModelScope, dataModelCode, null, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfTransaction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getTransactionsForPortfolioGroupAsync(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, Boolean showCancelledTransactions, List<String> sortBy, final ApiCallback<VersionedResourceListOfTransaction> _callback) throws ApiException {
+    private okhttp3.Call getTransactionsForPortfolioGroupAsync(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, Boolean showCancelledTransactions, List<String> sortBy, String dataModelScope, String dataModelCode, final ApiCallback<VersionedResourceListOfTransaction> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getTransactionsForPortfolioGroupValidateBeforeCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getTransactionsForPortfolioGroupValidateBeforeCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy, dataModelScope, dataModelCode, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<VersionedResourceListOfTransaction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getTransactionsForPortfolioGroupAsync(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, Boolean showCancelledTransactions, List<String> sortBy, final ApiCallback<VersionedResourceListOfTransaction> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getTransactionsForPortfolioGroupAsync(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, Boolean showCancelledTransactions, List<String> sortBy, String dataModelScope, String dataModelCode, final ApiCallback<VersionedResourceListOfTransaction> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getTransactionsForPortfolioGroupValidateBeforeCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy, _callback, opts);
+        okhttp3.Call localVarCall = getTransactionsForPortfolioGroupValidateBeforeCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy, dataModelScope, dataModelCode, _callback, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfTransaction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -5989,6 +5997,8 @@ public class PortfolioGroupsApi {
         private String page;
         private Boolean showCancelledTransactions;
         private List<String> sortBy;
+        private String dataModelScope;
+        private String dataModelCode;
 
         private APIgetTransactionsForPortfolioGroupRequest(String scope, String code) {
             this.scope = scope;
@@ -6086,6 +6096,26 @@ public class PortfolioGroupsApi {
         }
 
         /**
+         * Set dataModelScope
+         * @param dataModelScope The optional scope of a Custom Data Model to use (optional)
+         * @return APIgetTransactionsForPortfolioGroupRequest
+         */
+        public APIgetTransactionsForPortfolioGroupRequest dataModelScope(String dataModelScope) {
+            this.dataModelScope = dataModelScope;
+            return this;
+        }
+
+        /**
+         * Set dataModelCode
+         * @param dataModelCode The optional code of a Custom Data Model to use (optional)
+         * @return APIgetTransactionsForPortfolioGroupRequest
+         */
+        public APIgetTransactionsForPortfolioGroupRequest dataModelCode(String dataModelCode) {
+            this.dataModelCode = dataModelCode;
+            return this;
+        }
+
+        /**
          * Build call for getTransactionsForPortfolioGroup
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -6099,7 +6129,7 @@ public class PortfolioGroupsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getTransactionsForPortfolioGroupCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy, _callback);
+            return getTransactionsForPortfolioGroupCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy, dataModelScope, dataModelCode, _callback);
         }
 
         /**
@@ -6115,7 +6145,7 @@ public class PortfolioGroupsApi {
          </table>
          */
         public VersionedResourceListOfTransaction execute() throws ApiException {
-            ApiResponse<VersionedResourceListOfTransaction> localVarResp = getTransactionsForPortfolioGroupWithHttpInfo(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy);
+            ApiResponse<VersionedResourceListOfTransaction> localVarResp = getTransactionsForPortfolioGroupWithHttpInfo(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy, dataModelScope, dataModelCode);
             return localVarResp.getData();
         }
 
@@ -6132,7 +6162,7 @@ public class PortfolioGroupsApi {
          </table>
          */
         public VersionedResourceListOfTransaction execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<VersionedResourceListOfTransaction> localVarResp = getTransactionsForPortfolioGroupWithHttpInfo(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy, opts);
+            ApiResponse<VersionedResourceListOfTransaction> localVarResp = getTransactionsForPortfolioGroupWithHttpInfo(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy, dataModelScope, dataModelCode, opts);
             return localVarResp.getData();
         }
 
@@ -6149,7 +6179,7 @@ public class PortfolioGroupsApi {
          </table>
          */
         public ApiResponse<VersionedResourceListOfTransaction> executeWithHttpInfo() throws ApiException {
-            return getTransactionsForPortfolioGroupWithHttpInfo(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy);
+            return getTransactionsForPortfolioGroupWithHttpInfo(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy, dataModelScope, dataModelCode);
         }
 
         /**
@@ -6165,7 +6195,7 @@ public class PortfolioGroupsApi {
          </table>
          */
         public ApiResponse<VersionedResourceListOfTransaction> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getTransactionsForPortfolioGroupWithHttpInfo(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy, opts);
+            return getTransactionsForPortfolioGroupWithHttpInfo(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy, dataModelScope, dataModelCode, opts);
         }
 
         /**
@@ -6182,7 +6212,7 @@ public class PortfolioGroupsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfTransaction> _callback) throws ApiException {
-            return getTransactionsForPortfolioGroupAsync(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy, _callback);
+            return getTransactionsForPortfolioGroupAsync(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy, dataModelScope, dataModelCode, _callback);
         }
 
         /**
@@ -6199,7 +6229,7 @@ public class PortfolioGroupsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfTransaction> _callback, ConfigurationOptions opts) throws ApiException {
-            return getTransactionsForPortfolioGroupAsync(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy, _callback, opts);
+            return getTransactionsForPortfolioGroupAsync(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy, dataModelScope, dataModelCode, _callback, opts);
         }
     }
 

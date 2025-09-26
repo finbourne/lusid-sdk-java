@@ -5,10 +5,11 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AborApi* | [**addDiaryEntry**](docs/AborApi.md#adddiaryentry) | **POST** /api/abor/{scope}/{code}/accountingdiary | [EXPERIMENTAL] AddDiaryEntry: Add a diary entry to the specified Abor.
+*AborApi* | [**addDiaryEntry**](docs/AborApi.md#adddiaryentry) | **POST** /api/abor/{scope}/{code}/accountingdiary | [EXPERIMENTAL] AddDiaryEntry: Add a diary entry to the specified Abor. This would be type 'Other'.
 *AborApi* | [**closePeriod**](docs/AborApi.md#closeperiod) | **POST** /api/abor/{scope}/{code}/accountingdiary/$closeperiod | [EXPERIMENTAL] ClosePeriod: Closes or locks the current period for the given Abor.
 *AborApi* | [**createAbor**](docs/AborApi.md#createabor) | **POST** /api/abor/{scope} | [EXPERIMENTAL] CreateAbor: Create an Abor.
 *AborApi* | [**deleteAbor**](docs/AborApi.md#deleteabor) | **DELETE** /api/abor/{scope}/{code} | [EXPERIMENTAL] DeleteAbor: Delete an Abor.
+*AborApi* | [**deleteDiaryEntry**](docs/AborApi.md#deletediaryentry) | **DELETE** /api/abor/{scope}/{code}/accountingdiary/{diaryEntryCode} | [EXPERIMENTAL] DeleteDiaryEntry: Delete a diary entry type 'Other' from the specified Abor.
 *AborApi* | [**getAbor**](docs/AborApi.md#getabor) | **GET** /api/abor/{scope}/{code} | [EXPERIMENTAL] GetAbor: Get Abor.
 *AborApi* | [**getAborProperties**](docs/AborApi.md#getaborproperties) | **GET** /api/abor/{scope}/{code}/properties | [EXPERIMENTAL] GetAborProperties: Get Abor properties
 *AborApi* | [**getJournalEntryLines**](docs/AborApi.md#getjournalentrylines) | **POST** /api/abor/{scope}/{code}/journalentrylines/$query | [EXPERIMENTAL] GetJournalEntryLines: Get the Journal Entry lines for the given Abor.

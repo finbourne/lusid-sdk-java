@@ -154,7 +154,7 @@ public class MappingRule {
   }
 
    /**
-   * The (optional) value used with Finbourne.WebApi.Interface.Dto.Mappings.MappingRule.ComparisonType
+   * The (optional) value used with ComparisonType.
    * @return comparisonValue
   **/
   @jakarta.annotation.Nullable

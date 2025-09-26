@@ -1,28 +1,27 @@
+# com.finbourne.lusid.model.ModelOptionsType
 
+## Properties
 
-# ModelOptionsType
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**ModelOptionsType** | [**String**](.md) | **** | [default to String]
 
-## Enum
+```java
+import com.finbourne.lusid.model.ModelOptionsType;
+import java.util.*;
+import java.lang.System;
+import java.net.URI;
 
-
-* `INVALID` (value: `"Invalid"`)
-
-* `OPAQUEMODELOPTIONS` (value: `"OpaqueModelOptions"`)
-
-* `EMPTYMODELOPTIONS` (value: `"EmptyModelOptions"`)
-
-* `INDEXMODELOPTIONS` (value: `"IndexModelOptions"`)
-
-* `FXFORWARDMODELOPTIONS` (value: `"FxForwardModelOptions"`)
-
-* `FUNDINGLEGMODELOPTIONS` (value: `"FundingLegModelOptions"`)
-
-* `EQUITYMODELOPTIONS` (value: `"EquityModelOptions"`)
-
-* `CDSMODELOPTIONS` (value: `"CdsModelOptions"`)
-
+// Example usage of ModelOptionsType:
+ModelOptionsType method = ModelOptionsType.INVALID;
+ModelOptionsType method = ModelOptionsType.OPAQUEMODELOPTIONS;
+ModelOptionsType method = ModelOptionsType.EMPTYMODELOPTIONS;
+ModelOptionsType method = ModelOptionsType.INDEXMODELOPTIONS;
+ModelOptionsType method = ModelOptionsType.FXFORWARDMODELOPTIONS;
+ModelOptionsType method = ModelOptionsType.FUNDINGLEGMODELOPTIONS;
+ModelOptionsType method = ModelOptionsType.EQUITYMODELOPTIONS;
+ModelOptionsType method = ModelOptionsType.CDSMODELOPTIONS;
+```
 
 
 [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)
-
-
