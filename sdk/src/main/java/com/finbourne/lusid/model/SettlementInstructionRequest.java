@@ -95,6 +95,10 @@ public class SettlementInstructionRequest {
   @SerializedName(SERIALIZED_NAME_CUSTODIAN_ACCOUNT_OVERRIDE)
   private ResourceId custodianAccountOverride;
 
+  public static final String SERIALIZED_NAME_INSTRUCTION_TO_PORTFOLIO_RATE = "instructionToPortfolioRate";
+  @SerializedName(SERIALIZED_NAME_INSTRUCTION_TO_PORTFOLIO_RATE)
+  private java.math.BigDecimal instructionToPortfolioRate;
+
   public SettlementInstructionRequest() {
   }
 
@@ -324,6 +328,27 @@ public class SettlementInstructionRequest {
   }
 
 
+  public SettlementInstructionRequest instructionToPortfolioRate(java.math.BigDecimal instructionToPortfolioRate) {
+    
+    this.instructionToPortfolioRate = instructionToPortfolioRate;
+    return this;
+  }
+
+   /**
+   * Get instructionToPortfolioRate
+   * @return instructionToPortfolioRate
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getInstructionToPortfolioRate() {
+    return instructionToPortfolioRate;
+  }
+
+
+  public void setInstructionToPortfolioRate(java.math.BigDecimal instructionToPortfolioRate) {
+    this.instructionToPortfolioRate = instructionToPortfolioRate;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -343,7 +368,8 @@ public class SettlementInstructionRequest {
         Objects.equals(this.actualSettlementDate, settlementInstructionRequest.actualSettlementDate) &&
         (this.units.compareTo(settlementInstructionRequest.getUnits()) == 0) &&
         Objects.equals(this.subHoldingKeyOverrides, settlementInstructionRequest.subHoldingKeyOverrides) &&
-        Objects.equals(this.custodianAccountOverride, settlementInstructionRequest.custodianAccountOverride);
+        Objects.equals(this.custodianAccountOverride, settlementInstructionRequest.custodianAccountOverride) &&
+        (this.instructionToPortfolioRate.compareTo(settlementInstructionRequest.getInstructionToPortfolioRate()) == 0);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -352,7 +378,7 @@ public class SettlementInstructionRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(settlementInstructionId, transactionId, settlementCategory, instructionType, instrumentIdentifiers, contractualSettlementDate, actualSettlementDate, units, subHoldingKeyOverrides, custodianAccountOverride);
+    return Objects.hash(settlementInstructionId, transactionId, settlementCategory, instructionType, instrumentIdentifiers, contractualSettlementDate, actualSettlementDate, units, subHoldingKeyOverrides, custodianAccountOverride, instructionToPortfolioRate);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -376,6 +402,7 @@ public class SettlementInstructionRequest {
     sb.append("    units: ").append(toIndentedString(units)).append("\n");
     sb.append("    subHoldingKeyOverrides: ").append(toIndentedString(subHoldingKeyOverrides)).append("\n");
     sb.append("    custodianAccountOverride: ").append(toIndentedString(custodianAccountOverride)).append("\n");
+    sb.append("    instructionToPortfolioRate: ").append(toIndentedString(instructionToPortfolioRate)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -408,6 +435,7 @@ public class SettlementInstructionRequest {
     openapiFields.add("units");
     openapiFields.add("subHoldingKeyOverrides");
     openapiFields.add("custodianAccountOverride");
+    openapiFields.add("instructionToPortfolioRate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

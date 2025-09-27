@@ -103,6 +103,10 @@ public class TransactionSettlementInstruction {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private String status;
 
+  public static final String SERIALIZED_NAME_INSTRUCTION_TO_PORTFOLIO_RATE = "instructionToPortfolioRate";
+  @SerializedName(SERIALIZED_NAME_INSTRUCTION_TO_PORTFOLIO_RATE)
+  private java.math.BigDecimal instructionToPortfolioRate;
+
   public TransactionSettlementInstruction() {
   }
 
@@ -374,6 +378,27 @@ public class TransactionSettlementInstruction {
   }
 
 
+  public TransactionSettlementInstruction instructionToPortfolioRate(java.math.BigDecimal instructionToPortfolioRate) {
+    
+    this.instructionToPortfolioRate = instructionToPortfolioRate;
+    return this;
+  }
+
+   /**
+   * The exchange rate between the Settlement Instruction and Portfolio.
+   * @return instructionToPortfolioRate
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getInstructionToPortfolioRate() {
+    return instructionToPortfolioRate;
+  }
+
+
+  public void setInstructionToPortfolioRate(java.math.BigDecimal instructionToPortfolioRate) {
+    this.instructionToPortfolioRate = instructionToPortfolioRate;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -395,7 +420,8 @@ public class TransactionSettlementInstruction {
         Objects.equals(this.subHoldingKeyOverrides, transactionSettlementInstruction.subHoldingKeyOverrides) &&
         Objects.equals(this.custodianAccountOverride, transactionSettlementInstruction.custodianAccountOverride) &&
         Objects.equals(this.instrumentIdentifiers, transactionSettlementInstruction.instrumentIdentifiers) &&
-        Objects.equals(this.status, transactionSettlementInstruction.status);
+        Objects.equals(this.status, transactionSettlementInstruction.status) &&
+        (this.instructionToPortfolioRate.compareTo(transactionSettlementInstruction.getInstructionToPortfolioRate()) == 0);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -404,7 +430,7 @@ public class TransactionSettlementInstruction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(settlementInstructionId, instructionType, actualSettlementDate, units, transactionId, settlementCategory, lusidInstrumentId, contractualSettlementDate, subHoldingKeyOverrides, custodianAccountOverride, instrumentIdentifiers, status);
+    return Objects.hash(settlementInstructionId, instructionType, actualSettlementDate, units, transactionId, settlementCategory, lusidInstrumentId, contractualSettlementDate, subHoldingKeyOverrides, custodianAccountOverride, instrumentIdentifiers, status, instructionToPortfolioRate);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -430,6 +456,7 @@ public class TransactionSettlementInstruction {
     sb.append("    custodianAccountOverride: ").append(toIndentedString(custodianAccountOverride)).append("\n");
     sb.append("    instrumentIdentifiers: ").append(toIndentedString(instrumentIdentifiers)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    instructionToPortfolioRate: ").append(toIndentedString(instructionToPortfolioRate)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -464,6 +491,7 @@ public class TransactionSettlementInstruction {
     openapiFields.add("custodianAccountOverride");
     openapiFields.add("instrumentIdentifiers");
     openapiFields.add("status");
+    openapiFields.add("instructionToPortfolioRate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

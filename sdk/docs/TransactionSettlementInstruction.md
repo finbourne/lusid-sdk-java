@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **custodianAccountOverride** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **instrumentIdentifiers** | **Map&lt;String, String&gt;** | A set of instrument identifiers that can resolve the settlement instruction to a unique instrument. | [default to Map<String, String>]
 **status** | **String** | The status of the settlement instruction - &#39;Invalid&#39;, &#39;Rejected&#39; &#39;Applied&#39; or &#39;Orphan&#39;. | [optional] [default to String]
+**instructionToPortfolioRate** | **java.math.BigDecimal** | The exchange rate between the Settlement Instruction and Portfolio. | [optional] [default to java.math.BigDecimal]
 
 ```java
 import com.finbourne.lusid.model.TransactionSettlementInstruction;
@@ -35,6 +36,7 @@ String LusidInstrumentId = "example LusidInstrumentId";
 ResourceId CustodianAccountOverride = new ResourceId();
 Map<String, String> InstrumentIdentifiers = new Map<String, String>();
 @jakarta.annotation.Nullable String Status = "example Status";
+@jakarta.annotation.Nullable java.math.BigDecimal InstructionToPortfolioRate = new java.math.BigDecimal("100.00");
 
 
 TransactionSettlementInstruction transactionSettlementInstructionInstance = new TransactionSettlementInstruction()
@@ -49,7 +51,8 @@ TransactionSettlementInstruction transactionSettlementInstructionInstance = new 
     .SubHoldingKeyOverrides(SubHoldingKeyOverrides)
     .CustodianAccountOverride(CustodianAccountOverride)
     .InstrumentIdentifiers(InstrumentIdentifiers)
-    .Status(Status);
+    .Status(Status)
+    .InstructionToPortfolioRate(InstructionToPortfolioRate);
 ```
 
 
