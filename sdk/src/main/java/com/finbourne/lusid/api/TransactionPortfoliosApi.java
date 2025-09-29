@@ -1793,11 +1793,11 @@ public class TransactionPortfoliosApi {
     public APIbuildSettlementInstructionsRequest buildSettlementInstructions(String scope, String code, SettlementInstructionQuery settlementInstructionQuery) {
         return new APIbuildSettlementInstructionsRequest(scope, code, settlementInstructionQuery);
     }
-    private okhttp3.Call buildTransactionsCall(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, final ApiCallback _callback) throws ApiException {
-        return buildTransactionsCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page,  _callback, new ConfigurationOptions());
+    private okhttp3.Call buildTransactionsCall(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, String dataModelScope, String dataModelCode, final ApiCallback _callback) throws ApiException {
+        return buildTransactionsCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call buildTransactionsCall(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call buildTransactionsCall(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, String dataModelScope, String dataModelCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1844,6 +1844,14 @@ public class TransactionPortfoliosApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
+        if (dataModelScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dataModelScope", dataModelScope));
+        }
+
+        if (dataModelCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dataModelCode", dataModelCode));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -1870,7 +1878,7 @@ public class TransactionPortfoliosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call buildTransactionsValidateBeforeCall(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call buildTransactionsValidateBeforeCall(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, String dataModelScope, String dataModelCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling buildTransactions(Async)");
@@ -1886,34 +1894,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'transactionQueryParameters' when calling buildTransactions(Async)");
         }
 
-        return buildTransactionsCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, _callback, opts);
+        return buildTransactionsCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, _callback, opts);
 
     }
 
 
-    private ApiResponse<VersionedResourceListOfOutputTransaction> buildTransactionsWithHttpInfo(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page) throws ApiException {
-        okhttp3.Call localVarCall = buildTransactionsValidateBeforeCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, null, new ConfigurationOptions());
+    private ApiResponse<VersionedResourceListOfOutputTransaction> buildTransactionsWithHttpInfo(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, String dataModelScope, String dataModelCode) throws ApiException {
+        okhttp3.Call localVarCall = buildTransactionsValidateBeforeCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<VersionedResourceListOfOutputTransaction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<VersionedResourceListOfOutputTransaction> buildTransactionsWithHttpInfo(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = buildTransactionsValidateBeforeCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, null, opts);
+    private ApiResponse<VersionedResourceListOfOutputTransaction> buildTransactionsWithHttpInfo(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, String dataModelScope, String dataModelCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = buildTransactionsValidateBeforeCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, null, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfOutputTransaction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call buildTransactionsAsync(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, final ApiCallback<VersionedResourceListOfOutputTransaction> _callback) throws ApiException {
+    private okhttp3.Call buildTransactionsAsync(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, String dataModelScope, String dataModelCode, final ApiCallback<VersionedResourceListOfOutputTransaction> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = buildTransactionsValidateBeforeCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = buildTransactionsValidateBeforeCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<VersionedResourceListOfOutputTransaction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call buildTransactionsAsync(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, final ApiCallback<VersionedResourceListOfOutputTransaction> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call buildTransactionsAsync(String scope, String code, TransactionQueryParameters transactionQueryParameters, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, String dataModelScope, String dataModelCode, final ApiCallback<VersionedResourceListOfOutputTransaction> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = buildTransactionsValidateBeforeCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, _callback, opts);
+        okhttp3.Call localVarCall = buildTransactionsValidateBeforeCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, _callback, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfOutputTransaction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1928,6 +1936,8 @@ public class TransactionPortfoliosApi {
         private List<String> propertyKeys;
         private Integer limit;
         private String page;
+        private String dataModelScope;
+        private String dataModelCode;
 
         private APIbuildTransactionsRequest(String scope, String code, TransactionQueryParameters transactionQueryParameters) {
             this.scope = scope;
@@ -1986,6 +1996,26 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Set dataModelScope
+         * @param dataModelScope The optional scope of a Custom Data Model to use (optional)
+         * @return APIbuildTransactionsRequest
+         */
+        public APIbuildTransactionsRequest dataModelScope(String dataModelScope) {
+            this.dataModelScope = dataModelScope;
+            return this;
+        }
+
+        /**
+         * Set dataModelCode
+         * @param dataModelCode The optional code of a Custom Data Model to use (optional)
+         * @return APIbuildTransactionsRequest
+         */
+        public APIbuildTransactionsRequest dataModelCode(String dataModelCode) {
+            this.dataModelCode = dataModelCode;
+            return this;
+        }
+
+        /**
          * Build call for buildTransactions
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -1999,7 +2029,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return buildTransactionsCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, _callback);
+            return buildTransactionsCall(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, _callback);
         }
 
         /**
@@ -2015,7 +2045,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public VersionedResourceListOfOutputTransaction execute() throws ApiException {
-            ApiResponse<VersionedResourceListOfOutputTransaction> localVarResp = buildTransactionsWithHttpInfo(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page);
+            ApiResponse<VersionedResourceListOfOutputTransaction> localVarResp = buildTransactionsWithHttpInfo(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode);
             return localVarResp.getData();
         }
 
@@ -2032,7 +2062,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public VersionedResourceListOfOutputTransaction execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<VersionedResourceListOfOutputTransaction> localVarResp = buildTransactionsWithHttpInfo(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, opts);
+            ApiResponse<VersionedResourceListOfOutputTransaction> localVarResp = buildTransactionsWithHttpInfo(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, opts);
             return localVarResp.getData();
         }
 
@@ -2049,7 +2079,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<VersionedResourceListOfOutputTransaction> executeWithHttpInfo() throws ApiException {
-            return buildTransactionsWithHttpInfo(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page);
+            return buildTransactionsWithHttpInfo(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode);
         }
 
         /**
@@ -2065,7 +2095,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<VersionedResourceListOfOutputTransaction> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return buildTransactionsWithHttpInfo(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, opts);
+            return buildTransactionsWithHttpInfo(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, opts);
         }
 
         /**
@@ -2082,7 +2112,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfOutputTransaction> _callback) throws ApiException {
-            return buildTransactionsAsync(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, _callback);
+            return buildTransactionsAsync(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, _callback);
         }
 
         /**
@@ -2099,7 +2129,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfOutputTransaction> _callback, ConfigurationOptions opts) throws ApiException {
-            return buildTransactionsAsync(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, _callback, opts);
+            return buildTransactionsAsync(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page, dataModelScope, dataModelCode, _callback, opts);
         }
     }
 
