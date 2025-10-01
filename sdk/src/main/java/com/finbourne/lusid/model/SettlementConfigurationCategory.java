@@ -54,6 +54,14 @@ public class SettlementConfigurationCategory {
   @SerializedName(SERIALIZED_NAME_METHOD)
   private String method;
 
+  public static final String SERIALIZED_NAME_CALCULATE_INSTRUCTION_TO_PORTFOLIO_RATE = "calculateInstructionToPortfolioRate";
+  @SerializedName(SERIALIZED_NAME_CALCULATE_INSTRUCTION_TO_PORTFOLIO_RATE)
+  private Boolean calculateInstructionToPortfolioRate;
+
+  public static final String SERIALIZED_NAME_CALCULATE_IN_LIEU_SETTLEMENT_AMOUNT = "calculateInLieuSettlementAmount";
+  @SerializedName(SERIALIZED_NAME_CALCULATE_IN_LIEU_SETTLEMENT_AMOUNT)
+  private Boolean calculateInLieuSettlementAmount;
+
   public SettlementConfigurationCategory() {
   }
 
@@ -78,6 +86,48 @@ public class SettlementConfigurationCategory {
   }
 
 
+  public SettlementConfigurationCategory calculateInstructionToPortfolioRate(Boolean calculateInstructionToPortfolioRate) {
+    
+    this.calculateInstructionToPortfolioRate = calculateInstructionToPortfolioRate;
+    return this;
+  }
+
+   /**
+   * An optional flag that allows for the calculation of the instruction to portfolio rate for instructions with settlement category CashSettlement or DeferredCashReceipt, if it is not provided on the settlement instruction. Defaults to false if not specified.
+   * @return calculateInstructionToPortfolioRate
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getCalculateInstructionToPortfolioRate() {
+    return calculateInstructionToPortfolioRate;
+  }
+
+
+  public void setCalculateInstructionToPortfolioRate(Boolean calculateInstructionToPortfolioRate) {
+    this.calculateInstructionToPortfolioRate = calculateInstructionToPortfolioRate;
+  }
+
+
+  public SettlementConfigurationCategory calculateInLieuSettlementAmount(Boolean calculateInLieuSettlementAmount) {
+    
+    this.calculateInLieuSettlementAmount = calculateInLieuSettlementAmount;
+    return this;
+  }
+
+   /**
+   * An optional flag that allows for the calculation of the in lieu amount for instructions with settlement category CashSettlement or DeferredCashReceipt, if it is not provided on the settlement instruction. Defaults to false if not specified.
+   * @return calculateInLieuSettlementAmount
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getCalculateInLieuSettlementAmount() {
+    return calculateInLieuSettlementAmount;
+  }
+
+
+  public void setCalculateInLieuSettlementAmount(Boolean calculateInLieuSettlementAmount) {
+    this.calculateInLieuSettlementAmount = calculateInLieuSettlementAmount;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -88,7 +138,9 @@ public class SettlementConfigurationCategory {
       return false;
     }
     SettlementConfigurationCategory settlementConfigurationCategory = (SettlementConfigurationCategory) o;
-    return Objects.equals(this.method, settlementConfigurationCategory.method);
+    return Objects.equals(this.method, settlementConfigurationCategory.method) &&
+        Objects.equals(this.calculateInstructionToPortfolioRate, settlementConfigurationCategory.calculateInstructionToPortfolioRate) &&
+        Objects.equals(this.calculateInLieuSettlementAmount, settlementConfigurationCategory.calculateInLieuSettlementAmount);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -97,7 +149,7 @@ public class SettlementConfigurationCategory {
 
   @Override
   public int hashCode() {
-    return Objects.hash(method);
+    return Objects.hash(method, calculateInstructionToPortfolioRate, calculateInLieuSettlementAmount);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -112,6 +164,8 @@ public class SettlementConfigurationCategory {
     StringBuilder sb = new StringBuilder();
     sb.append("class SettlementConfigurationCategory {\n");
     sb.append("    method: ").append(toIndentedString(method)).append("\n");
+    sb.append("    calculateInstructionToPortfolioRate: ").append(toIndentedString(calculateInstructionToPortfolioRate)).append("\n");
+    sb.append("    calculateInLieuSettlementAmount: ").append(toIndentedString(calculateInLieuSettlementAmount)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -135,6 +189,8 @@ public class SettlementConfigurationCategory {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("method");
+    openapiFields.add("calculateInstructionToPortfolioRate");
+    openapiFields.add("calculateInLieuSettlementAmount");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

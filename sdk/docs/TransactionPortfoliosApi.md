@@ -549,7 +549,7 @@ public class TransactionPortfoliosApiExample {
 
 ## buildSettlementInstructions
 
-> VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery buildSettlementInstructions(scope, code, settlementInstructionQuery, asAt)
+> VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery buildSettlementInstructions(scope, code, settlementInstructionQuery)
 
 [EARLY ACCESS] BuildSettlementInstructions: Build Settlement Instructions
 
@@ -597,12 +597,11 @@ public class TransactionPortfoliosApiExample {
         String scope = "scope_example"; // String | The scope of the transaction portfolio.
         String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio.
         SettlementInstructionQuery settlementInstructionQuery = new SettlementInstructionQuery(); // SettlementInstructionQuery | The queryParameters which control how the settlement instructions are built and returned.
-        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to build the settlement instructions. Defaults to return the latest   version of each transaction if not specified.
         try {
             // uncomment the below to set overrides at the request level
-            // VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery result = apiInstance.buildSettlementInstructions(scope, code, settlementInstructionQuery, asAt).execute(opts);
+            // VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery result = apiInstance.buildSettlementInstructions(scope, code, settlementInstructionQuery).execute(opts);
 
-            VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery result = apiInstance.buildSettlementInstructions(scope, code, settlementInstructionQuery, asAt).execute();
+            VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery result = apiInstance.buildSettlementInstructions(scope, code, settlementInstructionQuery).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TransactionPortfoliosApi#buildSettlementInstructions");
@@ -622,7 +621,6 @@ public class TransactionPortfoliosApiExample {
 | **scope** | **String**| The scope of the transaction portfolio. | |
 | **code** | **String**| The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. | |
 | **settlementInstructionQuery** | [**SettlementInstructionQuery**](SettlementInstructionQuery.md)| The queryParameters which control how the settlement instructions are built and returned. | |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to build the settlement instructions. Defaults to return the latest   version of each transaction if not specified. | [optional] |
 
 ### Return type
 

@@ -17,6 +17,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -52,6 +53,10 @@ import com.finbourne.lusid.JSON;
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class SettlementInstructionQuery {
+  public static final String SERIALIZED_NAME_AS_AT = "asAt";
+  @SerializedName(SERIALIZED_NAME_AS_AT)
+  private OffsetDateTime asAt;
+
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
   private String startDate;
@@ -82,6 +87,27 @@ public class SettlementInstructionQuery {
 
   public SettlementInstructionQuery() {
   }
+
+  public SettlementInstructionQuery asAt(OffsetDateTime asAt) {
+    
+    this.asAt = asAt;
+    return this;
+  }
+
+   /**
+   * Get asAt
+   * @return asAt
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getAsAt() {
+    return asAt;
+  }
+
+
+  public void setAsAt(OffsetDateTime asAt) {
+    this.asAt = asAt;
+  }
+
 
   public SettlementInstructionQuery startDate(String startDate) {
     
@@ -256,7 +282,8 @@ public class SettlementInstructionQuery {
       return false;
     }
     SettlementInstructionQuery settlementInstructionQuery = (SettlementInstructionQuery) o;
-    return Objects.equals(this.startDate, settlementInstructionQuery.startDate) &&
+    return Objects.equals(this.asAt, settlementInstructionQuery.asAt) &&
+        Objects.equals(this.startDate, settlementInstructionQuery.startDate) &&
         Objects.equals(this.endDate, settlementInstructionQuery.endDate) &&
         Objects.equals(this.limit, settlementInstructionQuery.limit) &&
         Objects.equals(this.page, settlementInstructionQuery.page) &&
@@ -271,7 +298,7 @@ public class SettlementInstructionQuery {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, endDate, limit, page, filter, settlementInstructionPropertyKeys, transactionPropertyKeys);
+    return Objects.hash(asAt, startDate, endDate, limit, page, filter, settlementInstructionPropertyKeys, transactionPropertyKeys);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -285,6 +312,7 @@ public class SettlementInstructionQuery {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SettlementInstructionQuery {\n");
+    sb.append("    asAt: ").append(toIndentedString(asAt)).append("\n");
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    limit: ").append(toIndentedString(limit)).append("\n");
@@ -314,6 +342,7 @@ public class SettlementInstructionQuery {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("asAt");
     openapiFields.add("startDate");
     openapiFields.add("endDate");
     openapiFields.add("limit");

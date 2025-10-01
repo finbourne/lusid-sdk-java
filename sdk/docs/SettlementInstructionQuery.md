@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**asAt** | [**OffsetDateTime**](OffsetDateTime.md) |  | [optional] [default to OffsetDateTime]
 **startDate** | **String** |  | [optional] [default to String]
 **endDate** | **String** |  | [optional] [default to String]
 **limit** | **Integer** |  | [optional] [default to Integer]
@@ -18,6 +19,7 @@ import java.util.*;
 import java.lang.System;
 import java.net.URI;
 
+@jakarta.annotation.Nullable OffsetDateTime AsAt = OffsetDateTime.now();
 @jakarta.annotation.Nullable String StartDate = "example StartDate";
 @jakarta.annotation.Nullable String EndDate = "example EndDate";
 @jakarta.annotation.Nullable Integer Limit = new Integer("100.00");
@@ -28,6 +30,7 @@ import java.net.URI;
 
 
 SettlementInstructionQuery settlementInstructionQueryInstance = new SettlementInstructionQuery()
+    .AsAt(AsAt)
     .StartDate(StartDate)
     .EndDate(EndDate)
     .Limit(Limit)

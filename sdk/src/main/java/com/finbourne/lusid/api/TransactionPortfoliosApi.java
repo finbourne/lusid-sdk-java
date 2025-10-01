@@ -1525,11 +1525,11 @@ public class TransactionPortfoliosApi {
     public APIbatchUpsertTransactionsRequest batchUpsertTransactions(String scope, String code, String successMode, Map<String, TransactionRequest> requestBody) {
         return new APIbatchUpsertTransactionsRequest(scope, code, successMode, requestBody);
     }
-    private okhttp3.Call buildSettlementInstructionsCall(String scope, String code, SettlementInstructionQuery settlementInstructionQuery, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
-        return buildSettlementInstructionsCall(scope, code, settlementInstructionQuery, asAt,  _callback, new ConfigurationOptions());
+    private okhttp3.Call buildSettlementInstructionsCall(String scope, String code, SettlementInstructionQuery settlementInstructionQuery, final ApiCallback _callback) throws ApiException {
+        return buildSettlementInstructionsCall(scope, code, settlementInstructionQuery,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call buildSettlementInstructionsCall(String scope, String code, SettlementInstructionQuery settlementInstructionQuery, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call buildSettlementInstructionsCall(String scope, String code, SettlementInstructionQuery settlementInstructionQuery, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1555,10 +1555,6 @@ public class TransactionPortfoliosApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (asAt != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
-        }
 
         final String[] localVarAccepts = {
             "text/plain",
@@ -1586,7 +1582,7 @@ public class TransactionPortfoliosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call buildSettlementInstructionsValidateBeforeCall(String scope, String code, SettlementInstructionQuery settlementInstructionQuery, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call buildSettlementInstructionsValidateBeforeCall(String scope, String code, SettlementInstructionQuery settlementInstructionQuery, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling buildSettlementInstructions(Async)");
@@ -1602,34 +1598,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'settlementInstructionQuery' when calling buildSettlementInstructions(Async)");
         }
 
-        return buildSettlementInstructionsCall(scope, code, settlementInstructionQuery, asAt, _callback, opts);
+        return buildSettlementInstructionsCall(scope, code, settlementInstructionQuery, _callback, opts);
 
     }
 
 
-    private ApiResponse<VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery> buildSettlementInstructionsWithHttpInfo(String scope, String code, SettlementInstructionQuery settlementInstructionQuery, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = buildSettlementInstructionsValidateBeforeCall(scope, code, settlementInstructionQuery, asAt, null, new ConfigurationOptions());
+    private ApiResponse<VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery> buildSettlementInstructionsWithHttpInfo(String scope, String code, SettlementInstructionQuery settlementInstructionQuery) throws ApiException {
+        okhttp3.Call localVarCall = buildSettlementInstructionsValidateBeforeCall(scope, code, settlementInstructionQuery, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery> buildSettlementInstructionsWithHttpInfo(String scope, String code, SettlementInstructionQuery settlementInstructionQuery, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = buildSettlementInstructionsValidateBeforeCall(scope, code, settlementInstructionQuery, asAt, null, opts);
+    private ApiResponse<VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery> buildSettlementInstructionsWithHttpInfo(String scope, String code, SettlementInstructionQuery settlementInstructionQuery, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = buildSettlementInstructionsValidateBeforeCall(scope, code, settlementInstructionQuery, null, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call buildSettlementInstructionsAsync(String scope, String code, SettlementInstructionQuery settlementInstructionQuery, OffsetDateTime asAt, final ApiCallback<VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery> _callback) throws ApiException {
+    private okhttp3.Call buildSettlementInstructionsAsync(String scope, String code, SettlementInstructionQuery settlementInstructionQuery, final ApiCallback<VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = buildSettlementInstructionsValidateBeforeCall(scope, code, settlementInstructionQuery, asAt, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = buildSettlementInstructionsValidateBeforeCall(scope, code, settlementInstructionQuery, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call buildSettlementInstructionsAsync(String scope, String code, SettlementInstructionQuery settlementInstructionQuery, OffsetDateTime asAt, final ApiCallback<VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call buildSettlementInstructionsAsync(String scope, String code, SettlementInstructionQuery settlementInstructionQuery, final ApiCallback<VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = buildSettlementInstructionsValidateBeforeCall(scope, code, settlementInstructionQuery, asAt, _callback, opts);
+        okhttp3.Call localVarCall = buildSettlementInstructionsValidateBeforeCall(scope, code, settlementInstructionQuery, _callback, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1639,22 +1635,11 @@ public class TransactionPortfoliosApi {
         private final String scope;
         private final String code;
         private final SettlementInstructionQuery settlementInstructionQuery;
-        private OffsetDateTime asAt;
 
         private APIbuildSettlementInstructionsRequest(String scope, String code, SettlementInstructionQuery settlementInstructionQuery) {
             this.scope = scope;
             this.code = code;
             this.settlementInstructionQuery = settlementInstructionQuery;
-        }
-
-        /**
-         * Set asAt
-         * @param asAt The asAt datetime at which to build the settlement instructions. Defaults to return the latest   version of each transaction if not specified. (optional)
-         * @return APIbuildSettlementInstructionsRequest
-         */
-        public APIbuildSettlementInstructionsRequest asAt(OffsetDateTime asAt) {
-            this.asAt = asAt;
-            return this;
         }
 
         /**
@@ -1671,7 +1656,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return buildSettlementInstructionsCall(scope, code, settlementInstructionQuery, asAt, _callback);
+            return buildSettlementInstructionsCall(scope, code, settlementInstructionQuery, _callback);
         }
 
         /**
@@ -1687,7 +1672,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery execute() throws ApiException {
-            ApiResponse<VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery> localVarResp = buildSettlementInstructionsWithHttpInfo(scope, code, settlementInstructionQuery, asAt);
+            ApiResponse<VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery> localVarResp = buildSettlementInstructionsWithHttpInfo(scope, code, settlementInstructionQuery);
             return localVarResp.getData();
         }
 
@@ -1704,7 +1689,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery> localVarResp = buildSettlementInstructionsWithHttpInfo(scope, code, settlementInstructionQuery, asAt, opts);
+            ApiResponse<VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery> localVarResp = buildSettlementInstructionsWithHttpInfo(scope, code, settlementInstructionQuery, opts);
             return localVarResp.getData();
         }
 
@@ -1721,7 +1706,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery> executeWithHttpInfo() throws ApiException {
-            return buildSettlementInstructionsWithHttpInfo(scope, code, settlementInstructionQuery, asAt);
+            return buildSettlementInstructionsWithHttpInfo(scope, code, settlementInstructionQuery);
         }
 
         /**
@@ -1737,7 +1722,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return buildSettlementInstructionsWithHttpInfo(scope, code, settlementInstructionQuery, asAt, opts);
+            return buildSettlementInstructionsWithHttpInfo(scope, code, settlementInstructionQuery, opts);
         }
 
         /**
@@ -1754,7 +1739,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery> _callback) throws ApiException {
-            return buildSettlementInstructionsAsync(scope, code, settlementInstructionQuery, asAt, _callback);
+            return buildSettlementInstructionsAsync(scope, code, settlementInstructionQuery, _callback);
         }
 
         /**
@@ -1771,7 +1756,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery> _callback, ConfigurationOptions opts) throws ApiException {
-            return buildSettlementInstructionsAsync(scope, code, settlementInstructionQuery, asAt, _callback, opts);
+            return buildSettlementInstructionsAsync(scope, code, settlementInstructionQuery, _callback, opts);
         }
     }
 
